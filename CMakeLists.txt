@@ -21,10 +21,14 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 set(LIBFM_QT_LIB_VERSION "2.0.0")
 set(LIBFM_QT_LIB_SOVERSION "2")
 
-find_package(Qt5Widgets 5.2 REQUIRED)
-find_package(Qt5DBus 5.2 REQUIRED)
-find_package(Qt5LinguistTools 5.2 REQUIRED)
-find_package(Qt5X11Extras 5.2 REQUIRED)
+set(REQUIRED_QT_VERSION "5.2")
+set(REQUIRED_LIBFM_VERSION "1.2.0")
+set(REQUIRED_LIBMENUCACHE_VERSION "0.4.0")
+
+find_package(Qt5Widgets "${REQUIRED_QT_VERSION}" REQUIRED)
+find_package(Qt5DBus "${REQUIRED_QT_VERSION}" REQUIRED)
+find_package(Qt5LinguistTools "${REQUIRED_QT_VERSION}" REQUIRED)
+find_package(Qt5X11Extras "${REQUIRED_QT_VERSION}" REQUIRED)
 
 find_package(PkgConfig)
 pkg_check_modules(SYSTEM_LIBS REQUIRED
@@ -34,8 +38,8 @@ pkg_check_modules(SYSTEM_LIBS REQUIRED
     xcb
 )
 
-pkg_check_modules(LIBFM REQUIRED libfm>=1.2.0)
-pkg_check_modules(LIBMENUCACHE REQUIRED libmenu-cache>=0.4.0)
+pkg_check_modules(LIBFM REQUIRED libfm>="${REQUIRED_LIBFM_VERSION}")
+pkg_check_modules(LIBMENUCACHE REQUIRED libmenu-cache>="${REQUIRED_LIBMENUCACHE_VERSION}")
 
 option(UPDATE_TRANSLATIONS "Update source translation translations/*.ts files" OFF)
 include(GNUInstallDirs)
