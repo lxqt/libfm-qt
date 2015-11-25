@@ -39,6 +39,7 @@ pkg_check_modules(LIBMENUCACHE REQUIRED libmenu-cache>=0.4.0)
 
 option(UPDATE_TRANSLATIONS "Update source translation translations/*.ts files" OFF)
 include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
 include(LXQtTranslateTs)
 include(LXQtTranslateDesktop)
 
@@ -69,6 +70,18 @@ endif()
 
 set(CMAKE_AUTOMOC TRUE)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+write_basic_package_version_file(
+    "${CMAKE_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}-config-version.cmake"
+    VERSION ${LIBFM_QT_LIB_VERSION}
+    COMPATIBILITY AnyNewerVersion
+)
+
+install(FILES
+    "${CMAKE_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}-config-version.cmake"
+    DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${LIBFM_QT_LIBRARY_NAME}"
+    COMPONENT Devel
+)
 
 add_subdirectory(src)
 
