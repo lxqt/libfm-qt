@@ -1,4 +1,3 @@
-project(fm-qt)
 
 set(LIBRARY_NAME "fm-qt")
 set(QTX_INCLUDE_DIRS "")
