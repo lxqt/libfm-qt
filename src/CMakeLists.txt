@@ -5,7 +5,6 @@ include_directories(
     "${LIBFM_INCLUDEDIR}/libfm" # to workaround incorrect #include in fm-actions.
     ${LIBMENUCACHE_INCLUDE_DIRS}
     ${SYSTEM_LIBS_INCLUDE_DIRS}
-    "${CMAKE_CURRENT_BINARY_DIR}"
 )
 
 link_directories(
