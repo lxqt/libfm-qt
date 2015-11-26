@@ -1,5 +1,4 @@
 set(QTX_INCLUDE_DIRS "")
-set(QTX_LIBRARIES Qt5::Widgets Qt5::X11Extras)
 set(libfm_TRANSLATION_TEMPLATE ${PROJECT_NAME})
 
 include_directories(
@@ -109,7 +108,8 @@ install(EXPORT
 )
 
 target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
-    ${QTX_LIBRARIES}
+    Qt5::Widgets
+    Qt5::X11Extras
     ${LIBFM_LIBRARIES}
     ${LIBMENUCACHE_LIBRARIES}
     ${SYSTEM_LIBS_LIBRARIES}
@@ -143,7 +143,7 @@ export(TARGETS ${LIBFM_QT_LIBRARY_NAME}
 )
 
 # install a pkgconfig file for libfm-qt
-set(REQUIRED_QT "Qt5Core >= ${REQUIRED_QT_VERSION} Qt5DBus >= ${REQUIRED_QT_VERSION}")
+set(REQUIRED_QT "Qt5Widgets >= ${REQUIRED_QT_VERSION} Qt5X11Extras >= ${REQUIRED_QT_VERSION}")
 configure_file(libfm-qt.pc.in lib${LIBFM_QT_LIBRARY_NAME}.pc @ONLY)
 # FreeBSD loves to install files to different locations
 # http://www.freebsd.org/doc/handbook/dirstructure.html
