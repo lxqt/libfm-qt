@@ -804,7 +804,7 @@ void FolderView::childDropEvent(QDropEvent* e) {
   if(e->keyboardModifiers() == Qt::NoModifier) {
     // if no key modifiers are used, popup a menu
     // to ask the user for the action he/she wants to perform.
-    Qt::DropAction action = DndActionMenu::askUser(QCursor::pos());
+    Qt::DropAction action = DndActionMenu::askUser(e->possibleActions(), QCursor::pos());
     e->setDropAction(action);
   }
 }

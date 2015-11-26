@@ -30,10 +30,10 @@ namespace Fm {
 class DndActionMenu : public QMenu {
 Q_OBJECT
 public:
-  explicit DndActionMenu(QWidget* parent = 0);
+  explicit DndActionMenu(Qt::DropActions possibleActions, QWidget* parent = 0);
   virtual ~DndActionMenu();
 
-  static Qt::DropAction askUser(QPoint pos);
+  static Qt::DropAction askUser(Qt::DropActions possibleActions, QPoint pos);
 
 private:
   QAction* copyAction;
