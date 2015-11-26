@@ -8,5 +8,5 @@ Description: A Qt/glib/gio-based lib used to develop file managers providing som
 URL: http://pcmanfm.sourceforge.net/
 Requires: @REQUIRED_QT@ libfm >= 1.2.0
 Version: @LIBFM_QT_VERSION@
-Libs: -L${libdir} -lfm -l@LIBRARY_NAME@
+Libs: -L${libdir} -lfm -l@LIBFM_QT_LIBRARY_NAME@
 Cflags: -I${includedir}

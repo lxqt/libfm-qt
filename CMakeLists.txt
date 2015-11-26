@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(libfm-qt)
 
+set(LIBFM_QT_LIBRARY_NAME "fm-qt" CACHE STRING "fm-qt")
+
 set(LIBFM_QT_VERSION_MAJOR 0)
 set(LIBFM_QT_VERSION_MINOR 10)
 set(LIBFM_QT_VERSION_PATCH 0)
