@@ -1,8 +1,6 @@
-set(QTX_INCLUDE_DIRS "")
 set(libfm_TRANSLATION_TEMPLATE ${PROJECT_NAME})
 
 include_directories(
-    ${QTX_INCLUDE_DIRS}
     ${LIBFM_INCLUDE_DIRS}
     "${LIBFM_INCLUDEDIR}/libfm" # to workaround incorrect #include in fm-actions.
     ${LIBMENUCACHE_INCLUDE_DIRS}
