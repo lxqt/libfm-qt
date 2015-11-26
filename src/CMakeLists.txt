@@ -118,6 +118,10 @@ set_target_properties(${LIBFM_QT_LIBRARY_NAME} PROPERTIES
     SOVERSION ${LIBFM_QT_LIB_SOVERSION}
 )
 
+target_include_directories(${LIBFM_QT_LIBRARY_NAME}
+    INTERFACE "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)
+
 # install include header files (FIXME: can we make this cleaner? should dir name be versioned?)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt
