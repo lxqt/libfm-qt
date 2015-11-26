@@ -1,6 +1,6 @@
 project(fm-qt)
 
-set(LIBRARY_NAME "fm-qt5")
+set(LIBRARY_NAME "fm-qt")
 set(QTX_INCLUDE_DIRS "")
 set(QTX_LIBRARIES Qt5::Widgets Qt5::X11Extras)
 set(libfm_TRANSLATION_TEMPLATE "lib${PROJECT_NAME}")
@@ -119,10 +119,9 @@ set_target_properties(${LIBRARY_NAME} PROPERTIES
 )
 
 # install include header files (FIXME: can we make this cleaner? should dir name be versioned?)
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt
     FILES_MATCHING PATTERN "*.h"
-    PATTERN "*_p.h" EXCLUDE # exclude private headers
 )
 
 # FIXME: add libtool version to the lib (soname) later.
