@@ -128,6 +128,18 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
     FILES_MATCHING PATTERN "*.h"
 )
 
+configure_package_config_file(
+    "${PROJECT_SOURCE_DIR}/cmake/fm-qt-config.cmake.in"
+    "${PROJECT_BINARY_DIR}/install/${LIBFM_QT_LIBRARY_NAME}-config.cmake"
+    INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${LIBFM_QT_LIBRARY_NAME}"
+)
+
+install(FILES
+    "${PROJECT_BINARY_DIR}/install/${LIBFM_QT_LIBRARY_NAME}-config.cmake"
+    DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${LIBFM_QT_LIBRARY_NAME}"
+    COMPONENT Devel
+)
+
 # FIXME: add libtool version to the lib (soname) later.
 # FIXME: only export public symbols
 
