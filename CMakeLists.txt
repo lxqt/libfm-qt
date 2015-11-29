@@ -34,7 +34,6 @@ pkg_check_modules(SYSTEM_LIBS REQUIRED
     glib-2.0
     gio-2.0
     gio-unix-2.0
-    xcb
 )
 
 pkg_check_modules(LIBFM REQUIRED libfm>="${REQUIRED_LIBFM_VERSION}")
