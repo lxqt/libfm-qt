@@ -386,7 +386,7 @@ void PlacesModel::onMountChanged(GVolumeMonitor* monitor, GMount* mount, PlacesM
 
 void PlacesModel::onMountRemoved(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis) {
   GVolume* vol = g_mount_get_volume(mount);
-  // qDebug() << mount << "volume umounted: " << vol;
+  // qDebug() << "mount removed" << mount << "volume umounted: " << vol;
   if(vol) {
     // a volume is being unmounted
     // NOTE: Due to some problems of gvfs, sometimes the volume does not receive
@@ -403,9 +403,12 @@ void PlacesModel::onMountRemoved(GVolumeMonitor* monitor, GMount* mount, PlacesM
   }
 
 #if GLIB_CHECK_VERSION(2, 20, 0)
-  // if this is a shadowed mount
-  if(g_mount_is_shadowed(mount)) {
-    pThis->shadowedMounts_.removeOne(mount);
+  // NOTE: g_mount_is_shadowed() sometimes returns FALSE here even if the mount is shadowed.
+  // I don't know whether this is a bug in gvfs or not.
+  // So let's check if its in our list instead.
+  if(pThis->shadowedMounts_.removeOne(mount)) {
+    // if this is a shadowed mount
+    // qDebug() << "remove shadow mount";
     g_object_unref(mount);
   }
 #endif
