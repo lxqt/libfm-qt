@@ -18,45 +18,38 @@
 */
 
 
-#ifndef FM_PATHEDIT_H
-#define FM_PATHEDIT_H
+#ifndef FM_PATHEDIT_P_H
+#define FM_PATHEDIT_P_H
 
-#include "libfmqtglobals.h"
-#include <QLineEdit>
-#include <gio/gio.h>
-
-class QCompleter;
-class QStringListModel;
+#include <QObject>
+#include <libfm/fm.h>
 
 namespace Fm {
 
-class PathEditJob;
+class PathEdit;
 
-class LIBFM_QT_API PathEdit : public QLineEdit {
-Q_OBJECT
+class PathEditJob : public QObject {
+  Q_OBJECT
 public:
-  explicit PathEdit(QWidget* parent = 0);
-  virtual ~PathEdit();
+  GCancellable* cancellable;
+  GFile* dirName;
+  QStringList subDirs;
+  PathEdit* edit;
+  bool triggeredByFocusInEvent;
 
-protected:
-  virtual void focusInEvent(QFocusEvent* e);
-  virtual void focusOutEvent(QFocusEvent* e);
+  ~PathEditJob() {
+    g_object_unref(dirName);
+    g_object_unref(cancellable);
+  }
 
-private Q_SLOTS:
-  void onTextChanged(const QString & text);
+Q_SIGNALS:
+  void finished();
 
-private:
-  void reloadCompleter(bool triggeredByFocusInEvent = false);
-  void freeCompleter();
-  void onJobFinished();
+public Q_SLOTS:
+  void runJob();
 
-private:
-  QCompleter* completer_;
-  QStringListModel* model_;
-  QString currentPrefix_;
-  GCancellable* cancellable_;
 };
 
 }
 
-#endif // FM_PATHEDIT_H
+#endif // FM_PATHEDIT_P_H

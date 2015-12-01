@@ -19,13 +19,52 @@
 
 
 #include "pathedit.h"
+#include "pathedit_p.h"
 #include <QCompleter>
 #include <QStringListModel>
 #include <QStringBuilder>
+#include <QThread>
 #include <QDebug>
 #include <libfm/fm.h>
 
 namespace Fm {
+
+void PathEditJob::runJob() {
+  GError *err = NULL;
+  GFileEnumerator* enu = g_file_enumerate_children(dirName,
+                                                   // G_FILE_ATTRIBUTE_STANDARD_NAME","
+                                                   G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME","
+                                                   G_FILE_ATTRIBUTE_STANDARD_TYPE,
+                                                   G_FILE_QUERY_INFO_NONE, cancellable,
+                                                   &err);
+  if(enu) {
+    while(!g_cancellable_is_cancelled(cancellable)) {
+      GFileInfo* inf = g_file_enumerator_next_file(enu, cancellable, &err);
+      if(inf) {
+        GFileType type = g_file_info_get_file_type(inf);
+        if(type == G_FILE_TYPE_DIRECTORY) {
+          const char* name = g_file_info_get_display_name(inf);
+          // FIXME: encoding conversion here?
+          subDirs.append(QString::fromUtf8(name));
+        }
+        g_object_unref(inf);
+      }
+      else {
+        if(err) {
+          g_error_free(err);
+          err = NULL;
+        }
+        else /* EOF */
+          break;
+      }
+    }
+    g_file_enumerator_close(enu, cancellable, NULL);
+    g_object_unref(enu);
+  }
+  // finished! let's update the UI in the main thread
+  Q_EMIT finished();
+}
+
 
 PathEdit::PathEdit(QWidget* parent):
   QLineEdit(parent),
@@ -76,22 +115,6 @@ void PathEdit::onTextChanged(const QString& text) {
   }
 }
 
-struct JobData {
-  GCancellable* cancellable;
-  GFile* dirName;
-  QStringList subDirs;
-  PathEdit* edit;
-  bool triggeredByFocusInEvent;
-
-  ~JobData() {
-    g_object_unref(dirName);
-    g_object_unref(cancellable);
-  }
-
-  static void freeMe(JobData* data) {
-    delete data;
-  }
-};
 
 void PathEdit::reloadCompleter(bool triggeredByFocusInEvent) {
   // parent dir has been changed, reload dir list
@@ -101,19 +124,26 @@ void PathEdit::reloadCompleter(bool triggeredByFocusInEvent) {
     g_cancellable_cancel(cancellable_);
     g_object_unref(cancellable_);
   }
-  // launch a new job to do dir listing
-  JobData* data = new JobData();
-  data->edit = this;
-  data->triggeredByFocusInEvent = triggeredByFocusInEvent;
+
+  // create a new job to do dir listing
+  PathEditJob* job = new PathEditJob();
+  job->edit = this;
+  job->triggeredByFocusInEvent = triggeredByFocusInEvent;
   // need to use fm_file_new_for_commandline_arg() rather than g_file_new_for_commandline_arg().
   // otherwise, our own vfs, such as menu://, won't be loaded.
-  data->dirName = fm_file_new_for_commandline_arg(currentPrefix_.toLocal8Bit().constData());
+  job->dirName = fm_file_new_for_commandline_arg(currentPrefix_.toLocal8Bit().constData());
   // qDebug("load: %s", g_file_get_uri(data->dirName));
   cancellable_ = g_cancellable_new();
-  data->cancellable = (GCancellable*)g_object_ref(cancellable_);
-  g_io_scheduler_push_job((GIOSchedulerJobFunc)jobFunc,
-                          data, (GDestroyNotify)JobData::freeMe,
-                          G_PRIORITY_LOW, cancellable_);
+  job->cancellable = (GCancellable*)g_object_ref(cancellable_);
+
+  // launch a new worker thread to handle the job
+  QThread* thread = new QThread();
+  job->moveToThread(thread);
+  connect(thread, &QThread::started, job, &PathEditJob::runJob);
+  connect(thread, &QThread::finished, thread, &QObject::deleteLater);
+  connect(thread, &QThread::finished, job, &QObject::deleteLater);
+  connect(job, &PathEditJob::finished, this, &PathEdit::onJobFinished);
+  thread->start(QThread::LowPriority);
 }
 
 void PathEdit::freeCompleter() {
@@ -125,53 +155,9 @@ void PathEdit::freeCompleter() {
   model_->setStringList(QStringList());
 }
 
-gboolean PathEdit::jobFunc(GIOSchedulerJob* job, GCancellable* cancellable, gpointer user_data) {
-  JobData* data = reinterpret_cast<JobData*>(user_data);
-  GError *err = NULL;
-  GFileEnumerator* enu = g_file_enumerate_children(data->dirName,
-                                                   // G_FILE_ATTRIBUTE_STANDARD_NAME","
-                                                   G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME","
-                                                   G_FILE_ATTRIBUTE_STANDARD_TYPE,
-                                                   G_FILE_QUERY_INFO_NONE, cancellable,
-                                                   &err);
-  if(enu) {
-    while(!g_cancellable_is_cancelled(cancellable)) {
-      GFileInfo* inf = g_file_enumerator_next_file(enu, cancellable, &err);
-      if(inf) {
-        GFileType type = g_file_info_get_file_type(inf);
-        if(type == G_FILE_TYPE_DIRECTORY) {
-          const char* name = g_file_info_get_display_name(inf);
-          // FIXME: encoding conversion here?
-          data->subDirs.append(QString::fromUtf8(name));
-        }
-        g_object_unref(inf);
-      }
-      else {
-        if(err) {
-          g_error_free(err);
-          err = NULL;
-        }
-        else /* EOF */
-          break;
-      }
-    }
-    g_file_enumerator_close(enu, cancellable, NULL);
-    g_object_unref(enu);
-  }
-  // finished! let's update the UI in the main thread
-  g_io_scheduler_job_send_to_mainloop(job, _onJobFinished, data, NULL);
-  return FALSE;
-}
-
-// static
-gboolean PathEdit::_onJobFinished(gpointer user_data) {
-  JobData* data = reinterpret_cast<JobData*>(user_data);
-  data->edit->onJobFinished(data);
-  return TRUE;
-}
-
-// This callback function is called from main thread so it's safe to access the GUI
-void PathEdit::onJobFinished(JobData* data) {
+// This slot is called from main thread so it's safe to access the GUI
+void PathEdit::onJobFinished() {
+  PathEditJob* data = static_cast<PathEditJob*>(sender());
   if(!g_cancellable_is_cancelled(data->cancellable)) {
     // update the completer only if the job is not cancelled
     QStringList::iterator it;
