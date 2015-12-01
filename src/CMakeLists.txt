@@ -1,17 +1,10 @@
-project(fm-qt)
-
-set(LIBRARY_NAME "fm-qt5")
-set(QTX_INCLUDE_DIRS "")
-set(QTX_LIBRARIES Qt5::Widgets Qt5::X11Extras)
-set(libfm_TRANSLATION_TEMPLATE "lib${PROJECT_NAME}")
+set(libfm_TRANSLATION_TEMPLATE ${PROJECT_NAME})
 
 include_directories(
-    ${QTX_INCLUDE_DIRS}
     ${LIBFM_INCLUDE_DIRS}
     "${LIBFM_INCLUDEDIR}/libfm" # to workaround incorrect #include in fm-actions.
     ${LIBMENUCACHE_INCLUDE_DIRS}
     ${SYSTEM_LIBS_INCLUDE_DIRS}
-    "${CMAKE_CURRENT_BINARY_DIR}"
 )
 
 link_directories(
@@ -87,14 +80,14 @@ lxqt_translate_ts(QM_FILES
     TEMPLATE ${libfm_TRANSLATION_TEMPLATE}
 )
 
-add_library(${LIBRARY_NAME} SHARED
+add_library(${LIBFM_QT_LIBRARY_NAME} SHARED
     ${libfm_SRCS}
     ${libfm_UIS_H}
     ${QM_FILES}
 )
 
 set_property(
-    TARGET ${LIBRARY_NAME} APPEND
+    TARGET ${LIBFM_QT_LIBRARY_NAME} APPEND
     PROPERTY COMPILE_DEFINITIONS
     LIBFM_QT_COMPILATION=1
     LIBFM_DATA_DIR="${CMAKE_INSTALL_FULL_DATADIR}/libfm-qt"
@@ -102,46 +95,75 @@ set_property(
 
 # only turn on custom actions support if it is enabled in libfm.
 if(EXISTS ${LIBFM_INCLUDEDIR}/libfm/fm-actions.h)
-    set_property(TARGET ${LIBRARY_NAME} APPEND PROPERTY COMPILE_DEFINITIONS CUSTOM_ACTIONS)
+    set_property(TARGET ${LIBFM_QT_LIBRARY_NAME} APPEND PROPERTY COMPILE_DEFINITIONS CUSTOM_ACTIONS)
 endif()
 
-target_link_libraries(${LIBRARY_NAME}
-    ${QTX_LIBRARIES}
+install(EXPORT
+    "${LIBFM_QT_LIBRARY_NAME}-targets"
+    DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${LIBFM_QT_LIBRARY_NAME}"
+    COMPONENT Devel
+)
+
+target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
+    Qt5::Widgets
+    Qt5::X11Extras
     ${LIBFM_LIBRARIES}
     ${LIBMENUCACHE_LIBRARIES}
     ${SYSTEM_LIBS_LIBRARIES}
 )
 
 # set libtool soname
-set_target_properties(${LIBRARY_NAME} PROPERTIES
+set_target_properties(${LIBFM_QT_LIBRARY_NAME} PROPERTIES
     VERSION ${LIBFM_QT_LIB_VERSION}
     SOVERSION ${LIBFM_QT_LIB_SOVERSION}
 )
 
+target_include_directories(${LIBFM_QT_LIBRARY_NAME}
+    INTERFACE "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)
+
 # install include header files (FIXME: can we make this cleaner? should dir name be versioned?)
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt
     FILES_MATCHING PATTERN "*.h"
-    PATTERN "*_p.h" EXCLUDE # exclude private headers
+)
+
+configure_package_config_file(
+    "${PROJECT_SOURCE_DIR}/cmake/fm-qt-config.cmake.in"
+    "${PROJECT_BINARY_DIR}/install/${LIBFM_QT_LIBRARY_NAME}-config.cmake"
+    INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${LIBFM_QT_LIBRARY_NAME}"
+)
+
+install(FILES
+    "${PROJECT_BINARY_DIR}/install/${LIBFM_QT_LIBRARY_NAME}-config.cmake"
+    DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${LIBFM_QT_LIBRARY_NAME}"
+    COMPONENT Devel
 )
 
 # FIXME: add libtool version to the lib (soname) later.
 # FIXME: only export public symbols
 
-install(TARGETS ${LIBRARY_NAME}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+install(TARGETS ${LIBFM_QT_LIBRARY_NAME}
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+    EXPORT "${LIBFM_QT_LIBRARY_NAME}-targets"
+    LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     PUBLIC_HEADER
 )
 
+export(TARGETS ${LIBFM_QT_LIBRARY_NAME}
+    FILE "${CMAKE_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}-targets.cmake"
+    EXPORT_LINK_INTERFACE_LIBRARIES
+)
+
 # install a pkgconfig file for libfm-qt
-set(REQUIRED_QT "Qt5Core >= 5.1 Qt5DBus >= 5.1")
-configure_file(libfm-qt.pc.in lib${LIBRARY_NAME}.pc @ONLY)
+set(REQUIRED_QT "Qt5Widgets >= ${REQUIRED_QT_VERSION} Qt5X11Extras >= ${REQUIRED_QT_VERSION}")
+configure_file(libfm-qt.pc.in lib${LIBFM_QT_LIBRARY_NAME}.pc @ONLY)
 # FreeBSD loves to install files to different locations
 # http://www.freebsd.org/doc/handbook/dirstructure.html
 if(${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
-    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lib${LIBRARY_NAME}.pc" DESTINATION libdata/pkgconfig)
+    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lib${LIBFM_QT_LIBRARY_NAME}.pc" DESTINATION libdata/pkgconfig)
 else()
-    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lib${LIBRARY_NAME}.pc" DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lib${LIBFM_QT_LIBRARY_NAME}.pc" DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 endif()
 
 install(FILES ${QM_FILES} DESTINATION "${CMAKE_INSTALL_DATADIR}/libfm-qt/translations")

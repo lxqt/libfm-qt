@@ -1,0 +1,64 @@
+#=============================================================================
+# Copyright 2015 Luís Pereira <luis.artur.pereira@gmail.com>
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+#
+# 1. Redistributions of source code must retain the copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 3. The name of the author may not be used to endorse or promote products
+#    derived from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+# IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#=============================================================================
+
+@PACKAGE_INIT@
+
+if (CMAKE_VERSION VERSION_LESS 3.0.2)
+    message(FATAL_ERROR \"fm-qt requires at least CMake version 3.0.2\")
+endif()
+
+include(CMakeFindDependencyMacro)
+
+find_dependency(Qt5Widgets "@REQUIRED_QT_VERSION@")
+find_dependency(Qt5X11Extras "@REQUIRED_QT_VERSION@")
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(PKG_GLIB glib-2.0)
+pkg_check_modules(PKG_GIO
+    gio-2.0
+    gio-unix-2.0
+)
+
+pkg_check_modules(PKG_FM REQUIRED libfm>=@REQUIRED_LIBFM_VERSION@)
+pkg_check_modules(PKG_MENUCACHE REQUIRED libmenu-cache>=@REQUIRED_LIBMENUCACHE_VERSION@)
+
+if (NOT TARGET @LIBFM_QT_LIBRARY_NAME@)
+    include("${CMAKE_CURRENT_LIST_DIR}/@LIBFM_QT_LIBRARY_NAME@-targets.cmake")
+    set_property(TARGET "@LIBFM_QT_LIBRARY_NAME@" APPEND PROPERTY
+            INTERFACE_INCLUDE_DIRECTORIES
+            "${PKG_GLIB_INCLUDE_DIRS}"
+            "${PKG_GIO_INCLUDE_DIRS}"
+            "${PKG_FM_INCLUDE_DIRS}"
+            "${PKG_MENUCACHE_INCLUDE_DIRS}"
+    )
+    set_property(TARGET "@LIBFM_QT_LIBRARY_NAME@" APPEND PROPERTY
+        INTERFACE_COMPILE_DEFINITIONS
+            "LIBFM_QT_API=Q_DECL_IMPORT"
+            "QT_NO_KEYWORDS"
+            "LIBFM_DATA_DIR=\"${PKG_FM_PREFIX}/share/libfm\""
+    )
+endif()
