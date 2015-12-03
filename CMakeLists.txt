@@ -51,6 +51,10 @@ include(LXQtTranslateDesktop)
 
 add_definitions(-DQT_NO_KEYWORDS)
 
+# set visibility to hidden to hide symbols, unless they're exported manually in the code
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
+
 if (CMAKE_VERSION VERSION_LESS "3.1")
     include(CheckCXXCompilerFlag)
     CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
@@ -70,8 +74,7 @@ else()
 endif()
 
 if (CMAKE_COMPILER_IS_GNUCXX)
-    # set visibility to hidden to hide symbols, unless they're exported manually in the code
-    set(CMAKE_CXX_FLAGS "-fvisibility=hidden -fvisibility-inlines-hidden -fno-exceptions ${CMAKE_CXX_FLAGS}")
+    set(CMAKE_CXX_FLAGS "-fno-exceptions ${CMAKE_CXX_FLAGS}")
 endif()
 
 set(CMAKE_AUTOMOC TRUE)
