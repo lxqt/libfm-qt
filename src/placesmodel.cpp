@@ -348,7 +348,7 @@ void PlacesModel::onMountAdded(GVolumeMonitor* monitor, GMount* mount, PlacesMod
      * signals and added a device more than one. So, make a sanity check here. */
     if(!item) {
       item = new PlacesModelMountItem(mount);
-      QStandardItem* eject_btn = new QStandardItem(pThis->ejectIcon_, "");
+      QStandardItem* eject_btn = new QStandardItem(pThis->ejectIcon_, QString());
       pThis->devicesRoot->appendRow(QList<QStandardItem*>() << item << eject_btn);
     }
   }
