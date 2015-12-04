@@ -130,6 +130,7 @@ install(FILES
 # install include header files (FIXME: can we make this cleaner? should dir name be versioned?)
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt"
+    COMPONENT Devel
     FILES_MATCHING PATTERN "*.h"
 )
 
@@ -157,6 +158,7 @@ install(TARGETS ${LIBFM_QT_LIBRARY_NAME}
     EXPORT "${LIBFM_QT_LIBRARY_NAME}-targets"
     LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     PUBLIC_HEADER
+    COMPONENT Runtime
 )
 
 export(TARGETS ${LIBFM_QT_LIBRARY_NAME}
@@ -170,12 +172,24 @@ configure_file(libfm-qt.pc.in lib${LIBFM_QT_LIBRARY_NAME}.pc @ONLY)
 # FreeBSD loves to install files to different locations
 # http://www.freebsd.org/doc/handbook/dirstructure.html
 if(${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
-    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lib${LIBFM_QT_LIBRARY_NAME}.pc" DESTINATION libdata/pkgconfig)
+    install(FILES
+        "${CMAKE_CURRENT_BINARY_DIR}/lib${LIBFM_QT_LIBRARY_NAME}.pc"
+        DESTINATION libdata/pkgconfig
+        COMPONENT Devel
+    )
 else()
-    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lib${LIBFM_QT_LIBRARY_NAME}.pc" DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+    install(FILES
+        "${CMAKE_CURRENT_BINARY_DIR}/lib${LIBFM_QT_LIBRARY_NAME}.pc"
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
+        COMPONENT Devel
+    )
 endif()
 
-install(FILES ${QM_FILES} DESTINATION "${CMAKE_INSTALL_DATADIR}/libfm-qt/translations")
+install(FILES
+    ${QM_FILES}
+    DESTINATION "${CMAKE_INSTALL_DATADIR}/libfm-qt/translations"
+    COMPONENT Runtime
+)
 
 # prevent the generated files from being deleted during make cleaner
 set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
