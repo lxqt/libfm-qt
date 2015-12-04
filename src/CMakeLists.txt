@@ -89,7 +89,6 @@ add_library(${LIBFM_QT_LIBRARY_NAME} SHARED
 set_property(
     TARGET ${LIBFM_QT_LIBRARY_NAME} APPEND
     PROPERTY COMPILE_DEFINITIONS
-    LIBFM_QT_COMPILATION=1
     LIBFM_DATA_DIR="${CMAKE_INSTALL_FULL_DATADIR}/libfm-qt"
 )
 
@@ -122,10 +121,20 @@ target_include_directories(${LIBFM_QT_LIBRARY_NAME}
     INTERFACE "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
+install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}_export.h"
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt"
+    COMPONENT Devel
+)
+
 # install include header files (FIXME: can we make this cleaner? should dir name be versioned?)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt
     FILES_MATCHING PATTERN "*.h"
+)
+
+generate_export_header(${LIBFM_QT_LIBRARY_NAME}
+    EXPORT_MACRO_NAME LIBFM_QT_API
 )
 
 configure_package_config_file(

@@ -19,12 +19,6 @@
 #ifndef _LIBFM_QT_GLOBALS_
 #define _LIBFM_QT_GLOBALS_
 
-#include <QtGlobal>
-
-#ifdef LIBFM_QT_COMPILATION
-    #define LIBFM_QT_API    Q_DECL_EXPORT
-#else
-    #define LIBFM_QT_API    Q_DECL_IMPORT
-#endif
+#include "fm-qt_export.h"
 
 #endif

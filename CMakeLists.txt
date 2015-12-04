@@ -45,6 +45,7 @@ pkg_check_modules(LIBMENUCACHE REQUIRED libmenu-cache>="${REQUIRED_LIBMENUCACHE_
 
 option(UPDATE_TRANSLATIONS "Update source translation translations/*.ts files" OFF)
 include(GNUInstallDirs)
+include(GenerateExportHeader)
 include(CMakePackageConfigHelpers)
 include(LXQtTranslateTs)
 include(LXQtTranslateDesktop)
