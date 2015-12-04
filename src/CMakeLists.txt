@@ -1,16 +1,16 @@
 set(libfm_TRANSLATION_TEMPLATE ${PROJECT_NAME})
 
 include_directories(
-    ${LIBFM_INCLUDE_DIRS}
+    "${LIBFM_INCLUDE_DIRS}"
     "${LIBFM_INCLUDEDIR}/libfm" # to workaround incorrect #include in fm-actions.
-    ${LIBMENUCACHE_INCLUDE_DIRS}
-    ${SYSTEM_LIBS_INCLUDE_DIRS}
+    "${LIBMENUCACHE_INCLUDE_DIRS}"
+    "${SYSTEM_LIBS_INCLUDE_DIRS}"
 )
 
 link_directories(
-    ${LIBFM_LIBRARY_DIRS}
-    ${LIBMENUCACHE_LIBRARY_DIRS}
-    ${SYSTEM_LIBS_LIBRARY_DIRS}
+    "${LIBFM_LIBRARY_DIRS}"
+    "${LIBMENUCACHE_LIBRARY_DIRS}"
+    "${SYSTEM_LIBS_LIBRARY_DIRS}"
 )
 
 set(libfm_SRCS
@@ -93,7 +93,7 @@ set_property(
 )
 
 # only turn on custom actions support if it is enabled in libfm.
-if(EXISTS ${LIBFM_INCLUDEDIR}/libfm/fm-actions.h)
+if(EXISTS "${LIBFM_INCLUDEDIR}/libfm/fm-actions.h")
     set_property(TARGET ${LIBFM_QT_LIBRARY_NAME} APPEND PROPERTY COMPILE_DEFINITIONS CUSTOM_ACTIONS)
 endif()
 
@@ -128,8 +128,8 @@ install(FILES
 )
 
 # install include header files (FIXME: can we make this cleaner? should dir name be versioned?)
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/"
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt"
     FILES_MATCHING PATTERN "*.h"
 )
 
