@@ -72,6 +72,14 @@ public:
     return separator1_;
   }
 
+  QAction* createAction() {
+    return createAction_;
+  }
+
+  QAction* separator2() {
+    return separator2_;
+  }
+
   QAction* cutAction() {
     return cutAction_;
   }
@@ -96,8 +104,8 @@ public:
     return renameAction_;
   }
 
-  QAction* separator2() {
-    return separator2_;
+  QAction* separator3() {
+    return separator3_;
   }
 
   QAction* propertiesAction() {
@@ -191,13 +199,15 @@ private:
   QAction* openWithMenuAction_;
   QAction* openWithAction_;
   QAction* separator1_;
+  QAction* createAction_;
+  QAction* separator2_;
   QAction* cutAction_;
   QAction* copyAction_;
   QAction* pasteAction_;
   QAction* deleteAction_;
   QAction* unTrashAction_;
   QAction* renameAction_;
-  QAction* separator2_;
+  QAction* separator3_;
   QAction* propertiesAction_;
 
   FileLauncher* fileLauncher_;
