@@ -129,12 +129,13 @@ void FileMenu::createMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd) 
 
   separator1_ = addSeparator();
 
-  QAction* createAction = new QAction(tr("Create &New"), this);
+  createAction_ = new QAction(tr("Create &New"), this);
   FmPath* dirPath = fm_file_info_list_get_length(files) == 1 && fm_file_info_is_dir(first)
       ? path : cwd_;
-  createAction->setMenu(new CreateNewMenu(NULL, dirPath, this));
-  addAction(createAction);
-  addSeparator();
+  createAction_->setMenu(new CreateNewMenu(NULL, dirPath, this));
+  addAction(createAction_);
+
+  separator2_ = addSeparator();
 
   if(allTrash_) { // all selected files are in trash:///
     bool can_restore = true;
@@ -216,7 +217,7 @@ void FileMenu::createMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd) 
     }
   }
 
-  separator2_ = addSeparator();
+  separator3_ = addSeparator();
 
   propertiesAction_ = new QAction(QIcon::fromTheme("document-properties"), tr("Properties"), this);
   connect(propertiesAction_, &QAction::triggered, this, &FileMenu::onFilePropertiesTriggered);
