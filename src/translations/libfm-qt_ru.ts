@@ -81,17 +81,17 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation>&amp;Добавить пункт</translation>
+        <translation>&amp;Добавить элемент</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation>&amp;Удалить пункт</translation>
+        <translation>&amp;Удалить элемент</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Используйте перетаскивание и отпускание для переупорядочивания пунктов</translation>
+        <translation>Перетаскивайте элементы мышкой, чтобы изменить их порядок</translation>
     </message>
 </context>
 <context>
@@ -392,7 +392,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../execfiledialog.cpp" line="45"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>Это исполняемый файл &apos;%1&apos; . Вы хотите выполнить его?</translation>
+        <translation>Файл &apos;%1&apos; является исполняемым. Вы хотите запустить его?</translation>
     </message>
 </context>
 <context>
@@ -451,7 +451,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filemenu.cpp" line="200"/>
         <source>Extract to...</source>
-        <translation>Распаковать в ...</translation>
+        <translation>Распаковать в...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="205"/>
@@ -491,7 +491,7 @@ What do you want to do with it?</source>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
         <translation>Некоторые файлы не могут быть помещены в корзину, поскольку файловая система не поддерживает эту операцию.
-Вы всё равно хотите их удалить?</translation>
+Вы хотите удалить их вместо перемещения?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="262"/>
@@ -507,7 +507,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperation.cpp" line="279"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation>Переместить выбранные файлы в корзину?</translation>
+        <translation>Вы действительно хотите переместить выбранные файлы в корзину?</translation>
     </message>
 </context>
 <context>
@@ -535,7 +535,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="49"/>
         <source>Trash Files</source>
-        <translation>Перемещение в корзину файлов</translation>
+        <translation>Перемещение файлов в корзину</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -545,7 +545,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="53"/>
         <source>Delete Files</source>
-        <translation>Удалить файлы</translation>
+        <translation>Удаление файлов</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
@@ -575,7 +575,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Restore Trashed Files</source>
-        <translation>Восстановить файлы из корзины</translation>
+        <translation>Восстановление файлов из корзины</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="70"/>
@@ -613,7 +613,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="153"/>
         <source>Forbidden</source>
-        <translation>Запрет</translation>
+        <translation>Запрещено</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="257"/>
@@ -633,7 +633,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="416"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>Применить изменения рекурсивно ко всем файлам и подпапкам?</translation>
+        <translation>Вы хотите применить изменения рекурсивно ко всем файлам и подпапкам?</translation>
     </message>
 </context>
 <context>
@@ -734,7 +734,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="144"/>
         <source>Case Sensitive</source>
-        <translation>Регистрочувствительность</translation>
+        <translation>Чувствительность к регистру</translation>
     </message>
 </context>
 <context>
@@ -806,7 +806,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesmodel.cpp" line="70"/>
         <source>Applications</source>
-        <translation>Программы</translation>
+        <translation>Приложения</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="82"/>
@@ -1064,7 +1064,7 @@ Modified: %3</source>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
         <source>dest</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
@@ -1074,17 +1074,17 @@ Modified: %3</source>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
         <source>src file info</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="89"/>
         <source>dest file info</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="102"/>
         <source>src</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
