@@ -855,12 +855,12 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../placesview.cpp" line="346"/>
         <source>Open in New Tab</source>
-        <translation>Otwórz w nowej k&amp;arcie</translation>
+        <translation>Otwórz w nowej karcie</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="349"/>
         <source>Open in New Window</source>
-        <translation>Otwórz w nowym o&amp;knie</translation>
+        <translation>Otwórz w nowym oknie</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="367"/>
@@ -1223,12 +1223,12 @@ Zmodyfikowany: %3</translation>
     <message>
         <location filename="../filesearch.ui" line="223"/>
         <source>Case insensiti&amp;ve</source>
-        <translation>Nie uwzględniaj wielkości liter</translation>
+        <translation>&amp;Nie uwzględniaj wielkości liter</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="230"/>
         <source>&amp;Use regular expression</source>
-        <translation>Użyj wyrażeń regularnych</translation>
+        <translation>&amp;Użyj wyrażeń regularnych</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="254"/>
