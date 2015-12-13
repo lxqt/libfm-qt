@@ -107,6 +107,7 @@ private:
   static void onBookmarksChanged(FmBookmarks* bookmarks, PlacesModel* pThis);
 
   static void onTrashChanged(GFileMonitor *monitor, GFile *gf, GFile *other, GFileMonitorEvent evt, PlacesModel* pThis);
+
 private:
   FmBookmarks* bookmarks;
   GVolumeMonitor* volumeMonitor;

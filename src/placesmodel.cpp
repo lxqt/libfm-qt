@@ -24,6 +24,7 @@
 #include <QDebug>
 #include <QMimeData>
 #include <QTimer>
+#include <QPointer>
 #include "utilities.h"
 #include "placesmodelitem.h"
 
@@ -193,18 +194,40 @@ void PlacesModel::onTrashChanged(GFileMonitor* monitor, GFile* gf, GFile* other,
 }
 
 void PlacesModel::updateTrash() {
-  if(trashItem_) {
-    GFile* gf = fm_file_new_for_uri("trash:///");
-    GFileInfo* inf = g_file_query_info(gf, G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT, G_FILE_QUERY_INFO_NONE, NULL, NULL);
-    g_object_unref(gf);
-    if(inf) {
-      guint32 n = g_file_info_get_attribute_uint32(inf, G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
-      g_object_unref(inf);
-      const char* icon_name = n > 0 ? "user-trash-full" : "user-trash";
-      FmIcon* icon = fm_icon_from_name(icon_name);
-      trashItem_->setIcon(icon);
-      fm_icon_unref(icon);
+
+  struct UpdateTrashData {
+    QPointer<PlacesModel> model;
+    GFile* gf;
+    UpdateTrashData(PlacesModel* _model) : model(_model) {
+      gf = fm_file_new_for_uri("trash:///");
     }
+    ~UpdateTrashData() {
+      g_object_unref(gf);
+    }
+  };
+
+  if(trashItem_) {
+    UpdateTrashData* data = new UpdateTrashData(this);
+    g_file_query_info_async(data->gf, G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT, G_FILE_QUERY_INFO_NONE, G_PRIORITY_LOW, NULL,
+                            [](GObject *source_object, GAsyncResult *res, gpointer user_data) {
+        // the callback lambda function is called when the asyn query operation is finished
+        UpdateTrashData* data = reinterpret_cast<UpdateTrashData*>(user_data);
+        PlacesModel* _this = data->model.data();
+        if(_this != nullptr) { // ensure that our model object is not deleted yet
+            GFileInfo* inf = g_file_query_info_finish(data->gf, res, NULL);
+            if(inf) {
+              if(_this->trashItem_ != nullptr) { // it's possible that when we finish, the trash item is removed
+                guint32 n = g_file_info_get_attribute_uint32(inf, G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
+                const char* icon_name = n > 0 ? "user-trash-full" : "user-trash";
+                FmIcon* icon = fm_icon_from_name(icon_name);
+                _this->trashItem_->setIcon(icon);
+                fm_icon_unref(icon);
+              }
+              g_object_unref(inf);
+            }
+        }
+        delete data; // free the data used for this async operation.
+    }, data);
   }
 }
 
