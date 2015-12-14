@@ -299,10 +299,10 @@ FmPath* fm_search_dup_path(FmSearch* search)
         }
 
         if(search->min_size)
-            g_string_append_printf(search_str, "&min_size=%llu", search->min_size);
+            g_string_append_printf(search_str, "&min_size=%llu", (unsigned long long)search->min_size);
 
         if(search->max_size)
-            g_string_append_printf(search_str, "&max_size=%llu", search->max_size);
+            g_string_append_printf(search_str, "&max_size=%llu", (unsigned long long)search->max_size);
 
         if(search->min_mtime)
             g_string_append_printf(search_str, "&min_mtime=%s", search->min_mtime);
