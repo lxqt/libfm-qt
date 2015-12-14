@@ -16,6 +16,6 @@ LXDE website:
 # License
 
 libfm-qt is licensed under the terms of the
-[GPLv2](https://www.gnu.org/licenses/gpl-2.0.en.html) or any later version.
+[LGPLv2.1](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html) or any later version.
 
 See the LICENSE file for the full text of the license.
