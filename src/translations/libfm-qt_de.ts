@@ -641,17 +641,17 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../filesearchdialog.cpp" line="120"/>
         <source>Error</source>
-        <translation type="unfinished">Fehler</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="120"/>
         <source>You should add at least add one directory to search.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie sollten mindestens einen Ordner für die Suche hinzufügen.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="127"/>
         <source>Select a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Einen Ordner wählen</translation>
     </message>
 </context>
 <context>
@@ -1118,176 +1118,176 @@ Geändert: %3</translation>
     <message>
         <location filename="../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateien suchen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Name/Ort</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Muster für Dateinamen:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="41"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation>*</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Groß- und Kleinschreibung ignorieren</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Regulären Ausdruck verwenden</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="65"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zu durchsuchende Orte:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="78"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Hinzufügen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="90"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Entfernen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="119"/>
         <source>Search in sub directories</source>
-        <translation type="unfinished"></translation>
+        <translation>In Unterordnern suchen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="126"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach versteckten Dateien suchen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="137"/>
         <source>File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateityp</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="143"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nur nach Dateien der folgenden Typen suchen:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="149"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>Textdateien</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="156"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilddateien</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="163"/>
         <source>Audio files</source>
-        <translation type="unfinished"></translation>
+        <translation>Audiodateien</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="170"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>Videodateien</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="177"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokumente</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="184"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordner</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="208"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Inhalt</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="214"/>
         <source>File contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei enthält:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="223"/>
         <source>Case insensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Groß- und Kleinschreibung ig&amp;norieren</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="230"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Reg&amp;ulären Ausdruck verwenden</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="254"/>
         <source>Properties</source>
-        <translation type="unfinished">Eigenschaften</translation>
+        <translation>Eigenschaften</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="260"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateigröße:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="266"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Größer als:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="282"/>
         <location filename="../filesearch.ui" line="323"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Bytes</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="287"/>
         <location filename="../filesearch.ui" line="328"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="292"/>
         <location filename="../filesearch.ui" line="333"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>MiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="297"/>
         <location filename="../filesearch.ui" line="338"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>GiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="307"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kleiner als:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="351"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Letztes Änderungsdatum:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="357"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Früher als:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="364"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Später als:</translation>
     </message>
 </context>
 </TS>
