@@ -21,6 +21,7 @@
 #include "thumbnailloader.h"
 #include <new>
 #include <QByteArray>
+#include <QScopedArrayPointer>
 
 namespace Fm {
 
@@ -114,8 +115,8 @@ GObject* ThumbnailLoader::readImageFromFile(const char* filename) {
 GObject* ThumbnailLoader::readImageFromStream(GInputStream* stream, guint64 len, GCancellable* cancellable) {
   // qDebug("readImageFromStream: %p, %llu", stream, len);
   // FIXME: should we set a limit here? Otherwise if len is too large, we can run out of memory.
-  unsigned char* buffer = new unsigned char[len]; // allocate enough buffer
-  unsigned char* pbuffer = buffer;
+  QScopedArrayPointer<unsigned char> buffer(new unsigned char[len]); // allocate enough buffer
+  unsigned char* pbuffer = buffer.data();
   int totalReadSize = 0;
   while(!g_cancellable_is_cancelled(cancellable) && totalReadSize < len) {
     int bytesToRead = totalReadSize + 4096 > len ? len - totalReadSize : 4096;
@@ -128,8 +129,7 @@ GObject* ThumbnailLoader::readImageFromStream(GInputStream* stream, guint64 len,
     pbuffer += readSize;
   }
   QImage image;
-  image.loadFromData(buffer, totalReadSize);
-  delete []buffer;
+  image.loadFromData(buffer.data(), totalReadSize);
   return image.isNull() ? NULL : fm_qimage_wrapper_new(image);
 }
 
