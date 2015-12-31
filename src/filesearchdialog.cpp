@@ -101,7 +101,7 @@ void FileSearchDialog::accept() {
 
     if(ui->smallerThan->isChecked()) {
       guint64 size = ui->maxSize->value() * unit_bytes[ui->maxSizeUnit->currentIndex()];
-      fm_search_set_min_size(search, size);
+      fm_search_set_max_size(search, size);
     }
 
     // search based on file mtime (we only support date in YYYY-MM-DD format)
