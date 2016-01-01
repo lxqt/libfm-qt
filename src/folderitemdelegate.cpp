@@ -178,11 +178,23 @@ void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItemV4& opt
 
   QPalette::ColorGroup cg = opt.state & QStyle::State_Enabled ? QPalette::Normal : QPalette::Disabled;
   if(opt.state & QStyle::State_Selected) {
-    painter->fillRect(selRect, opt.palette.highlight());
+    if(!opt.widget)
+      painter->fillRect(selRect, opt.palette.highlight());
     painter->setPen(opt.palette.color(cg, QPalette::HighlightedText));
   }
   else
     painter->setPen(opt.palette.color(cg, QPalette::Text));
+
+  if (opt.state & QStyle::State_Selected || opt.state & QStyle::State_MouseOver) {
+    if (const QWidget* widget = opt.widget) { // let the style engine do it
+      QStyle* style = widget->style() ? widget->style() : qApp->style();
+      QStyleOptionViewItemV4 o(opt);
+      o.text = QString();
+      o.rect = selRect.toAlignedRect().intersected(opt.rect); // due to clipping and rounding, we might lose 1px
+      o.showDecorationSelected = true;
+      style->drawPrimitive(QStyle::PE_PanelItemViewItem, &o, painter, widget);
+    }
+  }
 
   // draw text
   for(int i = 0; i < visibleLines; ++i) {
