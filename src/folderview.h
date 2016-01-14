@@ -133,7 +133,15 @@ protected:
 
   virtual bool eventFilter(QObject* watched, QEvent* event);
 
-  void updateGridSize(); // called when view mode, icon size, or font size is changed
+  void updateGridSize(); // called when view mode, icon size, font size or cell margin is changed
+
+  QSize getMargins() const {
+    return itemDelegateMargins_;
+  }
+
+  // sets the cell margins in the icon and thumbnail modes
+  // and calls updateGridSize() when needed
+  void setMargins(QSize size);
 
 public Q_SLOTS:
   void onItemActivated(QModelIndex index);
@@ -162,6 +170,8 @@ private:
   QTimer* autoSelectionTimer_;
   QModelIndex lastAutoSelectionIndex_;
   QTimer* selChangedTimer_;
+  // the cell margins in the icon and thumbnail modes
+  QSize itemDelegateMargins_;
 };
 
 }

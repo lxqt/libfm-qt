@@ -389,7 +389,8 @@ FolderView::FolderView(ViewMode _mode, QWidget* parent):
   autoSelectionTimer_(nullptr),
   selChangedTimer_(nullptr),
   fileLauncher_(nullptr),
-  model_(nullptr) {
+  model_(nullptr),
+  itemDelegateMargins_(QSize(3, 3)) {
 
   iconSize_[IconMode - FirstViewMode] = QSize(48, 48);
   iconSize_[CompactMode - FirstViewMode] = QSize(24, 24);
@@ -577,7 +578,7 @@ void FolderView::updateGridSize() {
       ; // do not use grid size
   }
   if(mode == IconMode || mode == ThumbnailMode)
-    listView->setGridSize(grid + QSize(6, 6)); // a margin of 6 px for every cell
+    listView->setGridSize(grid + 2 * itemDelegateMargins_); // the default spacing is 6(=2x3) px
   else
     listView->setGridSize(grid);
   FolderItemDelegate* delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
@@ -598,6 +599,13 @@ void FolderView::setIconSize(ViewMode mode, QSize size) {
 QSize FolderView::iconSize(ViewMode mode) const {
   Q_ASSERT(mode >= FirstViewMode && mode <= LastViewMode);
   return iconSize_[mode - FirstViewMode];
+}
+
+void FolderView::setMargins(QSize size) {
+  if (itemDelegateMargins_ != size.expandedTo(QSize(0, 0))) {
+    itemDelegateMargins_ = size.expandedTo(QSize(0, 0));
+    updateGridSize();
+  }
 }
 
 FolderView::ViewMode FolderView::viewMode() const {
