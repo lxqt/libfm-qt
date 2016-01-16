@@ -41,11 +41,13 @@ public:
 protected:
   virtual void focusInEvent(QFocusEvent* e);
   virtual void focusOutEvent(QFocusEvent* e);
+  virtual bool event(QEvent* e);
 
 private Q_SLOTS:
   void onTextChanged(const QString & text);
 
 private:
+  void autoComplete();
   void reloadCompleter(bool triggeredByFocusInEvent = false);
   void freeCompleter();
   void onJobFinished();

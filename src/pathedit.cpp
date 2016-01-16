@@ -25,6 +25,7 @@
 #include <QStringBuilder>
 #include <QThread>
 #include <QDebug>
+#include <QKeyEvent>
 #include <libfm/fm.h>
 
 namespace Fm {
@@ -98,6 +99,22 @@ void PathEdit::focusOutEvent(QFocusEvent* e) {
   freeCompleter();
 }
 
+bool PathEdit::event(QEvent* e) {
+  // Stop Qt from moving the keyboard focus to the next widget when "Tab" is pressed.
+  // Instead, we need to do auto-completion in this case.
+  if(e->type() == QEvent::KeyPress) {
+    QKeyEvent* keyEvent = static_cast<QKeyEvent*>(e);
+    if(keyEvent->key() == Qt::Key_Tab && keyEvent->modifiers() == Qt::NoModifier) { // Tab key is pressed
+      e->accept();
+      // do auto-completion when the user press the Tab key.
+      // This fixes #201: https://github.com/lxde/pcmanfm-qt/issues/201
+      autoComplete();
+      return true;
+    }
+  }
+  return QLineEdit::event(e);
+}
+
 void PathEdit::onTextChanged(const QString& text) {
   int pos = text.lastIndexOf('/');
   if(pos >= 0)
@@ -115,6 +132,26 @@ void PathEdit::onTextChanged(const QString& text) {
   }
 }
 
+void PathEdit::autoComplete() {
+  // find longest common prefix of the strings currently shown in the candidate list
+  QAbstractItemModel* model = completer_->completionModel();
+  if(model->rowCount() > 0) {
+    int minLen = text().length();
+    QString commonPrefix = model->data(model->index(0, 0)).toString();
+    for(int row = 1; row < model->rowCount() && commonPrefix.length() > minLen; ++row) {
+      QModelIndex index = model->index(row, 0);
+      QString rowText = model->data(index).toString();
+      int prefixLen = 0;
+      while(prefixLen < rowText.length() && prefixLen < commonPrefix.length() && rowText[prefixLen] == commonPrefix[prefixLen]) {
+        ++prefixLen;
+      }
+      commonPrefix.truncate(prefixLen);
+    }
+    if(commonPrefix.length() > minLen) {
+      setText(commonPrefix);
+    }
+  }
+}
 
 void PathEdit::reloadCompleter(bool triggeredByFocusInEvent) {
   // parent dir has been changed, reload dir list
