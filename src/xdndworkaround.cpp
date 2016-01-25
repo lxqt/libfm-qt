@@ -24,12 +24,12 @@
 #include <QX11Info>
 #include <QMimeData>
 #include <QCursor>
+#include <QWidget>
 
 // This part is for Qt >= 5.4 only
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
 #include <QDrag>
 #include <QUrl>
-#include <QWidget>
 #include <string.h>
 
 // these are private Qt headers which are not part of Qt APIs
@@ -43,14 +43,16 @@
 
 #endif // (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
 
-XdndWorkaround::XdndWorkaround():
-  lastDrag_(nullptr) {
-
+XdndWorkaround::XdndWorkaround() {
   if(!QX11Info::isPlatformX11())
     return;
 
   // we need to filter all X11 events
   qApp->installNativeEventFilter(this);
+
+// This part is for Qt >= 5.4 only
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
+  lastDrag_ = nullptr;
 
   // initialize xinput2 since newer versions of Qt5 uses it.
   static char xi_name[] = "XInputExtension";
@@ -70,6 +72,7 @@ XdndWorkaround::XdndWorkaround():
     free(err);
   }
   free(reply);
+#endif // (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
 }
 
 XdndWorkaround::~XdndWorkaround() {
