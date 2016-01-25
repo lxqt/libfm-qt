@@ -22,6 +22,7 @@
 #include <QLocale>
 #include "icontheme.h"
 #include "thumbnailloader.h"
+#include "xdndworkaround.h"
 
 namespace Fm {
 
@@ -32,6 +33,7 @@ struct LibFmQtData {
   IconTheme* iconTheme;
   ThumbnailLoader* thumbnailLoader;
   QTranslator translator;
+  XdndWorkaround workaround;
   int refCount;
   Q_DISABLE_COPY(LibFmQtData)
 };

@@ -58,6 +58,7 @@ set(libfm_SRCS
     appchooserdialog.cpp
     filesearchdialog.cpp
     fm-search.c # might be moved to libfm later
+    xdndworkaround.cpp
 )
 
 set(libfm_UIS
@@ -118,6 +119,8 @@ set_target_properties(${LIBFM_QT_LIBRARY_NAME} PROPERTIES
 )
 
 target_include_directories(${LIBFM_QT_LIBRARY_NAME}
+    PRIVATE "${LIB_XCB_INDLUDE_DIRS}"
+    PRIVATE "${Qt5Gui_PRIVATE_INCLUDE_DIRS}"
     INTERFACE "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
