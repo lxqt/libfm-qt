@@ -28,6 +28,7 @@
 #include "appchooserdialog.h"
 #ifdef CUSTOM_ACTIONS
 #include <libfm/fm-actions.h>
+#include "customaction_p.h"
 #endif
 #include <QMessageBox>
 #include <QDebug>
@@ -184,6 +185,11 @@ void FileMenu::createMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd) 
     GList* l;
     for(l=items; l; l=l->next) {
       FmFileActionItem* item = FM_FILE_ACTION_ITEM(l->data);
+      if(l == items && item
+         && !(fm_file_action_item_is_action(item)
+              && !(fm_file_action_item_get_target(item) & FM_FILE_ACTION_TARGET_CONTEXT))) {
+        addSeparator(); // before all custom actions
+      }
       addCustomActionItem(this, item);
     }
   }

@@ -17,37 +17,31 @@
  *
  */
 
-#ifndef FM_FILEMENU_P_H
-#define FM_FILEMENU_P_H
-
-#include "icontheme.h"
-#include <QDebug>
+#ifndef FM_CUSTOMACTION_P_H
+#define FM_CUSTOMACTION_P_H
 
 namespace Fm {
 
-class AppInfoAction : public QAction {
-  Q_OBJECT
+class CustomAction : public QAction {
 public:
-  explicit AppInfoAction(GAppInfo* app, QObject* parent = 0):
-    QAction(QString::fromUtf8(g_app_info_get_name(app)), parent),
-    appInfo_(G_APP_INFO(g_object_ref(app))) {
-    setToolTip(QString::fromUtf8(g_app_info_get_description(app)));
-    GIcon* gicon = g_app_info_get_icon(app);
-    QIcon icon = IconTheme::icon(gicon);
-    setIcon(icon);
+  explicit CustomAction(FmFileActionItem* item, QObject* parent = NULL):
+    QAction(QString::fromUtf8(fm_file_action_item_get_name(item)), parent),
+    item_(reinterpret_cast<FmFileActionItem*>(fm_file_action_item_ref(item))) {
+    const char* icon_name = fm_file_action_item_get_icon(item);
+    if(icon_name)
+      setIcon(QIcon::fromTheme(icon_name));
   }
 
-  virtual ~AppInfoAction() {
-    if(appInfo_)
-      g_object_unref(appInfo_);
+  virtual ~CustomAction() {
+    fm_file_action_item_unref(item_);
   }
 
-  GAppInfo* appInfo() const {
-    return appInfo_;
+  FmFileActionItem* item() {
+    return item_;
   }
 
 private:
-  GAppInfo* appInfo_;
+  FmFileActionItem* item_;
 };
 
 } // namespace Fm

@@ -25,6 +25,9 @@
 #include <QMenu>
 #include <libfm/fm.h>
 #include "foldermodel.h"
+#ifdef CUSTOM_ACTIONS
+#include <libfm/fm-actions.h>
+#endif
 
 class QAction;
 
@@ -87,6 +90,11 @@ public:
     return view_;
   }
 
+protected:
+#ifdef CUSTOM_ACTIONS
+  void addCustomActionItem(QMenu* menu, FmFileActionItem* item);
+#endif
+
 protected Q_SLOTS:
   void onPasteActionTriggered();
   void onSelectAllActionTriggered();
@@ -97,6 +105,9 @@ protected Q_SLOTS:
   void onCaseSensitiveActionTriggered(bool checked);
   void onFolderFirstActionTriggered(bool checked);
   void onPropertiesActionTriggered();
+#ifdef CUSTOM_ACTIONS
+  void onCustomActionTrigerred();
+#endif
 
 private:
   void createSortMenu();
