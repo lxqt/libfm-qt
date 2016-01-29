@@ -25,6 +25,10 @@
 #include "folderview.h"
 #include "utilities.h"
 #include <cstring> // for memset
+#ifdef CUSTOM_ACTIONS
+#include "customaction_p.h"
+#include <QMessageBox>
+#endif
 
 namespace Fm {
 
@@ -68,6 +72,29 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
   showHiddenAction_->setChecked(model->showHidden());
   connect(showHiddenAction_, &QAction::triggered, this, &FolderMenu::onShowHiddenActionTriggered);
 
+#ifdef CUSTOM_ACTIONS
+  FmFileInfo* folderInfo = view_->folderInfo();
+  if(folderInfo) {
+    GList *single_list = NULL;
+    single_list = g_list_prepend(single_list, (GList*)folderInfo);
+    GList* items = fm_get_actions_for_files(single_list);
+    if(items) {
+      GList* l;
+      for(l=items; l; l=l->next) {
+        FmFileActionItem* item = FM_FILE_ACTION_ITEM(l->data);
+        if(l == items && item
+           && !(fm_file_action_item_is_action(item)
+                && !(fm_file_action_item_get_target(item) & FM_FILE_ACTION_TARGET_CONTEXT))) {
+          addSeparator(); // before all custom actions
+        }
+        addCustomActionItem(this, item);
+      }
+    }
+    g_list_foreach(items, (GFunc)fm_file_action_item_unref, NULL);
+    g_list_free(items);
+  }
+#endif
+
   separator4_ = addSeparator();
 
   propertiesAction_ = new QAction(tr("Folder Pr&operties"), this);
@@ -77,6 +104,46 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
 
 FolderMenu::~FolderMenu() {
 }
+
+#ifdef CUSTOM_ACTIONS
+void FolderMenu::addCustomActionItem(QMenu* menu, FmFileActionItem* item) {
+  if(!item) return;
+  if(fm_file_action_item_is_action(item) && !(fm_file_action_item_get_target(item) & FM_FILE_ACTION_TARGET_CONTEXT))
+    return;
+
+  CustomAction* action = new CustomAction(item, menu);
+  menu->addAction(action);
+  if(fm_file_action_item_is_menu(item)) {
+    GList* subitems = fm_file_action_item_get_sub_items(item);
+    for(GList* l = subitems; l; l = l->next) {
+      FmFileActionItem* subitem = FM_FILE_ACTION_ITEM(l->data);
+      QMenu* submenu = new QMenu(menu);
+      addCustomActionItem(submenu, subitem);
+      action->setMenu(submenu);
+    }
+  }
+  else if(fm_file_action_item_is_action(item)) {
+    connect(action, &QAction::triggered, this, &FolderMenu::onCustomActionTrigerred);
+  }
+}
+
+void FolderMenu::onCustomActionTrigerred() {
+  CustomAction* action = static_cast<CustomAction*>(sender());
+  FmFileActionItem* item = action->item();
+
+  FmFileInfo* folderInfo = view_->folderInfo();
+  if(folderInfo) {
+    GList *single_list = NULL;
+    single_list = g_list_prepend(single_list, (GList*)folderInfo);
+    char* output = NULL;
+    fm_file_action_item_launch(item, NULL, single_list, &output);
+    if(output) {
+      QMessageBox::information(this, tr("Output"), QString::fromUtf8(output));
+      g_free(output);
+    }
+  }
+}
+#endif
 
 void FolderMenu::addSortMenuItem(QString title, int id) {
   QAction* action = new QAction(title, this);
