@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>Použít aplikaci jako výchozí pro tento typ souboru</translation>
+        <translation>Použít aplikaci jako výchozí pro soubory tohoto typu</translation>
     </message>
 </context>
 <context>
@@ -271,17 +271,17 @@
     <message>
         <location filename="../file-props.ui" line="603"/>
         <source>Sticky</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="610"/>
         <source>SetUID</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="617"/>
         <source>SetGID</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="653"/>
@@ -294,7 +294,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="79"/>
         <source>Customize</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastní</translation>
     </message>
 </context>
 <context>
@@ -302,7 +302,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="262"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyber program, ve kterém se budou otvírat soubory “%1“</translation>
     </message>
 </context>
 <context>
@@ -310,12 +310,12 @@
     <message>
         <location filename="../createnewmenu.cpp" line="29"/>
         <source>Folder</source>
-        <translation type="unfinished">Adresář</translation>
+        <translation>Adresář</translation>
     </message>
     <message>
         <location filename="../createnewmenu.cpp" line="33"/>
         <source>Blank File</source>
-        <translation type="unfinished">Prázdný soubor</translation>
+        <translation>Prázdný soubor</translation>
     </message>
 </context>
 <context>
@@ -336,17 +336,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="208"/>
         <source>Open in New T&amp;ab</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít v novém &amp;panelu</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="212"/>
         <source>Open in New Win&amp;dow</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít v novém &amp;okně</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="217"/>
         <source>Open in Termina&amp;l</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít v &amp;terminálu</translation>
     </message>
 </context>
 <context>
@@ -592,32 +592,32 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="145"/>
         <source>View folder content</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit obsah složky</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="146"/>
         <source>View and modify folder content</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit a měnit obsah složky</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="150"/>
         <source>Read</source>
-        <translation type="unfinished">Čtení</translation>
+        <translation>Čtení</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="151"/>
         <source>Read and write</source>
-        <translation type="unfinished"></translation>
+        <translation>Čtení a zápis</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="153"/>
         <source>Forbidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakázáno</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="257"/>
         <source>Files of different types</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubory různých typů</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="287"/>
@@ -627,7 +627,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="415"/>
         <source>Apply changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít změny</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="416"/>
@@ -640,17 +640,17 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../filesearchdialog.cpp" line="120"/>
         <source>Error</source>
-        <translation type="unfinished">Chyba</translation>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="120"/>
         <source>You should add at least add one directory to search.</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidej aspoň jeden adresář k prohledání.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="127"/>
         <source>Select a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat adresář</translation>
     </message>
 </context>
 <context>
@@ -790,7 +790,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../mountoperationpassworddialog.cpp" line="40"/>
         <source>&amp;Connect</source>
-        <translation type="unfinished">&amp;Připojit</translation>
+        <translation>&amp;Připojit</translation>
     </message>
 </context>
 <context>
@@ -859,27 +859,27 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../placesview.cpp" line="349"/>
         <source>Open in New Window</source>
-        <translation type="unfinished">Otevřít v novém okně</translation>
+        <translation>Otevřít v novém okně</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="367"/>
         <source>Move Bookmark Up</source>
-        <translation type="unfinished">Přesunout záložku nahoru</translation>
+        <translation>Přesunout záložku nahoru</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="372"/>
         <source>Move Bookmark Down</source>
-        <translation type="unfinished">Přesunout záložku dolů</translation>
+        <translation>Přesunout záložku dolů</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="376"/>
         <source>Rename Bookmark</source>
-        <translation type="unfinished">Přejmenovat záložku</translation>
+        <translation>Přejmenovat záložku</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="379"/>
         <source>Remove Bookmark</source>
-        <translation type="unfinished">Odstranit záložku</translation>
+        <translation>Odstranit záložku</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="388"/>
@@ -906,29 +906,33 @@ Chceš je odstranit trvale?</translation>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ: %1
+Velikost: %2
+Změněno: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="56"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ: %1
+Změněno: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="75"/>
         <source>Type: %1
 Modified: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ: %1
+Změněno: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="89"/>
         <source>&amp;Overwrite</source>
-        <translation type="unfinished">&amp;Přepsat</translation>
+        <translation>&amp;Přepsat</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="91"/>
         <source>&amp;Rename</source>
-        <translation type="unfinished">Pře&amp;jmenovat</translation>
+        <translation>Pře&amp;jmenovat</translation>
     </message>
 </context>
 <context>
@@ -948,12 +952,12 @@ Modified: %3</source>
     <message>
         <location filename="../sidepane.cpp" line="137"/>
         <source>Shows list of common places, devices, and bookmarks in sidebar</source>
-        <translation type="unfinished">Zobrazit seznam obvyklých míst, zařízení a záložek v postranní liště</translation>
+        <translation>Zobrazit seznam obvyklých míst, zařízení a záložek v postranní liště</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="139"/>
         <source>Shows tree of directories in sidebar</source>
-        <translation type="unfinished">Zobrazit strom adresářů v postranní liště</translation>
+        <translation>Zobrazit strom adresářů v postranní liště</translation>
     </message>
 </context>
 <context>
@@ -971,37 +975,37 @@ Modified: %3</source>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation type="unfinished">Připojit jako &amp;uživatel:</translation>
+        <translation>Připojit jako &amp;uživatel:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
         <source>&amp;Username:</source>
-        <translation type="unfinished">Uživatelské &amp;jméno:</translation>
+        <translation>&amp;Jméno:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="102"/>
         <source>&amp;Password:</source>
-        <translation type="unfinished">&amp;Heslo:</translation>
+        <translation>&amp;Heslo:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
-        <translation type="unfinished">&amp;Doména:</translation>
+        <translation>&amp;Doména:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation type="unfinished">&amp;Zapomenout heslo</translation>
+        <translation>&amp;Zapomenout heslo</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password until you &amp;logout</source>
-        <translation type="unfinished">Pamatovat si heslo do &amp;odhlášení</translation>
+        <translation>Pamatovat si heslo do &amp;odhlášení</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation type="unfinished">Pamatovat si heslo &amp;trvale</translation>
+        <translation>Pamatovat si heslo &amp;trvale</translation>
     </message>
 </context>
 <context>
@@ -1113,176 +1117,176 @@ Modified: %3</source>
     <message>
         <location filename="../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Hledat soubory</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Jméno/umístění</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Jméno souboru obsahuje:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="41"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Nezohledňovat velikost písmen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít regulární výrazy</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="65"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Místa k prohledání:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="78"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Přidat</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="90"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Odstranit</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="119"/>
         <source>Search in sub directories</source>
-        <translation type="unfinished"></translation>
+        <translation>Hledat v podadresářích</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="126"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>Hledat skryté soubory</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="137"/>
         <source>File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ souboru</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="143"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hledat pouze soubory tohoto typu:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="149"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>Textové soubory</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="156"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrázky</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="163"/>
         <source>Audio files</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvuky</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="170"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>Videa</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="177"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokumenty</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="184"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresáře</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="208"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Obsah</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="214"/>
         <source>File contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubor obsahuje:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="223"/>
         <source>Case insensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Nezohledňovat &amp;velikost písmen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="230"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Po&amp;užít regulární výrazy</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="254"/>
         <source>Properties</source>
-        <translation type="unfinished">Vlastnosti</translation>
+        <translation>Vlastnosti</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="260"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost souboru:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="266"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Větší než:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="282"/>
         <location filename="../filesearch.ui" line="323"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Bytů</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="287"/>
         <location filename="../filesearch.ui" line="328"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="292"/>
         <location filename="../filesearch.ui" line="333"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="297"/>
         <location filename="../filesearch.ui" line="338"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="307"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Menší než:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="351"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Čas poslední změny:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="357"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dříve než:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="364"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Později než:</translation>
     </message>
 </context>
 </TS>
