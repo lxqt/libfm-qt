@@ -42,7 +42,8 @@ FmPathList* pathListFromQUrls(QList<QUrl> urls) {
 
   for(it = urls.begin(); it != urls.end(); ++it) {
     QUrl url = *it;
-    FmPath* path = fm_path_new_for_uri(url.toString().toUtf8());
+    FmPath* path = fm_path_new_for_uri(url.toString(QUrl::FullyDecoded).toUtf8());
+    qDebug("%s", fm_path_to_str(path));
     fm_path_list_push_tail(pathList, path);
     fm_path_unref(path);
   }

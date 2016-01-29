@@ -28,9 +28,11 @@
 #include <QByteArray>
 #include <QPixmap>
 #include <QPainter>
+#include <QDebug>
 #include "utilities.h"
 #include "fileoperation.h"
 #include "thumbnailloader.h"
+#include "path.h"
 
 namespace Fm {
 
@@ -366,10 +368,9 @@ QMimeData* FolderModel::mimeData(const QModelIndexList& indexes) const {
   for(const auto &index : indexes) {
     FolderModelItem* item = itemFromIndex(index);
     if(item) {
-      FmPath* path = fm_file_info_get_path(item->info);
-      char* uri = fm_path_to_uri(path);
+      char* uri = Path(fm_file_info_get_path(item->info)).toLocalUri();
       urilist.append(uri);
-      urilist.append('\n');
+      urilist.append("\r\n");
       g_free(uri);
     }
   }

@@ -149,8 +149,18 @@ public:
     return str;
   }
 
+  // convert the underlying FmPath object to an URI
   char* toUri() {
     return fm_path_to_uri(data_);
+  }
+
+  // convert the underlying URI to a gvfs-fuse mounted local file:/// URI.
+  // FIXME: we should really add such an API in libfm later.
+  char* toLocalUri() {
+    GFile* gf = fm_path_to_gfile(data_);
+    char* uri = g_file_get_path(gf);
+    g_object_unref(gf);
+    return uri;
   }
 
   GFile* toGfile() {
