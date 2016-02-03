@@ -41,6 +41,8 @@ FileSearchDialog::FileSearchDialog(QStringList paths, QWidget* parent, Qt::Windo
 
   connect(ui->addPath, &QPushButton::clicked, this, &FileSearchDialog::onAddPath);
   connect(ui->removePath, &QPushButton::clicked, this, &FileSearchDialog::onRemovePath);
+
+  ui->namePatterns->setFocus();
 }
 
 FileSearchDialog::~FileSearchDialog() {
