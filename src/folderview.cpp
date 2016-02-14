@@ -473,6 +473,7 @@ void FolderView::setViewMode(ViewMode _mode) {
   if(mode == DetailedListMode) {
     FolderViewTreeView* treeView = new FolderViewTreeView(this);
     connect(treeView, &FolderViewTreeView::activatedFiltered, this, &FolderView::onItemActivated);
+    setFocusProxy(treeView);
 
     view = treeView;
     treeView->setItemsExpandable(false);
@@ -492,6 +493,8 @@ void FolderView::setViewMode(ViewMode _mode) {
       connect(listView, &FolderViewListView::activatedFiltered, this, &FolderView::onItemActivated);
       view = listView;
     }
+    setFocusProxy(listView);
+
     // set our own custom delegate
     FolderItemDelegate* delegate = new FolderItemDelegate(listView);
     listView->setItemDelegateForColumn(FolderModel::ColumnFileName, delegate);
