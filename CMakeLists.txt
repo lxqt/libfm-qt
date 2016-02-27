@@ -4,7 +4,7 @@ project(libfm-qt)
 set(LIBFM_QT_LIBRARY_NAME "fm-qt" CACHE STRING "fm-qt")
 
 set(LIBFM_QT_VERSION_MAJOR 0)
-set(LIBFM_QT_VERSION_MINOR 10)
+set(LIBFM_QT_VERSION_MINOR 11)
 set(LIBFM_QT_VERSION_PATCH 0)
 set(LIBFM_QT_VERSION ${LIBFM_QT_VERSION_MAJOR}.${LIBFM_QT_VERSION_MINOR}.${LIBFM_QT_VERSION_PATCH})
 
@@ -17,9 +17,9 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 # Actually, libtool uses different ways on different operating systems. So there is no
 # universal way to translate a libtool version-info to a cmake version.
 # We use "(current-age).age.revision" as the cmake version.
-# current: 2, revision: 0, age: 0 => version: 2.0.0
-set(LIBFM_QT_LIB_VERSION "2.0.0")
-set(LIBFM_QT_LIB_SOVERSION "2")
+# current: 3, revision: 0, age: 0 => version: 3.0.0
+set(LIBFM_QT_LIB_VERSION "3.0.0")
+set(LIBFM_QT_LIB_SOVERSION "3")
 
 set(REQUIRED_QT_VERSION "5.2")
 set(REQUIRED_LIBFM_VERSION "1.2.0")
