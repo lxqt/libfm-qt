@@ -69,17 +69,26 @@ FilePropsDialog::FilePropsDialog(FmFileInfoList* files, QWidget* parent, Qt::Win
 }
 
 FilePropsDialog::~FilePropsDialog() {
-  delete ui;
-
   if(fileInfos_)
     fm_file_info_list_unref(fileInfos_);
-  if(deepCountJob)
-    g_object_unref(deepCountJob);
+
+  // Stop the timer if it's still running
   if(fileSizeTimer) {
     fileSizeTimer->stop();
     delete fileSizeTimer;
     fileSizeTimer = NULL;
   }
+
+  // Cancel the indexing job if it hasn't finished
+  if(deepCountJob) {
+    g_signal_handlers_disconnect_by_func(deepCountJob, (gpointer)G_CALLBACK(onDeepCountJobFinished), this);
+    fm_job_cancel(FM_JOB(deepCountJob));
+    g_object_unref(deepCountJob);
+    deepCountJob = NULL;
+  }
+
+  // And finally delete the dialog's UI
+  delete ui;
 }
 
 void FilePropsDialog::initApplications() {
