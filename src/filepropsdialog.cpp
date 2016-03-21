@@ -423,6 +423,29 @@ void FilePropsDialog::accept() {
     op->run();
   }
 
+  // Renaming
+  if(singleFile) {
+    QString new_name = ui->fileName->text();
+    if(QString::fromUtf8(fm_file_info_get_disp_name(fileInfo)) != new_name) {
+      FmPath* path = fm_file_info_get_path(fileInfo);
+      GFile* gf = fm_path_to_gfile(path);
+      GFile* parent_gf = g_file_get_parent(gf);
+      GFile* dest = g_file_get_child(G_FILE(parent_gf), new_name.toLocal8Bit().data());
+      g_object_unref(parent_gf);
+      GError* err = NULL;
+      if(!g_file_move(gf, dest,
+                      GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
+                                     G_FILE_COPY_NO_FALLBACK_FOR_MOVE |
+                                     G_FILE_COPY_NOFOLLOW_SYMLINKS),
+                      NULL, NULL, NULL, &err)) {
+        QMessageBox::critical(this, QObject::tr("Error"), err->message);
+        g_error_free(err);
+      }
+      g_object_unref(dest);
+      g_object_unref(gf);
+    }
+  }
+
   QDialog::accept();
 }
 
