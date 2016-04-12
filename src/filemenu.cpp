@@ -350,6 +350,7 @@ void FileMenu::onDeleteTriggered() {
 void FileMenu::onUnTrashTriggered() {
   FmPathList* paths = fm_path_list_new_from_file_info_list(files_);
   FileOperation::unTrashFiles(paths);
+  fm_path_list_unref(paths);
 }
 
 void FileMenu::onPasteTriggered() {
