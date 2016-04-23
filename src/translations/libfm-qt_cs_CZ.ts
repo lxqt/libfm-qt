@@ -174,7 +174,7 @@
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
-        <source>Mime type:</source>
+        <source>MIME type:</source>
         <translation>Mime typ:</translation>
     </message>
     <message>
@@ -548,7 +548,7 @@ Chceš je odstranit trvale?</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
-        <source>Deleting the following files</source>
+        <source>Deleting the following files:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -644,7 +644,7 @@ Chceš je odstranit trvale?</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="120"/>
-        <source>You should add at least add one directory to search.</source>
+        <source>You should add at least one directory to search.</source>
         <translation>Přidej aspoň jeden adresář k prohledání.</translation>
     </message>
     <message>
@@ -912,17 +912,11 @@ Změněno: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="56"/>
+        <location filename="../renamedialog.cpp" line="75"/>
         <source>Type: %1
 Modified: %2</source>
         <translation>Typ: %1
 Změněno: %2</translation>
-    </message>
-    <message>
-        <location filename="../renamedialog.cpp" line="75"/>
-        <source>Type: %1
-Modified: %3</source>
-        <translation>Typ: %1
-Změněno: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="89"/>

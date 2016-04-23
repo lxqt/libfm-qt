@@ -168,7 +168,7 @@
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
-        <source>Mime type:</source>
+        <source>MIME type:</source>
         <translation>Mime tipas:</translation>
     </message>
     <message>
@@ -551,8 +551,8 @@ Ar norite vietoje to juos pašalinti visam laikui?</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
-        <source>Deleting the following files</source>
-        <translation>Šalinami šie failai</translation>
+        <source>Deleting the following files:</source>
+        <translation>Šalinami šie failai:</translation>
     </message>
     <message>
         <source>Create Symlinks</source>
@@ -652,7 +652,7 @@ Ar norite vietoje to juos pašalinti visam laikui?</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="120"/>
-        <source>You should add at least add one directory to search.</source>
+        <source>You should add at least one directory to search.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -919,11 +919,12 @@ Dydis: %2
 Keista: %3</translation>
     </message>
     <message>
+        <location filename="../renamedialog.cpp" line="56"/>
         <location filename="../renamedialog.cpp" line="75"/>
         <source>Type: %1
-Modified: %3</source>
+Modified: %2</source>
         <translation>Tipas: %1
-Keista: %3</translation>
+Keista: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="89"/>
@@ -934,14 +935,6 @@ Keista: %3</translation>
         <location filename="../renamedialog.cpp" line="91"/>
         <source>&amp;Rename</source>
         <translation>Pe&amp;rvadinti</translation>
-    </message>
-    <message>
-        <location filename="../renamedialog.cpp" line="56"/>
-        <source>Type: %1
-Modified: %2</source>
-        <translation type="unfinished">Tipas: %1
-Keista: %2 {1
-?}</translation>
     </message>
 </context>
 <context>

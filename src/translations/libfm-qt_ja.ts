@@ -174,7 +174,7 @@
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
-        <source>Mime type:</source>
+        <source>MIME type:</source>
         <translation>MIMEタイプ:</translation>
     </message>
     <message>
@@ -554,8 +554,8 @@ Do you want to delete them instead?</source>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
-        <source>Deleting the following files</source>
-        <translation>以下のファイルを削除</translation>
+        <source>Deleting the following files:</source>
+        <translation>以下のファイルを削除:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
@@ -650,7 +650,7 @@ Do you want to delete them instead?</source>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="120"/>
-        <source>You should add at least add one directory to search.</source>
+        <source>You should add at least one directory to search.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -922,17 +922,11 @@ Modified: %3</source>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="56"/>
+        <location filename="../renamedialog.cpp" line="75"/>
         <source>Type: %1
 Modified: %2</source>
         <translation>種類: %1
 更新日時: %2</translation>
-    </message>
-    <message>
-        <location filename="../renamedialog.cpp" line="75"/>
-        <source>Type: %1
-Modified: %3</source>
-        <translation>種類: %1
-更新日時: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="89"/>
