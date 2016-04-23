@@ -72,7 +72,7 @@ RenameDialog::RenameDialog(FmFileInfo* src, FmFileInfo* dest, QWidget* parent, Q
                 .arg(QString::fromUtf8(fm_file_info_get_disp_mtime(dest)));
   }
   else {
-    infoStr = QString(tr("Type: %1\nModified: %3"))
+    infoStr = QString(tr("Type: %1\nModified: %2"))
                 .arg(QString::fromUtf8(fm_file_info_get_desc(dest)))
                 .arg(QString::fromUtf8(fm_file_info_get_disp_mtime(dest)));
   }

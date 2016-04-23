@@ -119,7 +119,7 @@ void FileSearchDialog::accept() {
     fm_search_free(search);
   }
   else {
-    QMessageBox::critical(this, tr("Error"), tr("You should add at least add one directory to search."));
+    QMessageBox::critical(this, tr("Error"), tr("You should add at least one directory to search."));
     return;
   }
   QDialog::accept();

@@ -51,7 +51,7 @@ FileOperationDialog::FileOperationDialog(FileOperation* _operation):
       break;
   case FM_FILE_OP_DELETE:
       title = tr("Delete Files");
-      message = tr("Deleting the following files");
+      message = tr("Deleting the following files:");
       ui->dest->hide();
       ui->destLabel->hide();
       break;

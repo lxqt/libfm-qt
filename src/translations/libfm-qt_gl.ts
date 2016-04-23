@@ -168,7 +168,7 @@
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
-        <source>Mime type:</source>
+        <source>MIME type:</source>
         <translation>Tipo MIME:</translation>
     </message>
     <message>
@@ -546,8 +546,8 @@ Desexa eliminalos no seu canto?</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
-        <source>Deleting the following files</source>
-        <translation>Eliminando os seguintes ficheiros</translation>
+        <source>Deleting the following files:</source>
+        <translation>Eliminando os seguintes ficheiros:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
@@ -642,7 +642,7 @@ Desexa eliminalos no seu canto?</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="120"/>
-        <source>You should add at least add one directory to search.</source>
+        <source>You should add at least one directory to search.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -910,17 +910,11 @@ Modificado: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="56"/>
+        <location filename="../renamedialog.cpp" line="75"/>
         <source>Type: %1
 Modified: %2</source>
         <translation>Tipo: %1
 Modificado: %2</translation>
-    </message>
-    <message>
-        <location filename="../renamedialog.cpp" line="75"/>
-        <source>Type: %1
-Modified: %3</source>
-        <translation>Tipo: %1
-Modificado: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="89"/>
