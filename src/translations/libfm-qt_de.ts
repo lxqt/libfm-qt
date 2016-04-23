@@ -174,7 +174,7 @@
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
-        <source>Mime type:</source>
+        <source>MIME type:</source>
         <translation>MIME-Typ:</translation>
     </message>
     <message>
@@ -549,8 +549,8 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
-        <source>Deleting the following files</source>
-        <translation>Lösche die folgenden Dateien</translation>
+        <source>Deleting the following files:</source>
+        <translation>Lösche die folgenden Dateien:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
@@ -645,7 +645,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="120"/>
-        <source>You should add at least add one directory to search.</source>
+        <source>You should add at least one directory to search.</source>
         <translation>Sie sollten mindestens einen Ordner für die Suche hinzufügen.</translation>
     </message>
     <message>
@@ -913,17 +913,11 @@ Geändert: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="56"/>
+        <location filename="../renamedialog.cpp" line="75"/>
         <source>Type: %1
 Modified: %2</source>
         <translation>Typ: %1
 Geändert: %2</translation>
-    </message>
-    <message>
-        <location filename="../renamedialog.cpp" line="75"/>
-        <source>Type: %1
-Modified: %3</source>
-        <translation>Typ: %1
-Geändert: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="89"/>

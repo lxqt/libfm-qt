@@ -174,7 +174,7 @@
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
-        <source>Mime type:</source>
+        <source>MIME type:</source>
         <translation>Mime típus:</translation>
     </message>
     <message>
@@ -549,8 +549,8 @@ Töröljük őket véglegesen?</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
-        <source>Deleting the following files</source>
-        <translation>A következő fájlok törlése</translation>
+        <source>Deleting the following files:</source>
+        <translation>A következő fájlok törlése:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
@@ -645,7 +645,7 @@ Töröljük őket véglegesen?</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="120"/>
-        <source>You should add at least add one directory to search.</source>
+        <source>You should add at least one directory to search.</source>
         <translation>Kereséshez legalább egy mappa megadandó.</translation>
     </message>
     <message>
@@ -913,17 +913,11 @@ Módosítva: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="56"/>
+        <location filename="../renamedialog.cpp" line="75"/>
         <source>Type: %1
 Modified: %2</source>
         <translation>Típus: %1
 Módosítva: %2</translation>
-    </message>
-    <message>
-        <location filename="../renamedialog.cpp" line="75"/>
-        <source>Type: %1
-Modified: %3</source>
-        <translation>Típus: %1
-Módosítva: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="89"/>
