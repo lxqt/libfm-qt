@@ -994,11 +994,11 @@ void FolderView::onFileClicked(int type, FmFileInfo* fileInfo) {
   }
   else if(type == ContextMenuClick) {
     FmPath* folderPath = nullptr;
-    FmFileInfoList* files = selectedFiles();
-    if (files) {
+    if (FmFileInfoList* files = selectedFiles()) {
       FmFileInfo* first = fm_file_info_list_peek_head(files);
       if (fm_file_info_list_get_length(files) == 1 && fm_file_info_is_dir(first))
         folderPath = fm_file_info_get_path(first);
+      fm_file_info_list_unref(files);
     }
     if (!folderPath)
       folderPath = path();
