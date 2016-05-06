@@ -99,7 +99,7 @@ void FileMenu::createMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd) 
   openWithMenuAction_ = new QAction(tr("Open With..."), this);
   addAction(openWithMenuAction_);
   // create the "Open with..." sub menu
-  QMenu* menu = new QMenu();
+  QMenu* menu = new QMenu(this);
   openWithMenuAction_->setMenu(menu);
 
   if(sameType_) { /* add specific menu items for this mime type */
@@ -116,7 +116,7 @@ void FileMenu::createMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd) 
         g_free(program_path);
 
         // create a QAction for the application.
-        AppInfoAction* action = new AppInfoAction(app);
+        AppInfoAction* action = new AppInfoAction(app, menu);
         connect(action, &QAction::triggered, this, &FileMenu::onApplicationTriggered);
         menu->addAction(action);
       }
