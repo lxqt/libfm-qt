@@ -181,7 +181,13 @@ glib_to_cpp_type = {
 
 
 class Method:
-    regex_pattern = re.compile(r'^(\w+\**)\s+(\w+)\s*\((.*)\);?', re.MULTILINE|re.ASCII)
+    regex_pattern = re.compile(r'''
+        ^(\w+)      # return type
+        ([\s\*]+)   # space or *
+        (\w+)       # function name
+        \s*         # space
+        \((.*)\);?  # (arg1, arg2, ...);
+        ''', re.MULTILINE|re.ASCII|re.VERBOSE)
 
     def __init__(self, regex_match=None):
         self.is_static = False
@@ -191,9 +197,12 @@ class Method:
         self.args = []  # list of Variable
         if regex_match:
             self.return_type = regex_match[0]
-            self.name = regex_match[1]
+            stars = regex_match[1].strip()
+            if stars:
+                self.return_type += stars
+            self.name = regex_match[2]
             # parse the declaration
-            args = regex_match[2]
+            args = regex_match[3]
             for arg_decl in args.split(","):
                 var = Variable()
                 var.from_string(arg_decl)
@@ -260,7 +269,7 @@ class Struct:
         self.free_func = None
 
     def add_method(self, method):
-        # print(self.name, method.name)
+        print(self.name, method.name, method.return_type)
         if method.return_type == "GType":
             # avoid adding _get_type()
             self.is_gobject = True  # this struct is a GObject class
