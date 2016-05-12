@@ -500,6 +500,11 @@ void FolderView::setViewMode(ViewMode _mode) {
     listView->setItemDelegateForColumn(FolderModel::ColumnFileName, delegate);
     // FIXME: should we expose the delegate?
     listView->setMovement(QListView::Static);
+    /* If listView is already visible, setMovement() will lay out items again with delay
+       (see Qt, QListView::setMovement(), d->doDelayedItemsLayout()) and thus drop events
+       will remain disabled for the viewport. So, we should re-enable drop events here. */
+    if(listView->viewport()->isVisible())
+      listView->viewport()->setAcceptDrops(true);
     listView->setResizeMode(QListView::Adjust);
     listView->setWrapping(true);
     switch(mode) {
