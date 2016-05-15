@@ -32,6 +32,8 @@ endif()
 find_package(Qt5Widgets "${REQUIRED_QT_VERSION}" REQUIRED)
 find_package(Qt5LinguistTools "${REQUIRED_QT_VERSION}" REQUIRED)
 find_package(Qt5X11Extras "${REQUIRED_QT_VERSION}" REQUIRED)
+#Note: no run-time dependency on liblxqt, just a build dependency for lxqt_translate_ts/desktop
+find_package(lxqt REQUIRED)
 
 find_package(PkgConfig)
 pkg_check_modules(SYSTEM_LIBS REQUIRED
