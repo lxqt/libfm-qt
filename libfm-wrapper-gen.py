@@ -342,6 +342,11 @@ class Struct:
             free = self.free_func.name if self.free_func else ""
             extra_code = ""
 
+        # FIXME: if copy and free are None, we should disable copy constructors
+        # FIXME: if no constructors are found, we should make default ctor private
+        # TODO: implement move conostructors
+        #       correct inheritence for GObject derived classses?
+
         # output the C++ class
         return class_templ.format(
             CLASS_NAME=self.name[2:],  # strip Fm
