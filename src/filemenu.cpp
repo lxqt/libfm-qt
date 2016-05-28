@@ -120,7 +120,9 @@ void FileMenu::createMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd) 
         connect(action, &QAction::triggered, this, &FileMenu::onApplicationTriggered);
         menu->addAction(action);
       }
-      g_list_free(apps); /* don't unref GAppInfos now */
+      // unref GAppInfos here, they are still ref'ed in the AppInfoActions above
+      g_list_foreach(apps, (GFunc)g_object_unref, NULL);
+      g_list_free(apps);
     }
   }
   menu->addSeparator();
