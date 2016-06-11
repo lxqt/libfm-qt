@@ -31,6 +31,7 @@
 #include <QLinkedList>
 #include <QPair>
 #include "foldermodelitem.h"
+#include "id3datamodel.h"
 
 namespace Fm {
 
@@ -48,6 +49,9 @@ public:
     ColumnFileSize,
     ColumnFileMTime,
     ColumnFileOwner,
+    ColumnFileID3Title,
+    ColumnFileID3Artist,
+    ColumnFileID3Album,
     NumOfColumns
   };
 

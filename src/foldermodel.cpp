@@ -223,6 +223,18 @@ QVariant FolderModel::data(const QModelIndex & index, int role/* = Qt::DisplayRo
           const char* name = fm_file_info_get_disp_owner(info);
           return QString::fromUtf8(name);
         }
+        case ColumnFileID3Title: {
+          ID3DataModel id3Data (fm_path_to_str(fm_file_info_get_path(info)));
+          return QString::fromStdString(id3Data.parseData(ID3DataModel::ColumnFileID3Title));
+        }
+        case ColumnFileID3Artist: {
+          ID3DataModel id3Data (fm_path_to_str(fm_file_info_get_path(info)));
+          return QString::fromStdString(id3Data.parseData(ID3DataModel::ColumnFileID3Artist));
+        }
+        case ColumnFileID3Album: {
+          ID3DataModel id3Data (fm_path_to_str(fm_file_info_get_path(info)));
+          return QString::fromStdString(id3Data.parseData(ID3DataModel::ColumnFileID3Album));
+        }
       }
     }
     case Qt::DecorationRole: {
@@ -258,6 +270,12 @@ QVariant FolderModel::headerData(int section, Qt::Orientation orientation, int r
           break;
         case ColumnFileOwner:
           title = tr("Owner");
+          break;
+        case ColumnFileID3Title:
+          title = tr("Title");
+          break;
+        case ColumnFileID3Artist:
+          title = tr("Artist");
           break;
       }
       return QVariant(title);

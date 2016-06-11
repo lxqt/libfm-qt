@@ -57,6 +57,7 @@ set(libfm_SRCS
     filesearchdialog.cpp
     fm-search.c # might be moved to libfm later
     xdndworkaround.cpp
+    id3datamodel.cpp
 )
 
 set(libfm_UIS
@@ -87,6 +88,7 @@ add_library(${LIBFM_QT_LIBRARY_NAME} SHARED
     ${libfm_SRCS}
     ${libfm_UIS_H}
     ${QM_FILES}
+    /usr/lib64/libid3.so
 )
 
 set_property(
@@ -112,6 +114,7 @@ target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
     ${LIBFM_LIBRARIES}
     ${LIBMENUCACHE_LIBRARIES}
     ${SYSTEM_LIBS_LIBRARIES}
+    /usr/lib64/libid3.so
 )
 
 # set libtool soname

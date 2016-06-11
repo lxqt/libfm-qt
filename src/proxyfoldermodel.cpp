@@ -20,6 +20,7 @@
 
 #include "proxyfoldermodel.h"
 #include "foldermodel.h"
+#include "id3datamodel.h"
 #include <QCollator>
 
 namespace Fm {
@@ -158,6 +159,12 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
         // TODO: sort by owner
         break;
       case FolderModel::ColumnFileType:
+        break;
+      case FolderModel::ColumnFileID3Title: 
+        break;
+      case FolderModel::ColumnFileID3Artist:
+        break;
+      case FolderModel::ColumnFileID3Album:
         break;
     }
   }
