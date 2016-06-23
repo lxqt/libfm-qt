@@ -6,6 +6,119 @@ import re
 from collections import deque
 
 
+license_text = """
+/*
+ * Copyright (C) 2016 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ */
+"""
+
+copy_ctor_templ = """
+    {CLASS_NAME}({CLASS_NAME}& other) {{
+        if(dataPtr_ != nullptr) {{
+            {FREE_FUNC}(dataPtr_);
+        }}
+        dataPtr_ = other.dataPtr_ != nullptr ? static_cast<{STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr;
+    }}
+"""
+
+default_ctor_templ = """
+    {CLASS_NAME}({STRUCT_NAME}* dataPtr) {{
+        if(dataPtr_ != nullptr) {{
+            {FREE_FUNC}(dataPtr_);
+        }}
+        dataPtr_ = dataPtr != nullptr ? static_cast<{STRUCT_NAME}*>({COPY_FUNC}(dataPtr)) : nullptr;
+    }}
+"""
+
+class_templ = """
+class {CLASS_NAME}{INHERIT} {{
+public:
+
+    // default constructor
+    {CLASS_NAME}(): dataPtr_(nullptr) {{
+    }}
+
+{CTORS}
+
+    // destructor
+    ~{CLASS_NAME}() {{
+        if(dataPtr_ != nullptr) {{
+            {FREE_FUNC}(dataPtr_);
+        }}
+    }}
+
+    // create a wrapper for the data pointer without increasing the reference count
+    static {CLASS_NAME}* wrap({STRUCT_NAME}* dataPtr) {{
+        {CLASS_NAME}* obj = new {CLASS_NAME}();
+        obj->dataPtr_ = dataPtr;
+        return obj;
+    }}
+
+    // disown the managed data pointer
+    {STRUCT_NAME}* takeDataPtr() {{
+        {STRUCT_NAME}* data = dataPtr_;
+        dataPtr_ = nullptr;
+        return data;
+    }}
+
+    // get the raw pointer wrapped
+    {STRUCT_NAME}* dataPtr() {{
+        return dataPtr_;
+    }}
+
+    // automatic type casting
+    operator {STRUCT_NAME}*() {{
+        return dataPtr_;
+    }}
+
+    // methods
+{METHODS}
+{EXTRA_CODE}
+private:
+    {STRUCT_NAME}* dataPtr_; // data pointer for the underlying C struct
+}};
+"""
+
+method_templ = """
+    {METHOD_DECL} {{
+        {CONTENT};
+    }}
+"""
+
+header_templ = """
+{LICENSE}
+#ifndef {HEADER_GUARD}
+#define {HEADER_GUARD}
+
+#include <libfm/fm.h>
+#include <QObject>
+#include <QtGlobals>
+
+namespace Fm {{
+
+{CLASSES}
+
+}}
+
+#endif // {HEADER_GUARD}
+"""
+
+
 def camel_case_to_lower(identifier):
     part_begin = 0
     parts = []
@@ -25,123 +138,6 @@ def lower_case_to_camel(identifier, capitalize_first=False):
     if not capitalize_first:
         parts[0] = parts[0].lower()
     return "".join(parts)
-
-
-header_templ = """
-/*
- * Copyright (C) 2016 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- */
-
-#ifndef {HEADER_GUARD}
-#define {HEADER_GUARD}
-
-#include <libfm/fm.h>
-#include <QObject>
-#include <QtGlobals>
-
-namespace Fm {{
-
-{CLASSES}
-
-}}
-
-#endif // {HEADER_GUARD}
-"""
-
-class_templ = """
-class {CLASS_NAME}{INHERIT} {{
-public:
-{CTORS}
-    {CLASS_NAME}({CLASS_NAME}& other) {{
-        if(dataPtr_ != nullptr) {{
-            {FREE}(dataPtr_);
-        }}
-        dataPtr_ = other.dataPtr_ != nullptr ? static_cast<{STRUCT}*>({COPY}(other.dataPtr_)) : nullptr;
-    }}
-
-    {CLASS_NAME}({STRUCT}* dataPtr, bool takeOwnership = false) {{
-        if(dataPtr_ != nullptr) {{
-            {FREE}(dataPtr_);
-        }}
-        if(takeOwnership)
-            dataPtr_ = dataPtr;
-        else
-            dataPtr_ = dataPtr != nullptr ? static_cast<{STRUCT}*>({COPY}(dataPtr)) : nullptr;
-    }}
-
-    ~{CLASS_NAME}() {{
-        if(dataPtr_ != nullptr) {{
-            {FREE}(dataPtr_);
-        }}
-    }}
-
-    // disown the managed data pointer
-    {STRUCT}* detatch() {{
-        {STRUCT}* data = dataPtr_;
-        dataPtr_ = nullptr;
-        return data;
-    }}
-
-    // get the raw pointer wrapped
-    {STRUCT}* dataPtr() {{
-        return dataPtr_;
-    }}
-
-    operator {STRUCT}*() {{
-        return dataPtr_;
-    }}
-
-{METHODS}
-{EXTRA_CODE}
-private:
-    {STRUCT}* dataPtr_;
-}};
-"""
-
-gobject_templ = """
-    GObject* gObject() {{
-        return static_cast<GObject*>(dataPtr_);
-    }}
-
-    operator GObject*() {{
-        return gObject();
-    }}
-
-Q_OBJECT
-
-Q_SIGNALS:
-{SIGNALS}
-
-protected:
-    void connectNotify(const QMetaMethod &signal) override {{
-        QObject::connectNotify(signal);
-    }}
-
-    void QObject::disconnectNotify(const QMetaMethod &signal) override {{
-        QObject::disconnectNotify(signal);
-    }}
-"""
-
-method_templ = """
-    {METHOD_DECL} {{
-        {CONTENT};
-    }}
-"""
 
 
 class Variable:
@@ -261,6 +257,7 @@ class Struct:
             self.name = ""
             self.prefix = ""
         self.is_gobject = False
+        self.is_ref_counted = False  # has reference counting
         self.methods = []  # list of Method
         # self.data_members = []  # list of Variable
         self.signals = []  # list of Method
@@ -273,6 +270,7 @@ class Struct:
         if method.return_type == "GType":
             # avoid adding _get_type()
             self.is_gobject = True  # this struct is a GObject class
+            self.is_ref_counted = True
             return
         this_type = self.name + "*"
         if not method.args or method.args[0].type_name != this_type:
@@ -284,13 +282,14 @@ class Struct:
             self.ctors.append(method)
         elif method.name.endswith("_ref"):  # copy method
             self.copy_func = method
+            self.is_ref_counted = True
         elif method.name.endswith("_unref"):  # free method
             self.free_func = method
         else:  # normal method
             self.methods.append(method)
 
     def to_string(self):
-        cpp_class=self.name[2:]  # skip Fm prefix
+        cpp_class = self.name[2:]  # skip Fm prefix
         self_ptr_type = self.name + "*"
         # ordinary methods
         prefix_len = len(self.prefix)
@@ -301,7 +300,7 @@ class Struct:
             if method.return_type != "void":
                 if method.return_type == self_ptr_type:  # returns Struct*
                     # wrap in our C++ wrapper
-                    ret_type=cpp_class
+                    ret_type = cpp_class
                     invoke = "{CPP_CLASS}({DATA}, {TAKE_OWNERSHIP})".format(
                             CPP_CLASS=cpp_class,
                             DATA=invoke,
@@ -344,7 +343,7 @@ class Struct:
 
         # FIXME: if copy and free are None, we should disable copy constructors
         # FIXME: if no constructors are found, we should make default ctor private
-        # TODO: implement move conostructors
+        # TODO: implement move constructors
         #       correct inheritence for GObject derived classses?
 
         # output the C++ class
@@ -352,59 +351,62 @@ class Struct:
             CLASS_NAME=self.name[2:],  # strip Fm
             INHERIT=inherit,
             CTORS="\n".join(ctors) if ctors else "",
-            COPY=copy,
-            FREE=free,
+            COPY_FUNC=copy,
+            FREE_FUNC=free,
             METHODS="\n".join(methods),
-            STRUCT=self.name,
+            STRUCT_NAME=self.name,
             EXTRA_CODE=extra_code
         )
 
-def generate_cpp_wrapper(c_header_file, output_file, base_name):
+
+def generate_cpp_wrapper(c_header_file, base_name):
     print(c_header_file)
-    with open(c_header_file, "r") as f:
-        source = f.read()
-        define_pattern = re.compile(r'#define\s+(\w+)', re.ASCII)
-        # for m in define_pattern.findall(source):
-        #     print("define", m)
+    try:
+        with open(c_header_file, "r") as f:
+            source = f.read()
+            define_pattern = re.compile(r'#define\s+(\w+)', re.ASCII)
+            # for m in define_pattern.findall(source):
+            #     print("define", m)
 
-        # find all struct names
-        structs = []
-        for m in Struct.regex_pattern.findall(source):
-            # print("struct", m)
-            struct = Struct(m)
-            structs.append(struct)
+            # find all struct names
+            structs = []
+            for m in Struct.regex_pattern.findall(source):
+                # print("struct", m)
+                struct = Struct(m)
+                structs.append(struct)
 
-        if not structs:  # no object class found in this header
-            return
+            if not structs:  # no object class found in this header
+                return ""
 
-        # find all function names
-        methods = deque()
-        for m in Method.regex_pattern.findall(source):
-            method = Method(m)
-            methods.append(method)
+            # find all function names
+            methods = deque()
+            for m in Method.regex_pattern.findall(source):
+                method = Method(m)
+                methods.append(method)
 
-        # sort struct by length of their names in descending order
-        structs.sort(key=lambda struct: len(struct.name), reverse=True)
+            # sort struct by length of their names in descending order
+            structs.sort(key=lambda struct: len(struct.name), reverse=True)
 
-        # add methods to structs
-        while methods:
-            method = methods.pop()
+            # add methods to structs
+            while methods:
+                method = methods.pop()
+                for struct in structs:
+                    if method.name.startswith(struct.prefix):
+                        struct.add_method(method)
+                        break
+
+            classes = []
             for struct in structs:
-                if method.name.startswith(struct.prefix):
-                    struct.add_method(method)
-                    break
+                # only generate wrapper for classes with methods
+                if struct.methods:
+                    classes.append(struct.to_string())
 
-        classes = []
-        for struct in structs:
-            # only generate wrapper for classes with methods
-            if struct.methods:
-                classes.append(struct.to_string())
-
-        # output
-        with open(output_file, "w") as output:
+            # output
             guard = "__LIBFM_QT_{0}__".format(base_name.replace("-", "_").replace(".", "_").upper())
-            content = header_templ.format(CLASSES="\n\n".join(classes), HEADER_GUARD=guard)
-            output.write(content)
+            content = header_templ.format(LICENSE=license_text, CLASSES="\n\n".join(classes), HEADER_GUARD=guard)
+    except IOError:
+        content = ""
+    return content
 
 
 def main(argv):
@@ -430,8 +432,9 @@ def main(argv):
     for header in headers:
         base_name = os.path.basename(header)
         output_file = os.path.join(output_dir, base_name[3:].replace("-", "")) # skip fm- and remove all '-'
-        generate_cpp_wrapper(header, output_file, base_name)
-
+        with open(output_file, "w") as output:
+            content = generate_cpp_wrapper(header, base_name)
+            output.write(content)
 
 if __name__ == "__main__":
     main(sys.argv)
