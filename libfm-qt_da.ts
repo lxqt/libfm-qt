@@ -53,7 +53,7 @@
     <message>
         <location filename="../../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation>Udfør i terminalemualtor</translation>
+        <translation>Udfør i terminalemulator</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="109"/>
@@ -91,7 +91,7 @@
     <message>
         <location filename="../../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Brug træk-og-slip for at arrangere bogmærkerne</translation>
+        <translation>Brug træk- og-slip for at arrangere bogmærkerne</translation>
     </message>
 </context>
 <context>
@@ -266,7 +266,7 @@
         <location filename="../../file-props.ui" line="542"/>
         <location filename="../../file-props.ui" line="594"/>
         <source>Execute</source>
-        <translation>Eksever</translation>
+        <translation>Eksekver</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="603"/>
@@ -286,7 +286,7 @@
     <message>
         <location filename="../../file-props.ui" line="653"/>
         <source>Advanced Mode</source>
-        <translation>Advanceret...</translation>
+        <translation>Avanceret...</translation>
     </message>
 </context>
 <context>
@@ -364,7 +364,7 @@
     <message>
         <location filename="../../dndactionmenu.cpp" line="37"/>
         <source>Create symlink here</source>
-        <translation>LAv symbolsk lænke her</translation>
+        <translation>Lav symbolsk lænke her</translation>
     </message>
     <message>
         <location filename="../../dndactionmenu.cpp" line="39"/>
@@ -386,13 +386,13 @@
         <location filename="../../execfiledialog.cpp" line="39"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>Denne tekst fil &quot;%1&quot; er tilsyneladende et eksverbart skript. 
+        <translation>Denne tekstfil &quot;%1&quot; er tilsyneladende et eksekverbart script.
 Hvad vil du foretage med det?</translation>
     </message>
     <message>
         <location filename="../../execfiledialog.cpp" line="44"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>Filen &quot;%1&quot; er eksverbar. Vil du ekskvere den?</translation>
+        <translation>Filen &quot;%1&quot; er eksekverbar. Vil du eksekvere den?</translation>
     </message>
 </context>
 <context>
@@ -490,7 +490,7 @@ Hvad vil du foretage med det?</translation>
         <location filename="../../fileoperation.cpp" line="221"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>Nogle filer kan ikke smides i papirkurven, fordi det underliggende filsystem ikke understøtter denne funktion
+        <translation>Nogle filer kan ikke smides i papirkurven, fordi det underliggende filsystem ikke understøtter denne funktion.
 Vil du slette dem istedet?</translation>
     </message>
     <message>
@@ -633,7 +633,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="425"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>Vil du anvende disse ændringer rekursivt på alle filer og undermappeer?</translation>
+        <translation>Vil du anvende disse ændringer rekursivt på alle filer og undermapper?</translation>
     </message>
 </context>
 <context>
@@ -811,7 +811,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../../placesmodel.cpp" line="71"/>
         <source>Applications</source>
-        <translation>Apllikationer</translation>
+        <translation>Applikationer</translation>
     </message>
     <message>
         <location filename="../../placesmodel.cpp" line="83"/>
@@ -898,7 +898,7 @@ Size: %2
 Modified: %3</source>
         <translation>Type: %1
 Størrelse: %2
-Sensest ændret: %3</translation>
+Senest ændret: %3</translation>
     </message>
     <message>
         <location filename="../../renamedialog.cpp" line="56"/>
@@ -959,7 +959,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>Forbind osm &amp;bruger:</translation>
+        <translation>Forbind som &amp;bruger:</translation>
     </message>
     <message>
         <location filename="../../mount-operation-password.ui" line="79"/>
@@ -1036,7 +1036,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../../utilities.cpp" line="171"/>
         <source>Please enter a new folder name:</source>
-        <translation>Venligst indtsast et nyt mappenavn:</translation>
+        <translation>Venligst indtast et nyt mappenavn:</translation>
     </message>
     <message>
         <location filename="../../utilities.cpp" line="172"/>
