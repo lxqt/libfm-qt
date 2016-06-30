@@ -286,7 +286,7 @@
     <message>
         <location filename="../../file-props.ui" line="653"/>
         <source>Advanced Mode</source>
-        <translation>Avanceret...</translation>
+        <translation>Avanceret</translation>
     </message>
 </context>
 <context>
@@ -659,7 +659,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../../foldermenu.cpp" line="41"/>
         <source>Create &amp;New</source>
-        <translation>Opret   &amp;ny</translation>
+        <translation>Opret &amp;ny</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="48"/>
@@ -801,7 +801,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../../placesmodel.cpp" line="49"/>
         <source>Desktop</source>
-        <translation>Skriverbord</translation>
+        <translation>Skrivebord</translation>
     </message>
     <message>
         <location filename="../../placesmodel.cpp" line="58"/>
@@ -1222,7 +1222,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="260"/>
         <source>File Size:</source>
-        <translation>Filstørrelse</translation>
+        <translation>Filstørrelse:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="289"/>
