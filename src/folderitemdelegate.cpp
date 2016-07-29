@@ -131,7 +131,10 @@ void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItemV4& opt
   QTextOption textOption;
   textOption.setAlignment(opt.displayAlignment);
   textOption.setWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
-  textOption.setTextDirection(opt.direction);
+  if (opt.text.isRightToLeft())
+    textOption.setTextDirection(Qt::RightToLeft);
+  else
+    textOption.setTextDirection(Qt::LeftToRight);
   layout.setTextOption(textOption);
   qreal height = 0;
   qreal width = 0;
