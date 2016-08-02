@@ -22,7 +22,7 @@
 #include "foldermodel.h"
 #include <QPainter>
 #include <QModelIndex>
-#include <QStyleOptionViewItemV4>
+#include <QStyleOptionViewItem>
 #include <QApplication>
 #include <QIcon>
 #include <QTextLayout>
@@ -49,7 +49,7 @@ QSize FolderItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QMo
   if(option.decorationPosition == QStyleOptionViewItem::Top ||
     option.decorationPosition == QStyleOptionViewItem::Bottom) {
 
-    QStyleOptionViewItemV4 opt = option;
+    QStyleOptionViewItem opt = option;
     initStyleOption(&opt, index);
     opt.decorationAlignment = Qt::AlignHCenter|Qt::AlignTop;
     opt.displayAlignment = Qt::AlignTop|Qt::AlignHCenter;
@@ -83,7 +83,7 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     painter->save();
     painter->setClipRect(option.rect);
 
-    QStyleOptionViewItemV4 opt = option;
+    QStyleOptionViewItem opt = option;
     initStyleOption(&opt, index);
     opt.decorationAlignment = Qt::AlignHCenter|Qt::AlignTop;
     opt.displayAlignment = Qt::AlignTop|Qt::AlignHCenter;
@@ -114,7 +114,7 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
 
     // draw emblems if needed
     if(isSymlink) {
-      QStyleOptionViewItemV4 opt = option;
+      QStyleOptionViewItem opt = option;
       initStyleOption(&opt, index);
       QIcon::Mode iconMode = iconModeFromState(opt.state);
       QPoint iconPos(opt.rect.x(), opt.rect.y() + (opt.rect.height() - opt.decorationSize.height()) / 2);
@@ -126,7 +126,7 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
 }
 
 // if painter is nullptr, the method calculate the bounding rectangle of the text and save it to textRect
-void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItemV4& opt, QRectF& textRect) const {
+void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItem& opt, QRectF& textRect) const {
   QTextLayout layout(opt.text, opt.font);
   QTextOption textOption;
   textOption.setAlignment(opt.displayAlignment);
@@ -191,7 +191,7 @@ void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItemV4& opt
   if (opt.state & QStyle::State_Selected || opt.state & QStyle::State_MouseOver) {
     if (const QWidget* widget = opt.widget) { // let the style engine do it
       QStyle* style = widget->style() ? widget->style() : qApp->style();
-      QStyleOptionViewItemV4 o(opt);
+      QStyleOptionViewItem o(opt);
       o.text = QString();
       o.rect = selRect.toAlignedRect().intersected(opt.rect); // due to clipping and rounding, we might lose 1px
       o.showDecorationSelected = true;
