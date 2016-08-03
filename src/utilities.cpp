@@ -93,7 +93,7 @@ void copyFilesToClipboard(FmPathList* files) {
   QMimeData* data = new QMimeData();
   char* urilist = fm_path_list_to_uri_list(files);
   // Gnome, LXDE, and XFCE
-  data->setData("x-special/gnome-copied-files", (QString("copy\n") + urilist).toUtf8());
+  data->setData("x-special/gnome-copied-files", QByteArray("copy\n") + QByteArray(urilist));
   // The KDE way
   data->setData("text/uri-list", urilist);
   // data.setData("x-kde-cut-selection", "0");
@@ -106,7 +106,7 @@ void cutFilesToClipboard(FmPathList* files) {
   QMimeData* data = new QMimeData();
   char* urilist = fm_path_list_to_uri_list(files);
   // Gnome, LXDE, and XFCE
-  data->setData("x-special/gnome-copied-files", (QString("cut\n") + urilist).toUtf8());
+  data->setData("x-special/gnome-copied-files", QByteArray("cut\n") + QByteArray(urilist));
   // The KDE way
   data->setData("text/uri-list", urilist);
   data->setData("x-kde-cut-selection", "1");
