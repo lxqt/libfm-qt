@@ -55,10 +55,10 @@ QSize FolderItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QMo
     opt.displayAlignment = Qt::AlignTop|Qt::AlignHCenter;
 
     Q_ASSERT(gridSize_ != QSize());
-    QRectF textRect(0, 0, gridSize_.width(), gridSize_.height() - opt.decorationSize.height());
+    QRectF textRect(0, 0, gridSize_.width(), gridSize_.height() - option.decorationSize.height());
     drawText(nullptr, opt, textRect); // passing NULL for painter will calculate the bounding rect only.
-    int width = qMax((int)textRect.width(), opt.decorationSize.width());
-    int height = opt.decorationSize.height() + textRect.height();
+    int width = qMax((int)textRect.width(), option.decorationSize.width());
+    int height = option.decorationSize.height() + textRect.height();
     return QSize(width, height);
   }
   return QStyledItemDelegate::sizeHint(option, index);
@@ -90,21 +90,23 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
 
     // draw the icon
     QIcon::Mode iconMode = iconModeFromState(opt.state);
-    QPoint iconPos(opt.rect.x() + (opt.rect.width() - opt.decorationSize.width()) / 2, opt.rect.y());
-    QPixmap pixmap = opt.icon.pixmap(opt.decorationSize, iconMode);
-    painter->drawPixmap(iconPos, pixmap);
+    QPoint iconPos(opt.rect.x() + (opt.rect.width() - option.decorationSize.width()) / 2, opt.rect.y());
+    QPixmap pixmap = opt.icon.pixmap(option.decorationSize, iconMode);
+    // in case the pixmap is smaller than the requested size
+    QSize margin = ((option.decorationSize - pixmap.size()) / 2).expandedTo(QSize(0, 0));
+    painter->drawPixmap(iconPos + QPoint(margin.width(), margin.height()), pixmap);
 
     // draw some emblems for the item if needed
     // we only support symlink emblem at the moment
     if(isSymlink)
-      painter->drawPixmap(iconPos, symlinkIcon_.pixmap(opt.decorationSize / 2, iconMode));
+      painter->drawPixmap(iconPos, symlinkIcon_.pixmap(option.decorationSize / 2, iconMode));
 
     // draw the text
     // The text rect dimensions should be exactly as they were in sizeHint()
     QRectF textRect(opt.rect.x() - (gridSize_.width() - opt.rect.width()) / 2,
-                    opt.rect.y() + opt.decorationSize.height(),
+                    opt.rect.y() + option.decorationSize.height(),
                     gridSize_.width(),
-                    gridSize_.height() - opt.decorationSize.height());
+                    gridSize_.height() - option.decorationSize.height());
     drawText(painter, opt, textRect);
     painter->restore();
   }
@@ -117,10 +119,10 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
       QStyleOptionViewItemV4 opt = option;
       initStyleOption(&opt, index);
       QIcon::Mode iconMode = iconModeFromState(opt.state);
-      QPoint iconPos(opt.rect.x(), opt.rect.y() + (opt.rect.height() - opt.decorationSize.height()) / 2);
+      QPoint iconPos(opt.rect.x(), opt.rect.y() + (opt.rect.height() - option.decorationSize.height()) / 2);
       // draw some emblems for the item if needed
       // we only support symlink emblem at the moment
-      painter->drawPixmap(iconPos, symlinkIcon_.pixmap(opt.decorationSize / 2, iconMode));
+      painter->drawPixmap(iconPos, symlinkIcon_.pixmap(option.decorationSize / 2, iconMode));
     }
   }
 }
