@@ -69,9 +69,9 @@ void PathEditJob::runJob() {
 
 PathEdit::PathEdit(QWidget* parent):
   QLineEdit(parent),
-  cancellable_(NULL),
+  completer_(new QCompleter()),
   model_(new QStringListModel()),
-  completer_(new QCompleter()) {
+  cancellable_(NULL) {
   setCompleter(completer_);
   completer_->setModel(model_);
   connect(this, &PathEdit::textChanged, this, &PathEdit::onTextChanged);

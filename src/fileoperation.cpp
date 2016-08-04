@@ -31,6 +31,7 @@ namespace Fm {
 
 FileOperation::FileOperation(Type type, FmPathList* srcFiles, QObject* parent):
   QObject(parent),
+  job_(fm_file_ops_job_new((FmFileOpType)type, srcFiles)),
   dlg(NULL),
   destPath(NULL),
   srcPaths(fm_path_list_ref(srcFiles)),
@@ -38,8 +39,7 @@ FileOperation::FileOperation(Type type, FmPathList* srcFiles, QObject* parent):
   elapsedTimer_(NULL),
   lastElapsed_(0),
   updateRemainingTime_(true),
-  autoDestroy_(true),
-  job_(fm_file_ops_job_new((FmFileOpType)type, srcFiles)) {
+  autoDestroy_(true) {
 
   g_signal_connect(job_, "ask", G_CALLBACK(onFileOpsJobAsk), this);
   g_signal_connect(job_, "ask-rename", G_CALLBACK(onFileOpsJobAskRename), this);

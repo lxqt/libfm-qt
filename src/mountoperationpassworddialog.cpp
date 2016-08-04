@@ -27,11 +27,11 @@ namespace Fm {
 MountOperationPasswordDialog::MountOperationPasswordDialog(MountOperation* op, GAskPasswordFlags flags):
   QDialog(),
   mountOperation(op),
-  canAnonymous(flags & G_ASK_PASSWORD_ANONYMOUS_SUPPORTED ? true : false),
-  canSavePassword(flags & G_ASK_PASSWORD_SAVING_SUPPORTED ? true : false),
-  needUserName(flags & G_ASK_PASSWORD_NEED_USERNAME ? true : false),
   needPassword(flags & G_ASK_PASSWORD_NEED_PASSWORD ? true : false),
-  needDomain(flags & G_ASK_PASSWORD_NEED_DOMAIN ? true : false) {
+  needUserName(flags & G_ASK_PASSWORD_NEED_USERNAME ? true : false),
+  needDomain(flags & G_ASK_PASSWORD_NEED_DOMAIN ? true : false),
+  canSavePassword(flags & G_ASK_PASSWORD_SAVING_SUPPORTED ? true : false),
+  canAnonymous(flags & G_ASK_PASSWORD_ANONYMOUS_SUPPORTED ? true : false) {
 
   ui = new Ui::MountOperationPasswordDialog();
   ui->setupUi(this);
