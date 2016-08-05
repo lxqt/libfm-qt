@@ -27,15 +27,15 @@ namespace Fm {
 PlacesModelItem::PlacesModelItem():
   QStandardItem(),
   path_(NULL),
-  icon_(NULL),
-  fileInfo_(NULL) {
+  fileInfo_(NULL),
+  icon_(NULL) {
 }
 
 PlacesModelItem::PlacesModelItem(const char* iconName, QString title, FmPath* path):
   QStandardItem(title),
   path_(path ? fm_path_ref(path) : NULL),
-  icon_(fm_icon_from_name(iconName)),
-  fileInfo_(NULL) {
+  fileInfo_(NULL),
+  icon_(fm_icon_from_name(iconName)) {
   if(icon_)
     QStandardItem::setIcon(IconTheme::icon(icon_));
   setEditable(false);
@@ -44,8 +44,8 @@ PlacesModelItem::PlacesModelItem(const char* iconName, QString title, FmPath* pa
 PlacesModelItem::PlacesModelItem(FmIcon* icon, QString title, FmPath* path):
   QStandardItem(title),
   path_(path ? fm_path_ref(path) : NULL),
-  icon_(icon ? fm_icon_ref(icon) : NULL),
-  fileInfo_(NULL) {
+  fileInfo_(NULL),
+  icon_(icon ? fm_icon_ref(icon) : NULL) {
   if(icon_)
     QStandardItem::setIcon(IconTheme::icon(icon));
   setEditable(false);
@@ -53,9 +53,9 @@ PlacesModelItem::PlacesModelItem(FmIcon* icon, QString title, FmPath* path):
 
 PlacesModelItem::PlacesModelItem(QIcon icon, QString title, FmPath* path):
   QStandardItem(icon, title),
-  icon_(NULL),
   path_(path ? fm_path_ref(path) : NULL),
-  fileInfo_(NULL) {
+  fileInfo_(NULL),
+  icon_(NULL) {
   setEditable(false);
 }
 

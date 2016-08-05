@@ -26,10 +26,10 @@ namespace Fm {
 
 ProxyFolderModel::ProxyFolderModel(QObject * parent):
   QSortFilterProxyModel(parent),
-  thumbnailSize_(0),
   showHidden_(false),
+  folderFirst_(true),
   showThumbnails_(false),
-  folderFirst_(true) {
+  thumbnailSize_(0) {
   setDynamicSortFilter(true);
   setSortCaseSensitivity(Qt::CaseInsensitive);
 }

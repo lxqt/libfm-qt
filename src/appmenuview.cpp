@@ -26,10 +26,10 @@
 namespace Fm {
 
 AppMenuView::AppMenuView(QWidget* parent):
+  QTreeView(parent),
   model_(new QStandardItemModel()),
   menu_cache(NULL),
-  menu_cache_reload_notify(NULL),
-  QTreeView(parent) {
+  menu_cache_reload_notify(NULL) {
 
   setHeaderHidden(true);
   setSelectionMode(SingleSelection);

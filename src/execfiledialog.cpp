@@ -25,9 +25,9 @@ namespace Fm {
 
 ExecFileDialog::ExecFileDialog(FmFileInfo* file, QWidget* parent, Qt::WindowFlags f):
   QDialog (parent, f),
+  ui(new Ui::ExecFileDialog()),
   fileInfo_(fm_file_info_ref(file)),
-  result_(FM_FILE_LAUNCHER_EXEC_CANCEL),
-  ui(new Ui::ExecFileDialog()) {
+  result_(FM_FILE_LAUNCHER_EXEC_CANCEL) {
 
   ui->setupUi(this);
   // show file icon

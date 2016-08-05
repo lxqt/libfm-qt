@@ -44,8 +44,8 @@ FileMenu::FileMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd, QWidget
 
 FileMenu::FileMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd, const QString& title, QWidget* parent):
   QMenu(title, parent),
-  fileLauncher_(NULL),
-  unTrashAction_(NULL) {
+  unTrashAction_(NULL),
+  fileLauncher_(NULL) {
   createMenu(files, info, cwd);
 }
 

@@ -27,10 +27,10 @@ namespace Fm {
 
 AppChooserDialog::AppChooserDialog(FmMimeType* mimeType, QWidget* parent, Qt::WindowFlags f):
   QDialog(parent, f),
+  ui(new Ui::AppChooserDialog()),
   mimeType_(NULL),
-  selectedApp_(NULL),
   canSetDefault_(true),
-  ui(new Ui::AppChooserDialog()) {
+  selectedApp_(NULL) {
   ui->setupUi(this);
 
   connect(ui->appMenuView, &AppMenuView::selectionChanged, this, &AppChooserDialog::onSelectionChanged);

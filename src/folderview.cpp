@@ -181,8 +181,8 @@ void FolderViewListView::activation(const QModelIndex &index) {
 
 FolderViewTreeView::FolderViewTreeView(QWidget* parent):
   QTreeView(parent),
-  layoutTimer_(nullptr),
   doingLayout_(false),
+  layoutTimer_(nullptr),
   activationAllowed_(true) {
 
   header()->setStretchLastSection(true);
@@ -388,12 +388,12 @@ void FolderViewTreeView::onSortFilterChanged() {
 FolderView::FolderView(ViewMode _mode, QWidget* parent):
   QWidget(parent),
   view(nullptr),
+  model_(nullptr),
   mode((ViewMode)0),
+  fileLauncher_(nullptr),
   autoSelectionDelay_(600),
   autoSelectionTimer_(nullptr),
   selChangedTimer_(nullptr),
-  fileLauncher_(nullptr),
-  model_(nullptr),
   itemDelegateMargins_(QSize(3, 3)) {
 
   iconSize_[IconMode - FirstViewMode] = QSize(48, 48);
@@ -656,7 +656,8 @@ bool FolderView::event(QEvent* event) {
     case QEvent::FontChange:
       updateGridSize();
       break;
-  };
+    default: break;
+  }
   return QWidget::event(event);
 }
 
@@ -830,10 +831,9 @@ void FolderView::childDropEvent(QDropEvent* e) {
     const QWidget* targetWidget = childView()->viewport();
     // these are dynamic QObject property set by our XDND workarounds in xworkaround.cpp.
     xcb_window_t dndSource = xcb_window_t(targetWidget->property("xdnd::lastDragSource").toUInt());
-    xcb_timestamp_t dropTimestamp = (xcb_timestamp_t)targetWidget->property("xdnd::lastDropTime").toUInt();
+    //xcb_timestamp_t dropTimestamp = (xcb_timestamp_t)targetWidget->property("xdnd::lastDropTime").toUInt();
     // qDebug() << "XDS: source window" << dndSource << dropTimestamp;
     if(dndSource != 0) {
-      xcb_connection_t* conn = QX11Info::connection();
       xcb_atom_t XdndDirectSaveAtom = XdndWorkaround::internAtom("XdndDirectSave0", 15);
       xcb_atom_t textAtom = XdndWorkaround::internAtom("text/plain", 10);
 
@@ -923,6 +923,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
         }
       }
       break;
+    default: break;
     }
   }
   return QObject::eventFilter(watched, event);

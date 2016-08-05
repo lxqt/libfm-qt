@@ -25,25 +25,25 @@
 namespace Fm {
 
 DirTreeModelItem::DirTreeModelItem():
-  model_(nullptr),
+  fileInfo_(nullptr),
   folder_(nullptr),
   expanded_(false),
   loaded_(false),
-  fileInfo_(nullptr),
+  parent_(nullptr),
   placeHolderChild_(nullptr),
-  parent_(nullptr) {
+  model_(nullptr) {
 }
 
 DirTreeModelItem::DirTreeModelItem(FmFileInfo* info, DirTreeModel* model, DirTreeModelItem* parent):
-  model_(model),
-  folder_(nullptr),
-  expanded_(false),
-  loaded_(false),
   fileInfo_(fm_file_info_ref(info)),
+  folder_(nullptr),
   displayName_(QString::fromUtf8(fm_file_info_get_disp_name(info))),
   icon_(IconTheme::icon(fm_file_info_get_icon(info))),
+  expanded_(false),
+  loaded_(false),
+  parent_(parent),
   placeHolderChild_(nullptr),
-  parent_(parent) {
+  model_(model) {
 
   if(info)
     addPlaceHolderChild();
