@@ -54,6 +54,9 @@ QSize FolderItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QMo
     opt.decorationAlignment = Qt::AlignHCenter|Qt::AlignTop;
     opt.displayAlignment = Qt::AlignTop|Qt::AlignHCenter;
 
+    // "opt.decorationSize" may be smaller than the requested size because
+    // "QStyledItemDelegate::initStyleOption()" uses "QIcon::actualSize()" to set it
+    // (see Qt -> qstyleditemdelegate.cpp). So, we always get decorationSize from "option".
     Q_ASSERT(gridSize_ != QSize());
     QRectF textRect(0, 0, gridSize_.width(), gridSize_.height() - option.decorationSize.height());
     drawText(nullptr, opt, textRect); // passing NULL for painter will calculate the bounding rect only.
