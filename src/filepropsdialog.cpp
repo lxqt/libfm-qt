@@ -46,9 +46,9 @@ enum {
 FilePropsDialog::FilePropsDialog(FmFileInfoList* files, QWidget* parent, Qt::WindowFlags f):
   QDialog(parent, f),
   fileInfos_(fm_file_info_list_ref(files)),
+  fileInfo(fm_file_info_list_peek_head(files)),
   singleType(fm_file_info_list_is_same_type(files)),
   singleFile(fm_file_info_list_get_length(files) == 1 ? true:false),
-  fileInfo(fm_file_info_list_peek_head(files)),
   mimeType(NULL) {
 
   setAttribute(Qt::WA_DeleteOnClose);
@@ -304,7 +304,7 @@ void FilePropsDialog::initGeneralPage() {
   connect(fileSizeTimer, &QTimer::timeout, this, &FilePropsDialog::onFileSizeTimerTimeout);
   fileSizeTimer->start(600);
   g_signal_connect(deepCountJob, "finished", G_CALLBACK(onDeepCountJobFinished), this);
-  gboolean ret = fm_job_run_async(FM_JOB(deepCountJob));
+  fm_job_run_async(FM_JOB(deepCountJob));
 }
 
 /*static */ void FilePropsDialog::onDeepCountJobFinished(FmDeepCountJob* job, FilePropsDialog* pThis) {

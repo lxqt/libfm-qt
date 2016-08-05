@@ -98,7 +98,7 @@ ThumbnailLoader::ThumbnailLoader() {
     getImageText,
     setImageText
   };
-  gboolean success = fm_thumbnail_loader_set_backend(&qt_backend);
+  fm_thumbnail_loader_set_backend(&qt_backend);
 }
 
 ThumbnailLoader::~ThumbnailLoader() {
@@ -117,7 +117,7 @@ GObject* ThumbnailLoader::readImageFromStream(GInputStream* stream, guint64 len,
   // FIXME: should we set a limit here? Otherwise if len is too large, we can run out of memory.
   QScopedArrayPointer<unsigned char> buffer(new unsigned char[len]); // allocate enough buffer
   unsigned char* pbuffer = buffer.data();
-  int totalReadSize = 0;
+  unsigned int totalReadSize = 0;
   while(!g_cancellable_is_cancelled(cancellable) && totalReadSize < len) {
     int bytesToRead = totalReadSize + 4096 > len ? len - totalReadSize : 4096;
     gssize readSize = g_input_stream_read(stream, pbuffer, bytesToRead, cancellable, NULL);

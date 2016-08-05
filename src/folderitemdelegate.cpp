@@ -34,8 +34,8 @@ namespace Fm {
 
 FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent):
   QStyledItemDelegate(parent ? parent : view),
-  symlinkIcon_(QIcon::fromTheme("emblem-symbolic-link")),
-  view_(view) {
+  view_(view),
+  symlinkIcon_(QIcon::fromTheme("emblem-symbolic-link")) {
 }
 
 FolderItemDelegate::~FolderItemDelegate() {

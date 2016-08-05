@@ -31,10 +31,10 @@ namespace Fm {
 
 MountOperation::MountOperation(bool interactive, QWidget* parent):
   QObject(parent),
-  interactive_(interactive),
-  running(false),
   op(g_mount_operation_new()),
   cancellable_(g_cancellable_new()),
+  running(false),
+  interactive_(interactive),
   eventLoop(NULL),
   autoDestroy_(true) {
 

@@ -26,11 +26,11 @@ namespace Fm {
 
 AppChooserComboBox::AppChooserComboBox(QWidget* parent):
   QComboBox(parent),
-  defaultApp_(NULL),
+  mimeType_(NULL),
   appInfos_(NULL),
+  defaultApp_(NULL),
   defaultAppIndex_(-1),
   prevIndex_(0),
-  mimeType_(NULL),
   blockOnCurrentIndexChanged_(false) {
 
   // the new Qt5 signal/slot syntax cannot handle overloaded methods by default

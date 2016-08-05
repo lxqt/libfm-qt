@@ -30,8 +30,8 @@
 namespace Fm {
 
 DirTreeView::DirTreeView(QWidget* parent):
-  currentExpandingItem_(NULL),
-  currentPath_(NULL) {
+  currentPath_(NULL),
+  currentExpandingItem_(NULL) {
 
   setSelectionMode(QAbstractItemView::SingleSelection);
   setHeaderHidden(true);
