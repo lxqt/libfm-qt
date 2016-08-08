@@ -6,8 +6,7 @@ import re
 from collections import deque
 
 
-license_text = """
-/*
+license_text = """/*
  * Copyright (C) 2016 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -100,8 +99,7 @@ method_templ = """
     }}
 """
 
-header_templ = """
-{LICENSE}
+header_templ = """{LICENSE}
 #ifndef {HEADER_GUARD}
 #define {HEADER_GUARD}
 
@@ -252,10 +250,10 @@ class Struct:
     def __init__(self, regex_match=None):
         if regex_match:
             self.name = regex_match[1]
-            self.prefix = camel_case_to_lower(self.name) + "_"
+            self.method_name_prefix = camel_case_to_lower(self.name) + "_"
         else:
             self.name = ""
-            self.prefix = ""
+            self.method_name_prefix = ""
         self.is_gobject = False
         self.is_ref_counted = False  # has reference counting
         self.methods = []  # list of Method
@@ -289,10 +287,10 @@ class Struct:
             self.methods.append(method)
 
     def to_string(self):
-        cpp_class = self.name[2:]  # skip Fm prefix
+        cpp_class_name = self.name[2:]  # skip Fm prefix
         self_ptr_type = self.name + "*"
         # ordinary methods
-        prefix_len = len(self.prefix)
+        prefix_len = len(self.method_name_prefix)
         methods = []
         for method in self.methods:
             invoke = method.invoke("dataPtr_")
@@ -300,9 +298,9 @@ class Struct:
             if method.return_type != "void":
                 if method.return_type == self_ptr_type:  # returns Struct*
                     # wrap in our C++ wrapper
-                    ret_type = cpp_class
+                    ret_type = cpp_class_name
                     invoke = "{CPP_CLASS}({DATA}, {TAKE_OWNERSHIP})".format(
-                            CPP_CLASS=cpp_class,
+                            CPP_CLASS=cpp_class_name,
                             DATA=invoke,
                             TAKE_OWNERSHIP="false" if method.is_getter() else "true"
                     )
@@ -326,9 +324,9 @@ class Struct:
         # special handling for GObjects
         if self.is_gobject:
             # FIXME: should we add code for signal handling for GObjects?
-            inherit = "" # ": public QObject"
-            copy = "g_object_ref"
-            free = "g_object_unref"
+            inherit = ""  # ": public QObject"
+            copy_func = "g_object_ref"
+            free_func = "g_object_unref"
             '''
             extra_code = gobject_templ.format(
                 SIGNALS=""
@@ -337,8 +335,8 @@ class Struct:
             extra_code = ""
         else:
             inherit = extra_code = ""
-            copy = self.copy_func.name if self.copy_func else ""
-            free = self.free_func.name if self.free_func else ""
+            copy_func = self.copy_func.name if self.copy_func else ""
+            free_func = self.free_func.name if self.free_func else ""
             extra_code = ""
 
         # FIXME: if copy and free are None, we should disable copy constructors
@@ -348,29 +346,29 @@ class Struct:
 
         # output the C++ class
         return class_templ.format(
-            CLASS_NAME=self.name[2:],  # strip Fm
+            CLASS_NAME=cpp_class_name,
             INHERIT=inherit,
             CTORS="\n".join(ctors) if ctors else "",
-            COPY_FUNC=copy,
-            FREE_FUNC=free,
+            COPY_FUNC=copy_func,
+            FREE_FUNC=free_func,
             METHODS="\n".join(methods),
             STRUCT_NAME=self.name,
             EXTRA_CODE=extra_code
         )
 
 
-def generate_cpp_wrapper(c_header_file, base_name):
+def generate_cpp_wrapper(c_header_file, file_base_name):
     print(c_header_file)
     try:
         with open(c_header_file, "r") as f:
-            source = f.read()
+            c_source_code = f.read()
             define_pattern = re.compile(r'#define\s+(\w+)', re.ASCII)
-            # for m in define_pattern.findall(source):
+            # for m in define_pattern.findall(c_source_code):
             #     print("define", m)
 
             # find all struct names
             structs = []
-            for m in Struct.regex_pattern.findall(source):
+            for m in Struct.regex_pattern.findall(c_source_code):
                 # print("struct", m)
                 struct = Struct(m)
                 structs.append(struct)
@@ -380,7 +378,7 @@ def generate_cpp_wrapper(c_header_file, base_name):
 
             # find all function names
             methods = deque()
-            for m in Method.regex_pattern.findall(source):
+            for m in Method.regex_pattern.findall(c_source_code):
                 method = Method(m)
                 methods.append(method)
 
@@ -391,22 +389,22 @@ def generate_cpp_wrapper(c_header_file, base_name):
             while methods:
                 method = methods.pop()
                 for struct in structs:
-                    if method.name.startswith(struct.prefix):
+                    if method.name.startswith(struct.method_name_prefix):
                         struct.add_method(method)
                         break
 
             classes = []
             for struct in structs:
-                # only generate wrapper for classes with methods
+                # only generate wrapper for classes which have methods
                 if struct.methods:
                     classes.append(struct.to_string())
 
             # output
-            guard = "__LIBFM_QT_{0}__".format(base_name.replace("-", "_").replace(".", "_").upper())
-            content = header_templ.format(LICENSE=license_text, CLASSES="\n\n".join(classes), HEADER_GUARD=guard)
+            header_guard = "__LIBFM_QT_{0}__".format(file_base_name.replace("-", "_").replace(".", "_").upper())
+            cpp_source_code = header_templ.format(LICENSE=license_text, CLASSES="\n\n".join(classes), HEADER_GUARD=header_guard)
     except IOError:
-        content = ""
-    return content
+        cpp_source_code = ""
+    return cpp_source_code
 
 
 def main(argv):
@@ -430,11 +428,11 @@ def main(argv):
 
     output_dir = sys.argv[2]
     for header in headers:
-        base_name = os.path.basename(header)
-        output_file = os.path.join(output_dir, base_name[3:].replace("-", "")) # skip fm- and remove all '-'
-        with open(output_file, "w") as output:
-            content = generate_cpp_wrapper(header, base_name)
-            output.write(content)
+        file_base_name = os.path.basename(header)
+        output_filename = os.path.join(output_dir, file_base_name[3:].replace("-", ""))  # skip fm- and remove all '-'
+        with open(output_filename, "w") as output_file:
+            cpp_source_code = generate_cpp_wrapper(header, file_base_name)
+            output_file.write(cpp_source_code)
 
 if __name__ == "__main__":
     main(sys.argv)
