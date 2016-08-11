@@ -4,6 +4,7 @@ import subprocess
 import os
 import re
 from collections import deque
+import copy
 
 
 license_text = """/*
@@ -27,61 +28,61 @@ license_text = """/*
 """
 
 copy_ctor_templ = """
-    {CLASS_NAME}({CLASS_NAME}& other) {{
+    {CPP_CLASS_NAME}({CPP_CLASS_NAME}& other) {{
         if(dataPtr_ != nullptr) {{
             {FREE_FUNC}(dataPtr_);
         }}
-        dataPtr_ = other.dataPtr_ != nullptr ? static_cast<{STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr;
+        dataPtr_ = other.dataPtr_ != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr;
     }}
 """
 
 default_ctor_templ = """
-    {CLASS_NAME}({STRUCT_NAME}* dataPtr) {{
+    {CPP_CLASS_NAME}({C_STRUCT_NAME}* dataPtr) {{
         if(dataPtr_ != nullptr) {{
             {FREE_FUNC}(dataPtr_);
         }}
-        dataPtr_ = dataPtr != nullptr ? static_cast<{STRUCT_NAME}*>({COPY_FUNC}(dataPtr)) : nullptr;
+        dataPtr_ = dataPtr != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(dataPtr)) : nullptr;
     }}
 """
 
 class_templ = """
-class {CLASS_NAME}{INHERIT} {{
+class {CPP_CLASS_NAME}{INHERIT} {{
 public:
 
     // default constructor
-    {CLASS_NAME}(): dataPtr_(nullptr) {{
+    {CPP_CLASS_NAME}(): dataPtr_(nullptr) {{
     }}
 
 {CTORS}
 
     // destructor
-    ~{CLASS_NAME}() {{
+    ~{CPP_CLASS_NAME}() {{
         if(dataPtr_ != nullptr) {{
             {FREE_FUNC}(dataPtr_);
         }}
     }}
 
     // create a wrapper for the data pointer without increasing the reference count
-    static {CLASS_NAME}* wrap({STRUCT_NAME}* dataPtr) {{
-        {CLASS_NAME}* obj = new {CLASS_NAME}();
+    static {CPP_CLASS_NAME}* wrap({C_STRUCT_NAME}* dataPtr) {{
+        {CPP_CLASS_NAME}* obj = new {CPP_CLASS_NAME}();
         obj->dataPtr_ = dataPtr;
         return obj;
     }}
 
     // disown the managed data pointer
-    {STRUCT_NAME}* takeDataPtr() {{
-        {STRUCT_NAME}* data = dataPtr_;
+    {C_STRUCT_NAME}* takeDataPtr() {{
+        {C_STRUCT_NAME}* data = dataPtr_;
         dataPtr_ = nullptr;
         return data;
     }}
 
     // get the raw pointer wrapped
-    {STRUCT_NAME}* dataPtr() {{
+    {C_STRUCT_NAME}* dataPtr() {{
         return dataPtr_;
     }}
 
     // automatic type casting
-    operator {STRUCT_NAME}*() {{
+    operator {C_STRUCT_NAME}*() {{
         return dataPtr_;
     }}
 
@@ -89,13 +90,13 @@ public:
 {METHODS}
 {EXTRA_CODE}
 private:
-    {STRUCT_NAME}* dataPtr_; // data pointer for the underlying C struct
+    {C_STRUCT_NAME}* dataPtr_; // data pointer for the underlying C struct
 }};
 """
 
 method_templ = """
     {METHOD_DECL} {{
-        {CONTENT};
+        {FUNC_BODY};
     }}
 """
 
@@ -208,6 +209,31 @@ class Method:
     def is_const_return(self):
         return True if "const" in self.return_type else False
 
+    def has_str_return(self):
+        return "char*" in self.return_type
+
+    def has_str_args(self):
+        for arg in self.args:
+            if "char*" in arg.type_name:
+                return True
+        return False
+
+    def generate_qstring_helpers(self):
+        helpers = []
+        if self.has_str_args():
+            helper = copy.deepcopy(self)
+            for arg in helper.args:
+                if "char*" in arg.type_name:
+                    arg.type_name = "const QString&"
+            helpers.append(helper)
+
+        if self.has_str_return():
+            for helper in helpers:
+                helper2 = copy.deepcopy(helper)
+                helper2.name += "_QString"
+                helpers.append(helper2)
+        return helpers
+
     def to_string(self, skip_prefix, camel_case=True, skip_this_ptr=True, name=None, ret_type=None):
         if not name:
             name = self.name[skip_prefix:]
@@ -236,6 +262,13 @@ class Method:
         return method_decl
 
     def invoke(self, this_ptr=None):
+        arg_names = []
+        for arg in self.args:
+            if arg.type_name == "const QString&":
+                arg_names.append("{ARG}.toUtf8().constData()")
+            else:
+                arg_names.append(arg.name)
+
         arg_names = [a.name for a in self.args if a.name]
         if this_ptr and not self.is_static:
             arg_names = [this_ptr] + arg_names[1:]  # skip this pointer
@@ -244,7 +277,16 @@ class Method:
         return invoke
 
 
-class Struct:
+custom_ctor_names = [
+    "fm_folder_config_open"
+]
+
+custom_free_func_names = [
+    "fm_folder_config_close"
+]
+
+
+class Class:
     regex_pattern = re.compile(r'typedef\s+struct\s+(\w+)\s+(\w+)', re.ASCII)
 
     def __init__(self, regex_match=None):
@@ -254,6 +296,7 @@ class Struct:
         else:
             self.name = ""
             self.method_name_prefix = ""
+        self.method_name_prefix_len = len(self.method_name_prefix)
         self.is_gobject = False
         self.is_ref_counted = False  # has reference counting
         self.methods = []  # list of Method
@@ -262,6 +305,8 @@ class Struct:
         self.ctors = []
         self.copy_func = None
         self.free_func = None
+        self.cpp_class_name = self.name[2:]  # skip Fm prefix
+        self.ptr_type = self.name + "*"
 
     def add_method(self, method):
         print(self.name, method.name, method.return_type)
@@ -274,7 +319,7 @@ class Struct:
         if not method.args or method.args[0].type_name != this_type:
             method.is_static = True
 
-        if "_new" in method.name and method.is_static:
+        if "_new" in method.name or method.name in custom_ctor_names and method.is_static:
             # this is a constructor
             method.is_ctor = True
             self.ctors.append(method)
@@ -283,44 +328,54 @@ class Struct:
             self.is_ref_counted = True
         elif method.name.endswith("_unref"):  # free method
             self.free_func = method
+        elif method.name in custom_free_func_names:
+            self.free_func = method
         else:  # normal method
             self.methods.append(method)
 
-    def to_string(self):
-        cpp_class_name = self.name[2:]  # skip Fm prefix
-        self_ptr_type = self.name + "*"
+    def generate_method_def(self, method):
         # ordinary methods
-        prefix_len = len(self.method_name_prefix)
-        methods = []
+        invoke = method.invoke("dataPtr_")
+        ret_type = None
+        if method.return_type != "void":
+            if method.return_type == self.ptr_type:  # returns Class*
+                # wrap in our C++ wrapper
+                ret_type = self.cpp_class_name
+                if method.is_getter():  # do not take ownership for getters
+                    invoke = "{CPP_CLASS}({DATA})".format(CPP_CLASS=self.cpp_class_name, DATA=invoke)
+                else:  # take ownership
+                    invoke = "{CPP_CLASS}::wrap({DATA})".format(CPP_CLASS=self.cpp_class_name, DATA=invoke)
+            elif method.return_type == "QString":  # QString wrapper
+                invoke = "QString::fromUtf8({DATA})".format(DATA=invoke)
+            invoke = "return " + invoke
+        method_def = method_templ.format(
+            METHOD_DECL=method.to_string(skip_prefix=self.method_name_prefix_len, camel_case=True, ret_type=ret_type),
+            FUNC_BODY=invoke
+        )
+        return method_def
+
+    def to_string(self):
+        # ordinary methods
+        method_defs = []
         for method in self.methods:
-            invoke = method.invoke("dataPtr_")
-            ret_type = None
-            if method.return_type != "void":
-                if method.return_type == self_ptr_type:  # returns Struct*
-                    # wrap in our C++ wrapper
-                    ret_type = cpp_class_name
-                    invoke = "{CPP_CLASS}({DATA}, {TAKE_OWNERSHIP})".format(
-                            CPP_CLASS=cpp_class_name,
-                            DATA=invoke,
-                            TAKE_OWNERSHIP="false" if method.is_getter() else "true"
-                    )
-                else:
-                    invoke = "return " + invoke
-            method_def = method_templ.format(
-                METHOD_DECL=method.to_string(skip_prefix=prefix_len, camel_case=True, ret_type=ret_type),
-                CONTENT=invoke
-            )
-            methods.append(method_def)
+            method_defs.append(self.generate_method_def(method))
+            """
+            if method.has_str_args() or method.has_str_return():
+                helpers = method.generate_qstring_helpers()
+                for helper in helpers:
+                    method_defs.append(self.generate_method_def(helper)
+            """
 
         # constructors
         ctors = []
         for ctor in self.ctors:
             ctor_def = method_templ.format(
-                METHOD_DECL=ctor.to_string(skip_prefix=prefix_len, name=self.name),
-                CONTENT="dataPtr_ = " + ctor.invoke("dataPtr_")
+                METHOD_DECL=ctor.to_string(skip_prefix=self.method_name_prefix_len, name=self.name),
+                FUNC_BODY="dataPtr_ = " + ctor.invoke("dataPtr_")
             )
             ctors.append(ctor_def)
 
+        inherit = extra_code = ""
         # special handling for GObjects
         if self.is_gobject:
             # FIXME: should we add code for signal handling for GObjects?
@@ -332,27 +387,24 @@ class Struct:
                 SIGNALS=""
             )
             '''
-            extra_code = ""
         else:
-            inherit = extra_code = ""
             copy_func = self.copy_func.name if self.copy_func else ""
             free_func = self.free_func.name if self.free_func else ""
-            extra_code = ""
 
-        # FIXME: if copy and free are None, we should disable copy constructors
+        # FIXME: if copy_func and free_func are empty, we should disable copy constructors
         # FIXME: if no constructors are found, we should make default ctor private
         # TODO: implement move constructors
         #       correct inheritence for GObject derived classses?
 
         # output the C++ class
         return class_templ.format(
-            CLASS_NAME=cpp_class_name,
+            CPP_CLASS_NAME=self.cpp_class_name,
             INHERIT=inherit,
             CTORS="\n".join(ctors) if ctors else "",
             COPY_FUNC=copy_func,
             FREE_FUNC=free_func,
-            METHODS="\n".join(methods),
-            STRUCT_NAME=self.name,
+            METHODS="\n".join(method_defs),
+            C_STRUCT_NAME=self.name,
             EXTRA_CODE=extra_code
         )
 
@@ -368,9 +420,9 @@ def generate_cpp_wrapper(c_header_file, file_base_name):
 
             # find all struct names
             structs = []
-            for m in Struct.regex_pattern.findall(c_source_code):
+            for m in Class.regex_pattern.findall(c_source_code):
                 # print("struct", m)
-                struct = Struct(m)
+                struct = Class(m)
                 structs.append(struct)
 
             if not structs:  # no object class found in this header
