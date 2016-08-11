@@ -28,76 +28,76 @@ license_text = """/*
 """
 
 copy_ctor_templ = """
-    {CPP_CLASS_NAME}({CPP_CLASS_NAME}& other) {{
-        if(dataPtr_ != nullptr) {{
-            {FREE_FUNC}(dataPtr_);
-        }}
-        dataPtr_ = other.dataPtr_ != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr;
+  {CPP_CLASS_NAME}({CPP_CLASS_NAME}& other) {{
+    if(dataPtr_ != nullptr) {{
+      {FREE_FUNC}(dataPtr_);
     }}
+    dataPtr_ = other.dataPtr_ != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr;
+  }}
 """
 
 default_ctor_templ = """
-    {CPP_CLASS_NAME}({C_STRUCT_NAME}* dataPtr) {{
-        if(dataPtr_ != nullptr) {{
-            {FREE_FUNC}(dataPtr_);
-        }}
-        dataPtr_ = dataPtr != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(dataPtr)) : nullptr;
+  {CPP_CLASS_NAME}({C_STRUCT_NAME}* dataPtr) {{
+    if(dataPtr_ != nullptr) {{
+      {FREE_FUNC}(dataPtr_);
     }}
+    dataPtr_ = dataPtr != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(dataPtr)) : nullptr;
+  }}
 """
 
 class_templ = """
 class {CPP_CLASS_NAME}{INHERIT} {{
 public:
 
-    // default constructor
-    {CPP_CLASS_NAME}(): dataPtr_(nullptr) {{
-    }}
+  // default constructor
+  {CPP_CLASS_NAME}(): dataPtr_(nullptr) {{
+  }}
 
 {CTORS}
 
-    // destructor
-    ~{CPP_CLASS_NAME}() {{
-        if(dataPtr_ != nullptr) {{
-            {FREE_FUNC}(dataPtr_);
-        }}
+  // destructor
+  ~{CPP_CLASS_NAME}() {{
+    if(dataPtr_ != nullptr) {{
+      {FREE_FUNC}(dataPtr_);
     }}
+  }}
 
-    // create a wrapper for the data pointer without increasing the reference count
-    static {CPP_CLASS_NAME}* wrap({C_STRUCT_NAME}* dataPtr) {{
-        {CPP_CLASS_NAME}* obj = new {CPP_CLASS_NAME}();
-        obj->dataPtr_ = dataPtr;
-        return obj;
-    }}
+  // create a wrapper for the data pointer without increasing the reference count
+  static {CPP_CLASS_NAME}* wrap({C_STRUCT_NAME}* dataPtr) {{
+    {CPP_CLASS_NAME}* obj = new {CPP_CLASS_NAME}();
+    obj->dataPtr_ = dataPtr;
+    return obj;
+  }}
 
-    // disown the managed data pointer
-    {C_STRUCT_NAME}* takeDataPtr() {{
-        {C_STRUCT_NAME}* data = dataPtr_;
-        dataPtr_ = nullptr;
-        return data;
-    }}
+  // disown the managed data pointer
+  {C_STRUCT_NAME}* takeDataPtr() {{
+    {C_STRUCT_NAME}* data = dataPtr_;
+    dataPtr_ = nullptr;
+    return data;
+  }}
 
-    // get the raw pointer wrapped
-    {C_STRUCT_NAME}* dataPtr() {{
-        return dataPtr_;
-    }}
+  // get the raw pointer wrapped
+  {C_STRUCT_NAME}* dataPtr() {{
+    return dataPtr_;
+  }}
 
-    // automatic type casting
-    operator {C_STRUCT_NAME}*() {{
-        return dataPtr_;
-    }}
+  // automatic type casting
+  operator {C_STRUCT_NAME}*() {{
+    return dataPtr_;
+  }}
 
     // methods
 {METHODS}
 {EXTRA_CODE}
 private:
-    {C_STRUCT_NAME}* dataPtr_; // data pointer for the underlying C struct
+  {C_STRUCT_NAME}* dataPtr_; // data pointer for the underlying C struct
 }};
 """
 
 method_templ = """
-    {METHOD_DECL} {{
-        {FUNC_BODY};
-    }}
+  {METHOD_DECL} {{
+    {FUNC_BODY};
+  }}
 """
 
 header_templ = """{LICENSE}
