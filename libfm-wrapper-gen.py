@@ -45,12 +45,23 @@ default_ctor_templ = """
   }}
 """
 
+disable_copy_templ = """
+// the wrapped object cannot be copied.
+private:
+  {CPP_CLASS_NAME}();
+  {CPP_CLASS_NAME}& operator=(const {CPP_CLASS_NAME}& other);
+"""
+
 class_templ = """
 class {CPP_CLASS_NAME}{INHERIT} {{
 public:
 
   // default constructor
   {CPP_CLASS_NAME}(): dataPtr_(nullptr) {{
+  }}
+
+  // move constructor
+  {CPP_CLASS_NAME}({CPP_CLASS_NAME}&& other): dataPtr_(other.takeDataPtr()) {{
   }}
 
 {CTORS}
@@ -86,10 +97,10 @@ public:
     return dataPtr_;
   }}
 
-    // methods
+  // methods
 {METHODS}
 {EXTRA_CODE}
-private:
+protected:
   {C_STRUCT_NAME}* dataPtr_; // data pointer for the underlying C struct
 }};
 """
@@ -177,11 +188,11 @@ glib_to_cpp_type = {
 
 class Method:
     regex_pattern = re.compile(r'''
-        ^(\w+)      # return type
-        ([\s\*]+)   # space or *
-        (\w+)       # function name
-        \s*         # space
-        \((.*)\);?  # (arg1, arg2, ...);
+        ^(\w+)        # return type
+        ([\s\*]+)     # space or *
+        (\w+)         # function name
+        \s*           # space (optional)
+        \(([^;]*)\);? # (arg1, arg2, ...);
         ''', re.MULTILINE|re.ASCII|re.VERBOSE)
 
     def __init__(self, regex_match=None):
@@ -374,6 +385,8 @@ class Class:
                 FUNC_BODY="dataPtr_ = " + ctor.invoke("dataPtr_")
             )
             ctors.append(ctor_def)
+        
+        # FIXME: handle copy ctors
 
         inherit = extra_code = ""
         # special handling for GObjects
@@ -391,10 +404,12 @@ class Class:
             copy_func = self.copy_func.name if self.copy_func else ""
             free_func = self.free_func.name if self.free_func else ""
 
-        # FIXME: if copy_func and free_func are empty, we should disable copy constructors
+        if not copy_func: # the object cannot be copied. disable copy ctor
+            extra_code = disable_copy_templ.format(CPP_CLASS_NAME=self.cpp_class_name)
+
         # FIXME: if no constructors are found, we should make default ctor private
-        # TODO: implement move constructors
-        #       correct inheritence for GObject derived classses?
+        # TODO: correct inheritence for GObject derived classses?
+        #       share the same data member of parent class and add virtual destructor
 
         # output the C++ class
         return class_templ.format(
