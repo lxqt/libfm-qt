@@ -29,18 +29,21 @@ license_text = """/*
 
 default_ctor_templ = """
   // default constructor
-  {CPP_CLASS_NAME}(): dataPtr_(nullptr) {{
+  {CPP_CLASS_NAME}() {{
+    dataPtr_ = nullptr;
   }}
 """
 
 data_ptr_ctor_templ = """
-  {CPP_CLASS_NAME}({C_STRUCT_NAME}* dataPtr): dataPtr_(dataPtr != nullptr ? reinterpret_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(dataPtr)) : nullptr) {{
+  {CPP_CLASS_NAME}({C_STRUCT_NAME}* dataPtr){{
+    dataPtr_ = dataPtr != nullptr ? reinterpret_cast<{DATA_MEMBER_TYPE}*>({COPY_FUNC}(dataPtr)) : nullptr;
   }}
 """
 
 copy_ctor_templ = """
   // copy constructor
-  {CPP_CLASS_NAME}(const {CPP_CLASS_NAME}& other): dataPtr_(other.dataPtr_ != nullptr ? reinterpret_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr) {{
+  {CPP_CLASS_NAME}(const {CPP_CLASS_NAME}& other) {{
+    dataPtr_ = other.dataPtr_ != nullptr ? reinterpret_cast<{DATA_MEMBER_TYPE}*>({COPY_FUNC}(other.dataPtr_)) : nullptr;
   }}
 """
 
@@ -59,7 +62,7 @@ copy_assignment_templ = """
     if(dataPtr_ != nullptr) {{
       {FREE_FUNC}(dataPtr_);
     }}
-    dataPtr_ = other.dataPtr_ != nullptr ? reinterpret_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr;
+    dataPtr_ = other.dataPtr_ != nullptr ? reinterpret_cast<{DATA_MEMBER_TYPE}*>({COPY_FUNC}(other.dataPtr_)) : nullptr;
   }}
 """
 
@@ -77,40 +80,41 @@ public:
 {CTORS}
 
   // move constructor
-  {CPP_CLASS_NAME}({CPP_CLASS_NAME}&& other): dataPtr_(other.takeDataPtr()) {{
+  {CPP_CLASS_NAME}({CPP_CLASS_NAME}&& other) {{
+    dataPtr_ = reinterpret_cast<{DATA_MEMBER_TYPE}*>(other.takeDataPtr());
   }}
 
 {DTOR}
 
   // create a wrapper for the data pointer without increasing the reference count
   static {CPP_CLASS_NAME} wrapPtr({C_STRUCT_NAME}* dataPtr) {{
-    {CPP_CLASS_NAME} obj = {CPP_CLASS_NAME}();
-    obj.dataPtr_ = dataPtr;
+    {CPP_CLASS_NAME} obj;
+    obj.dataPtr_ = reinterpret_cast<{DATA_MEMBER_TYPE}*>(dataPtr);
     return obj;
   }}
 
   // disown the managed data pointer
   {C_STRUCT_NAME}* takeDataPtr() {{
-    {C_STRUCT_NAME}* data = dataPtr_;
+    {C_STRUCT_NAME}* data = reinterpret_cast<{C_STRUCT_NAME}*>(dataPtr_);
     dataPtr_ = nullptr;
     return data;
   }}
 
   // get the raw pointer wrapped
   {C_STRUCT_NAME}* dataPtr() {{
-    return dataPtr_;
+    return reinterpret_cast<{C_STRUCT_NAME}*>(dataPtr_);
   }}
 
   // automatic type casting
   operator {C_STRUCT_NAME}*() {{
-    return dataPtr_;
+    return dataPtr();
   }}
 
 {ASSIGNMENT}
 
   // move assignment
   {CPP_CLASS_NAME}& operator=({CPP_CLASS_NAME}&& other) {{
-    dataPtr_ = other.takeDataPtr();
+    dataPtr_ = reinterpret_cast<{DATA_MEMBER_TYPE}*>(other.takeDataPtr());
   }}
 
   // methods
@@ -129,7 +133,7 @@ auto_g_object_cast = """
 
 data_member_templ = """
 {ACCESS}:
-  {C_STRUCT_NAME}* dataPtr_; // data pointer for the underlying C struct
+  {DATA_MEMBER_TYPE}* dataPtr_; // data pointer for the underlying C struct
 """
 
 method_templ = """
@@ -159,6 +163,30 @@ namespace Fm {{
 patches = {
     "folderconfig.h": [
         ("fm_folder_config_close(dataPtr_)", "fm_folder_config_close(dataPtr_, nullptr)"),
+    ],
+    "fileinfo.h": [
+        ("fm_list_ref(dataPtr)", "fm_list_ref(FM_LIST(dataPtr))"),
+        ("fm_list_ref(other.dataPtr_)", "fm_list_ref(FM_LIST(other.dataPtr_))"),
+        ("fm_list_unref(dataPtr_)", "fm_list_unref(FM_LIST(dataPtr_))"),
+    ],
+    "path.h": [
+        ("fm_list_ref(dataPtr)", "fm_list_ref(FM_LIST(dataPtr))"),
+        ("fm_list_ref(other.dataPtr_)", "fm_list_ref(FM_LIST(other.dataPtr_))"),
+        ("fm_list_unref(dataPtr_)", "fm_list_unref(FM_LIST(dataPtr_))"),
+    ],
+    "archiver.h": [
+        ("Archiver(fm_archiver_get_default())", "wrapPtr(fm_archiver_get_default())")
+    ],
+    "job.h": [
+        ("return fm_job_ask(dataPtr(), question, );", 
+"""
+    int ret;
+    va_list args;
+    va_start (args, question);
+    ret = fm_job_ask_valist(dataPtr(), question, args);
+    va_end (args);
+    return ret;
+""")
     ]
 }
 
@@ -260,31 +288,6 @@ class Method:
     def is_const_return(self):
         return True if "const" in self.return_type else False
 
-    def has_str_return(self):
-        return "char*" in self.return_type
-
-    def has_str_args(self):
-        for arg in self.args:
-            if "char*" in arg.type_name:
-                return True
-        return False
-
-    def generate_qstring_helpers(self):
-        helpers = []
-        if self.has_str_args():
-            helper = copy.deepcopy(self)
-            for arg in helper.args:
-                if "char*" in arg.type_name:
-                    arg.type_name = "const QString&"
-            helpers.append(helper)
-
-        if self.has_str_return():
-            for helper in helpers:
-                helper2 = copy.deepcopy(helper)
-                helper2.name += "_QString"
-                helpers.append(helper2)
-        return helpers
-
     def to_string(self, skip_prefix, camel_case=True, skip_this_ptr=True, name=None, ret_type=None):
         if not name:
             name = self.name[skip_prefix:]
@@ -315,10 +318,7 @@ class Method:
     def invoke(self, this_ptr=None):
         arg_names = []
         for arg in self.args:
-            if arg.type_name == "const QString&":
-                arg_names.append("{ARG}.toUtf8().constData()")
-            else:
-                arg_names.append(arg.name.strip("[]* \t"))
+            arg_names.append(arg.name.strip("[]* \t"))
 
         if this_ptr and not self.is_static:
             arg_names = [this_ptr] + arg_names[1:]  # skip this pointer
@@ -349,6 +349,7 @@ custom_free_funcs = {
     "FmPathList": "fm_list_unref",
     "FmFileInfoList": "fm_list_unref"
 }
+
 
 class Class:
     regex_pattern = re.compile(r'typedef\s+struct\s+(\w+)\s+(\w+)', re.ASCII)
@@ -398,7 +399,7 @@ class Class:
 
     def generate_method_def(self, method):
         # ordinary methods
-        invoke = method.invoke("dataPtr_")
+        invoke = method.invoke(this_ptr="dataPtr()".format(C_STRUCT_NAME=self.name))
         ret_type = None
         if method.return_type != "void":
             if method.return_type == self.ptr_type:  # returns Class*
@@ -408,8 +409,6 @@ class Class:
                     invoke = "{CPP_CLASS}({DATA})".format(CPP_CLASS=self.cpp_class_name, DATA=invoke)
                 else:  # take ownership
                     invoke = "{CPP_CLASS}::wrapPtr({DATA})".format(CPP_CLASS=self.cpp_class_name, DATA=invoke)
-            elif method.return_type == "QString":  # QString wrapper
-                invoke = "QString::fromUtf8({DATA})".format(DATA=invoke)
             invoke = "return " + invoke
         method_def = method_templ.format(
             METHOD_DECL=method.to_string(skip_prefix=self.method_name_prefix_len, camel_case=True, ret_type=ret_type),
@@ -423,36 +422,19 @@ class Class:
         for method in self.methods:
             method_defs.append(self.generate_method_def(method))
 
-        # constructors
-        has_default_ctor = False
-        ctors = []
-        for ctor in self.ctors:
-            if not ctor.args or not ctor.args[0].type_name or ctor.args[0].type_name == "void":
-                # the ctor has no arguments
-                has_default_ctor = True
-
-            ctor_def = method_templ.format(
-                METHOD_DECL=ctor.to_string(skip_prefix=self.method_name_prefix_len, name=self.cpp_class_name),
-                FUNC_BODY="dataPtr_ = " + ctor.invoke("dataPtr_")
-            )
-            ctors.append(ctor_def)
-
-        # ensure that we have a default ctor without any args
-        if not has_default_ctor:
-            ctor_def = default_ctor_templ.format(CPP_CLASS_NAME=self.cpp_class_name)
-            ctors.append(ctor_def)
-
         inherit = ""
         extra_code = ""
         data_member = ""
+        data_member_type = self.name
         dtor = ""
         # special handling for GObject inheritence
         if self.is_gobject:
             copy_func = "g_object_ref"
             free_func = "g_object_unref"
+            data_member_type = "GObject"
             if not self.parent_c_struct_name or self.parent_c_struct_name == "GObject":
                 extra_code = auto_g_object_cast  # add auto-casting to GObject
-                data_member = data_member_templ.format(ACCESS="protected", C_STRUCT_NAME=self.name)
+                data_member = data_member_templ.format(ACCESS="protected", DATA_MEMBER_TYPE="GObject")
                 dtor = dtor_templ.format(CPP_CLASS_NAME=self.cpp_class_name, FREE_FUNC=free_func, VIRTUAL="virtual ")
             else:
                 parent_cpp_class_name = self.parent_c_struct_name[2:]  # skip Fm prefix
@@ -468,8 +450,28 @@ class Class:
             else:
                 free_func = custom_free_funcs.get(self.name, "")
 
-            data_member = data_member_templ.format(ACCESS="private", C_STRUCT_NAME=self.name)
+            data_member = data_member_templ.format(ACCESS="private", DATA_MEMBER_TYPE=self.name)
             dtor = dtor_templ.format(CPP_CLASS_NAME=self.cpp_class_name, FREE_FUNC=free_func, VIRTUAL="")
+
+        # constructors
+        has_default_ctor = False
+        ctors = []
+        for ctor in self.ctors:
+            if not ctor.args or not ctor.args[0].type_name or ctor.args[0].type_name == "void":
+                # the ctor has no arguments
+                has_default_ctor = True
+
+            ctor_def = method_templ.format(
+                METHOD_DECL=ctor.to_string(skip_prefix=self.method_name_prefix_len, name=self.cpp_class_name),
+                FUNC_BODY="dataPtr_ = reinterpret_cast<{DATA_MEMBER_TYPE}*>({INVOKE})".format(DATA_MEMBER_TYPE=data_member_type, INVOKE=ctor.invoke())
+            )
+            ctors.append(ctor_def)
+
+        # ensure that we have a default ctor without any args
+        if not has_default_ctor:
+            ctor_def = default_ctor_templ.format(CPP_CLASS_NAME=self.cpp_class_name)
+            ctors.append(ctor_def)
+
 
         # create copy ctors and assignment operators
         assignment = ""
@@ -477,16 +479,19 @@ class Class:
             default_ctor = data_ptr_ctor_templ.format(
                                 CPP_CLASS_NAME=self.cpp_class_name,
                                 C_STRUCT_NAME=self.name,
+                                DATA_MEMBER_TYPE=data_member_type,
                                 COPY_FUNC=copy_func)
             ctors.append(default_ctor)
             assignment = copy_assignment_templ.format(
                                 CPP_CLASS_NAME=self.cpp_class_name,
                                 C_STRUCT_NAME=self.name,
+                                DATA_MEMBER_TYPE=data_member_type,
                                 COPY_FUNC=copy_func,
                                 FREE_FUNC=free_func)
             copy_ctor = copy_ctor_templ.format(
                                 CPP_CLASS_NAME=self.cpp_class_name,
                                 C_STRUCT_NAME=self.name,
+                                DATA_MEMBER_TYPE=data_member_type,
                                 COPY_FUNC=copy_func)
             ctors.append(copy_ctor)
         else: # the object cannot be copied. disable copy ctors
@@ -507,6 +512,7 @@ class Class:
             ASSIGNMENT=assignment,
             METHODS="\n".join(method_defs),
             C_STRUCT_NAME=self.name,
+            DATA_MEMBER_TYPE=data_member_type,
             DATA_MEMBER=data_member,
             EXTRA_CODE=extra_code
         )
@@ -521,6 +527,12 @@ def generate_cpp_wrapper(c_header_file, file_base_name):
     try:
         with open(c_header_file, "r") as f:
             c_source_code = f.read()
+            # remove some compiler attributes
+            c_source_code = c_source_code.replace("__attribute__((warn_unused_result))", "")
+            c_source_code = c_source_code.replace("__attribute__((warn_unused_result,nonnull(1)))", "")
+            # remove comments
+            c_source_code = re.sub(r'/\*.*?\*/', "", c_source_code, flags=re.MULTILINE|re.DOTALL)
+
             define_pattern = re.compile(r'#define\s+(\w+)', re.ASCII)
             # for m in define_pattern.findall(c_source_code):
             #     print("define", m)
