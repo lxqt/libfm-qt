@@ -23,6 +23,7 @@
 #include "ui_filesearch.h"
 #include <limits>
 #include <QFileDialog>
+#include <utility>
 
 namespace Fm {
 
@@ -113,7 +114,7 @@ void FileSearchDialog::accept() {
       fm_search_set_min_mtime(search, ui->minTime->date().toString(QStringLiteral("yyyy-MM-dd")).toUtf8().constData());
     }
 
-    searchUri_.take(fm_search_dup_path(search));
+    searchUri_ = std::move(Path::wrapPtr(fm_search_dup_path(search)));
 
     fm_search_free(search);
   }

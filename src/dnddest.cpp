@@ -44,13 +44,13 @@ bool DndDest::dropMimeData(const QMimeData* data, Qt::DropAction action) {
     FmPathList* srcPaths = pathListFromQUrls(data->urls());
     switch(action) {
       case Qt::CopyAction:
-        FileOperation::copyFiles(srcPaths, destPath_.data());
+        FileOperation::copyFiles(srcPaths, destPath_);
         break;
       case Qt::MoveAction:
-        FileOperation::moveFiles(srcPaths, destPath_.data());
+        FileOperation::moveFiles(srcPaths, destPath_);
         break;
       case Qt::LinkAction:
-        FileOperation::symlinkFiles(srcPaths, destPath_.data());
+        FileOperation::symlinkFiles(srcPaths, destPath_);
       default:
         fm_path_list_unref(srcPaths);
         return false;

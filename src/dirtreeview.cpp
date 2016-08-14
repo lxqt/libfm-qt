@@ -66,7 +66,7 @@ void DirTreeView::expandPendingPath() {
   if(pathsToExpand_.isEmpty())
     return;
 
-  FmPath* path = pathsToExpand_.first().data();
+  FmPath* path = pathsToExpand_.first();
   // qDebug() << "expanding: " << Path(path).displayBasename();
   DirTreeModel* _model = static_cast<DirTreeModel*>(model());
   DirTreeModelItem* item = _model->itemFromPath(path);

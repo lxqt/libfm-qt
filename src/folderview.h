@@ -29,6 +29,8 @@
 #include <libfm/fm.h>
 #include "foldermodel.h"
 #include "proxyfoldermodel.h"
+#include "fileinfo.h"
+#include "path.h"
 
 class QTimer;
 
@@ -92,8 +94,8 @@ public:
   }
 
   QItemSelectionModel* selectionModel() const;
-  FmFileInfoList* selectedFiles() const;
-  FmPathList* selectedFilePaths() const;
+  Fm::FileInfoList selectedFiles() const;
+  Fm::PathList selectedFilePaths() const;
   QModelIndex indexFromFolderPath(FmPath* folderPath) const;
 
   void selectAll();

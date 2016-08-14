@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 - 2015  Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+ * Copyright (C) 2016 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,6 +17,19 @@
  *
  */
 
-#include "path.h"
+#ifndef __LIBFM_QT_FM_UTILS_H__
+#define __LIBFM_QT_FM_UTILS_H__
 
-using namespace Fm;
+#include <libfm/fm.h>
+#include <QObject>
+#include <QtGlobal>
+#include "libfmqtglobals.h"
+
+
+namespace Fm {
+
+
+
+}
+
+#endif // __LIBFM_QT_FM_UTILS_H__
