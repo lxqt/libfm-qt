@@ -119,6 +119,14 @@ public:
     return *this;
   }}
 
+  bool isNull() {{
+    return (dataPtr_ == nullptr);
+  }}
+
+  bool isValid() {{
+    return !isNull();
+  }}
+
   // methods
 {METHODS}
 {EXTRA_CODE}
