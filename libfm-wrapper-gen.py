@@ -37,6 +37,15 @@ copy_ctor_templ = """
   }}
 """
 
+dtor_templ = """
+  // destructor
+  {VIRTUAL}~{CPP_CLASS_NAME}() {{
+    if(dataPtr_ != nullptr) {{
+      {FREE_FUNC}(dataPtr_);
+    }}
+  }}
+"""
+
 copy_assignment_templ = """
   // copy assignment
   {CPP_CLASS_NAME}& operator=(const {CPP_CLASS_NAME}& other) {{
@@ -68,12 +77,7 @@ public:
 
 {CTORS}
 
-  // destructor
-  ~{CPP_CLASS_NAME}() {{
-    if(dataPtr_ != nullptr) {{
-      {FREE_FUNC}(dataPtr_);
-    }}
-  }}
+{DTOR}
 
   // create a wrapper for the data pointer without increasing the reference count
   static {CPP_CLASS_NAME}* wrap({C_STRUCT_NAME}* dataPtr) {{
@@ -109,9 +113,13 @@ public:
   // methods
 {METHODS}
 {EXTRA_CODE}
-protected:
-  {C_STRUCT_NAME}* dataPtr_; // data pointer for the underlying C struct
+{DATA_MEMBER}
 }};
+"""
+
+data_member_templ = """
+{ACCESS}:
+  {C_STRUCT_NAME}* dataPtr_; // data pointer for the underlying C struct
 """
 
 method_templ = """
@@ -126,7 +134,8 @@ header_templ = """{LICENSE}
 
 #include <libfm/fm.h>
 #include <QObject>
-#include <QtGlobals>
+#include <QtGlobal>
+{INCLUDES}
 
 namespace Fm {{
 
@@ -206,7 +215,6 @@ class Method:
 
     def __init__(self, regex_match=None):
         self.is_static = False
-        self.is_ctor = False
         self.return_type = "void"
         self.name = ""
         self.args = []  # list of Variable
@@ -222,6 +230,14 @@ class Method:
                 var = Variable()
                 var.from_string(arg_decl)
                 self.args.append(var)
+
+    def is_ctor(self):
+        if self.is_static:
+            name = self.name
+            if name not in excluded_ctor_names:
+                if "_new" in name or "_from" in name or name in custom_ctor_names:
+                    return True
+        return False
 
     def is_getter(self):
         return True if "_get" in self.name else False
@@ -262,7 +278,7 @@ class Method:
 
         if not ret_type:
             ret_type = glib_to_cpp_type.get(self.return_type, self.return_type)
-            if self.is_ctor:  # constructor has no return type
+            if self.is_ctor():  # constructor has no return type
                 ret_type = ""
 
         args = self.args
@@ -277,7 +293,7 @@ class Method:
         method_decl = "{ret}{name}({args})".format(ret=ret_type + " " if ret_type else "",
                                                    name=name,
                                                    args=args)
-        if self.is_static and not self.is_ctor:
+        if self.is_static and not self.is_ctor():
             method_decl = "static " + method_decl
         return method_decl
 
@@ -296,6 +312,11 @@ class Method:
                                         args=", ".join(arg_names) if arg_names else "")
         return invoke
 
+excluded_ctor_names = [
+    "fm_path_new_relative",
+    "fm_path_new_child_len",
+    "fm_path_new_child",
+]
 
 custom_ctor_names = [
     "fm_folder_config_open"
@@ -305,6 +326,15 @@ custom_free_func_names = [
     "fm_folder_config_close"
 ]
 
+custom_copy_funcs = {
+    "FmPathList": "fm_list_ref",
+    "FmFileInfoList": "fm_list_ref"
+}
+
+custom_free_funcs = {
+    "FmPathList": "fm_list_unref",
+    "FmFileInfoList": "fm_list_unref"
+}
 
 class Class:
     regex_pattern = re.compile(r'typedef\s+struct\s+(\w+)\s+(\w+)', re.ASCII)
@@ -316,6 +346,7 @@ class Class:
         else:
             self.name = ""
             self.method_name_prefix = ""
+        self.parent_c_struct_name = ""
         self.method_name_prefix_len = len(self.method_name_prefix)
         self.is_gobject = False
         self.is_ref_counted = False  # has reference counting
@@ -339,9 +370,7 @@ class Class:
         if not method.args or method.args[0].type_name != this_type:
             method.is_static = True
 
-        if "_new" in method.name or method.name in custom_ctor_names and method.is_static:
-            # this is a constructor
-            method.is_ctor = True
+        if method.is_ctor(): # this is a constructor
             self.ctors.append(method)
         elif method.name.endswith("_ref"):  # copy method
             self.copy_func = method
@@ -379,41 +408,46 @@ class Class:
         method_defs = []
         for method in self.methods:
             method_defs.append(self.generate_method_def(method))
-            """
-            if method.has_str_args() or method.has_str_return():
-                helpers = method.generate_qstring_helpers()
-                for helper in helpers:
-                    method_defs.append(self.generate_method_def(helper)
-            """
 
         # constructors
         ctors = []
         for ctor in self.ctors:
             ctor_def = method_templ.format(
-                METHOD_DECL=ctor.to_string(skip_prefix=self.method_name_prefix_len, name=self.name),
+                METHOD_DECL=ctor.to_string(skip_prefix=self.method_name_prefix_len, name=self.cpp_class_name),
                 FUNC_BODY="dataPtr_ = " + ctor.invoke("dataPtr_")
             )
             ctors.append(ctor_def)
         
-        # FIXME: handle copy ctors
-
         inherit = ""
         extra_code = ""
-        # special handling for GObjects
+        data_member = ""
+        dtor = ""
+        # special handling for GObject inheritence
         if self.is_gobject:
-            # FIXME: should we add code for signal handling for GObjects?
-            inherit = ""  # ": public QObject"
             copy_func = "g_object_ref"
             free_func = "g_object_unref"
-            '''
-            extra_code = gobject_templ.format(
-                SIGNALS=""
-            )
-            '''
+            if self.parent_c_struct_name:
+                if self.parent_c_struct_name == "GObject":
+                    data_member = data_member_templ.format(ACCESS="protected", C_STRUCT_NAME=self.name)
+                    dtor = dtor_templ.format(CPP_CLASS_NAME=self.cpp_class_name, FREE_FUNC=free_func, VIRTUAL="virtual ")
+                else:
+                    parent_cpp_class_name = self.parent_c_struct_name[2:]  # skip Fm prefix
+                    inherit = ": public " + parent_cpp_class_name
         else:
-            copy_func = self.copy_func.name if self.copy_func else ""
-            free_func = self.free_func.name if self.free_func else ""
+            if self.copy_func:
+                copy_func = self.copy_func.name
+            else:
+                copy_func = custom_copy_funcs.get(self.name, "")
 
+            if self.free_func:
+                free_func = self.free_func.name
+            else:
+                free_func = custom_free_funcs.get(self.name, "")
+
+            data_member = data_member_templ.format(ACCESS="private", C_STRUCT_NAME=self.name)
+            dtor = dtor_templ.format(CPP_CLASS_NAME=self.cpp_class_name, FREE_FUNC=free_func, VIRTUAL="")
+
+        # create copy ctors and assignment operators
         assignment = ""
         if copy_func and free_func: # the object can be copied. add copy ctors & assignments
             assignment = copy_assignment_templ.format(
@@ -439,11 +473,13 @@ class Class:
             CPP_CLASS_NAME=self.cpp_class_name,
             INHERIT=inherit,
             CTORS="\n".join(ctors) if ctors else "",
+            DTOR=dtor,
             COPY_FUNC=copy_func,
             FREE_FUNC=free_func,
             ASSIGNMENT=assignment,
             METHODS="\n".join(method_defs),
             C_STRUCT_NAME=self.name,
+            DATA_MEMBER=data_member,
             EXTRA_CODE=extra_code
         )
 
@@ -457,11 +493,28 @@ def generate_cpp_wrapper(c_header_file, file_base_name):
             # for m in define_pattern.findall(c_source_code):
             #     print("define", m)
 
+            # find possible inheritence
+            inherit_pattern = re.compile("""
+                ^struct\s+
+                _(\w+)\s*{      # struct name
+                [^;}]*?         # skip some comments and spaces
+                (\w+)\s+parent; # <name> parent;  the first data member
+                """, re.VERBOSE|re.MULTILINE|re.ASCII)
+            inherits = {}
+            for m in inherit_pattern.findall(c_source_code):
+                struct_name = m[0]
+                parent_name = m[1]
+                inherits[struct_name] = parent_name
+
             # find all struct names
             structs = []
             for m in Class.regex_pattern.findall(c_source_code):
                 # print("struct", m)
                 struct = Class(m)
+                # setup inheritence relationship
+                parent_class = inherits.get(struct.name, "")
+                if parent_class:
+                    struct.parent_c_struct_name = parent_class
                 structs.append(struct)
 
             if not structs:  # no object class found in this header
@@ -485,14 +538,21 @@ def generate_cpp_wrapper(c_header_file, file_base_name):
                         break
 
             classes = []
+            includes = []
             for struct in structs:
                 # only generate wrapper for classes which have methods
                 if struct.methods:
                     classes.append(struct.to_string())
+                    if struct.parent_c_struct_name.startswith("Fm"):
+                        include = '#include "{0}.h"'.format(struct.parent_c_struct_name[2:].lower())
+                        includes.append(include)
 
             # output
             header_guard = "__LIBFM_QT_{0}__".format(file_base_name.replace("-", "_").replace(".", "_").upper())
-            cpp_source_code = header_templ.format(LICENSE=license_text, CLASSES="\n\n".join(classes), HEADER_GUARD=header_guard)
+            cpp_source_code = header_templ.format(LICENSE=license_text,
+                                                  CLASSES="\n\n".join(classes),
+                                                  HEADER_GUARD=header_guard,
+                                                  INCLUDES="\n".join(includes))
     except IOError:
         cpp_source_code = ""
     return cpp_source_code
