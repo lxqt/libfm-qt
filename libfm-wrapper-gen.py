@@ -118,6 +118,13 @@ public:
 }};
 """
 
+auto_g_object_cast = """
+  // automatic type casting for GObject
+  operator GObject*() {
+    return reinterpret_cast<GObject*>(dataPtr_);
+  }
+"""
+
 data_member_templ = """
 {ACCESS}:
   {C_STRUCT_NAME}* dataPtr_; // data pointer for the underlying C struct
@@ -304,9 +311,8 @@ class Method:
             if arg.type_name == "const QString&":
                 arg_names.append("{ARG}.toUtf8().constData()")
             else:
-                arg_names.append(arg.name)
+                arg_names.append(arg.name.strip("[]* \t"))
 
-        arg_names = [a.name for a in self.args if a.name]
         if this_ptr and not self.is_static:
             arg_names = [this_ptr] + arg_names[1:]  # skip this pointer
         invoke = "{func}({args})".format(func=self.name,
@@ -429,6 +435,7 @@ class Class:
             free_func = "g_object_unref"
             if self.parent_c_struct_name:
                 if self.parent_c_struct_name == "GObject":
+                    extra_code = auto_g_object_cast  # add auto-casting to GObject
                     data_member = data_member_templ.format(ACCESS="protected", C_STRUCT_NAME=self.name)
                     dtor = dtor_templ.format(CPP_CLASS_NAME=self.cpp_class_name, FREE_FUNC=free_func, VIRTUAL="virtual ")
                 else:
