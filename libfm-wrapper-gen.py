@@ -28,7 +28,8 @@ license_text = """/*
 """
 
 copy_ctor_templ = """
-  {CPP_CLASS_NAME}({CPP_CLASS_NAME}& other) {{
+  // copy constructor
+  {CPP_CLASS_NAME}(const {CPP_CLASS_NAME}& other) {{
     if(dataPtr_ != nullptr) {{
       {FREE_FUNC}(dataPtr_);
     }}
@@ -36,20 +37,21 @@ copy_ctor_templ = """
   }}
 """
 
-default_ctor_templ = """
-  {CPP_CLASS_NAME}({C_STRUCT_NAME}* dataPtr) {{
+copy_assignment_templ = """
+  // copy assignment
+  {CPP_CLASS_NAME}& operator=(const {CPP_CLASS_NAME}& other) {{
     if(dataPtr_ != nullptr) {{
       {FREE_FUNC}(dataPtr_);
     }}
-    dataPtr_ = dataPtr != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(dataPtr)) : nullptr;
+    dataPtr_ = other.dataPtr_ != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr;
   }}
 """
 
 disable_copy_templ = """
 // the wrapped object cannot be copied.
 private:
-  {CPP_CLASS_NAME}();
-  {CPP_CLASS_NAME}& operator=(const {CPP_CLASS_NAME}& other);
+  {CPP_CLASS_NAME}() = delete;
+  {CPP_CLASS_NAME}& operator=(const {CPP_CLASS_NAME}& other) = delete;
 """
 
 class_templ = """
@@ -86,6 +88,13 @@ public:
     dataPtr_ = nullptr;
     return data;
   }}
+
+  // move assignment
+  {CPP_CLASS_NAME}& operator=({CPP_CLASS_NAME}&& other) {{
+    dataPtr_ = other.takeDataPtr();
+  }}
+
+{ASSIGNMENT}
 
   // get the raw pointer wrapped
   {C_STRUCT_NAME}* dataPtr() {{
@@ -388,7 +397,8 @@ class Class:
         
         # FIXME: handle copy ctors
 
-        inherit = extra_code = ""
+        inherit = ""
+        extra_code = ""
         # special handling for GObjects
         if self.is_gobject:
             # FIXME: should we add code for signal handling for GObjects?
@@ -404,7 +414,20 @@ class Class:
             copy_func = self.copy_func.name if self.copy_func else ""
             free_func = self.free_func.name if self.free_func else ""
 
-        if not copy_func: # the object cannot be copied. disable copy ctor
+        assignment = ""
+        if copy_func and free_func: # the object can be copied. add copy ctors & assignments
+            assignment = copy_assignment_templ.format(
+                                CPP_CLASS_NAME=self.cpp_class_name,
+                                C_STRUCT_NAME=self.name,
+                                COPY_FUNC=copy_func,
+                                FREE_FUNC=free_func)
+            copy_ctor = copy_ctor_templ.format(
+                                CPP_CLASS_NAME=self.cpp_class_name,
+                                C_STRUCT_NAME=self.name,
+                                COPY_FUNC=copy_func,
+                                FREE_FUNC=free_func)
+            ctors.append(copy_ctor)
+        else: # the object cannot be copied. disable copy ctors
             extra_code = disable_copy_templ.format(CPP_CLASS_NAME=self.cpp_class_name)
 
         # FIXME: if no constructors are found, we should make default ctor private
@@ -418,6 +441,7 @@ class Class:
             CTORS="\n".join(ctors) if ctors else "",
             COPY_FUNC=copy_func,
             FREE_FUNC=free_func,
+            ASSIGNMENT=assignment,
             METHODS="\n".join(method_defs),
             C_STRUCT_NAME=self.name,
             EXTRA_CODE=extra_code
