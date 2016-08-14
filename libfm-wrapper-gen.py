@@ -28,13 +28,19 @@ license_text = """/*
 """
 
 default_ctor_templ = """
-  {CPP_CLASS_NAME}({C_STRUCT_NAME}* dataPtr): dataPtr_(dataPtr != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(dataPtr)) : nullptr) {{
+  // default constructor
+  {CPP_CLASS_NAME}(): dataPtr_(nullptr) {{
+  }}
+"""
+
+data_ptr_ctor_templ = """
+  {CPP_CLASS_NAME}({C_STRUCT_NAME}* dataPtr): dataPtr_(dataPtr != nullptr ? reinterpret_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(dataPtr)) : nullptr) {{
   }}
 """
 
 copy_ctor_templ = """
   // copy constructor
-  {CPP_CLASS_NAME}(const {CPP_CLASS_NAME}& other): dataPtr_(other.dataPtr_ != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr) {{
+  {CPP_CLASS_NAME}(const {CPP_CLASS_NAME}& other): dataPtr_(other.dataPtr_ != nullptr ? reinterpret_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr) {{
   }}
 """
 
@@ -53,7 +59,7 @@ copy_assignment_templ = """
     if(dataPtr_ != nullptr) {{
       {FREE_FUNC}(dataPtr_);
     }}
-    dataPtr_ = other.dataPtr_ != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr;
+    dataPtr_ = other.dataPtr_ != nullptr ? reinterpret_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr;
   }}
 """
 
@@ -68,15 +74,11 @@ class_templ = """
 class {CPP_CLASS_NAME}{INHERIT} {{
 public:
 
-  // default constructor
-  {CPP_CLASS_NAME}(): dataPtr_(nullptr) {{
-  }}
+{CTORS}
 
   // move constructor
   {CPP_CLASS_NAME}({CPP_CLASS_NAME}&& other): dataPtr_(other.takeDataPtr()) {{
   }}
-
-{CTORS}
 
 {DTOR}
 
@@ -94,13 +96,6 @@ public:
     return data;
   }}
 
-  // move assignment
-  {CPP_CLASS_NAME}& operator=({CPP_CLASS_NAME}&& other) {{
-    dataPtr_ = other.takeDataPtr();
-  }}
-
-{ASSIGNMENT}
-
   // get the raw pointer wrapped
   {C_STRUCT_NAME}* dataPtr() {{
     return dataPtr_;
@@ -109,6 +104,13 @@ public:
   // automatic type casting
   operator {C_STRUCT_NAME}*() {{
     return dataPtr_;
+  }}
+
+{ASSIGNMENT}
+
+  // move assignment
+  {CPP_CLASS_NAME}& operator=({CPP_CLASS_NAME}&& other) {{
+    dataPtr_ = other.takeDataPtr();
   }}
 
   // methods
@@ -154,6 +156,11 @@ namespace Fm {{
 #endif // {HEADER_GUARD}
 """
 
+patches = {
+    "folderconfig.h": [
+        ("fm_folder_config_close(dataPtr_)", "fm_folder_config_close(dataPtr_, nullptr)"),
+    ]
+}
 
 def camel_case_to_lower(identifier):
     part_begin = 0
@@ -417,12 +424,22 @@ class Class:
             method_defs.append(self.generate_method_def(method))
 
         # constructors
+        has_default_ctor = False
         ctors = []
         for ctor in self.ctors:
+            if not ctor.args or not ctor.args[0].type_name or ctor.args[0].type_name == "void":
+                # the ctor has no arguments
+                has_default_ctor = True
+
             ctor_def = method_templ.format(
                 METHOD_DECL=ctor.to_string(skip_prefix=self.method_name_prefix_len, name=self.cpp_class_name),
                 FUNC_BODY="dataPtr_ = " + ctor.invoke("dataPtr_")
             )
+            ctors.append(ctor_def)
+
+        # ensure that we have a default ctor without any args
+        if not has_default_ctor:
+            ctor_def = default_ctor_templ.format(CPP_CLASS_NAME=self.cpp_class_name)
             ctors.append(ctor_def)
 
         inherit = ""
@@ -433,14 +450,13 @@ class Class:
         if self.is_gobject:
             copy_func = "g_object_ref"
             free_func = "g_object_unref"
-            if self.parent_c_struct_name:
-                if self.parent_c_struct_name == "GObject":
-                    extra_code = auto_g_object_cast  # add auto-casting to GObject
-                    data_member = data_member_templ.format(ACCESS="protected", C_STRUCT_NAME=self.name)
-                    dtor = dtor_templ.format(CPP_CLASS_NAME=self.cpp_class_name, FREE_FUNC=free_func, VIRTUAL="virtual ")
-                else:
-                    parent_cpp_class_name = self.parent_c_struct_name[2:]  # skip Fm prefix
-                    inherit = ": public " + parent_cpp_class_name
+            if not self.parent_c_struct_name or self.parent_c_struct_name == "GObject":
+                extra_code = auto_g_object_cast  # add auto-casting to GObject
+                data_member = data_member_templ.format(ACCESS="protected", C_STRUCT_NAME=self.name)
+                dtor = dtor_templ.format(CPP_CLASS_NAME=self.cpp_class_name, FREE_FUNC=free_func, VIRTUAL="virtual ")
+            else:
+                parent_cpp_class_name = self.parent_c_struct_name[2:]  # skip Fm prefix
+                inherit = ": public " + parent_cpp_class_name
         else:
             if self.copy_func:
                 copy_func = self.copy_func.name
@@ -458,7 +474,7 @@ class Class:
         # create copy ctors and assignment operators
         assignment = ""
         if copy_func and free_func: # the object can be copied. add copy ctors & assignments
-            default_ctor = default_ctor_templ.format(
+            default_ctor = data_ptr_ctor_templ.format(
                                 CPP_CLASS_NAME=self.cpp_class_name,
                                 C_STRUCT_NAME=self.name,
                                 COPY_FUNC=copy_func)
@@ -496,6 +512,10 @@ class Class:
         )
 
 
+custom_inherits = {
+    "FmNavHistory": "GObject",
+}
+
 def generate_cpp_wrapper(c_header_file, file_base_name):
     print(c_header_file)
     try:
@@ -512,7 +532,7 @@ def generate_cpp_wrapper(c_header_file, file_base_name):
                 [^;}]*?                     # skip some comments and spaces
                 (\w+)Class\s+parent[^;]*;   # <name> parent_class;  the first data member
                 """, re.VERBOSE|re.MULTILINE|re.ASCII)
-            inherits = {}
+            inherits = copy.deepcopy(custom_inherits)
             for m in inherit_pattern.findall(c_source_code):
                 struct_name = m[0]
                 parent_name = m[1]
@@ -565,6 +585,7 @@ def generate_cpp_wrapper(c_header_file, file_base_name):
                                                   CLASSES="\n\n".join(classes),
                                                   HEADER_GUARD=header_guard,
                                                   INCLUDES="\n".join(includes))
+            
     except IOError:
         cpp_source_code = ""
     return cpp_source_code
@@ -595,6 +616,12 @@ def main(argv):
         output_filename = os.path.join(output_dir, file_base_name[3:].replace("-", ""))  # skip fm- and remove all '-'
         with open(output_filename, "w") as output_file:
             cpp_source_code = generate_cpp_wrapper(header, file_base_name)
+            # apply some patches
+            print(file_base_name)
+            patch = patches.get(os.path.basename(output_filename), None)
+            if patch:
+                for old, new in patch:
+                    cpp_source_code = cpp_source_code.replace(old, new)
             output_file.write(cpp_source_code)
 
 if __name__ == "__main__":
