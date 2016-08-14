@@ -417,7 +417,7 @@ class Class:
                 FUNC_BODY="dataPtr_ = " + ctor.invoke("dataPtr_")
             )
             ctors.append(ctor_def)
-        
+
         inherit = ""
         extra_code = ""
         data_member = ""
@@ -496,9 +496,9 @@ def generate_cpp_wrapper(c_header_file, file_base_name):
             # find possible inheritence
             inherit_pattern = re.compile("""
                 ^struct\s+
-                _(\w+)\s*{      # struct name
-                [^;}]*?         # skip some comments and spaces
-                (\w+)\s+parent; # <name> parent;  the first data member
+                _(\w+)Class\s*{             # struct name
+                [^;}]*?                     # skip some comments and spaces
+                (\w+)Class\s+parent[^;]*;   # <name> parent_class;  the first data member
                 """, re.VERBOSE|re.MULTILINE|re.ASCII)
             inherits = {}
             for m in inherit_pattern.findall(c_source_code):
