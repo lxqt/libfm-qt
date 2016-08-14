@@ -128,10 +128,6 @@ public:
     return (dataPtr_ == nullptr);
   }}
 
-  bool isValid() {{
-    return !isNull();
-  }}
-
   // methods
 {METHODS}
 {EXTRA_CODE}
