@@ -27,13 +27,14 @@ license_text = """/*
  */
 """
 
+default_ctor_templ = """
+  {CPP_CLASS_NAME}({C_STRUCT_NAME}* dataPtr): dataPtr_(dataPtr != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(dataPtr)) : nullptr) {{
+  }}
+"""
+
 copy_ctor_templ = """
   // copy constructor
-  {CPP_CLASS_NAME}(const {CPP_CLASS_NAME}& other) {{
-    if(dataPtr_ != nullptr) {{
-      {FREE_FUNC}(dataPtr_);
-    }}
-    dataPtr_ = other.dataPtr_ != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr;
+  {CPP_CLASS_NAME}(const {CPP_CLASS_NAME}& other): dataPtr_(other.dataPtr_ != nullptr ? static_cast<{C_STRUCT_NAME}*>({COPY_FUNC}(other.dataPtr_)) : nullptr) {{
   }}
 """
 
@@ -59,7 +60,7 @@ copy_assignment_templ = """
 disable_copy_templ = """
 // the wrapped object cannot be copied.
 private:
-  {CPP_CLASS_NAME}() = delete;
+  {CPP_CLASS_NAME}(const {CPP_CLASS_NAME}& other) = delete;
   {CPP_CLASS_NAME}& operator=(const {CPP_CLASS_NAME}& other) = delete;
 """
 
@@ -80,9 +81,9 @@ public:
 {DTOR}
 
   // create a wrapper for the data pointer without increasing the reference count
-  static {CPP_CLASS_NAME}* wrap({C_STRUCT_NAME}* dataPtr) {{
-    {CPP_CLASS_NAME}* obj = new {CPP_CLASS_NAME}();
-    obj->dataPtr_ = dataPtr;
+  static {CPP_CLASS_NAME} wrapPtr({C_STRUCT_NAME}* dataPtr) {{
+    {CPP_CLASS_NAME} obj = {CPP_CLASS_NAME}();
+    obj.dataPtr_ = dataPtr;
     return obj;
   }}
 
@@ -235,7 +236,7 @@ class Method:
         if self.is_static:
             name = self.name
             if name not in excluded_ctor_names:
-                if "_new" in name or "_from" in name or name in custom_ctor_names:
+                if name.endswith("_new") or name in custom_ctor_names:
                     return True
         return False
 
@@ -393,7 +394,7 @@ class Class:
                 if method.is_getter():  # do not take ownership for getters
                     invoke = "{CPP_CLASS}({DATA})".format(CPP_CLASS=self.cpp_class_name, DATA=invoke)
                 else:  # take ownership
-                    invoke = "{CPP_CLASS}::wrap({DATA})".format(CPP_CLASS=self.cpp_class_name, DATA=invoke)
+                    invoke = "{CPP_CLASS}::wrapPtr({DATA})".format(CPP_CLASS=self.cpp_class_name, DATA=invoke)
             elif method.return_type == "QString":  # QString wrapper
                 invoke = "QString::fromUtf8({DATA})".format(DATA=invoke)
             invoke = "return " + invoke
@@ -450,6 +451,11 @@ class Class:
         # create copy ctors and assignment operators
         assignment = ""
         if copy_func and free_func: # the object can be copied. add copy ctors & assignments
+            default_ctor = default_ctor_templ.format(
+                                CPP_CLASS_NAME=self.cpp_class_name,
+                                C_STRUCT_NAME=self.name,
+                                COPY_FUNC=copy_func)
+            ctors.append(default_ctor)
             assignment = copy_assignment_templ.format(
                                 CPP_CLASS_NAME=self.cpp_class_name,
                                 C_STRUCT_NAME=self.name,
@@ -458,8 +464,7 @@ class Class:
             copy_ctor = copy_ctor_templ.format(
                                 CPP_CLASS_NAME=self.cpp_class_name,
                                 C_STRUCT_NAME=self.name,
-                                COPY_FUNC=copy_func,
-                                FREE_FUNC=free_func)
+                                COPY_FUNC=copy_func)
             ctors.append(copy_ctor)
         else: # the object cannot be copied. disable copy ctors
             extra_code = disable_copy_templ.format(CPP_CLASS_NAME=self.cpp_class_name)
