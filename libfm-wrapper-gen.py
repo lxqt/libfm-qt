@@ -111,6 +111,11 @@ public:
     return dataPtr();
   }}
 
+  // automatic type casting
+  operator void*() {{
+    return dataPtr();
+  }}
+
 {ASSIGNMENT}
 
   // move assignment
