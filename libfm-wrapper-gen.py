@@ -75,7 +75,7 @@ private:
 """
 
 class_templ = """
-class {CPP_CLASS_NAME}{INHERIT} {{
+class LIBFM_QT_API {CPP_CLASS_NAME}{INHERIT} {{
 public:
 
 {CTORS}
@@ -151,6 +151,7 @@ header_templ = """{LICENSE}
 #include <libfm/fm.h>
 #include <QObject>
 #include <QtGlobal>
+#include "libfmqtglobals.h"
 {INCLUDES}
 
 namespace Fm {{
