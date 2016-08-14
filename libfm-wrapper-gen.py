@@ -63,6 +63,7 @@ copy_assignment_templ = """
       {FREE_FUNC}(dataPtr_);
     }}
     dataPtr_ = other.dataPtr_ != nullptr ? reinterpret_cast<{DATA_MEMBER_TYPE}*>({COPY_FUNC}(other.dataPtr_)) : nullptr;
+    return *this;
   }}
 """
 
@@ -115,6 +116,7 @@ public:
   // move assignment
   {CPP_CLASS_NAME}& operator=({CPP_CLASS_NAME}&& other) {{
     dataPtr_ = reinterpret_cast<{DATA_MEMBER_TYPE}*>(other.takeDataPtr());
+    return *this;
   }}
 
   // methods
