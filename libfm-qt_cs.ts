@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.1" language="cs">
 <context>
     <name>AppChooserDialog</name>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>Výběr aplikace</translation>
+        <translation>Vyberte aplikaci</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="36"/>
@@ -323,12 +323,12 @@
     <message>
         <location filename="../../dirtreemodelitem.cpp" line="76"/>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahrává se...</translation>
     </message>
     <message>
         <location filename="../../dirtreemodelitem.cpp" line="207"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Žádné podsložky&gt;</translation>
     </message>
 </context>
 <context>
@@ -386,12 +386,13 @@
         <location filename="../../execfiledialog.cpp" line="39"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdá se, že tento textový soubor &apos;%1&apos; je spustitelný skript.
+Co s ním chcete dělat?</translation>
     </message>
     <message>
         <location filename="../../execfiledialog.cpp" line="44"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento soubor &apos;%1&apos; je spustitelný. Chcete jej spustit?</translation>
     </message>
 </context>
 <context>
@@ -404,12 +405,12 @@ What do you want to do with it?</source>
     <message>
         <location filename="../../filemenu.cpp" line="133"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished">Vytvořit &amp;nový</translation>
+        <translation>Vytvořit &amp;nový</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="153"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished">O&amp;bnovit</translation>
+        <translation>O&amp;bnovit</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="159"/>
@@ -514,77 +515,77 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="41"/>
         <source>Move files</source>
-        <translation type="unfinished"></translation>
+        <translation>Přesunout soubory</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="42"/>
         <source>Moving the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Přesunout následující soubory do cílové složky:</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="45"/>
         <source>Copy Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovat soubory</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="46"/>
         <source>Copying the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovat následující soubory do cílové složky:</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="49"/>
         <source>Trash Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubory pro koš</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="50"/>
         <source>Moving the following files to trash can:</source>
-        <translation type="unfinished"></translation>
+        <translation>Přesunout následující soubory do koše:</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="53"/>
         <source>Delete Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat soubory</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="54"/>
         <source>Deleting the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat následující soubory:</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="59"/>
         <source>Create Symlinks</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvořit symbolické odkazy</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="60"/>
         <source>Creating symlinks for the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvořit symbolické odkazy pro následující soubory:</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="63"/>
         <source>Change Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Změnit vlastnosti</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="64"/>
         <source>Changing attributes of the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Změnit vlastnosti následujících souborů:</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="69"/>
         <source>Restore Trashed Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovit soubory z koše</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="70"/>
         <source>Restoring the following files from trash can:</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovit následující soubory z koše:</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="137"/>
         <source>Error</source>
-        <translation type="unfinished">Chyba</translation>
+        <translation>Chyba</translation>
     </message>
 </context>
 <context>
@@ -622,7 +623,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="296"/>
         <source>Multiple Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Více souborů</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="424"/>
@@ -632,7 +633,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="425"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation type="unfinished"></translation>
+        <translation>Chcete tyto změny použít na všechny soubory a podsložky?</translation>
     </message>
 </context>
 <context>
@@ -692,16 +693,16 @@ Chceš je odstranit trvale?</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation type="vanished">Adresář</translation>
+        <translation>Adresář</translation>
     </message>
     <message>
         <source>Blank File</source>
-        <translation type="vanished">Prázdný soubor</translation>
+        <translation>Prázdný soubor</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="141"/>
         <source>Output</source>
-        <translation type="unfinished">Výstup</translation>
+        <translation>Výstup</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="166"/>
@@ -969,7 +970,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation type="unfinished">Připojit &amp;anonymně</translation>
+        <translation>Připojit &amp;anonymně</translation>
     </message>
     <message>
         <location filename="../../mount-operation-password.ui" line="58"/>
@@ -1069,7 +1070,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation>Potvrdit náhradu souborů</translation>
+        <translation>Potvrdit nahrazení souborů</translation>
     </message>
     <message>
         <location filename="../../rename-dialog.ui" line="35"/>
@@ -1079,32 +1080,32 @@ Změněno: %2</translation>
     <message>
         <location filename="../../rename-dialog.ui" line="56"/>
         <source>dest</source>
-        <translation type="unfinished"></translation>
+        <translation>Cíl</translation>
     </message>
     <message>
         <location filename="../../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation>následujícím souborem?</translation>
+        <translation>Následujícím souborem?</translation>
     </message>
     <message>
         <location filename="../../rename-dialog.ui" line="76"/>
         <source>src file info</source>
-        <translation type="unfinished"></translation>
+        <translation>Informace o zdrojovém souboru</translation>
     </message>
     <message>
         <location filename="../../rename-dialog.ui" line="89"/>
         <source>dest file info</source>
-        <translation type="unfinished"></translation>
+        <translation>Informace o cílovém souboru</translation>
     </message>
     <message>
         <location filename="../../rename-dialog.ui" line="102"/>
         <source>src</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdroj</translation>
     </message>
     <message>
         <location filename="../../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>&amp;Jméno souboru:</translation>
+        <translation>Název &amp;souboru:</translation>
     </message>
     <message>
         <location filename="../../rename-dialog.ui" line="137"/>
