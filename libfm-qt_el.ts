@@ -310,12 +310,12 @@
     <message>
         <location filename="../../createnewmenu.cpp" line="29"/>
         <source>Folder</source>
-        <translation type="unfinished">Φάκελος</translation>
+        <translation>Φάκελος</translation>
     </message>
     <message>
         <location filename="../../createnewmenu.cpp" line="33"/>
         <source>Blank File</source>
-        <translation type="unfinished">Κενό αρχείο</translation>
+        <translation>Κενό αρχείο</translation>
     </message>
 </context>
 <context>
@@ -328,7 +328,7 @@
     <message>
         <location filename="../../dirtreemodelitem.cpp" line="207"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation>&lt;No sub folders&gt;</translation>
+        <translation>&lt;Κανένας υποφάκελος&gt;</translation>
     </message>
 </context>
 <context>
@@ -336,17 +336,17 @@
     <message>
         <location filename="../../dirtreeview.cpp" line="207"/>
         <source>Open in New T&amp;ab</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα σε νέα &amp;καρτέλα</translation>
     </message>
     <message>
         <location filename="../../dirtreeview.cpp" line="211"/>
         <source>Open in New Win&amp;dow</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα σε νέο &amp;παράθυρο</translation>
     </message>
     <message>
         <location filename="../../dirtreeview.cpp" line="216"/>
         <source>Open in Termina&amp;l</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα στο &amp;τερματικό</translation>
     </message>
 </context>
 <context>
@@ -415,7 +415,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../../filemenu.cpp" line="133"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished">Δημιουργία &amp;νέου</translation>
+        <translation>Δημιουργία &amp;νέου</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="153"/>
@@ -641,17 +641,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../filesearchdialog.cpp" line="122"/>
         <source>Error</source>
-        <translation type="unfinished">Σφάλμα</translation>
+        <translation>Σφάλμα</translation>
     </message>
     <message>
         <location filename="../../filesearchdialog.cpp" line="122"/>
         <source>You should add at least one directory to search.</source>
-        <translation type="unfinished"></translation>
+        <translation>Για την αναζήτηση θα πρέπει να προσθέσετε τουλάχιστον έναν κατάλογο.</translation>
     </message>
     <message>
         <location filename="../../filesearchdialog.cpp" line="129"/>
         <source>Select a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή φακέλου</translation>
     </message>
 </context>
 <context>
@@ -693,16 +693,16 @@ Do you want to delete them instead?</source>
     </message>
     <message>
         <source>Folder</source>
-        <translation type="vanished">Φάκελος</translation>
+        <translation>Φάκελος</translation>
     </message>
     <message>
         <source>Blank File</source>
-        <translation type="vanished">Κενό αρχείο</translation>
+        <translation>Κενό αρχείο</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="141"/>
         <source>Output</source>
-        <translation type="unfinished">Έξοδος</translation>
+        <translation>Έξοδος</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="166"/>
@@ -1110,176 +1110,176 @@ Modified: %2</source>
     <message>
         <location filename="../../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση αρχείων</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα/Τοποθεσία</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχηματομορφές ονομάτων αρχείων:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="41"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation>*</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Δίχως διάκριση πεζών/κεφαλαίων</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρήση κανονικής έκφρασης</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="65"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Τοποθεσίες προς αναζήτηση:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="78"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Προσθήκη</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="90"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Α&amp;φαίρεση</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="119"/>
         <source>Search in sub directories</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση σε υποφακέλους</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="126"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση για κρυφά αρχεία</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="137"/>
         <source>File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος αρχείου</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="143"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση αρχείων μόνο για τους ακόλουθους τύπους:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="149"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία κειμένου</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="156"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία εικόνων</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="163"/>
         <source>Audio files</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία ήχου</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="170"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία βίντεο</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="177"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Έγγραφα</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="184"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Φάκελοι</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="208"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιεχόμενο</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="214"/>
         <source>File contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία που περιέχουν:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="223"/>
         <source>Case insensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Δίχως διάκριση &amp;πεζών/κεφαλαίων</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="230"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Χρήση κανονικής έκφρασης</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="254"/>
         <source>Properties</source>
-        <translation type="unfinished">Ιδιότητες</translation>
+        <translation>Ιδιότητες</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="260"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος αρχείου:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="289"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Μεγαλύτερο από:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="303"/>
         <location filename="../../filesearch.ui" line="333"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Byte</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="308"/>
         <location filename="../../filesearch.ui" line="338"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="313"/>
         <location filename="../../filesearch.ui" line="343"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>MiB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="318"/>
         <location filename="../../filesearch.ui" line="348"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>GiB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="268"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Μικρότερο από:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="364"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρόνος της τελευταίας τροποποίησης:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="372"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Προγενέστερα από:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="379"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Αργότερα από:</translation>
     </message>
 </context>
 </TS>
