@@ -702,7 +702,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../../foldermenu.cpp" line="141"/>
         <source>Output</source>
-        <translation type="unfinished">Ausgabe</translation>
+        <translation>Ausgabe</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="166"/>
