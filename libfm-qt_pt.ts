@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt">
+<TS version="2.0" language="pt">
 <context>
     <name>AppChooserDialog</name>
     <message>
@@ -310,12 +310,12 @@
     <message>
         <location filename="../../createnewmenu.cpp" line="29"/>
         <source>Folder</source>
-        <translation type="unfinished">Pasta</translation>
+        <translation>Pasta</translation>
     </message>
     <message>
         <location filename="../../createnewmenu.cpp" line="33"/>
         <source>Blank File</source>
-        <translation type="unfinished">Ficheiro vazio</translation>
+        <translation>Ficheiro vazio</translation>
     </message>
 </context>
 <context>
@@ -336,17 +336,17 @@
     <message>
         <location filename="../../dirtreeview.cpp" line="207"/>
         <source>Open in New T&amp;ab</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir em novo sep&amp;arador</translation>
     </message>
     <message>
         <location filename="../../dirtreeview.cpp" line="211"/>
         <source>Open in New Win&amp;dow</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir em nova ja&amp;nela</translation>
     </message>
     <message>
         <location filename="../../dirtreeview.cpp" line="216"/>
         <source>Open in Termina&amp;l</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir no termina&amp;l</translation>
     </message>
 </context>
 <context>
@@ -455,7 +455,7 @@ O que pretende fazer com o ficheiro?</translation>
     <message>
         <location filename="../../filemenu.cpp" line="133"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished">Criar &amp;novo(a)</translation>
+        <translation>Criar &amp;novo(a)</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="153"/>
@@ -645,17 +645,17 @@ Eliminar permanentemente?</translation>
     <message>
         <location filename="../../filesearchdialog.cpp" line="122"/>
         <source>Error</source>
-        <translation type="unfinished">Erro</translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../../filesearchdialog.cpp" line="122"/>
         <source>You should add at least one directory to search.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deve adicionar, pelo menos, um diretório para pesquisar.</translation>
     </message>
     <message>
         <location filename="../../filesearchdialog.cpp" line="129"/>
         <source>Select a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecionar uma pasta</translation>
     </message>
 </context>
 <context>
@@ -697,7 +697,7 @@ Eliminar permanentemente?</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation type="vanished">Pasta</translation>
+        <translation>Pasta</translation>
     </message>
     <message>
         <source>File</source>
@@ -705,12 +705,12 @@ Eliminar permanentemente?</translation>
     </message>
     <message>
         <source>Blank File</source>
-        <translation type="vanished">Ficheiro vazio</translation>
+        <translation>Ficheiro vazio</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="141"/>
         <source>Output</source>
-        <translation type="unfinished">Destino</translation>
+        <translation>Destino</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="166"/>
@@ -755,7 +755,7 @@ Eliminar permanentemente?</translation>
     <message>
         <location filename="../../foldermenu.cpp" line="211"/>
         <source>Case Sensitive</source>
-        <translation>Diferenciar capitalização</translation>
+        <translation>Diferenciar maiúsculas/minúsculas</translation>
     </message>
 </context>
 <context>
@@ -859,41 +859,41 @@ Eliminar permanentemente?</translation>
     </message>
     <message>
         <source>Rename</source>
-        <translation type="vanished">Mudar nome</translation>
+        <translation>Mudar nome</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Eliminar</translation>
+        <translation>Eliminar</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="350"/>
         <source>Open in New Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir em novo separador</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="353"/>
         <source>Open in New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir em nova janela</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="371"/>
         <source>Move Bookmark Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover marcador para cima</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="376"/>
         <source>Move Bookmark Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover marcador para baixo</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="380"/>
         <source>Rename Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Mudar nome do marcador</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="383"/>
         <source>Remove Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Remover marcador</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="392"/>
@@ -1040,7 +1040,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../../utilities.cpp" line="161"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Criar pasta</translation>
     </message>
     <message>
         <location filename="../../utilities.cpp" line="166"/>
@@ -1126,176 +1126,176 @@ Modificado: %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Pesquisar ficheiros</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome/localização</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Padrão para nome de ficheiros:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="41"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation>*</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Não diferenciar maiúsculas/minúsculas</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizar expressão regular</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="65"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Locais a pesquisar:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="78"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Adicionar</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="90"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Remover</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="119"/>
         <source>Search in sub directories</source>
-        <translation type="unfinished"></translation>
+        <translation>Pesquisar nos subdiretórios</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="126"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>Pesquisar por ficheiros ocultos</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="137"/>
         <source>File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de ficheiro</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="143"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>Apenas pesquisar ficheiros destes tipos:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="149"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficheiros de texto</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="156"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficheiros de imagem</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="163"/>
         <source>Audio files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficheiros de áudio</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="170"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficheiros de vídeo</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="177"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Documentos</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="184"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Pastas</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="208"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Conteúdo</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="214"/>
         <source>File contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficheiro contém:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="223"/>
         <source>Case insensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Não diferenciar maiúsculas/minúsc&amp;ulas</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="230"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Utilizar expressão regular</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="254"/>
         <source>Properties</source>
-        <translation type="unfinished">Propriedades</translation>
+        <translation>Propriedades</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="260"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamanho do ficheiro:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="289"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Maior que:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="303"/>
         <location filename="../../filesearch.ui" line="333"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Bytes</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="308"/>
         <location filename="../../filesearch.ui" line="338"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="313"/>
         <location filename="../../filesearch.ui" line="343"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>MiB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="318"/>
         <location filename="../../filesearch.ui" line="348"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>GiB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="268"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Menor que:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="364"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Data da última modificação:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="372"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Anterior a:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="379"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Posterior a:</translation>
     </message>
 </context>
 </TS>
