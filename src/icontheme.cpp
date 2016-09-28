@@ -89,6 +89,8 @@ QIcon IconTheme::iconFromNames(const char* const* names) {
 }
 
 QIcon IconTheme::convertFromGIcon(GIcon* gicon) {
+  if(G_IS_EMBLEMED_ICON(gicon))
+    gicon = g_emblemed_icon_get_icon(G_EMBLEMED_ICON(gicon));
   if(G_IS_THEMED_ICON(gicon)) {
     const gchar * const * names = g_themed_icon_get_names(G_THEMED_ICON(gicon));
     QIcon icon = iconFromNames(names);
