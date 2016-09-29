@@ -98,18 +98,3 @@ if(BUILD_DOCUMENTATION)
         COMPONENT Devel
     )
 endif()
-
-# building tarball with CPack -------------------------------------------------
-# To create a source distribution, type:
-# make package_source
-include(InstallRequiredSystemLibraries)
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
-set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
-set(CPACK_PACKAGE_VENDOR "")
-set(CPACK_PACKAGE_VERSION_MAJOR ${LIBFM_QT_VERSION_MAJOR})
-set(CPACK_PACKAGE_VERSION_MINOR ${LIBFM_QT_VERSION_MINOR})
-set(CPACK_PACKAGE_VERSION_PATCH ${LIBFM_QT_VERSION_PATCH})
-set(CPACK_GENERATOR TBZ2)
-set(CPACK_SOURCE_GENERATOR TBZ2)
-set(CPACK_SOURCE_IGNORE_FILES /build/;.gitignore;.*~;.git;.kdev4;temp)
-include(CPack)
