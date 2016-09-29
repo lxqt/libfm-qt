@@ -89,7 +89,7 @@ QIcon IconTheme::iconFromNames(const char* const* names) {
 }
 
 QIcon IconTheme::convertFromGIcon(GIcon* gicon) {
-  if(G_IS_EMBLEMED_ICON(gicon))
+  if(G_IS_EMBLEMED_ICON(gicon)) // get an emblemless GIcon
     gicon = g_emblemed_icon_get_icon(G_EMBLEMED_ICON(gicon));
   if(G_IS_THEMED_ICON(gicon)) {
     const gchar * const * names = g_themed_icon_get_names(G_THEMED_ICON(gicon));
@@ -122,6 +122,8 @@ QIcon IconTheme::icon(FmIcon* fmicon) {
 
 //static
 QIcon IconTheme::icon(GIcon* gicon) {
+  if(G_IS_EMBLEMED_ICON(gicon)) // get an emblemless GIcon
+    gicon = g_emblemed_icon_get_icon(G_EMBLEMED_ICON(gicon));
   if(G_IS_THEMED_ICON(gicon)) {
     FmIcon* fmicon = fm_icon_from_gicon(gicon);
     QIcon qicon = icon(fmicon);
@@ -133,6 +135,22 @@ QIcon IconTheme::icon(GIcon* gicon) {
     return convertFromGIcon(gicon);
   }
   return theIconTheme->fallbackIcon_;
+}
+
+QIcon IconTheme::getEmblem(GIcon* gicon) {
+  QIcon emblem;
+  if(!G_IS_EMBLEMED_ICON(gicon))
+    return emblem;
+  GList* emblems = g_emblemed_icon_get_emblems(G_EMBLEMED_ICON(gicon));
+  GList* l;
+  for(l=emblems;l;l=l->next) {
+    emblem = icon(g_emblem_get_icon((GEmblem*)l->data));
+    if(!emblem.isNull()
+       && emblem.name() != "unknown" && emblem.name() != "application-octet-stream") {
+      break; // we only get the first meaningful emblem
+    }
+  }
+  return emblem;
 }
 
 // this method is called whenever there is an event on the QDesktopWidget object.

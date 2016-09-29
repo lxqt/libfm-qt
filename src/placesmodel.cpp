@@ -30,12 +30,13 @@
 
 namespace Fm {
 
-PlacesModel::PlacesModel(QObject* parent):
+PlacesModel::PlacesModel(QObject* parent, QSize iconSize):
   QStandardItemModel(parent),
   showApplications_(true),
   showDesktop_(true),
   ejectIcon_(QIcon::fromTheme("media-eject")) {
 
+  iconSize_ = iconSize;
   setColumnCount(2);
 
   placesRoot = new QStandardItem(tr("Places"));
@@ -131,7 +132,7 @@ PlacesModel::PlacesModel(QObject* parent):
             continue;
           }
           else {
-            PlacesModelItem* item = new PlacesModelMountItem(mount);
+            PlacesModelItem* item = new PlacesModelMountItem(mount, iconSize_);
             devicesRoot->appendRow(item);
           }
         }
@@ -370,7 +371,7 @@ void PlacesModel::onMountAdded(GVolumeMonitor* monitor, GMount* mount, PlacesMod
     /* for some unknown reasons, sometimes we get repeated mount-added
      * signals and added a device more than one. So, make a sanity check here. */
     if(!item) {
-      item = new PlacesModelMountItem(mount);
+      item = new PlacesModelMountItem(mount, pThis->iconSize_);
       QStandardItem* eject_btn = new QStandardItem(pThis->ejectIcon_, QString());
       pThis->devicesRoot->appendRow(QList<QStandardItem*>() << item << eject_btn);
     }
@@ -442,7 +443,7 @@ void PlacesModel::onVolumeAdded(GVolumeMonitor* monitor, GVolume* volume, Places
   // signals and added a device more than one. So, make a sanity check here.
   PlacesModelVolumeItem* volumeItem = pThis->itemFromVolume(volume);
   if(!volumeItem) {
-    volumeItem = new PlacesModelVolumeItem(volume);
+    volumeItem = new PlacesModelVolumeItem(volume, pThis->iconSize_);
     QStandardItem* ejectBtn = new QStandardItem();
     if(volumeItem->isMounted())
       ejectBtn->setIcon(pThis->ejectIcon_);
@@ -483,11 +484,13 @@ void PlacesModel::updateIcons() {
   int n = placesRoot->rowCount();
   for(row = 0; row < n; ++row) {
     item = static_cast<PlacesModelItem*>(placesRoot->child(row));
+    item->setIconSize(iconSize_);
     item->updateIcon();
   }
   n = devicesRoot->rowCount();
   for(row = 0; row < n; ++row) {
     item = static_cast<PlacesModelItem*>(devicesRoot->child(row));
+    item->setIconSize(iconSize_);
     item->updateIcon();
   }
 }

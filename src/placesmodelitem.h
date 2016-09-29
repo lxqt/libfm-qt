@@ -41,7 +41,7 @@ public:
   };
 
 public:
-  PlacesModelItem();
+  PlacesModelItem(QSize size = QSize());
   PlacesModelItem(QIcon icon, QString title, FmPath* path = NULL);
   PlacesModelItem(const char* iconName, QString title, FmPath* path = NULL);
   PlacesModelItem(FmIcon* icon, QString title, FmPath* path = NULL);
@@ -70,15 +70,21 @@ public:
     return Places;
   }
 
+  void setIconSize(QSize size) {
+    iconSize_ = size;
+  }
+
 private:
   FmPath* path_;
   FmFileInfo* fileInfo_;
   FmIcon* icon_;
+  GIcon* gicon_;
+  QSize iconSize_;
 };
 
 class LIBFM_QT_API PlacesModelVolumeItem : public PlacesModelItem {
 public:
-  PlacesModelVolumeItem(GVolume* volume);
+  PlacesModelVolumeItem(GVolume* volume, QSize size = QSize());
   bool isMounted();
   bool canEject() {
     return g_volume_can_eject(volume_);
@@ -96,7 +102,7 @@ private:
 
 class LIBFM_QT_API PlacesModelMountItem : public PlacesModelItem {
 public:
-  PlacesModelMountItem(GMount* mount);
+  PlacesModelMountItem(GMount* mount, QSize size = QSize());
   virtual int type() const {
     return Mount;
   }
