@@ -56,7 +56,7 @@ public:
   };
 
 public:
-  explicit PlacesModel(QObject* parent = 0);
+  explicit PlacesModel(QObject* parent = 0, QSize iconSize = QSize());
   virtual ~PlacesModel();
 
   bool showTrash() {
@@ -73,6 +73,13 @@ public:
     return showDesktop_;
   }
   void setShowDesktop(bool show);
+
+  void setIconSize(QSize size) {
+    if (iconSize_ != size) {
+      iconSize_ = size;
+      updateIcons(); // for emblems
+    }
+  }
 
 public Q_SLOTS:
   void updateIcons();
@@ -126,6 +133,7 @@ private:
   PlacesModelItem* applicationsItem;
   QIcon ejectIcon_;
   QList<GMount*> shadowedMounts_;
+  QSize iconSize_; // for setting the size hint of PlacesModelItem
 };
 
 }
