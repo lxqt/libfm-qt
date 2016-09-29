@@ -49,6 +49,7 @@ public:
   static IconTheme* instance();
   static QIcon icon(FmIcon* fmicon);
   static QIcon icon(GIcon* gicon);
+  static QIcon getEmblem(GIcon* gicon);
 
   static void checkChanged(); // check if current icon theme name is changed
 Q_SIGNALS:

@@ -44,7 +44,7 @@ PlacesView::PlacesView(QWidget* parent):
   setIconSize(QSize(24, 24));
 
   // FIXME: we may share this model amont all views
-  model_ = new PlacesModel(this);
+  model_ = new PlacesModel(this, iconSize());
   setModel(model_);
 
   QHeaderView* headerView = header();
@@ -120,6 +120,7 @@ void PlacesView::onPressed(const QModelIndex& index) {
 
 void PlacesView::onIconSizeChanged(const QSize& size) {
   setColumnWidth(1, size.width() + 5);
+  model_->setIconSize(size);
 }
 
 void PlacesView::onEjectButtonClicked(PlacesModelItem* item) {
