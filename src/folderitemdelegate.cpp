@@ -35,7 +35,9 @@ namespace Fm {
 FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent):
   QStyledItemDelegate(parent ? parent : view),
   view_(view),
-  symlinkIcon_(QIcon::fromTheme("emblem-symbolic-link")) {
+  symlinkIcon_(QIcon::fromTheme("emblem-symbolic-link")),
+  fileInfoRole_(Fm::FolderModel::FileInfoRole),
+  fmIconRole_(-1) {
 }
 
 FolderItemDelegate::~FolderItemDelegate() {
@@ -78,25 +80,13 @@ QIcon::Mode FolderItemDelegate::iconModeFromState(const QStyle::State state) {
 // special thanks to Razor-qt developer Alec Moskvin(amoskvin) for providing the fix!
 void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
   Q_ASSERT(index.isValid());
-  FmFileInfo* file = static_cast<FmFileInfo*>(index.data(FolderModel::FileInfoRole).value<void*>());
-  bool isSymlink(false);
-  QIcon emblem;
-  if(file) {
-    isSymlink = fm_file_info_is_symlink(file);
-    FmPath* path = fm_file_info_get_path(file);
-    GFile* gfile = fm_path_to_gfile(path);
-    GFileInfo *info = g_file_query_info(gfile, "metadata::emblems", G_FILE_QUERY_INFO_NONE, NULL, NULL);
-    char *att = g_file_info_get_attribute_as_string(info, "metadata::emblems");
-    QString emblemName(att);
-    g_free(att);
-    g_object_unref(info);
-    g_object_unref(gfile);
-    if(!emblemName.isEmpty()) { // only get the first emblem
-      emblemName = emblemName.section(QRegExp("\\[|\\]|,"), 0, 0, QString::SectionSkipEmpty);
-      emblem = QIcon::fromTheme(emblemName);
-    }
+  FmFileInfo* file = static_cast<FmFileInfo*>(index.data(fileInfoRole_).value<void*>());
+  FmIcon* fmicon = static_cast<FmIcon*>(index.data(fmIconRole_).value<void*>());
+  if(fmicon == nullptr && file != nullptr) {
+    fmicon = fm_file_info_get_icon(file);
   }
-
+  QList<Icon> emblems = fmicon != nullptr ? IconTheme::emblems(fmicon) : QList<Icon>();
+  bool isSymlink(false);
   if(option.decorationPosition == QStyleOptionViewItem::Top ||
     option.decorationPosition == QStyleOptionViewItem::Bottom) {
     painter->save();
@@ -118,8 +108,9 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     // draw some emblems for the item if needed
     if(isSymlink)
       painter->drawPixmap(iconPos, symlinkIcon_.pixmap(option.decorationSize / 2, iconMode));
-    if(!emblem.isNull()) {
+    if(!emblems.isEmpty()) {
       QPoint emblemPos(opt.rect.x() + opt.rect.width() / 2, opt.rect.y() + option.decorationSize.height() / 2);
+      QIcon emblem = IconTheme::icon(emblems.first().dataPtr());
       painter->drawPixmap(emblemPos, emblem.pixmap(option.decorationSize / 2, iconMode));
     }
 
@@ -137,7 +128,7 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     QStyledItemDelegate::paint(painter, option, index);
 
     // draw emblems if needed
-    if(isSymlink || !emblem.isNull()) {
+    if(isSymlink || !emblems.isEmpty()) {
       QStyleOptionViewItem opt = option;
       initStyleOption(&opt, index);
       QIcon::Mode iconMode = iconModeFromState(opt.state);
@@ -148,6 +139,7 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
       }
       else {
         QPoint iconPos(opt.rect.x() + option.decorationSize.width() / 2, opt.rect.y() + opt.rect.height() / 2);
+        QIcon emblem = IconTheme::icon(emblems.first().dataPtr());
         painter->drawPixmap(iconPos, emblem.pixmap(option.decorationSize / 2, iconMode));
       }
     }

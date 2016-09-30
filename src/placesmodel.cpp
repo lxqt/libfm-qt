@@ -30,13 +30,11 @@
 
 namespace Fm {
 
-PlacesModel::PlacesModel(QObject* parent, QSize iconSize):
+PlacesModel::PlacesModel(QObject* parent):
   QStandardItemModel(parent),
   showApplications_(true),
   showDesktop_(true),
   ejectIcon_(QIcon::fromTheme("media-eject")) {
-
-  iconSize_ = iconSize;
   setColumnCount(2);
 
   placesRoot = new QStandardItem(tr("Places"));
@@ -132,7 +130,7 @@ PlacesModel::PlacesModel(QObject* parent, QSize iconSize):
             continue;
           }
           else {
-            PlacesModelItem* item = new PlacesModelMountItem(mount, iconSize_);
+            PlacesModelItem* item = new PlacesModelMountItem(mount);
             devicesRoot->appendRow(item);
           }
         }
@@ -371,7 +369,7 @@ void PlacesModel::onMountAdded(GVolumeMonitor* monitor, GMount* mount, PlacesMod
     /* for some unknown reasons, sometimes we get repeated mount-added
      * signals and added a device more than one. So, make a sanity check here. */
     if(!item) {
-      item = new PlacesModelMountItem(mount, pThis->iconSize_);
+      item = new PlacesModelMountItem(mount);
       QStandardItem* eject_btn = new QStandardItem(pThis->ejectIcon_, QString());
       pThis->devicesRoot->appendRow(QList<QStandardItem*>() << item << eject_btn);
     }
@@ -443,7 +441,7 @@ void PlacesModel::onVolumeAdded(GVolumeMonitor* monitor, GVolume* volume, Places
   // signals and added a device more than one. So, make a sanity check here.
   PlacesModelVolumeItem* volumeItem = pThis->itemFromVolume(volume);
   if(!volumeItem) {
-    volumeItem = new PlacesModelVolumeItem(volume, pThis->iconSize_);
+    volumeItem = new PlacesModelVolumeItem(volume);
     QStandardItem* ejectBtn = new QStandardItem();
     if(volumeItem->isMounted())
       ejectBtn->setIcon(pThis->ejectIcon_);
@@ -484,13 +482,11 @@ void PlacesModel::updateIcons() {
   int n = placesRoot->rowCount();
   for(row = 0; row < n; ++row) {
     item = static_cast<PlacesModelItem*>(placesRoot->child(row));
-    item->setIconSize(iconSize_);
     item->updateIcon();
   }
   n = devicesRoot->rowCount();
   for(row = 0; row < n; ++row) {
     item = static_cast<PlacesModelItem*>(devicesRoot->child(row));
-    item->setIconSize(iconSize_);
     item->updateIcon();
   }
 }
@@ -506,6 +502,23 @@ Qt::ItemFlags PlacesModel::flags(const QModelIndex& index) const {
   }
   return QStandardItemModel::flags(index);
 }
+
+
+QVariant PlacesModel::data(const QModelIndex &index, int role) const {
+  if(index.column() == 0 && index.parent().isValid()) {
+    PlacesModelItem* item = static_cast<PlacesModelItem*>(QStandardItemModel::itemFromIndex(index));
+    if(item != nullptr) {
+      switch(role) {
+      case FileInfoRole:
+        return QVariant::fromValue<void*>(item->fileInfo());
+      case FmIconRole:
+        return QVariant::fromValue<void*>(item->icon());
+      }
+    }
+  }
+  return QStandardItemModel::data(index, role);
+}
+
 
 bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) {
   QStandardItem* item = itemFromIndex(parent);

@@ -25,6 +25,7 @@
 #include <QIcon>
 #include <QString>
 #include "libfm/fm.h"
+#include "icon.h"
 
 namespace Fm {
 
@@ -40,6 +41,8 @@ namespace Fm {
 
 // Nice article about QPixmap from KDE: http://techbase.kde.org/Development/Tutorials/Graphics/Performance
 
+class IconCacheData;
+
 class LIBFM_QT_API IconTheme: public QObject {
   Q_OBJECT
 public:
@@ -49,7 +52,8 @@ public:
   static IconTheme* instance();
   static QIcon icon(FmIcon* fmicon);
   static QIcon icon(GIcon* gicon);
-  static QIcon getEmblem(GIcon* gicon);
+  static QList<Icon> emblems(FmIcon* fmicon);
+  static QList<Icon> emblems(GIcon* gicon);
 
   static void checkChanged(); // check if current icon theme name is changed
 Q_SIGNALS:
@@ -57,8 +61,9 @@ Q_SIGNALS:
 
 protected:
   bool eventFilter(QObject *obj, QEvent *event);
-  static QIcon convertFromGIcon(GIcon* gicon);
+  static QIcon convertFromGIconWithoutEmblems(GIcon* gicon);
   static QIcon iconFromNames(const char * const * names);
+  static IconCacheData* ensureCacheData(FmIcon* fmicon);
 
 protected:
   QIcon fallbackIcon_;

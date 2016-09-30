@@ -25,21 +25,18 @@
 
 namespace Fm {
 
-PlacesModelItem::PlacesModelItem(QSize size):
+PlacesModelItem::PlacesModelItem():
   QStandardItem(),
   path_(NULL),
   fileInfo_(NULL),
-  icon_(NULL),
-  gicon_(NULL) {
-  iconSize_ = size;
+  icon_(NULL) {
 }
 
 PlacesModelItem::PlacesModelItem(const char* iconName, QString title, FmPath* path):
   QStandardItem(title),
   path_(path ? fm_path_ref(path) : NULL),
   fileInfo_(NULL),
-  icon_(fm_icon_from_name(iconName)),
-  gicon_(NULL) {
+  icon_(fm_icon_from_name(iconName)) {
   if(icon_)
     QStandardItem::setIcon(IconTheme::icon(icon_));
   setEditable(false);
@@ -49,8 +46,7 @@ PlacesModelItem::PlacesModelItem(FmIcon* icon, QString title, FmPath* path):
   QStandardItem(title),
   path_(path ? fm_path_ref(path) : NULL),
   fileInfo_(NULL),
-  icon_(icon ? fm_icon_ref(icon) : NULL),
-  gicon_(NULL) {
+  icon_(icon ? fm_icon_ref(icon) : NULL) {
   if(icon_)
     QStandardItem::setIcon(IconTheme::icon(icon));
   setEditable(false);
@@ -60,8 +56,7 @@ PlacesModelItem::PlacesModelItem(QIcon icon, QString title, FmPath* path):
   QStandardItem(icon, title),
   path_(path ? fm_path_ref(path) : NULL),
   fileInfo_(NULL),
-  icon_(NULL),
-  gicon_(NULL) {
+  icon_(NULL) {
   setEditable(false);
 }
 
@@ -72,8 +67,6 @@ PlacesModelItem::~PlacesModelItem() {
     g_object_unref(fileInfo_);
   if(icon_)
     fm_icon_unref(icon_);
-  if(gicon_)
-    g_object_unref(gicon_);
 }
 
 void PlacesModelItem::setPath(FmPath* path) {
@@ -88,10 +81,6 @@ void PlacesModelItem::setIcon(FmIcon* icon) {
   if(icon) {
     icon_ = fm_icon_ref(icon);
     QStandardItem::setIcon(IconTheme::icon(icon_));
-    if(gicon_) { // either FmIcon or emblemed GIcon
-      g_object_unref(gicon_);
-      gicon_ = NULL;
-    }
   }
   else {
     icon_ = NULL;
@@ -100,27 +89,6 @@ void PlacesModelItem::setIcon(FmIcon* icon) {
 }
 
 void PlacesModelItem::setIcon(GIcon* gicon) {
-  if(!iconSize_.isEmpty() && gicon && G_IS_EMBLEMED_ICON(gicon)) {
-    QIcon emblem = IconTheme::getEmblem(gicon);
-    if (!emblem.isNull()) {
-      if(gicon_)
-        g_object_unref(gicon_);
-      gicon_ = (GIcon*)g_object_ref(gicon);
-      QIcon icon = IconTheme::icon(gicon);
-      QPixmap pix = icon.pixmap(iconSize_);
-      QPainter p(&pix);
-      QSize emblemSize = pix.size() / 2;
-      QPoint emblemPos = pix.rect().bottomRight() - QPoint(emblemSize.width(), emblemSize.height());
-      p.drawPixmap(emblemPos, emblem.pixmap(emblemSize));
-      icon = QIcon(pix);
-      QStandardItem::setIcon(icon);
-      if(icon_) { // either FmIcon or emblemed GIcon
-        fm_icon_unref(icon_);
-        icon_ = NULL;
-      }
-      return;
-    }
-  }
   FmIcon* icon = gicon ? fm_icon_from_gicon(gicon) : NULL;
   setIcon(icon);
   fm_icon_unref(icon);
@@ -129,8 +97,6 @@ void PlacesModelItem::setIcon(GIcon* gicon) {
 void PlacesModelItem::updateIcon() {
   if(icon_)
     QStandardItem::setIcon(IconTheme::icon(icon_));
-  else if(gicon_)
-    setIcon(gicon_);
 }
 
 QVariant PlacesModelItem::data(int role) const {
@@ -156,8 +122,8 @@ PlacesModelBookmarkItem::PlacesModelBookmarkItem(FmBookmarkItem* bm_item):
   setEditable(true);
 }
 
-PlacesModelVolumeItem::PlacesModelVolumeItem(GVolume* volume, QSize size):
-  PlacesModelItem(size),
+PlacesModelVolumeItem::PlacesModelVolumeItem(GVolume* volume):
+  PlacesModelItem(),
   volume_(reinterpret_cast<GVolume*>(g_object_ref(volume))) {
   update();
   setEditable(false);
@@ -198,8 +164,8 @@ bool PlacesModelVolumeItem::isMounted() {
 }
 
 
-PlacesModelMountItem::PlacesModelMountItem(GMount* mount, QSize size):
-  PlacesModelItem(size),
+PlacesModelMountItem::PlacesModelMountItem(GMount* mount):
+  PlacesModelItem(),
   mount_(reinterpret_cast<GMount*>(mount)) {
   update();
   setEditable(false);

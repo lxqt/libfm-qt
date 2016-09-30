@@ -40,6 +40,11 @@ Q_OBJECT
 friend class PlacesView;
 public:
 
+  enum {
+    FileInfoRole = Qt::UserRole,
+    FmIconRole
+  };
+
   // QAction used for popup menus
   class ItemAction : public QAction {
   public:
@@ -56,7 +61,7 @@ public:
   };
 
 public:
-  explicit PlacesModel(QObject* parent = 0, QSize iconSize = QSize());
+  explicit PlacesModel(QObject* parent = 0);
   virtual ~PlacesModel();
 
   bool showTrash() {
@@ -74,12 +79,7 @@ public:
   }
   void setShowDesktop(bool show);
 
-  void setIconSize(QSize size) {
-    if (iconSize_ != size) {
-      iconSize_ = size;
-      updateIcons(); // for emblems
-    }
-  }
+  QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
 public Q_SLOTS:
   void updateIcons();
@@ -133,7 +133,6 @@ private:
   PlacesModelItem* applicationsItem;
   QIcon ejectIcon_;
   QList<GMount*> shadowedMounts_;
-  QSize iconSize_; // for setting the size hint of PlacesModelItem
 };
 
 }

@@ -41,6 +41,22 @@ public:
     return gridSize_;
   }
 
+  int fileInfoRole() {
+    return fileInfoRole_;
+  }
+
+  void setFileInfoRole(int role) {
+    fileInfoRole_ = role;
+  }
+
+  int fmIconRole() {
+    return fmIconRole_;
+  }
+
+  void setFmIconRole(int role) {
+    fmIconRole_ = role;
+  }
+
   virtual QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
   virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
@@ -52,6 +68,8 @@ private:
   QAbstractItemView* view_;
   QIcon symlinkIcon_;
   QSize gridSize_;
+  int fileInfoRole_;
+  int fmIconRole_;
 };
 
 }
