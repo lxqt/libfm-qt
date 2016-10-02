@@ -366,11 +366,15 @@ QMimeData* FolderModel::mimeData(const QModelIndexList& indexes) const {
   for(const auto &index : indexes) {
     FolderModelItem* item = itemFromIndex(index);
     if(item) {
-      FmPath* path = fm_file_info_get_path(item->info);
-      char* uri = fm_path_to_uri(path);
-      urilist.append(uri);
-      urilist.append('\n');
-      g_free(uri);
+      if(item->info) {
+        FmPath* path = fm_file_info_get_path(item->info);
+        if(path) {
+          char* uri = fm_path_to_uri(path);
+          urilist.append(uri);
+          urilist.append('\n');
+          g_free(uri);
+        }
+      }
     }
   }
   data->setData("text/uri-list", urilist);
