@@ -24,6 +24,7 @@ set(LIBFM_QT_LIB_SOVERSION "3")
 set(REQUIRED_QT_VERSION "5.2")
 set(REQUIRED_LIBFM_VERSION "1.2.0")
 set(REQUIRED_LIBMENUCACHE_VERSION "0.4.0")
+set(REQUIRED_LXQT_BUILD_TOOLS_VERSION "0.1.0")
 
 if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release)
@@ -34,8 +35,7 @@ find_package(Qt5LinguistTools "${REQUIRED_QT_VERSION}" REQUIRED)
 find_package(Qt5X11Extras "${REQUIRED_QT_VERSION}" REQUIRED)
 find_package(XCB REQUIRED)
 
-#Note: no run-time dependency on liblxqt, just a build dependency for lxqt_translate_ts/desktop
-find_package(lxqt REQUIRED)
+find_package(lxqt-build-tools "${REQUIRED_LXQT_BUILD_TOOLS_VERSION}" REQUIRED)
 
 find_package(PkgConfig)
 pkg_check_modules(SYSTEM_LIBS REQUIRED
