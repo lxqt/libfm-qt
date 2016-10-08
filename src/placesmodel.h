@@ -82,7 +82,6 @@ public:
   QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
 public Q_SLOTS:
-  void updateIcons();
   void updateTrash();
 
 protected:

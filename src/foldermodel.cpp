@@ -44,9 +44,6 @@ FolderModel::FolderModel() :
     NumOfColumns
 */
   thumbnailRefCounts.reserve(4);
-
-  // reload all icons when the icon theme is changed
-  connect(IconTheme::instance(), &IconTheme::changed, this, &FolderModel::updateIcons);
 }
 
 FolderModel::~FolderModel() {
@@ -546,13 +543,6 @@ QImage FolderModel::thumbnailFromIndex(const QModelIndex& index, int size) {
     }
   }
   return QImage();
-}
-
-void FolderModel::updateIcons() {
-  QList<FolderModelItem>::iterator it = items.begin();
-  for(;it != items.end(); ++it) {
-    (*it).updateIcon();
-  }
 }
 
 

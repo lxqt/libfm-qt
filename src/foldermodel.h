@@ -89,9 +89,6 @@ public:
 Q_SIGNALS:
   void thumbnailLoaded(const QModelIndex& index, int size);
 
-public Q_SLOTS:
-  void updateIcons();
-
 protected:
   static void onStartLoading(FmFolder* folder, gpointer user_data);
   static void onFinishLoading(FmFolder* folder, gpointer user_data);

@@ -17,6 +17,7 @@ set(libfm_SRCS
     bookmarkaction.cpp
     sidepane.cpp
     icontheme.cpp
+    iconengine.cpp
     filelauncher.cpp
     foldermodel.cpp
     foldermodelitem.cpp
