@@ -86,7 +86,7 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     fmicon = fm_file_info_get_icon(file);
   }
   QList<Icon> emblems = fmicon != nullptr ? IconTheme::emblems(fmicon) : QList<Icon>();
-  bool isSymlink(false);
+  bool isSymlink = file && fm_file_info_is_symlink(file);
   if(option.decorationPosition == QStyleOptionViewItem::Top ||
     option.decorationPosition == QStyleOptionViewItem::Bottom) {
     painter->save();
