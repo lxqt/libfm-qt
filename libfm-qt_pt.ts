@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pt">
+<TS version="2.1" language="pt">
 <context>
     <name>AppChooserDialog</name>
     <message>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>Utilizar a aplicação selecionada como pré-definida para este tipo de ficheiro</translation>
+        <translation>Utilizar a aplicação selecionada como padrão para este tipo de ficheiro</translation>
     </message>
 </context>
 <context>
@@ -210,12 +210,12 @@
     <message>
         <location filename="../../file-props.ui" line="285"/>
         <source>Permissions</source>
-        <translation>Pemissões</translation>
+        <translation>Permissões</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="300"/>
         <source>Ownership</source>
-        <translation>Propriedade</translation>
+        <translation>Titulariedade</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="324"/>
@@ -302,7 +302,7 @@
     <message>
         <location filename="../../appchooserdialog.cpp" line="262"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Selecione uma aplicação para abrir os ficheiros %1</translation>
+        <translation>Selecione a aplicação para abrir os ficheiros %1</translation>
     </message>
 </context>
 <context>
@@ -354,12 +354,12 @@
     <message>
         <location filename="../../dndactionmenu.cpp" line="33"/>
         <source>Copy here</source>
-        <translation>Copiar para aqui</translation>
+        <translation>Copiar aqui</translation>
     </message>
     <message>
         <location filename="../../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation>Mover para aqui</translation>
+        <translation>Mover aqui</translation>
     </message>
     <message>
         <location filename="../../dndactionmenu.cpp" line="37"/>
@@ -435,12 +435,12 @@ O que pretende fazer com o ficheiro?</translation>
     <message>
         <location filename="../../filemenu.cpp" line="371"/>
         <source>&amp;Delete</source>
-        <translation>&amp;Eliminar</translation>
+        <translation>&amp;Apagar</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="175"/>
         <source>Rename</source>
-        <translation>Mudar nome</translation>
+        <translation>Renomear</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="99"/>
@@ -495,7 +495,7 @@ O que pretende fazer com o ficheiro?</translation>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
         <translation>Alguns ficheiros não podem ser movidos para o lixo porque o sistema de ficheiros não suporta esta operação.
-Eliminar permanentemente?</translation>
+Deseja apagar permanentemente estes ficheiros?</translation>
     </message>
     <message>
         <location filename="../../fileoperation.cpp" line="262"/>
@@ -506,7 +506,7 @@ Eliminar permanentemente?</translation>
     <message>
         <location filename="../../fileoperation.cpp" line="263"/>
         <source>Do you want to delete the selected files?</source>
-        <translation>Quer mesmo eliminar o(s) ficheiro(s) selecionado(s)?</translation>
+        <translation>Quer mesmo apagar o(s) ficheiro(s) selecionado(s)?</translation>
     </message>
     <message>
         <location filename="../../fileoperation.cpp" line="279"/>
@@ -549,12 +549,12 @@ Eliminar permanentemente?</translation>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="53"/>
         <source>Delete Files</source>
-        <translation>Eliminar ficheiros</translation>
+        <translation>Apagar ficheiros</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="54"/>
         <source>Deleting the following files:</source>
-        <translation>A eliminar estes ficheiros:</translation>
+        <translation>A apagar estes ficheiros:</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="59"/>
@@ -579,7 +579,7 @@ Eliminar permanentemente?</translation>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="69"/>
         <source>Restore Trashed Files</source>
-        <translation>Restaurar ficheiros eliminados</translation>
+        <translation>Restaurar ficheiros apagados</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="70"/>
@@ -859,11 +859,11 @@ Eliminar permanentemente?</translation>
     </message>
     <message>
         <source>Rename</source>
-        <translation>Mudar nome</translation>
+        <translation>Renomear</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Eliminar</translation>
+        <translation>Apagar</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="350"/>
@@ -888,7 +888,7 @@ Eliminar permanentemente?</translation>
     <message>
         <location filename="../../placesview.cpp" line="380"/>
         <source>Rename Bookmark</source>
-        <translation>Mudar nome do marcador</translation>
+        <translation>Renomear marcador</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="383"/>
@@ -940,7 +940,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../../renamedialog.cpp" line="91"/>
         <source>&amp;Rename</source>
-        <translation>&amp;Mudar nome</translation>
+        <translation>&amp;Renomear</translation>
     </message>
 </context>
 <context>
@@ -1030,7 +1030,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../../utilities.cpp" line="120"/>
         <source>Rename File</source>
-        <translation>Mudar nome do ficheiro</translation>
+        <translation>Renomear ficheiro</translation>
     </message>
     <message>
         <location filename="../../utilities.cpp" line="121"/>
