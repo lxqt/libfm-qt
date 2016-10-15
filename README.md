@@ -10,8 +10,8 @@ libfm-qt is licensed under the terms of the [LGPLv2.1](https://www.gnu.org/licen
 
 ### Compiling source code
 
-Runtime dependencies are qtx11extras and libfm ≥ 1,2 (not all features are provided by libfm-qt yet).   
-Additional build dependencies are CMake and optionally Git to pull latest VCS checkouts. The localization files were outsourced to repository [lxqt-l10n](https://github.com/lxde/lxqt-l10n) so the corresponding dependencies are needed, too. Please refer to this repository's `README.md` for further information.   
+Runtime dependencies are Qt X11 Extras and libfm ≥ 1,2 (not all features are provided by libfm-qt yet).   
+Additional build dependencies are CMake, [lxqt-build-tools](https://github.com/lxde/lxqt-build-tools) and optionally Git to pull latest VCS checkouts. The localization files were outsourced to repository [lxqt-l10n](https://github.com/lxde/lxqt-l10n) so the corresponding dependencies are needed, too. Please refer to this repository's `README.md` for further information.   
 
 Code configuration is handled by CMake. CMake variable `CMAKE_INSTALL_PREFIX` has to be set to `/usr` on most operating systems, depending on the way library paths are dealt with on 64bit systems variables like `CMAKE_INSTALL_LIBDIR` may have to be set as well.   
 
