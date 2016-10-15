@@ -386,7 +386,8 @@
         <location filename="../../execfiledialog.cpp" line="39"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier texte &apos;%1&apos; semble être un script exécutable.
+Qu voulez-voulez vous en faire ?</translation>
     </message>
     <message>
         <location filename="../../execfiledialog.cpp" line="44"/>
@@ -429,7 +430,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../../filemenu.cpp" line="319"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortie</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="371"/>
@@ -459,7 +460,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../../filemenu.cpp" line="153"/>
         <source>&amp;Restore</source>
-        <translation>Restaurer</translation>
+        <translation>&amp;Restaurer</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="207"/>
@@ -705,7 +706,7 @@ Voulez-vous plutôt les supprimer ?</translation>
     <message>
         <location filename="../../foldermenu.cpp" line="141"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortie</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="166"/>
@@ -944,23 +945,23 @@ Modification : %2</translation>
         <location filename="../../sidepane.cpp" line="47"/>
         <location filename="../../sidepane.cpp" line="127"/>
         <source>Places</source>
-        <translation type="unfinished">Emplacements</translation>
+        <translation>Emplacements</translation>
     </message>
     <message>
         <location filename="../../sidepane.cpp" line="48"/>
         <location filename="../../sidepane.cpp" line="129"/>
         <source>Directory Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Arborescence des répertoires</translation>
     </message>
     <message>
         <location filename="../../sidepane.cpp" line="137"/>
         <source>Shows list of common places, devices, and bookmarks in sidebar</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher la liste des principaux emplacements, périphériques et raccourcis dans le panneau latéral</translation>
     </message>
     <message>
         <location filename="../../sidepane.cpp" line="139"/>
         <source>Shows tree of directories in sidebar</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher l&apos;arborescence des répertoires dans le panneau latéral</translation>
     </message>
 </context>
 <context>
@@ -1121,17 +1122,17 @@ Modification : %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Recherche de fichiers</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom/Emplacement</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Motifs dans le nom des fichiers :</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="41"/>
@@ -1146,32 +1147,32 @@ Modification : %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Utiliser les expressions rationnelles</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="65"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emplacements de la recherche :</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="78"/>
         <source>&amp;Add</source>
-        <translation>&amp;Ajout</translation>
+        <translation>&amp;Ajouter</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="90"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Supprimer</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="119"/>
         <source>Search in sub directories</source>
-        <translation type="unfinished"></translation>
+        <translation>Recherche dans les sous-répertoires</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="126"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechercher les fichiers cachés</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="137"/>
@@ -1181,17 +1182,17 @@ Modification : %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="143"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechercher uniquement les types de fichiers suivants :</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="149"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers texte</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="156"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers image</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="163"/>
@@ -1201,7 +1202,7 @@ Modification : %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="170"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers vidéo</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="177"/>
@@ -1231,12 +1232,12 @@ Modification : %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="230"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Utiliser les expressions rationelles</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="254"/>
         <source>Properties</source>
-        <translation type="unfinished">Propriétés</translation>
+        <translation>Propriétés</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="260"/>
@@ -1246,7 +1247,7 @@ Modification : %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="289"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Plus grands que :</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="303"/>
@@ -1275,12 +1276,12 @@ Modification : %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="268"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Plus petits que :</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="364"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Date de dernièremodification :</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="372"/>
@@ -1290,7 +1291,7 @@ Modification : %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="379"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Plus ancien que :</translation>
     </message>
 </context>
 </TS>
