@@ -57,11 +57,6 @@ include(LXQtCompilerSettings NO_POLICY_SCOPE)
 
 add_definitions(-DQT_NO_KEYWORDS)
 
-# set visibility to hidden to hide symbols, unless they're exported manually in the code
-set(CMAKE_CXX_VISIBILITY_PRESET hidden)
-set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
-
-
 set(CMAKE_AUTOMOC TRUE)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
