@@ -94,7 +94,7 @@ add_library(${LIBFM_QT_LIBRARY_NAME} SHARED
 
 # only turn on custom actions support if it is enabled in libfm.
 if(EXISTS "${LIBFM_INCLUDEDIR}/libfm/fm-actions.h")
-    set_property(TARGET ${LIBFM_QT_LIBRARY_NAME} APPEND PROPERTY COMPILE_DEFINITIONS CUSTOM_ACTIONS)
+    target_compile_definitions(${LIBFM_QT_LIBRARY_NAME} PRIVATE CUSTOM_ACTIONS)
 endif()
 
 install(EXPORT
