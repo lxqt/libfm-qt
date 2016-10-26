@@ -55,8 +55,4 @@ if (NOT TARGET @LIBFM_QT_LIBRARY_NAME@)
             "${PKG_FM_INCLUDE_DIRS}"
             "${PKG_MENUCACHE_INCLUDE_DIRS}"
     )
-    set_property(TARGET "@LIBFM_QT_LIBRARY_NAME@" APPEND PROPERTY
-        INTERFACE_COMPILE_DEFINITIONS
-            "LIBFM_DATA_DIR=\"${PKG_FM_PREFIX}/share/libfm\""
-    )
 endif()
