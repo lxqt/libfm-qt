@@ -72,11 +72,14 @@ set(libfm_UIS
 
 qt5_wrap_ui(libfm_UIS_H ${libfm_UIS})
 
+
+set(LIBFM_QT_DATA_DIR "${CMAKE_INSTALL_FULL_DATADIR}/libfm-qt")
+
 # add translation for libfm-qt
 lxqt_translate_ts(QM_FILES
     UPDATE_TRANSLATIONS ${UPDATE_TRANSLATIONS}
     SOURCES ${libfm_SRCS} ${libfm_UIS}
-    INSTALL_DIR "${CMAKE_INSTALL_DATADIR}/libfm-qt/translations"
+    INSTALL_DIR "${LIBFM_QT_DATA_DIR}/translations"
     PULL_TRANSLATIONS ${PULL_TRANSLATIONS}
     CLEAN_TRANSLATIONS ${CLEAN_TRANSLATIONS}
     TRANSLATIONS_REPO ${TRANSLATIONS_REPO}
@@ -89,15 +92,9 @@ add_library(${LIBFM_QT_LIBRARY_NAME} SHARED
     ${QM_FILES}
 )
 
-set_property(
-    TARGET ${LIBFM_QT_LIBRARY_NAME} APPEND
-    PROPERTY COMPILE_DEFINITIONS
-    LIBFM_DATA_DIR="${CMAKE_INSTALL_FULL_DATADIR}/libfm-qt"
-)
-
 # only turn on custom actions support if it is enabled in libfm.
 if(EXISTS "${LIBFM_INCLUDEDIR}/libfm/fm-actions.h")
-    set_property(TARGET ${LIBFM_QT_LIBRARY_NAME} APPEND PROPERTY COMPILE_DEFINITIONS CUSTOM_ACTIONS)
+    target_compile_definitions(${LIBFM_QT_LIBRARY_NAME} PRIVATE CUSTOM_ACTIONS)
 endif()
 
 install(EXPORT
@@ -125,6 +122,11 @@ target_include_directories(${LIBFM_QT_LIBRARY_NAME}
     PRIVATE "${LIB_XCB_INDLUDE_DIRS}"
     PRIVATE "${Qt5Gui_PRIVATE_INCLUDE_DIRS}"
     INTERFACE "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)
+
+target_compile_definitions(${LIBFM_QT_LIBRARY_NAME}
+    PRIVATE "LIBFM_QT_DATA_DIR=\"${LIBFM_QT_DATA_DIR}\""
+    PUBLIC "QT_NO_KEYWORDS"
 )
 
 install(FILES
