@@ -47,6 +47,8 @@ pkg_check_modules(SYSTEM_LIBS REQUIRED
 pkg_check_modules(LIBFM REQUIRED libfm>="${REQUIRED_LIBFM_VERSION}")
 pkg_check_modules(LIBMENUCACHE REQUIRED libmenu-cache>="${REQUIRED_LIBMENUCACHE_VERSION}")
 
+message(STATUS "Building ${PROJECT_NAME} with Qt ${Qt5Core_VERSION_STRING}")
+
 option(UPDATE_TRANSLATIONS "Update source translation translations/*.ts files" OFF)
 include(GNUInstallDirs)
 include(GenerateExportHeader)
