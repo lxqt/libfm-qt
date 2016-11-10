@@ -6,12 +6,6 @@ include_directories(
     "${XCB_INCLUDE_DIRS}"
 )
 
-link_directories(
-    "${LIBFM_LIBRARY_DIRS}"
-    "${LIBMENUCACHE_LIBRARY_DIRS}"
-    "${SYSTEM_LIBS_LIBRARY_DIRS}"
-)
-
 set(libfm_SRCS
     libfmqt.cpp
     bookmarkaction.cpp
