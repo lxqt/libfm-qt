@@ -45,7 +45,7 @@ pkg_check_modules(SYSTEM_LIBS REQUIRED
 )
 
 find_package(Fm "${REQUIRED_LIBFM_VERSION}" REQUIRED)
-pkg_check_modules(LIBMENUCACHE REQUIRED libmenu-cache>="${REQUIRED_LIBMENUCACHE_VERSION}")
+find_package(MenuCache "${REQUIRED_LIBMENUCACHE_VERSION}" REQUIRED)
 
 message(STATUS "Building ${PROJECT_NAME} with Qt ${Qt5Core_VERSION_STRING}")
 
