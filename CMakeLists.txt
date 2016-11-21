@@ -44,7 +44,7 @@ pkg_check_modules(SYSTEM_LIBS REQUIRED
     gio-unix-2.0
 )
 
-pkg_check_modules(LIBFM REQUIRED libfm>="${REQUIRED_LIBFM_VERSION}")
+find_package(Fm "${REQUIRED_LIBFM_VERSION}" REQUIRED)
 pkg_check_modules(LIBMENUCACHE REQUIRED libmenu-cache>="${REQUIRED_LIBMENUCACHE_VERSION}")
 
 message(STATUS "Building ${PROJECT_NAME} with Qt ${Qt5Core_VERSION_STRING}")

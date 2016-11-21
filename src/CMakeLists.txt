@@ -1,13 +1,12 @@
 include_directories(
-    "${LIBFM_INCLUDE_DIRS}"
-    "${LIBFM_INCLUDEDIR}/libfm" # to workaround incorrect #include in fm-actions.
+    "${FM_INCLUDE_DIR}"
+    "${FM_INCLUDE_DIR}/libfm" # to workaround incorrect #include in fm-actions.
     "${LIBMENUCACHE_INCLUDE_DIRS}"
     "${SYSTEM_LIBS_INCLUDE_DIRS}"
     "${XCB_INCLUDE_DIRS}"
 )
 
 link_directories(
-    "${LIBFM_LIBRARY_DIRS}"
     "${LIBMENUCACHE_LIBRARY_DIRS}"
     "${SYSTEM_LIBS_LIBRARY_DIRS}"
 )
@@ -94,7 +93,7 @@ add_library(${LIBFM_QT_LIBRARY_NAME} SHARED
 )
 
 # only turn on custom actions support if it is enabled in libfm.
-if(EXISTS "${LIBFM_INCLUDEDIR}/libfm/fm-actions.h")
+if(EXISTS "${FM_INCLUDE_DIR}/libfm/fm-actions.h")
     target_compile_definitions(${LIBFM_QT_LIBRARY_NAME} PRIVATE CUSTOM_ACTIONS)
 endif()
 
@@ -107,7 +106,7 @@ install(EXPORT
 target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
     Qt5::Widgets
     Qt5::X11Extras
-    ${LIBFM_LIBRARIES}
+    ${FM_LIBRARIES}
     ${LIBMENUCACHE_LIBRARIES}
     ${SYSTEM_LIBS_LIBRARIES}
     ${XCB_LIBRARIES}
