@@ -138,7 +138,7 @@ void PathBar::setPath(Path path) {
   Path pathElement = path;
   // create new buttons for the new path
   while(!pathElement.isNull()) {
-    qDebug("%s", pathElement.displayName(false));
+    // qDebug("%s", pathElement.displayName(false));
     PathButton* btn = new PathButton(pathElement, buttonsWidget_);
     btn->show();
     connect(btn, &QPushButton::toggled, this, &PathBar::onButtonToggled);
