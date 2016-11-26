@@ -35,6 +35,7 @@ public:
       setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
       setCheckable(true);
       setAutoExclusive(true);
+      setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 
       char* label = pathElement.displayBasename();
       setText(label);
