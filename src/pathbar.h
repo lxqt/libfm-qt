@@ -46,6 +46,7 @@ public:
 
 Q_SIGNALS:
   void chdir(FmPath* path);
+  void editingFinished();
 
 public Q_SLOTS:
   void openEditor();

@@ -222,6 +222,8 @@ void PathBar::closeEditor() {
   tempPathEdit_->deleteLater();
   tempPathEdit_ = nullptr;
   updateScrollButtonVisibility();
+
+  Q_EMIT editingFinished();
 }
 
 void PathBar::copyPath() {
