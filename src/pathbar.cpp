@@ -25,11 +25,20 @@
 #include <QScrollBar>
 #include <QHBoxLayout>
 #include <QResizeEvent>
+#include <QContextMenuEvent>
+#include <QMenu>
+#include <QClipboard>
+#include <QApplication>
 #include <QDebug>
+#include "pathedit.h"
+
 
 namespace Fm {
 
-PathBar::PathBar(QWidget *parent): QWidget(parent) {
+PathBar::PathBar(QWidget *parent):
+  QWidget(parent),
+  tempPathEdit_(nullptr) {
+
   QHBoxLayout* topLayout = new QHBoxLayout(this);
   topLayout->setContentsMargins(0, 0, 0, 0);
   topLayout->setSpacing(0);
@@ -71,7 +80,36 @@ PathBar::PathBar(QWidget *parent): QWidget(parent) {
 
 void PathBar::resizeEvent(QResizeEvent* event) {
   QWidget::resizeEvent(event);
-  bool showScrollers = (buttonsLayout_->sizeHint().width() > event->size().width());
+  updateScrollButtonVisibility();
+}
+
+void PathBar::mousePressEvent(QMouseEvent *event) {
+  QWidget::mousePressEvent(event);
+  if(event->button() == Qt::LeftButton)
+    openEditor();
+}
+
+void PathBar::contextMenuEvent(QContextMenuEvent *event) {
+  QMenu* menu = new QMenu(this);
+  connect(menu, &QMenu::aboutToHide, menu, &QMenu::deleteLater);
+
+  QAction* action = menu->addAction(tr("&Edit Path"));
+  connect(action, &QAction::triggered, this, &PathBar::openEditor);
+
+  action = menu->addAction(tr("&Copy Path"));
+  connect(action, &QAction::triggered, this, &PathBar::copyPath);
+
+  menu->popup(mapToGlobal(event->pos()));
+}
+
+void PathBar::updateScrollButtonVisibility() {
+  bool showScrollers;
+  if(tempPathEdit_ != nullptr) {
+    showScrollers = false;
+  }
+  else {
+    showScrollers = (buttonsLayout_->sizeHint().width() > width());
+  }
   leftArrow_->setVisible(showScrollers);
   rightArrow_->setVisible(showScrollers);
 }
@@ -156,6 +194,45 @@ void PathBar::setPath(Path path) {
   // we don't want to scroll vertically. make the scroll area fit the height of the buttons
   // FIXME: this is a little bit hackish :-(
   scrollArea_->setFixedHeight(buttonsLayout_->sizeHint().height());
+  updateScrollButtonVisibility();
+}
+
+void PathBar::openEditor() {
+  if(tempPathEdit_ == nullptr) {
+    tempPathEdit_ = new PathEdit(this);
+    layout()->replaceWidget(scrollArea_, tempPathEdit_, Qt::FindDirectChildrenOnly);
+    scrollArea_->hide();
+    char* pathStr = currentPath_.toStr();
+    tempPathEdit_->setText(pathStr);
+    g_free(pathStr);
+
+    connect(tempPathEdit_, &PathEdit::returnPressed, this, &PathBar::onReturnPressed);
+    connect(tempPathEdit_, &PathEdit::editingFinished, this, &PathBar::closeEditor);
+  }
+  tempPathEdit_->setFocus();
+}
+
+void PathBar::closeEditor() {
+  if(tempPathEdit_ == nullptr)
+    return;
+  layout()->replaceWidget(tempPathEdit_, scrollArea_, Qt::FindDirectChildrenOnly);
+  scrollArea_->show();
+
+  tempPathEdit_->deleteLater();
+  tempPathEdit_ = nullptr;
+  updateScrollButtonVisibility();
+}
+
+void PathBar::copyPath() {
+  char* pathStr = currentPath_.toStr();
+  QApplication::clipboard()->setText(pathStr);
+  g_free(pathStr);
+}
+
+void PathBar::onReturnPressed() {
+  QByteArray pathStr = tempPathEdit_->text().toLocal8Bit();
+  Path path = Path::newForDisplayName(pathStr.constData());
+  setPath(path);
 }
 
 

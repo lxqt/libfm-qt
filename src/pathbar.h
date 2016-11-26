@@ -31,6 +31,8 @@ class QHBoxLayout;
 
 namespace Fm {
 
+class PathEdit;
+
 class LIBFM_QT_API PathBar: public QWidget {
   Q_OBJECT
 public:
@@ -46,11 +48,22 @@ Q_SIGNALS:
   void chdir(FmPath* path);
 
 public Q_SLOTS:
+  void openEditor();
+  void closeEditor();
+  void copyPath();
+
+private Q_SLOTS:
   void onButtonToggled(bool checked);
   void onScrollButtonClicked();
+  void onReturnPressed();
 
 protected:
   void resizeEvent(QResizeEvent* event);
+  void mousePressEvent(QMouseEvent *event);
+  void contextMenuEvent(QContextMenuEvent *event);
+
+private:
+  void updateScrollButtonVisibility();
 
 private:
   QToolButton* leftArrow_;
@@ -58,6 +71,7 @@ private:
   QScrollArea* scrollArea_;
   QWidget* buttonsWidget_;
   QHBoxLayout* buttonsLayout_;
+  PathEdit* tempPathEdit_;
 
   Path currentPath_;   // currently active path
 };
