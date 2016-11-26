@@ -210,6 +210,7 @@ void PathBar::openEditor() {
     connect(tempPathEdit_, &PathEdit::editingFinished, this, &PathBar::closeEditor);
   }
   tempPathEdit_->setFocus();
+  tempPathEdit_->selectAll();
 }
 
 void PathBar::closeEditor() {
