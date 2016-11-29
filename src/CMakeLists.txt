@@ -1,13 +1,8 @@
 include_directories(
-    "${FM_INCLUDE_DIR}"
+    "${FM_INCLUDE_DIRS}"
     "${FM_INCLUDE_DIR}/libfm" # to workaround incorrect #include in fm-actions.
-    "${MENUCACHE_INCLUDE_DIR}"
-    "${SYSTEM_LIBS_INCLUDE_DIRS}"
+    "${MENUCACHE_INCLUDE_DIRS}"
     "${XCB_INCLUDE_DIRS}"
-)
-
-link_directories(
-    "${SYSTEM_LIBS_LIBRARY_DIRS}"
 )
 
 set(libfm_SRCS
@@ -107,7 +102,6 @@ target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
     Qt5::X11Extras
     ${FM_LIBRARIES}
     ${MENUCACHE_LIBRARIES}
-    ${SYSTEM_LIBS_LIBRARIES}
     ${XCB_LIBRARIES}
 )
 
