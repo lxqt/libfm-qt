@@ -47,5 +47,8 @@ pkg_check_modules(PKG_FM REQUIRED libfm>=@REQUIRED_LIBFM_VERSION@)
 pkg_check_modules(PKG_MENUCACHE REQUIRED libmenu-cache>=@REQUIRED_LIBMENUCACHE_VERSION@)
 
 if (NOT TARGET @LIBFM_QT_LIBRARY_NAME@)
+    if (POLICY CMP0024)
+        cmake_policy(SET CMP0024 NEW)
+    endif()
     include("${CMAKE_CURRENT_LIST_DIR}/@LIBFM_QT_LIBRARY_NAME@-targets.cmake")
 endif()
