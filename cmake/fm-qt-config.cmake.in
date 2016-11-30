@@ -33,19 +33,6 @@ endif()
 
 include(CMakeFindDependencyMacro)
 
-find_dependency(Qt5Widgets "@REQUIRED_QT_VERSION@")
-find_dependency(Qt5X11Extras "@REQUIRED_QT_VERSION@")
-
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(PKG_GLIB glib-2.0)
-pkg_check_modules(PKG_GIO
-    gio-2.0
-    gio-unix-2.0
-)
-
-pkg_check_modules(PKG_FM REQUIRED libfm>=@REQUIRED_LIBFM_VERSION@)
-pkg_check_modules(PKG_MENUCACHE REQUIRED libmenu-cache>=@REQUIRED_LIBMENUCACHE_VERSION@)
-
 if (NOT TARGET @LIBFM_QT_LIBRARY_NAME@)
     if (POLICY CMP0024)
         cmake_policy(SET CMP0024 NEW)
