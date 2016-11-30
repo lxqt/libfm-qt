@@ -1,10 +1,3 @@
-include_directories(
-    "${FM_INCLUDE_DIRS}"
-    "${FM_INCLUDE_DIR}/libfm" # to workaround incorrect #include in fm-actions.
-    "${MENUCACHE_INCLUDE_DIRS}"
-    "${XCB_INCLUDE_DIRS}"
-)
-
 set(libfm_SRCS
     libfmqt.cpp
     bookmarkaction.cpp
@@ -112,9 +105,14 @@ set_target_properties(${LIBFM_QT_LIBRARY_NAME} PROPERTIES
 )
 
 target_include_directories(${LIBFM_QT_LIBRARY_NAME}
-    PRIVATE "${LIB_XCB_INDLUDE_DIRS}"
     PRIVATE "${Qt5Gui_PRIVATE_INCLUDE_DIRS}"
-    INTERFACE "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+    PUBLIC
+        "${FM_INCLUDE_DIRS}"
+        "${FM_INCLUDE_DIR}/libfm" # to workaround incorrect #include in fm-actions.
+        "${MENUCACHE_INCLUDE_DIRS}"
+        "${XCB_INCLUDE_DIRS}"
+    INTERFACE
+        "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
 target_compile_definitions(${LIBFM_QT_LIBRARY_NAME}
