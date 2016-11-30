@@ -61,6 +61,7 @@ qt5_wrap_ui(libfm_UIS_H ${libfm_UIS})
 
 
 set(LIBFM_QT_DATA_DIR "${CMAKE_INSTALL_FULL_DATADIR}/libfm-qt")
+set(LIBFM_QT_INTREE_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/include")
 
 # add translation for libfm-qt
 lxqt_translate_ts(QM_FILES
@@ -113,6 +114,7 @@ target_include_directories(${LIBFM_QT_LIBRARY_NAME}
         "${XCB_INCLUDE_DIRS}"
     INTERFACE
         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+        "$<BUILD_INTERFACE:${LIBFM_QT_INTREE_INCLUDE_DIR}>"
 )
 
 target_compile_definitions(${LIBFM_QT_LIBRARY_NAME}
@@ -137,14 +139,20 @@ generate_export_header(${LIBFM_QT_LIBRARY_NAME}
     EXPORT_MACRO_NAME LIBFM_QT_API
 )
 
+# InTree build
+file(COPY ${libfm_HS} ${CMAKE_CURRENT_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}_export.h
+    DESTINATION "${LIBFM_QT_INTREE_INCLUDE_DIR}/libfm-qt"
+)
+
+
 configure_package_config_file(
     "${PROJECT_SOURCE_DIR}/cmake/fm-qt-config.cmake.in"
-    "${PROJECT_BINARY_DIR}/install/${LIBFM_QT_LIBRARY_NAME}-config.cmake"
+    "${CMAKE_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}-config.cmake"
     INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${LIBFM_QT_LIBRARY_NAME}"
 )
 
 install(FILES
-    "${PROJECT_BINARY_DIR}/install/${LIBFM_QT_LIBRARY_NAME}-config.cmake"
+    "${CMAKE_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}-config.cmake"
     DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${LIBFM_QT_LIBRARY_NAME}"
     COMPONENT Devel
 )
