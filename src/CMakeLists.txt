@@ -1,17 +1,3 @@
-include_directories(
-    "${LIBFM_INCLUDE_DIRS}"
-    "${LIBFM_INCLUDEDIR}/libfm" # to workaround incorrect #include in fm-actions.
-    "${LIBMENUCACHE_INCLUDE_DIRS}"
-    "${SYSTEM_LIBS_INCLUDE_DIRS}"
-    "${XCB_INCLUDE_DIRS}"
-)
-
-link_directories(
-    "${LIBFM_LIBRARY_DIRS}"
-    "${LIBMENUCACHE_LIBRARY_DIRS}"
-    "${SYSTEM_LIBS_LIBRARY_DIRS}"
-)
-
 set(libfm_SRCS
     libfmqt.cpp
     bookmarkaction.cpp
@@ -75,6 +61,7 @@ qt5_wrap_ui(libfm_UIS_H ${libfm_UIS})
 
 
 set(LIBFM_QT_DATA_DIR "${CMAKE_INSTALL_FULL_DATADIR}/libfm-qt")
+set(LIBFM_QT_INTREE_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/include")
 
 # add translation for libfm-qt
 lxqt_translate_ts(QM_FILES
@@ -94,7 +81,7 @@ add_library(${LIBFM_QT_LIBRARY_NAME} SHARED
 )
 
 # only turn on custom actions support if it is enabled in libfm.
-if(EXISTS "${LIBFM_INCLUDEDIR}/libfm/fm-actions.h")
+if(EXISTS "${FM_INCLUDE_DIR}/libfm/fm-actions.h")
     target_compile_definitions(${LIBFM_QT_LIBRARY_NAME} PRIVATE CUSTOM_ACTIONS)
 endif()
 
@@ -107,9 +94,8 @@ install(EXPORT
 target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
     Qt5::Widgets
     Qt5::X11Extras
-    ${LIBFM_LIBRARIES}
-    ${LIBMENUCACHE_LIBRARIES}
-    ${SYSTEM_LIBS_LIBRARIES}
+    ${FM_LIBRARIES}
+    ${MENUCACHE_LIBRARIES}
     ${XCB_LIBRARIES}
 )
 
@@ -120,9 +106,15 @@ set_target_properties(${LIBFM_QT_LIBRARY_NAME} PROPERTIES
 )
 
 target_include_directories(${LIBFM_QT_LIBRARY_NAME}
-    PRIVATE "${LIB_XCB_INDLUDE_DIRS}"
     PRIVATE "${Qt5Gui_PRIVATE_INCLUDE_DIRS}"
-    INTERFACE "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+    PUBLIC
+        "${FM_INCLUDE_DIRS}"
+        "${FM_INCLUDE_DIR}/libfm" # to workaround incorrect #include in fm-actions.
+        "${MENUCACHE_INCLUDE_DIRS}"
+        "${XCB_INCLUDE_DIRS}"
+    INTERFACE
+        "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+        "$<BUILD_INTERFACE:${LIBFM_QT_INTREE_INCLUDE_DIR}>"
 )
 
 target_compile_definitions(${LIBFM_QT_LIBRARY_NAME}
@@ -147,14 +139,20 @@ generate_export_header(${LIBFM_QT_LIBRARY_NAME}
     EXPORT_MACRO_NAME LIBFM_QT_API
 )
 
+# InTree build
+file(COPY ${libfm_HS} ${CMAKE_CURRENT_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}_export.h
+    DESTINATION "${LIBFM_QT_INTREE_INCLUDE_DIR}/libfm-qt"
+)
+
+
 configure_package_config_file(
     "${PROJECT_SOURCE_DIR}/cmake/fm-qt-config.cmake.in"
-    "${PROJECT_BINARY_DIR}/install/${LIBFM_QT_LIBRARY_NAME}-config.cmake"
+    "${CMAKE_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}-config.cmake"
     INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${LIBFM_QT_LIBRARY_NAME}"
 )
 
 install(FILES
-    "${PROJECT_BINARY_DIR}/install/${LIBFM_QT_LIBRARY_NAME}-config.cmake"
+    "${CMAKE_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}-config.cmake"
     DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${LIBFM_QT_LIBRARY_NAME}"
     COMPONENT Devel
 )
