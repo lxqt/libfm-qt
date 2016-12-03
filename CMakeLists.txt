@@ -33,11 +33,11 @@ endif()
 find_package(Qt5Widgets "${REQUIRED_QT_VERSION}" REQUIRED)
 find_package(Qt5LinguistTools "${REQUIRED_QT_VERSION}" REQUIRED)
 find_package(Qt5X11Extras "${REQUIRED_QT_VERSION}" REQUIRED)
-find_package(XCB REQUIRED)
 
 find_package(lxqt-build-tools "${REQUIRED_LXQT_BUILD_TOOLS_VERSION}" REQUIRED)
 find_package(Fm "${REQUIRED_LIBFM_VERSION}" REQUIRED)
 find_package(MenuCache "${REQUIRED_LIBMENUCACHE_VERSION}" REQUIRED)
+find_package(XCB REQUIRED)
 
 message(STATUS "Building ${PROJECT_NAME} with Qt ${Qt5Core_VERSION_STRING}")
 
