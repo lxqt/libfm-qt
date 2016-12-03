@@ -21,7 +21,6 @@
 #define FM_PATHBAR_P_H
 
 #include <QToolButton>
-#include <QApplication>
 #include <QStyle>
 #include "path.h"
 
@@ -39,7 +38,7 @@ public:
       setAutoExclusive(true);
       setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
       /* respect the toolbar icon size (can be set with some styles) */
-      int icnSize = qApp->style()->pixelMetric(QStyle::PM_ToolBarIconSize);
+      int icnSize = style()->pixelMetric(QStyle::PM_ToolBarIconSize);
       setIconSize(QSize(icnSize, icnSize));
 
       char* label = pathElement.displayBasename();
