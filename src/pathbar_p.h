@@ -21,6 +21,8 @@
 #define FM_PATHBAR_P_H
 
 #include <QToolButton>
+#include <QApplication>
+#include <QStyle>
 #include "path.h"
 
 namespace Fm {
@@ -32,10 +34,13 @@ public:
     QToolButton(parent),
     pathElement_(pathElement) {
 
-      setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+      setSizePolicy(QSizePolicy::Fixed, QSizePolicy::MinimumExpanding);
       setCheckable(true);
       setAutoExclusive(true);
       setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+      /* respect the toolbar icon size (can be set with some styles) */
+      int icnSize = qApp->style()->pixelMetric(QStyle::PM_ToolBarIconSize);
+      setIconSize(QSize(icnSize, icnSize));
 
       char* label = pathElement.displayBasename();
       setText(label);
