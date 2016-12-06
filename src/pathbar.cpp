@@ -239,8 +239,10 @@ void PathBar::closeEditor() {
     return;
   layout()->replaceWidget(tempPathEdit_, scrollArea_, Qt::FindDirectChildrenOnly);
   scrollArea_->show();
+  if(buttonsLayout_->sizeHint().width() > width()) {
     leftArrow_->setVisible(true);
     rightArrow_->setVisible(true);
+  }
 
   tempPathEdit_->deleteLater();
   tempPathEdit_ = nullptr;
