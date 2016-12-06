@@ -145,10 +145,12 @@ void PathBar::updateScrollButtonVisibility() {
   }
   leftArrow_->setVisible(showScrollers);
   rightArrow_->setVisible(showScrollers);
-  QScrollBar* sb = scrollArea_->horizontalScrollBar();
-  int value = sb->value();
-  leftArrow_->setEnabled(value != sb->minimum());
-  rightArrow_->setEnabled(value != sb->maximum());
+  if(showScrollers) {
+    QScrollBar* sb = scrollArea_->horizontalScrollBar();
+    int value = sb->value();
+    leftArrow_->setEnabled(value != sb->minimum());
+    rightArrow_->setEnabled(value != sb->maximum());
+  }
 }
 
 void PathBar::onButtonToggled(bool checked) {
@@ -277,9 +279,11 @@ void PathBar::onReturnPressed() {
 }
 
 void PathBar::setArrowEnabledState(int value) {
-  QScrollBar* sb = scrollArea_->horizontalScrollBar();
-  leftArrow_->setEnabled(value != sb->minimum());
-  rightArrow_->setEnabled(value != sb->maximum());
+  if(buttonsLayout_->sizeHint().width() > width()) {
+    QScrollBar* sb = scrollArea_->horizontalScrollBar();
+    leftArrow_->setEnabled(value != sb->minimum());
+    rightArrow_->setEnabled(value != sb->maximum());
+  }
 }
 
 
