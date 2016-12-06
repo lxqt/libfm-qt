@@ -58,9 +58,11 @@ private Q_SLOTS:
   void onButtonToggled(bool checked);
   void onScrollButtonClicked();
   void onReturnPressed();
+  void setArrowEnabledState(int value);
 
 protected:
   void resizeEvent(QResizeEvent* event);
+  void wheelEvent (QWheelEvent* event);
   void mousePressEvent(QMouseEvent *event);
   void contextMenuEvent(QContextMenuEvent *event);
 
