@@ -42,11 +42,15 @@ PathBar::PathBar(QWidget *parent):
   QHBoxLayout* topLayout = new QHBoxLayout(this);
   topLayout->setContentsMargins(0, 0, 0, 0);
   topLayout->setSpacing(0);
+  bool rtl(layoutDirection() == Qt::RightToLeft);
 
   // left arrow (scroll to left)
   leftArrow_ = new QToolButton(this);
-  leftArrow_->setArrowType(Qt::LeftArrow);
-  leftArrow_->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
+  if(rtl)
+    leftArrow_->setArrowType(Qt::RightArrow);
+  else
+    leftArrow_->setArrowType(Qt::LeftArrow);
+  leftArrow_->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
   connect(leftArrow_, &QToolButton::clicked, this, &PathBar::onScrollButtonClicked);
   topLayout->addWidget(leftArrow_);
 
@@ -58,12 +62,16 @@ PathBar::PathBar(QWidget *parent):
   scrollArea_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   scrollArea_->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
   scrollArea_->verticalScrollBar()->setDisabled(true);
+  connect(scrollArea_->horizontalScrollBar(), &QAbstractSlider::valueChanged, this, &PathBar::setArrowEnabledState);
   topLayout->addWidget(scrollArea_, 1); // stretch factor=1, make it expandable
 
   // right arrow (scroll to right)
   rightArrow_ = new QToolButton(this);
-  rightArrow_->setArrowType(Qt::RightArrow);
-  rightArrow_->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
+  if(rtl)
+    rightArrow_->setArrowType(Qt::LeftArrow);
+  else
+    rightArrow_->setArrowType(Qt::RightArrow);
+  rightArrow_->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
   connect(rightArrow_, &QToolButton::clicked, this, &PathBar::onScrollButtonClicked);
   topLayout->addWidget(rightArrow_);
 
@@ -81,6 +89,21 @@ PathBar::PathBar(QWidget *parent):
 void PathBar::resizeEvent(QResizeEvent* event) {
   QWidget::resizeEvent(event);
   updateScrollButtonVisibility();
+}
+
+void PathBar::wheelEvent(QWheelEvent* event) {
+  QWidget::wheelEvent(event);
+  QAbstractSlider::SliderAction action = QAbstractSlider::SliderNoAction;
+  int vDelta = event->angleDelta().y();
+  if(vDelta > 0) {
+    if(leftArrow_->isEnabled())
+      action = QAbstractSlider::SliderSingleStepSub;
+  }
+  else if(vDelta < 0) {
+    if(rightArrow_->isEnabled())
+      action = QAbstractSlider::SliderSingleStepAdd;
+  }
+  scrollArea_->horizontalScrollBar()->triggerAction(action);
 }
 
 void PathBar::mousePressEvent(QMouseEvent *event) {
@@ -112,6 +135,10 @@ void PathBar::updateScrollButtonVisibility() {
   }
   leftArrow_->setVisible(showScrollers);
   rightArrow_->setVisible(showScrollers);
+  QScrollBar* sb = scrollArea_->horizontalScrollBar();
+  int value = sb->value();
+  leftArrow_->setEnabled(value != sb->minimum());
+  rightArrow_->setEnabled(value != sb->maximum());
 }
 
 void PathBar::onButtonToggled(bool checked) {
@@ -127,19 +154,11 @@ void PathBar::onButtonToggled(bool checked) {
 
 void PathBar::onScrollButtonClicked() {
   QToolButton* btn = static_cast<QToolButton*>(sender());
-  QAbstractSlider::SliderAction action;
-  if(layoutDirection() == Qt::RightToLeft) { // RTL layout
-    if(btn == leftArrow_)
-      action = QAbstractSlider::SliderSingleStepAdd;
-    else
-      action = QAbstractSlider::SliderSingleStepSub;
-  }
-  else { // LTL layout
-    if(btn == rightArrow_)
-      action = QAbstractSlider::SliderSingleStepAdd;
-    else
-      action = QAbstractSlider::SliderSingleStepSub;
-  }
+  QAbstractSlider::SliderAction action = QAbstractSlider::SliderNoAction;
+  if(btn == rightArrow_)
+    action = QAbstractSlider::SliderSingleStepAdd;
+  else if (btn == leftArrow_)
+    action = QAbstractSlider::SliderSingleStepSub;
   scrollArea_->horizontalScrollBar()->triggerAction(action);
 }
 
@@ -202,6 +221,8 @@ void PathBar::openEditor() {
     tempPathEdit_ = new PathEdit(this);
     layout()->replaceWidget(scrollArea_, tempPathEdit_, Qt::FindDirectChildrenOnly);
     scrollArea_->hide();
+    leftArrow_->setVisible(false);
+    rightArrow_->setVisible(false);
     char* pathStr = currentPath_.toStr();
     tempPathEdit_->setText(pathStr);
     g_free(pathStr);
@@ -218,6 +239,8 @@ void PathBar::closeEditor() {
     return;
   layout()->replaceWidget(tempPathEdit_, scrollArea_, Qt::FindDirectChildrenOnly);
   scrollArea_->show();
+    leftArrow_->setVisible(true);
+    rightArrow_->setVisible(true);
 
   tempPathEdit_->deleteLater();
   tempPathEdit_ = nullptr;
@@ -236,6 +259,12 @@ void PathBar::onReturnPressed() {
   QByteArray pathStr = tempPathEdit_->text().toLocal8Bit();
   Path path = Path::newForDisplayName(pathStr.constData());
   setPath(path);
+}
+
+void PathBar::setArrowEnabledState(int value) {
+  QScrollBar* sb = scrollArea_->horizontalScrollBar();
+  leftArrow_->setEnabled(value != sb->minimum());
+  rightArrow_->setEnabled(value != sb->maximum());
 }
 
 
