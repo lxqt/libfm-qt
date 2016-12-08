@@ -23,6 +23,7 @@
 #include <QToolButton>
 #include <QStyle>
 #include <QEvent>
+#include <QMouseEvent>
 #include "path.h"
 
 namespace Fm {
@@ -66,6 +67,16 @@ public:
       int icnSize = style()->pixelMetric(QStyle::PM_ToolBarIconSize);
       setIconSize(QSize(icnSize, icnSize));
     }
+  }
+
+Q_SIGNALS:
+  void middleClicked();
+
+private Q_SLOTS:
+  void mousePressEvent(QMouseEvent *e) {
+    QToolButton::mousePressEvent(e);
+    if(e->button() == Qt::MidButton)
+      Q_EMIT middleClicked();
   }
 
 private:
