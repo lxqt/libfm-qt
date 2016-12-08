@@ -21,6 +21,7 @@
 #define FM_PATHBAR_P_H
 
 #include <QToolButton>
+#include <QMouseEvent>
 #include "path.h"
 
 namespace Fm {
@@ -53,6 +54,16 @@ public:
 
   void setPathElement(Path pathElement) {
     pathElement_ = pathElement;
+  }
+
+Q_SIGNALS:
+  void middleClicked();
+
+private Q_SLOTS:
+  void mousePressEvent(QMouseEvent *e) {
+    QToolButton::mousePressEvent(e);
+    if(e->button() == Qt::MidButton)
+      Q_EMIT middleClicked();
   }
 
 private:

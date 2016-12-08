@@ -125,6 +125,12 @@ void PathBar::onButtonToggled(bool checked) {
   }
 }
 
+void PathBar::onButtonMiddleClicked() {
+  PathButton* btn = static_cast<PathButton*>(sender());
+  scrollArea_->ensureWidgetVisible(btn, 0);
+  Q_EMIT middleClickChdir(btn->pathElement().dataPtr());
+}
+
 void PathBar::onScrollButtonClicked() {
   QToolButton* btn = static_cast<QToolButton*>(sender());
   QAbstractSlider::SliderAction action;
@@ -180,6 +186,7 @@ void PathBar::setPath(Path path) {
     PathButton* btn = new PathButton(pathElement, buttonsWidget_);
     btn->show();
     connect(btn, &QPushButton::toggled, this, &PathBar::onButtonToggled);
+    connect(btn, &PathButton::middleClicked, this, &PathBar::onButtonMiddleClicked);
     pathElement = pathElement.getParent();
     buttonsLayout_->insertWidget(0, btn);
   }

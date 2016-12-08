@@ -46,6 +46,7 @@ public:
 
 Q_SIGNALS:
   void chdir(FmPath* path);
+  void middleClickChdir(FmPath* path);
   void editingFinished();
 
 public Q_SLOTS:
@@ -55,6 +56,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
   void onButtonToggled(bool checked);
+  void onButtonMiddleClicked();
   void onScrollButtonClicked();
   void onReturnPressed();
 
