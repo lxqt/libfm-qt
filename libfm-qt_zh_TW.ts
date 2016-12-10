@@ -310,12 +310,12 @@
     <message>
         <location filename="../../createnewmenu.cpp" line="29"/>
         <source>Folder</source>
-        <translation type="unfinished">資料夾</translation>
+        <translation>資料夾</translation>
     </message>
     <message>
         <location filename="../../createnewmenu.cpp" line="33"/>
         <source>Blank File</source>
-        <translation type="unfinished">空白檔案</translation>
+        <translation>空白檔案</translation>
     </message>
 </context>
 <context>
@@ -336,17 +336,17 @@
     <message>
         <location filename="../../dirtreeview.cpp" line="207"/>
         <source>Open in New T&amp;ab</source>
-        <translation type="unfinished"></translation>
+        <translation>在新分頁開啟 (&amp;A)</translation>
     </message>
     <message>
         <location filename="../../dirtreeview.cpp" line="211"/>
         <source>Open in New Win&amp;dow</source>
-        <translation type="unfinished"></translation>
+        <translation>在新視窗開啟 (&amp;D)</translation>
     </message>
     <message>
         <location filename="../../dirtreeview.cpp" line="216"/>
         <source>Open in Termina&amp;l</source>
-        <translation type="unfinished"></translation>
+        <translation>在終端機內開啟 (&amp;I)</translation>
     </message>
 </context>
 <context>
@@ -419,7 +419,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../../filemenu.cpp" line="135"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished">新建(&amp;N)</translation>
+        <translation>新建(&amp;N)</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="155"/>
@@ -649,17 +649,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../filesearchdialog.cpp" line="122"/>
         <source>Error</source>
-        <translation type="unfinished">錯誤</translation>
+        <translation>錯誤</translation>
     </message>
     <message>
         <location filename="../../filesearchdialog.cpp" line="122"/>
         <source>You should add at least one directory to search.</source>
-        <translation type="unfinished"></translation>
+        <translation>你至少需要新增一個要搜尋的目錄。</translation>
     </message>
     <message>
         <location filename="../../filesearchdialog.cpp" line="129"/>
         <source>Select a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>選擇一個資料夾</translation>
     </message>
 </context>
 <context>
@@ -714,7 +714,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../foldermenu.cpp" line="143"/>
         <source>Output</source>
-        <translation type="unfinished">輸出</translation>
+        <translation>輸出</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="168"/>
@@ -816,12 +816,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../pathbar.cpp" line="123"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>編輯路徑 (&amp;E)</translation>
     </message>
     <message>
         <location filename="../../pathbar.cpp" line="126"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>複製路徑 (&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -885,32 +885,32 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../placesview.cpp" line="356"/>
         <source>Open in New Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>在新分頁中開啟</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="359"/>
         <source>Open in New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>在新視窗中開啟</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="377"/>
         <source>Move Bookmark Up</source>
-        <translation type="unfinished"></translation>
+        <translation>往上移動書籤</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="382"/>
         <source>Move Bookmark Down</source>
-        <translation type="unfinished"></translation>
+        <translation>往下移動書籤</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="386"/>
         <source>Rename Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>重新命名書籤</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="389"/>
         <source>Remove Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>移除書籤</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="398"/>
@@ -1057,7 +1057,7 @@ Modified: %2</source>
     <message>
         <location filename="../../utilities.cpp" line="161"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>建立資料夾</translation>
     </message>
     <message>
         <location filename="../../utilities.cpp" line="166"/>
@@ -1105,7 +1105,7 @@ Modified: %2</source>
     <message>
         <location filename="../../rename-dialog.ui" line="56"/>
         <source>dest</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../rename-dialog.ui" line="63"/>
@@ -1143,176 +1143,176 @@ Modified: %2</source>
     <message>
         <location filename="../../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>搜尋檔案</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>名稱/位置</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>檔案名稱樣式:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="41"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>區分大小寫</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>使用正規表示式 (regexp)</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="65"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>要搜尋的地方:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="78"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>新增 (&amp;A)</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="90"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>移除 (&amp;R)</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="119"/>
         <source>Search in sub directories</source>
-        <translation type="unfinished"></translation>
+        <translation>在子目錄中搜尋</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="126"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>搜尋隱藏檔</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="137"/>
         <source>File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>檔案型態</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="143"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>只搜尋下列型態的檔案:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="149"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>文字檔</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="156"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>圖片檔</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="163"/>
         <source>Audio files</source>
-        <translation type="unfinished"></translation>
+        <translation>聲音檔</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="170"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>影片檔</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="177"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>文件</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="184"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>資料夾</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="208"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>內容</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="214"/>
         <source>File contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>檔案包含:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="223"/>
         <source>Case insensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>區分大小寫 (&amp;V)</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="230"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>使用正規表示式 (&amp;U)</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="254"/>
         <source>Properties</source>
-        <translation type="unfinished">屬性</translation>
+        <translation>屬性</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="260"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>檔案大小:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="289"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>大於:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="303"/>
         <location filename="../../filesearch.ui" line="333"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>位元組</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="308"/>
         <location filename="../../filesearch.ui" line="338"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="313"/>
         <location filename="../../filesearch.ui" line="343"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="318"/>
         <location filename="../../filesearch.ui" line="348"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="268"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>小於:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="364"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>最後修改時間:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="372"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>早於:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="379"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>晚於:</translation>
     </message>
 </context>
 </TS>
