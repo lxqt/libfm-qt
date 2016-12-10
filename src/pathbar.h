@@ -70,8 +70,8 @@ private:
   void updateScrollButtonVisibility();
 
 private:
-  QToolButton* leftArrow_;
-  QToolButton* rightArrow_;
+  QToolButton* scrollToStart_;
+  QToolButton* scrollToEnd_;
   QScrollArea* scrollArea_;
   QWidget* buttonsWidget_;
   QHBoxLayout* buttonsLayout_;
