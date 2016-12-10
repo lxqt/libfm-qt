@@ -46,6 +46,7 @@ PathBar::PathBar(QWidget *parent):
   // left arrow (scroll to left)
   leftArrow_ = new QToolButton(this);
   leftArrow_->setArrowType(Qt::LeftArrow);
+  leftArrow_->setAutoRepeat(true);
   leftArrow_->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
   connect(leftArrow_, &QToolButton::clicked, this, &PathBar::onScrollButtonClicked);
   topLayout->addWidget(leftArrow_);
@@ -63,6 +64,7 @@ PathBar::PathBar(QWidget *parent):
   // right arrow (scroll to right)
   rightArrow_ = new QToolButton(this);
   rightArrow_->setArrowType(Qt::RightArrow);
+  rightArrow_->setAutoRepeat(true);
   rightArrow_->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
   connect(rightArrow_, &QToolButton::clicked, this, &PathBar::onScrollButtonClicked);
   topLayout->addWidget(rightArrow_);
