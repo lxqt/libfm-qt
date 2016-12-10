@@ -246,6 +246,9 @@ void PathBar::openEditor() {
 void PathBar::closeEditor() {
   if(tempPathEdit_ == nullptr)
     return;
+  // If a menu has popped up synchronously (with QMenu::exec), the path buttons may be drawn
+  // but the path-edit may not disappear until the menu is closed. So, we hide it here.
+  tempPathEdit_->setVisible(false);
   layout()->replaceWidget(tempPathEdit_, scrollArea_, Qt::FindDirectChildrenOnly);
   scrollArea_->show();
   if(buttonsLayout_->sizeHint().width() > width()) {
