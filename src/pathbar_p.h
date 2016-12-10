@@ -22,6 +22,7 @@
 
 #include <QToolButton>
 #include <QStyle>
+#include <QEvent>
 #include "path.h"
 
 namespace Fm {
@@ -57,6 +58,14 @@ public:
 
   void setPathElement(Path pathElement) {
     pathElement_ = pathElement;
+  }
+
+  void changeEvent(QEvent* event) override {
+    QToolButton::changeEvent(event);
+    if(event->type() == QEvent::StyleChange) {
+      int icnSize = style()->pixelMetric(QStyle::PM_ToolBarIconSize);
+      setIconSize(QSize(icnSize, icnSize));
+    }
   }
 
 private:
