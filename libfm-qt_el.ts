@@ -408,73 +408,73 @@ What do you want to do with it?</source>
         <translation>Άνοιγμα με...</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="127"/>
+        <location filename="../../filemenu.cpp" line="129"/>
         <source>Other Applications</source>
         <translation>Άλλες εφαρμογές</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="133"/>
+        <location filename="../../filemenu.cpp" line="135"/>
         <source>Create &amp;New</source>
         <translation>Δημιουργία &amp;νέου</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="153"/>
+        <location filename="../../filemenu.cpp" line="155"/>
         <source>&amp;Restore</source>
         <translation>&amp;Επαναφορά</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="159"/>
+        <location filename="../../filemenu.cpp" line="161"/>
         <source>Cut</source>
         <translation>Αποκοπή</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="163"/>
+        <location filename="../../filemenu.cpp" line="165"/>
         <source>Copy</source>
         <translation>Αντιγραφή</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="167"/>
+        <location filename="../../filemenu.cpp" line="169"/>
         <source>Paste</source>
         <translation>Επικόλληση</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="171"/>
-        <location filename="../../filemenu.cpp" line="371"/>
+        <location filename="../../filemenu.cpp" line="173"/>
+        <location filename="../../filemenu.cpp" line="375"/>
         <source>&amp;Move to Trash</source>
         <translation>&amp;Μετακίνηση στα απορρίμματα</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="175"/>
+        <location filename="../../filemenu.cpp" line="177"/>
         <source>Rename</source>
         <translation>Μετονομασία</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="207"/>
+        <location filename="../../filemenu.cpp" line="209"/>
         <source>Extract to...</source>
         <translation>Εξαγωγή σε...</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="212"/>
+        <location filename="../../filemenu.cpp" line="214"/>
         <source>Extract Here</source>
         <translation>Εξαγωγή εδώ</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="218"/>
+        <location filename="../../filemenu.cpp" line="220"/>
         <source>Compress</source>
         <translation>Συμπίεση</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="228"/>
+        <location filename="../../filemenu.cpp" line="230"/>
         <source>Properties</source>
         <translation>Ιδιότητες</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="319"/>
+        <location filename="../../filemenu.cpp" line="323"/>
         <source>Output</source>
         <translation>Έξοδος</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="371"/>
+        <location filename="../../filemenu.cpp" line="375"/>
         <source>&amp;Delete</source>
         <translation>&amp;Διαγραφή</translation>
     </message>
@@ -693,59 +693,59 @@ Do you want to delete them instead?</source>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Φάκελος</translation>
+        <translation type="vanished">Φάκελος</translation>
     </message>
     <message>
         <source>Blank File</source>
-        <translation>Κενό αρχείο</translation>
+        <translation type="vanished">Κενό αρχείο</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="141"/>
+        <location filename="../../foldermenu.cpp" line="143"/>
         <source>Output</source>
         <translation>Έξοδος</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="166"/>
+        <location filename="../../foldermenu.cpp" line="168"/>
         <source>By File Name</source>
         <translation>Ανά όνομα αρχείου</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="167"/>
+        <location filename="../../foldermenu.cpp" line="169"/>
         <source>By Modification Time</source>
         <translation>Ανά χρόνο τροποποίησης</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="168"/>
+        <location filename="../../foldermenu.cpp" line="170"/>
         <source>By File Size</source>
         <translation>Ανά μέγεθος αρχείου</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="169"/>
+        <location filename="../../foldermenu.cpp" line="171"/>
         <source>By File Type</source>
         <translation>Ανά τύπο αρχείου</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="170"/>
+        <location filename="../../foldermenu.cpp" line="172"/>
         <source>By File Owner</source>
         <translation>Ανά ιδιοκτήτη αρχείου</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="182"/>
+        <location filename="../../foldermenu.cpp" line="184"/>
         <source>Ascending</source>
         <translation>Αύξουσα</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="187"/>
+        <location filename="../../foldermenu.cpp" line="189"/>
         <source>Descending</source>
         <translation>Φθίνουσα</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="202"/>
+        <location filename="../../foldermenu.cpp" line="204"/>
         <source>Folder First</source>
         <translation>Οι φάκελοι πρώτα</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="211"/>
+        <location filename="../../foldermenu.cpp" line="213"/>
         <source>Case Sensitive</source>
         <translation>Διάκριση πεζών/κεφαλαίων</translation>
     </message>
@@ -800,44 +800,57 @@ Do you want to delete them instead?</source>
     </message>
 </context>
 <context>
+    <name>Fm::PathBar</name>
+    <message>
+        <location filename="../../pathbar.cpp" line="123"/>
+        <source>&amp;Edit Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../pathbar.cpp" line="126"/>
+        <source>&amp;Copy Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Fm::PlacesModel</name>
     <message>
-        <location filename="../../placesmodel.cpp" line="41"/>
+        <location filename="../../placesmodel.cpp" line="40"/>
         <source>Places</source>
         <translation>Τοποθεσίες</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="49"/>
+        <location filename="../../placesmodel.cpp" line="48"/>
         <source>Desktop</source>
         <translation>Επιφάνεια εργασίας</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="58"/>
+        <location filename="../../placesmodel.cpp" line="57"/>
         <source>Computer</source>
         <translation>Υπολογιστής</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="71"/>
+        <location filename="../../placesmodel.cpp" line="70"/>
         <source>Applications</source>
         <translation>Εφαρμογές</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="83"/>
+        <location filename="../../placesmodel.cpp" line="82"/>
         <source>Network</source>
         <translation>Δίκτυο</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="91"/>
+        <location filename="../../placesmodel.cpp" line="90"/>
         <source>Devices</source>
         <translation>Συσκευές</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="144"/>
+        <location filename="../../placesmodel.cpp" line="143"/>
         <source>Bookmarks</source>
         <translation>Σελιδοδείκτες</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="245"/>
+        <location filename="../../placesmodel.cpp" line="244"/>
         <source>Trash</source>
         <translation>Απορρίμματα</translation>
     </message>
@@ -845,53 +858,53 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../../placesview.cpp" line="350"/>
+        <location filename="../../placesview.cpp" line="356"/>
         <source>Open in New Tab</source>
         <translation>Άνοιγμα σε νέα καρτέλα</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="353"/>
+        <location filename="../../placesview.cpp" line="359"/>
         <source>Open in New Window</source>
         <translation>Άνοιγμα σε νέο παράθυρο</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="362"/>
+        <location filename="../../placesview.cpp" line="368"/>
         <source>Empty Trash</source>
         <translation>Άδειασμα των απορριμμάτων</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="371"/>
+        <location filename="../../placesview.cpp" line="377"/>
         <source>Move Bookmark Up</source>
         <translation>Μετακίνηση του σελιδοδείκτη προς τα πάνω</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="376"/>
+        <location filename="../../placesview.cpp" line="382"/>
         <source>Move Bookmark Down</source>
         <translation>Μετακίνηση του σελιδοδείκτη προς τα κάτω</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="380"/>
+        <location filename="../../placesview.cpp" line="386"/>
         <source>Rename Bookmark</source>
         <translation>Μετονομασία σελιδοδείκτη</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="383"/>
+        <location filename="../../placesview.cpp" line="389"/>
         <source>Remove Bookmark</source>
         <translation>Αφαίρεση σελιδοδείκτη</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="392"/>
-        <location filename="../../placesview.cpp" line="409"/>
+        <location filename="../../placesview.cpp" line="398"/>
+        <location filename="../../placesview.cpp" line="415"/>
         <source>Unmount</source>
         <translation>Αποπροσάρτηση</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="396"/>
+        <location filename="../../placesview.cpp" line="402"/>
         <source>Mount</source>
         <translation>Προσάρτηση</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="402"/>
+        <location filename="../../placesview.cpp" line="408"/>
         <source>Eject</source>
         <translation>Εξαγωγή</translation>
     </message>

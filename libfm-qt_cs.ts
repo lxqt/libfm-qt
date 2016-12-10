@@ -403,48 +403,48 @@ Co s ním chcete dělat?</translation>
         <translation>Otevřít</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="133"/>
+        <location filename="../../filemenu.cpp" line="135"/>
         <source>Create &amp;New</source>
         <translation>Vytvořit &amp;nový</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="153"/>
+        <location filename="../../filemenu.cpp" line="155"/>
         <source>&amp;Restore</source>
         <translation>O&amp;bnovit</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="159"/>
+        <location filename="../../filemenu.cpp" line="161"/>
         <source>Cut</source>
         <translation>Vyjmout</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="163"/>
+        <location filename="../../filemenu.cpp" line="165"/>
         <source>Copy</source>
         <translation>Kopírovat</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="167"/>
+        <location filename="../../filemenu.cpp" line="169"/>
         <source>Paste</source>
         <translation>Vložit</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="171"/>
-        <location filename="../../filemenu.cpp" line="371"/>
+        <location filename="../../filemenu.cpp" line="173"/>
+        <location filename="../../filemenu.cpp" line="375"/>
         <source>&amp;Move to Trash</source>
         <translation>Přesunout do &amp;koše</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="319"/>
+        <location filename="../../filemenu.cpp" line="323"/>
         <source>Output</source>
         <translation>Výstup</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="371"/>
+        <location filename="../../filemenu.cpp" line="375"/>
         <source>&amp;Delete</source>
         <translation>&amp;Smazat</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="175"/>
+        <location filename="../../filemenu.cpp" line="177"/>
         <source>Rename</source>
         <translation>Přejmenovat</translation>
     </message>
@@ -454,27 +454,27 @@ Co s ním chcete dělat?</translation>
         <translation>Otevřít v ...</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="127"/>
+        <location filename="../../filemenu.cpp" line="129"/>
         <source>Other Applications</source>
         <translation>Ostatní programy</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="207"/>
+        <location filename="../../filemenu.cpp" line="209"/>
         <source>Extract to...</source>
         <translation>Rozbalit do ...</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="212"/>
+        <location filename="../../filemenu.cpp" line="214"/>
         <source>Extract Here</source>
         <translation>Rozbalit sem</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="218"/>
+        <location filename="../../filemenu.cpp" line="220"/>
         <source>Compress</source>
         <translation>Komprimovat</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="228"/>
+        <location filename="../../filemenu.cpp" line="230"/>
         <source>Properties</source>
         <translation>Vlastnosti</translation>
     </message>
@@ -693,59 +693,59 @@ Chceš je odstranit trvale?</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Adresář</translation>
+        <translation type="vanished">Adresář</translation>
     </message>
     <message>
         <source>Blank File</source>
-        <translation>Prázdný soubor</translation>
+        <translation type="vanished">Prázdný soubor</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="141"/>
+        <location filename="../../foldermenu.cpp" line="143"/>
         <source>Output</source>
         <translation>Výstup</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="166"/>
+        <location filename="../../foldermenu.cpp" line="168"/>
         <source>By File Name</source>
         <translation>Podle jména</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="167"/>
+        <location filename="../../foldermenu.cpp" line="169"/>
         <source>By Modification Time</source>
         <translation>Podle času</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="168"/>
+        <location filename="../../foldermenu.cpp" line="170"/>
         <source>By File Size</source>
         <translation>Podle velikosti</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="169"/>
+        <location filename="../../foldermenu.cpp" line="171"/>
         <source>By File Type</source>
         <translation>Podle typu</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="170"/>
+        <location filename="../../foldermenu.cpp" line="172"/>
         <source>By File Owner</source>
         <translation>Podle vlastníka</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="182"/>
+        <location filename="../../foldermenu.cpp" line="184"/>
         <source>Ascending</source>
         <translation>Vzestupně</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="187"/>
+        <location filename="../../foldermenu.cpp" line="189"/>
         <source>Descending</source>
         <translation>sestupně</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="202"/>
+        <location filename="../../foldermenu.cpp" line="204"/>
         <source>Folder First</source>
         <translation>Adresáře jako první</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="211"/>
+        <location filename="../../foldermenu.cpp" line="213"/>
         <source>Case Sensitive</source>
         <translation>Zohlednit velikost písmen</translation>
     </message>
@@ -800,44 +800,57 @@ Chceš je odstranit trvale?</translation>
     </message>
 </context>
 <context>
+    <name>Fm::PathBar</name>
+    <message>
+        <location filename="../../pathbar.cpp" line="123"/>
+        <source>&amp;Edit Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../pathbar.cpp" line="126"/>
+        <source>&amp;Copy Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Fm::PlacesModel</name>
     <message>
-        <location filename="../../placesmodel.cpp" line="41"/>
+        <location filename="../../placesmodel.cpp" line="40"/>
         <source>Places</source>
         <translation>Místa</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="49"/>
+        <location filename="../../placesmodel.cpp" line="48"/>
         <source>Desktop</source>
         <translation>Plocha</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="245"/>
+        <location filename="../../placesmodel.cpp" line="244"/>
         <source>Trash</source>
         <translation>Koš</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="58"/>
+        <location filename="../../placesmodel.cpp" line="57"/>
         <source>Computer</source>
         <translation>Počítač</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="71"/>
+        <location filename="../../placesmodel.cpp" line="70"/>
         <source>Applications</source>
         <translation>Aplikace</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="83"/>
+        <location filename="../../placesmodel.cpp" line="82"/>
         <source>Network</source>
         <translation>Síť</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="91"/>
+        <location filename="../../placesmodel.cpp" line="90"/>
         <source>Devices</source>
         <translation>Zařízení</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="144"/>
+        <location filename="../../placesmodel.cpp" line="143"/>
         <source>Bookmarks</source>
         <translation>Záložky</translation>
     </message>
@@ -845,7 +858,7 @@ Chceš je odstranit trvale?</translation>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../../placesview.cpp" line="362"/>
+        <location filename="../../placesview.cpp" line="368"/>
         <source>Empty Trash</source>
         <translation>Vysypat koš</translation>
     </message>
@@ -858,48 +871,48 @@ Chceš je odstranit trvale?</translation>
         <translation type="obsolete">Smazat</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="350"/>
+        <location filename="../../placesview.cpp" line="356"/>
         <source>Open in New Tab</source>
         <translation>Otevřít v novém panelu</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="353"/>
+        <location filename="../../placesview.cpp" line="359"/>
         <source>Open in New Window</source>
         <translation>Otevřít v novém okně</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="371"/>
+        <location filename="../../placesview.cpp" line="377"/>
         <source>Move Bookmark Up</source>
         <translation>Přesunout záložku nahoru</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="376"/>
+        <location filename="../../placesview.cpp" line="382"/>
         <source>Move Bookmark Down</source>
         <translation>Přesunout záložku dolů</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="380"/>
+        <location filename="../../placesview.cpp" line="386"/>
         <source>Rename Bookmark</source>
         <translation>Přejmenovat záložku</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="383"/>
+        <location filename="../../placesview.cpp" line="389"/>
         <source>Remove Bookmark</source>
         <translation>Odstranit záložku</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="392"/>
-        <location filename="../../placesview.cpp" line="409"/>
+        <location filename="../../placesview.cpp" line="398"/>
+        <location filename="../../placesview.cpp" line="415"/>
         <source>Unmount</source>
         <translation>Odpojit</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="396"/>
+        <location filename="../../placesview.cpp" line="402"/>
         <source>Mount</source>
         <translation>Připojit</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="402"/>
+        <location filename="../../placesview.cpp" line="408"/>
         <source>Eject</source>
         <translation>Vysunout</translation>
     </message>

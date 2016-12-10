@@ -407,38 +407,38 @@ Cosa vuoi fare?</translation>
         <translation type="vanished">ApriCon</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="159"/>
+        <location filename="../../filemenu.cpp" line="161"/>
         <source>Cut</source>
         <translation>Taglia</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="163"/>
+        <location filename="../../filemenu.cpp" line="165"/>
         <source>Copy</source>
         <translation>Copia</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="167"/>
+        <location filename="../../filemenu.cpp" line="169"/>
         <source>Paste</source>
         <translation>Incolla</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="171"/>
-        <location filename="../../filemenu.cpp" line="371"/>
+        <location filename="../../filemenu.cpp" line="173"/>
+        <location filename="../../filemenu.cpp" line="375"/>
         <source>&amp;Move to Trash</source>
         <translation>Cestin&amp;a</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="319"/>
+        <location filename="../../filemenu.cpp" line="323"/>
         <source>Output</source>
         <translation>Risultato</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="371"/>
+        <location filename="../../filemenu.cpp" line="375"/>
         <source>&amp;Delete</source>
         <translation>&amp;Elimina</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="175"/>
+        <location filename="../../filemenu.cpp" line="177"/>
         <source>Rename</source>
         <translation>Rinomina</translation>
     </message>
@@ -448,37 +448,37 @@ Cosa vuoi fare?</translation>
         <translation>Apri con...</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="127"/>
+        <location filename="../../filemenu.cpp" line="129"/>
         <source>Other Applications</source>
         <translation>Altre applicazioni</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="133"/>
+        <location filename="../../filemenu.cpp" line="135"/>
         <source>Create &amp;New</source>
         <translation>Crea &amp;nuovo</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="153"/>
+        <location filename="../../filemenu.cpp" line="155"/>
         <source>&amp;Restore</source>
         <translation>&amp;Ripristina</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="207"/>
+        <location filename="../../filemenu.cpp" line="209"/>
         <source>Extract to...</source>
         <translation>Estrai in...</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="212"/>
+        <location filename="../../filemenu.cpp" line="214"/>
         <source>Extract Here</source>
         <translation>Estrai qui</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="218"/>
+        <location filename="../../filemenu.cpp" line="220"/>
         <source>Compress</source>
         <translation>Comprimi</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="228"/>
+        <location filename="../../filemenu.cpp" line="230"/>
         <source>Properties</source>
         <translation>Proprietà</translation>
     </message>
@@ -704,52 +704,52 @@ Vuoi invece eliminarli?</translation>
         <translation type="vanished">File</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="141"/>
+        <location filename="../../foldermenu.cpp" line="143"/>
         <source>Output</source>
         <translation type="unfinished">Risultato</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="166"/>
+        <location filename="../../foldermenu.cpp" line="168"/>
         <source>By File Name</source>
         <translation>Per nome file</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="167"/>
+        <location filename="../../foldermenu.cpp" line="169"/>
         <source>By Modification Time</source>
         <translation>Per data modifica</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="168"/>
+        <location filename="../../foldermenu.cpp" line="170"/>
         <source>By File Size</source>
         <translation>Per dimensione file</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="169"/>
+        <location filename="../../foldermenu.cpp" line="171"/>
         <source>By File Type</source>
         <translation>Per tipo file</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="170"/>
+        <location filename="../../foldermenu.cpp" line="172"/>
         <source>By File Owner</source>
         <translation>Per proprietario file</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="182"/>
+        <location filename="../../foldermenu.cpp" line="184"/>
         <source>Ascending</source>
         <translation>Crescente</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="187"/>
+        <location filename="../../foldermenu.cpp" line="189"/>
         <source>Descending</source>
         <translation>Decrescente</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="202"/>
+        <location filename="../../foldermenu.cpp" line="204"/>
         <source>Folder First</source>
         <translation>Prima le cartelle</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="211"/>
+        <location filename="../../foldermenu.cpp" line="213"/>
         <source>Case Sensitive</source>
         <translation>Distingui MAIUSCOLE/minuscole</translation>
     </message>
@@ -804,44 +804,57 @@ Vuoi invece eliminarli?</translation>
     </message>
 </context>
 <context>
+    <name>Fm::PathBar</name>
+    <message>
+        <location filename="../../pathbar.cpp" line="123"/>
+        <source>&amp;Edit Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../pathbar.cpp" line="126"/>
+        <source>&amp;Copy Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Fm::PlacesModel</name>
     <message>
-        <location filename="../../placesmodel.cpp" line="41"/>
+        <location filename="../../placesmodel.cpp" line="40"/>
         <source>Places</source>
         <translation>Risorse</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="49"/>
+        <location filename="../../placesmodel.cpp" line="48"/>
         <source>Desktop</source>
         <translation>Scrivania</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="245"/>
+        <location filename="../../placesmodel.cpp" line="244"/>
         <source>Trash</source>
         <translation>Cestino</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="58"/>
+        <location filename="../../placesmodel.cpp" line="57"/>
         <source>Computer</source>
         <translation>Computer</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="71"/>
+        <location filename="../../placesmodel.cpp" line="70"/>
         <source>Applications</source>
         <translation>Applicazioni</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="83"/>
+        <location filename="../../placesmodel.cpp" line="82"/>
         <source>Network</source>
         <translation>Rete</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="91"/>
+        <location filename="../../placesmodel.cpp" line="90"/>
         <source>Devices</source>
         <translation>Dispositivi</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="144"/>
+        <location filename="../../placesmodel.cpp" line="143"/>
         <source>Bookmarks</source>
         <translation>Segnalibri</translation>
     </message>
@@ -849,7 +862,7 @@ Vuoi invece eliminarli?</translation>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../../placesview.cpp" line="362"/>
+        <location filename="../../placesview.cpp" line="368"/>
         <source>Empty Trash</source>
         <translation>Svuota cestino</translation>
     </message>
@@ -862,48 +875,48 @@ Vuoi invece eliminarli?</translation>
         <translation type="vanished">Elimina</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="350"/>
+        <location filename="../../placesview.cpp" line="356"/>
         <source>Open in New Tab</source>
         <translation>Apri in una nuova scheda</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="353"/>
+        <location filename="../../placesview.cpp" line="359"/>
         <source>Open in New Window</source>
         <translation>Apri in una nuova finestra</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="371"/>
+        <location filename="../../placesview.cpp" line="377"/>
         <source>Move Bookmark Up</source>
         <translation>Sposta segnalibro in su</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="376"/>
+        <location filename="../../placesview.cpp" line="382"/>
         <source>Move Bookmark Down</source>
         <translation>Sposta segnalibro in giù</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="380"/>
+        <location filename="../../placesview.cpp" line="386"/>
         <source>Rename Bookmark</source>
         <translation>Rinomina segnalibro</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="383"/>
+        <location filename="../../placesview.cpp" line="389"/>
         <source>Remove Bookmark</source>
         <translation>Rimuovi segnalibro</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="392"/>
-        <location filename="../../placesview.cpp" line="409"/>
+        <location filename="../../placesview.cpp" line="398"/>
+        <location filename="../../placesview.cpp" line="415"/>
         <source>Unmount</source>
         <translation>Smonta</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="396"/>
+        <location filename="../../placesview.cpp" line="402"/>
         <source>Mount</source>
         <translation>Monta</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="402"/>
+        <location filename="../../placesview.cpp" line="408"/>
         <source>Eject</source>
         <translation>Espelli</translation>
     </message>

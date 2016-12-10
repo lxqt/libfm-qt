@@ -407,38 +407,38 @@ O que pretende fazer com o ficheiro?</translation>
         <translation type="obsolete">Abrir com</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="159"/>
+        <location filename="../../filemenu.cpp" line="161"/>
         <source>Cut</source>
         <translation>Cortar</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="163"/>
+        <location filename="../../filemenu.cpp" line="165"/>
         <source>Copy</source>
         <translation>Copiar</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="167"/>
+        <location filename="../../filemenu.cpp" line="169"/>
         <source>Paste</source>
         <translation>Colar</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="171"/>
-        <location filename="../../filemenu.cpp" line="371"/>
+        <location filename="../../filemenu.cpp" line="173"/>
+        <location filename="../../filemenu.cpp" line="375"/>
         <source>&amp;Move to Trash</source>
         <translation>&amp;Mover para o lixo</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="319"/>
+        <location filename="../../filemenu.cpp" line="323"/>
         <source>Output</source>
         <translation>Destino</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="371"/>
+        <location filename="../../filemenu.cpp" line="375"/>
         <source>&amp;Delete</source>
         <translation>&amp;Apagar</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="175"/>
+        <location filename="../../filemenu.cpp" line="177"/>
         <source>Rename</source>
         <translation>Renomear</translation>
     </message>
@@ -448,37 +448,37 @@ O que pretende fazer com o ficheiro?</translation>
         <translation>Abrir com...</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="127"/>
+        <location filename="../../filemenu.cpp" line="129"/>
         <source>Other Applications</source>
         <translation>Outras aplicações</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="133"/>
+        <location filename="../../filemenu.cpp" line="135"/>
         <source>Create &amp;New</source>
         <translation>Criar &amp;novo(a)</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="153"/>
+        <location filename="../../filemenu.cpp" line="155"/>
         <source>&amp;Restore</source>
         <translation>&amp;Restaurar</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="207"/>
+        <location filename="../../filemenu.cpp" line="209"/>
         <source>Extract to...</source>
         <translation>Extrair para...</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="212"/>
+        <location filename="../../filemenu.cpp" line="214"/>
         <source>Extract Here</source>
         <translation>Extrair aqui</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="218"/>
+        <location filename="../../filemenu.cpp" line="220"/>
         <source>Compress</source>
         <translation>Comprimir</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="228"/>
+        <location filename="../../filemenu.cpp" line="230"/>
         <source>Properties</source>
         <translation>Propriedades</translation>
     </message>
@@ -697,7 +697,7 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Pasta</translation>
+        <translation type="vanished">Pasta</translation>
     </message>
     <message>
         <source>File</source>
@@ -705,55 +705,55 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     </message>
     <message>
         <source>Blank File</source>
-        <translation>Ficheiro vazio</translation>
+        <translation type="vanished">Ficheiro vazio</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="141"/>
+        <location filename="../../foldermenu.cpp" line="143"/>
         <source>Output</source>
         <translation>Destino</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="166"/>
+        <location filename="../../foldermenu.cpp" line="168"/>
         <source>By File Name</source>
         <translation>Por nome de ficheiro</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="167"/>
+        <location filename="../../foldermenu.cpp" line="169"/>
         <source>By Modification Time</source>
         <translation>Por data de modificação</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="168"/>
+        <location filename="../../foldermenu.cpp" line="170"/>
         <source>By File Size</source>
         <translation>Por tamanho de ficheiro</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="169"/>
+        <location filename="../../foldermenu.cpp" line="171"/>
         <source>By File Type</source>
         <translation>Por tipo de ficheiro</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="170"/>
+        <location filename="../../foldermenu.cpp" line="172"/>
         <source>By File Owner</source>
         <translation>Por dono de ficheiro</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="182"/>
+        <location filename="../../foldermenu.cpp" line="184"/>
         <source>Ascending</source>
         <translation>Ascendente</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="187"/>
+        <location filename="../../foldermenu.cpp" line="189"/>
         <source>Descending</source>
         <translation>Descendente</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="202"/>
+        <location filename="../../foldermenu.cpp" line="204"/>
         <source>Folder First</source>
         <translation>Pastas no início</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="211"/>
+        <location filename="../../foldermenu.cpp" line="213"/>
         <source>Case Sensitive</source>
         <translation>Diferenciar maiúsculas/minúsculas</translation>
     </message>
@@ -808,44 +808,57 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     </message>
 </context>
 <context>
+    <name>Fm::PathBar</name>
+    <message>
+        <location filename="../../pathbar.cpp" line="123"/>
+        <source>&amp;Edit Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../pathbar.cpp" line="126"/>
+        <source>&amp;Copy Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Fm::PlacesModel</name>
     <message>
-        <location filename="../../placesmodel.cpp" line="41"/>
+        <location filename="../../placesmodel.cpp" line="40"/>
         <source>Places</source>
         <translation>Locais</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="49"/>
+        <location filename="../../placesmodel.cpp" line="48"/>
         <source>Desktop</source>
         <translation>Área de trabalho</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="245"/>
+        <location filename="../../placesmodel.cpp" line="244"/>
         <source>Trash</source>
         <translation>Lixo</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="58"/>
+        <location filename="../../placesmodel.cpp" line="57"/>
         <source>Computer</source>
         <translation>Computador</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="71"/>
+        <location filename="../../placesmodel.cpp" line="70"/>
         <source>Applications</source>
         <translation>Aplicações</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="83"/>
+        <location filename="../../placesmodel.cpp" line="82"/>
         <source>Network</source>
         <translation>Rede</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="91"/>
+        <location filename="../../placesmodel.cpp" line="90"/>
         <source>Devices</source>
         <translation>Dispositivos</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="144"/>
+        <location filename="../../placesmodel.cpp" line="143"/>
         <source>Bookmarks</source>
         <translation>Marcadores</translation>
     </message>
@@ -853,61 +866,61 @@ Deseja apagar permanentemente estes ficheiros?</translation>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../../placesview.cpp" line="362"/>
+        <location filename="../../placesview.cpp" line="368"/>
         <source>Empty Trash</source>
         <translation>Esvaziar lixo</translation>
     </message>
     <message>
         <source>Rename</source>
-        <translation>Renomear</translation>
+        <translation type="vanished">Renomear</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Apagar</translation>
+        <translation type="vanished">Apagar</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="350"/>
+        <location filename="../../placesview.cpp" line="356"/>
         <source>Open in New Tab</source>
         <translation>Abrir em novo separador</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="353"/>
+        <location filename="../../placesview.cpp" line="359"/>
         <source>Open in New Window</source>
         <translation>Abrir em nova janela</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="371"/>
+        <location filename="../../placesview.cpp" line="377"/>
         <source>Move Bookmark Up</source>
         <translation>Mover marcador para cima</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="376"/>
+        <location filename="../../placesview.cpp" line="382"/>
         <source>Move Bookmark Down</source>
         <translation>Mover marcador para baixo</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="380"/>
+        <location filename="../../placesview.cpp" line="386"/>
         <source>Rename Bookmark</source>
         <translation>Renomear marcador</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="383"/>
+        <location filename="../../placesview.cpp" line="389"/>
         <source>Remove Bookmark</source>
         <translation>Remover marcador</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="392"/>
-        <location filename="../../placesview.cpp" line="409"/>
+        <location filename="../../placesview.cpp" line="398"/>
+        <location filename="../../placesview.cpp" line="415"/>
         <source>Unmount</source>
         <translation>Desmontar</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="396"/>
+        <location filename="../../placesview.cpp" line="402"/>
         <source>Mount</source>
         <translation>Montar</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="402"/>
+        <location filename="../../placesview.cpp" line="408"/>
         <source>Eject</source>
         <translation>Ejetar</translation>
     </message>
