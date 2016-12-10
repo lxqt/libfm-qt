@@ -176,6 +176,7 @@ void PathBar::setPath(Path path) {
    *        we can append several new buttons rather than re-create
    *        all of the buttons. */
 
+  setUpdatesEnabled(false);
   // we do not have the path in the buttons list
   // destroy existing path element buttons and the spacer
   QLayoutItem* item;
@@ -206,6 +207,7 @@ void PathBar::setPath(Path path) {
   // FIXME: this is a little bit hackish :-(
   scrollArea_->setFixedHeight(buttonsLayout_->sizeHint().height());
   updateScrollButtonVisibility();
+  setUpdatesEnabled(true);
 }
 
 void PathBar::openEditor() {
