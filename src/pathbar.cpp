@@ -87,8 +87,16 @@ void PathBar::resizeEvent(QResizeEvent* event) {
 
 void PathBar::mousePressEvent(QMouseEvent *event) {
   QWidget::mousePressEvent(event);
-  if(event->button() == Qt::LeftButton)
+  if(event->button() == Qt::LeftButton) {
     openEditor();
+  }
+  else if(event->button() == Qt::MiddleButton) {
+      PathButton* btn = qobject_cast<PathButton*>(childAt(event->x(), event->y()));
+      if(btn != nullptr) {
+        scrollArea_->ensureWidgetVisible(btn, 0);
+        Q_EMIT middleClickChdir(btn->pathElement().dataPtr());
+      }
+  }
 }
 
 void PathBar::contextMenuEvent(QContextMenuEvent *event) {
@@ -127,11 +135,6 @@ void PathBar::onButtonToggled(bool checked) {
   }
 }
 
-void PathBar::onButtonMiddleClicked() {
-  PathButton* btn = static_cast<PathButton*>(sender());
-  scrollArea_->ensureWidgetVisible(btn, 0);
-  Q_EMIT middleClickChdir(btn->pathElement().dataPtr());
-}
 
 void PathBar::onScrollButtonClicked() {
   QToolButton* btn = static_cast<QToolButton*>(sender());
@@ -188,7 +191,6 @@ void PathBar::setPath(Path path) {
     PathButton* btn = new PathButton(pathElement, buttonsWidget_);
     btn->show();
     connect(btn, &QPushButton::toggled, this, &PathBar::onButtonToggled);
-    connect(btn, &PathButton::middleClicked, this, &PathBar::onButtonMiddleClicked);
     pathElement = pathElement.getParent();
     buttonsLayout_->insertWidget(0, btn);
   }

@@ -56,7 +56,6 @@ public Q_SLOTS:
 
 private Q_SLOTS:
   void onButtonToggled(bool checked);
-  void onButtonMiddleClicked();
   void onScrollButtonClicked();
   void onReturnPressed();
 

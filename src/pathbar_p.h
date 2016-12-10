@@ -69,16 +69,6 @@ public:
     }
   }
 
-Q_SIGNALS:
-  void middleClicked();
-
-private Q_SLOTS:
-  void mousePressEvent(QMouseEvent *e) {
-    QToolButton::mousePressEvent(e);
-    if(e->button() == Qt::MidButton)
-      Q_EMIT middleClicked();
-  }
-
 private:
   Path pathElement_;
 };
