@@ -812,12 +812,12 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../../pathbar.cpp" line="123"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Editar caminho</translation>
     </message>
     <message>
         <location filename="../../pathbar.cpp" line="126"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Copiar caminho</translation>
     </message>
 </context>
 <context>
