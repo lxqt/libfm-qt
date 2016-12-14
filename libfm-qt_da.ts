@@ -6,12 +6,12 @@
     <message>
         <location filename="../../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>Vælg en applikation</translation>
+        <translation>Vælg et program</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation>Installerede applikationer</translation>
+        <translation>Installerede programmer</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="46"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation>Applikationsnavn:</translation>
+        <translation>Programnavn:</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="72"/>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>Brug altid denne applikation til at åbne denne filtype</translation>
+        <translation>Brug altid dette program til at åbne denne filtype</translation>
     </message>
 </context>
 <context>
@@ -165,7 +165,7 @@
     <message>
         <location filename="../../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation>Sted:</translation>
+        <translation>Placering:</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="106"/>
@@ -195,7 +195,7 @@
     <message>
         <location filename="../../file-props.ui" line="221"/>
         <source>Link target:</source>
-        <translation>Linker til:</translation>
+        <translation>Henviser til:</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="247"/>
@@ -302,7 +302,7 @@
     <message>
         <location filename="../../appchooserdialog.cpp" line="262"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Vælg en applikation til at åbne  filer af typen &quot;%1&quot;</translation>
+        <translation>Vælg et program til at åbne filer af typen &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -377,7 +377,7 @@
     <message>
         <location filename="../../editbookmarksdialog.cpp" line="96"/>
         <source>New bookmark</source>
-        <translation></translation>
+        <translation>Nyt bogmærke</translation>
     </message>
 </context>
 <context>
@@ -410,7 +410,7 @@ Hvad vil du foretage med det?</translation>
     <message>
         <location filename="../../filemenu.cpp" line="129"/>
         <source>Other Applications</source>
-        <translation>Andre applikationer</translation>
+        <translation>Andre programmer</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="135"/>
@@ -593,12 +593,12 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="154"/>
         <source>View folder content</source>
-        <translation>Se mappe indhold</translation>
+        <translation>Vis mappens indhold</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="155"/>
         <source>View and modify folder content</source>
-        <translation>Se og ændre mappe indhold</translation>
+        <translation>Vis og ændre mappens indhold</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="159"/>
@@ -613,7 +613,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="162"/>
         <source>Forbidden</source>
-        <translation>Ikke tilladt</translation>
+        <translation>Forbudt</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="266"/>
@@ -796,12 +796,12 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../../pathbar.cpp" line="123"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Rediger sti</translation>
     </message>
     <message>
         <location filename="../../pathbar.cpp" line="126"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kopiér sti</translation>
     </message>
 </context>
 <context>
@@ -824,7 +824,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../../placesmodel.cpp" line="70"/>
         <source>Applications</source>
-        <translation>Applikationer</translation>
+        <translation>Programmer</translation>
     </message>
     <message>
         <location filename="../../placesmodel.cpp" line="82"/>
