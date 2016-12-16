@@ -136,7 +136,8 @@ void renameFile(FmFileInfo *file, QWidget *parent) {
 
   GFile* gf = fm_path_to_gfile(path);
   GFile* parent_gf = g_file_get_parent(gf);
-  GFile* dest = g_file_get_child(G_FILE(parent_gf), new_name.toLocal8Bit().data());
+  QByteArray nm = new_name.toLocal8Bit();
+  GFile* dest = g_file_get_child(G_FILE(parent_gf), nm.constData());
   g_object_unref(parent_gf);
 
   GError* err = NULL;
@@ -193,7 +194,8 @@ _retry:
     return;
 
   GFile* parent_gf = fm_path_to_gfile(parentDir);
-  GFile* dest_gf = g_file_get_child(G_FILE(parent_gf), new_name.toLocal8Bit().data());
+  QByteArray nm = new_name.toLocal8Bit();
+  GFile* dest_gf = g_file_get_child(G_FILE(parent_gf), nm.constData());
   g_object_unref(parent_gf);
 
   GError* err = NULL;
