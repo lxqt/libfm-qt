@@ -439,7 +439,7 @@ void FilePropsDialog::accept() {
       FmPath* path = fm_file_info_get_path(fileInfo);
       GFile* gf = fm_path_to_gfile(path);
       GFile* parent_gf = g_file_get_parent(gf);
-      GFile* dest = g_file_get_child(G_FILE(parent_gf), new_name.toLocal8Bit().data());
+      GFile* dest = g_file_get_child(G_FILE(parent_gf), new_name.toLocal8Bit().constData());
       g_object_unref(parent_gf);
       GError* err = NULL;
       if(!g_file_move(gf, dest,
