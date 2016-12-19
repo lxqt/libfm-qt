@@ -206,7 +206,7 @@ void PathBar::setPath(Path path) {
     // qDebug("%s", pathElement.displayName(false));
     PathButton* btn = new PathButton(pathElement, buttonsWidget_);
     btn->show();
-    connect(btn, &QPushButton::toggled, this, &PathBar::onButtonToggled);
+    connect(btn, &QPushButton::clicked, this, &PathBar::onButtonToggled);
     pathElement = pathElement.getParent();
     buttonsLayout_->insertWidget(0, btn);
   }
