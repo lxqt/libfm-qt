@@ -59,6 +59,7 @@ private Q_SLOTS:
   void onScrollButtonClicked();
   void onReturnPressed();
   void setArrowEnabledState(int value);
+  void setScrollButtonVisibility();
 
 protected:
   void resizeEvent(QResizeEvent* event);

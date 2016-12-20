@@ -29,6 +29,7 @@
 #include <QMenu>
 #include <QClipboard>
 #include <QApplication>
+#include <QTimer>
 #include <QDebug>
 #include "pathedit.h"
 
@@ -130,6 +131,13 @@ void PathBar::contextMenuEvent(QContextMenuEvent *event) {
 }
 
 void PathBar::updateScrollButtonVisibility() {
+  // Wait for the horizontal scrollbar to be completely shaped.
+  // Without this, the enabled state of arrow buttons might be
+  // wrong when the pathbar is created for the first time.
+  QTimer::singleShot(0, this, SLOT(setScrollButtonVisibility()));
+}
+
+void PathBar::setScrollButtonVisibility() {
   bool showScrollers;
   if(tempPathEdit_ != nullptr) {
     showScrollers = false;
