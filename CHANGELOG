@@ -1,7 +1,59 @@
 
-libfm-qt-0.11.1 / 2016-09-24
+libfm-qt-0.11.2 / 2016-12-21
 ============================
 
+  * Fix enabled state of path arrows on starting (#58)
+  * bump patch version (#56)
+  * Use QByteArray::constData() where we can (#57)
+  * Updates lxqt-build-tools required version
+  * Bump ABI so version numbers preparing for a new release.
+  * Fix Pathbar Paint on Menu Pop-Up
+  * Code cleanup and refactor for Fm::PathBar.
+  * Added another condition
+  * Added a missing condition (typo)
+  * Scroll Pathbar with Mouse Wheel
+  * Reduct flickering of the path bar when creating path buttons.
+  * Code simplification by removing unnecessary signal/slot usage.
+  * Path Button Middle Click
+  * Enable auto-repeat for pathbar scroll buttons.
+  * Make the path bar buttons aware of style changes.
+  * Use widget style instead of app style
+  * Align Path Buttons
+  * Move FindXCB.cmake to lxqt-build-tools
+  * Adds superbuild/intree support
+  * Removes not needed dependency check
+  * Set CMP0024 policy usage to NEW
+  * Updates target_include_directories() stuff
+  * Drops GLib library detection
+  * Use the new FindMenuCache CMake module
+  * Use the new FindFm CMake module
+  * Check for FolderModelItem info (and FmPath)
+  * Add Fm::PathBar::editingFinished() signal.
+  * Select the current path when editing the path bar.
+  * Enable path editing and popup menu for the button-style path bar.
+  * Properly set styles of path buttons.
+  * Remove unnecessary debug messages.
+  * Try to implement the Fm::PathBar which shows a filesystem path as buttons.
+  * Adds Build PROJECT_NAME with Qt version message
+  * Move LIBFM_DATA_DIR to pcmanfm repo.
+  * Refactors CUSTOM_ACTIONS compile definition
+  * Refactors LIBFM_DATA_DIR compile definition
+  * Drop add_definitions. Use target_compile_definitions.
+  * Removes duplicated symbols visibility settings
+  * README.md: Add build dependency lxqt-build-tools
+  * Use the new lxqt-build-tools package
+  * Restore symlink emblem
+  * Remove empty files
+  * Try to refactor the emblemed icon support in a more generalized way. Reuse FolderItemDelegate to paint the emblemed icons in Fm::PlacesView to prevent code duplication. APIs changes:  * Add Fm::IconTheme::emblems() and cache emblem info in the cache.  * Add Fm::FolderItemDelegate::setFileInfoRole() and Fm::FolderItemDelegate::setFmIconRole()  * Cache multiple emblems rather than getting the first one only (but only paint the first one now).  * Remove icon sizes from Fm::PlacesModel and Fm::PlacesModelItems to maintain MVC design pattern and backward incompatibility.  * Expose two role IDs in Fm::PlacesModel: FileInfoRole and FmIconRole so the views can access these data.
+  * Show File Emblems
+  * Emblem For (Encrypted) Volume Icons
+  * Remove cpack (#44)
+  * Also Consider GEmblemedIcon (#41)
+
+0.11.1 / 2016-09-24
+===================
+
+  * Release 0.11.1: Add changelog
   * Bump version to 0.11.1 (#39)
   * Fix Custom Actions Submenu (#38)
   * Extend README.md
