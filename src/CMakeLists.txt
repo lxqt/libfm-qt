@@ -1,4 +1,10 @@
+set(libfm_core_SRCS
+    core/gobjectptr.h
+    core/filepath.cpp
+)
+
 set(libfm_SRCS
+    ${libfm_core_SRCS}
     libfmqt.cpp
     bookmarkaction.cpp
     sidepane.cpp
