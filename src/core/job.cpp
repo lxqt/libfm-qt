@@ -4,27 +4,24 @@ namespace Fm2 {
 
 Job::Job():
     cancellable_{g_cancellable_new(), false},
-    autoDelete_{false},
     paused_{false} {
 }
 
-bool Job::runSync() {
-    auto ret = run();
-    Q_EMIT finished();
-    if(autoDelete_)
-        delete this;
-    return ret;
-}
 
 void Job::runAsync() {
-    thread_ = std::unique_ptr<QThread>(new QThread());
-    moveToThread(thread_.get());
-    connect(thread_.get(), &QThread::started, this, &Job::run);
-    connect(thread_.get(), &QThread::finished, this, &Job::finished, Qt::BlockingQueuedConnection);
-    if(autoDelete_) {
-        connect(thread_.get(), &QThread::finished, this, &Job::deleteLater);
+    auto thread = new QThread();
+    moveToThread(thread);
+    connect(thread, &QThread::started, this, &Job::run);
+    connect(thread, &QThread::finished, this, &Job::finished, Qt::BlockingQueuedConnection);
+    connect(thread, &QThread::finished, thread, &QThread::deleteLater);
+    if(autoDelete()) {
+        connect(thread, &QThread::finished, this, &Job::deleteLater);
     }
-    thread_->start();
+    thread->start();
+}
+
+void Job::run() {
+    Q_EMIT finished();
 }
 
 } // namespace Fm2

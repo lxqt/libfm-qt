@@ -31,6 +31,8 @@
 #include <fcntl.h>
 
 #include <vector>
+#include <utility>
+#include <string>
 
 #include "gobjectptr.h"
 #include "cstrptr.h"
@@ -44,9 +46,9 @@ namespace Fm2 {
 class LIBFM_QT_API FileInfo {
 public:
 
-    FileInfo();
+    explicit FileInfo();
 
-    FileInfo(GObjectPtr<GFileInfo> inf);
+    explicit FileInfo(GObjectPtr<GFileInfo> inf);
 
     virtual ~FileInfo();
 
@@ -93,8 +95,8 @@ public:
         return mtime_;
     }
 
-    const char* getTarget() const {
-        return target_.get();
+    const std::string& getTarget() const {
+        return target_;
     }
 
     bool isWritableDirectory() const {
@@ -168,27 +170,31 @@ public:
         return size_;
     }
 
-    const char* getName() const {
-        return name_.get();
+    const std::string& getName() const {
+        return name_;
     }
 
-    const char* getDispName() const {
-        return dispName_.get();
+    const QString& getDispName() const {
+        return dispName_;
     }
 
     FilePath path() const {
-        return dirPath_.child(name_.get());
+        return dirPath_.child(name_.c_str());
     }
 
     const FilePath& dirPath() const {
         return dirPath_;
     }
 
+    const char* filesystemId() const {
+        return filesystemId_;
+    }
+
     void setFromGFileInfo(GObjectPtr<GFileInfo> inf);
 
 private:
-    CStrPtr name_;
-    CStrPtr dispName_;
+    std::string name_;
+    QString dispName_;
 
     FilePath dirPath_;
 
@@ -207,7 +213,7 @@ private:
     std::shared_ptr<const MimeType> mimeType_;
     std::shared_ptr<const Icon> icon_;
 
-    CStrPtr target_; /* target of shortcut or mountable. */
+    std::string target_; /* target of shortcut or mountable. */
 
     bool isShortcut_ : 1; /* TRUE if file is shortcut type */
     bool isAccessible_ : 1; /* TRUE if can be read by user */
@@ -220,6 +226,18 @@ private:
 
     // std::vector<std::tuple<int, void*, void(void*)>> extraData_;
 };
+
+
+class FileInfoList: public std::vector<std::shared_ptr<const FileInfo>> {
+public:
+
+    bool isSameType() const;
+
+    bool isSameFilesystem() const;
+};
+
+
+typedef std::pair<std::shared_ptr<const FileInfo>, std::shared_ptr<const FileInfo>> FileInfoPair;
 
 
 }

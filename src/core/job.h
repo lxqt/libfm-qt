@@ -24,6 +24,7 @@
 #include <QObject>
 #include <QtGlobal>
 #include <QThread>
+#include <QRunnable>
 #include <memory>
 #include <gio/gio.h>
 #include "gobjectptr.h"
@@ -32,12 +33,19 @@
 
 namespace Fm2 {
 
+/*
+ * Fm2::Job can be used in several different modes.
+ * 1. run with QThreadPool::start()
+ * 2. call runAsync(), which will create a new QThread and move the object to the thread.
+ * 3. create a new QThread, and connect the started() signal to the slot Job::run()
+ * 4. Directly call Job::run(), which executes synchrounously as a normal blocking call
+*/
 
-class LIBFM_QT_API Job: public QObject {
+class LIBFM_QT_API Job: public QObject, public QRunnable {
     Q_OBJECT
 public:
 
-    Job();
+    explicit Job();
 
     virtual ~Job() {
     }
@@ -46,16 +54,7 @@ public:
         return g_cancellable_is_cancelled(cancellable_.get());
     }
 
-    bool runSync();
     void runAsync();
-
-    void setAutoDelete(bool autoDelete) {
-        autoDelete_ = autoDelete;
-    }
-
-    bool autoDelete() const {
-        return autoDelete_;
-    }
 
     bool pause();
 
@@ -70,10 +69,8 @@ public Q_SLOTS:
         g_cancellable_cancel(cancellable_.get());
     }
 
-protected Q_SLOTS:
-    virtual bool run() {
-        return true;
-    }
+    virtual void run();
+
 /*
 protected:
     void emitFinished() {
@@ -84,8 +81,6 @@ protected:
     GObjectPtr<GCancellable> cancellable_;
 
 private:
-    std::unique_ptr<QThread> thread_;
-    bool autoDelete_;
     bool paused_;
 };
 

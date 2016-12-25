@@ -11,7 +11,7 @@ template <typename T>
 class GObjectPtr {
 public:
 
-    GObjectPtr(T* gobj = nullptr, bool add_ref = true): gobj_{gobj} {
+    explicit GObjectPtr(T* gobj = nullptr, bool add_ref = true): gobj_{gobj} {
         if(gobj_ != nullptr && add_ref)
             g_object_ref(gobj_);
     }
@@ -46,7 +46,7 @@ public:
         if(gobj_ != nullptr)
             g_object_unref(gobj_);
         gobj_ = gobj ? reinterpret_cast<T*>(g_object_ref(gobj_)) : nullptr;
-        return gobj_;
+        return *this;
     }
 
     bool operator == (const GObjectPtr& other) const {

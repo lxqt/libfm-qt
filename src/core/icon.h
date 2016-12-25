@@ -30,17 +30,19 @@
 #include <memory>
 #include <mutex>
 #include <unordered_map>
+#include <QIcon>
+
 
 namespace Fm2 {
 
 class Icon {
 public:
 
-    Icon() {}
+    explicit Icon() {}
 
-    Icon(const char* name);
+    explicit Icon(const char* name);
 
-    Icon(GObjectPtr<GIcon>& gicon);
+    explicit Icon(GObjectPtr<GIcon>& gicon);
 
     ~Icon();
 
@@ -66,6 +68,8 @@ private:
 
 private:
     GObjectPtr<GIcon> gicon_;
+    QIcon qicon_;
+
     static std::unordered_map<GIcon*, std::shared_ptr<Icon>, GIconHash, GIconEqual> cache_;
     static std::mutex mutex_;
 };

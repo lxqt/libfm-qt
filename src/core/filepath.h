@@ -11,13 +11,13 @@ namespace Fm2 {
 class FilePath {
 public:
 
-    FilePath() {
+    explicit FilePath() {
     }
 
-    FilePath(const char *path_str): gfile_{g_file_new_for_commandline_arg(path_str), false} {
+    explicit FilePath(const char *path_str): gfile_{g_file_new_for_commandline_arg(path_str), false} {
     }
 
-    FilePath(GFile* gfile, bool add_ref): gfile_{gfile, add_ref} {
+    explicit FilePath(GFile* gfile, bool add_ref): gfile_{gfile, add_ref} {
     }
 
     FilePath(const FilePath& other) = default;
@@ -99,8 +99,31 @@ public:
         return gfile_;
     }
 
+    FilePath& operator = (const FilePath& other) = default;
+
+    FilePath& operator = (const FilePath&& other) {
+        gfile_ = std::move(other.gfile_);
+        return *this;
+    }
+
+    bool operator == (const FilePath& other) const {
+        if(gfile_ == other.gfile_) {
+            return true;
+        }
+        if(gfile_ && other.gfile_) {
+            return g_file_equal(gfile_.get(), other.gfile_.get());
+        }
+        return false;
+    }
+
 private:
     GObjectPtr<GFile> gfile_;
+};
+
+struct FilePathHash {
+    std::size_t operator() (const FilePath& path) const {
+        return path.hash();
+    }
 };
 
 } // namespace Fm2

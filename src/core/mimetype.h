@@ -42,7 +42,7 @@ namespace Fm2 {
 class MimeType {
 public:
 
-    MimeType(const char* typeName);
+    explicit MimeType(const char* typeName);
 
     MimeType() = delete;
 

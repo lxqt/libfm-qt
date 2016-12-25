@@ -1,10 +1,14 @@
 set(libfm_core_SRCS
+    # core data structures
     core/gobjectptr.h
     core/filepath.cpp
-    core/job.cpp
     core/icon.cpp
     core/mimetype.cpp
     core/fileinfo.cpp
+    core/folder.cpp
+    # i/o jobs
+    core/job.cpp
+    core/dirlistjob.cpp
 )
 
 set(libfm_SRCS
@@ -69,6 +73,7 @@ set(libfm_UIS
 
 qt5_wrap_ui(libfm_UIS_H ${libfm_UIS})
 
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions")  # boost signals2 need exceptions
 
 set(LIBFM_QT_DATA_DIR "${CMAKE_INSTALL_FULL_DATADIR}/libfm-qt")
 set(LIBFM_QT_INTREE_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/include")
@@ -122,6 +127,7 @@ target_include_directories(${LIBFM_QT_LIBRARY_NAME}
         "${FM_INCLUDE_DIR}/libfm" # to workaround incorrect #include in fm-actions.
         "${MENUCACHE_INCLUDE_DIRS}"
         "${XCB_INCLUDE_DIRS}"
+        "${Boost_INCLUDE_DIRS}"
     INTERFACE
         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
         "$<BUILD_INTERFACE:${LIBFM_QT_INTREE_INCLUDE_DIR}>"

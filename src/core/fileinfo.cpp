@@ -3,17 +3,11 @@
 
 namespace Fm2 {
 
-FileInfo::FileInfo():
-    name_{nullptr, g_free},
-    dispName_{nullptr, g_free},
-    target_{nullptr, g_free} {
+FileInfo::FileInfo() {
     // FIXME: initialize numeric data members
 }
 
-FileInfo::FileInfo(GObjectPtr<GFileInfo> inf):
-    name_{nullptr, g_free},
-    dispName_{nullptr, g_free},
-    target_{nullptr, g_free} {
+FileInfo::FileInfo(GObjectPtr<GFileInfo> inf) {
     setFromGFileInfo(inf);
 }
 
@@ -25,11 +19,12 @@ void FileInfo::setFromGFileInfo(GObjectPtr<GFileInfo> inf) {
     GIcon* gicon;
     GFileType type;
 
-    name_ = CStrPtr{g_strdup(g_file_info_get_name(inf.get())), g_free};
+    name_ = g_file_info_get_name(inf.get());
 
     tmp = g_file_info_get_edit_name(inf.get());
-    if (!tmp || strcmp(tmp, "/") == 0)
-        dispName_ = CStrPtr{g_strdup(g_file_info_get_display_name(inf.get())), g_free};
+    if (!tmp || strcmp(tmp, "/") == 0) {
+        dispName_ = g_file_info_get_display_name(inf.get());
+    }
 
     size_ = g_file_info_get_size(inf.get());
 
@@ -102,12 +97,14 @@ void FileInfo::setFromGFileInfo(GObjectPtr<GFileInfo> inf) {
     case G_FILE_TYPE_MOUNTABLE:
         uri = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
         if(uri) {
-            if(g_str_has_prefix(uri, "file:///"))
-                target_ = CStrPtr{g_filename_from_uri(uri, NULL, NULL), g_free};
+            if(g_str_has_prefix(uri, "file:///")) {
+                auto filename = CStrPtr{g_filename_from_uri(uri, NULL, NULL), g_free};
+                target_ = filename.get();
+            }
             else
-                target_ = CStrPtr{g_strdup(uri), g_free};
+                target_ = uri;
             if(!mimeType_)
-                mimeType_ = MimeType::guessFromFileName(target_.get());
+                mimeType_ = MimeType::guessFromFileName(target_.c_str());
         }
 
         /* if the mime-type is not determined or is unknown */
@@ -131,18 +128,21 @@ _file_is_symlink:
         uri = g_file_info_get_symlink_target(inf.get());
         if(uri)
         {
-            if(g_str_has_prefix(uri, "file:///"))
-                target_ = CStrPtr{g_filename_from_uri(uri, NULL, NULL), g_free};
-            else
-                target_ = CStrPtr{g_strdup(uri), g_free};
+            if(g_str_has_prefix(uri, "file:///")) {
+                auto filename = CStrPtr{g_filename_from_uri(uri, NULL, NULL), g_free};
+                target_ = filename.get();
+            }
+            else {
+                target_ = uri;
+            }
             if(!mimeType_)
-                mimeType_ = MimeType::guessFromFileName(target_.get());
+                mimeType_ = MimeType::guessFromFileName(target_.c_str());
         }
         /* continue with absent mime type */
     default: /* G_FILE_TYPE_UNKNOWN G_FILE_TYPE_REGULAR G_FILE_TYPE_SPECIAL */
         if(G_UNLIKELY(!mimeType_)) {
             if(!mimeType_)
-                mimeType_ = MimeType::guessFromFileName(name_.get());
+                mimeType_ = MimeType::guessFromFileName(name_.c_str());
         }
     }
 
@@ -225,6 +225,33 @@ bool FileInfo::isExecutableType() const {
     }
     return mimeType_->canBeExecutable();
 }
+
+
+bool FileInfoList::isSameType() const {
+    if(!empty()) {
+        auto& item = front();
+        for(auto it = cbegin() + 1; it != cend(); ++it) {
+            auto& item2 = *it;
+            if(item->mimeType() != item2->mimeType())
+                return false;
+        }
+    }
+    return true;
+}
+
+bool FileInfoList::isSameFilesystem() const {
+    if(!empty()) {
+        auto& item = front();
+        for(auto it = cbegin() + 1; it != cend(); ++it) {
+            auto& item2 = *it;
+            if(item->filesystemId() != item2->filesystemId())
+                return false;
+        }
+    }
+    return true;
+}
+
+
 
 } // namespace Fm2
 
