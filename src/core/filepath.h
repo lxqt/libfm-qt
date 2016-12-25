@@ -95,6 +95,9 @@ public:
         return CStrPtr{g_file_get_uri_scheme(gfile_.get()), g_free};
     }
 
+    const GObjectPtr<GFile>& gfile() const {
+        return gfile_;
+    }
 
 private:
     GObjectPtr<GFile> gfile_;

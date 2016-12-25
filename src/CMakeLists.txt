@@ -1,6 +1,10 @@
 set(libfm_core_SRCS
     core/gobjectptr.h
     core/filepath.cpp
+    core/job.cpp
+    core/icon.cpp
+    core/mimetype.cpp
+    core/fileinfo.cpp
 )
 
 set(libfm_SRCS
