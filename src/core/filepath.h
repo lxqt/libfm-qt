@@ -4,6 +4,7 @@
 #include "gobjectptr.h"
 #include "cstrptr.h"
 #include <gio/gio.h>
+#include <vector>
 
 
 namespace Fm2 {
@@ -125,6 +126,8 @@ struct FilePathHash {
         return path.hash();
     }
 };
+
+typedef std::vector<FilePath> FilePathList;
 
 } // namespace Fm2
 

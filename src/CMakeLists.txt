@@ -9,6 +9,7 @@ set(libfm_core_SRCS
     # i/o jobs
     core/job.cpp
     core/dirlistjob.cpp
+    core/fileinfojob.cpp
 )
 
 set(libfm_SRCS
