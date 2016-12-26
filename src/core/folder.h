@@ -34,6 +34,7 @@
 
 #include "gobjectptr.h"
 #include "fileinfo.h"
+#include "gsignalhandler.h"
 
 
 namespace Fm2 {
@@ -112,9 +113,6 @@ Q_SIGNALS:
 private:
 
     void onFileChangeEvents(GFileMonitor* monitor, GFile* file, GFile* other_file, GFileMonitorEvent event_type);
-    static void _onFileChangeEvents(GFileMonitor* monitor, GFile* file, GFile* other_file, GFileMonitorEvent event_type, Folder* _this) {
-        _this->onFileChangeEvents(monitor, file, other_file, event_type);
-    }
     void onDirChanged(GFileMonitorEvent event_type);
 
     void queue_update();
@@ -128,6 +126,7 @@ private Q_SLOTS:
 private:
     FilePath dir_path;
     GObjectPtr<GFileMonitor> mon;
+    GSignalHandler<Folder, GFileMonitor, void, GFile*, GFile*, GFileMonitorEvent> mon_changed;
 
     std::shared_ptr<const FileInfo> dir_fi;
     DirListJob* dirlist_job;

@@ -69,6 +69,7 @@ private:
     mutable T* gobj_;
 };
 
+
 } // namespace Fm2
 
 #endif // FM2_GOBJECTPTR_H

@@ -33,8 +33,8 @@ namespace Fm2 {
 std::unordered_map<FilePath, std::weak_ptr<Folder>, FilePathHash> Folder::cache_;
 std::mutex Folder::mutex_;
 
-
 Folder::Folder():
+    mon_changed{this, &Folder::onFileChangeEvents},
     dirlist_job{nullptr},
     /* for file monitor */
     has_idle_handler{false},
@@ -693,17 +693,18 @@ void Folder::reload() {
 #endif
 
     /* also re-create a new file monitor */
-    if(mon) {
-        g_signal_handlers_disconnect_by_func(mon.get(), gpointer(G_CALLBACK(&_onFileChangeEvents)), this);
-        mon = nullptr;
-    }
     // mon = GObjectPtr<GFileMonitor>{fm_monitor_directory(dir_path.gfile().get(), &err), false};
     // FIXME: should we make this cancellable?
-    mon = GObjectPtr<GFileMonitor>{g_file_monitor_directory(dir_path.gfile().get(), G_FILE_MONITOR_WATCH_MOUNTS, nullptr, &err), false};
+    mon = GObjectPtr<GFileMonitor>{
+            g_file_monitor_directory(dir_path.gfile().get(), G_FILE_MONITOR_WATCH_MOUNTS, nullptr, &err),
+            false
+    };
+
     if(mon) {
-        g_signal_connect(mon.get(), "changed", G_CALLBACK(&_onFileChangeEvents), this);
+        mon_changed.connect(mon.get(), "changed");
     }
     else {
+        mon_changed.disconnect();
         qDebug("file monitor cannot be created: %s", err->message);
         g_error_free(err);
     }
