@@ -9,8 +9,24 @@ set(libfm_core_SRCS
     core/folder.cpp
     # i/o jobs
     core/job.cpp
+    core/copyjob.cpp
+    core/deletejob.cpp
     core/dirlistjob.cpp
+    core/dirsizejob.cpp
+    core/filechangeattrjob.cpp
     core/fileinfojob.cpp
+    core/fileoperationjob.cpp
+    core/filesysteminfojob.cpp
+    core/job.cpp
+    core/movejob.cpp
+    core/trashjob.cpp
+    core/simplejob.h
+    # extra desktop services
+    core/bookmarks.cpp
+    core/volumemanager.cpp
+    core/userinfo.cpp
+    core/thumbnailer.cpp
+    core/thumbnailloader.cpp
 )
 
 set(libfm_SRCS

@@ -1,0 +1,42 @@
+#ifndef FM2_FILESYSTEMINFOJOB_H
+#define FM2_FILESYSTEMINFOJOB_H
+
+#include "job.h"
+#include "filepath.h"
+
+namespace Fm2 {
+
+class FileSystemInfoJob : public Job {
+    Q_OBJECT
+public:
+    FileSystemInfoJob(const FilePath& path):
+        path_{path},
+        isAvailable_{false},
+        size_{0},
+        freeSize_{0} {
+    }
+
+    bool isAvailable() const {
+        return isAvailable_;
+    }
+
+    uint64_t size() const {
+        return size_;
+    }
+
+    uint64_t freeSize() const {
+        return freeSize_;
+    }
+
+    void run() override;
+
+private:
+    FilePath path_;
+    bool isAvailable_;
+    uint64_t size_;
+    uint64_t freeSize_;
+};
+
+} // namespace Fm2
+
+#endif // FM2_FILESYSTEMINFOJOB_H

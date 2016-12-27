@@ -40,6 +40,7 @@
 namespace Fm2 {
 
 class DirListJob;
+class FileSystemInfoJob;
 
 
 class LIBFM_QT_API Folder: public QObject {
@@ -123,6 +124,8 @@ private Q_SLOTS:
 
     void onDirListFinished();
 
+    void onFileSystemInfoFinished();
+
 private:
     FilePath dir_path;
     GObjectPtr<GFileMonitor> mon;
@@ -130,6 +133,7 @@ private:
 
     std::shared_ptr<const FileInfo> dir_fi;
     DirListJob* dirlist_job;
+    FileSystemInfoJob* fsInfoJob_;
 
     /* for file monitor */
     bool has_idle_handler;

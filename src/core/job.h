@@ -60,6 +60,10 @@ public:
 
     void resume();
 
+    const GObjectPtr<GCancellable>& cancellable() const {
+        return cancellable_;
+    }
+
 Q_SIGNALS:
     void finished();
 
@@ -71,12 +75,6 @@ public Q_SLOTS:
 
     virtual void run();
 
-/*
-protected:
-    void emitFinished() {
-        QMetaMethod::fromSignal(&Job::finished).invoke(this, Qt::BlockingQueuedConnection);
-    }
-*/
 protected:
     GObjectPtr<GCancellable> cancellable_;
 

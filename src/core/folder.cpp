@@ -27,6 +27,7 @@
 #include <QThreadPool>
 
 #include "dirlistjob.h"
+#include "filesysteminfojob.h"
 
 namespace Fm2 {
 
@@ -36,6 +37,7 @@ std::mutex Folder::mutex_;
 Folder::Folder():
     mon_changed{this, &Folder::onFileChangeEvents},
     dirlist_job{nullptr},
+    fsInfoJob_{nullptr},
     /* for file monitor */
     has_idle_handler{false},
     pending_change_notify{false},
@@ -88,14 +90,6 @@ bool Folder::makeDirectory(const char* name, GError** error) {
 
 }
 
-void Folder::queryFilesystemInfo() {
-
-}
-
-bool Folder::getFilesystemInfo(uint64_t* total_size, uint64_t* free_size) const {
-
-}
-
 bool Folder::isIncremental() const {
     return wants_incremental;
 }
@@ -105,7 +99,7 @@ bool Folder::isValid() const {
 }
 
 bool Folder::isLoaded() const {
-
+    return (dirlist_job == nullptr);
 }
 
 std::shared_ptr<const FileInfo> Folder::getFileByName(const char* name) const {
@@ -556,6 +550,7 @@ void Folder::onDirListFinished() {
     dirlist_job = NULL;
 
 #endif
+
     Q_EMIT finishLoading();
 }
 
@@ -736,35 +731,6 @@ void Folder::reload() {
 }
 
 #if 0
-/**
- * Folder::is_loaded
- * @folder: folder to test
- *
- * Checks if all data for @folder is completely loaded.
- *
- * Before 1.0.0 this call had name Folder::get_is_loaded.
- *
- * Returns: %true is loading of folder is already completed.
- *
- * Since: 0.1.16
- */
-bool Folder::is_loaded(FmFolder* folder) {
-    return (dirlist_job == NULL);
-}
-
-/**
- * Folder::is_valid
- * @folder: folder to test
- *
- * Checks if directory described by @folder exists.
- *
- * Returns: %true if @folder describes a valid existing directory.
- *
- * Since: 1.0.0
- */
-bool Folder::is_valid(FmFolder* folder) {
-    return (dir_fi != NULL);
-}
 
 /**
  * Folder::is_incremental
@@ -795,21 +761,9 @@ bool Folder::is_incremental(FmFolder* folder) {
     return wants_incremental;
 }
 
+#endif
 
-/**
- * Folder::get_filesystem_info
- * @folder: folder to retrieve info
- * @total_size: pointer to counter of total size of the filesystem
- * @free_size: pointer to counter of free space on the filesystem
- *
- * Retrieves info about total and free space on the filesystem which
- * contains the @folder.
- *
- * Returns: %true if information can be retrieved.
- *
- * Since: 0.1.16
- */
-bool Folder::get_filesystem_info(FmFolder* folder, guint64* total_size, guint64* free_size) {
+bool Folder::getFilesystemInfo(uint64_t* total_size, uint64_t* free_size) const {
     if(has_fs_info) {
         *total_size = fs_total_size;
         *free_size = fs_free_size;
@@ -818,73 +772,33 @@ bool Folder::get_filesystem_info(FmFolder* folder, guint64* total_size, guint64*
     return false;
 }
 
+
 /* this function is run in GIO thread! */
-void on_query_filesystem_info_finished(GObject* src, GAsyncResult* res, FmFolder* folder) {
-    GFile* gf = G_FILE(src);
-    GError* err = NULL;
-    GFileInfo* inf = g_file_query_filesystem_info_finish(gf, res, &err);
-    if(!inf) {
-        fs_total_size = fs_free_size = 0;
-        has_fs_info = false;
-        fs_info_not_avail = true;
-
-        /* FIXME: examine unsupported filesystems */
-
-        g_error_free(err);
-        goto _out;
-    }
-    if(g_file_info_has_attribute(inf, G_FILE_ATTRIBUTE_FILESYSTEM_SIZE)) {
-        fs_total_size = g_file_info_get_attribute_uint64(inf, G_FILE_ATTRIBUTE_FILESYSTEM_SIZE);
-        fs_free_size = g_file_info_get_attribute_uint64(inf, G_FILE_ATTRIBUTE_FILESYSTEM_FREE);
-        has_fs_info = true;
-    }
-    else {
-        fs_total_size = fs_free_size = 0;
-        has_fs_info = false;
-        fs_info_not_avail = true;
-    }
-    g_object_unref(inf);
-
-_out:
-    G_LOCK(query);
-    if(fs_size_cancellable) {
-        g_object_unref(fs_size_cancellable);
-        fs_size_cancellable = NULL;
-    }
-
+void Folder::onFileSystemInfoFinished() {
+    FileSystemInfoJob* job = static_cast<FileSystemInfoJob*>(sender());
+    if(job->isCancelled() || job != fsInfoJob_) // this is a cancelled job, ignore!
+        return;
+    fs_info_not_avail = !job->isAvailable();
+    fs_total_size = job->size();
+    fs_free_size = job->freeSize();
     filesystem_info_pending = true;
-    G_UNLOCK(query);
-    /* we have a reference borrowed by async query still */
-    G_LOCK(lists);
-    queue_update(folder);
-    G_UNLOCK(lists);
-    g_object_unref(folder);
-}
-
-/**
- * Folder::query_filesystem_info
- * @folder: folder to retrieve info
- *
- * Queries to retrieve info about filesystem which contains the @folder if
- * the filesystem supports such query.
- *
- * Since: 0.1.16
- */
-void Folder::query_filesystem_info(FmFolder* folder) {
-    G_LOCK(query);
-    if(!fs_size_cancellable && !fs_info_not_avail) {
-        fs_size_cancellable = g_cancellable_new();
-        g_file_query_filesystem_info_async(gf,
-                                           G_FILE_ATTRIBUTE_FILESYSTEM_SIZE","
-                                           G_FILE_ATTRIBUTE_FILESYSTEM_FREE,
-                                           G_PRIORITY_LOW, fs_size_cancellable,
-                                           (GAsyncReadyCallback)on_query_filesystem_info_finished,
-                                           g_object_ref(folder));
-    }
-    G_UNLOCK(query);
 }
 
 
+void Folder::queryFilesystemInfo() {
+    // G_LOCK(query);
+    if(fsInfoJob_)
+        return;
+    fsInfoJob_ = new FileSystemInfoJob{dir_path};
+    fsInfoJob_->setAutoDelete(true);
+    connect(fsInfoJob_, &FileSystemInfoJob::finished, this, &Folder::onFileSystemInfoFinished);
+
+    QThreadPool::globalInstance()->start(fsInfoJob_);
+    // G_UNLOCK(query);
+}
+
+
+#if 0
 /**
  * Folder::block_updates
  * @folder: folder to apply
