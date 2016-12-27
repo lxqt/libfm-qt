@@ -2,7 +2,24 @@
 
 namespace Fm2 {
 
-VolumeManager::VolumeManager() : QObject() {
+VolumeManager::VolumeManager():
+    QObject(),
+    monitor_{g_volume_monitor_get(), false},
+    volAdded_{this, &VolumeManager::onGVolumeAdded},
+    volRemoved_{this, &VolumeManager::onGVolumeRemoved},
+    volChanged_{this, &VolumeManager::onGVolumeChanged},
+    mntAdded_{this, &VolumeManager::onGMountAdded},
+    mntRemoved_{this, &VolumeManager::onGMountRemoved},
+    mntChanged_{this, &VolumeManager::onGMountChanged} {
+
+    // connect gobject signal handlers
+    volAdded_.connect(monitor_.get(), "volume-added");
+    volRemoved_.connect(monitor_.get(), "volume-removd");
+    volChanged_.connect(monitor_.get(), "volume-changed");
+
+    mntAdded_.connect(monitor_.get(), "mount-added");
+    mntRemoved_.connect(monitor_.get(), "mount-removd");
+    mntChanged_.connect(monitor_.get(), "mount-changed");
 
 }
 
