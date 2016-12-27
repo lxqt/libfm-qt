@@ -12,13 +12,13 @@ set(libfm_core_SRCS
     core/copyjob.cpp
     core/deletejob.cpp
     core/dirlistjob.cpp
-    core/dirsizejob.cpp
     core/filechangeattrjob.cpp
     core/fileinfojob.cpp
     core/fileoperationjob.cpp
     core/filesysteminfojob.cpp
     core/job.cpp
     core/movejob.cpp
+    core/totalsizejob.cpp
     core/trashjob.cpp
     core/simplejob.h
     # extra desktop services
