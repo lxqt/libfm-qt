@@ -1,5 +1,5 @@
-#ifndef FM2_USERINFO_H
-#define FM2_USERINFO_H
+#ifndef FM2_USERINFOCACHE_H
+#define FM2_USERINFOCACHE_H
 
 #include <QObject>
 #include <string>
@@ -9,9 +9,9 @@
 
 namespace Fm2 {
 
-class User {
+class UserInfo {
 public:
-    User(uid_t uid, const char* name, const char* realName):
+    UserInfo(uid_t uid, const char* name, const char* realName):
         uid_{uid}, name_{name}, realName_{realName} {
     }
 
@@ -34,9 +34,9 @@ private:
 
 };
 
-class Group {
+class GroupInfo {
 public:
-    Group(gid_t gid, const char* name): gid_{gid}, name_{name} {
+    GroupInfo(gid_t gid, const char* name): gid_{gid}, name_{name} {
     }
 
     gid_t gid() const {
@@ -52,26 +52,26 @@ private:
     std::string name_;
 };
 
-class UserInfo : public QObject {
+class UserInfoCache : public QObject {
     Q_OBJECT
 public:
-    explicit UserInfo();
+    explicit UserInfoCache();
 
-    const std::shared_ptr<const User>& userFromId(uid_t uid);
+    const std::shared_ptr<const UserInfo>& userFromId(uid_t uid);
 
-    const std::shared_ptr<const Group>& groupFromId(gid_t gid);
+    const std::shared_ptr<const GroupInfo>& groupFromId(gid_t gid);
 
-    static UserInfo* instance();
+    static UserInfoCache* instance();
 
 Q_SIGNALS:
     void changed();
 
 private:
-    std::unordered_map<uid_t, std::shared_ptr<const User>> users_;
-    std::unordered_map<gid_t, std::shared_ptr<const Group>> groups_;
-    static UserInfo* globalInstance_;
+    std::unordered_map<uid_t, std::shared_ptr<const UserInfo>> users_;
+    std::unordered_map<gid_t, std::shared_ptr<const GroupInfo>> groups_;
+    static UserInfoCache* globalInstance_;
 };
 
 } // namespace Fm2
 
-#endif // FM2_USERINFO_H
+#endif // FM2_USERINFOCACHE_H
