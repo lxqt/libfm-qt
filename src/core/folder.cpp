@@ -28,6 +28,7 @@
 
 #include "dirlistjob.h"
 #include "filesysteminfojob.h"
+#include "fileinfojob.h"
 
 namespace Fm2 {
 
@@ -87,7 +88,8 @@ std::shared_ptr<Folder> Folder::fromPath(const FilePath& path) {
 }
 
 bool Folder::makeDirectory(const char* name, GError** error) {
-
+    // TODO:
+    return false;
 }
 
 bool Folder::isIncremental() const {
@@ -156,83 +158,64 @@ void Folder::init(FmFolder* folder) {
     hash_uses++;
     G_UNLOCK(hash);
 }
-
-bool on_idle_reload(FmFolder* folder) {
-    /* check if folder still exists */
-    if(g_source_is_destroyed(g_main_current_source())) {
-        /* FIXME: it should be impossible, folder cannot be disposed at this point */
-        return false;
-    }
-    Folder::reload(folder);
-    G_LOCK(query);
-    idle_reload_handler = 0;
-    G_UNLOCK(query);
-    g_object_unref(folder);
-    return false;
-}
-
-void queue_reload(FmFolder* folder) {
-    G_LOCK(query);
-    if(!idle_reload_handler)
-        idle_reload_handler = g_idle_add_full(G_PRIORITY_LOW, (GSourceFunc)on_idle_reload,
-                                      g_object_ref(folder), NULL);
-    G_UNLOCK(query);
-}
-
-void on_file_info_job_finished(FmFileInfoJob* job, FmFolder* folder) {
-    GList* l;
-    GSList* files_to_add = NULL;
-    GSList* files_to_update = NULL;
-    if(!fm_job_is_cancelled(FM_JOB(job))) {
-        bool need_added = g_signal_has_handler_pending(folder, signals[FILES_ADDED], 0, true);
-        bool need_changed = g_signal_has_handler_pending(folder, signals[FILES_CHANGED], 0, true);
-
-        for(l = fm_file_info_list_peek_head_link(job->file_infos); l; l = l->next) {
-            FmFileInfo* fi = (FmFileInfo*)l->data;
-            FmPath* path = fm_file_info_get_path(fi);
-            GList* l2;
-            if(path == fm_file_info_get_path(dir_fi))
-                /* update for folder itself, also see FIXME below! */
-            {
-                fm_file_info_update(dir_fi, fi);
-            }
-            else if((l2 = _Folder::get_file_by_path(folder, path)))
-                /* the file is already in the folder, update */
-            {
-                FmFileInfo* fi2 = (FmFileInfo*)l2->data;
-                /* FIXME: will fm_file_info_update here cause problems?
-                 *        the file info might be referenced by others, too.
-                 *        we're mofifying an object referenced by others.
-                 *        we should redesign the API, or document this clearly
-                 *        in future API doc.
-                 */
-                fm_file_info_update(fi2, fi);
-                if(need_changed) {
-                    files_to_update = g_slist_prepend(files_to_update, fi2);
-                }
-            }
-            else {
-                if(need_added) {
-                    files_to_add = g_slist_prepend(files_to_add, fi);
-                }
-                fm_file_info_list_push_tail(files, fi);
-            }
-        }
-        if(files_to_add) {
-            g_signal_emit(folder, signals[FILES_ADDED], 0, files_to_add);
-            g_slist_free(files_to_add);
-        }
-        if(files_to_update) {
-            g_signal_emit(folder, signals[FILES_CHANGED], 0, files_to_update);
-            g_slist_free(files_to_update);
-        }
-        g_signal_emit(folder, signals[CONTENT_CHANGED], 0);
-    }
-    pending_jobs = g_slist_remove(pending_jobs, job);
-    g_object_unref(job);
-}
-
 #endif
+
+void Folder::on_idle_reload() {
+    /* check if folder still exists */
+    reload();
+    // G_LOCK(query);
+    idle_reload_handler = false;
+    // G_UNLOCK(query);
+}
+
+void Folder::queue_reload() {
+    // G_LOCK(query);
+    if(!idle_reload_handler) {
+        idle_reload_handler = true;
+        QTimer::singleShot(0, this, &Folder::on_idle_reload);
+    }
+    // G_UNLOCK(query);
+}
+
+void Folder::onFileInfoFinished() {
+    FileInfoJob* job = static_cast<FileInfoJob*>(sender());
+    if(job->isCancelled())
+        return;
+
+    FileInfoList files_to_add;
+    std::vector<FileInfoPair> files_to_update;
+
+    const auto& paths = job->paths();
+    const auto& infos = job->files();
+    auto path_it = paths.cbegin();
+    auto info_it = infos.cbegin();
+    for(; path_it != paths.cend() && info_it != infos.cend(); ++path_it, ++info_it) {
+        const auto& path = *path_it;
+        const auto& info = *info_it;
+
+        if(path == dir_path) { // got the info for the folder itself.
+            dir_fi = info;
+        }
+        else {
+            auto it = files.find(info->getName().c_str());
+            if(it != files.end()) { // the file already exists, update
+                files_to_update.push_back(std::make_pair(it->second, info));
+            }
+            else { // newly added
+                files_to_add.push_back(info);
+            }
+            files[info->getName().c_str()] = info;
+        }
+
+        if(!files_to_add.empty()) {
+            Q_EMIT filesAdded(files_to_add);
+        }
+        if(!files_to_update.empty()) {
+            Q_EMIT filesChanged(files_to_update);
+        }
+    }
+    Q_EMIT contentChanged();
+}
 
 void Folder::processPendingChanges() {
     has_idle_handler = false;
@@ -412,14 +395,14 @@ void Folder::onDirChanged(GFileMonitorEvent evt) {
     case G_FILE_MONITOR_EVENT_UNMOUNTED:
         Q_EMIT unmount();
         /* g_debug("folder is unmounted"); */
-        // queue_reload(folder);
+        queue_reload();
         break;
     case G_FILE_MONITOR_EVENT_DELETED:
         Q_EMIT removed();
         /* g_debug("folder is deleted"); */
         break;
     case G_FILE_MONITOR_EVENT_CREATED:
-        // queue_reload(folder);
+        queue_reload();
         break;
     case G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED:
     case G_FILE_MONITOR_EVENT_CHANGED: {
@@ -494,6 +477,12 @@ void Folder::onDirListFinished() {
     DirListJob* job = static_cast<DirListJob*>(sender());
     if(job->isCancelled() || job != dirlist_job) // this is a cancelled job, ignore!
         return;
+    auto& files_to_add = job->files();
+    for(auto& file: files_to_add) {
+        files[file->getName().c_str()] = file;
+    }
+    Q_EMIT filesAdded(files_to_add);
+
 #if 0
     if(dirlist_job->isCancelled() && !wants_incremental) {
         GList* l;

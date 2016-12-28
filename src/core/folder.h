@@ -117,6 +117,7 @@ private:
     void onDirChanged(GFileMonitorEvent event_type);
 
     void queue_update();
+    void queue_reload();
 
 private Q_SLOTS:
 
@@ -125,6 +126,10 @@ private Q_SLOTS:
     void onDirListFinished();
 
     void onFileSystemInfoFinished();
+
+    void onFileInfoFinished();
+
+    void on_idle_reload();
 
 private:
     FilePath dir_path;
@@ -136,6 +141,7 @@ private:
     FileSystemInfoJob* fsInfoJob_;
 
     /* for file monitor */
+    bool idle_reload_handler;
     bool has_idle_handler;
     std::vector<FilePath> files_to_add;
     std::vector<FilePath> files_to_update;
@@ -145,7 +151,6 @@ private:
     bool filesystem_info_pending;
 
     bool wants_incremental;
-    guint idle_reload_handler;
     bool stop_emission; /* don't set it 1 bit to not lock other bits */
 
     std::unordered_map<const char*, std::shared_ptr<const FileInfo>, CStrHash, CStrEqual> files;
