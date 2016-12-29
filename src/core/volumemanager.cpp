@@ -23,4 +23,28 @@ VolumeManager::VolumeManager():
 
 }
 
+void VolumeManager::onGVolumeAdded(GVolumeMonitor* mon, GVolume* vol) {
+
+}
+
+void VolumeManager::onGVolumeRemoved(GVolumeMonitor* mon, GVolume* vol) {
+
+}
+
+void VolumeManager::onGVolumeChanged(GVolumeMonitor* mon, GVolume* vol) {
+
+}
+
+void VolumeManager::onGMountAdded(GVolumeMonitor* mon, GMount* mnt) {
+
+}
+
+void VolumeManager::onGMountRemoved(GVolumeMonitor* mon, GMount* mnt) {
+
+}
+
+void VolumeManager::onGMountChanged(GVolumeMonitor* mon, GMount* mnt) {
+
+}
+
 } // namespace Fm2

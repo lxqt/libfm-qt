@@ -1,11 +1,11 @@
 #include "dirlistjob.h"
 #include <gio/gio.h>
 #include "fileinfo_p.h"
+#include <QDebug>
 
 namespace Fm2 {
 
-DirListJob::DirListJob(const FilePath& path, Flags flags) {
-
+DirListJob::DirListJob(const FilePath& path, Flags flags): dir_path{path} {
 }
 
 void DirListJob::run() {

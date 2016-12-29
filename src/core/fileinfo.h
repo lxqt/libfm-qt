@@ -48,7 +48,7 @@ public:
 
     explicit FileInfo();
 
-    explicit FileInfo(GObjectPtr<GFileInfo> inf);
+    explicit FileInfo(const GObjectPtr<GFileInfo>& inf);
 
     virtual ~FileInfo();
 
@@ -190,7 +190,7 @@ public:
         return filesystemId_;
     }
 
-    void setFromGFileInfo(GObjectPtr<GFileInfo> inf);
+    void setFromGFileInfo(const GObjectPtr<GFileInfo>& inf);
 
 private:
     std::string name_;

@@ -4,6 +4,7 @@
 #include <glib.h>
 #include <glib-object.h>
 #include <cstddef>
+#include <QDebug>
 
 namespace Fm2 {
 
@@ -11,22 +12,20 @@ template <typename T>
 class GObjectPtr {
 public:
 
-    explicit GObjectPtr(T* gobj = nullptr, bool add_ref = true): gobj_{gobj} {
+    explicit GObjectPtr(): gobj_{nullptr} {
+    }
+
+    explicit GObjectPtr(T* gobj, bool add_ref = true): gobj_{gobj} {
         if(gobj_ != nullptr && add_ref)
             g_object_ref(gobj_);
     }
 
-    GObjectPtr(const GObjectPtr& other) {
-        if(gobj_ != nullptr)
-            g_object_unref(gobj_);
-        gobj_ = other.gobj_ ? reinterpret_cast<T*>(g_object_ref(other.gobj_)) : nullptr;
+    GObjectPtr(const GObjectPtr& other): GObjectPtr{} {
+        *this = other;
     }
 
-    GObjectPtr(GObjectPtr&& other) {
-        if(gobj_ != nullptr)
-            g_object_unref(gobj_);
-        gobj_ = other.gobj_ ? reinterpret_cast<T*>(g_object_ref(other.gobj_)) : nullptr;
-        other.gobj_ = nullptr;
+    GObjectPtr(GObjectPtr&& other): GObjectPtr{} {
+        *this = other;
     }
 
     ~GObjectPtr() {
@@ -38,9 +37,20 @@ public:
         return gobj_;
     }
 
-    GObjectPtr& operator = (const GObjectPtr& other) = default;
+    GObjectPtr& operator = (const GObjectPtr& other) {
+        if(gobj_ != nullptr)
+            g_object_unref(gobj_);
+        gobj_ = other.gobj_ ? reinterpret_cast<T*>(g_object_ref(other.gobj_)) : nullptr;
+        return *this;
+    }
 
-    GObjectPtr& operator = (GObjectPtr&& other) = default;
+    GObjectPtr& operator = (GObjectPtr&& other) {
+        if(gobj_ != nullptr)
+            g_object_unref(gobj_);
+        gobj_ = other.gobj_ ? reinterpret_cast<T*>(other.gobj_) : nullptr;
+        other.gobj_ = nullptr;
+        return *this;
+    }
 
     GObjectPtr& operator = (T* gobj) {
         if(gobj_ != nullptr)

@@ -228,3 +228,15 @@ endif()
 
 # prevent the generated files from being deleted during make cleaner
 set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
+
+
+# some simple test cases
+add_executable("test-folder"
+    core/tests/test-folder.cpp
+)
+target_link_libraries("test-folder"
+    Qt5::Core
+    Qt5::Widgets
+    ${FM_LIBRARIES}
+    ${LIBFM_QT_LIBRARY_NAME}
+)

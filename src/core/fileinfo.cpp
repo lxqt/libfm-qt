@@ -15,14 +15,14 @@ FileInfo::FileInfo() {
     // FIXME: initialize numeric data members
 }
 
-FileInfo::FileInfo(GObjectPtr<GFileInfo> inf) {
+FileInfo::FileInfo(const GObjectPtr<GFileInfo> &inf) {
     setFromGFileInfo(inf);
 }
 
 FileInfo::~FileInfo() {
 }
 
-void FileInfo::setFromGFileInfo(GObjectPtr<GFileInfo> inf) {
+void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf) {
     const char *tmp, *uri;
     GIcon* gicon;
     GFileType type;
@@ -106,7 +106,7 @@ void FileInfo::setFromGFileInfo(GObjectPtr<GFileInfo> inf) {
         uri = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
         if(uri) {
             if(g_str_has_prefix(uri, "file:///")) {
-                auto filename = CStrPtr{g_filename_from_uri(uri, NULL, NULL), g_free};
+                auto filename = CStrPtr{g_filename_from_uri(uri, NULL, NULL)};
                 target_ = filename.get();
             }
             else
@@ -137,7 +137,7 @@ _file_is_symlink:
         if(uri)
         {
             if(g_str_has_prefix(uri, "file:///")) {
-                auto filename = CStrPtr{g_filename_from_uri(uri, NULL, NULL), g_free};
+                auto filename = CStrPtr{g_filename_from_uri(uri, NULL, NULL)};
                 target_ = filename.get();
             }
             else {

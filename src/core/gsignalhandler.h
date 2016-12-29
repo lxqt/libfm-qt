@@ -25,17 +25,18 @@ public:
 
     GSignalHandler& operator = (GSignalHandler&& other) = delete;
 
-    gulong connect(G* obj, const char* sig) {
-        if(isConnected() || !obj)
+    gulong connect(G* gobj, const char* sig) {
+        if(isConnected() || !gobj)
             return 0;
-        g_object_weak_ref(gobj_, onGObjectDestroyed, this);
-        return g_signal_connect(obj, sig, G_CALLBACK(&stub), this);
+        gobj_ = gobj;
+        g_object_weak_ref(reinterpret_cast<GObject*>(gobj_), onGObjectDestroyed, this);
+        return g_signal_connect(gobj, sig, G_CALLBACK(&stub), this);
     }
 
     guint disconnect() {
         if(isConnected()) {
             guint ret = g_signal_handlers_disconnect_by_func(gobj_, reinterpret_cast<void*>(&stub), this);
-            g_object_weak_unref(gobj_, onGObjectDestroyed, this);
+            g_object_weak_unref(reinterpret_cast<GObject*>(gobj_), onGObjectDestroyed, this);
             gobj_ = nullptr;
             return ret;
         }
@@ -58,7 +59,7 @@ private:
         _this->gobj_ = nullptr;
     }
 
-    GObject* gobj_;
+    G* gobj_;
     T* obj_;
     MemFn callback_; // member function pointer
 };

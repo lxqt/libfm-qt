@@ -18,8 +18,8 @@ std::shared_ptr<const MimeType> MimeType::desktopEntry_; // application/x-deskto
 
 
 MimeType::MimeType(const char* typeName):
-    name_{g_strdup(typeName), g_free},
-    desc_{nullptr, g_free} {
+    name_{g_strdup(typeName)},
+    desc_{nullptr} {
 
     GObjectPtr<GIcon> gicon{g_content_type_get_icon(typeName), false};
     if(strcmp(typeName, "inode/directory") == 0)
@@ -57,7 +57,7 @@ std::shared_ptr<const MimeType> MimeType::guessFromFileName(const char* fileName
         fileName = strchr(uri_scheme + 3, '/');
     if(fileName == nullptr)
         fileName = "unknown";
-    auto type = CStrPtr{g_content_type_guess(fileName, NULL, 0, &uncertain), g_free};
+    auto type = CStrPtr{g_content_type_guess(fileName, NULL, 0, &uncertain)};
     return fromName(type.get());
 }
 

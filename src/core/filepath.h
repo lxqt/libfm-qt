@@ -21,9 +21,13 @@ public:
     explicit FilePath(GFile* gfile, bool add_ref): gfile_{gfile, add_ref} {
     }
 
-    FilePath(const FilePath& other) = default;
+    FilePath(const FilePath& other): FilePath{} {
+        *this = other;
+    }
 
-    FilePath(FilePath&& other) = default;
+    FilePath(FilePath&& other): FilePath{} {
+        *this = other;
+    }
 
     static FilePath fromUri(const char* uri) {
         return FilePath{g_file_new_for_uri(uri), false};
@@ -42,15 +46,15 @@ public:
     }
 
     CStrPtr baseName() const {
-        return CStrPtr{g_file_get_basename(gfile_.get()), g_free};
+        return CStrPtr{g_file_get_basename(gfile_.get())};
     }
 
     CStrPtr localPath() const {
-        return CStrPtr{g_file_get_path(gfile_.get()), g_free};
+        return CStrPtr{g_file_get_path(gfile_.get())};
     }
 
     CStrPtr uri() const {
-        return CStrPtr{g_file_get_uri(gfile_.get()), g_free};
+        return CStrPtr{g_file_get_uri(gfile_.get())};
     }
 
     CStrPtr toString() const {
@@ -77,7 +81,7 @@ public:
     }
 
     CStrPtr relativePathStr(const FilePath& descendant) const {
-        return CStrPtr{g_file_get_relative_path(gfile_.get(), descendant.gfile_.get()), g_free};
+        return CStrPtr{g_file_get_relative_path(gfile_.get(), descendant.gfile_.get())};
     }
 
     FilePath relativePath(const char* relPath) const {
@@ -93,14 +97,17 @@ public:
     }
 
     CStrPtr uriScheme() const {
-        return CStrPtr{g_file_get_uri_scheme(gfile_.get()), g_free};
+        return CStrPtr{g_file_get_uri_scheme(gfile_.get())};
     }
 
     const GObjectPtr<GFile>& gfile() const {
         return gfile_;
     }
 
-    FilePath& operator = (const FilePath& other) = default;
+    FilePath& operator = (const FilePath& other) {
+        gfile_ = other.gfile_;
+        return *this;
+    }
 
     FilePath& operator = (const FilePath&& other) {
         gfile_ = std::move(other.gfile_);

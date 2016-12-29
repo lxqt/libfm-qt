@@ -25,6 +25,7 @@
 #include <string.h>
 #include <QTimer>
 #include <QThreadPool>
+#include <QDebug>
 
 #include "dirlistjob.h"
 #include "filesysteminfojob.h"
@@ -83,7 +84,8 @@ std::shared_ptr<Folder> Folder::fromPath(const FilePath& path) {
         }
     }
     auto folder = std::make_shared<Folder>(path);
-    cache_.insert(std::make_pair(path, folder));
+    folder->reload();
+    //cache_.insert(std::make_pair(path, folder));
     return folder;
 }
 
@@ -698,9 +700,8 @@ void Folder::reload() {
     /* run a new dir listing job */
     // FIXME:
     // defer_content_test = fm_config->defer_content_test;
-
     dirlist_job = new DirListJob(dir_path, defer_content_test ? DirListJob::FAST : DirListJob::DETAILED);
-    connect(dirlist_job, &DirListJob::finished, this, &Folder::onDirListFinished);
+    connect(dirlist_job, &DirListJob::finished, this, &Folder::onDirListFinished, Qt::BlockingQueuedConnection);
 
 #if 0
     if(wants_incremental) {
@@ -762,7 +763,6 @@ bool Folder::getFilesystemInfo(uint64_t* total_size, uint64_t* free_size) const 
 }
 
 
-/* this function is run in GIO thread! */
 void Folder::onFileSystemInfoFinished() {
     FileSystemInfoJob* job = static_cast<FileSystemInfoJob*>(sender());
     if(job->isCancelled() || job != fsInfoJob_) // this is a cancelled job, ignore!
@@ -780,7 +780,7 @@ void Folder::queryFilesystemInfo() {
         return;
     fsInfoJob_ = new FileSystemInfoJob{dir_path};
     fsInfoJob_->setAutoDelete(true);
-    connect(fsInfoJob_, &FileSystemInfoJob::finished, this, &Folder::onFileSystemInfoFinished);
+    connect(fsInfoJob_, &FileSystemInfoJob::finished, this, &Folder::onFileSystemInfoFinished, Qt::BlockingQueuedConnection);
 
     QThreadPool::globalInstance()->start(fsInfoJob_);
     // G_UNLOCK(query);

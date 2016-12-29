@@ -8,11 +8,11 @@ namespace Fm2 {
 std::weak_ptr<Bookmarks> Bookmarks::globalInstance_;
 
 static inline CStrPtr get_legacy_bookmarks_file(void) {
-    return CStrPtr{g_build_filename(g_get_home_dir(), ".gtk-bookmarks", NULL), g_free};
+    return CStrPtr{g_build_filename(g_get_home_dir(), ".gtk-bookmarks", NULL)};
 }
 
 static inline CStrPtr get_new_bookmarks_file(void) {
-    return CStrPtr{g_build_filename(g_get_user_config_dir(), "gtk-3.0", "bookmarks", NULL), g_free};
+    return CStrPtr{g_build_filename(g_get_user_config_dir(), "gtk-3.0", "bookmarks", NULL)};
 }
 
 Bookmarks::Bookmarks(QObject* parent):

@@ -6,7 +6,13 @@
 
 namespace Fm2 {
 
-typedef std::unique_ptr<char, decltype(&g_free)> CStrPtr;
+struct CStrDeleter {
+    void operator()(char* ptr) {
+        g_free(ptr);
+    }
+};
+
+typedef std::unique_ptr<char, CStrDeleter> CStrPtr;
 
 struct CStrHash {
     std::size_t operator()(const char* str) const {

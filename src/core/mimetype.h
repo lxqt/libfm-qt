@@ -72,7 +72,7 @@ public:
 
     const char* desc() const {
         if(!desc_) {
-            desc_ = CStrPtr{g_content_type_get_description(name_.get()), g_free};
+            desc_ = CStrPtr{g_content_type_get_description(name_.get())};
         }
         return desc_.get();
     }

@@ -42,13 +42,13 @@ public:
 
     explicit Icon(const char* name);
 
-    explicit Icon(GObjectPtr<GIcon>& gicon);
+    explicit Icon(const GObjectPtr<GIcon>& gicon);
 
     ~Icon();
 
     static std::shared_ptr<const Icon> fromName(const char* name);
 
-    static std::shared_ptr<const Icon> fromGIcon(GObjectPtr<GIcon>& gicon);
+    static std::shared_ptr<const Icon> fromGIcon(const GObjectPtr<GIcon>& gicon);
 
     static void unloadCache();
 
