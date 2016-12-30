@@ -85,7 +85,7 @@ public:
 
     void forEachFile(std::function<void (const std::shared_ptr<const FileInfo>&)> func) const {
         std::lock_guard<std::mutex> lock{mutex_};
-        for(auto it = files.begin(); it != files.end(); ++it) {
+        for(auto it = files_.begin(); it != files_.end(); ++it) {
             func(it->second);
         }
     }
@@ -116,8 +116,12 @@ private:
     void onFileChangeEvents(GFileMonitor* monitor, GFile* file, GFile* other_file, GFileMonitorEvent event_type);
     void onDirChanged(GFileMonitorEvent event_type);
 
-    void queue_update();
-    void queue_reload();
+    void queueUpdate();
+    void queueReload();
+
+    bool eventFileAdded(const FilePath &path);
+    bool eventFileChanged(const FilePath &path);
+    void eventFileDeleted(const FilePath &path);
 
 private Q_SLOTS:
 
@@ -129,23 +133,23 @@ private Q_SLOTS:
 
     void onFileInfoFinished();
 
-    void on_idle_reload();
+    void onIdleReload();
 
 private:
-    FilePath dir_path;
-    GObjectPtr<GFileMonitor> mon;
-    GSignalHandler<Folder, GFileMonitor, void, GFile*, GFile*, GFileMonitorEvent> mon_changed;
+    FilePath dirPath_;
+    GObjectPtr<GFileMonitor> dirMonitor_;
+    GSignalHandler<Folder, GFileMonitor, void, GFile*, GFile*, GFileMonitorEvent> dirMonitorChangedHandler_;
 
-    std::shared_ptr<const FileInfo> dir_fi;
+    std::shared_ptr<const FileInfo> dirInfo_;
     DirListJob* dirlist_job;
     FileSystemInfoJob* fsInfoJob_;
 
     /* for file monitor */
-    bool idle_reload_handler;
-    bool has_idle_handler;
-    std::vector<FilePath> files_to_add;
-    std::vector<FilePath> files_to_update;
-    std::vector<FilePath> files_to_del;
+    bool has_idle_reload_handler;
+    bool has_idle_update_handler;
+    std::vector<FilePath> paths_to_add;
+    std::vector<FilePath> paths_to_update;
+    std::vector<FilePath> paths_to_del;
     // GSList* pending_jobs;
     bool pending_change_notify;
     bool filesystem_info_pending;
@@ -153,7 +157,7 @@ private:
     bool wants_incremental;
     bool stop_emission; /* don't set it 1 bit to not lock other bits */
 
-    std::unordered_map<const char*, std::shared_ptr<const FileInfo>, CStrHash, CStrEqual> files;
+    std::unordered_map<const char*, std::shared_ptr<const FileInfo>, CStrHash, CStrEqual> files_;
 
     /* filesystem info - set in query thread, read in main */
     uint64_t fs_total_size;

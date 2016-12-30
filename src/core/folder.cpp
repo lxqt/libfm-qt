@@ -37,15 +37,15 @@ std::unordered_map<FilePath, std::weak_ptr<Folder>, FilePathHash> Folder::cache_
 std::mutex Folder::mutex_;
 
 Folder::Folder():
-    mon_changed{this, &Folder::onFileChangeEvents},
+    dirMonitorChangedHandler_{this, &Folder::onFileChangeEvents},
     dirlist_job{nullptr},
     fsInfoJob_{nullptr},
     /* for file monitor */
-    has_idle_handler{false},
+    has_idle_update_handler{false},
     pending_change_notify{false},
     filesystem_info_pending{false},
     wants_incremental{false},
-    idle_reload_handler{0},
+    has_idle_reload_handler{0},
     stop_emission{false}, /* don't set it 1 bit to not lock other bits */
     /* filesystem info - set in query thread, read in main */
     fs_total_size{0},
@@ -56,7 +56,7 @@ Folder::Folder():
 }
 
 Folder::Folder(const FilePath& path): Folder() {
-    dir_path = path;
+    dirPath_ = path;
 }
 
 Folder::~Folder() {
@@ -64,7 +64,7 @@ Folder::~Folder() {
     // does not own a reference to the folder. When the last reference to Folder is
     // freed, we need to remove its hash table entry.
     std::lock_guard<std::mutex> lock{mutex_};
-    auto it = cache_.find(dir_path);
+    auto it = cache_.find(dirPath_);
     if(it != cache_.end()) {
         cache_.erase(it);
     }
@@ -99,7 +99,7 @@ bool Folder::isIncremental() const {
 }
 
 bool Folder::isValid() const {
-    return dir_fi != nullptr;
+    return dirInfo_ != nullptr;
 }
 
 bool Folder::isLoaded() const {
@@ -107,21 +107,21 @@ bool Folder::isLoaded() const {
 }
 
 std::shared_ptr<const FileInfo> Folder::getFileByName(const char* name) const {
-    auto it = files.find(name);
-    if(it != files.end()) {
+    auto it = files_.find(name);
+    if(it != files_.end()) {
         return it->second;
     }
     return nullptr;
 }
 
 bool Folder::isEmpty() const {
-    return files.empty();
+    return files_.empty();
 }
 
 FileInfoList Folder::getFiles() const {
     FileInfoList ret;
-    ret.reserve(files.size());
-    for(const auto& item : files) {
+    ret.reserve(files_.size());
+    for(const auto& item : files_) {
         ret.push_back(item.second);
     }
     return ret;
@@ -129,11 +129,11 @@ FileInfoList Folder::getFiles() const {
 
 
 const FilePath& Folder::getPath() const {
-    return dir_path;
+    return dirPath_;
 }
 
 const std::shared_ptr<const FileInfo>& Folder::getInfo() const {
-    return dir_fi;
+    return dirInfo_;
 }
 
 void Folder::unblockUpdates() {
@@ -162,19 +162,19 @@ void Folder::init(FmFolder* folder) {
 }
 #endif
 
-void Folder::on_idle_reload() {
+void Folder::onIdleReload() {
     /* check if folder still exists */
     reload();
     // G_LOCK(query);
-    idle_reload_handler = false;
+    has_idle_reload_handler = false;
     // G_UNLOCK(query);
 }
 
-void Folder::queue_reload() {
+void Folder::queueReload() {
     // G_LOCK(query);
-    if(!idle_reload_handler) {
-        idle_reload_handler = true;
-        QTimer::singleShot(0, this, &Folder::on_idle_reload);
+    if(!has_idle_reload_handler) {
+        has_idle_reload_handler = true;
+        QTimer::singleShot(0, this, &Folder::onIdleReload);
     }
     // G_UNLOCK(query);
 }
@@ -195,18 +195,18 @@ void Folder::onFileInfoFinished() {
         const auto& path = *path_it;
         const auto& info = *info_it;
 
-        if(path == dir_path) { // got the info for the folder itself.
-            dir_fi = info;
+        if(path == dirPath_) { // got the info for the folder itself.
+            dirInfo_ = info;
         }
         else {
-            auto it = files.find(info->getName().c_str());
-            if(it != files.end()) { // the file already exists, update
+            auto it = files_.find(info->getName().c_str());
+            if(it != files_.end()) { // the file already exists, update
                 files_to_update.push_back(std::make_pair(it->second, info));
             }
             else { // newly added
                 files_to_add.push_back(info);
             }
-            files[info->getName().c_str()] = info;
+            files_[info->getName().c_str()] = info;
         }
 
         if(!files_to_add.empty()) {
@@ -220,7 +220,7 @@ void Folder::onFileInfoFinished() {
 }
 
 void Folder::processPendingChanges() {
-    has_idle_handler = false;
+    has_idle_update_handler = false;
     // FmFileInfoJob* job = NULL;
     std::lock_guard<std::mutex> lock{mutex_};
 
@@ -230,52 +230,43 @@ void Folder::processPendingChanges() {
         return;
     }
 
+    FileInfoJob* info_job = nullptr;
+    if(!paths_to_update.empty() || !paths_to_add.empty()) {
+        FilePathList paths;
+        paths.insert(paths.end(), paths_to_add.cbegin(), paths_to_add.cend());
+        paths.insert(paths.end(), paths_to_update.cbegin(), paths_to_update.cend());
+        info_job = new FileInfoJob{paths};
+        paths_to_update.clear();
+        paths_to_add.clear();
+    }
+
+    if(info_job) {
+        connect(info_job, &FileInfoJob::finished, this, &Folder::onFileInfoFinished, Qt::BlockingQueuedConnection);
+        info_job->setAutoDelete(true);
+        QThreadPool::globalInstance()->start(info_job);
 #if 0
-    if(files_to_update || files_to_add) {
-        job = (FmFileInfoJob*)fm_file_info_job_new(NULL, 0);
-    }
-
-    if(files_to_update) {
-        for(l = files_to_update; l; l = l->next) {
-            FmPath* path = l->data;
-            fm_file_info_job_add(job, path);
-            fm_path_unref(path);
-        }
-        g_slist_free(files_to_update);
-    }
-
-    if(files_to_add) {
-        for(l = files_to_add; l; l = l->next) {
-            FmPath* path = l->data;
-            fm_file_info_job_add(job, path);
-            fm_path_unref(path);
-        }
-        g_slist_free(files_to_add);
-    }
-
-    if(job) {
-        g_signal_connect(job, "finished", G_CALLBACK(on_file_info_job_finished), folder);
         pending_jobs = g_slist_prepend(pending_jobs, job);
         if(!fm_job_run_async(FM_JOB(job))) {
             pending_jobs = g_slist_remove(pending_jobs, job);
             g_object_unref(job);
             g_critical("failed to start folder update job");
         }
-        /* the job will be freed automatically in on_file_info_job_finished() */
-    }
 #endif
-    if(!files_to_del.empty()) {
+    }
+
+    if(!paths_to_del.empty()) {
         FileInfoList deleted_files;
-        for(auto path: files_to_del) {
+        for(auto path: paths_to_del) {
             auto name = path.baseName();
-            auto it = files.find(name.get());
-            if(it != files.end()) {
+            auto it = files_.find(name.get());
+            if(it != files_.end()) {
                 deleted_files.push_back(it->second);
-                files.erase(it);
+                files_.erase(it);
             }
         }
         Q_EMIT filesRemoved(deleted_files);
         Q_EMIT contentChanged();
+        paths_to_del.clear();
     }
 
     if(pending_change_notify) {
@@ -292,40 +283,32 @@ void Folder::processPendingChanges() {
 }
 
 /* should be called only with G_LOCK(lists) on! */
-void Folder::queue_update() {
-    if(!has_idle_handler) {
+void Folder::queueUpdate() {
+    // qDebug() << "queue_update:" << !has_idle_handler << paths_to_add.size() << paths_to_update.size() << paths_to_del.size();
+    if(!has_idle_update_handler) {
         QTimer::singleShot(0, this, &Folder::processPendingChanges);
-        has_idle_handler = true;
+        has_idle_update_handler = true;
     }
 }
 
 
-#if 0
-
 /* returns true if reference was taken from path */
-bool _Folder::event_file_added(FmFolder* folder, FmPath* path) {
+bool Folder::eventFileAdded(const FilePath &path) {
     bool added = true;
-
-    G_LOCK(lists);
+    // G_LOCK(lists);
     /* make sure that the file is not already queued for addition. */
-    if(!g_slist_find(files_to_add, path)) {
-        GList* l = _Folder::get_file_by_path(folder, path);
-        if(!l) { /* it's new file */
-            /* add the file name to queue for addition. */
-            files_to_add = g_slist_append(files_to_add, path);
+    if(std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) == paths_to_add.cend()) {
+        if(files_.find(path.baseName().get()) != files_.end()) { // the file already exists, update instead
+            if(std::find(paths_to_update.cbegin(), paths_to_update.cend(), path) == paths_to_update.cend()) {
+                paths_to_update.push_back(path);
+            }
         }
-        else if(g_slist_find(files_to_update, path)) {
-            /* file already queued for update, don't duplicate */
-            added = false;
+        else { // newly added file
+            paths_to_add.push_back(path);
         }
-        /* if we already have the file in FmFolder, update the existing one instead. */
-        else {
-            /* bug #3591771: 'ln -fns . test' leave no file visible in folder.
-               If it is queued for deletion then cancel that operation */
-            files_to_del = g_slist_remove(files_to_del, l);
-            /* update the existing item. */
-            files_to_update = g_slist_append(files_to_update, path);
-        }
+        /* bug #3591771: 'ln -fns . test' leave no file visible in folder.
+           If it is queued for deletion then cancel that operation */
+        std::remove(paths_to_del.begin(), paths_to_del.end(), path);
     }
     else
         /* file already queued for adding, don't duplicate */
@@ -333,61 +316,47 @@ bool _Folder::event_file_added(FmFolder* folder, FmPath* path) {
         added = false;
     }
     if(added) {
-        queue_update(folder);
+        queueUpdate();
     }
-    G_UNLOCK(lists);
+    // G_UNLOCK(lists);
     return added;
 }
 
-bool _Folder::event_file_changed(FmFolder* folder, FmPath* path) {
+bool Folder::eventFileChanged(const FilePath &path) {
     bool added;
-
-    G_LOCK(lists);
+    // G_LOCK(lists);
     /* make sure that the file is not already queued for changes or
      * it's already queued for addition. */
-    if(!g_slist_find(files_to_update, path) &&
-            !g_slist_find(files_to_add, path) &&
-            _Folder::get_file_by_path(folder, path)) { /* ensure it is our file */
-        files_to_update = g_slist_append(files_to_update, path);
+    if(std::find(paths_to_update.cbegin(), paths_to_update.cend(), path) == paths_to_update.cend()
+        && std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) == paths_to_add.cend()
+        && files_.find(path.baseName().get()) != files_.cend() ) { /* ensure it is our file */
+        paths_to_update.push_back(path);
         added = true;
-        queue_update(folder);
+        queueUpdate();
     }
     else {
         added = false;
     }
-    G_UNLOCK(lists);
+    // G_UNLOCK(lists);
     return added;
 }
 
-void _Folder::event_file_deleted(FmFolder* folder, FmPath* path) {
-    GList* l;
-    GSList* sl;
-
-    G_LOCK(lists);
-    l = _Folder::get_file_by_path(folder, path);
-    if(l && !g_slist_find(files_to_del, l)) {
-        files_to_del = g_slist_prepend(files_to_del, l);
+void Folder::eventFileDeleted(const FilePath& path) {
+    // qDebug() << "delete " << path.baseName().get();
+    // G_LOCK(lists);
+    if(files_.find(path.baseName().get()) != files_.cend()) {
+        if(std::find(paths_to_del.cbegin(), paths_to_del.cend(), path) == paths_to_del.cend()) {
+            paths_to_del.push_back(path);
+        }
     }
     /* if the file is already queued for addition or update, that operation
        will be just a waste, therefore cancel it right now */
-    sl = g_slist_find(files_to_update, path);
-    if(sl) {
-        files_to_update = g_slist_delete_link(files_to_update, sl);
-    }
-    else if((sl = g_slist_find(files_to_add, path))) {
-        files_to_add = g_slist_delete_link(files_to_add, sl);
-    }
-    else {
-        path = NULL;
-    }
-    queue_update(folder);
-    G_UNLOCK(lists);
-    if(path != NULL) {
-        fm_path_unref(path);    /* link was freed above so we should unref it */
-    }
+    std::remove(paths_to_add.begin(), paths_to_add.end(), path);
+    std::remove(paths_to_update.begin(), paths_to_update.end(), path);
+    queueUpdate();
+    // G_UNLOCK(lists);
 }
 
-#endif
 
 void Folder::onDirChanged(GFileMonitorEvent evt) {
     switch(evt) {
@@ -397,22 +366,22 @@ void Folder::onDirChanged(GFileMonitorEvent evt) {
     case G_FILE_MONITOR_EVENT_UNMOUNTED:
         Q_EMIT unmount();
         /* g_debug("folder is unmounted"); */
-        queue_reload();
+        queueReload();
         break;
     case G_FILE_MONITOR_EVENT_DELETED:
         Q_EMIT removed();
         /* g_debug("folder is deleted"); */
         break;
     case G_FILE_MONITOR_EVENT_CREATED:
-        queue_reload();
+        queueReload();
         break;
     case G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED:
     case G_FILE_MONITOR_EVENT_CHANGED: {
         std::lock_guard<std::mutex> lock{mutex_};
         pending_change_notify = true;
-        if(std::find(files_to_update.cbegin(), files_to_update.cend(), dir_path) != files_to_update.end()) {
-            files_to_update.push_back(dir_path);
-            queue_update();
+        if(std::find(paths_to_update.cbegin(), paths_to_update.cend(), dirPath_) != paths_to_update.end()) {
+            paths_to_update.push_back(dirPath_);
+            queueUpdate();
         }
         /* g_debug("folder is changed"); */
         break;
@@ -437,7 +406,7 @@ void Folder::onFileChangeEvents(GFileMonitor* monitor, GFile* gf, GFile* other_f
         "G_FILE_MONITOR_EVENT_PRE_UNMOUNT",
         "G_FILE_MONITOR_EVENT_UNMOUNTED"
     }; */
-    if(dir_path.gfile() == gf) {
+    if(dirPath_.gfile() == gf) {
         onDirChanged(evt);
         return;
     }
@@ -449,29 +418,19 @@ void Folder::onFileChangeEvents(GFileMonitor* monitor, GFile* gf, GFile* other_f
          * check for duplications ourselves here. */
         switch(evt) {
         case G_FILE_MONITOR_EVENT_CREATED:
-            if(std::find(files_to_add.cbegin(), files_to_add.cend(), path) != files_to_add.end()) {
-                if(std::find(files_to_update.cbegin(), files_to_update.cend(), path) != files_to_update.end()) {
-                    files_to_add.push_back(path);
-                }
-            }
+            eventFileAdded(path);
             break;
         case G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED:
         case G_FILE_MONITOR_EVENT_CHANGED:
-            if(std::find(files_to_add.cbegin(), files_to_add.cend(), path) != files_to_add.end()) {
-                if(std::find(files_to_update.cbegin(), files_to_update.cend(), path) != files_to_update.end()) {
-                    files_to_update.push_back(path);
-                }
-            }
+            eventFileChanged(path);
             break;
         case G_FILE_MONITOR_EVENT_DELETED:
-            if(std::find(files_to_del.cbegin(), files_to_del.cend(), path) != files_to_del.end()) {
-                files_to_del.push_back(path);
-            }
+            eventFileDeleted(path);
             break;
         default:
             return;
         }
-        queue_update();
+        queueUpdate();
     }
 }
 
@@ -481,7 +440,7 @@ void Folder::onDirListFinished() {
         return;
     auto& files_to_add = job->files();
     for(auto& file: files_to_add) {
-        files[file->getName().c_str()] = file;
+        files_[file->getName().c_str()] = file;
     }
     Q_EMIT filesAdded(files_to_add);
 
@@ -574,15 +533,6 @@ FmJobErrorAction on_dirlist_job_error(FmDirListJob* job, GError* err, FmJobError
     return ret;
 }
 
-FmFolder* Folder::new_internal(FmPath* path, GFile* gf) {
-    FmFolder* folder = (FmFolder*)g_object_new(FM_TYPE_FOLDER, NULL);
-    dir_path = fm_path_ref(path);
-    gf = (GFile*)g_object_ref(gf);
-    wants_incremental = fm_file_wants_incremental(gf);
-    Folder::reload(folder);
-    return folder;
-}
-
 void free_dirlist_job(FmFolder* folder) {
     if(wants_incremental) {
         g_signal_handlers_disconnect_by_func(dirlist_job, on_dirlist_job_files_found, folder);
@@ -593,25 +543,6 @@ void free_dirlist_job(FmFolder* folder) {
     g_object_unref(dirlist_job);
     dirlist_job = NULL;
 }
-
-void Folder::finalize(GObject* object) {
-    G_LOCK(hash);
-    hash_uses--;
-    if(G_UNLIKELY(hash_uses == 0)) {
-        g_hash_table_destroy(hash);
-        hash = NULL;
-        if(volume_monitor) {
-            g_signal_handlers_disconnect_by_func(volume_monitor, on_mount_added, NULL);
-            g_signal_handlers_disconnect_by_func(volume_monitor, on_mount_removed, NULL);
-            g_object_unref(volume_monitor);
-            volume_monitor = NULL;
-        }
-    }
-    G_UNLOCK(hash);
-
-    (* G_OBJECT_CLASS(Folder::parent_class)->finalize)(object);
-}
-
 
 #endif
 
@@ -626,8 +557,8 @@ void Folder::reload() {
      * unnecessary signal handling and UI updates. */
 
     Q_EMIT startLoading();
-    if(dir_fi) {
-        dir_fi = nullptr;
+    if(dirInfo_) {
+        dirInfo_ = nullptr;
     }
 
     /* clear all update-lists now, see SF bug #919 - if update comes before
@@ -681,16 +612,16 @@ void Folder::reload() {
     /* also re-create a new file monitor */
     // mon = GObjectPtr<GFileMonitor>{fm_monitor_directory(dir_path.gfile().get(), &err), false};
     // FIXME: should we make this cancellable?
-    mon = GObjectPtr<GFileMonitor>{
-            g_file_monitor_directory(dir_path.gfile().get(), G_FILE_MONITOR_WATCH_MOUNTS, nullptr, &err),
+    dirMonitor_ = GObjectPtr<GFileMonitor>{
+            g_file_monitor_directory(dirPath_.gfile().get(), G_FILE_MONITOR_WATCH_MOUNTS, nullptr, &err),
             false
     };
 
-    if(mon) {
-        mon_changed.connect(mon.get(), "changed");
+    if(dirMonitor_) {
+        dirMonitorChangedHandler_.connect(dirMonitor_.get(), "changed");
     }
     else {
-        mon_changed.disconnect();
+        dirMonitorChangedHandler_.disconnect();
         qDebug("file monitor cannot be created: %s", err->message);
         g_error_free(err);
     }
@@ -700,7 +631,7 @@ void Folder::reload() {
     /* run a new dir listing job */
     // FIXME:
     // defer_content_test = fm_config->defer_content_test;
-    dirlist_job = new DirListJob(dir_path, defer_content_test ? DirListJob::FAST : DirListJob::DETAILED);
+    dirlist_job = new DirListJob(dirPath_, defer_content_test ? DirListJob::FAST : DirListJob::DETAILED);
     connect(dirlist_job, &DirListJob::finished, this, &Folder::onDirListFinished, Qt::BlockingQueuedConnection);
 
 #if 0
@@ -778,7 +709,7 @@ void Folder::queryFilesystemInfo() {
     // G_LOCK(query);
     if(fsInfoJob_)
         return;
-    fsInfoJob_ = new FileSystemInfoJob{dir_path};
+    fsInfoJob_ = new FileSystemInfoJob{dirPath_};
     fsInfoJob_->setAutoDelete(true);
     connect(fsInfoJob_, &FileSystemInfoJob::finished, this, &Folder::onFileSystemInfoFinished, Qt::BlockingQueuedConnection);
 
