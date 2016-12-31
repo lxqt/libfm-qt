@@ -14,12 +14,14 @@ set(libfm_core_SRCS
     core/dirlistjob.cpp
     core/filechangeattrjob.cpp
     core/fileinfojob.cpp
+    core/filelinkjob.cpp
     core/fileoperationjob.cpp
     core/filesysteminfojob.cpp
     core/job.cpp
     core/movejob.cpp
     core/totalsizejob.cpp
     core/trashjob.cpp
+    core/untrashjob.cpp
     core/simplejob.h
     # extra desktop services
     core/bookmarks.cpp

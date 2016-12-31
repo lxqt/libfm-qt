@@ -5,6 +5,14 @@ namespace Fm2 {
 Job::Job():
     cancellable_{g_cancellable_new(), false},
     paused_{false} {
+    cancellableHandler_ = g_signal_connect(cancellable_.get(), "cancelled", G_CALLBACK(_onCancellableCancelled), this);
+}
+
+Job::~Job()
+{
+    if(cancellable_) {
+        g_cancellable_disconnect(cancellable_.get(), cancellableHandler_);
+    }
 }
 
 

@@ -47,8 +47,7 @@ public:
 
     explicit Job();
 
-    virtual ~Job() {
-    }
+    virtual ~Job();
 
     bool isCancelled() const {
         return g_cancellable_is_cancelled(cancellable_.get());
@@ -65,6 +64,7 @@ public:
     }
 
 Q_SIGNALS:
+    void cancelled();
     void finished();
 
 public Q_SLOTS:
@@ -75,8 +75,18 @@ public Q_SLOTS:
 
     virtual void run();
 
+private:
+    static void _onCancellableCancelled(GCancellable* cancellable, Job* _this) {
+        _this->onCancellableCancelled(cancellable);
+    }
+
+    void onCancellableCancelled(GCancellable* cancellable) {
+        Q_EMIT cancelled();
+    }
+
 protected:
     GObjectPtr<GCancellable> cancellable_;
+    gulong cancellableHandler_;
 
 private:
     bool paused_;

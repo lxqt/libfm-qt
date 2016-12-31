@@ -29,10 +29,7 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf) {
 
     name_ = g_file_info_get_name(inf.get());
 
-    tmp = g_file_info_get_edit_name(inf.get());
-    if (!tmp || strcmp(tmp, "/") == 0) {
-        dispName_ = g_file_info_get_display_name(inf.get());
-    }
+    dispName_ = g_file_info_get_display_name(inf.get());
 
     size_ = g_file_info_get_size(inf.get());
 

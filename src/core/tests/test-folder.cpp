@@ -19,23 +19,20 @@ int main(int argc, char** argv) {
     QObject::connect(folder.get(), &Fm2::Folder::filesAdded, [=](Fm2::FileInfoList& files) {
         qDebug("files added");
         for(auto& item: files) {
-            qDebug() << item->getName().c_str();
-            // qDebug() << item->getDispName();
+            qDebug() << item->getDispName();
         }
     });
     QObject::connect(folder.get(), &Fm2::Folder::filesRemoved, [=](Fm2::FileInfoList& files) {
         qDebug("files removed");
         for(auto& item: files) {
-            qDebug() << item->getName().c_str();
-            // qDebug() << item->getDispName();
+            qDebug() << item->getDispName();
         }
     });
     QObject::connect(folder.get(), &Fm2::Folder::filesChanged, [=](std::vector<Fm2::FileInfoPair>& file_pairs) {
         qDebug("files changed");
         for(auto& pair: file_pairs) {
             auto& item = pair.second;
-            qDebug() << item->getName().c_str();
-            // qDebug() << item->getDispName();
+            qDebug() << item->getDispName();
         }
     });
 
