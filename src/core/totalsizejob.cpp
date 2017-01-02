@@ -47,12 +47,12 @@ _retry_query_info:
     type = g_file_info_get_file_type(inf.get());
     descend = true;
 
-    ++count;
+    ++fileCount_;
     /* SF bug #892: dir file size is not relevant in the summary */
     if(type != G_FILE_TYPE_DIRECTORY) {
-        total_size += g_file_info_get_size(inf.get());
+        totalSize_ += g_file_info_get_size(inf.get());
     }
-    total_ondisk_size += g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE);
+    totalOndiskSize_ += g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE);
 
     /* prepare for moving across different devices */
     if(flags & PREPARE_MOVE) {
@@ -60,9 +60,9 @@ _retry_query_info:
         fs_id = g_intern_string(fs_id);
         if(g_strcmp0(fs_id, dest_fs_id) != 0) {
             /* files on different device requires an additional 'delete' for the source file. */
-            ++total_size; /* this is for the additional delete */
-            ++total_ondisk_size;
-            ++count;
+            ++totalSize_; /* this is for the additional delete */
+            ++totalOndiskSize_;
+            ++fileCount_;
         }
         else {
             descend = false;

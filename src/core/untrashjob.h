@@ -8,6 +8,8 @@ namespace Fm2 {
 class UntrashJob : public Fm2::FileOperationJob {
 public:
     UntrashJob();
+
+    void run() override;
 };
 
 } // namespace Fm2

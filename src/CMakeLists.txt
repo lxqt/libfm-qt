@@ -18,7 +18,6 @@ set(libfm_core_SRCS
     core/fileoperationjob.cpp
     core/filesysteminfojob.cpp
     core/job.cpp
-    core/movejob.cpp
     core/totalsizejob.cpp
     core/trashjob.cpp
     core/untrashjob.cpp

@@ -28,6 +28,10 @@ void Job::runAsync() {
     thread->start();
 }
 
+void Job::cancel() {
+    g_cancellable_cancel(cancellable_.get());
+}
+
 void Job::run() {
     Q_EMIT finished();
 }

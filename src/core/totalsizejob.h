@@ -3,6 +3,7 @@
 
 #include "fileoperationjob.h"
 #include "filepath.h"
+#include <cstdint>
 
 namespace Fm2 {
 
@@ -11,10 +12,10 @@ class TotalSizeJob : public Fm2::FileOperationJob {
 public:
     enum Flags {
         DEFAULT = 0,
-        FOLLOW_LINKS = 1<<0,
-        SAME_FS = 1<<1,
-        PREPARE_MOVE = 1<<2,
-        PREPARE_DELETE = 1 <<3
+        FOLLOW_LINKS = 1 << 0,
+        SAME_FS = 1 << 1,
+        PREPARE_MOVE = 1 << 2,
+        PREPARE_DELETE = 1 << 3
     };
 
     TotalSizeJob();
@@ -27,16 +28,28 @@ public:
 
     void run() override;
 
+    std::uint64_t totalSize() const {
+        return totalSize_;
+    }
+
+    std::uint64_t totalOnDiskSize() const {
+        return totalOndiskSize_;
+    }
+
+    unsigned int fileCount() const {
+        return fileCount_;
+    }
+
 private:
-    void run(FilePath& path, GObjectPtr<GFileInfo> &inf);
+    void run(FilePath& path, GObjectPtr<GFileInfo>& inf);
 
 private:
     FilePathList paths_;
 
     Flags flags;
-    goffset total_size;
-    goffset total_ondisk_size;
-    guint count;
+    std::uint64_t totalSize_;
+    std::uint64_t totalOndiskSize_;
+    unsigned int fileCount_;
     const char* dest_fs_id;
 };
 
