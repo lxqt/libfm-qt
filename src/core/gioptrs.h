@@ -13,6 +13,7 @@ typedef GObjectPtr<GFile> GFilePtr;
 typedef GObjectPtr<GFileInfo> GFileInfoPtr;
 typedef GObjectPtr<GFileMonitor> GFileMonitorPtr;
 typedef GObjectPtr<GCancellable> GCancellablePtr;
+typedef GObjectPtr<GFileEnumerator> GFileEnumeratorPtr;
 
 typedef GObjectPtr<GIcon> GIconPtr;
 
@@ -36,8 +37,37 @@ public:
         other.err_ = nullptr;
     }
 
+    GErrorPtr(std::uint32_t domain, unsigned int code, const char* msg):
+        GErrorPtr{g_error_new_literal(domain, code, msg)} {
+    }
+
+    GErrorPtr(std::uint32_t domain, unsigned int code, const QString& msg):
+        GErrorPtr{domain, code, msg.toUtf8().constData()} {
+    }
+
     ~GErrorPtr() {
         reset();
+    }
+
+    std::uint32_t domain() const {
+        if(err_ != nullptr) {
+            return err_->domain;
+        }
+        return 0;
+    }
+
+    unsigned int code() const {
+        if(err_ != nullptr) {
+            return err_->code;
+        }
+        return 0;
+    }
+
+    QString message() const {
+        if(err_ != nullptr) {
+            return err_->message;
+        }
+        return QString();
     }
 
     void reset() {

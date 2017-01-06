@@ -10,6 +10,9 @@ public:
     UntrashJob();
 
     void run() override;
+
+private:
+    bool ensure_parent_dir(GFile *orig_path);
 };
 
 } // namespace Fm2

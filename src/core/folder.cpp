@@ -523,7 +523,7 @@ void on_dirlist_job_files_found(FmDirListJob* job, GSList* files, gpointer user_
     g_signal_emit(folder, signals[FILES_ADDED], 0, files);
 }
 
-FmJobErrorAction on_dirlist_job_error(FmDirListJob* job, GError* err, FmJobErrorSeverity severity, FmFolder* folder) {
+ErrorAction on_dirlist_job_error(FmDirListJob* job, GError* err, FmJobErrorSeverity severity, FmFolder* folder) {
     guint ret;
     /* it's possible that some signal handlers tries to free the folder
      * when errors occurs, so let's g_object_ref here. */

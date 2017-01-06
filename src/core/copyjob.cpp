@@ -4,17 +4,19 @@
 
 namespace Fm2 {
 
-CopyJob::CopyJob(const FilePathList& paths, const FilePath& destDirPath):
+CopyJob::CopyJob(const FilePathList& paths, const FilePath& destDirPath, Mode mode):
     FileOperationJob{},
     srcPaths_{paths},
     destDirPath_{destDirPath},
+    mode_{mode},
     skip_dir_content{false} {
 }
 
-CopyJob::CopyJob(const FilePathList&& paths, const FilePath&& destDirPath):
+CopyJob::CopyJob(const FilePathList &&paths, const FilePath &&destDirPath, Mode mode):
     FileOperationJob{},
     srcPaths_{paths},
     destDirPath_{destDirPath},
+    mode_{mode},
     skip_dir_content{false} {
 }
 
@@ -22,7 +24,7 @@ void CopyJob::gfileProgressCallback(goffset current_num_bytes, goffset total_num
     _this->setCurrentFileProgress(total_num_bytes, current_num_bytes);
 }
 
-bool CopyJob::copyRegularFile(const FilePath& srcPath, GObjectPtr<GFileInfo> srcFile, const FilePath& destPath) {
+bool CopyJob::copyRegularFile(const FilePath& srcPath, GFileInfoPtr srcFile, const FilePath& destPath) {
     int flags = G_FILE_COPY_ALL_METADATA | G_FILE_COPY_NOFOLLOW_SYMLINKS;
     GError* err = nullptr;
 _retry_copy:
@@ -70,10 +72,10 @@ _retry_copy:
         else {
             bool is_no_space = (err->domain == G_IO_ERROR &&
                                     err->code == G_IO_ERROR_NO_SPACE);
-            FmJobErrorAction act = fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MODERATE);
+            ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
             g_error_free(err);
             err = NULL;
-            if(act == FM_JOB_RETRY) {
+            if(act == ErrorAction::RETRY) {
                 job->current_file_finished = 0;
                 goto _retry_copy;
             }
@@ -92,7 +94,7 @@ _retry_copy:
     return false;
 }
 
-bool CopyJob::copySpecialFile(const FilePath& srcPath, GObjectPtr<GFileInfo> srcFile, const FilePath& destPath) {
+bool CopyJob::copySpecialFile(const FilePath& srcPath, GFileInfoPtr srcFile, const FilePath& destPath) {
     bool ret = false;
     GError* err = nullptr;
     /* only handle FIFO for local files */
@@ -116,17 +118,17 @@ bool CopyJob::copySpecialFile(const FilePath& srcPath, GObjectPtr<GFileInfo> src
         g_set_error(&err, G_IO_ERROR, G_IO_ERROR_FAILED,
                     ("Cannot copy file '%s': not supported"),
                     g_file_info_get_display_name(srcFile.get()));
-        // fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MODERATE);
+        // emitError( err, ErrorSeverity::MODERATE);
         g_clear_error(&err);
     }
     return ret;
 }
 
-bool CopyJob::copyDir(const FilePath& srcPath, GObjectPtr<GFileInfo> srcFile, const FilePath& destPath) {
+bool CopyJob::copyDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FilePath& destPath) {
     bool ret = false;
     if(makeDir(srcPath, srcFile, destPath)) {
         GError* err = nullptr;
-        auto enu = GObjectPtr<GFileEnumerator>{
+        auto enu = GFileEnumeratorPtr{
                 g_file_enumerate_children(srcPath.gfile().get(),
                                           gfile_info_query_attribs,
                                           G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
@@ -137,7 +139,7 @@ bool CopyJob::copyDir(const FilePath& srcPath, GObjectPtr<GFileInfo> srcFile, co
             int n_copied = 0;
             ret = true;
             while(!isCancelled()) {
-                auto inf = GObjectPtr<GFileInfo>{g_file_enumerator_next_file(enu.get(), cancellable().get(), &err), false};
+                auto inf = GFileInfoPtr{g_file_enumerator_next_file(enu.get(), cancellable().get(), &err), false};
                 if(inf) {
                     ++n_children;
                     /* don't overwrite dir content, only calculate progress. */
@@ -159,10 +161,10 @@ bool CopyJob::copyDir(const FilePath& srcPath, GObjectPtr<GFileInfo> srcFile, co
                 }
                 else {
                     if(err) {
-                        // FIXME: fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MODERATE);
+                        // FIXME: emitError( err, ErrorSeverity::MODERATE);
                         g_error_free(err);
                         err = NULL;
-                        /* FM_JOB_RETRY is not supported here */
+                        /* ErrorAction::RETRY is not supported here */
                         ret = false;
                     }
                     else { /* EOF is reached */
@@ -190,7 +192,7 @@ bool CopyJob::copyDir(const FilePath& srcPath, GObjectPtr<GFileInfo> srcFile, co
     return false;
 }
 
-bool CopyJob::makeDir(const FilePath& srcPath, GObjectPtr<GFileInfo> srcFile, const FilePath& dirPath) {
+bool CopyJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FilePath& dirPath) {
     GError* err = nullptr;
     if(isCancelled())
         return false;
@@ -203,7 +205,7 @@ bool CopyJob::makeDir(const FilePath& srcPath, GObjectPtr<GFileInfo> srcFile, co
                                          err->code == G_IO_ERROR_INVALID_FILENAME ||
                                          err->code == G_IO_ERROR_FILENAME_TOO_LONG)) {
             bool dest_exists = (err->code == G_IO_ERROR_EXISTS);
-            GObjectPtr<GFileInfo> destFile;
+            GFileInfoPtr destFile;
             // FIXME: query its info
             FilePath newDestPath;
             FileExistsAction opt = askRename(FileInfo{srcFile}, FileInfo{destFile}, newDestPath);
@@ -232,10 +234,10 @@ bool CopyJob::makeDir(const FilePath& srcPath, GObjectPtr<GFileInfo> srcFile, co
         }
         else {
 #if 0
-            FmJobErrorAction act = fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MODERATE);
+            ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
             g_error_free(err);
             err = NULL;
-            if(act == FM_JOB_RETRY) {
+            if(act == ErrorAction::RETRY) {
                 goto _retry_mkdir;
             }
 #endif
@@ -258,10 +260,10 @@ bool CopyJob::makeDir(const FilePath& srcPath, GObjectPtr<GFileInfo> srcFile, co
                                                          cancellable().get(), &err);
                 if(!chmod_done) {
 /*
-                    FmJobErrorAction act = fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MODERATE);
+                    ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
                     g_error_free(err);
                     err = NULL;
-                    if(act == FM_JOB_RETRY) {
+                    if(act == ErrorAction::RETRY) {
                         goto _retry_chmod_for_dir;
                     }
 */
@@ -277,7 +279,7 @@ bool CopyJob::makeDir(const FilePath& srcPath, GObjectPtr<GFileInfo> srcFile, co
 
 bool CopyJob::copyPath(const FilePath& srcPath, const FilePath& destDirPath, const char* destFileName) {
     GError* err = nullptr;
-    GObjectPtr<GFileInfo> srcInfo = GObjectPtr<GFileInfo> {
+    GFileInfoPtr srcInfo = GFileInfoPtr {
         g_file_query_info(srcPath.gfile().get(),
         gfile_info_query_attribs,
         G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
@@ -291,11 +293,11 @@ bool CopyJob::copyPath(const FilePath& srcPath, const FilePath& destDirPath, con
     return copyPath(srcPath, srcInfo, destDirPath, destFileName);
 }
 
-bool CopyJob::copyPath(const FilePath& srcPath, const GObjectPtr<GFileInfo>& srcInfo, const FilePath& destDirPath, const char* destFileName) {
+bool CopyJob::copyPath(const FilePath& srcPath, const GFileInfoPtr& srcInfo, const FilePath& destDirPath, const char* destFileName) {
     setCurrentFile(srcPath);
     GError* err = nullptr;
 
-    GObjectPtr<GFileInfo> destDirInfo = GObjectPtr<GFileInfo> {
+    GFileInfoPtr destDirInfo = GFileInfoPtr {
         g_file_query_info(destDirPath.gfile().get(),
         "id::filesystem",
         G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,

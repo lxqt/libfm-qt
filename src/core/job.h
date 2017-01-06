@@ -28,6 +28,7 @@
 #include <memory>
 #include <gio/gio.h>
 #include "gobjectptr.h"
+#include "gioptrs.h"
 #include "libfmqtglobals.h"
 
 
@@ -45,6 +46,21 @@ class LIBFM_QT_API Job: public QObject, public QRunnable {
     Q_OBJECT
 public:
 
+    enum class ErrorAction{
+        CONTINUE,
+        RETRY,
+        ABORT
+    };
+
+    enum class ErrorSeverity {
+        UNKNOWN,
+        WARNING,
+        MILD,
+        MODERATE,
+        SEVERE,
+        CRITICAL
+    };
+
     explicit Job();
 
     virtual ~Job();
@@ -59,19 +75,30 @@ public:
 
     void resume();
 
-    const GObjectPtr<GCancellable>& cancellable() const {
+    const GCancellablePtr& cancellable() const {
         return cancellable_;
     }
 
 Q_SIGNALS:
     void cancelled();
+
     void finished();
+
+    // this signal should be connected with Qt::BlockingQueuedConnection
+    void error(const GErrorPtr& err, ErrorSeverity severity, ErrorAction& response);
 
 public Q_SLOTS:
 
     void cancel();
 
     virtual void run();
+
+protected:
+    ErrorAction emitError(const GErrorPtr& err, ErrorSeverity severity = ErrorSeverity::MODERATE) {
+        ErrorAction response = ErrorAction::CONTINUE;
+        Q_EMIT error(err, severity, response);
+        return response;
+    }
 
 private:
     static void _onCancellableCancelled(GCancellable* cancellable, Job* _this) {
@@ -82,12 +109,10 @@ private:
         Q_EMIT cancelled();
     }
 
-protected:
-    GObjectPtr<GCancellable> cancellable_;
-    gulong cancellableHandler_;
-
 private:
     bool paused_;
+    GCancellablePtr cancellable_;
+    gulong cancellableHandler_;
 };
 
 

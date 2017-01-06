@@ -10,34 +10,38 @@ static const char query_str[] =
     G_FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE","
     G_FILE_ATTRIBUTE_ID_FILESYSTEM;
 
-TotalSizeJob::TotalSizeJob() {
 
+TotalSizeJob::TotalSizeJob(FilePathList &&paths, Flags flags):
+    paths_{paths},
+    flags_{flags},
+    totalSize_{0},
+    totalOndiskSize_{0},
+    fileCount_{0},
+    dest_fs_id{nullptr} {
 }
 
-void TotalSizeJob::run(FilePath& path, GObjectPtr<GFileInfo> &inf) {
-    GError* err = NULL;
+
+void TotalSizeJob::run(FilePath& path, GFileInfoPtr &inf) {
     GFileType type;
     const char* fs_id;
     bool descend;
 
 _retry_query_info:
     if(!inf) {
-        inf = GObjectPtr<GFileInfo> {
+        GErrorPtr err;
+        inf = GFileInfoPtr {
             g_file_query_info(path.gfile().get(), query_str,
-            (flags & FOLLOW_LINKS) ? G_FILE_QUERY_INFO_NONE : G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+            (flags_ & FOLLOW_LINKS) ? G_FILE_QUERY_INFO_NONE : G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
             cancellable().get(), &err),
             false
         };
         if(!inf) {
-#if 0
-            FmJobErrorAction act = fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MILD);
-            g_error_free(err);
+            ErrorAction act = emitError( err, ErrorSeverity::MILD);
             err = NULL;
-            if(act == FM_JOB_RETRY) {
+            if(act == ErrorAction::RETRY) {
                 goto _retry_query_info;
             }
             return;
-#endif
         }
     }
     if(isCancelled()) {
@@ -55,7 +59,7 @@ _retry_query_info:
     totalOndiskSize_ += g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE);
 
     /* prepare for moving across different devices */
-    if(flags & PREPARE_MOVE) {
+    if(flags_ & PREPARE_MOVE) {
         fs_id = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_ID_FILESYSTEM);
         fs_id = g_intern_string(fs_id);
         if(g_strcmp0(fs_id, dest_fs_id) != 0) {
@@ -90,7 +94,8 @@ _retry_query_info:
 
         if(descend) {
 _retry_enum_children:
-            auto enu = GObjectPtr<GFileEnumerator> {
+            GErrorPtr err;
+            auto enu = GFileEnumeratorPtr {
                 g_file_enumerate_children(path.gfile().get(), query_str,
                 G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
                 cancellable().get(), &err),
@@ -105,13 +110,9 @@ _retry_enum_children:
                     }
                     else {
                         if(err) { /* error! */
-#if 0
-                            /* FM_JOB_RETRY is not supported */
-                            /*FmJobErrorAction act = */
-                            fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MILD);
-                            g_error_free(err);
+                            /* ErrorAction::RETRY is not supported */
+                            ErrorAction act = emitError( err, ErrorSeverity::MILD);
                             err = NULL;
-#endif
                         }
                         else {
                             /* EOF is reached, do nothing. */
@@ -122,14 +123,11 @@ _retry_enum_children:
                 g_file_enumerator_close(enu.get(), NULL, NULL);
             }
             else {
-#if 0
-                FmJobErrorAction act = fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MILD);
-                g_error_free(err);
+                ErrorAction act = emitError( err, ErrorSeverity::MILD);
                 err = NULL;
-                if(act == FM_JOB_RETRY) {
+                if(act == ErrorAction::RETRY) {
                     goto _retry_enum_children;
                 }
-#endif
             }
         }
     }
@@ -138,7 +136,7 @@ _retry_enum_children:
 
 void TotalSizeJob::run() {
     for(auto& path : paths_) {
-        GObjectPtr<GFileInfo> inf;
+        GFileInfoPtr inf;
         run(path, inf);
     }
     Q_EMIT finished();

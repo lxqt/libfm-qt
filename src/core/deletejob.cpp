@@ -5,12 +5,9 @@
 namespace Fm2 {
 
 bool DeleteJob::deleteFile(const FilePath& path, GFileInfoPtr inf, bool only_empty) {
-    GErrorPtr err;
-#if 0
-    GError* err = NULL;
-    FmJobErrorAction act;
-
+    // ErrorAction act;
     while(!inf) {
+        GErrorPtr err;
         inf = GFileInfoPtr{
                 g_file_query_info(path.gfile().get(), "standard::*",
                                   G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
@@ -21,15 +18,13 @@ bool DeleteJob::deleteFile(const FilePath& path, GFileInfoPtr inf, bool only_emp
             break;
         }
 /*
-        act = fm_job_emit_error(job, err, FM_JOB_ERROR_MODERATE);
+        act = emitError( err, ErrorSeverity::MODERATE);
 */
-        g_error_free(err);
-        err = NULL;
 /*
-        if(act == FM_JOB_ABORT) {
+        if(act == ErrorAction::ABORT) {
             return false;
         }
-        if(act != FM_JOB_RETRY) {
+        if(act != ErrorAction::RETRY) {
             break;
         }
 */
@@ -56,6 +51,7 @@ bool DeleteJob::deleteFile(const FilePath& path, GFileInfoPtr inf, bool only_emp
     }
     else {
         while(!isCancelled()) {
+            GErrorPtr err;
             // try to delete the path directly
             if(g_file_delete(path.gfile().get(), cancellable().get(), &err)) {
     /*
@@ -69,13 +65,11 @@ bool DeleteJob::deleteFile(const FilePath& path, GFileInfoPtr inf, bool only_emp
             }
             if(err) {
                 // FIXME: error handling
-                g_error_free(err);
             }
         }
         /* show progress */
         // setCurrentFileProgress()
     }
-#endif
     return false;
 }
 
@@ -84,7 +78,7 @@ bool DeleteJob::deleteDir(const FilePath &path, GFileInfoPtr inf, bool only_empt
     GError* err = NULL;
     bool is_dir, is_trash_root = false, ok;
     GFileInfo* _inf = NULL;
-    FmJobErrorAction act;
+    ErrorAction act;
 
         GFileEnumerator* enu;
         FmFolder* sub_folder;
@@ -111,7 +105,7 @@ bool DeleteJob::deleteDir(const FilePath &path, GFileInfoPtr inf, bool only_empt
                                         cancellable().get(), &err);
 /*
         if(!enu) {
-            fm_job_emit_error(job, err, FM_JOB_ERROR_MODERATE);
+            emitError( err, ErrorSeverity::MODERATE);
             g_error_free(err);
             return false;
         }
@@ -132,8 +126,8 @@ bool DeleteJob::deleteDir(const FilePath &path, GFileInfoPtr inf, bool only_empt
             }
             else {
                 if(err) {
-                    fm_job_emit_error(job, err, FM_JOB_ERROR_MODERATE);
-                    /* FM_JOB_RETRY is not supported here */
+                    emitError( err, ErrorSeverity::MODERATE);
+                    /* ErrorAction::RETRY is not supported here */
                     g_error_free(err);
 _failed:
                     g_object_unref(enu);
@@ -174,10 +168,10 @@ if(err) {
         }
     }
 #if 0
-    act = fm_job_emit_error(job, err, FM_JOB_ERROR_MODERATE);
+    act = emitError( err, ErrorSeverity::MODERATE);
     g_error_free(err);
     err = NULL;
-    if(act != FM_JOB_RETRY) {
+    if(act != ErrorAction::RETRY) {
         return false;
     }
 #endif

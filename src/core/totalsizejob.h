@@ -4,6 +4,7 @@
 #include "fileoperationjob.h"
 #include "filepath.h"
 #include <cstdint>
+#include "gioptrs.h"
 
 namespace Fm2 {
 
@@ -18,13 +19,14 @@ public:
         PREPARE_DELETE = 1 << 3
     };
 
-    TotalSizeJob();
-
-    TotalSizeJob(const FilePathList& paths): paths_{paths} {
+    TotalSizeJob(): TotalSizeJob{FilePathList{}} {
     }
 
-    TotalSizeJob(FilePathList&& paths): paths_{paths} {
+    TotalSizeJob(const FilePathList& paths, Flags flags = DEFAULT):
+        TotalSizeJob{FilePathList{paths}, flags} {
     }
+
+    TotalSizeJob(FilePathList&& paths, Flags flags = DEFAULT);
 
     void run() override;
 
@@ -41,12 +43,12 @@ public:
     }
 
 private:
-    void run(FilePath& path, GObjectPtr<GFileInfo>& inf);
+    void run(FilePath& path, GFileInfoPtr& inf);
 
 private:
     FilePathList paths_;
 
-    Flags flags;
+    int flags_;
     std::uint64_t totalSize_;
     std::uint64_t totalOndiskSize_;
     unsigned int fileCount_;

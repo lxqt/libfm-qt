@@ -1,6 +1,7 @@
 #include "dirlistjob.h"
 #include <gio/gio.h>
 #include "fileinfo_p.h"
+#include "gioptrs.h"
 #include <QDebug>
 
 namespace Fm2 {
@@ -10,31 +11,29 @@ DirListJob::DirListJob(const FilePath& path, Flags flags): dir_path{path} {
 
 void DirListJob::run() {
 _retry:
-    GError* err = NULL;
-    GFile* gf = dir_path.gfile().get();
-    GObjectPtr<GFileInfo> dir_inf{g_file_query_info(gf, gfile_info_query_attribs, G_FILE_QUERY_INFO_NONE, cancellable_.get(), &err), false};
+    GErrorPtr err;
+    GFileInfoPtr dir_inf{
+        g_file_query_info(dir_path.gfile().get(), gfile_info_query_attribs,
+                          G_FILE_QUERY_INFO_NONE, cancellable().get(), &err),
+        false
+    };
     if(!dir_inf) {
-#if 0
-        FmJobErrorAction act = fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MODERATE);
-        g_error_free(err);
-        if(act == FM_JOB_RETRY) {
-            err = NULL;
+        ErrorAction act = emitError(err, ErrorSeverity::MODERATE);
+        if(act == ErrorAction::RETRY) {
+            err.reset();
             goto _retry;
         }
-#endif
         return;
     }
 
     if(g_file_info_get_file_type(dir_inf.get()) != G_FILE_TYPE_DIRECTORY) {
-#if 0
-        char* path_str = fm_path_to_str(job->dir_path);
-        err = g_error_new(G_IO_ERROR, G_IO_ERROR_NOT_DIRECTORY,
-                          _("The specified directory '%s' is not valid"),
-                          path_str);
-        fm_job_emit_error(fmjob, err, FM_JOB_ERROR_CRITICAL);
-        g_free(path_str);
-        g_error_free(err);
-#endif
+        auto path_str = dir_path.toString();
+        err = GErrorPtr{
+                G_IO_ERROR,
+                G_IO_ERROR_NOT_DIRECTORY,
+                tr("The specified directory '%1' is not valid").arg(path_str.get())
+        };
+        emitError(err, ErrorSeverity::CRITICAL);
         return;
     }
     else {
@@ -45,13 +44,15 @@ _retry:
     FileInfoList foundFiles;
     /* check if FS is R/O and set attr. into inf */
     // FIXME:  _fm_file_info_job_update_fs_readonly(gf, inf, NULL, NULL);
-    GObjectPtr<GFileEnumerator> enu = GObjectPtr<GFileEnumerator>{
-            g_file_enumerate_children(gf, gfile_info_query_attribs,
-                                      G_FILE_QUERY_INFO_NONE, cancellable_.get(), &err),
-            false};
+    GFileEnumeratorPtr enu = GFileEnumeratorPtr{
+            g_file_enumerate_children(dir_path.gfile().get(), gfile_info_query_attribs,
+                                      G_FILE_QUERY_INFO_NONE, cancellable().get(), &err),
+            false
+    };
     if(enu) {
         while(!isCancelled()) {
-            GObjectPtr<GFileInfo> inf{g_file_enumerator_next_file(enu.get(), cancellable_.get(), &err), false};
+            err.reset();
+            GFileInfoPtr inf{g_file_enumerator_next_file(enu.get(), cancellable().get(), &err), false};
             if(inf) {
 #if 0
                 FmPath* dir, *sub;
@@ -91,27 +92,21 @@ _retry:
                 foundFiles.push_back(std::move(fileInfo));
             }
             else {
-#if 0
                 if(err) {
-                    FmJobErrorAction act = fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MILD);
-                    g_error_free(err);
-                    /* FM_JOB_RETRY is not supported. */
-                    if(act == FM_JOB_ABORT) {
-                        fm_job_cancel(fmjob);
+                    ErrorAction act = emitError(err, ErrorSeverity::MILD);
+                    /* ErrorAction::RETRY is not supported. */
+                    if(act == ErrorAction::ABORT) {
+                        cancel();
                     }
                 }
-#endif
                 /* otherwise it's EOL */
                 break;
             }
         }
-        g_file_enumerator_close(enu.get(), cancellable_.get(), &err);
+        g_file_enumerator_close(enu.get(), cancellable().get(), &err);
     }
     else {
-        /* FIXME:
-        fm_job_emit_error(fmjob, err, FM_JOB_ERROR_CRITICAL);
-        g_error_free(err);
-        */
+        emitError(err, ErrorSeverity::CRITICAL);
     }
 
     if(!foundFiles.empty()) {

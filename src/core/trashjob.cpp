@@ -89,13 +89,13 @@ _on_error:
                 unsupportedFiles_.push_back(path);
             }
             else {
-                FmJobErrorAction act = fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MODERATE);
+                ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
                 g_error_free(err);
                 err = NULL;
-                if(act == FM_JOB_RETRY) {
+                if(act == ErrorAction::RETRY) {
                     goto _retry_trash;
                 }
-                else if(act == FM_JOB_ABORT) {
+                else if(act == ErrorAction::ABORT) {
                     return;
                 }
             }

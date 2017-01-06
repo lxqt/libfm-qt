@@ -17,18 +17,17 @@ static const char trash_query[] =
     G_FILE_ATTRIBUTE_ID_FILESYSTEM","
     "trash::orig-path";
 
-static gboolean ensure_parent_dir(FmJob* job, GFile* orig_path) {
+bool UntrashJob::ensure_parent_dir(GFile* orig_path) {
     GFile* parent = g_file_get_parent(orig_path);
-    gboolean ret = g_file_query_exists(parent, fm_job_get_cancellable(job));
+    gboolean ret = g_file_query_exists(parent, cancellable().get());
     if(!ret) {
-        GError* err = NULL;
+        GErrorPtr err;
 _retry_mkdir:
-        if(!g_file_make_directory_with_parents(parent, fm_job_get_cancellable(job), &err)) {
-            if(!fm_job_is_cancelled(job)) {
-                FmJobErrorAction act = fm_job_emit_error(job, err, FM_JOB_ERROR_MODERATE);
-                g_error_free(err);
+        if(!g_file_make_directory_with_parents(parent, cancellable().get(), &err)) {
+            if(!isCancelled()) {
+                ErrorAction act = emitError(err, ErrorSeverity::MODERATE);
                 err = NULL;
-                if(act == FM_JOB_RETRY) {
+                if(act == ErrorAction::RETRY) {
                     goto _retry_mkdir;
                 }
             }
@@ -87,14 +86,14 @@ _retry_get_orig_path:
                 g_object_unref(orig_path);
             }
             else {
-                FmJobErrorAction act;
+                ErrorAction act;
 
                 g_set_error(&err, G_IO_ERROR, G_IO_ERROR_FAILED,
                             _("Cannot untrash file '%s': original path not known"),
                             g_file_info_get_display_name(inf));
-                act = fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MODERATE);
+                act = emitError( err, ErrorSeverity::MODERATE);
                 g_clear_error(&err);
-                if(act == FM_JOB_ABORT) {
+                if(act == ErrorAction::ABORT) {
                     g_object_unref(inf);
                     g_object_unref(gf);
                     return FALSE;
@@ -111,13 +110,13 @@ _retry_get_orig_path:
             g_free(disp);
 
             if(err) {
-                FmJobErrorAction act = fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MODERATE);
+                ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
                 g_error_free(err);
                 err = NULL;
-                if(act == FM_JOB_RETRY) {
+                if(act == ErrorAction::RETRY) {
                     goto _retry_get_orig_path;
                 }
-                else if(act == FM_JOB_ABORT) {
+                else if(act == ErrorAction::ABORT) {
                     g_object_unref(gf);
                     return FALSE;
                 }
