@@ -21,9 +21,10 @@ public:
     }
 
     void run() override;
+
 private:
-    bool deleteFile(const FilePath& path, GFileInfoPtr inf, bool only_empty);
-    bool deleteDirContent(const FilePath& path, GFileInfoPtr inf, bool only_empty);
+    bool deleteFile(const FilePath& path, GFileInfoPtr inf);
+    bool deleteDirContent(const FilePath& path, GFileInfoPtr inf);
 
 private:
     FilePathList paths_;
