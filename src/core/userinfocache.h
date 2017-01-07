@@ -1,6 +1,7 @@
 #ifndef FM2_USERINFOCACHE_H
 #define FM2_USERINFOCACHE_H
 
+#include "libfmqtglobals.h"
 #include <QObject>
 #include <string>
 #include <unordered_map>
@@ -9,7 +10,7 @@
 
 namespace Fm2 {
 
-class UserInfo {
+class LIBFM_QT_API UserInfo {
 public:
     UserInfo(uid_t uid, const char* name, const char* realName):
         uid_{uid}, name_{name}, realName_{realName} {
@@ -34,7 +35,7 @@ private:
 
 };
 
-class GroupInfo {
+class LIBFM_QT_API GroupInfo {
 public:
     GroupInfo(gid_t gid, const char* name): gid_{gid}, name_{name} {
     }
@@ -52,7 +53,7 @@ private:
     std::string name_;
 };
 
-class UserInfoCache : public QObject {
+class LIBFM_QT_API UserInfoCache : public QObject {
     Q_OBJECT
 public:
     explicit UserInfoCache();

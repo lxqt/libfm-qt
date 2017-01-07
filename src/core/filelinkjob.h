@@ -1,11 +1,12 @@
 #ifndef FM2_FILELINKJOB_H
 #define FM2_FILELINKJOB_H
 
+#include "libfmqtglobals.h"
 #include "fileoperationjob.h"
 
 namespace Fm2 {
 
-class FileLinkJob : public Fm2::FileOperationJob {
+class LIBFM_QT_API FileLinkJob : public Fm2::FileOperationJob {
 public:
     FileLinkJob();
 };

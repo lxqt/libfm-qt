@@ -1,6 +1,7 @@
 #ifndef FM2_DIRLISTJOB_H
 #define FM2_DIRLISTJOB_H
 
+#include "libfmqtglobals.h"
 #include <mutex>
 #include "job.h"
 #include "filepath.h"
@@ -9,7 +10,7 @@
 
 namespace Fm2 {
 
-class DirListJob : public Job {
+class LIBFM_QT_API DirListJob : public Job {
     Q_OBJECT
 public:
    enum Flags {

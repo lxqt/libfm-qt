@@ -1,6 +1,7 @@
 #ifndef FM2_TOTALSIZEJOB_H
 #define FM2_TOTALSIZEJOB_H
 
+#include "libfmqtglobals.h"
 #include "fileoperationjob.h"
 #include "filepath.h"
 #include <cstdint>
@@ -8,7 +9,7 @@
 
 namespace Fm2 {
 
-class TotalSizeJob : public Fm2::FileOperationJob {
+class LIBFM_QT_API TotalSizeJob : public Fm2::FileOperationJob {
     Q_OBJECT
 public:
     enum Flags {

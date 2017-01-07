@@ -26,16 +26,16 @@ void CopyJob::gfileProgressCallback(goffset current_num_bytes, goffset total_num
 
 bool CopyJob::copyRegularFile(const FilePath& srcPath, GFileInfoPtr srcFile, const FilePath& destPath) {
     int flags = G_FILE_COPY_ALL_METADATA | G_FILE_COPY_NOFOLLOW_SYMLINKS;
-    GError* err = nullptr;
+    GErrorPtr err;
 _retry_copy:
     if(!g_file_copy(srcPath.gfile().get(), destPath.gfile().get(), GFileCopyFlags(flags), cancellable().get(),
                     GFileProgressCallback(gfileProgressCallback), this, &err)) {
         flags &= ~G_FILE_COPY_OVERWRITE;
-#if 0
         /* handle existing files or file name conflict */
-        if(err->domain == G_IO_ERROR && (err->code == G_IO_ERROR_EXISTS ||
-                                         err->code == G_IO_ERROR_INVALID_FILENAME ||
-                                         err->code == G_IO_ERROR_FILENAME_TOO_LONG)) {
+        if(err.domain() == G_IO_ERROR && (err.code() == G_IO_ERROR_EXISTS ||
+                                         err.code() == G_IO_ERROR_INVALID_FILENAME ||
+                                         err.code() == G_IO_ERROR_FILENAME_TOO_LONG)) {
+#if 0
             GFile* dest_cp = new_dest;
             bool dest_exists = (err->code == G_IO_ERROR_EXISTS);
             FmFileOpOption opt = 0;
@@ -68,28 +68,30 @@ _retry_copy:
                 break;
             case FM_FILE_OP_SKIP_ERROR: ; /* FIXME */
             }
+#endif
         }
         else {
-            bool is_no_space = (err->domain == G_IO_ERROR &&
-                                    err->code == G_IO_ERROR_NO_SPACE);
+            bool is_no_space = (err.domain() == G_IO_ERROR &&
+                                err.code() == G_IO_ERROR_NO_SPACE);
             ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
-            g_error_free(err);
-            err = NULL;
+            err.reset();
             if(act == ErrorAction::RETRY) {
-                job->current_file_finished = 0;
+                // FIXME: job->current_file_finished = 0;
                 goto _retry_copy;
             }
+# if 0
             /* FIXME: ask to leave partial content? */
             if(is_no_space) {
                 g_file_delete(dest, fm_job_get_cancellable(fmjob), NULL);
             }
             ret = false;
             delete_src = false;
+#endif
         }
+        err.reset();
     }
     else {
-        ret = true;
-#endif
+        return true;
     }
     return false;
 }
@@ -278,7 +280,7 @@ bool CopyJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FileP
 }
 
 bool CopyJob::copyPath(const FilePath& srcPath, const FilePath& destDirPath, const char* destFileName) {
-    GError* err = nullptr;
+    GErrorPtr err;
     GFileInfoPtr srcInfo = GFileInfoPtr {
         g_file_query_info(srcPath.gfile().get(),
         gfile_info_query_attribs,
@@ -287,7 +289,6 @@ bool CopyJob::copyPath(const FilePath& srcPath, const FilePath& destDirPath, con
         false
     };
     if(!srcInfo || isCancelled()) {
-        g_error_free(err);
         return false;
     }
     return copyPath(srcPath, srcInfo, destDirPath, destFileName);
@@ -295,8 +296,7 @@ bool CopyJob::copyPath(const FilePath& srcPath, const FilePath& destDirPath, con
 
 bool CopyJob::copyPath(const FilePath& srcPath, const GFileInfoPtr& srcInfo, const FilePath& destDirPath, const char* destFileName) {
     setCurrentFile(srcPath);
-    GError* err = nullptr;
-
+    GErrorPtr err;
     GFileInfoPtr destDirInfo = GFileInfoPtr {
         g_file_query_info(destDirPath.gfile().get(),
         "id::filesystem",
@@ -306,9 +306,11 @@ bool CopyJob::copyPath(const FilePath& srcPath, const GFileInfoPtr& srcInfo, con
     };
 
     if(!destDirInfo || isCancelled()) {
-        g_error_free(err);
         return false;
     }
+
+    auto size = g_file_info_get_size(srcInfo.get());
+    setCurrentFileProgress(size, 0);
 
     auto destPath = destDirPath.child(destFileName);
     bool success = false;
@@ -325,9 +327,8 @@ bool CopyJob::copyPath(const FilePath& srcPath, const GFileInfoPtr& srcInfo, con
     }
 
     if(success) {
+        addFinishedAmount(size, 1);
 #if 0
-        job->finished += size;
-        job->current_file_finished = 0;
 
         if(ret && dest_folder) {
             fm_dest = fm_path_new_for_gfile(dest);
@@ -431,13 +432,14 @@ bool _fm_file_ops_job_copy_run(FmFileOpsJob* job) {
 
 void CopyJob::run() {
     TotalSizeJob totalSizeJob{srcPaths_};
-    connect(&totalSizeJob, &TotalSizeJob::cancelled, this, &CopyJob::cancel);
+    connect(&totalSizeJob, &TotalSizeJob::error, this, &CopyJob::error);
+    connect(this, &CopyJob::cancelled, &totalSizeJob, &TotalSizeJob::cancel);
     totalSizeJob.run();
     if(isCancelled()) {
         return;
     }
 
-    // setTotalAmount(totalSizeJob)
+    setTotalAmount(totalSizeJob.totalSize(), totalSizeJob.fileCount());
     Q_EMIT preparedToRun();
 
     for(auto& srcPath : srcPaths_) {

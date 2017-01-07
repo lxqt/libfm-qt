@@ -1,6 +1,7 @@
 #ifndef FM2_FILEOPERATIONJOB_H
 #define FM2_FILEOPERATIONJOB_H
 
+#include "libfmqtglobals.h"
 #include "job.h"
 #include <string>
 #include <mutex>
@@ -10,7 +11,7 @@
 
 namespace Fm2 {
 
-class FileOperationJob : public Fm2::Job {
+class LIBFM_QT_API FileOperationJob : public Fm2::Job {
     Q_OBJECT
 public:
     enum FileExistsAction {

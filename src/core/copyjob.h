@@ -1,12 +1,13 @@
 #ifndef FM2_COPYJOB_H
 #define FM2_COPYJOB_H
 
+#include "libfmqtglobals.h"
 #include "fileoperationjob.h"
 #include "gioptrs.h"
 
 namespace Fm2 {
 
-class CopyJob : public Fm2::FileOperationJob {
+class LIBFM_QT_API CopyJob : public Fm2::FileOperationJob {
     Q_OBJECT
 public:
 

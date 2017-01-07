@@ -5,7 +5,7 @@
 namespace Fm2 {
 
 bool DeleteJob::deleteFile(const FilePath& path, GFileInfoPtr inf, bool only_empty) {
-    // ErrorAction act;
+    ErrorAction act = ErrorAction::CONTINUE;
     while(!inf) {
         GErrorPtr err;
         inf = GFileInfoPtr{
@@ -17,17 +17,13 @@ bool DeleteJob::deleteFile(const FilePath& path, GFileInfoPtr inf, bool only_emp
         if(inf) {
             break;
         }
-/*
-        act = emitError( err, ErrorSeverity::MODERATE);
-*/
-/*
+        act = emitError(err, ErrorSeverity::MODERATE);
         if(act == ErrorAction::ABORT) {
             return false;
         }
         if(act != ErrorAction::RETRY) {
             break;
         }
-*/
     }
     if(!inf) {
 #if 0
@@ -47,42 +43,61 @@ bool DeleteJob::deleteFile(const FilePath& path, GFileInfoPtr inf, bool only_emp
     setCurrentFile(path);
 
     if(g_file_info_get_file_type(inf.get()) == G_FILE_TYPE_DIRECTORY) {
-        return deleteDir(path, inf, only_empty);
+        // delete the content of the dir prior to deleting itself
+        if(!deleteDirContent(path, inf, only_empty))
+            return false;
     }
-    else {
-        while(!isCancelled()) {
-            GErrorPtr err;
-            // try to delete the path directly
-            if(g_file_delete(path.gfile().get(), cancellable().get(), &err)) {
-    /*
-                if(folder) {
-                    path = fm_path_new_for_gfile(gf);
-                    _fm_folder_event_file_deleted(folder, path);
-                    fm_path_unref(path);
-                }
-    */
-                return true;
+
+    while(!isCancelled()) {
+        GErrorPtr err;
+        // try to delete the path directly
+        if(g_file_delete(path.gfile().get(), cancellable().get(), &err)) {
+/*
+            if(folder) {
+                path = fm_path_new_for_gfile(gf);
+                _fm_folder_event_file_deleted(folder, path);
+                fm_path_unref(path);
             }
-            if(err) {
-                // FIXME: error handling
+*/
+            return true;
+        }
+        if(err) {
+            // FIXME: error handling
+#if 0
+            /* if it's non-empty dir then descent into it then try again */
+            /* trash root gives G_IO_ERROR_PERMISSION_DENIED */
+            if(is_trash_root || /* FIXME: need to refactor this! */
+                    (is_dir && !only_empty &&
+                     err.domain() == G_IO_ERROR && err.code() == G_IO_ERROR_NOT_EMPTY)) {
+                deleteDirContent(path, inf, only_empty);
+            }
+            else if(err.domain() == G_IO_ERROR && err.code() == G_IO_ERROR_PERMISSION_DENIED) {
+                /* special case for trash:/// */
+                /* FIXME: is there any better way to handle this? */
+                auto scheme = path.uriScheme();
+                if(g_strcmp0(scheme.get(), "trash") == 0) {
+                    return true;
+                }
+            }
+#endif
+            act = emitError( err, ErrorSeverity::MODERATE);
+            if(act != ErrorAction::RETRY) {
+                return false;
             }
         }
-        /* show progress */
-        // setCurrentFileProgress()
     }
+    /* show progress */
+    // setCurrentFileProgress()
     return false;
 }
 
-bool DeleteJob::deleteDir(const FilePath &path, GFileInfoPtr inf, bool only_empty) {
-#if 0
-    GError* err = NULL;
+bool DeleteJob::deleteDirContent(const FilePath &path, GFileInfoPtr inf, bool only_empty) {
+    GErrorPtr err;
     bool is_dir, is_trash_root = false, ok;
-    GFileInfo* _inf = NULL;
     ErrorAction act;
 
-        GFileEnumerator* enu;
-        FmFolder* sub_folder;
 #if 0
+    FmFolder* sub_folder;
         /* special handling for trash:/// */
         if(!g_file_is_native(gf)) {
             char* scheme = g_file_get_uri_scheme(gf);
@@ -97,94 +112,56 @@ bool DeleteJob::deleteDir(const FilePath &path, GFileInfoPtr inf, bool only_empt
             g_free(scheme);
         }
 #endif
-
-        g_error_free(err);
-        err = NULL;
-        enu = g_file_enumerate_children(path.gfile().get(), gfile_info_query_attribs,
-                                        G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                                        cancellable().get(), &err);
-/*
-        if(!enu) {
-            emitError( err, ErrorSeverity::MODERATE);
-            g_error_free(err);
-            return false;
-        }
-*/
-        path = fm_path_new_for_gfile(gf);
-        sub_folder = fm_folder_find_by_path(path);
-        fm_path_unref(path);
-        while(! fm_job_is_cancelled(job)) {
-            inf = g_file_enumerator_next_file(enu, fm_job_get_cancellable(job), &err);
-            if(inf) {
-                GFile* sub = g_file_get_child(gf, g_file_info_get_name(inf));
-                ok = _fm_file_ops_job_delete_file(job, sub, inf, sub_folder, false);
-                g_object_unref(sub);
-                g_object_unref(inf);
-                if(!ok) { /* stop the job if error happened */
-                    goto _failed;
-                }
-            }
-            else {
-                if(err) {
-                    emitError( err, ErrorSeverity::MODERATE);
-                    /* ErrorAction::RETRY is not supported here */
-                    g_error_free(err);
-_failed:
-                    g_object_unref(enu);
-                    if(sub_folder) {
-                        g_object_unref(sub_folder);
-                    }
-                    return false;
-                }
-                else { /* EOF */
-                    break;
-                }
-            }
-        }
-        g_object_unref(enu);
-        if(sub_folder) {
-            g_object_unref(sub_folder);
-        }
-
-        is_trash_root = false; /* don't go here again! */
-        is_dir = false;
-        continue;
-    }
-if(err) {
-    /* if it's non-empty dir then descent into it then try again */
-    /* trash root gives G_IO_ERROR_PERMISSION_DENIED */
-    if(is_trash_root || /* FIXME: need to refactor this! */
-            (is_dir && !only_empty &&
-             err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_EMPTY)) {
-        deleteDir(path, inf, only_empty);
-    }
-    else if(err->domain == G_IO_ERROR && err->code == G_IO_ERROR_PERMISSION_DENIED) {
-        /* special case for trash:/// */
-        /* FIXME: is there any better way to handle this? */
-        auto scheme = path.uriScheme();
-        if(g_strcmp0(scheme.get(), "trash") == 0) {
-            g_error_free(err);
-            return true;
-        }
-    }
-#if 0
-    act = emitError( err, ErrorSeverity::MODERATE);
-    g_error_free(err);
-    err = NULL;
-    if(act != ErrorAction::RETRY) {
+    GFileEnumeratorPtr enu{
+        g_file_enumerate_children(path.gfile().get(), gfile_info_query_attribs,
+                                G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                cancellable().get(), &err),
+                false
+    };
+    if(!enu) {
+        emitError(err, ErrorSeverity::MODERATE);
         return false;
     }
-#endif
-}
-
-#endif
+    // FIXME: sub_folder = fm_folder_find_by_path(path);
+    while(!isCancelled()) {
+        inf = GFileInfoPtr{
+            g_file_enumerator_next_file(enu.get(), cancellable().get(), &err),
+            false
+        };
+        if(inf) {
+            auto subPath = path.child(g_file_info_get_name(inf.get()));
+            if(!deleteFile(subPath, inf, false))
+                goto _failed;
+        }
+        else {
+            if(err) {
+                emitError( err, ErrorSeverity::MODERATE);
+                /* ErrorAction::RETRY is not supported here */
+_failed:
+                g_file_enumerator_close(enu.get(), nullptr, nullptr);
+/*
+                if(sub_folder) {
+                    g_object_unref(sub_folder);
+                }
+*/
+                return false;
+            }
+            else { /* EOF */
+                g_file_enumerator_close(enu.get(), nullptr, nullptr);
+                break;
+            }
+        }
+        is_trash_root = false; /* don't go here again! */
+        is_dir = false;
+    }
     return false;
 }
 
 
 void DeleteJob::run() {
     /* prepare the job, count total work needed with FmDeepCountJob */
-    TotalSizeJob totalSizeJob{paths_};
+    TotalSizeJob totalSizeJob{paths_, TotalSizeJob::Flags::PREPARE_DELETE};
+    connect(&totalSizeJob, &TotalSizeJob::error, this, &DeleteJob::error);
     connect(this, &DeleteJob::cancelled, &totalSizeJob, &TotalSizeJob::cancel);
     totalSizeJob.run();
 

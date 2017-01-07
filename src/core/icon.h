@@ -25,6 +25,7 @@
 #ifndef __FM2_ICON_H__
 #define __FM2_ICON_H__
 
+#include "libfmqtglobals.h"
 #include <gio/gio.h>
 #include "gobjectptr.h"
 #include <memory>
@@ -35,7 +36,7 @@
 
 namespace Fm2 {
 
-class Icon {
+class LIBFM_QT_API Icon {
 public:
 
     explicit Icon() {}

@@ -7,6 +7,7 @@ set(libfm_core_SRCS
     core/mimetype.cpp
     core/fileinfo.cpp
     core/folder.cpp
+    core/filemonitor.cpp
     # i/o jobs
     core/job.cpp
     core/copyjob.cpp
@@ -21,7 +22,6 @@ set(libfm_core_SRCS
     core/totalsizejob.cpp
     core/trashjob.cpp
     core/untrashjob.cpp
-    core/simplejob.h
     # extra desktop services
     core/bookmarks.cpp
     core/volumemanager.cpp

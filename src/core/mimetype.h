@@ -23,6 +23,7 @@
 #ifndef _FM2_MIME_TYPE_H_
 #define _FM2_MIME_TYPE_H_
 
+#include "libfmqtglobals.h"
 #include <glib.h>
 #include <gio/gio.h>
 
@@ -39,7 +40,7 @@
 
 namespace Fm2 {
 
-class MimeType {
+class LIBFM_QT_API MimeType {
 public:
 
     explicit MimeType(const char* typeName);

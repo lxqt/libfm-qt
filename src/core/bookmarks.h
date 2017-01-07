@@ -1,6 +1,7 @@
 #ifndef FM2_BOOKMARKS_H
 #define FM2_BOOKMARKS_H
 
+#include "libfmqtglobals.h"
 #include <QObject>
 #include "gobjectptr.h"
 #include "fileinfo.h"
@@ -8,7 +9,7 @@
 
 namespace Fm2 {
 
-class BookmarkItem {
+class LIBFM_QT_API BookmarkItem {
 public:
     friend class Bookmarks;
 
@@ -43,7 +44,7 @@ private:
 };
 
 
-class Bookmarks : public QObject {
+class LIBFM_QT_API Bookmarks : public QObject {
     Q_OBJECT
 public:
     explicit Bookmarks(QObject* parent = 0);

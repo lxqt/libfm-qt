@@ -228,7 +228,7 @@ private:
 };
 
 
-class FileInfoList: public std::vector<std::shared_ptr<const FileInfo>> {
+class LIBFM_QT_API FileInfoList: public std::vector<std::shared_ptr<const FileInfo>> {
 public:
 
     bool isSameType() const;

@@ -47,4 +47,5 @@ void VolumeManager::onGMountChanged(GVolumeMonitor* mon, GMount* mnt) {
 
 }
 
+
 } // namespace Fm2

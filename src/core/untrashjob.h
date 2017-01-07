@@ -1,11 +1,12 @@
 #ifndef FM2_UNTRASHJOB_H
 #define FM2_UNTRASHJOB_H
 
+#include "libfmqtglobals.h"
 #include "fileoperationjob.h"
 
 namespace Fm2 {
 
-class UntrashJob : public Fm2::FileOperationJob {
+class LIBFM_QT_API UntrashJob : public Fm2::FileOperationJob {
 public:
     UntrashJob();
 

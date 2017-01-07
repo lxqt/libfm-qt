@@ -1,6 +1,7 @@
 #ifndef GSIGNALCONNECTION_H
 #define GSIGNALCONNECTION_H
 
+#include "libfmqtglobals.h"
 #include <glib.h>
 #include <glib-object.h>
 
@@ -10,7 +11,7 @@ namespace Fm2 {
 // automatic signal/slot connection management with type safety for GObject
 
 template <class T, class G, class R, class ...Args>
-class GSignalHandler {
+class LIBFM_QT_API GSignalHandler {
 public:
     typedef R (T::*MemFn)(G*, Args...);
 

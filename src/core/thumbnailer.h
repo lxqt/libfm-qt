@@ -1,10 +1,11 @@
 #ifndef FM2_THUMBNAILER_H
 #define FM2_THUMBNAILER_H
 
+#include "libfmqtglobals.h"
 
 namespace Fm2 {
 
-class Thumbnailer {
+class LIBFM_QT_API Thumbnailer {
 public:
     Thumbnailer();
 };

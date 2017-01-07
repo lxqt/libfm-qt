@@ -1,6 +1,7 @@
 #ifndef FM2_FILEPATH_H
 #define FM2_FILEPATH_H
 
+#include "libfmqtglobals.h"
 #include "gobjectptr.h"
 #include "cstrptr.h"
 #include <gio/gio.h>
@@ -9,7 +10,7 @@
 
 namespace Fm2 {
 
-class FilePath {
+class LIBFM_QT_API FilePath {
 public:
 
     explicit FilePath() {
