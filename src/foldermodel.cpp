@@ -34,8 +34,7 @@
 
 namespace Fm {
 
-FolderModel::FolderModel() :
-  folder_(nullptr) {
+FolderModel::FolderModel() {
 /*
     ColumnIcon,
     ColumnName,
@@ -44,16 +43,10 @@ FolderModel::FolderModel() :
     NumOfColumns
 */
   thumbnailRefCounts.reserve(4);
-
-  // reload all icons when the icon theme is changed
-  connect(IconTheme::instance(), &IconTheme::changed, this, &FolderModel::updateIcons);
 }
 
 FolderModel::~FolderModel() {
   qDebug("delete FolderModel");
-
-  if(folder_)
-    setFolder(nullptr);
 
   // if the thumbnail requests list is not empty, cancel them
   if(!thumbnailResults.empty()) {
@@ -63,48 +56,36 @@ FolderModel::~FolderModel() {
   }
 }
 
-void FolderModel::setFolder(FmFolder* new_folder) {
+void FolderModel::setFolder(const std::shared_ptr<Fm2::Folder> &new_folder) {
   if(folder_) {
     removeAll();        // remove old items
-    g_signal_handlers_disconnect_by_func(folder_, gpointer(onStartLoading), this);
-    g_signal_handlers_disconnect_by_func(folder_, gpointer(onFinishLoading), this);
-    g_signal_handlers_disconnect_by_func(folder_, gpointer(onFilesAdded), this);
-    g_signal_handlers_disconnect_by_func(folder_, gpointer(onFilesChanged), this);
-    g_signal_handlers_disconnect_by_func(folder_, gpointer(onFilesRemoved), this);
-    g_object_unref(folder_);
   }
   if(new_folder) {
-    folder_ = FM_FOLDER(g_object_ref(new_folder));
-    g_signal_connect(folder_, "start-loading", G_CALLBACK(onStartLoading), this);
-    g_signal_connect(folder_, "finish-loading", G_CALLBACK(onFinishLoading), this);
-    g_signal_connect(folder_, "files-added", G_CALLBACK(onFilesAdded), this);
-    g_signal_connect(folder_, "files-changed", G_CALLBACK(onFilesChanged), this);
-    g_signal_connect(folder_, "files-removed", G_CALLBACK(onFilesRemoved), this);
+    folder_ = new_folder;
+    connect(folder_.get(), &Fm2::Folder::startLoading, this, &FolderModel::onStartLoading);
+    connect(folder_.get(), &Fm2::Folder::finishLoading, this, &FolderModel::onFinishLoading);
+    connect(folder_.get(), &Fm2::Folder::filesAdded, this, &FolderModel::onFilesAdded);
+    connect(folder_.get(), &Fm2::Folder::filesChanged, this, &FolderModel::onFilesChanged);
+    connect(folder_.get(), &Fm2::Folder::filesRemoved, this, &FolderModel::onFilesRemoved);
     // handle the case if the folder is already loaded
-    if(fm_folder_is_loaded(folder_))
-      insertFiles(0, fm_folder_get_files(folder_));
+    if(folder_->isLoaded()) {
+        insertFiles(0, folder_->getFiles());
+    }
   }
-  else
-    folder_ = nullptr;
 }
 
-void FolderModel::onStartLoading(FmFolder* folder, gpointer user_data) {
-  FolderModel* model = static_cast<FolderModel*>(user_data);
+void FolderModel::onStartLoading() {
   // remove all items
-  model->removeAll();
+  removeAll();
 }
 
-void FolderModel::onFinishLoading(FmFolder* folder, gpointer user_data) {
-  Q_UNUSED(folder)
-  Q_UNUSED(user_data)
+void FolderModel::onFinishLoading() {
 }
 
-void FolderModel::onFilesAdded(FmFolder* folder, GSList* files, gpointer user_data) {
-  FolderModel* model = static_cast<FolderModel*>(user_data);
-  int n_files = g_slist_length(files);
-  model->beginInsertRows(QModelIndex(), model->items.count(), model->items.count() + n_files - 1);
-  for(GSList* l = files; l; l = l->next) {
-    FmFileInfo* info = FM_FILE_INFO(l->data);
+void FolderModel::onFilesAdded(const Fm2::FileInfoList &files) {
+  int n_files = files.size();
+  beginInsertRows(QModelIndex(), items.count(), items.count() + n_files - 1);
+  for(auto& info: files) {
     FolderModelItem item(info);
 /*
     if(fm_file_info_is_hidden(info)) {
@@ -112,51 +93,47 @@ void FolderModel::onFilesAdded(FmFolder* folder, GSList* files, gpointer user_da
       continue;
     }
 */
-    model->items.append(item);
+    items.append(item);
   }
-  model->endInsertRows();
+  endInsertRows();
 }
 
 //static
-void FolderModel::onFilesChanged(FmFolder* folder, GSList* files, gpointer user_data) {
-  FolderModel* model = static_cast<FolderModel*>(user_data);
-  for(GSList* l = files; l; l = l->next) {
-    FmFileInfo* info = FM_FILE_INFO(l->data);
+void FolderModel::onFilesChanged(std::vector<Fm2::FileInfoPair>& files) {
+  for(auto& change: files) {
     int row;
-    QList<FolderModelItem>::iterator it = model->findItemByFileInfo(info, &row);
-    if(it != model->items.end()) {
+    auto& oldInfo = change.first;
+    auto& newInfo = change.second;
+    QList<FolderModelItem>::iterator it = findItemByFileInfo(oldInfo.get(), &row);
+    if(it != items.end()) {
       FolderModelItem& item = *it;
       // try to update the item
-      item.displayName = QString::fromUtf8(fm_file_info_get_disp_name(info));
-      item.updateIcon();
+      item.info = newInfo;
       item.thumbnails.clear();
-      QModelIndex index = model->createIndex(row, 0, &item);
-      Q_EMIT model->dataChanged(index, index);
+      QModelIndex index = createIndex(row, 0, &item);
+      Q_EMIT dataChanged(index, index);
     }
   }
 }
 
 //static
-void FolderModel::onFilesRemoved(FmFolder* folder, GSList* files, gpointer user_data) {
-  FolderModel* model = static_cast<FolderModel*>(user_data);
-  for(GSList* l = files; l; l = l->next) {
-    FmFileInfo* info = FM_FILE_INFO(l->data);
-    const char* name = fm_file_info_get_name(info);
+void FolderModel::onFilesRemoved(const Fm2::FileInfoList &files) {
+  for(auto& info: files) {
     int row;
-    QList<FolderModelItem>::iterator it = model->findItemByName(name, &row);
-    if(it != model->items.end()) {
-      model->beginRemoveRows(QModelIndex(), row, row);
-      model->items.erase(it);
-      model->endRemoveRows();
+    QList<FolderModelItem>::iterator it = findItemByName(info->getName().c_str(), &row);
+    if(it != items.end()) {
+      beginRemoveRows(QModelIndex(), row, row);
+      items.erase(it);
+      endRemoveRows();
     }
   }
 }
 
-void FolderModel::insertFiles(int row, FmFileInfoList* files) {
-  int n_files = fm_file_info_list_get_length(files);
+void FolderModel::insertFiles(int row, const Fm2::FileInfoList& files) {
+  int n_files = files.size();
   beginInsertRows(QModelIndex(), row, row + n_files - 1);
-  for(GList* l = fm_file_info_list_peek_head_link(files); l; l = l->next) {
-    FolderModelItem item(FM_FILE_INFO(l->data));
+  for(auto& info: files) {
+    FolderModelItem item(info);
     items.append(item);
   }
   endInsertRows();
@@ -186,7 +163,7 @@ FolderModelItem* FolderModel::itemFromIndex(const QModelIndex& index) const {
   return reinterpret_cast<FolderModelItem*>(index.internalPointer());
 }
 
-FmFileInfo* FolderModel::fileInfoFromIndex(const QModelIndex& index) const {
+std::shared_ptr<const Fm2::FileInfo> FolderModel::fileInfoFromIndex(const QModelIndex& index) const {
   FolderModelItem* item = itemFromIndex(index);
   return item ? item->info : nullptr;
 }
@@ -196,45 +173,45 @@ QVariant FolderModel::data(const QModelIndex & index, int role/* = Qt::DisplayRo
     return QVariant();
   }
   FolderModelItem* item = itemFromIndex(index);
-  FmFileInfo* info = item->info;
+  auto info = item->info;
 
   switch(role) {
     case Qt::ToolTipRole:
-      return QVariant(item->displayName);
+      return QVariant(item->displayName());
     case Qt::DisplayRole:  {
       switch(index.column()) {
         case ColumnFileName: {
-          return QVariant(item->displayName);
+          return QVariant(item->displayName());
         }
         case ColumnFileType: {
-          FmMimeType* mime = fm_file_info_get_mime_type(info);
-          const char* desc = fm_mime_type_get_desc(mime);
-          return QString::fromUtf8(desc);
+          auto mime = info->getMimeType();
+          return QString::fromUtf8(mime->desc());
         }
         case ColumnFileMTime: {
-          const char* name = fm_file_info_get_disp_mtime(info);
-          return QString::fromUtf8(name);
+          // FIXME:
+          // const char* name = fm_file_info_get_disp_mtime(info);
+          // return QString::fromUtf8(name);
         }
         case ColumnFileSize: {
-          const char* name = fm_file_info_get_disp_size(info);
-          return QString::fromUtf8(name);
+          // FIXME:
+          // const char* name = fm_file_info_get_disp_size(info);
+          // return QString::fromUtf8(name);
         }
         case ColumnFileOwner: {
-          const char* name = fm_file_info_get_disp_owner(info);
-          return QString::fromUtf8(name);
+          // FIXME:
+          // const char* name = fm_file_info_get_disp_owner(info);
+          // return QString::fromUtf8(name);
         }
       }
     }
     case Qt::DecorationRole: {
       if(index.column() == 0) {
-        // QPixmap pix = IconTheme::loadIcon(fm_file_info_get_icon(info), iconSize_);
-        return QVariant(item->icon);
-        // return QVariant(pix);
+        return QVariant(item->icon());
       }
       break;
     }
     case FileInfoRole:
-      return qVariantFromValue((void*)info);
+      return qVariantFromValue((void*)info.get());
   }
   return QVariant();
 }
@@ -293,13 +270,13 @@ Qt::ItemFlags FolderModel::flags(const QModelIndex& index) const {
 
 // FIXME: this is very inefficient and should be replaced with a
 // more reasonable implementation later.
-QList<FolderModelItem>::iterator FolderModel::findItemByPath(FmPath* path, int* row) {
+QList<FolderModelItem>::iterator FolderModel::findItemByPath(const Fm2::FilePath &path, int* row) {
   QList<FolderModelItem>::iterator it = items.begin();
   int i = 0;
   while(it != items.end()) {
     FolderModelItem& item = *it;
-    FmPath* item_path = fm_file_info_get_path(item.info);
-    if(fm_path_equal(item_path, path)) {
+    auto item_path = item.info->path();
+    if(item_path == path) {
       *row = i;
       return it;
     }
@@ -316,8 +293,7 @@ QList<FolderModelItem>::iterator FolderModel::findItemByName(const char* name, i
   int i = 0;
   while(it != items.end()) {
     FolderModelItem& item = *it;
-    const char* item_name = fm_file_info_get_name(item.info);
-    if(strcmp(name, item_name) == 0) {
+    if(item.info->getName() == name) {
       *row = i;
       return it;
     }
@@ -327,12 +303,12 @@ QList<FolderModelItem>::iterator FolderModel::findItemByName(const char* name, i
   return items.end();
 }
 
-QList< FolderModelItem >::iterator FolderModel::findItemByFileInfo(FmFileInfo* info, int* row) {
+QList< FolderModelItem >::iterator FolderModel::findItemByFileInfo(const Fm2::FileInfo* info, int* row) {
   QList<FolderModelItem>::iterator it = items.begin();
   int i = 0;
   while(it != items.end()) {
     FolderModelItem& item = *it;
-    if(item.info == info) {
+    if(item.info.get() == info) {
       *row = i;
       return it;
     }
@@ -366,12 +342,11 @@ QMimeData* FolderModel::mimeData(const QModelIndexList& indexes) const {
   for(const auto &index : indexes) {
     FolderModelItem* item = itemFromIndex(index);
     if(item && item->info) {
-      FmPath* path = fm_file_info_get_path(item->info);
-      if(path) {
-        char* uri = fm_path_to_uri(path);
-        urilist.append(uri);
+      auto path = item->info->path();
+      if(path.isValid()) {
+        auto uri = path.uri();
+        urilist.append(uri.get());
         urilist.append('\n');
-        g_free(uri);
       }
     }
   }
@@ -384,9 +359,9 @@ bool FolderModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
   qDebug("FolderModel::dropMimeData");
   if(!folder_)
     return false;
-  FmPath* destPath;
+  Fm2::FilePath destPath;
   if(parent.isValid()) { // drop on an item
-    FmFileInfo* info;
+    std::shared_ptr<const Fm2::FileInfo> info;
     if(row == -1 && column == -1)
       info = fileInfoFromIndex(parent);
     else {
@@ -394,7 +369,7 @@ bool FolderModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
       info = fileInfoFromIndex(itemIndex);
     }
     if(info)
-      destPath = fm_file_info_get_path(info);
+      destPath = info->path();
     else
       return false;
   }
@@ -404,21 +379,25 @@ bool FolderModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
 
   // FIXME: should we put this in dropEvent handler of FolderView instead?
   if(data->hasUrls()) {
+    // FIXME: port this to new Fm2 APIs
     qDebug("drop action: %d", action);
     FmPathList* srcPaths = pathListFromQUrls(data->urls());
+    FmPath* _destPath = fm_path_new_for_gfile(destPath.gfile().get());
     switch(action) {
       case Qt::CopyAction:
-        FileOperation::copyFiles(srcPaths, destPath);
+        FileOperation::copyFiles(srcPaths, _destPath);
         break;
       case Qt::MoveAction:
-        FileOperation::moveFiles(srcPaths, destPath);
+        FileOperation::moveFiles(srcPaths, _destPath);
         break;
       case Qt::LinkAction:
-        FileOperation::symlinkFiles(srcPaths, destPath);
+        FileOperation::symlinkFiles(srcPaths, _destPath);
       default:
+        fm_path_unref(_destPath);
         fm_path_list_unref(srcPaths);
         return false;
     }
+    fm_path_unref(_destPath);
     fm_path_list_unref(srcPaths);
     return true;
   }
@@ -481,6 +460,7 @@ void FolderModel::releaseThumbnails(int size) {
 }
 
 void FolderModel::onThumbnailLoaded(FmThumbnailLoader* res, gpointer user_data) {
+  // FIXME: port this to the new Fm2 API
   FolderModel* pThis = reinterpret_cast<FolderModel*>(user_data);
   QLinkedList<FmThumbnailLoader*>::iterator it;
   for(it = pThis->thumbnailResults.begin(); it != pThis->thumbnailResults.end(); ++it) {
@@ -489,7 +469,7 @@ void FolderModel::onThumbnailLoaded(FmThumbnailLoader* res, gpointer user_data) 
       FmFileInfo* info = ThumbnailLoader::fileInfo(res);
       int row = -1;
       // find the model item this thumbnail belongs to
-      QList<FolderModelItem>::iterator it = pThis->findItemByFileInfo(info, &row);
+      QList<FolderModelItem>::iterator it = pThis->findItemByName(fm_file_info_get_name(info), &row);
       if(it != pThis->items.end()) {
         // the file is found in our model
         FolderModelItem& item = *it;
@@ -530,6 +510,10 @@ void FolderModel::onThumbnailLoaded(FmThumbnailLoader* res, gpointer user_data) 
 // get a thumbnail of size at the index
 // if a thumbnail is not yet loaded, this will initiate loading of the thumbnail.
 QImage FolderModel::thumbnailFromIndex(const QModelIndex& index, int size) {
+
+    // FIXME: port to the new Fm2 APIs
+
+#if 0
   FolderModelItem* item = itemFromIndex(index);
   if(item) {
     FolderModelItem::Thumbnail* thumbnail = item->findThumbnail(size);
@@ -547,14 +531,8 @@ QImage FolderModel::thumbnailFromIndex(const QModelIndex& index, int size) {
       default:;
     }
   }
+#endif
   return QImage();
-}
-
-void FolderModel::updateIcons() {
-  QList<FolderModelItem>::iterator it = items.begin();
-  for(;it != items.end(); ++it) {
-    (*it).updateIcon();
-  }
 }
 
 

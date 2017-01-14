@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <QDir>
 #include <QDebug>
-#include "../folder.h"
+#include "../core/folder.h"
 
 int main(int argc, char** argv) {
     QApplication app(argc, argv);

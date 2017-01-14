@@ -104,7 +104,7 @@ bool ProxyFolderModel::filterAcceptsRow(int source_row, const QModelIndex & sour
   // apply additional filters if there're any
   Q_FOREACH(ProxyFolderModelFilter* filter, filters_) {
     FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
-    FmFileInfo* fileInfo = srcModel->fileInfoFromIndex(srcModel->index(source_row, 0, source_parent));
+    auto fileInfo = srcModel->fileInfoFromIndex(srcModel->index(source_row, 0, source_parent));
     if(!filter->filterAcceptsRow(this, fileInfo))
       return false;
   }
@@ -115,8 +115,8 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
   FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
   // left and right are indexes of source model, not the proxy model.
   if(srcModel) {
-    FmFileInfo* leftInfo = srcModel->fileInfoFromIndex(left);
-    FmFileInfo* rightInfo = srcModel->fileInfoFromIndex(right);
+    auto leftInfo = srcModel->fileInfoFromIndex(left);
+    auto rightInfo = srcModel->fileInfoFromIndex(right);
 
     if(Q_UNLIKELY(!leftInfo || !rightInfo)) {
       // In theory, this should not happen, but it's safer to add the null check.
@@ -125,8 +125,8 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
     }
 
     if(folderFirst_) {
-      bool leftIsFolder = (bool)fm_file_info_is_dir(leftInfo);
-      bool rightIsFolder = (bool)fm_file_info_is_dir(rightInfo);
+      bool leftIsFolder = leftInfo->isDir();
+      bool rightIsFolder = rightInfo->isDir();
       if(leftIsFolder != rightIsFolder)
         return sortOrder() == Qt::AscendingOrder ? leftIsFolder : rightIsFolder;
     }
@@ -137,7 +137,10 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
           // fm_file_info_get_collate_key_nocasefold() uses g_utf8_casefold() from glib internally, which
           // is only an approximation not working correctly in some locales.
           // FIXME: we may use QCollator (since Qt 5.2) for this, but the performance impact is unknown
-          return strcmp(fm_file_info_get_collate_key_nocasefold(leftInfo), fm_file_info_get_collate_key_nocasefold(rightInfo)) < 0;
+          // return strcmp(fm_file_info_get_collate_key_nocasefold(leftInfo), fm_file_info_get_collate_key_nocasefold(rightInfo)) < 0;
+
+          return 0; // FIXME: new libfm-qt APIs does not implement this yet.
+
           /*
           QCollator coll;
           coll.setCaseSensitivity(Qt::CaseSensitive);
@@ -148,12 +151,14 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
         }
         else {
           // linguistic case insensitive ordering
-          return strcmp(fm_file_info_get_collate_key(leftInfo), fm_file_info_get_collate_key(rightInfo)) < 0;
+
+            return 0; // FIXME: new libfm-qt APIs does not implement this yet.
+            // return strcmp(fm_file_info_get_collate_key(leftInfo), fm_file_info_get_collate_key(rightInfo)) < 0;
         }
       case FolderModel::ColumnFileMTime:
-        return fm_file_info_get_mtime(leftInfo) < fm_file_info_get_mtime(rightInfo);
+        return leftInfo->getMtime() < rightInfo->getMtime();
       case FolderModel::ColumnFileSize:
-        return fm_file_info_get_size(leftInfo) < fm_file_info_get_size(rightInfo);
+        return leftInfo->getSize() < rightInfo->getSize();
       case FolderModel::ColumnFileOwner:
         // TODO: sort by owner
         break;
@@ -164,13 +169,13 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
   return QSortFilterProxyModel::lessThan(left, right);
 }
 
-FmFileInfo* ProxyFolderModel::fileInfoFromIndex(const QModelIndex& index) const {
+const std::shared_ptr<const Fm2::FileInfo>& ProxyFolderModel::fileInfoFromIndex(const QModelIndex& index) const {
   FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
   if(srcModel) {
     QModelIndex srcIndex = mapToSource(index);
     return srcModel->fileInfoFromIndex(srcIndex);
   }
-  return NULL;
+  return nullptr;
 }
 
 void ProxyFolderModel::setShowThumbnails(bool show) {

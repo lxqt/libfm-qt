@@ -610,9 +610,9 @@ void Folder::reload() {
 #endif
 
     /* also re-create a new file monitor */
-    // mon = GObjectPtr<GFileMonitor>{fm_monitor_directory(dir_path.gfile().get(), &err), false};
+    // mon = GFileMonitorPtr{fm_monitor_directory(dir_path.gfile().get(), &err), false};
     // FIXME: should we make this cancellable?
-    dirMonitor_ = GObjectPtr<GFileMonitor>{
+    dirMonitor_ = GFileMonitorPtr{
             g_file_monitor_directory(dirPath_.gfile().get(), G_FILE_MONITOR_WATCH_MOUNTS, nullptr, &err),
             false
     };

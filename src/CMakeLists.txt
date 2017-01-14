@@ -163,11 +163,11 @@ install(FILES
     COMPONENT Devel
 )
 
-file(GLOB libfm_HS "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
 # install include header files (FIXME: can we make this cleaner? should dir name be versioned?)
-install(FILES ${libfm_HS}
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt"
     COMPONENT Devel
+    FILES_MATCHING PATTERN "*.h"
 )
 
 generate_export_header(${LIBFM_QT_LIBRARY_NAME}
@@ -231,13 +231,20 @@ endif()
 set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
 
 
-# some simple test cases
-add_executable("test-folder"
-    core/tests/test-folder.cpp
-)
-target_link_libraries("test-folder"
+set(TEST_LIBRARIES
     Qt5::Core
     Qt5::Widgets
     ${FM_LIBRARIES}
     ${LIBFM_QT_LIBRARY_NAME}
 )
+# some simple test cases
+add_executable("test-folder"
+    tests/test-folder.cpp
+)
+target_link_libraries("test-folder" ${TEST_LIBRARIES})
+
+# some simple test cases
+add_executable("test-folderview"
+    tests/test-folderview.cpp
+)
+target_link_libraries("test-folderview" ${TEST_LIBRARIES})

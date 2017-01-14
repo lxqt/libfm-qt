@@ -32,6 +32,8 @@
 #include "fileinfo.h"
 #include "path.h"
 
+#include "core/folder.h"
+
 class QTimer;
 
 namespace Fm {
@@ -79,24 +81,24 @@ public:
   ProxyFolderModel* model() const;
   void setModel(ProxyFolderModel* _model);
 
-  FmFolder* folder() {
+  const std::shared_ptr<Fm2::Folder>& folder() const {
     return model_ ? static_cast<FolderModel*>(model_->sourceModel())->folder() : NULL;
   }
 
-  FmFileInfo* folderInfo() {
-    FmFolder* _folder = folder();
-    return _folder ? fm_folder_get_info(_folder) : NULL;
+  std::shared_ptr<const Fm2::FileInfo> folderInfo() const {
+    auto _folder = folder();
+    return _folder ? _folder->getInfo() : NULL;
   }
 
-  FmPath* path() {
-    FmFolder* _folder = folder();
-    return _folder ? fm_folder_get_path(_folder) : NULL;
+  Fm2::FilePath path() {
+    auto _folder = folder();
+    return _folder ? _folder->getPath() : Fm2::FilePath();
   }
 
   QItemSelectionModel* selectionModel() const;
-  Fm::FileInfoList selectedFiles() const;
-  Fm::PathList selectedFilePaths() const;
-  QModelIndex indexFromFolderPath(FmPath* folderPath) const;
+  Fm2::FileInfoList selectedFiles() const;
+  Fm2::FilePathList selectedFilePaths() const;
+  QModelIndex indexFromFolderPath(const Fm2::FilePath &folderPath) const;
 
   void selectAll();
 

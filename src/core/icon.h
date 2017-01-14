@@ -53,6 +53,14 @@ public:
 
     static void unloadCache();
 
+    GObjectPtr<GIcon> gicon() const {
+        return gicon_;
+    }
+
+    QIcon qicon() const;
+
+    static QIcon qiconFromNames(const char* const* names);
+
 private:
 
     struct GIconHash {
@@ -69,7 +77,7 @@ private:
 
 private:
     GObjectPtr<GIcon> gicon_;
-    QIcon qicon_;
+    mutable QIcon qicon_;
 
     static std::unordered_map<GIcon*, std::shared_ptr<Icon>, GIconHash, GIconEqual> cache_;
     static std::mutex mutex_;

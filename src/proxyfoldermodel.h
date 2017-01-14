@@ -26,6 +26,8 @@
 #include <libfm/fm.h>
 #include <QList>
 
+#include "core/fileinfo.h"
+
 namespace Fm {
 
 // a proxy model used to sort and filter FolderModel
@@ -35,7 +37,7 @@ class ProxyFolderModel;
 
 class LIBFM_QT_API ProxyFolderModelFilter {
 public:
-  virtual bool filterAcceptsRow(const ProxyFolderModel* model, FmFileInfo* info) const = 0;
+  virtual bool filterAcceptsRow(const ProxyFolderModel* model, const std::shared_ptr<const Fm2::FileInfo>& info) const = 0;
   virtual ~ProxyFolderModelFilter() {}
 };
 
@@ -74,7 +76,7 @@ public:
   }
   void setThumbnailSize(int size);
 
-  FmFileInfo* fileInfoFromIndex(const QModelIndex& index) const;
+  const std::shared_ptr<const Fm2::FileInfo> &fileInfoFromIndex(const QModelIndex& index) const;
 
   virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
   virtual QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;

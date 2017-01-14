@@ -21,41 +21,35 @@
 
 namespace Fm {
 
-static GQuark data_id = 0;
-
-
-CachedFolderModel::CachedFolderModel(FmFolder* folder):
+CachedFolderModel::CachedFolderModel(const std::shared_ptr<Fm2::Folder>& folder):
   FolderModel(),
   refCount(1) {
-
   FolderModel::setFolder(folder);
 }
 
 CachedFolderModel::~CachedFolderModel() {
 }
 
-CachedFolderModel* CachedFolderModel::modelFromFolder(FmFolder* folder) {
+CachedFolderModel* CachedFolderModel::modelFromFolder(const std::shared_ptr<Fm2::Folder>& folder) {
   CachedFolderModel* model = NULL;
-  if(!data_id)
-    data_id = g_quark_from_static_string("CachedFolderModel");
-  gpointer qdata = g_object_get_qdata(G_OBJECT(folder), data_id);
-  model = reinterpret_cast<CachedFolderModel*>(qdata);
+  QVariant cache = folder->property(cacheKey);
+  model = cache.value<CachedFolderModel*>();
   if(model) {
     // qDebug("cache found!!");
     model->ref();
   }
   else {
     model = new CachedFolderModel(folder);
-    g_object_set_qdata(G_OBJECT(folder), data_id, model);
+    cache = QVariant::fromValue(model);
+    folder->setProperty(cacheKey, cache);
   }
   return model;
 }
 
-CachedFolderModel* CachedFolderModel::modelFromPath(FmPath* path) {
-  FmFolder* folder = fm_folder_from_path(path);
+CachedFolderModel* CachedFolderModel::modelFromPath(const Fm2::FilePath &path) {
+  auto folder = Fm2::Folder::fromPath(path);
   if(folder) {
     CachedFolderModel* model = modelFromFolder(folder);
-    g_object_unref(folder);
     return model;
   }
   return NULL;
@@ -65,7 +59,7 @@ void CachedFolderModel::unref() {
   // qDebug("unref cache");
   --refCount;
   if(refCount <= 0) {
-    g_object_set_qdata(G_OBJECT(folder()), data_id, NULL);
+    folder()->setProperty(cacheKey, QVariant());
     deleteLater();
   }
 }

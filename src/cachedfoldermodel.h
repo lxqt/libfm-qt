@@ -24,25 +24,28 @@
 #include "libfmqtglobals.h"
 #include "foldermodel.h"
 
+#include "core/folder.h"
+
 namespace Fm {
 
 class LIBFM_QT_API CachedFolderModel : public FolderModel {
   Q_OBJECT
 public:
-  CachedFolderModel(FmFolder* folder);
+  CachedFolderModel(const std::shared_ptr<Fm2::Folder>& folder);
   void ref() {
     ++refCount;
   }
   void unref();
 
-  static CachedFolderModel* modelFromFolder(FmFolder* folder);
-  static CachedFolderModel* modelFromPath(FmPath* path);
+  static CachedFolderModel* modelFromFolder(const std::shared_ptr<Fm2::Folder>& folder);
+  static CachedFolderModel* modelFromPath(const Fm2::FilePath& path);
 
 private:
   virtual ~CachedFolderModel();
   void setFolder(FmFolder* folder);
 private:
   int refCount;
+  constexpr static const char* cacheKey = "CachedFolderModel";
 };
 
 

@@ -32,7 +32,7 @@
 #include <QtGlobal>
 #include "libfmqtglobals.h"
 
-#include "gobjectptr.h"
+#include "gioptrs.h"
 #include "fileinfo.h"
 #include "gsignalhandler.h"
 
@@ -137,7 +137,7 @@ private Q_SLOTS:
 
 private:
     FilePath dirPath_;
-    GObjectPtr<GFileMonitor> dirMonitor_;
+    GFileMonitorPtr dirMonitor_;
     GSignalHandler<Folder, GFileMonitor, void, GFile*, GFile*, GFileMonitorEvent> dirMonitorChangedHandler_;
 
     std::shared_ptr<const FileInfo> dirInfo_;
@@ -162,7 +162,7 @@ private:
     /* filesystem info - set in query thread, read in main */
     uint64_t fs_total_size;
     uint64_t fs_free_size;
-    GObjectPtr<GCancellable> fs_size_cancellable;
+    GCancellablePtr fs_size_cancellable;
 
     bool has_fs_info : 1;
     bool fs_info_not_avail : 1;

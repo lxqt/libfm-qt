@@ -80,13 +80,17 @@ QIcon::Mode FolderItemDelegate::iconModeFromState(const QStyle::State state) {
 // special thanks to Razor-qt developer Alec Moskvin(amoskvin) for providing the fix!
 void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
   Q_ASSERT(index.isValid());
-  FmFileInfo* file = static_cast<FmFileInfo*>(index.data(fileInfoRole_).value<void*>());
+  Fm2::FileInfo* file = static_cast<Fm2::FileInfo*>(index.data(fileInfoRole_).value<void*>());
+
+#if 0
+  // FIXME: port to new Fm2 API
   FmIcon* fmicon = static_cast<FmIcon*>(index.data(fmIconRole_).value<void*>());
   if(fmicon == nullptr && file != nullptr) {
     fmicon = fm_file_info_get_icon(file);
   }
   QList<Icon> emblems = fmicon != nullptr ? IconTheme::emblems(fmicon) : QList<Icon>();
-  bool isSymlink = file && fm_file_info_is_symlink(file);
+#endif
+  bool isSymlink = file && file->isSymlink();
   if(option.decorationPosition == QStyleOptionViewItem::Top ||
     option.decorationPosition == QStyleOptionViewItem::Bottom) {
     painter->save();
@@ -108,11 +112,14 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     // draw some emblems for the item if needed
     if(isSymlink)
       painter->drawPixmap(iconPos, symlinkIcon_.pixmap(option.decorationSize / 2, iconMode));
+#if 0
+    // FIXME: port to new Fm2 API
     if(!emblems.isEmpty()) {
       QPoint emblemPos(opt.rect.x() + opt.rect.width() / 2, opt.rect.y() + option.decorationSize.height() / 2);
       QIcon emblem = IconTheme::icon(emblems.first().dataPtr());
       painter->drawPixmap(emblemPos, emblem.pixmap(option.decorationSize / 2, iconMode));
     }
+#endif
 
     // draw the text
     // The text rect dimensions should be exactly as they were in sizeHint()
@@ -127,6 +134,8 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     // let QStyledItemDelegate does its default painting
     QStyledItemDelegate::paint(painter, option, index);
 
+#if 0
+    // FIXME: port to new Fm2 API.
     // draw emblems if needed
     if(isSymlink || !emblems.isEmpty()) {
       QStyleOptionViewItem opt = option;
@@ -143,6 +152,7 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         painter->drawPixmap(iconPos, emblem.pixmap(option.decorationSize / 2, iconMode));
       }
     }
+#endif
   }
 }
 

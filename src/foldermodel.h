@@ -32,6 +32,8 @@
 #include <QPair>
 #include "foldermodelitem.h"
 
+#include "core/folder.h"
+
 namespace Fm {
 
 class LIBFM_QT_API FolderModel : public QAbstractListModel {
@@ -55,13 +57,14 @@ public:
   FolderModel();
   virtual ~FolderModel();
 
-  FmFolder* folder() {
+  const std::shared_ptr<Fm2::Folder>& folder() const {
     return folder_;
   }
-  void setFolder(FmFolder* new_folder);
 
-  FmPath* path() {
-    return folder_ ? fm_folder_get_path(folder_) : NULL;
+  void setFolder(const std::shared_ptr<Fm2::Folder>& new_folder);
+
+  Fm2::FilePath path() {
+    return folder_ ? folder_->getPath() : Fm2::FilePath();
   }
 
   int rowCount(const QModelIndex & parent = QModelIndex()) const;
@@ -79,7 +82,7 @@ public:
   virtual Qt::DropActions supportedDropActions() const;
   virtual bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent);
 
-  FmFileInfo* fileInfoFromIndex(const QModelIndex& index) const;
+  std::shared_ptr<const Fm2::FileInfo> fileInfoFromIndex(const QModelIndex& index) const;
   FolderModelItem* itemFromIndex(const QModelIndex& index) const;
   QImage thumbnailFromIndex(const QModelIndex& index, int size);
 
@@ -89,25 +92,25 @@ public:
 Q_SIGNALS:
   void thumbnailLoaded(const QModelIndex& index, int size);
 
-public Q_SLOTS:
-  void updateIcons();
+protected Q_SLOTS:
+
+  void onStartLoading();
+  void onFinishLoading();
+  void onFilesAdded(const Fm2::FileInfoList& files);
+  void onFilesChanged(std::vector<Fm2::FileInfoPair>& files);
+  void onFilesRemoved(const Fm2::FileInfoList &files);
 
 protected:
-  static void onStartLoading(FmFolder* folder, gpointer user_data);
-  static void onFinishLoading(FmFolder* folder, gpointer user_data);
-  static void onFilesAdded(FmFolder* folder, GSList* files, gpointer user_data);
-  static void onFilesChanged(FmFolder* folder, GSList* files, gpointer user_data);
-  static void onFilesRemoved(FmFolder* folder, GSList* files, gpointer user_data);
   static void onThumbnailLoaded(FmThumbnailLoader *res, gpointer user_data);
 
-  void insertFiles(int row, FmFileInfoList* files);
+  void insertFiles(int row, const Fm2::FileInfoList& files);
   void removeAll();
-  QList<FolderModelItem>::iterator findItemByPath(FmPath* path, int* row);
+  QList<FolderModelItem>::iterator findItemByPath(const Fm2::FilePath& path, int* row);
   QList<FolderModelItem>::iterator findItemByName(const char* name, int* row);
-  QList<FolderModelItem>::iterator findItemByFileInfo(FmFileInfo* info, int* row);
+  QList<FolderModelItem>::iterator findItemByFileInfo(const Fm2::FileInfo *info, int* row);
 
 private:
-  FmFolder* folder_;
+  std::shared_ptr<Fm2::Folder> folder_;
   // FIXME: should we use a hash table here so item lookup becomes much faster?
   QList<FolderModelItem> items;
 

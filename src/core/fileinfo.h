@@ -82,6 +82,10 @@ public:
         return icon_;
     }
 
+    const std::shared_ptr<const MimeType>& getMimeType() const {
+        return mimeType_;
+    }
+
     time_t getCtime() const {
         return ctime_;
     }

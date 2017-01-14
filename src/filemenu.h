@@ -26,6 +26,7 @@
 #include <qabstractitemmodel.h>
 #include <libfm/fm.h>
 
+
 class QAction;
 
 struct _FmFileActionItem;
