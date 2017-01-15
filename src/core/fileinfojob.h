@@ -13,14 +13,7 @@ class LIBFM_QT_API FileInfoJob : public Job {
     Q_OBJECT
 public:
 
-    explicit FileInfoJob(const FilePathList& paths): Job(), paths_{paths} {
-    }
-
-    explicit FileInfoJob(FilePathList&& paths): Job(), paths_{paths} {
-    }
-
-    virtual ~FileInfoJob() {
-    }
+    explicit FileInfoJob(FilePathList paths, FilePath commonDirPath = FilePath());
 
     const FilePathList& paths() const {
         return paths_;
@@ -38,6 +31,7 @@ Q_SIGNALS:
 private:
     FilePathList paths_;
     FileInfoList results_;
+    FilePath commonDirPath_;
 };
 
 } // namespace Fm2

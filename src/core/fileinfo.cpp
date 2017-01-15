@@ -15,14 +15,16 @@ FileInfo::FileInfo() {
     // FIXME: initialize numeric data members
 }
 
-FileInfo::FileInfo(const GObjectPtr<GFileInfo> &inf) {
-    setFromGFileInfo(inf);
+FileInfo::FileInfo(const GFileInfoPtr& inf, const FilePath& parentDirPath) {
+    setFromGFileInfo(inf, parentDirPath);
 }
 
 FileInfo::~FileInfo() {
 }
 
-void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf) {
+void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath& parentDirPath) {
+    dirPath_ = parentDirPath;
+
     const char *tmp, *uri;
     GIcon* gicon;
     GFileType type;
@@ -198,7 +200,6 @@ _file_is_symlink:
         g_object_unref(_gf);
 #endif
 }
-
 
 bool FileInfo::canThumbnail() const {
     /* We cannot use S_ISREG here as this exclude all symlinks */

@@ -22,12 +22,12 @@ set(libfm_core_SRCS
     core/totalsizejob.cpp
     core/trashjob.cpp
     core/untrashjob.cpp
+    core/thumbnailjob.cpp
     # extra desktop services
     core/bookmarks.cpp
     core/volumemanager.cpp
     core/userinfocache.cpp
     core/thumbnailer.cpp
-    core/thumbnailloader.cpp
 )
 
 set(libfm_SRCS
@@ -92,7 +92,6 @@ set(libfm_UIS
 
 qt5_wrap_ui(libfm_UIS_H ${libfm_UIS})
 
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions")  # boost signals2 need exceptions
 
 set(LIBFM_QT_DATA_DIR "${CMAKE_INSTALL_FULL_DATADIR}/libfm-qt")
 set(LIBFM_QT_INTREE_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/include")
@@ -131,6 +130,7 @@ target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
     ${FM_LIBRARIES}
     ${MENUCACHE_LIBRARIES}
     ${XCB_LIBRARIES}
+    ${EXIF_LIBRARIES}
 )
 
 # set libtool soname
@@ -146,7 +146,7 @@ target_include_directories(${LIBFM_QT_LIBRARY_NAME}
         "${FM_INCLUDE_DIR}/libfm" # to workaround incorrect #include in fm-actions.
         "${MENUCACHE_INCLUDE_DIRS}"
         "${XCB_INCLUDE_DIRS}"
-        "${Boost_INCLUDE_DIRS}"
+        "${EXIF_INCLUDE_DIRS}"
     INTERFACE
         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
         "$<BUILD_INTERFACE:${LIBFM_QT_INTREE_INCLUDE_DIR}>"

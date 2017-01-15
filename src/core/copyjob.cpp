@@ -210,7 +210,7 @@ bool CopyJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FileP
             GFileInfoPtr destFile;
             // FIXME: query its info
             FilePath newDestPath;
-            FileExistsAction opt = askRename(FileInfo{srcFile}, FileInfo{destFile}, newDestPath);
+            FileExistsAction opt = askRename(FileInfo{srcFile, srcPath.parent()}, FileInfo{destFile, dirPath.parent()}, newDestPath);
             g_error_free(err);
             err = NULL;
 

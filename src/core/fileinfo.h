@@ -34,8 +34,7 @@
 #include <utility>
 #include <string>
 
-#include "gobjectptr.h"
-#include "cstrptr.h"
+#include "gioptrs.h"
 #include "filepath.h"
 #include "icon.h"
 #include "mimetype.h"
@@ -48,7 +47,7 @@ public:
 
     explicit FileInfo();
 
-    explicit FileInfo(const GObjectPtr<GFileInfo>& inf);
+    explicit FileInfo(const GFileInfoPtr& inf, const FilePath& parentDirPath);
 
     virtual ~FileInfo();
 
@@ -194,7 +193,7 @@ public:
         return filesystemId_;
     }
 
-    void setFromGFileInfo(const GObjectPtr<GFileInfo>& inf);
+    void setFromGFileInfo(const GFileInfoPtr& inf, const FilePath& parentDirPath);
 
 private:
     std::string name_;

@@ -235,7 +235,7 @@ void Folder::processPendingChanges() {
         FilePathList paths;
         paths.insert(paths.end(), paths_to_add.cbegin(), paths_to_add.cend());
         paths.insert(paths.end(), paths_to_update.cbegin(), paths_to_update.cend());
-        info_job = new FileInfoJob{paths};
+        info_job = new FileInfoJob{paths, dirPath_};
         paths_to_update.clear();
         paths_to_add.clear();
     }

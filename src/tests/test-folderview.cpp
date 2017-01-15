@@ -22,6 +22,10 @@ int main(int argc, char** argv) {
     auto proxy_model = new Fm::ProxyFolderModel();
     proxy_model->sort(Fm::FolderModel::ColumnFileName, Qt::AscendingOrder);
     proxy_model->setSourceModel(model);
+
+    proxy_model->setThumbnailSize(64);
+    proxy_model->setShowThumbnails(true);
+
     folder_view.setModel(proxy_model);
 
     QToolBar toolbar;

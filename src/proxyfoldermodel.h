@@ -76,7 +76,7 @@ public:
   }
   void setThumbnailSize(int size);
 
-  const std::shared_ptr<const Fm2::FileInfo> &fileInfoFromIndex(const QModelIndex& index) const;
+  std::shared_ptr<const Fm2::FileInfo> fileInfoFromIndex(const QModelIndex& index) const;
 
   virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
   virtual QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
