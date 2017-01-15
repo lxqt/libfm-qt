@@ -98,7 +98,6 @@ void FolderModel::onFilesAdded(const Fm2::FileInfoList &files) {
   endInsertRows();
 }
 
-//static
 void FolderModel::onFilesChanged(std::vector<Fm2::FileInfoPair>& files) {
   for(auto& change: files) {
     int row;
@@ -116,7 +115,6 @@ void FolderModel::onFilesChanged(std::vector<Fm2::FileInfoPair>& files) {
   }
 }
 
-//static
 void FolderModel::onFilesRemoved(const Fm2::FileInfoList &files) {
   for(auto& info: files) {
     int row;

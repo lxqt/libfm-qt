@@ -40,7 +40,9 @@ find_package(Fm "${REQUIRED_LIBFM_VERSION}" REQUIRED)
 find_package(MenuCache "${REQUIRED_LIBMENUCACHE_VERSION}" REQUIRED)
 find_package(XCB REQUIRED)
 
-# find_package(Boost "${REQUIRED_BOOST_VERSION}" REQUIRED)
+find_package(PkgConfig)
+pkg_check_modules(EXIF libexif REQUIRED)
+
 
 message(STATUS "Building ${PROJECT_NAME} with Qt ${Qt5Core_VERSION_STRING}")
 

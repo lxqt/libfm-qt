@@ -15,6 +15,11 @@ typedef GObjectPtr<GFileMonitor> GFileMonitorPtr;
 typedef GObjectPtr<GCancellable> GCancellablePtr;
 typedef GObjectPtr<GFileEnumerator> GFileEnumeratorPtr;
 
+typedef GObjectPtr<GInputStream> GInputStreamPtr;
+typedef GObjectPtr<GFileInputStream> GFileInputStreamPtr;
+typedef GObjectPtr<GOutputStream> GOutputStreamPtr;
+typedef GObjectPtr<GFileOutputStream> GFileOutputStreamPtr;
+
 typedef GObjectPtr<GIcon> GIconPtr;
 
 typedef GObjectPtr<GVolumeMonitor> GVolumeMonitorPtr;

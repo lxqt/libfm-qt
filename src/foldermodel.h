@@ -30,9 +30,11 @@
 #include <QVector>
 #include <QLinkedList>
 #include <QPair>
+#include <vector>
 #include "foldermodelitem.h"
 
 #include "core/folder.h"
+#include "core/thumbnailloader.h"
 
 namespace Fm {
 

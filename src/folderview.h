@@ -81,7 +81,7 @@ public:
   ProxyFolderModel* model() const;
   void setModel(ProxyFolderModel* _model);
 
-  const std::shared_ptr<Fm2::Folder>& folder() const {
+  std::shared_ptr<Fm2::Folder> folder() const {
     return model_ ? static_cast<FolderModel*>(model_->sourceModel())->folder() : NULL;
   }
 
