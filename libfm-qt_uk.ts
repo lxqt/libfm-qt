@@ -796,12 +796,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../pathbar.cpp" line="123"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Шлях редагування</translation>
     </message>
     <message>
         <location filename="../../pathbar.cpp" line="126"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Шлях копіювання</translation>
     </message>
 </context>
 <context>
