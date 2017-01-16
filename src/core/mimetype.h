@@ -32,16 +32,19 @@
 #include <string>
 #include <mutex>
 #include <cstring>
+#include <forward_list>
+#include <functional>
 
 #include "cstrptr.h"
 #include "gobjectptr.h"
 #include "icon.h"
-
+#include "thumbnailer.h"
 
 namespace Fm2 {
 
 class LIBFM_QT_API MimeType {
 public:
+    friend class Thumbnailer;
 
     explicit MimeType(const char* typeName);
 
@@ -49,19 +52,19 @@ public:
 
     ~MimeType();
 
-    /*
-    void removeThumbnailer(gpointer thumbnailer) {
-      fm_mime_type_remove_thumbnailer(dataPtr(), thumbnailer);
+    std::shared_ptr<const Thumbnailer> firstThumbnailer() const {
+        std::lock_guard<std::mutex> lock{mutex_};
+        return thumbnailers_.empty() ? nullptr : thumbnailers_.front();
     }
 
-    void addThumbnailer(gpointer thumbnailer) {
-      fm_mime_type_add_thumbnailer(dataPtr(), thumbnailer);
+    void forEachThumbnailer(std::function<bool(const std::shared_ptr<const Thumbnailer>&)> func) const {
+        std::lock_guard<std::mutex> lock{mutex_};
+        for(auto& thumbnailer: thumbnailers_) {
+            if(func(thumbnailer)) {
+                break;
+            }
+        }
     }
-
-    GList* getThumbnailersList(void) {
-      return fm_mime_type_get_thumbnailers_list(dataPtr());
-    }
-    */
 
     const std::shared_ptr<const Icon>& icon() const {
         return icon_;
@@ -139,10 +142,21 @@ public:
     }
 
 private:
+    void removeThumbnailer(std::shared_ptr<const Thumbnailer>& thumbnailer) {
+        std::lock_guard<std::mutex> lock{mutex_};
+        thumbnailers_.remove(thumbnailer);
+    }
+
+    void addThumbnailer(std::shared_ptr<const Thumbnailer> thumbnailer) {
+        std::lock_guard<std::mutex> lock{mutex_};
+        thumbnailers_.push_front(std::move(thumbnailer));
+    }
+
+private:
     std::shared_ptr<const Icon> icon_;
     CStrPtr name_;
     mutable CStrPtr desc_;
-    // std::vector<Thumbnailer> thumbnailers;
+    std::forward_list<std::shared_ptr<const Thumbnailer>> thumbnailers_;
     static std::unordered_map<const char*, std::shared_ptr<const MimeType>, CStrHash, CStrEqual> cache_;
     static std::mutex mutex_;
 

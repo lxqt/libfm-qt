@@ -5,6 +5,7 @@
 #include <libexif/exif-loader.h>
 #include <QImageReader>
 #include <QDir>
+#include "thumbnailer.h"
 
 namespace Fm2 {
 
@@ -100,8 +101,55 @@ bool ThumbnailJob::isSupportedImageType(const std::shared_ptr<const MimeType>& m
 }
 
 bool ThumbnailJob::isThumbnailOutdated(const std::shared_ptr<const FileInfo>& file, const QImage &thumbnail) const {
-    QString thumb_mtime = thumbnail.text("tEXt::Thumb::MTime");
+    QString thumb_mtime = thumbnail.text("Thumb::MTime");
     return (thumb_mtime.isEmpty()&& thumb_mtime.toInt() != file->getMtime());
+}
+
+bool ThumbnailJob::readJpegExif(GInputStream *stream, QImage& thumbnail, int& rotate_degrees) {
+    /* try to extract thumbnails embedded in jpeg files */
+    ExifLoader* exif_loader = exif_loader_new();
+    while(!isCancelled()) {
+        unsigned char buf[4096];
+        gssize read_size = g_input_stream_read(stream, buf, 4096, cancellable_.get(), NULL);
+        if(read_size <= 0) { // EOF or error
+            break;
+        }
+        if(exif_loader_write(exif_loader, buf, read_size) == 0) {
+            break;    // no more EXIF data
+        }
+    }
+    ExifData* exif_data = exif_loader_get_data(exif_loader);
+    exif_loader_unref(exif_loader);
+    if(exif_data) {
+        /* reference for EXIF orientation tag:
+         * http://www.impulseadventure.com/photo/exif-orientation.html */
+        ExifEntry* orient_ent = exif_data_get_entry(exif_data, EXIF_TAG_ORIENTATION);
+        if(orient_ent) { /* orientation flag found in EXIF */
+            gushort orient;
+            ExifByteOrder bo = exif_data_get_byte_order(exif_data);
+            /* bo == EXIF_BYTE_ORDER_INTEL ; */
+            orient = exif_get_short(orient_ent->data, bo);
+            switch(orient) {
+            case 1: /* no rotation */
+                rotate_degrees = 0;
+                break;
+            case 8:
+                rotate_degrees = 90;
+                break;
+            case 3:
+                rotate_degrees = 180;
+                break;
+            case 6:
+                rotate_degrees = 270;
+                break;
+            }
+        }
+        if(exif_data->data) { // if an embedded thumbnail is available, load it
+            thumbnail.loadFromData(exif_data->data, exif_data->size);
+        }
+        exif_data_unref(exif_data);
+    }
+    return !thumbnail.isNull();
 }
 
 QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& file, const FilePath& origPath, const char* uri, const QString& thumbnailFilename) {
@@ -111,54 +159,16 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
         GFileInputStreamPtr ins{g_file_read(origPath.gfile().get(), cancellable_.get(), NULL), false};
         if(!ins)
             return QImage();
+        bool fromExif = false;
         int rotate_degrees = 0;
         if(strcmp(mime_type->name(), "image/jpeg") == 0) { // if this is a jpeg file
-            /* try to extract thumbnails embedded in jpeg files */
-            ExifLoader* exif_loader = exif_loader_new();
-            while(!isCancelled()) {
-                unsigned char buf[4096];
-                gssize read_size = g_input_stream_read(G_INPUT_STREAM(ins.get()), buf, 4096, cancellable_.get(), NULL);
-                if(read_size <= 0) { // EOF or error
-                    break;
-                }
-                if(exif_loader_write(exif_loader, buf, read_size) == 0) {
-                    break;    // no more EXIF data
-                }
-            }
-            ExifData* exif_data = exif_loader_get_data(exif_loader);
-            exif_loader_unref(exif_loader);
-            if(exif_data) {
-                /* reference for EXIF orientation tag:
-                 * http://www.impulseadventure.com/photo/exif-orientation.html */
-                ExifEntry* orient_ent = exif_data_get_entry(exif_data, EXIF_TAG_ORIENTATION);
-                if(orient_ent) { /* orientation flag found in EXIF */
-                    gushort orient;
-                    ExifByteOrder bo = exif_data_get_byte_order(exif_data);
-                    /* bo == EXIF_BYTE_ORDER_INTEL ; */
-                    orient = exif_get_short(orient_ent->data, bo);
-                    switch(orient) {
-                    case 1: /* no rotation */
-                        rotate_degrees = 0;
-                        break;
-                    case 8:
-                        rotate_degrees = 90;
-                        break;
-                    case 3:
-                        rotate_degrees = 180;
-                        break;
-                    case 6:
-                        rotate_degrees = 270;
-                        break;
-                    }
-                }
-                if(exif_data->data) { // if an embedded thumbnail is available, load it
-                    result.loadFromData(exif_data->data, exif_data->size);
-                }
-                exif_data_unref(exif_data);
+            // try to get the thumbnail embedded in EXIF data
+            if(readJpegExif(G_INPUT_STREAM(ins.get()), result, rotate_degrees)) {
+                fromExif = true;
             }
         }
-        if(result.isNull()) {  // not able to generate a thumbnail from the EXIF data
-            // load the original file
+        if(!fromExif) {  // not able to generate a thumbnail from the EXIF data
+            // load the original file and do the scaling ourselves
             g_seekable_seek(G_SEEKABLE(ins.get()), 0, G_SEEK_SET, cancellable_.get(), nullptr);
             result = readImageFromStream(G_INPUT_STREAM(ins.get()), file->getSize());
         }
@@ -186,17 +196,41 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
                 result = result.transformed(QMatrix().rotate(360 - rotate_degrees));
             }
 
-            // save the generated thumbnail to disk
-            result.setText("tEXt::Thumb::MTime", QString::number(file->getMtime()));
-            result.setText("tEXt::Thumb::URI", uri);
-            result.save(thumbnailFilename, "PNG");
-
+            // save the generated thumbnail to disk (don't save png thumbnails for JPEG EXIF thumbnails since loading them is cheap)
+            if(!fromExif) {
+                result.setText("Thumb::MTime", QString::number(file->getMtime()));
+                result.setText("Thumb::URI", uri);
+                result.save(thumbnailFilename, "PNG");
+            }
             // qDebug() << "save thumbnail:" << thumbnailFilename;
         }
     }
     else { // the image format is not supported, try to find an external thumbnailer
-        // TODO: find an external thumbnailer for it
-        // Calling an external thumbnailer is expensive, so we might check the "failed" dir first
+        // try all available external thumbnailers for it until sucess
+        file->getMimeType()->forEachThumbnailer([&](const std::shared_ptr<const Thumbnailer>& thumbnailer) {
+            if(thumbnailer->run(uri, thumbnailFilename.toLocal8Bit().constData(), size_)) {
+                result = QImage(thumbnailFilename);
+            }
+            return !result.isNull(); // return true on success, and forEachThumbnailer() will stop.
+        });
+
+        if(!result.isNull()) {
+            // Some thumbnailers did not write the proper metadata required by the xdg spec to the output (such as evince-thumbnailer)
+            // Here we waste some time to fix them so next time we don't need to re-generate these thumbnails. :-(
+            bool changed = false;
+            if(Q_UNLIKELY(result.text("Thumb::MTime").isEmpty())) {
+                result.setText("Thumb::MTime", QString::number(file->getMtime()));
+                changed = true;
+            }
+            if(Q_UNLIKELY(result.text("Thumb::URI").isEmpty())) {
+                result.setText("Thumb::URI", uri);
+                changed = true;
+            }
+            if(Q_UNLIKELY(changed)) {
+                // save the modified PNG file containing metadata to a file.
+                result.save(thumbnailFilename, "PNG");
+            }
+        }
     }
     return result;
 }

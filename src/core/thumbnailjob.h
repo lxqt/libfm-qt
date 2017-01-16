@@ -38,6 +38,8 @@ private:
 
     QImage loadForFile(const std::shared_ptr<const FileInfo>& file);
 
+    bool readJpegExif(GInputStream *stream, QImage& thumbnail, int& rotate_degrees);
+
 private:
     FileInfoList files_;
     int size_;

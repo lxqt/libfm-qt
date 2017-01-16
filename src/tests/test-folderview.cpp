@@ -9,9 +9,12 @@
 #include "../cachedfoldermodel.h"
 #include "../proxyfoldermodel.h"
 #include "../pathedit.h"
+#include "libfmqt.h"
 
 int main(int argc, char** argv) {
     QApplication app(argc, argv);
+
+    Fm::LibFmQt contex;
     QMainWindow win;
 
     Fm::FolderView folder_view;
