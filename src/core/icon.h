@@ -49,7 +49,7 @@ public:
 
     static std::shared_ptr<const Icon> fromName(const char* name);
 
-    static std::shared_ptr<const Icon> fromGIcon(const GObjectPtr<GIcon>& gicon);
+    static std::shared_ptr<const Icon> fromGIcon(GObjectPtr<GIcon> gicon);
 
     static void unloadCache();
 

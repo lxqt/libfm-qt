@@ -24,7 +24,7 @@ std::shared_ptr<const Icon> Icon::fromName(const char* name) {
 }
 
 // static
-std::shared_ptr<const Icon> Icon::fromGIcon(const GObjectPtr<GIcon>& gicon) {
+std::shared_ptr<const Icon> Icon::fromGIcon(GObjectPtr<GIcon> gicon) {
     std::lock_guard<std::mutex> lock{mutex_};
     auto it = cache_.find(gicon.get());
     if(it != cache_.end()) {
