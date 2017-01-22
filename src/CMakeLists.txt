@@ -243,8 +243,14 @@ add_executable("test-folder"
 )
 target_link_libraries("test-folder" ${TEST_LIBRARIES})
 
-# some simple test cases
 add_executable("test-folderview"
     tests/test-folderview.cpp
 )
 target_link_libraries("test-folderview" ${TEST_LIBRARIES})
+
+add_executable("test-volumemanager"
+    tests/test-volumemanager.cpp
+)
+target_link_libraries("test-volumemanager" ${TEST_LIBRARIES})
+
+

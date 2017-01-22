@@ -8,7 +8,9 @@
 #include "gsignalhandler.h"
 #include "filepath.h"
 #include "icon.h"
+#include "job.h"
 #include <vector>
+#include <mutex>
 
 namespace Fm2 {
 
@@ -16,6 +18,9 @@ class LIBFM_QT_API Volume: public GVolumePtr {
 public:
 
     Volume(GVolume* gvol, bool addRef): GVolumePtr{gvol, addRef} {
+    }
+
+    Volume(GVolumePtr gvol): GVolumePtr{std::move(gvol)} {
     }
 
     CStrPtr name() const {
@@ -79,6 +84,12 @@ public:
 class LIBFM_QT_API Mount: public GMountPtr {
 public:
 
+    Mount(GMount* mnt, bool addRef): GMountPtr{mnt, addRef} {
+    }
+
+    Mount(GMountPtr gmnt): GMountPtr{std::move(gmnt)} {
+    }
+
     CStrPtr name() const {
         return CStrPtr{g_mount_get_name(get())};
     }
@@ -97,8 +108,8 @@ public:
         return FilePath{g_mount_get_root(get()), false};
     }
 
-    Volume volume() const {
-        Volume{g_mount_get_volume(get()), false};
+    GVolumePtr volume() const {
+        return GVolumePtr{g_mount_get_volume(get()), false};
     }
 
     FilePath defaultLocation() const {
@@ -141,10 +152,13 @@ public:
 };
 
 
+
 class LIBFM_QT_API VolumeManager : public QObject {
     Q_OBJECT
 public:
     explicit VolumeManager();
+
+    ~VolumeManager();
 
     const std::vector<Volume>& volumes() const {
         return volumes_;
@@ -154,37 +168,68 @@ public:
         return mounts_;
     }
 
-Q_SIGNALS:
-    void VolumeAdded(const Volume& vol);
-    void VolumeRemoved(const Volume& vol);
-    void VolumeChanged(const Volume& vol);
+    static std::shared_ptr<VolumeManager> globalInstance();
 
-    void MountAdded(const Mount& mnt);
-    void MountRemoved(const Mount& mnt);
-    void MountChanged(const Mount& mnt);
+Q_SIGNALS:
+    void volumeAdded(const Volume& vol);
+    void volumeRemoved(const Volume& vol);
+    void volumeChanged(const Volume& vol);
+
+    void mountAdded(const Mount& mnt);
+    void mountRemoved(const Mount& mnt);
+    void mountChanged(const Mount& mnt);
 
 public Q_SLOTS:
 
-private:
-    void onGVolumeAdded(GVolumeMonitor* mon, GVolume* vol);
-    void onGVolumeRemoved(GVolumeMonitor* mon, GVolume* vol);
-    void onGVolumeChanged(GVolumeMonitor* mon, GVolume* vol);
+    void onGetGVolumeMonitorFinished();
 
-    void onGMountAdded(GVolumeMonitor* mon, GMount* mnt);
-    void onGMountRemoved(GVolumeMonitor* mon, GMount* mnt);
-    void onGMountChanged(GVolumeMonitor* mon, GMount* mnt);
+private:
+
+    class GetGVolumeMonitorJob: public Job {
+    public:
+        GetGVolumeMonitorJob() {}
+        void run() override;
+        GVolumeMonitorPtr monitor_;
+    };
+
+    static void _onGVolumeAdded(GVolumeMonitor* mon, GVolume* vol, VolumeManager* _this) {
+        _this->onGVolumeAdded(vol);
+    }
+    void onGVolumeAdded(GVolume* vol);
+
+    static void _onGVolumeRemoved(GVolumeMonitor* mon, GVolume* vol, VolumeManager* _this) {
+        _this->onGVolumeRemoved(vol);
+    }
+    void onGVolumeRemoved(GVolume* vol);
+
+    static void _onGVolumeChanged(GVolumeMonitor* mon, GVolume* vol, VolumeManager* _this) {
+        _this->onGVolumeChanged(vol);
+    }
+    void onGVolumeChanged(GVolume* vol);
+
+    static void _onGMountAdded(GVolumeMonitor* mon, GMount* mnt, VolumeManager* _this) {
+        _this->onGMountAdded(mnt);
+    }
+    void onGMountAdded(GMount* mnt);
+
+    static void _onGMountRemoved(GVolumeMonitor* mon, GMount* mnt, VolumeManager* _this) {
+        _this->onGMountRemoved(mnt);
+    }
+    void onGMountRemoved(GMount* mnt);
+
+    static void _onGMountChanged(GVolumeMonitor* mon, GMount* mnt, VolumeManager* _this) {
+        _this->onGMountChanged(mnt);
+    }
+    void onGMountChanged(GMount* mnt);
 
 private:
     GVolumeMonitorPtr monitor_;
-    GSignalHandler<VolumeManager, GVolumeMonitor, void, GVolume*> volAdded_;
-    GSignalHandler<VolumeManager, GVolumeMonitor, void, GVolume*> volRemoved_;
-    GSignalHandler<VolumeManager, GVolumeMonitor, void, GVolume*> volChanged_;
-    GSignalHandler<VolumeManager, GVolumeMonitor, void, GMount*> mntAdded_;
-    GSignalHandler<VolumeManager, GVolumeMonitor, void, GMount*> mntRemoved_;
-    GSignalHandler<VolumeManager, GVolumeMonitor, void, GMount*> mntChanged_;
 
     std::vector<Volume> volumes_;
     std::vector<Mount> mounts_;
+
+    static std::mutex mutex_;
+    static std::weak_ptr<VolumeManager> globalInstance_;
 };
 
 } // namespace Fm2

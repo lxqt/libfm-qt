@@ -1,50 +1,114 @@
 #include "volumemanager.h"
+#include <QThreadPool>
 
 namespace Fm2 {
 
+std::mutex VolumeManager::mutex_;
+std::weak_ptr<VolumeManager> VolumeManager::globalInstance_;
+
 VolumeManager::VolumeManager():
     QObject(),
-    monitor_{g_volume_monitor_get(), false},
-    volAdded_{this, &VolumeManager::onGVolumeAdded},
-    volRemoved_{this, &VolumeManager::onGVolumeRemoved},
-    volChanged_{this, &VolumeManager::onGVolumeChanged},
-    mntAdded_{this, &VolumeManager::onGMountAdded},
-    mntRemoved_{this, &VolumeManager::onGMountRemoved},
-    mntChanged_{this, &VolumeManager::onGMountChanged} {
+    monitor_{g_volume_monitor_get(), false} {
 
     // connect gobject signal handlers
-    volAdded_.connect(monitor_.get(), "volume-added");
-    volRemoved_.connect(monitor_.get(), "volume-removd");
-    volChanged_.connect(monitor_.get(), "volume-changed");
+    g_signal_connect(monitor_.get(), "volume-added", G_CALLBACK(_onGVolumeAdded), this);
+    g_signal_connect(monitor_.get(), "volume-removed", G_CALLBACK(_onGVolumeRemoved), this);
+    g_signal_connect(monitor_.get(), "volume-changed", G_CALLBACK(_onGVolumeChanged), this);
 
-    mntAdded_.connect(monitor_.get(), "mount-added");
-    mntRemoved_.connect(monitor_.get(), "mount-removd");
-    mntChanged_.connect(monitor_.get(), "mount-changed");
+    g_signal_connect(monitor_.get(), "mount-added", G_CALLBACK(_onGMountAdded), this);
+    g_signal_connect(monitor_.get(), "mount-removed", G_CALLBACK(_onGMountRemoved), this);
+    g_signal_connect(monitor_.get(), "mount-changed", G_CALLBACK(_onGMountChanged), this);
 
+    // g_get_volume_monitor() is a slow blocking call, so call it in a low priority thread
+    auto job = new GetGVolumeMonitorJob();
+    job->setAutoDelete(true);
+    connect(job, &GetGVolumeMonitorJob::finished, this, &VolumeManager::onGetGVolumeMonitorFinished, Qt::BlockingQueuedConnection);
+    QThreadPool::globalInstance()->start(job, -10);
 }
 
-void VolumeManager::onGVolumeAdded(GVolumeMonitor* mon, GVolume* vol) {
-
+VolumeManager::~VolumeManager() {
+    if(monitor_) {
+        g_signal_handlers_disconnect_by_data(monitor_.get(), this);
+    }
 }
 
-void VolumeManager::onGVolumeRemoved(GVolumeMonitor* mon, GVolume* vol) {
-
+std::shared_ptr<VolumeManager> VolumeManager::globalInstance() {
+    std::lock_guard<std::mutex> lock{mutex_};
+    auto mon = globalInstance_.lock();
+    if(mon == nullptr) {
+        mon = std::make_shared<VolumeManager>();
+        globalInstance_ = mon;
+    }
+    return mon;
 }
 
-void VolumeManager::onGVolumeChanged(GVolumeMonitor* mon, GVolume* vol) {
+void VolumeManager::onGetGVolumeMonitorFinished() {
+    auto job = static_cast<GetGVolumeMonitorJob*>(sender());
+    monitor_ = std::move(job->monitor_);
+    GList* vols = g_volume_monitor_get_volumes(monitor_.get());
+    for(GList* l = vols; l != nullptr; l = l->next) {
+        volumes_.push_back(Volume{G_VOLUME(l->data), false});
+        Q_EMIT volumeAdded(volumes_.back());
+    }
+    g_list_free(vols);
 
+    GList* mnts = g_volume_monitor_get_mounts(monitor_.get());
+    for(GList* l = mnts; l != nullptr; l = l->next) {
+        mounts_.push_back(Mount{G_MOUNT(l->data), false});
+        Q_EMIT mountAdded(mounts_.back());
+    }
+    g_list_free(mnts);
 }
 
-void VolumeManager::onGMountAdded(GVolumeMonitor* mon, GMount* mnt) {
-
+void VolumeManager::onGVolumeAdded(GVolume* vol) {
+    if(std::find(volumes_.cbegin(), volumes_.cend(), vol) != volumes_.cend())
+        return;
+    volumes_.push_back(Volume{vol, true});
+    Q_EMIT volumeAdded(volumes_.back());
 }
 
-void VolumeManager::onGMountRemoved(GVolumeMonitor* mon, GMount* mnt) {
-
+void VolumeManager::onGVolumeRemoved(GVolume* vol) {
+    auto it = std::find(volumes_.begin(), volumes_.end(), vol);
+    if(it == volumes_.end())
+        return;
+    auto removed = std::move(*it);
+    Q_EMIT volumeRemoved(removed);
+    volumes_.erase(it);
 }
 
-void VolumeManager::onGMountChanged(GVolumeMonitor* mon, GMount* mnt) {
+void VolumeManager::onGVolumeChanged(GVolume* vol) {
+    auto it = std::find(volumes_.begin(), volumes_.end(), vol);
+    if(it == volumes_.end())
+        return;
+    Q_EMIT volumeChanged(*it);
+}
 
+void VolumeManager::onGMountAdded(GMount* mnt) {
+    if(std::find(mounts_.cbegin(), mounts_.cend(), mnt) != mounts_.cend())
+        return;
+    mounts_.push_back(Mount{mnt, true});
+    Q_EMIT mountAdded(mounts_.back());
+}
+
+void VolumeManager::onGMountRemoved(GMount* mnt) {
+    auto it = std::find(mounts_.begin(), mounts_.end(), mnt);
+    if(it == mounts_.end())
+        return;
+    auto removed = std::move(*it);
+    Q_EMIT mountRemoved(removed);
+    mounts_.erase(it);
+}
+
+void VolumeManager::onGMountChanged(GMount* mnt) {
+    auto it = std::find(mounts_.begin(), mounts_.end(), mnt);
+    if(it == mounts_.end())
+        return;
+    Q_EMIT mountChanged(*it);
+}
+
+void VolumeManager::GetGVolumeMonitorJob::run() {
+    monitor_ = GVolumeMonitorPtr{g_volume_monitor_get(), false};
+    Q_EMIT finished();
 }
 
 
