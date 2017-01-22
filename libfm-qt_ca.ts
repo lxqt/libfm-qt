@@ -66,7 +66,7 @@
     <message>
         <location filename="../../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation>Edita els marcadors</translation>
+        <translation>Edició dels marcadors</translation>
     </message>
     <message>
         <location filename="../../edit-bookmarks.ui" line="42"/>
@@ -91,7 +91,7 @@
     <message>
         <location filename="../../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Utilitza arrossega i deixa anar per a reordenar els ítems</translation>
+        <translation>Utilitzeu arrossega i deixa anar per a reordenar els ítems</translation>
     </message>
 </context>
 <context>
@@ -796,12 +796,12 @@ En lloc seu, voleu suprimir-los?</translation>
     <message>
         <location filename="../../pathbar.cpp" line="123"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Edita el camí</translation>
     </message>
     <message>
         <location filename="../../pathbar.cpp" line="126"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Copia el camí</translation>
     </message>
 </context>
 <context>
