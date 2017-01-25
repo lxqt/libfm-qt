@@ -804,12 +804,12 @@ Wilt u ze in plaats daarvan blijvend verwijderen?</translation>
     <message>
         <location filename="../../pathbar.cpp" line="123"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad &amp;bewerken</translation>
     </message>
     <message>
         <location filename="../../pathbar.cpp" line="126"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad &amp;kopiëren</translation>
     </message>
 </context>
 <context>
@@ -1151,12 +1151,12 @@ Veranderd: %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation>Groß- und Kleinschreibung ignorieren</translation>
+        <translation>Hoofdletterongevoelig</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation>gebruik reguliere uitdrukking</translation>
+        <translation>Gebruik reguliere uitdrukking</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="65"/>
@@ -1211,7 +1211,7 @@ Veranderd: %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="170"/>
         <source>Video files</source>
-        <translation>Beeldbestanden</translation>
+        <translation>Videobestanden</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="177"/>
