@@ -22,7 +22,7 @@
 
 #include "libfmqtglobals.h"
 #include <QWidget>
-#include "path.h"
+#include "core/filepath.h"
 
 class QToolButton;
 class QScrollArea;
@@ -32,21 +32,22 @@ class QHBoxLayout;
 namespace Fm {
 
 class PathEdit;
+class PathButton;
 
 class LIBFM_QT_API PathBar: public QWidget {
   Q_OBJECT
 public:
   explicit PathBar(QWidget *parent = 0);
 
-  Path path() {
+  const Fm2::FilePath& path() {
     return currentPath_;
   }
 
-  void setPath(Path path);
+  void setPath(Fm2::FilePath path);
 
 Q_SIGNALS:
-  void chdir(FmPath* path);
-  void middleClickChdir(FmPath* path);
+  void chdir(const Fm2::FilePath& path);
+  void middleClickChdir(const Fm2::FilePath& path);
   void editingFinished();
 
 public Q_SLOTS:
@@ -68,6 +69,7 @@ protected:
 
 private:
   void updateScrollButtonVisibility();
+  Fm2::FilePath pathForButton(PathButton* btn);
 
 private:
   QToolButton* scrollToStart_;
@@ -77,7 +79,7 @@ private:
   QHBoxLayout* buttonsLayout_;
   PathEdit* tempPathEdit_;
 
-  Path currentPath_;   // currently active path
+  Fm2::FilePath currentPath_;   // currently active path
 };
 
 } // namespace Fm
