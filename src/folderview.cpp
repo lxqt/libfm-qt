@@ -1032,14 +1032,12 @@ void FolderView::onAutoSelectionTimeout() {
 }
 
 void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm2::FileInfo> &fileInfo) {
-#if 0
     // FIXME: port to Fm2
-
     if(type == ActivatedClick) {
         if(fileLauncher_) {
-            GList* files = g_list_append(nullptr, fileInfo);
-            fileLauncher_->launchFiles(nullptr, files);
-            g_list_free(files);
+            Fm2::FileInfoList files;
+            files.push_back(fileInfo);
+            fileLauncher_->launchFiles(nullptr, std::move(files));
         }
     }
     else if(type == ContextMenuClick) {
@@ -1059,7 +1057,7 @@ void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm2::FileIn
             // show context menu
             auto files = selectedFiles();
             if(!files.empty()) {
-                Fm::FileMenu* fileMenu = new Fm::FileMenu(files.dataPtr(), fileInfo, folderPath);
+                Fm::FileMenu* fileMenu = new Fm::FileMenu(files, fileInfo, folderPath);
                 fileMenu->setFileLauncher(fileLauncher_);
                 prepareFileMenu(fileMenu);
                 menu = fileMenu;
@@ -1075,7 +1073,6 @@ void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm2::FileIn
             delete menu;
         }
     }
-#endif
 }
 
 void FolderView::prepareFileMenu(FileMenu* menu) {
