@@ -431,7 +431,7 @@ FolderView::~FolderView() {
 void FolderView::onItemActivated(QModelIndex index) {
     if(index.isValid() && index.model()) {
         QVariant data = index.model()->data(index, FolderModel::FileInfoRole);
-        FmFileInfo* info = (FmFileInfo*)data.value<void*>();
+        auto info = data.value<std::shared_ptr<const Fm2::FileInfo>>();
         if(info) {
             if(!(QApplication::keyboardModifiers() & (Qt::ShiftModifier | Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier))) {
                 Q_EMIT clicked(ActivatedClick, info);
@@ -715,7 +715,7 @@ void FolderView::emitClickedAt(ClickType type, const QPoint& pos) {
     QModelIndex index = view->indexAt(pos);
     if(index.isValid()) {
         QVariant data = index.data(FolderModel::FileInfoRole);
-        FmFileInfo* info = reinterpret_cast<FmFileInfo*>(data.value<void*>());
+        auto info = data.value<std::shared_ptr<const Fm2::FileInfo>>();
         Q_EMIT clicked(type, info);
     }
     else {
@@ -1031,7 +1031,7 @@ void FolderView::onAutoSelectionTimeout() {
     autoSelectionTimer_ = nullptr;
 }
 
-void FolderView::onFileClicked(int type, FmFileInfo* fileInfo) {
+void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm2::FileInfo> &fileInfo) {
 #if 0
     // FIXME: port to Fm2
 

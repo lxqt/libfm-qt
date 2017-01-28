@@ -37,7 +37,6 @@ std::unordered_map<FilePath, std::weak_ptr<Folder>, FilePathHash> Folder::cache_
 std::mutex Folder::mutex_;
 
 Folder::Folder():
-    dirMonitorChangedHandler_{this, &Folder::onFileChangeEvents},
     dirlist_job{nullptr},
     fsInfoJob_{nullptr},
     /* for file monitor */
@@ -60,6 +59,11 @@ Folder::Folder(const FilePath& path): Folder() {
 }
 
 Folder::~Folder() {
+    if(dirMonitor_) {
+        g_signal_handlers_disconnect_by_data(dirMonitor_.get(), this);
+        dirMonitor_.reset();
+    }
+
     // We store a weak_ptr instead of shared_ptr in the hash table, so the hash table
     // does not own a reference to the folder. When the last reference to Folder is
     // freed, we need to remove its hash table entry.
@@ -557,8 +561,10 @@ void Folder::reload() {
      * unnecessary signal handling and UI updates. */
 
     Q_EMIT startLoading();
-    if(dirInfo_) {
-        dirInfo_ = nullptr;
+    dirInfo_.reset();
+    if(dirMonitor_) {
+        g_signal_handlers_disconnect_by_data(dirMonitor_.get(), this);
+        dirMonitor_.reset();
     }
 
     /* clear all update-lists now, see SF bug #919 - if update comes before
@@ -618,10 +624,9 @@ void Folder::reload() {
     };
 
     if(dirMonitor_) {
-        dirMonitorChangedHandler_.connect(dirMonitor_.get(), "changed");
+        g_signal_connect(dirMonitor_.get(), "changed", G_CALLBACK(_onFileChangeEvents), this);
     }
     else {
-        dirMonitorChangedHandler_.disconnect();
         qDebug("file monitor cannot be created: %s", err->message);
         g_error_free(err);
     }

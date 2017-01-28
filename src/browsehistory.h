@@ -25,6 +25,8 @@
 #include <QVector>
 #include <libfm/fm.h>
 
+#include "core/filepath.h"
+
 namespace Fm {
 
 // class used to story browsing history of folder views
@@ -34,96 +36,86 @@ namespace Fm {
 class LIBFM_QT_API BrowseHistoryItem {
 public:
 
-  BrowseHistoryItem():
-    path_(NULL),
-    scrollPos_(0) {
-  }
+    BrowseHistoryItem():
+        scrollPos_(0) {
+    }
 
-  BrowseHistoryItem(FmPath* path, int scrollPos = 0):
-    path_(fm_path_ref(path)),
-    scrollPos_(scrollPos) {
-  }
+    BrowseHistoryItem(Fm2::FilePath path, int scrollPos = 0):
+        path_(std::move(path)),
+        scrollPos_(scrollPos) {
+    }
 
-  BrowseHistoryItem(const BrowseHistoryItem& other):
-    path_(other.path_ ? fm_path_ref(other.path_) : NULL),
-    scrollPos_(other.scrollPos_) {
-  }
+    BrowseHistoryItem(const BrowseHistoryItem& other) = default;
 
-  ~BrowseHistoryItem() {
-    if(path_)
-      fm_path_unref(path_);
-  }
+    ~BrowseHistoryItem() {
+    }
 
-  BrowseHistoryItem& operator=(const BrowseHistoryItem& other) {
-    if(path_)
-      fm_path_unref(path_);
-    path_ = other.path_ ? fm_path_ref(other.path_) : NULL;
-    scrollPos_ = other.scrollPos_;
-    return *this;
-  }
+    BrowseHistoryItem& operator=(const BrowseHistoryItem& other) {
+        path_ = other.path_;
+        scrollPos_ = other.scrollPos_;
+        return *this;
+    }
 
-  FmPath* path() const {
-    return path_;
-  }
+    Fm2::FilePath path() const {
+        return path_;
+    }
 
-  int scrollPos() const {
-    return scrollPos_;
-  }
+    int scrollPos() const {
+        return scrollPos_;
+    }
 
-  void setScrollPos(int pos) {
-    scrollPos_ = pos;
-  }
+    void setScrollPos(int pos) {
+        scrollPos_ = pos;
+    }
 
 private:
-  FmPath* path_;
-  int scrollPos_;
-  // TODO: we may need to store current selection as well. reserve room for furutre expansion.
-  // void* reserved1;
-  // void* reserved2;
+    Fm2::FilePath path_;
+    int scrollPos_;
+    // TODO: we may need to store current selection as well.
 };
 
 class LIBFM_QT_API BrowseHistory : public QVector<BrowseHistoryItem> {
 
 public:
-  BrowseHistory();
-  virtual ~BrowseHistory();
+    BrowseHistory();
+    virtual ~BrowseHistory();
 
-  int currentIndex() const {
-    return currentIndex_;
-  }
-  void setCurrentIndex(int index);
+    int currentIndex() const {
+        return currentIndex_;
+    }
+    void setCurrentIndex(int index);
 
-  FmPath* currentPath() const {
-    return at(currentIndex_).path();
-  }
+    Fm2::FilePath currentPath() const {
+        return at(currentIndex_).path();
+    }
 
-  int currentScrollPos() const {
-    return at(currentIndex_).scrollPos();
-  }
+    int currentScrollPos() const {
+        return at(currentIndex_).scrollPos();
+    }
 
-  BrowseHistoryItem& currentItem() {
-    return operator[](currentIndex_);
-  }
+    BrowseHistoryItem& currentItem() {
+        return operator[](currentIndex_);
+    }
 
-  void add(FmPath* path, int scrollPos = 0);
+    void add(Fm2::FilePath path, int scrollPos = 0);
 
-  bool canForward() const;
+    bool canForward() const;
 
-  bool canBackward() const;
+    bool canBackward() const;
 
-  int backward();
+    int backward();
 
-  int forward();
+    int forward();
 
-  int maxCount() const {
-    return maxCount_;
-  }
+    int maxCount() const {
+        return maxCount_;
+    }
 
-  void setMaxCount(int maxCount);
+    void setMaxCount(int maxCount);
 
 private:
-  int currentIndex_;
-  int maxCount_;
+    int currentIndex_;
+    int maxCount_;
 };
 
 }

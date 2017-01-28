@@ -78,6 +78,10 @@ public:
         return FilePath{g_file_get_parent(gfile_.get()), false};
     }
 
+    bool hasParent() const {
+        return g_file_has_parent(gfile_.get(), nullptr);
+    }
+
     bool isParentOf(const FilePath& other) {
         return g_file_has_parent(other.gfile_.get(), gfile_.get());
     }

@@ -32,9 +32,8 @@ namespace Fm {
 
 SidePane::SidePane(QWidget* parent):
     QWidget(parent),
-    currentPath_(NULL),
-    view_(NULL),
-    combo_(NULL),
+    view_(nullptr),
+    combo_(nullptr),
     iconSize_(24, 24),
     mode_(ModeNone),
     showHidden_(false) {
@@ -89,7 +88,7 @@ void SidePane::setCurrentPath(Fm2::FilePath path) {
 }
 
 SidePane::Mode SidePane::modeByName(const char* str) {
-    if(str == NULL) {
+    if(str == nullptr) {
         return ModeNone;
     }
     if(strcmp(str, "places") == 0) {
@@ -108,7 +107,7 @@ const char* SidePane::modeName(SidePane::Mode mode) {
     case ModeDirTree:
         return "dirtree";
     default:
-        return NULL;
+        return nullptr;
     }
 }
 
@@ -136,7 +135,7 @@ QString SidePane::modeTooltip(SidePane::Mode mode) {
 #endif
 
 bool SidePane::setHomeDir(const char* home_dir) {
-    if(view_ == NULL) {
+    if(view_ == nullptr) {
         return false;
     }
     // TODO: SidePane::setHomeDir
@@ -157,7 +156,7 @@ bool SidePane::setHomeDir(const char* home_dir) {
 void SidePane::initDirTree() {
     // TODO
     DirTreeModel* model = new DirTreeModel(view_);
-    FmFileInfoJob* job = fm_file_info_job_new(NULL, FM_FILE_INFO_JOB_NONE);
+    FmFileInfoJob* job = fm_file_info_job_new(nullptr, FM_FILE_INFO_JOB_NONE);
     model->setShowHidden(showHidden_);
 
 #if 0
@@ -185,7 +184,7 @@ void SidePane::setMode(Mode mode) {
 
     if(view_) {
         delete view_;
-        view_ = NULL;
+        view_ = nullptr;
         //if(sp->update_popup)
         //  g_signal_handlers_disconnect_by_func(sp->view, on_item_popup, sp);
     }
@@ -232,7 +231,7 @@ void SidePane::setMode(Mode mode) {
 }
 
 void SidePane::setShowHidden(bool show_hidden) {
-    if(view_ == NULL || show_hidden == showHidden_) {
+    if(view_ == nullptr || show_hidden == showHidden_) {
         return;
     }
     showHidden_ = show_hidden;

@@ -228,7 +228,7 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
         break;
     }
     case FileInfoRole:
-        return qVariantFromValue((void*)info.get());
+        return qVariantFromValue<std::shared_ptr<const Fm2::FileInfo>>(info);
     }
     return QVariant();
 }
