@@ -253,4 +253,8 @@ add_executable("test-volumemanager"
 )
 target_link_libraries("test-volumemanager" ${TEST_LIBRARIES})
 
+add_executable("test-placesview"
+    tests/test-placesview.cpp
+)
+target_link_libraries("test-placesview" ${TEST_LIBRARIES})
 

@@ -47,15 +47,23 @@ const std::shared_ptr<const BookmarkItem>& Bookmarks::insert(const FilePath& pat
 }
 
 void Bookmarks::remove(const std::shared_ptr<const BookmarkItem>& item) {
-    items_.erase(std::remove_if(items_.begin(), items_.end(), [item](const std::shared_ptr<const BookmarkItem>& elem) {
-        return elem == item;
-    }), items_.end());
+    items_.erase(std::remove(items_.begin(), items_.end(), item), items_.end());
     queueSave();
 }
 
 void Bookmarks::reorder(const std::shared_ptr<const BookmarkItem>& item, int pos) {
-    remove(item);
-    items_.insert(items_.begin() + pos, std::shared_ptr<const BookmarkItem>{item});
+    auto old_it = std::find(items_.cbegin(), items_.cend(), item);
+    if(old_it == items_.cend())
+        return;
+    std::shared_ptr<const BookmarkItem> newItem = item;
+    auto old_pos = old_it - items_.cbegin();
+    items_.erase(old_it);
+    if(old_pos < pos)
+        --pos;
+    auto new_it = items_.cbegin() + pos;
+    if(new_it > items_.cend())
+        new_it = items_.cend();
+    items_.insert(new_it, std::move(newItem));
     queueSave();
 }
 
@@ -65,8 +73,9 @@ void Bookmarks::rename(const std::shared_ptr<const BookmarkItem>& item, QString 
     });
     if(it != items_.cend()) {
         // create a new item to replace the old one
-        items_.insert(it, std::make_shared<const BookmarkItem>(item->path(), new_name));
-        items_.erase(it);
+        // we do not modify the old item directly since this data structure is shared with others
+        it = items_.insert(it, std::make_shared<const BookmarkItem>(item->path(), new_name));
+        items_.erase(it + 1); // remove the old item
         queueSave();
     }
 }
