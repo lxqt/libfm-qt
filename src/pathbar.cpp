@@ -153,11 +153,13 @@ Fm2::FilePath PathBar::pathForButton(PathButton* btn) {
     std::string fullPath;
     int buttonCount = buttonsLayout_->count() - 1; // the last item is a spacer
     for(int i = 0; i < buttonCount; ++i) {
-        if(!fullPath.empty()) {
+        if(!fullPath.empty() && fullPath.back() != '/') {
             fullPath += '/';
         }
-        PathButton* btn = static_cast<PathButton*>(buttonsLayout_->itemAt(i)->widget());
-        fullPath += btn->name();
+        PathButton* elem = static_cast<PathButton*>(buttonsLayout_->itemAt(i)->widget());
+        fullPath += elem->name();
+        if(elem == btn)
+            break;
     }
     return Fm2::FilePath::fromPathStr(fullPath.c_str());
 }
@@ -168,7 +170,6 @@ void PathBar::onButtonToggled(bool checked) {
         scrollArea_->ensureWidgetVisible(btn, 0); // make the button visible
 
         currentPath_ = pathForButton(btn);
-        // qDebug("chdir: %s", currentPath_.displayName(false));
         Q_EMIT chdir(currentPath_);
     }
 }
@@ -187,7 +188,7 @@ void PathBar::onScrollButtonClicked() {
 }
 
 void PathBar::setPath(Fm2::FilePath path) {
-    if(currentPath_.isValid() && path.isValid() && currentPath_ == path) { // same path, do nothing
+    if(currentPath_ == path) { // same path, do nothing
         return;
     }
 
@@ -195,7 +196,7 @@ void PathBar::setPath(Fm2::FilePath path) {
     currentPath_ = std::move(path);
     // check if we already have a button for this path
     int buttonCount = buttonsLayout_->count() - 1; // the last item is a spacer
-    if(currentPath_.isPrefixOf(oldPath)) {
+    if(oldPath && currentPath_.isPrefixOf(oldPath)) {
         auto btnPath = oldPath;
         for(int i = buttonCount - 1; i >= 0; --i) {
             if(btnPath == currentPath_) {
@@ -225,7 +226,7 @@ void PathBar::setPath(Fm2::FilePath path) {
 
     // create new buttons for the new path
     auto btnPath = currentPath_;
-    while(btnPath.isValid()) {
+    while(btnPath) {
         Fm2::CStrPtr name;
         auto parent = btnPath.parent();
         auto isRoot = !parent.isValid();
@@ -241,13 +242,14 @@ void PathBar::setPath(Fm2::FilePath path) {
         btnPath = parent;
         buttonsLayout_->insertWidget(0, btn);
     }
-    buttonCount = buttonsLayout_->count();
-    if(buttonCount) {
+    buttonsLayout_->addStretch(1); // add a spacer at the tail of the buttons
+
+    buttonCount = buttonsLayout_->count() - 1;
+    if(buttonCount > 0) {
         PathButton* lastBtn = static_cast<PathButton*>(buttonsLayout_->itemAt(buttonCount - 1)->widget());
         // we don't have to emit the chdir signal since the "onButtonToggled()" slot will be triggered by this.
         lastBtn->setChecked(true);
     }
-    buttonsLayout_->addStretch(1);
 
     // we don't want to scroll vertically. make the scroll area fit the height of the buttons
     // FIXME: this is a little bit hackish :-(

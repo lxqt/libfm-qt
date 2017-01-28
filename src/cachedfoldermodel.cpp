@@ -22,46 +22,47 @@
 namespace Fm {
 
 CachedFolderModel::CachedFolderModel(const std::shared_ptr<Fm2::Folder>& folder):
-  FolderModel(),
-  refCount(1) {
-  FolderModel::setFolder(folder);
+    FolderModel(),
+    refCount(1) {
+    FolderModel::setFolder(folder);
 }
 
 CachedFolderModel::~CachedFolderModel() {
+    // qDebug("delete CachedFolderModel");
 }
 
 CachedFolderModel* CachedFolderModel::modelFromFolder(const std::shared_ptr<Fm2::Folder>& folder) {
-  CachedFolderModel* model = nullptr;
-  QVariant cache = folder->property(cacheKey);
-  model = cache.value<CachedFolderModel*>();
-  if(model) {
-    // qDebug("cache found!!");
-    model->ref();
-  }
-  else {
-    model = new CachedFolderModel(folder);
-    cache = QVariant::fromValue(model);
-    folder->setProperty(cacheKey, cache);
-  }
-  return model;
+    CachedFolderModel* model = nullptr;
+    QVariant cache = folder->property(cacheKey);
+    model = cache.value<CachedFolderModel*>();
+    if(model) {
+        // qDebug("cache found!!");
+        model->ref();
+    }
+    else {
+        model = new CachedFolderModel(folder);
+        cache = QVariant::fromValue(model);
+        folder->setProperty(cacheKey, cache);
+    }
+    return model;
 }
 
-CachedFolderModel* CachedFolderModel::modelFromPath(const Fm2::FilePath &path) {
-  auto folder = Fm2::Folder::fromPath(path);
-  if(folder) {
-    CachedFolderModel* model = modelFromFolder(folder);
-    return model;
-  }
-  return nullptr;
+CachedFolderModel* CachedFolderModel::modelFromPath(const Fm2::FilePath& path) {
+    auto folder = Fm2::Folder::fromPath(path);
+    if(folder) {
+        CachedFolderModel* model = modelFromFolder(folder);
+        return model;
+    }
+    return nullptr;
 }
 
 void CachedFolderModel::unref() {
-  // qDebug("unref cache");
-  --refCount;
-  if(refCount <= 0) {
-    folder()->setProperty(cacheKey, QVariant());
-    deleteLater();
-  }
+    // qDebug("unref cache");
+    --refCount;
+    if(refCount <= 0) {
+        folder()->setProperty(cacheKey, QVariant());
+        deleteLater();
+    }
 }
 
 
