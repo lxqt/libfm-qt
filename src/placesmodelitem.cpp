@@ -64,7 +64,7 @@ PlacesModelItem::~PlacesModelItem() {
 
 void PlacesModelItem::setIcon(std::shared_ptr<const Fm2::Icon> icon) {
     icon_= std::move(icon);
-    if(icon) {
+    if(icon_) {
         QStandardItem::setIcon(icon_->qicon());
     }
     else {
@@ -73,8 +73,7 @@ void PlacesModelItem::setIcon(std::shared_ptr<const Fm2::Icon> icon) {
 }
 
 void PlacesModelItem::setIcon(GIcon* gicon) {
-    auto icon = Fm2::Icon::fromGIcon(Fm2::GIconPtr{gicon, true});
-    setIcon(icon);
+    setIcon(Fm2::Icon::fromGIcon(Fm2::GIconPtr{gicon, true}));
 }
 
 void PlacesModelItem::updateIcon() {
@@ -89,7 +88,7 @@ QVariant PlacesModelItem::data(int role) const {
 }
 
 PlacesModelBookmarkItem::PlacesModelBookmarkItem(std::shared_ptr<const Fm2::BookmarkItem> bm_item):
-    PlacesModelItem{QIcon::fromTheme("folder"), bm_item->name(), bm_item->path()},
+    PlacesModelItem{Fm2::Icon::fromName("folder"), bm_item->name(), bm_item->path()},
     bookmarkItem_{std::move(bm_item)} {
     setEditable(true);
 }
