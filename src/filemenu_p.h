@@ -22,32 +22,31 @@
 
 #include "icontheme.h"
 #include <QDebug>
+#include "core/gioptrs.h"
 
 namespace Fm {
 
 class AppInfoAction : public QAction {
   Q_OBJECT
 public:
-  explicit AppInfoAction(GAppInfo* app, QObject* parent = 0):
-    QAction(QString::fromUtf8(g_app_info_get_name(app)), parent),
-    appInfo_(G_APP_INFO(g_object_ref(app))) {
-    setToolTip(QString::fromUtf8(g_app_info_get_description(app)));
-    GIcon* gicon = g_app_info_get_icon(app);
+  explicit AppInfoAction(Fm2::GAppInfoPtr app, QObject* parent = 0):
+    QAction(QString::fromUtf8(g_app_info_get_name(app.get())), parent),
+    appInfo_{std::move(app)} {
+    setToolTip(QString::fromUtf8(g_app_info_get_description(app.get())));
+    GIcon* gicon = g_app_info_get_icon(app.get());
     QIcon icon = IconTheme::icon(gicon);
     setIcon(icon);
   }
 
   virtual ~AppInfoAction() {
-    if(appInfo_)
-      g_object_unref(appInfo_);
   }
 
-  GAppInfo* appInfo() const {
+  const Fm2::GAppInfoPtr& appInfo() const {
     return appInfo_;
   }
 
 private:
-  GAppInfo* appInfo_;
+  Fm2::GAppInfoPtr appInfo_;
 };
 
 } // namespace Fm

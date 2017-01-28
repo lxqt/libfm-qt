@@ -40,28 +40,35 @@ Bookmarks::~Bookmarks() {
     }
 }
 
-const std::shared_ptr<BookmarkItem>& Bookmarks::insert(const FilePath& path, const QString& name, int pos) {
-    auto it = items_.insert(items_.begin() + pos, std::make_shared<BookmarkItem>(path, name));
+const std::shared_ptr<const BookmarkItem>& Bookmarks::insert(const FilePath& path, const QString& name, int pos) {
+    auto it = items_.insert(items_.begin() + pos, std::make_shared<const BookmarkItem>(path, name));
     queueSave();
     return *it;
 }
 
-void Bookmarks::remove(const std::shared_ptr<BookmarkItem>& item) {
-    std::remove_if(items_.begin(), items_.end(), [item](const std::shared_ptr<const BookmarkItem>& elem) {
+void Bookmarks::remove(const std::shared_ptr<const BookmarkItem>& item) {
+    items_.erase(std::remove_if(items_.begin(), items_.end(), [item](const std::shared_ptr<const BookmarkItem>& elem) {
         return elem == item;
-    });
+    }), items_.end());
     queueSave();
 }
 
-void Bookmarks::reorder(const std::shared_ptr<BookmarkItem>& item, int pos) {
+void Bookmarks::reorder(const std::shared_ptr<const BookmarkItem>& item, int pos) {
     remove(item);
-    items_.insert(items_.begin() + pos, std::shared_ptr<BookmarkItem>{item});
+    items_.insert(items_.begin() + pos, std::shared_ptr<const BookmarkItem>{item});
     queueSave();
 }
 
-void Bookmarks::rename(const std::shared_ptr<BookmarkItem>& item, QString new_name) {
-    item->setName(new_name);
-    queueSave();
+void Bookmarks::rename(const std::shared_ptr<const BookmarkItem>& item, QString new_name) {
+    auto it = std::find_if(items_.cbegin(), items_.cend(), [item](const std::shared_ptr<const BookmarkItem>& elem) {
+        return elem->path() == item->path();
+    });
+    if(it != items_.cend()) {
+        // create a new item to replace the old one
+        items_.insert(it, std::make_shared<const BookmarkItem>(item->path(), new_name));
+        items_.erase(it);
+        queueSave();
+    }
 }
 
 std::shared_ptr<Bookmarks> Bookmarks::globalInstance() {

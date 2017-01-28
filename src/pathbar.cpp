@@ -230,7 +230,7 @@ void PathBar::setPath(Fm2::FilePath path) {
         auto parent = btnPath.parent();
         auto isRoot = !parent.isValid();
         if(isRoot) {
-            name = btnPath.toString();
+            name = btnPath.displayName();
         }
         else {
             name = btnPath.baseName();
@@ -263,7 +263,7 @@ void PathBar::openEditor() {
         scrollArea_->hide();
         scrollToStart_->setVisible(false);
         scrollToEnd_->setVisible(false);
-        tempPathEdit_->setText(currentPath_.toString().get());
+        tempPathEdit_->setText(currentPath_.displayName().get());
 
         connect(tempPathEdit_, &PathEdit::returnPressed, this, &PathBar::onReturnPressed);
         connect(tempPathEdit_, &PathEdit::editingFinished, this, &PathBar::closeEditor);

@@ -25,48 +25,53 @@
 #include "libfmqtglobals.h"
 #include <libfm/fm.h>
 
+#include "core/mimetype.h"
+#include "core/gioptrs.h"
+
 namespace Ui {
-  class AppChooserDialog;
+class AppChooserDialog;
 }
 
 namespace Fm {
 
 class LIBFM_QT_API AppChooserDialog : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit AppChooserDialog(FmMimeType* mimeType, QWidget* parent = NULL, Qt::WindowFlags f = 0);
-  ~AppChooserDialog();
+    explicit AppChooserDialog(std::shared_ptr<const Fm2::MimeType> mimeType, QWidget* parent = NULL, Qt::WindowFlags f = 0);
+    ~AppChooserDialog();
 
-  virtual void accept();
+    virtual void accept();
 
-  void setMimeType(FmMimeType* mimeType);
-  FmMimeType* mimeType() {
-    return mimeType_;
-  }
+    void setMimeType(std::shared_ptr<const Fm2::MimeType> mimeType);
 
-  void setCanSetDefault(bool value);
-  bool canSetDefault() {
-    return canSetDefault_;
-  }
+    const std::shared_ptr<const Fm2::MimeType>& mimeType() const {
+        return mimeType_;
+    }
 
-  GAppInfo* selectedApp() {
-    return G_APP_INFO(g_object_ref(selectedApp_));
-  }
+    void setCanSetDefault(bool value);
 
-  bool isSetDefault();
+    bool canSetDefault() const {
+        return canSetDefault_;
+    }
+
+    const Fm2::GAppInfoPtr& selectedApp() const {
+        return selectedApp_;
+    }
+
+    bool isSetDefault() const;
 
 private:
-  GAppInfo* customCommandToApp();
+    GAppInfo* customCommandToApp();
 
 private Q_SLOTS:
-  void onSelectionChanged();
-  void onTabChanged(int index);
+    void onSelectionChanged();
+    void onTabChanged(int index);
 
 private:
-  Ui::AppChooserDialog* ui;
-  FmMimeType* mimeType_;
-  bool canSetDefault_;
-  GAppInfo* selectedApp_;
+    Ui::AppChooserDialog* ui;
+    std::shared_ptr<const Fm2::MimeType> mimeType_;
+    bool canSetDefault_;
+    Fm2::GAppInfoPtr selectedApp_;
 };
 
 }

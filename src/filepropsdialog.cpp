@@ -37,439 +37,463 @@
 namespace Fm {
 
 enum {
-  ACCESS_NO_CHANGE = 0,
-  ACCESS_READ_ONLY,
-  ACCESS_READ_WRITE,
-  ACCESS_FORBID
+    ACCESS_NO_CHANGE = 0,
+    ACCESS_READ_ONLY,
+    ACCESS_READ_WRITE,
+    ACCESS_FORBID
 };
 
-FilePropsDialog::FilePropsDialog(FmFileInfoList* files, QWidget* parent, Qt::WindowFlags f):
-  QDialog(parent, f),
-  fileInfos_(fm_file_info_list_ref(files)),
-  fileInfo(fm_file_info_list_peek_head(files)),
-  singleType(fm_file_info_list_is_same_type(files)),
-  singleFile(fm_file_info_list_get_length(files) == 1 ? true:false),
-  mimeType(NULL) {
+FilePropsDialog::FilePropsDialog(Fm2::FileInfoList files, QWidget* parent, Qt::WindowFlags f):
+    QDialog(parent, f),
+    fileInfos_{std::move(files)},
+    fileInfo{fileInfos_.front()},
+    singleType(fileInfos_.isSameType()),
+    singleFile(fileInfos_.size() == 1 ? true : false) {
 
-  setAttribute(Qt::WA_DeleteOnClose);
+    setAttribute(Qt::WA_DeleteOnClose);
 
-  ui = new Ui::FilePropsDialog();
-  ui->setupUi(this);
+    ui = new Ui::FilePropsDialog();
+    ui->setupUi(this);
 
-  if(singleType) {
-    mimeType = fm_mime_type_ref(fm_file_info_get_mime_type(fileInfo));
-  }
+    if(singleType) {
+        mimeType = fileInfo->mimeType();
+    }
 
-  FmPathList* paths = fm_path_list_new_from_file_info_list(files);
-  deepCountJob = fm_deep_count_job_new(paths, FM_DC_JOB_DEFAULT);
-  fm_path_list_unref(paths);
+    // FIXME: port to new API
+    FmPathList* paths = fm_path_list_new();
+    for(auto& file : fileInfos_) {
+        FmPath* tmp = fm_path_new_for_gfile(file->path().gfile().get());
+        fm_path_list_push_tail(paths, tmp);
+        fm_path_unref(tmp);
+    }
+    deepCountJob = fm_deep_count_job_new(paths, FM_DC_JOB_DEFAULT);
+    fm_path_list_unref(paths);
 
-  initGeneralPage();
-  initPermissionsPage();
+    initGeneralPage();
+    initPermissionsPage();
 }
 
 FilePropsDialog::~FilePropsDialog() {
-  if(fileInfos_)
-    fm_file_info_list_unref(fileInfos_);
+    // Stop the timer if it's still running
+    if(fileSizeTimer) {
+        fileSizeTimer->stop();
+        delete fileSizeTimer;
+        fileSizeTimer = NULL;
+    }
 
-  // Stop the timer if it's still running
-  if(fileSizeTimer) {
-    fileSizeTimer->stop();
-    delete fileSizeTimer;
-    fileSizeTimer = NULL;
-  }
+    // Cancel the indexing job if it hasn't finished
+    if(deepCountJob) {
+        g_signal_handlers_disconnect_by_func(deepCountJob, (gpointer)G_CALLBACK(onDeepCountJobFinished), this);
+        fm_job_cancel(FM_JOB(deepCountJob));
+        g_object_unref(deepCountJob);
+        deepCountJob = NULL;
+    }
 
-  // Cancel the indexing job if it hasn't finished
-  if(deepCountJob) {
-    g_signal_handlers_disconnect_by_func(deepCountJob, (gpointer)G_CALLBACK(onDeepCountJobFinished), this);
-    fm_job_cancel(FM_JOB(deepCountJob));
-    g_object_unref(deepCountJob);
-    deepCountJob = NULL;
-  }
-
-  // And finally delete the dialog's UI
-  delete ui;
+    // And finally delete the dialog's UI
+    delete ui;
 }
 
 void FilePropsDialog::initApplications() {
-  if(singleType && mimeType && !fm_file_info_is_dir(fileInfo)) {
-    ui->openWith->setMimeType(mimeType);
-  }
-  else {
-    ui->openWith->hide();
-    ui->openWithLabel->hide();
-  }
+    if(singleType && mimeType && !fileInfo->isDir()) {
+        ui->openWith->setMimeType(mimeType);
+    }
+    else {
+        ui->openWith->hide();
+        ui->openWithLabel->hide();
+    }
 }
 
 void FilePropsDialog::initPermissionsPage() {
-  // ownership handling
-  // get owner/group and mode of the first file in the list
-  uid = fm_file_info_get_uid(fileInfo);
-  gid = fm_file_info_get_gid(fileInfo);
-  mode_t mode = fm_file_info_get_mode(fileInfo);
-  ownerPerm = (mode & (S_IRUSR|S_IWUSR|S_IXUSR));
-  groupPerm = (mode & (S_IRGRP|S_IWGRP|S_IXGRP));
-  otherPerm = (mode & (S_IROTH|S_IWOTH|S_IXOTH));
-  execPerm = (mode & (S_IXUSR|S_IXGRP|S_IXOTH));
-  allNative = fm_file_info_is_native(fileInfo);
-  hasDir = S_ISDIR(mode);
+    // ownership handling
+    // get owner/group and mode of the first file in the list
+    uid = fileInfo->getUid();
+    gid = fileInfo->getGid();
+    mode_t mode = fileInfo->getMode();
+    ownerPerm = (mode & (S_IRUSR | S_IWUSR | S_IXUSR));
+    groupPerm = (mode & (S_IRGRP | S_IWGRP | S_IXGRP));
+    otherPerm = (mode & (S_IROTH | S_IWOTH | S_IXOTH));
+    execPerm = (mode & (S_IXUSR | S_IXGRP | S_IXOTH));
+    allNative = fileInfo->isNative();
+    hasDir = S_ISDIR(mode);
 
-  // check if all selected files belongs to the same owner/group or have the same mode
-  // at the same time, check if all files are on native unix filesystems
-  GList* l;
-  for(l = fm_file_info_list_peek_head_link(fileInfos_)->next; l; l = l->next) {
-    FmFileInfo* fi = FM_FILE_INFO(l->data);
-    if(allNative && !fm_file_info_is_native(fi))
-      allNative = false; // not all of the files are native
+    // check if all selected files belongs to the same owner/group or have the same mode
+    // at the same time, check if all files are on native unix filesystems
+    for(auto& fi: fileInfos_) {
+        if(allNative && !fi->isNative()) {
+            allNative = false;    // not all of the files are native
+        }
 
-    mode_t fi_mode = fm_file_info_get_mode(fi);
-    if(S_ISDIR(fi_mode))
-      hasDir = true; // the files list contains dir(s)
+        mode_t fi_mode = fi->getMode();
+        if(S_ISDIR(fi_mode)) {
+            hasDir = true;    // the files list contains dir(s)
+        }
 
-    if(uid != DIFFERENT_UIDS && uid != fm_file_info_get_uid(fi))
-      uid = DIFFERENT_UIDS; // not all files have the same owner
-    if(gid != DIFFERENT_GIDS && gid != fm_file_info_get_gid(fi))
-      gid = DIFFERENT_GIDS; // not all files have the same owner group
+        if(uid != DIFFERENT_UIDS && uid != fi->getUid()) {
+            uid = DIFFERENT_UIDS;    // not all files have the same owner
+        }
+        if(gid != DIFFERENT_GIDS && gid != fi->getGid()) {
+            gid = DIFFERENT_GIDS;    // not all files have the same owner group
+        }
 
-    if(ownerPerm != DIFFERENT_PERMS && ownerPerm != (fi_mode & (S_IRUSR|S_IWUSR|S_IXUSR)))
-      ownerPerm = DIFFERENT_PERMS; // not all files have the same permission for owner
-    if(groupPerm != DIFFERENT_PERMS && groupPerm != (fi_mode & (S_IRGRP|S_IWGRP|S_IXGRP)))
-      groupPerm = DIFFERENT_PERMS; // not all files have the same permission for grop
-    if(otherPerm != DIFFERENT_PERMS && otherPerm != (fi_mode & (S_IROTH|S_IWOTH|S_IXOTH)))
-      otherPerm = DIFFERENT_PERMS; // not all files have the same permission for other
-    if(execPerm != DIFFERENT_PERMS && execPerm != (fi_mode & (S_IXUSR|S_IXGRP|S_IXOTH)))
-      execPerm = DIFFERENT_PERMS; // not all files have the same executable permission
-  }
-
-  // init owner/group
-  initOwner();
-
-  // if all files are of the same type, and some of them are dirs => all of the items are dirs
-  // rwx values have different meanings for dirs
-  // Let's make it clear for the users
-  // init combo boxes for file permissions here
-  QStringList comboItems;
-  comboItems.append("---"); // no change
-  if(singleType && hasDir) { // all files are dirs
-    comboItems.append(tr("View folder content"));
-    comboItems.append(tr("View and modify folder content"));
-    ui->executable->hide();
-  }
-  else { //not all of the files are dirs
-    comboItems.append(tr("Read"));
-    comboItems.append(tr("Read and write"));
-  }
-  comboItems.append(tr("Forbidden"));
-  QStringListModel* comboModel = new QStringListModel(comboItems, this);
-  ui->ownerPerm->setModel(comboModel);
-  ui->groupPerm->setModel(comboModel);
-  ui->otherPerm->setModel(comboModel);
-
-  // owner
-  ownerPermSel = ACCESS_NO_CHANGE;
-  if(ownerPerm != DIFFERENT_PERMS) { // permissions for owner are the same among all files
-    if(ownerPerm & S_IRUSR) { // can read
-      if(ownerPerm & S_IWUSR) // can write
-        ownerPermSel = ACCESS_READ_WRITE;
-      else
-        ownerPermSel = ACCESS_READ_ONLY;
-    }
-    else {
-      if((ownerPerm & S_IWUSR) == 0) // cannot read or write
-        ownerPermSel = ACCESS_FORBID;
-    }
-  }
-  ui->ownerPerm->setCurrentIndex(ownerPermSel);
-
-  // owner and group
-  groupPermSel = ACCESS_NO_CHANGE;
-  if(groupPerm != DIFFERENT_PERMS) { // permissions for owner are the same among all files
-    if(groupPerm & S_IRGRP) { // can read
-      if(groupPerm & S_IWGRP) // can write
-        groupPermSel = ACCESS_READ_WRITE;
-      else
-        groupPermSel = ACCESS_READ_ONLY;
-    }
-    else {
-      if((groupPerm & S_IWGRP) == 0) // cannot read or write
-        groupPermSel = ACCESS_FORBID;
-    }
-  }
-  ui->groupPerm->setCurrentIndex(groupPermSel);
-
-  // other
-  otherPermSel = ACCESS_NO_CHANGE;
-  if(otherPerm != DIFFERENT_PERMS) { // permissions for owner are the same among all files
-    if(otherPerm & S_IROTH) { // can read
-      if(otherPerm & S_IWOTH) // can write
-        otherPermSel = ACCESS_READ_WRITE;
-      else
-        otherPermSel = ACCESS_READ_ONLY;
-    }
-    else {
-      if((otherPerm & S_IWOTH) == 0) // cannot read or write
-        otherPermSel = ACCESS_FORBID;
+        if(ownerPerm != DIFFERENT_PERMS && ownerPerm != (fi_mode & (S_IRUSR | S_IWUSR | S_IXUSR))) {
+            ownerPerm = DIFFERENT_PERMS;    // not all files have the same permission for owner
+        }
+        if(groupPerm != DIFFERENT_PERMS && groupPerm != (fi_mode & (S_IRGRP | S_IWGRP | S_IXGRP))) {
+            groupPerm = DIFFERENT_PERMS;    // not all files have the same permission for grop
+        }
+        if(otherPerm != DIFFERENT_PERMS && otherPerm != (fi_mode & (S_IROTH | S_IWOTH | S_IXOTH))) {
+            otherPerm = DIFFERENT_PERMS;    // not all files have the same permission for other
+        }
+        if(execPerm != DIFFERENT_PERMS && execPerm != (fi_mode & (S_IXUSR | S_IXGRP | S_IXOTH))) {
+            execPerm = DIFFERENT_PERMS;    // not all files have the same executable permission
+        }
     }
 
-  }
-  ui->otherPerm->setCurrentIndex(otherPermSel);
+    // init owner/group
+    initOwner();
 
-  // set the checkbox to partially checked state
-  // when owner, group, and other have different executable flags set.
-  // some of them have exec, and others do not have.
-  execCheckState = Qt::PartiallyChecked;
-  if(execPerm != DIFFERENT_PERMS) { // if all files have the same executable permission
-    // check if the files are all executable
-    if((mode & (S_IXUSR|S_IXGRP|S_IXOTH)) == (S_IXUSR|S_IXGRP|S_IXOTH)) {
-      // owner, group, and other all have exec permission.
-      ui->executable->setTristate(false);
-      execCheckState = Qt::Checked;
+    // if all files are of the same type, and some of them are dirs => all of the items are dirs
+    // rwx values have different meanings for dirs
+    // Let's make it clear for the users
+    // init combo boxes for file permissions here
+    QStringList comboItems;
+    comboItems.append("---"); // no change
+    if(singleType && hasDir) { // all files are dirs
+        comboItems.append(tr("View folder content"));
+        comboItems.append(tr("View and modify folder content"));
+        ui->executable->hide();
     }
-    else if((mode & (S_IXUSR|S_IXGRP|S_IXOTH)) == 0) {
-      // owner, group, and other all have no exec permission
-      ui->executable->setTristate(false);
-      execCheckState = Qt::Unchecked;
+    else { //not all of the files are dirs
+        comboItems.append(tr("Read"));
+        comboItems.append(tr("Read and write"));
     }
-  }
-  ui->executable->setCheckState(execCheckState);
+    comboItems.append(tr("Forbidden"));
+    QStringListModel* comboModel = new QStringListModel(comboItems, this);
+    ui->ownerPerm->setModel(comboModel);
+    ui->groupPerm->setModel(comboModel);
+    ui->otherPerm->setModel(comboModel);
+
+    // owner
+    ownerPermSel = ACCESS_NO_CHANGE;
+    if(ownerPerm != DIFFERENT_PERMS) { // permissions for owner are the same among all files
+        if(ownerPerm & S_IRUSR) { // can read
+            if(ownerPerm & S_IWUSR) { // can write
+                ownerPermSel = ACCESS_READ_WRITE;
+            }
+            else {
+                ownerPermSel = ACCESS_READ_ONLY;
+            }
+        }
+        else {
+            if((ownerPerm & S_IWUSR) == 0) { // cannot read or write
+                ownerPermSel = ACCESS_FORBID;
+            }
+        }
+    }
+    ui->ownerPerm->setCurrentIndex(ownerPermSel);
+
+    // owner and group
+    groupPermSel = ACCESS_NO_CHANGE;
+    if(groupPerm != DIFFERENT_PERMS) { // permissions for owner are the same among all files
+        if(groupPerm & S_IRGRP) { // can read
+            if(groupPerm & S_IWGRP) { // can write
+                groupPermSel = ACCESS_READ_WRITE;
+            }
+            else {
+                groupPermSel = ACCESS_READ_ONLY;
+            }
+        }
+        else {
+            if((groupPerm & S_IWGRP) == 0) { // cannot read or write
+                groupPermSel = ACCESS_FORBID;
+            }
+        }
+    }
+    ui->groupPerm->setCurrentIndex(groupPermSel);
+
+    // other
+    otherPermSel = ACCESS_NO_CHANGE;
+    if(otherPerm != DIFFERENT_PERMS) { // permissions for owner are the same among all files
+        if(otherPerm & S_IROTH) { // can read
+            if(otherPerm & S_IWOTH) { // can write
+                otherPermSel = ACCESS_READ_WRITE;
+            }
+            else {
+                otherPermSel = ACCESS_READ_ONLY;
+            }
+        }
+        else {
+            if((otherPerm & S_IWOTH) == 0) { // cannot read or write
+                otherPermSel = ACCESS_FORBID;
+            }
+        }
+
+    }
+    ui->otherPerm->setCurrentIndex(otherPermSel);
+
+    // set the checkbox to partially checked state
+    // when owner, group, and other have different executable flags set.
+    // some of them have exec, and others do not have.
+    execCheckState = Qt::PartiallyChecked;
+    if(execPerm != DIFFERENT_PERMS) { // if all files have the same executable permission
+        // check if the files are all executable
+        if((mode & (S_IXUSR | S_IXGRP | S_IXOTH)) == (S_IXUSR | S_IXGRP | S_IXOTH)) {
+            // owner, group, and other all have exec permission.
+            ui->executable->setTristate(false);
+            execCheckState = Qt::Checked;
+        }
+        else if((mode & (S_IXUSR | S_IXGRP | S_IXOTH)) == 0) {
+            // owner, group, and other all have no exec permission
+            ui->executable->setTristate(false);
+            execCheckState = Qt::Unchecked;
+        }
+    }
+    ui->executable->setCheckState(execCheckState);
 }
 
 void FilePropsDialog::initGeneralPage() {
-  // update UI
-  if(singleType) { // all files are of the same mime-type
-    FmIcon* icon = NULL;
-    // FIXME: handle custom icons for some files
-    // FIXME: display special property pages for special files or
-    // some specified mime-types.
-    if(singleFile) { // only one file is selected.
-      icon = fm_file_info_get_icon(fileInfo);
-    }
-    if(mimeType) {
-      if(!icon) // get an icon from mime type if needed
-        icon = fm_mime_type_get_icon(mimeType);
-      ui->fileType->setText(QString::fromUtf8(fm_mime_type_get_desc(mimeType)));
-      ui->mimeType->setText(QString::fromUtf8(fm_mime_type_get_type(mimeType)));
-    }
-    if(icon) {
-      ui->iconButton->setIcon(IconTheme::icon(icon));
+    // update UI
+    if(singleType) { // all files are of the same mime-type
+        std::shared_ptr<const Fm2::Icon> icon;
+        // FIXME: handle custom icons for some files
+        // FIXME: display special property pages for special files or
+        // some specified mime-types.
+        if(singleFile) { // only one file is selected.
+            icon = fileInfo->getIcon();
+        }
+        if(mimeType) {
+            if(!icon) { // get an icon from mime type if needed
+                icon = mimeType->icon();
+            }
+            ui->fileType->setText(mimeType->desc());
+            ui->mimeType->setText(mimeType->name());
+        }
+        if(icon) {
+            ui->iconButton->setIcon(icon->qicon());
+        }
+
+        if(singleFile && fileInfo->isSymlink()) {
+            ui->target->setText(QString::fromStdString(fileInfo->getTarget()));
+        }
+        else {
+            ui->target->hide();
+            ui->targetLabel->hide();
+        }
+    } // end if(singleType)
+    else { // not singleType, multiple files are selected at the same time
+        ui->fileType->setText(tr("Files of different types"));
+        ui->target->hide();
+        ui->targetLabel->hide();
     }
 
-    if(singleFile && fm_file_info_is_symlink(fileInfo)) {
-      ui->target->setText(QString::fromUtf8(fm_file_info_get_target(fileInfo)));
+    // FIXME: check if all files has the same parent dir, mtime, or atime
+    if(singleFile) { // only one file is selected
+        auto parent_path = fileInfo->path().parent();
+        auto parent_str = parent_path ? parent_path.displayName(): nullptr;
+
+        ui->fileName->setText(fileInfo->getDispName());
+        if(parent_str) {
+            ui->location->setText(parent_str.get());
+        }
+        else {
+            ui->location->clear();
+        }
+
+        // FIXME: port to new API
+        // ui->lastModified->setText(QString::fromUtf8(fm_file_info_get_disp_mtime(fileInfo)));
+
+        // FIXME: need to encapsulate this in an libfm API.
+        time_t atime;
+        struct tm tm;
+        atime = fileInfo->getAtime();
+        localtime_r(&atime, &tm);
+        char buf[128];
+        strftime(buf, sizeof(buf), "%x %R", &tm);
+        ui->lastAccessed->setText(buf);
     }
     else {
-      ui->target->hide();
-      ui->targetLabel->hide();
+        ui->fileName->setText(tr("Multiple Files"));
+        ui->fileName->setEnabled(false);
     }
-  } // end if(singleType)
-  else { // not singleType, multiple files are selected at the same time
-    ui->fileType->setText(tr("Files of different types"));
-    ui->target->hide();
-    ui->targetLabel->hide();
-  }
 
-  // FIXME: check if all files has the same parent dir, mtime, or atime
-  if(singleFile) { // only one file is selected
-    FmPath* parent_path = fm_path_get_parent(fm_file_info_get_path(fileInfo));
-    char* parent_str = parent_path ? fm_path_display_name(parent_path, true) : NULL;
+    initApplications(); // init applications combo box
 
-    ui->fileName->setText(QString::fromUtf8(fm_file_info_get_disp_name(fileInfo)));
-    if(parent_str) {
-      ui->location->setText(QString::fromUtf8(parent_str));
-      g_free(parent_str);
-    }
-    else
-      ui->location->clear();
-
-    ui->lastModified->setText(QString::fromUtf8(fm_file_info_get_disp_mtime(fileInfo)));
-
-    // FIXME: need to encapsulate this in an libfm API.
-    time_t atime;
-    struct tm tm;
-    atime = fm_file_info_get_atime(fileInfo);
-    localtime_r(&atime, &tm);
-    char buf[128];
-    strftime(buf, sizeof(buf), "%x %R", &tm);
-    ui->lastAccessed->setText(QString::fromUtf8(buf));
-  }
-  else {
-    ui->fileName->setText(tr("Multiple Files"));
-    ui->fileName->setEnabled(false);
-  }
-
-  initApplications(); // init applications combo box
-
-  // calculate total file sizes
-  fileSizeTimer = new QTimer(this);
-  connect(fileSizeTimer, &QTimer::timeout, this, &FilePropsDialog::onFileSizeTimerTimeout);
-  fileSizeTimer->start(600);
-  g_signal_connect(deepCountJob, "finished", G_CALLBACK(onDeepCountJobFinished), this);
-  fm_job_run_async(FM_JOB(deepCountJob));
+    // calculate total file sizes
+    fileSizeTimer = new QTimer(this);
+    connect(fileSizeTimer, &QTimer::timeout, this, &FilePropsDialog::onFileSizeTimerTimeout);
+    fileSizeTimer->start(600);
+    g_signal_connect(deepCountJob, "finished", G_CALLBACK(onDeepCountJobFinished), this);
+    fm_job_run_async(FM_JOB(deepCountJob));
 }
 
 /*static */ void FilePropsDialog::onDeepCountJobFinished(FmDeepCountJob* job, FilePropsDialog* pThis) {
 
-  pThis->onFileSizeTimerTimeout(); // update file size display
+    pThis->onFileSizeTimerTimeout(); // update file size display
 
-  // free the job
-  g_object_unref(pThis->deepCountJob);
-  pThis->deepCountJob = NULL;
+    // free the job
+    g_object_unref(pThis->deepCountJob);
+    pThis->deepCountJob = NULL;
 
-  // stop the timer
-  if(pThis->fileSizeTimer) {
-    pThis->fileSizeTimer->stop();
-    delete pThis->fileSizeTimer;
-    pThis->fileSizeTimer = NULL;
-  }
+    // stop the timer
+    if(pThis->fileSizeTimer) {
+        pThis->fileSizeTimer->stop();
+        delete pThis->fileSizeTimer;
+        pThis->fileSizeTimer = NULL;
+    }
 }
 
 void FilePropsDialog::onFileSizeTimerTimeout() {
-  if(deepCountJob && !fm_job_is_cancelled(FM_JOB(deepCountJob))) {
-    char size_str[128];
-    fm_file_size_to_str(size_str, sizeof(size_str), deepCountJob->total_size,
-                        fm_config->si_unit);
-    // FIXME:
-    // OMG! It's really unbelievable that Qt developers only implement
-    // QObject::tr(... int n). GNU gettext developers are smarter and
-    // they use unsigned long instead of int.
-    // We cannot use Qt here to handle plural forms. So sad. :-(
-    QString str = QString::fromUtf8(size_str) %
-      QString(" (%1 B)").arg(deepCountJob->total_size);
-      // tr(" (%n) byte(s)", "", deepCountJob->total_size);
-    ui->fileSize->setText(str);
+    if(deepCountJob && !fm_job_is_cancelled(FM_JOB(deepCountJob))) {
+        char size_str[128];
+        fm_file_size_to_str(size_str, sizeof(size_str), deepCountJob->total_size,
+                            fm_config->si_unit);
+        // FIXME:
+        // OMG! It's really unbelievable that Qt developers only implement
+        // QObject::tr(... int n). GNU gettext developers are smarter and
+        // they use unsigned long instead of int.
+        // We cannot use Qt here to handle plural forms. So sad. :-(
+        QString str = QString::fromUtf8(size_str) %
+                      QString(" (%1 B)").arg(deepCountJob->total_size);
+        // tr(" (%n) byte(s)", "", deepCountJob->total_size);
+        ui->fileSize->setText(str);
 
-    fm_file_size_to_str(size_str, sizeof(size_str), deepCountJob->total_ondisk_size,
-                        fm_config->si_unit);
-    str = QString::fromUtf8(size_str) %
-      QString(" (%1 B)").arg(deepCountJob->total_ondisk_size);
-      // tr(" (%n) byte(s)", "", deepCountJob->total_ondisk_size);
-    ui->onDiskSize->setText(str);
-  }
+        fm_file_size_to_str(size_str, sizeof(size_str), deepCountJob->total_ondisk_size,
+                            fm_config->si_unit);
+        str = QString::fromUtf8(size_str) %
+              QString(" (%1 B)").arg(deepCountJob->total_ondisk_size);
+        // tr(" (%n) byte(s)", "", deepCountJob->total_ondisk_size);
+        ui->onDiskSize->setText(str);
+    }
 }
 
 void FilePropsDialog::accept() {
 
-  // applications
-  if(mimeType && ui->openWith->isChanged()) {
-    GAppInfo* currentApp = ui->openWith->selectedApp();
-    g_app_info_set_as_default_for_type(currentApp, fm_mime_type_get_type(mimeType), NULL);
-  }
-
-  // check if chown or chmod is needed
-  guint32 newUid = uidFromName(ui->owner->text());
-  guint32 newGid = gidFromName(ui->ownerGroup->text());
-  bool needChown = (newUid != -1 && newUid != uid) || (newGid != -1 && newGid != gid);
-
-  int newOwnerPermSel = ui->ownerPerm->currentIndex();
-  int newGroupPermSel = ui->groupPerm->currentIndex();
-  int newOtherPermSel = ui->otherPerm->currentIndex();
-  Qt::CheckState newExecCheckState = ui->executable->checkState();
-  bool needChmod = ((newOwnerPermSel != ownerPermSel) ||
-                    (newGroupPermSel != groupPermSel) ||
-                    (newOtherPermSel != otherPermSel) ||
-                    (newExecCheckState != execCheckState));
-
-  if(needChmod || needChown) {
-    FmPathList* paths = fm_path_list_new_from_file_info_list(fileInfos_);
-    FileOperation* op = new FileOperation(FileOperation::ChangeAttr, paths);
-    fm_path_list_unref(paths);
-    if(needChown) {
-      // don't do chown if new uid/gid and the original ones are actually the same.
-      if(newUid == uid)
-        newUid = -1;
-      if(newGid == gid)
-        newGid = -1;
-      op->setChown(newUid, newGid);
+    // applications
+    if(mimeType && ui->openWith->isChanged()) {
+        auto currentApp = ui->openWith->selectedApp();
+        g_app_info_set_as_default_for_type(currentApp.get(), mimeType->name(), NULL);
     }
-    if(needChmod) {
-      mode_t newMode = 0;
-      mode_t newModeMask = 0;
-      // FIXME: we need to make sure that folders with "r" permission also have "x"
-      // at the same time. Otherwise, it's not able to browse the folder later.
-      if(newOwnerPermSel != ownerPermSel && newOwnerPermSel != ACCESS_NO_CHANGE) {
-        // owner permission changed
-        newModeMask |= (S_IRUSR|S_IWUSR); // affect user bits
-        if(newOwnerPermSel == ACCESS_READ_ONLY)
-          newMode |= S_IRUSR;
-        else if(newOwnerPermSel == ACCESS_READ_WRITE)
-          newMode |= (S_IRUSR|S_IWUSR);
-      }
-      if(newGroupPermSel != groupPermSel && newGroupPermSel != ACCESS_NO_CHANGE) {
-        qDebug("newGroupPermSel: %d", newGroupPermSel);
-        // group permission changed
-        newModeMask |= (S_IRGRP|S_IWGRP); // affect group bits
-        if(newGroupPermSel == ACCESS_READ_ONLY)
-          newMode |= S_IRGRP;
-        else if(newGroupPermSel == ACCESS_READ_WRITE)
-          newMode |= (S_IRGRP|S_IWGRP);
-      }
-      if(newOtherPermSel != otherPermSel && newOtherPermSel != ACCESS_NO_CHANGE) {
-        // other permission changed
-        newModeMask |= (S_IROTH|S_IWOTH); // affect other bits
-        if(newOtherPermSel == ACCESS_READ_ONLY)
-          newMode |= S_IROTH;
-        else if(newOtherPermSel == ACCESS_READ_WRITE)
-          newMode |= (S_IROTH|S_IWOTH);
-      }
-      if(newExecCheckState != execCheckState && newExecCheckState != Qt::PartiallyChecked) {
-        // executable state changed
-        newModeMask |= (S_IXUSR|S_IXGRP|S_IXOTH);
-        if(newExecCheckState == Qt::Checked)
-          newMode |= (S_IXUSR|S_IXGRP|S_IXOTH);
-      }
-      op->setChmod(newMode, newModeMask);
 
-      if(hasDir) { // if there are some dirs in our selected files
-        QMessageBox::StandardButton r = QMessageBox::question(this,
-                                          tr("Apply changes"),
-                                          tr("Do you want to recursively apply these changes to all files and sub-folders?"),
-                                          QMessageBox::Yes|QMessageBox::No);
-        if(r == QMessageBox::Yes)
-          op->setRecursiveChattr(true);
-      }
+    // check if chown or chmod is needed
+    guint32 newUid = uidFromName(ui->owner->text());
+    guint32 newGid = gidFromName(ui->ownerGroup->text());
+    bool needChown = (newUid != -1 && newUid != uid) || (newGid != -1 && newGid != gid);
+
+    int newOwnerPermSel = ui->ownerPerm->currentIndex();
+    int newGroupPermSel = ui->groupPerm->currentIndex();
+    int newOtherPermSel = ui->otherPerm->currentIndex();
+    Qt::CheckState newExecCheckState = ui->executable->checkState();
+    bool needChmod = ((newOwnerPermSel != ownerPermSel) ||
+                      (newGroupPermSel != groupPermSel) ||
+                      (newOtherPermSel != otherPermSel) ||
+                      (newExecCheckState != execCheckState));
+
+    if(needChmod || needChown) {
+        FileOperation* op = new FileOperation(FileOperation::ChangeAttr, fileInfos_.paths());
+        if(needChown) {
+            // don't do chown if new uid/gid and the original ones are actually the same.
+            if(newUid == uid) {
+                newUid = -1;
+            }
+            if(newGid == gid) {
+                newGid = -1;
+            }
+            op->setChown(newUid, newGid);
+        }
+        if(needChmod) {
+            mode_t newMode = 0;
+            mode_t newModeMask = 0;
+            // FIXME: we need to make sure that folders with "r" permission also have "x"
+            // at the same time. Otherwise, it's not able to browse the folder later.
+            if(newOwnerPermSel != ownerPermSel && newOwnerPermSel != ACCESS_NO_CHANGE) {
+                // owner permission changed
+                newModeMask |= (S_IRUSR | S_IWUSR); // affect user bits
+                if(newOwnerPermSel == ACCESS_READ_ONLY) {
+                    newMode |= S_IRUSR;
+                }
+                else if(newOwnerPermSel == ACCESS_READ_WRITE) {
+                    newMode |= (S_IRUSR | S_IWUSR);
+                }
+            }
+            if(newGroupPermSel != groupPermSel && newGroupPermSel != ACCESS_NO_CHANGE) {
+                qDebug("newGroupPermSel: %d", newGroupPermSel);
+                // group permission changed
+                newModeMask |= (S_IRGRP | S_IWGRP); // affect group bits
+                if(newGroupPermSel == ACCESS_READ_ONLY) {
+                    newMode |= S_IRGRP;
+                }
+                else if(newGroupPermSel == ACCESS_READ_WRITE) {
+                    newMode |= (S_IRGRP | S_IWGRP);
+                }
+            }
+            if(newOtherPermSel != otherPermSel && newOtherPermSel != ACCESS_NO_CHANGE) {
+                // other permission changed
+                newModeMask |= (S_IROTH | S_IWOTH); // affect other bits
+                if(newOtherPermSel == ACCESS_READ_ONLY) {
+                    newMode |= S_IROTH;
+                }
+                else if(newOtherPermSel == ACCESS_READ_WRITE) {
+                    newMode |= (S_IROTH | S_IWOTH);
+                }
+            }
+            if(newExecCheckState != execCheckState && newExecCheckState != Qt::PartiallyChecked) {
+                // executable state changed
+                newModeMask |= (S_IXUSR | S_IXGRP | S_IXOTH);
+                if(newExecCheckState == Qt::Checked) {
+                    newMode |= (S_IXUSR | S_IXGRP | S_IXOTH);
+                }
+            }
+            op->setChmod(newMode, newModeMask);
+
+            if(hasDir) { // if there are some dirs in our selected files
+                QMessageBox::StandardButton r = QMessageBox::question(this,
+                                                tr("Apply changes"),
+                                                tr("Do you want to recursively apply these changes to all files and sub-folders?"),
+                                                QMessageBox::Yes | QMessageBox::No);
+                if(r == QMessageBox::Yes) {
+                    op->setRecursiveChattr(true);
+                }
+            }
+        }
+        op->setAutoDestroy(true);
+        op->run();
     }
-    op->setAutoDestroy(true);
-    op->run();
-  }
 
-  // Renaming
-  if(singleFile) {
-    QString new_name = ui->fileName->text();
-    if(QString::fromUtf8(fm_file_info_get_disp_name(fileInfo)) != new_name) {
-      FmPath* path = fm_file_info_get_path(fileInfo);
-      GFile* gf = fm_path_to_gfile(path);
-      GFile* parent_gf = g_file_get_parent(gf);
-      GFile* dest = g_file_get_child(G_FILE(parent_gf), new_name.toLocal8Bit().data());
-      g_object_unref(parent_gf);
-      GError* err = NULL;
-      if(!g_file_move(gf, dest,
-                      GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
-                                     G_FILE_COPY_NO_FALLBACK_FOR_MOVE |
-                                     G_FILE_COPY_NOFOLLOW_SYMLINKS),
-                      NULL, NULL, NULL, &err)) {
-        QMessageBox::critical(this, QObject::tr("Error"), err->message);
-        g_error_free(err);
-      }
-      g_object_unref(dest);
-      g_object_unref(gf);
+    // Renaming
+    if(singleFile) {
+        QString new_name = ui->fileName->text();
+        if(fileInfo->getDispName() != new_name) {
+            auto path = fileInfo->path();
+            auto parent_path = path.parent();
+            auto dest = parent_path.child(new_name.toLocal8Bit().constData());
+            Fm2::GErrorPtr err;
+            if(!g_file_move(path.gfile().get(), dest.gfile().get(),
+                            GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
+                                           G_FILE_COPY_NO_FALLBACK_FOR_MOVE |
+                                           G_FILE_COPY_NOFOLLOW_SYMLINKS),
+                            NULL, NULL, NULL, &err)) {
+                QMessageBox::critical(this, QObject::tr("Error"), err.message());
+            }
+        }
     }
-  }
 
-  QDialog::accept();
+    QDialog::accept();
 }
 
 void FilePropsDialog::initOwner() {
-  if(allNative) {
-    if(uid != DIFFERENT_UIDS)
-      ui->owner->setText(uidToName(uid));
-    if(gid != DIFFERENT_GIDS)
-      ui->ownerGroup->setText(gidToName(gid));
+    if(allNative) {
+        if(uid != DIFFERENT_UIDS) {
+            ui->owner->setText(uidToName(uid));
+        }
+        if(gid != DIFFERENT_GIDS) {
+            ui->ownerGroup->setText(gidToName(gid));
+        }
 
-    if(geteuid() != 0) { // on local filesystems, only root can do chown.
-      ui->owner->setEnabled(false);
-      ui->ownerGroup->setEnabled(false);
+        if(geteuid() != 0) { // on local filesystems, only root can do chown.
+            ui->owner->setEnabled(false);
+            ui->ownerGroup->setEnabled(false);
+        }
     }
-  }
 }
 
 

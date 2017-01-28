@@ -38,6 +38,18 @@ public:
         return gobj_;
     }
 
+    T* release() {
+        T* tmp = gobj_;
+        gobj_ = nullptr;
+        return tmp;
+    }
+
+    void reset() {
+        if(gobj_ != nullptr)
+            g_object_unref(gobj_);
+        gobj_ = nullptr;
+    }
+
     GObjectPtr& operator = (const GObjectPtr& other) {
         if(gobj_ != nullptr)
             g_object_unref(gobj_);

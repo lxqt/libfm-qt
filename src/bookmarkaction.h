@@ -23,30 +23,25 @@
 
 #include "libfmqtglobals.h"
 #include <QAction>
-#include <libfm/fm.h>
+#include "core/bookmarks.h"
 
 namespace Fm {
 
 // action used to create bookmark menu items
 class LIBFM_QT_API BookmarkAction : public QAction {
 public:
-  explicit BookmarkAction(FmBookmarkItem* item, QObject* parent = 0);
+  explicit BookmarkAction(std::shared_ptr<Fm2::BookmarkItem> item, QObject* parent = 0);
 
-  virtual ~BookmarkAction() {
-    if(item_)
-      fm_bookmark_item_unref(item_);
-  }
-
-  FmBookmarkItem* bookmark() {
+  const std::shared_ptr<Fm2::BookmarkItem>& bookmark() const {
     return item_;
   }
 
-  FmPath* path() {
-    return item_->path;
+  const Fm2::FilePath& path() const {
+    return item_->path();
   }
 
 private:
-  FmBookmarkItem* item_;
+  std::shared_ptr<Fm2::BookmarkItem> item_;
 };
 
 }

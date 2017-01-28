@@ -51,15 +51,15 @@ public:
 
     ~Bookmarks();
 
-    const std::shared_ptr<BookmarkItem> &insert(const FilePath& path, const QString& name, int pos);
+    const std::shared_ptr<const BookmarkItem> &insert(const FilePath& path, const QString& name, int pos);
 
-    void remove(const std::shared_ptr<BookmarkItem>& item);
+    void remove(const std::shared_ptr<const BookmarkItem>& item);
 
-    void reorder(const std::shared_ptr<BookmarkItem>& item, int pos);
+    void reorder(const std::shared_ptr<const BookmarkItem> &item, int pos);
 
-    void rename(const std::shared_ptr<BookmarkItem>& item, QString new_name);
+    void rename(const std::shared_ptr<const BookmarkItem>& item, QString new_name);
 
-    const std::vector<std::shared_ptr<BookmarkItem>>& items() const {
+    const std::vector<std::shared_ptr<const BookmarkItem>>& items() const {
         return items_;
     }
 
@@ -83,7 +83,7 @@ private:
 private:
     FilePath file;
     GObjectPtr<GFileMonitor> mon;
-    std::vector<std::shared_ptr<BookmarkItem>> items_;
+    std::vector<std::shared_ptr<const BookmarkItem>> items_;
     static std::weak_ptr<Bookmarks> globalInstance_;
     bool idle_handler;
 };

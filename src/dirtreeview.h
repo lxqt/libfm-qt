@@ -16,14 +16,15 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
  */
- 
+
 #ifndef FM_DIRTREEVIEW_H
 #define FM_DIRTREEVIEW_H
 
 #include "libfmqtglobals.h"
 #include <QTreeView>
 #include <libfm/fm.h>
-#include "path.h"
+
+#include "core/filepath.h"
 
 class QItemSelection;
 
@@ -33,60 +34,55 @@ class FileMenu;
 class DirTreeModelItem;
 
 class LIBFM_QT_API DirTreeView : public QTreeView {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  DirTreeView(QWidget* parent);
-  ~DirTreeView();
+    DirTreeView(QWidget* parent);
+    ~DirTreeView();
 
-  FmPath* currentPath() {
-    return currentPath_;
-  }
+    const Fm2::FilePath& currentPath() const {
+        return currentPath_;
+    }
 
-  void setCurrentPath(FmPath* path);
+    void setCurrentPath(Fm2::FilePath path);
 
-  // libfm-gtk compatible alias
-  FmPath* getCwd() {
-    return currentPath();
-  }
+    void chdir(Fm2::FilePath path) {
+        setCurrentPath(std::move(path));
+    }
 
-  void chdir(FmPath* path) {
-    setCurrentPath(path);
-  }
-
-  virtual void setModel(QAbstractItemModel* model);
+    virtual void setModel(QAbstractItemModel* model);
 
 protected:
-  virtual void mousePressEvent(QMouseEvent* event);
+    virtual void mousePressEvent(QMouseEvent* event);
 
 private:
-  void cancelPendingChdir();
-  void expandPendingPath();
+    void cancelPendingChdir();
+    void expandPendingPath();
 
 Q_SIGNALS:
-  void chdirRequested(int type, FmPath* path);
-  void openFolderInNewWindowRequested(FmPath* path);
-  void openFolderInNewTabRequested(FmPath* path);
-  void openFolderInTerminalRequested(FmPath* path);
-  void createNewFolderRequested(FmPath* path);
-  void prepareFileMenu(Fm::FileMenu* menu); // emit before showing a Fm::FileMenu
+    void chdirRequested(int type, const Fm2::FilePath& path);
+    void openFolderInNewWindowRequested(const Fm2::FilePath& path);
+    void openFolderInNewTabRequested(const Fm2::FilePath& path);
+    void openFolderInTerminalRequested(const Fm2::FilePath& path);
+    void createNewFolderRequested(const Fm2::FilePath& path);
+    void prepareFileMenu(Fm::FileMenu* menu); // emit before showing a Fm::FileMenu
 
 protected Q_SLOTS:
-  void onCollapsed(const QModelIndex & index);
-  void onExpanded(const QModelIndex & index);
-  void onRowLoaded(const QModelIndex& index);
-  void onSelectionChanged(const QItemSelection & selected, const QItemSelection & deselected);
-  void onCustomContextMenuRequested(const QPoint& pos);
-  void onOpen();
-  void onNewWindow();
-  void onNewTab();
-  void onOpenInTerminal();
-  void onNewFolder();
+    void onCollapsed(const QModelIndex& index);
+    void onExpanded(const QModelIndex& index);
+    void onRowLoaded(const QModelIndex& index);
+    void onSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
+    void onCustomContextMenuRequested(const QPoint& pos);
+    void onOpen();
+    void onNewWindow();
+    void onNewTab();
+    void onOpenInTerminal();
+    void onNewFolder();
 
 private:
-  FmPath* currentPath_;
-  QList<Path> pathsToExpand_;
-  DirTreeModelItem* currentExpandingItem_;
+    Fm2::FilePath currentPath_;
+    Fm2::FilePathList pathsToExpand_;
+    DirTreeModelItem* currentExpandingItem_;
 };
 
 }

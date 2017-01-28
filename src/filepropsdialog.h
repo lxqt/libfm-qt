@@ -26,70 +26,71 @@
 #include <QTimer>
 #include <libfm/fm.h>
 
+#include "core/fileinfo.h"
+
 namespace Ui {
-  class FilePropsDialog;
+class FilePropsDialog;
 };
 
 namespace Fm {
 
 class LIBFM_QT_API FilePropsDialog : public QDialog {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit FilePropsDialog(FmFileInfoList* files, QWidget* parent = 0, Qt::WindowFlags f = 0);
-  virtual ~FilePropsDialog();
+    explicit FilePropsDialog(Fm2::FileInfoList files, QWidget* parent = 0, Qt::WindowFlags f = 0);
+    virtual ~FilePropsDialog();
 
-  virtual void accept();
+    virtual void accept();
 
-  static FilePropsDialog* showForFile(FmFileInfo* file, QWidget* parent = 0) {
-    FmFileInfoList* files = fm_file_info_list_new();
-    fm_file_info_list_push_tail(files, file);
-    FilePropsDialog* dlg = showForFiles(files, parent);
-    fm_file_info_list_unref(files);
-    return dlg;
-  }
+    static FilePropsDialog* showForFile(std::shared_ptr<const Fm2::FileInfo> file, QWidget* parent = 0) {
+        Fm2::FileInfoList files;
+        files.push_back(std::move(file));
+        FilePropsDialog* dlg = showForFiles(files, parent);
+        return dlg;
+    }
 
-  static FilePropsDialog* showForFiles(FmFileInfoList* files, QWidget* parent = 0) {
-    FilePropsDialog* dlg = new FilePropsDialog(files, parent);
-    dlg->show();
-    return dlg;
-  }
+    static FilePropsDialog* showForFiles(Fm2::FileInfoList files, QWidget* parent = 0) {
+        FilePropsDialog* dlg = new FilePropsDialog(std::move(files), parent);
+        dlg->show();
+        return dlg;
+    }
 
 private:
-  void initGeneralPage();
-  void initApplications();
-  void initPermissionsPage();
-  void initOwner();
+    void initGeneralPage();
+    void initApplications();
+    void initPermissionsPage();
+    void initOwner();
 
-  static void onDeepCountJobFinished(FmDeepCountJob* job, FilePropsDialog* pThis);
+    static void onDeepCountJobFinished(FmDeepCountJob* job, FilePropsDialog* pThis);
 
 private Q_SLOTS:
-  void onFileSizeTimerTimeout();
+    void onFileSizeTimerTimeout();
 
 private:
-  Ui::FilePropsDialog* ui;
-  FmFileInfoList* fileInfos_; // list of all file infos
-  FmFileInfo* fileInfo; // file info of the first file in the list
-  bool singleType; // all files are of the same type?
-  bool singleFile; // only one file is selected?
-  bool hasDir; // is there any dir in the files?
-  bool allNative; // all files are on native UNIX filesystems (not virtual or remote)
+    Ui::FilePropsDialog* ui;
+    Fm2::FileInfoList fileInfos_; // list of all file infos
+    std::shared_ptr<const Fm2::FileInfo> fileInfo; // file info of the first file in the list
+    bool singleType; // all files are of the same type?
+    bool singleFile; // only one file is selected?
+    bool hasDir; // is there any dir in the files?
+    bool allNative; // all files are on native UNIX filesystems (not virtual or remote)
 
-  FmMimeType* mimeType; // mime type of the files
+    std::shared_ptr<const Fm2::MimeType> mimeType; // mime type of the files
 
-  gint32 uid; // owner uid of the files, -1 means all files do not have the same uid
-  gint32 gid; // owner gid of the files, -1 means all files do not have the same uid
-  mode_t ownerPerm; // read permission of the files, -1 means not all files have the same value
-  int ownerPermSel;
-  mode_t groupPerm; // read permission of the files, -1 means not all files have the same value
-  int groupPermSel;
-  mode_t otherPerm; // read permission of the files, -1 means not all files have the same value
-  int otherPermSel;
-  mode_t execPerm; // exec permission of the files
-  Qt::CheckState execCheckState;
+    gint32 uid; // owner uid of the files, -1 means all files do not have the same uid
+    gint32 gid; // owner gid of the files, -1 means all files do not have the same uid
+    mode_t ownerPerm; // read permission of the files, -1 means not all files have the same value
+    int ownerPermSel;
+    mode_t groupPerm; // read permission of the files, -1 means not all files have the same value
+    int groupPermSel;
+    mode_t otherPerm; // read permission of the files, -1 means not all files have the same value
+    int otherPermSel;
+    mode_t execPerm; // exec permission of the files
+    Qt::CheckState execCheckState;
 
-  FmDeepCountJob* deepCountJob; // job used to count total size
-  QTimer* fileSizeTimer;
+    FmDeepCountJob* deepCountJob; // job used to count total size
+    QTimer* fileSizeTimer;
 };
 
 }

@@ -26,6 +26,8 @@ typedef GObjectPtr<GVolumeMonitor> GVolumeMonitorPtr;
 typedef GObjectPtr<GVolume> GVolumePtr;
 typedef GObjectPtr<GMount> GMountPtr;
 
+typedef GObjectPtr<GAppInfo> GAppInfoPtr;
+
 
 class GErrorPtr {
 public:

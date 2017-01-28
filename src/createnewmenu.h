@@ -24,26 +24,27 @@
 #include <QMenu>
 #include <libfm/fm.h>
 
+#include "core/filepath.h"
+
 namespace Fm {
 
 class FolderView;
 
 class LIBFM_QT_API CreateNewMenu : public QMenu {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit CreateNewMenu(QWidget* dialogParent, FmPath* dirPath,
-                         QWidget* parent = 0);
-  virtual ~CreateNewMenu();
+    explicit CreateNewMenu(QWidget* dialogParent, Fm2::FilePath dirPath, QWidget* parent = 0);
+    virtual ~CreateNewMenu();
 
 protected Q_SLOTS:
-  void onCreateNewFolder();
-  void onCreateNewFile();
-  void onCreateNew();
+    void onCreateNewFolder();
+    void onCreateNewFile();
+    void onCreateNew();
 
 private:
-  QWidget* dialogParent_;
-  FmPath* dirPath_;
+    QWidget* dialogParent_;
+    Fm2::FilePath dirPath_;
 };
 
 }

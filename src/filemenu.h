@@ -25,7 +25,7 @@
 #include <QMenu>
 #include <qabstractitemmodel.h>
 #include <libfm/fm.h>
-
+#include "core/fileinfo.h"
 
 class QAction;
 
@@ -36,182 +36,180 @@ namespace Fm {
 class FileLauncher;
 
 class LIBFM_QT_API FileMenu : public QMenu {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit FileMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd, QWidget* parent = 0);
-  explicit FileMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd, const QString& title, QWidget* parent = 0);
-  ~FileMenu();
+    explicit FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo> info, Fm2::FilePath cwd, const QString& title = QString(), QWidget* parent = nullptr);
+    ~FileMenu();
 
-  bool useTrash() {
-    return useTrash_;
-  }
+    bool useTrash() {
+        return useTrash_;
+    }
 
-  void setUseTrash(bool trash);
+    void setUseTrash(bool trash);
 
-  bool confirmDelete() {
-    return confirmDelete_;
-  }
+    bool confirmDelete() {
+        return confirmDelete_;
+    }
 
-  void setConfirmDelete(bool confirm) {
-    confirmDelete_ = confirm;
-  }
+    void setConfirmDelete(bool confirm) {
+        confirmDelete_ = confirm;
+    }
 
-  QAction* openAction() {
-    return openAction_;
-  }
+    QAction* openAction() {
+        return openAction_;
+    }
 
-  QAction* openWithMenuAction() {
-    return openWithMenuAction_;
-  }
+    QAction* openWithMenuAction() {
+        return openWithMenuAction_;
+    }
 
-  QAction* openWithAction() {
-    return openWithAction_;
-  }
+    QAction* openWithAction() {
+        return openWithAction_;
+    }
 
-  QAction* separator1() {
-    return separator1_;
-  }
+    QAction* separator1() {
+        return separator1_;
+    }
 
-  QAction* createAction() {
-    return createAction_;
-  }
+    QAction* createAction() {
+        return createAction_;
+    }
 
-  QAction* separator2() {
-    return separator2_;
-  }
+    QAction* separator2() {
+        return separator2_;
+    }
 
-  QAction* cutAction() {
-    return cutAction_;
-  }
+    QAction* cutAction() {
+        return cutAction_;
+    }
 
-  QAction* copyAction() {
-    return copyAction_;
-  }
+    QAction* copyAction() {
+        return copyAction_;
+    }
 
-  QAction* pasteAction() {
-    return pasteAction_;
-  }
+    QAction* pasteAction() {
+        return pasteAction_;
+    }
 
-  QAction* deleteAction() {
-    return deleteAction_;
-  }
+    QAction* deleteAction() {
+        return deleteAction_;
+    }
 
-  QAction* unTrashAction() {
-    return unTrashAction_;
-  }
+    QAction* unTrashAction() {
+        return unTrashAction_;
+    }
 
-  QAction* renameAction() {
-    return renameAction_;
-  }
+    QAction* renameAction() {
+        return renameAction_;
+    }
 
-  QAction* separator3() {
-    return separator3_;
-  }
+    QAction* separator3() {
+        return separator3_;
+    }
 
-  QAction* propertiesAction() {
-    return propertiesAction_;
-  }
+    QAction* propertiesAction() {
+        return propertiesAction_;
+    }
 
-  FmFileInfoList* files() {
-    return files_;
-  }
+    const Fm2::FileInfoList& files() const {
+        return files_;
+    }
 
-  FmFileInfo* firstFile() {
-    return info_;
-  }
+    const std::shared_ptr<const Fm2::FileInfo>& firstFile() const {
+        return info_;
+    }
 
-  FmPath* cwd() {
-    return cwd_;
-  }
+    const Fm2::FilePath& cwd() const {
+        return cwd_;
+    }
 
-  void setFileLauncher(FileLauncher* launcher) {
-    fileLauncher_ = launcher;
-  }
+    void setFileLauncher(FileLauncher* launcher) {
+        fileLauncher_ = launcher;
+    }
 
-  FileLauncher* fileLauncher() {
-    return fileLauncher_;
-  }
+    FileLauncher* fileLauncher() {
+        return fileLauncher_;
+    }
 
-  bool sameType() const {
-    return sameType_;
-  }
+    bool sameType() const {
+        return sameType_;
+    }
 
-  bool sameFilesystem() const {
-    return sameFilesystem_;
-  }
+    bool sameFilesystem() const {
+        return sameFilesystem_;
+    }
 
-  bool allVirtual() const {
-    return allVirtual_;
-  }
+    bool allVirtual() const {
+        return allVirtual_;
+    }
 
-  bool allTrash() const {
-    return allTrash_;
-  }
+    bool allTrash() const {
+        return allTrash_;
+    }
 
-  bool confirmTrash() const {
-    return confirmTrash_;
-  }
+    bool confirmTrash() const {
+        return confirmTrash_;
+    }
 
-  void setConfirmTrash(bool value) {
-    confirmTrash_ = value;
-  }
+    void setConfirmTrash(bool value) {
+        confirmTrash_ = value;
+    }
 
 protected:
-  void createMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd);
 #ifdef CUSTOM_ACTIONS
-  void addCustomActionItem(QMenu* menu, struct _FmFileActionItem* item);
+    void addCustomActionItem(QMenu* menu, struct _FmFileActionItem* item);
 #endif
-  void openFilesWithApp(GAppInfo* app);
+    void openFilesWithApp(GAppInfo* app);
 
 protected Q_SLOTS:
-  void onOpenTriggered();
-  void onOpenWithTriggered();
-  void onFilePropertiesTriggered();
-  void onApplicationTriggered();
+    void onOpenTriggered();
+    void onOpenWithTriggered();
+    void onFilePropertiesTriggered();
+    void onApplicationTriggered();
 #ifdef CUSTOM_ACTIONS
-  void onCustomActionTrigerred();
+    void onCustomActionTrigerred();
 #endif
-  void onCompress();
-  void onExtract();
-  void onExtractHere();
+    void onCompress();
+    void onExtract();
+    void onExtractHere();
 
-  void onCutTriggered();
-  void onCopyTriggered();
-  void onPasteTriggered();
-  void onRenameTriggered();
-  void onDeleteTriggered();
-  void onUnTrashTriggered();
+    void onCutTriggered();
+    void onCopyTriggered();
+    void onPasteTriggered();
+    void onRenameTriggered();
+    void onDeleteTriggered();
+    void onUnTrashTriggered();
 
 private:
-  FmFileInfoList* files_;
-  FmFileInfo* info_;
-  FmPath* cwd_;
-  bool useTrash_;
-  bool confirmDelete_;
-  bool confirmTrash_; // Confirm before moving files into "trash can"
+    Fm2::FileInfoList files_;
+    std::shared_ptr<const Fm2::FileInfo> info_;
+    Fm2::FilePath cwd_;
+    bool useTrash_;
+    bool confirmDelete_;
+    bool confirmTrash_; // Confirm before moving files into "trash can"
 
-  bool sameType_;
-  bool sameFilesystem_;
-  bool allVirtual_;
-  bool allTrash_;
+    bool sameType_;
+    bool sameFilesystem_;
+    bool allVirtual_;
+    bool allTrash_;
 
-  QAction* openAction_;
-  QAction* openWithMenuAction_;
-  QAction* openWithAction_;
-  QAction* separator1_;
-  QAction* createAction_;
-  QAction* separator2_;
-  QAction* cutAction_;
-  QAction* copyAction_;
-  QAction* pasteAction_;
-  QAction* deleteAction_;
-  QAction* unTrashAction_;
-  QAction* renameAction_;
-  QAction* separator3_;
-  QAction* propertiesAction_;
+    QAction* openAction_;
+    QAction* openWithMenuAction_;
+    QAction* openWithAction_;
+    QAction* separator1_;
+    QAction* createAction_;
+    QAction* separator2_;
+    QAction* cutAction_;
+    QAction* copyAction_;
+    QAction* pasteAction_;
+    QAction* deleteAction_;
+    QAction* unTrashAction_;
+    QAction* renameAction_;
+    QAction* separator3_;
+    QAction* propertiesAction_;
 
-  FileLauncher* fileLauncher_;
+    FileLauncher* fileLauncher_;
 };
 
 }

@@ -6,7 +6,7 @@
 #include "cstrptr.h"
 #include <gio/gio.h>
 #include <vector>
-
+#include <QMetaType>
 
 namespace Fm2 {
 
@@ -38,6 +38,10 @@ public:
         return FilePath{g_file_new_for_path(path), false};
     }
 
+    static FilePath fromDisplayName(const char* path) {
+        return FilePath{g_file_parse_name(path), false};
+    }
+
     bool isValid() const {
         return gfile_ != nullptr;
     }
@@ -63,6 +67,11 @@ public:
             return localPath();
         }
         return uri();
+    }
+
+    // a human readable UTF-8 display name for the path
+    CStrPtr displayName() const {
+        return CStrPtr{g_file_get_parse_name(gfile_.get())};
     }
 
     FilePath parent() const {
@@ -125,6 +134,18 @@ public:
         return false;
     }
 
+    bool operator != (const FilePath& other) const {
+        return !operator==(other);
+    }
+
+    bool operator != (std::nullptr_t) const {
+        return gfile_ != nullptr;
+    }
+
+    operator bool() const {
+        return gfile_ != nullptr;
+    }
+
 private:
     GObjectPtr<GFile> gfile_;
 };
@@ -138,5 +159,7 @@ struct FilePathHash {
 typedef std::vector<FilePath> FilePathList;
 
 } // namespace Fm2
+
+Q_DECLARE_METATYPE(Fm2::FilePath)
 
 #endif // FM2_FILEPATH_H

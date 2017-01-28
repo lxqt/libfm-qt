@@ -237,6 +237,14 @@ public:
     bool isSameType() const;
 
     bool isSameFilesystem() const;
+
+    FilePathList paths() const {
+        FilePathList ret;
+        for(auto& file: *this) {
+            ret.push_back(file->path());
+        }
+        return ret;
+    }
 };
 
 
@@ -244,5 +252,8 @@ typedef std::pair<std::shared_ptr<const FileInfo>, std::shared_ptr<const FileInf
 
 
 }
+
+Q_DECLARE_METATYPE(std::shared_ptr<const Fm2::FileInfo>)
+
 
 #endif // __LIBFM_QT_FM2_FILE_INFO_H__

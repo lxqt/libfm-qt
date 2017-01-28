@@ -404,24 +404,19 @@ bool FolderModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
     if(data->hasUrls()) {
         // FIXME: port this to new Fm2 APIs
         qDebug("drop action: %d", action);
-        FmPathList* srcPaths = pathListFromQUrls(data->urls());
-        FmPath* _destPath = fm_path_new_for_gfile(destPath.gfile().get());
+        auto srcPaths = pathListFromQUrls(data->urls());
         switch(action) {
         case Qt::CopyAction:
-            FileOperation::copyFiles(srcPaths, _destPath);
+            FileOperation::copyFiles(srcPaths, destPath);
             break;
         case Qt::MoveAction:
-            FileOperation::moveFiles(srcPaths, _destPath);
+            FileOperation::moveFiles(srcPaths, destPath);
             break;
         case Qt::LinkAction:
-            FileOperation::symlinkFiles(srcPaths, _destPath);
+            FileOperation::symlinkFiles(srcPaths, destPath);
         default:
-            fm_path_unref(_destPath);
-            fm_path_list_unref(srcPaths);
             return false;
         }
-        fm_path_unref(_destPath);
-        fm_path_list_unref(srcPaths);
         return true;
     }
     else if(data->hasFormat("application/x-qabstractitemmodeldatalist")) {
