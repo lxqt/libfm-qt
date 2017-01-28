@@ -22,7 +22,7 @@
 
 namespace Fm {
 
-BookmarkAction::BookmarkAction(std::shared_ptr<Fm2::BookmarkItem> item, QObject* parent):
+BookmarkAction::BookmarkAction(std::shared_ptr<const Fm2::BookmarkItem> item, QObject* parent):
   QAction(parent),
   item_(std::move(item)) {
 

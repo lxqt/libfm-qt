@@ -30,9 +30,9 @@ namespace Fm {
 // action used to create bookmark menu items
 class LIBFM_QT_API BookmarkAction : public QAction {
 public:
-  explicit BookmarkAction(std::shared_ptr<Fm2::BookmarkItem> item, QObject* parent = 0);
+  explicit BookmarkAction(std::shared_ptr<const Fm2::BookmarkItem> item, QObject* parent = 0);
 
-  const std::shared_ptr<Fm2::BookmarkItem>& bookmark() const {
+  const std::shared_ptr<const Fm2::BookmarkItem>& bookmark() const {
     return item_;
   }
 
@@ -41,7 +41,7 @@ public:
   }
 
 private:
-  std::shared_ptr<Fm2::BookmarkItem> item_;
+  std::shared_ptr<const Fm2::BookmarkItem> item_;
 };
 
 }
