@@ -43,7 +43,7 @@ _retry:
 
     FileInfoList foundFiles;
     /* check if FS is R/O and set attr. into inf */
-    // FIXME:  _fm_file_info_job_update_fs_readonly(gf, inf, NULL, NULL);
+    // FIXME:  _fm_file_info_job_update_fs_readonly(gf, inf, nullptr, nullptr);
     GFileEnumeratorPtr enu = GFileEnumeratorPtr{
             g_file_enumerate_children(dir_path.gfile().get(), gfile_info_query_attribs,
                                       G_FILE_QUERY_INFO_NONE, cancellable().get(), &err),
@@ -78,7 +78,7 @@ _retry:
                 if(g_file_info_get_file_type(inf) == G_FILE_TYPE_DIRECTORY)
                     /* for dir: check if its FS is R/O and set attr. into inf */
                 {
-                    _fm_file_info_job_update_fs_readonly(child, inf, NULL, NULL);
+                    _fm_file_info_job_update_fs_readonly(child, inf, nullptr, nullptr);
                 }
                 fi = fm_file_info_new_from_g_file_data(child, inf, sub);
                 fm_path_unref(sub);
@@ -130,7 +130,7 @@ static gboolean emit_found_files(gpointer user_data) {
     }
     g_signal_emit(job, signals[FILES_FOUND], 0, job->files_to_add);
     g_slist_free_full(job->files_to_add, (GDestroyNotify)fm_file_info_unref);
-    job->files_to_add = NULL;
+    job->files_to_add = nullptr;
     job->delay_add_files_handler = 0;
     return FALSE;
 }
@@ -144,7 +144,7 @@ static gpointer queue_add_file(FmJob* fmjob, gpointer user_data) {
     if(job->delay_add_files_handler == 0)
         job->delay_add_files_handler = g_timeout_add_seconds_full(G_PRIORITY_LOW,
                                        1, emit_found_files, g_object_ref(job), g_object_unref);
-    return NULL;
+    return nullptr;
 }
 
 void fm_dir_list_job_add_found_file(FmDirListJob* job, FmFileInfo* file) {

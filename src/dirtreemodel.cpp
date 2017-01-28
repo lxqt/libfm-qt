@@ -135,7 +135,7 @@ QModelIndex DirTreeModel::addRoot(std::shared_ptr<const Fm2::FileInfo> root) {
     beginInsertRows(QModelIndex(), row, row);
     item->fileInfo_ = std::move(root);
     rootItems_.append(item);
-    // add_place_holder_child_item(model, item_l, NULL, FALSE);
+    // add_place_holder_child_item(model, item_l, nullptr, FALSE);
     endInsertRows();
     return QModelIndex();
 }
@@ -161,7 +161,7 @@ DirTreeModelItem* DirTreeModel::itemFromPath(const Fm2::FilePath &path) const {
             }
         }
     }
-    return NULL;
+    return nullptr;
 }
 
 
@@ -192,7 +192,7 @@ QIcon DirTreeModel::icon(const QModelIndex& index) {
 
 std::shared_ptr<const Fm2::FileInfo> DirTreeModel::fileInfo(const QModelIndex& index) {
     DirTreeModelItem* item = itemFromIndex(index);
-    return item ? item->fileInfo_ : NULL;
+    return item ? item->fileInfo_ : nullptr;
 }
 
 Fm2::FilePath DirTreeModel::filePath(const QModelIndex& index) {

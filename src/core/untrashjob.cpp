@@ -26,7 +26,7 @@ _retry_mkdir:
         if(!g_file_make_directory_with_parents(parent, cancellable().get(), &err)) {
             if(!isCancelled()) {
                 ErrorAction act = emitError(err, ErrorSeverity::MODERATE);
-                err = NULL;
+                err = nullptr;
                 if(act == ErrorAction::RETRY) {
                     goto _retry_mkdir;
                 }
@@ -45,7 +45,7 @@ void UntrashJob::run() {
 #if 0
     gboolean ret = TRUE;
     GList* l;
-    GError* err = NULL;
+    GError* err = nullptr;
     FmJob* fmjob = FM_JOB(job);
     job->total = fm_path_list_get_length(job->srcs);
     fm_file_ops_job_emit_prepared(job);
@@ -103,7 +103,7 @@ _retry_get_orig_path:
         }
         else {
             char* basename = g_file_get_basename(gf);
-            char* disp = basename ? g_filename_display_name(basename) : NULL;
+            char* disp = basename ? g_filename_display_name(basename) : nullptr;
             g_free(basename);
             /* FIXME: translate it */
             fm_file_ops_job_emit_cur_file(job, disp ? disp : "(invalid file)");
@@ -112,7 +112,7 @@ _retry_get_orig_path:
             if(err) {
                 ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
                 g_error_free(err);
-                err = NULL;
+                err = nullptr;
                 if(act == ErrorAction::RETRY) {
                     goto _retry_get_orig_path;
                 }

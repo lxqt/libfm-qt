@@ -31,7 +31,7 @@ CachedFolderModel::~CachedFolderModel() {
 }
 
 CachedFolderModel* CachedFolderModel::modelFromFolder(const std::shared_ptr<Fm2::Folder>& folder) {
-  CachedFolderModel* model = NULL;
+  CachedFolderModel* model = nullptr;
   QVariant cache = folder->property(cacheKey);
   model = cache.value<CachedFolderModel*>();
   if(model) {
@@ -52,7 +52,7 @@ CachedFolderModel* CachedFolderModel::modelFromPath(const Fm2::FilePath &path) {
     CachedFolderModel* model = modelFromFolder(folder);
     return model;
   }
-  return NULL;
+  return nullptr;
 }
 
 void CachedFolderModel::unref() {

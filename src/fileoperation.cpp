@@ -43,10 +43,10 @@ static PathList _convertPathList(const Fm2::FilePathList& srcFiles) {
 FileOperation::FileOperation(Type type, Fm2::FilePathList srcFiles, QObject* parent):
     QObject(parent),
     job_{fm_file_ops_job_new((FmFileOpType)type, _convertPathList(srcFiles))},
-    dlg{NULL},
+    dlg{nullptr},
     srcPaths{std::move(srcFiles)},
-    uiTimer(NULL),
-    elapsedTimer_(NULL),
+    uiTimer(nullptr),
+    elapsedTimer_(nullptr),
     lastElapsed_(0),
     updateRemainingTime_(true),
     autoDestroy_(true) {
@@ -76,11 +76,11 @@ FileOperation::~FileOperation() {
     if(uiTimer) {
         uiTimer->stop();
         delete uiTimer;
-        uiTimer = NULL;
+        uiTimer = nullptr;
     }
     if(elapsedTimer_) {
         delete elapsedTimer_;
-        elapsedTimer_ = NULL;
+        elapsedTimer_ = nullptr;
     }
 
     if(job_) {
@@ -210,13 +210,13 @@ void FileOperation::handleFinish() {
     if(uiTimer) {
         uiTimer->stop();
         delete uiTimer;
-        uiTimer = NULL;
+        uiTimer = nullptr;
     }
 
     if(dlg) {
         dlg->done(QDialog::Accepted);
         delete dlg;
-        dlg = NULL;
+        dlg = nullptr;
     }
     Q_EMIT finished();
 
@@ -231,7 +231,7 @@ void FileOperation::handleFinish() {
                 filesToDel.push_back(Fm2::FilePath{fm_path_to_gfile(FM_PATH(l->data)), false});
             }
             /* FIXME: parent window might be already destroyed! */
-            QWidget* parent = NULL; // FIXME: currently, parent window is not set
+            QWidget* parent = nullptr; // FIXME: currently, parent window is not set
             if(QMessageBox::question(parent, tr("Error"),
                                      tr("Some files cannot be moved to trash can because "
                                         "the underlying file systems don't support this operation.\n"
@@ -241,7 +241,7 @@ void FileOperation::handleFinish() {
         }
     }
     g_object_unref(job_);
-    job_ = NULL;
+    job_ = nullptr;
 
     if(autoDestroy_) {
         delete this;
@@ -280,7 +280,7 @@ FileOperation* FileOperation::deleteFiles(Fm2::FilePathList srcFiles, bool promp
                                           QMessageBox::Yes | QMessageBox::No,
                                           QMessageBox::No);
         if(result != QMessageBox::Yes) {
-            return NULL;
+            return nullptr;
         }
     }
 
@@ -297,7 +297,7 @@ FileOperation* FileOperation::trashFiles(Fm2::FilePathList srcFiles, bool prompt
                                           QMessageBox::Yes | QMessageBox::No,
                                           QMessageBox::No);
         if(result != QMessageBox::Yes) {
-            return NULL;
+            return nullptr;
         }
     }
 

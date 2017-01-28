@@ -78,7 +78,7 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
 #ifdef CUSTOM_ACTIONS
     FmFileInfo* folderInfo = view_->folderInfo();
     if(folderInfo) {
-        GList* single_list = NULL;
+        GList* single_list = nullptr;
         single_list = g_list_prepend(single_list, (GList*)folderInfo);
         GList* items = fm_get_actions_for_files(single_list);
         if(items) {
@@ -93,7 +93,7 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
                 addCustomActionItem(this, item);
             }
         }
-        g_list_foreach(items, (GFunc)fm_file_action_item_unref, NULL);
+        g_list_foreach(items, (GFunc)fm_file_action_item_unref, nullptr);
         g_list_free(items);
     }
 #endif
@@ -123,7 +123,7 @@ void FolderMenu::addCustomActionItem(QMenu* menu, FmFileActionItem* item) {
     menu->addAction(action);
     if(fm_file_action_item_is_menu(item)) {
         GList* subitems = fm_file_action_item_get_sub_items(item);
-        if(subitems != NULL) {
+        if(subitems != nullptr) {
             QMenu* submenu = new QMenu(menu);
             for(GList* l = subitems; l; l = l->next) {
                 FmFileActionItem* subitem = FM_FILE_ACTION_ITEM(l->data);
@@ -145,10 +145,10 @@ void FolderMenu::onCustomActionTrigerred() {
 
     FmFileInfo* folderInfo = view_->folderInfo();
     if(folderInfo) {
-        GList* single_list = NULL;
+        GList* single_list = nullptr;
         single_list = g_list_prepend(single_list, (GList*)folderInfo);
-        char* output = NULL;
-        fm_file_action_item_launch(item, NULL, single_list, &output);
+        char* output = nullptr;
+        fm_file_action_item_launch(item, nullptr, single_list, &output);
         if(output) {
             QMessageBox::information(this, tr("Output"), QString::fromUtf8(output));
             g_free(output);

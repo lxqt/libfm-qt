@@ -40,9 +40,9 @@ _retry_copy:
             bool dest_exists = (err->code == G_IO_ERROR_EXISTS);
             FmFileOpOption opt = 0;
             g_error_free(err);
-            err = NULL;
+            err = nullptr;
 
-            new_dest = NULL;
+            new_dest = nullptr;
             opt = _fm_file_ops_job_ask_new_name(job, src, dest, &new_dest, dest_exists);
             if(!new_dest) { /* restoring status quo */
                 new_dest = dest_cp;
@@ -82,7 +82,7 @@ _retry_copy:
 # if 0
             /* FIXME: ask to leave partial content? */
             if(is_no_space) {
-                g_file_delete(dest, fm_job_get_cancellable(fmjob), NULL);
+                g_file_delete(dest, fm_job_get_cancellable(fmjob), nullptr);
             }
             ret = false;
             delete_src = false;
@@ -165,7 +165,7 @@ bool CopyJob::copyDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FileP
                     if(err) {
                         // FIXME: emitError( err, ErrorSeverity::MODERATE);
                         g_error_free(err);
-                        err = NULL;
+                        err = nullptr;
                         /* ErrorAction::RETRY is not supported here */
                         ret = false;
                     }
@@ -212,7 +212,7 @@ bool CopyJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FileP
             FilePath newDestPath;
             FileExistsAction opt = askRename(FileInfo{srcFile, srcPath.parent()}, FileInfo{destFile, dirPath.parent()}, newDestPath);
             g_error_free(err);
-            err = NULL;
+            err = nullptr;
 
             switch(opt) {
             case FileOperationJob::RENAME:
@@ -238,7 +238,7 @@ bool CopyJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FileP
 #if 0
             ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
             g_error_free(err);
-            err = NULL;
+            err = nullptr;
             if(act == ErrorAction::RETRY) {
                 goto _retry_mkdir;
             }
@@ -264,7 +264,7 @@ bool CopyJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FileP
 /*
                     ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
                     g_error_free(err);
-                    err = NULL;
+                    err = nullptr;
                     if(act == ErrorAction::RETRY) {
                         goto _retry_chmod_for_dir;
                     }
@@ -382,11 +382,11 @@ bool _fm_file_ops_job_copy_run(FmFileOpsJob* job) {
         if(g_file_is_native(src) && g_file_is_native(dest_dir))
             /* both are native */
         {
-            tmp_basename = NULL;
+            tmp_basename = nullptr;
         }
         else if(g_file_is_native(src)) /* copy from native to virtual */
             tmp_basename = g_filename_to_utf8(fm_path_get_basename(path),
-                                              -1, NULL, NULL, NULL);
+                                              -1, nullptr, nullptr, nullptr);
         /* gvfs escapes it itself */
         else { /* copy from virtual to native/virtual */
             /* if we drop URI query onto native filesystem, omit query part */
@@ -404,13 +404,13 @@ bool _fm_file_ops_job_copy_run(FmFileOpsJob* job) {
                     basename = sub_name;
                 }
             }
-            tmp_basename = fm_uri_subpath_to_native_subpath(basename, NULL);
+            tmp_basename = fm_uri_subpath_to_native_subpath(basename, nullptr);
             g_free(sub_name);
         }
         dest = g_file_get_child(dest_dir,
                                 tmp_basename ? tmp_basename : fm_path_get_basename(path));
         g_free(tmp_basename);
-        if(!_fm_file_ops_job_copy_file(job, src, NULL, dest, NULL, df)) {
+        if(!_fm_file_ops_job_copy_file(job, src, nullptr, dest, nullptr, df)) {
             ret = false;
         }
         g_object_unref(src);

@@ -27,9 +27,9 @@ namespace Fm {
 
 PlacesModelItem::PlacesModelItem():
     QStandardItem(),
-    path_(NULL),
-    fileInfo_(NULL),
-    icon_(NULL) {
+    path_(nullptr),
+    fileInfo_(nullptr),
+    icon_(nullptr) {
 }
 
 PlacesModelItem::PlacesModelItem(const char* iconName, QString title, Fm2::FilePath path):
@@ -127,7 +127,7 @@ bool PlacesModelVolumeItem::isMounted() {
     if(mount) {
         g_object_unref(mount);
     }
-    return mount != NULL ? true : false;
+    return mount != nullptr ? true : false;
 }
 
 

@@ -39,13 +39,13 @@ struct LibFmQtData {
   Q_DISABLE_COPY(LibFmQtData)
 };
 
-static LibFmQtData* theLibFmData = NULL;
+static LibFmQtData* theLibFmData = nullptr;
 
 LibFmQtData::LibFmQtData(): refCount(1) {
 #if !GLIB_CHECK_VERSION(2, 36, 0)
   g_type_init();
 #endif
-  fm_init(NULL);
+  fm_init(nullptr);
   // turn on glib debug message
   // g_setenv("G_MESSAGES_DEBUG", "all", true);
   iconTheme = new IconTheme();
@@ -72,7 +72,7 @@ LibFmQt::LibFmQt() {
 LibFmQt::~LibFmQt() {
   if(--d->refCount == 0) {
     delete d;
-    theLibFmData = NULL;
+    theLibFmData = nullptr;
   }
 }
 

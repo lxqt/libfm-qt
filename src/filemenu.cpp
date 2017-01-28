@@ -41,25 +41,25 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
     files_{std::move(files)},
     info_{std::move(info)},
     cwd_{std::move(cwd)},
-    unTrashAction_(NULL),
-    fileLauncher_(NULL) {
+    unTrashAction_(nullptr),
+    fileLauncher_(nullptr) {
 
     useTrash_ = true;
     confirmDelete_ = true;
     confirmTrash_ = false; // Confirm before moving files into "trash can"
 
-    openAction_ = NULL;
-    openWithMenuAction_ = NULL;
-    openWithAction_ = NULL;
-    separator1_ = NULL;
-    cutAction_ = NULL;
-    copyAction_ = NULL;
-    pasteAction_ = NULL;
-    deleteAction_ = NULL;
-    unTrashAction_ = NULL;
-    renameAction_ = NULL;
-    separator2_ = NULL;
-    propertiesAction_ = NULL;
+    openAction_ = nullptr;
+    openWithMenuAction_ = nullptr;
+    openWithAction_ = nullptr;
+    separator1_ = nullptr;
+    cutAction_ = nullptr;
+    copyAction_ = nullptr;
+    pasteAction_ = nullptr;
+    deleteAction_ = nullptr;
+    unTrashAction_ = nullptr;
+    renameAction_ = nullptr;
+    separator2_ = nullptr;
+    propertiesAction_ = nullptr;
 
     auto mime_type = info->mimeType();
     Fm2::FilePath path = info->path();
@@ -116,7 +116,7 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
 
     createAction_ = new QAction(tr("Create &New"), this);
     Fm2::FilePath dirPath = files.size() == 1 && info->isDir() ? path : cwd_;
-    createAction_->setMenu(new CreateNewMenu(NULL, dirPath, this));
+    createAction_->setMenu(new CreateNewMenu(nullptr, dirPath, this));
     addAction(createAction_);
 
     separator2_ = addSeparator();
@@ -178,7 +178,7 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
             addCustomActionItem(this, item);
         }
     }
-    g_list_foreach(items, (GFunc)fm_file_action_item_unref, NULL);
+    g_list_foreach(items, (GFunc)fm_file_action_item_unref, nullptr);
     g_list_free(items);
 #endif
     // archiver integration
@@ -236,7 +236,7 @@ void FileMenu::addCustomActionItem(QMenu* menu, FmFileActionItem* item) {
     menu->addAction(action);
     if(fm_file_action_item_is_menu(item)) {
         GList* subitems = fm_file_action_item_get_sub_items(item);
-        if(subitems != NULL) {
+        if(subitems != nullptr) {
             QMenu* submenu = new QMenu(menu);
             for(GList* l = subitems; l; l = l->next) {
                 FmFileActionItem* subitem = FM_FILE_ACTION_ITEM(l->data);
@@ -253,16 +253,16 @@ void FileMenu::addCustomActionItem(QMenu* menu, FmFileActionItem* item) {
 
 void FileMenu::onOpenTriggered() {
     if(fileLauncher_) {
-        fileLauncher_->launchFiles(NULL, files_);
+        fileLauncher_->launchFiles(nullptr, files_);
     }
     else { // use the default launcher
         Fm::FileLauncher launcher;
-        launcher.launchFiles(NULL, files_);
+        launcher.launchFiles(nullptr, files_);
     }
 }
 
 void FileMenu::onOpenWithTriggered() {
-    AppChooserDialog dlg(NULL);
+    AppChooserDialog dlg(nullptr);
     if(sameType_) {
         dlg.setMimeType(info_->mimeType());
     }
@@ -279,12 +279,12 @@ void FileMenu::onOpenWithTriggered() {
 }
 
 void FileMenu::openFilesWithApp(GAppInfo* app) {
-    GList* uris = NULL;
+    GList* uris = nullptr;
     for(auto& file: files_) {
         auto uri = file->path().uri();
         uris = g_list_prepend(uris, uri.get());
     }
-    fm_app_info_launch_uris(app, uris, NULL, NULL);
+    fm_app_info_launch_uris(app, uris, nullptr, nullptr);
     g_list_free(uris);
 }
 
@@ -300,10 +300,10 @@ void FileMenu::onCustomActionTrigerred() {
     FmFileActionItem* item = action->item();
 
     GList* files = fm_file_info_list_peek_head_link(files_);
-    char* output = NULL;
+    char* output = nullptr;
     /* g_debug("item: %s is activated, id:%s", fm_file_action_item_get_name(item),
         fm_file_action_item_get_id(item)); */
-    fm_file_action_item_launch(item, NULL, files, &output);
+    fm_file_action_item_launch(item, nullptr, files, &output);
     if(output) {
         QMessageBox::information(this, tr("Output"), QString::fromUtf8(output));
         g_free(output);
@@ -344,7 +344,7 @@ void FileMenu::onPasteTriggered() {
 
 void FileMenu::onRenameTriggered() {
     for(auto& info: files_) {
-        Fm::renameFile(info, NULL);
+        Fm::renameFile(info, nullptr);
     }
 }
 
@@ -362,7 +362,7 @@ void FileMenu::onCompress() {
 #if 0 //FIXME
     FmArchiver* archiver = fm_archiver_get_default();
     if(archiver) {
-        fm_archiver_create_archive(archiver, NULL, files_.paths());
+        fm_archiver_create_archive(archiver, nullptr, files_.paths());
     }
 #endif
 }
@@ -372,7 +372,7 @@ void FileMenu::onExtract() {
     FmArchiver* archiver = fm_archiver_get_default();
     if(archiver) {
         FmPathList* paths = fm_path_list_new_from_file_info_list(files_);
-        fm_archiver_extract_archives(archiver, NULL, paths);
+        fm_archiver_extract_archives(archiver, nullptr, paths);
         fm_path_list_unref(paths);
     }
 #endif
@@ -383,7 +383,7 @@ void FileMenu::onExtractHere() {
     FmArchiver* archiver = fm_archiver_get_default();
     if(archiver) {
         FmPathList* paths = fm_path_list_new_from_file_info_list(files_);
-        fm_archiver_extract_archives_to(archiver, NULL, paths, cwd_);
+        fm_archiver_extract_archives_to(archiver, nullptr, paths, cwd_);
         fm_path_list_unref(paths);
     }
 #endif

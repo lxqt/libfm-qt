@@ -52,7 +52,7 @@ CreateNewMenu::CreateNewMenu(QWidget* dialogParent, Fm2::FilePath dirPath, QWidg
                 icon = fm_mime_type_get_icon(mime_type);
             }
             QAction* action = addAction(IconTheme::icon(icon), text);
-            action->setObjectName(QString::fromUtf8(fm_template_get_name(templ, NULL)));
+            action->setObjectName(QString::fromUtf8(fm_template_get_name(templ, nullptr)));
             connect(action, &QAction::triggered, this, &CreateNewMenu::onCreateNew);
         }
     }
@@ -77,10 +77,10 @@ void CreateNewMenu::onCreateNew() {
     QAction* action = static_cast<QAction*>(sender());
     QByteArray name = action->objectName().toUtf8();
     GList* templates = fm_template_list_all(fm_config->only_user_templates);
-    FmTemplate* templ = NULL;
+    FmTemplate* templ = nullptr;
     for(GList* l = templates; l; l = l->next) {
         FmTemplate* t = (FmTemplate*)l->data;
-        if(name == fm_template_get_name(t, NULL)) {
+        if(name == fm_template_get_name(t, nullptr)) {
             templ = t;
             break;
         }

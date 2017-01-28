@@ -39,7 +39,7 @@ CStrPtr Thumbnailer::commandForUri(const char* uri, const char* output_file, gui
                     g_string_append_printf(cmd_line, "%d", size);
                     break;
                 case 'i': {
-                    char* src_path = g_filename_from_uri(uri, NULL, NULL);
+                    char* src_path = g_filename_from_uri(uri, nullptr, nullptr);
                     if(src_path) {
                         quoted = g_shell_quote(src_path);
                         g_string_append(cmd_line, quoted);
@@ -78,11 +78,11 @@ bool Thumbnailer::run(const char* uri, const char* output_file, int size) const 
 }
 
 static void find_thumbnailers_in_data_dir(std::unordered_map<std::string, const char*>& hash, const char* data_dir) {
-    CStrPtr dir_path{g_build_filename(data_dir, "thumbnailers", NULL)};
-    GDir* dir = g_dir_open(dir_path.get(), 0, NULL);
+    CStrPtr dir_path{g_build_filename(data_dir, "thumbnailers", nullptr)};
+    GDir* dir = g_dir_open(dir_path.get(), 0, nullptr);
     if(dir) {
         const char* basename;
-        while((basename = g_dir_read_name(dir)) != NULL) {
+        while((basename = g_dir_read_name(dir)) != nullptr) {
             /* we only want filenames with .thumbnailer extension */
             if(G_LIKELY(g_str_has_suffix(basename, ".thumbnailer"))) {
                 hash.insert(std::make_pair(basename, data_dir));
@@ -116,8 +116,8 @@ void Thumbnailer::loadAll() {
         for(auto& item: hash) {
             auto& base_name = item.first;
             auto& dir_path = item.second;
-            CStrPtr file_path{g_build_filename(dir_path, "thumbnailers", base_name.c_str(), NULL)};
-            if(g_key_file_load_from_file(kf, file_path.get(), G_KEY_FILE_NONE, NULL)) {
+            CStrPtr file_path{g_build_filename(dir_path, "thumbnailers", base_name.c_str(), nullptr)};
+            if(g_key_file_load_from_file(kf, file_path.get(), G_KEY_FILE_NONE, nullptr)) {
                 auto thumbnailer = std::make_shared<Thumbnailer>(base_name.c_str(), kf);
                 char** mime_types = g_key_file_get_string_list(kf, "Thumbnailer Entry", "MimeType", nullptr, nullptr);
                 if(mime_types && thumbnailer->exec_) {

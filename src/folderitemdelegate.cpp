@@ -61,7 +61,7 @@ QSize FolderItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QMo
     // (see Qt -> qstyleditemdelegate.cpp). So, we always get decorationSize from "option".
     Q_ASSERT(gridSize_ != QSize());
     QRectF textRect(0, 0, gridSize_.width(), gridSize_.height() - option.decorationSize.height());
-    drawText(nullptr, opt, textRect); // passing NULL for painter will calculate the bounding rect only.
+    drawText(nullptr, opt, textRect); // passing nullptr for painter will calculate the bounding rect only.
     int width = qMax((int)textRect.width(), option.decorationSize.width());
     int height = option.decorationSize.height() + textRect.height();
     return QSize(width, height);

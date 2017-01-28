@@ -123,20 +123,20 @@ private:
     void showDialog();
 
     void pauseElapsedTimer() {
-        if(Q_LIKELY(elapsedTimer_ != NULL)) {
+        if(Q_LIKELY(elapsedTimer_ != nullptr)) {
             lastElapsed_ += elapsedTimer_->elapsed();
             elapsedTimer_->invalidate();
         }
     }
 
     void resumeElapsedTimer() {
-        if(Q_LIKELY(elapsedTimer_ != NULL)) {
+        if(Q_LIKELY(elapsedTimer_ != nullptr)) {
             elapsedTimer_->start();
         }
     }
 
     qint64 elapsedTime() {
-        if(Q_LIKELY(elapsedTimer_ != NULL)) {
+        if(Q_LIKELY(elapsedTimer_ != nullptr)) {
             return lastElapsed_ + elapsedTimer_->elapsed();
         }
         return 0;

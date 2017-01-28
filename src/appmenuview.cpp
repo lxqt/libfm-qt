@@ -28,8 +28,8 @@ namespace Fm {
 AppMenuView::AppMenuView(QWidget* parent):
     QTreeView(parent),
     model_(new QStandardItemModel()),
-    menu_cache(NULL),
-    menu_cache_reload_notify(NULL) {
+    menu_cache(nullptr),
+    menu_cache_reload_notify(nullptr) {
 
     setHeaderHidden(true);
     setSelectionMode(SingleSelection);
@@ -47,7 +47,7 @@ AppMenuView::AppMenuView(QWidget* parent):
         MenuCacheDir* dir = menu_cache_dup_root_dir(menu_cache);
         menu_cache_reload_notify = menu_cache_add_reload_notify(menu_cache, _onMenuCacheReload, this);
         if(dir) { /* content of menu is already loaded */
-            addMenuItems(NULL, dir);
+            addMenuItems(nullptr, dir);
             menu_cache_item_unref(MENU_CACHE_ITEM(dir));
         }
     }
@@ -70,7 +70,7 @@ void AppMenuView::addMenuItems(QStandardItem* parentItem, MenuCacheDir* dir) {
     GSList* l;
     GSList* list;
     /* Iterate over all menu items in this directory. */
-    for(l = list = menu_cache_dir_list_children(dir); l != NULL; l = l->next) {
+    for(l = list = menu_cache_dir_list_children(dir); l != nullptr; l = l->next) {
         /* Get the menu item. */
         MenuCacheItem* menuItem = MENU_CACHE_ITEM(l->data);
         switch(menu_cache_item_get_type(menuItem)) {
@@ -102,7 +102,7 @@ void AppMenuView::onMenuCacheReload(MenuCache* mc) {
     model_->clear();
     /* FIXME: preserve original selection */
     if(dir) {
-        addMenuItems(NULL, dir);
+        addMenuItems(nullptr, dir);
         menu_cache_item_unref(MENU_CACHE_ITEM(dir));
         selectionModel()->select(model_->index(0, 0), QItemSelectionModel::SelectCurrent);
     }
@@ -120,7 +120,7 @@ AppMenuViewItem* AppMenuView::selectedItem() const {
                                                                                    ));
         return item;
     }
-    return NULL;
+    return nullptr;
 }
 
 Fm2::GAppInfoPtr AppMenuView::selectedApp() const {
@@ -144,7 +144,7 @@ const char* AppMenuView::selectedAppDesktopId() const {
     if(item && item->isApp()) {
         return menu_cache_item_get_id(item->item());
     }
-    return NULL;
+    return nullptr;
 }
 
 FmPath* AppMenuView::selectedAppDesktopPath() const {
@@ -156,7 +156,7 @@ FmPath* AppMenuView::selectedAppDesktopPath() const {
         g_free(mpath);
         return path;
     }
-    return NULL;
+    return nullptr;
 }
 
 } // namespace Fm

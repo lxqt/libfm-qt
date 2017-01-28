@@ -70,7 +70,7 @@ public:
     virtual ~PlacesModel();
 
     bool showTrash() {
-        return trashItem_ != NULL;
+        return trashItem_ != nullptr;
     }
     void setShowTrash(bool show);
 

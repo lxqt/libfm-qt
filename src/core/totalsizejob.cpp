@@ -37,7 +37,7 @@ _retry_query_info:
         };
         if(!inf) {
             ErrorAction act = emitError( err, ErrorSeverity::MILD);
-            err = NULL;
+            err = nullptr;
             if(act == ErrorAction::RETRY) {
                 goto _retry_query_info;
             }
@@ -112,7 +112,7 @@ _retry_enum_children:
                         if(err) { /* error! */
                             /* ErrorAction::RETRY is not supported */
                             ErrorAction act = emitError( err, ErrorSeverity::MILD);
-                            err = NULL;
+                            err = nullptr;
                         }
                         else {
                             /* EOF is reached, do nothing. */
@@ -120,11 +120,11 @@ _retry_enum_children:
                         }
                     }
                 }
-                g_file_enumerator_close(enu.get(), NULL, NULL);
+                g_file_enumerator_close(enu.get(), nullptr, nullptr);
             }
             else {
                 ErrorAction act = emitError( err, ErrorSeverity::MILD);
-                err = NULL;
+                err = nullptr;
                 if(act == ErrorAction::RETRY) {
                     goto _retry_enum_children;
                 }

@@ -30,7 +30,7 @@
 namespace Fm {
 
 DirTreeView::DirTreeView(QWidget* parent):
-    currentExpandingItem_(NULL) {
+    currentExpandingItem_(nullptr) {
 
     setSelectionMode(QAbstractItemView::SingleSelection);
     setHeaderHidden(true);
@@ -56,7 +56,7 @@ void DirTreeView::cancelPendingChdir() {
         }
         DirTreeModel* _model = static_cast<DirTreeModel*>(model());
         disconnect(_model, &DirTreeModel::rowLoaded, this, &DirTreeView::onRowLoaded);
-        currentExpandingItem_ = NULL;
+        currentExpandingItem_ = nullptr;
     }
 }
 

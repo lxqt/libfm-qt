@@ -62,7 +62,7 @@ PlacesModel::PlacesModel(QObject* parent):
         placesRoot->appendRow(computerItem);
     }
     else {
-        computerItem = NULL;
+        computerItem = nullptr;
     }
 
     // FIXME: add an option to hide applications:///
@@ -83,7 +83,7 @@ PlacesModel::PlacesModel(QObject* parent):
         placesRoot->appendRow(networkItem);
     }
     else {
-        networkItem = NULL;
+        networkItem = nullptr;
     }
 
     devicesRoot = new QStandardItem(tr("Devices"));
@@ -200,13 +200,13 @@ void PlacesModel::updateTrash() {
 
     if(trashItem_) {
         UpdateTrashData* data = new UpdateTrashData(this);
-        g_file_query_info_async(data->gf, G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT, G_FILE_QUERY_INFO_NONE, G_PRIORITY_LOW, NULL,
+        g_file_query_info_async(data->gf, G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT, G_FILE_QUERY_INFO_NONE, G_PRIORITY_LOW, nullptr,
         [](GObject * source_object, GAsyncResult * res, gpointer user_data) {
             // the callback lambda function is called when the asyn query operation is finished
             UpdateTrashData* data = reinterpret_cast<UpdateTrashData*>(user_data);
             PlacesModel* _this = data->model.data();
             if(_this != nullptr) { // ensure that our model object is not deleted yet
-                Fm2::GFileInfoPtr inf{g_file_query_info_finish(data->gf, res, NULL), false};
+                Fm2::GFileInfoPtr inf{g_file_query_info_finish(data->gf, res, nullptr), false};
                 if(inf) {
                     if(_this->trashItem_ != nullptr) { // it's possible that when we finish, the trash item is removed
                         guint32 n = g_file_info_get_attribute_uint32(inf.get(), G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
@@ -226,15 +226,15 @@ void PlacesModel::createTrashItem() {
     gf = fm_file_new_for_uri("trash:///");
     // check if trash is supported by the current vfs
     // if gvfs is not installed, this can be unavailable.
-    if(!g_file_query_exists(gf, NULL)) {
+    if(!g_file_query_exists(gf, nullptr)) {
         g_object_unref(gf);
-        trashItem_ = NULL;
-        trashMonitor_ = NULL;
+        trashItem_ = nullptr;
+        trashMonitor_ = nullptr;
         return;
     }
     trashItem_ = new PlacesModelItem("user-trash", tr("Trash"), Fm2::FilePath::fromUri("trash:///"));
 
-    trashMonitor_ = fm_monitor_directory(gf, NULL);
+    trashMonitor_ = fm_monitor_directory(gf, nullptr);
     if(trashMonitor_) {
         g_signal_connect(trashMonitor_, "changed", G_CALLBACK(onTrashChanged), this);
     }
@@ -267,10 +267,10 @@ void PlacesModel::setShowTrash(bool show) {
             if(trashMonitor_) {
                 g_signal_handlers_disconnect_by_func(trashMonitor_, (gpointer)G_CALLBACK(onTrashChanged), this);
                 g_object_unref(trashMonitor_);
-                trashMonitor_ = NULL;
+                trashMonitor_ = nullptr;
             }
             placesRoot->removeRow(trashItem_->row()); // delete trashItem_;
-            trashItem_ = NULL;
+            trashItem_ = nullptr;
         }
     }
 }
@@ -294,7 +294,7 @@ PlacesModelItem* PlacesModel::itemFromPath(QStandardItem* rootItem, const Fm2::F
             return item;
         }
     }
-    return NULL;
+    return nullptr;
 }
 
 PlacesModelVolumeItem* PlacesModel::itemFromVolume(GVolume* volume) {
@@ -308,7 +308,7 @@ PlacesModelVolumeItem* PlacesModel::itemFromVolume(GVolume* volume) {
             }
         }
     }
-    return NULL;
+    return nullptr;
 }
 
 PlacesModelMountItem* PlacesModel::itemFromMount(GMount* mount) {
@@ -322,7 +322,7 @@ PlacesModelMountItem* PlacesModel::itemFromMount(GMount* mount) {
             }
         }
     }
-    return NULL;
+    return nullptr;
 }
 
 PlacesModelBookmarkItem* PlacesModel::itemFromBookmark(std::shared_ptr<const Fm2::BookmarkItem> bkitem) {
@@ -333,7 +333,7 @@ PlacesModelBookmarkItem* PlacesModel::itemFromBookmark(std::shared_ptr<const Fm2
             return item;
         }
     }
-    return NULL;
+    return nullptr;
 }
 
 void PlacesModel::onMountAdded(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis) {
@@ -537,7 +537,7 @@ bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
         QByteArray buf = data->data("application/x-bookmark-row");
         QDataStream stream(&buf, QIODevice::ReadOnly);
         int oldPos = -1;
-        char* pathStr = NULL;
+        char* pathStr = nullptr;
         stream >> oldPos >> pathStr;
         // find the source bookmark item being dragged
         auto allBookmarks = bookmarks->items();
@@ -585,7 +585,7 @@ bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
                 for(auto& path: paths) {
                     // FIXME: this is a blocking call
                     if(g_file_query_file_type(path.gfile().get(), G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                                              NULL) == G_FILE_TYPE_DIRECTORY) {
+                                              nullptr) == G_FILE_TYPE_DIRECTORY) {
                         auto disp_name = path.baseName();
                         bookmarks->insert(path, disp_name.get(), row);
                     }
@@ -618,7 +618,7 @@ QMimeData* PlacesModel::mimeData(const QModelIndexList& indexes) const {
             return mime;
         }
     }
-    return NULL;
+    return nullptr;
 }
 
 QStringList PlacesModel::mimeTypes() const {

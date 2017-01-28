@@ -34,7 +34,7 @@ QImage ThumbnailJob::readImageFromStream(GInputStream* stream, size_t len) {
     size_t totalReadSize = 0;
     while(!isCancelled() && totalReadSize < len) {
         size_t bytesToRead = totalReadSize + 4096 > len ? len - totalReadSize : 4096;
-        gssize readSize = g_input_stream_read(stream, pbuffer, bytesToRead, cancellable_.get(), NULL);
+        gssize readSize = g_input_stream_read(stream, pbuffer, bytesToRead, cancellable_.get(), nullptr);
         if(readSize == 0) { // end of file
             break;
         }
@@ -110,7 +110,7 @@ bool ThumbnailJob::readJpegExif(GInputStream *stream, QImage& thumbnail, int& ro
     ExifLoader* exif_loader = exif_loader_new();
     while(!isCancelled()) {
         unsigned char buf[4096];
-        gssize read_size = g_input_stream_read(stream, buf, 4096, cancellable_.get(), NULL);
+        gssize read_size = g_input_stream_read(stream, buf, 4096, cancellable_.get(), nullptr);
         if(read_size <= 0) { // EOF or error
             break;
         }
@@ -156,7 +156,7 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
     QImage result;
     auto mime_type = file->mimeType();
     if(isSupportedImageType(mime_type)) {
-        GFileInputStreamPtr ins{g_file_read(origPath.gfile().get(), cancellable_.get(), NULL), false};
+        GFileInputStreamPtr ins{g_file_read(origPath.gfile().get(), cancellable_.get(), nullptr), false};
         if(!ins)
             return QImage();
         bool fromExif = false;

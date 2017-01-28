@@ -118,7 +118,7 @@ public:
   }
 
 Q_SIGNALS:
-  void finished(GError* error = NULL);
+  void finished(GError* error = nullptr);
 
 private:
   void prepareUnmount(GMount* mount);

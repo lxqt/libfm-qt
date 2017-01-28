@@ -113,7 +113,7 @@ QByteArray XdndWorkaround::atomName(xcb_atom_t atom) {
   QByteArray name;
   xcb_connection_t* conn = QX11Info::connection();
   xcb_get_atom_name_cookie_t cookie = xcb_get_atom_name(conn, atom);
-  xcb_get_atom_name_reply_t* reply = xcb_get_atom_name_reply(conn, cookie, NULL);
+  xcb_get_atom_name_reply_t* reply = xcb_get_atom_name_reply(conn, cookie, nullptr);
   int len = xcb_get_atom_name_name_length(reply);
   if(len > 0) {
     name.append(xcb_get_atom_name_name(reply), len);

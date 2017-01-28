@@ -57,7 +57,7 @@ std::shared_ptr<const MimeType> MimeType::guessFromFileName(const char* fileName
         fileName = strchr(uri_scheme + 3, '/');
     if(fileName == nullptr)
         fileName = "unknown";
-    auto type = CStrPtr{g_content_type_guess(fileName, NULL, 0, &uncertain)};
+    auto type = CStrPtr{g_content_type_guess(fileName, nullptr, 0, &uncertain)};
     return fromName(type.get());
 }
 

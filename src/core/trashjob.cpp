@@ -32,7 +32,7 @@ void TrashJob::run() {
             bool ret = FALSE;
             if(fm_config->no_usb_trash) {
                 err.reset();
-                GMountPtr mnt{g_file_find_enclosing_mount(gf, NULL, &err), false};
+                GMountPtr mnt{g_file_find_enclosing_mount(gf, nullptr, &err), false};
                 if(mnt) {
                     ret = g_mount_can_unmount(mnt.get()); /* TRUE if it's removable media */
                     if(ret) {

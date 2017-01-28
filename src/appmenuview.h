@@ -37,7 +37,7 @@ class AppMenuViewItem;
 class LIBFM_QT_API AppMenuView : public QTreeView {
     Q_OBJECT
 public:
-    explicit AppMenuView(QWidget* parent = NULL);
+    explicit AppMenuView(QWidget* parent = nullptr);
     ~AppMenuView();
 
     Fm2::GAppInfoPtr selectedApp() const;

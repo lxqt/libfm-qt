@@ -76,7 +76,7 @@ bool FileLauncher::launchPaths(QWidget* parent, GList* paths) {
 }
 
 GAppInfo* FileLauncher::getApp(GList* file_infos, FmMimeType* mime_type, GError** err) {
-    AppChooserDialog dlg(NULL);
+    AppChooserDialog dlg(nullptr);
     if(mime_type) {
         dlg.setMimeType(Fm2::MimeType::fromName(fm_mime_type_get_type(mime_type)));
     }
@@ -88,7 +88,7 @@ GAppInfo* FileLauncher::getApp(GList* file_infos, FmMimeType* mime_type, GError*
         auto app = dlg.selectedApp();
         return app.release();
     }
-    return NULL;
+    return nullptr;
 }
 
 bool FileLauncher::openFolder(GAppLaunchContext* ctx, GList* folder_infos, GError** err) {
@@ -119,7 +119,7 @@ FmFileLauncherExecAction FileLauncher::execFile(FmFileInfo* file) {
 
 int FileLauncher::ask(const char* msg, char* const* btn_labels, int default_btn) {
     /* FIXME: set default button properly */
-    // return fm_askv(data->parent, NULL, msg, btn_labels);
+    // return fm_askv(data->parent, nullptr, msg, btn_labels);
     return -1;
 }
 

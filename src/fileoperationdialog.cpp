@@ -27,7 +27,7 @@
 namespace Fm {
 
 FileOperationDialog::FileOperationDialog(FileOperation* _operation):
-    QDialog(NULL),
+    QDialog(nullptr),
     operation(_operation),
     defaultOption(-1) {
 

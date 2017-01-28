@@ -31,7 +31,7 @@
 namespace Fm {
 
 void PathEditJob::runJob() {
-  GError *err = NULL;
+  GError *err = nullptr;
   GFileEnumerator* enu = g_file_enumerate_children(dirName,
                                                    // G_FILE_ATTRIBUTE_STANDARD_NAME","
                                                    G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME","
@@ -53,13 +53,13 @@ void PathEditJob::runJob() {
       else {
         if(err) {
           g_error_free(err);
-          err = NULL;
+          err = nullptr;
         }
         else /* EOF */
           break;
       }
     }
-    g_file_enumerator_close(enu, cancellable, NULL);
+    g_file_enumerator_close(enu, cancellable, nullptr);
     g_object_unref(enu);
   }
   // finished! let's update the UI in the main thread
@@ -71,7 +71,7 @@ PathEdit::PathEdit(QWidget* parent):
   QLineEdit(parent),
   completer_(new QCompleter()),
   model_(new QStringListModel()),
-  cancellable_(NULL) {
+  cancellable_(nullptr) {
   setCompleter(completer_);
   completer_->setModel(model_);
   connect(this, &PathEdit::textChanged, this, &PathEdit::onTextChanged);
@@ -187,7 +187,7 @@ void PathEdit::freeCompleter() {
   if(cancellable_) {
     g_cancellable_cancel(cancellable_);
     g_object_unref(cancellable_);
-    cancellable_ = NULL;
+    cancellable_ = nullptr;
   }
   model_->setStringList(QStringList());
 }
@@ -211,7 +211,7 @@ void PathEdit::onJobFinished() {
     model_->setStringList(QStringList());
   if(cancellable_) {
     g_object_unref(cancellable_);
-    cancellable_ = NULL;
+    cancellable_ = nullptr;
   }
 }
 

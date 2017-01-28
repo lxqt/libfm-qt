@@ -82,12 +82,12 @@ public:
     void setModel(ProxyFolderModel* _model);
 
     std::shared_ptr<Fm2::Folder> folder() const {
-        return model_ ? static_cast<FolderModel*>(model_->sourceModel())->folder() : NULL;
+        return model_ ? static_cast<FolderModel*>(model_->sourceModel())->folder() : nullptr;
     }
 
     std::shared_ptr<const Fm2::FileInfo> folderInfo() const {
         auto _folder = folder();
-        return _folder ? _folder->getInfo() : NULL;
+        return _folder ? _folder->getInfo() : nullptr;
     }
 
     Fm2::FilePath path() {

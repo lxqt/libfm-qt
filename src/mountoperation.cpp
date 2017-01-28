@@ -35,7 +35,7 @@ MountOperation::MountOperation(bool interactive, QWidget* parent):
   cancellable_(g_cancellable_new()),
   running(false),
   interactive_(interactive),
-  eventLoop(NULL),
+  eventLoop(nullptr),
   autoDestroy_(true) {
 
   g_signal_connect(op, "ask-password", G_CALLBACK(onAskPassword), this);
@@ -118,7 +118,7 @@ void MountOperation::onShowUnmountProgress(GMountOperation* _op, gchar* message,
 
 void MountOperation::onEjectMountFinished(GMount* mount, GAsyncResult* res, QPointer< MountOperation >* pThis) {
   if(*pThis) {
-    GError* error = NULL;
+    GError* error = nullptr;
     g_mount_eject_with_operation_finish(mount, res, &error);
     (*pThis)->handleFinish(error);
   }
@@ -127,7 +127,7 @@ void MountOperation::onEjectMountFinished(GMount* mount, GAsyncResult* res, QPoi
 
 void MountOperation::onEjectVolumeFinished(GVolume* volume, GAsyncResult* res, QPointer< MountOperation >* pThis) {
   if(*pThis) {
-    GError* error = NULL;
+    GError* error = nullptr;
     g_volume_eject_with_operation_finish(volume, res, &error);
     (*pThis)->handleFinish(error);
   }
@@ -136,7 +136,7 @@ void MountOperation::onEjectVolumeFinished(GVolume* volume, GAsyncResult* res, Q
 
 void MountOperation::onMountFileFinished(GFile* file, GAsyncResult* res, QPointer< MountOperation >* pThis) {
   if(*pThis) {
-    GError* error = NULL;
+    GError* error = nullptr;
     g_file_mount_enclosing_volume_finish(file, res, &error);
     (*pThis)->handleFinish(error);
   }
@@ -145,7 +145,7 @@ void MountOperation::onMountFileFinished(GFile* file, GAsyncResult* res, QPointe
 
 void MountOperation::onMountVolumeFinished(GVolume* volume, GAsyncResult* res, QPointer< MountOperation >* pThis) {
   if(*pThis) {
-    GError* error = NULL;
+    GError* error = nullptr;
     g_volume_mount_finish(volume, res, &error);
     (*pThis)->handleFinish(error);
   }
@@ -154,7 +154,7 @@ void MountOperation::onMountVolumeFinished(GVolume* volume, GAsyncResult* res, Q
 
 void MountOperation::onUnmountMountFinished(GMount* mount, GAsyncResult* res, QPointer< MountOperation >* pThis) {
   if(*pThis) {
-    GError* error = NULL;
+    GError* error = nullptr;
     g_mount_unmount_with_operation_finish(mount, res, &error);
     (*pThis)->handleFinish(error);
   }
@@ -182,14 +182,14 @@ void MountOperation::handleFinish(GError* error) {
         showError = false;
     }
     if(showError)
-      QMessageBox::critical(NULL, QObject::tr("Error"), QString::fromUtf8(error->message));
+      QMessageBox::critical(nullptr, QObject::tr("Error"), QString::fromUtf8(error->message));
   }
 
   Q_EMIT finished(error);
 
   if(eventLoop) { // if wait() is called to block the main loop
-    eventLoop->exit(error != NULL ? 1 : 0);
-    eventLoop = NULL;
+    eventLoop->exit(error != nullptr ? 1 : 0);
+    eventLoop = nullptr;
   }
 
   if(error)

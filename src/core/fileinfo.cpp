@@ -105,7 +105,7 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
         uri = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
         if(uri) {
             if(g_str_has_prefix(uri, "file:///")) {
-                auto filename = CStrPtr{g_filename_from_uri(uri, NULL, NULL)};
+                auto filename = CStrPtr{g_filename_from_uri(uri, nullptr, nullptr)};
                 target_ = filename.get();
             }
             else
@@ -136,7 +136,7 @@ _file_is_symlink:
         if(uri)
         {
             if(g_str_has_prefix(uri, "file:///")) {
-                auto filename = CStrPtr{g_filename_from_uri(uri, NULL, NULL)};
+                auto filename = CStrPtr{g_filename_from_uri(uri, nullptr, nullptr)};
                 target_ = filename.get();
             }
             else {
@@ -185,9 +185,9 @@ _file_is_symlink:
         isNameChangeable_ = g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_ACCESS_CAN_RENAME);
 
 #if 0
-    GFile *_gf = NULL;
+    GFile *_gf = nullptr;
     GFileAttributeInfoList *list;
-    auto list = g_file_query_settable_attributes(gf, NULL, NULL);
+    auto list = g_file_query_settable_attributes(gf, nullptr, nullptr);
     if (G_LIKELY(list))
     {
         if (g_file_attribute_info_list_lookup(list, G_FILE_ATTRIBUTE_STANDARD_ICON))

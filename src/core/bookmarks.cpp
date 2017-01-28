@@ -8,11 +8,11 @@ namespace Fm2 {
 std::weak_ptr<Bookmarks> Bookmarks::globalInstance_;
 
 static inline CStrPtr get_legacy_bookmarks_file(void) {
-    return CStrPtr{g_build_filename(g_get_home_dir(), ".gtk-bookmarks", NULL)};
+    return CStrPtr{g_build_filename(g_get_home_dir(), ".gtk-bookmarks", nullptr)};
 }
 
 static inline CStrPtr get_new_bookmarks_file(void) {
-    return CStrPtr{g_build_filename(g_get_user_config_dir(), "gtk-3.0", "bookmarks", NULL)};
+    return CStrPtr{g_build_filename(g_get_user_config_dir(), "gtk-3.0", "bookmarks", nullptr)};
 }
 
 Bookmarks::Bookmarks(QObject* parent):
@@ -28,7 +28,7 @@ Bookmarks::Bookmarks(QObject* parent):
         file = FilePath::fromLocalPath(fpath.get());
         load();
     }
-    mon = GObjectPtr<GFileMonitor>{g_file_monitor_file(file.gfile().get(), G_FILE_MONITOR_NONE, NULL, NULL), false};
+    mon = GObjectPtr<GFileMonitor>{g_file_monitor_file(file.gfile().get(), G_FILE_MONITOR_NONE, nullptr, nullptr), false};
     if(mon) {
         g_signal_connect(mon.get(), "changed", G_CALLBACK(_onFileChanged), this);
     }
@@ -101,9 +101,9 @@ void Bookmarks::save() {
     }
     idle_handler = false;
     // G_UNLOCK(bookmarks);
-    GError* err = NULL;
-    if(!g_file_replace_contents(file.gfile().get(), buf.c_str(), buf.length(), NULL,
-                                FALSE, G_FILE_CREATE_NONE, NULL, NULL, &err)) {
+    GError* err = nullptr;
+    if(!g_file_replace_contents(file.gfile().get(), buf.c_str(), buf.length(), nullptr,
+                                FALSE, G_FILE_CREATE_NONE, nullptr, nullptr, &err)) {
         g_critical("%s", err->message);
         g_error_free(err);
     }

@@ -54,7 +54,7 @@ enum CreateFileType {
     CreateWithTemplate
 };
 
-LIBFM_QT_API void createFileOrFolder(CreateFileType type, Fm2::FilePath parentDir, FmTemplate* templ = NULL, QWidget* parent = 0);
+LIBFM_QT_API void createFileOrFolder(CreateFileType type, Fm2::FilePath parentDir, FmTemplate* templ = nullptr, QWidget* parent = 0);
 
 LIBFM_QT_API uid_t uidFromName(QString name);
 

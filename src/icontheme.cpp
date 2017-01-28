@@ -34,8 +34,8 @@ public:
     QList<Icon> emblems;
 };
 
-static IconTheme* theIconTheme = NULL; // the global single instance of IconTheme.
-static const char* fallbackNames[] = {"unknown", "application-octet-stream", NULL};
+static IconTheme* theIconTheme = nullptr; // the global single instance of IconTheme.
+static const char* fallbackNames[] = {"unknown", "application-octet-stream", nullptr};
 
 static void fmIconDataDestroy(gpointer user_data) {
   IconCacheData* data = reinterpret_cast<IconCacheData*>(user_data);
@@ -45,8 +45,8 @@ static void fmIconDataDestroy(gpointer user_data) {
 IconTheme::IconTheme():
   currentThemeName_(QIcon::themeName()) {
   // NOTE: only one instance is allowed
-  Q_ASSERT(theIconTheme == NULL);
-  Q_ASSERT(qApp != NULL); // QApplication should exists before contructing IconTheme.
+  Q_ASSERT(theIconTheme == nullptr);
+  Q_ASSERT(qApp != nullptr); // QApplication should exists before contructing IconTheme.
 
   theIconTheme = this;
   fm_icon_set_user_data_destroy(reinterpret_cast<GDestroyNotify>(fmIconDataDestroy));

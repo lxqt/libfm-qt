@@ -155,8 +155,8 @@ void renameFile(std::shared_ptr<const Fm2::FileInfo> file, QWidget* parent) {
                     GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
                                    G_FILE_COPY_NO_FALLBACK_FOR_MOVE |
                                    G_FILE_COPY_NOFOLLOW_SYMLINKS),
-                    NULL, /* make this cancellable later. */
-                    NULL, NULL, &err)) {
+                    nullptr, /* make this cancellable later. */
+                    nullptr, nullptr, &err)) {
         QMessageBox::critical(parent, QObject::tr("Error"), err.message());
     }
 }
@@ -182,7 +182,7 @@ void createFileOrFolder(CreateFileType type, Fm2::FilePath parentDir, FmTemplate
     case CreateWithTemplate: {
         FmMimeType* mime = fm_template_get_mime_type(templ);
         prompt = QObject::tr("Enter a name for the new %1:").arg(QString::fromUtf8(fm_mime_type_get_desc(mime)));
-        defaultNewName = QString::fromUtf8(fm_template_get_name(templ, NULL));
+        defaultNewName = QString::fromUtf8(fm_template_get_name(templ, nullptr));
     }
     break;
     }
@@ -204,14 +204,14 @@ _retry:
     Fm2::GErrorPtr err;
     switch(type) {
     case CreateNewTextFile: {
-        Fm2::GFileOutputStreamPtr f{g_file_create(dest.gfile().get(), G_FILE_CREATE_NONE, NULL, &err), false};
+        Fm2::GFileOutputStreamPtr f{g_file_create(dest.gfile().get(), G_FILE_CREATE_NONE, nullptr, &err), false};
         if(f) {
-            g_output_stream_close(G_OUTPUT_STREAM(f.get()), NULL, NULL);
+            g_output_stream_close(G_OUTPUT_STREAM(f.get()), nullptr, nullptr);
         }
         break;
     }
     case CreateNewFolder:
-        g_file_make_directory(dest.gfile().get(), NULL, &err);
+        g_file_make_directory(dest.gfile().get(), nullptr, &err);
         break;
     case CreateWithTemplate:
         fm_template_create_file(templ, dest.gfile().get(), &err, false);
@@ -306,7 +306,7 @@ int execModelessDialog(QDialog* dlg) {
 // Use uriExists() whenever possible.
 bool isUriSchemeSupported(const char* uriScheme) {
     const gchar* const* schemes = g_vfs_get_supported_uri_schemes(g_vfs_get_default());
-    if(Q_UNLIKELY(schemes == NULL)) {
+    if(Q_UNLIKELY(schemes == nullptr)) {
         return false;
     }
     for(const gchar * const* scheme = schemes; *scheme; ++scheme)
@@ -323,7 +323,7 @@ bool isUriSchemeSupported(const char* uriScheme) {
 // Checking "network:///" is very slow, for example.
 bool uriExists(const char* uri) {
     GFile* gf = g_file_new_for_uri(uri);
-    bool ret = (bool)g_file_query_exists(gf, NULL);
+    bool ret = (bool)g_file_query_exists(gf, nullptr);
     g_object_unref(gf);
     return ret;
 }

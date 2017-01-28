@@ -37,7 +37,7 @@ namespace Fm {
 class LIBFM_QT_API AppChooserDialog : public QDialog {
     Q_OBJECT
 public:
-    explicit AppChooserDialog(std::shared_ptr<const Fm2::MimeType> mimeType, QWidget* parent = NULL, Qt::WindowFlags f = 0);
+    explicit AppChooserDialog(std::shared_ptr<const Fm2::MimeType> mimeType, QWidget* parent = nullptr, Qt::WindowFlags f = 0);
     ~AppChooserDialog();
 
     virtual void accept();

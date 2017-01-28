@@ -63,8 +63,8 @@ static GAppInfo* app_info_create_from_commandline(const char* commandline,
         const char* bin_name,
         const char* mime_type,
         gboolean terminal, gboolean keep) {
-    GAppInfo* app = NULL;
-    char* dirname = g_build_filename(g_get_user_data_dir(), "applications", NULL);
+    GAppInfo* app = nullptr;
+    char* dirname = g_build_filename(g_get_user_data_dir(), "applications", nullptr);
     const char* app_basename = strrchr(bin_name, '/');
 
     if(app_basename) {
@@ -99,7 +99,7 @@ static GAppInfo* app_info_create_from_commandline(const char* commandline,
                 g_string_append_printf(content, "X-KeepTerminal=%s\n",
                                        keep ? "true" : "false");
             close(fd); /* g_file_set_contents() may fail creating duplicate */
-            if(g_file_set_contents(filename, content->str, content->len, NULL)) {
+            if(g_file_set_contents(filename, content->str, content->len, nullptr)) {
                 char* fbname = g_path_get_basename(filename);
                 app = G_APP_INFO(g_desktop_app_info_new(fbname));
                 g_free(fbname);
@@ -127,11 +127,11 @@ inline static char* get_binary(const char* cmdline, gboolean* arg_found) {
     const char* p = strstr(cmdline, " %");
     if(p) {
         if(!strchr("fFuU", *(p + 2))) {
-            p = NULL;
+            p = nullptr;
         }
     }
     if(arg_found) {
-        *arg_found = (p != NULL);
+        *arg_found = (p != nullptr);
     }
     if(p) {
         return g_strndup(cmdline, p - cmdline);
@@ -142,7 +142,7 @@ inline static char* get_binary(const char* cmdline, gboolean* arg_found) {
 }
 
 GAppInfo* AppChooserDialog::customCommandToApp() {
-    GAppInfo* app = NULL;
+    GAppInfo* app = nullptr;
     QByteArray cmdline = ui->cmdLine->text().toLocal8Bit();
     QByteArray app_name = ui->appName->text().toUtf8();
     if(!cmdline.isEmpty()) {
@@ -164,7 +164,7 @@ GAppInfo* AppChooserDialog::customCommandToApp() {
             for(l = apps; l; l = l->next) {
                 GAppInfo* app2 = G_APP_INFO(l->data);
                 const char* cmd = g_app_info_get_commandline(app2);
-                char* bin2 = get_binary(cmd, NULL);
+                char* bin2 = get_binary(cmd, nullptr);
                 if(g_strcmp0(bin1, bin2) == 0) {
                     app = G_APP_INFO(g_object_ref(app2));
                     qDebug("found in app list");
@@ -173,7 +173,7 @@ GAppInfo* AppChooserDialog::customCommandToApp() {
                 }
                 g_free(bin2);
             }
-            g_list_foreach(apps, (GFunc)g_object_unref, NULL);
+            g_list_foreach(apps, (GFunc)g_object_unref, nullptr);
             g_list_free(apps);
             if(app) {
                 goto _out;
@@ -190,11 +190,11 @@ GAppInfo* AppChooserDialog::customCommandToApp() {
                         MenuCacheApp* ma = MENU_CACHE_APP(l->data);
                         const char* exec = menu_cache_app_get_exec(ma);
                         char* bin2;
-                        if(exec == NULL) {
+                        if(exec == nullptr) {
                             g_warning("application %s has no Exec statement", menu_cache_item_get_id(MENU_CACHE_ITEM(ma)));
                             continue;
                         }
-                        bin2 = get_binary(exec, NULL);
+                        bin2 = get_binary(exec, nullptr);
                         if(g_strcmp0(bin1, bin2) == 0) {
                             app = G_APP_INFO(g_desktop_app_info_new(menu_cache_item_get_id(MENU_CACHE_ITEM(ma))));
                             qDebug("found in menu cache");
@@ -217,7 +217,7 @@ GAppInfo* AppChooserDialog::customCommandToApp() {
 
         /* FIXME: g_app_info_create_from_commandline force the use of %f or %u, so this is not we need */
         app = app_info_create_from_commandline(cmdline.constData(), app_name.constData(), bin1,
-                                               mimeType_ ? mimeType_->name() : NULL,
+                                               mimeType_ ? mimeType_->name() : nullptr,
                                                ui->useTerminal->isChecked(), ui->keepTermOpen->isChecked());
 _out:
         g_free(bin1);
@@ -239,13 +239,13 @@ void AppChooserDialog::accept() {
         if(mimeType_ && g_app_info_get_name(selectedApp_.get())) {
             /* add this app to the mime-type */
 #if GLIB_CHECK_VERSION(2, 27, 6)
-            g_app_info_set_as_last_used_for_type(selectedApp_.get(), mimeType_->name(), NULL);
+            g_app_info_set_as_last_used_for_type(selectedApp_.get(), mimeType_->name(), nullptr);
 #else
-            g_app_info_add_supports_type(selectedApp_.get(), mimeType_->name(), NULL);
+            g_app_info_add_supports_type(selectedApp_.get(), mimeType_->name(), nullptr);
 #endif
             /* if need to set default */
             if(ui->setDefault->isChecked()) {
-                g_app_info_set_as_default_for_type(selectedApp_.get(), mimeType_->name(), NULL);
+                g_app_info_set_as_default_for_type(selectedApp_.get(), mimeType_->name(), nullptr);
             }
         }
     }

@@ -73,12 +73,12 @@ static void fm_qimage_wrapper_finalize(GObject *self) {
 }
 
 GObject *fm_qimage_wrapper_new(QImage& image) {
-  FmQImageWrapper *wrapper = (FmQImageWrapper*)g_object_new(FM_TYPE_QIMAGE_WRAPPER, NULL);
+  FmQImageWrapper *wrapper = (FmQImageWrapper*)g_object_new(FM_TYPE_QIMAGE_WRAPPER, nullptr);
   wrapper->image = image;
   return (GObject*)wrapper;
 }
 
-ThumbnailLoader* ThumbnailLoader::theThumbnailLoader = NULL;
+ThumbnailLoader* ThumbnailLoader::theThumbnailLoader = nullptr;
 bool ThumbnailLoader::localFilesOnly_ = true;
 int ThumbnailLoader::maxThumbnailFileSize_ = 0;
 
@@ -109,7 +109,7 @@ GObject* ThumbnailLoader::readImageFromFile(const char* filename) {
   QImage image;
   image.load(QString(filename));
   // qDebug("readImageFromFile: %s, %d", filename, image.isNull());
-  return image.isNull() ? NULL : fm_qimage_wrapper_new(image);
+  return image.isNull() ? nullptr : fm_qimage_wrapper_new(image);
 }
 
 GObject* ThumbnailLoader::readImageFromStream(GInputStream* stream, guint64 len, GCancellable* cancellable) {
@@ -120,22 +120,22 @@ GObject* ThumbnailLoader::readImageFromStream(GInputStream* stream, guint64 len,
   unsigned int totalReadSize = 0;
   while(!g_cancellable_is_cancelled(cancellable) && totalReadSize < len) {
     int bytesToRead = totalReadSize + 4096 > len ? len - totalReadSize : 4096;
-    gssize readSize = g_input_stream_read(stream, pbuffer, bytesToRead, cancellable, NULL);
+    gssize readSize = g_input_stream_read(stream, pbuffer, bytesToRead, cancellable, nullptr);
     if(readSize == 0) // end of file
       break;
     else if(readSize == -1) // error
-      return NULL;
+      return nullptr;
     totalReadSize += readSize;
     pbuffer += readSize;
   }
   QImage image;
   image.loadFromData(buffer.data(), totalReadSize);
-  return image.isNull() ? NULL : fm_qimage_wrapper_new(image);
+  return image.isNull() ? nullptr : fm_qimage_wrapper_new(image);
 }
 
 gboolean ThumbnailLoader::writeImage(GObject* image, const char* filename) {
   FmQImageWrapper* wrapper = FM_QIMAGE_WRAPPER(image);
-  if(wrapper == NULL || wrapper->image.isNull())
+  if(wrapper == nullptr || wrapper->image.isNull())
     return FALSE;
   return (gboolean)wrapper->image.save(filename, "PNG");
 }
@@ -144,7 +144,7 @@ GObject* ThumbnailLoader::scaleImage(GObject* ori_pix, int new_width, int new_he
   // qDebug("scaleImage: %d, %d", new_width, new_height);
   FmQImageWrapper* ori_wrapper = FM_QIMAGE_WRAPPER(ori_pix);
   QImage scaled = ori_wrapper->image.scaled(new_width, new_height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-  return scaled.isNull() ? NULL : fm_qimage_wrapper_new(scaled);
+  return scaled.isNull() ? nullptr : fm_qimage_wrapper_new(scaled);
 }
 
 GObject* ThumbnailLoader::rotateImage(GObject* image, int degree) {
@@ -159,7 +159,7 @@ GObject* ThumbnailLoader::rotateImage(GObject* image, int degree) {
   // coordinates, the direction of the rotation will be clockwise because
   // the y-axis points downwards.
   QImage rotated = wrapper->image.transformed(QMatrix().rotate(360 - degree));
-  return rotated.isNull() ? NULL : fm_qimage_wrapper_new(rotated);
+  return rotated.isNull() ? nullptr : fm_qimage_wrapper_new(rotated);
 }
 
 int ThumbnailLoader::getImageWidth(GObject* image) {
@@ -180,8 +180,8 @@ char* ThumbnailLoader::getImageText(GObject* image, const char* key) {
 
 gboolean ThumbnailLoader::setImageText(GObject* image, const char* key, const char* val) {
   FmQImageWrapper* wrapper = FM_QIMAGE_WRAPPER(image);
-  // NOTE: we might receive image=NULL sometimes with older versions of libfm.
-  if(Q_LIKELY(wrapper != NULL)) {
+  // NOTE: we might receive image=nullptr sometimes with older versions of libfm.
+  if(Q_LIKELY(wrapper != nullptr)) {
     wrapper->image.setText(key, val);
   }
   return TRUE;

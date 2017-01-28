@@ -78,7 +78,7 @@ FilePropsDialog::~FilePropsDialog() {
     if(fileSizeTimer) {
         fileSizeTimer->stop();
         delete fileSizeTimer;
-        fileSizeTimer = NULL;
+        fileSizeTimer = nullptr;
     }
 
     // Cancel the indexing job if it hasn't finished
@@ -86,7 +86,7 @@ FilePropsDialog::~FilePropsDialog() {
         g_signal_handlers_disconnect_by_func(deepCountJob, (gpointer)G_CALLBACK(onDeepCountJobFinished), this);
         fm_job_cancel(FM_JOB(deepCountJob));
         g_object_unref(deepCountJob);
-        deepCountJob = NULL;
+        deepCountJob = nullptr;
     }
 
     // And finally delete the dialog's UI
@@ -332,13 +332,13 @@ void FilePropsDialog::initGeneralPage() {
 
     // free the job
     g_object_unref(pThis->deepCountJob);
-    pThis->deepCountJob = NULL;
+    pThis->deepCountJob = nullptr;
 
     // stop the timer
     if(pThis->fileSizeTimer) {
         pThis->fileSizeTimer->stop();
         delete pThis->fileSizeTimer;
-        pThis->fileSizeTimer = NULL;
+        pThis->fileSizeTimer = nullptr;
     }
 }
 
@@ -371,7 +371,7 @@ void FilePropsDialog::accept() {
     // applications
     if(mimeType && ui->openWith->isChanged()) {
         auto currentApp = ui->openWith->selectedApp();
-        g_app_info_set_as_default_for_type(currentApp.get(), mimeType->name(), NULL);
+        g_app_info_set_as_default_for_type(currentApp.get(), mimeType->name(), nullptr);
     }
 
     // check if chown or chmod is needed
@@ -471,7 +471,7 @@ void FilePropsDialog::accept() {
                             GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
                                            G_FILE_COPY_NO_FALLBACK_FOR_MOVE |
                                            G_FILE_COPY_NOFOLLOW_SYMLINKS),
-                            NULL, NULL, NULL, &err)) {
+                            nullptr, nullptr, nullptr, &err)) {
                 QMessageBox::critical(this, QObject::tr("Error"), err.message());
             }
         }
