@@ -25,6 +25,7 @@
 #include <QTreeView>
 #include <libfm/fm.h>
 
+#include <memory>
 #include "core/filepath.h"
 
 namespace Fm {
@@ -98,7 +99,7 @@ private:
     void activateRow(int type, const QModelIndex& index);
 
 private:
-    PlacesModel* model_;
+    std::shared_ptr<PlacesModel> model_;
     Fm2::FilePath currentPath_;
 };
 

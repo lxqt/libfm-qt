@@ -48,9 +48,8 @@ PlacesView::PlacesView(QWidget* parent):
     delegate->setFmIconRole(PlacesModel::FmIconRole);
     setItemDelegateForColumn(0, delegate);
 
-    // FIXME: we may share this model amont all views
-    model_ = new PlacesModel(this);
-    setModel(model_);
+    model_ = PlacesModel::globalInstance();
+    setModel(model_.get());
 
     QHeaderView* headerView = header();
     headerView->setSectionResizeMode(0, QHeaderView::Stretch);

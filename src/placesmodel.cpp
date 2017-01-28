@@ -32,6 +32,8 @@
 
 namespace Fm {
 
+std::weak_ptr<PlacesModel> PlacesModel::globalInstance_;
+
 PlacesModel::PlacesModel(QObject* parent):
     QStandardItemModel(parent),
     showApplications_(true),
@@ -516,6 +518,15 @@ QVariant PlacesModel::data(const QModelIndex& index, int role) const {
         }
     }
     return QStandardItemModel::data(index, role);
+}
+
+std::shared_ptr<PlacesModel> PlacesModel::globalInstance() {
+    auto model = globalInstance_.lock();
+    if(!model) {
+        model = std::make_shared<PlacesModel>();
+        globalInstance_ = model;
+    }
+    return model;
 }
 
 

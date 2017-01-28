@@ -28,6 +28,8 @@
 #include <QAction>
 #include <libfm/fm.h>
 
+#include <memory>
+
 #include "core/filepath.h"
 #include "core/bookmarks.h"
 
@@ -84,6 +86,8 @@ public:
 
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
 
+    static std::shared_ptr<PlacesModel> globalInstance();
+
 public Q_SLOTS:
     void updateIcons();
     void updateTrash();
@@ -135,6 +139,8 @@ private:
     PlacesModelItem* applicationsItem;
     QIcon ejectIcon_;
     QList<GMount*> shadowedMounts_;
+
+    static std::weak_ptr<PlacesModel> globalInstance_;
 };
 
 }
