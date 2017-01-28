@@ -33,11 +33,21 @@ public:
 
     void run() override;
 
+    FilePath dirPath() const {
+        std::lock_guard<std::mutex> lock{mutex_};
+        return dir_path;
+    }
+
+    std::shared_ptr<const FileInfo> dirInfo() const {
+        std::lock_guard<std::mutex> lock{mutex_};
+        return dir_fi;
+    }
+
 Q_SIGNALS:
     void filesFound(FileInfoList& foundFiles);
 
 private:
-    std::mutex mutex_;
+    mutable std::mutex mutex_;
     FilePath dir_path;
     Flags flags;
     std::shared_ptr<const FileInfo> dir_fi;

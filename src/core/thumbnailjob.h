@@ -23,22 +23,45 @@ public:
 
     static QThreadPool* threadPool();
 
+
+    static void setLocalFilesOnly(bool value) {
+        localFilesOnly_ = value;
+        if(fm_config) {
+            fm_config->thumbnail_local = localFilesOnly_;
+        }
+    }
+
+    static bool localFilesOnly() {
+        return localFilesOnly_;
+    }
+
+    static int maxThumbnailFileSize() {
+        return maxThumbnailFileSize_;
+    }
+
+    static void setMaxThumbnailFileSize(int size) {
+        maxThumbnailFileSize_ = size;
+        if(fm_config) {
+            fm_config->thumbnail_max = maxThumbnailFileSize_;
+        }
+    }
+
 Q_SIGNALS:
     void thumbnailLoaded(const std::shared_ptr<const FileInfo>& file, int size, const QImage& thumbnail);
 
 private:
 
-    bool isSupportedImageType(const std::shared_ptr<const MimeType> &mimeType) const;
+    bool isSupportedImageType(const std::shared_ptr<const MimeType>& mimeType) const;
 
-    bool isThumbnailOutdated(const std::shared_ptr<const FileInfo> &file, const QImage& thumbnail) const;
+    bool isThumbnailOutdated(const std::shared_ptr<const FileInfo>& file, const QImage& thumbnail) const;
 
-    QImage generateThumbnail(const std::shared_ptr<const FileInfo> &file, const FilePath &origPath, const char* uri, const QString& thumbnailFilename);
+    QImage generateThumbnail(const std::shared_ptr<const FileInfo>& file, const FilePath& origPath, const char* uri, const QString& thumbnailFilename);
 
-    QImage readImageFromStream(GInputStream *stream, size_t len);
+    QImage readImageFromStream(GInputStream* stream, size_t len);
 
     QImage loadForFile(const std::shared_ptr<const FileInfo>& file);
 
-    bool readJpegExif(GInputStream *stream, QImage& thumbnail, int& rotate_degrees);
+    bool readJpegExif(GInputStream* stream, QImage& thumbnail, int& rotate_degrees);
 
 private:
     FileInfoList files_;
@@ -47,6 +70,9 @@ private:
     GCancellablePtr cancellable_;
 
     static QThreadPool* threadPool_;
+
+    static bool localFilesOnly_;
+    static int maxThumbnailFileSize_;
 };
 
 } // namespace Fm2

@@ -11,6 +11,9 @@ namespace Fm2 {
 
 QThreadPool* ThumbnailJob::threadPool_ = nullptr;
 
+bool ThumbnailJob::localFilesOnly_ = true;
+int ThumbnailJob::maxThumbnailFileSize_ = 0;
+
 ThumbnailJob::ThumbnailJob(FileInfoList files, int size):
     files_{std::move(files)},
     size_{size} {

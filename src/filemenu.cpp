@@ -282,9 +282,10 @@ void FileMenu::openFilesWithApp(GAppInfo* app) {
     GList* uris = nullptr;
     for(auto& file: files_) {
         auto uri = file->path().uri();
-        uris = g_list_prepend(uris, uri.get());
+        uris = g_list_prepend(uris, uri.release());
     }
     fm_app_info_launch_uris(app, uris, nullptr, nullptr);
+    g_list_foreach(uris, (GFunc)g_free, nullptr);
     g_list_free(uris);
 }
 

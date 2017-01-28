@@ -442,6 +442,8 @@ void Folder::onDirListFinished() {
     DirListJob* job = static_cast<DirListJob*>(sender());
     if(job->isCancelled() || job != dirlist_job) // this is a cancelled job, ignore!
         return;
+    dirInfo_ = job->dirInfo();
+
     auto& files_to_add = job->files();
     for(auto& file: files_to_add) {
         files_[file->getName().c_str()] = file;

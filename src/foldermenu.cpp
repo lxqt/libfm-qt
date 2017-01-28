@@ -36,9 +36,6 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
     QMenu(parent),
     view_(view) {
 
-#if 0
-    // FIXME: Fm2
-
     ProxyFolderModel* model = view_->model();
 
     createAction_ = new QAction(tr("Create &New"), this);
@@ -75,6 +72,7 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
     showHiddenAction_->setChecked(model->showHidden());
     connect(showHiddenAction_, &QAction::triggered, this, &FolderMenu::onShowHiddenActionTriggered);
 
+#if 0 // FIXME: port to Fm2
 #ifdef CUSTOM_ACTIONS
     FmFileInfo* folderInfo = view_->folderInfo();
     if(folderInfo) {
@@ -98,13 +96,13 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
     }
 #endif
 
+#endif
+
     separator4_ = addSeparator();
 
     propertiesAction_ = new QAction(tr("Folder Pr&operties"), this);
     addAction(propertiesAction_);
     connect(propertiesAction_, &QAction::triggered, this, &FolderMenu::onPropertiesActionTriggered);
-
-#endif
 }
 
 FolderMenu::~FolderMenu() {
@@ -313,14 +311,10 @@ void FolderMenu::onFolderFirstActionTriggered(bool checked) {
 }
 
 void FolderMenu::onPropertiesActionTriggered() {
-#if 0
-    // FIXME: port to Fm2
-    FmFileInfo* folderInfo = view_->folderInfo();
-
+    auto folderInfo = view_->folderInfo();
     if(folderInfo) {
         FilePropsDialog::showForFile(folderInfo);
     }
-#endif
 }
 
 } // namespace Fm

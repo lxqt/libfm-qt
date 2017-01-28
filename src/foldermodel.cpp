@@ -32,7 +32,6 @@
 #include <QTimer>
 #include "utilities.h"
 #include "fileoperation.h"
-#include "thumbnailloader.h"
 
 namespace Fm {
 

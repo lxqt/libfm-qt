@@ -21,7 +21,6 @@
 #include "libfmqt.h"
 #include <QLocale>
 #include "icontheme.h"
-#include "thumbnailloader.h"
 #include "core/thumbnailer.h"
 #include "xdndworkaround.h"
 
@@ -32,7 +31,6 @@ struct LibFmQtData {
   ~LibFmQtData();
 
   IconTheme* iconTheme;
-  ThumbnailLoader* thumbnailLoader;
   QTranslator translator;
   XdndWorkaround workaround;
   int refCount;
@@ -49,14 +47,12 @@ LibFmQtData::LibFmQtData(): refCount(1) {
   // turn on glib debug message
   // g_setenv("G_MESSAGES_DEBUG", "all", true);
   iconTheme = new IconTheme();
-  thumbnailLoader = new ThumbnailLoader();
   Fm2::Thumbnailer::loadAll();
   translator.load("libfm-qt_" + QLocale::system().name(), LIBFM_QT_DATA_DIR "/translations");
 }
 
 LibFmQtData::~LibFmQtData() {
   delete iconTheme;
-  delete thumbnailLoader;
   fm_finalize();
 }
 

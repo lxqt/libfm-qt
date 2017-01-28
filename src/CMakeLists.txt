@@ -69,7 +69,6 @@ set(libfm_SRCS
     utilities.cpp
     dndactionmenu.cpp
     editbookmarksdialog.cpp
-    thumbnailloader.cpp
     execfiledialog.cpp
     appchoosercombobox.cpp
     appmenuview.cpp

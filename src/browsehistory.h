@@ -22,7 +22,7 @@
 #define FM_BROWSEHISTORY_H
 
 #include "libfmqtglobals.h"
-#include <QVector>
+#include <vector>
 #include <libfm/fm.h>
 
 #include "core/filepath.h"
@@ -74,7 +74,7 @@ private:
     // TODO: we may need to store current selection as well.
 };
 
-class LIBFM_QT_API BrowseHistory : public QVector<BrowseHistoryItem> {
+class LIBFM_QT_API BrowseHistory {
 
 public:
     BrowseHistory();
@@ -86,15 +86,23 @@ public:
     void setCurrentIndex(int index);
 
     Fm2::FilePath currentPath() const {
-        return at(currentIndex_).path();
+        return items_[currentIndex_].path();
     }
 
     int currentScrollPos() const {
-        return at(currentIndex_).scrollPos();
+        return items_[currentIndex_].scrollPos();
     }
 
     BrowseHistoryItem& currentItem() {
-        return operator[](currentIndex_);
+        return items_[currentIndex_];
+    }
+
+    size_t size() const {
+        return items_.size();
+    }
+
+    BrowseHistoryItem& at(int index) {
+        return items_[index];
     }
 
     void add(Fm2::FilePath path, int scrollPos = 0);
@@ -114,6 +122,7 @@ public:
     void setMaxCount(int maxCount);
 
 private:
+    std::vector<BrowseHistoryItem> items_;
     int currentIndex_;
     int maxCount_;
 };
