@@ -27,7 +27,6 @@ namespace Fm {
 
 PlacesModelItem::PlacesModelItem():
     QStandardItem(),
-    path_(nullptr),
     fileInfo_(nullptr),
     icon_(nullptr) {
 }

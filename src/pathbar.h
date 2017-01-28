@@ -35,51 +35,51 @@ class PathEdit;
 class PathButton;
 
 class LIBFM_QT_API PathBar: public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit PathBar(QWidget *parent = 0);
+    explicit PathBar(QWidget* parent = 0);
 
-  const Fm2::FilePath& path() {
-    return currentPath_;
-  }
+    const Fm2::FilePath& path() {
+        return currentPath_;
+    }
 
-  void setPath(Fm2::FilePath path);
+    void setPath(Fm2::FilePath path);
 
 Q_SIGNALS:
-  void chdir(const Fm2::FilePath& path);
-  void middleClickChdir(const Fm2::FilePath& path);
-  void editingFinished();
+    void chdir(const Fm2::FilePath& path);
+    void middleClickChdir(const Fm2::FilePath& path);
+    void editingFinished();
 
 public Q_SLOTS:
-  void openEditor();
-  void closeEditor();
-  void copyPath();
+    void openEditor();
+    void closeEditor();
+    void copyPath();
 
 private Q_SLOTS:
-  void onButtonToggled(bool checked);
-  void onScrollButtonClicked();
-  void onReturnPressed();
-  void setArrowEnabledState(int value);
+    void onButtonToggled(bool checked);
+    void onScrollButtonClicked();
+    void onReturnPressed();
+    void setArrowEnabledState(int value);
 
 protected:
-  void resizeEvent(QResizeEvent* event);
-  void wheelEvent (QWheelEvent* event);
-  void mousePressEvent(QMouseEvent *event);
-  void contextMenuEvent(QContextMenuEvent *event);
+    void resizeEvent(QResizeEvent* event);
+    void wheelEvent(QWheelEvent* event);
+    void mousePressEvent(QMouseEvent* event);
+    void contextMenuEvent(QContextMenuEvent* event);
 
 private:
-  void updateScrollButtonVisibility();
-  Fm2::FilePath pathForButton(PathButton* btn);
+    void updateScrollButtonVisibility();
+    Fm2::FilePath pathForButton(PathButton* btn);
 
 private:
-  QToolButton* scrollToStart_;
-  QToolButton* scrollToEnd_;
-  QScrollArea* scrollArea_;
-  QWidget* buttonsWidget_;
-  QHBoxLayout* buttonsLayout_;
-  PathEdit* tempPathEdit_;
+    QToolButton* scrollToStart_;
+    QToolButton* scrollToEnd_;
+    QScrollArea* scrollArea_;
+    QWidget* buttonsWidget_;
+    QHBoxLayout* buttonsLayout_;
+    PathEdit* tempPathEdit_;
 
-  Fm2::FilePath currentPath_;   // currently active path
+    Fm2::FilePath currentPath_;   // currently active path
 };
 
 } // namespace Fm

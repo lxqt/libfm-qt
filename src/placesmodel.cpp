@@ -545,7 +545,7 @@ bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
         // If we cannot find the dragged bookmark item at position <oldRow>, or we find an item,
         // but the path of the item is not the same as what we expected, than it's the wrong item.
         // This means that the bookmarks are changed during our dnd processing, which is an extremely rare case.
-        auto draggedPath = Fm2::FilePath{pathStr};
+        auto draggedPath = Fm2::FilePath::fromPathStr(pathStr);
         if(!draggedItem || draggedItem->path() != draggedPath) {
             delete []pathStr;
             return false;

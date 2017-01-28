@@ -159,7 +159,7 @@ Fm2::FilePath PathBar::pathForButton(PathButton* btn) {
         PathButton* btn = static_cast<PathButton*>(buttonsLayout_->itemAt(i)->widget());
         fullPath += btn->name();
     }
-    return Fm2::FilePath{fullPath.c_str()};
+    return Fm2::FilePath::fromPathStr(fullPath.c_str());
 }
 
 void PathBar::onButtonToggled(bool checked) {
@@ -299,8 +299,7 @@ void PathBar::copyPath() {
 
 void PathBar::onReturnPressed() {
     QByteArray pathStr = tempPathEdit_->text().toLocal8Bit();
-    Fm2::FilePath path{pathStr.constData()};
-    setPath(path);
+    setPath(Fm2::FilePath::fromPathStr(pathStr.constData()));
 }
 
 void PathBar::setArrowEnabledState(int value) {

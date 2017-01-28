@@ -16,9 +16,6 @@ public:
     explicit FilePath() {
     }
 
-    explicit FilePath(const char *path_str): gfile_{g_file_new_for_commandline_arg(path_str), false} {
-    }
-
     explicit FilePath(GFile* gfile, bool add_ref): gfile_{gfile, add_ref} {
     }
 
@@ -40,6 +37,10 @@ public:
 
     static FilePath fromDisplayName(const char* path) {
         return FilePath{g_file_parse_name(path), false};
+    }
+
+    static FilePath fromPathStr(const char* path_str) {
+        return FilePath{g_file_new_for_commandline_arg(path_str), false};
     }
 
     bool isValid() const {

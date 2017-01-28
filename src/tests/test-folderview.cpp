@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
     auto action = new QAction("Go");
     toolbar.addAction(action);
     QObject::connect(action, &QAction::triggered, [&]() {
-        auto path = Fm2::FilePath(edit.text().toLocal8Bit().constData());
+        auto path = Fm2::FilePath::fromPathStr(edit.text().toLocal8Bit().constData());
         auto new_model = Fm::CachedFolderModel::modelFromPath(path);
         proxy_model->setSourceModel(new_model);
     });
