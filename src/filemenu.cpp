@@ -61,8 +61,8 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
     separator2_ = nullptr;
     propertiesAction_ = nullptr;
 
-    auto mime_type = info->mimeType();
-    Fm2::FilePath path = info->path();
+    auto mime_type = info_->mimeType();
+    Fm2::FilePath path = info_->path();
 
     // check if the files are of the same type
     sameType_ = files.isSameType();
@@ -115,7 +115,7 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
     separator1_ = addSeparator();
 
     createAction_ = new QAction(tr("Create &New"), this);
-    Fm2::FilePath dirPath = files.size() == 1 && info->isDir() ? path : cwd_;
+    Fm2::FilePath dirPath = files.size() == 1 && info_->isDir() ? path : cwd_;
     createAction_->setMenu(new CreateNewMenu(nullptr, dirPath, this));
     addAction(createAction_);
 
