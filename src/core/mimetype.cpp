@@ -27,7 +27,7 @@ MimeType::MimeType(const char* typeName):
     else if(g_content_type_can_be_executable(typeName))
         g_themed_icon_append_name(G_THEMED_ICON(gicon.get()), "application-x-executable");
 
-    icon_ = Icon::fromGIcon(gicon);
+    icon_ = IconInfo::fromGIcon(gicon);
 }
 
 MimeType::~MimeType () {

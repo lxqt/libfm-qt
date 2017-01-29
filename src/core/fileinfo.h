@@ -37,7 +37,7 @@
 
 #include "gioptrs.h"
 #include "filepath.h"
-#include "icon.h"
+#include "iconinfo.h"
 #include "mimetype.h"
 
 
@@ -78,7 +78,7 @@ public:
         return filesystemId_;
     }
 
-    const std::shared_ptr<const Icon>& getIcon() const {
+    const std::shared_ptr<const IconInfo>& getIcon() const {
         return icon_;
     }
 
@@ -196,7 +196,7 @@ public:
 
     void setFromGFileInfo(const GFileInfoPtr& inf, const FilePath& parentDirPath);
 
-    const std::forward_list<std::shared_ptr<const Icon>>& getEmblems() const {
+    const std::forward_list<std::shared_ptr<const IconInfo>>& getEmblems() const {
         return emblems_;
     }
 
@@ -219,8 +219,8 @@ private:
     uint64_t blocks_;
 
     std::shared_ptr<const MimeType> mimeType_;
-    std::shared_ptr<const Icon> icon_;
-    std::forward_list<std::shared_ptr<const Icon>> emblems_;
+    std::shared_ptr<const IconInfo> icon_;
+    std::forward_list<std::shared_ptr<const IconInfo>> emblems_;
 
     std::string target_; /* target of shortcut or mountable. */
 

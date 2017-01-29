@@ -83,8 +83,8 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     if(!index.isValid())
         return;
 
-    std::forward_list<std::shared_ptr<const Fm2::Icon>> icon_emblems;
-    auto fmicon = index.data(iconInfoRole_).value<std::shared_ptr<const Fm2::Icon>>();
+    std::forward_list<std::shared_ptr<const Fm2::IconInfo>> icon_emblems;
+    auto fmicon = index.data(iconInfoRole_).value<std::shared_ptr<const Fm2::IconInfo>>();
     if(fmicon) {
         icon_emblems = fmicon->emblems();
     }

@@ -2,7 +2,7 @@ set(libfm_core_SRCS
     # core data structures
     core/gobjectptr.h
     core/filepath.cpp
-    core/icon.cpp
+    core/iconinfo.cpp
     core/mimetype.cpp
     core/fileinfo.cpp
     core/folder.cpp

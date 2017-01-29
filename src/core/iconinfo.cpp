@@ -1,48 +1,48 @@
-#include "icon.h"
+#include "iconinfo.h"
 
 namespace Fm2 {
 
-std::unordered_map<GIcon*, std::shared_ptr<Icon>, Icon::GIconHash, Icon::GIconEqual> Icon::cache_;
-std::mutex Icon::mutex_;
+std::unordered_map<GIcon*, std::shared_ptr<IconInfo>, IconInfo::GIconHash, IconInfo::GIconEqual> IconInfo::cache_;
+std::mutex IconInfo::mutex_;
 
 
-Icon::Icon(const char* name):
+IconInfo::IconInfo(const char* name):
     gicon_{g_themed_icon_new(name), false} {
 }
 
-Icon::Icon(const GIconPtr gicon):
+IconInfo::IconInfo(const GIconPtr gicon):
     gicon_{std::move(gicon)} {
 }
 
-Icon::~Icon() {
+IconInfo::~IconInfo() {
 }
 
 // static
-std::shared_ptr<const Icon> Icon::fromName(const char* name) {
+std::shared_ptr<const IconInfo> IconInfo::fromName(const char* name) {
     GObjectPtr<GIcon> gicon{g_themed_icon_new(name), false};
     return fromGIcon(gicon);
 }
 
 // static
-std::shared_ptr<const Icon> Icon::fromGIcon(GObjectPtr<GIcon> gicon) {
+std::shared_ptr<const IconInfo> IconInfo::fromGIcon(GObjectPtr<GIcon> gicon) {
     std::lock_guard<std::mutex> lock{mutex_};
     auto it = cache_.find(gicon.get());
     if(it != cache_.end()) {
         return it->second;
     }
     // not found in the cache, create a new entry for it.
-    auto icon = std::make_shared<Icon>(gicon);
+    auto icon = std::make_shared<IconInfo>(gicon);
     cache_.insert(std::make_pair(icon->gicon_.get(), icon));
     return icon;
 }
 
-void Icon::unloadCache() {
+void IconInfo::unloadCache() {
     std::lock_guard<std::mutex> lock{mutex_};
     // cache_.clear();
 
 }
 
-QIcon Icon::qicon() const {
+QIcon IconInfo::qicon() const {
     if(qicon_.isNull()) {
         GIcon* gicon = gicon_.get();
         if(G_IS_EMBLEMED_ICON(gicon_.get())) {
@@ -65,7 +65,7 @@ QIcon Icon::qicon() const {
     return qicon_; // FIXME: return fallack icon instead
 }
 
-QIcon Icon::qiconFromNames(const char* const* names) {
+QIcon IconInfo::qiconFromNames(const char* const* names) {
     const gchar* const* name;
     // qDebug("names: %p", names);
     for(name = names; *name; ++name) {
@@ -78,8 +78,8 @@ QIcon Icon::qiconFromNames(const char* const* names) {
     return QIcon();
 }
 
-std::forward_list<std::shared_ptr<const Icon>> Icon::emblems() const {
-    std::forward_list<std::shared_ptr<const Icon>> result;
+std::forward_list<std::shared_ptr<const IconInfo>> IconInfo::emblems() const {
+    std::forward_list<std::shared_ptr<const IconInfo>> result;
     if(hasEmblems()) {
         const GList* emblems_glist = g_emblemed_icon_get_emblems(G_EMBLEMED_ICON(gicon_.get()));
         for(auto l = emblems_glist; l; l = l->next) {

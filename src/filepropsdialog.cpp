@@ -254,7 +254,7 @@ void FilePropsDialog::initPermissionsPage() {
 void FilePropsDialog::initGeneralPage() {
     // update UI
     if(singleType) { // all files are of the same mime-type
-        std::shared_ptr<const Fm2::Icon> icon;
+        std::shared_ptr<const Fm2::IconInfo> icon;
         // FIXME: handle custom icons for some files
         // FIXME: display special property pages for special files or
         // some specified mime-types.

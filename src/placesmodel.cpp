@@ -69,7 +69,7 @@ PlacesModel::PlacesModel(QObject* parent):
     const char* applicaion_icon_names[] = {"system-software-install", "applications-accessories", "application-x-executable"};
     // NOTE: g_themed_icon_new_from_names() accepts char**, but actually const char** is OK.
     Fm2::GIconPtr gicon{g_themed_icon_new_from_names((char**)applicaion_icon_names, G_N_ELEMENTS(applicaion_icon_names)), false};
-    auto fmicon = Fm2::Icon::fromGIcon(std::move(gicon));
+    auto fmicon = Fm2::IconInfo::fromGIcon(std::move(gicon));
     applicationsItem = new PlacesModelItem(fmicon, tr("Applications"), Fm2::FilePath::fromUri("menu:///applications.menu/"));
     placesRoot->appendRow(applicationsItem);
 
@@ -78,7 +78,7 @@ PlacesModel::PlacesModel(QObject* parent):
         const char* network_icon_names[] = {"network", "folder-network", "folder"};
         // NOTE: g_themed_icon_new_from_names() accepts char**, but actually const char** is OK.
         Fm2::GIconPtr gicon{g_themed_icon_new_from_names((char**)network_icon_names, G_N_ELEMENTS(network_icon_names)), false};
-        auto fmicon = Fm2::Icon::fromGIcon(std::move(gicon));
+        auto fmicon = Fm2::IconInfo::fromGIcon(std::move(gicon));
         networkItem = new PlacesModelItem(fmicon, tr("Network"), Fm2::FilePath::fromUri("network:///"));
         placesRoot->appendRow(networkItem);
     }
@@ -211,7 +211,7 @@ void PlacesModel::updateTrash() {
                     if(_this->trashItem_ != nullptr) { // it's possible that when we finish, the trash item is removed
                         guint32 n = g_file_info_get_attribute_uint32(inf.get(), G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
                         const char* icon_name = n > 0 ? "user-trash-full" : "user-trash";
-                        auto icon = Fm2::Icon::fromName(icon_name);
+                        auto icon = Fm2::IconInfo::fromName(icon_name);
                         _this->trashItem_->setIcon(std::move(icon));
                     }
                 }

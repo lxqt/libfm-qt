@@ -37,7 +37,7 @@
 
 #include "cstrptr.h"
 #include "gobjectptr.h"
-#include "icon.h"
+#include "iconinfo.h"
 #include "thumbnailer.h"
 
 namespace Fm2 {
@@ -66,7 +66,7 @@ public:
         }
     }
 
-    const std::shared_ptr<const Icon>& icon() const {
+    const std::shared_ptr<const IconInfo>& icon() const {
         return icon_;
     }
 
@@ -153,7 +153,7 @@ private:
     }
 
 private:
-    std::shared_ptr<const Icon> icon_;
+    std::shared_ptr<const IconInfo> icon_;
     CStrPtr name_;
     mutable CStrPtr desc_;
     std::forward_list<std::shared_ptr<const Thumbnailer>> thumbnailers_;

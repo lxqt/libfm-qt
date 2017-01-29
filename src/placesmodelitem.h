@@ -48,7 +48,7 @@ public:
     PlacesModelItem();
     PlacesModelItem(QIcon icon, QString title, Fm2::FilePath path = Fm2::FilePath{});
     PlacesModelItem(const char* iconName, QString title, Fm2::FilePath path = Fm2::FilePath{});
-    PlacesModelItem(std::shared_ptr<const Fm2::Icon> icon, QString title, Fm2::FilePath path = Fm2::FilePath{});
+    PlacesModelItem(std::shared_ptr<const Fm2::IconInfo> icon, QString title, Fm2::FilePath path = Fm2::FilePath{});
     ~PlacesModelItem();
 
     const std::shared_ptr<const Fm2::FileInfo>& fileInfo() const {
@@ -65,10 +65,10 @@ public:
         path_ = std::move(path);
     }
 
-    const std::shared_ptr<const Fm2::Icon>& icon() const {
+    const std::shared_ptr<const Fm2::IconInfo>& icon() const {
         return icon_;
     }
-    void setIcon(std::shared_ptr<const Fm2::Icon> icon);
+    void setIcon(std::shared_ptr<const Fm2::IconInfo> icon);
     void setIcon(GIcon* gicon);
     void updateIcon();
 
@@ -81,7 +81,7 @@ public:
 private:
     Fm2::FilePath path_;
     std::shared_ptr<const Fm2::FileInfo> fileInfo_;
-    std::shared_ptr<const Fm2::Icon> icon_;
+    std::shared_ptr<const Fm2::IconInfo> icon_;
 };
 
 class LIBFM_QT_API PlacesModelVolumeItem : public PlacesModelItem {

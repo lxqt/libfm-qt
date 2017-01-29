@@ -6,7 +6,7 @@
 #include <gio/gio.h>
 #include "gioptrs.h"
 #include "filepath.h"
-#include "icon.h"
+#include "iconinfo.h"
 #include "job.h"
 #include <vector>
 #include <mutex>
@@ -30,8 +30,8 @@ public:
         return CStrPtr{g_volume_get_uuid(get())};
     }
 
-    Icon icon() {
-        return Icon{GIconPtr{g_volume_get_icon(get()), false}};
+    IconInfo icon() {
+        return IconInfo{GIconPtr{g_volume_get_icon(get()), false}};
     }
 
     // GDrive *	g_volume_get_drive(get());
@@ -97,8 +97,8 @@ public:
         return CStrPtr{g_mount_get_uuid(get())};
     }
 
-    Icon icon() const {
-        return Icon{GIconPtr{g_mount_get_icon(get()), false}};
+    IconInfo icon() const {
+        return IconInfo{GIconPtr{g_mount_get_icon(get()), false}};
     }
 
     // GIcon *	g_mount_get_symbolic_icon(get());

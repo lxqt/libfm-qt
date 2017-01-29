@@ -158,7 +158,7 @@ _file_is_symlink:
     if(gicon) {
         // FIXME: this is bad
         auto gicon_ptr = GObjectPtr<GIcon>{gicon, true};
-        icon_ = Icon::fromGIcon(gicon_ptr);
+        icon_ = IconInfo::fromGIcon(gicon_ptr);
     }
 
 #if 0
@@ -174,7 +174,7 @@ _file_is_symlink:
     if(emblem_names) {
         auto n_emblems = g_strv_length(emblem_names);
         for(int i = n_emblems - 1; i >= 0; --i) {
-            emblems_.emplace_front(Fm2::Icon::fromName(emblem_names[i]));
+            emblems_.emplace_front(Fm2::IconInfo::fromName(emblem_names[i]));
         }
     }
 
