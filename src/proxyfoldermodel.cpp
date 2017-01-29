@@ -156,9 +156,9 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
             // return strcmp(fm_file_info_get_collate_key(leftInfo), fm_file_info_get_collate_key(rightInfo)) < 0;
         }
       case FolderModel::ColumnFileMTime:
-        return leftInfo->getMtime() < rightInfo->getMtime();
+        return leftInfo->mtime() < rightInfo->mtime();
       case FolderModel::ColumnFileSize:
-        return leftInfo->getSize() < rightInfo->getSize();
+        return leftInfo->size() < rightInfo->size();
       case FolderModel::ColumnFileOwner:
         // TODO: sort by owner
         break;

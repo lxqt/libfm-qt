@@ -106,9 +106,9 @@ void FilePropsDialog::initApplications() {
 void FilePropsDialog::initPermissionsPage() {
     // ownership handling
     // get owner/group and mode of the first file in the list
-    uid = fileInfo->getUid();
-    gid = fileInfo->getGid();
-    mode_t mode = fileInfo->getMode();
+    uid = fileInfo->uid();
+    gid = fileInfo->gid();
+    mode_t mode = fileInfo->mode();
     ownerPerm = (mode & (S_IRUSR | S_IWUSR | S_IXUSR));
     groupPerm = (mode & (S_IRGRP | S_IWGRP | S_IXGRP));
     otherPerm = (mode & (S_IROTH | S_IWOTH | S_IXOTH));
@@ -123,15 +123,15 @@ void FilePropsDialog::initPermissionsPage() {
             allNative = false;    // not all of the files are native
         }
 
-        mode_t fi_mode = fi->getMode();
+        mode_t fi_mode = fi->mode();
         if(S_ISDIR(fi_mode)) {
             hasDir = true;    // the files list contains dir(s)
         }
 
-        if(uid != DIFFERENT_UIDS && uid != fi->getUid()) {
+        if(uid != DIFFERENT_UIDS && uid != fi->uid()) {
             uid = DIFFERENT_UIDS;    // not all files have the same owner
         }
-        if(gid != DIFFERENT_GIDS && gid != fi->getGid()) {
+        if(gid != DIFFERENT_GIDS && gid != fi->gid()) {
             gid = DIFFERENT_GIDS;    // not all files have the same owner group
         }
 
@@ -259,7 +259,7 @@ void FilePropsDialog::initGeneralPage() {
         // FIXME: display special property pages for special files or
         // some specified mime-types.
         if(singleFile) { // only one file is selected.
-            icon = fileInfo->getIcon();
+            icon = fileInfo->icon();
         }
         if(mimeType) {
             if(!icon) { // get an icon from mime type if needed
@@ -273,7 +273,7 @@ void FilePropsDialog::initGeneralPage() {
         }
 
         if(singleFile && fileInfo->isSymlink()) {
-            ui->target->setText(QString::fromStdString(fileInfo->getTarget()));
+            ui->target->setText(QString::fromStdString(fileInfo->target()));
         }
         else {
             ui->target->hide();
@@ -291,7 +291,7 @@ void FilePropsDialog::initGeneralPage() {
         auto parent_path = fileInfo->path().parent();
         auto parent_str = parent_path ? parent_path.displayName(): nullptr;
 
-        ui->fileName->setText(fileInfo->getDispName());
+        ui->fileName->setText(fileInfo->displayName());
         if(parent_str) {
             ui->location->setText(parent_str.get());
         }
@@ -305,7 +305,7 @@ void FilePropsDialog::initGeneralPage() {
         // FIXME: need to encapsulate this in an libfm API.
         time_t atime;
         struct tm tm;
-        atime = fileInfo->getAtime();
+        atime = fileInfo->atime();
         localtime_r(&atime, &tm);
         char buf[128];
         strftime(buf, sizeof(buf), "%x %R", &tm);
@@ -462,7 +462,7 @@ void FilePropsDialog::accept() {
     // Renaming
     if(singleFile) {
         QString new_name = ui->fileName->text();
-        if(fileInfo->getDispName() != new_name) {
+        if(fileInfo->displayName() != new_name) {
             auto path = fileInfo->path();
             auto parent_path = path.parent();
             auto dest = parent_path.child(new_name.toLocal8Bit().constData());

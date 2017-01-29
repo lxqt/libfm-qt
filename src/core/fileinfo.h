@@ -66,40 +66,40 @@ public:
 
     bool canThumbnail() const;
 
-    gid_t getGid() const {
+    gid_t gid() const {
         return gid_;
     }
 
-    uid_t getUid() const {
+    uid_t uid() const {
         return uid_;
     }
 
-    const char* getFsId() {
+    const char* filesystemId() const {
         return filesystemId_;
     }
 
-    const std::shared_ptr<const IconInfo>& getIcon() const {
+    const std::shared_ptr<const IconInfo>& icon() const {
         return icon_;
     }
 
-    const std::shared_ptr<const MimeType>& getMimeType() const {
+    const std::shared_ptr<const MimeType>& mimeType() const {
         return mimeType_;
     }
 
-    time_t getCtime() const {
+    time_t ctime() const {
         return ctime_;
     }
 
 
-    time_t getAtime() const {
+    time_t atime() const {
         return atime_;
     }
 
-    time_t getMtime() const {
+    time_t mtime() const {
         return mtime_;
     }
 
-    const std::string& getTarget() const {
+    const std::string& target() const {
         return target_;
     }
 
@@ -154,31 +154,27 @@ public:
         return mimeType_->isDir();
     }
 
-    const std::shared_ptr<const MimeType>& mimeType() const {
-        return mimeType_;
-    }
-
     bool isNative() const {
         return dirPath_.isNative();
     }
 
-    mode_t getMode() const {
+    mode_t mode() const {
         return mode_;
     }
 
-    uint64_t getBlocks() const {
+    uint64_t realSize() const {
         return blksize_ *blocks_;
     }
 
-    uint64_t getSize() const {
+    uint64_t size() const {
         return size_;
     }
 
-    const std::string& getName() const {
+    const std::string& name() const {
         return name_;
     }
 
-    const QString& getDispName() const {
+    const QString& displayName() const {
         return dispName_;
     }
 
@@ -190,13 +186,9 @@ public:
         return dirPath_;
     }
 
-    const char* filesystemId() const {
-        return filesystemId_;
-    }
-
     void setFromGFileInfo(const GFileInfoPtr& inf, const FilePath& parentDirPath);
 
-    const std::forward_list<std::shared_ptr<const IconInfo>>& getEmblems() const {
+    const std::forward_list<std::shared_ptr<const IconInfo>>& emblems() const {
         return emblems_;
     }
 

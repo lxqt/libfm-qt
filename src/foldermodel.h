@@ -65,7 +65,7 @@ public:
     void setFolder(const std::shared_ptr<Fm2::Folder>& new_folder);
 
     Fm2::FilePath path() {
-        return folder_ ? folder_->getPath() : Fm2::FilePath();
+        return folder_ ? folder_->path() : Fm2::FilePath();
     }
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const;

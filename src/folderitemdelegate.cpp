@@ -89,7 +89,7 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         icon_emblems = fmicon->emblems();
     }
     auto file = index.data(fileInfoRole_).value<std::shared_ptr<const Fm2::FileInfo>>();
-    const auto& emblems = file ? file->getEmblems() : icon_emblems;
+    const auto& emblems = file ? file->emblems() : icon_emblems;
 
     bool isSymlink = file && file->isSymlink();
     if(option.decorationPosition == QStyleOptionViewItem::Top ||

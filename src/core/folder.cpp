@@ -110,7 +110,7 @@ bool Folder::isLoaded() const {
     return (dirlist_job == nullptr);
 }
 
-std::shared_ptr<const FileInfo> Folder::getFileByName(const char* name) const {
+std::shared_ptr<const FileInfo> Folder::fileByName(const char* name) const {
     auto it = files_.find(name);
     if(it != files_.end()) {
         return it->second;
@@ -122,7 +122,7 @@ bool Folder::isEmpty() const {
     return files_.empty();
 }
 
-FileInfoList Folder::getFiles() const {
+FileInfoList Folder::files() const {
     FileInfoList ret;
     ret.reserve(files_.size());
     for(const auto& item : files_) {
@@ -132,11 +132,11 @@ FileInfoList Folder::getFiles() const {
 }
 
 
-const FilePath& Folder::getPath() const {
+const FilePath& Folder::path() const {
     return dirPath_;
 }
 
-const std::shared_ptr<const FileInfo>& Folder::getInfo() const {
+const std::shared_ptr<const FileInfo>& Folder::info() const {
     return dirInfo_;
 }
 
@@ -203,14 +203,14 @@ void Folder::onFileInfoFinished() {
             dirInfo_ = info;
         }
         else {
-            auto it = files_.find(info->getName().c_str());
+            auto it = files_.find(info->name().c_str());
             if(it != files_.end()) { // the file already exists, update
                 files_to_update.push_back(std::make_pair(it->second, info));
             }
             else { // newly added
                 files_to_add.push_back(info);
             }
-            files_[info->getName().c_str()] = info;
+            files_[info->name().c_str()] = info;
         }
 
         if(!files_to_add.empty()) {
@@ -446,7 +446,7 @@ void Folder::onDirListFinished() {
 
     auto& files_to_add = job->files();
     for(auto& file: files_to_add) {
-        files_[file->getName().c_str()] = file;
+        files_[file->name().c_str()] = file;
     }
     Q_EMIT filesAdded(files_to_add);
 

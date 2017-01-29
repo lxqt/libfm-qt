@@ -68,15 +68,15 @@ public:
 
     bool isLoaded() const;
 
-    std::shared_ptr<const FileInfo> getFileByName(const char* name) const;
+    std::shared_ptr<const FileInfo> fileByName(const char* name) const;
 
     bool isEmpty() const;
 
-    FileInfoList getFiles() const;
+    FileInfoList files() const;
 
-    const FilePath& getPath() const;
+    const FilePath& path() const;
 
-    const std::shared_ptr<const FileInfo> &getInfo() const;
+    const std::shared_ptr<const FileInfo> &info() const;
 
     void unblockUpdates();
 

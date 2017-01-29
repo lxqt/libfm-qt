@@ -87,12 +87,12 @@ public:
 
     std::shared_ptr<const Fm2::FileInfo> folderInfo() const {
         auto _folder = folder();
-        return _folder ? _folder->getInfo() : nullptr;
+        return _folder ? _folder->info() : nullptr;
     }
 
     Fm2::FilePath path() {
         auto _folder = folder();
-        return _folder ? _folder->getPath() : Fm2::FilePath();
+        return _folder ? _folder->path() : Fm2::FilePath();
     }
 
     QItemSelectionModel* selectionModel() const;

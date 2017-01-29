@@ -60,7 +60,7 @@ void FolderModel::setFolder(const std::shared_ptr<Fm2::Folder>& new_folder) {
         connect(folder_.get(), &Fm2::Folder::filesRemoved, this, &FolderModel::onFilesRemoved);
         // handle the case if the folder is already loaded
         if(folder_->isLoaded()) {
-            insertFiles(0, folder_->getFiles());
+            insertFiles(0, folder_->files());
         }
     }
 }
@@ -109,7 +109,7 @@ void FolderModel::onFilesChanged(std::vector<Fm2::FileInfoPair>& files) {
 void FolderModel::onFilesRemoved(const Fm2::FileInfoList& files) {
     for(auto& info : files) {
         int row;
-        QList<FolderModelItem>::iterator it = findItemByName(info->getName().c_str(), &row);
+        QList<FolderModelItem>::iterator it = findItemByName(info->name().c_str(), &row);
         if(it != items.end()) {
             beginRemoveRows(QModelIndex(), row, row);
             items.erase(it);
@@ -200,7 +200,7 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
             return QVariant(item->displayName());
         }
         case ColumnFileType: {
-            auto mime = info->getMimeType();
+            auto mime = info->mimeType();
             return QString::fromUtf8(mime->desc());
         }
         case ColumnFileMTime: {
@@ -311,7 +311,7 @@ QList<FolderModelItem>::iterator FolderModel::findItemByName(const char* name, i
     int i = 0;
     while(it != items.end()) {
         FolderModelItem& item = *it;
-        if(item.info->getName() == name) {
+        if(item.info->name() == name) {
             *row = i;
             return it;
         }

@@ -55,11 +55,11 @@ public:
     virtual ~FolderModelItem();
 
     QString displayName() const {
-        return info->getDispName();
+        return info->displayName();
     }
 
     QIcon icon() const {
-        return info->getIcon()->qicon();
+        return info->icon()->qicon();
     }
 
     Thumbnail* findThumbnail(int size);

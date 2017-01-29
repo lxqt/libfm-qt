@@ -105,7 +105,7 @@ bool ThumbnailJob::isSupportedImageType(const std::shared_ptr<const MimeType>& m
 
 bool ThumbnailJob::isThumbnailOutdated(const std::shared_ptr<const FileInfo>& file, const QImage &thumbnail) const {
     QString thumb_mtime = thumbnail.text("Thumb::MTime");
-    return (thumb_mtime.isEmpty()&& thumb_mtime.toInt() != file->getMtime());
+    return (thumb_mtime.isEmpty()&& thumb_mtime.toInt() != file->mtime());
 }
 
 bool ThumbnailJob::readJpegExif(GInputStream *stream, QImage& thumbnail, int& rotate_degrees) {
@@ -173,7 +173,7 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
         if(!fromExif) {  // not able to generate a thumbnail from the EXIF data
             // load the original file and do the scaling ourselves
             g_seekable_seek(G_SEEKABLE(ins.get()), 0, G_SEEK_SET, cancellable_.get(), nullptr);
-            result = readImageFromStream(G_INPUT_STREAM(ins.get()), file->getSize());
+            result = readImageFromStream(G_INPUT_STREAM(ins.get()), file->size());
         }
         g_input_stream_close(G_INPUT_STREAM(ins.get()), nullptr, nullptr);
 
@@ -201,7 +201,7 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
 
             // save the generated thumbnail to disk (don't save png thumbnails for JPEG EXIF thumbnails since loading them is cheap)
             if(!fromExif) {
-                result.setText("Thumb::MTime", QString::number(file->getMtime()));
+                result.setText("Thumb::MTime", QString::number(file->mtime()));
                 result.setText("Thumb::URI", uri);
                 result.save(thumbnailFilename, "PNG");
             }
@@ -210,7 +210,7 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
     }
     else { // the image format is not supported, try to find an external thumbnailer
         // try all available external thumbnailers for it until sucess
-        file->getMimeType()->forEachThumbnailer([&](const std::shared_ptr<const Thumbnailer>& thumbnailer) {
+        file->mimeType()->forEachThumbnailer([&](const std::shared_ptr<const Thumbnailer>& thumbnailer) {
             if(thumbnailer->run(uri, thumbnailFilename.toLocal8Bit().constData(), size_)) {
                 result = QImage(thumbnailFilename);
             }
@@ -222,7 +222,7 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
             // Here we waste some time to fix them so next time we don't need to re-generate these thumbnails. :-(
             bool changed = false;
             if(Q_UNLIKELY(result.text("Thumb::MTime").isEmpty())) {
-                result.setText("Thumb::MTime", QString::number(file->getMtime()));
+                result.setText("Thumb::MTime", QString::number(file->mtime()));
                 changed = true;
             }
             if(Q_UNLIKELY(result.text("Thumb::URI").isEmpty())) {

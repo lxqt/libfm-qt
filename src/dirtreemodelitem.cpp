@@ -36,8 +36,8 @@ DirTreeModelItem::DirTreeModelItem():
 
 DirTreeModelItem::DirTreeModelItem(std::shared_ptr<const Fm2::FileInfo> info, DirTreeModel* model, DirTreeModelItem* parent):
     fileInfo_{std::move(info)},
-    displayName_(info->getDispName()),
-    icon_(info->getIcon()->qicon()),
+    displayName_(info->displayName()),
+    icon_(info->icon()->qicon()),
     expanded_(false),
     loaded_(false),
     parent_(parent),
@@ -106,7 +106,7 @@ void DirTreeModelItem::loadFolder() {
         expanded_ = true;
         /* if the folder is already loaded, call "loaded" handler ourselves */
         if(folder_->isLoaded()) { // already loaded
-            for(auto& fi: folder_->getFiles()) {
+            for(auto& fi: folder_->files()) {
                 if(fi->isDir()) {
                     insertFileInfo(fi);
                 }
@@ -166,7 +166,7 @@ DirTreeModelItem* DirTreeModelItem::insertFileInfo(std::shared_ptr<const Fm2::Fi
 // find a good position to insert the new item
 int DirTreeModelItem::insertItem(DirTreeModelItem* newItem) {
     if(model_->showHidden() || !newItem->fileInfo_ || !newItem->fileInfo_->isHidden()) {
-        auto newName = newItem->fileInfo_->getDispName();
+        auto newName = newItem->fileInfo_->displayName();
         int pos = 0;
         QList<DirTreeModelItem*>::iterator it;
         // FIXME: this is inefficient (use binary search instead)
@@ -175,7 +175,7 @@ int DirTreeModelItem::insertItem(DirTreeModelItem* newItem) {
             if(G_UNLIKELY(!child->fileInfo_)) {
                 continue;
             }
-            if(QString::localeAwareCompare(newName, child->fileInfo_->getDispName()) <= 0) {
+            if(QString::localeAwareCompare(newName, child->fileInfo_->displayName()) <= 0) {
                 break;
             }
             ++pos;
@@ -236,7 +236,7 @@ void DirTreeModelItem::onFolderFilesRemoved(Fm2::FileInfoList& files) {
 
     for(auto& fi: files) {
         int pos;
-        DirTreeModelItem* child  = childFromName(fi->getName().c_str(), &pos);
+        DirTreeModelItem* child  = childFromName(fi->name().c_str(), &pos);
         if(child) {
             model->beginRemoveRows(index(), pos, pos);
             children_.removeAt(pos);
@@ -251,7 +251,7 @@ void DirTreeModelItem::onFolderFilesChanged(std::vector<Fm2::FileInfoPair> &chan
     for(auto& changePair: changes) {
         int pos;
         auto& changedFile = changePair.first;
-        DirTreeModelItem* child = childFromName(changedFile->getName().c_str(), &pos);
+        DirTreeModelItem* child = childFromName(changedFile->name().c_str(), &pos);
         if(child) {
             QModelIndex childIndex = child->index();
             Q_EMIT model->dataChanged(childIndex, childIndex);
@@ -262,7 +262,7 @@ void DirTreeModelItem::onFolderFilesChanged(std::vector<Fm2::FileInfoPair> &chan
 DirTreeModelItem* DirTreeModelItem::childFromName(const char* utf8_name, int* pos) {
     int i = 0;
     for(const auto item : children_) {
-        if(item->fileInfo_ && item->fileInfo_->getName() == utf8_name) {
+        if(item->fileInfo_ && item->fileInfo_->name() == utf8_name) {
             if(pos) {
                 *pos = i;
             }
