@@ -25,6 +25,7 @@
 #include <QSortFilterProxyModel>
 #include <libfm/fm.h>
 #include <QList>
+#include <QCollator>
 
 #include "core/fileinfo.h"
 
@@ -37,73 +38,69 @@ class ProxyFolderModel;
 
 class LIBFM_QT_API ProxyFolderModelFilter {
 public:
-  virtual bool filterAcceptsRow(const ProxyFolderModel* model, const std::shared_ptr<const Fm2::FileInfo>& info) const = 0;
-  virtual ~ProxyFolderModelFilter() {}
+    virtual bool filterAcceptsRow(const ProxyFolderModel* model, const std::shared_ptr<const Fm2::FileInfo>& info) const = 0;
+    virtual ~ProxyFolderModelFilter() {}
 };
 
 
 class LIBFM_QT_API ProxyFolderModel : public QSortFilterProxyModel {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit ProxyFolderModel(QObject * parent = 0);
-  virtual ~ProxyFolderModel();
+    explicit ProxyFolderModel(QObject* parent = 0);
+    virtual ~ProxyFolderModel();
 
-  // only Fm::FolderModel is allowed for being sourceModel
-  virtual void setSourceModel(QAbstractItemModel* model);
+    // only Fm::FolderModel is allowed for being sourceModel
+    virtual void setSourceModel(QAbstractItemModel* model);
 
-  void setShowHidden(bool show);
-  bool showHidden() const {
-    return showHidden_;
-  }
+    void setShowHidden(bool show);
+    bool showHidden() const {
+        return showHidden_;
+    }
 
-  void setFolderFirst(bool folderFirst);
-  bool folderFirst() {
-    return folderFirst_;
-  }
+    void setFolderFirst(bool folderFirst);
+    bool folderFirst() {
+        return folderFirst_;
+    }
 
-  void setSortCaseSensitivity(Qt::CaseSensitivity cs) {
-    QSortFilterProxyModel::setSortCaseSensitivity(cs);
-    Q_EMIT sortFilterChanged();
-  }
+    void setSortCaseSensitivity(Qt::CaseSensitivity cs);
 
-  bool showThumbnails() {
-    return showThumbnails_;
-  }
-  void setShowThumbnails(bool show);
+    bool showThumbnails() {
+        return showThumbnails_;
+    }
+    void setShowThumbnails(bool show);
 
-  int thumbnailSize() {
-    return thumbnailSize_;
-  }
-  void setThumbnailSize(int size);
+    int thumbnailSize() {
+        return thumbnailSize_;
+    }
+    void setThumbnailSize(int size);
 
-  std::shared_ptr<const Fm2::FileInfo> fileInfoFromIndex(const QModelIndex& index) const;
+    std::shared_ptr<const Fm2::FileInfo> fileInfoFromIndex(const QModelIndex& index) const;
 
-  virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
-  virtual QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
+    virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
+    virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
 
-  void addFilter(ProxyFolderModelFilter* filter);
-  void removeFilter(ProxyFolderModelFilter* filter);
-  void updateFilters();
+    void addFilter(ProxyFolderModelFilter* filter);
+    void removeFilter(ProxyFolderModelFilter* filter);
+    void updateFilters();
 
 Q_SIGNALS:
-  void sortFilterChanged();
+    void sortFilterChanged();
 
 protected Q_SLOTS:
-  void onThumbnailLoaded(const QModelIndex& srcIndex, int size);
+    void onThumbnailLoaded(const QModelIndex& srcIndex, int size);
 
 protected:
-  bool filterAcceptsRow(int source_row, const QModelIndex & source_parent) const;
-  bool lessThan(const QModelIndex & left, const QModelIndex & right) const;
-  // void reloadAllThumbnails();
+    bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
+    bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
+    // void reloadAllThumbnails();
 
 private:
-
-private:
-  bool showHidden_;
-  bool folderFirst_;
-  bool showThumbnails_;
-  int thumbnailSize_;
-  QList<ProxyFolderModelFilter*> filters_;
+    QCollator collator_;
+    bool showHidden_;
+    bool folderFirst_;
+    bool showThumbnails_;
+    int thumbnailSize_;
+    QList<ProxyFolderModelFilter*> filters_;
 };
 
 }

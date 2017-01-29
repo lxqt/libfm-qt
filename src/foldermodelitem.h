@@ -71,7 +71,7 @@ public:
     const QString &displaySize() const;
 
     Thumbnail* findThumbnail(int size);
-    // void setThumbnail(int size, QImage image);
+
     void removeThumbnail(int size);
 
     std::shared_ptr<const Fm2::FileInfo> info;
