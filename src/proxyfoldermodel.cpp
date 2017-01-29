@@ -98,7 +98,6 @@ void ProxyFolderModel::setFolderFirst(bool folderFirst) {
 }
 
 void ProxyFolderModel::setSortCaseSensitivity(Qt::CaseSensitivity cs) {
-    qDebug() << "CS:" << cs;
     collator_.setCaseSensitivity(cs);
     QSortFilterProxyModel::setSortCaseSensitivity(cs);
     invalidate();

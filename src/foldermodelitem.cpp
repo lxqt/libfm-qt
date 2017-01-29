@@ -19,6 +19,7 @@
 
 
 #include "foldermodelitem.h"
+#include <QDateTime>
 #include "utilities.h"
 #include "core/userinfocache.h"
 
@@ -56,10 +57,8 @@ QString FolderModelItem::ownerGroup() const {
 
 const QString &FolderModelItem::displayMtime() const {
     if(dispMtime_.isEmpty()) {
-        auto mtime = info->mtime();
-        char buf[ 128 ];
-        strftime(buf, sizeof(buf), "%x %R", localtime(&mtime));
-        dispMtime_ = buf;
+        auto mtime = QDateTime::fromMSecsSinceEpoch(info->mtime() * 1000);
+        dispMtime_ = mtime.toString(Qt::SystemLocaleShortDate);
     }
     return dispMtime_;
 }

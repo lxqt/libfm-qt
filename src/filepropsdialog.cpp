@@ -26,7 +26,7 @@
 #include <QStringBuilder>
 #include <QStringListModel>
 #include <QMessageBox>
-#include <qdial.h>
+#include <QDateTime>
 #include <sys/types.h>
 #include <time.h>
 
@@ -298,18 +298,10 @@ void FilePropsDialog::initGeneralPage() {
         else {
             ui->location->clear();
         }
-
-        // FIXME: port to new API
-        // ui->lastModified->setText(QString::fromUtf8(fm_file_info_get_disp_mtime(fileInfo)));
-
-        // FIXME: need to encapsulate this in an libfm API.
-        time_t atime;
-        struct tm tm;
-        atime = fileInfo->atime();
-        localtime_r(&atime, &tm);
-        char buf[128];
-        strftime(buf, sizeof(buf), "%x %R", &tm);
-        ui->lastAccessed->setText(buf);
+        auto mtime = QDateTime::fromMSecsSinceEpoch(fileInfo->mtime() * 1000);
+        ui->lastModified->setText(mtime.toString(Qt::SystemLocaleShortDate));
+        auto atime = QDateTime::fromMSecsSinceEpoch(fileInfo->atime() * 1000);
+        ui->lastAccessed->setText(atime.toString(Qt::SystemLocaleShortDate));
     }
     else {
         ui->fileName->setText(tr("Multiple Files"));
