@@ -27,10 +27,11 @@
 
 #include "libfmqtglobals.h"
 #include <gio/gio.h>
-#include "gobjectptr.h"
+#include "gioptrs.h"
 #include <memory>
 #include <mutex>
 #include <unordered_map>
+#include <forward_list>
 #include <QIcon>
 
 
@@ -43,7 +44,7 @@ public:
 
     explicit Icon(const char* name);
 
-    explicit Icon(const GObjectPtr<GIcon>& gicon);
+    explicit Icon(const GIconPtr gicon);
 
     ~Icon();
 
@@ -53,13 +54,19 @@ public:
 
     static void unloadCache();
 
-    GObjectPtr<GIcon> gicon() const {
+    GIconPtr gicon() const {
         return gicon_;
     }
 
     QIcon qicon() const;
 
     static QIcon qiconFromNames(const char* const* names);
+
+    bool hasEmblems() const {
+        return G_IS_EMBLEMED_ICON(gicon_.get());
+    }
+
+    std::forward_list<std::shared_ptr<const Icon>> emblems() const;
 
 private:
 
@@ -76,7 +83,7 @@ private:
     };
 
 private:
-    GObjectPtr<GIcon> gicon_;
+    GIconPtr gicon_;
     mutable QIcon qicon_;
 
     static std::unordered_map<GIcon*, std::shared_ptr<Icon>, GIconHash, GIconEqual> cache_;
@@ -84,5 +91,7 @@ private:
 };
 
 } // namespace Fm2
+
+Q_DECLARE_METATYPE(std::shared_ptr<const Fm2::Icon>)
 
 #endif /* __FM2_ICON_H__ */

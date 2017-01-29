@@ -170,7 +170,14 @@ _file_is_symlink:
 #endif
 
     /* if the file has emblems, add them to the icon */
-    // FIXME: _fm_file_info_set_emblems(fi, inf);
+    auto emblem_names = g_file_info_get_attribute_stringv(inf.get(), "metadata::emblems");
+    if(emblem_names) {
+        auto n_emblems = g_strv_length(emblem_names);
+        for(int i = n_emblems - 1; i >= 0; --i) {
+            emblems_.emplace_front(Fm2::Icon::fromName(emblem_names[i]));
+        }
+    }
+
     tmp = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_ID_FILESYSTEM);
     filesystemId_ = g_intern_string(tmp);
 

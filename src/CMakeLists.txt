@@ -1,7 +1,6 @@
 set(libfm_core_SRCS
     # core data structures
     core/gobjectptr.h
-    core/gsignalhandler.h
     core/filepath.cpp
     core/icon.cpp
     core/mimetype.cpp

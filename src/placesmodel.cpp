@@ -511,9 +511,9 @@ QVariant PlacesModel::data(const QModelIndex& index, int role) const {
             switch(role) {
             // FIXME: can we use smart pointers here?
             case FileInfoRole:
-                return QVariant::fromValue<void*>((void*)item->fileInfo().get());
+                return QVariant::fromValue(item->fileInfo());
             case FmIconRole:
-                return QVariant::fromValue<void*>((void*)item->icon().get());
+                return QVariant::fromValue(item->icon());
             }
         }
     }

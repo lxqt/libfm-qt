@@ -5,7 +5,6 @@
 #include <QObject>
 #include <gio/gio.h>
 #include "gioptrs.h"
-#include "gsignalhandler.h"
 #include "filepath.h"
 #include "icon.h"
 #include "job.h"

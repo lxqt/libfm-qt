@@ -33,6 +33,7 @@
 #include <vector>
 #include <utility>
 #include <string>
+#include <forward_list>
 
 #include "gioptrs.h"
 #include "filepath.h"
@@ -195,6 +196,10 @@ public:
 
     void setFromGFileInfo(const GFileInfoPtr& inf, const FilePath& parentDirPath);
 
+    const std::forward_list<std::shared_ptr<const Icon>>& getEmblems() const {
+        return emblems_;
+    }
+
 private:
     std::string name_;
     QString dispName_;
@@ -215,6 +220,7 @@ private:
 
     std::shared_ptr<const MimeType> mimeType_;
     std::shared_ptr<const Icon> icon_;
+    std::forward_list<std::shared_ptr<const Icon>> emblems_;
 
     std::string target_; /* target of shortcut or mountable. */
 
