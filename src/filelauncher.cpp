@@ -59,6 +59,7 @@ bool FileLauncher::launchPaths(QWidget *parent, Fm2::FilePathList paths) {
     tmp = g_list_reverse(tmp);
     bool ret = launchPaths(parent, tmp);
     g_list_free(tmp);
+    return ret;
 }
 
 bool FileLauncher::launchFiles(QWidget* parent, GList* file_infos) {

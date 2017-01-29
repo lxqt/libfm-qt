@@ -328,5 +328,9 @@ bool uriExists(const char* uri) {
     return ret;
 }
 
+QString formatFileSize(uint64_t size, bool useSI) {
+    Fm2::CStrPtr str{g_format_size_full(size, useSI ? G_FORMAT_SIZE_DEFAULT : G_FORMAT_SIZE_IEC_UNITS)};
+    return QString(str.get());
+}
 
 } // namespace Fm

@@ -54,7 +54,7 @@ public:
     FolderModelItem(const FolderModelItem& other);
     virtual ~FolderModelItem();
 
-    QString displayName() const {
+    const QString& displayName() const {
         return info->displayName();
     }
 
@@ -62,11 +62,21 @@ public:
         return info->icon()->qicon();
     }
 
+    QString ownerName() const;
+
+    QString ownerGroup() const;
+
+    const QString& displayMtime() const;
+
+    const QString &displaySize() const;
+
     Thumbnail* findThumbnail(int size);
     // void setThumbnail(int size, QImage image);
     void removeThumbnail(int size);
 
     std::shared_ptr<const Fm2::FileInfo> info;
+    mutable QString dispMtime_;
+    mutable QString dispSize_;
     QVector<Thumbnail> thumbnails;
 };
 

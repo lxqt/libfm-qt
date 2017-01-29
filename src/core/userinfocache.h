@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include <sys/types.h>
 #include <memory>
+#include <mutex>
 
 namespace Fm2 {
 
@@ -20,7 +21,7 @@ public:
         return uid_;
     }
 
-    const std::string& name() const {
+    const QString& name() const {
         return name_;
     }
 
@@ -30,7 +31,7 @@ public:
 
 private:
     uid_t uid_;
-    std::string name_;
+    QString name_;
     QString realName_;
 
 };
@@ -44,14 +45,16 @@ public:
         return gid_;
     }
 
-    const std::string& name() const {
+    const QString& name() const {
         return name_;
     }
 
 private:
     gid_t gid_;
-    std::string name_;
+    QString name_;
 };
+
+// FIXME: handle file changes
 
 class LIBFM_QT_API UserInfoCache : public QObject {
     Q_OBJECT
@@ -62,7 +65,7 @@ public:
 
     const std::shared_ptr<const GroupInfo>& groupFromId(gid_t gid);
 
-    static UserInfoCache* instance();
+    static UserInfoCache* globalInstance();
 
 Q_SIGNALS:
     void changed();
@@ -71,6 +74,7 @@ private:
     std::unordered_map<uid_t, std::shared_ptr<const UserInfo>> users_;
     std::unordered_map<gid_t, std::shared_ptr<const GroupInfo>> groups_;
     static UserInfoCache* globalInstance_;
+    static std::mutex mutex_;
 };
 
 } // namespace Fm2

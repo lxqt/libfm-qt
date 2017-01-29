@@ -19,6 +19,8 @@
 
 
 #include "foldermodelitem.h"
+#include "utilities.h"
+#include "core/userinfocache.h"
 
 namespace Fm {
 
@@ -33,6 +35,41 @@ FolderModelItem::FolderModelItem(const FolderModelItem& other):
 }
 
 FolderModelItem::~FolderModelItem() {
+}
+
+QString FolderModelItem::ownerName() const {
+    QString name;
+    auto user = Fm2::UserInfoCache::globalInstance()->userFromId(info->uid());
+    if(user) {
+        name = user->realName();
+        if(name.isEmpty()) {
+            name = user->name();
+        }
+    }
+    return name;
+}
+
+QString FolderModelItem::ownerGroup() const {
+    auto group = Fm2::UserInfoCache::globalInstance()->groupFromId(info->gid());
+    return group ? group->name() : QString();
+}
+
+const QString &FolderModelItem::displayMtime() const {
+    if(dispMtime_.isEmpty()) {
+        auto mtime = info->mtime();
+        char buf[ 128 ];
+        strftime(buf, sizeof(buf), "%x %R", localtime(&mtime));
+        dispMtime_ = buf;
+    }
+    return dispMtime_;
+}
+
+const QString& FolderModelItem::displaySize() const {
+    if(dispSize_.isEmpty() && !info->isDir()) {
+        // FIXME: choose IEC or SI units
+        dispSize_ = Fm::formatFileSize(info->size(), false);
+    }
+    return dispSize_;
 }
 
 // find thumbnail of the specified size
@@ -64,27 +101,6 @@ void FolderModelItem::removeThumbnail(int size) {
         }
     }
 }
-
-#if 0
-// cache the thumbnail of the specified size in the folder item
-void FolderModelItem::setThumbnail(int size, QImage image) {
-    QVector<Thumbnail>::iterator it;
-    for(it = thumbnails.begin(); it != thumbnails.end(); ++it) {
-        if(it->size == size) { // an image of the same size already exists
-            it->image = image; // replace it
-            it->status = ThumbnailLoaded;
-            break;
-        }
-    }
-    if(it == thumbnails.end()) { // the image is not found
-        Thumbnail thumbnail;
-        thumbnail.size = size;
-        thumbnail.status = ThumbnailLoaded;
-        thumbnail.image = image;
-        thumbnails.append(thumbnail); // add a new entry
-    }
-}
-#endif
 
 
 } // namespace Fm

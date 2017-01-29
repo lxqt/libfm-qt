@@ -27,6 +27,8 @@
 #include <libfm/fm.h>
 #include <sys/types.h>
 
+#include <cstdint>
+
 #include "core/filepath.h"
 #include "core/fileinfo.h"
 
@@ -71,6 +73,8 @@ LIBFM_QT_API int execModelessDialog(QDialog* dlg);
 LIBFM_QT_API bool isUriSchemeSupported(const char* uriScheme);
 
 LIBFM_QT_API bool uriExists(const char* uri);
+
+LIBFM_QT_API QString formatFileSize(std::uint64_t size, bool useSI = false);
 
 }
 

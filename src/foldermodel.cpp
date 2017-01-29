@@ -196,28 +196,16 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
         return QVariant(item->displayName());
     case Qt::DisplayRole:  {
         switch(index.column()) {
-        case ColumnFileName: {
-            return QVariant(item->displayName());
-        }
-        case ColumnFileType: {
-            auto mime = info->mimeType();
-            return QString::fromUtf8(mime->desc());
-        }
-        case ColumnFileMTime: {
-            // FIXME: port
-            // const char* name = fm_file_info_get_disp_mtime(info);
-            // return QString::fromUtf8(name);
-        }
-        case ColumnFileSize: {
-            // FIXME: port
-            // const char* name = fm_file_info_get_disp_size(info);
-            // return QString::fromUtf8(name);
-        }
-        case ColumnFileOwner: {
-            // FIXME: port
-            // const char* name = fm_file_info_get_disp_owner(info);
-            // return QString::fromUtf8(name);
-        }
+        case ColumnFileName:
+            return item->displayName();
+        case ColumnFileType:
+            return QString(info->mimeType()->desc());
+        case ColumnFileMTime:
+            return item->displayMtime();
+        case ColumnFileSize:
+            return item->displaySize();
+        case ColumnFileOwner:
+            return item->ownerName();
         }
     }
     case Qt::DecorationRole: {
