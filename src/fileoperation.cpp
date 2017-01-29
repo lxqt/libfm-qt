@@ -26,23 +26,15 @@
 #include <QDebug>
 #include "path.h"
 
+#include "core/compat_p.h"
+
 namespace Fm {
 
 #define SHOW_DLG_DELAY  1000
 
-// FIXME: remove this later
-static PathList _convertPathList(const Fm2::FilePathList& srcFiles) {
-    Fm::PathList ret;
-    for(auto& file: srcFiles) {
-        Fm::Path path = Fm::Path::newForGfile(file.gfile().get());
-        ret.pushTail(path);
-    }
-    return ret;
-}
-
 FileOperation::FileOperation(Type type, Fm2::FilePathList srcFiles, QObject* parent):
     QObject(parent),
-    job_{fm_file_ops_job_new((FmFileOpType)type, _convertPathList(srcFiles))},
+    job_{fm_file_ops_job_new((FmFileOpType)type, Fm2::_convertPathList(srcFiles))},
     dlg{nullptr},
     srcPaths{std::move(srcFiles)},
     uiTimer(nullptr),

@@ -34,6 +34,8 @@
 #include <QDebug>
 #include "filemenu_p.h"
 
+#include "core/compat_p.h"
+
 namespace Fm {
 
 FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo> info, Fm2::FilePath cwd, const QString& title, QWidget* parent):
@@ -160,12 +162,18 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
         addAction(renameAction_);
     }
 
-#if 0
-    FIXME: port these parts to Fm2 API
+    // FIXME: port these parts to Fm2 API
 #ifdef CUSTOM_ACTIONS
     // DES-EMA custom actions integration
-    GList* files_list = fm_file_info_list_peek_head_link(files);
+    GList* files_list = nullptr;
+    for(auto it = files.crbegin(); it != files.crend(); ++it) {
+        FmFileInfo* fm_info = Fm2::_convertFileInfo(*it);
+        files_list = g_list_prepend(files_list, fm_info);
+    }
     GList* items = fm_get_actions_for_files(files_list);
+    g_list_foreach(files_list, (GFunc)fm_file_info_unref, nullptr);
+    g_list_free(files_list);
+
     if(items) {
         GList* l;
         for(l = items; l; l = l->next) {
@@ -181,13 +189,15 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
     g_list_foreach(items, (GFunc)fm_file_action_item_unref, nullptr);
     g_list_free(items);
 #endif
+
     // archiver integration
     // FIXME: we need to modify upstream libfm to include some Qt-based archiver programs.
     if(!allVirtual_) {
         if(sameType_) {
+            // FIXME: port these parts to Fm2 API
             FmArchiver* archiver = fm_archiver_get_default();
             if(archiver) {
-                if(fm_archiver_is_mime_type_supported(archiver, fm_mime_type_get_type(mime_type))) {
+                if(fm_archiver_is_mime_type_supported(archiver, mime_type->name())) {
                     if(cwd_ && archiver->extract_to_cmd) {
                         QAction* action = new QAction(tr("Extract to..."), this);
                         connect(action, &QAction::triggered, this, &FileMenu::onExtract);
@@ -207,7 +217,6 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
             }
         }
     }
-#endif
 
     separator3_ = addSeparator();
 
@@ -360,34 +369,28 @@ void FileMenu::setUseTrash(bool trash) {
 }
 
 void FileMenu::onCompress() {
-#if 0 //FIXME
     FmArchiver* archiver = fm_archiver_get_default();
     if(archiver) {
-        fm_archiver_create_archive(archiver, nullptr, files_.paths());
+        auto paths = Fm2::_convertPathList(files_.paths());
+        fm_archiver_create_archive(archiver, nullptr, paths.dataPtr());
     }
-#endif
 }
 
 void FileMenu::onExtract() {
-#if 0 //FIXME
     FmArchiver* archiver = fm_archiver_get_default();
     if(archiver) {
-        FmPathList* paths = fm_path_list_new_from_file_info_list(files_);
-        fm_archiver_extract_archives(archiver, nullptr, paths);
-        fm_path_list_unref(paths);
+        auto paths = Fm2::_convertPathList(files_.paths());
+        fm_archiver_extract_archives(archiver, nullptr, paths.dataPtr());
     }
-#endif
 }
 
 void FileMenu::onExtractHere() {
-#if 0 //FIXME
     FmArchiver* archiver = fm_archiver_get_default();
     if(archiver) {
-        FmPathList* paths = fm_path_list_new_from_file_info_list(files_);
-        fm_archiver_extract_archives_to(archiver, nullptr, paths, cwd_);
-        fm_path_list_unref(paths);
+        auto paths = Fm2::_convertPathList(files_.paths());
+        auto cwd = Fm2::_convertPath(cwd_);
+        fm_archiver_extract_archives_to(archiver, nullptr, paths.dataPtr(), cwd);
     }
-#endif
 }
 
 } // namespace Fm

@@ -30,6 +30,8 @@
 #include <QMessageBox>
 #endif
 
+#include "core/compat_p.h"
+
 namespace Fm {
 
 FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
@@ -72,13 +74,17 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
     showHiddenAction_->setChecked(model->showHidden());
     connect(showHiddenAction_, &QAction::triggered, this, &FolderMenu::onShowHiddenActionTriggered);
 
-#if 0 // FIXME: port to Fm2
+    // FIXME: port these parts to Fm2 API
 #ifdef CUSTOM_ACTIONS
-    FmFileInfo* folderInfo = view_->folderInfo();
+    auto folderInfo = view_->folderInfo();
     if(folderInfo) {
         GList* single_list = nullptr;
-        single_list = g_list_prepend(single_list, (GList*)folderInfo);
+        FmFileInfo* fm_info = Fm2::_convertFileInfo(folderInfo);
+        single_list = g_list_prepend(single_list, fm_info);
         GList* items = fm_get_actions_for_files(single_list);
+        g_list_foreach(single_list, (GFunc)fm_file_info_unref, nullptr);
+        g_list_free(single_list);
+
         if(items) {
             GList* l;
             for(l = items; l; l = l->next) {
@@ -94,8 +100,6 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
         g_list_foreach(items, (GFunc)fm_file_action_item_unref, nullptr);
         g_list_free(items);
     }
-#endif
-
 #endif
 
     separator4_ = addSeparator();
