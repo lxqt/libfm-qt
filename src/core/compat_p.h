@@ -44,8 +44,8 @@ inline FM_QT_DEPRECATED FmFileInfo* _convertFileInfo(const std::shared_ptr<const
     g_file_info_set_attribute_uint64(ginfo.get(), G_FILE_ATTRIBUTE_TIME_ACCESS, info->atime());
     g_file_info_set_attribute_uint64(ginfo.get(), G_FILE_ATTRIBUTE_TIME_CHANGED, info->ctime());
 
-    auto fmpath = Fm::Path::newForGfile(info->path().gfile().get());
-    return fm_file_info_new_from_gfileinfo(fmpath.dataPtr(), ginfo.get());
+    auto gf = info->path().gfile();
+    return fm_file_info_new_from_g_file_data(gf.get(), ginfo.get(), nullptr);
 }
 
 }

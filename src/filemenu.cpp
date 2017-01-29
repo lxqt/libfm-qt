@@ -67,9 +67,9 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
     Fm2::FilePath path = info_->path();
 
     // check if the files are of the same type
-    sameType_ = files.isSameType();
+    sameType_ = files_.isSameType();
     // check if the files are on the same filesystem
-    sameFilesystem_ = files.isSameFilesystem();
+    sameFilesystem_ = files_.isSameFilesystem();
     // check if the files are all virtual
 
     // FIXME: allVirtual_ = sameFilesystem_ && fm_path_is_virtual(path);
@@ -117,7 +117,7 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
     separator1_ = addSeparator();
 
     createAction_ = new QAction(tr("Create &New"), this);
-    Fm2::FilePath dirPath = files.size() == 1 && info_->isDir() ? path : cwd_;
+    Fm2::FilePath dirPath = files_.size() == 1 && info_->isDir() ? path : cwd_;
     createAction_->setMenu(new CreateNewMenu(nullptr, dirPath, this));
     addAction(createAction_);
 
@@ -127,7 +127,7 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
         bool can_restore = true;
         /* only immediate children of trash:/// can be restored. */
         auto trash_root = Fm2::FilePath::fromUri("trash:///");
-        for(auto& file: files) {
+        for(auto& file: files_) {
             Fm2::FilePath trash_path = file->path();
             if(!trash_root.isParentOf(trash_path)) {
                 can_restore = false;
@@ -166,9 +166,10 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
 #ifdef CUSTOM_ACTIONS
     // DES-EMA custom actions integration
     GList* files_list = nullptr;
-    for(auto it = files.crbegin(); it != files.crend(); ++it) {
+    for(auto it = files_.crbegin(); it != files_.crend(); ++it) {
         FmFileInfo* fm_info = Fm2::_convertFileInfo(*it);
         files_list = g_list_prepend(files_list, fm_info);
+        qDebug() << "fi:" << fm_info;
     }
     GList* items = fm_get_actions_for_files(files_list);
     g_list_foreach(files_list, (GFunc)fm_file_info_unref, nullptr);
@@ -185,9 +186,9 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
             }
             addCustomActionItem(this, item);
         }
+        g_list_foreach(items, (GFunc)fm_file_action_item_unref, nullptr);
+        g_list_free(items);
     }
-    g_list_foreach(items, (GFunc)fm_file_action_item_unref, nullptr);
-    g_list_free(items);
 #endif
 
     // archiver integration
@@ -305,20 +306,25 @@ void FileMenu::onApplicationTriggered() {
 
 #ifdef CUSTOM_ACTIONS
 void FileMenu::onCustomActionTrigerred() {
-#if 0 // FIXME: port to Fm2
     CustomAction* action = static_cast<CustomAction*>(sender());
     FmFileActionItem* item = action->item();
 
-    GList* files = fm_file_info_list_peek_head_link(files_);
+    GList* files_list = nullptr;
+    for(auto it = files_.crbegin(); it != files_.crend(); ++it) {
+        FmFileInfo* fm_info = Fm2::_convertFileInfo(*it);
+        files_list = g_list_prepend(files_list, fm_info);
+    }
     char* output = nullptr;
     /* g_debug("item: %s is activated, id:%s", fm_file_action_item_get_name(item),
         fm_file_action_item_get_id(item)); */
-    fm_file_action_item_launch(item, nullptr, files, &output);
+    fm_file_action_item_launch(item, nullptr, files_list, &output);
+    g_list_foreach(files_list, (GFunc)fm_file_info_unref, nullptr);
+    g_list_free(files_list);
+
     if(output) {
         QMessageBox::information(this, tr("Output"), QString::fromUtf8(output));
         g_free(output);
     }
-#endif
 }
 #endif
 

@@ -25,6 +25,7 @@
 #include "folderview.h"
 #include "utilities.h"
 #include <cstring> // for memset
+#include <QDebug>
 #ifdef CUSTOM_ACTIONS
 #include "customaction_p.h"
 #include <QMessageBox>
@@ -74,7 +75,7 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
     showHiddenAction_->setChecked(model->showHidden());
     connect(showHiddenAction_, &QAction::triggered, this, &FolderMenu::onShowHiddenActionTriggered);
 
-    // FIXME: port these parts to Fm2 API
+    // FIXME: port custom actions to Fm2 API
 #ifdef CUSTOM_ACTIONS
     auto folderInfo = view_->folderInfo();
     if(folderInfo) {
@@ -140,23 +141,22 @@ void FolderMenu::addCustomActionItem(QMenu* menu, FmFileActionItem* item) {
 }
 
 void FolderMenu::onCustomActionTrigerred() {
-#if 0
     // FIXME: port to Fm2
     CustomAction* action = static_cast<CustomAction*>(sender());
     FmFileActionItem* item = action->item();
-
-    FmFileInfo* folderInfo = view_->folderInfo();
+    auto folderInfo = view_->folderInfo();
     if(folderInfo) {
         GList* single_list = nullptr;
-        single_list = g_list_prepend(single_list, (GList*)folderInfo);
+        single_list = g_list_prepend(single_list, Fm2::_convertFileInfo(folderInfo));
         char* output = nullptr;
         fm_file_action_item_launch(item, nullptr, single_list, &output);
+        g_list_foreach(single_list, (GFunc)fm_file_info_unref, nullptr);
+        g_list_free(single_list);
         if(output) {
             QMessageBox::information(this, tr("Output"), QString::fromUtf8(output));
             g_free(output);
         }
     }
-#endif
 }
 #endif
 
@@ -238,14 +238,10 @@ void FolderMenu::createSortMenu() {
 }
 
 void FolderMenu::onPasteActionTriggered() {
-#if 0
-    // FIXME: port to Fm2
-    FmPath* folderPath = view_->path();
-
+    auto folderPath = view_->path();
     if(folderPath) {
         pasteFilesFromClipboard(folderPath);
     }
-#endif
 }
 
 void FolderMenu::onSelectAllActionTriggered() {
