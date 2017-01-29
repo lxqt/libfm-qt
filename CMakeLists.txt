@@ -70,6 +70,7 @@ install(FILES
 )
 
 add_subdirectory(src)
+add_subdirectory(data)
 
 # add Doxygen support to generate API docs
 # References:

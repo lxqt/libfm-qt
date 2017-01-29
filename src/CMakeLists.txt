@@ -27,6 +27,7 @@ set(libfm_core_SRCS
     core/volumemanager.cpp
     core/userinfocache.cpp
     core/thumbnailer.cpp
+    core/terminal.cpp
 )
 
 set(libfm_SRCS
