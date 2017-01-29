@@ -23,49 +23,48 @@
 #include <QStandardItem>
 #include <menu-cache/menu-cache.h>
 #include "icontheme.h"
+#include "core/iconinfo.h"
 
 namespace Fm {
 
 class AppMenuViewItem : public QStandardItem {
 public:
-  explicit AppMenuViewItem(MenuCacheItem* item):
-    item_(menu_cache_item_ref(item)) {
-    FmIcon* fmicon;
-    if(menu_cache_item_get_icon(item))
-      fmicon = fm_icon_from_name(menu_cache_item_get_icon(item));
-    else
-      fmicon = nullptr;
-    setText(QString::fromUtf8(menu_cache_item_get_name(item)));
-    setEditable(false);
-    setDragEnabled(false);
-    if(fmicon) {
-      setIcon(IconTheme::icon(fmicon));
-      fm_icon_unref(fmicon);
+    explicit AppMenuViewItem(MenuCacheItem* item):
+        item_(menu_cache_item_ref(item)) {
+        std::shared_ptr<const Fm2::IconInfo> icon;
+        if(menu_cache_item_get_icon(item)) {
+            icon = Fm2::IconInfo::fromName(menu_cache_item_get_icon(item));
+        }
+        setText(menu_cache_item_get_name(item));
+        setEditable(false);
+        setDragEnabled(false);
+        if(icon) {
+            setIcon(icon->qicon());
+        }
     }
-  }
 
-  ~AppMenuViewItem() {
-    menu_cache_item_unref(item_);
-  }
+    ~AppMenuViewItem() {
+        menu_cache_item_unref(item_);
+    }
 
-  MenuCacheItem* item() {
-    return item_;
-  }
+    MenuCacheItem* item() {
+        return item_;
+    }
 
-  MenuCacheType type() {
-	return menu_cache_item_get_type(item_);
-  }
+    MenuCacheType type() {
+        return menu_cache_item_get_type(item_);
+    }
 
-  bool isApp() {
-    return type() == MENU_CACHE_TYPE_APP;
-  }
+    bool isApp() {
+        return type() == MENU_CACHE_TYPE_APP;
+    }
 
-  bool isDir() {
-    return type() == MENU_CACHE_TYPE_DIR;
-  }
+    bool isDir() {
+        return type() == MENU_CACHE_TYPE_DIR;
+    }
 
 private:
-  MenuCacheItem* item_;
+    MenuCacheItem* item_;
 };
 
 }

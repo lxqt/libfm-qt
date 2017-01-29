@@ -21,6 +21,7 @@
 #include "icontheme.h"
 #include "appchooserdialog.h"
 #include "utilities.h"
+#include "core/iconinfo.h"
 
 namespace Fm {
 
@@ -53,8 +54,7 @@ void AppChooserComboBox::setMimeType(std::shared_ptr<const Fm2::MimeType> mimeTy
         for(GList* l = appInfos_glist; l; l = l->next, ++i) {
             Fm2::GAppInfoPtr app{G_APP_INFO(l->data), false};
             GIcon* gicon = g_app_info_get_icon(app.get());
-            // FIXME: port to the new icon API
-            addItem(IconTheme::icon(gicon), g_app_info_get_name(app.get()));
+            addItem(gicon ? Fm2::IconInfo::fromGIcon(gicon)->qicon(): QIcon(), g_app_info_get_name(app.get()));
             if(g_app_info_equal(app.get(), defaultApp_.get())) {
                 defaultAppIndex_ = i;
             }
@@ -111,7 +111,7 @@ void AppChooserComboBox::onCurrentIndexChanged(int index) {
                 else { /* if it's not found, add it to the list */
                     appInfos_.insert(appInfos_.cbegin(), std::move(app));
                     GIcon* gicon = g_app_info_get_icon(app.get());
-                    insertItem(0, IconTheme::icon(gicon), g_app_info_get_name(app.get()));
+                    insertItem(0, Fm2::IconInfo::fromGIcon(gicon)->qicon(), g_app_info_get_name(app.get()));
                     setCurrentIndex(0);
                 }
                 blockOnCurrentIndexChanged_ = false;

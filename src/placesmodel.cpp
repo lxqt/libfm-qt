@@ -148,9 +148,6 @@ PlacesModel::PlacesModel(QObject* parent):
     bookmarks = Fm2::Bookmarks::globalInstance();
     loadBookmarks();
     connect(bookmarks.get(), &Fm2::Bookmarks::changed, this, &PlacesModel::onBookmarksChanged);
-
-    // update some icons when the icon theme is changed
-    connect(IconTheme::instance(), &IconTheme::changed, this, &PlacesModel::updateIcons);
 }
 
 void PlacesModel::loadBookmarks() {
@@ -470,22 +467,6 @@ void PlacesModel::onBookmarksChanged() {
     // remove all items
     bookmarksRoot->removeRows(0, bookmarksRoot->rowCount());
     loadBookmarks();
-}
-
-void PlacesModel::updateIcons() {
-    // the icon theme is changed and we need to update the icons
-    PlacesModelItem* item;
-    int row;
-    int n = placesRoot->rowCount();
-    for(row = 0; row < n; ++row) {
-        item = static_cast<PlacesModelItem*>(placesRoot->child(row));
-        item->updateIcon();
-    }
-    n = devicesRoot->rowCount();
-    for(row = 0; row < n; ++row) {
-        item = static_cast<PlacesModelItem*>(devicesRoot->child(row));
-        item->updateIcon();
-    }
 }
 
 Qt::ItemFlags PlacesModel::flags(const QModelIndex& index) const {

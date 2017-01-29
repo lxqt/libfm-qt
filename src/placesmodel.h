@@ -89,7 +89,6 @@ public:
     static std::shared_ptr<PlacesModel> globalInstance();
 
 public Q_SLOTS:
-    void updateIcons();
     void updateTrash();
     void onBookmarksChanged();
 

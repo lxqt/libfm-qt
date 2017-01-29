@@ -21,6 +21,7 @@
 #include "folderview.h"
 #include "icontheme.h"
 #include "utilities.h"
+#include "core/iconinfo.h"
 
 namespace Fm {
 
@@ -51,7 +52,7 @@ CreateNewMenu::CreateNewMenu(QWidget* dialogParent, Fm2::FilePath dirPath, QWidg
             if(!icon) {
                 icon = fm_mime_type_get_icon(mime_type);
             }
-            QAction* action = addAction(IconTheme::icon(icon), text);
+            QAction* action = addAction(Fm2::IconInfo::fromGIcon(G_ICON(icon))->qicon(), text);
             action->setObjectName(QString::fromUtf8(fm_template_get_name(templ, nullptr)));
             connect(action, &QAction::triggered, this, &CreateNewMenu::onCreateNew);
         }

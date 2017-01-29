@@ -37,8 +37,9 @@
 
 namespace Fm2 {
 
-class LIBFM_QT_API IconInfo {
+class LIBFM_QT_API IconInfo: public std::enable_shared_from_this<IconInfo> {
 public:
+    friend class IconEngine;
 
     explicit IconInfo() {}
 
@@ -50,9 +51,13 @@ public:
 
     static std::shared_ptr<const IconInfo> fromName(const char* name);
 
-    static std::shared_ptr<const IconInfo> fromGIcon(GObjectPtr<GIcon> gicon);
+    static std::shared_ptr<const IconInfo> fromGIcon(GIconPtr gicon);
 
-    static void unloadCache();
+    static std::shared_ptr<const IconInfo> fromGIcon(GIcon* gicon) {
+        return fromGIcon(GIconPtr{gicon, true});
+    }
+
+    static void updateQIcons();
 
     GIconPtr gicon() const {
         return gicon_;
@@ -60,15 +65,22 @@ public:
 
     QIcon qicon() const;
 
-    static QIcon qiconFromNames(const char* const* names);
-
     bool hasEmblems() const {
         return G_IS_EMBLEMED_ICON(gicon_.get());
     }
 
     std::forward_list<std::shared_ptr<const IconInfo>> emblems() const;
 
+    bool isValid() const {
+        return gicon_ != nullptr;
+    }
+
 private:
+
+    static QIcon qiconFromNames(const char* const* names);
+
+    // actual QIcon loaded by QIcon::fromTheme
+    QIcon internalQicon() const;
 
     struct GIconHash {
         std::size_t operator()(GIcon* gicon) const {
@@ -85,9 +97,11 @@ private:
 private:
     GIconPtr gicon_;
     mutable QIcon qicon_;
+    mutable QIcon internalQicon_;
 
     static std::unordered_map<GIcon*, std::shared_ptr<IconInfo>, GIconHash, GIconEqual> cache_;
     static std::mutex mutex_;
+    static QIcon fallbackQicon_;
 };
 
 } // namespace Fm2
