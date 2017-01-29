@@ -154,26 +154,13 @@ bool SidePane::setHomeDir(const char* home_dir) {
 }
 
 void SidePane::initDirTree() {
-    // TODO
     DirTreeModel* model = new DirTreeModel(view_);
-    FmFileInfoJob* job = fm_file_info_job_new(nullptr, FM_FILE_INFO_JOB_NONE);
     model->setShowHidden(showHidden_);
 
-#if 0
-    // FIXME: port to new API
-    GList* l;
-    /* query FmFileInfo for home dir and root dir, and then,
-      * add them to dir tree model */
-    fm_file_info_job_add(job, fm_path_get_home());
-    fm_file_info_job_add(job, fm_path_get_root());
-    /* FIXME: maybe it's cleaner to use run_async here? */
-    fm_job_run_sync_with_mainloop(FM_JOB(job));
-    for(l = fm_file_info_list_peek_head_link(job->file_infos); l; l = l->next) {
-        FmFileInfo* fi = FM_FILE_INFO(l->data);
-        model->addRoot(fi);
-    }
-    g_object_unref(job);
-#endif
+    Fm2::FilePathList rootPaths;
+    rootPaths.emplace_back(Fm2::FilePath::homeDir());
+    rootPaths.emplace_back(Fm2::FilePath::fromLocalPath("/"));
+    model->addRoots(std::move(rootPaths));
     static_cast<DirTreeView*>(view_)->setModel(model);
 }
 

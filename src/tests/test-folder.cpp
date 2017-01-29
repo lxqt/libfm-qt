@@ -1,12 +1,11 @@
 #include <QApplication>
-#include <QDir>
 #include <QDebug>
 #include "../core/folder.h"
 
 int main(int argc, char** argv) {
     QApplication app(argc, argv);
 
-    auto home = Fm2::FilePath::fromLocalPath(QDir().homePath().toLocal8Bit().constData());
+    auto home = Fm2::FilePath::homeDir();
     auto folder = Fm2::Folder::fromPath(home);
 
     QObject::connect(folder.get(), &Fm2::Folder::startLoading, [=]() {

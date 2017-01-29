@@ -20,6 +20,8 @@
 #include "dirtreemodel.h"
 #include "dirtreemodelitem.h"
 #include <QDebug>
+#include <QThreadPool>
+#include "core/fileinfojob.h"
 
 namespace Fm {
 
@@ -28,6 +30,20 @@ DirTreeModel::DirTreeModel(QObject* parent):
 }
 
 DirTreeModel::~DirTreeModel() {
+}
+
+QModelIndex DirTreeModel::addRoots(Fm2::FilePathList rootPaths) {
+    auto job = new Fm2::FileInfoJob{std::move(rootPaths)};
+    job->setAutoDelete(true);
+    connect(job, &Fm2::FileInfoJob::finished, this, &DirTreeModel::onFileInfoJobFinished, Qt::BlockingQueuedConnection);
+    QThreadPool::globalInstance()->start(job);
+}
+
+void DirTreeModel::onFileInfoJobFinished() {
+    auto job = static_cast<Fm2::FileInfoJob*>(sender());
+    for(auto file: job->files()) {
+        addRoot(std::move(file));
+    }
 }
 
 // QAbstractItemModel implementation
@@ -130,14 +146,13 @@ QModelIndex DirTreeModel::indexFromItem(DirTreeModelItem* item) const {
 
 // public APIs
 QModelIndex DirTreeModel::addRoot(std::shared_ptr<const Fm2::FileInfo> root) {
-    DirTreeModelItem* item = new DirTreeModelItem(root, this);
+    DirTreeModelItem* item = new DirTreeModelItem(std::move(root), this);
     int row = rootItems_.count();
     beginInsertRows(QModelIndex(), row, row);
-    item->fileInfo_ = std::move(root);
     rootItems_.append(item);
     // add_place_holder_child_item(model, item_l, nullptr, FALSE);
     endInsertRows();
-    return QModelIndex();
+    return createIndex(row, 0, (void*)item);
 }
 
 DirTreeModelItem* DirTreeModel::itemFromIndex(const QModelIndex& index) const {

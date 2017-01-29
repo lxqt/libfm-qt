@@ -151,8 +151,11 @@ public:
         return gfile_ != nullptr;
     }
 
+    static const FilePath& homeDir();
+
 private:
     GObjectPtr<GFile> gfile_;
+    static FilePath homeDir_;
 };
 
 struct FilePathHash {

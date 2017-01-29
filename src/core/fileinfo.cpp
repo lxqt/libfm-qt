@@ -36,9 +36,10 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
     size_ = g_file_info_get_size(inf.get());
 
     tmp = g_file_info_get_content_type(inf.get());
-    // FIXME: replace this with unknown if it's not available
-    if(tmp)
-        mimeType_ = MimeType::fromName(tmp);
+    if(!tmp) {
+        tmp = "application/octet-stream";
+    }
+    mimeType_ = MimeType::fromName(tmp);
 
     mode_ = g_file_info_get_attribute_uint32(inf.get(), G_FILE_ATTRIBUTE_UNIX_MODE);
 
@@ -156,9 +157,7 @@ _file_is_symlink:
     /* try file-specific icon first */
     gicon = g_file_info_get_icon(inf.get());
     if(gicon) {
-        // FIXME: this is bad
-        auto gicon_ptr = GObjectPtr<GIcon>{gicon, true};
-        icon_ = IconInfo::fromGIcon(gicon_ptr);
+        icon_ = IconInfo::fromGIcon(gicon);
     }
 
 #if 0

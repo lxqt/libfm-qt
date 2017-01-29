@@ -50,7 +50,8 @@ public:
     explicit DirTreeModel(QObject* parent);
     ~DirTreeModel();
 
-    QModelIndex addRoot(std::shared_ptr<const Fm2::FileInfo> root);
+    QModelIndex addRoots(Fm2::FilePathList rootPaths);
+
     void loadRow(const QModelIndex& index);
     void unloadRow(const QModelIndex& index);
 
@@ -75,18 +76,24 @@ public:
     virtual QModelIndex index(int row, int column, const QModelIndex& parent) const;
     virtual bool hasChildren(const QModelIndex& parent = QModelIndex()) const;
 
+Q_SIGNALS:
+    void rowLoaded(const QModelIndex& index);
+
+private Q_SLOTS:
+    void onFileInfoJobFinished();
+
 private:
+    QModelIndex addRoot(std::shared_ptr<const Fm2::FileInfo> root);
+
     DirTreeModelItem* itemFromPath(const Fm2::FilePath& path) const;
     DirTreeModelItem* itemFromIndex(const QModelIndex& index) const;
     QModelIndex indexFromItem(DirTreeModelItem* item) const;
-
-Q_SIGNALS:
-    void rowLoaded(const QModelIndex& index);
 
 private:
     bool showHidden_;
     QList<DirTreeModelItem*> rootItems_;
 };
+
 }
 
 #endif // FM_DIRTREEMODEL_H

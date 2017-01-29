@@ -25,7 +25,6 @@
 #include <QMimeData>
 #include <QTimer>
 #include <QPointer>
-#include <QDir>
 #include <QStandardPaths>
 #include "utilities.h"
 #include "placesmodelitem.h"
@@ -46,8 +45,7 @@ PlacesModel::PlacesModel(QObject* parent):
     placesRoot->setColumnCount(2);
     appendRow(placesRoot);
 
-    homeItem = new PlacesModelItem("user-home", g_get_user_name(),
-                                   Fm2::FilePath::fromLocalPath(QDir::homePath().toLocal8Bit().constData()));
+    homeItem = new PlacesModelItem("user-home", g_get_user_name(), Fm2::FilePath::homeDir());
     placesRoot->appendRow(homeItem);
 
     desktopItem = new PlacesModelItem("user-desktop", tr("Desktop"),

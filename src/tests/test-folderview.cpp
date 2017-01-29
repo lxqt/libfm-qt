@@ -1,7 +1,6 @@
 #include <QApplication>
 #include <QMainWindow>
 #include <QToolBar>
-#include <QDir>
 #include <QDebug>
 #include "../core/folder.h"
 #include "../foldermodel.h"
@@ -20,7 +19,7 @@ int main(int argc, char** argv) {
     Fm::FolderView folder_view;
     win.setCentralWidget(&folder_view);
 
-    auto home = Fm2::FilePath::fromLocalPath(QDir().homePath().toLocal8Bit().constData());
+    auto home = Fm2::FilePath::homeDir();
     Fm::CachedFolderModel* model = Fm::CachedFolderModel::modelFromPath(home);
     auto proxy_model = new Fm::ProxyFolderModel();
     proxy_model->sort(Fm::FolderModel::ColumnFileName, Qt::AscendingOrder);

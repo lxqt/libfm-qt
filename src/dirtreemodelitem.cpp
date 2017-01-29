@@ -36,15 +36,15 @@ DirTreeModelItem::DirTreeModelItem():
 
 DirTreeModelItem::DirTreeModelItem(std::shared_ptr<const Fm2::FileInfo> info, DirTreeModel* model, DirTreeModelItem* parent):
     fileInfo_{std::move(info)},
-    displayName_(info->displayName()),
-    icon_(info->icon()->qicon()),
     expanded_(false),
     loaded_(false),
     parent_(parent),
     placeHolderChild_(nullptr),
     model_(model) {
 
-    if(info) {
+    if(fileInfo_) {
+        displayName_ = fileInfo_->displayName();
+        icon_ = fileInfo_->icon()->qicon();
         addPlaceHolderChild();
     }
 }

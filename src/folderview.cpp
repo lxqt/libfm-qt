@@ -1032,7 +1032,6 @@ void FolderView::onAutoSelectionTimeout() {
 }
 
 void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm2::FileInfo> &fileInfo) {
-    // FIXME: port to Fm2
     if(type == ActivatedClick) {
         if(fileLauncher_) {
             Fm2::FileInfoList files;

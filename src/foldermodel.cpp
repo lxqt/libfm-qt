@@ -204,17 +204,17 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
             return QString::fromUtf8(mime->desc());
         }
         case ColumnFileMTime: {
-            // FIXME:
+            // FIXME: port
             // const char* name = fm_file_info_get_disp_mtime(info);
             // return QString::fromUtf8(name);
         }
         case ColumnFileSize: {
-            // FIXME:
+            // FIXME: port
             // const char* name = fm_file_info_get_disp_size(info);
             // return QString::fromUtf8(name);
         }
         case ColumnFileOwner: {
-            // FIXME:
+            // FIXME: port
             // const char* name = fm_file_info_get_disp_owner(info);
             // return QString::fromUtf8(name);
         }
@@ -401,7 +401,6 @@ bool FolderModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
 
     // FIXME: should we put this in dropEvent handler of FolderView instead?
     if(data->hasUrls()) {
-        // FIXME: port this to new Fm2 APIs
         qDebug("drop action: %d", action);
         auto srcPaths = pathListFromQUrls(data->urls());
         switch(action) {

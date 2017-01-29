@@ -179,7 +179,7 @@ public:
     }
 
     FilePath path() const {
-        return dirPath_.child(name_.c_str());
+        return dirPath_ ? dirPath_.child(name_.c_str()) : FilePath::fromPathStr(name_.c_str());
     }
 
     const FilePath& dirPath() const {
