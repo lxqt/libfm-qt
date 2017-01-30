@@ -11,8 +11,8 @@ static const char query_str[] =
     G_FILE_ATTRIBUTE_ID_FILESYSTEM;
 
 
-TotalSizeJob::TotalSizeJob(FilePathList &&paths, Flags flags):
-    paths_{paths},
+TotalSizeJob::TotalSizeJob(FilePathList paths, Flags flags):
+    paths_{std::move(paths)},
     flags_{flags},
     totalSize_{0},
     totalOndiskSize_{0},
@@ -21,7 +21,7 @@ TotalSizeJob::TotalSizeJob(FilePathList &&paths, Flags flags):
 }
 
 
-void TotalSizeJob::run(FilePath& path, GFileInfoPtr &inf) {
+void TotalSizeJob::run(FilePath path, GFileInfoPtr inf) {
     GFileType type;
     const char* fs_id;
     bool descend;
@@ -103,10 +103,10 @@ _retry_enum_children:
             };
             if(enu) {
                 while(!isCancelled()) {
-                    inf = g_file_enumerator_next_file(enu.get(), cancellable().get(), &err);
+                    inf = GFileInfoPtr{g_file_enumerator_next_file(enu.get(), cancellable().get(), &err), false};
                     if(inf) {
                         FilePath child = path.child(g_file_info_get_name(inf.get()));
-                        run(child, inf);
+                        run(std::move(child), std::move(inf));
                     }
                     else {
                         if(err) { /* error! */
@@ -136,8 +136,7 @@ _retry_enum_children:
 
 void TotalSizeJob::run() {
     for(auto& path : paths_) {
-        GFileInfoPtr inf;
-        run(path, inf);
+        run(path, GFileInfoPtr{});
     }
     Q_EMIT finished();
 }

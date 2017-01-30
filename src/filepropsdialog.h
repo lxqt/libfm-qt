@@ -27,6 +27,7 @@
 #include <libfm/fm.h>
 
 #include "core/fileinfo.h"
+#include "core/totalsizejob.h"
 
 namespace Ui {
 class FilePropsDialog;
@@ -62,9 +63,8 @@ private:
     void initPermissionsPage();
     void initOwner();
 
-    static void onDeepCountJobFinished(FmDeepCountJob* job, FilePropsDialog* pThis);
-
 private Q_SLOTS:
+    void onDeepCountJobFinished();
     void onFileSizeTimerTimeout();
 
 private:
@@ -89,7 +89,7 @@ private:
     mode_t execPerm; // exec permission of the files
     Qt::CheckState execCheckState;
 
-    FmDeepCountJob* deepCountJob; // job used to count total size
+    Fm2::TotalSizeJob* totalSizeJob; // job used to count total size
     QTimer* fileSizeTimer;
 };
 

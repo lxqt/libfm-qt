@@ -27,8 +27,10 @@
 #include <QStringListModel>
 #include <QMessageBox>
 #include <QDateTime>
+#include <QThreadPool>
 #include <sys/types.h>
 #include <time.h>
+#include "core/totalsizejob.h"
 
 #define DIFFERENT_UIDS    ((uid)-1)
 #define DIFFERENT_GIDS    ((gid)-1)
@@ -60,14 +62,8 @@ FilePropsDialog::FilePropsDialog(Fm2::FileInfoList files, QWidget* parent, Qt::W
     }
 
     // FIXME: port to new API
-    FmPathList* paths = fm_path_list_new();
-    for(auto& file : fileInfos_) {
-        FmPath* tmp = fm_path_new_for_gfile(file->path().gfile().get());
-        fm_path_list_push_tail(paths, tmp);
-        fm_path_unref(tmp);
-    }
-    deepCountJob = fm_deep_count_job_new(paths, FM_DC_JOB_DEFAULT);
-    fm_path_list_unref(paths);
+
+    totalSizeJob = new Fm2::TotalSizeJob(fileInfos_.paths(), Fm2::TotalSizeJob::DEFAULT);
 
     initGeneralPage();
     initPermissionsPage();
@@ -82,11 +78,9 @@ FilePropsDialog::~FilePropsDialog() {
     }
 
     // Cancel the indexing job if it hasn't finished
-    if(deepCountJob) {
-        g_signal_handlers_disconnect_by_func(deepCountJob, (gpointer)G_CALLBACK(onDeepCountJobFinished), this);
-        fm_job_cancel(FM_JOB(deepCountJob));
-        g_object_unref(deepCountJob);
-        deepCountJob = nullptr;
+    if(totalSizeJob) {
+        totalSizeJob->cancel();
+        totalSizeJob = nullptr;
     }
 
     // And finally delete the dialog's UI
@@ -314,45 +308,38 @@ void FilePropsDialog::initGeneralPage() {
     fileSizeTimer = new QTimer(this);
     connect(fileSizeTimer, &QTimer::timeout, this, &FilePropsDialog::onFileSizeTimerTimeout);
     fileSizeTimer->start(600);
-    g_signal_connect(deepCountJob, "finished", G_CALLBACK(onDeepCountJobFinished), this);
-    fm_job_run_async(FM_JOB(deepCountJob));
+
+    connect(totalSizeJob, &Fm2::TotalSizeJob::finished, this, &FilePropsDialog::onDeepCountJobFinished, Qt::BlockingQueuedConnection);
+    QThreadPool::globalInstance()->start(totalSizeJob);
 }
 
-/*static */ void FilePropsDialog::onDeepCountJobFinished(FmDeepCountJob* job, FilePropsDialog* pThis) {
+void FilePropsDialog::onDeepCountJobFinished() {
+    onFileSizeTimerTimeout(); // update file size display
 
-    pThis->onFileSizeTimerTimeout(); // update file size display
-
-    // free the job
-    g_object_unref(pThis->deepCountJob);
-    pThis->deepCountJob = nullptr;
+    totalSizeJob = nullptr;
 
     // stop the timer
-    if(pThis->fileSizeTimer) {
-        pThis->fileSizeTimer->stop();
-        delete pThis->fileSizeTimer;
-        pThis->fileSizeTimer = nullptr;
+    if(fileSizeTimer) {
+        fileSizeTimer->stop();
+        delete fileSizeTimer;
+        fileSizeTimer = nullptr;
     }
 }
 
 void FilePropsDialog::onFileSizeTimerTimeout() {
-    if(deepCountJob && !fm_job_is_cancelled(FM_JOB(deepCountJob))) {
-        char size_str[128];
-        fm_file_size_to_str(size_str, sizeof(size_str), deepCountJob->total_size,
-                            fm_config->si_unit);
+    if(totalSizeJob && !totalSizeJob->isCancelled()) {
         // FIXME:
         // OMG! It's really unbelievable that Qt developers only implement
         // QObject::tr(... int n). GNU gettext developers are smarter and
         // they use unsigned long instead of int.
         // We cannot use Qt here to handle plural forms. So sad. :-(
-        QString str = QString::fromUtf8(size_str) %
-                      QString(" (%1 B)").arg(deepCountJob->total_size);
+        QString str = Fm::formatFileSize(totalSizeJob->totalSize(), fm_config->si_unit) %
+                      QString(" (%1 B)").arg(totalSizeJob->totalSize());
         // tr(" (%n) byte(s)", "", deepCountJob->total_size);
         ui->fileSize->setText(str);
 
-        fm_file_size_to_str(size_str, sizeof(size_str), deepCountJob->total_ondisk_size,
-                            fm_config->si_unit);
-        str = QString::fromUtf8(size_str) %
-              QString(" (%1 B)").arg(deepCountJob->total_ondisk_size);
+        str = Fm::formatFileSize(totalSizeJob->totalOnDiskSize(), fm_config->si_unit) %
+              QString(" (%1 B)").arg(totalSizeJob->totalOnDiskSize());
         // tr(" (%n) byte(s)", "", deepCountJob->total_ondisk_size);
         ui->onDiskSize->setText(str);
     }

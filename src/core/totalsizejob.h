@@ -20,14 +20,7 @@ public:
         PREPARE_DELETE = 1 << 3
     };
 
-    TotalSizeJob(): TotalSizeJob{FilePathList{}} {
-    }
-
-    TotalSizeJob(const FilePathList& paths, Flags flags = DEFAULT):
-        TotalSizeJob{FilePathList{paths}, flags} {
-    }
-
-    TotalSizeJob(FilePathList&& paths, Flags flags = DEFAULT);
+    TotalSizeJob(FilePathList paths = FilePathList{}, Flags flags = DEFAULT);
 
     void run() override;
 
@@ -44,7 +37,7 @@ public:
     }
 
 private:
-    void run(FilePath& path, GFileInfoPtr& inf);
+    void run(FilePath path, GFileInfoPtr inf);
 
 private:
     FilePathList paths_;
