@@ -52,12 +52,12 @@ DirTreeModelItem::DirTreeModelItem(std::shared_ptr<const Fm2::FileInfo> info, Di
 DirTreeModelItem::~DirTreeModelItem() {
     freeFolder();
     // delete child items if needed
-    if(!children_.isEmpty()) {
+    if(!children_.empty()) {
         Q_FOREACH(DirTreeModelItem* item, children_) {
             delete item;
         }
     }
-    if(!hiddenChildren_.isEmpty()) {
+    if(!hiddenChildren_.empty()) {
         Q_FOREACH(DirTreeModelItem* item, hiddenChildren_) {
             delete item;
         }
@@ -79,7 +79,7 @@ void DirTreeModelItem::addPlaceHolderChild() {
     placeHolderChild_->parent_ = this;
     placeHolderChild_->model_ = model_;
     placeHolderChild_->displayName_ = DirTreeModel::tr("Loading...");
-    children_.append(placeHolderChild_);
+    children_.push_back(placeHolderChild_);
 }
 
 void DirTreeModelItem::loadFolder() {
@@ -122,8 +122,8 @@ void DirTreeModelItem::unloadFolder() {
           * item to keep expander in the tree view around. */
 
         // delete all visible child items
-        model_->beginRemoveRows(index(), 0, children_.count() - 1);
-        if(!children_.isEmpty()) {
+        model_->beginRemoveRows(index(), 0, children_.size() - 1);
+        if(!children_.empty()) {
             Q_FOREACH(DirTreeModelItem* item, children_) {
                 delete item;
             }
@@ -132,7 +132,7 @@ void DirTreeModelItem::unloadFolder() {
         model_->endRemoveRows();
 
         // remove hidden children
-        if(!hiddenChildren_.isEmpty()) {
+        if(!hiddenChildren_.empty()) {
             Q_FOREACH(DirTreeModelItem* item, hiddenChildren_) {
                 delete item;
             }
@@ -167,28 +167,19 @@ DirTreeModelItem* DirTreeModelItem::insertFileInfo(std::shared_ptr<const Fm2::Fi
 int DirTreeModelItem::insertItem(DirTreeModelItem* newItem) {
     if(model_->showHidden() || !newItem->fileInfo_ || !newItem->fileInfo_->isHidden()) {
         auto newName = newItem->fileInfo_->displayName();
-        int pos = 0;
-        QList<DirTreeModelItem*>::iterator it;
-        // FIXME: this is inefficient (use binary search instead)
-        for(it = children_.begin(); it != children_.end(); ++it) {
-            DirTreeModelItem* child = *it;
-            if(G_UNLIKELY(!child->fileInfo_)) {
-                continue;
-            }
-            if(QString::localeAwareCompare(newName, child->fileInfo_->displayName()) <= 0) {
-                break;
-            }
-            ++pos;
-        }
+        auto it = std::lower_bound(children_.cbegin(), children_.cend(), newItem, [=](const DirTreeModelItem* a, const DirTreeModelItem* b) {
+            return QString::localeAwareCompare(a->fileInfo_->displayName(), b->fileInfo_->displayName()) < 0;
+        });
         // inform the world that we're about to insert the item
-        model_->beginInsertRows(index(), pos, pos);
+        auto position = it - children_.begin();
+        model_->beginInsertRows(index(), position, position);
         newItem->parent_ = this;
         children_.insert(it, newItem);
         model_->endInsertRows();
-        return pos;
+        return position;
     }
     else { // hidden folder
-        hiddenChildren_.append(newItem);
+        hiddenChildren_.push_back(newItem);
     }
     return -1;
 }
@@ -203,16 +194,17 @@ void DirTreeModelItem::onFolderFinishLoading() {
     QModelIndex idx = index();
     qDebug() << "folder loaded";
     // remove the placeholder child if needed
-    if(children_.count() == 1) { // we have no other child other than the place holder item, leave it
+    if(children_.size() == 1) { // we have no other child other than the place holder item, leave it
         placeHolderChild_->displayName_ = DirTreeModel::tr("<No sub folders>");
         QModelIndex placeHolderIndex = placeHolderChild_->index();
         // qDebug() << "placeHolderIndex: "<<placeHolderIndex;
         Q_EMIT model->dataChanged(placeHolderIndex, placeHolderIndex);
     }
     else {
-        int pos = children_.indexOf(placeHolderChild_);
+        auto it = std::find(children_.cbegin(), children_.cend(), placeHolderChild_);
+        auto pos = it - children_.cbegin();
         model->beginRemoveRows(idx, pos, pos);
-        children_.removeAt(pos);
+        children_.erase(it);
         delete placeHolderChild_;
         model->endRemoveRows();
         placeHolderChild_ = nullptr;
@@ -239,7 +231,7 @@ void DirTreeModelItem::onFolderFilesRemoved(Fm2::FileInfoList& files) {
         DirTreeModelItem* child  = childFromName(fi->name().c_str(), &pos);
         if(child) {
             model->beginRemoveRows(index(), pos, pos);
-            children_.removeAt(pos);
+            children_.erase(children_.cbegin() + pos);
             delete child;
             model->endRemoveRows();
         }
@@ -295,24 +287,23 @@ DirTreeModelItem* DirTreeModelItem::childFromPath(Fm2::FilePath path, bool recur
 void DirTreeModelItem::setShowHidden(bool show) {
     if(show) {
         // move all hidden children to visible list
-        Q_FOREACH(DirTreeModelItem* item, hiddenChildren_) {
+        for(auto item: hiddenChildren_) {
             insertItem(item);
         }
         hiddenChildren_.clear();
     }
     else { // hide hidden folders
         QModelIndex _index = index();
-        QList<DirTreeModelItem*>::iterator it, next;
         int pos = 0;
-        for(it = children_.begin(); it != children_.end(); ++pos) {
+        for(auto it = children_.begin(); it != children_.end(); ++pos) {
             DirTreeModelItem* item = *it;
-            next = it + 1;
+            auto next = it + 1;
             if(item->fileInfo_) {
                 if(item->fileInfo_->isHidden()) { // hidden folder
                     // remove from the model and add to the hiddenChildren_ list
                     model_->beginRemoveRows(_index, pos, pos);
                     children_.erase(it);
-                    hiddenChildren_.append(item);
+                    hiddenChildren_.push_back(item);
                     model_->endRemoveRows();
                 }
                 else { // visible folder, recursively filter its children

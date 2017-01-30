@@ -312,7 +312,7 @@ bool Folder::eventFileAdded(const FilePath &path) {
         }
         /* bug #3591771: 'ln -fns . test' leave no file visible in folder.
            If it is queued for deletion then cancel that operation */
-        std::remove(paths_to_del.begin(), paths_to_del.end(), path);
+        paths_to_del.erase(std::remove(paths_to_del.begin(), paths_to_del.end(), path), paths_to_del.cend());
     }
     else
         /* file already queued for adding, don't duplicate */
@@ -355,8 +355,8 @@ void Folder::eventFileDeleted(const FilePath& path) {
     }
     /* if the file is already queued for addition or update, that operation
        will be just a waste, therefore cancel it right now */
-    std::remove(paths_to_add.begin(), paths_to_add.end(), path);
-    std::remove(paths_to_update.begin(), paths_to_update.end(), path);
+    paths_to_add.erase(std::remove(paths_to_add.begin(), paths_to_add.end(), path), paths_to_add.cend());
+    paths_to_update.erase(std::remove(paths_to_update.begin(), paths_to_update.end(), path), paths_to_update.cend());
     queueUpdate();
     // G_UNLOCK(lists);
 }

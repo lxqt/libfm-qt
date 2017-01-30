@@ -86,11 +86,11 @@ int DirTreeModel::columnCount(const QModelIndex& parent) const {
 
 int DirTreeModel::rowCount(const QModelIndex& parent) const {
     if(!parent.isValid()) {
-        return rootItems_.count();
+        return rootItems_.size();
     }
     DirTreeModelItem* item = itemFromIndex(parent);
     if(item) {
-        return item->children_.count();
+        return item->children_.size();
     }
     return 0;
 }
@@ -100,9 +100,10 @@ QModelIndex DirTreeModel::parent(const QModelIndex& child) const {
     if(item && item->parent_) {
         item = item->parent_; // go to parent item
         if(item) {
-            const QList<DirTreeModelItem*>& items = item->parent_ ? item->parent_->children_ : rootItems_;
-            int row = items.indexOf(item); // this is Q(n) and may be slow :-(
-            if(row >= 0) {
+            const auto& items = item->parent_ ? item->parent_->children_ : rootItems_;
+            auto it = std::find(items.cbegin(), items.cend(), item);
+            if(it != items.cend()) {
+                int row = it - items.cbegin();
                 return createIndex(row, 0, (void*)item);
             }
         }
@@ -113,14 +114,14 @@ QModelIndex DirTreeModel::parent(const QModelIndex& child) const {
 QModelIndex DirTreeModel::index(int row, int column, const QModelIndex& parent) const {
     if(row >= 0 && column >= 0 && column == 0) {
         if(!parent.isValid()) { // root items
-            if(row < rootItems_.count()) {
+            if(row < rootItems_.size()) {
                 const DirTreeModelItem* item = rootItems_.at(row);
                 return createIndex(row, column, (void*)item);
             }
         }
         else { // child items
             DirTreeModelItem* parentItem = itemFromIndex(parent);
-            if(row < parentItem->children_.count()) {
+            if(row < parentItem->children_.size()) {
                 const DirTreeModelItem* item = parentItem->children_.at(row);
                 return createIndex(row, column, (void*)item);
             }
@@ -136,9 +137,10 @@ bool DirTreeModel::hasChildren(const QModelIndex& parent) const {
 
 QModelIndex DirTreeModel::indexFromItem(DirTreeModelItem* item) const {
     Q_ASSERT(item);
-    const QList<DirTreeModelItem*>& items = item->parent_ ? item->parent_->children_ : rootItems_;
-    int row = items.indexOf(item);
-    if(row >= 0) {
+    const auto& items = item->parent_ ? item->parent_->children_ : rootItems_;
+    auto it = std::find(items.cbegin(), items.cend(), item);
+    if(it != items.cend()) {
+        int row = it - items.cbegin();
         return createIndex(row, 0, (void*)item);
     }
     return QModelIndex();
@@ -147,9 +149,9 @@ QModelIndex DirTreeModel::indexFromItem(DirTreeModelItem* item) const {
 // public APIs
 QModelIndex DirTreeModel::addRoot(std::shared_ptr<const Fm2::FileInfo> root) {
     DirTreeModelItem* item = new DirTreeModelItem(std::move(root), this);
-    int row = rootItems_.count();
+    int row = rootItems_.size();
     beginInsertRows(QModelIndex(), row, row);
-    rootItems_.append(item);
+    rootItems_.push_back(item);
     // add_place_holder_child_item(model, item_l, nullptr, FALSE);
     endInsertRows();
     return createIndex(row, 0, (void*)item);

@@ -22,8 +22,8 @@
 
 #include "libfmqtglobals.h"
 #include <libfm/fm.h>
+#include <vector>
 #include <QIcon>
-#include <QList>
 #include <QModelIndex>
 
 #include "core/fileinfo.h"
@@ -76,8 +76,8 @@ private:
     bool loaded_;
     DirTreeModelItem* parent_;
     DirTreeModelItem* placeHolderChild_;
-    QList<DirTreeModelItem*> children_;
-    QList<DirTreeModelItem*> hiddenChildren_;
+    std::vector<DirTreeModelItem*> children_;
+    std::vector<DirTreeModelItem*> hiddenChildren_;
     DirTreeModel* model_;
     // signal connections
     QMetaObject::Connection onFolderFinishLoadingConn_;

@@ -27,6 +27,7 @@
 #include <QList>
 #include <QSharedPointer>
 #include <libfm/fm.h>
+#include <vector>
 
 #include "core/fileinfo.h"
 #include "core/filepath.h"
@@ -91,7 +92,7 @@ private:
 
 private:
     bool showHidden_;
-    QList<DirTreeModelItem*> rootItems_;
+    std::vector<DirTreeModelItem*> rootItems_;
 };
 
 }
