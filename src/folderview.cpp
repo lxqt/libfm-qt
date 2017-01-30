@@ -443,17 +443,8 @@ void FolderView::onItemActivated(QModelIndex index) {
 void FolderView::onSelChangedTimeout() {
     selChangedTimer_->deleteLater();
     selChangedTimer_ = nullptr;
-
-    QItemSelectionModel* selModel = selectionModel();
-    int nSel = 0;
-    if(viewMode() == DetailedListMode) {
-        nSel = selModel->selectedRows().count();
-    }
-    else {
-        nSel = selModel->selectedIndexes().count();
-    }
     // qDebug()<<"selected:" << nSel;
-    Q_EMIT selChanged(nSel); // FIXME: this is inefficient
+    Q_EMIT selChanged();
 }
 
 void FolderView::onSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected) {
@@ -764,6 +755,11 @@ Fm2::FilePathList FolderView::selectedFilePaths() const {
         }
     }
     return Fm2::FilePathList();
+}
+
+bool FolderView::hasSelection() const {
+    QItemSelectionModel* selModel = selectionModel();
+    return selModel ? selModel->hasSelection() : false;
 }
 
 QModelIndex FolderView::indexFromFolderPath(const Fm2::FilePath& folderPath) const {

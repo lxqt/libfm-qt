@@ -61,8 +61,6 @@ FilePropsDialog::FilePropsDialog(Fm2::FileInfoList files, QWidget* parent, Qt::W
         mimeType = fileInfo->mimeType();
     }
 
-    // FIXME: port to new API
-
     totalSizeJob = new Fm2::TotalSizeJob(fileInfos_.paths(), Fm2::TotalSizeJob::DEFAULT);
 
     initGeneralPage();

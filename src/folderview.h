@@ -98,6 +98,7 @@ public:
     QItemSelectionModel* selectionModel() const;
     Fm2::FileInfoList selectedFiles() const;
     Fm2::FilePathList selectedFilePaths() const;
+    bool hasSelection() const;
     QModelIndex indexFromFolderPath(const Fm2::FilePath& folderPath) const;
 
     void selectAll();
@@ -160,7 +161,7 @@ Q_SIGNALS:
     void clicked(int type, const std::shared_ptr<const Fm2::FileInfo>& file);
     void clickedBack();
     void clickedForward();
-    void selChanged(int n_sel);
+    void selChanged();
     void sortChanged();
 
 private:
