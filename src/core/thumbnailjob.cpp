@@ -210,8 +210,9 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
     }
     else { // the image format is not supported, try to find an external thumbnailer
         // try all available external thumbnailers for it until sucess
+        int target_size = size_ > 128 ? 256 : 128;
         file->mimeType()->forEachThumbnailer([&](const std::shared_ptr<const Thumbnailer>& thumbnailer) {
-            if(thumbnailer->run(uri, thumbnailFilename.toLocal8Bit().constData(), size_)) {
+            if(thumbnailer->run(uri, thumbnailFilename.toLocal8Bit().constData(), target_size)) {
                 result = QImage(thumbnailFilename);
             }
             return !result.isNull(); // return true on success, and forEachThumbnailer() will stop.
