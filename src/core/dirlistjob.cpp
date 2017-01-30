@@ -10,9 +10,12 @@ DirListJob::DirListJob(const FilePath& path, Flags flags): dir_path{path} {
 }
 
 void DirListJob::run() {
-_retry:
     GErrorPtr err;
-    GFileInfoPtr dir_inf{
+    GFileInfoPtr dir_inf;
+
+_retry:
+    err.reset();
+    dir_inf = GFileInfoPtr{
         g_file_query_info(dir_path.gfile().get(), gfile_info_query_attribs,
                           G_FILE_QUERY_INFO_NONE, cancellable().get(), &err),
         false
@@ -44,6 +47,7 @@ _retry:
     FileInfoList foundFiles;
     /* check if FS is R/O and set attr. into inf */
     // FIXME:  _fm_file_info_job_update_fs_readonly(gf, inf, nullptr, nullptr);
+    err.reset();
     GFileEnumeratorPtr enu = GFileEnumeratorPtr{
             g_file_enumerate_children(dir_path.gfile().get(), gfile_info_query_attribs,
                                       G_FILE_QUERY_INFO_NONE, cancellable().get(), &err),
@@ -103,6 +107,7 @@ _retry:
                 break;
             }
         }
+        err.reset();
         g_file_enumerator_close(enu.get(), cancellable().get(), &err);
     }
     else {

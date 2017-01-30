@@ -95,6 +95,7 @@ std::shared_ptr<Folder> Folder::fromPath(const FilePath& path) {
 
 bool Folder::makeDirectory(const char* name, GError** error) {
     // TODO:
+    // FIXME: what the API is used for in the original libfm C API?
     return false;
 }
 
@@ -139,15 +140,6 @@ const FilePath& Folder::path() const {
 const std::shared_ptr<const FileInfo>& Folder::info() const {
     return dirInfo_;
 }
-
-void Folder::unblockUpdates() {
-
-}
-
-void Folder::blockUpdates() {
-
-}
-
 
 #if 0
 void Folder::init(FmFolder* folder) {
@@ -510,7 +502,6 @@ void Folder::onDirListFinished() {
     Q_EMIT finishLoading();
 }
 
-
 #if 0
 
 
@@ -639,6 +630,7 @@ void Folder::reload() {
     // FIXME:
     // defer_content_test = fm_config->defer_content_test;
     dirlist_job = new DirListJob(dirPath_, defer_content_test ? DirListJob::FAST : DirListJob::DETAILED);
+    connect(dirlist_job, &DirListJob::error, this, &Folder::error, Qt::BlockingQueuedConnection);
     connect(dirlist_job, &DirListJob::finished, this, &Folder::onDirListFinished, Qt::BlockingQueuedConnection);
 
 #if 0
@@ -650,7 +642,6 @@ void Folder::reload() {
 #endif
 
     dirlist_job->setAutoDelete(true);
-    // dirlist_job->runAsync();
     QThreadPool::globalInstance()->start(dirlist_job);
 
     /* also reload filesystem info.

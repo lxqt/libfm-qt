@@ -37,6 +37,7 @@ PlacesModel::PlacesModel(QObject* parent):
     QStandardItemModel(parent),
     showApplications_(true),
     showDesktop_(true),
+    // FIXME: this seems to be broken when porting to new API.
     ejectIcon_(QIcon::fromTheme("media-eject")) {
     setColumnCount(2);
 
@@ -488,7 +489,6 @@ QVariant PlacesModel::data(const QModelIndex& index, int role) const {
         PlacesModelItem* item = static_cast<PlacesModelItem*>(QStandardItemModel::itemFromIndex(index));
         if(item != nullptr) {
             switch(role) {
-            // FIXME: can we use smart pointers here?
             case FileInfoRole:
                 return QVariant::fromValue(item->fileInfo());
             case FmIconRole:

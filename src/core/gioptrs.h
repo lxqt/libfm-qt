@@ -78,8 +78,10 @@ public:
     }
 
     void reset() {
-        if(err_)
+        if(err_) {
             g_error_free(err_);
+        }
+        err_ = nullptr;
     }
 
     GError* get() const {

@@ -36,4 +36,24 @@ void Job::run() {
     Q_EMIT finished();
 }
 
+Job::ErrorAction Job::emitError(const GErrorPtr &err, Job::ErrorSeverity severity) {
+    ErrorAction response = ErrorAction::CONTINUE;
+    // if the error is already handled, don't emit it.
+    if(err.domain() == G_IO_ERROR && err.code() == G_IO_ERROR_FAILED_HANDLED) {
+        return response;
+    }
+    Q_EMIT error(err, severity, response);
+
+    if(severity == ErrorSeverity::CRITICAL || response == ErrorAction::ABORT) {
+        cancel();
+    }
+    else if(response == ErrorAction::RETRY ) {
+        /* If the job is already cancelled, retry is not allowed. */
+        if(isCancelled() || (err.domain() == G_IO_ERROR && err.code() == G_IO_ERROR_CANCELLED)) {
+            response = ErrorAction::CONTINUE;
+        }
+    }
+    return response;
+}
+
 } // namespace Fm2

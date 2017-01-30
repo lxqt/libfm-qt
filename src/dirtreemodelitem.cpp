@@ -164,6 +164,7 @@ DirTreeModelItem* DirTreeModelItem::insertFileInfo(std::shared_ptr<const Fm2::Fi
 }
 
 // find a good position to insert the new item
+// FIXME: insert one item at a time is slow. Insert multiple items at once and then sort is faster.
 int DirTreeModelItem::insertItem(DirTreeModelItem* newItem) {
     if(model_->showHidden() || !newItem->fileInfo_ || !newItem->fileInfo_->isHidden()) {
         auto newName = newItem->fileInfo_->displayName();

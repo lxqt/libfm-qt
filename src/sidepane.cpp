@@ -111,29 +111,6 @@ const char* SidePane::modeName(SidePane::Mode mode) {
     }
 }
 
-#if 0 // FIXME: are these APIs from libfm-qt needed?
-
-QString SidePane::modeLabel(SidePane::Mode mode) {
-    switch(mode) {
-    case ModePlaces:
-        return tr("Places");
-    case ModeDirTree:
-        return tr("Directory Tree");
-    }
-    return QString();
-}
-
-QString SidePane::modeTooltip(SidePane::Mode mode) {
-    switch(mode) {
-    case ModePlaces:
-        return tr("Shows list of common places, devices, and bookmarks in sidebar");
-    case ModeDirTree:
-        return tr("Shows tree of directories in sidebar");
-    }
-    return QString();
-}
-#endif
-
 bool SidePane::setHomeDir(const char* home_dir) {
     if(view_ == nullptr) {
         return false;

@@ -94,11 +94,7 @@ public Q_SLOTS:
     virtual void run();
 
 protected:
-    ErrorAction emitError(const GErrorPtr& err, ErrorSeverity severity = ErrorSeverity::MODERATE) {
-        ErrorAction response = ErrorAction::CONTINUE;
-        Q_EMIT error(err, severity, response);
-        return response;
-    }
+    ErrorAction emitError(const GErrorPtr& err, ErrorSeverity severity = ErrorSeverity::MODERATE);
 
 private:
     static void _onCancellableCancelled(GCancellable* cancellable, Job* _this) {

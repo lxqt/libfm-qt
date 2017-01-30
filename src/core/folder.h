@@ -34,7 +34,7 @@
 
 #include "gioptrs.h"
 #include "fileinfo.h"
-
+#include "job.h"
 
 namespace Fm2 {
 
@@ -78,10 +78,6 @@ public:
 
     const std::shared_ptr<const FileInfo> &info() const;
 
-    void unblockUpdates();
-
-    void blockUpdates();
-
     void forEachFile(std::function<void (const std::shared_ptr<const FileInfo>&)> func) const {
         std::lock_guard<std::mutex> lock{mutex_};
         for(auto it = files_.begin(); it != files_.end(); ++it) {
@@ -109,6 +105,11 @@ Q_SIGNALS:
     void contentChanged();
 
     void fileSystemChanged();
+
+    // FIXME: this API design is bad. We leave this here to be compatible with the old libfm C API.
+    // It might be better to remember the error state while loading the folder, and let the user of the
+    // API handle the error on finish.
+    void error(const GErrorPtr& err, Job::ErrorSeverity severity, Job::ErrorAction& response);
 
 private:
 
