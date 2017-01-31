@@ -24,7 +24,6 @@
 #include "folder.h"
 #include <string.h>
 #include <QTimer>
-#include <QThreadPool>
 #include <QDebug>
 
 #include "dirlistjob.h"
@@ -239,7 +238,7 @@ void Folder::processPendingChanges() {
     if(info_job) {
         connect(info_job, &FileInfoJob::finished, this, &Folder::onFileInfoFinished, Qt::BlockingQueuedConnection);
         info_job->setAutoDelete(true);
-        QThreadPool::globalInstance()->start(info_job);
+        info_job->runAsync();
 #if 0
         pending_jobs = g_slist_prepend(pending_jobs, job);
         if(!fm_job_run_async(FM_JOB(job))) {
@@ -641,7 +640,7 @@ void Folder::reload() {
 #endif
 
     dirlist_job->setAutoDelete(true);
-    QThreadPool::globalInstance()->start(dirlist_job);
+    dirlist_job->runAsync();
 
     /* also reload filesystem info.
      * FIXME: is this needed? */
@@ -710,7 +709,7 @@ void Folder::queryFilesystemInfo() {
     fsInfoJob_->setAutoDelete(true);
     connect(fsInfoJob_, &FileSystemInfoJob::finished, this, &Folder::onFileSystemInfoFinished, Qt::BlockingQueuedConnection);
 
-    QThreadPool::globalInstance()->start(fsInfoJob_);
+    fsInfoJob_->runAsync();
     // G_UNLOCK(query);
 }
 

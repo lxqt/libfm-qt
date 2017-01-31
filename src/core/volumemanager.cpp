@@ -1,5 +1,4 @@
 #include "volumemanager.h"
-#include <QThreadPool>
 
 namespace Fm2 {
 
@@ -23,7 +22,7 @@ VolumeManager::VolumeManager():
     auto job = new GetGVolumeMonitorJob();
     job->setAutoDelete(true);
     connect(job, &GetGVolumeMonitorJob::finished, this, &VolumeManager::onGetGVolumeMonitorFinished, Qt::BlockingQueuedConnection);
-    QThreadPool::globalInstance()->start(job, -10);
+    job->runAsync(QThread::LowPriority);
 }
 
 VolumeManager::~VolumeManager() {

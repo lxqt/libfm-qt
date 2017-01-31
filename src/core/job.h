@@ -69,7 +69,7 @@ public:
         return g_cancellable_is_cancelled(cancellable_.get());
     }
 
-    void runAsync();
+    void runAsync(QThread::Priority priority = QThread::InheritPriority);
 
     bool pause();
 

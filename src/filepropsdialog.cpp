@@ -27,7 +27,6 @@
 #include <QStringListModel>
 #include <QMessageBox>
 #include <QDateTime>
-#include <QThreadPool>
 #include <sys/types.h>
 #include <time.h>
 #include "core/totalsizejob.h"
@@ -308,7 +307,7 @@ void FilePropsDialog::initGeneralPage() {
     fileSizeTimer->start(600);
 
     connect(totalSizeJob, &Fm2::TotalSizeJob::finished, this, &FilePropsDialog::onDeepCountJobFinished, Qt::BlockingQueuedConnection);
-    QThreadPool::globalInstance()->start(totalSizeJob);
+    totalSizeJob->runAsync();
 }
 
 void FilePropsDialog::onDeepCountJobFinished() {

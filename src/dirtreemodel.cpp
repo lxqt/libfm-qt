@@ -20,7 +20,6 @@
 #include "dirtreemodel.h"
 #include "dirtreemodelitem.h"
 #include <QDebug>
-#include <QThreadPool>
 #include "core/fileinfojob.h"
 
 namespace Fm {
@@ -36,7 +35,7 @@ QModelIndex DirTreeModel::addRoots(Fm2::FilePathList rootPaths) {
     auto job = new Fm2::FileInfoJob{std::move(rootPaths)};
     job->setAutoDelete(true);
     connect(job, &Fm2::FileInfoJob::finished, this, &DirTreeModel::onFileInfoJobFinished, Qt::BlockingQueuedConnection);
-    QThreadPool::globalInstance()->start(job);
+    job->runAsync();
 }
 
 void DirTreeModel::onFileInfoJobFinished() {
