@@ -40,7 +40,7 @@ FmPathList* pathListFromQUrls(QList<QUrl> urls) {
   QList<QUrl>::const_iterator it;
   FmPathList* pathList = fm_path_list_new();
 
-  for(it = urls.begin(); it != urls.end(); ++it) {
+  for(it = urls.constBegin(); it != urls.constEnd(); ++it) {
     QUrl url = *it;
     FmPath* path = fm_path_new_for_uri(url.toString().toUtf8());
     fm_path_list_push_tail(pathList, path);
