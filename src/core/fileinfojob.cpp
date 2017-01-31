@@ -9,7 +9,7 @@ FileInfoJob::FileInfoJob(FilePathList paths, FilePath commonDirPath):
     commonDirPath_{std::move(commonDirPath)} {
 }
 
-void FileInfoJob::run() {
+void FileInfoJob::exec() {
     for(const auto& path: paths_) {
         if(!isCancelled()) {
             GErrorPtr err;
@@ -26,7 +26,6 @@ void FileInfoJob::run() {
             Q_EMIT gotInfo(path, fileInfo);
         }
     }
-    Q_EMIT finished();
 }
 
 } // namespace Fm2

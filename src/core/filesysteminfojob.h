@@ -29,7 +29,9 @@ public:
         return freeSize_;
     }
 
-    void run() override;
+protected:
+
+    void exec() override;
 
 private:
     FilePath path_;

@@ -31,8 +31,6 @@ public:
         return emit_files_found;
     }
 
-    void run() override;
-
     FilePath dirPath() const {
         std::lock_guard<std::mutex> lock{mutex_};
         return dir_path;
@@ -45,6 +43,10 @@ public:
 
 Q_SIGNALS:
     void filesFound(FileInfoList& foundFiles);
+
+protected:
+
+    void exec() override;
 
 private:
     mutable std::mutex mutex_;

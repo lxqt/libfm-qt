@@ -10,7 +10,8 @@ class LIBFM_QT_API UntrashJob : public Fm2::FileOperationJob {
 public:
     UntrashJob();
 
-    void run() override;
+protected:
+    void exec() override;
 
 private:
     bool ensure_parent_dir(GFile *orig_path);

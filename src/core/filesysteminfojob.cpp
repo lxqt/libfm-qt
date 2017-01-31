@@ -3,7 +3,7 @@
 
 namespace Fm2 {
 
-void FileSystemInfoJob::run() {
+void FileSystemInfoJob::exec() {
     GObjectPtr<GFileInfo> inf = GObjectPtr<GFileInfo>{
             g_file_query_filesystem_info(
                 path_.gfile().get(),

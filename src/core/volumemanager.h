@@ -187,8 +187,9 @@ private:
     class GetGVolumeMonitorJob: public Job {
     public:
         GetGVolumeMonitorJob() {}
-        void run() override;
         GVolumeMonitorPtr monitor_;
+    protected:
+        void exec() override;
     };
 
     static void _onGVolumeAdded(GVolumeMonitor* mon, GVolume* vol, VolumeManager* _this) {

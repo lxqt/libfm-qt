@@ -13,11 +13,13 @@ public:
     TrashJob(const FilePathList& paths);
     TrashJob(const FilePathList&& paths);
 
-    void run() override;
-
     FilePathList unsupportedFiles() const {
         return unsupportedFiles_;
     }
+
+protected:
+
+    void exec() override;
 
 private:
     FilePathList paths_;

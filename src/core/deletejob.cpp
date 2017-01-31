@@ -126,7 +126,7 @@ bool DeleteJob::deleteDirContent(const FilePath& path, GFileInfoPtr inf) {
 }
 
 
-void DeleteJob::run() {
+void DeleteJob::exec() {
     /* prepare the job, count total work needed with FmDeepCountJob */
     TotalSizeJob totalSizeJob{paths_, TotalSizeJob::Flags::PREPARE_DELETE};
     connect(&totalSizeJob, &TotalSizeJob::error, this, &DeleteJob::error);

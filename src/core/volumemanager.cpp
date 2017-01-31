@@ -105,9 +105,8 @@ void VolumeManager::onGMountChanged(GMount* mnt) {
     Q_EMIT mountChanged(*it);
 }
 
-void VolumeManager::GetGVolumeMonitorJob::run() {
+void VolumeManager::GetGVolumeMonitorJob::exec() {
     monitor_ = GVolumeMonitorPtr{g_volume_monitor_get(), false};
-    Q_EMIT finished();
 }
 
 

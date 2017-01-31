@@ -21,8 +21,6 @@ public:
         return size_;
     }
 
-    void run() override;
-
     static QThreadPool* threadPool();
 
 
@@ -54,6 +52,10 @@ public:
 
 Q_SIGNALS:
     void thumbnailLoaded(std::shared_ptr<const FileInfo>& file, int size, QImage thumbnail);
+
+protected:
+
+    void exec() override;
 
 private:
 

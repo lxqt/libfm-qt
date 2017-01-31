@@ -23,10 +23,11 @@ public:
         return results_;
     }
 
-    void run() override;
-
 Q_SIGNALS:
     void gotInfo(const FilePath& path, std::shared_ptr<const FileInfo>& info);
+
+protected:
+    void exec() override;
 
 private:
     FilePathList paths_;

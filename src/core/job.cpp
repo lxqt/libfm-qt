@@ -26,8 +26,10 @@ void Job::cancel() {
 }
 
 void Job::run() {
+    exec();
     Q_EMIT finished();
 }
+
 
 Job::ErrorAction Job::emitError(const GErrorPtr &err, Job::ErrorSeverity severity) {
     ErrorAction response = ErrorAction::CONTINUE;

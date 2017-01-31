@@ -20,7 +20,8 @@ public:
 
     CopyJob(const FilePathList&& paths, const FilePath&& destDirPath, Mode mode = Mode::COPY);
 
-    void run() override;
+protected:
+    void exec() override;
 
 private:
     bool copyPath(const FilePath& srcPath, const FilePath& destPath, const char *destFileName);

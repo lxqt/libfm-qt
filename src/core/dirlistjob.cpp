@@ -9,7 +9,7 @@ namespace Fm2 {
 DirListJob::DirListJob(const FilePath& path, Flags flags): dir_path{path} {
 }
 
-void DirListJob::run() {
+void DirListJob::exec() {
     GErrorPtr err;
     GFileInfoPtr dir_inf;
 
@@ -118,8 +118,6 @@ _retry:
         std::lock_guard<std::mutex> lock{mutex_};
         files_.swap(foundFiles);
     }
-
-    Q_EMIT finished();
 }
 
 #if 0

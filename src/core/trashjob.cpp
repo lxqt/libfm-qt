@@ -8,7 +8,7 @@ TrashJob::TrashJob(const FilePathList& paths): paths_{paths} {
 TrashJob::TrashJob(const FilePathList&& paths): paths_{paths} {
 }
 
-void TrashJob::run() {
+void TrashJob::exec() {
     setTotalAmount(paths_.size(), paths_.size());
     Q_EMIT preparedToRun();
 

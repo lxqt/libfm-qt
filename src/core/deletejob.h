@@ -20,7 +20,8 @@ public:
     ~DeleteJob() {
     }
 
-    void run() override;
+protected:
+    void exec() override;
 
 private:
     bool deleteFile(const FilePath& path, GFileInfoPtr inf);

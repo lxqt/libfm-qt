@@ -41,7 +41,7 @@ _retry_mkdir:
 }
 
 
-void UntrashJob::run() {
+void UntrashJob::exec() {
 #if 0
     gboolean ret = TRUE;
     GList* l;

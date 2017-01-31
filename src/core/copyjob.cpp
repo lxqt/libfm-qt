@@ -430,7 +430,7 @@ bool _fm_file_ops_job_copy_run(FmFileOpsJob* job) {
 }
 #endif
 
-void CopyJob::run() {
+void CopyJob::exec() {
     TotalSizeJob totalSizeJob{srcPaths_};
     connect(&totalSizeJob, &TotalSizeJob::error, this, &CopyJob::error);
     connect(this, &CopyJob::cancelled, &totalSizeJob, &TotalSizeJob::cancel);

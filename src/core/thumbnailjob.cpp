@@ -25,7 +25,7 @@ ThumbnailJob::~ThumbnailJob() {
     // qDebug("delete  ThumbnailJob");
 }
 
-void ThumbnailJob::run() {
+void ThumbnailJob::exec() {
     for(auto& file: files_) {
         if(isCancelled()) {
             break;
@@ -34,7 +34,6 @@ void ThumbnailJob::run() {
         Q_EMIT thumbnailLoaded(file, size_, image);
         results_.emplace_back(std::move(image));
     }
-    Q_EMIT finished();
 }
 
 QImage ThumbnailJob::readImageFromStream(GInputStream* stream, size_t len) {

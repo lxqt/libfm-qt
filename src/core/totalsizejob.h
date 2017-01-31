@@ -22,8 +22,6 @@ public:
 
     TotalSizeJob(FilePathList paths = FilePathList{}, Flags flags = DEFAULT);
 
-    void run() override;
-
     std::uint64_t totalSize() const {
         return totalSize_;
     }
@@ -36,8 +34,12 @@ public:
         return fileCount_;
     }
 
+protected:
+
+    void exec() override;
+
 private:
-    void run(FilePath path, GFileInfoPtr inf);
+    void exec(FilePath path, GFileInfoPtr inf);
 
 private:
     FilePathList paths_;

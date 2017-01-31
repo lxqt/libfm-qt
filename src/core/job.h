@@ -91,10 +91,13 @@ public Q_SLOTS:
 
     void cancel();
 
-    virtual void run();
+    void run() override;
 
 protected:
     ErrorAction emitError(const GErrorPtr& err, ErrorSeverity severity = ErrorSeverity::MODERATE);
+
+    // all derived job subclasses should do their work in this method.
+    virtual void exec() = 0;
 
 private:
     static void _onCancellableCancelled(GCancellable* cancellable, Job* _this) {
