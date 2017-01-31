@@ -51,6 +51,8 @@ ProxyFolderModel::~ProxyFolderModel() {
 }
 
 void ProxyFolderModel::setSourceModel(QAbstractItemModel* model) {
+    if(model == sourceModel()) // avoid setting the same model twice
+        return;
     if(model) {
         // we only support Fm::FolderModel
         Q_ASSERT(model->inherits("Fm::FolderModel"));

@@ -36,7 +36,6 @@ CachedFolderModel* CachedFolderModel::modelFromFolder(const std::shared_ptr<Fm2:
     QVariant cache = folder->property(cacheKey);
     model = cache.value<CachedFolderModel*>();
     if(model) {
-        // qDebug("cache found!!");
         model->ref();
     }
     else {

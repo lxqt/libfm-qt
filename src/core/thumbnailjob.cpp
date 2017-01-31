@@ -19,13 +19,18 @@ ThumbnailJob::ThumbnailJob(FileInfoList files, int size):
     size_{size} {
 }
 
+ThumbnailJob::~ThumbnailJob() {
+    // qDebug("delete  ThumbnailJob");
+}
+
 void ThumbnailJob::run() {
     for(auto& file: files_) {
         if(isCancelled()) {
             break;
         }
-        results_.push_back(loadForFile(file));
-        Q_EMIT thumbnailLoaded(file, size_, results_.back());
+        auto image = loadForFile(file);
+        Q_EMIT thumbnailLoaded(file, size_, image);
+        results_.emplace_back(std::move(image));
     }
     Q_EMIT finished();
 }

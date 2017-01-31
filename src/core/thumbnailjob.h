@@ -15,6 +15,8 @@ public:
 
     ThumbnailJob(FileInfoList files, int size);
 
+    ~ThumbnailJob();
+
     int size() const {
         return size_;
     }
@@ -46,8 +48,12 @@ public:
         }
     }
 
+    const std::vector<QImage>& results() const {
+        return results_;
+    }
+
 Q_SIGNALS:
-    void thumbnailLoaded(const std::shared_ptr<const FileInfo>& file, int size, const QImage& thumbnail);
+    void thumbnailLoaded(std::shared_ptr<const FileInfo>& file, int size, QImage thumbnail);
 
 private:
 

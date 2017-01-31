@@ -32,14 +32,14 @@ struct LibFmQtData;
 
 class LIBFM_QT_API LibFmQt {
 public:
-  LibFmQt();
-  ~LibFmQt();
+    LibFmQt();
+    ~LibFmQt();
 
-  QTranslator* translator();
+    QTranslator* translator();
 
 private:
-  LibFmQt(LibFmQt& other); // disable copy
-  LibFmQtData* d;
+    LibFmQt(LibFmQt& other); // disable copy
+    LibFmQtData* d;
 };
 
 }

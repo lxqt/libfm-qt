@@ -89,7 +89,7 @@ std::shared_ptr<Folder> Folder::fromPath(const FilePath& path) {
     }
     auto folder = std::make_shared<Folder>(path);
     folder->reload();
-    //cache_.insert(std::make_pair(path, folder));
+    cache_.emplace(path, folder);
     return folder;
 }
 
@@ -495,10 +495,9 @@ void Folder::onDirListFinished() {
         dir_fi = fm_file_info_ref(job->dir_fi);
     }
     g_object_unref(dirlist_job);
-    dirlist_job = nullptr;
-
 #endif
 
+    dirlist_job = nullptr;
     Q_EMIT finishLoading();
 }
 

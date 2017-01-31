@@ -20,6 +20,7 @@
 #include <libfm/fm.h>
 #include "libfmqt.h"
 #include <QLocale>
+#include <QPixmapCache>
 #include "icontheme.h"
 #include "core/thumbnailer.h"
 #include "xdndworkaround.h"
@@ -27,53 +28,55 @@
 namespace Fm {
 
 struct LibFmQtData {
-  LibFmQtData();
-  ~LibFmQtData();
+    LibFmQtData();
+    ~LibFmQtData();
 
-  IconTheme* iconTheme;
-  QTranslator translator;
-  XdndWorkaround workaround;
-  int refCount;
-  Q_DISABLE_COPY(LibFmQtData)
+    IconTheme* iconTheme;
+    QTranslator translator;
+    XdndWorkaround workaround;
+    int refCount;
+    Q_DISABLE_COPY(LibFmQtData)
 };
 
 static LibFmQtData* theLibFmData = nullptr;
 
 LibFmQtData::LibFmQtData(): refCount(1) {
 #if !GLIB_CHECK_VERSION(2, 36, 0)
-  g_type_init();
+    g_type_init();
 #endif
-  fm_init(nullptr);
-  // turn on glib debug message
-  // g_setenv("G_MESSAGES_DEBUG", "all", true);
-  iconTheme = new IconTheme();
-  Fm2::Thumbnailer::loadAll();
-  translator.load("libfm-qt_" + QLocale::system().name(), LIBFM_QT_DATA_DIR "/translations");
+    fm_init(nullptr);
+    // turn on glib debug message
+    // g_setenv("G_MESSAGES_DEBUG", "all", true);
+    QPixmapCache::setCacheLimit(1024);
+    iconTheme = new IconTheme();
+    Fm2::Thumbnailer::loadAll();
+    translator.load("libfm-qt_" + QLocale::system().name(), LIBFM_QT_DATA_DIR "/translations");
 }
 
 LibFmQtData::~LibFmQtData() {
-  delete iconTheme;
-  fm_finalize();
+    delete iconTheme;
+    fm_finalize();
 }
 
 LibFmQt::LibFmQt() {
-  if(!theLibFmData) {
-    theLibFmData = new LibFmQtData();
-  }
-  else
-    ++theLibFmData->refCount;
-  d = theLibFmData;
+    if(!theLibFmData) {
+        theLibFmData = new LibFmQtData();
+    }
+    else {
+        ++theLibFmData->refCount;
+    }
+    d = theLibFmData;
 }
 
 LibFmQt::~LibFmQt() {
-  if(--d->refCount == 0) {
-    delete d;
-    theLibFmData = nullptr;
-  }
+    if(--d->refCount == 0) {
+        delete d;
+        theLibFmData = nullptr;
+    }
 }
 
 QTranslator* LibFmQt::translator() {
-  return &d->translator;
+    return &d->translator;
 }
 
 } // namespace Fm
