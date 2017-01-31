@@ -213,7 +213,7 @@ void PathBar::setPath(Fm2::FilePath path) {
 
     /* FIXME: if the new path is the subdir of our full path, actually
      *        we can append several new buttons rather than re-create
-     *        all of the buttons. */
+     *        all of the buttons. This can reduce flickers. */
 
     setUpdatesEnabled(false);
     // we do not have the path in the buttons list
@@ -229,7 +229,9 @@ void PathBar::setPath(Fm2::FilePath path) {
     while(btnPath) {
         Fm2::CStrPtr name;
         auto parent = btnPath.parent();
-        auto isRoot = !parent.isValid();
+        // FIXME: some buggy uri types, such as menu://, fail to return NULL when there is no parent path.
+        // Instead, the path itself is returned. So we check if the parent path is the same as current path.
+        auto isRoot = !parent.isValid() || parent == btnPath;
         if(isRoot) {
             name = btnPath.displayName();
         }
@@ -239,8 +241,11 @@ void PathBar::setPath(Fm2::FilePath path) {
         auto btn = new PathButton(name.get(), name.get(), isRoot, buttonsWidget_);
         btn->show();
         connect(btn, &QPushButton::toggled, this, &PathBar::onButtonToggled);
-        btnPath = parent;
         buttonsLayout_->insertWidget(0, btn);
+        if(isRoot) { // this is the root element of the path
+            break;
+        }
+        btnPath = parent;
     }
     buttonsLayout_->addStretch(1); // add a spacer at the tail of the buttons
 
