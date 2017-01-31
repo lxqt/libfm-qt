@@ -23,6 +23,7 @@
 
 #include "folder.h"
 #include <string.h>
+#include <cassert>
 #include <QTimer>
 #include <QDebug>
 
@@ -61,6 +62,19 @@ Folder::~Folder() {
     if(dirMonitor_) {
         g_signal_handlers_disconnect_by_data(dirMonitor_.get(), this);
         dirMonitor_.reset();
+    }
+
+    if(dirlist_job) {
+        dirlist_job->cancel();
+    }
+
+    // cancel any file info job in progress.
+    for(auto job: fileinfoJobs_) {
+        job->cancel();
+    }
+
+    if(fsInfoJob_) {
+        fsInfoJob_->cancel();
     }
 
     // We store a weak_ptr instead of shared_ptr in the hash table, so the hash table
@@ -176,6 +190,8 @@ void Folder::queueReload() {
 
 void Folder::onFileInfoFinished() {
     FileInfoJob* job = static_cast<FileInfoJob*>(sender());
+    fileinfoJobs_.erase(std::find(fileinfoJobs_.cbegin(), fileinfoJobs_.cend(), job));
+
     if(job->isCancelled())
         return;
 
@@ -431,8 +447,13 @@ void Folder::onFileChangeEvents(GFileMonitor* monitor, GFile* gf, GFile* other_f
 
 void Folder::onDirListFinished() {
     DirListJob* job = static_cast<DirListJob*>(sender());
-    if(job->isCancelled() || job != dirlist_job) // this is a cancelled job, ignore!
+    assert(job && job == dirlist_job);
+
+    if(job->isCancelled()) { // this is a cancelled job, ignore!
+        dirlist_job = nullptr;
+        Q_EMIT finishLoading();
         return;
+    }
     dirInfo_ = job->dirInfo();
 
     auto& files_to_add = job->files();
@@ -543,16 +564,9 @@ void free_dirlist_job(FmFolder* folder) {
 
 
 void Folder::reload() {
+    // cancel in-progress jobs if there are any
     GError* err = nullptr;
-
-    /* Tell the world that we're about to reload the folder.
-     * It might be a good idea for users of the folder to disconnect
-     * from the folder temporarily and reconnect to it again after
-     * the folder complete the loading. This might reduce some
-     * unnecessary signal handling and UI updates. */
-
-    Q_EMIT startLoading();
-    dirInfo_.reset();
+    // cancel directory monitoring
     if(dirMonitor_) {
         g_signal_handlers_disconnect_by_data(dirMonitor_.get(), this);
         dirMonitor_.reset();
@@ -560,51 +574,36 @@ void Folder::reload() {
 
     /* clear all update-lists now, see SF bug #919 - if update comes before
        listing job is finished, a duplicate may be created in the folder */
-#if 0
-    if(has_idle_handler) {
-        g_source_remove(idle_handler);
-        idle_handler = 0;
-        if(files_to_add) {
-            g_slist_foreach(files_to_add, (GFunc)fm_path_unref, nullptr);
-            g_slist_free(files_to_add);
-            files_to_add = nullptr;
-        }
-        if(files_to_update) {
-            g_slist_foreach(files_to_update, (GFunc)fm_path_unref, nullptr);
-            g_slist_free(files_to_update);
-            files_to_update = nullptr;
-        }
-        if(files_to_del) {
-            g_slist_free(files_to_del);
-            files_to_del = nullptr;
-        }
-    }
-    /* remove all items and re-run a dir list job. */
-    GList* l = fm_file_info_list_peek_head_link(files);
-#endif
+    if(has_idle_update_handler) {
+        // FIXME: cancel the idle handler
+        paths_to_add.clear();
+        paths_to_update.clear();
+        paths_to_del.clear();
 
-    /* cancel running dir listing job if there is any. */
-    if(dirlist_job) {
-        disconnect(dirlist_job, &DirListJob::finished, this, &Folder::onDirListFinished);
-        dirlist_job->cancel();
-        dirlist_job = nullptr;
+        // cancel any file info job in progress.
+        for(auto job: fileinfoJobs_) {
+            job->cancel();
+            disconnect(job, &FileInfoJob::finished, this, &Folder::onFileInfoFinished);
+        }
+        fileinfoJobs_.clear();
     }
 
     /* remove all existing files */
-#if 0
-    if(l) {
-        if(g_signal_has_handler_pending(folder, signals[FILES_REMOVED], 0, true)) {
-            /* need to emit signal of removal */
-            GSList* files_to_del = nullptr;
-            for(; l; l = l->next) {
-                files_to_del = g_slist_prepend(files_to_del, (FmFileInfo*)l->data);
-            }
-            g_signal_emit(folder, signals[FILES_REMOVED], 0, files_to_del);
-            g_slist_free(files_to_del);
-        }
-        fm_file_info_list_clear(files); /* fm_file_info_unref will be invoked. */
+    if(!files_.empty()) {
+        // FIXME: this is not very efficient :(
+        auto tmp = files();
+        files_.clear();
+        Q_EMIT filesRemoved(tmp);
     }
-#endif
+
+    /* Tell the world that we're about to reload the folder.
+     * It might be a good idea for users of the folder to disconnect
+     * from the folder temporarily and reconnect to it again after
+     * the folder complete the loading. This might reduce some
+     * unnecessary signal handling and UI updates. */
+    Q_EMIT startLoading();
+
+    dirInfo_.reset(); // clear dir info
 
     /* also re-create a new file monitor */
     // mon = GFileMonitorPtr{fm_monitor_directory(dir_path.gfile().get(), &err), false};
@@ -692,12 +691,15 @@ bool Folder::getFilesystemInfo(uint64_t* total_size, uint64_t* free_size) const 
 
 void Folder::onFileSystemInfoFinished() {
     FileSystemInfoJob* job = static_cast<FileSystemInfoJob*>(sender());
-    if(job->isCancelled() || job != fsInfoJob_) // this is a cancelled job, ignore!
+    if(job->isCancelled() || job != fsInfoJob_) { // this is a cancelled job, ignore!
+        fsInfoJob_ = nullptr;
         return;
+    }
     fs_info_not_avail = !job->isAvailable();
     fs_total_size = job->size();
     fs_free_size = job->freeSize();
     filesystem_info_pending = true;
+    fsInfoJob_ = nullptr;
 }
 
 

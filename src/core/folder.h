@@ -40,6 +40,7 @@ namespace Fm2 {
 
 class DirListJob;
 class FileSystemInfoJob;
+class FileInfoJob;
 
 
 class LIBFM_QT_API Folder: public QObject {
@@ -144,6 +145,7 @@ private:
 
     std::shared_ptr<const FileInfo> dirInfo_;
     DirListJob* dirlist_job;
+    std::vector<FileInfoJob*> fileinfoJobs_;
     FileSystemInfoJob* fsInfoJob_;
 
     /* for file monitor */
