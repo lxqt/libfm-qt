@@ -307,6 +307,7 @@ void FilePropsDialog::initGeneralPage() {
     fileSizeTimer->start(600);
 
     connect(totalSizeJob, &Fm2::TotalSizeJob::finished, this, &FilePropsDialog::onDeepCountJobFinished, Qt::BlockingQueuedConnection);
+    totalSizeJob->setAutoDelete(true);
     totalSizeJob->runAsync();
 }
 

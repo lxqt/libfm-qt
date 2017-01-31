@@ -16,9 +16,6 @@ protected:
 
     void run() override {
         job_->run();
-        if(job_->autoDelete()) {
-            delete job_;
-        }
     }
 
     Job* job_;

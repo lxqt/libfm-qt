@@ -51,7 +51,7 @@ public:
     }
 
 Q_SIGNALS:
-    void thumbnailLoaded(std::shared_ptr<const FileInfo>& file, int size, QImage thumbnail);
+    void thumbnailLoaded(const std::shared_ptr<const FileInfo>& file, int size, QImage thumbnail);
 
 protected:
 

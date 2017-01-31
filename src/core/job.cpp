@@ -18,6 +18,9 @@ Job::~Job() {
 void Job::runAsync(QThread::Priority priority) {
     auto thread = new JobThread(this);
     connect(thread, &QThread::finished, thread, &QThread::deleteLater);
+    if(autoDelete()) {
+        connect(this, &Job::finished, this, &Job::deleteLater);
+    }
     thread->start(priority);
 }
 

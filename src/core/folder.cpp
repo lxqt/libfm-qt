@@ -252,8 +252,9 @@ void Folder::processPendingChanges() {
     }
 
     if(info_job) {
-        connect(info_job, &FileInfoJob::finished, this, &Folder::onFileInfoFinished, Qt::BlockingQueuedConnection);
+        fileinfoJobs_.push_back(info_job);
         info_job->setAutoDelete(true);
+        connect(info_job, &FileInfoJob::finished, this, &Folder::onFileInfoFinished, Qt::BlockingQueuedConnection);
         info_job->runAsync();
 #if 0
         pending_jobs = g_slist_prepend(pending_jobs, job);
@@ -627,6 +628,7 @@ void Folder::reload() {
     // FIXME:
     // defer_content_test = fm_config->defer_content_test;
     dirlist_job = new DirListJob(dirPath_, defer_content_test ? DirListJob::FAST : DirListJob::DETAILED);
+    dirlist_job->setAutoDelete(true);
     connect(dirlist_job, &DirListJob::error, this, &Folder::error, Qt::BlockingQueuedConnection);
     connect(dirlist_job, &DirListJob::finished, this, &Folder::onDirListFinished, Qt::BlockingQueuedConnection);
 
@@ -635,10 +637,8 @@ void Folder::reload() {
         g_signal_connect(dirlist_job, "files-found", G_CALLBACK(on_dirlist_job_files_found), folder);
     }
     fm_dir_list_job_set_incremental(dirlist_job, wants_incremental);
-    g_signal_connect(dirlist_job, "error", G_CALLBACK(on_dirlist_job_error), folder);
 #endif
 
-    dirlist_job->setAutoDelete(true);
     dirlist_job->runAsync();
 
     /* also reload filesystem info.
