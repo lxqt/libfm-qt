@@ -40,6 +40,11 @@ struct LibFmQtData {
 
 static LibFmQtData* theLibFmData = nullptr;
 
+static GFile* lookupCustomUri(GVfs *vfs, const char *identifier, gpointer user_data) {
+    GFile* gf = fm_file_new_for_uri(identifier);
+    return gf;
+}
+
 LibFmQtData::LibFmQtData(): refCount(1) {
 #if !GLIB_CHECK_VERSION(2, 36, 0)
     g_type_init();
@@ -47,13 +52,21 @@ LibFmQtData::LibFmQtData(): refCount(1) {
     fm_init(nullptr);
     // turn on glib debug message
     // g_setenv("G_MESSAGES_DEBUG", "all", true);
-    QPixmapCache::setCacheLimit(1024);
     iconTheme = new IconTheme();
     Fm2::Thumbnailer::loadAll();
     translator.load("libfm-qt_" + QLocale::system().name(), LIBFM_QT_DATA_DIR "/translations");
+
+    // register some URI schemes implemented by libfm
+    // FIXME: move these implementations into libfm-qt to avoid linking with libfm.
+    GVfs* vfs = g_vfs_get_default();
+    g_vfs_register_uri_scheme(vfs, "menu", lookupCustomUri, nullptr, nullptr, lookupCustomUri, nullptr, nullptr);
+    g_vfs_register_uri_scheme(vfs, "search", lookupCustomUri, nullptr, nullptr, lookupCustomUri, nullptr, nullptr);
 }
 
 LibFmQtData::~LibFmQtData() {
+    GVfs* vfs = g_vfs_get_default();
+    g_vfs_unregister_uri_scheme(vfs, "menu");
+    g_vfs_unregister_uri_scheme(vfs, "search");
     delete iconTheme;
     fm_finalize();
 }
