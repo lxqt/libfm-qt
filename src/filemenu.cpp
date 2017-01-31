@@ -29,12 +29,33 @@
 #ifdef CUSTOM_ACTIONS
 #include <libfm/fm-actions.h>
 #include "customaction_p.h"
-#endif
 #include <QMessageBox>
+#endif
 #include <QDebug>
 #include "filemenu_p.h"
 
 namespace Fm {
+
+static QStringList itemNameList_;
+
+static int compare_items(FmFileActionItem* a, FmFileActionItem* b)
+{
+  const gchar* a_name = fm_file_action_item_get_name(FM_FILE_ACTION_ITEM(a));
+  const gchar* b_name = fm_file_action_item_get_name(FM_FILE_ACTION_ITEM(b));
+  if(!itemNameList_.isEmpty()) {
+    int first = itemNameList_.indexOf(QString::fromUtf8(a_name));
+    int second = itemNameList_.indexOf(QString::fromUtf8(b_name));
+    if(first > -1) {
+      if(second > -1)
+        return first - second;
+      else
+        return first - itemNameList_.length();
+    }
+    else if(second > -1)
+      return itemNameList_.length() - second;
+  }
+  return g_strcmp0(a_name, b_name); 
+}
 
 FileMenu::FileMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd, QWidget* parent):
   QMenu(parent),
@@ -180,10 +201,49 @@ void FileMenu::createMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd) 
   }
 
 #ifdef CUSTOM_ACTIONS
+  // first get the list of level-zero item names (http://www.nautilus-actions.org/?q=node/377)
+  if(itemNameList_.isEmpty())
+  {
+    QString useDataDir;
+    QString levelZeroFile;
+    QString dataDirs = QLatin1String(qgetenv("XDG_DATA_DIRS"));
+    if(!dataDirs.isEmpty()) {
+      useDataDir = dataDirs.split(':').at(0);
+      if(!useDataDir.isEmpty())
+        levelZeroFile = useDataDir + QLatin1String("/file-manager/actions/level-zero.directory");
+    }
+    if(!levelZeroFile.isEmpty()) {
+      GKeyFile *key = g_key_file_new();
+      if(g_key_file_load_from_file(key, levelZeroFile.toUtf8().constData(), G_KEY_FILE_NONE, NULL)) {
+        gchar** itemsList = g_key_file_get_string_list(key, "Desktop Entry", "ItemsList", NULL, NULL);
+        if(itemsList) {
+          guint i;
+          for(i = 0; i < g_strv_length(itemsList); ++i) {
+            QString desktopFile = useDataDir + QLatin1String("/file-manager/actions/")
+                                  + QString::fromUtf8(itemsList[i])
+                                  + QLatin1String(".desktop");
+            GKeyFile *desktopKey = g_key_file_new();
+            if(g_key_file_load_from_file(desktopKey, desktopFile.toUtf8().constData(), G_KEY_FILE_NONE, NULL)) {
+              gchar *actionName = g_key_file_get_string(desktopKey, "Desktop Entry", "Name", NULL);
+              if(actionName) {
+                itemNameList_ << QString::fromUtf8(actionName);
+                g_free(actionName);
+              }
+            }
+            g_key_file_free(desktopKey);
+          }
+          g_strfreev(itemsList);
+        }
+      }
+      g_key_file_free(key);
+    }
+  }
+
   // DES-EMA custom actions integration
   GList* files_list = fm_file_info_list_peek_head_link(files);
   GList* items = fm_get_actions_for_files(files_list);
   if(items) {
+    items = g_list_sort(items, (GCompareFunc)compare_items);
     GList* l;
     for(l=items; l; l=l->next) {
       FmFileActionItem* item = FM_FILE_ACTION_ITEM(l->data);
