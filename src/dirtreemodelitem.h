@@ -58,7 +58,8 @@ private:
     DirTreeModelItem* childFromName(const char* utf8_name, int* pos);
     DirTreeModelItem* childFromPath(Fm2::FilePath path, bool recursive) const;
 
-    DirTreeModelItem* insertFileInfo(std::shared_ptr<const Fm2::FileInfo> fi);
+    DirTreeModelItem* insertFile(std::shared_ptr<const Fm2::FileInfo> fi);
+    void insertFiles(Fm2::FileInfoList files);
     int insertItem(Fm::DirTreeModelItem* newItem);
     QModelIndex index();
 

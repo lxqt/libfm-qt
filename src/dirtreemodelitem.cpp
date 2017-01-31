@@ -106,11 +106,7 @@ void DirTreeModelItem::loadFolder() {
         expanded_ = true;
         /* if the folder is already loaded, call "loaded" handler ourselves */
         if(folder_->isLoaded()) { // already loaded
-            for(auto& fi: folder_->files()) {
-                if(fi->isDir()) {
-                    insertFileInfo(fi);
-                }
-            }
+            insertFiles(folder_->files());
             onFolderFinishLoading();
         }
     }
@@ -154,13 +150,55 @@ QModelIndex DirTreeModelItem::index() {
     return model_->indexFromItem(this);
 }
 
-/* Add file info to parent node to proper position.
- * GtkTreePath tp is the tree path of parent node. */
-DirTreeModelItem* DirTreeModelItem::insertFileInfo(std::shared_ptr<const Fm2::FileInfo> fi) {
+/* Add file info to parent node to proper position. */
+DirTreeModelItem* DirTreeModelItem::insertFile(std::shared_ptr<const Fm2::FileInfo> fi) {
     // qDebug() << "insertFileInfo: " << fm_file_info_get_disp_name(fi);
     DirTreeModelItem* item = new DirTreeModelItem(std::move(fi), model_);
     insertItem(item);
     return item;
+}
+
+/* Add file info to parent node to proper position. */
+void DirTreeModelItem::insertFiles(Fm2::FileInfoList files) {
+    if(children_.size() == 1 && placeHolderChild_) {
+        // the list is empty, add them all at once and do sort
+        auto hidden_it = files.end();
+        if(!model_->showHidden()) { // need to separate visible and hidden items
+            // find hidden files and move them to the end of the list
+            auto hidden_it = std::remove_if(files.begin(), files.end(), [](Fm2::FileInfoList::const_reference fi) {
+                return fi->isHidden();
+            });
+            // insert hidden files into the "hiddenChildren_" list and remove them from "files" list
+            if(hidden_it != files.end()) {
+                for(auto it = hidden_it; it != files.cend(); ++it) {
+                    hiddenChildren_.push_back(new DirTreeModelItem{std::move(*it), model_});
+                }
+                files.erase(hidden_it, files.end());
+            }
+        }
+        // sort the remaining visible files by name
+        std::sort(files.begin(), files.end(), [](const std::shared_ptr<const Fm2::FileInfo>& a, const std::shared_ptr<const Fm2::FileInfo>& b) {
+            return QString::localeAwareCompare(a->displayName(), b->displayName()) < 0;
+        });
+        // insert the files into the visible children list at once
+        model_->beginInsertRows(index(), 1, files.size() + 1); // the first item is the placeholder item, so we start from row 1
+        for(auto& file: files) {
+            if(file->isDir()) {
+                DirTreeModelItem* newItem = new DirTreeModelItem(std::move(file), model_);
+                newItem->parent_ = this;
+                children_.push_back(newItem);
+            }
+        }
+        model_->endInsertRows();
+    }
+    else {
+        // the list already contain some items, insert new items one by one so they can be sorted.
+        for(auto& file: files) {
+            if(file->isDir()) {
+                insertFile(std::move(file));
+            }
+        }
+    }
 }
 
 // find a good position to insert the new item
@@ -169,6 +207,9 @@ int DirTreeModelItem::insertItem(DirTreeModelItem* newItem) {
     if(model_->showHidden() || !newItem->fileInfo_ || !newItem->fileInfo_->isHidden()) {
         auto newName = newItem->fileInfo_->displayName();
         auto it = std::lower_bound(children_.cbegin(), children_.cend(), newItem, [=](const DirTreeModelItem* a, const DirTreeModelItem* b) {
+            if(Q_UNLIKELY(!a->fileInfo_)) {
+                return true;  // this is a placeholder item which will be removed so the order doesn't matter.
+            }
             return QString::localeAwareCompare(a->fileInfo_->displayName(), b->fileInfo_->displayName()) < 0;
         });
         // inform the world that we're about to insert the item
@@ -215,13 +256,7 @@ void DirTreeModelItem::onFolderFinishLoading() {
 }
 
 void DirTreeModelItem::onFolderFilesAdded(Fm2::FileInfoList& files) {
-    for(auto& fi: files) {
-        if(fi->isDir()) { /* FIXME: maybe adding files can be allowed later */
-            /* Ideally FmFolder should not emit files-added signals for files that
-             * already exists. So there is no need to check for duplication here. */
-            insertFileInfo(fi);
-        }
-    }
+    insertFiles(files);
 }
 
 void DirTreeModelItem::onFolderFilesRemoved(Fm2::FileInfoList& files) {
@@ -312,6 +347,9 @@ void DirTreeModelItem::setShowHidden(bool show) {
                 }
             }
             it = next;
+        }
+        if(children_.empty()) { // no visible children, add a placeholder item to keep the row expanded
+            addPlaceHolderChild();
         }
     }
 }
