@@ -74,6 +74,7 @@ private:
     int size_;
     std::vector<QImage> results_;
     GCancellablePtr cancellable_;
+    GChecksum* md5Calc_;
 
     static QThreadPool* threadPool_;
 

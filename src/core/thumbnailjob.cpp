@@ -16,10 +16,12 @@ int ThumbnailJob::maxThumbnailFileSize_ = 0;
 
 ThumbnailJob::ThumbnailJob(FileInfoList files, int size):
     files_{std::move(files)},
-    size_{size} {
+    size_{size},
+    md5Calc_{g_checksum_new(G_CHECKSUM_MD5)} {
 }
 
 ThumbnailJob::~ThumbnailJob() {
+    g_checksum_free(md5Calc_);
     // qDebug("delete  ThumbnailJob");
 }
 
@@ -71,10 +73,10 @@ QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
 
     char thumbnailName[32 + 5];
     // calculate md5 hash for the uri of the original file
-    GChecksum* sum = g_checksum_new(G_CHECKSUM_MD5);
-    g_checksum_update(sum, reinterpret_cast<const unsigned char*>(uri.get()), -1);
-    memcpy(thumbnailName, g_checksum_get_string(sum), 32);
+    g_checksum_update(md5Calc_, reinterpret_cast<const unsigned char*>(uri.get()), -1);
+    memcpy(thumbnailName, g_checksum_get_string(md5Calc_), 32);
     mempcpy(thumbnailName + 32, ".png", 5);
+    g_checksum_reset(md5Calc_); // reset the checksum calculator for next use
 
     QString thumbnailFilename = thumbnailDir;
     thumbnailFilename += '/';
