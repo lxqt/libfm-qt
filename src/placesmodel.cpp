@@ -69,7 +69,7 @@ PlacesModel::PlacesModel(QObject* parent):
     // NOTE: g_themed_icon_new_from_names() accepts char**, but actually const char** is OK.
     Fm2::GIconPtr gicon{g_themed_icon_new_from_names((char**)applicaion_icon_names, G_N_ELEMENTS(applicaion_icon_names)), false};
     auto fmicon = Fm2::IconInfo::fromGIcon(std::move(gicon));
-    applicationsItem = new PlacesModelItem(fmicon, tr("Applications"), Fm2::FilePath::fromUri("menu:///applications.menu/"));
+    applicationsItem = new PlacesModelItem(fmicon, tr("Applications"), Fm2::FilePath::fromUri("menu:///applications/"));
     placesRoot->appendRow(applicationsItem);
 
     // FIXME: add an option to hide network:///
