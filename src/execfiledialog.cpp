@@ -35,7 +35,13 @@ ExecFileDialog::ExecFileDialog(FmFileInfo* file, QWidget* parent, Qt::WindowFlag
   ui->icon->setPixmap(IconTheme::icon(icon).pixmap(QSize(48, 48)));
 
   QString msg;
-  if(fm_file_info_is_text(file)) {
+  if(fm_file_info_is_desktop_entry(file)) {
+    msg = tr("This file '%1' seems to be a desktop entry.\nWhat do you want to do with it?")
+            .arg(QString::fromUtf8(fm_file_info_get_disp_name(file)));
+    ui->exec->setDefault(true);
+    ui->execTerm->hide();
+  }
+  else if(fm_file_info_is_text(file)) {
     msg = tr("This text file '%1' seems to be an executable script.\nWhat do you want to do with it?")
             .arg(QString::fromUtf8(fm_file_info_get_disp_name(file)));
     ui->execTerm->setDefault(true);
