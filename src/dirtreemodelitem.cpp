@@ -162,7 +162,6 @@ DirTreeModelItem* DirTreeModelItem::insertFile(std::shared_ptr<const Fm2::FileIn
 void DirTreeModelItem::insertFiles(Fm2::FileInfoList files) {
     if(children_.size() == 1 && placeHolderChild_) {
         // the list is empty, add them all at once and do sort
-        auto hidden_it = files.end();
         if(!model_->showHidden()) { // need to separate visible and hidden items
             // find hidden files and move them to the end of the list
             auto hidden_it = std::remove_if(files.begin(), files.end(), [](Fm2::FileInfoList::const_reference fi) {

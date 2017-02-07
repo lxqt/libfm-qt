@@ -228,17 +228,19 @@ void PathBar::setPath(Fm2::FilePath path) {
     auto btnPath = currentPath_;
     while(btnPath) {
         Fm2::CStrPtr name;
+        Fm2::CStrPtr displayName;
         auto parent = btnPath.parent();
         // FIXME: some buggy uri types, such as menu://, fail to return NULL when there is no parent path.
         // Instead, the path itself is returned. So we check if the parent path is the same as current path.
         auto isRoot = !parent.isValid() || parent == btnPath;
         if(isRoot) {
-            name = btnPath.displayName();
+            displayName = btnPath.displayName();
+            name = btnPath.toString();
         }
         else {
             name = btnPath.baseName();
         }
-        auto btn = new PathButton(name.get(), name.get(), isRoot, buttonsWidget_);
+        auto btn = new PathButton(name.get(), displayName ? displayName.get() : name.get(), isRoot, buttonsWidget_);
         btn->show();
         connect(btn, &QPushButton::toggled, this, &PathBar::onButtonToggled);
         buttonsLayout_->insertWidget(0, btn);
@@ -270,7 +272,7 @@ void PathBar::openEditor() {
         scrollArea_->hide();
         scrollToStart_->setVisible(false);
         scrollToEnd_->setVisible(false);
-        tempPathEdit_->setText(currentPath_.displayName().get());
+        tempPathEdit_->setText(currentPath_.toString().get());
 
         connect(tempPathEdit_, &PathEdit::returnPressed, this, &PathBar::onReturnPressed);
         connect(tempPathEdit_, &PathEdit::editingFinished, this, &PathBar::closeEditor);

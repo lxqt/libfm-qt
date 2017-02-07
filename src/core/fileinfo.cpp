@@ -24,7 +24,6 @@ FileInfo::~FileInfo() {
 
 void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath& parentDirPath) {
     dirPath_ = parentDirPath;
-
     const char *tmp, *uri;
     GIcon* gicon;
     GFileType type;

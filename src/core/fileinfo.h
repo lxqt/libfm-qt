@@ -155,7 +155,7 @@ public:
     }
 
     bool isNative() const {
-        return dirPath_.isNative();
+        return dirPath_ ? dirPath_.isNative() : path().isNative();
     }
 
     mode_t mode() const {

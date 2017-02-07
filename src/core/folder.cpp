@@ -40,11 +40,11 @@ Folder::Folder():
     dirlist_job{nullptr},
     fsInfoJob_{nullptr},
     /* for file monitor */
+    has_idle_reload_handler{0},
     has_idle_update_handler{false},
     pending_change_notify{false},
     filesystem_info_pending{false},
     wants_incremental{false},
-    has_idle_reload_handler{0},
     stop_emission{false}, /* don't set it 1 bit to not lock other bits */
     /* filesystem info - set in query thread, read in main */
     fs_total_size{0},
@@ -147,6 +147,9 @@ FileInfoList Folder::files() const {
 
 
 const FilePath& Folder::path() const {
+    auto pathStr = dirPath_.toString();
+    // qDebug() << this << "FOLDER_PATH:" << pathStr.get() << dirPath_.gfile().get();
+    //assert(!g_str_has_prefix(pathStr.get(), "file:"));
     return dirPath_;
 }
 

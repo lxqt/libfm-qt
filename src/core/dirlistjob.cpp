@@ -12,11 +12,19 @@ DirListJob::DirListJob(const FilePath& path, Flags flags): dir_path{path} {
 void DirListJob::exec() {
     GErrorPtr err;
     GFileInfoPtr dir_inf;
-
+    GFilePtr dir_gfile = dir_path.gfile();
+    // FIXME: these are hacks for search:/// URI implemented by libfm which contains some bugs
+    bool isFileSearch = dir_path.hasUriScheme("search");
+    if(isFileSearch) {
+        // NOTE: The GFile instance changes its URI during file enumeration (bad design).
+        // So we create a copy here to avoid channging the gfile stored in dir_path.
+        // FIXME: later we should refactor file search and remove this dirty hack.
+        dir_gfile = GFilePtr{g_file_dup(dir_gfile.get())};
+    }
 _retry:
     err.reset();
     dir_inf = GFileInfoPtr{
-        g_file_query_info(dir_path.gfile().get(), gfile_info_query_attribs,
+        g_file_query_info(dir_gfile.get(), gfile_info_query_attribs,
                           G_FILE_QUERY_INFO_NONE, cancellable().get(), &err),
         false
     };
@@ -49,11 +57,12 @@ _retry:
     // FIXME:  _fm_file_info_job_update_fs_readonly(gf, inf, nullptr, nullptr);
     err.reset();
     GFileEnumeratorPtr enu = GFileEnumeratorPtr{
-            g_file_enumerate_children(dir_path.gfile().get(), gfile_info_query_attribs,
+            g_file_enumerate_children(dir_gfile.get(), gfile_info_query_attribs,
                                       G_FILE_QUERY_INFO_NONE, cancellable().get(), &err),
             false
     };
     if(enu) {
+        // qDebug() << "START LISTING:" << dir_path.toString().get();
         while(!isCancelled()) {
             err.reset();
             GFileInfoPtr inf{g_file_enumerator_next_file(enu.get(), cancellable().get(), &err), false};
@@ -68,28 +77,28 @@ _retry:
                         continue;
                     }
                 }
-
-                /* virtual folders may return children not within them */
-                dir = fm_path_new_for_gfile(g_file_enumerator_get_container(enu));
-                if(fm_path_equal(job->dir_path, dir)) {
-                    sub = fm_path_new_child(job->dir_path, g_file_info_get_name(inf));
+#endif
+                // virtual folders may return children not within them
+                // For example: the search:/// URI implemented by libfm might return files from different folders during enumeration.
+                // So here we call g_file_enumerator_get_container() to get the real parent path rather than simply using dir_path.
+                // This is not the behaviour of gio, but the extensions by libfm might do this.
+                // FIXME: after we port these vfs implementation from libfm, we can redesign this.
+                FilePath realParentPath = FilePath{g_file_enumerator_get_container(enu.get()), true};
+                if(isFileSearch) { // this is a file sarch job (search:/// URI)
+                    // FIXME: redesign file search and remove this dirty hack
+                    // the libfm implementation of search:/// URI returns a customized GFile implementation that does not behave normally.
+                    // let's get its actual URI and re-create a normal gio GFile instance from it.
+                    realParentPath = FilePath::fromUri(realParentPath.uri().get());
                 }
-                else {
-                    sub = fm_path_new_child(dir, g_file_info_get_name(inf));
-                }
-                child = g_file_get_child(g_file_enumerator_get_container(enu),
-                                         g_file_info_get_name(inf));
+#if 0
                 if(g_file_info_get_file_type(inf) == G_FILE_TYPE_DIRECTORY)
                     /* for dir: check if its FS is R/O and set attr. into inf */
                 {
                     _fm_file_info_job_update_fs_readonly(child, inf, nullptr, nullptr);
                 }
                 fi = fm_file_info_new_from_g_file_data(child, inf, sub);
-                fm_path_unref(sub);
-                fm_path_unref(dir);
-                g_object_unref(child);
 #endif
-                auto fileInfo = std::make_shared<FileInfo>(inf, dir_path);
+                auto fileInfo = std::make_shared<FileInfo>(inf, realParentPath);
                 if(emit_files_found) {
                     // Q_EMIT filesFound();
                 }
@@ -114,6 +123,7 @@ _retry:
         emitError(err, ErrorSeverity::CRITICAL);
     }
 
+    // qDebug() << "END LISTING:" << dir_path.toString().get();
     if(!foundFiles.empty()) {
         std::lock_guard<std::mutex> lock{mutex_};
         files_.swap(foundFiles);
