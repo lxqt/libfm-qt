@@ -39,6 +39,7 @@ std::mutex Folder::mutex_;
 Folder::Folder():
     dirlist_job{nullptr},
     fsInfoJob_{nullptr},
+    volumeManager_{VolumeManager::globalInstance()},
     /* for file monitor */
     has_idle_reload_handler{0},
     has_idle_update_handler{false},
@@ -52,6 +53,9 @@ Folder::Folder():
     has_fs_info{false},
     fs_info_not_avail{false},
     defer_content_test{false} {
+
+    connect(volumeManager_.get(), &VolumeManager::mountAdded, this, &Folder::onMountAdded);
+    connect(volumeManager_.get(), &VolumeManager::mountRemoved, this, &Folder::onMountRemoved);
 }
 
 Folder::Folder(const FilePath& path): Folder() {
@@ -451,10 +455,10 @@ void Folder::onFileChangeEvents(GFileMonitor* monitor, GFile* gf, GFile* other_f
 
 void Folder::onDirListFinished() {
     DirListJob* job = static_cast<DirListJob*>(sender());
-    assert(job && job == dirlist_job);
-
     if(job->isCancelled()) { // this is a cancelled job, ignore!
-        dirlist_job = nullptr;
+        if(job == dirlist_job) {
+            dirlist_job = nullptr;
+        }
         Q_EMIT finishLoading();
         return;
     }
@@ -798,6 +802,8 @@ void Folder::content_changed(FmFolder* folder) {
     }
 }
 
+#endif
+
 /* NOTE:
  * GFileMonitor has some significant limitations:
  * 1. Currently it can correctly emit unmounted event for a directory.
@@ -810,86 +816,35 @@ void Folder::content_changed(FmFolder* folder) {
  * 4. Some limitations come from Linux/inotify. If FAM/gamin is used,
  *    the condition may be different. More testing is needed.
  */
-void on_mount_added(GVolumeMonitor* vm, GMount* mount, gpointer user_data) {
+void Folder::onMountAdded(const Mount& mnt) {
     /* If a filesystem is mounted over an existing folder,
      * we need to refresh the content of the folder to reflect
      * the changes. Besides, we need to create a new GFileMonitor
      * for the newly-mounted filesystem as the inode already changed.
      * GFileMonitor cannot detect this kind of changes caused by mounting.
      * So let's do it ourselves. */
-
-    GFile* gfile = g_mount_get_root(mount);
-    /* g_debug("FmFolder::mount_added"); */
-    if(gfile) {
-        GHashTableIter it;
-        FmPath* path;
-        FmFolder* folder;
-        FmPath* mounted_path = fm_path_new_for_gfile(gfile);
-        g_object_unref(gfile);
-
-        G_LOCK(hash);
-        g_hash_table_iter_init(&it, hash);
-        while(g_hash_table_iter_next(&it, (gpointer*)&path, (gpointer*)&folder)) {
-            if(path == mounted_path) {
-                queue_reload(folder);
-            }
-            else if(fm_path_has_prefix(path, mounted_path)) {
-                /* see if currently cached folders are below the mounted path.
-                 * Folders below the mounted folder are removed.
-                 * FIXME: should we emit "removed" signal for them, or
-                 * keep the folders and only reload them? */
-                /* g_signal_emit(folder, signals[REMOVED], 0); */
-                queue_reload(folder);
-            }
-        }
-        G_UNLOCK(hash);
-        fm_path_unref(mounted_path);
+    auto mountRoot = mnt.root();
+    if(mountRoot.isPrefixOf(dirPath_)) {
+        queueReload();
     }
+    /* g_debug("FmFolder::mount_added"); */
 }
 
-void on_mount_removed(GVolumeMonitor* vm, GMount* mount, gpointer user_data) {
+void Folder::onMountRemoved(const Mount& mnt) {
     /* g_debug("FmFolder::mount_removed"); */
 
     /* NOTE: gvfs does not emit unmount signals for remote folders since
-     * GFileMonitor does not support remote filesystems at all. We do fake
-     * file monitoring with FmDummyMonitor dirty hack.
+     * GFileMonitor does not support remote filesystems at all.
      * So here is the side effect, no unmount notifications.
      * We need to generate the signal ourselves. */
-
-    GFile* gfile = g_mount_get_root(mount);
-    if(gfile) {
-        GSList* dummy_monitor_folders = nullptr, *l;
-        GHashTableIter it;
-        FmPath* path;
-        FmFolder* folder;
-        FmPath* mounted_path = fm_path_new_for_gfile(gfile);
-        g_object_unref(gfile);
-
-        G_LOCK(hash);
-        g_hash_table_iter_init(&it, hash);
-        while(g_hash_table_iter_next(&it, (gpointer*)&path, (gpointer*)&folder)) {
-            if(fm_path_has_prefix(path, mounted_path)) {
-                /* see if currently cached folders are below the mounted path.
-                 * Folders below the mounted folder are removed. */
-                if(FM_IS_DUMMY_MONITOR(mon)) {
-                    dummy_monitor_folders = g_slist_prepend(dummy_monitor_folders, folder);
-                }
-            }
+    if(!dirMonitor_) {
+        // this is only needed when we don't have a GFileMonitor
+        auto mountRoot = mnt.root();
+        if(mountRoot.isPrefixOf(dirPath_)) {
+            // if the current folder is under the unmounted path, generate the event ourselves
+            onDirChanged(G_FILE_MONITOR_EVENT_UNMOUNTED);
         }
-        G_UNLOCK(hash);
-        fm_path_unref(mounted_path);
-
-        for(l = dummy_monitor_folders; l; l = l->next) {
-            folder = FM_FOLDER(l->data);
-            g_object_ref(folder);
-            g_signal_emit_by_name(mon, "changed", gf, nullptr, G_FILE_MONITOR_EVENT_UNMOUNTED);
-            /* FIXME: should we emit a fake deleted event here? */
-            /* g_signal_emit_by_name(mon, "changed", gf, nullptr, G_FILE_MONITOR_EVENT_DELETED); */
-            g_object_unref(folder);
-        }
-        g_slist_free(dummy_monitor_folders);
     }
 }
 
-#endif
 } // namespace Fm

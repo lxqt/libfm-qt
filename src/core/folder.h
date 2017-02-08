@@ -35,6 +35,7 @@
 #include "gioptrs.h"
 #include "fileinfo.h"
 #include "job.h"
+#include "volumemanager.h"
 
 namespace Fm {
 
@@ -139,6 +140,10 @@ private Q_SLOTS:
 
     void onIdleReload();
 
+    void onMountAdded(const Mount& mnt);
+
+    void onMountRemoved(const Mount& mnt);
+
 private:
     FilePath dirPath_;
     GFileMonitorPtr dirMonitor_;
@@ -147,6 +152,8 @@ private:
     DirListJob* dirlist_job;
     std::vector<FileInfoJob*> fileinfoJobs_;
     FileSystemInfoJob* fsInfoJob_;
+
+    std::shared_ptr<VolumeManager> volumeManager_;
 
     /* for file monitor */
     bool has_idle_reload_handler;
