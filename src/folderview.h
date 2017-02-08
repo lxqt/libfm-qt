@@ -29,7 +29,6 @@
 #include <libfm/fm.h>
 #include "foldermodel.h"
 #include "proxyfoldermodel.h"
-#include "fileinfo.h"
 #include "path.h"
 
 #include "core/folder.h"
