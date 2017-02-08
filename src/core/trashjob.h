@@ -5,9 +5,9 @@
 #include "fileoperationjob.h"
 #include "filepath.h"
 
-namespace Fm2 {
+namespace Fm {
 
-class LIBFM_QT_API TrashJob : public Fm2::FileOperationJob {
+class LIBFM_QT_API TrashJob : public Fm::FileOperationJob {
     Q_OBJECT
 public:
     TrashJob(const FilePathList& paths);
@@ -26,6 +26,6 @@ private:
     FilePathList unsupportedFiles_;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_TRASHJOB_H

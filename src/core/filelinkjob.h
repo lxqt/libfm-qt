@@ -4,13 +4,13 @@
 #include "libfmqtglobals.h"
 #include "fileoperationjob.h"
 
-namespace Fm2 {
+namespace Fm {
 
-class LIBFM_QT_API FileLinkJob : public Fm2::FileOperationJob {
+class LIBFM_QT_API FileLinkJob : public Fm::FileOperationJob {
 public:
     FileLinkJob();
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_FILELINKJOB_H

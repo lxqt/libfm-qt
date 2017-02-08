@@ -40,13 +40,13 @@ public:
     DirTreeView(QWidget* parent);
     ~DirTreeView();
 
-    const Fm2::FilePath& currentPath() const {
+    const Fm::FilePath& currentPath() const {
         return currentPath_;
     }
 
-    void setCurrentPath(Fm2::FilePath path);
+    void setCurrentPath(Fm::FilePath path);
 
-    void chdir(Fm2::FilePath path) {
+    void chdir(Fm::FilePath path) {
         setCurrentPath(std::move(path));
     }
 
@@ -60,11 +60,11 @@ private:
     void expandPendingPath();
 
 Q_SIGNALS:
-    void chdirRequested(int type, const Fm2::FilePath& path);
-    void openFolderInNewWindowRequested(const Fm2::FilePath& path);
-    void openFolderInNewTabRequested(const Fm2::FilePath& path);
-    void openFolderInTerminalRequested(const Fm2::FilePath& path);
-    void createNewFolderRequested(const Fm2::FilePath& path);
+    void chdirRequested(int type, const Fm::FilePath& path);
+    void openFolderInNewWindowRequested(const Fm::FilePath& path);
+    void openFolderInNewTabRequested(const Fm::FilePath& path);
+    void openFolderInTerminalRequested(const Fm::FilePath& path);
+    void createNewFolderRequested(const Fm::FilePath& path);
     void prepareFileMenu(Fm::FileMenu* menu); // emit before showing a Fm::FileMenu
 
 protected Q_SLOTS:
@@ -80,8 +80,8 @@ protected Q_SLOTS:
     void onNewFolder();
 
 private:
-    Fm2::FilePath currentPath_;
-    Fm2::FilePathList pathsToExpand_;
+    Fm::FilePath currentPath_;
+    Fm::FilePathList pathsToExpand_;
     DirTreeModelItem* currentExpandingItem_;
 };
 

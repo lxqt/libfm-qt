@@ -1,6 +1,6 @@
 #include "trashjob.h"
 
-namespace Fm2 {
+namespace Fm {
 
 TrashJob::TrashJob(const FilePathList& paths): paths_{paths} {
 }
@@ -70,4 +70,4 @@ void TrashJob::exec() {
 }
 
 
-} // namespace Fm2
+} // namespace Fm

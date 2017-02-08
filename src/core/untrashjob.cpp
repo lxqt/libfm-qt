@@ -1,6 +1,6 @@
 #include "untrashjob.h"
 
-namespace Fm2 {
+namespace Fm {
 
 UntrashJob::UntrashJob() {
 
@@ -129,4 +129,4 @@ _retry_get_orig_path:
 #endif
 }
 
-} // namespace Fm2
+} // namespace Fm

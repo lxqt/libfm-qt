@@ -6,7 +6,7 @@
 
 using namespace std;
 
-namespace Fm2 {
+namespace Fm {
 
 std::unordered_map<const char*, std::shared_ptr<const MimeType>, CStrHash, CStrEqual> MimeType::cache_;
 std::mutex MimeType::mutex_;
@@ -61,4 +61,4 @@ std::shared_ptr<const MimeType> MimeType::guessFromFileName(const char* fileName
     return fromName(type.get());
 }
 
-} // namespace Fm2
+} // namespace Fm

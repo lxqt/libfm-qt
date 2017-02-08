@@ -36,19 +36,19 @@ class QDialog;
 
 namespace Fm {
 
-LIBFM_QT_API Fm2::FilePathList pathListFromUriList(const char* uriList);
+LIBFM_QT_API Fm::FilePathList pathListFromUriList(const char* uriList);
 
-LIBFM_QT_API QByteArray pathListToUriList(const Fm2::FilePathList& paths);
+LIBFM_QT_API QByteArray pathListToUriList(const Fm::FilePathList& paths);
 
-LIBFM_QT_API Fm2::FilePathList pathListFromQUrls(QList<QUrl> urls);
+LIBFM_QT_API Fm::FilePathList pathListFromQUrls(QList<QUrl> urls);
 
-LIBFM_QT_API void pasteFilesFromClipboard(const Fm2::FilePath& destPath, QWidget* parent = 0);
+LIBFM_QT_API void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent = 0);
 
-LIBFM_QT_API void copyFilesToClipboard(const Fm2::FilePathList& files);
+LIBFM_QT_API void copyFilesToClipboard(const Fm::FilePathList& files);
 
-LIBFM_QT_API void cutFilesToClipboard(const Fm2::FilePathList& files);
+LIBFM_QT_API void cutFilesToClipboard(const Fm::FilePathList& files);
 
-LIBFM_QT_API void renameFile(std::shared_ptr<const Fm2::FileInfo> file, QWidget* parent = 0);
+LIBFM_QT_API void renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent = 0);
 
 enum CreateFileType {
     CreateNewFolder,
@@ -56,7 +56,7 @@ enum CreateFileType {
     CreateWithTemplate
 };
 
-LIBFM_QT_API void createFileOrFolder(CreateFileType type, Fm2::FilePath parentDir, FmTemplate* templ = nullptr, QWidget* parent = 0);
+LIBFM_QT_API void createFileOrFolder(CreateFileType type, Fm::FilePath parentDir, FmTemplate* templ = nullptr, QWidget* parent = 0);
 
 LIBFM_QT_API uid_t uidFromName(QString name);
 

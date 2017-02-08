@@ -39,7 +39,7 @@ class LIBFM_QT_API FileMenu : public QMenu {
     Q_OBJECT
 
 public:
-    explicit FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo> info, Fm2::FilePath cwd, const QString& title = QString(), QWidget* parent = nullptr);
+    explicit FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> info, Fm::FilePath cwd, const QString& title = QString(), QWidget* parent = nullptr);
     ~FileMenu();
 
     bool useTrash() {
@@ -112,15 +112,15 @@ public:
         return propertiesAction_;
     }
 
-    const Fm2::FileInfoList& files() const {
+    const Fm::FileInfoList& files() const {
         return files_;
     }
 
-    const std::shared_ptr<const Fm2::FileInfo>& firstFile() const {
+    const std::shared_ptr<const Fm::FileInfo>& firstFile() const {
         return info_;
     }
 
-    const Fm2::FilePath& cwd() const {
+    const Fm::FilePath& cwd() const {
         return cwd_;
     }
 
@@ -182,9 +182,9 @@ protected Q_SLOTS:
     void onUnTrashTriggered();
 
 private:
-    Fm2::FileInfoList files_;
-    std::shared_ptr<const Fm2::FileInfo> info_;
-    Fm2::FilePath cwd_;
+    Fm::FileInfoList files_;
+    std::shared_ptr<const Fm::FileInfo> info_;
+    Fm::FilePath cwd_;
     bool useTrash_;
     bool confirmDelete_;
     bool confirmTrash_; // Confirm before moving files into "trash can"

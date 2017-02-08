@@ -1,10 +1,10 @@
 #ifndef FILEINFO_P_H
 #define FILEINFO_P_H
 
-namespace Fm2 {
+namespace Fm {
 
     extern const char gfile_info_query_attribs[];
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FILEINFO_P_H

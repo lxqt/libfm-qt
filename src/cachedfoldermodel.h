@@ -31,14 +31,14 @@ namespace Fm {
 class LIBFM_QT_API CachedFolderModel : public FolderModel {
     Q_OBJECT
 public:
-    CachedFolderModel(const std::shared_ptr<Fm2::Folder>& folder);
+    CachedFolderModel(const std::shared_ptr<Fm::Folder>& folder);
     void ref() {
         ++refCount;
     }
     void unref();
 
-    static CachedFolderModel* modelFromFolder(const std::shared_ptr<Fm2::Folder>& folder);
-    static CachedFolderModel* modelFromPath(const Fm2::FilePath& path);
+    static CachedFolderModel* modelFromFolder(const std::shared_ptr<Fm::Folder>& folder);
+    static CachedFolderModel* modelFromPath(const Fm::FilePath& path);
 
 private:
     virtual ~CachedFolderModel();

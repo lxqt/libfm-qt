@@ -34,7 +34,7 @@ namespace Fm {
 class LIBFM_QT_API FolderConfig {
 public:
 
-    FolderConfig(const Fm2::FilePath& path) {
+    FolderConfig(const Fm::FilePath& path) {
         FmPath* fmpath = fm_path_new_for_gfile(path.gfile().get());
         dataPtr_ = reinterpret_cast<FmFolderConfig*>(fm_folder_config_open(fmpath));
         fm_path_unref(fmpath);

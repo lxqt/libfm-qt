@@ -38,7 +38,7 @@ class ProxyFolderModel;
 
 class LIBFM_QT_API ProxyFolderModelFilter {
 public:
-    virtual bool filterAcceptsRow(const ProxyFolderModel* model, const std::shared_ptr<const Fm2::FileInfo>& info) const = 0;
+    virtual bool filterAcceptsRow(const ProxyFolderModel* model, const std::shared_ptr<const Fm::FileInfo>& info) const = 0;
     virtual ~ProxyFolderModelFilter() {}
 };
 
@@ -74,7 +74,7 @@ public:
     }
     void setThumbnailSize(int size);
 
-    std::shared_ptr<const Fm2::FileInfo> fileInfoFromIndex(const QModelIndex& index) const;
+    std::shared_ptr<const Fm::FileInfo> fileInfoFromIndex(const QModelIndex& index) const;
 
     virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
     virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;

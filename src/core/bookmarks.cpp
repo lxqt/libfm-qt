@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <QTimer>
 
-namespace Fm2 {
+namespace Fm {
 
 std::weak_ptr<Bookmarks> Bookmarks::globalInstance_;
 
@@ -152,4 +152,4 @@ void Bookmarks::queueSave() {
 }
 
 
-} // namespace Fm2
+} // namespace Fm

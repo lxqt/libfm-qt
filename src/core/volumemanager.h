@@ -11,7 +11,7 @@
 #include <vector>
 #include <mutex>
 
-namespace Fm2 {
+namespace Fm {
 
 class LIBFM_QT_API Volume: public GVolumePtr {
 public:
@@ -232,6 +232,6 @@ private:
     static std::weak_ptr<VolumeManager> globalInstance_;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_VOLUMEMANAGER_H

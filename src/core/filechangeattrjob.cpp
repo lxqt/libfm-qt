@@ -1,9 +1,9 @@
 #include "filechangeattrjob.h"
 
-namespace Fm2 {
+namespace Fm {
 
 FileChangeAttrJob::FileChangeAttrJob() {
 
 }
 
-} // namespace Fm2
+} // namespace Fm

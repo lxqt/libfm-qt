@@ -35,7 +35,7 @@
 #include <QIcon>
 
 
-namespace Fm2 {
+namespace Fm {
 
 class LIBFM_QT_API IconInfo: public std::enable_shared_from_this<IconInfo> {
 public:
@@ -104,8 +104,8 @@ private:
     static QIcon fallbackQicon_;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
-Q_DECLARE_METATYPE(std::shared_ptr<const Fm2::IconInfo>)
+Q_DECLARE_METATYPE(std::shared_ptr<const Fm::IconInfo>)
 
 #endif /* __FM2_ICON_INFO_H__ */

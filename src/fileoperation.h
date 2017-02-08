@@ -47,10 +47,10 @@ public:
     };
 
 public:
-    explicit FileOperation(Type type, Fm2::FilePathList srcFiles, QObject* parent = 0);
+    explicit FileOperation(Type type, Fm::FilePathList srcFiles, QObject* parent = 0);
     virtual ~FileOperation();
 
-    void setDestination(Fm2::FilePath dest);
+    void setDestination(Fm::FilePath dest);
 
     void setChmod(mode_t newMode, mode_t newModeMask) {
         fm_file_ops_job_set_chmod(job_, newMode, newModeMask);
@@ -97,13 +97,13 @@ public:
     }
 
     // convinient static functions
-    static FileOperation* copyFiles(Fm2::FilePathList srcFiles, Fm2::FilePath dest, QWidget* parent = 0);
-    static FileOperation* moveFiles(Fm2::FilePathList srcFiles, Fm2::FilePath dest, QWidget* parent = 0);
-    static FileOperation* symlinkFiles(Fm2::FilePathList srcFiles, Fm2::FilePath dest, QWidget* parent = 0);
-    static FileOperation* deleteFiles(Fm2::FilePathList srcFiles, bool promp = true, QWidget* parent = 0);
-    static FileOperation* trashFiles(Fm2::FilePathList srcFiles, bool promp = true, QWidget* parent = 0);
-    static FileOperation* unTrashFiles(Fm2::FilePathList srcFiles, QWidget* parent = 0);
-    static FileOperation* changeAttrFiles(Fm2::FilePathList srcFiles, QWidget* parent = 0);
+    static FileOperation* copyFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent = 0);
+    static FileOperation* moveFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent = 0);
+    static FileOperation* symlinkFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent = 0);
+    static FileOperation* deleteFiles(Fm::FilePathList srcFiles, bool promp = true, QWidget* parent = 0);
+    static FileOperation* trashFiles(Fm::FilePathList srcFiles, bool promp = true, QWidget* parent = 0);
+    static FileOperation* unTrashFiles(Fm::FilePathList srcFiles, QWidget* parent = 0);
+    static FileOperation* changeAttrFiles(Fm::FilePathList srcFiles, QWidget* parent = 0);
 
 Q_SIGNALS:
     void finished();
@@ -148,8 +148,8 @@ private Q_SLOTS:
 private:
     FmFileOpsJob* job_;
     FileOperationDialog* dlg;
-    Fm2::FilePath destPath;
-    Fm2::FilePathList srcPaths;
+    Fm::FilePath destPath;
+    Fm::FilePathList srcPaths;
     QTimer* uiTimer;
     QElapsedTimer* elapsedTimer_;
     qint64 lastElapsed_;

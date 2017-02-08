@@ -81,11 +81,11 @@ FileOperationDialog::~FileOperationDialog() {
     delete ui;
 }
 
-void FileOperationDialog::setDestPath(const Fm2::FilePath &dest) {
+void FileOperationDialog::setDestPath(const Fm::FilePath &dest) {
     ui->dest->setText(dest.displayName().get());
 }
 
-void FileOperationDialog::setSourceFiles(const Fm2::FilePathList &srcFiles) {
+void FileOperationDialog::setSourceFiles(const Fm::FilePathList &srcFiles) {
     for(auto& srcFile : srcFiles) {
         ui->sourceFiles->addItem(srcFile.displayName().get());
     }

@@ -44,12 +44,12 @@ FileLauncher::FileLauncher():
 FileLauncher::~FileLauncher() {
 }
 
-bool FileLauncher::launchFiles(QWidget *parent, Fm2::FileInfoList file_infos) {
+bool FileLauncher::launchFiles(QWidget *parent, Fm::FileInfoList file_infos) {
     // FIXME: rewrite
     return launchPaths(parent, file_infos.paths());
 }
 
-bool FileLauncher::launchPaths(QWidget *parent, Fm2::FilePathList paths) {
+bool FileLauncher::launchPaths(QWidget *parent, Fm::FilePathList paths) {
     // FIXME: rewrite, port to new api
     GList* tmp = nullptr;
     for(auto& path: paths) {
@@ -79,7 +79,7 @@ bool FileLauncher::launchPaths(QWidget* parent, GList* paths) {
 GAppInfo* FileLauncher::getApp(GList* file_infos, FmMimeType* mime_type, GError** err) {
     AppChooserDialog dlg(nullptr);
     if(mime_type) {
-        dlg.setMimeType(Fm2::MimeType::fromName(fm_mime_type_get_type(mime_type)));
+        dlg.setMimeType(Fm::MimeType::fromName(fm_mime_type_get_type(mime_type)));
     }
     else {
         dlg.setCanSetDefault(false);

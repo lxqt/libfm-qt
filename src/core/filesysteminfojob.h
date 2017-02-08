@@ -5,7 +5,7 @@
 #include "job.h"
 #include "filepath.h"
 
-namespace Fm2 {
+namespace Fm {
 
 class LIBFM_QT_API FileSystemInfoJob : public Job {
     Q_OBJECT
@@ -40,6 +40,6 @@ private:
     uint64_t freeSize_;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_FILESYSTEMINFOJOB_H

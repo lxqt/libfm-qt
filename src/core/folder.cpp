@@ -31,7 +31,7 @@
 #include "filesysteminfojob.h"
 #include "fileinfojob.h"
 
-namespace Fm2 {
+namespace Fm {
 
 std::unordered_map<FilePath, std::weak_ptr<Folder>, FilePathHash> Folder::cache_;
 std::mutex Folder::mutex_;
@@ -892,4 +892,4 @@ void on_mount_removed(GVolumeMonitor* vm, GMount* mount, gpointer user_data) {
 }
 
 #endif
-} // namespace Fm2
+} // namespace Fm

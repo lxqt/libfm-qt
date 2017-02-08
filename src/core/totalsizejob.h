@@ -7,9 +7,9 @@
 #include <cstdint>
 #include "gioptrs.h"
 
-namespace Fm2 {
+namespace Fm {
 
-class LIBFM_QT_API TotalSizeJob : public Fm2::FileOperationJob {
+class LIBFM_QT_API TotalSizeJob : public Fm::FileOperationJob {
     Q_OBJECT
 public:
     enum Flags {
@@ -51,6 +51,6 @@ private:
     const char* dest_fs_id;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_TOTALSIZEJOB_H

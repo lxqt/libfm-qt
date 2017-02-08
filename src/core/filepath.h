@@ -8,7 +8,7 @@
 #include <vector>
 #include <QMetaType>
 
-namespace Fm2 {
+namespace Fm {
 
 class LIBFM_QT_API FilePath {
 public:
@@ -166,8 +166,8 @@ struct FilePathHash {
 
 typedef std::vector<FilePath> FilePathList;
 
-} // namespace Fm2
+} // namespace Fm
 
-Q_DECLARE_METATYPE(Fm2::FilePath)
+Q_DECLARE_METATYPE(Fm::FilePath)
 
 #endif // FM2_FILEPATH_H

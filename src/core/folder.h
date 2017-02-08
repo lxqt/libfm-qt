@@ -36,7 +36,7 @@
 #include "fileinfo.h"
 #include "job.h"
 
-namespace Fm2 {
+namespace Fm {
 
 class DirListJob;
 class FileSystemInfoJob;

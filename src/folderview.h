@@ -80,25 +80,25 @@ public:
     ProxyFolderModel* model() const;
     void setModel(ProxyFolderModel* _model);
 
-    std::shared_ptr<Fm2::Folder> folder() const {
+    std::shared_ptr<Fm::Folder> folder() const {
         return model_ ? static_cast<FolderModel*>(model_->sourceModel())->folder() : nullptr;
     }
 
-    std::shared_ptr<const Fm2::FileInfo> folderInfo() const {
+    std::shared_ptr<const Fm::FileInfo> folderInfo() const {
         auto _folder = folder();
         return _folder ? _folder->info() : nullptr;
     }
 
-    Fm2::FilePath path() {
+    Fm::FilePath path() {
         auto _folder = folder();
-        return _folder ? _folder->path() : Fm2::FilePath();
+        return _folder ? _folder->path() : Fm::FilePath();
     }
 
     QItemSelectionModel* selectionModel() const;
-    Fm2::FileInfoList selectedFiles() const;
-    Fm2::FilePathList selectedFilePaths() const;
+    Fm::FileInfoList selectedFiles() const;
+    Fm::FilePathList selectedFilePaths() const;
     bool hasSelection() const;
-    QModelIndex indexFromFolderPath(const Fm2::FilePath& folderPath) const;
+    QModelIndex indexFromFolderPath(const Fm::FilePath& folderPath) const;
 
     void selectAll();
 
@@ -150,14 +150,14 @@ protected:
 public Q_SLOTS:
     void onItemActivated(QModelIndex index);
     void onSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
-    virtual void onFileClicked(int type, const std::shared_ptr<const Fm2::FileInfo>& fileInfo);
+    virtual void onFileClicked(int type, const std::shared_ptr<const Fm::FileInfo>& fileInfo);
 
 private Q_SLOTS:
     void onAutoSelectionTimeout();
     void onSelChangedTimeout();
 
 Q_SIGNALS:
-    void clicked(int type, const std::shared_ptr<const Fm2::FileInfo>& file);
+    void clicked(int type, const std::shared_ptr<const Fm::FileInfo>& file);
     void clickedBack();
     void clickedForward();
     void selChanged();

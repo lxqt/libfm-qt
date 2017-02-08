@@ -46,29 +46,29 @@ public:
 
 public:
     PlacesModelItem();
-    PlacesModelItem(QIcon icon, QString title, Fm2::FilePath path = Fm2::FilePath{});
-    PlacesModelItem(const char* iconName, QString title, Fm2::FilePath path = Fm2::FilePath{});
-    PlacesModelItem(std::shared_ptr<const Fm2::IconInfo> icon, QString title, Fm2::FilePath path = Fm2::FilePath{});
+    PlacesModelItem(QIcon icon, QString title, Fm::FilePath path = Fm::FilePath{});
+    PlacesModelItem(const char* iconName, QString title, Fm::FilePath path = Fm::FilePath{});
+    PlacesModelItem(std::shared_ptr<const Fm::IconInfo> icon, QString title, Fm::FilePath path = Fm::FilePath{});
     ~PlacesModelItem();
 
-    const std::shared_ptr<const Fm2::FileInfo>& fileInfo() const {
+    const std::shared_ptr<const Fm::FileInfo>& fileInfo() const {
         return fileInfo_;
     }
-    void setFileInfo(std::shared_ptr<const Fm2::FileInfo> fileInfo) {
+    void setFileInfo(std::shared_ptr<const Fm::FileInfo> fileInfo) {
         fileInfo_ = std::move(fileInfo);
     }
 
-    const Fm2::FilePath& path() const {
+    const Fm::FilePath& path() const {
         return path_;
     }
-    void setPath(Fm2::FilePath path) {
+    void setPath(Fm::FilePath path) {
         path_ = std::move(path);
     }
 
-    const std::shared_ptr<const Fm2::IconInfo>& icon() const {
+    const std::shared_ptr<const Fm::IconInfo>& icon() const {
         return icon_;
     }
-    void setIcon(std::shared_ptr<const Fm2::IconInfo> icon);
+    void setIcon(std::shared_ptr<const Fm::IconInfo> icon);
     void setIcon(GIcon* gicon);
     void updateIcon();
 
@@ -79,9 +79,9 @@ public:
     }
 
 private:
-    Fm2::FilePath path_;
-    std::shared_ptr<const Fm2::FileInfo> fileInfo_;
-    std::shared_ptr<const Fm2::IconInfo> icon_;
+    Fm::FilePath path_;
+    std::shared_ptr<const Fm::FileInfo> fileInfo_;
+    std::shared_ptr<const Fm::IconInfo> icon_;
 };
 
 class LIBFM_QT_API PlacesModelVolumeItem : public PlacesModelItem {
@@ -121,12 +121,12 @@ public:
     virtual int type() const {
         return Bookmark;
     }
-    PlacesModelBookmarkItem(std::shared_ptr<const Fm2::BookmarkItem> bm_item);
-    const std::shared_ptr<const Fm2::BookmarkItem>& bookmark() const {
+    PlacesModelBookmarkItem(std::shared_ptr<const Fm::BookmarkItem> bm_item);
+    const std::shared_ptr<const Fm::BookmarkItem>& bookmark() const {
         return bookmarkItem_;
     }
 private:
-    std::shared_ptr<const Fm2::BookmarkItem> bookmarkItem_;
+    std::shared_ptr<const Fm::BookmarkItem> bookmarkItem_;
 };
 
 }

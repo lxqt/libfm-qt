@@ -39,7 +39,7 @@ RenameDialog::RenameDialog(FmFileInfo* src, FmFileInfo* dest, QWidget* parent, Q
   FmIcon* destIcon = fm_file_info_get_icon(dest);
 
   // show info for the source file
-  QIcon icon = Fm2::IconInfo::fromGIcon(G_ICON(srcIcon))->qicon();
+  QIcon icon = Fm::IconInfo::fromGIcon(G_ICON(srcIcon))->qicon();
   QSize iconSize(fm_config->big_icon_size, fm_config->big_icon_size);
   QPixmap pixmap = icon.pixmap(iconSize);
   ui->srcIcon->setPixmap(pixmap);
@@ -60,7 +60,7 @@ RenameDialog::RenameDialog(FmFileInfo* src, FmFileInfo* dest, QWidget* parent, Q
   ui->srcInfo->setText(infoStr);
 
   // show info for the dest file
-  icon = Fm2::IconInfo::fromGIcon(G_ICON(destIcon))->qicon();
+  icon = Fm::IconInfo::fromGIcon(G_ICON(destIcon))->qicon();
   pixmap = icon.pixmap(iconSize);
   ui->destIcon->setPixmap(pixmap);
 

@@ -46,18 +46,18 @@ PlacesModel::PlacesModel(QObject* parent):
     placesRoot->setColumnCount(2);
     appendRow(placesRoot);
 
-    homeItem = new PlacesModelItem("user-home", g_get_user_name(), Fm2::FilePath::homeDir());
+    homeItem = new PlacesModelItem("user-home", g_get_user_name(), Fm::FilePath::homeDir());
     placesRoot->appendRow(homeItem);
 
     desktopItem = new PlacesModelItem("user-desktop", tr("Desktop"),
-                                      Fm2::FilePath::fromLocalPath(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation).toLocal8Bit().constData()));
+                                      Fm::FilePath::fromLocalPath(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation).toLocal8Bit().constData()));
     placesRoot->appendRow(desktopItem);
 
     createTrashItem();
 
     // FIXME: add an option to hide network:///
     if(true) {
-        computerItem = new PlacesModelItem("computer", tr("Computer"), Fm2::FilePath::fromUri("computer:///"));
+        computerItem = new PlacesModelItem("computer", tr("Computer"), Fm::FilePath::fromUri("computer:///"));
         placesRoot->appendRow(computerItem);
     }
     else {
@@ -67,18 +67,18 @@ PlacesModel::PlacesModel(QObject* parent):
     // FIXME: add an option to hide applications:///
     const char* applicaion_icon_names[] = {"system-software-install", "applications-accessories", "application-x-executable"};
     // NOTE: g_themed_icon_new_from_names() accepts char**, but actually const char** is OK.
-    Fm2::GIconPtr gicon{g_themed_icon_new_from_names((char**)applicaion_icon_names, G_N_ELEMENTS(applicaion_icon_names)), false};
-    auto fmicon = Fm2::IconInfo::fromGIcon(std::move(gicon));
-    applicationsItem = new PlacesModelItem(fmicon, tr("Applications"), Fm2::FilePath::fromUri("menu:///applications/"));
+    Fm::GIconPtr gicon{g_themed_icon_new_from_names((char**)applicaion_icon_names, G_N_ELEMENTS(applicaion_icon_names)), false};
+    auto fmicon = Fm::IconInfo::fromGIcon(std::move(gicon));
+    applicationsItem = new PlacesModelItem(fmicon, tr("Applications"), Fm::FilePath::fromUri("menu:///applications/"));
     placesRoot->appendRow(applicationsItem);
 
     // FIXME: add an option to hide network:///
     if(true) {
         const char* network_icon_names[] = {"network", "folder-network", "folder"};
         // NOTE: g_themed_icon_new_from_names() accepts char**, but actually const char** is OK.
-        Fm2::GIconPtr gicon{g_themed_icon_new_from_names((char**)network_icon_names, G_N_ELEMENTS(network_icon_names)), false};
-        auto fmicon = Fm2::IconInfo::fromGIcon(std::move(gicon));
-        networkItem = new PlacesModelItem(fmicon, tr("Network"), Fm2::FilePath::fromUri("network:///"));
+        Fm::GIconPtr gicon{g_themed_icon_new_from_names((char**)network_icon_names, G_N_ELEMENTS(network_icon_names)), false};
+        auto fmicon = Fm::IconInfo::fromGIcon(std::move(gicon));
+        networkItem = new PlacesModelItem(fmicon, tr("Network"), Fm::FilePath::fromUri("network:///"));
         placesRoot->appendRow(networkItem);
     }
     else {
@@ -144,9 +144,9 @@ PlacesModel::PlacesModel(QObject* parent):
     bookmarksRoot->setColumnCount(2);
     appendRow(bookmarksRoot);
 
-    bookmarks = Fm2::Bookmarks::globalInstance();
+    bookmarks = Fm::Bookmarks::globalInstance();
     loadBookmarks();
-    connect(bookmarks.get(), &Fm2::Bookmarks::changed, this, &PlacesModel::onBookmarksChanged);
+    connect(bookmarks.get(), &Fm::Bookmarks::changed, this, &PlacesModel::onBookmarksChanged);
 }
 
 void PlacesModel::loadBookmarks() {
@@ -202,12 +202,12 @@ void PlacesModel::updateTrash() {
             UpdateTrashData* data = reinterpret_cast<UpdateTrashData*>(user_data);
             PlacesModel* _this = data->model.data();
             if(_this != nullptr) { // ensure that our model object is not deleted yet
-                Fm2::GFileInfoPtr inf{g_file_query_info_finish(data->gf, res, nullptr), false};
+                Fm::GFileInfoPtr inf{g_file_query_info_finish(data->gf, res, nullptr), false};
                 if(inf) {
                     if(_this->trashItem_ != nullptr) { // it's possible that when we finish, the trash item is removed
                         guint32 n = g_file_info_get_attribute_uint32(inf.get(), G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
                         const char* icon_name = n > 0 ? "user-trash-full" : "user-trash";
-                        auto icon = Fm2::IconInfo::fromName(icon_name);
+                        auto icon = Fm::IconInfo::fromName(icon_name);
                         _this->trashItem_->setIcon(std::move(icon));
                     }
                 }
@@ -228,7 +228,7 @@ void PlacesModel::createTrashItem() {
         trashMonitor_ = nullptr;
         return;
     }
-    trashItem_ = new PlacesModelItem("user-trash", tr("Trash"), Fm2::FilePath::fromUri("trash:///"));
+    trashItem_ = new PlacesModelItem("user-trash", tr("Trash"), Fm::FilePath::fromUri("trash:///"));
 
     trashMonitor_ = fm_monitor_directory(gf, nullptr);
     if(trashMonitor_) {
@@ -271,7 +271,7 @@ void PlacesModel::setShowTrash(bool show) {
     }
 }
 
-PlacesModelItem* PlacesModel::itemFromPath(const Fm2::FilePath &path) {
+PlacesModelItem* PlacesModel::itemFromPath(const Fm::FilePath &path) {
     PlacesModelItem* item = itemFromPath(placesRoot, path);
     if(!item) {
         item = itemFromPath(devicesRoot, path);
@@ -282,7 +282,7 @@ PlacesModelItem* PlacesModel::itemFromPath(const Fm2::FilePath &path) {
     return item;
 }
 
-PlacesModelItem* PlacesModel::itemFromPath(QStandardItem* rootItem, const Fm2::FilePath &path) {
+PlacesModelItem* PlacesModel::itemFromPath(QStandardItem* rootItem, const Fm::FilePath &path) {
     int rowCount = rootItem->rowCount();
     for(int i = 0; i < rowCount; ++i) {
         PlacesModelItem* item = static_cast<PlacesModelItem*>(rootItem->child(i, 0));
@@ -321,7 +321,7 @@ PlacesModelMountItem* PlacesModel::itemFromMount(GMount* mount) {
     return nullptr;
 }
 
-PlacesModelBookmarkItem* PlacesModel::itemFromBookmark(std::shared_ptr<const Fm2::BookmarkItem> bkitem) {
+PlacesModelBookmarkItem* PlacesModel::itemFromBookmark(std::shared_ptr<const Fm::BookmarkItem> bkitem) {
     int rowCount = bookmarksRoot->rowCount();
     for(int i = 0; i < rowCount; ++i) {
         PlacesModelBookmarkItem* item = static_cast<PlacesModelBookmarkItem*>(bookmarksRoot->child(i, 0));
@@ -347,7 +347,7 @@ void PlacesModel::onMountAdded(GVolumeMonitor* monitor, GMount* mount, PlacesMod
         PlacesModelVolumeItem* item = pThis->itemFromVolume(vol);
         if(item && !item->path()) {
             // update the mounted volume and show a button for eject.
-            Fm2::FilePath path{g_mount_get_root(mount), false};
+            Fm::FilePath path{g_mount_get_root(mount), false};
             item->setPath(path);
             // update the mount indicator (eject button)
             QStandardItem* ejectBtn = item->parent()->child(item->row(), 1);
@@ -524,7 +524,7 @@ bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
         // If we cannot find the dragged bookmark item at position <oldRow>, or we find an item,
         // but the path of the item is not the same as what we expected, than it's the wrong item.
         // This means that the bookmarks are changed during our dnd processing, which is an extremely rare case.
-        auto draggedPath = Fm2::FilePath::fromPathStr(pathStr);
+        auto draggedPath = Fm::FilePath::fromPathStr(pathStr);
         if(!draggedItem || draggedItem->path() != draggedPath) {
             delete []pathStr;
             return false;

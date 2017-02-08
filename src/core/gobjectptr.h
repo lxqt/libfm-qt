@@ -7,7 +7,7 @@
 #include <cstddef>
 #include <QDebug>
 
-namespace Fm2 {
+namespace Fm {
 
 template <typename T>
 class LIBFM_QT_API GObjectPtr {
@@ -93,6 +93,6 @@ private:
 };
 
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_GOBJECTPTR_H

@@ -3,7 +3,7 @@
 #include <utility>
 #include <glib.h>
 
-namespace Fm2 {
+namespace Fm {
 
 FilePath FilePath::homeDir_;
 
@@ -18,4 +18,4 @@ const FilePath &FilePath::homeDir() {
     return homeDir_;
 }
 
-} // namespace Fm2
+} // namespace Fm

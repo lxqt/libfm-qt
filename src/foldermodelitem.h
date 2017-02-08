@@ -50,7 +50,7 @@ public:
     };
 
 public:
-    FolderModelItem(const std::shared_ptr<const Fm2::FileInfo>& _info);
+    FolderModelItem(const std::shared_ptr<const Fm::FileInfo>& _info);
     FolderModelItem(const FolderModelItem& other);
     virtual ~FolderModelItem();
 
@@ -74,7 +74,7 @@ public:
 
     void removeThumbnail(int size);
 
-    std::shared_ptr<const Fm2::FileInfo> info;
+    std::shared_ptr<const Fm::FileInfo> info;
     mutable QString dispMtime_;
     mutable QString dispSize_;
     QVector<Thumbnail> thumbnails;

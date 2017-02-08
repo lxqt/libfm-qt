@@ -6,12 +6,12 @@
 int main(int argc, char** argv) {
     QApplication app(argc, argv);
 
-    auto vm = Fm2::VolumeManager::globalInstance();
+    auto vm = Fm::VolumeManager::globalInstance();
 
-    QObject::connect(vm.get(), &Fm2::VolumeManager::volumeAdded, [=](const Fm2::Volume& vol) {
+    QObject::connect(vm.get(), &Fm::VolumeManager::volumeAdded, [=](const Fm::Volume& vol) {
         qDebug() << "volume added:" << vol.name().get();
     });
-    QObject::connect(vm.get(), &Fm2::VolumeManager::volumeRemoved, [=](const Fm2::Volume& vol) {
+    QObject::connect(vm.get(), &Fm::VolumeManager::volumeRemoved, [=](const Fm::Volume& vol) {
         qDebug() << "volume removed:" << vol.name().get();
     });
 

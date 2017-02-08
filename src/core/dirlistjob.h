@@ -8,7 +8,7 @@
 #include "gobjectptr.h"
 #include "fileinfo.h"
 
-namespace Fm2 {
+namespace Fm {
 
 class LIBFM_QT_API DirListJob : public Job {
     Q_OBJECT
@@ -59,6 +59,6 @@ private:
     // GSList* files_to_add;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_DIRLISTJOB_H

@@ -30,11 +30,11 @@ public:
     DndDest();
     ~DndDest();
 
-    void setDestPath(Fm2::FilePath dest) {
+    void setDestPath(Fm::FilePath dest) {
         destPath_ = std::move(dest);
     }
 
-    const Fm2::FilePath& destPath() {
+    const Fm::FilePath& destPath() {
         return destPath_;
     }
 
@@ -44,7 +44,7 @@ public:
     bool dropMimeData(const QMimeData* data, Qt::DropAction action);
 
 private:
-    Fm2::FilePath destPath_;
+    Fm::FilePath destPath_;
 };
 
 }

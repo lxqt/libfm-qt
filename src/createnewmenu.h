@@ -34,7 +34,7 @@ class LIBFM_QT_API CreateNewMenu : public QMenu {
     Q_OBJECT
 
 public:
-    explicit CreateNewMenu(QWidget* dialogParent, Fm2::FilePath dirPath, QWidget* parent = 0);
+    explicit CreateNewMenu(QWidget* dialogParent, Fm::FilePath dirPath, QWidget* parent = 0);
     virtual ~CreateNewMenu();
 
 protected Q_SLOTS:
@@ -44,7 +44,7 @@ protected Q_SLOTS:
 
 private:
     QWidget* dialogParent_;
-    Fm2::FilePath dirPath_;
+    Fm::FilePath dirPath_;
 };
 
 }

@@ -32,10 +32,10 @@
 #include "libfmqtglobals.h"
 
 
-namespace Fm2 {
+namespace Fm {
 
 /*
- * Fm2::Job can be used in several different modes.
+ * Fm::Job can be used in several different modes.
  * 1. run with QThreadPool::start()
  * 2. call runAsync(), which will create a new QThread and move the object to the thread.
  * 3. create a new QThread, and connect the started() signal to the slot Job::run()

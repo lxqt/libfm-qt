@@ -47,17 +47,17 @@ FolderModel::~FolderModel() {
     }
 }
 
-void FolderModel::setFolder(const std::shared_ptr<Fm2::Folder>& new_folder) {
+void FolderModel::setFolder(const std::shared_ptr<Fm::Folder>& new_folder) {
     if(folder_) {
         removeAll();        // remove old items
     }
     if(new_folder) {
         folder_ = new_folder;
-        connect(folder_.get(), &Fm2::Folder::startLoading, this, &FolderModel::onStartLoading);
-        connect(folder_.get(), &Fm2::Folder::finishLoading, this, &FolderModel::onFinishLoading);
-        connect(folder_.get(), &Fm2::Folder::filesAdded, this, &FolderModel::onFilesAdded);
-        connect(folder_.get(), &Fm2::Folder::filesChanged, this, &FolderModel::onFilesChanged);
-        connect(folder_.get(), &Fm2::Folder::filesRemoved, this, &FolderModel::onFilesRemoved);
+        connect(folder_.get(), &Fm::Folder::startLoading, this, &FolderModel::onStartLoading);
+        connect(folder_.get(), &Fm::Folder::finishLoading, this, &FolderModel::onFinishLoading);
+        connect(folder_.get(), &Fm::Folder::filesAdded, this, &FolderModel::onFilesAdded);
+        connect(folder_.get(), &Fm::Folder::filesChanged, this, &FolderModel::onFilesChanged);
+        connect(folder_.get(), &Fm::Folder::filesRemoved, this, &FolderModel::onFilesRemoved);
         // handle the case if the folder is already loaded
         if(folder_->isLoaded()) {
             insertFiles(0, folder_->files());
@@ -73,7 +73,7 @@ void FolderModel::onStartLoading() {
 void FolderModel::onFinishLoading() {
 }
 
-void FolderModel::onFilesAdded(const Fm2::FileInfoList& files) {
+void FolderModel::onFilesAdded(const Fm::FileInfoList& files) {
     int n_files = files.size();
     beginInsertRows(QModelIndex(), items.count(), items.count() + n_files - 1);
     for(auto& info : files) {
@@ -89,7 +89,7 @@ void FolderModel::onFilesAdded(const Fm2::FileInfoList& files) {
     endInsertRows();
 }
 
-void FolderModel::onFilesChanged(std::vector<Fm2::FileInfoPair>& files) {
+void FolderModel::onFilesChanged(std::vector<Fm::FileInfoPair>& files) {
     for(auto& change : files) {
         int row;
         auto& oldInfo = change.first;
@@ -106,7 +106,7 @@ void FolderModel::onFilesChanged(std::vector<Fm2::FileInfoPair>& files) {
     }
 }
 
-void FolderModel::onFilesRemoved(const Fm2::FileInfoList& files) {
+void FolderModel::onFilesRemoved(const Fm::FileInfoList& files) {
     for(auto& info : files) {
         int row;
         QList<FolderModelItem>::iterator it = findItemByName(info->name().c_str(), &row);
@@ -122,16 +122,16 @@ void FolderModel::loadPendingThumbnails() {
     hasPendingThumbnailHandler_ = false;
     for(auto& item: thumbnailData_) {
         if(!item.pendingThumbnails_.empty()) {
-            auto job = new Fm2::ThumbnailJob(item.pendingThumbnails_, item.size_);
+            auto job = new Fm::ThumbnailJob(item.pendingThumbnails_, item.size_);
             job->setAutoDelete(true);
-            connect(job, &Fm2::ThumbnailJob::thumbnailLoaded, this, &FolderModel::onThumbnailLoaded, Qt::BlockingQueuedConnection);
-            connect(job, &Fm2::ThumbnailJob::finished, this, &FolderModel::onThumbnailJobFinished, Qt::BlockingQueuedConnection);
-            Fm2::ThumbnailJob::threadPool()->start(job);
+            connect(job, &Fm::ThumbnailJob::thumbnailLoaded, this, &FolderModel::onThumbnailLoaded, Qt::BlockingQueuedConnection);
+            connect(job, &Fm::ThumbnailJob::finished, this, &FolderModel::onThumbnailJobFinished, Qt::BlockingQueuedConnection);
+            Fm::ThumbnailJob::threadPool()->start(job);
         }
     }
 }
 
-void FolderModel::queueLoadThumbnail(const std::shared_ptr<const Fm2::FileInfo>& file, int size) {
+void FolderModel::queueLoadThumbnail(const std::shared_ptr<const Fm::FileInfo>& file, int size) {
     auto it = std::find_if(thumbnailData_.begin(), thumbnailData_.end(), [size](ThumbnailData& item){return item.size_ == size;});
     if(it != thumbnailData_.end()) {
         it->pendingThumbnails_.push_back(file);
@@ -142,7 +142,7 @@ void FolderModel::queueLoadThumbnail(const std::shared_ptr<const Fm2::FileInfo>&
     }
 }
 
-void FolderModel::insertFiles(int row, const Fm2::FileInfoList& files) {
+void FolderModel::insertFiles(int row, const Fm::FileInfoList& files) {
     int n_files = files.size();
     beginInsertRows(QModelIndex(), row, row + n_files - 1);
     for(auto& info : files) {
@@ -179,7 +179,7 @@ FolderModelItem* FolderModel::itemFromIndex(const QModelIndex& index) const {
     return reinterpret_cast<FolderModelItem*>(index.internalPointer());
 }
 
-std::shared_ptr<const Fm2::FileInfo> FolderModel::fileInfoFromIndex(const QModelIndex& index) const {
+std::shared_ptr<const Fm::FileInfo> FolderModel::fileInfoFromIndex(const QModelIndex& index) const {
     FolderModelItem* item = itemFromIndex(index);
     return item ? item->info : nullptr;
 }
@@ -276,7 +276,7 @@ Qt::ItemFlags FolderModel::flags(const QModelIndex& index) const {
 
 // FIXME: this is very inefficient and should be replaced with a
 // more reasonable implementation later.
-QList<FolderModelItem>::iterator FolderModel::findItemByPath(const Fm2::FilePath& path, int* row) {
+QList<FolderModelItem>::iterator FolderModel::findItemByPath(const Fm::FilePath& path, int* row) {
     QList<FolderModelItem>::iterator it = items.begin();
     int i = 0;
     while(it != items.end()) {
@@ -309,7 +309,7 @@ QList<FolderModelItem>::iterator FolderModel::findItemByName(const char* name, i
     return items.end();
 }
 
-QList< FolderModelItem >::iterator FolderModel::findItemByFileInfo(const Fm2::FileInfo* info, int* row) {
+QList< FolderModelItem >::iterator FolderModel::findItemByFileInfo(const Fm::FileInfo* info, int* row) {
     QList<FolderModelItem>::iterator it = items.begin();
     int i = 0;
     while(it != items.end()) {
@@ -366,9 +366,9 @@ bool FolderModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
     if(!folder_) {
         return false;
     }
-    Fm2::FilePath destPath;
+    Fm::FilePath destPath;
     if(parent.isValid()) { // drop on an item
-        std::shared_ptr<const Fm2::FileInfo> info;
+        std::shared_ptr<const Fm::FileInfo> info;
         if(row == -1 && column == -1) {
             info = fileInfoFromIndex(parent);
         }
@@ -450,14 +450,14 @@ void FolderModel::releaseThumbnails(int size) {
 }
 
 void FolderModel::onThumbnailJobFinished() {
-    Fm2::ThumbnailJob* job = static_cast<Fm2::ThumbnailJob*>(sender());
+    Fm::ThumbnailJob* job = static_cast<Fm::ThumbnailJob*>(sender());
     auto it = std::find(pendingThumbnailJobs_.cbegin(), pendingThumbnailJobs_.cend(), job);
     if(it != pendingThumbnailJobs_.end()) {
         pendingThumbnailJobs_.erase(it);
     }
 }
 
-void FolderModel::onThumbnailLoaded(const std::shared_ptr<const Fm2::FileInfo>& file, int size, const QImage& image) {
+void FolderModel::onThumbnailLoaded(const std::shared_ptr<const Fm::FileInfo>& file, int size, const QImage& image) {
     // find the model item this thumbnail belongs to
     int row;
     QList<FolderModelItem>::iterator it = findItemByFileInfo(file.get(), &row);

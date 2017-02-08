@@ -39,15 +39,15 @@ class LIBFM_QT_API PathBar: public QWidget {
 public:
     explicit PathBar(QWidget* parent = 0);
 
-    const Fm2::FilePath& path() {
+    const Fm::FilePath& path() {
         return currentPath_;
     }
 
-    void setPath(Fm2::FilePath path);
+    void setPath(Fm::FilePath path);
 
 Q_SIGNALS:
-    void chdir(const Fm2::FilePath& path);
-    void middleClickChdir(const Fm2::FilePath& path);
+    void chdir(const Fm::FilePath& path);
+    void middleClickChdir(const Fm::FilePath& path);
     void editingFinished();
 
 public Q_SLOTS:
@@ -69,7 +69,7 @@ protected:
 
 private:
     void updateScrollButtonVisibility();
-    Fm2::FilePath pathForButton(PathButton* btn);
+    Fm::FilePath pathForButton(PathButton* btn);
 
 private:
     QToolButton* scrollToStart_;
@@ -79,7 +79,7 @@ private:
     QHBoxLayout* buttonsLayout_;
     PathEdit* tempPathEdit_;
 
-    Fm2::FilePath currentPath_;   // currently active path
+    Fm::FilePath currentPath_;   // currently active path
 };
 
 } // namespace Fm

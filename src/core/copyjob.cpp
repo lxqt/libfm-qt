@@ -2,7 +2,7 @@
 #include "totalsizejob.h"
 #include "fileinfo_p.h"
 
-namespace Fm2 {
+namespace Fm {
 
 CopyJob::CopyJob(const FilePathList& paths, const FilePath& destDirPath, Mode mode):
     FileOperationJob{},
@@ -451,4 +451,4 @@ void CopyJob::exec() {
 }
 
 
-} // namespace Fm2
+} // namespace Fm

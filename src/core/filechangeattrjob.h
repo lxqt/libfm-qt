@@ -4,14 +4,14 @@
 #include "libfmqtglobals.h"
 #include "fileoperationjob.h"
 
-namespace Fm2 {
+namespace Fm {
 
-class LIBFM_QT_API FileChangeAttrJob : public Fm2::FileOperationJob {
+class LIBFM_QT_API FileChangeAttrJob : public Fm::FileOperationJob {
     Q_OBJECT
 public:
     FileChangeAttrJob();
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_FILECHANGEATTRJOB_H

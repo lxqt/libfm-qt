@@ -12,13 +12,13 @@
 
 // compatibility functions bridging the old libfm C APIs and new C++ APIs.
 
-namespace Fm2 {
+namespace Fm {
 
-inline FM_QT_DEPRECATED Fm::Path _convertPath(const Fm2::FilePath& path) {
+inline FM_QT_DEPRECATED Fm::Path _convertPath(const Fm::FilePath& path) {
     return Fm::Path::newForGfile(path.gfile().get());
 }
 
-inline FM_QT_DEPRECATED Fm::PathList _convertPathList(const Fm2::FilePathList& srcFiles) {
+inline FM_QT_DEPRECATED Fm::PathList _convertPathList(const Fm::FilePathList& srcFiles) {
     Fm::PathList ret;
     for(auto& file: srcFiles) {
         ret.pushTail(_convertPath(file));
@@ -26,7 +26,7 @@ inline FM_QT_DEPRECATED Fm::PathList _convertPathList(const Fm2::FilePathList& s
     return ret;
 }
 
-inline FM_QT_DEPRECATED FmFileInfo* _convertFileInfo(const std::shared_ptr<const Fm2::FileInfo>& info) {
+inline FM_QT_DEPRECATED FmFileInfo* _convertFileInfo(const std::shared_ptr<const Fm::FileInfo>& info) {
     // conver to GFileInfo first
     GFileInfoPtr ginfo{g_file_info_new(), false};
     g_file_info_set_name(ginfo.get(), info->name().c_str());

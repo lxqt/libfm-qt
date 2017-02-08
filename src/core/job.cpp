@@ -1,7 +1,7 @@
 #include "job.h"
 #include "job_p.h"
 
-namespace Fm2 {
+namespace Fm {
 
 Job::Job():
     paused_{false},
@@ -54,4 +54,4 @@ Job::ErrorAction Job::emitError(const GErrorPtr &err, Job::ErrorSeverity severit
     return response;
 }
 
-} // namespace Fm2
+} // namespace Fm

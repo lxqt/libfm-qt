@@ -51,15 +51,15 @@ public:
     explicit DirTreeModel(QObject* parent);
     ~DirTreeModel();
 
-    QModelIndex addRoots(Fm2::FilePathList rootPaths);
+    QModelIndex addRoots(Fm::FilePathList rootPaths);
 
     void loadRow(const QModelIndex& index);
     void unloadRow(const QModelIndex& index);
 
     bool isLoaded(const QModelIndex& index);
     QIcon icon(const QModelIndex& index);
-    std::shared_ptr<const Fm2::FileInfo> fileInfo(const QModelIndex& index);
-    Fm2::FilePath filePath(const QModelIndex& index);
+    std::shared_ptr<const Fm::FileInfo> fileInfo(const QModelIndex& index);
+    Fm::FilePath filePath(const QModelIndex& index);
     QString dispName(const QModelIndex& index);
 
     void setShowHidden(bool show_hidden);
@@ -67,7 +67,7 @@ public:
         return showHidden_;
     }
 
-    QModelIndex indexFromPath(const Fm2::FilePath& path) const;
+    QModelIndex indexFromPath(const Fm::FilePath& path) const;
 
     virtual Qt::ItemFlags flags(const QModelIndex& index) const;
     virtual QVariant data(const QModelIndex& index, int role) const;
@@ -84,9 +84,9 @@ private Q_SLOTS:
     void onFileInfoJobFinished();
 
 private:
-    QModelIndex addRoot(std::shared_ptr<const Fm2::FileInfo> root);
+    QModelIndex addRoot(std::shared_ptr<const Fm::FileInfo> root);
 
-    DirTreeModelItem* itemFromPath(const Fm2::FilePath& path) const;
+    DirTreeModelItem* itemFromPath(const Fm::FilePath& path) const;
     DirTreeModelItem* itemFromIndex(const QModelIndex& index) const;
     QModelIndex indexFromItem(DirTreeModelItem* item) const;
 

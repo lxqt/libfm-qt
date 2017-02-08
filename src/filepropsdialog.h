@@ -39,19 +39,19 @@ class LIBFM_QT_API FilePropsDialog : public QDialog {
     Q_OBJECT
 
 public:
-    explicit FilePropsDialog(Fm2::FileInfoList files, QWidget* parent = 0, Qt::WindowFlags f = 0);
+    explicit FilePropsDialog(Fm::FileInfoList files, QWidget* parent = 0, Qt::WindowFlags f = 0);
     virtual ~FilePropsDialog();
 
     virtual void accept();
 
-    static FilePropsDialog* showForFile(std::shared_ptr<const Fm2::FileInfo> file, QWidget* parent = 0) {
-        Fm2::FileInfoList files;
+    static FilePropsDialog* showForFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent = 0) {
+        Fm::FileInfoList files;
         files.push_back(std::move(file));
         FilePropsDialog* dlg = showForFiles(files, parent);
         return dlg;
     }
 
-    static FilePropsDialog* showForFiles(Fm2::FileInfoList files, QWidget* parent = 0) {
+    static FilePropsDialog* showForFiles(Fm::FileInfoList files, QWidget* parent = 0) {
         FilePropsDialog* dlg = new FilePropsDialog(std::move(files), parent);
         dlg->show();
         return dlg;
@@ -69,14 +69,14 @@ private Q_SLOTS:
 
 private:
     Ui::FilePropsDialog* ui;
-    Fm2::FileInfoList fileInfos_; // list of all file infos
-    std::shared_ptr<const Fm2::FileInfo> fileInfo; // file info of the first file in the list
+    Fm::FileInfoList fileInfos_; // list of all file infos
+    std::shared_ptr<const Fm::FileInfo> fileInfo; // file info of the first file in the list
     bool singleType; // all files are of the same type?
     bool singleFile; // only one file is selected?
     bool hasDir; // is there any dir in the files?
     bool allNative; // all files are on native UNIX filesystems (not virtual or remote)
 
-    std::shared_ptr<const Fm2::MimeType> mimeType; // mime type of the files
+    std::shared_ptr<const Fm::MimeType> mimeType; // mime type of the files
 
     gint32 uid; // owner uid of the files, -1 means all files do not have the same uid
     gint32 gid; // owner gid of the files, -1 means all files do not have the same uid
@@ -89,7 +89,7 @@ private:
     mode_t execPerm; // exec permission of the files
     Qt::CheckState execCheckState;
 
-    Fm2::TotalSizeJob* totalSizeJob; // job used to count total size
+    Fm::TotalSizeJob* totalSizeJob; // job used to count total size
     QTimer* fileSizeTimer;
 };
 

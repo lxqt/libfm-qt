@@ -33,9 +33,9 @@ public:
     FileLauncher();
     virtual ~FileLauncher();
 
-    bool launchFiles(QWidget* parent, Fm2::FileInfoList file_infos);
+    bool launchFiles(QWidget* parent, Fm::FileInfoList file_infos);
 
-    bool launchPaths(QWidget* parent, Fm2::FilePathList paths);
+    bool launchPaths(QWidget* parent, Fm::FilePathList paths);
 
     bool quickExec() const {
         return quickExec_;

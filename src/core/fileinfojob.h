@@ -6,7 +6,7 @@
 #include "filepath.h"
 #include "fileinfo.h"
 
-namespace Fm2 {
+namespace Fm {
 
 
 class LIBFM_QT_API FileInfoJob : public Job {
@@ -35,6 +35,6 @@ private:
     FilePath commonDirPath_;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_FILEINFOJOB_H

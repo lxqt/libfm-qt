@@ -40,7 +40,7 @@ AppChooserComboBox::AppChooserComboBox(QWidget* parent):
 AppChooserComboBox::~AppChooserComboBox() {
 }
 
-void AppChooserComboBox::setMimeType(std::shared_ptr<const Fm2::MimeType> mimeType) {
+void AppChooserComboBox::setMimeType(std::shared_ptr<const Fm::MimeType> mimeType) {
     clear();
     defaultApp_.reset();
     appInfos_.clear();
@@ -48,13 +48,13 @@ void AppChooserComboBox::setMimeType(std::shared_ptr<const Fm2::MimeType> mimeTy
     mimeType_ = std::move(mimeType);
     if(mimeType_) {
         const char* typeName = mimeType_->name();
-        defaultApp_ = Fm2::GAppInfoPtr{g_app_info_get_default_for_type(typeName, FALSE), false};
+        defaultApp_ = Fm::GAppInfoPtr{g_app_info_get_default_for_type(typeName, FALSE), false};
         GList* appInfos_glist = g_app_info_get_all_for_type(typeName);
         int i = 0;
         for(GList* l = appInfos_glist; l; l = l->next, ++i) {
-            Fm2::GAppInfoPtr app{G_APP_INFO(l->data), false};
+            Fm::GAppInfoPtr app{G_APP_INFO(l->data), false};
             GIcon* gicon = g_app_info_get_icon(app.get());
-            addItem(gicon ? Fm2::IconInfo::fromGIcon(gicon)->qicon(): QIcon(), g_app_info_get_name(app.get()));
+            addItem(gicon ? Fm::IconInfo::fromGIcon(gicon)->qicon(): QIcon(), g_app_info_get_name(app.get()));
             if(g_app_info_equal(app.get(), defaultApp_.get())) {
                 defaultAppIndex_ = i;
             }
@@ -71,9 +71,9 @@ void AppChooserComboBox::setMimeType(std::shared_ptr<const Fm2::MimeType> mimeTy
 }
 
 // returns the currently selected app.
-Fm2::GAppInfoPtr AppChooserComboBox::selectedApp() const {
+Fm::GAppInfoPtr AppChooserComboBox::selectedApp() const {
     int idx = currentIndex();
-    return idx >= 0 ? appInfos_[idx] : Fm2::GAppInfoPtr{};
+    return idx >= 0 ? appInfos_[idx] : Fm::GAppInfoPtr{};
 }
 
 bool AppChooserComboBox::isChanged() const {
@@ -96,7 +96,7 @@ void AppChooserComboBox::onCurrentIndexChanged(int index) {
             auto app = dlg.selectedApp();
             if(app) {
                 /* see if it's already in the list to prevent duplication */
-                auto found = std::find_if(appInfos_.cbegin(), appInfos_.cend(), [&](const Fm2::GAppInfoPtr& item) {
+                auto found = std::find_if(appInfos_.cbegin(), appInfos_.cend(), [&](const Fm::GAppInfoPtr& item) {
                     return g_app_info_equal(app.get(), item.get());
                 });
 
@@ -111,7 +111,7 @@ void AppChooserComboBox::onCurrentIndexChanged(int index) {
                 else { /* if it's not found, add it to the list */
                     appInfos_.insert(appInfos_.cbegin(), std::move(app));
                     GIcon* gicon = g_app_info_get_icon(app.get());
-                    insertItem(0, Fm2::IconInfo::fromGIcon(gicon)->qicon(), g_app_info_get_name(app.get()));
+                    insertItem(0, Fm::IconInfo::fromGIcon(gicon)->qicon(), g_app_info_get_name(app.get()));
                     setCurrentIndex(0);
                 }
                 blockOnCurrentIndexChanged_ = false;

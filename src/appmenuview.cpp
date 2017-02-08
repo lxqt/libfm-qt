@@ -123,9 +123,9 @@ AppMenuViewItem* AppMenuView::selectedItem() const {
     return nullptr;
 }
 
-Fm2::GAppInfoPtr AppMenuView::selectedApp() const {
+Fm::GAppInfoPtr AppMenuView::selectedApp() const {
     const char* id = selectedAppDesktopId();
-    return Fm2::GAppInfoPtr{id ? G_APP_INFO(g_desktop_app_info_new(id)) : nullptr, false};
+    return Fm::GAppInfoPtr{id ? G_APP_INFO(g_desktop_app_info_new(id)) : nullptr, false};
 }
 
 QByteArray AppMenuView::selectedAppDesktopFilePath() const {

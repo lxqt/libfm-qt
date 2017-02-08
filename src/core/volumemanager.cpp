@@ -1,6 +1,6 @@
 #include "volumemanager.h"
 
-namespace Fm2 {
+namespace Fm {
 
 std::mutex VolumeManager::mutex_;
 std::weak_ptr<VolumeManager> VolumeManager::globalInstance_;
@@ -110,4 +110,4 @@ void VolumeManager::GetGVolumeMonitorJob::exec() {
 }
 
 
-} // namespace Fm2
+} // namespace Fm

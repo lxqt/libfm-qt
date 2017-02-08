@@ -7,7 +7,7 @@
 #include <QDir>
 #include "thumbnailer.h"
 
-namespace Fm2 {
+namespace Fm {
 
 QThreadPool* ThumbnailJob::threadPool_ = nullptr;
 
@@ -254,4 +254,4 @@ QThreadPool* ThumbnailJob::threadPool() {
 }
 
 
-} // namespace Fm2
+} // namespace Fm

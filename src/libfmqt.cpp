@@ -53,7 +53,7 @@ LibFmQtData::LibFmQtData(): refCount(1) {
     // turn on glib debug message
     // g_setenv("G_MESSAGES_DEBUG", "all", true);
     iconTheme = new IconTheme();
-    Fm2::Thumbnailer::loadAll();
+    Fm::Thumbnailer::loadAll();
     translator.load("libfm-qt_" + QLocale::system().name(), LIBFM_QT_DATA_DIR "/translations");
 
     // register some URI schemes implemented by libfm

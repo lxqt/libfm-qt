@@ -7,7 +7,7 @@
 #include "gobjectptr.h"
 #include "cstrptr.h"
 
-namespace Fm2 {
+namespace Fm {
 
 typedef GObjectPtr<GFile> GFilePtr;
 typedef GObjectPtr<GFileInfo> GFileInfoPtr;
@@ -132,6 +132,6 @@ private:
     GError* err_;
 };
 
-} //namespace Fm2
+} //namespace Fm
 
 #endif // GIOPTRS_H

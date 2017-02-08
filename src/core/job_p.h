@@ -4,7 +4,7 @@
 #include <QThread>
 #include "job.h"
 
-namespace Fm2 {
+namespace Fm {
 
 class JobThread: public QThread {
     Q_OBJECT
@@ -21,6 +21,6 @@ protected:
     Job* job_;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // JOB_P_H

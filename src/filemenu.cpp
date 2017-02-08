@@ -38,7 +38,7 @@
 
 namespace Fm {
 
-FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo> info, Fm2::FilePath cwd, const QString& title, QWidget* parent):
+FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> info, Fm::FilePath cwd, const QString& title, QWidget* parent):
     QMenu(title, parent),
     files_{std::move(files)},
     info_{std::move(info)},
@@ -64,7 +64,7 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
     propertiesAction_ = nullptr;
 
     auto mime_type = info_->mimeType();
-    Fm2::FilePath path = info_->path();
+    Fm::FilePath path = info_->path();
 
     // check if the files are of the same type
     sameType_ = files_.isSameType();
@@ -93,7 +93,7 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
             GList* apps = g_app_info_get_all_for_type(mime_type->name());
             GList* l;
             for(l = apps; l; l = l->next) {
-                Fm2::GAppInfoPtr app{G_APP_INFO(l->data), false};
+                Fm::GAppInfoPtr app{G_APP_INFO(l->data), false};
                 // check if the command really exists
                 gchar* program_path = g_find_program_in_path(g_app_info_get_executable(app.get()));
                 if(!program_path) {
@@ -117,7 +117,7 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
     separator1_ = addSeparator();
 
     createAction_ = new QAction(tr("Create &New"), this);
-    Fm2::FilePath dirPath = files_.size() == 1 && info_->isDir() ? path : cwd_;
+    Fm::FilePath dirPath = files_.size() == 1 && info_->isDir() ? path : cwd_;
     createAction_->setMenu(new CreateNewMenu(nullptr, dirPath, this));
     addAction(createAction_);
 
@@ -126,9 +126,9 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
     if(allTrash_) { // all selected files are in trash:///
         bool can_restore = true;
         /* only immediate children of trash:/// can be restored. */
-        auto trash_root = Fm2::FilePath::fromUri("trash:///");
+        auto trash_root = Fm::FilePath::fromUri("trash:///");
         for(auto& file: files_) {
-            Fm2::FilePath trash_path = file->path();
+            Fm::FilePath trash_path = file->path();
             if(!trash_root.isParentOf(trash_path)) {
                 can_restore = false;
                 break;
@@ -162,12 +162,12 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
         addAction(renameAction_);
     }
 
-    // FIXME: port these parts to Fm2 API
+    // FIXME: port these parts to Fm API
 #ifdef CUSTOM_ACTIONS
     // DES-EMA custom actions integration
     GList* files_list = nullptr;
     for(auto it = files_.crbegin(); it != files_.crend(); ++it) {
-        FmFileInfo* fm_info = Fm2::_convertFileInfo(*it);
+        FmFileInfo* fm_info = Fm::_convertFileInfo(*it);
         files_list = g_list_prepend(files_list, fm_info);
         qDebug() << "fi:" << fm_info;
     }
@@ -195,7 +195,7 @@ FileMenu::FileMenu(Fm2::FileInfoList files, std::shared_ptr<const Fm2::FileInfo>
     // FIXME: we need to modify upstream libfm to include some Qt-based archiver programs.
     if(!allVirtual_) {
         if(sameType_) {
-            // FIXME: port these parts to Fm2 API
+            // FIXME: port these parts to Fm API
             FmArchiver* archiver = fm_archiver_get_default();
             if(archiver) {
                 if(fm_archiver_is_mime_type_supported(archiver, mime_type->name())) {
@@ -311,7 +311,7 @@ void FileMenu::onCustomActionTrigerred() {
 
     GList* files_list = nullptr;
     for(auto it = files_.crbegin(); it != files_.crend(); ++it) {
-        FmFileInfo* fm_info = Fm2::_convertFileInfo(*it);
+        FmFileInfo* fm_info = Fm::_convertFileInfo(*it);
         files_list = g_list_prepend(files_list, fm_info);
     }
     char* output = nullptr;
@@ -377,7 +377,7 @@ void FileMenu::setUseTrash(bool trash) {
 void FileMenu::onCompress() {
     FmArchiver* archiver = fm_archiver_get_default();
     if(archiver) {
-        auto paths = Fm2::_convertPathList(files_.paths());
+        auto paths = Fm::_convertPathList(files_.paths());
         fm_archiver_create_archive(archiver, nullptr, paths.dataPtr());
     }
 }
@@ -385,7 +385,7 @@ void FileMenu::onCompress() {
 void FileMenu::onExtract() {
     FmArchiver* archiver = fm_archiver_get_default();
     if(archiver) {
-        auto paths = Fm2::_convertPathList(files_.paths());
+        auto paths = Fm::_convertPathList(files_.paths());
         fm_archiver_extract_archives(archiver, nullptr, paths.dataPtr());
     }
 }
@@ -393,8 +393,8 @@ void FileMenu::onExtract() {
 void FileMenu::onExtractHere() {
     FmArchiver* archiver = fm_archiver_get_default();
     if(archiver) {
-        auto paths = Fm2::_convertPathList(files_.paths());
-        auto cwd = Fm2::_convertPath(cwd_);
+        auto paths = Fm::_convertPathList(files_.paths());
+        auto cwd = Fm::_convertPath(cwd_);
         fm_archiver_extract_archives_to(archiver, nullptr, paths.dataPtr(), cwd);
     }
 }

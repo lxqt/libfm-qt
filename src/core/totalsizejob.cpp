@@ -1,6 +1,6 @@
 #include "totalsizejob.h"
 
-namespace Fm2 {
+namespace Fm {
 
 static const char query_str[] =
     G_FILE_ATTRIBUTE_STANDARD_TYPE","
@@ -141,4 +141,4 @@ void TotalSizeJob::exec() {
 }
 
 
-} // namespace Fm2
+} // namespace Fm

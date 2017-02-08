@@ -30,7 +30,7 @@ BrowseHistory::BrowseHistory():
 BrowseHistory::~BrowseHistory() {
 }
 
-void BrowseHistory::add(Fm2::FilePath path, int scrollPos) {
+void BrowseHistory::add(Fm::FilePath path, int scrollPos) {
     int lastIndex = items_.size() - 1;
     if(currentIndex_ < lastIndex) {
         // if we're not at the last item, remove items after the current one.

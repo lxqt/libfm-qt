@@ -61,7 +61,7 @@ void IconTheme::checkChanged() {
         // if the icon theme is changed
         theIconTheme->currentThemeName_ = QIcon::themeName();
         // invalidate the cached data
-        Fm2::IconInfo::updateQIcons();
+        Fm::IconInfo::updateQIcons();
         Q_EMIT theIconTheme->changed();
     }
 }

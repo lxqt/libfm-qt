@@ -5,7 +5,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-namespace Fm2 {
+namespace Fm {
 
 std::mutex Thumbnailer::mutex_;
 std::vector<std::shared_ptr<Thumbnailer>> Thumbnailer::allThumbnailers_;
@@ -137,4 +137,4 @@ void Thumbnailer::loadAll() {
     }
 }
 
-} // namespace Fm2
+} // namespace Fm

@@ -36,17 +36,17 @@
 
 namespace Fm {
 
-Fm2::FilePathList pathListFromUriList(const char* uriList) {
-    Fm2::FilePathList pathList;
+Fm::FilePathList pathListFromUriList(const char* uriList) {
+    Fm::FilePathList pathList;
     char** uris = g_strsplit_set(uriList, "\r\n", -1);
     for(char** uri = uris; *uri; ++uri) {
-        pathList.push_back(Fm2::FilePath::fromUri(*uri));
+        pathList.push_back(Fm::FilePath::fromUri(*uri));
     }
     g_strfreev(uris);
     return pathList;
 }
 
-QByteArray pathListToUriList(const Fm2::FilePathList& paths) {
+QByteArray pathListToUriList(const Fm::FilePathList& paths) {
     QByteArray uriList;
     for(auto& path: paths) {
         uriList += path.uri().get();
@@ -55,20 +55,20 @@ QByteArray pathListToUriList(const Fm2::FilePathList& paths) {
     return uriList;
 }
 
-Fm2::FilePathList pathListFromQUrls(QList<QUrl> urls) {
-    Fm2::FilePathList pathList;
+Fm::FilePathList pathListFromQUrls(QList<QUrl> urls) {
+    Fm::FilePathList pathList;
     for(auto it = urls.cbegin(); it != urls.cend(); ++it) {
-        auto path = Fm2::FilePath::fromUri(it->toString().toUtf8().constData());
+        auto path = Fm::FilePath::fromUri(it->toString().toUtf8().constData());
         pathList.push_back(std::move(path));
     }
     return pathList;
 }
 
-void pasteFilesFromClipboard(const Fm2::FilePath& destPath, QWidget* parent) {
+void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent) {
     QClipboard* clipboard = QApplication::clipboard();
     const QMimeData* data = clipboard->mimeData();
     bool isCut = false;
-    Fm2::FilePathList paths;
+    Fm::FilePathList paths;
 
     if(data->hasFormat("x-special/gnome-copied-files")) {
         // Gnome, LXDE, and XFCE
@@ -102,7 +102,7 @@ void pasteFilesFromClipboard(const Fm2::FilePath& destPath, QWidget* parent) {
     }
 }
 
-void copyFilesToClipboard(const Fm2::FilePathList& files) {
+void copyFilesToClipboard(const Fm::FilePathList& files) {
     QClipboard* clipboard = QApplication::clipboard();
     QMimeData* data = new QMimeData();
     auto urilist = pathListToUriList(files);
@@ -114,7 +114,7 @@ void copyFilesToClipboard(const Fm2::FilePathList& files) {
     clipboard->setMimeData(data);
 }
 
-void cutFilesToClipboard(const Fm2::FilePathList& files) {
+void cutFilesToClipboard(const Fm::FilePathList& files) {
     QClipboard* clipboard = QApplication::clipboard();
     QMimeData* data = new QMimeData();
     auto urilist = pathListToUriList(files);
@@ -126,7 +126,7 @@ void cutFilesToClipboard(const Fm2::FilePathList& files) {
     clipboard->setMimeData(data);
 }
 
-void renameFile(std::shared_ptr<const Fm2::FileInfo> file, QWidget* parent) {
+void renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent) {
     auto path = file->path();
     FilenameDialog dlg(parent);
     dlg.setWindowTitle(QObject::tr("Rename File"));
@@ -150,7 +150,7 @@ void renameFile(std::shared_ptr<const Fm2::FileInfo> file, QWidget* parent) {
 
     auto parent_dir = path.parent();
     auto dest = path.parent().child(new_name.toLocal8Bit().constData());
-    Fm2::GErrorPtr err;
+    Fm::GErrorPtr err;
     if(!g_file_move(path.gfile().get(), dest.gfile().get(),
                     GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
                                    G_FILE_COPY_NO_FALLBACK_FOR_MOVE |
@@ -162,7 +162,7 @@ void renameFile(std::shared_ptr<const Fm2::FileInfo> file, QWidget* parent) {
 }
 
 // templateFile is a file path used as a template of the new file.
-void createFileOrFolder(CreateFileType type, Fm2::FilePath parentDir, FmTemplate* templ, QWidget* parent) {
+void createFileOrFolder(CreateFileType type, Fm::FilePath parentDir, FmTemplate* templ, QWidget* parent) {
     QString defaultNewName;
     QString prompt;
     QString dialogTitle = type == CreateNewFolder ? QObject::tr("Create Folder")
@@ -201,10 +201,10 @@ _retry:
     }
 
     auto dest = parentDir.child(new_name.toLocal8Bit().data());
-    Fm2::GErrorPtr err;
+    Fm::GErrorPtr err;
     switch(type) {
     case CreateNewTextFile: {
-        Fm2::GFileOutputStreamPtr f{g_file_create(dest.gfile().get(), G_FILE_CREATE_NONE, nullptr, &err), false};
+        Fm::GFileOutputStreamPtr f{g_file_create(dest.gfile().get(), G_FILE_CREATE_NONE, nullptr, &err), false};
         if(f) {
             g_output_stream_close(G_OUTPUT_STREAM(f.get()), nullptr, nullptr);
         }
@@ -329,7 +329,7 @@ bool uriExists(const char* uri) {
 }
 
 QString formatFileSize(uint64_t size, bool useSI) {
-    Fm2::CStrPtr str{g_format_size_full(size, useSI ? G_FORMAT_SIZE_DEFAULT : G_FORMAT_SIZE_IEC_UNITS)};
+    Fm::CStrPtr str{g_format_size_full(size, useSI ? G_FORMAT_SIZE_DEFAULT : G_FORMAT_SIZE_IEC_UNITS)};
     return QString(str.get());
 }
 

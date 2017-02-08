@@ -37,14 +37,14 @@ namespace Fm {
 class LIBFM_QT_API AppChooserDialog : public QDialog {
     Q_OBJECT
 public:
-    explicit AppChooserDialog(std::shared_ptr<const Fm2::MimeType> mimeType, QWidget* parent = nullptr, Qt::WindowFlags f = 0);
+    explicit AppChooserDialog(std::shared_ptr<const Fm::MimeType> mimeType, QWidget* parent = nullptr, Qt::WindowFlags f = 0);
     ~AppChooserDialog();
 
     virtual void accept();
 
-    void setMimeType(std::shared_ptr<const Fm2::MimeType> mimeType);
+    void setMimeType(std::shared_ptr<const Fm::MimeType> mimeType);
 
-    const std::shared_ptr<const Fm2::MimeType>& mimeType() const {
+    const std::shared_ptr<const Fm::MimeType>& mimeType() const {
         return mimeType_;
     }
 
@@ -54,7 +54,7 @@ public:
         return canSetDefault_;
     }
 
-    const Fm2::GAppInfoPtr& selectedApp() const {
+    const Fm::GAppInfoPtr& selectedApp() const {
         return selectedApp_;
     }
 
@@ -69,9 +69,9 @@ private Q_SLOTS:
 
 private:
     Ui::AppChooserDialog* ui;
-    std::shared_ptr<const Fm2::MimeType> mimeType_;
+    std::shared_ptr<const Fm::MimeType> mimeType_;
     bool canSetDefault_;
-    Fm2::GAppInfoPtr selectedApp_;
+    Fm::GAppInfoPtr selectedApp_;
 };
 
 }

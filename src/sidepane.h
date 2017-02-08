@@ -56,11 +56,11 @@ public:
 
     void setIconSize(QSize size);
 
-    const Fm2::FilePath& currentPath() const {
+    const Fm::FilePath& currentPath() const {
         return currentPath_;
     }
 
-    void setCurrentPath(Fm2::FilePath path);
+    void setCurrentPath(Fm::FilePath path);
 
     void setMode(Mode mode);
 
@@ -94,16 +94,16 @@ public:
 
     bool setHomeDir(const char* home_dir);
 
-    void chdir(Fm2::FilePath path) {
+    void chdir(Fm::FilePath path) {
         setCurrentPath(std::move(path));
     }
 
 Q_SIGNALS:
-    void chdirRequested(int type, const Fm2::FilePath& path);
-    void openFolderInNewWindowRequested(const Fm2::FilePath& path);
-    void openFolderInNewTabRequested(const Fm2::FilePath& path);
-    void openFolderInTerminalRequested(const Fm2::FilePath& path);
-    void createNewFolderRequested(const Fm2::FilePath& path);
+    void chdirRequested(int type, const Fm::FilePath& path);
+    void openFolderInNewWindowRequested(const Fm::FilePath& path);
+    void openFolderInNewTabRequested(const Fm::FilePath& path);
+    void openFolderInTerminalRequested(const Fm::FilePath& path);
+    void createNewFolderRequested(const Fm::FilePath& path);
     void modeChanged(Fm::SidePane::Mode mode);
 
     void prepareFileMenu(Fm::FileMenu* menu); // emit before showing a Fm::FileMenu
@@ -115,7 +115,7 @@ private:
     void initDirTree();
 
 private:
-    Fm2::FilePath currentPath_;
+    Fm::FilePath currentPath_;
     QWidget* view_;
     QComboBox* combo_;
     QVBoxLayout* verticalLayout;

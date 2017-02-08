@@ -33,7 +33,7 @@ ExecFileDialog::ExecFileDialog(FmFileInfo* file, QWidget* parent, Qt::WindowFlag
     ui->setupUi(this);
     // show file icon
     GIcon* gicon = G_ICON(fm_file_info_get_icon(fileInfo_));
-    ui->icon->setPixmap(Fm2::IconInfo::fromGIcon(gicon)->qicon().pixmap(QSize(48, 48)));
+    ui->icon->setPixmap(Fm::IconInfo::fromGIcon(gicon)->qicon().pixmap(QSize(48, 48)));
 
     QString msg;
     if(fm_file_info_is_text(file)) {

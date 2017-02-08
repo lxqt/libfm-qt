@@ -4,7 +4,7 @@
 #include "gioptrs.h"
 #include <QDebug>
 
-namespace Fm2 {
+namespace Fm {
 
 DirListJob::DirListJob(const FilePath& path, Flags flags): dir_path{path} {
 }
@@ -168,4 +168,4 @@ void fm_dir_list_job_add_found_file(FmDirListJob* job, FmFileInfo* file) {
 }
 #endif
 
-} // namespace Fm2
+} // namespace Fm

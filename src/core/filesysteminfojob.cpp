@@ -1,7 +1,7 @@
 #include "filesysteminfojob.h"
 #include "gobjectptr.h"
 
-namespace Fm2 {
+namespace Fm {
 
 void FileSystemInfoJob::exec() {
     GObjectPtr<GFileInfo> inf = GObjectPtr<GFileInfo>{
@@ -21,4 +21,4 @@ void FileSystemInfoJob::exec() {
     }
 }
 
-} // namespace Fm2
+} // namespace Fm

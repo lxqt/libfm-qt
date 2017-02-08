@@ -31,15 +31,15 @@ DirTreeModel::DirTreeModel(QObject* parent):
 DirTreeModel::~DirTreeModel() {
 }
 
-QModelIndex DirTreeModel::addRoots(Fm2::FilePathList rootPaths) {
-    auto job = new Fm2::FileInfoJob{std::move(rootPaths)};
+QModelIndex DirTreeModel::addRoots(Fm::FilePathList rootPaths) {
+    auto job = new Fm::FileInfoJob{std::move(rootPaths)};
     job->setAutoDelete(true);
-    connect(job, &Fm2::FileInfoJob::finished, this, &DirTreeModel::onFileInfoJobFinished, Qt::BlockingQueuedConnection);
+    connect(job, &Fm::FileInfoJob::finished, this, &DirTreeModel::onFileInfoJobFinished, Qt::BlockingQueuedConnection);
     job->runAsync();
 }
 
 void DirTreeModel::onFileInfoJobFinished() {
-    auto job = static_cast<Fm2::FileInfoJob*>(sender());
+    auto job = static_cast<Fm::FileInfoJob*>(sender());
     for(auto file: job->files()) {
         addRoot(std::move(file));
     }
@@ -146,7 +146,7 @@ QModelIndex DirTreeModel::indexFromItem(DirTreeModelItem* item) const {
 }
 
 // public APIs
-QModelIndex DirTreeModel::addRoot(std::shared_ptr<const Fm2::FileInfo> root) {
+QModelIndex DirTreeModel::addRoot(std::shared_ptr<const Fm::FileInfo> root) {
     DirTreeModelItem* item = new DirTreeModelItem(std::move(root), this);
     int row = rootItems_.size();
     beginInsertRows(QModelIndex(), row, row);
@@ -160,12 +160,12 @@ DirTreeModelItem* DirTreeModel::itemFromIndex(const QModelIndex& index) const {
     return reinterpret_cast<DirTreeModelItem*>(index.internalPointer());
 }
 
-QModelIndex DirTreeModel::indexFromPath(const Fm2::FilePath &path) const {
+QModelIndex DirTreeModel::indexFromPath(const Fm::FilePath &path) const {
     DirTreeModelItem* item = itemFromPath(path);
     return item ? item->index() : QModelIndex();
 }
 
-DirTreeModelItem* DirTreeModel::itemFromPath(const Fm2::FilePath &path) const {
+DirTreeModelItem* DirTreeModel::itemFromPath(const Fm::FilePath &path) const {
     Q_FOREACH(DirTreeModelItem* item, rootItems_) {
         if(item->fileInfo_ && path == item->fileInfo_->path()) {
             return item;
@@ -206,14 +206,14 @@ QIcon DirTreeModel::icon(const QModelIndex& index) {
     return item ? item->icon_ : QIcon();
 }
 
-std::shared_ptr<const Fm2::FileInfo> DirTreeModel::fileInfo(const QModelIndex& index) {
+std::shared_ptr<const Fm::FileInfo> DirTreeModel::fileInfo(const QModelIndex& index) {
     DirTreeModelItem* item = itemFromIndex(index);
     return item ? item->fileInfo_ : nullptr;
 }
 
-Fm2::FilePath DirTreeModel::filePath(const QModelIndex& index) {
+Fm::FilePath DirTreeModel::filePath(const QModelIndex& index) {
     DirTreeModelItem* item = itemFromIndex(index);
-    return (item && item->fileInfo_) ? item->fileInfo_->path() : Fm2::FilePath{};
+    return (item && item->fileInfo_) ? item->fileInfo_->path() : Fm::FilePath{};
 }
 
 QString DirTreeModel::dispName(const QModelIndex& index) {

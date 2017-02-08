@@ -34,7 +34,7 @@ DirTreeModelItem::DirTreeModelItem():
     model_(nullptr) {
 }
 
-DirTreeModelItem::DirTreeModelItem(std::shared_ptr<const Fm2::FileInfo> info, DirTreeModel* model, DirTreeModelItem* parent):
+DirTreeModelItem::DirTreeModelItem(std::shared_ptr<const Fm::FileInfo> info, DirTreeModel* model, DirTreeModelItem* parent):
     fileInfo_{std::move(info)},
     expanded_(false),
     loaded_(false),
@@ -85,20 +85,20 @@ void DirTreeModelItem::addPlaceHolderChild() {
 void DirTreeModelItem::loadFolder() {
     if(!expanded_) {
         /* dynamically load content of the folder. */
-        folder_ =  Fm2::Folder::fromPath(fileInfo_->path());
+        folder_ =  Fm::Folder::fromPath(fileInfo_->path());
         /* g_debug("fm_dir_tree_model_load_row()"); */
         /* associate the data with loaded handler */
 
-        onFolderFinishLoadingConn_ = QObject::connect(folder_.get(), &Fm2::Folder::finishLoading, model_, [=]() {
+        onFolderFinishLoadingConn_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, model_, [=]() {
             onFolderFinishLoading();
         });
-        onFolderFilesAddedConn_ = QObject::connect(folder_.get(), &Fm2::Folder::filesAdded, model_, [=](Fm2::FileInfoList files) {
+        onFolderFilesAddedConn_ = QObject::connect(folder_.get(), &Fm::Folder::filesAdded, model_, [=](Fm::FileInfoList files) {
             onFolderFilesAdded(files);
         });
-        onFolderFilesRemovedConn_ = QObject::connect(folder_.get(), &Fm2::Folder::filesRemoved, model_, [=](Fm2::FileInfoList files) {
+        onFolderFilesRemovedConn_ = QObject::connect(folder_.get(), &Fm::Folder::filesRemoved, model_, [=](Fm::FileInfoList files) {
             onFolderFilesRemoved(files);
         });
-        onFolderFilesChangedConn_ = QObject::connect(folder_.get(), &Fm2::Folder::filesChanged, model_, [=](std::vector<Fm2::FileInfoPair>& changes) {
+        onFolderFilesChangedConn_ = QObject::connect(folder_.get(), &Fm::Folder::filesChanged, model_, [=](std::vector<Fm::FileInfoPair>& changes) {
             onFolderFilesChanged(changes);
         });
 
@@ -151,7 +151,7 @@ QModelIndex DirTreeModelItem::index() {
 }
 
 /* Add file info to parent node to proper position. */
-DirTreeModelItem* DirTreeModelItem::insertFile(std::shared_ptr<const Fm2::FileInfo> fi) {
+DirTreeModelItem* DirTreeModelItem::insertFile(std::shared_ptr<const Fm::FileInfo> fi) {
     // qDebug() << "insertFileInfo: " << fm_file_info_get_disp_name(fi);
     DirTreeModelItem* item = new DirTreeModelItem(std::move(fi), model_);
     insertItem(item);
@@ -159,12 +159,12 @@ DirTreeModelItem* DirTreeModelItem::insertFile(std::shared_ptr<const Fm2::FileIn
 }
 
 /* Add file info to parent node to proper position. */
-void DirTreeModelItem::insertFiles(Fm2::FileInfoList files) {
+void DirTreeModelItem::insertFiles(Fm::FileInfoList files) {
     if(children_.size() == 1 && placeHolderChild_) {
         // the list is empty, add them all at once and do sort
         if(!model_->showHidden()) { // need to separate visible and hidden items
             // find hidden files and move them to the end of the list
-            auto hidden_it = std::remove_if(files.begin(), files.end(), [](Fm2::FileInfoList::const_reference fi) {
+            auto hidden_it = std::remove_if(files.begin(), files.end(), [](Fm::FileInfoList::const_reference fi) {
                 return fi->isHidden();
             });
             // insert hidden files into the "hiddenChildren_" list and remove them from "files" list
@@ -176,7 +176,7 @@ void DirTreeModelItem::insertFiles(Fm2::FileInfoList files) {
             }
         }
         // sort the remaining visible files by name
-        std::sort(files.begin(), files.end(), [](const std::shared_ptr<const Fm2::FileInfo>& a, const std::shared_ptr<const Fm2::FileInfo>& b) {
+        std::sort(files.begin(), files.end(), [](const std::shared_ptr<const Fm::FileInfo>& a, const std::shared_ptr<const Fm::FileInfo>& b) {
             return QString::localeAwareCompare(a->displayName(), b->displayName()) < 0;
         });
         // insert the files into the visible children list at once
@@ -254,11 +254,11 @@ void DirTreeModelItem::onFolderFinishLoading() {
     Q_EMIT model->rowLoaded(idx);
 }
 
-void DirTreeModelItem::onFolderFilesAdded(Fm2::FileInfoList& files) {
+void DirTreeModelItem::onFolderFilesAdded(Fm::FileInfoList& files) {
     insertFiles(files);
 }
 
-void DirTreeModelItem::onFolderFilesRemoved(Fm2::FileInfoList& files) {
+void DirTreeModelItem::onFolderFilesRemoved(Fm::FileInfoList& files) {
     DirTreeModel* model = model_;
 
     for(auto& fi: files) {
@@ -273,7 +273,7 @@ void DirTreeModelItem::onFolderFilesRemoved(Fm2::FileInfoList& files) {
     }
 }
 
-void DirTreeModelItem::onFolderFilesChanged(std::vector<Fm2::FileInfoPair> &changes) {
+void DirTreeModelItem::onFolderFilesChanged(std::vector<Fm::FileInfoPair> &changes) {
     DirTreeModel* model = model_;
     for(auto& changePair: changes) {
         int pos;
@@ -300,7 +300,7 @@ DirTreeModelItem* DirTreeModelItem::childFromName(const char* utf8_name, int* po
     return nullptr;
 }
 
-DirTreeModelItem* DirTreeModelItem::childFromPath(Fm2::FilePath path, bool recursive) const {
+DirTreeModelItem* DirTreeModelItem::childFromPath(Fm::FilePath path, bool recursive) const {
     Q_ASSERT(path != nullptr);
 
     Q_FOREACH(DirTreeModelItem* item, children_) {

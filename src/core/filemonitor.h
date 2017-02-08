@@ -6,7 +6,7 @@
 #include "gioptrs.h"
 #include "filepath.h"
 
-namespace Fm2 {
+namespace Fm {
 
 class LIBFM_QT_API FileMonitor: public QObject {
     Q_OBJECT
@@ -21,6 +21,6 @@ private:
     GFileMonitorPtr monitor_;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_FILEMONITOR_H

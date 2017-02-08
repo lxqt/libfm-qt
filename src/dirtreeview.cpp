@@ -120,7 +120,7 @@ void DirTreeView::onRowLoaded(const QModelIndex& index) {
 }
 
 
-void DirTreeView::setCurrentPath(Fm2::FilePath path) {
+void DirTreeView::setCurrentPath(Fm::FilePath path) {
     DirTreeModel* _model = static_cast<DirTreeModel*>(model());
     if(!_model) {
         return;
@@ -141,7 +141,7 @@ void DirTreeView::setCurrentPath(Fm2::FilePath path) {
     cancelPendingChdir();
 
     /* find a root item containing this path */
-    Fm2::FilePath root;
+    Fm::FilePath root;
     for(int row = 0; row < rowCount; ++row) {
         QModelIndex index = _model->index(row, 0, QModelIndex());
         auto row_path = _model->filePath(index);
@@ -191,16 +191,16 @@ void DirTreeView::onCustomContextMenuRequested(const QPoint& pos) {
     QModelIndex index = indexAt(pos);
     if(index.isValid()) {
         QVariant data = index.data(DirTreeModel::FileInfoRole);
-        auto fileInfo = data.value<std::shared_ptr<const Fm2::FileInfo>>();
+        auto fileInfo = data.value<std::shared_ptr<const Fm::FileInfo>>();
         if(fileInfo) {
             auto path = fileInfo->path();
-            Fm2::FileInfoList files ;
+            Fm::FileInfoList files ;
             files.push_back(fileInfo);
             Fm::FileMenu* menu = new Fm::FileMenu(files, fileInfo, path);
             // FIXME: apply some settings to the menu and set a proper file launcher to it
             Q_EMIT prepareFileMenu(menu);
 
-            QVariant pathData = qVariantFromValue<Fm2::FilePath>(path);
+            QVariant pathData = qVariantFromValue<Fm::FilePath>(path);
             QAction* action = menu->openAction();
             action->disconnect();
             action->setData(index);
@@ -233,28 +233,28 @@ void DirTreeView::onOpen() {
 
 void DirTreeView::onNewWindow() {
     if(QAction* action = qobject_cast<QAction*>(sender())) {
-        auto path = action->data().value<Fm2::FilePath>();
+        auto path = action->data().value<Fm::FilePath>();
         Q_EMIT openFolderInNewWindowRequested(path);
     }
 }
 
 void DirTreeView::onNewTab() {
     if(QAction* action = qobject_cast<QAction*>(sender())) {
-        auto path = action->data().value<Fm2::FilePath>();
+        auto path = action->data().value<Fm::FilePath>();
         Q_EMIT openFolderInNewTabRequested(path);
     }
 }
 
 void DirTreeView::onOpenInTerminal() {
     if(QAction* action = qobject_cast<QAction*>(sender())) {
-        auto path = action->data().value<Fm2::FilePath>();
+        auto path = action->data().value<Fm::FilePath>();
         Q_EMIT openFolderInTerminalRequested(path);
     }
 }
 
 void DirTreeView::onNewFolder() {
     if(QAction* action = qobject_cast<QAction*>(sender())) {
-        auto path = action->data().value<Fm2::FilePath>();
+        auto path = action->data().value<Fm::FilePath>();
         Q_EMIT createNewFolderRequested(path);
     }
 }

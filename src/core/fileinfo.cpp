@@ -2,7 +2,7 @@
 #include "fileinfo_p.h"
 #include <gio/gio.h>
 
-namespace Fm2 {
+namespace Fm {
 
 const char gfile_info_query_attribs[] = "standard::*,"
                                         "unix::*,"
@@ -172,7 +172,7 @@ _file_is_symlink:
     if(emblem_names) {
         auto n_emblems = g_strv_length(emblem_names);
         for(int i = n_emblems - 1; i >= 0; --i) {
-            emblems_.emplace_front(Fm2::IconInfo::fromName(emblem_names[i]));
+            emblems_.emplace_front(Fm::IconInfo::fromName(emblem_names[i]));
         }
     }
 
@@ -264,5 +264,5 @@ bool FileInfoList::isSameFilesystem() const {
 
 
 
-} // namespace Fm2
+} // namespace Fm
 

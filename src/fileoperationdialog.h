@@ -41,8 +41,8 @@ public:
     explicit FileOperationDialog(FileOperation* _operation);
     virtual ~FileOperationDialog();
 
-    void setSourceFiles(const Fm2::FilePathList& srcFiles);
-    void setDestPath(const Fm2::FilePath& dest);
+    void setSourceFiles(const Fm::FilePathList& srcFiles);
+    void setDestPath(const Fm::FilePath& dest);
 
     int ask(QString question, char* const* options);
     int askRename(FmFileInfo* src, FmFileInfo* dest, QString& new_name);

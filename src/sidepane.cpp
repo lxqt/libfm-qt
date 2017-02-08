@@ -72,7 +72,7 @@ void SidePane::setIconSize(QSize size) {
     }
 }
 
-void SidePane::setCurrentPath(Fm2::FilePath path) {
+void SidePane::setCurrentPath(Fm::FilePath path) {
     Q_ASSERT(path);
     currentPath_ = std::move(path);
     switch(mode_) {
@@ -134,9 +134,9 @@ void SidePane::initDirTree() {
     DirTreeModel* model = new DirTreeModel(view_);
     model->setShowHidden(showHidden_);
 
-    Fm2::FilePathList rootPaths;
-    rootPaths.emplace_back(Fm2::FilePath::homeDir());
-    rootPaths.emplace_back(Fm2::FilePath::fromLocalPath("/"));
+    Fm::FilePathList rootPaths;
+    rootPaths.emplace_back(Fm::FilePath::homeDir());
+    rootPaths.emplace_back(Fm::FilePath::fromLocalPath("/"));
     model->addRoots(std::move(rootPaths));
     static_cast<DirTreeView*>(view_)->setModel(model);
 }

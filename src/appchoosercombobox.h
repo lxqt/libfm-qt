@@ -37,13 +37,13 @@ public:
     ~AppChooserComboBox();
     AppChooserComboBox(QWidget* parent);
 
-    void setMimeType(std::shared_ptr<const Fm2::MimeType> mimeType);
+    void setMimeType(std::shared_ptr<const Fm::MimeType> mimeType);
 
-    const std::shared_ptr<const Fm2::MimeType>& mimeType() const {
+    const std::shared_ptr<const Fm::MimeType>& mimeType() const {
         return mimeType_;
     }
 
-    Fm2::GAppInfoPtr selectedApp() const;
+    Fm::GAppInfoPtr selectedApp() const;
     // const GList* customApps();
 
     bool isChanged() const;
@@ -52,9 +52,9 @@ private Q_SLOTS:
     void onCurrentIndexChanged(int index);
 
 private:
-    std::shared_ptr<const Fm2::MimeType> mimeType_;
-    std::vector<Fm2::GAppInfoPtr> appInfos_; // applications used to open the file type
-    Fm2::GAppInfoPtr defaultApp_; // default application used to open the file type
+    std::shared_ptr<const Fm::MimeType> mimeType_;
+    std::vector<Fm::GAppInfoPtr> appInfos_; // applications used to open the file type
+    Fm::GAppInfoPtr defaultApp_; // default application used to open the file type
     int defaultAppIndex_;
     int prevIndex_;
     bool blockOnCurrentIndexChanged_;

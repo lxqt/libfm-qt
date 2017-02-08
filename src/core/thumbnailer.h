@@ -8,7 +8,7 @@
 #include <memory>
 #include <mutex>
 
-namespace Fm2 {
+namespace Fm {
 
 class MimeType;
 
@@ -32,6 +32,6 @@ private:
     static std::vector<std::shared_ptr<Thumbnailer>> allThumbnailers_;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_THUMBNAILER_H

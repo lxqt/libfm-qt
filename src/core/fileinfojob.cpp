@@ -1,7 +1,7 @@
 #include "fileinfojob.h"
 #include "fileinfo_p.h"
 
-namespace Fm2 {
+namespace Fm {
 
 FileInfoJob::FileInfoJob(FilePathList paths, FilePath commonDirPath):
     Job(),
@@ -28,4 +28,4 @@ void FileInfoJob::exec() {
     }
 }
 
-} // namespace Fm2
+} // namespace Fm

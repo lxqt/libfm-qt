@@ -5,9 +5,9 @@
 #include "fileoperationjob.h"
 #include "gioptrs.h"
 
-namespace Fm2 {
+namespace Fm {
 
-class LIBFM_QT_API CopyJob : public Fm2::FileOperationJob {
+class LIBFM_QT_API CopyJob : public Fm::FileOperationJob {
     Q_OBJECT
 public:
 
@@ -41,6 +41,6 @@ private:
 };
 
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_COPYJOB_H

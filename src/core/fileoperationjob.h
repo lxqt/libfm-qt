@@ -9,9 +9,9 @@
 #include "fileinfo.h"
 #include "filepath.h"
 
-namespace Fm2 {
+namespace Fm {
 
-class LIBFM_QT_API FileOperationJob : public Fm2::Job {
+class LIBFM_QT_API FileOperationJob : public Fm::Job {
     Q_OBJECT
 public:
     enum FileExistsAction {
@@ -68,6 +68,6 @@ private:
     mutable std::mutex mutex_;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_FILEOPERATIONJOB_H

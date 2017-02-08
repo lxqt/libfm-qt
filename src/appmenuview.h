@@ -40,7 +40,7 @@ public:
     explicit AppMenuView(QWidget* parent = nullptr);
     ~AppMenuView();
 
-    Fm2::GAppInfoPtr selectedApp() const;
+    Fm::GAppInfoPtr selectedApp() const;
 
     const char* selectedAppDesktopId() const;
 

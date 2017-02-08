@@ -1,9 +1,9 @@
 #include "filemonitor.h"
 
-namespace Fm2 {
+namespace Fm {
 
 FileMonitor::FileMonitor() {
 
 }
 
-} // namespace Fm2
+} // namespace Fm

@@ -25,7 +25,7 @@
 
 namespace Fm {
 
-CreateNewMenu::CreateNewMenu(QWidget* dialogParent, Fm2::FilePath dirPath, QWidget* parent):
+CreateNewMenu::CreateNewMenu(QWidget* dialogParent, Fm::FilePath dirPath, QWidget* parent):
     QMenu(parent), dialogParent_(dialogParent), dirPath_(std::move(dirPath)) {
     QAction* action = new QAction(QIcon::fromTheme("folder-new"), tr("Folder"), this);
     connect(action, &QAction::triggered, this, &CreateNewMenu::onCreateNewFolder);
@@ -52,7 +52,7 @@ CreateNewMenu::CreateNewMenu(QWidget* dialogParent, Fm2::FilePath dirPath, QWidg
             if(!icon) {
                 icon = fm_mime_type_get_icon(mime_type);
             }
-            QAction* action = addAction(Fm2::IconInfo::fromGIcon(G_ICON(icon))->qicon(), text);
+            QAction* action = addAction(Fm::IconInfo::fromGIcon(G_ICON(icon))->qicon(), text);
             action->setObjectName(QString::fromUtf8(fm_template_get_name(templ, nullptr)));
             connect(action, &QAction::triggered, this, &CreateNewMenu::onCreateNew);
         }

@@ -1,6 +1,6 @@
 #include "fileoperationjob.h"
 
-namespace Fm2 {
+namespace Fm {
 
 FileOperationJob::FileOperationJob():
     hasTotalAmount_{false},
@@ -76,4 +76,4 @@ void FileOperationJob::setCurrentFileProgress(uint64_t totalSize, uint64_t finis
     currentFileFinished_ = finishedSize;
 }
 
-} // namespace Fm2
+} // namespace Fm

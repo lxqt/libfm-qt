@@ -7,7 +7,7 @@
 #include "fileinfo.h"
 
 
-namespace Fm2 {
+namespace Fm {
 
 class LIBFM_QT_API BookmarkItem {
 public:
@@ -88,6 +88,6 @@ private:
     bool idle_handler;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_BOOKMARKS_H

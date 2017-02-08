@@ -40,7 +40,7 @@ public:
     friend class DirTreeView; // allow direct access of private members in DirTreeView
 
     explicit DirTreeModelItem();
-    explicit DirTreeModelItem(std::shared_ptr<const Fm2::FileInfo> info, DirTreeModel* model, DirTreeModelItem* parent = nullptr);
+    explicit DirTreeModelItem(std::shared_ptr<const Fm::FileInfo> info, DirTreeModel* model, DirTreeModelItem* parent = nullptr);
     ~DirTreeModelItem();
 
     void loadFolder();
@@ -56,21 +56,21 @@ private:
     void freeFolder();
     void addPlaceHolderChild();
     DirTreeModelItem* childFromName(const char* utf8_name, int* pos);
-    DirTreeModelItem* childFromPath(Fm2::FilePath path, bool recursive) const;
+    DirTreeModelItem* childFromPath(Fm::FilePath path, bool recursive) const;
 
-    DirTreeModelItem* insertFile(std::shared_ptr<const Fm2::FileInfo> fi);
-    void insertFiles(Fm2::FileInfoList files);
+    DirTreeModelItem* insertFile(std::shared_ptr<const Fm::FileInfo> fi);
+    void insertFiles(Fm::FileInfoList files);
     int insertItem(Fm::DirTreeModelItem* newItem);
     QModelIndex index();
 
     void onFolderFinishLoading();
-    void onFolderFilesAdded(Fm2::FileInfoList &files);
-    void onFolderFilesRemoved(Fm2::FileInfoList &files);
-    void onFolderFilesChanged(std::vector<Fm2::FileInfoPair>& changes);
+    void onFolderFilesAdded(Fm::FileInfoList &files);
+    void onFolderFilesRemoved(Fm::FileInfoList &files);
+    void onFolderFilesChanged(std::vector<Fm::FileInfoPair>& changes);
 
 private:
-    std::shared_ptr<const Fm2::FileInfo> fileInfo_;
-    std::shared_ptr<Fm2::Folder> folder_;
+    std::shared_ptr<const Fm::FileInfo> fileInfo_;
+    std::shared_ptr<Fm::Folder> folder_;
     QString displayName_ ;
     QIcon icon_;
     bool expanded_;

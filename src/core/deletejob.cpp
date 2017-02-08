@@ -2,7 +2,7 @@
 #include "totalsizejob.h"
 #include "fileinfo_p.h"
 
-namespace Fm2 {
+namespace Fm {
 
 bool DeleteJob::deleteFile(const FilePath& path, GFileInfoPtr inf) {
     ErrorAction act = ErrorAction::CONTINUE;
@@ -148,4 +148,4 @@ void DeleteJob::exec() {
     }
 }
 
-} // namespace Fm2
+} // namespace Fm

@@ -30,24 +30,24 @@ namespace Fm {
 class AppInfoAction : public QAction {
     Q_OBJECT
 public:
-    explicit AppInfoAction(Fm2::GAppInfoPtr app, QObject* parent = 0):
+    explicit AppInfoAction(Fm::GAppInfoPtr app, QObject* parent = 0):
         QAction(QString::fromUtf8(g_app_info_get_name(app.get())), parent),
         appInfo_{std::move(app)} {
         setToolTip(QString::fromUtf8(g_app_info_get_description(app.get())));
         GIcon* gicon = g_app_info_get_icon(app.get());
-        QIcon icon = Fm2::IconInfo::fromGIcon(gicon)->qicon();
+        QIcon icon = Fm::IconInfo::fromGIcon(gicon)->qicon();
         setIcon(icon);
     }
 
     virtual ~AppInfoAction() {
     }
 
-    const Fm2::GAppInfoPtr& appInfo() const {
+    const Fm::GAppInfoPtr& appInfo() const {
         return appInfo_;
     }
 
 private:
-    Fm2::GAppInfoPtr appInfo_;
+    Fm::GAppInfoPtr appInfo_;
 };
 
 } // namespace Fm

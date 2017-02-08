@@ -40,7 +40,7 @@ public:
         scrollPos_(0) {
     }
 
-    BrowseHistoryItem(Fm2::FilePath path, int scrollPos = 0):
+    BrowseHistoryItem(Fm::FilePath path, int scrollPos = 0):
         path_(std::move(path)),
         scrollPos_(scrollPos) {
     }
@@ -56,7 +56,7 @@ public:
         return *this;
     }
 
-    Fm2::FilePath path() const {
+    Fm::FilePath path() const {
         return path_;
     }
 
@@ -69,7 +69,7 @@ public:
     }
 
 private:
-    Fm2::FilePath path_;
+    Fm::FilePath path_;
     int scrollPos_;
     // TODO: we may need to store current selection as well.
 };
@@ -85,7 +85,7 @@ public:
     }
     void setCurrentIndex(int index);
 
-    Fm2::FilePath currentPath() const {
+    Fm::FilePath currentPath() const {
         return items_[currentIndex_].path();
     }
 
@@ -105,7 +105,7 @@ public:
         return items_[index];
     }
 
-    void add(Fm2::FilePath path, int scrollPos = 0);
+    void add(Fm::FilePath path, int scrollPos = 0);
 
     bool canForward() const;
 

@@ -431,7 +431,7 @@ FolderView::~FolderView() {
 void FolderView::onItemActivated(QModelIndex index) {
     if(index.isValid() && index.model()) {
         QVariant data = index.model()->data(index, FolderModel::FileInfoRole);
-        auto info = data.value<std::shared_ptr<const Fm2::FileInfo>>();
+        auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
         if(info) {
             if(!(QApplication::keyboardModifiers() & (Qt::ShiftModifier | Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier))) {
                 Q_EMIT clicked(ActivatedClick, info);
@@ -706,7 +706,7 @@ void FolderView::emitClickedAt(ClickType type, const QPoint& pos) {
     QModelIndex index = view->indexAt(pos);
     if(index.isValid()) {
         QVariant data = index.data(FolderModel::FileInfoRole);
-        auto info = data.value<std::shared_ptr<const Fm2::FileInfo>>();
+        auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
         Q_EMIT clicked(type, info);
     }
     else {
@@ -741,11 +741,11 @@ QItemSelectionModel* FolderView::selectionModel() const {
     return view ? view->selectionModel() : nullptr;
 }
 
-Fm2::FilePathList FolderView::selectedFilePaths() const {
+Fm::FilePathList FolderView::selectedFilePaths() const {
     if(model_) {
         QModelIndexList selIndexes = mode == DetailedListMode ? selectedRows() : selectedIndexes();
         if(!selIndexes.isEmpty()) {
-            Fm2::FilePathList paths;
+            Fm::FilePathList paths;
             QModelIndexList::const_iterator it;
             for(it = selIndexes.begin(); it != selIndexes.end(); ++it) {
                 auto file = model_->fileInfoFromIndex(*it);
@@ -754,7 +754,7 @@ Fm2::FilePathList FolderView::selectedFilePaths() const {
             return paths;
         }
     }
-    return Fm2::FilePathList();
+    return Fm::FilePathList();
 }
 
 bool FolderView::hasSelection() const {
@@ -762,7 +762,7 @@ bool FolderView::hasSelection() const {
     return selModel ? selModel->hasSelection() : false;
 }
 
-QModelIndex FolderView::indexFromFolderPath(const Fm2::FilePath& folderPath) const {
+QModelIndex FolderView::indexFromFolderPath(const Fm::FilePath& folderPath) const {
     if(!model_ || !folderPath.isValid()) {
         return QModelIndex();
     }
@@ -778,11 +778,11 @@ QModelIndex FolderView::indexFromFolderPath(const Fm2::FilePath& folderPath) con
     return QModelIndex();
 }
 
-Fm2::FileInfoList FolderView::selectedFiles() const {
+Fm::FileInfoList FolderView::selectedFiles() const {
     if(model_) {
         QModelIndexList selIndexes = mode == DetailedListMode ? selectedRows() : selectedIndexes();
         if(!selIndexes.isEmpty()) {
-            Fm2::FileInfoList files;
+            Fm::FileInfoList files;
             QModelIndexList::const_iterator it;
             for(it = selIndexes.constBegin(); it != selIndexes.constEnd(); ++it) {
                 auto file = model_->fileInfoFromIndex(*it);
@@ -791,7 +791,7 @@ Fm2::FileInfoList FolderView::selectedFiles() const {
             return files;
         }
     }
-    return Fm2::FileInfoList();
+    return Fm::FileInfoList();
 }
 
 void FolderView::selectAll() {
@@ -1027,16 +1027,16 @@ void FolderView::onAutoSelectionTimeout() {
     autoSelectionTimer_ = nullptr;
 }
 
-void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm2::FileInfo> &fileInfo) {
+void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm::FileInfo> &fileInfo) {
     if(type == ActivatedClick) {
         if(fileLauncher_) {
-            Fm2::FileInfoList files;
+            Fm::FileInfoList files;
             files.push_back(fileInfo);
             fileLauncher_->launchFiles(nullptr, std::move(files));
         }
     }
     else if(type == ContextMenuClick) {
-        Fm2::FilePath folderPath;
+        Fm::FilePath folderPath;
         auto files = selectedFiles();
         if(!files.empty()) {
             auto& first = files.front();

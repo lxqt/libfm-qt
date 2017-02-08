@@ -7,7 +7,7 @@
 #include "job.h"
 #include <QThreadPool>
 
-namespace Fm2 {
+namespace Fm {
 
 class LIBFM_QT_API ThumbnailJob: public Job {
     Q_OBJECT
@@ -84,6 +84,6 @@ private:
     static int maxThumbnailFileSize_;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_THUMBNAILJOB_H

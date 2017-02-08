@@ -6,9 +6,9 @@
 #include "filepath.h"
 #include "gioptrs.h"
 
-namespace Fm2 {
+namespace Fm {
 
-class LIBFM_QT_API DeleteJob : public Fm2::FileOperationJob {
+class LIBFM_QT_API DeleteJob : public Fm::FileOperationJob {
     Q_OBJECT
 public:
     DeleteJob(const FilePathList& paths): paths_{paths} {
@@ -31,6 +31,6 @@ private:
     FilePathList paths_;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_DELETEJOB_H

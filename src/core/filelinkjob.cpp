@@ -1,9 +1,9 @@
 #include "filelinkjob.h"
 
-namespace Fm2 {
+namespace Fm {
 
 FileLinkJob::FileLinkJob() {
 
 }
 
-} // namespace Fm2
+} // namespace Fm

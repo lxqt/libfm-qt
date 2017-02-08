@@ -25,7 +25,7 @@
 
 namespace Fm {
 
-FolderModelItem::FolderModelItem(const std::shared_ptr<const Fm2::FileInfo>& _info):
+FolderModelItem::FolderModelItem(const std::shared_ptr<const Fm::FileInfo>& _info):
     info{_info} {
     thumbnails.reserve(2);
 }
@@ -40,7 +40,7 @@ FolderModelItem::~FolderModelItem() {
 
 QString FolderModelItem::ownerName() const {
     QString name;
-    auto user = Fm2::UserInfoCache::globalInstance()->userFromId(info->uid());
+    auto user = Fm::UserInfoCache::globalInstance()->userFromId(info->uid());
     if(user) {
         name = user->realName();
         if(name.isEmpty()) {
@@ -51,7 +51,7 @@ QString FolderModelItem::ownerName() const {
 }
 
 QString FolderModelItem::ownerGroup() const {
-    auto group = Fm2::UserInfoCache::globalInstance()->groupFromId(info->gid());
+    auto group = Fm::UserInfoCache::globalInstance()->groupFromId(info->gid());
     return group ? group->name() : QString();
 }
 

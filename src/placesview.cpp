@@ -170,7 +170,7 @@ void PlacesView::onClicked(const QModelIndex& index) {
     }
 }
 
-void PlacesView::setCurrentPath(Fm2::FilePath path) {
+void PlacesView::setCurrentPath(Fm::FilePath path) {
     currentPath_ = std::move(path);
     if(path) {
         // TODO: search for item with the path in model_ and select it.
@@ -206,8 +206,8 @@ void PlacesView::dropEvent(QDropEvent* event) {
 }
 
 void PlacesView::onEmptyTrash() {
-    Fm2::FilePathList files;
-    files.push_back(Fm2::FilePath::fromUri("trash:///"));
+    Fm::FilePathList files;
+    files.push_back(Fm::FilePath::fromUri("trash:///"));
     Fm::FileOperation::deleteFiles(std::move(files));
 }
 
@@ -221,7 +221,7 @@ void PlacesView::onMoveBookmarkUp() {
     int row = item->row();
     if(row > 0) {
         auto bookmarkItem = item->bookmark();
-        Fm2::Bookmarks::globalInstance()->reorder(bookmarkItem, row - 1);
+        Fm::Bookmarks::globalInstance()->reorder(bookmarkItem, row - 1);
     }
 }
 
@@ -235,7 +235,7 @@ void PlacesView::onMoveBookmarkDown() {
     int row = item->row();
     if(row < model_->rowCount()) {
         auto bookmarkItem = item->bookmark();
-        Fm2::Bookmarks::globalInstance()->reorder(bookmarkItem, row + 1);
+        Fm::Bookmarks::globalInstance()->reorder(bookmarkItem, row + 1);
     }
 }
 
@@ -246,7 +246,7 @@ void PlacesView::onDeleteBookmark() {
     }
     PlacesModelBookmarkItem* item = static_cast<PlacesModelBookmarkItem*>(model_->itemFromIndex(action->index()));
     auto bookmarkItem = item->bookmark();
-    Fm2::Bookmarks::globalInstance()->remove(bookmarkItem);
+    Fm::Bookmarks::globalInstance()->remove(bookmarkItem);
 }
 
 // virtual
@@ -255,7 +255,7 @@ void PlacesView::commitData(QWidget* editor) {
     PlacesModelBookmarkItem* item = static_cast<PlacesModelBookmarkItem*>(model_->itemFromIndex(currentIndex()));
     auto bookmarkItem = item->bookmark();
     // rename bookmark
-    Fm2::Bookmarks::globalInstance()->rename(bookmarkItem, item->text());
+    Fm::Bookmarks::globalInstance()->rename(bookmarkItem, item->text());
 }
 
 void PlacesView::onOpenNewTab() {

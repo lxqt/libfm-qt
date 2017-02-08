@@ -40,7 +40,7 @@
 #include "iconinfo.h"
 #include "thumbnailer.h"
 
-namespace Fm2 {
+namespace Fm {
 
 class LIBFM_QT_API MimeType {
 public:
@@ -167,6 +167,6 @@ private:
 };
 
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif

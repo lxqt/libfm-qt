@@ -25,7 +25,7 @@
 
 namespace Fm {
 
-AppChooserDialog::AppChooserDialog(std::shared_ptr<const Fm2::MimeType> mimeType, QWidget* parent, Qt::WindowFlags f):
+AppChooserDialog::AppChooserDialog(std::shared_ptr<const Fm::MimeType> mimeType, QWidget* parent, Qt::WindowFlags f):
     QDialog(parent, f),
     ui(new Ui::AppChooserDialog()),
     mimeType_{std::move(mimeType)},
@@ -256,7 +256,7 @@ void AppChooserDialog::onSelectionChanged() {
     ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(isAppSelected);
 }
 
-void AppChooserDialog::setMimeType(std::shared_ptr<const Fm2::MimeType> mimeType) {
+void AppChooserDialog::setMimeType(std::shared_ptr<const Fm::MimeType> mimeType) {
     mimeType_ = std::move(mimeType);
     if(mimeType_) {
         QString text = tr("Select an application to open \"%1\" files")

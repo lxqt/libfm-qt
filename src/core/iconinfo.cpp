@@ -1,7 +1,7 @@
 #include "iconinfo.h"
 #include "iconinfo_p.h"
 
-namespace Fm2 {
+namespace Fm {
 
 std::unordered_map<GIcon*, std::shared_ptr<IconInfo>, IconInfo::GIconHash, IconInfo::GIconEqual> IconInfo::cache_;
 std::mutex IconInfo::mutex_;
@@ -123,4 +123,4 @@ QIcon IconInfo::internalQicon() const {
     return internalQicon_;
 }
 
-} // namespace Fm2
+} // namespace Fm

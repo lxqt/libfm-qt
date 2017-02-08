@@ -9,7 +9,7 @@
 #include <memory>
 #include <mutex>
 
-namespace Fm2 {
+namespace Fm {
 
 class LIBFM_QT_API UserInfo {
 public:
@@ -77,6 +77,6 @@ private:
     static std::mutex mutex_;
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_USERINFOCACHE_H

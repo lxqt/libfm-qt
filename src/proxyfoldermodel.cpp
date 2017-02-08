@@ -155,7 +155,7 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
     return QSortFilterProxyModel::lessThan(left, right);
 }
 
-std::shared_ptr<const Fm2::FileInfo> ProxyFolderModel::fileInfoFromIndex(const QModelIndex& index) const {
+std::shared_ptr<const Fm::FileInfo> ProxyFolderModel::fileInfoFromIndex(const QModelIndex& index) const {
     FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
     if(srcModel) {
         QModelIndex srcIndex = mapToSource(index);

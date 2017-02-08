@@ -1,6 +1,6 @@
 #include "terminal.h"
 
-namespace Fm2 {
+namespace Fm {
 
 #include <glib.h>
 #include <gio/gdesktopappinfo.h>
@@ -16,7 +16,7 @@ static void child_setup(gpointer user_data) {
     setpgid(0, (pid_t)(gsize)user_data);
 }
 
-bool launchTerminal(const char* programName, const FilePath& workingDir, Fm2::GErrorPtr& error) {
+bool launchTerminal(const char* programName, const FilePath& workingDir, Fm::GErrorPtr& error) {
     /* read system terminals file */
     GKeyFile* kf = g_key_file_new();
     if(!g_key_file_load_from_file(kf, LIBFM_QT_DATA_DIR "/terminals.list", G_KEY_FILE_NONE, &error)) {
@@ -126,4 +126,4 @@ std::vector<CStrPtr> allKnownTerminals() {
     return std::move(terminals);
 }
 
-} // namespace Fm2
+} // namespace Fm

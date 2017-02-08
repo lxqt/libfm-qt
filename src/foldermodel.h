@@ -58,14 +58,14 @@ public:
     FolderModel();
     virtual ~FolderModel();
 
-    const std::shared_ptr<Fm2::Folder>& folder() const {
+    const std::shared_ptr<Fm::Folder>& folder() const {
         return folder_;
     }
 
-    void setFolder(const std::shared_ptr<Fm2::Folder>& new_folder);
+    void setFolder(const std::shared_ptr<Fm::Folder>& new_folder);
 
-    Fm2::FilePath path() {
-        return folder_ ? folder_->path() : Fm2::FilePath();
+    Fm::FilePath path() {
+        return folder_ ? folder_->path() : Fm::FilePath();
     }
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const;
@@ -83,7 +83,7 @@ public:
     virtual Qt::DropActions supportedDropActions() const;
     virtual bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent);
 
-    std::shared_ptr<const Fm2::FileInfo> fileInfoFromIndex(const QModelIndex& index) const;
+    std::shared_ptr<const Fm::FileInfo> fileInfoFromIndex(const QModelIndex& index) const;
     FolderModelItem* itemFromIndex(const QModelIndex& index) const;
     QImage thumbnailFromIndex(const QModelIndex& index, int size);
 
@@ -97,21 +97,21 @@ protected Q_SLOTS:
 
     void onStartLoading();
     void onFinishLoading();
-    void onFilesAdded(const Fm2::FileInfoList& files);
-    void onFilesChanged(std::vector<Fm2::FileInfoPair>& files);
-    void onFilesRemoved(const Fm2::FileInfoList& files);
+    void onFilesAdded(const Fm::FileInfoList& files);
+    void onFilesChanged(std::vector<Fm::FileInfoPair>& files);
+    void onFilesRemoved(const Fm::FileInfoList& files);
 
-    void onThumbnailLoaded(const std::shared_ptr<const Fm2::FileInfo>& file, int size, const QImage& image);
+    void onThumbnailLoaded(const std::shared_ptr<const Fm::FileInfo>& file, int size, const QImage& image);
     void onThumbnailJobFinished();
     void loadPendingThumbnails();
 
 protected:
-    void queueLoadThumbnail(const std::shared_ptr<const Fm2::FileInfo>& file, int size);
-    void insertFiles(int row, const Fm2::FileInfoList& files);
+    void queueLoadThumbnail(const std::shared_ptr<const Fm::FileInfo>& file, int size);
+    void insertFiles(int row, const Fm::FileInfoList& files);
     void removeAll();
-    QList<FolderModelItem>::iterator findItemByPath(const Fm2::FilePath& path, int* row);
+    QList<FolderModelItem>::iterator findItemByPath(const Fm::FilePath& path, int* row);
     QList<FolderModelItem>::iterator findItemByName(const char* name, int* row);
-    QList<FolderModelItem>::iterator findItemByFileInfo(const Fm2::FileInfo* info, int* row);
+    QList<FolderModelItem>::iterator findItemByFileInfo(const Fm::FileInfo* info, int* row);
 
 private:
 
@@ -123,14 +123,14 @@ private:
 
         int size_;
         int refCount_;
-        Fm2::FileInfoList pendingThumbnails_;
+        Fm::FileInfoList pendingThumbnails_;
     };
 
-    std::shared_ptr<Fm2::Folder> folder_;
+    std::shared_ptr<Fm::Folder> folder_;
     QList<FolderModelItem> items;
 
     bool hasPendingThumbnailHandler_;
-    std::vector<Fm2::ThumbnailJob*> pendingThumbnailJobs_;
+    std::vector<Fm::ThumbnailJob*> pendingThumbnailJobs_;
     std::forward_list<ThumbnailData> thumbnailData_;
 };
 

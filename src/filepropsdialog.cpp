@@ -44,7 +44,7 @@ enum {
     ACCESS_FORBID
 };
 
-FilePropsDialog::FilePropsDialog(Fm2::FileInfoList files, QWidget* parent, Qt::WindowFlags f):
+FilePropsDialog::FilePropsDialog(Fm::FileInfoList files, QWidget* parent, Qt::WindowFlags f):
     QDialog(parent, f),
     fileInfos_{std::move(files)},
     fileInfo{fileInfos_.front()},
@@ -60,7 +60,7 @@ FilePropsDialog::FilePropsDialog(Fm2::FileInfoList files, QWidget* parent, Qt::W
         mimeType = fileInfo->mimeType();
     }
 
-    totalSizeJob = new Fm2::TotalSizeJob(fileInfos_.paths(), Fm2::TotalSizeJob::DEFAULT);
+    totalSizeJob = new Fm::TotalSizeJob(fileInfos_.paths(), Fm::TotalSizeJob::DEFAULT);
 
     initGeneralPage();
     initPermissionsPage();
@@ -245,7 +245,7 @@ void FilePropsDialog::initPermissionsPage() {
 void FilePropsDialog::initGeneralPage() {
     // update UI
     if(singleType) { // all files are of the same mime-type
-        std::shared_ptr<const Fm2::IconInfo> icon;
+        std::shared_ptr<const Fm::IconInfo> icon;
         // FIXME: handle custom icons for some files
         // FIXME: display special property pages for special files or
         // some specified mime-types.
@@ -306,7 +306,7 @@ void FilePropsDialog::initGeneralPage() {
     connect(fileSizeTimer, &QTimer::timeout, this, &FilePropsDialog::onFileSizeTimerTimeout);
     fileSizeTimer->start(600);
 
-    connect(totalSizeJob, &Fm2::TotalSizeJob::finished, this, &FilePropsDialog::onDeepCountJobFinished, Qt::BlockingQueuedConnection);
+    connect(totalSizeJob, &Fm::TotalSizeJob::finished, this, &FilePropsDialog::onDeepCountJobFinished, Qt::BlockingQueuedConnection);
     totalSizeJob->setAutoDelete(true);
     totalSizeJob->runAsync();
 }
@@ -443,7 +443,7 @@ void FilePropsDialog::accept() {
             auto path = fileInfo->path();
             auto parent_path = path.parent();
             auto dest = parent_path.child(new_name.toLocal8Bit().constData());
-            Fm2::GErrorPtr err;
+            Fm::GErrorPtr err;
             if(!g_file_move(path.gfile().get(), dest.gfile().get(),
                             GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
                                            G_FILE_COPY_NO_FALLBACK_FOR_MOVE |

@@ -48,7 +48,7 @@ public:
     explicit MountOperation(bool interactive = true, QWidget* parent = 0);
     ~MountOperation();
 
-    void mount(const Fm2::FilePath& path) {
+    void mount(const Fm::FilePath& path) {
         g_file_mount_enclosing_volume(path.gfile().get(), G_MOUNT_MOUNT_NONE, op, cancellable_,
                                       (GAsyncReadyCallback)onMountFileFinished, new QPointer<MountOperation>(this));
     }

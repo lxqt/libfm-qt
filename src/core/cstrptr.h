@@ -4,7 +4,7 @@
 #include <memory>
 #include <glib.h>
 
-namespace Fm2 {
+namespace Fm {
 
 struct CStrDeleter {
     void operator()(char* ptr) {
@@ -26,6 +26,6 @@ struct CStrEqual {
     }
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_CSTRPTR_H

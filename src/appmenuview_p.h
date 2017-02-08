@@ -31,9 +31,9 @@ class AppMenuViewItem : public QStandardItem {
 public:
     explicit AppMenuViewItem(MenuCacheItem* item):
         item_(menu_cache_item_ref(item)) {
-        std::shared_ptr<const Fm2::IconInfo> icon;
+        std::shared_ptr<const Fm::IconInfo> icon;
         if(menu_cache_item_get_icon(item)) {
-            icon = Fm2::IconInfo::fromName(menu_cache_item_get_icon(item));
+            icon = Fm::IconInfo::fromName(menu_cache_item_get_icon(item));
         }
         setText(menu_cache_item_get_name(item));
         setEditable(false);

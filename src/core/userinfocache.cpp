@@ -2,7 +2,7 @@
 #include <pwd.h>
 #include <grp.h>
 
-namespace Fm2 {
+namespace Fm {
 
 UserInfoCache* UserInfoCache::globalInstance_ = nullptr;
 std::mutex UserInfoCache::mutex_;
@@ -44,4 +44,4 @@ UserInfoCache* UserInfoCache::globalInstance() {
     return globalInstance_;
 }
 
-} // namespace Fm2
+} // namespace Fm

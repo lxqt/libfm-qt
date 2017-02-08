@@ -94,11 +94,11 @@ public Q_SLOTS:
 
 protected:
 
-    PlacesModelItem* itemFromPath(const Fm2::FilePath& path);
-    PlacesModelItem* itemFromPath(QStandardItem* rootItem, const Fm2::FilePath & path);
+    PlacesModelItem* itemFromPath(const Fm::FilePath& path);
+    PlacesModelItem* itemFromPath(QStandardItem* rootItem, const Fm::FilePath & path);
     PlacesModelVolumeItem* itemFromVolume(GVolume* volume);
     PlacesModelMountItem* itemFromMount(GMount* mount);
-    PlacesModelBookmarkItem* itemFromBookmark(std::shared_ptr<const Fm2::BookmarkItem> bkitem);
+    PlacesModelBookmarkItem* itemFromBookmark(std::shared_ptr<const Fm::BookmarkItem> bkitem);
 
     virtual Qt::ItemFlags flags(const QModelIndex& index) const;
     virtual QStringList mimeTypes() const;
@@ -121,7 +121,7 @@ private:
     static void onTrashChanged(GFileMonitor* monitor, GFile* gf, GFile* other, GFileMonitorEvent evt, PlacesModel* pThis);
 
 private:
-    std::shared_ptr<Fm2::Bookmarks> bookmarks;
+    std::shared_ptr<Fm::Bookmarks> bookmarks;
     GVolumeMonitor* volumeMonitor;
     QList<FmJob*> jobs;
     bool showApplications_;

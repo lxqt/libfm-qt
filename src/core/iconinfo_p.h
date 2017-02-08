@@ -25,12 +25,12 @@
 #include "iconinfo.h"
 #include <gio/gio.h>
 
-namespace Fm2 {
+namespace Fm {
 
 class IconEngine: public QIconEngine {
 public:
 
-    IconEngine(std::shared_ptr<const Fm2::IconInfo> info);
+    IconEngine(std::shared_ptr<const Fm::IconInfo> info);
 
     ~IconEngine();
 
@@ -53,7 +53,7 @@ public:
     virtual void virtual_hook(int id, void* data) override;
 
 private:
-    std::shared_ptr<const Fm2::IconInfo> info_;
+    std::shared_ptr<const Fm::IconInfo> info_;
 };
 
 IconEngine::IconEngine(std::shared_ptr<const IconInfo> info): info_{info} {

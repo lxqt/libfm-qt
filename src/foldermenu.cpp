@@ -75,12 +75,12 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
     showHiddenAction_->setChecked(model->showHidden());
     connect(showHiddenAction_, &QAction::triggered, this, &FolderMenu::onShowHiddenActionTriggered);
 
-    // FIXME: port custom actions to Fm2 API
+    // FIXME: port custom actions to Fm API
 #ifdef CUSTOM_ACTIONS
     auto folderInfo = view_->folderInfo();
     if(folderInfo) {
         GList* single_list = nullptr;
-        FmFileInfo* fm_info = Fm2::_convertFileInfo(folderInfo);
+        FmFileInfo* fm_info = Fm::_convertFileInfo(folderInfo);
         single_list = g_list_prepend(single_list, fm_info);
         GList* items = fm_get_actions_for_files(single_list);
         g_list_foreach(single_list, (GFunc)fm_file_info_unref, nullptr);
@@ -141,13 +141,13 @@ void FolderMenu::addCustomActionItem(QMenu* menu, FmFileActionItem* item) {
 }
 
 void FolderMenu::onCustomActionTrigerred() {
-    // FIXME: port to Fm2
+    // FIXME: port to Fm
     CustomAction* action = static_cast<CustomAction*>(sender());
     FmFileActionItem* item = action->item();
     auto folderInfo = view_->folderInfo();
     if(folderInfo) {
         GList* single_list = nullptr;
-        single_list = g_list_prepend(single_list, Fm2::_convertFileInfo(folderInfo));
+        single_list = g_list_prepend(single_list, Fm::_convertFileInfo(folderInfo));
         char* output = nullptr;
         fm_file_action_item_launch(item, nullptr, single_list, &output);
         g_list_foreach(single_list, (GFunc)fm_file_info_unref, nullptr);

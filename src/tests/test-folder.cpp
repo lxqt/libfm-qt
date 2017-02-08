@@ -5,29 +5,29 @@
 int main(int argc, char** argv) {
     QApplication app(argc, argv);
 
-    auto home = Fm2::FilePath::homeDir();
-    auto folder = Fm2::Folder::fromPath(home);
+    auto home = Fm::FilePath::homeDir();
+    auto folder = Fm::Folder::fromPath(home);
 
-    QObject::connect(folder.get(), &Fm2::Folder::startLoading, [=]() {
+    QObject::connect(folder.get(), &Fm::Folder::startLoading, [=]() {
         qDebug("start loading");
     });
-    QObject::connect(folder.get(), &Fm2::Folder::finishLoading, [=]() {
+    QObject::connect(folder.get(), &Fm::Folder::finishLoading, [=]() {
         qDebug("finish loading");
     });
 
-    QObject::connect(folder.get(), &Fm2::Folder::filesAdded, [=](Fm2::FileInfoList& files) {
+    QObject::connect(folder.get(), &Fm::Folder::filesAdded, [=](Fm::FileInfoList& files) {
         qDebug("files added");
         for(auto& item: files) {
             qDebug() << item->displayName();
         }
     });
-    QObject::connect(folder.get(), &Fm2::Folder::filesRemoved, [=](Fm2::FileInfoList& files) {
+    QObject::connect(folder.get(), &Fm::Folder::filesRemoved, [=](Fm::FileInfoList& files) {
         qDebug("files removed");
         for(auto& item: files) {
             qDebug() << item->displayName();
         }
     });
-    QObject::connect(folder.get(), &Fm2::Folder::filesChanged, [=](std::vector<Fm2::FileInfoPair>& file_pairs) {
+    QObject::connect(folder.get(), &Fm::Folder::filesChanged, [=](std::vector<Fm::FileInfoPair>& file_pairs) {
         qDebug("files changed");
         for(auto& pair: file_pairs) {
             auto& item = pair.second;

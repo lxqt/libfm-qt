@@ -40,13 +40,13 @@ public:
     explicit PlacesView(QWidget* parent = 0);
     virtual ~PlacesView();
 
-    void setCurrentPath(Fm2::FilePath path);
+    void setCurrentPath(Fm::FilePath path);
 
-    const Fm2::FilePath& currentPath() const {
+    const Fm::FilePath& currentPath() const {
         return currentPath_;
     }
 
-    void chdir(Fm2::FilePath path) {
+    void chdir(Fm::FilePath path) {
         setCurrentPath(std::move(path));
     }
 
@@ -60,7 +60,7 @@ public:
 #endif
 
 Q_SIGNALS:
-    void chdirRequested(int type, const Fm2::FilePath& path);
+    void chdirRequested(int type, const Fm::FilePath& path);
 
 protected Q_SLOTS:
     void onClicked(const QModelIndex& index);
@@ -100,7 +100,7 @@ private:
 
 private:
     std::shared_ptr<PlacesModel> model_;
-    Fm2::FilePath currentPath_;
+    Fm::FilePath currentPath_;
 };
 
 }

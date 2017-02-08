@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
     Fm::FolderView folder_view;
     win.setCentralWidget(&folder_view);
 
-    auto home = Fm2::FilePath::homeDir();
+    auto home = Fm::FilePath::homeDir();
     Fm::CachedFolderModel* model = Fm::CachedFolderModel::modelFromPath(home);
     auto proxy_model = new Fm::ProxyFolderModel();
     proxy_model->sort(Fm::FolderModel::ColumnFileName, Qt::AscendingOrder);
@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
     auto action = new QAction("Go");
     toolbar.addAction(action);
     QObject::connect(action, &QAction::triggered, [&]() {
-        auto path = Fm2::FilePath::fromPathStr(edit.text().toLocal8Bit().constData());
+        auto path = Fm::FilePath::fromPathStr(edit.text().toLocal8Bit().constData());
         auto new_model = Fm::CachedFolderModel::modelFromPath(path);
         proxy_model->setSourceModel(new_model);
     });

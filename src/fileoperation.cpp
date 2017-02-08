@@ -32,9 +32,9 @@ namespace Fm {
 
 #define SHOW_DLG_DELAY  1000
 
-FileOperation::FileOperation(Type type, Fm2::FilePathList srcFiles, QObject* parent):
+FileOperation::FileOperation(Type type, Fm::FilePathList srcFiles, QObject* parent):
     QObject(parent),
-    job_{fm_file_ops_job_new((FmFileOpType)type, Fm2::_convertPathList(srcFiles))},
+    job_{fm_file_ops_job_new((FmFileOpType)type, Fm::_convertPathList(srcFiles))},
     dlg{nullptr},
     srcPaths{std::move(srcFiles)},
     uiTimer(nullptr),
@@ -81,7 +81,7 @@ FileOperation::~FileOperation() {
     }
 }
 
-void FileOperation::setDestination(Fm2::FilePath dest) {
+void FileOperation::setDestination(Fm::FilePath dest) {
     destPath = std::move(dest);
     auto tmp = Fm::Path::newForGfile(dest.gfile().get());
     fm_file_ops_job_set_dest(job_, tmp.dataPtr());
@@ -218,9 +218,9 @@ void FileOperation::handleFinish() {
         auto unable_to_trash = static_cast<FmPathList*>(g_object_get_data(G_OBJECT(job_), "trash-unsupported"));
         /* some files cannot be trashed because underlying filesystems don't support it. */
         if(unable_to_trash) { /* delete them instead */
-            Fm2::FilePathList filesToDel;
+            Fm::FilePathList filesToDel;
             for(GList* l = fm_path_list_peek_head_link(unable_to_trash); l; l = l->next) {
-                filesToDel.push_back(Fm2::FilePath{fm_path_to_gfile(FM_PATH(l->data)), false});
+                filesToDel.push_back(Fm::FilePath{fm_path_to_gfile(FM_PATH(l->data)), false});
             }
             /* FIXME: parent window might be already destroyed! */
             QWidget* parent = nullptr; // FIXME: currently, parent window is not set
@@ -241,7 +241,7 @@ void FileOperation::handleFinish() {
 }
 
 // static
-FileOperation* FileOperation::copyFiles(Fm2::FilePathList srcFiles, Fm2::FilePath dest, QWidget* parent) {
+FileOperation* FileOperation::copyFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent) {
     FileOperation* op = new FileOperation(FileOperation::Copy, std::move(srcFiles));
     op->setDestination(dest);
     op->run();
@@ -249,7 +249,7 @@ FileOperation* FileOperation::copyFiles(Fm2::FilePathList srcFiles, Fm2::FilePat
 }
 
 // static
-FileOperation* FileOperation::moveFiles(Fm2::FilePathList srcFiles, Fm2::FilePath dest, QWidget* parent) {
+FileOperation* FileOperation::moveFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent) {
     FileOperation* op = new FileOperation(FileOperation::Move, std::move(srcFiles));
     op->setDestination(dest);
     op->run();
@@ -257,7 +257,7 @@ FileOperation* FileOperation::moveFiles(Fm2::FilePathList srcFiles, Fm2::FilePat
 }
 
 //static
-FileOperation* FileOperation::symlinkFiles(Fm2::FilePathList srcFiles, Fm2::FilePath dest, QWidget* parent) {
+FileOperation* FileOperation::symlinkFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent) {
     FileOperation* op = new FileOperation(FileOperation::Link, std::move(srcFiles));
     op->setDestination(dest);
     op->run();
@@ -265,7 +265,7 @@ FileOperation* FileOperation::symlinkFiles(Fm2::FilePathList srcFiles, Fm2::File
 }
 
 //static
-FileOperation* FileOperation::deleteFiles(Fm2::FilePathList srcFiles, bool prompt, QWidget* parent) {
+FileOperation* FileOperation::deleteFiles(Fm::FilePathList srcFiles, bool prompt, QWidget* parent) {
     if(prompt) {
         int result = QMessageBox::warning(parent, tr("Confirm"),
                                           tr("Do you want to delete the selected files?"),
@@ -282,7 +282,7 @@ FileOperation* FileOperation::deleteFiles(Fm2::FilePathList srcFiles, bool promp
 }
 
 //static
-FileOperation* FileOperation::trashFiles(Fm2::FilePathList srcFiles, bool prompt, QWidget* parent) {
+FileOperation* FileOperation::trashFiles(Fm::FilePathList srcFiles, bool prompt, QWidget* parent) {
     if(prompt) {
         int result = QMessageBox::warning(parent, tr("Confirm"),
                                           tr("Do you want to move the selected files to trash can?"),
@@ -299,14 +299,14 @@ FileOperation* FileOperation::trashFiles(Fm2::FilePathList srcFiles, bool prompt
 }
 
 //static
-FileOperation* FileOperation::unTrashFiles(Fm2::FilePathList srcFiles, QWidget* parent) {
+FileOperation* FileOperation::unTrashFiles(Fm::FilePathList srcFiles, QWidget* parent) {
     FileOperation* op = new FileOperation(FileOperation::UnTrash, std::move(srcFiles));
     op->run();
     return op;
 }
 
 // static
-FileOperation* FileOperation::changeAttrFiles(Fm2::FilePathList srcFiles, QWidget* parent) {
+FileOperation* FileOperation::changeAttrFiles(Fm::FilePathList srcFiles, QWidget* parent) {
     //TODO
     FileOperation* op = new FileOperation(FileOperation::ChangeAttr, std::move(srcFiles));
     op->run();

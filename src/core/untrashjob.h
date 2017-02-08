@@ -4,9 +4,9 @@
 #include "libfmqtglobals.h"
 #include "fileoperationjob.h"
 
-namespace Fm2 {
+namespace Fm {
 
-class LIBFM_QT_API UntrashJob : public Fm2::FileOperationJob {
+class LIBFM_QT_API UntrashJob : public Fm::FileOperationJob {
 public:
     UntrashJob();
 
@@ -17,6 +17,6 @@ private:
     bool ensure_parent_dir(GFile *orig_path);
 };
 
-} // namespace Fm2
+} // namespace Fm
 
 #endif // FM2_UNTRASHJOB_H

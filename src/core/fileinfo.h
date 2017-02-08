@@ -41,7 +41,7 @@
 #include "mimetype.h"
 
 
-namespace Fm2 {
+namespace Fm {
 
 class LIBFM_QT_API FileInfo {
 public:
@@ -251,7 +251,7 @@ typedef std::pair<std::shared_ptr<const FileInfo>, std::shared_ptr<const FileInf
 
 }
 
-Q_DECLARE_METATYPE(std::shared_ptr<const Fm2::FileInfo>)
+Q_DECLARE_METATYPE(std::shared_ptr<const Fm::FileInfo>)
 
 
 #endif // __LIBFM_QT_FM2_FILE_INFO_H__

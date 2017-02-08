@@ -149,7 +149,7 @@ void PathBar::updateScrollButtonVisibility() {
     }
 }
 
-Fm2::FilePath PathBar::pathForButton(PathButton* btn) {
+Fm::FilePath PathBar::pathForButton(PathButton* btn) {
     std::string fullPath;
     int buttonCount = buttonsLayout_->count() - 1; // the last item is a spacer
     for(int i = 0; i < buttonCount; ++i) {
@@ -161,7 +161,7 @@ Fm2::FilePath PathBar::pathForButton(PathButton* btn) {
         if(elem == btn)
             break;
     }
-    return Fm2::FilePath::fromPathStr(fullPath.c_str());
+    return Fm::FilePath::fromPathStr(fullPath.c_str());
 }
 
 void PathBar::onButtonToggled(bool checked) {
@@ -187,7 +187,7 @@ void PathBar::onScrollButtonClicked() {
     scrollArea_->horizontalScrollBar()->triggerAction(action);
 }
 
-void PathBar::setPath(Fm2::FilePath path) {
+void PathBar::setPath(Fm::FilePath path) {
     if(currentPath_ == path) { // same path, do nothing
         return;
     }
@@ -227,8 +227,8 @@ void PathBar::setPath(Fm2::FilePath path) {
     // create new buttons for the new path
     auto btnPath = currentPath_;
     while(btnPath) {
-        Fm2::CStrPtr name;
-        Fm2::CStrPtr displayName;
+        Fm::CStrPtr name;
+        Fm::CStrPtr displayName;
         auto parent = btnPath.parent();
         // FIXME: some buggy uri types, such as menu://, fail to return NULL when there is no parent path.
         // Instead, the path itself is returned. So we check if the parent path is the same as current path.
@@ -308,7 +308,7 @@ void PathBar::copyPath() {
 
 void PathBar::onReturnPressed() {
     QByteArray pathStr = tempPathEdit_->text().toLocal8Bit();
-    setPath(Fm2::FilePath::fromPathStr(pathStr.constData()));
+    setPath(Fm::FilePath::fromPathStr(pathStr.constData()));
 }
 
 void PathBar::setArrowEnabledState(int value) {
