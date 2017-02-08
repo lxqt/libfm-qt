@@ -28,48 +28,48 @@
 namespace Fm {
 
 class LIBFM_QT_API FolderItemDelegate : public QStyledItemDelegate {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit FolderItemDelegate(QAbstractItemView* view, QObject* parent = nullptr);
-  virtual ~FolderItemDelegate();
+    explicit FolderItemDelegate(QAbstractItemView* view, QObject* parent = nullptr);
+    virtual ~FolderItemDelegate();
 
-  inline void setGridSize(QSize size) {
-    gridSize_ = size;
-  }
+    inline void setGridSize(QSize size) {
+        gridSize_ = size;
+    }
 
-  inline QSize gridSize() const {
-    return gridSize_;
-  }
+    inline QSize gridSize() const {
+        return gridSize_;
+    }
 
-  int fileInfoRole() {
-    return fileInfoRole_;
-  }
+    int fileInfoRole() {
+        return fileInfoRole_;
+    }
 
-  void setFileInfoRole(int role) {
-    fileInfoRole_ = role;
-  }
+    void setFileInfoRole(int role) {
+        fileInfoRole_ = role;
+    }
 
-  int fmIconRole() {
-    return fmIconRole_;
-  }
+    int iconInfoRole() {
+        return iconInfoRole_;
+    }
 
-  void setFmIconRole(int role) {
-    fmIconRole_ = role;
-  }
+    void setIconInfoRole(int role) {
+        iconInfoRole_ = role;
+    }
 
-  virtual QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
-  virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-
-private:
-  void drawText(QPainter* painter, QStyleOptionViewItem& opt, QRectF& textRect) const;
-  static QIcon::Mode iconModeFromState(QStyle::State state);
+    virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 private:
-  QAbstractItemView* view_;
-  QIcon symlinkIcon_;
-  QSize gridSize_;
-  int fileInfoRole_;
-  int fmIconRole_;
+    void drawText(QPainter* painter, QStyleOptionViewItem& opt, QRectF& textRect) const;
+    static QIcon::Mode iconModeFromState(QStyle::State state);
+
+private:
+    QAbstractItemView* view_;
+    QIcon symlinkIcon_;
+    QSize gridSize_;
+    int fileInfoRole_;
+    int iconInfoRole_;
 };
 
 }

@@ -25,313 +25,334 @@
 namespace Fm {
 
 DirTreeModelItem::DirTreeModelItem():
-  fileInfo_(nullptr),
-  folder_(nullptr),
-  expanded_(false),
-  loaded_(false),
-  parent_(nullptr),
-  placeHolderChild_(nullptr),
-  model_(nullptr) {
+    fileInfo_(nullptr),
+    folder_(nullptr),
+    expanded_(false),
+    loaded_(false),
+    parent_(nullptr),
+    placeHolderChild_(nullptr),
+    model_(nullptr) {
 }
 
-DirTreeModelItem::DirTreeModelItem(FmFileInfo* info, DirTreeModel* model, DirTreeModelItem* parent):
-  fileInfo_(fm_file_info_ref(info)),
-  folder_(nullptr),
-  displayName_(QString::fromUtf8(fm_file_info_get_disp_name(info))),
-  icon_(IconTheme::icon(fm_file_info_get_icon(info))),
-  expanded_(false),
-  loaded_(false),
-  parent_(parent),
-  placeHolderChild_(nullptr),
-  model_(model) {
+DirTreeModelItem::DirTreeModelItem(std::shared_ptr<const Fm::FileInfo> info, DirTreeModel* model, DirTreeModelItem* parent):
+    fileInfo_{std::move(info)},
+    expanded_(false),
+    loaded_(false),
+    parent_(parent),
+    placeHolderChild_(nullptr),
+    model_(model) {
 
-  if(info)
-    addPlaceHolderChild();
+    if(fileInfo_) {
+        displayName_ = fileInfo_->displayName();
+        icon_ = fileInfo_->icon()->qicon();
+        addPlaceHolderChild();
+    }
 }
 
 DirTreeModelItem::~DirTreeModelItem() {
-  if(fileInfo_)
-    fm_file_info_unref(fileInfo_);
-
-  if(folder_)
     freeFolder();
-
-  // delete child items if needed
-  if(!children_.isEmpty()) {
-    Q_FOREACH(DirTreeModelItem* item, children_) {
-      delete item;
+    // delete child items if needed
+    if(!children_.empty()) {
+        Q_FOREACH(DirTreeModelItem* item, children_) {
+            delete item;
+        }
     }
-  }
-  if(!hiddenChildren_.isEmpty()) {
-    Q_FOREACH(DirTreeModelItem* item, hiddenChildren_) {
-      delete item;
+    if(!hiddenChildren_.empty()) {
+        Q_FOREACH(DirTreeModelItem* item, hiddenChildren_) {
+            delete item;
+        }
     }
-  }
-}
-
-void DirTreeModelItem::addPlaceHolderChild() {
-  placeHolderChild_ = new DirTreeModelItem();
-  placeHolderChild_->parent_ = this;
-  placeHolderChild_->model_ = model_;
-  placeHolderChild_->displayName_ = DirTreeModel::tr("Loading...");
-  children_.append(placeHolderChild_);
 }
 
 void DirTreeModelItem::freeFolder() {
-  if(folder_) {
-    g_signal_handlers_disconnect_by_func(folder_, gpointer(onFolderFinishLoading), this);
-    g_signal_handlers_disconnect_by_func(folder_, gpointer(onFolderFilesAdded), this);
-    g_signal_handlers_disconnect_by_func(folder_, gpointer(onFolderFilesRemoved), this);
-    g_signal_handlers_disconnect_by_func(folder_, gpointer(onFolderFilesChanged), this);
-    g_object_unref(folder_);
-    folder_ = nullptr;
-  }
+    if(folder_) {
+        QObject::disconnect(onFolderFinishLoadingConn_);
+        QObject::disconnect(onFolderFilesAddedConn_);
+        QObject::disconnect(onFolderFilesRemovedConn_);
+        QObject::disconnect(onFolderFilesChangedConn_);
+        folder_.reset();
+    }
+}
+
+void DirTreeModelItem::addPlaceHolderChild() {
+    placeHolderChild_ = new DirTreeModelItem();
+    placeHolderChild_->parent_ = this;
+    placeHolderChild_->model_ = model_;
+    placeHolderChild_->displayName_ = DirTreeModel::tr("Loading...");
+    children_.push_back(placeHolderChild_);
 }
 
 void DirTreeModelItem::loadFolder() {
-  if(!expanded_) {
-    /* dynamically load content of the folder. */
-    folder_ = fm_folder_from_path(fm_file_info_get_path(fileInfo_));
-    /* g_debug("fm_dir_tree_model_load_row()"); */
-    /* associate the data with loaded handler */
-    g_signal_connect(folder_, "finish-loading", G_CALLBACK(onFolderFinishLoading), this);
-    g_signal_connect(folder_, "files-added", G_CALLBACK(onFolderFilesAdded), this);
-    g_signal_connect(folder_, "files-removed", G_CALLBACK(onFolderFilesRemoved), this);
-    g_signal_connect(folder_, "files-changed", G_CALLBACK(onFolderFilesChanged), this);
+    if(!expanded_) {
+        /* dynamically load content of the folder. */
+        folder_ =  Fm::Folder::fromPath(fileInfo_->path());
+        /* g_debug("fm_dir_tree_model_load_row()"); */
+        /* associate the data with loaded handler */
 
-    /* set 'expanded' flag beforehand as callback may check it */
-    expanded_ = true;
-    /* if the folder is already loaded, call "loaded" handler ourselves */
-    if(fm_folder_is_loaded(folder_)) { // already loaded
-      GList* file_l;
-      FmFileInfoList* files = fm_folder_get_files(folder_);
-      for(file_l = fm_file_info_list_peek_head_link(files); file_l; file_l = file_l->next) {
-        FmFileInfo* fi = FM_FILE_INFO(file_l->data);
-        if(fm_file_info_is_dir(fi)) {
-          insertFileInfo(fi);
+        onFolderFinishLoadingConn_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, model_, [=]() {
+            onFolderFinishLoading();
+        });
+        onFolderFilesAddedConn_ = QObject::connect(folder_.get(), &Fm::Folder::filesAdded, model_, [=](Fm::FileInfoList files) {
+            onFolderFilesAdded(files);
+        });
+        onFolderFilesRemovedConn_ = QObject::connect(folder_.get(), &Fm::Folder::filesRemoved, model_, [=](Fm::FileInfoList files) {
+            onFolderFilesRemoved(files);
+        });
+        onFolderFilesChangedConn_ = QObject::connect(folder_.get(), &Fm::Folder::filesChanged, model_, [=](std::vector<Fm::FileInfoPair>& changes) {
+            onFolderFilesChanged(changes);
+        });
+
+        /* set 'expanded' flag beforehand as callback may check it */
+        expanded_ = true;
+        /* if the folder is already loaded, call "loaded" handler ourselves */
+        if(folder_->isLoaded()) { // already loaded
+            insertFiles(folder_->files());
+            onFolderFinishLoading();
         }
-      }
-      onFolderFinishLoading(folder_, this);
     }
-  }
 }
 
 void DirTreeModelItem::unloadFolder() {
-  if(expanded_) { /* do some cleanup */
-    /* remove all children, and replace them with a dummy child
-      * item to keep expander in the tree view around. */
+    if(expanded_) { /* do some cleanup */
+        /* remove all children, and replace them with a dummy child
+          * item to keep expander in the tree view around. */
 
-    // delete all visible child items
-    model_->beginRemoveRows(index(), 0, children_.count() - 1);
-    if(!children_.isEmpty()) {
-      Q_FOREACH(DirTreeModelItem* item, children_) {
-        delete item;
-      }
-      children_.clear();
+        // delete all visible child items
+        model_->beginRemoveRows(index(), 0, children_.size() - 1);
+        if(!children_.empty()) {
+            Q_FOREACH(DirTreeModelItem* item, children_) {
+                delete item;
+            }
+            children_.clear();
+        }
+        model_->endRemoveRows();
+
+        // remove hidden children
+        if(!hiddenChildren_.empty()) {
+            Q_FOREACH(DirTreeModelItem* item, hiddenChildren_) {
+                delete item;
+            }
+            hiddenChildren_.clear();
+        }
+
+        /* now, we have no child since all child items are removed.
+         * So we add a place holder child item to keep the expander around. */
+        addPlaceHolderChild();
+        /* deactivate folder since it will be reactivated on expand */
+        freeFolder();
+        expanded_ = false;
+        loaded_ = false;
     }
-    model_->endRemoveRows();
-
-    // remove hidden children
-    if(!hiddenChildren_.isEmpty()) {
-      Q_FOREACH(DirTreeModelItem* item, hiddenChildren_) {
-        delete item;
-      }
-      hiddenChildren_.clear();
-    }
-
-    /* now, we have no child since all child items are removed.
-     * So we add a place holder child item to keep the expander around. */
-    addPlaceHolderChild();
-    /* deactivate folder since it will be reactivated on expand */
-    freeFolder();
-    expanded_ = false;
-    loaded_ = false;
-  }
 }
 
 QModelIndex DirTreeModelItem::index() {
-  Q_ASSERT(model_);
-  return model_->indexFromItem(this);
+    Q_ASSERT(model_);
+    return model_->indexFromItem(this);
 }
 
-/* Add file info to parent node to proper position.
- * GtkTreePath tp is the tree path of parent node. */
-DirTreeModelItem* DirTreeModelItem::insertFileInfo(FmFileInfo* fi) {
-  // qDebug() << "insertFileInfo: " << fm_file_info_get_disp_name(fi);
-  DirTreeModelItem* item = new DirTreeModelItem(fi, model_);
-  insertItem(item);
-  return item;
+/* Add file info to parent node to proper position. */
+DirTreeModelItem* DirTreeModelItem::insertFile(std::shared_ptr<const Fm::FileInfo> fi) {
+    // qDebug() << "insertFileInfo: " << fm_file_info_get_disp_name(fi);
+    DirTreeModelItem* item = new DirTreeModelItem(std::move(fi), model_);
+    insertItem(item);
+    return item;
+}
+
+/* Add file info to parent node to proper position. */
+void DirTreeModelItem::insertFiles(Fm::FileInfoList files) {
+    if(children_.size() == 1 && placeHolderChild_) {
+        // the list is empty, add them all at once and do sort
+        if(!model_->showHidden()) { // need to separate visible and hidden items
+            // find hidden files and move them to the end of the list
+            auto hidden_it = std::remove_if(files.begin(), files.end(), [](Fm::FileInfoList::const_reference fi) {
+                return fi->isHidden();
+            });
+            // insert hidden files into the "hiddenChildren_" list and remove them from "files" list
+            if(hidden_it != files.end()) {
+                for(auto it = hidden_it; it != files.cend(); ++it) {
+                    hiddenChildren_.push_back(new DirTreeModelItem{std::move(*it), model_});
+                }
+                files.erase(hidden_it, files.end());
+            }
+        }
+        // sort the remaining visible files by name
+        std::sort(files.begin(), files.end(), [](const std::shared_ptr<const Fm::FileInfo>& a, const std::shared_ptr<const Fm::FileInfo>& b) {
+            return QString::localeAwareCompare(a->displayName(), b->displayName()) < 0;
+        });
+        // insert the files into the visible children list at once
+        model_->beginInsertRows(index(), 1, files.size() + 1); // the first item is the placeholder item, so we start from row 1
+        for(auto& file: files) {
+            if(file->isDir()) {
+                DirTreeModelItem* newItem = new DirTreeModelItem(std::move(file), model_);
+                newItem->parent_ = this;
+                children_.push_back(newItem);
+            }
+        }
+        model_->endInsertRows();
+    }
+    else {
+        // the list already contain some items, insert new items one by one so they can be sorted.
+        for(auto& file: files) {
+            if(file->isDir()) {
+                insertFile(std::move(file));
+            }
+        }
+    }
 }
 
 // find a good position to insert the new item
+// FIXME: insert one item at a time is slow. Insert multiple items at once and then sort is faster.
 int DirTreeModelItem::insertItem(DirTreeModelItem* newItem) {
-  if(model_->showHidden() || !newItem->fileInfo_ || !fm_file_info_is_hidden(newItem->fileInfo_)) {
-    const char* new_key = fm_file_info_get_collate_key(newItem->fileInfo_);
-    int pos = 0;
-    QList<DirTreeModelItem*>::iterator it;
-    for(it = children_.begin(); it != children_.end(); ++it) {
-      DirTreeModelItem* child = *it;
-      if(G_UNLIKELY(!child->fileInfo_))
-	continue;
-      const char* key = fm_file_info_get_collate_key(child->fileInfo_);
-      if(strcmp(new_key, key) <= 0)
-	break;
-      ++pos;
+    if(model_->showHidden() || !newItem->fileInfo_ || !newItem->fileInfo_->isHidden()) {
+        auto newName = newItem->fileInfo_->displayName();
+        auto it = std::lower_bound(children_.cbegin(), children_.cend(), newItem, [=](const DirTreeModelItem* a, const DirTreeModelItem* b) {
+            if(Q_UNLIKELY(!a->fileInfo_)) {
+                return true;  // this is a placeholder item which will be removed so the order doesn't matter.
+            }
+            return QString::localeAwareCompare(a->fileInfo_->displayName(), b->fileInfo_->displayName()) < 0;
+        });
+        // inform the world that we're about to insert the item
+        auto position = it - children_.begin();
+        model_->beginInsertRows(index(), position, position);
+        newItem->parent_ = this;
+        children_.insert(it, newItem);
+        model_->endInsertRows();
+        return position;
     }
-    // inform the world that we're about to insert the item
-    model_->beginInsertRows(index(), pos, pos);
-    newItem->parent_ = this;
-    children_.insert(it, newItem);
-    model_->endInsertRows();
-    return pos;
-  }
-  else { // hidden folder
-    hiddenChildren_.append(newItem);
-  }
-  return -1;
+    else { // hidden folder
+        hiddenChildren_.push_back(newItem);
+    }
+    return -1;
 }
 
 
 // FmFolder signal handlers
 
-// static
-void DirTreeModelItem::onFolderFinishLoading(FmFolder* folder, gpointer user_data) {
-  DirTreeModelItem* _this = (DirTreeModelItem*)user_data;
-  DirTreeModel* model = _this->model_;
-  /* set 'loaded' flag beforehand as callback may check it */
-  _this->loaded_ = true;
-  QModelIndex index = _this->index();
-qDebug() << "folder loaded";
-  // remove the placeholder child if needed
-  if(_this->children_.count() == 1) { // we have no other child other than the place holder item, leave it
-    _this->placeHolderChild_->displayName_ = DirTreeModel::tr("<No sub folders>");
-    QModelIndex placeHolderIndex = _this->placeHolderChild_->index();
-    // qDebug() << "placeHolderIndex: "<<placeHolderIndex;
-    Q_EMIT model->dataChanged(placeHolderIndex, placeHolderIndex);
-  }
-  else {
-    int pos = _this->children_.indexOf(_this->placeHolderChild_);
-    model->beginRemoveRows(index, pos, pos);
-    _this->children_.removeAt(pos);
-    delete _this->placeHolderChild_;
-    model->endRemoveRows();
-    _this->placeHolderChild_ = nullptr;
-  }
+void DirTreeModelItem::onFolderFinishLoading() {
+    DirTreeModel* model = model_;
+    /* set 'loaded' flag beforehand as callback may check it */
+    loaded_ = true;
+    QModelIndex idx = index();
+    qDebug() << "folder loaded";
+    // remove the placeholder child if needed
+    if(children_.size() == 1) { // we have no other child other than the place holder item, leave it
+        placeHolderChild_->displayName_ = DirTreeModel::tr("<No sub folders>");
+        QModelIndex placeHolderIndex = placeHolderChild_->index();
+        // qDebug() << "placeHolderIndex: "<<placeHolderIndex;
+        Q_EMIT model->dataChanged(placeHolderIndex, placeHolderIndex);
+    }
+    else {
+        auto it = std::find(children_.cbegin(), children_.cend(), placeHolderChild_);
+        auto pos = it - children_.cbegin();
+        model->beginRemoveRows(idx, pos, pos);
+        children_.erase(it);
+        delete placeHolderChild_;
+        model->endRemoveRows();
+        placeHolderChild_ = nullptr;
+    }
 
-  Q_EMIT model->rowLoaded(index);
+    Q_EMIT model->rowLoaded(idx);
 }
 
-// static
-void DirTreeModelItem::onFolderFilesAdded(FmFolder* folder, GSList* files, gpointer user_data) {
-  GSList* l;
-  DirTreeModelItem* _this = (DirTreeModelItem*)user_data;
-  for(l = files; l; l = l->next) {
-    FmFileInfo* fi = FM_FILE_INFO(l->data);
-    if(fm_file_info_is_dir(fi)) { /* FIXME: maybe adding files can be allowed later */
-      /* Ideally FmFolder should not emit files-added signals for files that
-       * already exists. So there is no need to check for duplication here. */
-      _this->insertFileInfo(fi);
-    }
-  }
+void DirTreeModelItem::onFolderFilesAdded(Fm::FileInfoList& files) {
+    insertFiles(files);
 }
 
-// static
-void DirTreeModelItem::onFolderFilesRemoved(FmFolder* folder, GSList* files, gpointer user_data) {
-  DirTreeModelItem* _this = (DirTreeModelItem*)user_data;
-  DirTreeModel* model = _this->model_;
+void DirTreeModelItem::onFolderFilesRemoved(Fm::FileInfoList& files) {
+    DirTreeModel* model = model_;
 
-  for(GSList* l = files; l; l = l->next) {
-    FmFileInfo* fi = FM_FILE_INFO(l->data);
-    int pos;
-    DirTreeModelItem* child  = _this->childFromName(fm_file_info_get_name(fi), &pos);
-    if(child) {
-      model->beginRemoveRows(_this->index(), pos, pos);
-      _this->children_.removeAt(pos);
-      delete child;
-      model->endRemoveRows();
+    for(auto& fi: files) {
+        int pos;
+        DirTreeModelItem* child  = childFromName(fi->name().c_str(), &pos);
+        if(child) {
+            model->beginRemoveRows(index(), pos, pos);
+            children_.erase(children_.cbegin() + pos);
+            delete child;
+            model->endRemoveRows();
+        }
     }
-  }
 }
 
-// static
-void DirTreeModelItem::onFolderFilesChanged(FmFolder* folder, GSList* files, gpointer user_data) {
-  DirTreeModelItem* _this = (DirTreeModelItem*)user_data;
-  DirTreeModel* model = _this->model_;
-
-  for(GSList* l = files; l; l = l->next) {
-    FmFileInfo* changedFile = FM_FILE_INFO(l->data);
-    int pos;
-    DirTreeModelItem* child = _this->childFromName(fm_file_info_get_name(changedFile), &pos);
-    if(child) {
-      QModelIndex childIndex = child->index();
-      Q_EMIT model->dataChanged(childIndex, childIndex);
+void DirTreeModelItem::onFolderFilesChanged(std::vector<Fm::FileInfoPair> &changes) {
+    DirTreeModel* model = model_;
+    for(auto& changePair: changes) {
+        int pos;
+        auto& changedFile = changePair.first;
+        DirTreeModelItem* child = childFromName(changedFile->name().c_str(), &pos);
+        if(child) {
+            QModelIndex childIndex = child->index();
+            Q_EMIT model->dataChanged(childIndex, childIndex);
+        }
     }
-  }
 }
 
 DirTreeModelItem* DirTreeModelItem::childFromName(const char* utf8_name, int* pos) {
-  int i = 0;
-  for (const auto item : children_) {
-    if(item->fileInfo_ && strcmp(fm_file_info_get_name(item->fileInfo_), utf8_name) == 0) {
-      if(pos)
-        *pos = i;
-      return item;
+    int i = 0;
+    for(const auto item : children_) {
+        if(item->fileInfo_ && item->fileInfo_->name() == utf8_name) {
+            if(pos) {
+                *pos = i;
+            }
+            return item;
+        }
+        ++i;
     }
-    ++i;
-  }
-  return nullptr;
+    return nullptr;
 }
 
-DirTreeModelItem* DirTreeModelItem::childFromPath(FmPath* path, bool recursive) const {
-  Q_ASSERT(path != nullptr);
+DirTreeModelItem* DirTreeModelItem::childFromPath(Fm::FilePath path, bool recursive) const {
+    Q_ASSERT(path != nullptr);
 
-  Q_FOREACH(DirTreeModelItem* item, children_) {
-    // if(item->fileInfo_)
-    //  qDebug() << "child: " << QString::fromUtf8(fm_file_info_get_disp_name(item->fileInfo_));
-    if(item->fileInfo_ && fm_path_equal(fm_file_info_get_path(item->fileInfo_), path)) {
-      return item;
-    } else if(recursive) {
-      DirTreeModelItem* child = item->childFromPath(path, true);
-      if(child)
-        return child;
+    Q_FOREACH(DirTreeModelItem* item, children_) {
+        // if(item->fileInfo_)
+        //  qDebug() << "child: " << QString::fromUtf8(fm_file_info_get_disp_name(item->fileInfo_));
+        if(item->fileInfo_ && item->fileInfo_->path() == path) {
+            return item;
+        }
+        else if(recursive) {
+            DirTreeModelItem* child = item->childFromPath(std::move(path), true);
+            if(child) {
+                return child;
+            }
+        }
     }
-  }
-  return nullptr;
+    return nullptr;
 }
 
 void DirTreeModelItem::setShowHidden(bool show) {
-  if(show) {
-    // move all hidden children to visible list
-    Q_FOREACH(DirTreeModelItem* item, hiddenChildren_) {
-      insertItem(item);
-    }
-    hiddenChildren_.clear();
-  }
-  else { // hide hidden folders
-    QModelIndex _index = index();
-    QList<DirTreeModelItem*>::iterator it, next;
-    int pos = 0;
-    for(it = children_.begin(); it != children_.end(); ++pos) {
-      DirTreeModelItem* item = *it;
-      next = it + 1;
-      if(item->fileInfo_) {
-        if(fm_file_info_is_hidden(item->fileInfo_)) { // hidden folder
-          // remove from the model and add to the hiddenChildren_ list
-          model_->beginRemoveRows(_index, pos, pos);
-          children_.erase(it);
-          hiddenChildren_.append(item);
-          model_->endRemoveRows();
+    if(show) {
+        // move all hidden children to visible list
+        for(auto item: hiddenChildren_) {
+            insertItem(item);
         }
-        else { // visible folder, recursively filter its children
-          item->setShowHidden(show);
-        }
-      }
-      it = next;
+        hiddenChildren_.clear();
     }
-  }
+    else { // hide hidden folders
+        QModelIndex _index = index();
+        int pos = 0;
+        for(auto it = children_.begin(); it != children_.end(); ++pos) {
+            DirTreeModelItem* item = *it;
+            auto next = it + 1;
+            if(item->fileInfo_) {
+                if(item->fileInfo_->isHidden()) { // hidden folder
+                    // remove from the model and add to the hiddenChildren_ list
+                    model_->beginRemoveRows(_index, pos, pos);
+                    children_.erase(it);
+                    hiddenChildren_.push_back(item);
+                    model_->endRemoveRows();
+                }
+                else { // visible folder, recursively filter its children
+                    item->setShowHidden(show);
+                }
+            }
+            it = next;
+        }
+        if(children_.empty()) { // no visible children, add a placeholder item to keep the row expanded
+            addPlaceHolderChild();
+        }
+    }
 }
 
 
 
 } // namespace Fm
-

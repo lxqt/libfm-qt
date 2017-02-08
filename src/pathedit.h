@@ -33,30 +33,30 @@ namespace Fm {
 class PathEditJob;
 
 class LIBFM_QT_API PathEdit : public QLineEdit {
-Q_OBJECT
+    Q_OBJECT
 public:
-  explicit PathEdit(QWidget* parent = 0);
-  virtual ~PathEdit();
+    explicit PathEdit(QWidget* parent = 0);
+    virtual ~PathEdit();
 
 protected:
-  virtual void focusInEvent(QFocusEvent* e);
-  virtual void focusOutEvent(QFocusEvent* e);
-  virtual bool event(QEvent* e);
+    virtual void focusInEvent(QFocusEvent* e);
+    virtual void focusOutEvent(QFocusEvent* e);
+    virtual bool event(QEvent* e);
 
 private Q_SLOTS:
-  void onTextChanged(const QString & text);
+    void onTextChanged(const QString& text);
 
 private:
-  void autoComplete();
-  void reloadCompleter(bool triggeredByFocusInEvent = false);
-  void freeCompleter();
-  void onJobFinished();
+    void autoComplete();
+    void reloadCompleter(bool triggeredByFocusInEvent = false);
+    void freeCompleter();
+    void onJobFinished();
 
 private:
-  QCompleter* completer_;
-  QStringListModel* model_;
-  QString currentPrefix_;
-  GCancellable* cancellable_;
+    QCompleter* completer_;
+    QStringListModel* model_;
+    QString currentPrefix_;
+    GCancellable* cancellable_;
 };
 
 }

@@ -55,35 +55,34 @@
 
 class QDrag;
 
-class XdndWorkaround : public QAbstractNativeEventFilter
-{
+class XdndWorkaround : public QAbstractNativeEventFilter {
 public:
-  XdndWorkaround();
-  ~XdndWorkaround();
-  bool nativeEventFilter(const QByteArray & eventType, void * message, long * result) override;
-  static QByteArray atomName(xcb_atom_t atom);
-  static xcb_atom_t internAtom(const char* name, int len = -1);
-  static QByteArray windowProperty(xcb_window_t window, xcb_atom_t propAtom, xcb_atom_t typeAtom, int len);
-  static void setWindowProperty(xcb_window_t window, xcb_atom_t propAtom, xcb_atom_t typeAtom, void* data, int len, int format = 8);
+    XdndWorkaround();
+    ~XdndWorkaround();
+    bool nativeEventFilter(const QByteArray& eventType, void* message, long* result) override;
+    static QByteArray atomName(xcb_atom_t atom);
+    static xcb_atom_t internAtom(const char* name, int len = -1);
+    static QByteArray windowProperty(xcb_window_t window, xcb_atom_t propAtom, xcb_atom_t typeAtom, int len);
+    static void setWindowProperty(xcb_window_t window, xcb_atom_t propAtom, xcb_atom_t typeAtom, void* data, int len, int format = 8);
 
 private:
-  bool clientMessage(xcb_client_message_event_t* event);
-  bool selectionNotify(xcb_selection_notify_event_t* event);
+    bool clientMessage(xcb_client_message_event_t* event);
+    bool selectionNotify(xcb_selection_notify_event_t* event);
 
 // This part is for Qt >= 5.4 only
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
 private:
-  bool selectionRequest(xcb_selection_request_event_t* event);
-  bool genericEvent(xcb_ge_generic_event_t *event);
-  // _QBasicDrag* xcbDrag() const;
-  void buttonRelease();
+    bool selectionRequest(xcb_selection_request_event_t* event);
+    bool genericEvent(xcb_ge_generic_event_t* event);
+    // _QBasicDrag* xcbDrag() const;
+    void buttonRelease();
 
-  QDrag* lastDrag_;
-  // xinput related
-  bool xinput2Enabled_;
-  int xinputOpCode_;
-  int xinputEventBase_;
-  int xinputErrorBase_;
+    QDrag* lastDrag_;
+    // xinput related
+    bool xinput2Enabled_;
+    int xinputOpCode_;
+    int xinputEventBase_;
+    int xinputErrorBase_;
 #endif // Qt >= 5.4
 };
 

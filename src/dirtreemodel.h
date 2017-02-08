@@ -27,6 +27,10 @@
 #include <QList>
 #include <QSharedPointer>
 #include <libfm/fm.h>
+#include <vector>
+
+#include "core/fileinfo.h"
+#include "core/filepath.h"
 
 namespace Fm {
 
@@ -34,56 +38,63 @@ class DirTreeModelItem;
 class DirTreeView;
 
 class LIBFM_QT_API DirTreeModel : public QAbstractItemModel {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  friend class DirTreeModelItem; // allow direct access of private members in DirTreeModelItem
-  friend class DirTreeView; // allow direct access of private members in DirTreeView
+    friend class DirTreeModelItem; // allow direct access of private members in DirTreeModelItem
+    friend class DirTreeView; // allow direct access of private members in DirTreeView
 
-  enum Role {
-    FileInfoRole = Qt::UserRole
-  };
+    enum Role {
+        FileInfoRole = Qt::UserRole
+    };
 
-  explicit DirTreeModel(QObject* parent);
-  ~DirTreeModel();
+    explicit DirTreeModel(QObject* parent);
+    ~DirTreeModel();
 
-  QModelIndex addRoot(FmFileInfo* root);
-  void loadRow(const QModelIndex& index);
-  void unloadRow(const QModelIndex& index);
+    QModelIndex addRoots(Fm::FilePathList rootPaths);
 
-  bool isLoaded(const QModelIndex& index);
-  QIcon icon(const QModelIndex& index);
-  FmFileInfo* fileInfo(const QModelIndex& index);
-  FmPath* filePath(const QModelIndex& index);
-  QString dispName(const QModelIndex& index);
+    void loadRow(const QModelIndex& index);
+    void unloadRow(const QModelIndex& index);
 
-  void setShowHidden(bool show_hidden);
-  bool showHidden() const {
-    return showHidden_;
-  }
+    bool isLoaded(const QModelIndex& index);
+    QIcon icon(const QModelIndex& index);
+    std::shared_ptr<const Fm::FileInfo> fileInfo(const QModelIndex& index);
+    Fm::FilePath filePath(const QModelIndex& index);
+    QString dispName(const QModelIndex& index);
 
-  QModelIndex indexFromPath(FmPath* path) const;
+    void setShowHidden(bool show_hidden);
+    bool showHidden() const {
+        return showHidden_;
+    }
 
-  virtual Qt::ItemFlags flags(const QModelIndex& index) const;
-  virtual QVariant data(const QModelIndex& index, int role) const;
-  virtual int columnCount(const QModelIndex& parent) const;
-  virtual int rowCount(const QModelIndex& parent) const;
-  virtual QModelIndex parent(const QModelIndex& child) const;
-  virtual QModelIndex index(int row, int column, const QModelIndex& parent) const;
-  virtual bool hasChildren(const QModelIndex& parent = QModelIndex()) const;
+    QModelIndex indexFromPath(const Fm::FilePath& path) const;
 
-private:
-  DirTreeModelItem* itemFromPath(FmPath* path) const;
-  DirTreeModelItem* itemFromIndex(const QModelIndex& index) const;
-  QModelIndex indexFromItem(DirTreeModelItem* item) const;
+    virtual Qt::ItemFlags flags(const QModelIndex& index) const;
+    virtual QVariant data(const QModelIndex& index, int role) const;
+    virtual int columnCount(const QModelIndex& parent) const;
+    virtual int rowCount(const QModelIndex& parent) const;
+    virtual QModelIndex parent(const QModelIndex& child) const;
+    virtual QModelIndex index(int row, int column, const QModelIndex& parent) const;
+    virtual bool hasChildren(const QModelIndex& parent = QModelIndex()) const;
 
 Q_SIGNALS:
-  void rowLoaded(const QModelIndex& index);
+    void rowLoaded(const QModelIndex& index);
+
+private Q_SLOTS:
+    void onFileInfoJobFinished();
 
 private:
-  bool showHidden_;
-  QList<DirTreeModelItem*> rootItems_;
+    QModelIndex addRoot(std::shared_ptr<const Fm::FileInfo> root);
+
+    DirTreeModelItem* itemFromPath(const Fm::FilePath& path) const;
+    DirTreeModelItem* itemFromIndex(const QModelIndex& index) const;
+    QModelIndex indexFromItem(DirTreeModelItem* item) const;
+
+private:
+    bool showHidden_;
+    std::vector<DirTreeModelItem*> rootItems_;
 };
+
 }
 
 #endif // FM_DIRTREEMODEL_H

@@ -22,9 +22,12 @@
 
 #include "libfmqtglobals.h"
 #include <libfm/fm.h>
+#include <vector>
 #include <QIcon>
-#include <QList>
 #include <QModelIndex>
+
+#include "core/fileinfo.h"
+#include "core/folder.h"
 
 namespace Fm {
 
@@ -33,49 +36,55 @@ class DirTreeView;
 
 class LIBFM_QT_API DirTreeModelItem {
 public:
-  friend class DirTreeModel; // allow direct access of private members in DirTreeModel
-  friend class DirTreeView; // allow direct access of private members in DirTreeView
+    friend class DirTreeModel; // allow direct access of private members in DirTreeModel
+    friend class DirTreeView; // allow direct access of private members in DirTreeView
 
-  explicit DirTreeModelItem();
-  explicit DirTreeModelItem(FmFileInfo* info, DirTreeModel* model, DirTreeModelItem* parent = nullptr);
-  ~DirTreeModelItem();
+    explicit DirTreeModelItem();
+    explicit DirTreeModelItem(std::shared_ptr<const Fm::FileInfo> info, DirTreeModel* model, DirTreeModelItem* parent = nullptr);
+    ~DirTreeModelItem();
 
-  void loadFolder();
-  void unloadFolder();
+    void loadFolder();
+    void unloadFolder();
 
-  inline bool isPlaceHolder() const {
-    return (fileInfo_ == nullptr);
-  }
+    inline bool isPlaceHolder() const {
+        return (fileInfo_ == nullptr);
+    }
 
-  void setShowHidden(bool show);
-
-private:
-  void freeFolder();
-  void addPlaceHolderChild();
-  DirTreeModelItem* childFromName(const char* utf8_name, int* pos);
-  DirTreeModelItem* childFromPath(FmPath* path, bool recursive) const;
-
-  DirTreeModelItem* insertFileInfo(FmFileInfo* fi);
-  int insertItem(Fm::DirTreeModelItem* newItem);
-  QModelIndex index();
-
-  static void onFolderFinishLoading(FmFolder* folder, gpointer user_data);
-  static void onFolderFilesAdded(FmFolder* folder, GSList* files, gpointer user_data);
-  static void onFolderFilesRemoved(FmFolder* folder, GSList* files, gpointer user_data);
-  static void onFolderFilesChanged(FmFolder* folder, GSList* files, gpointer user_data);
+    void setShowHidden(bool show);
 
 private:
-  FmFileInfo* fileInfo_;
-  FmFolder* folder_;
-  QString displayName_ ;
-  QIcon icon_;
-  bool expanded_;
-  bool loaded_;
-  DirTreeModelItem* parent_;
-  DirTreeModelItem* placeHolderChild_;
-  QList<DirTreeModelItem*> children_;
-  QList<DirTreeModelItem*> hiddenChildren_;
-  DirTreeModel* model_;
+    void freeFolder();
+    void addPlaceHolderChild();
+    DirTreeModelItem* childFromName(const char* utf8_name, int* pos);
+    DirTreeModelItem* childFromPath(Fm::FilePath path, bool recursive) const;
+
+    DirTreeModelItem* insertFile(std::shared_ptr<const Fm::FileInfo> fi);
+    void insertFiles(Fm::FileInfoList files);
+    int insertItem(Fm::DirTreeModelItem* newItem);
+    QModelIndex index();
+
+    void onFolderFinishLoading();
+    void onFolderFilesAdded(Fm::FileInfoList &files);
+    void onFolderFilesRemoved(Fm::FileInfoList &files);
+    void onFolderFilesChanged(std::vector<Fm::FileInfoPair>& changes);
+
+private:
+    std::shared_ptr<const Fm::FileInfo> fileInfo_;
+    std::shared_ptr<Fm::Folder> folder_;
+    QString displayName_ ;
+    QIcon icon_;
+    bool expanded_;
+    bool loaded_;
+    DirTreeModelItem* parent_;
+    DirTreeModelItem* placeHolderChild_;
+    std::vector<DirTreeModelItem*> children_;
+    std::vector<DirTreeModelItem*> hiddenChildren_;
+    DirTreeModel* model_;
+    // signal connections
+    QMetaObject::Connection onFolderFinishLoadingConn_;
+    QMetaObject::Connection onFolderFilesAddedConn_;
+    QMetaObject::Connection onFolderFilesRemovedConn_;
+    QMetaObject::Connection onFolderFilesChangedConn_;
 };
 
 }

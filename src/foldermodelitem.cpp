@@ -19,78 +19,87 @@
 
 
 #include "foldermodelitem.h"
+#include <QDateTime>
+#include "utilities.h"
+#include "core/userinfocache.h"
 
 namespace Fm {
 
-FolderModelItem::FolderModelItem(FmFileInfo* _info):
-  info(fm_file_info_ref(_info)) {
-  displayName = QString::fromUtf8(fm_file_info_get_disp_name(info));
-  icon = IconTheme::icon(fm_file_info_get_icon(_info));
-  thumbnails.reserve(2);
+FolderModelItem::FolderModelItem(const std::shared_ptr<const Fm::FileInfo>& _info):
+    info{_info} {
+    thumbnails.reserve(2);
 }
 
-FolderModelItem::FolderModelItem(const FolderModelItem& other) {
-  info = other.info ? fm_file_info_ref(other.info) : NULL;
-  displayName = QString::fromUtf8(fm_file_info_get_disp_name(info));
-  icon = other.icon;
-  thumbnails = other.thumbnails;
+FolderModelItem::FolderModelItem(const FolderModelItem& other):
+    info{other.info},
+    thumbnails{other.thumbnails} {
 }
 
 FolderModelItem::~FolderModelItem() {
-  if(info)
-    fm_file_info_unref(info);
+}
+
+QString FolderModelItem::ownerName() const {
+    QString name;
+    auto user = Fm::UserInfoCache::globalInstance()->userFromId(info->uid());
+    if(user) {
+        name = user->realName();
+        if(name.isEmpty()) {
+            name = user->name();
+        }
+    }
+    return name;
+}
+
+QString FolderModelItem::ownerGroup() const {
+    auto group = Fm::UserInfoCache::globalInstance()->groupFromId(info->gid());
+    return group ? group->name() : QString();
+}
+
+const QString &FolderModelItem::displayMtime() const {
+    if(dispMtime_.isEmpty()) {
+        auto mtime = QDateTime::fromMSecsSinceEpoch(info->mtime() * 1000);
+        dispMtime_ = mtime.toString(Qt::SystemLocaleShortDate);
+    }
+    return dispMtime_;
+}
+
+const QString& FolderModelItem::displaySize() const {
+    if(dispSize_.isEmpty() && !info->isDir()) {
+        // FIXME: choose IEC or SI units
+        dispSize_ = Fm::formatFileSize(info->size(), false);
+    }
+    return dispSize_;
 }
 
 // find thumbnail of the specified size
 // The returned thumbnail item is temporary and short-lived
 // If you need to use the struct later, copy it to your own struct to keep it.
 FolderModelItem::Thumbnail* FolderModelItem::findThumbnail(int size) {
-  QVector<Thumbnail>::iterator it;
-  for(it = thumbnails.begin(); it != thumbnails.end(); ++it) {
-    if(it->size == size) { // an image of the same size is found
-      return it;
+    QVector<Thumbnail>::iterator it;
+    for(it = thumbnails.begin(); it != thumbnails.end(); ++it) {
+        if(it->size == size) { // an image of the same size is found
+            return it;
+        }
     }
-  }
-  if(it == thumbnails.end()) {
-    Thumbnail thumbnail;
-    thumbnail.status = ThumbnailNotChecked;
-    thumbnail.size = size;
-    thumbnails.append(thumbnail);
-  }
-  return &thumbnails.back();
+    if(it == thumbnails.end()) {
+        Thumbnail thumbnail;
+        thumbnail.status = ThumbnailNotChecked;
+        thumbnail.size = size;
+        thumbnails.append(thumbnail);
+    }
+    return &thumbnails.back();
 }
 
 // remove cached thumbnail of the specified size
 void FolderModelItem::removeThumbnail(int size) {
-  QVector<Thumbnail>::iterator it;
-  for(it = thumbnails.begin(); it != thumbnails.end(); ++it) {
-    if(it->size == size) { // an image of the same size is found
-      thumbnails.erase(it);
-      break;
+    QVector<Thumbnail>::iterator it;
+    for(it = thumbnails.begin(); it != thumbnails.end(); ++it) {
+        if(it->size == size) { // an image of the same size is found
+            thumbnails.erase(it);
+            break;
+        }
     }
-  }
 }
-
-#if 0
-// cache the thumbnail of the specified size in the folder item
-void FolderModelItem::setThumbnail(int size, QImage image) {
-  QVector<Thumbnail>::iterator it;
-  for(it = thumbnails.begin(); it != thumbnails.end(); ++it) {
-    if(it->size == size) { // an image of the same size already exists
-      it->image = image; // replace it
-      it->status = ThumbnailLoaded;
-      break;
-    }
-  }
-  if(it == thumbnails.end()) { // the image is not found
-    Thumbnail thumbnail;
-    thumbnail.size = size;
-    thumbnail.status = ThumbnailLoaded;
-    thumbnail.image = image;
-    thumbnails.append(thumbnail); // add a new entry
-  }
-}
-#endif
 
 
 } // namespace Fm

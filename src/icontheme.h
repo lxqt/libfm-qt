@@ -25,49 +25,27 @@
 #include <QIcon>
 #include <QString>
 #include "libfm/fm.h"
-#include "icon.h"
 
 namespace Fm {
 
-// NOTE:
-// Qt seems to has its own QIcon pixmap caching mechanism internally.
-// Besides, it also caches QIcon objects created by QIcon::fromTheme().
-// So maybe we should not duplicate the work.
-// See http://qt.gitorious.org/qt/qt/blobs/4.8/src/gui/image/qicon.cpp
-// QPixmap QPixmapIconEngine::pixmap(const QSize &size, QIcon::Mode mode, QIcon::State state).
-// In addition, QPixmap is actually stored in X11 server, not client side.
-// Hence maybe we should not cache too many pixmaps, I guess?
-// Let's have Qt do its work and only translate GIcon to QIcon here.
-
-// Nice article about QPixmap from KDE: http://techbase.kde.org/Development/Tutorials/Graphics/Performance
-
-class IconCacheData;
-
 class LIBFM_QT_API IconTheme: public QObject {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  IconTheme();
-  ~IconTheme();
+    IconTheme();
+    ~IconTheme();
 
-  static IconTheme* instance();
-  static QIcon icon(FmIcon* fmicon);
-  static QIcon icon(GIcon* gicon);
-  static QList<Icon> emblems(FmIcon* fmicon);
-  static QList<Icon> emblems(GIcon* gicon);
+    static IconTheme* instance();
 
-  static void checkChanged(); // check if current icon theme name is changed
+    static void checkChanged(); // check if current icon theme name is changed
+
 Q_SIGNALS:
-  void changed(); // emitted when the name of current icon theme is changed
+    void changed(); // emitted when the name of current icon theme is changed
 
 protected:
-  bool eventFilter(QObject *obj, QEvent *event);
-  static QIcon convertFromGIconWithoutEmblems(GIcon* gicon);
-  static QIcon iconFromNames(const char * const * names);
-  static IconCacheData* ensureCacheData(FmIcon* fmicon);
+    bool eventFilter(QObject* obj, QEvent* event);
 
-protected:
-  QIcon fallbackIcon_;
-  QString currentThemeName_;
+private:
+    QString currentThemeName_;
 };
 
 }

@@ -34,11 +34,11 @@ static char* fm_app_launch_context_get_display(GAppLaunchContext *context, GAppI
     char* xstr = DisplayString(dpy);
     return g_strdup(xstr);
   }
-  return NULL;
+  return nullptr;
 }
 
 static char* fm_app_launch_context_get_startup_notify_id(GAppLaunchContext *context, GAppInfo *info, GList *files) {
-  return NULL;
+  return nullptr;
 }
 
 static void fm_app_launch_context_class_init(FmAppLaunchContextClass* klass) {
@@ -51,11 +51,11 @@ static void fm_app_launch_context_init(FmAppLaunchContext* context) {
 }
 
 FmAppLaunchContext* fm_app_launch_context_new_for_widget(QWidget* widget) {
-  FmAppLaunchContext* context = (FmAppLaunchContext*)g_object_new(FM_TYPE_APP_LAUNCH_CONTEXT, NULL);
+  FmAppLaunchContext* context = (FmAppLaunchContext*)g_object_new(FM_TYPE_APP_LAUNCH_CONTEXT, nullptr);
   return context;
 }
 
 FmAppLaunchContext* fm_app_launch_context_new() {
-  FmAppLaunchContext* context = (FmAppLaunchContext*)g_object_new(FM_TYPE_APP_LAUNCH_CONTEXT, NULL);
+  FmAppLaunchContext* context = (FmAppLaunchContext*)g_object_new(FM_TYPE_APP_LAUNCH_CONTEXT, nullptr);
   return context;
 }

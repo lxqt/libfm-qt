@@ -24,53 +24,53 @@
 #include <QStyle>
 #include <QEvent>
 #include <QMouseEvent>
-#include "path.h"
+#include <QString>
+#include <string>
 
 namespace Fm {
 
 class PathButton: public QToolButton {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  PathButton(Fm::Path pathElement, QWidget* parent = nullptr):
-    QToolButton(parent),
-    pathElement_(pathElement) {
+    PathButton(std::string name, QString displayName, bool isRoot = false, QWidget* parent = nullptr):
+        QToolButton(parent),
+        name_{name} {
 
-      setSizePolicy(QSizePolicy::Fixed, QSizePolicy::MinimumExpanding);
-      setCheckable(true);
-      setAutoExclusive(true);
-      setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-      /* respect the toolbar icon size (can be set with some styles) */
-      int icnSize = style()->pixelMetric(QStyle::PM_ToolBarIconSize);
-      setIconSize(QSize(icnSize, icnSize));
+        setSizePolicy(QSizePolicy::Fixed, QSizePolicy::MinimumExpanding);
+        setCheckable(true);
+        setAutoExclusive(true);
+        setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+        /* respect the toolbar icon size (can be set with some styles) */
+        int icnSize = style()->pixelMetric(QStyle::PM_ToolBarIconSize);
+        setIconSize(QSize(icnSize, icnSize));
 
-      char* label = pathElement.displayBasename();
-      setText(label);
-      g_free(label);
+        setText(displayName);
 
-      if(pathElement.getParent().isNull()) { /* this element is root */
-        QIcon icon = QIcon::fromTheme("drive-harddisk");
-        setIcon(icon);
-      }
-  }
-
-  Path pathElement() {
-    return pathElement_;
-  }
-
-  void setPathElement(Path pathElement) {
-    pathElement_ = pathElement;
-  }
-
-  void changeEvent(QEvent* event) override {
-    QToolButton::changeEvent(event);
-    if(event->type() == QEvent::StyleChange) {
-      int icnSize = style()->pixelMetric(QStyle::PM_ToolBarIconSize);
-      setIconSize(QSize(icnSize, icnSize));
+        if(isRoot) { /* this element is root */
+            QIcon icon = QIcon::fromTheme("drive-harddisk");
+            setIcon(icon);
+        }
     }
-  }
+
+    void changeEvent(QEvent* event) override {
+        QToolButton::changeEvent(event);
+        if(event->type() == QEvent::StyleChange) {
+            int icnSize = style()->pixelMetric(QStyle::PM_ToolBarIconSize);
+            setIconSize(QSize(icnSize, icnSize));
+        }
+    }
+
+    std::string name() const {
+        return name_;
+    }
+
+    void setName(const std::string& name) {
+        name_ = name;
+    }
 
 private:
-  Path pathElement_;
+    QString displayName_;
+    std::string name_;
 };
 
 } // namespace Fm

@@ -22,7 +22,7 @@
 
 #include "libfmqtglobals.h"
 #include <QWidget>
-#include "path.h"
+#include "core/filepath.h"
 
 class QToolButton;
 class QScrollArea;
@@ -32,27 +32,28 @@ class QHBoxLayout;
 namespace Fm {
 
 class PathEdit;
+class PathButton;
 
 class LIBFM_QT_API PathBar: public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit PathBar(QWidget *parent = 0);
+    explicit PathBar(QWidget* parent = 0);
 
-  Path path() {
-    return currentPath_;
-  }
+    const Fm::FilePath& path() {
+        return currentPath_;
+    }
 
-  void setPath(Path path);
+    void setPath(Fm::FilePath path);
 
 Q_SIGNALS:
-  void chdir(FmPath* path);
-  void middleClickChdir(FmPath* path);
-  void editingFinished();
+    void chdir(const Fm::FilePath& path);
+    void middleClickChdir(const Fm::FilePath& path);
+    void editingFinished();
 
 public Q_SLOTS:
-  void openEditor();
-  void closeEditor();
-  void copyPath();
+    void openEditor();
+    void closeEditor();
+    void copyPath();
 
 private Q_SLOTS:
   void onButtonToggled(bool checked);
@@ -62,23 +63,24 @@ private Q_SLOTS:
   void setScrollButtonVisibility();
 
 protected:
-  void resizeEvent(QResizeEvent* event);
-  void wheelEvent (QWheelEvent* event);
-  void mousePressEvent(QMouseEvent *event);
-  void contextMenuEvent(QContextMenuEvent *event);
+    void resizeEvent(QResizeEvent* event);
+    void wheelEvent(QWheelEvent* event);
+    void mousePressEvent(QMouseEvent* event);
+    void contextMenuEvent(QContextMenuEvent* event);
 
 private:
-  void updateScrollButtonVisibility();
+    void updateScrollButtonVisibility();
+    Fm::FilePath pathForButton(PathButton* btn);
 
 private:
-  QToolButton* scrollToStart_;
-  QToolButton* scrollToEnd_;
-  QScrollArea* scrollArea_;
-  QWidget* buttonsWidget_;
-  QHBoxLayout* buttonsLayout_;
-  PathEdit* tempPathEdit_;
+    QToolButton* scrollToStart_;
+    QToolButton* scrollToEnd_;
+    QScrollArea* scrollArea_;
+    QWidget* buttonsWidget_;
+    QHBoxLayout* buttonsLayout_;
+    PathEdit* tempPathEdit_;
 
-  Path currentPath_;   // currently active path
+    Fm::FilePath currentPath_;   // currently active path
 };
 
 } // namespace Fm

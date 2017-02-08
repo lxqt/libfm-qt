@@ -21,53 +21,47 @@
 
 namespace Fm {
 
-static GQuark data_id = 0;
-
-
-CachedFolderModel::CachedFolderModel(FmFolder* folder):
-  FolderModel(),
-  refCount(1) {
-
-  FolderModel::setFolder(folder);
+CachedFolderModel::CachedFolderModel(const std::shared_ptr<Fm::Folder>& folder):
+    FolderModel(),
+    refCount(1) {
+    FolderModel::setFolder(folder);
 }
 
 CachedFolderModel::~CachedFolderModel() {
+    // qDebug("delete CachedFolderModel");
 }
 
-CachedFolderModel* CachedFolderModel::modelFromFolder(FmFolder* folder) {
-  CachedFolderModel* model = NULL;
-  if(!data_id)
-    data_id = g_quark_from_static_string("CachedFolderModel");
-  gpointer qdata = g_object_get_qdata(G_OBJECT(folder), data_id);
-  model = reinterpret_cast<CachedFolderModel*>(qdata);
-  if(model) {
-    // qDebug("cache found!!");
-    model->ref();
-  }
-  else {
-    model = new CachedFolderModel(folder);
-    g_object_set_qdata(G_OBJECT(folder), data_id, model);
-  }
-  return model;
-}
-
-CachedFolderModel* CachedFolderModel::modelFromPath(FmPath* path) {
-  FmFolder* folder = fm_folder_from_path(path);
-  if(folder) {
-    CachedFolderModel* model = modelFromFolder(folder);
-    g_object_unref(folder);
+CachedFolderModel* CachedFolderModel::modelFromFolder(const std::shared_ptr<Fm::Folder>& folder) {
+    CachedFolderModel* model = nullptr;
+    QVariant cache = folder->property(cacheKey);
+    model = cache.value<CachedFolderModel*>();
+    if(model) {
+        model->ref();
+    }
+    else {
+        model = new CachedFolderModel(folder);
+        cache = QVariant::fromValue(model);
+        folder->setProperty(cacheKey, cache);
+    }
     return model;
-  }
-  return NULL;
+}
+
+CachedFolderModel* CachedFolderModel::modelFromPath(const Fm::FilePath& path) {
+    auto folder = Fm::Folder::fromPath(path);
+    if(folder) {
+        CachedFolderModel* model = modelFromFolder(folder);
+        return model;
+    }
+    return nullptr;
 }
 
 void CachedFolderModel::unref() {
-  // qDebug("unref cache");
-  --refCount;
-  if(refCount <= 0) {
-    g_object_set_qdata(G_OBJECT(folder()), data_id, NULL);
-    deleteLater();
-  }
+    // qDebug("unref cache");
+    --refCount;
+    if(refCount <= 0) {
+        folder()->setProperty(cacheKey, QVariant());
+        deleteLater();
+    }
 }
 
 

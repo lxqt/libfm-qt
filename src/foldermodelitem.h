@@ -29,41 +29,55 @@
 #include <QVector>
 #include "icontheme.h"
 
+#include "core/folder.h"
+
 namespace Fm {
 
 class LIBFM_QT_API FolderModelItem {
 public:
 
-  enum ThumbnailStatus {
-    ThumbnailNotChecked,
-    ThumbnailLoading,
-    ThumbnailLoaded,
-    ThumbnailFailed
-  };
+    enum ThumbnailStatus {
+        ThumbnailNotChecked,
+        ThumbnailLoading,
+        ThumbnailLoaded,
+        ThumbnailFailed
+    };
 
-  struct Thumbnail {
-    int size;
-    ThumbnailStatus status;
-    QImage image;
-  };
+    struct Thumbnail {
+        int size;
+        ThumbnailStatus status;
+        QImage image;
+    };
 
 public:
-  FolderModelItem(FmFileInfo* _info);
-  FolderModelItem(const FolderModelItem& other);
-  virtual ~FolderModelItem();
+    FolderModelItem(const std::shared_ptr<const Fm::FileInfo>& _info);
+    FolderModelItem(const FolderModelItem& other);
+    virtual ~FolderModelItem();
 
-  Thumbnail* findThumbnail(int size);
-  // void setThumbnail(int size, QImage image);
-  void removeThumbnail(int size);
+    const QString& displayName() const {
+        return info->displayName();
+    }
 
-  void updateIcon() {
-    icon = IconTheme::icon(fm_file_info_get_icon(info));
-  }
+    QIcon icon() const {
+        return info->icon()->qicon();
+    }
 
-  QString displayName;
-  QIcon icon;
-  FmFileInfo* info;
-  QVector<Thumbnail> thumbnails;
+    QString ownerName() const;
+
+    QString ownerGroup() const;
+
+    const QString& displayMtime() const;
+
+    const QString &displaySize() const;
+
+    Thumbnail* findThumbnail(int size);
+
+    void removeThumbnail(int size);
+
+    std::shared_ptr<const Fm::FileInfo> info;
+    mutable QString dispMtime_;
+    mutable QString dispSize_;
+    QVector<Thumbnail> thumbnails;
 };
 
 }

@@ -24,7 +24,7 @@ namespace Fm {
 
 class CustomAction : public QAction {
 public:
-  explicit CustomAction(FmFileActionItem* item, QObject* parent = NULL):
+  explicit CustomAction(FmFileActionItem* item, QObject* parent = nullptr):
     QAction(QString::fromUtf8(fm_file_action_item_get_name(item)), parent),
     item_(reinterpret_cast<FmFileActionItem*>(fm_file_action_item_ref(item))) {
     const char* icon_name = fm_file_action_item_get_icon(item);
