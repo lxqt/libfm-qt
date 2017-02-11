@@ -28,6 +28,10 @@ set(libfm_core_SRCS
     core/userinfocache.cpp
     core/thumbnailer.cpp
     core/terminal.cpp
+    # custom actions
+    customactions/fileaction.cpp
+    customactions/fileactionprofile.cpp
+    customactions/fileactioncondition.cpp
 )
 
 set(libfm_SRCS

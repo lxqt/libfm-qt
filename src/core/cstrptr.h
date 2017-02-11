@@ -12,7 +12,8 @@ struct CStrDeleter {
     }
 };
 
-typedef std::unique_ptr<char, CStrDeleter> CStrPtr;
+// smart pointer for C string (char*) which should be freed by free()
+typedef std::unique_ptr<char[], CStrDeleter> CStrPtr;
 
 struct CStrHash {
     std::size_t operator()(const char* str) const {
@@ -25,6 +26,16 @@ struct CStrEqual {
         return g_str_equal(str1, str2);
     }
 };
+
+struct CStrVDeleter {
+    void operator()(char** ptr) {
+        g_strfreev(ptr);
+    }
+};
+
+// smart pointer for C string array (char**) which should be freed by g_strfreev() of glib
+typedef std::unique_ptr<char*[], CStrVDeleter> CStrArrayPtr;
+
 
 } // namespace Fm
 
