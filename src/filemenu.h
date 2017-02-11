@@ -29,11 +29,10 @@
 
 class QAction;
 
-struct _FmFileActionItem;
-
 namespace Fm {
 
 class FileLauncher;
+class FileActionItem;
 
 class LIBFM_QT_API FileMenu : public QMenu {
     Q_OBJECT
@@ -157,9 +156,7 @@ public:
     }
 
 protected:
-#ifdef CUSTOM_ACTIONS
-    void addCustomActionItem(QMenu* menu, struct _FmFileActionItem* item);
-#endif
+    void addCustomActionItem(QMenu* menu, std::shared_ptr<const FileActionItem> item);
     void openFilesWithApp(GAppInfo* app);
 
 protected Q_SLOTS:
@@ -167,9 +164,7 @@ protected Q_SLOTS:
     void onOpenWithTriggered();
     void onFilePropertiesTriggered();
     void onApplicationTriggered();
-#ifdef CUSTOM_ACTIONS
     void onCustomActionTrigerred();
-#endif
     void onCompress();
     void onExtract();
     void onExtractHere();

@@ -2,6 +2,7 @@
 #include "fileaction.h"
 #include <string>
 
+
 using namespace std;
 
 namespace Fm {
@@ -63,22 +64,23 @@ bool FileActionCondition::match_show_if_registered(const FileInfoList& files) {
         // References:
         // http://people.freedesktop.org/~david/eggdbus-20091014/eggdbus-interface-org.freedesktop.DBus.html#eggdbus-method-org.freedesktop.DBus.NameHasOwner
         // glib source code: gio/tests/gdbus-names.c
-#if 0
-        auto con = Bus.get_sync(BusType.SESSION);
-        auto result = con.call_sync("org.freedesktop.DBus",
-                                   "/org/freedesktop/DBus",
-                                   "org.freedesktop.DBus",
-                                   "NameHasOwner",
-                                   new Variant("(s)", service),
-                                   new VariantType("(b)"),
-                                   DBusCallFlags.NONE, -1);
+        auto con = g_bus_get_sync(G_BUS_TYPE_SESSION, nullptr, nullptr);
+        auto result = g_dbus_connection_call_sync(con,
+                                                  "org.freedesktop.DBus",
+                                                   "/org/freedesktop/DBus",
+                                                   "org.freedesktop.DBus",
+                                                   "NameHasOwner",
+                                                   g_variant_new("(s)", service.c_str()),
+                                                   g_variant_type_new("(b)"),
+                                                   G_DBUS_CALL_FLAGS_NONE,
+                                                  -1, nullptr, nullptr);
         bool name_has_owner;
-        result.get("(b)", out name_has_owner);
+        g_variant_get(result, "(b)", &name_has_owner);
+        g_variant_unref(result);
         // stdout.printf("check if service: %s is in use: %d\n", service, (int)name_has_owner);
         if(!name_has_owner) {
             return false;
         }
-#endif
     }
     return true;
 }

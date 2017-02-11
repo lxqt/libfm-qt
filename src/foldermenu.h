@@ -25,15 +25,13 @@
 #include <QMenu>
 #include <libfm/fm.h>
 #include "foldermodel.h"
-#ifdef CUSTOM_ACTIONS
-#include <libfm/fm-actions.h>
-#endif
 
 class QAction;
 
 namespace Fm {
 
 class FolderView;
+class FileActionItem;
 
 class LIBFM_QT_API FolderMenu : public QMenu {
     Q_OBJECT
@@ -91,9 +89,7 @@ public:
     }
 
 protected:
-#ifdef CUSTOM_ACTIONS
-    void addCustomActionItem(QMenu* menu, FmFileActionItem* item);
-#endif
+    void addCustomActionItem(QMenu* menu, std::shared_ptr<const FileActionItem> item);
 
 protected Q_SLOTS:
     void onPasteActionTriggered();
@@ -105,9 +101,7 @@ protected Q_SLOTS:
     void onCaseSensitiveActionTriggered(bool checked);
     void onFolderFirstActionTriggered(bool checked);
     void onPropertiesActionTriggered();
-#ifdef CUSTOM_ACTIONS
     void onCustomActionTrigerred();
-#endif
 
 private:
     void createSortMenu();

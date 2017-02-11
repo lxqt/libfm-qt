@@ -26,10 +26,10 @@
 #include "fileoperation.h"
 #include "filelauncher.h"
 #include "appchooserdialog.h"
-#ifdef CUSTOM_ACTIONS
-#include <libfm/fm-actions.h>
+
+#include "customactions/fileaction.h"
 #include "customaction_p.h"
-#endif
+
 #include <QMessageBox>
 #include <QDebug>
 #include "filemenu_p.h"
@@ -162,34 +162,18 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
         addAction(renameAction_);
     }
 
-    // FIXME: port these parts to Fm API
-#ifdef CUSTOM_ACTIONS
     // DES-EMA custom actions integration
-    GList* files_list = nullptr;
-    for(auto it = files_.crbegin(); it != files_.crend(); ++it) {
-        FmFileInfo* fm_info = Fm::_convertFileInfo(*it);
-        files_list = g_list_prepend(files_list, fm_info);
-        qDebug() << "fi:" << fm_info;
-    }
-    GList* items = fm_get_actions_for_files(files_list);
-    g_list_foreach(files_list, (GFunc)fm_file_info_unref, nullptr);
-    g_list_free(files_list);
-
-    if(items) {
-        GList* l;
-        for(l = items; l; l = l->next) {
-            FmFileActionItem* item = FM_FILE_ACTION_ITEM(l->data);
-            if(l == items && item
-                    && !(fm_file_action_item_is_action(item)
-                         && !(fm_file_action_item_get_target(item) & FM_FILE_ACTION_TARGET_CONTEXT))) {
-                addSeparator(); // before all custom actions
-            }
-            addCustomActionItem(this, item);
+    // FIXME: port these parts to Fm API
+    auto custom_actions = FileActionItem::get_actions_for_files(files);
+    for(auto& item: custom_actions) {
+        if(item && !(item->get_target() & FILE_ACTION_TARGET_CONTEXT)) {
+            continue;  // this item is not for context menu
         }
-        g_list_foreach(items, (GFunc)fm_file_action_item_unref, nullptr);
-        g_list_free(items);
+        if(item == custom_actions.front() && item->is_action()) {
+            addSeparator(); // before all custom actions
+        }
+        addCustomActionItem(this, item);
     }
-#endif
 
     // archiver integration
     // FIXME: we need to modify upstream libfm to include some Qt-based archiver programs.
@@ -230,36 +214,33 @@ FileMenu::~FileMenu() {
 }
 
 
-#ifdef CUSTOM_ACTIONS
-void FileMenu::addCustomActionItem(QMenu* menu, FmFileActionItem* item) {
+void FileMenu::addCustomActionItem(QMenu* menu, std::shared_ptr<const FileActionItem> item) {
     if(!item) { // separator
         addSeparator();
         return;
     }
 
     // this action is not for context menu
-    if(fm_file_action_item_is_action(item) && !(fm_file_action_item_get_target(item) & FM_FILE_ACTION_TARGET_CONTEXT)) {
+    if(item->is_action() && !(item->get_target() & FILE_ACTION_TARGET_CONTEXT)) {
         return;
     }
 
     CustomAction* action = new CustomAction(item, menu);
     menu->addAction(action);
-    if(fm_file_action_item_is_menu(item)) {
-        GList* subitems = fm_file_action_item_get_sub_items(item);
-        if(subitems != nullptr) {
+    if(item->is_menu()) {
+        auto& subitems = item->get_sub_items();
+        if(!subitems.empty()) {
             QMenu* submenu = new QMenu(menu);
-            for(GList* l = subitems; l; l = l->next) {
-                FmFileActionItem* subitem = FM_FILE_ACTION_ITEM(l->data);
+            for(auto& subitem: subitems) {
                 addCustomActionItem(submenu, subitem);
             }
             action->setMenu(submenu);
         }
     }
-    else if(fm_file_action_item_is_action(item)) {
+    else if(item->is_action()) {
         connect(action, &QAction::triggered, this, &FileMenu::onCustomActionTrigerred);
     }
 }
-#endif
 
 void FileMenu::onOpenTriggered() {
     if(fileLauncher_) {
@@ -304,29 +285,17 @@ void FileMenu::onApplicationTriggered() {
     openFilesWithApp(action->appInfo().get());
 }
 
-#ifdef CUSTOM_ACTIONS
 void FileMenu::onCustomActionTrigerred() {
     CustomAction* action = static_cast<CustomAction*>(sender());
-    FmFileActionItem* item = action->item();
-
-    GList* files_list = nullptr;
-    for(auto it = files_.crbegin(); it != files_.crend(); ++it) {
-        FmFileInfo* fm_info = Fm::_convertFileInfo(*it);
-        files_list = g_list_prepend(files_list, fm_info);
-    }
-    char* output = nullptr;
+    auto& item = action->item();
     /* g_debug("item: %s is activated, id:%s", fm_file_action_item_get_name(item),
         fm_file_action_item_get_id(item)); */
-    fm_file_action_item_launch(item, nullptr, files_list, &output);
-    g_list_foreach(files_list, (GFunc)fm_file_info_unref, nullptr);
-    g_list_free(files_list);
-
+    CStrPtr output;
+    item->launch(nullptr, files_, output);
     if(output) {
-        QMessageBox::information(this, tr("Output"), QString::fromUtf8(output));
-        g_free(output);
+        QMessageBox::information(this, tr("Output"), output.get());
     }
 }
-#endif
 
 void FileMenu::onFilePropertiesTriggered() {
     FilePropsDialog::showForFiles(files_);

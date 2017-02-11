@@ -116,11 +116,6 @@ add_library(${LIBFM_QT_LIBRARY_NAME} SHARED
     ${QM_FILES}
 )
 
-# only turn on custom actions support if it is enabled in libfm.
-if(EXISTS "${FM_INCLUDE_DIR}/libfm/fm-actions.h")
-    target_compile_definitions(${LIBFM_QT_LIBRARY_NAME} PRIVATE CUSTOM_ACTIONS)
-endif()
-
 install(EXPORT
     "${LIBFM_QT_LIBRARY_NAME}-targets"
     DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${LIBFM_QT_LIBRARY_NAME}"

@@ -131,9 +131,9 @@ public:
         return (action->type == FileActionType::ACTION);
     }
 
-    bool launch(GAppLaunchContext *ctx, const FileInfoList &files, CStrPtr &output);
+    bool launch(GAppLaunchContext *ctx, const FileInfoList &files, CStrPtr &output) const;
 
-    const std::vector<std::shared_ptr<const FileActionItem>>& get_sub_items() {
+    const std::vector<std::shared_ptr<const FileActionItem>>& get_sub_items() const {
         return children;
     }
 

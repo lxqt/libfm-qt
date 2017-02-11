@@ -26,12 +26,9 @@
 #include "utilities.h"
 #include <cstring> // for memset
 #include <QDebug>
-#ifdef CUSTOM_ACTIONS
 #include "customaction_p.h"
+#include "customactions/fileaction.h"
 #include <QMessageBox>
-#endif
-
-#include "core/compat_p.h"
 
 namespace Fm {
 
@@ -75,33 +72,19 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
     showHiddenAction_->setChecked(model->showHidden());
     connect(showHiddenAction_, &QAction::triggered, this, &FolderMenu::onShowHiddenActionTriggered);
 
-    // FIXME: port custom actions to Fm API
-#ifdef CUSTOM_ACTIONS
-    auto folderInfo = view_->folderInfo();
-    if(folderInfo) {
-        GList* single_list = nullptr;
-        FmFileInfo* fm_info = Fm::_convertFileInfo(folderInfo);
-        single_list = g_list_prepend(single_list, fm_info);
-        GList* items = fm_get_actions_for_files(single_list);
-        g_list_foreach(single_list, (GFunc)fm_file_info_unref, nullptr);
-        g_list_free(single_list);
-
-        if(items) {
-            GList* l;
-            for(l = items; l; l = l->next) {
-                FmFileActionItem* item = FM_FILE_ACTION_ITEM(l->data);
-                if(l == items && item
-                        && !(fm_file_action_item_is_action(item)
-                             && !(fm_file_action_item_get_target(item) & FM_FILE_ACTION_TARGET_CONTEXT))) {
-                    addSeparator(); // before all custom actions
-                }
-                addCustomActionItem(this, item);
-            }
+    // DES-EMA custom actions integration
+    FileInfoList files;
+    files.push_back(view->folderInfo());
+    auto custom_actions = FileActionItem::get_actions_for_files(files);
+    for(auto& item: custom_actions) {
+        if(item && !(item->get_target() & FILE_ACTION_TARGET_CONTEXT)) {
+            continue;  // this item is not for context menu
         }
-        g_list_foreach(items, (GFunc)fm_file_action_item_unref, nullptr);
-        g_list_free(items);
+        if(item == custom_actions.front() && item && item->is_action()) {
+            addSeparator(); // before all custom actions
+        }
+        addCustomActionItem(this, item);
     }
-#endif
 
     separator4_ = addSeparator();
 
@@ -113,52 +96,45 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
 FolderMenu::~FolderMenu() {
 }
 
-#ifdef CUSTOM_ACTIONS
-void FolderMenu::addCustomActionItem(QMenu* menu, FmFileActionItem* item) {
+void FolderMenu::addCustomActionItem(QMenu* menu, std::shared_ptr<const FileActionItem> item) {
     if(!item) {
         return;
     }
-    if(fm_file_action_item_is_action(item) && !(fm_file_action_item_get_target(item) & FM_FILE_ACTION_TARGET_CONTEXT)) {
+    if(item->is_action() && !(item->get_target() & FILE_ACTION_TARGET_CONTEXT)) {
         return;
     }
 
     CustomAction* action = new CustomAction(item, menu);
     menu->addAction(action);
-    if(fm_file_action_item_is_menu(item)) {
-        GList* subitems = fm_file_action_item_get_sub_items(item);
-        if(subitems != nullptr) {
+    if(item->is_menu()) {
+        auto& subitems = item->get_sub_items();
+        if(!subitems.empty()) {
             QMenu* submenu = new QMenu(menu);
-            for(GList* l = subitems; l; l = l->next) {
-                FmFileActionItem* subitem = FM_FILE_ACTION_ITEM(l->data);
+            for(auto& subitem: subitems) {
                 addCustomActionItem(submenu, subitem);
             }
             action->setMenu(submenu);
         }
     }
-    else if(fm_file_action_item_is_action(item)) {
+    else if(item->is_action()) {
         connect(action, &QAction::triggered, this, &FolderMenu::onCustomActionTrigerred);
     }
 }
 
 void FolderMenu::onCustomActionTrigerred() {
-    // FIXME: port to Fm
     CustomAction* action = static_cast<CustomAction*>(sender());
-    FmFileActionItem* item = action->item();
+    auto& item = action->item();
     auto folderInfo = view_->folderInfo();
     if(folderInfo) {
-        GList* single_list = nullptr;
-        single_list = g_list_prepend(single_list, Fm::_convertFileInfo(folderInfo));
-        char* output = nullptr;
-        fm_file_action_item_launch(item, nullptr, single_list, &output);
-        g_list_foreach(single_list, (GFunc)fm_file_info_unref, nullptr);
-        g_list_free(single_list);
+        CStrPtr output;
+        FileInfoList file_list;
+        file_list.push_back(folderInfo);
+        item->launch(nullptr, file_list, output);
         if(output) {
-            QMessageBox::information(this, tr("Output"), QString::fromUtf8(output));
-            g_free(output);
+            QMessageBox::information(this, tr("Output"), output.get());
         }
     }
 }
-#endif
 
 void FolderMenu::addSortMenuItem(QString title, int id) {
     QAction* action = new QAction(title, this);

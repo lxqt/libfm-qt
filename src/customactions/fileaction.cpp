@@ -1,5 +1,6 @@
 #include "fileaction.h"
 #include <unordered_map>
+#include <QDebug>
 
 using namespace std;
 
@@ -269,14 +270,18 @@ std::string FileActionObject::expand_str(const char* templ, const FileInfoList& 
             result += ch;
         }
     }
-    return std::move(result);
+    return result;
 }
 
-FileAction::FileAction(GKeyFile* kf): FileActionObject{kf} {
+FileAction::FileAction(GKeyFile* kf): FileActionObject{kf}, target{FILE_ACTION_TARGET_CONTEXT} {
     type = FileActionType::ACTION;
 
-    if(g_key_file_get_boolean(kf, "Desktop Entry", "TargetContext", nullptr)) {
+    GErrorPtr err;
+    if(g_key_file_get_boolean(kf, "Desktop Entry", "TargetContext", &err)) { // default to true
         target |= FILE_ACTION_TARGET_CONTEXT;
+    }
+    else if(!err) { // error means the key is abscent
+        target &= ~FILE_ACTION_TARGET_CONTEXT;
     }
     if(g_key_file_get_boolean(kf, "Desktop Entry", "TargetLocation", nullptr)) {
         target |= FILE_ACTION_TARGET_LOCATION;
@@ -296,7 +301,7 @@ FileAction::FileAction(GKeyFile* kf): FileActionObject{kf} {
 }
 
 std::shared_ptr<FileActionProfile> FileAction::match(const FileInfoList& files) const {
-    // stdout.printf("FileAction.match: %s\n", id);
+    qDebug() << "FileAction.match: " << id.get();
     if(hidden || !enabled) {
         return nullptr;
     }
@@ -306,8 +311,8 @@ std::shared_ptr<FileActionProfile> FileAction::match(const FileInfoList& files) 
     }
     for(const auto& profile : profiles) {
         if(profile->match(files)) {
+            qDebug() << "  profile matched!\n\n";
             return profile;
-            // stdout.printf("  profile matched!\n\n");
         }
     }
     // stdout.printf("\n");
@@ -389,7 +394,7 @@ std::shared_ptr<FileActionItem> FileActionItem::fromActionObject(std::shared_ptr
 
 FileActionItem::FileActionItem(std::shared_ptr<FileAction> _action, std::shared_ptr<FileActionProfile> _profile, const FileInfoList& files):
     FileActionItem{static_pointer_cast<FileActionObject>(_action), files} {
-    profile = profile;
+    profile = _profile;
 }
 
 FileActionItem::FileActionItem(std::shared_ptr<FileActionMenu> menu, const FileInfoList& files):
@@ -409,12 +414,12 @@ FileActionItem::FileActionItem(std::shared_ptr<FileActionMenu> menu, const FileI
 
 FileActionItem::FileActionItem(std::shared_ptr<FileActionObject> _action, const FileInfoList& files) {
     action = std::move(_action);
-    name = FileActionObject::expand_str(_action->name.get(), files, true);
-    desc = FileActionObject::expand_str(_action->desc.get(), files, true);
-    icon = FileActionObject::expand_str(_action->icon.get(), files, false);
+    name = FileActionObject::expand_str(action->name.get(), files, true);
+    desc = FileActionObject::expand_str(action->desc.get(), files, true);
+    icon = FileActionObject::expand_str(action->icon.get(), files, false);
 }
 
-bool FileActionItem::launch(GAppLaunchContext* ctx, const FileInfoList& files, CStrPtr& output) {
+bool FileActionItem::launch(GAppLaunchContext* ctx, const FileInfoList& files, CStrPtr& output) const {
     if(action->type == FileActionType::ACTION) {
         if(profile != nullptr) {
             profile->launch(ctx, files, output);
@@ -425,7 +430,7 @@ bool FileActionItem::launch(GAppLaunchContext* ctx, const FileInfoList& files, C
 }
 
 static void load_actions_from_dir(const char* dirname, const char* id_prefix) {
-    // stdout.printf("loading from: %s\n", dirname);
+    qDebug() << "loading from: " << dirname << endl;
     auto dir = g_dir_open(dirname, 0, nullptr);
     if(dir != nullptr) {
         for(;;) {

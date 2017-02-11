@@ -1,5 +1,6 @@
 #include "fileactionprofile.h"
 #include "fileaction.h"
+#include <QDebug>
 
 using namespace std;
 
@@ -90,16 +91,23 @@ bool FileActionProfile::launch(GAppLaunchContext* ctx, const FileInfoList& files
     }
     else { // singular form command, run once for each file
         GString* all_output = g_string_sized_new(1024);
+        bool show_output = false;
         for(auto& fi: files) {
             CStrPtr one_output;
             launch_once(ctx, fi, files, one_output);
             if(one_output) {
+                show_output = true;
                 // FIXME: how to handle multiple output std::strings properly?
                 g_string_append(all_output, one_output.get());
                 g_string_append(all_output, "\n");
             }
         }
-        output = CStrPtr{g_string_free(all_output, false)};
+        if(show_output) {
+            output = CStrPtr{g_string_free(all_output, false)};
+        }
+        else {
+            g_string_free(all_output, true);
+        }
         ret = true;
     }
     return ret;
