@@ -37,11 +37,8 @@ find_package(Qt5X11Extras "${REQUIRED_QT_VERSION}" REQUIRED)
 find_package(lxqt-build-tools "${REQUIRED_LXQT_BUILD_TOOLS_VERSION}" REQUIRED)
 find_package(Fm "${REQUIRED_LIBFM_VERSION}" REQUIRED)
 find_package(MenuCache "${REQUIRED_LIBMENUCACHE_VERSION}" REQUIRED)
+find_package(Exif REQUIRED)
 find_package(XCB REQUIRED)
-
-find_package(PkgConfig)
-pkg_check_modules(EXIF libexif REQUIRED)
-
 
 message(STATUS "Building ${PROJECT_NAME} with Qt ${Qt5Core_VERSION_STRING}")
 
