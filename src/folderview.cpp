@@ -747,7 +747,7 @@ Fm::FilePathList FolderView::selectedFilePaths() const {
         if(!selIndexes.isEmpty()) {
             Fm::FilePathList paths;
             QModelIndexList::const_iterator it;
-            for(it = selIndexes.begin(); it != selIndexes.end(); ++it) {
+            for(it = selIndexes.constBegin(); it != selIndexes.constEnd(); ++it) {
                 auto file = model_->fileInfoFromIndex(*it);
                 paths.push_back(file->path());
             }
