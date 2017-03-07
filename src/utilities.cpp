@@ -40,7 +40,9 @@ Fm::FilePathList pathListFromUriList(const char* uriList) {
     Fm::FilePathList pathList;
     char** uris = g_strsplit_set(uriList, "\r\n", -1);
     for(char** uri = uris; *uri; ++uri) {
-        pathList.push_back(Fm::FilePath::fromUri(*uri));
+        if(**uri != '\0') {
+            pathList.push_back(Fm::FilePath::fromUri(*uri));
+        }
     }
     g_strfreev(uris);
     return pathList;
@@ -107,7 +109,8 @@ void copyFilesToClipboard(const Fm::FilePathList& files) {
     QMimeData* data = new QMimeData();
     auto urilist = pathListToUriList(files);
     // Gnome, LXDE, and XFCE
-    data->setData("x-special/gnome-copied-files", QByteArray("copy\n") + urilist);
+    // Note: the standard text/urilist format uses CRLF for line breaks, but gnome format uses LF only
+    data->setData("x-special/gnome-copied-files", QByteArray("copy\n") + urilist.replace("\r\n", "\n"));
     // The KDE way
     data->setData("text/uri-list", urilist);
     // data.setData("x-kde-cut-selection", "0");
@@ -119,7 +122,8 @@ void cutFilesToClipboard(const Fm::FilePathList& files) {
     QMimeData* data = new QMimeData();
     auto urilist = pathListToUriList(files);
     // Gnome, LXDE, and XFCE
-    data->setData("x-special/gnome-copied-files", QByteArray("cut\n") + urilist);
+    // Note: the standard text/urilist format uses CRLF for line breaks, but gnome format uses LF only
+    data->setData("x-special/gnome-copied-files", QByteArray("cut\n") + urilist.replace("\r\n", "\n"));
     // The KDE way
     data->setData("text/uri-list", urilist);
     data->setData("x-kde-cut-selection", "1");
