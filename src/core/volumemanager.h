@@ -1,7 +1,7 @@
 #ifndef FM2_VOLUMEMANAGER_H
 #define FM2_VOLUMEMANAGER_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include <QObject>
 #include <gio/gio.h>
 #include "gioptrs.h"

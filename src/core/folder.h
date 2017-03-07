@@ -30,7 +30,7 @@
 
 #include <QObject>
 #include <QtGlobal>
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 
 #include "gioptrs.h"
 #include "fileinfo.h"

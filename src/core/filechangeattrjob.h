@@ -1,7 +1,7 @@
 #ifndef FM2_FILECHANGEATTRJOB_H
 #define FM2_FILECHANGEATTRJOB_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include "fileoperationjob.h"
 
 namespace Fm {

@@ -1,7 +1,7 @@
 #ifndef FM2_BOOKMARKS_H
 #define FM2_BOOKMARKS_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include <QObject>
 #include "gobjectptr.h"
 #include "fileinfo.h"

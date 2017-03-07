@@ -1,7 +1,7 @@
 #ifndef LIBFM_QT_COMPAT_P_H
 #define LIBFM_QT_COMPAT_P_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include "core/filepath.h"
 #include "core/fileinfo.h"
 #include "core/gioptrs.h"

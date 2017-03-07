@@ -1,7 +1,7 @@
 #ifndef FM2_TOTALSIZEJOB_H
 #define FM2_TOTALSIZEJOB_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include "fileoperationjob.h"
 #include "filepath.h"
 #include <cstdint>

@@ -1,7 +1,7 @@
 #ifndef FM2_THUMBNAILER_H
 #define FM2_THUMBNAILER_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include "cstrptr.h"
 #include <unordered_map>
 #include <vector>

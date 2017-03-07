@@ -1,7 +1,7 @@
 #ifndef FM2_GOBJECTPTR_H
 #define FM2_GOBJECTPTR_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include <glib.h>
 #include <glib-object.h>
 #include <cstddef>

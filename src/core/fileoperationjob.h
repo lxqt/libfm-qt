@@ -1,7 +1,7 @@
 #ifndef FM2_FILEOPERATIONJOB_H
 #define FM2_FILEOPERATIONJOB_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include "job.h"
 #include <string>
 #include <mutex>

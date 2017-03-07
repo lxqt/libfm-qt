@@ -1,7 +1,7 @@
 #ifndef FM2_FILEINFOJOB_H
 #define FM2_FILEINFOJOB_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include "job.h"
 #include "filepath.h"
 #include "fileinfo.h"

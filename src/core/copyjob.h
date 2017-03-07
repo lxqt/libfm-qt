@@ -1,7 +1,7 @@
 #ifndef FM2_COPYJOB_H
 #define FM2_COPYJOB_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include "fileoperationjob.h"
 #include "gioptrs.h"
 

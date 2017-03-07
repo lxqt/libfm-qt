@@ -1,7 +1,7 @@
 #ifndef FM2_DIRLISTJOB_H
 #define FM2_DIRLISTJOB_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include <mutex>
 #include "job.h"
 #include "filepath.h"

@@ -23,7 +23,7 @@
 #ifndef _FM2_MIME_TYPE_H_
 #define _FM2_MIME_TYPE_H_
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include <glib.h>
 #include <gio/gio.h>
 

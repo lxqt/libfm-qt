@@ -23,7 +23,7 @@
 #include <libfm/fm.h>
 #include <QObject>
 #include <QtGlobal>
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>

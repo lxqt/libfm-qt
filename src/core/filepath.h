@@ -1,7 +1,7 @@
 #ifndef FM2_FILEPATH_H
 #define FM2_FILEPATH_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include "gobjectptr.h"
 #include "cstrptr.h"
 #include <gio/gio.h>

@@ -1,7 +1,7 @@
 #ifndef FM2_USERINFOCACHE_H
 #define FM2_USERINFOCACHE_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include <QObject>
 #include <string>
 #include <unordered_map>

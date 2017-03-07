@@ -21,7 +21,7 @@
 #define FM_ICONENGINE_H
 
 #include <QIconEngine>
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include "iconinfo.h"
 #include <gio/gio.h>
 

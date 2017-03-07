@@ -29,7 +29,7 @@
 #include <gio/gio.h>
 #include "gobjectptr.h"
 #include "gioptrs.h"
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 
 
 namespace Fm {

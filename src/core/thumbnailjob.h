@@ -1,7 +1,7 @@
 ﻿#ifndef FM2_THUMBNAILJOB_H
 #define FM2_THUMBNAILJOB_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include "fileinfo.h"
 #include "gioptrs.h"
 #include "job.h"

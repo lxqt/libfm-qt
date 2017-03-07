@@ -1,7 +1,7 @@
 #ifndef FM2_FILEMONITOR_H
 #define FM2_FILEMONITOR_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include <QObject>
 #include "gioptrs.h"
 #include "filepath.h"

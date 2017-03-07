@@ -25,7 +25,7 @@
 #ifndef __FM2_ICON_INFO_H__
 #define __FM2_ICON_INFO_H__
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include <gio/gio.h>
 #include "gioptrs.h"
 #include <memory>

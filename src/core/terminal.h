@@ -1,7 +1,7 @@
 #ifndef TERMINAL_H
 #define TERMINAL_H
 
-#include "libfmqtglobals.h"
+#include "../libfmqtglobals.h"
 #include "gioptrs.h"
 #include "filepath.h"
 #include <vector>
