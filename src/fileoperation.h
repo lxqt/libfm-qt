@@ -25,7 +25,7 @@
 #include <QObject>
 #include <QElapsedTimer>
 #include <libfm/fm.h>
-#include <core/filepath.h>
+#include "core/filepath.h"
 
 class QTimer;
 
