@@ -209,7 +209,7 @@ _file_is_symlink:
     }
 
     // special handling for desktop entry files (show the name and icon defined in the desktop entry instead)
-    if(G_UNLIKELY(isDesktopEntry())) {
+    if(isNative() && G_UNLIKELY(isDesktopEntry())) {
         auto local_path = path().localPath();
         GKeyFile* kf = g_key_file_new();
         if(g_key_file_load_from_file(kf, local_path.get(), G_KEY_FILE_NONE, nullptr)) {
