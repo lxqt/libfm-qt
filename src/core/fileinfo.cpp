@@ -24,7 +24,7 @@ FileInfo::~FileInfo() {
 
 void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath& parentDirPath) {
     dirPath_ = parentDirPath;
-    const char *tmp, *uri;
+    const char* tmp, *uri;
     GIcon* gicon;
     GFileType type;
 
@@ -43,15 +43,16 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
     mode_ = g_file_info_get_attribute_uint32(inf.get(), G_FILE_ATTRIBUTE_UNIX_MODE);
 
     uid_ = gid_ = -1;
-    if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_UNIX_UID))
+    if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_UNIX_UID)) {
         uid_ = g_file_info_get_attribute_uint32(inf.get(), G_FILE_ATTRIBUTE_UNIX_UID);
-    if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_UNIX_GID))
+    }
+    if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_UNIX_GID)) {
         gid_ = g_file_info_get_attribute_uint32(inf.get(), G_FILE_ATTRIBUTE_UNIX_GID);
+    }
 
     type = g_file_info_get_file_type(inf.get());
     if(0 == mode_) { /* if UNIX file mode is not available, compose a fake one. */
-        switch(type)
-        {
+        switch(type) {
         case G_FILE_TYPE_REGULAR:
             mode_ |= S_IFREG;
             break;
@@ -66,18 +67,23 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
         case G_FILE_TYPE_MOUNTABLE:
             break;
         case G_FILE_TYPE_SPECIAL:
-            if(mode_)
+            if(mode_) {
                 break;
-        /* if it's a special file but it doesn't have UNIX mode, compose a fake one. */
-            if(strcmp(tmp, "inode/chardevice")==0)
+            }
+            /* if it's a special file but it doesn't have UNIX mode, compose a fake one. */
+            if(strcmp(tmp, "inode/chardevice") == 0) {
                 mode_ |= S_IFCHR;
-            else if(strcmp(tmp, "inode/blockdevice")==0)
+            }
+            else if(strcmp(tmp, "inode/blockdevice") == 0) {
                 mode_ |= S_IFBLK;
-            else if(strcmp(tmp, "inode/fifo")==0)
+            }
+            else if(strcmp(tmp, "inode/fifo") == 0) {
                 mode_ |= S_IFIFO;
+            }
 #ifdef S_IFSOCK
-            else if(strcmp(tmp, "inode/socket")==0)
+            else if(strcmp(tmp, "inode/socket") == 0) {
                 mode_ |= S_IFSOCK;
+            }
 #endif
             break;
         case G_FILE_TYPE_UNKNOWN:
@@ -85,14 +91,17 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
         }
     }
 
-    if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
+    if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_ACCESS_CAN_READ)) {
         isAccessible_ = g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_ACCESS_CAN_READ);
+    }
     else
         /* assume it's accessible */
+    {
         isAccessible_ = true;
+    }
 
     /* special handling for symlinks */
-    if (g_file_info_get_is_symlink(inf.get())) {
+    if(g_file_info_get_is_symlink(inf.get())) {
         mode_ &= ~S_IFMT; /* reset type */
         mode_ |= S_IFLNK; /* set type to symlink */
         goto _file_is_symlink;
@@ -108,33 +117,38 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
                 auto filename = CStrPtr{g_filename_from_uri(uri, nullptr, nullptr)};
                 target_ = filename.get();
             }
-            else
+            else {
                 target_ = uri;
-            if(!mimeType_)
+            }
+            if(!mimeType_) {
                 mimeType_ = MimeType::guessFromFileName(target_.c_str());
+            }
         }
 
         /* if the mime-type is not determined or is unknown */
         if(G_UNLIKELY(!mimeType_ || mimeType_->isUnknownType())) {
             /* FIXME: is this appropriate? */
-            if(type == G_FILE_TYPE_SHORTCUT)
+            if(type == G_FILE_TYPE_SHORTCUT) {
                 mimeType_ = MimeType::inodeShortcut();
-            else
+            }
+            else {
                 mimeType_ = MimeType::inodeMountPoint();
+            }
         }
         break;
     case G_FILE_TYPE_DIRECTORY:
-        if(!mimeType_)
+        if(!mimeType_) {
             mimeType_ = MimeType::inodeDirectory();
+        }
         isReadOnly_ = false; /* default is R/W */
-        if (g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_FILESYSTEM_READONLY))
+        if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_FILESYSTEM_READONLY)) {
             isReadOnly_ = g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_FILESYSTEM_READONLY);
+        }
         break;
     case G_FILE_TYPE_SYMBOLIC_LINK:
 _file_is_symlink:
         uri = g_file_info_get_symlink_target(inf.get());
-        if(uri)
-        {
+        if(uri) {
             if(g_str_has_prefix(uri, "file:///")) {
                 auto filename = CStrPtr{g_filename_from_uri(uri, nullptr, nullptr)};
                 target_ = filename.get();
@@ -142,14 +156,16 @@ _file_is_symlink:
             else {
                 target_ = uri;
             }
-            if(!mimeType_)
+            if(!mimeType_) {
                 mimeType_ = MimeType::guessFromFileName(target_.c_str());
+            }
         }
-        /* continue with absent mime type */
+    /* continue with absent mime type */
     default: /* G_FILE_TYPE_UNKNOWN G_FILE_TYPE_REGULAR G_FILE_TYPE_SPECIAL */
         if(G_UNLIKELY(!mimeType_)) {
-            if(!mimeType_)
+            if(!mimeType_) {
                 mimeType_ = MimeType::guessFromFileName(name_.c_str());
+            }
         }
     }
 
@@ -161,10 +177,12 @@ _file_is_symlink:
 
 #if 0
     /* set "locked" icon on unaccesible folder */
-    else if(!accessible && type == G_FILE_TYPE_DIRECTORY)
+    else if(!accessible && type == G_FILE_TYPE_DIRECTORY) {
         icon = g_object_ref(icon_locked_folder);
-    else
+    }
+    else {
         icon = g_object_ref(fm_mime_type_get_icon(mime_type));
+    }
 #endif
 
     /* if the file has emblems, add them to the icon */
@@ -186,33 +204,71 @@ _file_is_symlink:
     isBackup_ = g_file_info_get_is_backup(inf.get());
     isNameChangeable_ = true; /* GVFS tends to ignore this attribute */
     isIconChangeable_ = isHiddenChangeable_ = false;
-    if (g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_ACCESS_CAN_RENAME))
+    if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_ACCESS_CAN_RENAME)) {
         isNameChangeable_ = g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_ACCESS_CAN_RENAME);
+    }
+
+    // special handling for desktop entry files (show the name and icon defined in the desktop entry instead)
+    if(G_UNLIKELY(isDesktopEntry())) {
+        auto local_path = path().localPath();
+        GKeyFile* kf = g_key_file_new();
+        if(g_key_file_load_from_file(kf, local_path.get(), G_KEY_FILE_NONE, nullptr)) {
+            /* check if type is correct and supported */
+            CStrPtr type{g_key_file_get_string(kf, "Desktop Entry", "Type", nullptr)};
+            if(type) {
+                // Type == "Link"
+                if(strcmp(type.get(), G_KEY_FILE_DESKTOP_TYPE_LINK) == 0) {
+                    CStrPtr uri{g_key_file_get_string(kf, G_KEY_FILE_DESKTOP_GROUP, G_KEY_FILE_DESKTOP_KEY_URL, nullptr)};
+                    if(uri) {
+                        isShortcut_ = true;
+                        target_ = uri.get();
+                    }
+                }
+            }
+            CStrPtr icon_name{g_key_file_get_string(kf, "Desktop Entry", "Icon", nullptr)};
+            if(icon_name) {
+                icon_ = IconInfo::fromName(icon_name.get());
+            }
+            /* Use title of the desktop entry for display */
+            CStrPtr displayName{g_key_file_get_locale_string(kf, "Desktop Entry", "Name", nullptr, nullptr)};
+            if(displayName) {
+                dispName_ = displayName.get();
+            }
+            /* handle 'Hidden' key to set hidden attribute */
+            if(!isHidden_) {
+                isHidden_ = g_key_file_get_boolean(kf, "Desktop Entry", "Hidden", nullptr);
+            }
+        }
+        g_key_file_free(kf);
+    }
 
 #if 0
-    GFile *_gf = nullptr;
-    GFileAttributeInfoList *list;
+    GFile* _gf = nullptr;
+    GFileAttributeInfoList* list;
     auto list = g_file_query_settable_attributes(gf, nullptr, nullptr);
-    if (G_LIKELY(list))
-    {
-        if (g_file_attribute_info_list_lookup(list, G_FILE_ATTRIBUTE_STANDARD_ICON))
+    if(G_LIKELY(list)) {
+        if(g_file_attribute_info_list_lookup(list, G_FILE_ATTRIBUTE_STANDARD_ICON)) {
             icon_is_changeable = true;
-        if (g_file_attribute_info_list_lookup(list, G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN))
+        }
+        if(g_file_attribute_info_list_lookup(list, G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN)) {
             hidden_is_changeable = true;
+        }
         g_file_attribute_info_list_unref(list);
     }
-    if (G_UNLIKELY(_gf))
+    if(G_UNLIKELY(_gf)) {
         g_object_unref(_gf);
+    }
 #endif
 }
 
 bool FileInfo::canThumbnail() const {
     /* We cannot use S_ISREG here as this exclude all symlinks */
-    if( size_ == 0 || /* don't generate thumbnails for empty files */
-        !(mode_ & S_IFREG) ||
-        isDesktopEntry() ||
-        isUnknownType())
+    if(size_ == 0 ||  /* don't generate thumbnails for empty files */
+            !(mode_ & S_IFREG) ||
+            isDesktopEntry() ||
+            isUnknownType()) {
         return false;
+    }
     return true;
 }
 
@@ -220,7 +276,7 @@ bool FileInfo::canThumbnail() const {
 bool FileInfo::isExecutableType() const {
     if(isText()) { /* g_content_type_can_be_executable reports text files as executables too */
         /* We don't execute remote files nor files in trash */
-        if(isNative() && (mode_ & (S_IXOTH|S_IXGRP|S_IXUSR))) {
+        if(isNative() && (mode_ & (S_IXOTH | S_IXGRP | S_IXUSR))) {
             /* it has executable bits so lets check shell-bang */
             auto pathStr = path().toString();
             int fd = open(pathStr.get(), O_RDONLY);
@@ -228,8 +284,9 @@ bool FileInfo::isExecutableType() const {
                 char buf[2];
                 ssize_t rdlen = read(fd, &buf, 2);
                 close(fd);
-                if(rdlen == 2 && buf[0] == '#' && buf[1] == '!')
+                if(rdlen == 2 && buf[0] == '#' && buf[1] == '!') {
                     return true;
+                }
             }
         }
         return false;
@@ -243,8 +300,9 @@ bool FileInfoList::isSameType() const {
         auto& item = front();
         for(auto it = cbegin() + 1; it != cend(); ++it) {
             auto& item2 = *it;
-            if(item->mimeType() != item2->mimeType())
+            if(item->mimeType() != item2->mimeType()) {
                 return false;
+            }
         }
     }
     return true;
@@ -255,8 +313,9 @@ bool FileInfoList::isSameFilesystem() const {
         auto& item = front();
         for(auto it = cbegin() + 1; it != cend(); ++it) {
             auto& item2 = *it;
-            if(item->filesystemId() != item2->filesystemId())
+            if(item->filesystemId() != item2->filesystemId()) {
                 return false;
+            }
         }
     }
     return true;
@@ -265,4 +324,3 @@ bool FileInfoList::isSameFilesystem() const {
 
 
 } // namespace Fm
-
