@@ -37,6 +37,9 @@
 #include <QApplication>
 #include <QScrollBar>
 #include <QMetaType>
+#include <QMessageBox>
+#include <QShortcut>
+#include <QTextEdit>
 #include <QX11Info> // for XDS support
 #include <xcb/xcb.h> // for XDS support
 #include "xdndworkaround.h" // for XDS support
@@ -51,6 +54,11 @@ FolderViewListView::FolderViewListView(QWidget* parent):
   QListView(parent),
   activationAllowed_(true) {
   connect(this, &QListView::activated, this, &FolderViewListView::activation);
+  // inline renaming
+  // WARNING: Qt doc isn't clear regarding the default but it isn't NoEditTriggers
+  setEditTriggers(QAbstractItemView::NoEditTriggers);
+  QShortcut* s = new QShortcut(Qt::CTRL + Qt::Key_R, this);
+  connect(s, &QShortcut::activated, this, &FolderViewListView::editActivated);
 }
 
 FolderViewListView::~FolderViewListView() {
@@ -453,6 +461,46 @@ void FolderView::onSelectionChanged(const QItemSelection& selected, const QItemS
   }
 }
 
+void FolderView::onClosingEditor(QWidget* editor, QAbstractItemDelegate::EndEditHint hint) {
+  if (hint != QAbstractItemDelegate::NoHint)
+    return; // we set the hint to NoHint in FolderItemDelegate::eventFilter()
+  QString newName = reinterpret_cast<QTextEdit*>(editor)->toPlainText();
+  editor->deleteLater();
+  if (newName.isEmpty())
+    return;
+
+  QModelIndex index = view->selectionModel()->currentIndex();
+  if(index.isValid() && index.model()) {
+    QVariant data = index.model()->data(index, FolderModel::FileInfoRole);
+    FmFileInfo* file = (FmFileInfo*)data.value<void*>();
+    if(file) {
+      FmPath* path = fm_file_info_get_path(file);
+      QString oldName = QString::fromLocal8Bit(fm_path_get_basename(path));
+      if(newName == oldName)
+        return;
+      GFile* gf = fm_path_to_gfile(path);
+      GFile* parent_gf = g_file_get_parent(gf);
+      GFile* dest = g_file_get_child(G_FILE(parent_gf), newName.toLocal8Bit().constData());
+      g_object_unref(parent_gf);
+
+      QWidget* parent = window();
+      if (window() == this) // supposedly desktop
+        parent = nullptr;
+      GError* err = NULL;
+      if(!g_file_move(gf, dest,
+                      GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
+                                     G_FILE_COPY_NO_FALLBACK_FOR_MOVE |
+                                     G_FILE_COPY_NOFOLLOW_SYMLINKS),
+                      NULL, /* make this cancellable later. */
+                      NULL, NULL, &err)) {
+          QMessageBox::critical(parent, QObject::tr("Error"), err->message);
+          g_error_free(err);
+      }
+      g_object_unref(dest);
+      g_object_unref(gf);
+    }
+  }
+}
 
 void FolderView::setViewMode(ViewMode _mode) {
   if(_mode == mode) // if it's the same more, ignore
@@ -498,6 +546,8 @@ void FolderView::setViewMode(ViewMode _mode) {
     // set our own custom delegate
     FolderItemDelegate* delegate = new FolderItemDelegate(listView);
     listView->setItemDelegateForColumn(FolderModel::ColumnFileName, delegate);
+    // inline renaming
+    connect(delegate,  &QAbstractItemDelegate::closeEditor, this, &FolderView::onClosingEditor);
     // FIXME: should we expose the delegate?
     listView->setMovement(QListView::Static);
     /* If listView is already visible, setMovement() will lay out items again with delay
@@ -1015,6 +1065,8 @@ void FolderView::onFileClicked(int type, FmFileInfo* fileInfo) {
       if (!files.isNull()) {
         Fm::FileMenu* fileMenu = new Fm::FileMenu(files.dataPtr(), fileInfo, folderPath);
         fileMenu->setFileLauncher(fileLauncher_);
+        if(view && mode != DetailedListMode && selectedIndexes().size() == 1)
+          fileMenu->setView(view);
         prepareFileMenu(fileMenu);
         menu = fileMenu;
       }

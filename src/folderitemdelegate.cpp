@@ -28,6 +28,7 @@
 #include <QTextLayout>
 #include <QTextOption>
 #include <QTextLine>
+#include <QTextEdit>
 #include <QDebug>
 
 namespace Fm {
@@ -248,6 +249,73 @@ void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItem& opt, 
       style->drawPrimitive(QStyle::PE_FrameFocusRect, &o, painter, widget);
     }
   }
+}
+
+/*
+ * The following methods are for inline renaming.
+*/
+
+QWidget* FolderItemDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const {
+  // we use QTextEdit instead of QPlainTextEdit because
+  // the latter always shows an empty space at the bottom
+  QTextEdit *textEdit = new QTextEdit(parent);
+  textEdit->ensureCursorVisible();
+  textEdit->setFocusPolicy(Qt::StrongFocus);
+  textEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  textEdit->setContentsMargins(0, 0, 0, 0);
+  return textEdit;
+}
+
+void FolderItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const {
+  if (!index.isValid())
+    return;
+  QTextEdit *textEdit = qobject_cast<QTextEdit*>(editor);
+  if (!textEdit)
+    return;
+  const QString currentName = index.data(Qt::EditRole).toString();
+  textEdit->setPlainText(currentName);
+  textEdit->setAlignment(Qt::AlignCenter);
+  // select text appropriately
+  QTextCursor cur = textEdit->textCursor();
+  int end;
+  if (index.data(Fm::FolderModel::FileIsDirRole).toBool() || !currentName.contains("."))
+    end = currentName.size();
+  else
+    end = currentName.lastIndexOf(".");
+  cur.setPosition(end, QTextCursor::KeepAnchor);
+  textEdit->setTextCursor(cur);
+}
+
+bool FolderItemDelegate::eventFilter(QObject *object, QEvent *event) {
+  QWidget *editor = qobject_cast<QWidget*>(object);
+  if (editor && event->type() == QEvent::KeyPress) {
+    int k = static_cast<QKeyEvent *>(event)->key();
+    if (k == Qt::Key_Return || k == Qt::Key_Enter) {
+      Q_EMIT QAbstractItemDelegate::commitData(editor);
+      Q_EMIT QAbstractItemDelegate::closeEditor(editor, QAbstractItemDelegate::NoHint);
+      return true;
+    }
+  }
+  return QStyledItemDelegate::eventFilter(object, event);
+}
+
+void FolderItemDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const {
+  if (gridSize_ != QSize()
+      && (option.decorationPosition == QStyleOptionViewItem::Top
+          || option.decorationPosition == QStyleOptionViewItem::Bottom)) {
+    // give all of the available space to the editor
+    QStyleOptionViewItem opt = option;
+    initStyleOption(&opt, index);
+    opt.decorationAlignment = Qt::AlignHCenter|Qt::AlignTop;
+    opt.displayAlignment = Qt::AlignTop|Qt::AlignHCenter;
+    QRect textRect(opt.rect.x() - (gridSize_.width() - opt.rect.width()) / 2,
+                   opt.rect.y() + option.decorationSize.height(),
+                   gridSize_.width(),
+                   gridSize_.height() - option.decorationSize.height());
+    editor->setGeometry(textRect);
+  }
+  else
+    QStyledItemDelegate::updateEditorGeometry(editor, option, index);
 }
 
 

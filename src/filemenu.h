@@ -23,6 +23,7 @@
 
 #include "libfmqtglobals.h"
 #include <QMenu>
+#include <QAbstractItemView>
 #include <qabstractitemmodel.h>
 #include <libfm/fm.h>
 
@@ -156,6 +157,10 @@ public:
     confirmTrash_ = value;
   }
 
+  void setView(QAbstractItemView* view) {
+    view_ = view;
+  }
+
 protected:
   void createMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd);
 #ifdef CUSTOM_ACTIONS
@@ -209,6 +214,7 @@ private:
   QAction* renameAction_;
   QAction* separator3_;
   QAction* propertiesAction_;
+  QAbstractItemView* view_;
 
   FileLauncher* fileLauncher_;
 };

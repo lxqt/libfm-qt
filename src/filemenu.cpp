@@ -38,14 +38,16 @@ namespace Fm {
 
 FileMenu::FileMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd, QWidget* parent):
   QMenu(parent),
-  fileLauncher_(NULL) {
+  fileLauncher_(NULL),
+  view_ (NULL) {
   createMenu(files, info, cwd);
 }
 
 FileMenu::FileMenu(FmFileInfoList* files, FmFileInfo* info, FmPath* cwd, const QString& title, QWidget* parent):
   QMenu(title, parent),
   unTrashAction_(NULL),
-  fileLauncher_(NULL) {
+  fileLauncher_(NULL),
+  view_ (NULL) {
   createMenu(files, info, cwd);
 }
 
@@ -362,9 +364,16 @@ void FileMenu::onPasteTriggered() {
 }
 
 void FileMenu::onRenameTriggered() {
-  for(GList* l = fm_file_info_list_peek_head_link(files_); l; l = l->next) {
-    FmFileInfo* info = FM_FILE_INFO(l->data);
-    Fm::renameFile(info, NULL);
+  if (view_) {
+    // if there is a view, just edit the current index
+    if (view_->currentIndex().isValid())
+      view_->edit(view_->currentIndex());
+  }
+  else {
+    for(GList* l = fm_file_info_list_peek_head_link(files_); l; l = l->next) {
+      FmFileInfo* info = FM_FILE_INFO(l->data);
+      Fm::renameFile(info, NULL);
+    }
   }
 }
 

@@ -65,6 +65,11 @@ Q_SIGNALS:
 
 private Q_SLOTS:
   void activation(const QModelIndex &index);
+  // inline renaming
+  void editActivated() {
+    if (currentIndex().isValid())
+      edit(currentIndex());
+  }
 
 private:
   bool activationAllowed_;

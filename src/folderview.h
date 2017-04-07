@@ -153,6 +153,7 @@ public Q_SLOTS:
 private Q_SLOTS:
   void onAutoSelectionTimeout();
   void onSelChangedTimeout();
+  void onClosingEditor(QWidget* editor, QAbstractItemDelegate::EndEditHint hint);
 
 Q_SIGNALS:
   void clicked(int type, FmFileInfo* file);
