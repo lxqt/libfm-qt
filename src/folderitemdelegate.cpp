@@ -38,7 +38,9 @@ FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent)
   view_(view),
   symlinkIcon_(QIcon::fromTheme("emblem-symbolic-link")),
   fileInfoRole_(Fm::FolderModel::FileInfoRole),
-  fmIconRole_(-1) {
+  fmIconRole_(-1),
+  hasEditor_(false) {
+  connect(this,  &QAbstractItemDelegate::closeEditor, [=]{hasEditor_ = false;});
 }
 
 FolderItemDelegate::~FolderItemDelegate() {
@@ -259,6 +261,7 @@ QWidget* FolderItemDelegate::createEditor(QWidget *parent, const QStyleOptionVie
   // we use QTextEdit instead of QPlainTextEdit because
   // the latter always shows an empty space at the bottom
   QTextEdit *textEdit = new QTextEdit(parent);
+  hasEditor_ = true;
   textEdit->ensureCursorVisible();
   textEdit->setFocusPolicy(Qt::StrongFocus);
   textEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

@@ -65,10 +65,14 @@ Q_SIGNALS:
 
 private Q_SLOTS:
   void activation(const QModelIndex &index);
+
   // inline renaming
   void editActivated() {
-    if (currentIndex().isValid())
-      edit(currentIndex());
+    QModelIndex cur = currentIndex();
+    if (cur.isValid()) {
+      scrollTo(cur);
+      edit(cur);
+    }
   }
 
 private:

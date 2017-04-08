@@ -224,6 +224,7 @@ QVariant FolderModel::data(const QModelIndex & index, int role/* = Qt::DisplayRo
           return QString::fromUtf8(name);
         }
       }
+      break;
     }
     case Qt::DecorationRole: {
       if(index.column() == 0) {
@@ -236,7 +237,8 @@ QVariant FolderModel::data(const QModelIndex & index, int role/* = Qt::DisplayRo
     case Qt::EditRole: {
       if(index.column() == 0) {
         // inline renaming (see FolderItemDelegate::setEditorData())
-        return QVariant(item->displayName);
+        const char* name = fm_file_info_get_name(info);
+        return QString::fromUtf8(name);
       }
       break;
     }

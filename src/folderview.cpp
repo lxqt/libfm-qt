@@ -958,6 +958,13 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
         setCursor(Qt::ArrowCursor);
       break;
     case QEvent::Wheel:
+      // don't let the view scroll during an inline renaming
+      if (view && mode != DetailedListMode) {
+        FolderViewListView* listView = static_cast<FolderViewListView*>(view);
+        FolderItemDelegate* delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
+        if (delegate->hasEditor())
+          return true;
+      }
       // This is to fix #85: Scrolling doesn't work in compact view
       // Actually, I think it's the bug of Qt, not ours.
       // When in compact mode, only the horizontal scroll bar is used and the vertical one is hidden.
