@@ -14,6 +14,9 @@ public:
     friend class Bookmarks;
 
     BookmarkItem(const FilePath& path, const QString name): path_{path}, name_{name} {
+        if(name_.isEmpty()) { // if the name is not specified, use basename of the path
+            name_ = path_.baseName().get();
+        }
     }
 
     const QString& name() const {

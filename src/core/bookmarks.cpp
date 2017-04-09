@@ -119,18 +119,24 @@ void Bookmarks::load() {
     f = fopen(fpath.get(), "r");
     if(f) {
         while(fgets(buf, 1024, f)) {
+            // format of each line in the bookmark file:
+            // <URI> <name>\n
             char* sep;
             sep = strchr(buf, '\n');
             if(sep) {
                 *sep = '\0';
             }
-            sep = strchr(buf, ' ');
+
+            QString name;
+            sep = strchr(buf, ' ');  // find the separator between URI and name
             if(sep) {
                 *sep = '\0';
+                name = sep + 1;
             }
             auto uri = buf;
-            auto name = sep + 1;
-            items_.push_back(std::make_shared<BookmarkItem>(FilePath::fromUri(uri), name));
+            if(uri[0] != '\0') {
+                items_.push_back(std::make_shared<BookmarkItem>(FilePath::fromUri(uri), name));
+            }
         }
         fclose(f);
     }
