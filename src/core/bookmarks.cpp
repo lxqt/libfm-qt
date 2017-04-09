@@ -41,7 +41,8 @@ Bookmarks::~Bookmarks() {
 }
 
 const std::shared_ptr<const BookmarkItem>& Bookmarks::insert(const FilePath& path, const QString& name, int pos) {
-    auto it = items_.insert(items_.begin() + pos, std::make_shared<const BookmarkItem>(path, name));
+    const auto insert_pos = (pos < 0 || pos > items_.size()) ? items_.cend() : items_.cbegin() + pos;
+    auto it = items_.insert(insert_pos, std::make_shared<const BookmarkItem>(path, name));
     queueSave();
     return *it;
 }
