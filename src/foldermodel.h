@@ -39,7 +39,8 @@ Q_OBJECT
 public:
 
   enum Role {
-    FileInfoRole = Qt::UserRole
+    FileInfoRole = Qt::UserRole,
+    FileIsDirRole
   };
 
   enum ColumnId {

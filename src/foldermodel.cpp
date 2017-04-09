@@ -224,6 +224,7 @@ QVariant FolderModel::data(const QModelIndex & index, int role/* = Qt::DisplayRo
           return QString::fromUtf8(name);
         }
       }
+      break;
     }
     case Qt::DecorationRole: {
       if(index.column() == 0) {
@@ -233,8 +234,18 @@ QVariant FolderModel::data(const QModelIndex & index, int role/* = Qt::DisplayRo
       }
       break;
     }
+    case Qt::EditRole: {
+      if(index.column() == 0) {
+        // inline renaming (see FolderItemDelegate::setEditorData())
+        const char* name = fm_file_info_get_name(info);
+        return QString::fromUtf8(name);
+      }
+      break;
+    }
     case FileInfoRole:
       return qVariantFromValue((void*)info);
+    case FileIsDirRole:
+      return QVariant(fm_file_info_is_dir(info));
   }
   return QVariant();
 }
@@ -283,7 +294,8 @@ Qt::ItemFlags FolderModel::flags(const QModelIndex& index) const {
   if(index.isValid()) {
     flags = Qt::ItemIsEnabled|Qt::ItemIsSelectable;
     if(index.column() == ColumnFileName)
-      flags |= (Qt::ItemIsDragEnabled|Qt::ItemIsDropEnabled);
+      flags |= (Qt::ItemIsDragEnabled|Qt::ItemIsDropEnabled
+                |Qt::ItemIsEditable); // inline renaming
   }
   else {
     flags = Qt::ItemIsDropEnabled;
