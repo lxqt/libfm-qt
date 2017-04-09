@@ -30,8 +30,8 @@ public:
         return CStrPtr{g_volume_get_uuid(get())};
     }
 
-    IconInfo icon() {
-        return IconInfo{GIconPtr{g_volume_get_icon(get()), false}};
+    std::shared_ptr<const IconInfo> icon() const {
+        return IconInfo::fromGIcon(GIconPtr{g_volume_get_icon(get()), false});
     }
 
     // GDrive *	g_volume_get_drive(get());
@@ -97,8 +97,8 @@ public:
         return CStrPtr{g_mount_get_uuid(get())};
     }
 
-    IconInfo icon() const {
-        return IconInfo{GIconPtr{g_mount_get_icon(get()), false}};
+    std::shared_ptr<const IconInfo> icon() const {
+        return IconInfo::fromGIcon(GIconPtr{g_mount_get_icon(get()), false});
     }
 
     // GIcon *	g_mount_get_symbolic_icon(get());
