@@ -278,7 +278,9 @@ void FolderItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index
     return;
   const QString currentName = index.data(Qt::EditRole).toString();
   textEdit->setPlainText(currentName);
+  textEdit->setUndoRedoEnabled(false);
   textEdit->setAlignment(Qt::AlignCenter);
+  textEdit->setUndoRedoEnabled(true);
   // select text appropriately
   QTextCursor cur = textEdit->textCursor();
   int end;
