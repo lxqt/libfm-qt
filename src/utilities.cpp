@@ -166,7 +166,7 @@ void renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent) {
 }
 
 // templateFile is a file path used as a template of the new file.
-void createFileOrFolder(CreateFileType type, Fm::FilePath parentDir, FmTemplate* templ, QWidget* parent) {
+void createFileOrFolder(CreateFileType type, FilePath parentDir, const TemplateItem* templ, QWidget* parent) {
     QString defaultNewName;
     QString prompt;
     QString dialogTitle = type == CreateNewFolder ? QObject::tr("Create Folder")
@@ -184,9 +184,9 @@ void createFileOrFolder(CreateFileType type, Fm::FilePath parentDir, FmTemplate*
         break;
 
     case CreateWithTemplate: {
-        FmMimeType* mime = fm_template_get_mime_type(templ);
-        prompt = QObject::tr("Enter a name for the new %1:").arg(QString::fromUtf8(fm_mime_type_get_desc(mime)));
-        defaultNewName = QString::fromUtf8(fm_template_get_name(templ, nullptr));
+        auto mime = templ->mimeType();
+        prompt = QObject::tr("Enter a name for the new %1:").arg(mime->desc());
+        defaultNewName = QString::fromStdString(templ->name());
     }
     break;
     }
@@ -218,7 +218,7 @@ _retry:
         g_file_make_directory(dest.gfile().get(), nullptr, &err);
         break;
     case CreateWithTemplate:
-        fm_template_create_file(templ, dest.gfile().get(), &err, false);
+        templ->createNewFile(dest, err);
         break;
     }
     if(err) {

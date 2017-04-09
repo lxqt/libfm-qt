@@ -31,6 +31,7 @@
 
 #include "core/filepath.h"
 #include "core/fileinfo.h"
+#include "core/templates.h"
 
 class QDialog;
 
@@ -56,7 +57,7 @@ enum CreateFileType {
     CreateWithTemplate
 };
 
-LIBFM_QT_API void createFileOrFolder(CreateFileType type, Fm::FilePath parentDir, FmTemplate* templ = nullptr, QWidget* parent = 0);
+LIBFM_QT_API void createFileOrFolder(CreateFileType type, FilePath parentDir, const TemplateItem* templ = nullptr, QWidget* parent = 0);
 
 LIBFM_QT_API uid_t uidFromName(QString name);
 
