@@ -59,7 +59,8 @@ public:
     }
 
     QIcon icon() const {
-        return info->icon()->qicon();
+        const auto i = info->icon();
+        return i ? i->qicon() : QIcon{};
     }
 
     QString ownerName() const;
