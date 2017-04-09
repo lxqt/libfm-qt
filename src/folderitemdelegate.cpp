@@ -262,6 +262,7 @@ QWidget* FolderItemDelegate::createEditor(QWidget *parent, const QStyleOptionVie
   // the latter always shows an empty space at the bottom
   QTextEdit *textEdit = new QTextEdit(parent);
   hasEditor_ = true;
+  textEdit->setAcceptRichText(false);
   textEdit->ensureCursorVisible();
   textEdit->setFocusPolicy(Qt::StrongFocus);
   textEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
