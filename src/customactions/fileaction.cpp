@@ -28,6 +28,8 @@ FileActionObject::FileActionObject(GKeyFile* kf) {
     suggested_shortcut = CStrPtr{g_key_file_get_string(kf, "Desktop Entry", "SuggestedShortcut", nullptr)};
 
     condition = unique_ptr<FileActionCondition> {new FileActionCondition(kf, "Desktop Entry")};
+
+    has_parent = false;
 }
 
 FileActionObject::~FileActionObject() {
@@ -301,7 +303,7 @@ FileAction::FileAction(GKeyFile* kf): FileActionObject{kf}, target{FILE_ACTION_T
 }
 
 std::shared_ptr<FileActionProfile> FileAction::match(const FileInfoList& files) const {
-    qDebug() << "FileAction.match: " << id.get();
+    //qDebug() << "FileAction.match: " << id.get();
     if(hidden || !enabled) {
         return nullptr;
     }
@@ -311,7 +313,7 @@ std::shared_ptr<FileActionProfile> FileAction::match(const FileInfoList& files) 
     }
     for(const auto& profile : profiles) {
         if(profile->match(files)) {
-            qDebug() << "  profile matched!\n\n";
+            //qDebug() << "  profile matched!\n\n";
             return profile;
         }
     }
@@ -430,7 +432,7 @@ bool FileActionItem::launch(GAppLaunchContext* ctx, const FileInfoList& files, C
 }
 
 static void load_actions_from_dir(const char* dirname, const char* id_prefix) {
-    qDebug() << "loading from: " << dirname << endl;
+    //qDebug() << "loading from: " << dirname << endl;
     auto dir = g_dir_open(dirname, 0, nullptr);
     if(dir != nullptr) {
         for(;;) {

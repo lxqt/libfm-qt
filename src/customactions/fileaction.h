@@ -120,7 +120,7 @@ public:
         if(action->type == FileActionType::ACTION) {
             return FileActionTarget(static_cast<FileAction*>(action.get())->target);
         }
-        return FILE_ACTION_TARGET_NONE;
+        return FILE_ACTION_TARGET_CONTEXT;
     }
 
     bool is_menu() const {

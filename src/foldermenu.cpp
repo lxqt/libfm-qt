@@ -80,7 +80,7 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
         if(item && !(item->get_target() & FILE_ACTION_TARGET_CONTEXT)) {
             continue;  // this item is not for context menu
         }
-        if(item == custom_actions.front() && item && item->is_action()) {
+        if(item == custom_actions.front() && item && !item->is_action()) {
             addSeparator(); // before all custom actions
         }
         addCustomActionItem(this, item);
