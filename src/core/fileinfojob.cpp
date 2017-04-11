@@ -18,6 +18,8 @@ void FileInfoJob::exec() {
                                   G_FILE_QUERY_INFO_NONE, cancellable().get(), &err),
                 false
             };
+            if(!inf)
+                return;
 
             // Reuse the same dirPath object when the path remains the same (optimize for files in the same dir)
             auto dirPath = commonDirPath_.isValid() ? commonDirPath_ : path.parent();

@@ -242,6 +242,9 @@ _file_is_symlink:
         g_key_file_free(kf);
     }
 
+    if(!icon_ && mimeType_)
+        icon_ = mimeType_->icon();
+
 #if 0
     GFile* _gf = nullptr;
     GFileAttributeInfoList* list;
