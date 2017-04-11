@@ -205,17 +205,15 @@ void PathBar::setPath(Fm::FilePath path) {
     // check if we already have a button for this path
     int buttonCount = buttonsLayout_->count() - 1; // the last item is a spacer
     if(oldPath && currentPath_.isPrefixOf(oldPath)) {
-        auto btnPath = oldPath;
         for(int i = buttonCount - 1; i >= 0; --i) {
-            if(btnPath == currentPath_) {
-                auto btn = static_cast<PathButton*>(buttonsLayout_->itemAt(i)->widget());
+            auto btn = static_cast<PathButton*>(buttonsLayout_->itemAt(i)->widget());
+            if(pathForButton(btn) == currentPath_) {
                 btn->setChecked(true); // toggle the button
                 /* we don't need to emit chdir signal here since later
                  * toggled signal will be triggered on the button, which
                  * in turns emit chdir. */
                 return;
             }
-            btnPath = btnPath.parent();
         }
     }
 
