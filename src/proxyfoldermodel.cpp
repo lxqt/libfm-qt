@@ -229,7 +229,8 @@ void ProxyFolderModel::onThumbnailLoaded(const QModelIndex& srcIndex, int size) 
     // FolderModelItem* item = srcModel->itemFromIndex(srcIndex);
     // qDebug("ProxyFolderModel::onThumbnailLoaded: %d, %s", size, item->displayName.toUtf8().data());
 
-    if(size == thumbnailSize_) { // if a thumbnail of the size we want is loaded
+    if(size == thumbnailSize_ // if a thumbnail of the size we want is loaded
+       && srcIndex.model() == sourceModel()) { // check if the sourse model contains the index item
         QModelIndex index = mapFromSource(srcIndex);
         Q_EMIT dataChanged(index, index);
     }
