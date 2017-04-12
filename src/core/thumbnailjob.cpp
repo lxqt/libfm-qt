@@ -59,9 +59,18 @@ QImage ThumbnailJob::readImageFromStream(GInputStream* stream, size_t len) {
 }
 
 QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
+    if(!file->canThumbnail()) {
+        return QImage();
+    }
+
     // thumbnails are stored in $XDG_CACHE_HOME/thumbnails/large|normal|failed
     QString thumbnailDir{g_get_user_cache_dir()};
     thumbnailDir += "/thumbnails/";
+
+    // don't make thumbnails for files inside the thumbnail directory
+    if(FilePath::fromLocalPath(thumbnailDir.toLocal8Bit().constData()).isParentOf(file->dirPath())) {
+        return QImage();
+    }
 
     const char* subdir = size_ > 128 ? "large" : "normal";
     thumbnailDir += subdir;
