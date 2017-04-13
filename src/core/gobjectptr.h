@@ -21,12 +21,10 @@ public:
             g_object_ref(gobj_);
     }
 
-    GObjectPtr(const GObjectPtr& other): GObjectPtr{} {
-        *this = other;
+    GObjectPtr(const GObjectPtr& other): gobj_{other.gobj_ ? reinterpret_cast<T*>(g_object_ref(other.gobj_)) : nullptr} {
     }
 
-    GObjectPtr(GObjectPtr&& other): GObjectPtr{} {
-        *this = other;
+    GObjectPtr(GObjectPtr&& other): gobj_{other.release()} {
     }
 
     ~GObjectPtr() {
@@ -51,6 +49,9 @@ public:
     }
 
     GObjectPtr& operator = (const GObjectPtr& other) {
+        if (*this == other)
+            return *this;
+
         if(gobj_ != nullptr)
             g_object_unref(gobj_);
         gobj_ = other.gobj_ ? reinterpret_cast<T*>(g_object_ref(other.gobj_)) : nullptr;
@@ -58,14 +59,19 @@ public:
     }
 
     GObjectPtr& operator = (GObjectPtr&& other) {
+        if (this == &other)
+            return *this;
+
         if(gobj_ != nullptr)
             g_object_unref(gobj_);
-        gobj_ = other.gobj_ ? reinterpret_cast<T*>(other.gobj_) : nullptr;
-        other.gobj_ = nullptr;
+        gobj_ = other.release();
         return *this;
     }
 
     GObjectPtr& operator = (T* gobj) {
+        if (*this == gobj)
+            return *this;
+
         if(gobj_ != nullptr)
             g_object_unref(gobj_);
         gobj_ = gobj ? reinterpret_cast<T*>(g_object_ref(gobj_)) : nullptr;
