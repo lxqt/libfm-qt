@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
     Fm::PathEdit edit;
     edit.setText(home.toString().get());
     toolbar.addWidget(&edit);
-    auto action = new QAction("Go");
+    auto action = new QAction("Go", nullptr);
     toolbar.addAction(action);
     QObject::connect(action, &QAction::triggered, [&]() {
         auto path = Fm::FilePath::fromPathStr(edit.text().toLocal8Bit().constData());
