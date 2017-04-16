@@ -33,8 +33,8 @@ public:
     explicit AppInfoAction(Fm::GAppInfoPtr app, QObject* parent = 0):
         QAction(QString::fromUtf8(g_app_info_get_name(app.get())), parent),
         appInfo_{std::move(app)} {
-        setToolTip(QString::fromUtf8(g_app_info_get_description(app.get())));
-        GIcon* gicon = g_app_info_get_icon(app.get());
+        setToolTip(QString::fromUtf8(g_app_info_get_description(appInfo_.get())));
+        GIcon* gicon = g_app_info_get_icon(appInfo_.get());
         QIcon icon = Fm::IconInfo::fromGIcon(gicon)->qicon();
         setIcon(icon);
     }
