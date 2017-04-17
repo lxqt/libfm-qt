@@ -20,7 +20,7 @@ enum class FileActionExecMode {
 
 class FileActionProfile {
 public:
-    FileActionProfile(GKeyFile* kf, const char* profile_name);
+    explicit FileActionProfile(GKeyFile* kf, const char* profile_name);
 
     bool launch_once(GAppLaunchContext* ctx, std::shared_ptr<const FileInfo> first_file, const FileInfoList& files, CStrPtr& output);
 

@@ -55,7 +55,7 @@ public:
     };
 
 public:
-    FolderModel();
+    explicit FolderModel();
     virtual ~FolderModel();
 
     const std::shared_ptr<Fm::Folder>& folder() const {

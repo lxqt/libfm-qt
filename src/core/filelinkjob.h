@@ -8,7 +8,7 @@ namespace Fm {
 
 class LIBFM_QT_API FileLinkJob : public Fm::FileOperationJob {
 public:
-    FileLinkJob();
+    explicit FileLinkJob();
 };
 
 } // namespace Fm

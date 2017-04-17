@@ -13,7 +13,7 @@ class LIBFM_QT_API ThumbnailJob: public Job {
     Q_OBJECT
 public:
 
-    ThumbnailJob(FileInfoList files, int size);
+    explicit ThumbnailJob(FileInfoList files, int size);
 
     ~ThumbnailJob();
 

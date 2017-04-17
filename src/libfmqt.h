@@ -32,7 +32,7 @@ struct LibFmQtData;
 
 class LIBFM_QT_API LibFmQt {
 public:
-    LibFmQt();
+    explicit LibFmQt();
     ~LibFmQt();
 
     QTranslator* translator();

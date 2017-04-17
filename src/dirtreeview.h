@@ -37,7 +37,7 @@ class LIBFM_QT_API DirTreeView : public QTreeView {
     Q_OBJECT
 
 public:
-    DirTreeView(QWidget* parent);
+    explicit DirTreeView(QWidget* parent);
     ~DirTreeView();
 
     const Fm::FilePath& currentPath() const {

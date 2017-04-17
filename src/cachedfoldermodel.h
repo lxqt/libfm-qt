@@ -28,10 +28,11 @@
 
 namespace Fm {
 
+// FIXME: deprecate CachedFolderModel later (ugly API design with manual ref()/unref())
 class LIBFM_QT_API CachedFolderModel : public FolderModel {
     Q_OBJECT
 public:
-    CachedFolderModel(const std::shared_ptr<Fm::Folder>& folder);
+    explicit CachedFolderModel(const std::shared_ptr<Fm::Folder>& folder);
     void ref() {
         ++refCount;
     }

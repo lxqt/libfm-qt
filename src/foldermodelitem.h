@@ -50,7 +50,7 @@ public:
     };
 
 public:
-    FolderModelItem(const std::shared_ptr<const Fm::FileInfo>& _info);
+    explicit FolderModelItem(const std::shared_ptr<const Fm::FileInfo>& _info);
     FolderModelItem(const FolderModelItem& other);
     virtual ~FolderModelItem();
 

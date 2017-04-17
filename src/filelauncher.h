@@ -30,7 +30,7 @@ namespace Fm {
 
 class LIBFM_QT_API FileLauncher {
 public:
-    FileLauncher();
+    explicit FileLauncher();
     virtual ~FileLauncher();
 
     bool launchFiles(QWidget* parent, Fm::FileInfoList file_infos);

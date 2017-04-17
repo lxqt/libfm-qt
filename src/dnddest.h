@@ -27,7 +27,7 @@ namespace Fm {
 
 class DndDest {
 public:
-    DndDest();
+    explicit DndDest();
     ~DndDest();
 
     void setDestPath(Fm::FilePath dest) {

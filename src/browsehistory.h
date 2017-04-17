@@ -36,11 +36,11 @@ namespace Fm {
 class LIBFM_QT_API BrowseHistoryItem {
 public:
 
-    BrowseHistoryItem():
+    explicit BrowseHistoryItem():
         scrollPos_(0) {
     }
 
-    BrowseHistoryItem(Fm::FilePath path, int scrollPos = 0):
+    explicit BrowseHistoryItem(Fm::FilePath path, int scrollPos = 0):
         path_(std::move(path)),
         scrollPos_(scrollPos) {
     }

@@ -35,7 +35,7 @@ class LIBFM_QT_API AppChooserComboBox : public QComboBox {
     Q_OBJECT
 public:
     ~AppChooserComboBox();
-    AppChooserComboBox(QWidget* parent);
+    explicit AppChooserComboBox(QWidget* parent);
 
     void setMimeType(std::shared_ptr<const Fm::MimeType> mimeType);
 

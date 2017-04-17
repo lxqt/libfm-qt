@@ -9,7 +9,7 @@ namespace Fm {
 class LIBFM_QT_API FileChangeAttrJob : public Fm::FileOperationJob {
     Q_OBJECT
 public:
-    FileChangeAttrJob();
+    explicit FileChangeAttrJob();
 };
 
 } // namespace Fm

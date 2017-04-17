@@ -53,7 +53,7 @@ public:
     // QAction used for popup menus
     class ItemAction : public QAction {
     public:
-        ItemAction(const QModelIndex& index, QString text, QObject* parent = 0):
+        explicit ItemAction(const QModelIndex& index, QString text, QObject* parent = 0):
             QAction(text, parent),
             index_(index) {
         }

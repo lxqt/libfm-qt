@@ -22,7 +22,7 @@ public:
         SKIP_ERROR = 1<<3
     };
 
-    FileOperationJob();
+    explicit FileOperationJob();
 
     bool totalAmount(std::uint64_t& fileSize, std::uint64_t& fileCount) const;
 

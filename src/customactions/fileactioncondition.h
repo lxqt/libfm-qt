@@ -22,7 +22,7 @@ enum class FileActionCapability {
 
 class FileActionCondition {
 public:
-    FileActionCondition(GKeyFile* kf, const char* group);
+    explicit FileActionCondition(GKeyFile* kf, const char* group);
 
 #if 0
     bool match_base_name_(const FileInfoList& files, const char* allowed_base_name) {

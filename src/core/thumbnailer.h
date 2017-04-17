@@ -14,7 +14,7 @@ class MimeType;
 
 class LIBFM_QT_API Thumbnailer {
 public:
-    Thumbnailer(const char *id, GKeyFile *kf);
+    explicit Thumbnailer(const char *id, GKeyFile *kf);
 
     CStrPtr commandForUri(const char* uri, const char* output_file, guint size) const;
 

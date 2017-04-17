@@ -8,7 +8,7 @@ namespace Fm {
 
 class LIBFM_QT_API UntrashJob : public Fm::FileOperationJob {
 public:
-    UntrashJob();
+    explicit UntrashJob();
 
 protected:
     void exec() override;

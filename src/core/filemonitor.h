@@ -12,7 +12,7 @@ class LIBFM_QT_API FileMonitor: public QObject {
     Q_OBJECT
 public:
 
-    FileMonitor();
+    explicit FileMonitor();
 
 Q_SIGNALS:
 

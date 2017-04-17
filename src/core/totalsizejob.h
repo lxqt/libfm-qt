@@ -20,7 +20,7 @@ public:
         PREPARE_DELETE = 1 << 3
     };
 
-    TotalSizeJob(FilePathList paths = FilePathList{}, Flags flags = DEFAULT);
+    explicit TotalSizeJob(FilePathList paths = FilePathList{}, Flags flags = DEFAULT);
 
     std::uint64_t totalSize() const {
         return totalSize_;

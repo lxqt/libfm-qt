@@ -213,7 +213,7 @@ void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItem& opt, 
         return;
     }
 
-    QPalette::ColorGroup cg = opt.state & QStyle::State_Enabled ? QPalette::Normal : QPalette::Disabled;
+    QPalette::ColorGroup cg = (opt.state & QStyle::State_Enabled) ? QPalette::Normal : QPalette::Disabled;
     if(opt.state & QStyle::State_Selected) {
         if(!opt.widget) {
             painter->fillRect(selRect, opt.palette.highlight());

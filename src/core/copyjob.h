@@ -16,9 +16,9 @@ public:
         MOVE
     };
 
-    CopyJob(const FilePathList& paths, const FilePath& destDirPath, Mode mode = Mode::COPY);
+    explicit CopyJob(const FilePathList& paths, const FilePath& destDirPath, Mode mode = Mode::COPY);
 
-    CopyJob(const FilePathList&& paths, const FilePath&& destDirPath, Mode mode = Mode::COPY);
+    explicit CopyJob(const FilePathList&& paths, const FilePath&& destDirPath, Mode mode = Mode::COPY);
 
 protected:
     void exec() override;

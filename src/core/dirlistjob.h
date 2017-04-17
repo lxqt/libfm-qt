@@ -13,11 +13,11 @@ namespace Fm {
 class LIBFM_QT_API DirListJob : public Job {
     Q_OBJECT
 public:
-   enum Flags {
-       FAST = 0,
-       DIR_ONLY = 1 << 0,
-       DETAILED = 1 << 1
-   };
+    enum Flags {
+        FAST = 0,
+        DIR_ONLY = 1 << 0,
+        DETAILED = 1 << 1
+    };
 
     explicit DirListJob(const FilePath& path, Flags flags);
 

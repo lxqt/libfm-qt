@@ -255,11 +255,11 @@ void FolderViewTreeView::layoutColumns() {
     QHeaderView* headerView = header();
     // the width that's available for showing the columns.
     int availWidth = viewport()->contentsRect().width();
-    int desiredWidth = 0;
 
     // get the width that every column want
     int numCols = headerView->count();
     if(numCols > 0) {
+        int desiredWidth = 0;
         int* widths = new int[numCols]; // array to store the widths every column needs
         int column;
         for(column = 0; column < numCols; ++column) {

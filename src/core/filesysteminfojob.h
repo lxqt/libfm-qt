@@ -10,7 +10,7 @@ namespace Fm {
 class LIBFM_QT_API FileSystemInfoJob : public Job {
     Q_OBJECT
 public:
-    FileSystemInfoJob(const FilePath& path):
+    explicit FileSystemInfoJob(const FilePath& path):
         path_{path},
         isAvailable_{false},
         size_{0},

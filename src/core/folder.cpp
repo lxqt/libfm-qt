@@ -398,7 +398,7 @@ void Folder::onDirChanged(GFileMonitorEvent evt) {
     case G_FILE_MONITOR_EVENT_CHANGED: {
         std::lock_guard<std::mutex> lock{mutex_};
         pending_change_notify = true;
-        if(std::find(paths_to_update.cbegin(), paths_to_update.cend(), dirPath_) != paths_to_update.end()) {
+        if(std::find(paths_to_update.cbegin(), paths_to_update.cend(), dirPath_) != paths_to_update.cend()) {
             paths_to_update.push_back(dirPath_);
             queueUpdate();
         }

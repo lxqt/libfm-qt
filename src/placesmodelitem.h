@@ -45,10 +45,10 @@ public:
     };
 
 public:
-    PlacesModelItem();
-    PlacesModelItem(QIcon icon, QString title, Fm::FilePath path = Fm::FilePath{});
-    PlacesModelItem(const char* iconName, QString title, Fm::FilePath path = Fm::FilePath{});
-    PlacesModelItem(std::shared_ptr<const Fm::IconInfo> icon, QString title, Fm::FilePath path = Fm::FilePath{});
+    explicit PlacesModelItem();
+    explicit PlacesModelItem(QIcon icon, QString title, Fm::FilePath path = Fm::FilePath{});
+    explicit PlacesModelItem(const char* iconName, QString title, Fm::FilePath path = Fm::FilePath{});
+    explicit PlacesModelItem(std::shared_ptr<const Fm::IconInfo> icon, QString title, Fm::FilePath path = Fm::FilePath{});
     ~PlacesModelItem();
 
     const std::shared_ptr<const Fm::FileInfo>& fileInfo() const {

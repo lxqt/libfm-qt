@@ -27,9 +27,9 @@ enum FileActionTarget {
 
 class FileActionObject {
 public:
-    FileActionObject();
+    explicit FileActionObject();
 
-    FileActionObject(GKeyFile* kf);
+    explicit FileActionObject(GKeyFile* kf);
 
     virtual ~FileActionObject();
 

@@ -16,10 +16,10 @@ namespace Fm {
 class LIBFM_QT_API Volume: public GVolumePtr {
 public:
 
-    Volume(GVolume* gvol, bool addRef): GVolumePtr{gvol, addRef} {
+    explicit Volume(GVolume* gvol, bool addRef): GVolumePtr{gvol, addRef} {
     }
 
-    Volume(GVolumePtr gvol): GVolumePtr{std::move(gvol)} {
+    explicit Volume(GVolumePtr gvol): GVolumePtr{std::move(gvol)} {
     }
 
     CStrPtr name() const {
@@ -83,10 +83,10 @@ public:
 class LIBFM_QT_API Mount: public GMountPtr {
 public:
 
-    Mount(GMount* mnt, bool addRef): GMountPtr{mnt, addRef} {
+    explicit Mount(GMount* mnt, bool addRef): GMountPtr{mnt, addRef} {
     }
 
-    Mount(GMountPtr gmnt): GMountPtr{std::move(gmnt)} {
+    explicit Mount(GMountPtr gmnt): GMountPtr{std::move(gmnt)} {
     }
 
     CStrPtr name() const {

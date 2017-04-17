@@ -13,7 +13,7 @@ class LIBFM_QT_API BookmarkItem {
 public:
     friend class Bookmarks;
 
-    BookmarkItem(const FilePath& path, const QString name): path_{path}, name_{name} {
+    explicit BookmarkItem(const FilePath& path, const QString name): path_{path}, name_{name} {
         if(name_.isEmpty()) { // if the name is not specified, use basename of the path
             name_ = path_.baseName().get();
         }
