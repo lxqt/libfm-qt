@@ -26,7 +26,7 @@
 #include <libfm/fm.h>
 
 namespace Ui {
-  class RenameDialog;
+class RenameDialog;
 };
 
 class QPushButton;
@@ -34,48 +34,48 @@ class QPushButton;
 namespace Fm {
 
 class LIBFM_QT_API RenameDialog : public QDialog {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-  enum Action {
-    ActionCancel,
-    ActionRename,
-    ActionOverwrite,
-    ActionIgnore
-  };
+    enum Action {
+        ActionCancel,
+        ActionRename,
+        ActionOverwrite,
+        ActionIgnore
+    };
 
 public:
-  explicit RenameDialog(FmFileInfo* src, FmFileInfo* dest, QWidget* parent = 0, Qt::WindowFlags f = 0);
-  virtual ~RenameDialog();
+    explicit RenameDialog(FmFileInfo* src, FmFileInfo* dest, QWidget* parent = 0, Qt::WindowFlags f = 0);
+    virtual ~RenameDialog();
 
-  Action action() {
-    return action_;
-  }
+    Action action() {
+        return action_;
+    }
 
-  bool applyToAll() {
-    return applyToAll_;
-  }
+    bool applyToAll() {
+        return applyToAll_;
+    }
 
-  QString newName() {
-    return newName_;
-  }
+    QString newName() {
+        return newName_;
+    }
 
 protected Q_SLOTS:
-  void onRenameClicked();
-  void onIgnoreClicked();
-  void onFileNameChanged(QString newName);
+    void onRenameClicked();
+    void onIgnoreClicked();
+    void onFileNameChanged(QString newName);
 
 protected:
-  void accept();
-  void reject();
+    void accept();
+    void reject();
 
 private:
-  Ui::RenameDialog* ui;
-  QPushButton* renameButton_;
-  Action action_;
-  bool applyToAll_;
-  QString oldName_;
-  QString newName_;
+    Ui::RenameDialog* ui;
+    QPushButton* renameButton_;
+    Action action_;
+    bool applyToAll_;
+    QString oldName_;
+    QString newName_;
 };
 
 }

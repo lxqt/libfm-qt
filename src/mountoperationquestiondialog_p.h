@@ -30,20 +30,20 @@ namespace Fm {
 class MountOperation;
 
 class MountOperationQuestionDialog : public QMessageBox {
-Q_OBJECT
+    Q_OBJECT
 public:
-  MountOperationQuestionDialog(MountOperation* op, gchar* message, GStrv choices);
-  virtual ~MountOperationQuestionDialog();
+    MountOperationQuestionDialog(MountOperation* op, gchar* message, GStrv choices);
+    virtual ~MountOperationQuestionDialog();
 
-  virtual void done(int r);
+    virtual void done(int r);
 
 private Q_SLOTS:
-  void onButtonClicked(QAbstractButton* button);
+    void onButtonClicked(QAbstractButton* button);
 
 private:
-  MountOperation* mountOperation;
-  QAbstractButton** choiceButtons;
-  int choiceCount;
+    MountOperation* mountOperation;
+    QAbstractButton** choiceButtons;
+    int choiceCount;
 };
 
 }

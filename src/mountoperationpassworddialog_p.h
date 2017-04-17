@@ -26,7 +26,7 @@
 #include <gio/gio.h>
 
 namespace Ui {
-  class MountOperationPasswordDialog;
+class MountOperationPasswordDialog;
 };
 
 namespace Fm {
@@ -34,29 +34,29 @@ namespace Fm {
 class MountOperation;
 
 class MountOperationPasswordDialog : public QDialog {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit MountOperationPasswordDialog(MountOperation* op, GAskPasswordFlags flags);
-  virtual ~MountOperationPasswordDialog();
+    explicit MountOperationPasswordDialog(MountOperation* op, GAskPasswordFlags flags);
+    virtual ~MountOperationPasswordDialog();
 
-  void setMessage(QString message);
-  void setDefaultUser(QString user);
-  void setDefaultDomain(QString domain);
+    void setMessage(QString message);
+    void setDefaultUser(QString user);
+    void setDefaultDomain(QString domain);
 
-  virtual void done(int r);
+    virtual void done(int r);
 
 private Q_SLOTS:
-  void onAnonymousToggled(bool checked);
+    void onAnonymousToggled(bool checked);
 
 private:
-  Ui::MountOperationPasswordDialog* ui;
-  MountOperation* mountOperation;
-  bool needPassword;
-  bool needUserName;
-  bool needDomain;
-  bool canSavePassword;
-  bool canAnonymous;
+    Ui::MountOperationPasswordDialog* ui;
+    MountOperation* mountOperation;
+    bool needPassword;
+    bool needUserName;
+    bool needDomain;
+    bool canSavePassword;
+    bool canAnonymous;
 };
 
 }

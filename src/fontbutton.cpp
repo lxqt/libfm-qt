@@ -25,33 +25,33 @@
 namespace Fm {
 
 FontButton::FontButton(QWidget* parent): QPushButton(parent) {
-  connect(this, &QPushButton::clicked, this, &FontButton::onClicked);
+    connect(this, &QPushButton::clicked, this, &FontButton::onClicked);
 }
 
 FontButton::~FontButton() {
 }
 
 void FontButton::onClicked() {
-  QFontDialog dlg(font_);
-  if(dlg.exec() == QDialog::Accepted) {
-    setFont(dlg.selectedFont());
-  }
+    QFontDialog dlg(font_);
+    if(dlg.exec() == QDialog::Accepted) {
+        setFont(dlg.selectedFont());
+    }
 }
 
 void FontButton::setFont(QFont font) {
-  font_ = font;
-  QString text = font.family();
-  if(font.bold()) {
-    text += " ";
-    text += tr("Bold");
-  }
-  if(font.italic()) {
-    text += " ";
-    text += tr("Italic");
-  }
-  text += QString(" %1").arg(font.pointSize());
-  setText(text);
-  Q_EMIT changed();
+    font_ = font;
+    QString text = font.family();
+    if(font.bold()) {
+        text += " ";
+        text += tr("Bold");
+    }
+    if(font.italic()) {
+        text += " ";
+        text += tr("Italic");
+    }
+    text += QString(" %1").arg(font.pointSize());
+    setText(text);
+    Q_EMIT changed();
 }
 
 

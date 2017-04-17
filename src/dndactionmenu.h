@@ -28,18 +28,18 @@
 namespace Fm {
 
 class DndActionMenu : public QMenu {
-Q_OBJECT
+    Q_OBJECT
 public:
-  explicit DndActionMenu(Qt::DropActions possibleActions, QWidget* parent = 0);
-  virtual ~DndActionMenu();
+    explicit DndActionMenu(Qt::DropActions possibleActions, QWidget* parent = 0);
+    virtual ~DndActionMenu();
 
-  static Qt::DropAction askUser(Qt::DropActions possibleActions, QPoint pos);
+    static Qt::DropAction askUser(Qt::DropActions possibleActions, QPoint pos);
 
 private:
-  QAction* copyAction;
-  QAction* moveAction;
-  QAction* linkAction;
-  QAction* cancelAction;
+    QAction* copyAction;
+    QAction* moveAction;
+    QAction* linkAction;
+    QAction* cancelAction;
 };
 
 }

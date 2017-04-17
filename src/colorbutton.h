@@ -28,26 +28,26 @@
 namespace Fm {
 
 class LIBFM_QT_API ColorButton : public QPushButton {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit ColorButton(QWidget* parent = 0);
-  virtual ~ColorButton();
+    explicit ColorButton(QWidget* parent = 0);
+    virtual ~ColorButton();
 
-  void setColor(const QColor&);
+    void setColor(const QColor&);
 
-  QColor color() const {
-    return color_;
-  }
+    QColor color() const {
+        return color_;
+    }
 
 Q_SIGNALS:
-  void changed();
+    void changed();
 
 private Q_SLOTS:
-  void onClicked();
+    void onClicked();
 
 private:
-  QColor color_;
+    QColor color_;
 };
 
 }

@@ -28,25 +28,25 @@
 namespace Fm {
 
 class LIBFM_QT_API FontButton : public QPushButton {
-Q_OBJECT
+    Q_OBJECT
 public:
-  explicit FontButton(QWidget* parent = 0);
-  virtual ~FontButton();
+    explicit FontButton(QWidget* parent = 0);
+    virtual ~FontButton();
 
-  QFont font() {
-    return font_;
-  }
+    QFont font() {
+        return font_;
+    }
 
-  void setFont(QFont font);
+    void setFont(QFont font);
 
 Q_SIGNALS:
-  void changed();
+    void changed();
 
 private Q_SLOTS:
-  void onClicked();
+    void onClicked();
 
 private:
-  QFont font_;
+    QFont font_;
 };
 
 }

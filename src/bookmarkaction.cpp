@@ -23,10 +23,10 @@
 namespace Fm {
 
 BookmarkAction::BookmarkAction(std::shared_ptr<const Fm::BookmarkItem> item, QObject* parent):
-  QAction(parent),
-  item_(std::move(item)) {
+    QAction(parent),
+    item_(std::move(item)) {
 
-  setText(item_->name());
+    setText(item_->name());
 }
 
 } // namespace Fm

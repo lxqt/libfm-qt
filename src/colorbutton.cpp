@@ -24,7 +24,7 @@
 namespace Fm {
 
 ColorButton::ColorButton(QWidget* parent): QPushButton(parent) {
-  connect(this, &QPushButton::clicked, this, &ColorButton::onClicked);
+    connect(this, &QPushButton::clicked, this, &ColorButton::onClicked);
 }
 
 ColorButton::~ColorButton() {
@@ -32,21 +32,21 @@ ColorButton::~ColorButton() {
 }
 
 void ColorButton::onClicked() {
-  QColorDialog dlg(color_);
-  if(dlg.exec() == QDialog::Accepted) {
-    setColor(dlg.selectedColor());
-  }
+    QColorDialog dlg(color_);
+    if(dlg.exec() == QDialog::Accepted) {
+        setColor(dlg.selectedColor());
+    }
 }
 
 void ColorButton::setColor(const QColor& color) {
-  if(color != color_) {
-    color_ = color;
-    // use qss instead of QPalette to set the background color
-    // otherwise, this won't work when using the gtk style.
-    QString style = QString("QPushButton{background-color:%1;}").arg(color.name());
-    setStyleSheet(style);
-    Q_EMIT changed();
-  }
+    if(color != color_) {
+        color_ = color;
+        // use qss instead of QPalette to set the background color
+        // otherwise, this won't work when using the gtk style.
+        QString style = QString("QPushButton{background-color:%1;}").arg(color.name());
+        setStyleSheet(style);
+        Q_EMIT changed();
+    }
 }
 
 

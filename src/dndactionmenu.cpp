@@ -23,20 +23,22 @@
 namespace Fm {
 
 DndActionMenu::DndActionMenu(Qt::DropActions possibleActions, QWidget* parent)
-  : QMenu(parent)
-  , copyAction(nullptr)
-  , moveAction(nullptr)
-  , linkAction(nullptr)
-  , cancelAction(nullptr)
-{
-  if (possibleActions.testFlag(Qt::CopyAction))
-    copyAction = addAction(QIcon::fromTheme("edit-copy"), tr("Copy here"));
-  if (possibleActions.testFlag(Qt::MoveAction))
-    moveAction = addAction(tr("Move here"));
-  if (possibleActions.testFlag(Qt::LinkAction))
-    linkAction = addAction(tr("Create symlink here"));
-  addSeparator();
-  cancelAction = addAction(tr("Cancel"));
+    : QMenu(parent)
+    , copyAction(nullptr)
+    , moveAction(nullptr)
+    , linkAction(nullptr)
+    , cancelAction(nullptr) {
+    if(possibleActions.testFlag(Qt::CopyAction)) {
+        copyAction = addAction(QIcon::fromTheme("edit-copy"), tr("Copy here"));
+    }
+    if(possibleActions.testFlag(Qt::MoveAction)) {
+        moveAction = addAction(tr("Move here"));
+    }
+    if(possibleActions.testFlag(Qt::LinkAction)) {
+        linkAction = addAction(tr("Create symlink here"));
+    }
+    addSeparator();
+    cancelAction = addAction(tr("Cancel"));
 }
 
 DndActionMenu::~DndActionMenu() {
@@ -44,19 +46,21 @@ DndActionMenu::~DndActionMenu() {
 }
 
 Qt::DropAction DndActionMenu::askUser(Qt::DropActions possibleActions, QPoint pos) {
-  Qt::DropAction result = Qt::IgnoreAction;
-  DndActionMenu menu{possibleActions};
-  QAction* action = menu.exec(pos);
-  if (nullptr != action)
-  {
-      if(action == menu.copyAction)
-          result = Qt::CopyAction;
-      else if(action == menu.moveAction)
-          result = Qt::MoveAction;
-      else if(action == menu.linkAction)
-          result = Qt::LinkAction;
-  }
-  return result;
+    Qt::DropAction result = Qt::IgnoreAction;
+    DndActionMenu menu{possibleActions};
+    QAction* action = menu.exec(pos);
+    if(nullptr != action) {
+        if(action == menu.copyAction) {
+            result = Qt::CopyAction;
+        }
+        else if(action == menu.moveAction) {
+            result = Qt::MoveAction;
+        }
+        else if(action == menu.linkAction) {
+            result = Qt::LinkAction;
+        }
+    }
+    return result;
 }
 
 
