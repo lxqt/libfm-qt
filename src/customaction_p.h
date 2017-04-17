@@ -20,28 +20,31 @@
 #ifndef FM_CUSTOMACTION_P_H
 #define FM_CUSTOMACTION_P_H
 
+#include <QAction>
+#include "customactions/fileaction.h"
+
 namespace Fm {
 
 class CustomAction : public QAction {
 public:
-  explicit CustomAction(FmFileActionItem* item, QObject* parent = NULL):
-    QAction(QString::fromUtf8(fm_file_action_item_get_name(item)), parent),
-    item_(reinterpret_cast<FmFileActionItem*>(fm_file_action_item_ref(item))) {
-    const char* icon_name = fm_file_action_item_get_icon(item);
-    if(icon_name)
-      setIcon(QIcon::fromTheme(icon_name));
-  }
+    explicit CustomAction(std::shared_ptr<const FileActionItem> item, QObject* parent = nullptr):
+        QAction{QString::fromStdString(item->get_name()), parent},
+        item_{item} {
+        auto& icon_name = item->get_icon();
+        if(!icon_name.empty()) {
+            setIcon(QIcon::fromTheme(icon_name.c_str()));
+        }
+    }
 
-  virtual ~CustomAction() {
-    fm_file_action_item_unref(item_);
-  }
+    virtual ~CustomAction() {
+    }
 
-  FmFileActionItem* item() {
-    return item_;
-  }
+    const std::shared_ptr<const FileActionItem>& item() const {
+        return item_;
+    }
 
 private:
-  FmFileActionItem* item_;
+    std::shared_ptr<const FileActionItem> item_;
 };
 
 } // namespace Fm

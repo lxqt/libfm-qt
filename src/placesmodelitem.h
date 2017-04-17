@@ -28,101 +28,105 @@
 #include <QAction>
 #include <libfm/fm.h>
 
+#include "core/fileinfo.h"
+#include "core/filepath.h"
+#include "core/bookmarks.h"
+
 namespace Fm {
 
 // model item
 class LIBFM_QT_API PlacesModelItem : public QStandardItem {
 public:
-  enum Type {
-    Places = QStandardItem::UserType + 1,
-    Volume,
-    Mount,
-    Bookmark
-  };
+    enum Type {
+        Places = QStandardItem::UserType + 1,
+        Volume,
+        Mount,
+        Bookmark
+    };
 
 public:
-  PlacesModelItem();
-  PlacesModelItem(QIcon icon, QString title, FmPath* path = NULL);
-  PlacesModelItem(const char* iconName, QString title, FmPath* path = NULL);
-  PlacesModelItem(FmIcon* icon, QString title, FmPath* path = NULL);
-  ~PlacesModelItem();
+    PlacesModelItem();
+    PlacesModelItem(QIcon icon, QString title, Fm::FilePath path = Fm::FilePath{});
+    PlacesModelItem(const char* iconName, QString title, Fm::FilePath path = Fm::FilePath{});
+    PlacesModelItem(std::shared_ptr<const Fm::IconInfo> icon, QString title, Fm::FilePath path = Fm::FilePath{});
+    ~PlacesModelItem();
 
-  FmFileInfo* fileInfo() {
-    return fileInfo_;
-  }
-  void setFileInfo(FmFileInfo* fileInfo);
+    const std::shared_ptr<const Fm::FileInfo>& fileInfo() const {
+        return fileInfo_;
+    }
+    void setFileInfo(std::shared_ptr<const Fm::FileInfo> fileInfo) {
+        fileInfo_ = std::move(fileInfo);
+    }
 
-  FmPath* path() {
-    return path_;
-  }
-  void setPath(FmPath* path);
+    const Fm::FilePath& path() const {
+        return path_;
+    }
+    void setPath(Fm::FilePath path) {
+        path_ = std::move(path);
+    }
 
-  FmIcon* icon() {
-    return icon_;
-  }
-  void setIcon(FmIcon* icon);
-  void setIcon(GIcon* gicon);
-  void updateIcon();
+    const std::shared_ptr<const Fm::IconInfo>& icon() const {
+        return icon_;
+    }
+    void setIcon(std::shared_ptr<const Fm::IconInfo> icon);
+    void setIcon(GIcon* gicon);
+    void updateIcon();
 
-  QVariant data(int role = Qt::UserRole + 1) const;
+    QVariant data(int role = Qt::UserRole + 1) const;
 
-  virtual int type() const {
-    return Places;
-  }
+    virtual int type() const {
+        return Places;
+    }
 
 private:
-  FmPath* path_;
-  FmFileInfo* fileInfo_;
-  FmIcon* icon_;
+    Fm::FilePath path_;
+    std::shared_ptr<const Fm::FileInfo> fileInfo_;
+    std::shared_ptr<const Fm::IconInfo> icon_;
 };
 
 class LIBFM_QT_API PlacesModelVolumeItem : public PlacesModelItem {
 public:
-  PlacesModelVolumeItem(GVolume* volume);
-  bool isMounted();
-  bool canEject() {
-    return g_volume_can_eject(volume_);
-  }
-  virtual int type() const {
-    return Volume;
-  }
-  GVolume* volume() {
-    return volume_;
-  }
-  void update();
+    PlacesModelVolumeItem(GVolume* volume);
+    bool isMounted();
+    bool canEject() {
+        return g_volume_can_eject(volume_);
+    }
+    virtual int type() const {
+        return Volume;
+    }
+    GVolume* volume() {
+        return volume_;
+    }
+    void update();
 private:
-  GVolume* volume_;
+    GVolume* volume_;
 };
 
 class LIBFM_QT_API PlacesModelMountItem : public PlacesModelItem {
 public:
-  PlacesModelMountItem(GMount* mount);
-  virtual int type() const {
-    return Mount;
-  }
-  GMount* mount() const {
-    return mount_;
-  }
-  void update();
+    PlacesModelMountItem(GMount* mount);
+    virtual int type() const {
+        return Mount;
+    }
+    GMount* mount() const {
+        return mount_;
+    }
+    void update();
 private:
-  GMount* mount_;
+    GMount* mount_;
 };
 
 class LIBFM_QT_API PlacesModelBookmarkItem : public PlacesModelItem {
 public:
-  virtual int type() const {
-    return Bookmark;
-  }
-  PlacesModelBookmarkItem(FmBookmarkItem* bm_item);
-  virtual ~PlacesModelBookmarkItem() {
-    if(bookmarkItem_)
-      fm_bookmark_item_unref(bookmarkItem_);
-  }
-  FmBookmarkItem* bookmark() const {
-    return bookmarkItem_;
-  }
+    virtual int type() const {
+        return Bookmark;
+    }
+    PlacesModelBookmarkItem(std::shared_ptr<const Fm::BookmarkItem> bm_item);
+    const std::shared_ptr<const Fm::BookmarkItem>& bookmark() const {
+        return bookmarkItem_;
+    }
 private:
-  FmBookmarkItem* bookmarkItem_;
+    std::shared_ptr<const Fm::BookmarkItem> bookmarkItem_;
 };
 
 }

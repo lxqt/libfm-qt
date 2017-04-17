@@ -25,6 +25,8 @@
 #include <libfm/fm.h>
 #include <QWidget>
 
+#include "core/filepath.h"
+
 class QComboBox;
 class QVBoxLayout;
 class QWidget;
@@ -34,99 +36,92 @@ namespace Fm {
 class FileMenu;
 
 class LIBFM_QT_API SidePane : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  enum Mode {
-      ModeNone = -1,
-      ModePlaces = 0,
-      ModeDirTree,
-      NumModes
-  };
+    enum Mode {
+        ModeNone = -1,
+        ModePlaces = 0,
+        ModeDirTree,
+        NumModes
+    };
 
 public:
-  explicit SidePane(QWidget* parent = 0);
-  virtual ~SidePane();
+    explicit SidePane(QWidget* parent = 0);
+    virtual ~SidePane();
 
-  QSize iconSize() {
-    return iconSize_;
-  }
+    QSize iconSize() const {
+        return iconSize_;
+    }
 
-  void setIconSize(QSize size);
+    void setIconSize(QSize size);
 
-  FmPath* currentPath() {
-    return currentPath_;
-  }
+    const Fm::FilePath& currentPath() const {
+        return currentPath_;
+    }
 
-  void setCurrentPath(FmPath* path);
+    void setCurrentPath(Fm::FilePath path);
 
-  void setMode(Mode mode);
+    void setMode(Mode mode);
 
-  Mode mode() {
-    return mode_;
-  }
+    Mode mode() const {
+        return mode_;
+    }
 
-  QWidget* view() {
-    return view_;
-  }
+    QWidget* view() const {
+        return view_;
+    }
 
-  const char *modeName(Mode mode);
+    static const char* modeName(Mode mode);
 
-  Mode modeByName(const char *str);
+    static Mode modeByName(const char* str);
 
 #if 0 // FIXME: are these APIs from libfm-qt needed?
-  int modeCount(void) {
-    return NumModes;
-  }
+    int modeCount(void) {
+        return NumModes;
+    }
 
-  QString modeLabel(Mode mode);
+    QString modeLabel(Mode mode);
 
-  QString modeTooltip(Mode mode);
+    QString modeTooltip(Mode mode);
 #endif
 
-  void setShowHidden(bool show_hidden);
+    void setShowHidden(bool show_hidden);
 
-  bool showHidden() {
-    return showHidden_;
-  }
+    bool showHidden() const {
+        return showHidden_;
+    }
 
-  bool setHomeDir(const char *home_dir);
+    bool setHomeDir(const char* home_dir);
 
-  // libfm-gtk compatible alias
-  FmPath* getCwd() {
-    return currentPath();
-  }
-
-  void chdir(FmPath* path) {
-    setCurrentPath(path);
-  }
+    void chdir(Fm::FilePath path) {
+        setCurrentPath(std::move(path));
+    }
 
 Q_SIGNALS:
-  void chdirRequested(int type, FmPath* path);
-  void openFolderInNewWindowRequested(FmPath* path);
-  void openFolderInNewTabRequested(FmPath* path);
-  void openFolderInTerminalRequested(FmPath* path);
-  void createNewFolderRequested(FmPath* path);
-  void modeChanged(Fm::SidePane::Mode mode);
+    void chdirRequested(int type, const Fm::FilePath& path);
+    void openFolderInNewWindowRequested(const Fm::FilePath& path);
+    void openFolderInNewTabRequested(const Fm::FilePath& path);
+    void openFolderInTerminalRequested(const Fm::FilePath& path);
+    void createNewFolderRequested(const Fm::FilePath& path);
+    void modeChanged(Fm::SidePane::Mode mode);
 
-  void prepareFileMenu(Fm::FileMenu* menu); // emit before showing a Fm::FileMenu
+    void prepareFileMenu(Fm::FileMenu* menu); // emit before showing a Fm::FileMenu
 
 protected Q_SLOTS:
-  void onPlacesViewChdirRequested(int type, FmPath* path);
-  void onDirTreeViewChdirRequested(int type, FmPath* path);
-  void onComboCurrentIndexChanged(int current);
+    void onComboCurrentIndexChanged(int current);
 
 private:
-  void initDirTree();
+    void initDirTree();
 
 private:
-  FmPath* currentPath_;
-  QWidget* view_;
-  QComboBox* combo_;
-  QVBoxLayout* verticalLayout;
-  QSize iconSize_;
-  Mode mode_;
-  bool showHidden_;
+    Fm::FilePath currentPath_;
+    QWidget* view_;
+    QComboBox* combo_;
+    QVBoxLayout* verticalLayout;
+    QSize iconSize_;
+    Mode mode_;
+    bool showHidden_;
 };
 
 }

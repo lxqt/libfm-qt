@@ -28,6 +28,11 @@
 #include <QAction>
 #include <libfm/fm.h>
 
+#include <memory>
+
+#include "core/filepath.h"
+#include "core/bookmarks.h"
+
 namespace Fm {
 
 class PlacesModelItem;
@@ -36,103 +41,105 @@ class PlacesModelMountItem;
 class PlacesModelBookmarkItem;
 
 class LIBFM_QT_API PlacesModel : public QStandardItemModel {
-Q_OBJECT
-friend class PlacesView;
+    Q_OBJECT
+    friend class PlacesView;
 public:
 
-  enum {
-    FileInfoRole = Qt::UserRole,
-    FmIconRole
-  };
+    enum {
+        FileInfoRole = Qt::UserRole,
+        FmIconRole
+    };
 
-  // QAction used for popup menus
-  class ItemAction : public QAction {
-  public:
-    ItemAction(const QModelIndex& index, QString text, QObject* parent = 0):
-      QAction(text, parent),
-      index_(index) {
-    }
+    // QAction used for popup menus
+    class ItemAction : public QAction {
+    public:
+        ItemAction(const QModelIndex& index, QString text, QObject* parent = 0):
+            QAction(text, parent),
+            index_(index) {
+        }
 
-    QPersistentModelIndex& index() {
-      return index_;
-    }
-  private:
-    QPersistentModelIndex index_;
-  };
+        QPersistentModelIndex& index() {
+            return index_;
+        }
+    private:
+        QPersistentModelIndex index_;
+    };
 
 public:
-  explicit PlacesModel(QObject* parent = 0);
-  virtual ~PlacesModel();
+    explicit PlacesModel(QObject* parent = 0);
+    virtual ~PlacesModel();
 
-  bool showTrash() {
-    return trashItem_ != NULL;
-  }
-  void setShowTrash(bool show);
+    bool showTrash() {
+        return trashItem_ != nullptr;
+    }
+    void setShowTrash(bool show);
 
-  bool showApplications() {
-    return showApplications_;
-  }
-  void setShowApplications(bool show);
+    bool showApplications() {
+        return showApplications_;
+    }
+    void setShowApplications(bool show);
 
-  bool showDesktop() {
-    return showDesktop_;
-  }
-  void setShowDesktop(bool show);
+    bool showDesktop() {
+        return showDesktop_;
+    }
+    void setShowDesktop(bool show);
 
-  QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+    QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+
+    static std::shared_ptr<PlacesModel> globalInstance();
 
 public Q_SLOTS:
-  void updateIcons();
-  void updateTrash();
+    void updateTrash();
+    void onBookmarksChanged();
 
 protected:
 
-  PlacesModelItem* itemFromPath(FmPath* path);
-  PlacesModelItem* itemFromPath(QStandardItem* rootItem, FmPath* path);
-  PlacesModelVolumeItem* itemFromVolume(GVolume* volume);
-  PlacesModelMountItem* itemFromMount(GMount* mount);
-  PlacesModelBookmarkItem* itemFromBookmark(FmBookmarkItem* bkitem);
+    PlacesModelItem* itemFromPath(const Fm::FilePath& path);
+    PlacesModelItem* itemFromPath(QStandardItem* rootItem, const Fm::FilePath & path);
+    PlacesModelVolumeItem* itemFromVolume(GVolume* volume);
+    PlacesModelMountItem* itemFromMount(GMount* mount);
+    PlacesModelBookmarkItem* itemFromBookmark(std::shared_ptr<const Fm::BookmarkItem> bkitem);
 
-  virtual Qt::ItemFlags flags(const QModelIndex& index) const;
-  virtual QStringList mimeTypes() const;
-  virtual QMimeData* mimeData(const QModelIndexList& indexes) const;
-  virtual bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent);
-  Qt::DropActions supportedDropActions() const;
+    virtual Qt::ItemFlags flags(const QModelIndex& index) const;
+    virtual QStringList mimeTypes() const;
+    virtual QMimeData* mimeData(const QModelIndexList& indexes) const;
+    virtual bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent);
+    Qt::DropActions supportedDropActions() const;
 
-  void createTrashItem();
-
-private:
-  void loadBookmarks();
-
-  static void onVolumeAdded(GVolumeMonitor* monitor, GVolume* volume, PlacesModel* pThis);
-  static void onVolumeRemoved(GVolumeMonitor* monitor, GVolume* volume, PlacesModel* pThis);
-  static void onVolumeChanged(GVolumeMonitor* monitor, GVolume* volume, PlacesModel* pThis);
-  static void onMountAdded(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis);
-  static void onMountRemoved(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis);
-  static void onMountChanged(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis);
-
-  static void onBookmarksChanged(FmBookmarks* bookmarks, PlacesModel* pThis);
-
-  static void onTrashChanged(GFileMonitor *monitor, GFile *gf, GFile *other, GFileMonitorEvent evt, PlacesModel* pThis);
+    void createTrashItem();
 
 private:
-  FmBookmarks* bookmarks;
-  GVolumeMonitor* volumeMonitor;
-  QList<FmJob*> jobs;
-  bool showApplications_;
-  bool showDesktop_;
-  QStandardItem* placesRoot;
-  QStandardItem* devicesRoot;
-  QStandardItem* bookmarksRoot;
-  PlacesModelItem* trashItem_;
-  GFileMonitor* trashMonitor_;
-  PlacesModelItem* desktopItem;
-  PlacesModelItem* homeItem;
-  PlacesModelItem* computerItem;
-  PlacesModelItem* networkItem;
-  PlacesModelItem* applicationsItem;
-  QIcon ejectIcon_;
-  QList<GMount*> shadowedMounts_;
+    void loadBookmarks();
+
+    static void onVolumeAdded(GVolumeMonitor* monitor, GVolume* volume, PlacesModel* pThis);
+    static void onVolumeRemoved(GVolumeMonitor* monitor, GVolume* volume, PlacesModel* pThis);
+    static void onVolumeChanged(GVolumeMonitor* monitor, GVolume* volume, PlacesModel* pThis);
+    static void onMountAdded(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis);
+    static void onMountRemoved(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis);
+    static void onMountChanged(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis);
+
+    static void onTrashChanged(GFileMonitor* monitor, GFile* gf, GFile* other, GFileMonitorEvent evt, PlacesModel* pThis);
+
+private:
+    std::shared_ptr<Fm::Bookmarks> bookmarks;
+    GVolumeMonitor* volumeMonitor;
+    QList<FmJob*> jobs;
+    bool showApplications_;
+    bool showDesktop_;
+    QStandardItem* placesRoot;
+    QStandardItem* devicesRoot;
+    QStandardItem* bookmarksRoot;
+    PlacesModelItem* trashItem_;
+    GFileMonitor* trashMonitor_;
+    PlacesModelItem* desktopItem;
+    PlacesModelItem* homeItem;
+    PlacesModelItem* computerItem;
+    PlacesModelItem* networkItem;
+    PlacesModelItem* applicationsItem;
+    QIcon ejectIcon_;
+    QList<GMount*> shadowedMounts_;
+
+    static std::weak_ptr<PlacesModel> globalInstance_;
 };
 
 }

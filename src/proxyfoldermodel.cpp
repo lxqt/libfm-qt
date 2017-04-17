@@ -24,256 +24,251 @@
 
 namespace Fm {
 
-ProxyFolderModel::ProxyFolderModel(QObject * parent):
-  QSortFilterProxyModel(parent),
-  showHidden_(false),
-  folderFirst_(true),
-  showThumbnails_(false),
-  thumbnailSize_(0) {
-  setDynamicSortFilter(true);
-  setSortCaseSensitivity(Qt::CaseInsensitive);
+ProxyFolderModel::ProxyFolderModel(QObject* parent):
+    QSortFilterProxyModel(parent),
+    showHidden_(false),
+    folderFirst_(true),
+    showThumbnails_(false),
+    thumbnailSize_(0) {
+
+    setDynamicSortFilter(true);
+    setSortCaseSensitivity(Qt::CaseInsensitive);
+
+    collator_.setNumericMode(true);
 }
 
 ProxyFolderModel::~ProxyFolderModel() {
-  qDebug("delete ProxyFolderModel");
+    qDebug("delete ProxyFolderModel");
 
-  if(showThumbnails_ && thumbnailSize_ != 0) {
-    FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
-    // tell the source model that we don't need the thumnails anymore
-    if(srcModel) {
-      srcModel->releaseThumbnails(thumbnailSize_);
-      disconnect(srcModel, SIGNAL(thumbnailLoaded(QModelIndex,int)));
+    if(showThumbnails_ && thumbnailSize_ != 0) {
+        FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
+        // tell the source model that we don't need the thumnails anymore
+        if(srcModel) {
+            srcModel->releaseThumbnails(thumbnailSize_);
+            disconnect(srcModel, SIGNAL(thumbnailLoaded(QModelIndex, int)));
+        }
     }
-  }
 }
 
 void ProxyFolderModel::setSourceModel(QAbstractItemModel* model) {
-  if(model) {
-    // we only support Fm::FolderModel
-    Q_ASSERT(model->inherits("Fm::FolderModel"));
+    if(model == sourceModel()) // avoid setting the same model twice
+        return;
+    if(model) {
+        // we only support Fm::FolderModel
+        Q_ASSERT(model->inherits("Fm::FolderModel"));
 
-    if(showThumbnails_ && thumbnailSize_ != 0) { // if we're showing thumbnails
-      FolderModel* oldSrcModel = static_cast<FolderModel*>(sourceModel());
-      FolderModel* newSrcModel = static_cast<FolderModel*>(model);
-      if(oldSrcModel) { // we need to release cached thumbnails for the old source model
-        oldSrcModel->releaseThumbnails(thumbnailSize_);
-        disconnect(oldSrcModel, SIGNAL(thumbnailLoaded(QModelIndex,int)));
-      }
-      if(newSrcModel) { // tell the new source model that we want thumbnails of this size
-        newSrcModel->cacheThumbnails(thumbnailSize_);
-        connect(newSrcModel, &FolderModel::thumbnailLoaded, this, &ProxyFolderModel::onThumbnailLoaded);
-      }
+        if(showThumbnails_ && thumbnailSize_ != 0) { // if we're showing thumbnails
+            FolderModel* oldSrcModel = static_cast<FolderModel*>(sourceModel());
+            FolderModel* newSrcModel = static_cast<FolderModel*>(model);
+            if(oldSrcModel) { // we need to release cached thumbnails for the old source model
+                oldSrcModel->releaseThumbnails(thumbnailSize_);
+                disconnect(oldSrcModel, SIGNAL(thumbnailLoaded(QModelIndex, int)));
+            }
+            if(newSrcModel) { // tell the new source model that we want thumbnails of this size
+                newSrcModel->cacheThumbnails(thumbnailSize_);
+                connect(newSrcModel, &FolderModel::thumbnailLoaded, this, &ProxyFolderModel::onThumbnailLoaded);
+            }
+        }
     }
-  }
-  QSortFilterProxyModel::setSourceModel(model);
+    QSortFilterProxyModel::setSourceModel(model);
 }
 
 void ProxyFolderModel::sort(int column, Qt::SortOrder order) {
-  int oldColumn = sortColumn();
-  Qt::SortOrder oldOrder = sortOrder();
-  QSortFilterProxyModel::sort(column, order);
-  if(column != oldColumn || order != oldOrder) {
-    Q_EMIT sortFilterChanged();
-  }
+    int oldColumn = sortColumn();
+    Qt::SortOrder oldOrder = sortOrder();
+    QSortFilterProxyModel::sort(column, order);
+    if(column != oldColumn || order != oldOrder) {
+        Q_EMIT sortFilterChanged();
+    }
 }
 
 void ProxyFolderModel::setShowHidden(bool show) {
-  if(show != showHidden_) {
-    showHidden_ = show;
-    invalidateFilter();
-    Q_EMIT sortFilterChanged();
-  }
+    if(show != showHidden_) {
+        showHidden_ = show;
+        invalidateFilter();
+        Q_EMIT sortFilterChanged();
+    }
 }
 
 // need to call invalidateFilter() manually.
 void ProxyFolderModel::setFolderFirst(bool folderFirst) {
-  if(folderFirst != folderFirst_) {
-    folderFirst_ = folderFirst;
-    invalidate();
-    Q_EMIT sortFilterChanged();
-  }
+    if(folderFirst != folderFirst_) {
+        folderFirst_ = folderFirst;
+        invalidate();
+        Q_EMIT sortFilterChanged();
+    }
 }
 
-bool ProxyFolderModel::filterAcceptsRow(int source_row, const QModelIndex & source_parent) const {
-  if(!showHidden_) {
-    QAbstractItemModel* srcModel = sourceModel();
-    QString name = srcModel->data(srcModel->index(source_row, 0, source_parent)).toString();
-    if(name.startsWith(".") || name.endsWith("~"))
-      return false;
-  }
-  // apply additional filters if there're any
-  Q_FOREACH(ProxyFolderModelFilter* filter, filters_) {
-    FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
-    FmFileInfo* fileInfo = srcModel->fileInfoFromIndex(srcModel->index(source_row, 0, source_parent));
-    if(!filter->filterAcceptsRow(this, fileInfo))
-      return false;
-  }
-  return true;
+void ProxyFolderModel::setSortCaseSensitivity(Qt::CaseSensitivity cs) {
+    collator_.setCaseSensitivity(cs);
+    QSortFilterProxyModel::setSortCaseSensitivity(cs);
+    invalidate();
+    Q_EMIT sortFilterChanged();
+}
+
+bool ProxyFolderModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
+    if(!showHidden_) {
+        QAbstractItemModel* srcModel = sourceModel();
+        QString name = srcModel->data(srcModel->index(source_row, 0, source_parent)).toString();
+        if(name.startsWith(".") || name.endsWith("~")) {
+            return false;
+        }
+    }
+    // apply additional filters if there're any
+    Q_FOREACH(ProxyFolderModelFilter* filter, filters_) {
+        FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
+        auto fileInfo = srcModel->fileInfoFromIndex(srcModel->index(source_row, 0, source_parent));
+        if(!filter->filterAcceptsRow(this, fileInfo)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& right) const {
-  FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
-  // left and right are indexes of source model, not the proxy model.
-  if(srcModel) {
-    FmFileInfo* leftInfo = srcModel->fileInfoFromIndex(left);
-    FmFileInfo* rightInfo = srcModel->fileInfoFromIndex(right);
+    FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
+    // left and right are indexes of source model, not the proxy model.
+    if(srcModel) {
+        auto leftInfo = srcModel->fileInfoFromIndex(left);
+        auto rightInfo = srcModel->fileInfoFromIndex(right);
 
-    if(Q_UNLIKELY(!leftInfo || !rightInfo)) {
-      // In theory, this should not happen, but it's safer to add the null check.
-      // This is reported in https://github.com/lxde/pcmanfm-qt/issues/205
-      return false;
-    }
-
-    if(folderFirst_) {
-      bool leftIsFolder = (bool)fm_file_info_is_dir(leftInfo);
-      bool rightIsFolder = (bool)fm_file_info_is_dir(rightInfo);
-      if(leftIsFolder != rightIsFolder)
-        return sortOrder() == Qt::AscendingOrder ? leftIsFolder : rightIsFolder;
-    }
-
-    switch(sortColumn()) {
-      case FolderModel::ColumnFileName:
-        if(sortCaseSensitivity() == Qt::CaseSensitive) {
-          // fm_file_info_get_collate_key_nocasefold() uses g_utf8_casefold() from glib internally, which
-          // is only an approximation not working correctly in some locales.
-          // FIXME: we may use QCollator (since Qt 5.2) for this, but the performance impact is unknown
-          return strcmp(fm_file_info_get_collate_key_nocasefold(leftInfo), fm_file_info_get_collate_key_nocasefold(rightInfo)) < 0;
-          /*
-          QCollator coll;
-          coll.setCaseSensitivity(Qt::CaseSensitive);
-          coll.setIgnorePunctuation(false);
-          coll.setNumericMode(true);
-          return coll.compare(QString::fromUtf8(fm_file_info_get_disp_name(leftInfo)), QString::fromUtf8(fm_file_info_get_disp_name(rightInfo))) < 0;
-          */
+        if(folderFirst_) {
+            bool leftIsFolder = leftInfo->isDir();
+            bool rightIsFolder = rightInfo->isDir();
+            if(leftIsFolder != rightIsFolder) {
+                return sortOrder() == Qt::AscendingOrder ? leftIsFolder : rightIsFolder;
+            }
         }
-        else {
-          // linguistic case insensitive ordering
-          return strcmp(fm_file_info_get_collate_key(leftInfo), fm_file_info_get_collate_key(rightInfo)) < 0;
+
+        switch(sortColumn()) {
+        case FolderModel::ColumnFileMTime:
+            return leftInfo->mtime() < rightInfo->mtime();
+        case FolderModel::ColumnFileSize:
+            return leftInfo->size() < rightInfo->size();
+        default: {
+            QString leftText = left.data(Qt::DisplayRole).toString();
+            QString rightText = right.data(Qt::DisplayRole).toString();
+            return collator_.compare(leftText, rightText) < 0;
         }
-      case FolderModel::ColumnFileMTime:
-        return fm_file_info_get_mtime(leftInfo) < fm_file_info_get_mtime(rightInfo);
-      case FolderModel::ColumnFileSize:
-        return fm_file_info_get_size(leftInfo) < fm_file_info_get_size(rightInfo);
-      case FolderModel::ColumnFileOwner:
-        // TODO: sort by owner
-        break;
-      case FolderModel::ColumnFileType:
-        break;
+        }
     }
-  }
-  return QSortFilterProxyModel::lessThan(left, right);
+    return QSortFilterProxyModel::lessThan(left, right);
 }
 
-FmFileInfo* ProxyFolderModel::fileInfoFromIndex(const QModelIndex& index) const {
-  FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
-  if(srcModel) {
-    QModelIndex srcIndex = mapToSource(index);
-    return srcModel->fileInfoFromIndex(srcIndex);
-  }
-  return NULL;
+std::shared_ptr<const Fm::FileInfo> ProxyFolderModel::fileInfoFromIndex(const QModelIndex& index) const {
+    FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
+    if(srcModel) {
+        QModelIndex srcIndex = mapToSource(index);
+        return srcModel->fileInfoFromIndex(srcIndex);
+    }
+    return nullptr;
 }
 
 void ProxyFolderModel::setShowThumbnails(bool show) {
-  if(show != showThumbnails_) {
-    showThumbnails_ = show;
-    FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
-    if(srcModel && thumbnailSize_ != 0) {
-      if(show) {
-        // ask for cache of thumbnails of the new size in source model
-        srcModel->cacheThumbnails(thumbnailSize_);
-        // connect to the srcModel so we can be notified when a thumbnail is loaded.
-        connect(srcModel, &FolderModel::thumbnailLoaded, this, &ProxyFolderModel::onThumbnailLoaded);
-      }
-      else { // turn off thumbnails
-        // free cached old thumbnails in souce model
-        srcModel->releaseThumbnails(thumbnailSize_);
-        disconnect(srcModel, SIGNAL(thumbnailLoaded(QModelIndex,int)));
-      }
-      // reload all items, FIXME: can we only update items previously having thumbnails
-      Q_EMIT dataChanged(index(0, 0), index(rowCount() - 1, 0));
+    if(show != showThumbnails_) {
+        showThumbnails_ = show;
+        FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
+        if(srcModel && thumbnailSize_ != 0) {
+            if(show) {
+                // ask for cache of thumbnails of the new size in source model
+                srcModel->cacheThumbnails(thumbnailSize_);
+                // connect to the srcModel so we can be notified when a thumbnail is loaded.
+                connect(srcModel, &FolderModel::thumbnailLoaded, this, &ProxyFolderModel::onThumbnailLoaded);
+            }
+            else { // turn off thumbnails
+                // free cached old thumbnails in souce model
+                srcModel->releaseThumbnails(thumbnailSize_);
+                disconnect(srcModel, SIGNAL(thumbnailLoaded(QModelIndex, int)));
+            }
+            // reload all items, FIXME: can we only update items previously having thumbnails
+            Q_EMIT dataChanged(index(0, 0), index(rowCount() - 1, 0));
+        }
     }
-  }
 }
 
 void ProxyFolderModel::setThumbnailSize(int size) {
-  if(size != thumbnailSize_) {
-    FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
-    if(showThumbnails_ && srcModel) {
-      // free cached thumbnails of the old size
-      if(thumbnailSize_ != 0)
-        srcModel->releaseThumbnails(thumbnailSize_);
-      else {
-        // if the old thumbnail size is 0, we did not turn on thumbnail initially
-        connect(srcModel, &FolderModel::thumbnailLoaded, this, &ProxyFolderModel::onThumbnailLoaded);
-      }
-      // ask for cache of thumbnails of the new size in source model
-      srcModel->cacheThumbnails(size);
-      // reload all items, FIXME: can we only update items previously having thumbnails
-      Q_EMIT dataChanged(index(0, 0), index(rowCount() - 1, 0));
-    }
+    if(size != thumbnailSize_) {
+        FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
+        if(showThumbnails_ && srcModel) {
+            // free cached thumbnails of the old size
+            if(thumbnailSize_ != 0) {
+                srcModel->releaseThumbnails(thumbnailSize_);
+            }
+            else {
+                // if the old thumbnail size is 0, we did not turn on thumbnail initially
+                connect(srcModel, &FolderModel::thumbnailLoaded, this, &ProxyFolderModel::onThumbnailLoaded);
+            }
+            // ask for cache of thumbnails of the new size in source model
+            srcModel->cacheThumbnails(size);
+            // reload all items, FIXME: can we only update items previously having thumbnails
+            Q_EMIT dataChanged(index(0, 0), index(rowCount() - 1, 0));
+        }
 
-    thumbnailSize_ = size;
-  }
+        thumbnailSize_ = size;
+    }
 }
 
 QVariant ProxyFolderModel::data(const QModelIndex& index, int role) const {
-  if(index.column() == 0) { // only show the decoration role for the first column
-    if(role == Qt::DecorationRole && showThumbnails_ && thumbnailSize_) {
-      // we need to show thumbnails instead of icons
-      FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
-      QModelIndex srcIndex = mapToSource(index);
-      QImage image = srcModel->thumbnailFromIndex(srcIndex, thumbnailSize_);
-      if(!image.isNull()) // if we got a thumbnail of the desired size, use it
-        return QVariant(image);
+    if(index.column() == 0) { // only show the decoration role for the first column
+        if(role == Qt::DecorationRole && showThumbnails_ && thumbnailSize_) {
+            // we need to show thumbnails instead of icons
+            FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
+            QModelIndex srcIndex = mapToSource(index);
+            QImage image = srcModel->thumbnailFromIndex(srcIndex, thumbnailSize_);
+            if(!image.isNull()) { // if we got a thumbnail of the desired size, use it
+                return QVariant(image);
+            }
+        }
     }
-  }
-  // fallback to icons if thumbnails are not available
-  return QSortFilterProxyModel::data(index, role);
+    // fallback to icons if thumbnails are not available
+    return QSortFilterProxyModel::data(index, role);
 }
 
 void ProxyFolderModel::onThumbnailLoaded(const QModelIndex& srcIndex, int size) {
-  // FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
-  // FolderModelItem* item = srcModel->itemFromIndex(srcIndex);
-  // qDebug("ProxyFolderModel::onThumbnailLoaded: %d, %s", size, item->displayName.toUtf8().constData());
+    // FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
+    // FolderModelItem* item = srcModel->itemFromIndex(srcIndex);
+    // qDebug("ProxyFolderModel::onThumbnailLoaded: %d, %s", size, item->displayName.toUtf8().data());
 
-  if(size == thumbnailSize_) { // if a thumbnail of the size we want is loaded
-    QModelIndex index = mapFromSource(srcIndex);
-    Q_EMIT dataChanged(index, index);
-  }
+    if(size == thumbnailSize_ // if a thumbnail of the size we want is loaded
+       && srcIndex.model() == sourceModel()) { // check if the sourse model contains the index item
+        QModelIndex index = mapFromSource(srcIndex);
+        Q_EMIT dataChanged(index, index);
+    }
 }
 
 void ProxyFolderModel::addFilter(ProxyFolderModelFilter* filter) {
-  filters_.append(filter);
-  invalidateFilter();
-  Q_EMIT sortFilterChanged();
+    filters_.append(filter);
+    invalidateFilter();
+    Q_EMIT sortFilterChanged();
 }
 
 void ProxyFolderModel::removeFilter(ProxyFolderModelFilter* filter) {
-  filters_.removeOne(filter);
-  invalidateFilter();
-  Q_EMIT sortFilterChanged();
+    filters_.removeOne(filter);
+    invalidateFilter();
+    Q_EMIT sortFilterChanged();
 }
 
 void ProxyFolderModel::updateFilters() {
-  invalidate();
-  Q_EMIT sortFilterChanged();
+    invalidate();
+    Q_EMIT sortFilterChanged();
 }
 
 #if 0
 void ProxyFolderModel::reloadAllThumbnails() {
-  // reload all thumbnails and update UI
-  FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
-  if(srcModel) {
-    int rows= rowCount();
-    for(int row = 0; row < rows; ++row) {
-      QModelIndex index = this->index(row, 0);
-      QModelIndex srcIndex = mapToSource(index);
-      QImage image = srcModel->thumbnailFromIndex(srcIndex, size);
-      // tell the world that the item is changed to trigger a UI update
-      if(!image.isNull())
-        Q_EMIT dataChanged(index, index);
+    // reload all thumbnails and update UI
+    FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
+    if(srcModel) {
+        int rows = rowCount();
+        for(int row = 0; row < rows; ++row) {
+            QModelIndex index = this->index(row, 0);
+            QModelIndex srcIndex = mapToSource(index);
+            QImage image = srcModel->thumbnailFromIndex(srcIndex, size);
+            // tell the world that the item is changed to trigger a UI update
+            if(!image.isNull()) {
+                Q_EMIT dataChanged(index, index);
+            }
+        }
     }
-  }
 }
 #endif
 

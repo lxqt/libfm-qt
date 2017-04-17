@@ -1,4 +1,41 @@
+set(libfm_core_SRCS
+    # core data structures
+    core/gobjectptr.h
+    core/filepath.cpp
+    core/iconinfo.cpp
+    core/mimetype.cpp
+    core/fileinfo.cpp
+    core/folder.cpp
+    core/filemonitor.cpp
+    # i/o jobs
+    core/job.cpp
+    core/copyjob.cpp
+    core/deletejob.cpp
+    core/dirlistjob.cpp
+    core/filechangeattrjob.cpp
+    core/fileinfojob.cpp
+    core/filelinkjob.cpp
+    core/fileoperationjob.cpp
+    core/filesysteminfojob.cpp
+    core/job.cpp
+    core/totalsizejob.cpp
+    core/trashjob.cpp
+    core/untrashjob.cpp
+    core/thumbnailjob.cpp
+    # extra desktop services
+    core/bookmarks.cpp
+    core/volumemanager.cpp
+    core/userinfocache.cpp
+    core/thumbnailer.cpp
+    core/terminal.cpp
+    # custom actions
+    customactions/fileaction.cpp
+    customactions/fileactionprofile.cpp
+    customactions/fileactioncondition.cpp
+)
+
 set(libfm_SRCS
+    ${libfm_core_SRCS}
     libfmqt.cpp
     bookmarkaction.cpp
     sidepane.cpp
@@ -36,7 +73,6 @@ set(libfm_SRCS
     utilities.cpp
     dndactionmenu.cpp
     editbookmarksdialog.cpp
-    thumbnailloader.cpp
     execfiledialog.cpp
     appchoosercombobox.cpp
     appmenuview.cpp
@@ -80,11 +116,6 @@ add_library(${LIBFM_QT_LIBRARY_NAME} SHARED
     ${QM_FILES}
 )
 
-# only turn on custom actions support if it is enabled in libfm.
-if(EXISTS "${FM_INCLUDE_DIR}/libfm/fm-actions.h")
-    target_compile_definitions(${LIBFM_QT_LIBRARY_NAME} PRIVATE CUSTOM_ACTIONS)
-endif()
-
 install(EXPORT
     "${LIBFM_QT_LIBRARY_NAME}-targets"
     DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${LIBFM_QT_LIBRARY_NAME}"
@@ -97,6 +128,7 @@ target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
     ${FM_LIBRARIES}
     ${MENUCACHE_LIBRARIES}
     ${XCB_LIBRARIES}
+    ${EXIF_LIBRARIES}
 )
 
 # set libtool soname
@@ -112,6 +144,7 @@ target_include_directories(${LIBFM_QT_LIBRARY_NAME}
         "${FM_INCLUDE_DIR}/libfm" # to workaround incorrect #include in fm-actions.
         "${MENUCACHE_INCLUDE_DIRS}"
         "${XCB_INCLUDE_DIRS}"
+        "${EXIF_INCLUDE_DIRS}"
     INTERFACE
         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
         "$<BUILD_INTERFACE:${LIBFM_QT_INTREE_INCLUDE_DIR}>"
@@ -128,11 +161,11 @@ install(FILES
     COMPONENT Devel
 )
 
-file(GLOB libfm_HS "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
 # install include header files (FIXME: can we make this cleaner? should dir name be versioned?)
-install(FILES ${libfm_HS}
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt"
     COMPONENT Devel
+    FILES_MATCHING PATTERN "*.h"
 )
 
 generate_export_header(${LIBFM_QT_LIBRARY_NAME}
@@ -194,3 +227,32 @@ endif()
 
 # prevent the generated files from being deleted during make cleaner
 set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
+
+
+set(TEST_LIBRARIES
+    Qt5::Core
+    Qt5::Widgets
+    ${FM_LIBRARIES}
+    ${LIBFM_QT_LIBRARY_NAME}
+)
+# some simple test cases
+add_executable("test-folder"
+    tests/test-folder.cpp
+)
+target_link_libraries("test-folder" ${TEST_LIBRARIES})
+
+add_executable("test-folderview"
+    tests/test-folderview.cpp
+)
+target_link_libraries("test-folderview" ${TEST_LIBRARIES})
+
+add_executable("test-volumemanager"
+    tests/test-volumemanager.cpp
+)
+target_link_libraries("test-volumemanager" ${TEST_LIBRARIES})
+
+add_executable("test-placesview"
+    tests/test-placesview.cpp
+)
+target_link_libraries("test-placesview" ${TEST_LIBRARIES})
+

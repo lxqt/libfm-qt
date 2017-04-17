@@ -27,93 +27,111 @@
 #include <QImage>
 #include <libfm/fm.h>
 #include <QList>
-#include <QVector>
-#include <QLinkedList>
-#include <QPair>
+#include <vector>
+#include <utility>
+#include <forward_list>
 #include "foldermodelitem.h"
+
+#include "core/folder.h"
+#include "core/thumbnailjob.h"
 
 namespace Fm {
 
 class LIBFM_QT_API FolderModel : public QAbstractListModel {
-Q_OBJECT
+    Q_OBJECT
 public:
 
-  enum Role {
-    FileInfoRole = Qt::UserRole
-  };
+    enum Role {
+        FileInfoRole = Qt::UserRole
+    };
 
-  enum ColumnId {
-    ColumnFileName,
-    ColumnFileType,
-    ColumnFileSize,
-    ColumnFileMTime,
-    ColumnFileOwner,
-    NumOfColumns
-  };
+    enum ColumnId {
+        ColumnFileName,
+        ColumnFileType,
+        ColumnFileSize,
+        ColumnFileMTime,
+        ColumnFileOwner,
+        NumOfColumns
+    };
 
 public:
-  FolderModel();
-  virtual ~FolderModel();
+    FolderModel();
+    virtual ~FolderModel();
 
-  FmFolder* folder() {
-    return folder_;
-  }
-  void setFolder(FmFolder* new_folder);
+    const std::shared_ptr<Fm::Folder>& folder() const {
+        return folder_;
+    }
 
-  FmPath* path() {
-    return folder_ ? fm_folder_get_path(folder_) : NULL;
-  }
+    void setFolder(const std::shared_ptr<Fm::Folder>& new_folder);
 
-  int rowCount(const QModelIndex & parent = QModelIndex()) const;
-  int columnCount (const QModelIndex & parent) const;
-  QVariant data(const QModelIndex & index, int role) const;
-  QVariant headerData(int section, Qt::Orientation orientation, int role) const;
-  QModelIndex index(int row, int column, const QModelIndex & parent = QModelIndex()) const;
-  QModelIndex parent( const QModelIndex & index ) const;
-  // void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
+    Fm::FilePath path() {
+        return folder_ ? folder_->path() : Fm::FilePath();
+    }
 
-  Qt::ItemFlags flags(const QModelIndex & index) const;
+    int rowCount(const QModelIndex& parent = QModelIndex()) const;
+    int columnCount(const QModelIndex& parent) const;
+    QVariant data(const QModelIndex& index, int role) const;
+    QVariant headerData(int section, Qt::Orientation orientation, int role) const;
+    QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const;
+    QModelIndex parent(const QModelIndex& index) const;
+    // void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
-  virtual QStringList mimeTypes() const;
-  virtual QMimeData* mimeData(const QModelIndexList & indexes) const;
-  virtual Qt::DropActions supportedDropActions() const;
-  virtual bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent);
+    Qt::ItemFlags flags(const QModelIndex& index) const;
 
-  FmFileInfo* fileInfoFromIndex(const QModelIndex& index) const;
-  FolderModelItem* itemFromIndex(const QModelIndex& index) const;
-  QImage thumbnailFromIndex(const QModelIndex& index, int size);
+    virtual QStringList mimeTypes() const;
+    virtual QMimeData* mimeData(const QModelIndexList& indexes) const;
+    virtual Qt::DropActions supportedDropActions() const;
+    virtual bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent);
 
-  void cacheThumbnails(int size);
-  void releaseThumbnails(int size);
+    std::shared_ptr<const Fm::FileInfo> fileInfoFromIndex(const QModelIndex& index) const;
+    FolderModelItem* itemFromIndex(const QModelIndex& index) const;
+    QImage thumbnailFromIndex(const QModelIndex& index, int size);
+
+    void cacheThumbnails(int size);
+    void releaseThumbnails(int size);
 
 Q_SIGNALS:
-  void thumbnailLoaded(const QModelIndex& index, int size);
+    void thumbnailLoaded(const QModelIndex& index, int size);
 
-public Q_SLOTS:
-  void updateIcons();
+protected Q_SLOTS:
+
+    void onStartLoading();
+    void onFinishLoading();
+    void onFilesAdded(const Fm::FileInfoList& files);
+    void onFilesChanged(std::vector<Fm::FileInfoPair>& files);
+    void onFilesRemoved(const Fm::FileInfoList& files);
+
+    void onThumbnailLoaded(const std::shared_ptr<const Fm::FileInfo>& file, int size, const QImage& image);
+    void onThumbnailJobFinished();
+    void loadPendingThumbnails();
 
 protected:
-  static void onStartLoading(FmFolder* folder, gpointer user_data);
-  static void onFinishLoading(FmFolder* folder, gpointer user_data);
-  static void onFilesAdded(FmFolder* folder, GSList* files, gpointer user_data);
-  static void onFilesChanged(FmFolder* folder, GSList* files, gpointer user_data);
-  static void onFilesRemoved(FmFolder* folder, GSList* files, gpointer user_data);
-  static void onThumbnailLoaded(FmThumbnailLoader *res, gpointer user_data);
-
-  void insertFiles(int row, FmFileInfoList* files);
-  void removeAll();
-  QList<FolderModelItem>::iterator findItemByPath(FmPath* path, int* row);
-  QList<FolderModelItem>::iterator findItemByName(const char* name, int* row);
-  QList<FolderModelItem>::iterator findItemByFileInfo(FmFileInfo* info, int* row);
+    void queueLoadThumbnail(const std::shared_ptr<const Fm::FileInfo>& file, int size);
+    void insertFiles(int row, const Fm::FileInfoList& files);
+    void removeAll();
+    QList<FolderModelItem>::iterator findItemByPath(const Fm::FilePath& path, int* row);
+    QList<FolderModelItem>::iterator findItemByName(const char* name, int* row);
+    QList<FolderModelItem>::iterator findItemByFileInfo(const Fm::FileInfo* info, int* row);
 
 private:
-  FmFolder* folder_;
-  // FIXME: should we use a hash table here so item lookup becomes much faster?
-  QList<FolderModelItem> items;
 
-  // record what size of thumbnails we should cache in an array of <size, refCount> pairs.
-  QVector<QPair<int, int> > thumbnailRefCounts;
-  QLinkedList<FmThumbnailLoader*> thumbnailResults;
+    struct ThumbnailData {
+        ThumbnailData(int size):
+            size_{size},
+            refCount_{1} {
+        }
+
+        int size_;
+        int refCount_;
+        Fm::FileInfoList pendingThumbnails_;
+    };
+
+    std::shared_ptr<Fm::Folder> folder_;
+    QList<FolderModelItem> items;
+
+    bool hasPendingThumbnailHandler_;
+    std::vector<Fm::ThumbnailJob*> pendingThumbnailJobs_;
+    std::forward_list<ThumbnailData> thumbnailData_;
 };
 
 }

@@ -22,32 +22,32 @@
 
 #include "icontheme.h"
 #include <QDebug>
+#include "core/gioptrs.h"
+#include "core/iconinfo.h"
 
 namespace Fm {
 
 class AppInfoAction : public QAction {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit AppInfoAction(GAppInfo* app, QObject* parent = 0):
-    QAction(QString::fromUtf8(g_app_info_get_name(app)), parent),
-    appInfo_(G_APP_INFO(g_object_ref(app))) {
-    setToolTip(QString::fromUtf8(g_app_info_get_description(app)));
-    GIcon* gicon = g_app_info_get_icon(app);
-    QIcon icon = IconTheme::icon(gicon);
-    setIcon(icon);
-  }
+    explicit AppInfoAction(Fm::GAppInfoPtr app, QObject* parent = 0):
+        QAction(QString::fromUtf8(g_app_info_get_name(app.get())), parent),
+        appInfo_{std::move(app)} {
+        setToolTip(QString::fromUtf8(g_app_info_get_description(appInfo_.get())));
+        GIcon* gicon = g_app_info_get_icon(appInfo_.get());
+        QIcon icon = Fm::IconInfo::fromGIcon(gicon)->qicon();
+        setIcon(icon);
+    }
 
-  virtual ~AppInfoAction() {
-    if(appInfo_)
-      g_object_unref(appInfo_);
-  }
+    virtual ~AppInfoAction() {
+    }
 
-  GAppInfo* appInfo() const {
-    return appInfo_;
-  }
+    const Fm::GAppInfoPtr& appInfo() const {
+        return appInfo_;
+    }
 
 private:
-  GAppInfo* appInfo_;
+    Fm::GAppInfoPtr appInfo_;
 };
 
 } // namespace Fm

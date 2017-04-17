@@ -23,67 +23,70 @@
 namespace Fm {
 
 BrowseHistory::BrowseHistory():
-  currentIndex_(0),
-  maxCount_(10) {
+    currentIndex_(0),
+    maxCount_(10) {
 }
 
 BrowseHistory::~BrowseHistory() {
 }
 
-void BrowseHistory::add(FmPath* path, int scrollPos) {
-  int lastIndex = size() - 1;
-  if(currentIndex_ < lastIndex) {
-    // if we're not at the last item, remove items after the current one.
-    erase(begin() + currentIndex_ + 1, end());
-  }
-
-  if(size() + 1 > maxCount_) {
-    // if there are too many items, remove the oldest one.
-    // FIXME: what if currentIndex_ == 0? remove the last item instead?
-    if(currentIndex_ == 0)
-      remove(lastIndex);
-    else {
-      remove(0);
-      --currentIndex_;
+void BrowseHistory::add(Fm::FilePath path, int scrollPos) {
+    int lastIndex = items_.size() - 1;
+    if(currentIndex_ < lastIndex) {
+        // if we're not at the last item, remove items after the current one.
+        items_.erase(items_.cbegin() + currentIndex_ + 1, items_.cend());
     }
-  }
-  // add a path and current scroll position to browse history
-  append(BrowseHistoryItem(path, scrollPos));
-  currentIndex_ = size() - 1;
+
+    if(items_.size() + 1 > maxCount_) {
+        // if there are too many items, remove the oldest one.
+        // FIXME: what if currentIndex_ == 0? remove the last item instead?
+        if(currentIndex_ == 0) {
+            items_.erase(items_.cbegin() + lastIndex);
+        }
+        else {
+            items_.erase(items_.cbegin());
+            --currentIndex_;
+        }
+    }
+    // add a path and current scroll position to browse history
+    items_.push_back(BrowseHistoryItem(path, scrollPos));
+    currentIndex_ = items_.size() - 1;
 }
 
 void BrowseHistory::setCurrentIndex(int index) {
-  if(index >= 0 && index < size()) {
-    currentIndex_ = index;
-    // FIXME: should we emit a signal for the change?
-  }
+    if(index >= 0 && index < items_.size()) {
+        currentIndex_ = index;
+        // FIXME: should we emit a signal for the change?
+    }
 }
 
 bool BrowseHistory::canBackward() const {
-  return (currentIndex_ > 0);
+    return (currentIndex_ > 0);
 }
 
 int BrowseHistory::backward() {
-  if(canBackward())
-    --currentIndex_;
-  return currentIndex_;
+    if(canBackward()) {
+        --currentIndex_;
+    }
+    return currentIndex_;
 }
 
 bool BrowseHistory::canForward() const {
-  return (currentIndex_ + 1 < size());
+    return (currentIndex_ + 1 < items_.size());
 }
 
 int BrowseHistory::forward() {
-  if(canForward())
-    ++currentIndex_;
-  return currentIndex_;
+    if(canForward()) {
+        ++currentIndex_;
+    }
+    return currentIndex_;
 }
 
 void BrowseHistory::setMaxCount(int maxCount) {
-  maxCount_ = maxCount;
-  if(size() > maxCount) {
-    // TODO: remove some items
-  }
+    maxCount_ = maxCount;
+    if(items_.size() > maxCount) {
+        // TODO: remove some items
+    }
 }
 
 

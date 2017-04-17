@@ -24,35 +24,40 @@
 #include <QComboBox>
 #include <libfm/fm.h>
 
+#include <vector>
+
+#include "core/mimetype.h"
+#include "core/gioptrs.h"
+
 namespace Fm {
 
 class LIBFM_QT_API AppChooserComboBox : public QComboBox {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  ~AppChooserComboBox();
-  AppChooserComboBox(QWidget* parent);
+    ~AppChooserComboBox();
+    AppChooserComboBox(QWidget* parent);
 
-  void setMimeType(FmMimeType* mimeType);
+    void setMimeType(std::shared_ptr<const Fm::MimeType> mimeType);
 
-  FmMimeType* mimeType() {
-    return mimeType_;
-  }
+    const std::shared_ptr<const Fm::MimeType>& mimeType() const {
+        return mimeType_;
+    }
 
-  GAppInfo* selectedApp();
-  // const GList* customApps();
+    Fm::GAppInfoPtr selectedApp() const;
+    // const GList* customApps();
 
-  bool isChanged();
+    bool isChanged() const;
 
 private Q_SLOTS:
-  void onCurrentIndexChanged(int index);
+    void onCurrentIndexChanged(int index);
 
 private:
-  FmMimeType* mimeType_;
-  GList* appInfos_; // applications used to open the file type
-  GAppInfo* defaultApp_; // default application used to open the file type
-  int defaultAppIndex_;
-  int prevIndex_;
-  bool blockOnCurrentIndexChanged_;
+    std::shared_ptr<const Fm::MimeType> mimeType_;
+    std::vector<Fm::GAppInfoPtr> appInfos_; // applications used to open the file type
+    Fm::GAppInfoPtr defaultApp_; // default application used to open the file type
+    int defaultAppIndex_;
+    int prevIndex_;
+    bool blockOnCurrentIndexChanged_;
 };
 
 }

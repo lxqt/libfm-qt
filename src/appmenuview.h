@@ -25,6 +25,8 @@
 #include <libfm/fm.h>
 #include <menu-cache/menu-cache.h>
 
+#include "core/gioptrs.h"
+
 class QStandardItemModel;
 class QStandardItem;
 
@@ -33,38 +35,38 @@ namespace Fm {
 class AppMenuViewItem;
 
 class LIBFM_QT_API AppMenuView : public QTreeView {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit AppMenuView(QWidget* parent = NULL);
-  ~AppMenuView();
+    explicit AppMenuView(QWidget* parent = nullptr);
+    ~AppMenuView();
 
-  GAppInfo* selectedApp();
+    Fm::GAppInfoPtr selectedApp() const;
 
-  const char* selectedAppDesktopId();
+    const char* selectedAppDesktopId() const;
 
-  QByteArray selectedAppDesktopFilePath();
+    QByteArray selectedAppDesktopFilePath() const;
 
-  FmPath * selectedAppDesktopPath();
+    FmPath* selectedAppDesktopPath() const;
 
-  bool isAppSelected();
+    bool isAppSelected() const;
 
 Q_SIGNALS:
-  void selectionChanged();
+    void selectionChanged();
 
 private:
-  void addMenuItems(QStandardItem* parentItem, MenuCacheDir* dir);
-  void onMenuCacheReload(MenuCache* mc);
-  static void _onMenuCacheReload(MenuCache* mc, gpointer user_data) {
-    static_cast<AppMenuView*>(user_data)->onMenuCacheReload(mc);
-  }
+    void addMenuItems(QStandardItem* parentItem, MenuCacheDir* dir);
+    void onMenuCacheReload(MenuCache* mc);
+    static void _onMenuCacheReload(MenuCache* mc, gpointer user_data) {
+        static_cast<AppMenuView*>(user_data)->onMenuCacheReload(mc);
+    }
 
-  AppMenuViewItem* selectedItem();
+    AppMenuViewItem* selectedItem() const;
 
 private:
-  // gboolean fm_app_menu_view_is_item_app(, GtkTreeIter* it);
-  QStandardItemModel* model_;
-  MenuCache* menu_cache;
-  MenuCacheNotifyId menu_cache_reload_notify;
+    // gboolean fm_app_menu_view_is_item_app(, GtkTreeIter* it);
+    QStandardItemModel* model_;
+    MenuCache* menu_cache;
+    MenuCacheNotifyId menu_cache_reload_notify;
 };
 
 }

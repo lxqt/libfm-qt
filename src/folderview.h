@@ -29,8 +29,9 @@
 #include <libfm/fm.h>
 #include "foldermodel.h"
 #include "proxyfoldermodel.h"
-#include "fileinfo.h"
 #include "path.h"
+
+#include "core/folder.h"
 
 class QTimer;
 
@@ -42,138 +43,139 @@ class FileLauncher;
 class FolderViewStyle;
 
 class LIBFM_QT_API FolderView : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
 
-  enum ViewMode {
-    FirstViewMode = 1,
-    IconMode = FirstViewMode,
-    CompactMode,
-    DetailedListMode,
-    ThumbnailMode,
-    LastViewMode = ThumbnailMode,
-    NumViewModes = (LastViewMode - FirstViewMode + 1)
-  };
+    enum ViewMode {
+        FirstViewMode = 1,
+        IconMode = FirstViewMode,
+        CompactMode,
+        DetailedListMode,
+        ThumbnailMode,
+        LastViewMode = ThumbnailMode,
+        NumViewModes = (LastViewMode - FirstViewMode + 1)
+    };
 
-  enum ClickType {
-    ActivatedClick,
-    MiddleClick,
-    ContextMenuClick
-  };
+    enum ClickType {
+        ActivatedClick,
+        MiddleClick,
+        ContextMenuClick
+    };
 
-  friend class FolderViewTreeView;
-  friend class FolderViewListView;
+    friend class FolderViewTreeView;
+    friend class FolderViewListView;
 
-  explicit FolderView(ViewMode _mode = IconMode, QWidget* parent = 0);
-  virtual ~FolderView();
+    explicit FolderView(ViewMode _mode = IconMode, QWidget* parent = 0);
+    virtual ~FolderView();
 
-  void setViewMode(ViewMode _mode);
-  ViewMode viewMode() const;
+    void setViewMode(ViewMode _mode);
+    ViewMode viewMode() const;
 
-  void setIconSize(ViewMode mode, QSize size);
-  QSize iconSize(ViewMode mode) const;
+    void setIconSize(ViewMode mode, QSize size);
+    QSize iconSize(ViewMode mode) const;
 
-  QAbstractItemView* childView() const;
+    QAbstractItemView* childView() const;
 
-  ProxyFolderModel* model() const;
-  void setModel(ProxyFolderModel* _model);
+    ProxyFolderModel* model() const;
+    void setModel(ProxyFolderModel* _model);
 
-  FmFolder* folder() {
-    return model_ ? static_cast<FolderModel*>(model_->sourceModel())->folder() : NULL;
-  }
+    std::shared_ptr<Fm::Folder> folder() const {
+        return model_ ? static_cast<FolderModel*>(model_->sourceModel())->folder() : nullptr;
+    }
 
-  FmFileInfo* folderInfo() {
-    FmFolder* _folder = folder();
-    return _folder ? fm_folder_get_info(_folder) : NULL;
-  }
+    std::shared_ptr<const Fm::FileInfo> folderInfo() const {
+        auto _folder = folder();
+        return _folder ? _folder->info() : nullptr;
+    }
 
-  FmPath* path() {
-    FmFolder* _folder = folder();
-    return _folder ? fm_folder_get_path(_folder) : NULL;
-  }
+    Fm::FilePath path() {
+        auto _folder = folder();
+        return _folder ? _folder->path() : Fm::FilePath();
+    }
 
-  QItemSelectionModel* selectionModel() const;
-  Fm::FileInfoList selectedFiles() const;
-  Fm::PathList selectedFilePaths() const;
-  QModelIndex indexFromFolderPath(FmPath* folderPath) const;
+    QItemSelectionModel* selectionModel() const;
+    Fm::FileInfoList selectedFiles() const;
+    Fm::FilePathList selectedFilePaths() const;
+    bool hasSelection() const;
+    QModelIndex indexFromFolderPath(const Fm::FilePath& folderPath) const;
 
-  void selectAll();
+    void selectAll();
 
-  void invertSelection();
+    void invertSelection();
 
-  void setFileLauncher(FileLauncher* launcher) {
-    fileLauncher_ = launcher;
-  }
+    void setFileLauncher(FileLauncher* launcher) {
+        fileLauncher_ = launcher;
+    }
 
-  FileLauncher* fileLauncher() {
-    return fileLauncher_;
-  }
+    FileLauncher* fileLauncher() {
+        return fileLauncher_;
+    }
 
-  int autoSelectionDelay() const {
-    return autoSelectionDelay_;
-  }
+    int autoSelectionDelay() const {
+        return autoSelectionDelay_;
+    }
 
-  void setAutoSelectionDelay(int delay);
+    void setAutoSelectionDelay(int delay);
 
 protected:
-  virtual bool event(QEvent* event);
-  virtual void contextMenuEvent(QContextMenuEvent* event);
-  virtual void childMousePressEvent(QMouseEvent* event);
-  virtual void childDragEnterEvent(QDragEnterEvent* event);
-  virtual void childDragMoveEvent(QDragMoveEvent* e);
-  virtual void childDragLeaveEvent(QDragLeaveEvent* e);
-  virtual void childDropEvent(QDropEvent* e);
+    virtual bool event(QEvent* event);
+    virtual void contextMenuEvent(QContextMenuEvent* event);
+    virtual void childMousePressEvent(QMouseEvent* event);
+    virtual void childDragEnterEvent(QDragEnterEvent* event);
+    virtual void childDragMoveEvent(QDragMoveEvent* e);
+    virtual void childDragLeaveEvent(QDragLeaveEvent* e);
+    virtual void childDropEvent(QDropEvent* e);
 
-  void emitClickedAt(ClickType type, const QPoint& pos);
+    void emitClickedAt(ClickType type, const QPoint& pos);
 
-  QModelIndexList selectedRows ( int column = 0 ) const;
-  QModelIndexList selectedIndexes() const;
+    QModelIndexList selectedRows(int column = 0) const;
+    QModelIndexList selectedIndexes() const;
 
-  virtual void prepareFileMenu(Fm::FileMenu* menu);
-  virtual void prepareFolderMenu(Fm::FolderMenu* menu);
+    virtual void prepareFileMenu(Fm::FileMenu* menu);
+    virtual void prepareFolderMenu(Fm::FolderMenu* menu);
 
-  virtual bool eventFilter(QObject* watched, QEvent* event);
+    virtual bool eventFilter(QObject* watched, QEvent* event);
 
-  void updateGridSize(); // called when view mode, icon size, font size or cell margin is changed
+    void updateGridSize(); // called when view mode, icon size, font size or cell margin is changed
 
-  QSize getMargins() const {
-    return itemDelegateMargins_;
-  }
+    QSize getMargins() const {
+        return itemDelegateMargins_;
+    }
 
-  // sets the cell margins in the icon and thumbnail modes
-  // and calls updateGridSize() when needed
-  void setMargins(QSize size);
+    // sets the cell margins in the icon and thumbnail modes
+    // and calls updateGridSize() when needed
+    void setMargins(QSize size);
 
 public Q_SLOTS:
-  void onItemActivated(QModelIndex index);
-  void onSelectionChanged(const QItemSelection & selected, const QItemSelection & deselected);
-  virtual void onFileClicked(int type, FmFileInfo* fileInfo);
+    void onItemActivated(QModelIndex index);
+    void onSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
+    virtual void onFileClicked(int type, const std::shared_ptr<const Fm::FileInfo>& fileInfo);
 
 private Q_SLOTS:
-  void onAutoSelectionTimeout();
-  void onSelChangedTimeout();
+    void onAutoSelectionTimeout();
+    void onSelChangedTimeout();
 
 Q_SIGNALS:
-  void clicked(int type, FmFileInfo* file);
-  void clickedBack();
-  void clickedForward();
-  void selChanged(int n_sel);
-  void sortChanged();
+    void clicked(int type, const std::shared_ptr<const Fm::FileInfo>& file);
+    void clickedBack();
+    void clickedForward();
+    void selChanged();
+    void sortChanged();
 
 private:
 
-  QAbstractItemView* view;
-  ProxyFolderModel* model_;
-  ViewMode mode;
-  QSize iconSize_[NumViewModes];
-  FileLauncher* fileLauncher_;
-  int autoSelectionDelay_;
-  QTimer* autoSelectionTimer_;
-  QModelIndex lastAutoSelectionIndex_;
-  QTimer* selChangedTimer_;
-  // the cell margins in the icon and thumbnail modes
-  QSize itemDelegateMargins_;
+    QAbstractItemView* view;
+    ProxyFolderModel* model_;
+    ViewMode mode;
+    QSize iconSize_[NumViewModes];
+    FileLauncher* fileLauncher_;
+    int autoSelectionDelay_;
+    QTimer* autoSelectionTimer_;
+    QModelIndex lastAutoSelectionIndex_;
+    QTimer* selChangedTimer_;
+    // the cell margins in the icon and thumbnail modes
+    QSize itemDelegateMargins_;
 };
 
 }

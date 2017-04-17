@@ -25,83 +25,82 @@
 #include <QTreeView>
 #include <libfm/fm.h>
 
+#include <memory>
+#include "core/filepath.h"
+
 namespace Fm {
 
 class PlacesModel;
 class PlacesModelItem;
 
 class LIBFM_QT_API PlacesView : public QTreeView {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit PlacesView(QWidget* parent = 0);
-  virtual ~PlacesView();
+    explicit PlacesView(QWidget* parent = 0);
+    virtual ~PlacesView();
 
-  void setCurrentPath(FmPath* path);
-  FmPath* currentPath() {
-    return currentPath_;
-  }
+    void setCurrentPath(Fm::FilePath path);
 
-  // libfm-gtk compatible alias
-  FmPath* getCwd() {
-    return currentPath();
-  }
+    const Fm::FilePath& currentPath() const {
+        return currentPath_;
+    }
 
-  void chdir(FmPath* path) {
-    setCurrentPath(path);
-  }
+    void chdir(Fm::FilePath path) {
+        setCurrentPath(std::move(path));
+    }
 
 #if QT_VERSION < QT_VERSION_CHECK(5, 5, 0)
-  void setIconSize(const QSize &size) {
-      // The signal QAbstractItemView::iconSizeChanged is only available after Qt 5.5.
-      // To simulate the effect for older Qt versions, we override setIconSize().
-      QAbstractItemView::setIconSize(size);
-      onIconSizeChanged(size);
-  }
+    void setIconSize(const QSize& size) {
+        // The signal QAbstractItemView::iconSizeChanged is only available after Qt 5.5.
+        // To simulate the effect for older Qt versions, we override setIconSize().
+        QAbstractItemView::setIconSize(size);
+        onIconSizeChanged(size);
+    }
 #endif
 
 Q_SIGNALS:
-  void chdirRequested(int type, FmPath* path);
+    void chdirRequested(int type, const Fm::FilePath& path);
 
 protected Q_SLOTS:
-  void onClicked(const QModelIndex & index);
-  void onPressed(const QModelIndex & index);
-  void onIconSizeChanged(const QSize & size);
-  // void onMountOperationFinished(GError* error);
+    void onClicked(const QModelIndex& index);
+    void onPressed(const QModelIndex& index);
+    void onIconSizeChanged(const QSize& size);
+    // void onMountOperationFinished(GError* error);
 
-  void onOpenNewTab();
-  void onOpenNewWindow();
+    void onOpenNewTab();
+    void onOpenNewWindow();
 
-  void onEmptyTrash();
+    void onEmptyTrash();
 
-  void onMountVolume();
-  void onUnmountVolume();
-  void onEjectVolume();
-  void onUnmountMount();
+    void onMountVolume();
+    void onUnmountVolume();
+    void onEjectVolume();
+    void onUnmountMount();
 
-  void onMoveBookmarkUp();
-  void onMoveBookmarkDown();
-  void onDeleteBookmark();
-  void onRenameBookmark();
+    void onMoveBookmarkUp();
+    void onMoveBookmarkDown();
+    void onDeleteBookmark();
+    void onRenameBookmark();
 
 protected:
-  void drawBranches ( QPainter * painter, const QRect & rect, const QModelIndex & index ) const {
-    // override this method to inhibit drawing of the branch grid lines by Qt.
-  }
+    void drawBranches(QPainter* painter, const QRect& rect, const QModelIndex& index) const {
+        // override this method to inhibit drawing of the branch grid lines by Qt.
+    }
 
-  virtual void dragMoveEvent(QDragMoveEvent* event);
-  virtual void dropEvent(QDropEvent* event);
-  virtual void contextMenuEvent(QContextMenuEvent* event);
+    virtual void dragMoveEvent(QDragMoveEvent* event);
+    virtual void dropEvent(QDropEvent* event);
+    virtual void contextMenuEvent(QContextMenuEvent* event);
 
-  virtual void commitData(QWidget * editor);
-
-private:
-  void onEjectButtonClicked(PlacesModelItem* item);
-  void activateRow(int type, const QModelIndex& index);
+    virtual void commitData(QWidget* editor);
 
 private:
-  PlacesModel* model_;
-  FmPath* currentPath_;
+    void onEjectButtonClicked(PlacesModelItem* item);
+    void activateRow(int type, const QModelIndex& index);
+
+private:
+    std::shared_ptr<PlacesModel> model_;
+    Fm::FilePath currentPath_;
 };
 
 }

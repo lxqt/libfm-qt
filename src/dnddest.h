@@ -21,30 +21,30 @@
 #define FM_DNDDEST_H
 
 #include <QMimeData>
-#include "path.h"
+#include "core/filepath.h"
 
 namespace Fm {
 
 class DndDest {
 public:
-  DndDest();
-  ~DndDest();
+    DndDest();
+    ~DndDest();
 
-  void setDestPath(FmPath* dest) {
-    destPath_ = dest;
-  }
+    void setDestPath(Fm::FilePath dest) {
+        destPath_ = std::move(dest);
+    }
 
-  const Path& destPath() {
-    return destPath_;
-  }
+    const Fm::FilePath& destPath() {
+        return destPath_;
+    }
 
-  bool isSupported(const QMimeData* data);
-  bool isSupported(QString mimeType);
+    bool isSupported(const QMimeData* data);
+    bool isSupported(QString mimeType);
 
-  bool dropMimeData(const QMimeData* data, Qt::DropAction action);
+    bool dropMimeData(const QMimeData* data, Qt::DropAction action);
 
 private:
-  Path destPath_;
+    Fm::FilePath destPath_;
 };
 
 }

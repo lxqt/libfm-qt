@@ -27,27 +27,36 @@
 #include <libfm/fm.h>
 #include <sys/types.h>
 
+#include <cstdint>
+
+#include "core/filepath.h"
+#include "core/fileinfo.h"
+
 class QDialog;
 
 namespace Fm {
 
-LIBFM_QT_API FmPathList* pathListFromQUrls(QList<QUrl> urls);
+LIBFM_QT_API Fm::FilePathList pathListFromUriList(const char* uriList);
 
-LIBFM_QT_API void pasteFilesFromClipboard(FmPath* destPath, QWidget* parent = 0);
+LIBFM_QT_API QByteArray pathListToUriList(const Fm::FilePathList& paths);
 
-LIBFM_QT_API void copyFilesToClipboard(FmPathList* files);
+LIBFM_QT_API Fm::FilePathList pathListFromQUrls(QList<QUrl> urls);
 
-LIBFM_QT_API void cutFilesToClipboard(FmPathList* files);
+LIBFM_QT_API void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent = 0);
 
-LIBFM_QT_API void renameFile(FmFileInfo* file, QWidget* parent = 0);
+LIBFM_QT_API void copyFilesToClipboard(const Fm::FilePathList& files);
+
+LIBFM_QT_API void cutFilesToClipboard(const Fm::FilePathList& files);
+
+LIBFM_QT_API void renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent = 0);
 
 enum CreateFileType {
-  CreateNewFolder,
-  CreateNewTextFile,
-  CreateWithTemplate
+    CreateNewFolder,
+    CreateNewTextFile,
+    CreateWithTemplate
 };
 
-LIBFM_QT_API void createFileOrFolder(CreateFileType type, FmPath* parentDir, FmTemplate* templ = NULL, QWidget* parent = 0);
+LIBFM_QT_API void createFileOrFolder(CreateFileType type, Fm::FilePath parentDir, FmTemplate* templ = nullptr, QWidget* parent = 0);
 
 LIBFM_QT_API uid_t uidFromName(QString name);
 
@@ -64,6 +73,8 @@ LIBFM_QT_API int execModelessDialog(QDialog* dlg);
 LIBFM_QT_API bool isUriSchemeSupported(const char* uriScheme);
 
 LIBFM_QT_API bool uriExists(const char* uri);
+
+LIBFM_QT_API QString formatFileSize(std::uint64_t size, bool useSI = false);
 
 }
 

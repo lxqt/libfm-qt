@@ -29,24 +29,24 @@ namespace Fm {
 class PathEdit;
 
 class PathEditJob : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  GCancellable* cancellable;
-  GFile* dirName;
-  QStringList subDirs;
-  PathEdit* edit;
-  bool triggeredByFocusInEvent;
+    GCancellable* cancellable;
+    GFile* dirName;
+    QStringList subDirs;
+    PathEdit* edit;
+    bool triggeredByFocusInEvent;
 
-  ~PathEditJob() {
-    g_object_unref(dirName);
-    g_object_unref(cancellable);
-  }
+    ~PathEditJob() {
+        g_object_unref(dirName);
+        g_object_unref(cancellable);
+    }
 
 Q_SIGNALS:
-  void finished();
+    void finished();
 
 public Q_SLOTS:
-  void runJob();
+    void runJob();
 
 };
 
