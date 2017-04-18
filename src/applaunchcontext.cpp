@@ -28,7 +28,7 @@ typedef struct _FmAppLaunchContext {
 
 G_DEFINE_TYPE(FmAppLaunchContext, fm_app_launch_context, G_TYPE_APP_LAUNCH_CONTEXT)
 
-static char* fm_app_launch_context_get_display(GAppLaunchContext *context, GAppInfo *info, GList *files) {
+static char* fm_app_launch_context_get_display(GAppLaunchContext * /*context*/, GAppInfo * /*info*/, GList * /*files*/) {
   Display* dpy = QX11Info::display();
   if(dpy) {
     char* xstr = DisplayString(dpy);
@@ -37,7 +37,7 @@ static char* fm_app_launch_context_get_display(GAppLaunchContext *context, GAppI
   return nullptr;
 }
 
-static char* fm_app_launch_context_get_startup_notify_id(GAppLaunchContext *context, GAppInfo *info, GList *files) {
+static char* fm_app_launch_context_get_startup_notify_id(GAppLaunchContext * /*context*/, GAppInfo * /*info*/, GList * /*files*/) {
   return nullptr;
 }
 
@@ -47,10 +47,10 @@ static void fm_app_launch_context_class_init(FmAppLaunchContextClass* klass) {
   app_launch_class->get_startup_notify_id = fm_app_launch_context_get_startup_notify_id;
 }
 
-static void fm_app_launch_context_init(FmAppLaunchContext* context) {
+static void fm_app_launch_context_init(FmAppLaunchContext* /*context*/) {
 }
 
-FmAppLaunchContext* fm_app_launch_context_new_for_widget(QWidget* widget) {
+FmAppLaunchContext* fm_app_launch_context_new_for_widget(QWidget* /*widget*/) {
   FmAppLaunchContext* context = (FmAppLaunchContext*)g_object_new(FM_TYPE_APP_LAUNCH_CONTEXT, nullptr);
   return context;
 }

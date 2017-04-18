@@ -112,7 +112,7 @@ bool DeleteJob::deleteDirContent(const FilePath& path, GFileInfoPtr inf) {
         }
         else {
             if(err) {
-                ErrorAction act = emitError(err, ErrorSeverity::MODERATE);
+                emitError(err, ErrorSeverity::MODERATE);
                 /* ErrorAction::RETRY is not supported here */
                 hasError = true;
             }

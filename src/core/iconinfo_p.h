@@ -37,10 +37,10 @@ public:
     virtual QSize actualSize(const QSize& size, QIcon::Mode mode, QIcon::State state) override;
 
     // not supported
-    virtual void addFile(const QString& fileName, const QSize& size, QIcon::Mode mode, QIcon::State state) override {}
+    virtual void addFile(const QString& /*fileName*/, const QSize& /*size*/, QIcon::Mode /*mode*/, QIcon::State /*state*/) override {}
 
     // not supported
-    virtual void addPixmap(const QPixmap& pixmap, QIcon::Mode mode, QIcon::State state) override {}
+    virtual void addPixmap(const QPixmap& /*pixmap*/, QIcon::Mode /*mode*/, QIcon::State /*state*/) override {}
 
     virtual QIconEngine* clone() const override;
 

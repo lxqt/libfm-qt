@@ -41,7 +41,7 @@ FileActionProfile::FileActionProfile(GKeyFile *kf, const char* profile_name) {
 }
 
 
-bool FileActionProfile::launch_once(GAppLaunchContext* ctx, std::shared_ptr<const FileInfo> first_file, const FileInfoList& files, CStrPtr& output) {
+bool FileActionProfile::launch_once(GAppLaunchContext* /*ctx*/, std::shared_ptr<const FileInfo> first_file, const FileInfoList& files, CStrPtr& output) {
     if(exec == nullptr) {
         return false;
     }

@@ -111,7 +111,7 @@ _retry_enum_children:
                     else {
                         if(err) { /* error! */
                             /* ErrorAction::RETRY is not supported */
-                            ErrorAction act = emitError( err, ErrorSeverity::MILD);
+                            emitError( err, ErrorSeverity::MILD);
                             err = nullptr;
                         }
                         else {

@@ -104,7 +104,7 @@ private:
         _this->onCancellableCancelled(cancellable);
     }
 
-    void onCancellableCancelled(GCancellable* cancellable) {
+    void onCancellableCancelled(GCancellable* /*cancellable*/) {
         Q_EMIT cancelled();
     }
 

@@ -177,7 +177,7 @@ PlacesModel::~PlacesModel() {
 }
 
 // static
-void PlacesModel::onTrashChanged(GFileMonitor* monitor, GFile* gf, GFile* other, GFileMonitorEvent evt, PlacesModel* pThis) {
+void PlacesModel::onTrashChanged(GFileMonitor* /*monitor*/, GFile* /*gf*/, GFile* /*other*/, GFileMonitorEvent /*evt*/, PlacesModel* pThis) {
     QTimer::singleShot(0, pThis, SLOT(updateTrash()));
 }
 
@@ -197,7 +197,7 @@ void PlacesModel::updateTrash() {
     if(trashItem_) {
         UpdateTrashData* data = new UpdateTrashData(this);
         g_file_query_info_async(data->gf, G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT, G_FILE_QUERY_INFO_NONE, G_PRIORITY_LOW, nullptr,
-        [](GObject * source_object, GAsyncResult * res, gpointer user_data) {
+        [](GObject * /*source_object*/, GAsyncResult * res, gpointer user_data) {
             // the callback lambda function is called when the asyn query operation is finished
             UpdateTrashData* data = reinterpret_cast<UpdateTrashData*>(user_data);
             PlacesModel* _this = data->model.data();
@@ -332,7 +332,7 @@ PlacesModelBookmarkItem* PlacesModel::itemFromBookmark(std::shared_ptr<const Fm:
     return nullptr;
 }
 
-void PlacesModel::onMountAdded(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis) {
+void PlacesModel::onMountAdded(GVolumeMonitor* /*monitor*/, GMount* mount, PlacesModel* pThis) {
     // according to gio API doc, a shadowed mount should not be visible to the user
 #if GLIB_CHECK_VERSION(2, 20, 0)
     if(g_mount_is_shadowed(mount)) {
@@ -428,7 +428,7 @@ void PlacesModel::onMountRemoved(GVolumeMonitor* monitor, GMount* mount, PlacesM
 #endif
 }
 
-void PlacesModel::onVolumeAdded(GVolumeMonitor* monitor, GVolume* volume, PlacesModel* pThis) {
+void PlacesModel::onVolumeAdded(GVolumeMonitor* /*monitor*/, GVolume* volume, PlacesModel* pThis) {
     // for some unknown reasons, sometimes we get repeated volume-added
     // signals and added a device more than one. So, make a sanity check here.
     PlacesModelVolumeItem* volumeItem = pThis->itemFromVolume(volume);
@@ -442,7 +442,7 @@ void PlacesModel::onVolumeAdded(GVolumeMonitor* monitor, GVolume* volume, Places
     }
 }
 
-void PlacesModel::onVolumeChanged(GVolumeMonitor* monitor, GVolume* volume, PlacesModel* pThis) {
+void PlacesModel::onVolumeChanged(GVolumeMonitor* /*monitor*/, GVolume* volume, PlacesModel* pThis) {
     PlacesModelVolumeItem* item = pThis->itemFromVolume(volume);
     if(item) {
         item->update();
@@ -455,7 +455,7 @@ void PlacesModel::onVolumeChanged(GVolumeMonitor* monitor, GVolume* volume, Plac
     }
 }
 
-void PlacesModel::onVolumeRemoved(GVolumeMonitor* monitor, GVolume* volume, PlacesModel* pThis) {
+void PlacesModel::onVolumeRemoved(GVolumeMonitor* /*monitor*/, GVolume* volume, PlacesModel* pThis) {
     PlacesModelVolumeItem* item = pThis->itemFromVolume(volume);
     if(item) {
         pThis->devicesRoot->removeRow(item->row());
@@ -509,7 +509,7 @@ std::shared_ptr<PlacesModel> PlacesModel::globalInstance() {
 }
 
 
-bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) {
+bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction /*action*/, int row, int column, const QModelIndex& parent) {
     QStandardItem* item = itemFromIndex(parent);
     if(data->hasFormat("application/x-bookmark-row")) { // the data being dopped is a bookmark row
         // decode it and do bookmark reordering

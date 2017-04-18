@@ -23,8 +23,6 @@ bool launchTerminal(const char* programName, const FilePath& workingDir, Fm::GEr
         g_key_file_free(kf);
         return false;
     }
-    auto open_arg = g_key_file_get_string(kf, programName, "open_arg", nullptr);
-    auto noclose_arg = g_key_file_get_string(kf, programName, "noclose_arg", nullptr);
     auto launch = g_key_file_get_string(kf, programName, "launch", nullptr);
     auto desktop_id = g_key_file_get_string(kf, programName, "desktop_id", nullptr);
 

@@ -192,32 +192,32 @@ private:
         void exec() override;
     };
 
-    static void _onGVolumeAdded(GVolumeMonitor* mon, GVolume* vol, VolumeManager* _this) {
+    static void _onGVolumeAdded(GVolumeMonitor* /*mon*/, GVolume* vol, VolumeManager* _this) {
         _this->onGVolumeAdded(vol);
     }
     void onGVolumeAdded(GVolume* vol);
 
-    static void _onGVolumeRemoved(GVolumeMonitor* mon, GVolume* vol, VolumeManager* _this) {
+    static void _onGVolumeRemoved(GVolumeMonitor* /*mon*/, GVolume* vol, VolumeManager* _this) {
         _this->onGVolumeRemoved(vol);
     }
     void onGVolumeRemoved(GVolume* vol);
 
-    static void _onGVolumeChanged(GVolumeMonitor* mon, GVolume* vol, VolumeManager* _this) {
+    static void _onGVolumeChanged(GVolumeMonitor* /*mon*/, GVolume* vol, VolumeManager* _this) {
         _this->onGVolumeChanged(vol);
     }
     void onGVolumeChanged(GVolume* vol);
 
-    static void _onGMountAdded(GVolumeMonitor* mon, GMount* mnt, VolumeManager* _this) {
+    static void _onGMountAdded(GVolumeMonitor* /*mon*/, GMount* mnt, VolumeManager* _this) {
         _this->onGMountAdded(mnt);
     }
     void onGMountAdded(GMount* mnt);
 
-    static void _onGMountRemoved(GVolumeMonitor* mon, GMount* mnt, VolumeManager* _this) {
+    static void _onGMountRemoved(GVolumeMonitor* /*mon*/, GMount* mnt, VolumeManager* _this) {
         _this->onGMountRemoved(mnt);
     }
     void onGMountRemoved(GMount* mnt);
 
-    static void _onGMountChanged(GVolumeMonitor* mon, GMount* mnt, VolumeManager* _this) {
+    static void _onGMountChanged(GVolumeMonitor* /*mon*/, GMount* mnt, VolumeManager* _this) {
         _this->onGMountChanged(mnt);
     }
     void onGMountChanged(GMount* mnt);

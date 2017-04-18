@@ -30,6 +30,7 @@
 namespace Fm {
 
 DirTreeView::DirTreeView(QWidget* parent):
+    QTreeView(parent),
     currentExpandingItem_(nullptr) {
 
     setSelectionMode(QAbstractItemView::SingleSelection);
@@ -274,7 +275,7 @@ void DirTreeView::onExpanded(const QModelIndex& index) {
     }
 }
 
-void DirTreeView::onSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected) {
+void DirTreeView::onSelectionChanged(const QItemSelection& selected, const QItemSelection& /*deselected*/) {
     if(!selected.isEmpty()) {
         QModelIndex index = selected.first().topLeft();
         DirTreeModel* _model = static_cast<DirTreeModel*>(model());

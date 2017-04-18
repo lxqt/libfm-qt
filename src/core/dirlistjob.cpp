@@ -6,7 +6,7 @@
 
 namespace Fm {
 
-DirListJob::DirListJob(const FilePath& path, Flags flags): dir_path{path} {
+DirListJob::DirListJob(const FilePath& path, Flags _flags): dir_path{path}, flags{_flags} {
 }
 
 void DirListJob::exec() {

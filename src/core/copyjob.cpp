@@ -24,7 +24,7 @@ void CopyJob::gfileProgressCallback(goffset current_num_bytes, goffset total_num
     _this->setCurrentFileProgress(total_num_bytes, current_num_bytes);
 }
 
-bool CopyJob::copyRegularFile(const FilePath& srcPath, GFileInfoPtr srcFile, const FilePath& destPath) {
+bool CopyJob::copyRegularFile(const FilePath& srcPath, GFileInfoPtr /*srcFile*/, const FilePath& destPath) {
     int flags = G_FILE_COPY_ALL_METADATA | G_FILE_COPY_NOFOLLOW_SYMLINKS;
     GErrorPtr err;
 _retry_copy:
@@ -71,8 +71,6 @@ _retry_copy:
 #endif
         }
         else {
-            bool is_no_space = (err.domain() == G_IO_ERROR &&
-                                err.code() == G_IO_ERROR_NO_SPACE);
             ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
             err.reset();
             if(act == ErrorAction::RETRY) {
@@ -80,6 +78,8 @@ _retry_copy:
                 goto _retry_copy;
             }
 # if 0
+            const bool is_no_space = (err.domain() == G_IO_ERROR &&
+                                err.code() == G_IO_ERROR_NO_SPACE);
             /* FIXME: ask to leave partial content? */
             if(is_no_space) {
                 g_file_delete(dest, fm_job_get_cancellable(fmjob), nullptr);
@@ -206,7 +206,6 @@ bool CopyJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FileP
         if(err->domain == G_IO_ERROR && (err->code == G_IO_ERROR_EXISTS ||
                                          err->code == G_IO_ERROR_INVALID_FILENAME ||
                                          err->code == G_IO_ERROR_FILENAME_TOO_LONG)) {
-            bool dest_exists = (err->code == G_IO_ERROR_EXISTS);
             GFileInfoPtr destFile;
             // FIXME: query its info
             FilePath newDestPath;

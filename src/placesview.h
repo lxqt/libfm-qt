@@ -84,7 +84,7 @@ protected Q_SLOTS:
     void onRenameBookmark();
 
 protected:
-    void drawBranches(QPainter* painter, const QRect& rect, const QModelIndex& index) const {
+    void drawBranches(QPainter* /*painter*/, const QRect& /*rect*/, const QModelIndex& /*index*/) const {
         // override this method to inhibit drawing of the branch grid lines by Qt.
     }
 

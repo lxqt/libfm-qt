@@ -134,7 +134,7 @@ void FileOperation::showDialog() {
     }
 }
 
-gint FileOperation::onFileOpsJobAsk(FmFileOpsJob* job, const char* question, char* const* options, FileOperation* pThis) {
+gint FileOperation::onFileOpsJobAsk(FmFileOpsJob* /*job*/, const char* question, char* const* options, FileOperation* pThis) {
     pThis->pauseElapsedTimer();
     pThis->showDialog();
     int ret = pThis->dlg->ask(QString::fromUtf8(question), options);
@@ -142,7 +142,7 @@ gint FileOperation::onFileOpsJobAsk(FmFileOpsJob* job, const char* question, cha
     return ret;
 }
 
-gint FileOperation::onFileOpsJobAskRename(FmFileOpsJob* job, FmFileInfo* src, FmFileInfo* dest, char** new_name, FileOperation* pThis) {
+gint FileOperation::onFileOpsJobAskRename(FmFileOpsJob* /*job*/, FmFileInfo* src, FmFileInfo* dest, char** new_name, FileOperation* pThis) {
     pThis->pauseElapsedTimer();
     pThis->showDialog();
     QString newName;
@@ -154,11 +154,11 @@ gint FileOperation::onFileOpsJobAskRename(FmFileOpsJob* job, FmFileInfo* src, Fm
     return ret;
 }
 
-void FileOperation::onFileOpsJobCancelled(FmFileOpsJob* job, FileOperation* pThis) {
+void FileOperation::onFileOpsJobCancelled(FmFileOpsJob* /*job*/, FileOperation* /*pThis*/) {
     qDebug("file operation is cancelled!");
 }
 
-void FileOperation::onFileOpsJobCurFile(FmFileOpsJob* job, const char* cur_file, FileOperation* pThis) {
+void FileOperation::onFileOpsJobCurFile(FmFileOpsJob* /*job*/, const char* cur_file, FileOperation* pThis) {
     pThis->curFile = QString::fromUtf8(cur_file);
 
     // We update the current file name in a timeout slot because drawing a string
@@ -168,7 +168,7 @@ void FileOperation::onFileOpsJobCurFile(FmFileOpsJob* job, const char* cur_file,
     //  pThis->dlg->setCurFile(pThis->curFile);
 }
 
-FmJobErrorAction FileOperation::onFileOpsJobError(FmFileOpsJob* job, GError* err, FmJobErrorSeverity severity, FileOperation* pThis) {
+FmJobErrorAction FileOperation::onFileOpsJobError(FmFileOpsJob* /*job*/, GError* err, FmJobErrorSeverity severity, FileOperation* pThis) {
     pThis->pauseElapsedTimer();
     pThis->showDialog();
     FmJobErrorAction act = pThis->dlg->error(err, severity);
@@ -176,17 +176,17 @@ FmJobErrorAction FileOperation::onFileOpsJobError(FmFileOpsJob* job, GError* err
     return act;
 }
 
-void FileOperation::onFileOpsJobFinished(FmFileOpsJob* job, FileOperation* pThis) {
+void FileOperation::onFileOpsJobFinished(FmFileOpsJob* /*job*/, FileOperation* pThis) {
     pThis->handleFinish();
 }
 
-void FileOperation::onFileOpsJobPercent(FmFileOpsJob* job, guint percent, FileOperation* pThis) {
+void FileOperation::onFileOpsJobPercent(FmFileOpsJob* /*job*/, guint percent, FileOperation* pThis) {
     if(pThis->dlg) {
         pThis->dlg->setPercent(percent);
     }
 }
 
-void FileOperation::onFileOpsJobPrepared(FmFileOpsJob* job, FileOperation* pThis) {
+void FileOperation::onFileOpsJobPrepared(FmFileOpsJob* /*job*/, FileOperation* pThis) {
     if(!pThis->elapsedTimer_) {
         pThis->elapsedTimer_ = new QElapsedTimer();
         pThis->elapsedTimer_->start();
@@ -242,7 +242,7 @@ void FileOperation::handleFinish() {
 
 // static
 FileOperation* FileOperation::copyFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent) {
-    FileOperation* op = new FileOperation(FileOperation::Copy, std::move(srcFiles));
+    FileOperation* op = new FileOperation(FileOperation::Copy, std::move(srcFiles), parent);
     op->setDestination(dest);
     op->run();
     return op;
@@ -250,7 +250,7 @@ FileOperation* FileOperation::copyFiles(Fm::FilePathList srcFiles, Fm::FilePath 
 
 // static
 FileOperation* FileOperation::moveFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent) {
-    FileOperation* op = new FileOperation(FileOperation::Move, std::move(srcFiles));
+    FileOperation* op = new FileOperation(FileOperation::Move, std::move(srcFiles), parent);
     op->setDestination(dest);
     op->run();
     return op;
@@ -258,7 +258,7 @@ FileOperation* FileOperation::moveFiles(Fm::FilePathList srcFiles, Fm::FilePath 
 
 //static
 FileOperation* FileOperation::symlinkFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent) {
-    FileOperation* op = new FileOperation(FileOperation::Link, std::move(srcFiles));
+    FileOperation* op = new FileOperation(FileOperation::Link, std::move(srcFiles), parent);
     op->setDestination(dest);
     op->run();
     return op;
@@ -300,7 +300,7 @@ FileOperation* FileOperation::trashFiles(Fm::FilePathList srcFiles, bool prompt,
 
 //static
 FileOperation* FileOperation::unTrashFiles(Fm::FilePathList srcFiles, QWidget* parent) {
-    FileOperation* op = new FileOperation(FileOperation::UnTrash, std::move(srcFiles));
+    FileOperation* op = new FileOperation(FileOperation::UnTrash, std::move(srcFiles), parent);
     op->run();
     return op;
 }
@@ -308,7 +308,7 @@ FileOperation* FileOperation::unTrashFiles(Fm::FilePathList srcFiles, QWidget* p
 // static
 FileOperation* FileOperation::changeAttrFiles(Fm::FilePathList srcFiles, QWidget* parent) {
     //TODO
-    FileOperation* op = new FileOperation(FileOperation::ChangeAttr, std::move(srcFiles));
+    FileOperation* op = new FileOperation(FileOperation::ChangeAttr, std::move(srcFiles), parent);
     op->run();
     return op;
 }

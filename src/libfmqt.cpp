@@ -40,7 +40,7 @@ struct LibFmQtData {
 
 static LibFmQtData* theLibFmData = nullptr;
 
-static GFile* lookupCustomUri(GVfs *vfs, const char *identifier, gpointer user_data) {
+static GFile* lookupCustomUri(GVfs * /*vfs*/, const char *identifier, gpointer /*user_data*/) {
     GFile* gf = fm_file_new_for_uri(identifier);
     return gf;
 }

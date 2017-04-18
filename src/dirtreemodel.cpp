@@ -25,6 +25,7 @@
 namespace Fm {
 
 DirTreeModel::DirTreeModel(QObject* parent):
+    QAbstractItemModel(parent),
     showHidden_(false) {
 }
 
@@ -79,7 +80,7 @@ QVariant DirTreeModel::data(const QModelIndex& index, int role) const {
     return QVariant();
 }
 
-int DirTreeModel::columnCount(const QModelIndex& parent) const {
+int DirTreeModel::columnCount(const QModelIndex& /*parent*/) const {
     return 1;
 }
 
@@ -113,14 +114,14 @@ QModelIndex DirTreeModel::parent(const QModelIndex& child) const {
 QModelIndex DirTreeModel::index(int row, int column, const QModelIndex& parent) const {
     if(row >= 0 && column >= 0 && column == 0) {
         if(!parent.isValid()) { // root items
-            if(row < rootItems_.size()) {
+            if(static_cast<size_t>(row) < rootItems_.size()) {
                 const DirTreeModelItem* item = rootItems_.at(row);
                 return createIndex(row, column, (void*)item);
             }
         }
         else { // child items
             DirTreeModelItem* parentItem = itemFromIndex(parent);
-            if(row < parentItem->children_.size()) {
+            if(static_cast<size_t>(row) < parentItem->children_.size()) {
                 const DirTreeModelItem* item = parentItem->children_.at(row);
                 return createIndex(row, column, (void*)item);
             }

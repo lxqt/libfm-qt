@@ -228,7 +228,7 @@ void FolderMenu::onInvertSelectionActionTriggered() {
     view_->invertSelection();
 }
 
-void FolderMenu::onSortActionTriggered(bool checked) {
+void FolderMenu::onSortActionTriggered(bool /*checked*/) {
     ProxyFolderModel* model = view_->model();
 
     if(model) {
@@ -243,7 +243,7 @@ void FolderMenu::onSortActionTriggered(bool checked) {
     }
 }
 
-void FolderMenu::onSortOrderActionTriggered(bool checked) {
+void FolderMenu::onSortOrderActionTriggered(bool /*checked*/) {
     ProxyFolderModel* model = view_->model();
 
     if(model) {

@@ -51,7 +51,7 @@ public:
     bool isAppSelected() const;
 
 Q_SIGNALS:
-    void selectionChanged();
+    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
 private:
     void addMenuItems(QStandardItem* parentItem, MenuCacheDir* dir);

@@ -51,7 +51,7 @@ public:
         return item_;
     }
 
-    MenuCacheType type() {
+    int type() const {
         return menu_cache_item_get_type(item_);
     }
 

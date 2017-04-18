@@ -83,7 +83,7 @@ XdndWorkaround::~XdndWorkaround() {
     qApp->removeNativeEventFilter(this);
 }
 
-bool XdndWorkaround::nativeEventFilter(const QByteArray& eventType, void* message, long* result) {
+bool XdndWorkaround::nativeEventFilter(const QByteArray& eventType, void* message, long* /*result*/) {
     if(Q_LIKELY(eventType == "xcb_generic_event_t")) {
         xcb_generic_event_t* event = static_cast<xcb_generic_event_t*>(message);
         switch(event->response_type & ~0x80) {

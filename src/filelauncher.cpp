@@ -34,7 +34,8 @@ FmFileLauncher FileLauncher::funcs = {
     (FmLaunchFolderFunc)FileLauncher::_openFolder,
     FileLauncher::_execFile,
     FileLauncher::_error,
-    FileLauncher::_ask
+    FileLauncher::_ask,
+    nullptr
 };
 
 FileLauncher::FileLauncher():
@@ -76,7 +77,7 @@ bool FileLauncher::launchPaths(QWidget* parent, GList* paths) {
     return ret;
 }
 
-GAppInfo* FileLauncher::getApp(GList* file_infos, FmMimeType* mime_type, GError** err) {
+GAppInfo* FileLauncher::getApp(GList* /*file_infos*/, FmMimeType* mime_type, GError** /*err*/) {
     AppChooserDialog dlg(nullptr);
     if(mime_type) {
         dlg.setMimeType(Fm::MimeType::fromName(fm_mime_type_get_type(mime_type)));
@@ -92,7 +93,7 @@ GAppInfo* FileLauncher::getApp(GList* file_infos, FmMimeType* mime_type, GError*
     return nullptr;
 }
 
-bool FileLauncher::openFolder(GAppLaunchContext* ctx, GList* folder_infos, GError** err) {
+bool FileLauncher::openFolder(GAppLaunchContext* /*ctx*/, GList* folder_infos, GError** /*err*/) {
     for(GList* l = folder_infos; l; l = l->next) {
         FmFileInfo* fi = FM_FILE_INFO(l->data);
         qDebug() << "  folder:" << QString::fromUtf8(fm_file_info_get_disp_name(fi));
@@ -118,13 +119,13 @@ FmFileLauncherExecAction FileLauncher::execFile(FmFileInfo* file) {
     return res;
 }
 
-int FileLauncher::ask(const char* msg, char* const* btn_labels, int default_btn) {
+int FileLauncher::ask(const char* /*msg*/, char* const* /*btn_labels*/, int /*default_btn*/) {
     /* FIXME: set default button properly */
     // return fm_askv(data->parent, nullptr, msg, btn_labels);
     return -1;
 }
 
-bool FileLauncher::error(GAppLaunchContext* ctx, GError* err, FmPath* path) {
+bool FileLauncher::error(GAppLaunchContext* /*ctx*/, GError* err, FmPath* path) {
     /* ask for mount if trying to launch unmounted path */
     if(err->domain == G_IO_ERROR) {
         if(path && err->code == G_IO_ERROR_NOT_MOUNTED) {

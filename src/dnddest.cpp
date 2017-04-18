@@ -59,11 +59,11 @@ bool DndDest::dropMimeData(const QMimeData* data, Qt::DropAction action) {
   return false;
 }
 
-bool DndDest::isSupported(const QMimeData* data) {
+bool DndDest::isSupported(const QMimeData* /*data*/) {
   return false;
 }
 
-bool DndDest::isSupported(QString mimeType) {
+bool DndDest::isSupported(QString /*mimeType*/) {
   return false;
 }
 

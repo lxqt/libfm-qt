@@ -83,11 +83,11 @@ MountOperation::~MountOperation() {
     // qDebug("MountOperation deleted");
 }
 
-void MountOperation::onAbort(GMountOperation* _op, MountOperation* pThis) {
+void MountOperation::onAbort(GMountOperation* /*_op*/, MountOperation* /*pThis*/) {
 
 }
 
-void MountOperation::onAskPassword(GMountOperation* _op, gchar* message, gchar* default_user, gchar* default_domain, GAskPasswordFlags flags, MountOperation* pThis) {
+void MountOperation::onAskPassword(GMountOperation* /*_op*/, gchar* message, gchar* default_user, gchar* default_domain, GAskPasswordFlags flags, MountOperation* pThis) {
     qDebug("ask password");
     MountOperationPasswordDialog dlg(pThis, flags);
     dlg.setMessage(QString::fromUtf8(message));
@@ -96,7 +96,7 @@ void MountOperation::onAskPassword(GMountOperation* _op, gchar* message, gchar* 
     dlg.exec();
 }
 
-void MountOperation::onAskQuestion(GMountOperation* _op, gchar* message, GStrv choices, MountOperation* pThis) {
+void MountOperation::onAskQuestion(GMountOperation* /*_op*/, gchar* message, GStrv choices, MountOperation* pThis) {
     qDebug("ask question");
     MountOperationQuestionDialog dialog(pThis, message, choices);
     dialog.exec();
@@ -108,11 +108,11 @@ void MountOperation::onReply(GMountOperation* _op, GMountOperationResult result,
 }
 */
 
-void MountOperation::onShowProcesses(GMountOperation* _op, gchar* message, GArray* processes, GStrv choices, MountOperation* pThis) {
+void MountOperation::onShowProcesses(GMountOperation* /*_op*/, gchar* /*message*/, GArray* /*processes*/, GStrv /*choices*/, MountOperation* /*pThis*/) {
     qDebug("show processes");
 }
 
-void MountOperation::onShowUnmountProgress(GMountOperation* _op, gchar* message, gint64 time_left, gint64 bytes_left, MountOperation* pThis) {
+void MountOperation::onShowUnmountProgress(GMountOperation* /*_op*/, gchar* /*message*/, gint64 /*time_left*/, gint64 /*bytes_left*/, MountOperation* /*pThis*/) {
     qDebug("show unmount progress");
 }
 
@@ -162,7 +162,7 @@ void MountOperation::onUnmountMountFinished(GMount* mount, GAsyncResult* res, QP
 }
 
 void MountOperation::handleFinish(GError* error) {
-    qDebug("operation finished: %p", error);
+    qDebug("operation finished: %p", static_cast<void *>(error));
     if(error) {
         bool showError = interactive_;
         if(error->domain == G_IO_ERROR) {

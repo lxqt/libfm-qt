@@ -248,7 +248,7 @@ QVariant FolderModel::headerData(int section, Qt::Orientation orientation, int r
     return QVariant();
 }
 
-QModelIndex FolderModel::index(int row, int column, const QModelIndex& parent) const {
+QModelIndex FolderModel::index(int row, int column, const QModelIndex& /*parent*/) const {
     if(row < 0 || row >= items.size() || column < 0 || column >= NumOfColumns) {
         return QModelIndex();
     }
@@ -256,7 +256,7 @@ QModelIndex FolderModel::index(int row, int column, const QModelIndex& parent) c
     return createIndex(row, column, (void*)&item);
 }
 
-QModelIndex FolderModel::parent(const QModelIndex& index) const {
+QModelIndex FolderModel::parent(const QModelIndex& /*index*/) const {
     return QModelIndex();
 }
 
