@@ -123,7 +123,7 @@ std::vector<CStrPtr> allKnownTerminals() {
         g_free(programs);
     }
     g_key_file_free(kf);
-    return std::move(terminals);
+    return terminals;
 }
 
 } // namespace Fm
