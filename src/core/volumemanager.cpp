@@ -70,8 +70,7 @@ void VolumeManager::onGVolumeRemoved(GVolume* vol) {
     auto it = std::find(volumes_.begin(), volumes_.end(), vol);
     if(it == volumes_.end())
         return;
-    auto removed = std::move(*it);
-    Q_EMIT volumeRemoved(removed);
+    Q_EMIT volumeRemoved(*it);
     volumes_.erase(it);
 }
 
@@ -93,8 +92,7 @@ void VolumeManager::onGMountRemoved(GMount* mnt) {
     auto it = std::find(mounts_.begin(), mounts_.end(), mnt);
     if(it == mounts_.end())
         return;
-    auto removed = std::move(*it);
-    Q_EMIT mountRemoved(removed);
+    Q_EMIT mountRemoved(*it);
     mounts_.erase(it);
 }
 
