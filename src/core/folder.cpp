@@ -129,8 +129,7 @@ bool Folder::isLoaded() const {
 }
 
 std::shared_ptr<const FileInfo> Folder::fileByName(const char* name) const {
-    std::string nameStr(name);
-    auto it = files_.find(nameStr);
+    auto it = files_.find(name);
     if(it != files_.end()) {
         return it->second;
     }
@@ -227,13 +226,12 @@ void Folder::onFileInfoFinished() {
             }
             files_[info->name()] = info;
         }
-
-        if(!files_to_add.empty()) {
-            Q_EMIT filesAdded(files_to_add);
-        }
-        if(!files_to_update.empty()) {
-            Q_EMIT filesChanged(files_to_update);
-        }
+    }
+    if(!files_to_add.empty()) {
+        Q_EMIT filesAdded(files_to_add);
+    }
+    if(!files_to_update.empty()) {
+        Q_EMIT filesChanged(files_to_update);
     }
     Q_EMIT contentChanged();
 }
@@ -278,8 +276,7 @@ void Folder::processPendingChanges() {
         FileInfoList deleted_files;
         for(auto path: paths_to_del) {
             auto name = path.baseName();
-            std::string nameStr(name.get());
-            auto it = files_.find(nameStr);
+            auto it = files_.find(name.get());
             if(it != files_.end()) {
                 deleted_files.push_back(it->second);
                 files_.erase(it);
@@ -319,8 +316,7 @@ bool Folder::eventFileAdded(const FilePath &path) {
     // G_LOCK(lists);
     /* make sure that the file is not already queued for addition. */
     if(std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) == paths_to_add.cend()) {
-        std::string nameStr(path.baseName().get());
-        if(files_.find(nameStr) != files_.end()) { // the file already exists, update instead
+        if(files_.find(path.baseName().get()) != files_.end()) { // the file already exists, update instead
             if(std::find(paths_to_update.cbegin(), paths_to_update.cend(), path) == paths_to_update.cend()) {
                 paths_to_update.push_back(path);
             }
@@ -349,10 +345,9 @@ bool Folder::eventFileChanged(const FilePath &path) {
     // G_LOCK(lists);
     /* make sure that the file is not already queued for changes or
      * it's already queued for addition. */
-    std::string nameStr(path.baseName().get());
     if(std::find(paths_to_update.cbegin(), paths_to_update.cend(), path) == paths_to_update.cend()
         && std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) == paths_to_add.cend()
-        && files_.find(nameStr) != files_.cend() ) { /* ensure it is our file */
+        && files_.find(path.baseName().get()) != files_.cend() ) { /* ensure it is our file */
         paths_to_update.push_back(path);
         added = true;
         queueUpdate();
@@ -367,8 +362,7 @@ bool Folder::eventFileChanged(const FilePath &path) {
 void Folder::eventFileDeleted(const FilePath& path) {
     // qDebug() << "delete " << path.baseName().get();
     // G_LOCK(lists);
-    std::string nameStr(path.baseName().get());
-    if(files_.find(nameStr) != files_.cend()) {
+    if(files_.find(path.baseName().get()) != files_.cend()) {
         if(std::find(paths_to_del.cbegin(), paths_to_del.cend(), path) == paths_to_del.cend()) {
             paths_to_del.push_back(path);
         }
