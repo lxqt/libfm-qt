@@ -429,7 +429,7 @@ bool FileActionCondition::match_folders(const FileInfoList& files) {
 }
 
 bool FileActionCondition::match_selection_count(const FileInfoList& files) {
-    uint n_files = files.size();
+    const int n_files = files.size();
     switch(selection_count_cmp) {
     case '<':
         if(n_files >= selection_count) {
@@ -450,7 +450,7 @@ bool FileActionCondition::match_selection_count(const FileInfoList& files) {
     return true;
 }
 
-bool FileActionCondition::match_capabilities(const FileInfoList& files) {
+bool FileActionCondition::match_capabilities(const FileInfoList& /*files*/) {
     // TODO
     return true;
 }

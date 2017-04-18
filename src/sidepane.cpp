@@ -111,7 +111,7 @@ const char* SidePane::modeName(SidePane::Mode mode) {
     }
 }
 
-bool SidePane::setHomeDir(const char* home_dir) {
+bool SidePane::setHomeDir(const char* /*home_dir*/) {
     if(view_ == nullptr) {
         return false;
     }

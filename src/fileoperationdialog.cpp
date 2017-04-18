@@ -91,7 +91,7 @@ void FileOperationDialog::setSourceFiles(const Fm::FilePathList &srcFiles) {
     }
 }
 
-int FileOperationDialog::ask(QString question, char* const* options) {
+int FileOperationDialog::ask(QString /*question*/, char* const* /*options*/) {
     // TODO: implement FileOperationDialog::ask()
     return 0;
 }

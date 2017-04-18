@@ -37,7 +37,7 @@ void BrowseHistory::add(Fm::FilePath path, int scrollPos) {
         items_.erase(items_.cbegin() + currentIndex_ + 1, items_.cend());
     }
 
-    if(items_.size() + 1 > maxCount_) {
+    if(items_.size() + 1 > static_cast<size_t>(maxCount_)) {
         // if there are too many items, remove the oldest one.
         // FIXME: what if currentIndex_ == 0? remove the last item instead?
         if(currentIndex_ == 0) {
@@ -54,7 +54,7 @@ void BrowseHistory::add(Fm::FilePath path, int scrollPos) {
 }
 
 void BrowseHistory::setCurrentIndex(int index) {
-    if(index >= 0 && index < items_.size()) {
+    if(index >= 0 && static_cast<size_t>(index) < items_.size()) {
         currentIndex_ = index;
         // FIXME: should we emit a signal for the change?
     }
@@ -72,7 +72,7 @@ int BrowseHistory::backward() {
 }
 
 bool BrowseHistory::canForward() const {
-    return (currentIndex_ + 1 < items_.size());
+    return (static_cast<size_t>(currentIndex_) + 1 < items_.size());
 }
 
 int BrowseHistory::forward() {
@@ -84,7 +84,7 @@ int BrowseHistory::forward() {
 
 void BrowseHistory::setMaxCount(int maxCount) {
     maxCount_ = maxCount;
-    if(items_.size() > maxCount) {
+    if(items_.size() > static_cast<size_t>(maxCount)) {
         // TODO: remove some items
     }
 }

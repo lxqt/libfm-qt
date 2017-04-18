@@ -119,10 +119,10 @@ void FilePropsDialog::initPermissionsPage() {
             hasDir = true;    // the files list contains dir(s)
         }
 
-        if(uid != DIFFERENT_UIDS && uid != fi->uid()) {
+        if(uid != DIFFERENT_UIDS && static_cast<uid_t>(uid) != fi->uid()) {
             uid = DIFFERENT_UIDS;    // not all files have the same owner
         }
-        if(gid != DIFFERENT_GIDS && gid != fi->gid()) {
+        if(gid != DIFFERENT_GIDS && static_cast<gid_t>(gid) != fi->gid()) {
             gid = DIFFERENT_GIDS;    // not all files have the same owner group
         }
 
@@ -352,8 +352,8 @@ void FilePropsDialog::accept() {
     }
 
     // check if chown or chmod is needed
-    guint32 newUid = uidFromName(ui->owner->text());
-    guint32 newGid = gidFromName(ui->ownerGroup->text());
+    gint32 newUid = uidFromName(ui->owner->text());
+    gint32 newGid = gidFromName(ui->ownerGroup->text());
     bool needChown = (newUid != -1 && newUid != uid) || (newGid != -1 && newGid != gid);
 
     int newOwnerPermSel = ui->ownerPerm->currentIndex();

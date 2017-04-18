@@ -48,7 +48,7 @@ bool AppChooserDialog::isSetDefault() const {
     return ui->setDefault->isChecked();
 }
 
-static void on_temp_appinfo_destroy(gpointer data, GObject* objptr) {
+static void on_temp_appinfo_destroy(gpointer data, GObject* /*objptr*/) {
     char* filename = (char*)data;
     if(g_unlink(filename) < 0) {
         g_critical("failed to remove %s", filename);

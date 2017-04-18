@@ -350,8 +350,8 @@ void FolderViewTreeView::rowsAboutToBeRemoved(const QModelIndex& parent, int sta
     queueLayoutColumns();
 }
 
-void FolderViewTreeView::dataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight) {
-    QTreeView::dataChanged(topLeft, bottomRight);
+void FolderViewTreeView::dataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int>& roles /*= QVector<int>{}*/) {
+    QTreeView::dataChanged(topLeft, bottomRight, roles);
     // FIXME: this will be very inefficient
     // queueLayoutColumns();
 }
@@ -467,7 +467,7 @@ void FolderView::onSelChangedTimeout() {
     Q_EMIT selChanged();
 }
 
-void FolderView::onSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected) {
+void FolderView::onSelectionChanged(const QItemSelection& /*selected*/, const QItemSelection& /*deselected*/) {
     // It's possible that the selected items change too often and this slot gets called for thousands of times.
     // For example, when you select thousands of files and delete them, we will get one selectionChanged() event
     // for every deleted file. So, we use a timer to delay the handling to avoid too frequent updates of the UI.
@@ -867,7 +867,7 @@ void FolderView::childDragLeaveEvent(QDragLeaveEvent* e) {
     e->accept();
 }
 
-void FolderView::childDragMoveEvent(QDragMoveEvent* e) {
+void FolderView::childDragMoveEvent(QDragMoveEvent* /*e*/) {
     qDebug("drag move");
 }
 
@@ -1087,8 +1087,8 @@ void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm::FileInf
     }
 }
 
-void FolderView::prepareFileMenu(FileMenu* menu) {
+void FolderView::prepareFileMenu(FileMenu* /*menu*/) {
 }
 
-void FolderView::prepareFolderMenu(FolderMenu* menu) {
+void FolderView::prepareFolderMenu(FolderMenu* /*menu*/) {
 }

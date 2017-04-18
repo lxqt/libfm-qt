@@ -12,8 +12,8 @@ std::vector<std::shared_ptr<Thumbnailer>> Thumbnailer::allThumbnailers_;
 
 Thumbnailer::Thumbnailer(const char* id, GKeyFile* kf):
     id_{g_strdup(id)},
-    exec_{g_key_file_get_string(kf, "Thumbnailer Entry", "Exec", nullptr)},
-    try_exec_{g_key_file_get_string(kf, "Thumbnailer Entry", "TryExec", nullptr)} {
+    try_exec_{g_key_file_get_string(kf, "Thumbnailer Entry", "TryExec", nullptr)},
+    exec_{g_key_file_get_string(kf, "Thumbnailer Entry", "Exec", nullptr)} {
 }
 
 CStrPtr Thumbnailer::commandForUri(const char* uri, const char* output_file, guint size) const {

@@ -109,7 +109,7 @@ std::shared_ptr<Folder> Folder::fromPath(const FilePath& path) {
     return folder;
 }
 
-bool Folder::makeDirectory(const char* name, GError** error) {
+bool Folder::makeDirectory(const char* /*name*/, GError** /*error*/) {
     // TODO:
     // FIXME: what the API is used for in the original libfm C API?
     return false;
@@ -413,7 +413,7 @@ void Folder::onDirChanged(GFileMonitorEvent evt) {
     }
 }
 
-void Folder::onFileChangeEvents(GFileMonitor* monitor, GFile* gf, GFile* other_file, GFileMonitorEvent evt) {
+void Folder::onFileChangeEvents(GFileMonitor* /*monitor*/, GFile* gf, GFile* /*other_file*/, GFileMonitorEvent evt) {
     /* const char* names[]={
         "G_FILE_MONITOR_EVENT_CHANGED",
         "G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT",
