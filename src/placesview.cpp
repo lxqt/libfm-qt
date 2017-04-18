@@ -172,7 +172,7 @@ void PlacesView::onClicked(const QModelIndex& index) {
 
 void PlacesView::setCurrentPath(Fm::FilePath path) {
     currentPath_ = std::move(path);
-    if(path) {
+    if(currentPath_) {
         // TODO: search for item with the path in model_ and select it.
         PlacesModelItem* item = model_->itemFromPath(currentPath_);
         if(item) {
