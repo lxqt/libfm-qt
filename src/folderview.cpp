@@ -918,9 +918,6 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                 QModelIndex index = view->indexAt(hoverEvent->pos()); // find out the hovered item
                 if(index.isValid()) { // change the cursor to a hand when hovering on an item
                     setCursor(Qt::PointingHandCursor);
-                    if(!selectionModel()->hasSelection()) {
-                        selectionModel()->setCurrentIndex(index, QItemSelectionModel::Current);
-                    }
                 }
                 else {
                     setCursor(Qt::ArrowCursor);
