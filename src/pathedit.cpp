@@ -26,6 +26,7 @@
 #include <QThread>
 #include <QDebug>
 #include <QKeyEvent>
+#include <QDir>
 #include <libfm/fm.h>
 
 namespace Fm {
@@ -77,6 +78,7 @@ PathEdit::PathEdit(QWidget* parent):
     setCompleter(completer_);
     completer_->setModel(model_);
     connect(this, &PathEdit::textChanged, this, &PathEdit::onTextChanged);
+    connect(this, &PathEdit::textEdited, this, &PathEdit::onTextEdited);
 }
 
 PathEdit::~PathEdit() {
@@ -118,7 +120,23 @@ bool PathEdit::event(QEvent* e) {
     return QLineEdit::event(e);
 }
 
+void PathEdit::onTextEdited(const QString& text) {
+    // just replace start tilde with home path if text is changed by user
+    if(text == QLatin1String("~") || text.startsWith(QLatin1String("~/"))) {
+        QString txt(text);
+        txt.replace(0, 1, QDir::homePath());
+        setText(txt); // emits textChanged()
+        return;
+    }
+}
+
 void PathEdit::onTextChanged(const QString& text) {
+    if(text == QLatin1String("~") || text.startsWith(QLatin1String("~/"))) {
+        // do nothing with a start tilde because neither Fm::FilePath nor autocompletion
+        // understands it; instead, wait until textChanged() is emitted again without it
+        // WARNING: replacing tilde may not be safe here
+        return;
+    }
     int pos = text.lastIndexOf('/');
     if(pos >= 0) {
         ++pos;
