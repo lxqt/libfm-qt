@@ -173,10 +173,14 @@ generate_export_header(${LIBFM_QT_LIBRARY_NAME}
 )
 
 # InTree build
-file(COPY ${libfm_HS} ${CMAKE_CURRENT_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}_export.h
+file(COPY ${CMAKE_CURRENT_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}_export.h
     DESTINATION "${LIBFM_QT_INTREE_INCLUDE_DIR}/libfm-qt"
 )
 
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/
+    DESTINATION "${LIBFM_QT_INTREE_INCLUDE_DIR}/libfm-qt"
+    FILES_MATCHING PATTERN "*.h"
+)
 
 configure_package_config_file(
     "${PROJECT_SOURCE_DIR}/cmake/fm-qt-config.cmake.in"
