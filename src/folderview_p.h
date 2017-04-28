@@ -63,6 +63,9 @@ public:
 Q_SIGNALS:
   void activatedFiltered(const QModelIndex &index);
 
+protected:
+  virtual QModelIndex moveCursor(CursorAction cursorAction, Qt::KeyboardModifiers modifiers);
+
 private Q_SLOTS:
   void activation(const QModelIndex &index);
 

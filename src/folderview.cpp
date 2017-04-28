@@ -182,6 +182,26 @@ void FolderViewListView::mouseDoubleClickEvent(QMouseEvent* event) {
     activationAllowed_ = activationWasAllowed;
 }
 
+QModelIndex FolderViewListView::moveCursor(CursorAction cursorAction, Qt::KeyboardModifiers modifiers) {
+    QAbstractItemModel* model_ = model();
+
+    if(model_ && currentIndex().isValid()) {
+        FolderView::ViewMode viewMode = static_cast<FolderView*>(parent())->viewMode();
+        if((viewMode == FolderView::IconMode) || (viewMode == FolderView::ThumbnailMode)) {
+            int next = (layoutDirection() == Qt::RightToLeft) ? - 1 : 1;
+
+            if(cursorAction == QAbstractItemView::MoveRight) {
+                return model_->index(currentIndex().row() + next, 0);
+            }
+            else if(cursorAction == QAbstractItemView::MoveLeft) {
+                return model_->index(currentIndex().row() - next, 0);
+            }
+        }
+    }
+
+    return QListView::moveCursor(cursorAction, modifiers);
+}
+
 void FolderViewListView::activation(const QModelIndex& index) {
     if(activationAllowed_) {
         Q_EMIT activatedFiltered(index);
