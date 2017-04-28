@@ -109,9 +109,9 @@ void AppChooserComboBox::onCurrentIndexChanged(int index) {
                     setCurrentIndex(pos);
                 }
                 else { /* if it's not found, add it to the list */
-                    appInfos_.insert(appInfos_.cbegin(), std::move(app));
-                    GIcon* gicon = g_app_info_get_icon(app.get());
-                    insertItem(0, Fm::IconInfo::fromGIcon(gicon)->qicon(), g_app_info_get_name(app.get()));
+                    auto it = appInfos_.insert(appInfos_.cbegin(), std::move(app));
+                    GIcon* gicon = g_app_info_get_icon(it->get());
+                    insertItem(0, Fm::IconInfo::fromGIcon(gicon)->qicon(), g_app_info_get_name(it->get()));
                     setCurrentIndex(0);
                 }
                 blockOnCurrentIndexChanged_ = false;

@@ -168,12 +168,10 @@ void DirTreeModelItem::insertFiles(Fm::FileInfoList files) {
                 return fi->isHidden();
             });
             // insert hidden files into the "hiddenChildren_" list and remove them from "files" list
-            if(hidden_it != files.end()) {
-                for(auto it = hidden_it; it != files.cend(); ++it) {
-                    hiddenChildren_.push_back(new DirTreeModelItem{std::move(*it), model_});
-                }
-                files.erase(hidden_it, files.end());
+            for(auto it = hidden_it; it != files.end(); ++it) {
+                hiddenChildren_.push_back(new DirTreeModelItem{std::move(*it), model_});
             }
+            files.erase(hidden_it, files.end());
         }
         // sort the remaining visible files by name
         std::sort(files.begin(), files.end(), [](const std::shared_ptr<const Fm::FileInfo>& a, const std::shared_ptr<const Fm::FileInfo>& b) {

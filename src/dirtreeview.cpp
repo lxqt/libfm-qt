@@ -145,13 +145,14 @@ void DirTreeView::setCurrentPath(Fm::FilePath path) {
     for(int row = 0; row < rowCount; ++row) {
         QModelIndex index = _model->index(row, 0, QModelIndex());
         auto row_path = _model->filePath(index);
-        if(row_path.isPrefixOf(path)) {
+        if(row_path.isPrefixOf(currentPath_)) {
             root = row_path;
             break;
         }
     }
 
     if(root) { /* root item is found */
+        path = currentPath_;
         do { /* add path elements one by one to a list */
             pathsToExpand_.insert(pathsToExpand_.cbegin(), path);
             // qDebug() << "prepend path: " << Path(path).displayBasename();
