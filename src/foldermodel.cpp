@@ -122,7 +122,8 @@ void FolderModel::loadPendingThumbnails() {
     hasPendingThumbnailHandler_ = false;
     for(auto& item: thumbnailData_) {
         if(!item.pendingThumbnails_.empty()) {
-            auto job = new Fm::ThumbnailJob(item.pendingThumbnails_, item.size_);
+            auto job = new Fm::ThumbnailJob(std::move(item.pendingThumbnails_), item.size_);
+            pendingThumbnailJobs_.push_back(job);
             job->setAutoDelete(true);
             connect(job, &Fm::ThumbnailJob::thumbnailLoaded, this, &FolderModel::onThumbnailLoaded, Qt::BlockingQueuedConnection);
             connect(job, &Fm::ThumbnailJob::finished, this, &FolderModel::onThumbnailJobFinished, Qt::BlockingQueuedConnection);
