@@ -217,22 +217,21 @@ void Folder::onFileInfoFinished() {
             dirInfo_ = info;
         }
         else {
-            auto it = files_.find(info->name().c_str());
+            auto it = files_.find(info->name());
             if(it != files_.end()) { // the file already exists, update
                 files_to_update.push_back(std::make_pair(it->second, info));
             }
             else { // newly added
                 files_to_add.push_back(info);
             }
-            files_[info->name().c_str()] = info;
+            files_[info->name()] = info;
         }
-
-        if(!files_to_add.empty()) {
-            Q_EMIT filesAdded(files_to_add);
-        }
-        if(!files_to_update.empty()) {
-            Q_EMIT filesChanged(files_to_update);
-        }
+    }
+    if(!files_to_add.empty()) {
+        Q_EMIT filesAdded(files_to_add);
+    }
+    if(!files_to_update.empty()) {
+        Q_EMIT filesChanged(files_to_update);
     }
     Q_EMIT contentChanged();
 }
@@ -466,7 +465,7 @@ void Folder::onDirListFinished() {
 
     auto& files_to_add = job->files();
     for(auto& file: files_to_add) {
-        files_[file->name().c_str()] = file;
+        files_[file->name()] = file;
     }
     Q_EMIT filesAdded(files_to_add);
 

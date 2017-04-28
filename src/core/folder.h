@@ -168,7 +168,7 @@ private:
     bool wants_incremental;
     bool stop_emission; /* don't set it 1 bit to not lock other bits */
 
-    std::unordered_map<const char*, std::shared_ptr<const FileInfo>, CStrHash, CStrEqual> files_;
+    std::unordered_map<const std::string, std::shared_ptr<const FileInfo>, std::hash<std::string>> files_;
 
     /* filesystem info - set in query thread, read in main */
     uint64_t fs_total_size;
