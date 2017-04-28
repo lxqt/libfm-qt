@@ -45,6 +45,7 @@ protected:
 
 private Q_SLOTS:
     void onTextChanged(const QString& text);
+    void onTextEdited(const QString& text);
 
 private:
     void autoComplete();
