@@ -29,7 +29,7 @@
 
 namespace Ui {
 class FileOperationDialog;
-};
+}
 
 namespace Fm {
 

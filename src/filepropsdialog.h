@@ -31,7 +31,7 @@
 
 namespace Ui {
 class FilePropsDialog;
-};
+}
 
 namespace Fm {
 

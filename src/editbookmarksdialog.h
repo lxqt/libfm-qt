@@ -27,7 +27,7 @@
 
 namespace Ui {
 class EditBookmarksDialog;
-};
+}
 
 namespace Fm {
 
