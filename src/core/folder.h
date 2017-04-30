@@ -176,7 +176,6 @@ private:
     GCancellablePtr fs_size_cancellable;
 
     bool has_fs_info : 1;
-    bool fs_info_not_avail : 1;
     bool defer_content_test : 1;
 
     static std::unordered_map<FilePath, std::weak_ptr<Folder>, FilePathHash> cache_;
