@@ -706,6 +706,7 @@ void Folder::onFileSystemInfoFinished() {
     fs_free_size = job->freeSize();
     filesystem_info_pending = true;
     fsInfoJob_ = nullptr;
+    queueUpdate();
 }
 
 
