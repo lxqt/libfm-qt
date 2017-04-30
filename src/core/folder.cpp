@@ -51,7 +51,6 @@ Folder::Folder():
     fs_total_size{0},
     fs_free_size{0},
     has_fs_info{false},
-    fs_info_not_avail{false},
     defer_content_test{false} {
 
     connect(volumeManager_.get(), &VolumeManager::mountAdded, this, &Folder::onMountAdded);
@@ -699,13 +698,15 @@ void Folder::onFileSystemInfoFinished() {
     FileSystemInfoJob* job = static_cast<FileSystemInfoJob*>(sender());
     if(job->isCancelled() || job != fsInfoJob_) { // this is a cancelled job, ignore!
         fsInfoJob_ = nullptr;
+        has_fs_info = false;
         return;
     }
-    fs_info_not_avail = !job->isAvailable();
+    has_fs_info = job->isAvailable();
     fs_total_size = job->size();
     fs_free_size = job->freeSize();
     filesystem_info_pending = true;
     fsInfoJob_ = nullptr;
+    queueUpdate();
 }
 
 
