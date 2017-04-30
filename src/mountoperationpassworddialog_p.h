@@ -27,7 +27,7 @@
 
 namespace Ui {
 class MountOperationPasswordDialog;
-};
+}
 
 namespace Fm {
 

@@ -27,7 +27,7 @@
 
 namespace Ui {
 class RenameDialog;
-};
+}
 
 class QPushButton;
 
