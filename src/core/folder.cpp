@@ -462,11 +462,29 @@ void Folder::onDirListFinished() {
     }
     dirInfo_ = job->dirInfo();
 
-    auto& files_to_add = job->files();
-    for(auto& file: files_to_add) {
-        files_[file->name()] = file;
+    FileInfoList files_to_add;
+    std::vector<FileInfoPair> files_to_update;
+
+    const auto& infos = job->files();
+    auto info_it = infos.cbegin();
+    for(; info_it != infos.cend(); ++info_it) {
+        const auto& info = *info_it;
+        auto it = files_.find(info->name());
+        if(it != files_.end()) {
+            files_to_update.push_back(std::make_pair(it->second, info));
+        }
+        else {
+            files_to_add.push_back(info);
+        }
+        files_[info->name()] = info;
     }
-    Q_EMIT filesAdded(files_to_add);
+
+    if(!files_to_add.empty()) {
+        Q_EMIT filesAdded(files_to_add);
+    }
+    if(!files_to_update.empty()) {
+        Q_EMIT filesChanged(files_to_update);
+    }
 
 #if 0
     if(dirlist_job->isCancelled() && !wants_incremental) {
