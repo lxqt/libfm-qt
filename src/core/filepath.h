@@ -130,11 +130,15 @@ public:
     }
 
     bool operator == (const FilePath& other) const {
-        if(gfile_ == other.gfile_) {
+        return operator==(other.gfile_.get());
+    }
+
+    bool operator == (GFile* other_gfile) const {
+        if(gfile_ == other_gfile) {
             return true;
         }
-        if(gfile_ && other.gfile_) {
-            return g_file_equal(gfile_.get(), other.gfile_.get());
+        if(gfile_ && other_gfile) {
+            return g_file_equal(gfile_.get(), other_gfile);
         }
         return false;
     }

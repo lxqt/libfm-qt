@@ -423,7 +423,7 @@ void Folder::onFileChangeEvents(GFileMonitor* monitor, GFile* gf, GFile* other_f
         "G_FILE_MONITOR_EVENT_PRE_UNMOUNT",
         "G_FILE_MONITOR_EVENT_UNMOUNTED"
     }; */
-    if(dirPath_.gfile() == gf) {
+    if(dirPath_ == gf) {
         onDirChanged(evt);
         return;
     }
