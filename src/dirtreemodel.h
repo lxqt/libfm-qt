@@ -51,7 +51,7 @@ public:
     explicit DirTreeModel(QObject* parent);
     ~DirTreeModel();
 
-    QModelIndex addRoots(Fm::FilePathList rootPaths);
+    void addRoots(Fm::FilePathList rootPaths);
 
     void loadRow(const QModelIndex& index);
     void unloadRow(const QModelIndex& index);

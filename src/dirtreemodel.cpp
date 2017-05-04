@@ -31,7 +31,7 @@ DirTreeModel::DirTreeModel(QObject* parent):
 DirTreeModel::~DirTreeModel() {
 }
 
-QModelIndex DirTreeModel::addRoots(Fm::FilePathList rootPaths) {
+void DirTreeModel::addRoots(Fm::FilePathList rootPaths) {
     auto job = new Fm::FileInfoJob{std::move(rootPaths)};
     job->setAutoDelete(true);
     connect(job, &Fm::FileInfoJob::finished, this, &DirTreeModel::onFileInfoJobFinished, Qt::BlockingQueuedConnection);
