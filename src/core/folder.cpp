@@ -464,19 +464,28 @@ void Folder::onDirListFinished() {
 
     FileInfoList files_to_add;
     std::vector<FileInfoPair> files_to_update;
-
     const auto& infos = job->files();
-    auto info_it = infos.cbegin();
-    for(; info_it != infos.cend(); ++info_it) {
-        const auto& info = *info_it;
-        auto it = files_.find(info->name());
-        if(it != files_.end()) {
-            files_to_update.push_back(std::make_pair(it->second, info));
+
+    // with "search://", there is no update for infos and all of them should be added
+    if(strcmp(dirPath_.uriScheme().get(), "search") == 0) {
+        files_to_add = infos;
+        for(auto& file: files_to_add) {
+            files_[file->name()] = file;
         }
-        else {
-            files_to_add.push_back(info);
+    }
+    else {
+        auto info_it = infos.cbegin();
+        for(; info_it != infos.cend(); ++info_it) {
+            const auto& info = *info_it;
+            auto it = files_.find(info->name());
+            if(it != files_.end()) {
+                files_to_update.push_back(std::make_pair(it->second, info));
+            }
+            else {
+                files_to_add.push_back(info);
+            }
+            files_[info->name()] = info;
         }
-        files_[info->name()] = info;
     }
 
     if(!files_to_add.empty()) {
