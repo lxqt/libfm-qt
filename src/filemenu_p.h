@@ -35,8 +35,10 @@ public:
         appInfo_{std::move(app)} {
         setToolTip(QString::fromUtf8(g_app_info_get_description(appInfo_.get())));
         GIcon* gicon = g_app_info_get_icon(appInfo_.get());
-        QIcon icon = Fm::IconInfo::fromGIcon(gicon)->qicon();
-        setIcon(icon);
+        const auto icnInfo = Fm::IconInfo::fromGIcon(gicon);
+        if(icnInfo) {
+            setIcon(icnInfo->qicon());
+        }
     }
 
     virtual ~AppInfoAction() {
