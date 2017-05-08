@@ -345,8 +345,10 @@ bool Folder::eventFileChanged(const FilePath &path) {
     /* make sure that the file is not already queued for changes or
      * it's already queued for addition. */
     if(std::find(paths_to_update.cbegin(), paths_to_update.cend(), path) == paths_to_update.cend()
-        && std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) == paths_to_add.cend()
-        && files_.find(path.baseName().get()) != files_.cend() ) { /* ensure it is our file */
+       && std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) == paths_to_add.cend()) {
+        /* Since this function is called only when a file already exists, even if that file
+           isn't included in "files_" yet, it will be soon due to a previous call to queueUpdate().
+           So, here, we should queue it for changes regardless of what "files_" may contain. */
         paths_to_update.push_back(path);
         added = true;
         queueUpdate();
