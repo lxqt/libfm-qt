@@ -37,7 +37,7 @@ MountOperationPasswordDialog::MountOperationPasswordDialog(MountOperation* op, G
     ui->setupUi(this);
 
     // change the text of Ok button to Connect
-    ui->buttonBox->buttons().first()->setText(tr("&Connect"));
+    ui->buttonBox->buttons().constFirst()->setText(tr("&Connect"));
     connect(ui->Anonymous, &QAbstractButton::toggled, this, &MountOperationPasswordDialog::onAnonymousToggled);
 
     if(canAnonymous) {

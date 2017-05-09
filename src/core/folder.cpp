@@ -273,7 +273,7 @@ void Folder::processPendingChanges() {
 
     if(!paths_to_del.empty()) {
         FileInfoList deleted_files;
-        for(auto path: paths_to_del) {
+        for(const auto &path: paths_to_del) {
             auto name = path.baseName();
             auto it = files_.find(name.get());
             if(it != files_.end()) {
