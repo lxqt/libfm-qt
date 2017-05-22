@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="lt_LT">
+<TS version="2.1" language="lt">
 <context>
     <name>AppChooserDialog</name>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkite programą</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Įdiegtos programos</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Tinkinta komanda</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation type="unfinished"></translation>
+        <translation>Komandų eilutė, kurią vykdyti:</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Programos pavadinimas:</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="72"/>
@@ -37,22 +37,28 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Komandų eilutėje gali būti naudojami šie specialūs kodai:&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Atvaizduoja vieno failo pavadinimą&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Atvaizduoja kelių failų pavadinimus&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Atvaizduoja vieną failo URI&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Atvaizduoja kelis URI&lt;/li&gt;
+&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation type="unfinished"></translation>
+        <translation>Po komandos įvykdymo, palikti terminalo langą atvertą</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>Vykdyti terminalo emuliatoriuje</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation type="unfinished"></translation>
+        <translation>Nustatyti pasirinktą programą kaip numatytąjį veiksmą šiam failo tipui</translation>
     </message>
 </context>
 <context>
@@ -80,12 +86,12 @@
     <message>
         <location filename="../../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation>&amp;Pašalinti elementą</translation>
+        <translation>Ša&amp;linti elementą</translation>
     </message>
     <message>
         <location filename="../../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Failų tvarkai pakeisti naudokite vilkimą</translation>
+        <translation>Vilkite, norėdami pakeisti elementų tvarką</translation>
     </message>
 </context>
 <context>
@@ -93,27 +99,27 @@
     <message>
         <location filename="../../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation type="unfinished"></translation>
+        <translation>Vykdyti failą</translation>
     </message>
     <message>
         <location filename="../../exec-file.ui" line="39"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Atverti</translation>
     </message>
     <message>
         <location filename="../../exec-file.ui" line="52"/>
         <source>E&amp;xecute</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vykdyti</translation>
     </message>
     <message>
         <location filename="../../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Vykdyti &amp;terminale</translation>
     </message>
     <message>
         <location filename="../../exec-file.ui" line="85"/>
         <source>Cancel</source>
-        <translation type="unfinished">Atšaukti</translation>
+        <translation>Atsisakyti</translation>
     </message>
 </context>
 <context>
@@ -126,12 +132,12 @@
     <message>
         <location filename="../../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation>Apdorojama:</translation>
+        <translation>Vykdoma:</translation>
     </message>
     <message>
         <location filename="../../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation>Ruošiamasi...</translation>
+        <translation>Ruošiama...</translation>
     </message>
     <message>
         <location filename="../../file-operation-dialog.ui" line="75"/>
@@ -169,7 +175,7 @@
     <message>
         <location filename="../../file-props.ui" line="129"/>
         <source>MIME type:</source>
-        <translation>Mime tipas:</translation>
+        <translation>MIME tipas:</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="152"/>
@@ -189,17 +195,17 @@
     <message>
         <location filename="../../file-props.ui" line="221"/>
         <source>Link target:</source>
-        <translation>Nuorodos tikslas:</translation>
+        <translation>Nuorodos paskirtis:</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="247"/>
         <source>Open With:</source>
-        <translation>Atverti su:</translation>
+        <translation>Atverti naudojant:</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="267"/>
         <source>Last accessed:</source>
-        <translation>Paskutinį kartą naudota:</translation>
+        <translation>Paskutinė prieiga:</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="285"/>
@@ -228,18 +234,18 @@
     <message>
         <location filename="../../file-props.ui" line="353"/>
         <source>Access Control</source>
-        <translation>Prieigos kontrolė</translation>
+        <translation>Prieigos valdymas</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="406"/>
         <location filename="../../file-props.ui" line="555"/>
         <source>Other:</source>
-        <translation>Kita:</translation>
+        <translation>Kiti:</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="423"/>
         <source>Make the file executable</source>
-        <translation>Padaryti failą vykdomu</translation>
+        <translation>Padaryti failą vykdomuoju</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="464"/>
@@ -280,7 +286,7 @@
     <message>
         <location filename="../../file-props.ui" line="653"/>
         <source>Advanced Mode</source>
-        <translation>Išsamus režimas</translation>
+        <translation>Išplėstinė veiksena</translation>
     </message>
 </context>
 <context>
@@ -288,7 +294,7 @@
     <message>
         <location filename="../../appchoosercombobox.cpp" line="78"/>
         <source>Customize</source>
-        <translation type="unfinished"></translation>
+        <translation>Tinkinti</translation>
     </message>
 </context>
 <context>
@@ -296,7 +302,7 @@
     <message>
         <location filename="../../appchooserdialog.cpp" line="262"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkite programą, kad atvertumėte failus &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -304,12 +310,12 @@
     <message>
         <location filename="../../createnewmenu.cpp" line="29"/>
         <source>Folder</source>
-        <translation type="unfinished">Aplankas</translation>
+        <translation>Aplanką</translation>
     </message>
     <message>
         <location filename="../../createnewmenu.cpp" line="33"/>
         <source>Blank File</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuščią failą</translation>
     </message>
 </context>
 <context>
@@ -317,12 +323,12 @@
     <message>
         <location filename="../../dirtreemodelitem.cpp" line="76"/>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Įkeliama...</translation>
     </message>
     <message>
         <location filename="../../dirtreemodelitem.cpp" line="207"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Nėra poaplankių&gt;</translation>
     </message>
 </context>
 <context>
@@ -330,17 +336,17 @@
     <message>
         <location filename="../../dirtreeview.cpp" line="207"/>
         <source>Open in New T&amp;ab</source>
-        <translation type="unfinished"></translation>
+        <translation>Atverti naujoje kort&amp;elėje</translation>
     </message>
     <message>
         <location filename="../../dirtreeview.cpp" line="211"/>
         <source>Open in New Win&amp;dow</source>
-        <translation type="unfinished"></translation>
+        <translation>Atverti naujame lan&amp;ge</translation>
     </message>
     <message>
         <location filename="../../dirtreeview.cpp" line="216"/>
         <source>Open in Termina&amp;l</source>
-        <translation type="unfinished"></translation>
+        <translation>Atverti termina&amp;le</translation>
     </message>
 </context>
 <context>
@@ -356,19 +362,14 @@
         <translation>Perkelti čia</translation>
     </message>
     <message>
+        <location filename="../../dndactionmenu.cpp" line="37"/>
         <source>Create symlink here</source>
-        <comment>symlink=symbolic link</comment>
-        <translation type="obsolete">Sukurti simbolinę nuorodą</translation>
+        <translation>Sukurti simbolinę nuorodą čia</translation>
     </message>
     <message>
         <location filename="../../dndactionmenu.cpp" line="39"/>
         <source>Cancel</source>
-        <translation>Atšaukti</translation>
-    </message>
-    <message>
-        <location filename="../../dndactionmenu.cpp" line="37"/>
-        <source>Create symlink here</source>
-        <translation type="unfinished">Sukurti simbolinę nuorodą</translation>
+        <translation>Atsisakyti</translation>
     </message>
 </context>
 <context>
@@ -385,12 +386,13 @@
         <location filename="../../execfiledialog.cpp" line="39"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Atrodo, kad šis tekstinis failas &quot;%1&quot; yra vykdomasis scenarijus.
+Ką norėtumėte su juo daryti?</translation>
     </message>
     <message>
         <location filename="../../execfiledialog.cpp" line="44"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Šis failas &quot;%1&quot; yra vykdomasis. Ar norite jį vykdyti?</translation>
     </message>
 </context>
 <context>
@@ -401,88 +403,96 @@ What do you want to do with it?</source>
         <translation>Atverti</translation>
     </message>
     <message>
-        <source>OpenWith</source>
-        <translation type="obsolete">Atverti su</translation>
+        <location filename="../../filemenu.cpp" line="99"/>
+        <source>Open With...</source>
+        <translation>Atverti naudojant...</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="161"/>
+        <location filename="../../filemenu.cpp" line="127"/>
+        <source>Other Applications</source>
+        <translation>Kitas programas</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="133"/>
+        <source>Create &amp;New</source>
+        <translation>Sukurti &amp;naują</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="153"/>
+        <source>&amp;Restore</source>
+        <translation>&amp;Atkurti</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="159"/>
         <source>Cut</source>
         <translation>Iškirpti</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="165"/>
+        <location filename="../../filemenu.cpp" line="163"/>
         <source>Copy</source>
         <translation>Kopijuoti</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="169"/>
+        <location filename="../../filemenu.cpp" line="167"/>
         <source>Paste</source>
-        <translation>Įklijuoti</translation>
+        <translation>Įdėti</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="173"/>
-        <location filename="../../filemenu.cpp" line="375"/>
+        <location filename="../../filemenu.cpp" line="171"/>
+        <location filename="../../filemenu.cpp" line="371"/>
         <source>&amp;Move to Trash</source>
         <translation>&amp;Perkelti į šiukšlinę</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="375"/>
-        <source>&amp;Delete</source>
-        <translation>&amp;Pašalinti</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="177"/>
+        <location filename="../../filemenu.cpp" line="175"/>
         <source>Rename</source>
         <translation>Pervadinti</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="135"/>
-        <source>Create &amp;New</source>
-        <translation type="unfinished">&amp;Kurti naują</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="209"/>
+        <location filename="../../filemenu.cpp" line="207"/>
         <source>Extract to...</source>
         <translation>Išskleisti į...</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="214"/>
+        <location filename="../../filemenu.cpp" line="212"/>
         <source>Extract Here</source>
         <translation>Išskleisti čia</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="220"/>
+        <location filename="../../filemenu.cpp" line="218"/>
         <source>Compress</source>
-        <translation>Archyvuoti</translation>
+        <translation>Glaudinti</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="230"/>
+        <location filename="../../filemenu.cpp" line="228"/>
         <source>Properties</source>
         <translation>Savybės</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="99"/>
-        <source>Open With...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="129"/>
-        <source>Other Applications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="323"/>
+        <location filename="../../filemenu.cpp" line="319"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvestis</translation>
     </message>
     <message>
-        <location filename="../../filemenu.cpp" line="155"/>
-        <source>&amp;Restore</source>
-        <translation type="unfinished"></translation>
+        <location filename="../../filemenu.cpp" line="371"/>
+        <source>&amp;Delete</source>
+        <translation>&amp;Ištrinti</translation>
     </message>
 </context>
 <context>
     <name>Fm::FileOperation</name>
+    <message>
+        <location filename="../../fileoperation.cpp" line="220"/>
+        <source>Error</source>
+        <translation>Klaida</translation>
+    </message>
+    <message>
+        <location filename="../../fileoperation.cpp" line="221"/>
+        <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
+Do you want to delete them instead?</source>
+        <translation>Kai kurie failai negali būti perkelti į šiukšlinę, kadangi esama failų sistema nepalaiko šios operacijos.
+Ar norite vietoj to, juos ištrinti?</translation>
+    </message>
     <message>
         <location filename="../../fileoperation.cpp" line="262"/>
         <location filename="../../fileoperation.cpp" line="278"/>
@@ -492,24 +502,12 @@ What do you want to do with it?</source>
     <message>
         <location filename="../../fileoperation.cpp" line="263"/>
         <source>Do you want to delete the selected files?</source>
-        <translation>Ar norite ištrinti pasirinktus failus?</translation>
+        <translation>Ar norite ištrinti pažymėtus failus?</translation>
     </message>
     <message>
         <location filename="../../fileoperation.cpp" line="279"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation>Ar norite perkelti pasirinktus failus į šiukšlinę?</translation>
-    </message>
-    <message>
-        <location filename="../../fileoperation.cpp" line="221"/>
-        <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
-Do you want to delete them instead?</source>
-        <translation>Kai kurie failai negali būti išmesti į šiukšlinę, nes failų sistema to nepalaiko.
-Ar norite vietoje to juos pašalinti visam laikui?</translation>
-    </message>
-    <message>
-        <location filename="../../fileoperation.cpp" line="220"/>
-        <source>Error</source>
-        <translation type="unfinished">Klaida</translation>
+        <translation>Ar norite perkelti pažymėtus failus į šiukšlinę?</translation>
     </message>
 </context>
 <context>
@@ -537,27 +535,27 @@ Ar norite vietoje to juos pašalinti visam laikui?</translation>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="49"/>
         <source>Trash Files</source>
-        <translation>Išmesti failus į šiukšliadėžę</translation>
+        <translation>Perkelti failus į šiukšlinę</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="50"/>
         <source>Moving the following files to trash can:</source>
-        <translation>Failai perkeliami į šiukšliadėžę:</translation>
+        <translation>Šie failai perkeliami į šiukšlinę:</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="53"/>
         <source>Delete Files</source>
-        <translation>Pašalinti failus</translation>
+        <translation>Ištrinti failus</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="54"/>
         <source>Deleting the following files:</source>
-        <translation>Šalinami šie failai:</translation>
+        <translation>Ištrinami šie failai:</translation>
     </message>
     <message>
+        <location filename="../../fileoperationdialog.cpp" line="59"/>
         <source>Create Symlinks</source>
-        <comment>symlink=symbolic link</comment>
-        <translation type="obsolete">Sukurti simbolinę nuorodą</translation>
+        <translation>Sukurti simbolines nuorodas</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="60"/>
@@ -577,22 +575,17 @@ Ar norite vietoje to juos pašalinti visam laikui?</translation>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="69"/>
         <source>Restore Trashed Files</source>
-        <translation>Atstatyti ištrintus failus</translation>
+        <translation>Atkurti į šiukšlinę perkeltus failus</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="70"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Šie failai atstatomi iš šiukšliadėžės:</translation>
+        <translation>Šie failai atkuriami iš šiukšlinės:</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="137"/>
         <source>Error</source>
         <translation>Klaida</translation>
-    </message>
-    <message>
-        <location filename="../../fileoperationdialog.cpp" line="59"/>
-        <source>Create Symlinks</source>
-        <translation type="unfinished">Sukurti simbolinę nuorodą</translation>
     </message>
 </context>
 <context>
@@ -625,7 +618,7 @@ Ar norite vietoje to juos pašalinti visam laikui?</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="266"/>
         <source>Files of different types</source>
-        <translation>Skirtingų tipų failai</translation>
+        <translation>Įvairių tipų failai</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="296"/>
@@ -635,12 +628,12 @@ Ar norite vietoje to juos pašalinti visam laikui?</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="424"/>
         <source>Apply changes</source>
-        <translation>Pritaikyti pakeitimus</translation>
+        <translation>Taikyti pakeitimus</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="425"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>Ar norite rekursyviai pritaikyti šiuos pakeitimus visiems failams ir poaplankiams?</translation>
+        <translation>Ar norite rekursyviai taikyti šiuos pakeitimus visiems failams ir poaplankiams?</translation>
     </message>
 </context>
 <context>
@@ -648,17 +641,17 @@ Ar norite vietoje to juos pašalinti visam laikui?</translation>
     <message>
         <location filename="../../filesearchdialog.cpp" line="122"/>
         <source>Error</source>
-        <translation type="unfinished">Klaida</translation>
+        <translation>Klaida</translation>
     </message>
     <message>
         <location filename="../../filesearchdialog.cpp" line="122"/>
         <source>You should add at least one directory to search.</source>
-        <translation type="unfinished"></translation>
+        <translation>Norėdami ieškoti, turite pasirinkti bent vieną katalogą.</translation>
     </message>
     <message>
         <location filename="../../filesearchdialog.cpp" line="129"/>
         <source>Select a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkti aplanką</translation>
     </message>
 </context>
 <context>
@@ -666,22 +659,22 @@ Ar norite vietoje to juos pašalinti visam laikui?</translation>
     <message>
         <location filename="../../foldermenu.cpp" line="41"/>
         <source>Create &amp;New</source>
-        <translation>&amp;Kurti naują</translation>
+        <translation>Sukurti &amp;naują</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="48"/>
         <source>&amp;Paste</source>
-        <translation>Į&amp;klijuoti</translation>
+        <translation>Į&amp;dėti</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="54"/>
         <source>Select &amp;All</source>
-        <translation>Pasirinkti &amp;viską</translation>
+        <translation>&amp;Pažymėti viską</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="58"/>
         <source>Invert Selection</source>
-        <translation>Invertuoti pasirinkimą</translation>
+        <translation>Invertuoti žymėjimą</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="64"/>
@@ -696,63 +689,55 @@ Ar norite vietoje to juos pašalinti visam laikui?</translation>
     <message>
         <location filename="../../foldermenu.cpp" line="100"/>
         <source>Folder Pr&amp;operties</source>
-        <translation>Failo &amp;savybės</translation>
+        <translation>Aplanko &amp;savybės</translation>
     </message>
     <message>
-        <source>Folder</source>
-        <translation type="vanished">Aplankas</translation>
-    </message>
-    <message>
-        <source>File</source>
-        <translation type="obsolete">Failas</translation>
-    </message>
-    <message>
-        <location filename="../../foldermenu.cpp" line="143"/>
+        <location filename="../../foldermenu.cpp" line="141"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvestis</translation>
+    </message>
+    <message>
+        <location filename="../../foldermenu.cpp" line="166"/>
+        <source>By File Name</source>
+        <translation>Pagal failo pavadinimą</translation>
+    </message>
+    <message>
+        <location filename="../../foldermenu.cpp" line="167"/>
+        <source>By Modification Time</source>
+        <translation>Pagal pakeitimo laiką</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="168"/>
-        <source>By File Name</source>
-        <translation>Pagal failo vardą</translation>
-    </message>
-    <message>
-        <location filename="../../foldermenu.cpp" line="169"/>
-        <source>By Modification Time</source>
-        <translation>Pagal keitimo datą</translation>
-    </message>
-    <message>
-        <location filename="../../foldermenu.cpp" line="170"/>
         <source>By File Size</source>
         <translation>Pagal failo dydį</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="171"/>
+        <location filename="../../foldermenu.cpp" line="169"/>
         <source>By File Type</source>
         <translation>Pagal failo tipą</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="172"/>
+        <location filename="../../foldermenu.cpp" line="170"/>
         <source>By File Owner</source>
         <translation>Pagal failo savininką</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="184"/>
+        <location filename="../../foldermenu.cpp" line="182"/>
         <source>Ascending</source>
         <translation>Didėjančiai</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="189"/>
+        <location filename="../../foldermenu.cpp" line="187"/>
         <source>Descending</source>
         <translation>Mažėjančiai</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="204"/>
+        <location filename="../../foldermenu.cpp" line="202"/>
         <source>Folder First</source>
         <translation>Pirmiausia aplankai</translation>
     </message>
     <message>
-        <location filename="../../foldermenu.cpp" line="213"/>
+        <location filename="../../foldermenu.cpp" line="211"/>
         <source>Case Sensitive</source>
         <translation>Skirti raidžių dydį</translation>
     </message>
@@ -790,12 +775,12 @@ Ar norite vietoje to juos pašalinti visam laikui?</translation>
     <message>
         <location filename="../../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation>Paryškintas</translation>
+        <translation>Pusjuodis</translation>
     </message>
     <message>
         <location filename="../../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation>Kursyvinis</translation>
+        <translation>Kursyvas</translation>
     </message>
 </context>
 <context>
@@ -803,7 +788,7 @@ Ar norite vietoje to juos pašalinti visam laikui?</translation>
     <message>
         <location filename="../../mountoperationpassworddialog.cpp" line="40"/>
         <source>&amp;Connect</source>
-        <translation>&amp;Prisijungti</translation>
+        <translation>&amp;Prijungti</translation>
     </message>
 </context>
 <context>
@@ -811,117 +796,109 @@ Ar norite vietoje to juos pašalinti visam laikui?</translation>
     <message>
         <location filename="../../pathbar.cpp" line="123"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Taisyti kelią</translation>
     </message>
     <message>
         <location filename="../../pathbar.cpp" line="126"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kopijuoti kelią</translation>
     </message>
 </context>
 <context>
     <name>Fm::PlacesModel</name>
     <message>
-        <location filename="../../placesmodel.cpp" line="48"/>
+        <location filename="../../placesmodel.cpp" line="41"/>
+        <source>Places</source>
+        <translation>Vietos</translation>
+    </message>
+    <message>
+        <location filename="../../placesmodel.cpp" line="49"/>
         <source>Desktop</source>
-        <translation>Darbastalis</translation>
+        <translation>Darbalaukis</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="244"/>
-        <source>Trash</source>
-        <translation>Šiukšlinė</translation>
-    </message>
-    <message>
-        <location filename="../../placesmodel.cpp" line="57"/>
+        <location filename="../../placesmodel.cpp" line="58"/>
         <source>Computer</source>
         <translation>Kompiuteris</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="70"/>
+        <location filename="../../placesmodel.cpp" line="71"/>
         <source>Applications</source>
         <translation>Programos</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="82"/>
+        <location filename="../../placesmodel.cpp" line="83"/>
         <source>Network</source>
         <translation>Tinklas</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="40"/>
-        <source>Places</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../placesmodel.cpp" line="90"/>
+        <location filename="../../placesmodel.cpp" line="91"/>
         <source>Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Įrenginiai</translation>
     </message>
     <message>
-        <location filename="../../placesmodel.cpp" line="143"/>
+        <location filename="../../placesmodel.cpp" line="144"/>
         <source>Bookmarks</source>
-        <translation type="unfinished"></translation>
+        <translation>Žymelės</translation>
+    </message>
+    <message>
+        <location filename="../../placesmodel.cpp" line="245"/>
+        <source>Trash</source>
+        <translation>Šiukšlinė</translation>
     </message>
 </context>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <source>Rename</source>
-        <translation type="vanished">Pervadinti</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="vanished">Šalinami failai</translation>
-    </message>
-    <message>
-        <location filename="../../placesview.cpp" line="356"/>
+        <location filename="../../placesview.cpp" line="350"/>
         <source>Open in New Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Atverti naujoje kortelėje</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="359"/>
+        <location filename="../../placesview.cpp" line="353"/>
         <source>Open in New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Atverti naujame lange</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="377"/>
+        <location filename="../../placesview.cpp" line="362"/>
+        <source>Empty Trash</source>
+        <translation>Išvalyti šiukšlinę</translation>
+    </message>
+    <message>
+        <location filename="../../placesview.cpp" line="371"/>
         <source>Move Bookmark Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Pakelti žymelę</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="382"/>
+        <location filename="../../placesview.cpp" line="376"/>
         <source>Move Bookmark Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuleisti žymelę</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="386"/>
+        <location filename="../../placesview.cpp" line="380"/>
         <source>Rename Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Pervadinti žymelę</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="389"/>
+        <location filename="../../placesview.cpp" line="383"/>
         <source>Remove Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Šalinti žymelę</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="398"/>
-        <location filename="../../placesview.cpp" line="415"/>
+        <location filename="../../placesview.cpp" line="392"/>
+        <location filename="../../placesview.cpp" line="409"/>
         <source>Unmount</source>
         <translation>Atjungti</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="402"/>
+        <location filename="../../placesview.cpp" line="396"/>
         <source>Mount</source>
         <translation>Prijungti</translation>
     </message>
     <message>
-        <location filename="../../placesview.cpp" line="408"/>
+        <location filename="../../placesview.cpp" line="402"/>
         <source>Eject</source>
         <translation>Išstumti</translation>
-    </message>
-    <message>
-        <location filename="../../placesview.cpp" line="368"/>
-        <source>Empty Trash</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -934,7 +911,7 @@ Size: %2
 Modified: %3</source>
         <translation>Tipas: %1
 Dydis: %2
-Keista: %3</translation>
+Pakeista: %3</translation>
     </message>
     <message>
         <location filename="../../renamedialog.cpp" line="56"/>
@@ -942,12 +919,12 @@ Keista: %3</translation>
         <source>Type: %1
 Modified: %2</source>
         <translation>Tipas: %1
-Keista: %2</translation>
+Pakeista: %2</translation>
     </message>
     <message>
         <location filename="../../renamedialog.cpp" line="89"/>
         <source>&amp;Overwrite</source>
-        <translation>&amp;Perrašyti</translation>
+        <translation>Perraš&amp;yti</translation>
     </message>
     <message>
         <location filename="../../renamedialog.cpp" line="91"/>
@@ -961,23 +938,23 @@ Keista: %2</translation>
         <location filename="../../sidepane.cpp" line="47"/>
         <location filename="../../sidepane.cpp" line="127"/>
         <source>Places</source>
-        <translation type="unfinished"></translation>
+        <translation>Vietos</translation>
     </message>
     <message>
         <location filename="../../sidepane.cpp" line="48"/>
         <location filename="../../sidepane.cpp" line="129"/>
         <source>Directory Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Katalogų medis</translation>
     </message>
     <message>
         <location filename="../../sidepane.cpp" line="137"/>
         <source>Shows list of common places, devices, and bookmarks in sidebar</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodo bendrų vietų, įrenginių ir žymelių sąrašą šoninėje juostoje </translation>
     </message>
     <message>
         <location filename="../../sidepane.cpp" line="139"/>
         <source>Shows tree of directories in sidebar</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodo katalogų medį šoninėje juostoje</translation>
     </message>
 </context>
 <context>
@@ -995,41 +972,51 @@ Keista: %2</translation>
     <message>
         <location filename="../../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>Prisijungti kaip nau&amp;dotojui:</translation>
+        <translation>Prisijungti kaip naudotoja&amp;s:</translation>
     </message>
     <message>
         <location filename="../../mount-operation-password.ui" line="79"/>
         <source>&amp;Username:</source>
-        <translation>&amp;Naudotojo vardas:</translation>
+        <translation>Na&amp;udotojo vardas:</translation>
     </message>
     <message>
         <location filename="../../mount-operation-password.ui" line="102"/>
         <source>&amp;Password:</source>
-        <translation>&amp;Slaptažodis:</translation>
+        <translation>Sla&amp;ptažodis:</translation>
     </message>
     <message>
         <location filename="../../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
-        <translation>&amp;Domenas:</translation>
+        <translation>&amp;Sritis:</translation>
     </message>
     <message>
         <location filename="../../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation>&amp;Neįsiminti slaptažodžio</translation>
+        <translation>Nedels&amp;iant užmiršti slaptažodį</translation>
     </message>
     <message>
         <location filename="../../mount-operation-password.ui" line="137"/>
         <source>Remember password until you &amp;logout</source>
-        <translation>&amp;Atsiminti slaptažodį iki atsijungsite</translation>
+        <translation>Prisiminti slaptažodį tol, kol atsijungsi&amp;te</translation>
     </message>
     <message>
         <location filename="../../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation>Prisiminti &amp;visam laikui</translation>
+        <translation>Prisiminti visam laik&amp;ui</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
+    <message>
+        <location filename="../../utilities.cpp" line="120"/>
+        <source>Rename File</source>
+        <translation>Pervadinti failą</translation>
+    </message>
+    <message>
+        <location filename="../../utilities.cpp" line="121"/>
+        <source>Please enter a new name:</source>
+        <translation>Įrašykite naują pavadinimą:</translation>
+    </message>
     <message>
         <location filename="../../utilities.cpp" line="149"/>
         <location filename="../../utilities.cpp" line="225"/>
@@ -1040,24 +1027,19 @@ Keista: %2</translation>
         <translation>Klaida</translation>
     </message>
     <message>
-        <location filename="../../utilities.cpp" line="120"/>
-        <source>Rename File</source>
-        <translation>Pervadinti failą</translation>
-    </message>
-    <message>
-        <location filename="../../utilities.cpp" line="121"/>
-        <source>Please enter a new name:</source>
-        <translation>Įveskite naują pavadinimą:</translation>
-    </message>
-    <message>
         <location filename="../../utilities.cpp" line="161"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Sukurti aplanką</translation>
+    </message>
+    <message>
+        <location filename="../../utilities.cpp" line="162"/>
+        <source>Create File</source>
+        <translation>Sukurti failą</translation>
     </message>
     <message>
         <location filename="../../utilities.cpp" line="166"/>
         <source>Please enter a new file name:</source>
-        <translation>Įveskite naują failo pavadinimą:</translation>
+        <translation>Įrašykite naują failo pavadinimą:</translation>
     </message>
     <message>
         <location filename="../../utilities.cpp" line="167"/>
@@ -1067,7 +1049,7 @@ Keista: %2</translation>
     <message>
         <location filename="../../utilities.cpp" line="171"/>
         <source>Please enter a new folder name:</source>
-        <translation>Įveskite naują failo pavadinimą:</translation>
+        <translation>Įrašykite naują aplanko pavadinimą:</translation>
     </message>
     <message>
         <location filename="../../utilities.cpp" line="172"/>
@@ -1075,14 +1057,9 @@ Keista: %2</translation>
         <translation>Naujas aplankas</translation>
     </message>
     <message>
-        <location filename="../../utilities.cpp" line="162"/>
-        <source>Create File</source>
-        <translation>Sukurti failą</translation>
-    </message>
-    <message>
         <location filename="../../utilities.cpp" line="177"/>
         <source>Enter a name for the new %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Įrašykite pavadinimą naujam %1:</translation>
     </message>
 </context>
 <context>
@@ -1095,7 +1072,7 @@ Keista: %2</translation>
     <message>
         <location filename="../../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Šiame aplanke jau yra failas tokiu pačiu pavadinimu.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Ar norite pakeisti esamą failą?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Šioje vietoje jau yra failas tokiu pačiu pavadinimu.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Ar norite pakeisti esamą failą?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../../rename-dialog.ui" line="56"/>
@@ -1130,7 +1107,7 @@ Keista: %2</translation>
     <message>
         <location filename="../../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation>Pritaikyti šią nuostatą visiems failams</translation>
+        <translation>Taikyti šią parinktį visiems esamiems failams</translation>
     </message>
 </context>
 <context>
@@ -1138,176 +1115,176 @@ Keista: %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ieškoti failų</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Pavadinimas/Vieta</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Failo pavadinimo šablonai:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="41"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation>*</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Neskirti didžiųjų ir mažųjų raidžių</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudoti reguliarųjį reiškinį</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="65"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vietos, kuriose ieškoti:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="78"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pridėti</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="90"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Ša&amp;linti</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="119"/>
         <source>Search in sub directories</source>
-        <translation type="unfinished"></translation>
+        <translation>Ieškoti pakatalogiuose</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="126"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ieškoti paslėptų failų</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="137"/>
         <source>File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Failo tipas</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="143"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ieškoti tik šių tipų failų:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="149"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstiniai failai</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="156"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Paveikslų failai</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="163"/>
         <source>Audio files</source>
-        <translation type="unfinished"></translation>
+        <translation>Garso failai</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="170"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaizdo failai</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="177"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokumentai</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="184"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplankai</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="208"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Turinys</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="214"/>
         <source>File contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Faile yra:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="223"/>
         <source>Case insensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Neski&amp;rti didžiųjų ir mažųjų raidžių</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="230"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Na&amp;udoti reguliarųjį reiškinį</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="254"/>
         <source>Properties</source>
-        <translation type="unfinished">Savybės</translation>
+        <translation>Savybės</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="260"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Failo dydis:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="289"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Didesnis nei:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="303"/>
         <location filename="../../filesearch.ui" line="333"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Baitų</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="308"/>
         <location filename="../../filesearch.ui" line="338"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="313"/>
         <location filename="../../filesearch.ui" line="343"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>MiB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="318"/>
         <location filename="../../filesearch.ui" line="348"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>GiB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="268"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mažesnis nei:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="364"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Paskutinio pakeitimo laikas:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="372"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Anksčiau nei:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="379"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vėliau nei:</translation>
     </message>
 </context>
 </TS>
