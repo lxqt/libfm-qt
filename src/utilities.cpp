@@ -88,8 +88,8 @@ void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent) {
     if(paths.empty() && data->hasUrls()) {
         // The KDE way
         paths = Fm::pathListFromQUrls(data->urls());
-        QByteArray cut = data->data("x-kde-cut-selection");
-        if(!cut.isEmpty() && cut.at(0) == '1') {
+        QByteArray cut = data->data(QStringLiteral("application/x-kde-cutselection"));
+        if(!cut.isEmpty() && QChar::fromLatin1(cut.at(0)) == QLatin1Char('1')) {
             isCut = true;
         }
     }
@@ -113,7 +113,7 @@ void copyFilesToClipboard(const Fm::FilePathList& files) {
     data->setData("x-special/gnome-copied-files", QByteArray("copy\n") + urilist.replace("\r\n", "\n"));
     // The KDE way
     data->setData("text/uri-list", urilist);
-    // data.setData("x-kde-cut-selection", "0");
+    // data->setData(QStringLiteral("application/x-kde-cutselection"), QByteArrayLiteral("0"));
     clipboard->setMimeData(data);
 }
 
@@ -126,7 +126,7 @@ void cutFilesToClipboard(const Fm::FilePathList& files) {
     data->setData("x-special/gnome-copied-files", QByteArray("cut\n") + urilist.replace("\r\n", "\n"));
     // The KDE way
     data->setData("text/uri-list", urilist);
-    data->setData("x-kde-cut-selection", "1");
+    data->setData(QStringLiteral("application/x-kde-cutselection"), QByteArrayLiteral("1"));
     clipboard->setMimeData(data);
 }
 
