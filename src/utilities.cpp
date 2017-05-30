@@ -97,6 +97,7 @@ void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent) {
     if(!paths.empty()) {
         if(isCut) {
             FileOperation::moveFiles(paths, destPath, parent);
+            clipboard->clear(QClipboard::Clipboard);
         }
         else {
             FileOperation::copyFiles(paths, destPath, parent);
