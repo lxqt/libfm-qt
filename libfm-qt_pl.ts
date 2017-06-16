@@ -702,7 +702,7 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../../foldermenu.cpp" line="143"/>
         <source>Output</source>
-        <translation type="unfinished">Wyjście</translation>
+        <translation>Wyjście</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="168"/>
@@ -804,12 +804,12 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../../pathbar.cpp" line="123"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Edytuj ścieżkę</translation>
     </message>
     <message>
         <location filename="../../pathbar.cpp" line="126"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kopiuj ścieżkę</translation>
     </message>
 </context>
 <context>
@@ -1093,7 +1093,7 @@ Zmodyfikowany: %2</translation>
     <message>
         <location filename="../../rename-dialog.ui" line="56"/>
         <source>dest</source>
-        <translation type="unfinished"></translation>
+        <translation>doc.</translation>
     </message>
     <message>
         <location filename="../../rename-dialog.ui" line="63"/>
@@ -1103,17 +1103,17 @@ Zmodyfikowany: %2</translation>
     <message>
         <location filename="../../rename-dialog.ui" line="76"/>
         <source>src file info</source>
-        <translation type="unfinished"></translation>
+        <translation>inf. o pliku źród.</translation>
     </message>
     <message>
         <location filename="../../rename-dialog.ui" line="89"/>
         <source>dest file info</source>
-        <translation type="unfinished"></translation>
+        <translation>inf. o pliku doc.</translation>
     </message>
     <message>
         <location filename="../../rename-dialog.ui" line="102"/>
         <source>src</source>
-        <translation type="unfinished"></translation>
+        <translation>źród.</translation>
     </message>
     <message>
         <location filename="../../rename-dialog.ui" line="122"/>
@@ -1262,25 +1262,25 @@ Zmodyfikowany: %2</translation>
         <location filename="../../filesearch.ui" line="303"/>
         <location filename="../../filesearch.ui" line="333"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Bajty</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="308"/>
         <location filename="../../filesearch.ui" line="338"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="313"/>
         <location filename="../../filesearch.ui" line="343"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>MB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="318"/>
         <location filename="../../filesearch.ui" line="348"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>GB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="268"/>
