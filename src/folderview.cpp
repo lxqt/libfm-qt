@@ -93,7 +93,8 @@ QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
         // We use the grid size - (2, 2) as the size of the bounding rectangle of the whole item.
         // The width of the text label hence is gridSize.width - 2, and the width and height of the icon is from iconSize().
         QRect visRect = visualRect(index); // visibal area on the screen
-        QSize itemSize = gridSize();
+        auto delegate = itemDelegateForColumn(FolderModel::ColumnFileName);
+        QSize itemSize = static_cast<FolderItemDelegate*>(delegate)->itemSize();
         itemSize.setWidth(itemSize.width() - 2);
         itemSize.setHeight(itemSize.height() - 2);
         QSize _iconSize = iconSize();
@@ -630,19 +631,20 @@ void FolderView::updateGridSize() {
         int textHeight = fm.lineSpacing() * 3;
         grid.setWidth(qMax(icon.width(), textWidth) + 4); // a margin of 2 px for selection rects
         grid.setHeight(icon.height() + textHeight + 4); // a margin of 2 px for selection rects
+
+        listView->setSpacing(24);    // the default spacing is 6(=2x3) px
         break;
     }
     default:
+        // FIXME: set proper item size
+        listView->setSpacing(2);    // the default spacing is 6(=2x3) px
         ; // do not use grid size
     }
-    if(mode == IconMode || mode == ThumbnailMode) {
-        listView->setGridSize(grid + 2 * itemDelegateMargins_);    // the default spacing is 6(=2x3) px
-    }
-    else {
-        listView->setGridSize(grid);
-    }
+    listView->setUniformItemSizes(true);
+
     FolderItemDelegate* delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
-    delegate->setGridSize(grid);
+    delegate->setItemSize(grid);
+    delegate->setIconSize(icon);
 }
 
 void FolderView::setIconSize(ViewMode mode, QSize size) {

@@ -23,7 +23,7 @@
 
 #include "libfmqtglobals.h"
 #include <QStyledItemDelegate>
-#include <QAbstractItemView>
+class QAbstractItemView;
 
 namespace Fm {
 
@@ -31,14 +31,23 @@ class LIBFM_QT_API FolderItemDelegate : public QStyledItemDelegate {
     Q_OBJECT
 public:
     explicit FolderItemDelegate(QAbstractItemView* view, QObject* parent = nullptr);
+
     virtual ~FolderItemDelegate();
 
-    inline void setGridSize(QSize size) {
-        gridSize_ = size;
+    inline void setItemSize(QSize size) {
+        itemSize_ = size;
     }
 
-    inline QSize gridSize() const {
-        return gridSize_;
+    inline QSize itemSize() const {
+        return itemSize_;
+    }
+
+    inline void setIconSize(QSize size) {
+        iconSize_ = size;
+    }
+
+    inline QSize iconSize() const {
+        return iconSize_;
     }
 
     int fileInfoRole() {
@@ -58,16 +67,18 @@ public:
     }
 
     virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+
     virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 private:
     void drawText(QPainter* painter, QStyleOptionViewItem& opt, QRectF& textRect) const;
+
     static QIcon::Mode iconModeFromState(QStyle::State state);
 
 private:
-    QAbstractItemView* view_;
     QIcon symlinkIcon_;
-    QSize gridSize_;
+    QSize iconSize_;
+    QSize itemSize_;
     int fileInfoRole_;
     int iconInfoRole_;
 };
