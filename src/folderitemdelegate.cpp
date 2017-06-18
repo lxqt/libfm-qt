@@ -22,6 +22,7 @@
 #include "foldermodel.h"
 #include <QPainter>
 #include <QModelIndex>
+#include <QAbstractItemView>
 #include <QStyleOptionViewItem>
 #include <QApplication>
 #include <QIcon>
@@ -34,7 +35,6 @@ namespace Fm {
 
 FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent):
     QStyledItemDelegate(parent ? parent : view),
-    view_(view),
     symlinkIcon_(QIcon::fromTheme("emblem-symbolic-link")),
     fileInfoRole_(Fm::FolderModel::FileInfoRole),
     iconInfoRole_(-1) {
@@ -53,18 +53,29 @@ QSize FolderItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QMo
             option.decorationPosition == QStyleOptionViewItem::Bottom) {
 
         QStyleOptionViewItem opt = option;
-        initStyleOption(&opt, index);
+        QSize decorationSize;
+        if(iconSize_.isValid()) {
+            initStyleOption(&opt, QModelIndex());
+            decorationSize = iconSize_;
+        }
+        else {
+            initStyleOption(&opt, index);
+            decorationSize = option.decorationSize;
+        }
         opt.decorationAlignment = Qt::AlignHCenter | Qt::AlignTop;
         opt.displayAlignment = Qt::AlignTop | Qt::AlignHCenter;
 
         // "opt.decorationSize" may be smaller than the requested size because
         // "QStyledItemDelegate::initStyleOption()" uses "QIcon::actualSize()" to set it
         // (see Qt -> qstyleditemdelegate.cpp). So, we always get decorationSize from "option".
-        Q_ASSERT(gridSize_ != QSize());
-        QRectF textRect(0, 0, gridSize_.width(), gridSize_.height() - option.decorationSize.height());
+        Q_ASSERT(itemSize_ != QSize());
+        QRectF textRect(0, 0, itemSize_.width(), itemSize_.height() - decorationSize.height());
         drawText(nullptr, opt, textRect); // passing nullptr for painter will calculate the bounding rect only.
-        int width = qMax((int)textRect.width(), option.decorationSize.width());
-        int height = option.decorationSize.height() + textRect.height();
+        int width = qMax((int)textRect.width(), decorationSize.width());
+        width = itemSize_.width();
+        int height = decorationSize.height() + textRect.height();
+        height = itemSize_.height();
+        qDebug() << width << height;
         return QSize(width, height);
     }
     return QStyledItemDelegate::sizeHint(option, index);
@@ -124,10 +135,10 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
 
         // draw the text
         // The text rect dimensions should be exactly as they were in sizeHint()
-        QRectF textRect(opt.rect.x() - (gridSize_.width() - opt.rect.width()) / 2,
+        QRectF textRect(opt.rect.x() - (itemSize_.width() - opt.rect.width()) / 2,
                         opt.rect.y() + option.decorationSize.height(),
-                        gridSize_.width(),
-                        gridSize_.height() - option.decorationSize.height());
+                        itemSize_.width(),
+                        itemSize_.height() - option.decorationSize.height());
         drawText(painter, opt, textRect);
         painter->restore();
     }
