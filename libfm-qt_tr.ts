@@ -1125,7 +1125,7 @@ Değiştirild: %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya Adı Modelleri:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="41"/>
@@ -1145,7 +1145,7 @@ Değiştirild: %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="65"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aradığınız Yerler:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="78"/>
@@ -1258,13 +1258,13 @@ Değiştirild: %2</translation>
         <location filename="../../filesearch.ui" line="313"/>
         <location filename="../../filesearch.ui" line="343"/>
         <source>MiB</source>
-        <translation type="unfinished">MBit</translation>
+        <translation>MB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="318"/>
         <location filename="../../filesearch.ui" line="348"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>GB</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="268"/>
