@@ -39,6 +39,7 @@ public:
   virtual ~FolderViewListView();
   virtual void startDrag(Qt::DropActions supportedActions);
   virtual void mousePressEvent(QMouseEvent* event);
+  virtual void mouseMoveEvent(QMouseEvent* event);
   virtual void mouseReleaseEvent(QMouseEvent* event);
   virtual void mouseDoubleClickEvent(QMouseEvent* event);
   virtual void dragEnterEvent(QDragEnterEvent* event);
@@ -81,6 +82,7 @@ public:
   virtual ~FolderViewTreeView();
   virtual void setModel(QAbstractItemModel* model);
   virtual void mousePressEvent(QMouseEvent* event);
+  virtual void mouseMoveEvent(QMouseEvent* event);
   virtual void mouseReleaseEvent(QMouseEvent* event);
   virtual void mouseDoubleClickEvent(QMouseEvent* event);
   virtual void dragEnterEvent(QDragEnterEvent* event);

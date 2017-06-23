@@ -70,6 +70,13 @@ void FolderViewListView::mousePressEvent(QMouseEvent* event) {
     static_cast<FolderView*>(parent())->childMousePressEvent(event);
 }
 
+void FolderViewListView::mouseMoveEvent(QMouseEvent* event) {
+    // NOTE: Filter the BACK & FORWARD buttons to not Drag & Drop with them.
+    // (by default Qt views drag with any button)
+    if (event->buttons() == Qt::NoButton || event->buttons() & ~(Qt::BackButton | Qt::ForwardButton))
+        QListView::mouseMoveEvent(event);
+}
+
 QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
     QModelIndex index = QListView::indexAt(point);
     // NOTE: QListView has a severe design flaw here. It does hit-testing based on the
@@ -241,6 +248,13 @@ void FolderViewTreeView::setModel(QAbstractItemModel* model) {
 void FolderViewTreeView::mousePressEvent(QMouseEvent* event) {
     QTreeView::mousePressEvent(event);
     static_cast<FolderView*>(parent())->childMousePressEvent(event);
+}
+
+void FolderViewTreeView::mouseMoveEvent(QMouseEvent* event) {
+    // NOTE: Filter the BACK & FORWARD buttons to not Drag & Drop with them.
+    // (by default Qt views drag with any button)
+    if (event->buttons() == Qt::NoButton || event->buttons() & ~(Qt::BackButton | Qt::ForwardButton))
+        QTreeView::mouseMoveEvent(event);
 }
 
 void FolderViewTreeView::dragEnterEvent(QDragEnterEvent* event) {
