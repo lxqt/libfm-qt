@@ -225,6 +225,10 @@ FolderViewTreeView::FolderViewTreeView(QWidget* parent):
 
     header()->setStretchLastSection(true);
     setIndentation(0);
+    /* the default true value may cause a crash on entering a folder
+       by double clicking because of the viewport update done by
+       QTreeView::mouseDoubleClickEvent() (a Qt bug?) */
+    setExpandsOnDoubleClick(false);
 
     connect(this, &QTreeView::activated, this, &FolderViewTreeView::activation);
 }
