@@ -102,6 +102,9 @@ void FolderModel::onFilesChanged(std::vector<Fm::FileInfoPair>& files) {
             item.thumbnails.clear();
             QModelIndex index = createIndex(row, 0, &item);
             Q_EMIT dataChanged(index, index);
+            if(oldInfo->size() != newInfo->size()) {
+                Q_EMIT fileSizeChanged(index);
+            }
         }
     }
 }
