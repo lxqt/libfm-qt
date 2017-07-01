@@ -259,7 +259,7 @@ void FolderViewTreeView::mouseMoveEvent(QMouseEvent* event) {
 
 void FolderViewTreeView::dragEnterEvent(QDragEnterEvent* event) {
     QTreeView::dragEnterEvent(event);
-    static_cast<FolderView*>(parent())->childDragEnterEvent(event);
+    //static_cast<FolderView*>(parent())->childDragEnterEvent(event);
 }
 
 void FolderViewTreeView::dragLeaveEvent(QDragLeaveEvent* e) {
@@ -894,7 +894,7 @@ void FolderView::childDropEvent(QDropEvent* e) {
     if(QX11Info::isPlatformX11() && e->mimeData()->hasFormat("XdndDirectSave0")) {
         e->setDropAction(Qt::CopyAction);
         const QWidget* targetWidget = childView()->viewport();
-        // these are dynamic QObject property set by our XDND workarounds in xworkaround.cpp.
+        // these are dynamic QObject property set by our XDND workarounds in xdndworkaround.cpp.
         xcb_window_t dndSource = xcb_window_t(targetWidget->property("xdnd::lastDragSource").toUInt());
         //xcb_timestamp_t dropTimestamp = (xcb_timestamp_t)targetWidget->property("xdnd::lastDropTime").toUInt();
         // qDebug() << "XDS: source window" << dndSource << dropTimestamp;
