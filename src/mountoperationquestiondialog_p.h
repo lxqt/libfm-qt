@@ -22,6 +22,7 @@
 #define FM_MOUNTOPERATIONQUESTIONDIALOG_H
 
 #include "libfmqtglobals.h"
+#include <QCloseEvent>
 #include <QMessageBox>
 #include <gio/gio.h>
 
@@ -36,9 +37,7 @@ public:
     virtual ~MountOperationQuestionDialog();
 
     virtual void done(int r);
-
-private Q_SLOTS:
-    void onButtonClicked(QAbstractButton* button);
+    virtual void closeEvent(QCloseEvent *event);
 
 private:
     MountOperation* mountOperation;
