@@ -64,7 +64,7 @@ const QString &FolderModelItem::displayMtime() const {
 }
 
 const QString& FolderModelItem::displaySize() const {
-    if(dispSize_.isEmpty() && !info->isDir()) {
+    if(!info->isDir()) {
         // FIXME: choose IEC or SI units
         dispSize_ = Fm::formatFileSize(info->size(), false);
     }
