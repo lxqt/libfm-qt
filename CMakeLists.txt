@@ -40,7 +40,7 @@ find_package(MenuCache "${REQUIRED_LIBMENUCACHE_VERSION}" REQUIRED)
 find_package(Exif REQUIRED)
 find_package(XCB REQUIRED)
 
-message(STATUS "Building ${PROJECT_NAME} with Qt ${Qt5Core_VERSION_STRING}")
+message(STATUS "Building ${PROJECT_NAME} with Qt ${Qt5Core_VERSION}")
 
 option(UPDATE_TRANSLATIONS "Update source translation translations/*.ts files" OFF)
 include(GNUInstallDirs)
