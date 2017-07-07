@@ -37,11 +37,15 @@
 #include <QApplication>
 #include <QScrollBar>
 #include <QMetaType>
+#include <QMessageBox>
+#include <QLineEdit>
+#include <QTextEdit>
 #include <QX11Info> // for XDS support
 #include <xcb/xcb.h> // for XDS support
 #include "xdndworkaround.h" // for XDS support
 #include "path.h"
 #include "folderview_p.h"
+#include "utilities.h"
 
 Q_DECLARE_OPAQUE_POINTER(FmFileInfo*)
 
@@ -51,6 +55,8 @@ FolderViewListView::FolderViewListView(QWidget* parent):
     QListView(parent),
     activationAllowed_(true) {
     connect(this, &QListView::activated, this, &FolderViewListView::activation);
+    // inline renaming
+    setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 FolderViewListView::~FolderViewListView() {
@@ -236,6 +242,8 @@ FolderViewTreeView::FolderViewTreeView(QWidget* parent):
     setExpandsOnDoubleClick(false);
 
     connect(this, &QTreeView::activated, this, &FolderViewTreeView::activation);
+    // don't open editor on double clicking
+    setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 FolderViewTreeView::~FolderViewTreeView() {
@@ -502,6 +510,40 @@ void FolderView::onSelectionChanged(const QItemSelection& /*selected*/, const QI
     }
 }
 
+void FolderView::onClosingEditor(QWidget* editor, QAbstractItemDelegate::EndEditHint hint) {
+    if (hint != QAbstractItemDelegate::NoHint) {
+        // we set the hint to NoHint in FolderItemDelegate::eventFilter()
+        return;
+    }
+    QString newName;
+    if (qobject_cast<QTextEdit*>(editor)) { // icon and thumbnail view
+        newName = qobject_cast<QTextEdit*>(editor)->toPlainText();
+    }
+    else if (qobject_cast<QLineEdit*>(editor)) { // compact view
+        newName = qobject_cast<QLineEdit*>(editor)->text();
+    }
+    if (newName.isEmpty()) {
+        return;
+    }
+    // the editor will be deleted by QAbstractItemDelegate::destroyEditor() when no longer needed
+
+    QModelIndex index = view->selectionModel()->currentIndex();
+    if(index.isValid() && index.model()) {
+        QVariant data = index.model()->data(index, FolderModel::FileInfoRole);
+        auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
+        if (info) {
+            auto oldName = QString::fromStdString(info->name());
+            if(newName == oldName) {
+                return;
+            }
+            QWidget* parent = window();
+            if (window() == this) { // supposedly desktop, in case it uses this
+                parent = nullptr;
+            }
+            changeFileName(info->path(), newName, parent);
+        }
+    }
+}
 
 void FolderView::setViewMode(ViewMode _mode) {
     if(_mode == mode) { // if it's the same more, ignore
@@ -549,6 +591,8 @@ void FolderView::setViewMode(ViewMode _mode) {
         // set our own custom delegate
         FolderItemDelegate* delegate = new FolderItemDelegate(listView);
         listView->setItemDelegateForColumn(FolderModel::ColumnFileName, delegate);
+        // inline renaming
+        connect(delegate,  &QAbstractItemDelegate::closeEditor, this, &FolderView::onClosingEditor);
         // FIXME: should we expose the delegate?
         listView->setMovement(QListView::Static);
         /* If listView is already visible, setMovement() will lay out items again with delay
@@ -981,6 +1025,14 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
             }
             break;
         case QEvent::Wheel:
+            // don't let the view scroll during an inline renaming
+            if (view && mode != DetailedListMode) {
+                FolderViewListView* listView = static_cast<FolderViewListView*>(view);
+                FolderItemDelegate* delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
+                if (delegate->hasEditor()) {
+                    return true;
+                }
+            }
             // This is to fix #85: Scrolling doesn't work in compact view
             // Actually, I think it's the bug of Qt, not ours.
             // When in compact mode, only the horizontal scroll bar is used and the vertical one is hidden.
@@ -1091,7 +1143,9 @@ void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm::FileInf
             // show context menu
             auto files = selectedFiles();
             if(!files.empty()) {
-                Fm::FileMenu* fileMenu = new Fm::FileMenu(files, fileInfo, folderPath);
+                Fm::FileMenu* fileMenu = (view && mode != DetailedListMode && selectedIndexes().size() == 1)
+                                         ? new Fm::FileMenu(files, fileInfo, folderPath, QString(), view)
+                                         : new Fm::FileMenu(files, fileInfo, folderPath);
                 fileMenu->setFileLauncher(fileLauncher_);
                 prepareFileMenu(fileMenu);
                 menu = fileMenu;

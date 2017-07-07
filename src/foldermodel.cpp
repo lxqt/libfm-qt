@@ -211,6 +211,7 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
         case ColumnFileOwner:
             return item->ownerName();
         }
+        break;
     }
     case Qt::DecorationRole: {
         if(index.column() == 0) {
@@ -218,8 +219,16 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
         }
         break;
     }
+    case Qt::EditRole: {
+        if(index.column() == 0) {
+            return QString::fromStdString(info->name());
+        }
+        break;
+    }
     case FileInfoRole:
         return QVariant::fromValue(info);
+    case FileIsDirRole:
+        return QVariant(info->isDir());
     }
     return QVariant();
 }
@@ -269,7 +278,8 @@ Qt::ItemFlags FolderModel::flags(const QModelIndex& index) const {
     if(index.isValid()) {
         flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable;
         if(index.column() == ColumnFileName) {
-            flags |= (Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled);
+            flags |= (Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled
+                      | Qt::ItemIsEditable); // inline renaming);
         }
     }
     else {

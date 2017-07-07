@@ -31,6 +31,7 @@
 #include "customaction_p.h"
 
 #include <QMessageBox>
+#include <QAbstractItemView>
 #include <QDebug>
 #include "filemenu_p.h"
 
@@ -328,6 +329,13 @@ void FileMenu::onPasteTriggered() {
 }
 
 void FileMenu::onRenameTriggered() {
+    if (QAbstractItemView* view = qobject_cast<QAbstractItemView*>(parentWidget())) {
+        // if there is a view and this is a single file, just edit the current index
+        if (view->currentIndex().isValid() && files_.size() == 1) {
+            view->edit(view->currentIndex());
+            return;
+        }
+    }
     for(auto& info: files_) {
         Fm::renameFile(info, nullptr);
     }

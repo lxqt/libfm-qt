@@ -29,6 +29,9 @@
 #include <QTextLayout>
 #include <QTextOption>
 #include <QTextLine>
+#include <QLineEdit>
+#include <QTextEdit>
+#include <QTimer>
 #include <QDebug>
 
 namespace Fm {
@@ -38,7 +41,9 @@ FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent)
     symlinkIcon_(QIcon::fromTheme("emblem-symbolic-link")),
     fileInfoRole_(Fm::FolderModel::FileInfoRole),
     iconInfoRole_(-1),
-    margins_(QSize(3, 3)) {
+    margins_(QSize(3, 3)),
+    hasEditor_(false) {
+    connect(this,  &QAbstractItemDelegate::closeEditor, [=]{hasEditor_ = false;});
 }
 
 FolderItemDelegate::~FolderItemDelegate() {
@@ -293,6 +298,103 @@ void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItem& opt, 
             QStyle* style = widget->style() ? widget->style() : qApp->style();
             style->drawPrimitive(QStyle::PE_FrameFocusRect, &o, painter, widget);
         }
+    }
+}
+
+/*
+ * The following methods are for inline renaming.
+ */
+
+QWidget* FolderItemDelegate::createEditor(QWidget* parent, const QStyleOptionViewItem& option, const QModelIndex& index) const {
+    hasEditor_ = true;
+    if (option.decorationPosition == QStyleOptionViewItem::Top
+        || option.decorationPosition == QStyleOptionViewItem::Bottom)
+    {
+        // in icon view, we use QTextEdit as the editor (and not QPlainTextEdit
+        // because the latter always shows an empty space at the bottom)
+        QTextEdit *textEdit = new QTextEdit(parent);
+        textEdit->setAcceptRichText(false);
+        textEdit->ensureCursorVisible();
+        textEdit->setFocusPolicy(Qt::StrongFocus);
+        textEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        textEdit->setContentsMargins(0, 0, 0, 0);
+        return textEdit;
+    }
+    else {
+        // return the default line-edit in compact view
+        return QStyledItemDelegate::createEditor(parent, option, index);
+    }
+}
+
+void FolderItemDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const {
+    if (!index.isValid()) {
+        return;
+    }
+    const QString currentName = index.data(Qt::EditRole).toString();
+
+    if (QTextEdit* textEdit = qobject_cast<QTextEdit*>(editor)) {
+        textEdit->setPlainText(currentName);
+        textEdit->setUndoRedoEnabled(false);
+        textEdit->setAlignment(Qt::AlignCenter);
+        textEdit->setUndoRedoEnabled(true);
+        // select text appropriately
+        QTextCursor cur = textEdit->textCursor();
+        int end;
+        if (index.data(Fm::FolderModel::FileIsDirRole).toBool() || !currentName.contains(".")) {
+            end = currentName.size();
+        }
+        else {
+            end = currentName.lastIndexOf(".");
+        }
+        cur.setPosition(end, QTextCursor::KeepAnchor);
+        textEdit->setTextCursor(cur);
+    }
+    else if (QLineEdit* lineEdit = qobject_cast<QLineEdit*>(editor)) {
+        lineEdit->setText(currentName);
+        if (!index.data(Fm::FolderModel::FileIsDirRole).toBool() && currentName.contains("."))
+        {
+            /* Qt will call QLineEdit::selectAll() after calling setEditorData() in
+               qabstractitemview.cpp -> QAbstractItemViewPrivate::editor(). Therefore,
+               we cannot select a part of the text in the usual way here.  */
+            QTimer::singleShot(0, [lineEdit]() {
+                int length = lineEdit->text().lastIndexOf(".");
+                lineEdit->setSelection(0, length);
+            });
+        }
+    }
+}
+
+bool FolderItemDelegate::eventFilter(QObject* object, QEvent* event) {
+    QWidget *editor = qobject_cast<QWidget*>(object);
+    if (editor && event->type() == QEvent::KeyPress) {
+        int k = static_cast<QKeyEvent *>(event)->key();
+        if (k == Qt::Key_Return || k == Qt::Key_Enter) {
+            Q_EMIT QAbstractItemDelegate::commitData(editor);
+            Q_EMIT QAbstractItemDelegate::closeEditor(editor, QAbstractItemDelegate::NoHint);
+            return true;
+        }
+    }
+    return QStyledItemDelegate::eventFilter(object, event);
+}
+
+void FolderItemDelegate::updateEditorGeometry(QWidget* editor, const QStyleOptionViewItem& option, const QModelIndex& index) const {
+    if (option.decorationPosition == QStyleOptionViewItem::Top
+        || option.decorationPosition == QStyleOptionViewItem::Bottom) {
+        // give all of the available space to the editor
+        QStyleOptionViewItem opt = option;
+        initStyleOption(&opt, index);
+        opt.decorationAlignment = Qt::AlignHCenter|Qt::AlignTop;
+        opt.displayAlignment = Qt::AlignTop|Qt::AlignHCenter;
+        QRect textRect(opt.rect.x(),
+                       opt.rect.y() + margins_.height() + option.decorationSize.height(),
+                       itemSize_.width(),
+                       itemSize_.height() - margins_.height() - option.decorationSize.height());
+        int frame = editor->style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &option, editor);
+        editor->setGeometry(textRect.adjusted(-frame, -frame, frame, frame));
+    }
+    else {
+        // use the default editor geometry in compact view
+        QStyledItemDelegate::updateEditorGeometry(editor, option, index);
     }
 }
 
