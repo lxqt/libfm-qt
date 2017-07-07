@@ -130,8 +130,20 @@ void cutFilesToClipboard(const Fm::FilePathList& files) {
     clipboard->setMimeData(data);
 }
 
+void changeFileName(const Fm::FilePath& filePath, const QString& newName, QWidget* parent) {
+    auto dest = filePath.parent().child(newName.toLocal8Bit().constData());
+    Fm::GErrorPtr err;
+    if(!g_file_move(filePath.gfile().get(), dest.gfile().get(),
+                    GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
+                                   G_FILE_COPY_NO_FALLBACK_FOR_MOVE |
+                                   G_FILE_COPY_NOFOLLOW_SYMLINKS),
+                    nullptr, /* make this cancellable later. */
+                    nullptr, nullptr, &err)) {
+        QMessageBox::critical(parent, QObject::tr("Error"), err.message());
+    }
+}
+
 void renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent) {
-    auto path = file->path();
     FilenameDialog dlg(parent);
     dlg.setWindowTitle(QObject::tr("Rename File"));
     dlg.setLabelText(QObject::tr("Please enter a new name:"));
@@ -151,18 +163,7 @@ void renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent) {
     if(new_name == old_name) {
         return;
     }
-
-    auto parent_dir = path.parent();
-    auto dest = path.parent().child(new_name.toLocal8Bit().constData());
-    Fm::GErrorPtr err;
-    if(!g_file_move(path.gfile().get(), dest.gfile().get(),
-                    GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
-                                   G_FILE_COPY_NO_FALLBACK_FOR_MOVE |
-                                   G_FILE_COPY_NOFOLLOW_SYMLINKS),
-                    nullptr, /* make this cancellable later. */
-                    nullptr, nullptr, &err)) {
-        QMessageBox::critical(parent, QObject::tr("Error"), err.message());
-    }
+    changeFileName(file->path(), new_name, parent);
 }
 
 // templateFile is a file path used as a template of the new file.

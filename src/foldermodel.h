@@ -42,7 +42,8 @@ class LIBFM_QT_API FolderModel : public QAbstractListModel {
 public:
 
     enum Role {
-        FileInfoRole = Qt::UserRole
+        FileInfoRole = Qt::UserRole,
+        FileIsDirRole
     };
 
     enum ColumnId {
