@@ -838,15 +838,10 @@ void FolderView::selectAll() {
         // can only select the first column of every row. I consider this discripancy yet
         // another design flaw of Qt. To make them consistent, we do it ourselves by only
         // selecting the first column of every row and do not select all columns as Qt does.
-        // This will trigger one selectionChanged event per row, which is very inefficient,
-        // but we have no other choices to workaround the Qt bug.
         // I'll report a Qt bug for this later.
         if(model_) {
-            int rowCount = model_->rowCount();
-            for(int row = 0; row < rowCount; ++row) {
-                QModelIndex index = model_->index(row, 0);
-                selectionModel()->select(index, QItemSelectionModel::Select);
-            }
+            const QItemSelection sel{model_->index(0, 0), model_->index(model_->rowCount() - 1, 0)};
+            selectionModel()->select(sel, QItemSelectionModel::Select);
         }
     }
 }
