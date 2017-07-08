@@ -23,7 +23,7 @@ public:
         *this = other;
     }
 
-    FilePath(FilePath&& other): FilePath{} {
+    FilePath(FilePath&& other) noexcept: FilePath{} {
         *this = other;
     }
 
@@ -124,7 +124,7 @@ public:
         return *this;
     }
 
-    FilePath& operator = (const FilePath&& other) {
+    FilePath& operator = (const FilePath&& other) noexcept {
         gfile_ = std::move(other.gfile_);
         return *this;
     }

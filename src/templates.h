@@ -51,7 +51,7 @@ public:
 
 
   // move constructor
-  Template(Template&& other) {
+  Template(Template&& other) noexcept {
     dataPtr_ = reinterpret_cast<GObject*>(other.takeDataPtr());
   }
 
@@ -105,7 +105,7 @@ public:
 
 
   // move assignment
-  Template& operator=(Template&& other) {
+  Template& operator=(Template&& other) noexcept {
     dataPtr_ = reinterpret_cast<GObject*>(other.takeDataPtr());
     return *this;
   }

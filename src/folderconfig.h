@@ -48,7 +48,7 @@ public:
 
 
     // move constructor
-    FolderConfig(FolderConfig&& other) {
+    FolderConfig(FolderConfig&& other) noexcept {
         dataPtr_ = reinterpret_cast<FmFolderConfig*>(other.takeDataPtr());
     }
 
@@ -93,7 +93,7 @@ public:
 
 
     // move assignment
-    FolderConfig& operator=(FolderConfig&& other) {
+    FolderConfig& operator=(FolderConfig&& other) noexcept {
         dataPtr_ = reinterpret_cast<FmFolderConfig*>(other.takeDataPtr());
         return *this;
     }

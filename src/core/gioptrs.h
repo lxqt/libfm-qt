@@ -34,13 +34,13 @@ public:
     GErrorPtr(): err_{nullptr} {
     }
 
-    GErrorPtr(GError*&& err): err_{err} {
+    GErrorPtr(GError*&& err) noexcept: err_{err} {
         err = nullptr;
     }
 
     GErrorPtr(const GErrorPtr& other) = delete;
 
-    GErrorPtr(GErrorPtr&& other): err_{other.err_} {
+    GErrorPtr(GErrorPtr&& other) noexcept: err_{other.err_} {
         other.err_ = nullptr;
     }
 
@@ -90,7 +90,7 @@ public:
 
     GErrorPtr& operator = (const GErrorPtr& other) = delete;
 
-    GErrorPtr& operator = (GErrorPtr&& other) {
+    GErrorPtr& operator = (GErrorPtr&& other) noexcept {
         reset();
         err_ = other.err_;
         other.err_ = nullptr;

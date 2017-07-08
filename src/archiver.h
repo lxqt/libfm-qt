@@ -40,7 +40,7 @@ public:
 
 
   // move constructor
-  Archiver(Archiver&& other) {
+  Archiver(Archiver&& other) noexcept {
     dataPtr_ = reinterpret_cast<FmArchiver*>(other.takeDataPtr());
   }
 
@@ -85,7 +85,7 @@ public:
 
 
   // move assignment
-  Archiver& operator=(Archiver&& other) {
+  Archiver& operator=(Archiver&& other) noexcept {
     dataPtr_ = reinterpret_cast<FmArchiver*>(other.takeDataPtr());
     return *this;
   }

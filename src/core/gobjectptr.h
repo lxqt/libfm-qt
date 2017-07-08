@@ -24,7 +24,7 @@ public:
     GObjectPtr(const GObjectPtr& other): gobj_{other.gobj_ ? reinterpret_cast<T*>(g_object_ref(other.gobj_)) : nullptr} {
     }
 
-    GObjectPtr(GObjectPtr&& other): gobj_{other.release()} {
+    GObjectPtr(GObjectPtr&& other) noexcept: gobj_{other.release()} {
     }
 
     ~GObjectPtr() {
@@ -58,7 +58,7 @@ public:
         return *this;
     }
 
-    GObjectPtr& operator = (GObjectPtr&& other) {
+    GObjectPtr& operator = (GObjectPtr&& other) noexcept {
         if (this == &other)
             return *this;
 
