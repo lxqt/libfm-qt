@@ -30,5 +30,6 @@
 * Distribution & Version: 
 * Kernel: 
 * Qt Version: 
-* liblxqt Version:  
+* lxqt-build-tools Version: 
+* libqtxdg Version: 
 * Package version: 
