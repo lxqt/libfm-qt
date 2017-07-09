@@ -66,6 +66,21 @@ public:
         iconInfoRole_ = role;
     }
 
+    // only support vertical layout (icon view mode: text below icon)
+    void setShadowColor(const QColor& shadowColor) {
+      shadowColor_ = shadowColor;
+    }
+
+    // only support vertical layout (icon view mode: text below icon)
+    const QColor& shadowColor() const {
+      return shadowColor_;
+    }
+
+    // only support vertical layout (icon view mode: text below icon)
+    void setMargins(QSize margins) {
+      margins_ = margins.expandedTo(QSize(0, 0));
+    }
+
     virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
     virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
@@ -81,6 +96,8 @@ private:
     QSize itemSize_;
     int fileInfoRole_;
     int iconInfoRole_;
+    QColor shadowColor_;
+    QSize margins_;
 };
 
 }
