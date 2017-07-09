@@ -37,7 +37,8 @@ FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent)
     QStyledItemDelegate(parent ? parent : view),
     symlinkIcon_(QIcon::fromTheme("emblem-symbolic-link")),
     fileInfoRole_(Fm::FolderModel::FileInfoRole),
-    iconInfoRole_(-1) {
+    iconInfoRole_(-1),
+    margins_(QSize(3, 3)) {
 }
 
 FolderItemDelegate::~FolderItemDelegate() {
@@ -47,18 +48,24 @@ FolderItemDelegate::~FolderItemDelegate() {
 QSize FolderItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
     QVariant value = index.data(Qt::SizeHintRole);
     if(value.isValid()) {
+        // no further processing if the size is specified by the data model
         return qvariant_cast<QSize>(value);
     }
+    // we only handle vertical layout here.
     if(option.decorationPosition == QStyleOptionViewItem::Top ||
             option.decorationPosition == QStyleOptionViewItem::Bottom) {
 
         QStyleOptionViewItem opt = option;
+        // instead of getting decoration size (icon size) from the style option,
+        // we force use of the icon size we specified.
         QSize decorationSize;
         if(iconSize_.isValid()) {
             initStyleOption(&opt, QModelIndex());
             decorationSize = iconSize_;
         }
         else {
+            // FIXME: this operation seems to cause the generation of thumbnail pixmaps just to measure icon sizes.
+            // Since our icon size is a fixed value, we need to avoid this to speed it up.
             initStyleOption(&opt, index);
             decorationSize = option.decorationSize;
         }
@@ -71,6 +78,13 @@ QSize FolderItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QMo
         Q_ASSERT(itemSize_ != QSize());
         QRectF textRect(0, 0, itemSize_.width(), itemSize_.height() - decorationSize.height());
         drawText(nullptr, opt, textRect); // passing nullptr for painter will calculate the bounding rect only.
+
+        // to draw text shadow, we need one more pixel for it.
+        if(shadowColor_.isValid()) {
+            textRect.setWidth(textRect.width() + 1);
+            textRect.setHeight(textRect.height() + 1);
+        }
+
         int width = qMax((int)textRect.width(), decorationSize.width());
         width = itemSize_.width();
         int height = decorationSize.height() + textRect.height();
@@ -78,6 +92,8 @@ QSize FolderItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QMo
         qDebug() << width << height;
         return QSize(width, height);
     }
+
+    // fallback to default size hint for horizontal layout.
     return QStyledItemDelegate::sizeHint(option, index);
 }
 
@@ -94,15 +110,18 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     if(!index.isValid())
         return;
 
+    // get emblems for this icon
     std::forward_list<std::shared_ptr<const Fm::IconInfo>> icon_emblems;
     auto fmicon = index.data(iconInfoRole_).value<std::shared_ptr<const Fm::IconInfo>>();
     if(fmicon) {
         icon_emblems = fmicon->emblems();
     }
+    // get file info for the item
     auto file = index.data(fileInfoRole_).value<std::shared_ptr<const Fm::FileInfo>>();
     const auto& emblems = file ? file->emblems() : icon_emblems;
 
     bool isSymlink = file && file->isSymlink();
+    // vertical layout (icon mode, thumbnail mode)
     if(option.decorationPosition == QStyleOptionViewItem::Top ||
             option.decorationPosition == QStyleOptionViewItem::Bottom) {
         painter->save();
@@ -123,9 +142,11 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
 
         // draw some emblems for the item if needed
         if(isSymlink) {
+            // draw the emblem for symlinks
             painter->drawPixmap(iconPos, symlinkIcon_.pixmap(option.decorationSize / 2, iconMode));
         }
 
+        // draw other emblems if there's any
         if(!emblems.empty()) {
             // FIXME: we only support one emblem now
             QPoint emblemPos(opt.rect.x() + opt.rect.width() / 2, opt.rect.y() + option.decorationSize.height() / 2);
@@ -134,15 +155,17 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         }
 
         // draw the text
+        QSize drawAreaSize = itemSize_ - 2 * margins_;
         // The text rect dimensions should be exactly as they were in sizeHint()
-        QRectF textRect(opt.rect.x() - (itemSize_.width() - opt.rect.width()) / 2,
+        QRectF textRect(opt.rect.x() - (drawAreaSize.width() - opt.rect.width()) / 2,
                         opt.rect.y() + option.decorationSize.height(),
-                        itemSize_.width(),
-                        itemSize_.height() - option.decorationSize.height());
+                        drawAreaSize.width(),
+                        drawAreaSize.height() - option.decorationSize.height());
         drawText(painter, opt, textRect);
         painter->restore();
     }
-    else {
+    else {  // horizontal layout (list view)
+
         // let QStyledItemDelegate does its default painting
         QStyledItemDelegate::paint(painter, option, index);
 
@@ -172,6 +195,7 @@ void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItem& opt, 
     QTextOption textOption;
     textOption.setAlignment(opt.displayAlignment);
     textOption.setWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
+    // FIXME:     textOption.setTextDirection(opt.direction); ?
     if(opt.text.isRightToLeft()) {
         textOption.setTextDirection(Qt::RightToLeft);
     }
@@ -224,6 +248,7 @@ void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItem& opt, 
         return;
     }
 
+    // ?????
     QPalette::ColorGroup cg = (opt.state & QStyle::State_Enabled) ? QPalette::Normal : QPalette::Disabled;
     if(opt.state & QStyle::State_Selected) {
         if(!opt.widget) {
@@ -244,6 +269,23 @@ void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItem& opt, 
             o.showDecorationSelected = true;
             style->drawPrimitive(QStyle::PE_PanelItemViewItem, &o, painter, widget);
         }
+    }
+
+    // draw shadow for text if the item is not selected and a shadow color is set
+    if(!(opt.state & QStyle::State_Selected) && shadowColor_.isValid()) {
+        QPen prevPen = painter->pen();
+        painter->setPen(QPen(shadowColor_));
+        for(int i = 0; i < visibleLines; ++i) {
+            QTextLine line = layout.lineAt(i);
+            if(i == (visibleLines - 1) && !elidedText.isEmpty()) { // the last line, draw elided text
+                QPointF pos(boundRect.x() + line.position().x() + 1, boundRect.y() + line.y() + line.ascent() + 1);
+                painter->drawText(pos, elidedText);
+            }
+            else {
+                line.draw(painter, textRect.topLeft() + QPointF(1, 1));
+            }
+        }
+        painter->setPen(prevPen);
     }
 
     // draw text
