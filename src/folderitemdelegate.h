@@ -81,9 +81,15 @@ public:
       margins_ = margins.expandedTo(QSize(0, 0));
     }
 
+    QSize getMargins() const {
+      return margins_;
+    }
+
     virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
     virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+
+    QSize iconViewTextSize(const QModelIndex& index) const;
 
 private:
     void drawText(QPainter* painter, QStyleOptionViewItem& opt, QRectF& textRect) const;
