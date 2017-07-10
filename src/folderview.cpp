@@ -951,15 +951,6 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
     if(view && watched == view->viewport()) {
         switch(event->type()) {
         case QEvent::HoverMove:
-            /*if (view && mode != DetailedListMode) {
-                FolderViewListView* listView = static_cast<FolderViewListView*>(view);
-                FolderItemDelegate* delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
-                QHoverEvent* hoverEvent = static_cast<QHoverEvent*>(event);
-                QModelIndex index = view->indexAt(hoverEvent->pos());
-                if (index.isValid() && !static_cast<FolderItemDelegate*>(delegate)->itemRegion(index).contains(hoverEvent->pos()))
-                    setCursor(Qt::ArrowCursor);
-                    break;
-            }*/
             // activate items on single click
             if(style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick)) {
                 QHoverEvent* hoverEvent = static_cast<QHoverEvent*>(event);
