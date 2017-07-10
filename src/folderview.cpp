@@ -87,22 +87,26 @@ QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
     // An item is hit only when the point is in the icon or text label.
     // If the point is in the bound rectangle but outside the icon or text, it should not be selected.
     if(viewMode() == QListView::IconMode && index.isValid()) {
-        // FIXME: this hack only improves the usability partially. We still need more precise sizeHint handling.
-        // FolderItemDelegate* delegate = static_cast<FolderItemDelegate*>(itemDelegateForColumn(FolderModel::ColumnFileName));
-        // Q_ASSERT(delegate != nullptr);
-        // We use the grid size - (2, 2) as the size of the bounding rectangle of the whole item.
-        // The width of the text label hence is gridSize.width - 2, and the width and height of the icon is from iconSize().
-        QRect visRect = visualRect(index); // visibal area on the screen
-        auto delegate = itemDelegateForColumn(FolderModel::ColumnFileName);
-        QSize itemSize = static_cast<FolderItemDelegate*>(delegate)->itemSize();
-        itemSize.setWidth(itemSize.width() - 2);
-        itemSize.setHeight(itemSize.height() - 2);
+        QRect visRect = visualRect(index); // visible area on the screen
+        FolderItemDelegate* delegate = static_cast<FolderItemDelegate*>(itemDelegateForColumn(FolderModel::ColumnFileName));
+        QSize margins = delegate->getMargins();
         QSize _iconSize = iconSize();
-        int textHeight = itemSize.height() - _iconSize.height();
-        if(point.y() < visRect.bottom() - textHeight) {
-            // the point is in the icon area, not over the text label
-            int iconXMargin = (itemSize.width() - _iconSize.width()) / 2;
-            if(point.x() < (visRect.left() + iconXMargin) || point.x() > (visRect.right() - iconXMargin)) {
+        if(point.y() < visRect.top() + margins.height()) { // above icon
+            return QModelIndex();
+        }
+        else if(point.y() < visRect.top() + margins.height() + _iconSize.height()) { // on the icon area
+            int iconXMargin = (visRect.width() - _iconSize.width()) / 2;
+            if(point.x() < (visRect.left() + iconXMargin) || point.x() > (visRect.right() + 1 - iconXMargin)) {
+                // to the left or right of the icon
+                return QModelIndex();
+            }
+        }
+        else {
+            QSize _textSize = delegate->iconViewTextSize(index);
+            int textHMargin = (visRect.width() - _textSize.width()) / 2;
+            if(point.y() > visRect.top() + margins.height() + _iconSize.height() + _textSize.height() // below text
+               // on the text area but to the left or right of the text
+               || point.x() < visRect.left() + textHMargin || point.x() > visRect.right() + 1 - textHMargin) {
                 return QModelIndex();
             }
         }
@@ -631,13 +635,16 @@ void FolderView::updateGridSize() {
         int textHeight = fm.lineSpacing() * 3;
         grid.setWidth(qMax(icon.width(), textWidth) + 4); // a margin of 2 px for selection rects
         grid.setHeight(icon.height() + textHeight + 4); // a margin of 2 px for selection rects
+        // grow to include margins
+        grid += 2*itemDelegateMargins_;
+        // let horizontal and vertical spacings be set only by itemDelegateMargins_
+        listView->setSpacing(0);
 
-        listView->setSpacing(24);    // the default spacing is 6(=2x3) px
         break;
     }
     default:
         // FIXME: set proper item size
-        listView->setSpacing(2);    // the default spacing is 6(=2x3) px
+        listView->setSpacing(2);
         ; // do not use grid size
     }
     listView->setUniformItemSizes(true);
@@ -645,6 +652,7 @@ void FolderView::updateGridSize() {
     FolderItemDelegate* delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
     delegate->setItemSize(grid);
     delegate->setIconSize(icon);
+    delegate->setMargins(itemDelegateMargins_);
 }
 
 void FolderView::setIconSize(ViewMode mode, QSize size) {
@@ -943,6 +951,15 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
     if(view && watched == view->viewport()) {
         switch(event->type()) {
         case QEvent::HoverMove:
+            /*if (view && mode != DetailedListMode) {
+                FolderViewListView* listView = static_cast<FolderViewListView*>(view);
+                FolderItemDelegate* delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
+                QHoverEvent* hoverEvent = static_cast<QHoverEvent*>(event);
+                QModelIndex index = view->indexAt(hoverEvent->pos());
+                if (index.isValid() && !static_cast<FolderItemDelegate*>(delegate)->itemRegion(index).contains(hoverEvent->pos()))
+                    setCursor(Qt::ArrowCursor);
+                    break;
+            }*/
             // activate items on single click
             if(style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick)) {
                 QHoverEvent* hoverEvent = static_cast<QHoverEvent*>(event);

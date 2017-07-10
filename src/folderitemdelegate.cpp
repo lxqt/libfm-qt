@@ -45,52 +45,30 @@ FolderItemDelegate::~FolderItemDelegate() {
 
 }
 
+QSize FolderItemDelegate::iconViewTextSize(const QModelIndex& index) const {
+    QStyleOptionViewItem opt;
+    initStyleOption(&opt, index);
+    opt.decorationSize = iconSize_.isValid() ? iconSize_ : QSize(0, 0);
+    opt.decorationAlignment = Qt::AlignHCenter | Qt::AlignTop;
+    opt.displayAlignment = Qt::AlignTop | Qt::AlignHCenter;
+    QRectF textRect(0, 0,
+                    itemSize_.width() - 2 * margins_.width(),
+                    itemSize_.height() - 2 * margins_.height() - opt.decorationSize.height());
+    drawText(nullptr, opt, textRect); // passing nullptr for painter will calculate the bounding rect only
+    return textRect.toRect().size();
+}
+
 QSize FolderItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
     QVariant value = index.data(Qt::SizeHintRole);
     if(value.isValid()) {
         // no further processing if the size is specified by the data model
         return qvariant_cast<QSize>(value);
     }
-    // we only handle vertical layout here.
+
     if(option.decorationPosition == QStyleOptionViewItem::Top ||
             option.decorationPosition == QStyleOptionViewItem::Bottom) {
-
-        QStyleOptionViewItem opt = option;
-        // instead of getting decoration size (icon size) from the style option,
-        // we force use of the icon size we specified.
-        QSize decorationSize;
-        if(iconSize_.isValid()) {
-            initStyleOption(&opt, QModelIndex());
-            decorationSize = iconSize_;
-        }
-        else {
-            // FIXME: this operation seems to cause the generation of thumbnail pixmaps just to measure icon sizes.
-            // Since our icon size is a fixed value, we need to avoid this to speed it up.
-            initStyleOption(&opt, index);
-            decorationSize = option.decorationSize;
-        }
-        opt.decorationAlignment = Qt::AlignHCenter | Qt::AlignTop;
-        opt.displayAlignment = Qt::AlignTop | Qt::AlignHCenter;
-
-        // "opt.decorationSize" may be smaller than the requested size because
-        // "QStyledItemDelegate::initStyleOption()" uses "QIcon::actualSize()" to set it
-        // (see Qt -> qstyleditemdelegate.cpp). So, we always get decorationSize from "option".
-        Q_ASSERT(itemSize_ != QSize());
-        QRectF textRect(0, 0, itemSize_.width(), itemSize_.height() - decorationSize.height());
-        drawText(nullptr, opt, textRect); // passing nullptr for painter will calculate the bounding rect only.
-
-        // to draw text shadow, we need one more pixel for it.
-        if(shadowColor_.isValid()) {
-            textRect.setWidth(textRect.width() + 1);
-            textRect.setHeight(textRect.height() + 1);
-        }
-
-        int width = qMax((int)textRect.width(), decorationSize.width());
-        width = itemSize_.width();
-        int height = decorationSize.height() + textRect.height();
-        height = itemSize_.height();
-        qDebug() << width << height;
-        return QSize(width, height);
+        // we handle vertical layout just by returning our item size
+        return itemSize_;
     }
 
     // fallback to default size hint for horizontal layout.
@@ -134,7 +112,7 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
 
         // draw the icon
         QIcon::Mode iconMode = iconModeFromState(opt.state);
-        QPoint iconPos(opt.rect.x() + (opt.rect.width() - option.decorationSize.width()) / 2, opt.rect.y());
+        QPoint iconPos(opt.rect.x() + (opt.rect.width() - option.decorationSize.width()) / 2, opt.rect.y() + margins_.height());
         QPixmap pixmap = opt.icon.pixmap(option.decorationSize, iconMode);
         // in case the pixmap is smaller than the requested size
         QSize margin = ((option.decorationSize - pixmap.size()) / 2).expandedTo(QSize(0, 0));
@@ -157,8 +135,8 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         // draw the text
         QSize drawAreaSize = itemSize_ - 2 * margins_;
         // The text rect dimensions should be exactly as they were in sizeHint()
-        QRectF textRect(opt.rect.x() - (drawAreaSize.width() - opt.rect.width()) / 2,
-                        opt.rect.y() + option.decorationSize.height(),
+        QRectF textRect(opt.rect.x() + (opt.rect.width() - drawAreaSize.width()) / 2,
+                        opt.rect.y() + margins_.height() + option.decorationSize.height(),
                         drawAreaSize.width(),
                         drawAreaSize.height() - option.decorationSize.height());
         drawText(painter, opt, textRect);
