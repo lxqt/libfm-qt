@@ -54,6 +54,7 @@ public:
 
 protected:
     virtual void mousePressEvent(QMouseEvent* event);
+    virtual void rowsAboutToBeRemoved(const QModelIndex& parent, int start, int end);
 
 private:
     void cancelPendingChdir();
@@ -78,11 +79,14 @@ protected Q_SLOTS:
     void onNewTab();
     void onOpenInTerminal();
     void onNewFolder();
+    void rowsRemoved(const QModelIndex& parent, int start, int end);
+    void doQueuedDeletions();
 
 private:
     Fm::FilePath currentPath_;
     Fm::FilePathList pathsToExpand_;
     DirTreeModelItem* currentExpandingItem_;
+    std::vector<DirTreeModelItem*> queuedForDeletion_;
 };
 
 }
