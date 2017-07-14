@@ -52,6 +52,11 @@ public:
 
     void setShowHidden(bool show);
 
+    bool isQueuedForDeletion() {
+        return queuedForDeletion_;
+    }
+    
+
 private:
     void freeFolder();
     void addPlaceHolderChild();
@@ -76,10 +81,12 @@ private:
     bool expanded_;
     bool loaded_;
     DirTreeModelItem* parent_;
+    bool deleteLater_;
     DirTreeModelItem* placeHolderChild_;
     std::vector<DirTreeModelItem*> children_;
     std::vector<DirTreeModelItem*> hiddenChildren_;
     DirTreeModel* model_;
+    bool queuedForDeletion_;
     // signal connections
     QMetaObject::Connection onFolderFinishLoadingConn_;
     QMetaObject::Connection onFolderFilesAddedConn_;

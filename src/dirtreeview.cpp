@@ -23,6 +23,7 @@
 #include <QItemSelection>
 #include <QGuiApplication>
 #include <QMouseEvent>
+#include <QTimer>
 #include "dirtreemodel.h"
 #include "dirtreemodelitem.h"
 #include "filemenu.h"
@@ -272,6 +273,43 @@ void DirTreeView::onExpanded(const QModelIndex& index) {
     DirTreeModel* treeModel = static_cast<DirTreeModel*>(model());
     if(treeModel) {
         treeModel->loadRow(index);
+    }
+}
+void DirTreeView::rowsAboutToBeRemoved(const QModelIndex& parent, int start, int end) {
+    // see if to-be-removed items are queued for deletion
+    // and also clear selection if one of them is selected (otherwise a freeze will occur)
+    QModelIndex selIndex;
+    if(selectionModel()->selectedRows().size() == 1) {
+        selIndex = selectionModel()->selectedRows().at(0);
+    }
+    for (int i = start; i <= end; ++i) {
+        QModelIndex index = parent.child(i, 0);
+        if(index.isValid()) {
+            if(index == selIndex) {
+                selectionModel()->clear();
+            }
+            DirTreeModelItem* item = reinterpret_cast<DirTreeModelItem*>(index.internalPointer());
+            if (item->isQueuedForDeletion()) {
+                queuedForDeletion_.push_back(item);
+            }
+        }
+    }
+
+    QTreeView::rowsAboutToBeRemoved (parent, start, end);
+}
+
+void DirTreeView::rowsRemoved(const QModelIndex& parent, int start, int end) {
+    QTreeView::rowsRemoved (parent, start, end);
+    // do the queued deletions only after all rows are removed (otherwise a freeze might occur)
+    QTimer::singleShot(0, this, SLOT (doQueuedDeletions()));
+}
+
+void DirTreeView::doQueuedDeletions() {
+    if(!queuedForDeletion_.empty()) {
+        Q_FOREACH(DirTreeModelItem* item, queuedForDeletion_) {
+            delete item;
+        }
+        queuedForDeletion_.clear();
     }
 }
 
