@@ -81,7 +81,6 @@ private:
     bool expanded_;
     bool loaded_;
     DirTreeModelItem* parent_;
-    bool deleteLater_;
     DirTreeModelItem* placeHolderChild_;
     std::vector<DirTreeModelItem*> children_;
     std::vector<DirTreeModelItem*> hiddenChildren_;
