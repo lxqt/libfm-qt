@@ -651,7 +651,6 @@ void FolderView::updateGridSize() {
         listView->setSpacing(2);
         ; // do not use grid size
     }
-    listView->setUniformItemSizes(true);
 
     FolderItemDelegate* delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
     delegate->setItemSize(grid);
