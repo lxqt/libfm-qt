@@ -949,7 +949,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../../sidepane.cpp" line="137"/>
         <source>Shows list of common places, devices, and bookmarks in sidebar</source>
-        <translation>Rodo bendrų vietų, įrenginių ir žymelių sąrašą šoninėje juostoje </translation>
+        <translation>Rodo bendrų vietų, įrenginių ir žymelių sąrašą šoninėje juostoje</translation>
     </message>
     <message>
         <location filename="../../sidepane.cpp" line="139"/>
