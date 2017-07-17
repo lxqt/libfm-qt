@@ -71,8 +71,16 @@ QSize FolderItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QMo
         return itemSize_;
     }
 
-    // fallback to default size hint for horizontal layout.
-    return QStyledItemDelegate::sizeHint(option, index);
+    // The default size hint of the horizontal layout isn't reliable 
+    // because Qt calculates the row size based on the real icon size,
+    // which may not be equal to the requested icon size on various occasions.
+    // So, we do as in QStyledItemDelegate::sizeHint() but use the requested size.
+    QStyleOptionViewItem opt = option;
+    initStyleOption(&opt, index);
+    opt.decorationSize = option.decorationSize; // requested by the view
+    const QWidget* widget = option.widget;
+    QStyle* style = widget ? widget->style() : QApplication::style();
+    return style->sizeFromContents(QStyle::CT_ItemViewItem, &opt, QSize(), widget);
 }
 
 QIcon::Mode FolderItemDelegate::iconModeFromState(const QStyle::State state) {
@@ -145,6 +153,8 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     else {  // horizontal layout (list view)
 
         // let QStyledItemDelegate does its default painting
+        // FIXME: For better text alignment, here we should increase
+        // the icon width if it's smaller that the requested size
         QStyledItemDelegate::paint(painter, option, index);
 
         // draw emblems if needed
