@@ -314,6 +314,13 @@ QWidget* FolderItemDelegate::createEditor(QWidget* parent, const QStyleOptionVie
         // because the latter always shows an empty space at the bottom)
         QTextEdit *textEdit = new QTextEdit(parent);
         textEdit->setAcceptRichText(false);
+
+        // Since the text color on desktop is inherited from desktop foreground color,
+        // it may not be suitable. So, we reset it by using the app palette.
+        QPalette p = textEdit->palette();
+        p.setColor(QPalette::Text, qApp->palette().text().color());
+        textEdit->setPalette(p);
+
         textEdit->ensureCursorVisible();
         textEdit->setFocusPolicy(Qt::StrongFocus);
         textEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
