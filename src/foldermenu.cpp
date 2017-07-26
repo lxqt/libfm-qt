@@ -73,17 +73,20 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
     connect(showHiddenAction_, &QAction::triggered, this, &FolderMenu::onShowHiddenActionTriggered);
 
     // DES-EMA custom actions integration
-    FileInfoList files;
-    files.push_back(view->folderInfo());
-    auto custom_actions = FileActionItem::get_actions_for_files(files);
-    for(auto& item: custom_actions) {
-        if(item && !(item->get_target() & FILE_ACTION_TARGET_CONTEXT)) {
-            continue;  // this item is not for context menu
+    auto folderInfo = view_->folderInfo();
+    if(folderInfo) { // should never be null (see FolderView::onFileClicked)
+        FileInfoList files;
+        files.push_back(folderInfo);
+        auto custom_actions = FileActionItem::get_actions_for_files(files);
+        for(auto& item: custom_actions) {
+            if(item && !(item->get_target() & FILE_ACTION_TARGET_CONTEXT)) {
+                continue;  // this item is not for context menu
+            }
+            if(item == custom_actions.front() && item && !item->is_action()) {
+                addSeparator(); // before all custom actions
+            }
+            addCustomActionItem(this, item);
         }
-        if(item == custom_actions.front() && item && !item->is_action()) {
-            addSeparator(); // before all custom actions
-        }
-        addCustomActionItem(this, item);
     }
 
     separator4_ = addSeparator();
