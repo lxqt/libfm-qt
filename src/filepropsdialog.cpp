@@ -27,9 +27,12 @@
 #include <QStringListModel>
 #include <QMessageBox>
 #include <QDateTime>
+#include <QStandardPaths>
+#include <QFileDialog>
 #include <sys/types.h>
 #include <time.h>
 #include "core/totalsizejob.h"
+#include "core/folder.h"
 
 #define DIFFERENT_UIDS    ((uid)-1)
 #define DIFFERENT_GIDS    ((gid)-1)
@@ -270,6 +273,9 @@ void FilePropsDialog::initGeneralPage() {
             ui->target->hide();
             ui->targetLabel->hide();
         }
+        if(fileInfo->isDir() && fileInfo->isNative()) { // all files are native dirs
+            connect(ui->iconButton, &QAbstractButton::clicked, this, &FilePropsDialog::onIconButtonclicked);
+        }
     } // end if(singleType)
     else { // not singleType, multiple files are selected at the same time
         ui->fileType->setText(tr("Files of different types"));
@@ -340,6 +346,51 @@ void FilePropsDialog::onFileSizeTimerTimeout() {
               QString(" (%1 B)").arg(totalSizeJob->totalOnDiskSize());
         // tr(" (%n) byte(s)", "", deepCountJob->total_ondisk_size);
         ui->onDiskSize->setText(str);
+    }
+}
+
+void FilePropsDialog::onIconButtonclicked() {
+    QString iconDir;
+    QString iconThemeName = QIcon::themeName();
+    QStringList icons = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
+                                                  "icons",
+                                                  QStandardPaths::LocateDirectory);
+    for (QStringList::ConstIterator it = icons.constBegin(); it != icons.constEnd(); ++it) {
+        QString iconThemeFolder = *it + '/' + iconThemeName;
+        if (QDir(iconThemeFolder).exists() && QFileInfo(iconThemeFolder).permission(QFileDevice::ReadUser)) {
+            // give priority to the "places" folder
+            const QString places = iconThemeFolder + QLatin1String("/places");
+            if (QDir(places).exists() && QFileInfo(places).permission(QFileDevice::ReadUser)) {
+                iconDir = places;
+            }
+            else {
+                iconDir = iconThemeFolder;
+            }
+            break;
+        }
+    }
+    if(iconDir.isEmpty()) {
+        iconDir = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
+                                         "icons",
+                                         QStandardPaths::LocateDirectory);
+        if(iconDir.isEmpty()) {
+            return;
+        }
+    }
+    const QString iconPath = QFileDialog::getOpenFileName(this, tr("Select an icon"),
+                                                          iconDir,
+                                                          tr("Images (*.png *.xpm *.svg *.svgz )"));
+    if(!iconPath.isEmpty()) {
+        QStringList parts = iconPath.split("/", QString::SkipEmptyParts);
+        if(!parts.isEmpty()) {
+            QString iconName = parts.at(parts.count() - 1);
+            int ln = iconName.lastIndexOf(".");
+            if(ln > -1) {
+                iconName.remove(ln, iconName.length() - ln); 
+                customIcon = QIcon::fromTheme(iconName);
+                ui->iconButton->setIcon(customIcon);
+            }
+        }
     }
 }
 
@@ -450,6 +501,38 @@ void FilePropsDialog::accept() {
                                            G_FILE_COPY_NOFOLLOW_SYMLINKS),
                             nullptr, nullptr, nullptr, &err)) {
                 QMessageBox::critical(this, QObject::tr("Error"), err.message());
+            }
+        }
+    }
+
+    // Custom (folder) icon
+    if(!customIcon.isNull()) {
+        bool reloadNeeded(false);
+        QString iconNamne = customIcon.name();
+        for(auto& fi: fileInfos_) {
+            std::shared_ptr<const Fm::IconInfo> icon = fi->icon();
+            if (!fi->icon() || fi->icon()->qicon().name() != iconNamne) {
+                auto dot_dir = CStrPtr{g_build_filename(fi->path().localPath().get(), ".directory", nullptr)};
+                GKeyFile* kf = g_key_file_new();
+                g_key_file_set_string(kf, "Desktop Entry", "Icon", iconNamne.toLocal8Bit().constData());
+                Fm::GErrorPtr err;
+                if (!g_key_file_save_to_file(kf, dot_dir.get(), &err)) {
+                    QMessageBox::critical(this, QObject::tr("Custom Icon Error"), err.message());
+                }
+                else {
+                    reloadNeeded = true;
+                }
+                g_key_file_free(kf);
+            }
+        }
+        if(reloadNeeded) {
+            // since there can be only one parent dir, only one reload is needed
+            auto parent = fileInfo->path().parent();
+            if(parent.isValid()) {
+                auto folder = Fm::Folder::fromPath(parent);
+                if(folder->isLoaded()) {
+                    folder->reload();
+                }
             }
         }
     }

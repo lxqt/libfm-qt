@@ -169,10 +169,31 @@ _file_is_symlink:
         }
     }
 
-    /* try file-specific icon first */
-    gicon = g_file_info_get_icon(inf.get());
-    if(gicon) {
-        icon_ = IconInfo::fromGIcon(gicon);
+    /* if there is a custom folder icon, use it */
+    if(isNative() && type == G_FILE_TYPE_DIRECTORY) {
+        auto local_path = path().localPath();
+        auto dot_dir = CStrPtr{g_build_filename(local_path.get(), ".directory", nullptr)};
+        if(g_file_test(dot_dir.get(), G_FILE_TEST_IS_REGULAR)) {
+            GKeyFile* kf = g_key_file_new();
+            if(g_key_file_load_from_file(kf, dot_dir.get(), G_KEY_FILE_NONE, nullptr)) {
+                CStrPtr icon_name{g_key_file_get_string(kf, "Desktop Entry", "Icon", nullptr)};
+                if(icon_name) {
+                    auto dot_icon = IconInfo::fromName(icon_name.get());
+                    if(dot_icon && dot_icon->isValid()) {
+                        icon_ = dot_icon;
+                    }
+                }
+            }
+            g_key_file_free(kf);
+        }
+     }
+    
+    if(!icon_) {
+        /* try file-specific icon first */
+        gicon = g_file_info_get_icon(inf.get());
+        if(gicon) {
+            icon_ = IconInfo::fromGIcon(gicon);
+        }
     }
 
 #if 0
