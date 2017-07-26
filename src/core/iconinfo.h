@@ -63,7 +63,7 @@ public:
         return gicon_;
     }
 
-    QIcon qicon() const;
+    QIcon qicon(const bool& transparent = false) const;
 
     bool hasEmblems() const {
         return G_IS_EMBLEMED_ICON(gicon_.get());
@@ -97,6 +97,7 @@ private:
 private:
     GIconPtr gicon_;
     mutable QIcon qicon_;
+    mutable QIcon qiconTransparent_;
     mutable QIcon internalQicon_;
 
     static std::unordered_map<GIcon*, std::shared_ptr<IconInfo>, GIconHash, GIconEqual> cache_;

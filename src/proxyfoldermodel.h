@@ -64,6 +64,8 @@ public:
 
     void setSortCaseSensitivity(Qt::CaseSensitivity cs);
 
+    void setCutFiles(const QItemSelection& selection);
+
     bool showThumbnails() {
         return showThumbnails_;
     }

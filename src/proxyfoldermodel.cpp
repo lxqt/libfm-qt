@@ -184,6 +184,13 @@ std::shared_ptr<const FileInfo> ProxyFolderModel::fileInfoFromPath(const FilePat
     return fileInfoFromIndex(indexFromPath(path));
 }
 
+void ProxyFolderModel::setCutFiles(const QItemSelection& selection) {
+    FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
+    if(srcModel) {
+        srcModel->setCutFiles(mapSelectionToSource(selection));
+    }
+}
+
 void ProxyFolderModel::setShowThumbnails(bool show) {
     if(show != showThumbnails_) {
         showThumbnails_ = show;

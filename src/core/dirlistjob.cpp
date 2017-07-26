@@ -6,7 +6,8 @@
 
 namespace Fm {
 
-DirListJob::DirListJob(const FilePath& path, Flags _flags): dir_path{path}, flags{_flags} {
+DirListJob::DirListJob(const FilePath& path, Flags _flags, const std::shared_ptr<const HashSet>& cutFilesHashSet):
+    dir_path{path}, flags{_flags}, cutFilesHashSet_{cutFilesHashSet} {
 }
 
 void DirListJob::exec() {
@@ -102,6 +103,12 @@ _retry:
                 if(emit_files_found) {
                     // Q_EMIT filesFound();
                 }
+
+                if(cutFilesHashSet_
+                        && cutFilesHashSet_->count(fileInfo->path().hash()) > 0) {
+                    fileInfo->bindCutFiles(cutFilesHashSet_);
+                }
+
                 foundFiles.push_back(std::move(fileInfo));
             }
             else {

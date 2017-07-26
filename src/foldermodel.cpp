@@ -156,6 +156,21 @@ void FolderModel::insertFiles(int row, const Fm::FileInfoList& files) {
     endInsertRows();
 }
 
+void FolderModel::setCutFiles(const QItemSelection& selection) {
+    if(folder_) {
+        if(!selection.isEmpty()) {
+            auto cutFilesHashSet = std::make_shared<HashSet>();
+            folder_->setCutFiles(cutFilesHashSet);
+            for(const auto& index : selection.indexes()) {
+                auto item = itemFromIndex(index);
+                item->bindCutFiles(cutFilesHashSet);
+                cutFilesHashSet->insert(item->info->path().hash());
+            }
+        }
+        Q_EMIT dataChanged(index(0, 0), index(rowCount() - 1, 0));
+    }
+}
+
 void FolderModel::removeAll() {
     if(items.empty()) {
         return;
@@ -195,6 +210,11 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
     FolderModelItem* item = itemFromIndex(index);
     auto info = item->info;
 
+    bool isCut = false;
+    if(folder_ && Q_UNLIKELY(folder_->hasCutFiles())) {
+        isCut = item->isCut();
+    }
+
     switch(role) {
     case Qt::ToolTipRole:
         return QVariant(item->displayName());
@@ -215,7 +235,7 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
     }
     case Qt::DecorationRole: {
         if(index.column() == 0) {
-            return QVariant(item->icon());
+            return QVariant(item->icon(isCut));
         }
         break;
     }
@@ -229,6 +249,8 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
         return QVariant::fromValue(info);
     case FileIsDirRole:
         return QVariant(info->isDir());
+    case FileIsCutRole:
+        return isCut;
     }
     return QVariant();
 }
@@ -480,8 +502,9 @@ void FolderModel::onThumbnailLoaded(const std::shared_ptr<const Fm::FileInfo>& f
         FolderModelItem& item = *it;
         QModelIndex index = createIndex(row, 0, (void*)&item);
         // store the image in the folder model item.
-        FolderModelItem::Thumbnail* thumbnail = item.findThumbnail(size);
+        FolderModelItem::Thumbnail* thumbnail = item.findThumbnail(size, false);
         thumbnail->image = image;
+        thumbnail->transparent = false;
         // qDebug("thumbnail loaded for: %s, size: %d", item.displayName.toUtf8().constData(), size);
         if(image.isNull()) {
             thumbnail->status = FolderModelItem::ThumbnailFailed;
@@ -501,7 +524,7 @@ void FolderModel::onThumbnailLoaded(const std::shared_ptr<const Fm::FileInfo>& f
 QImage FolderModel::thumbnailFromIndex(const QModelIndex& index, int size) {
     FolderModelItem* item = itemFromIndex(index);
     if(item) {
-        FolderModelItem::Thumbnail* thumbnail = item->findThumbnail(size);
+        FolderModelItem::Thumbnail* thumbnail = item->findThumbnail(size, item->isCut());
         // qDebug("FolderModel::thumbnailFromIndex: %d, %s", thumbnail->status, item->displayName.toUtf8().data());
         switch(thumbnail->status) {
         case FolderModelItem::ThumbnailNotChecked: {

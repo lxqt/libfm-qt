@@ -21,6 +21,7 @@
 #define FM_ICONENGINE_H
 
 #include <QIconEngine>
+#include <QPainter>
 #include "../libfmqtglobals.h"
 #include "iconinfo.h"
 #include <gio/gio.h>
@@ -30,7 +31,7 @@ namespace Fm {
 class IconEngine: public QIconEngine {
 public:
 
-    IconEngine(std::shared_ptr<const Fm::IconInfo> info);
+    IconEngine(std::shared_ptr<const Fm::IconInfo> info, const bool& transparent = false);
 
     ~IconEngine();
 
@@ -54,9 +55,11 @@ public:
 
 private:
     std::weak_ptr<const Fm::IconInfo> info_;
+    bool transparent_;
 };
 
-IconEngine::IconEngine(std::shared_ptr<const IconInfo> info): info_{info} {
+IconEngine::IconEngine(std::shared_ptr<const IconInfo> info, const bool& transparent):
+    info_{info}, transparent_{transparent} {
 }
 
 IconEngine::~IconEngine() {
@@ -78,8 +81,16 @@ QString IconEngine::key() const {
 
 void IconEngine::paint(QPainter* painter, const QRect& rect, QIcon::Mode mode, QIcon::State state) {
     auto info = info_.lock();
-    if (info)
+    if(info) {
+        if(transparent_) {
+            painter->save();
+            painter->setOpacity(0.45);
+        }
         info->internalQicon().paint(painter, rect, Qt::AlignCenter, mode, state);
+        if(transparent_) {
+            painter->restore();
+        }
+    }
 }
 
 QPixmap IconEngine::pixmap(const QSize& size, QIcon::Mode mode, QIcon::State state) {

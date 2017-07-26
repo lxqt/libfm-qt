@@ -23,6 +23,7 @@
 
 #include "libfmqtglobals.h"
 #include <QAbstractListModel>
+#include <QItemSelection>
 #include <QIcon>
 #include <QImage>
 #include <libfm/fm.h>
@@ -43,7 +44,8 @@ public:
 
     enum Role {
         FileInfoRole = Qt::UserRole,
-        FileIsDirRole
+        FileIsDirRole,
+        FileIsCutRole
     };
 
     enum ColumnId {
@@ -90,6 +92,8 @@ public:
 
     void cacheThumbnails(int size);
     void releaseThumbnails(int size);
+
+    void setCutFiles(const QItemSelection& selection);
 
 Q_SIGNALS:
     void thumbnailLoaded(const QModelIndex& index, int size);

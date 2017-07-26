@@ -287,6 +287,10 @@ _file_is_symlink:
 #endif
 }
 
+void FileInfo::bindCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet) {
+    cutFilesHashSet_ = cutFilesHashSet;
+}
+
 bool FileInfo::canThumbnail() const {
     /* We cannot use S_ISREG here as this exclude all symlinks */
     if(size_ == 0 ||  /* don't generate thumbnails for empty files */
