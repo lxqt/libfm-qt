@@ -510,6 +510,60 @@ static void load_all_actions() {
     actions_loaded = true;
 }
 
+bool FileActionItem::compare_items(std::shared_ptr<const FileActionItem> a, std::shared_ptr<const FileActionItem> b)
+{
+    // first get the list of level-zero item names (http://www.nautilus-actions.org/?q=node/377)
+    static QStringList itemNamesList;
+    static bool level_zero_checked = false;
+    if(!level_zero_checked) {
+        level_zero_checked = true;
+        auto level_zero = CStrPtr{g_build_filename(g_get_user_data_dir(),
+                                                   "file-manager/actions/level-zero.directory", nullptr)};
+        if(g_file_test(level_zero.get(), G_FILE_TEST_IS_REGULAR)) {
+            GKeyFile* kf = g_key_file_new();
+            if(g_key_file_load_from_file(kf, level_zero.get(), G_KEY_FILE_NONE, nullptr)) {
+                auto itemsList = CStrArrayPtr{g_key_file_get_string_list(kf,
+                                                                         "Desktop Entry",
+                                                                         "ItemsList", nullptr, nullptr)};
+                if(itemsList) {
+                    for(uint i = 0; i < g_strv_length(itemsList.get()); ++i) {
+                        CStrPtr desktop_file_name{g_strconcat(itemsList.get()[i], ".desktop", nullptr)};
+                        auto desktop_file = CStrPtr{g_build_filename(g_get_user_data_dir(),
+                                                                     "file-manager/actions",
+                                                                     desktop_file_name.get(), nullptr)};
+                        GKeyFile* desktop_file_key = g_key_file_new();
+                        if(g_key_file_load_from_file(desktop_file_key, desktop_file.get(), G_KEY_FILE_NONE, nullptr)) {
+                            auto actionName = CStrPtr{g_key_file_get_string(desktop_file_key,
+                                                                            "Desktop Entry",
+                                                                            "Name", NULL)};
+                            if(actionName) {
+                                itemNamesList << QString::fromUtf8(actionName.get());
+                            }
+                        }
+                        g_key_file_free(desktop_file_key);
+                    }
+                }
+            }
+            g_key_file_free(kf);
+        }
+    }
+    if(!itemNamesList.isEmpty()) {
+        int first = itemNamesList.indexOf(QString::fromStdString(a->get_name()));
+        int second = itemNamesList.indexOf(QString::fromStdString(b->get_name()));
+        if(first > -1) {
+            if(second > -1) {
+                return (first < second);
+            }
+            else {
+                return true; // list items have priority
+            }
+        }
+        else if(second > -1) {
+            return false;
+        }
+    }
+    return (a->get_name().compare(b->get_name()) < 0);
+}
 
 FileActionItemList FileActionItem::get_actions_for_files(const FileInfoList& files) {
     if(!actions_loaded) {
@@ -553,6 +607,8 @@ FileActionItemList FileActionItem::get_actions_for_files(const FileInfoList& fil
             menu->cached_children.clear();
         }
     }
+
+    std::sort(items.begin(), items.end(), compare_items);
     return items;
 }
 
