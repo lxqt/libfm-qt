@@ -137,6 +137,7 @@ public:
         return children;
     }
 
+    static bool compare_items(std::shared_ptr<const FileActionItem> a, std::shared_ptr<const FileActionItem> b);
     static std::vector<std::shared_ptr<const FileActionItem>> get_actions_for_files(const FileInfoList& files);
 
     std::string name;
