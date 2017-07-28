@@ -377,7 +377,7 @@ QMimeData* FolderModel::mimeData(const QModelIndexList& indexes) const {
 
 bool FolderModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) {
     qDebug("FolderModel::dropMimeData");
-    if(!folder_) {
+    if(!folder_ || !data) {
         return false;
     }
     Fm::FilePath destPath;
