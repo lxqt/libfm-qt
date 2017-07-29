@@ -450,7 +450,7 @@ void FolderViewTreeView::onSortFilterChanged() {
 
 //-----------------------------------------------------------------------------
 
-FolderView::FolderView(ViewMode _mode, QWidget* parent):
+FolderView::FolderView(QWidget *parent, FolderView::ViewMode _mode):
     QWidget(parent),
     view(nullptr),
     model_(nullptr),

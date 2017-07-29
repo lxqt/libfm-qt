@@ -78,6 +78,7 @@ set(libfm_SRCS
     appmenuview.cpp
     appchooserdialog.cpp
     filesearchdialog.cpp
+    filedialog.cpp
     fm-search.c # might be moved to libfm later
     xdndworkaround.cpp
 )
@@ -91,6 +92,7 @@ set(libfm_UIS
     exec-file.ui
     app-chooser-dialog.ui
     filesearch.ui
+    filedialog.ui
 )
 
 qt5_wrap_ui(libfm_UIS_H ${libfm_UIS})
@@ -249,6 +251,11 @@ add_executable("test-folderview"
     tests/test-folderview.cpp
 )
 target_link_libraries("test-folderview" ${TEST_LIBRARIES})
+
+add_executable("test-filedialog"
+    tests/test-filedialog.cpp
+)
+target_link_libraries("test-filedialog" ${TEST_LIBRARIES})
 
 add_executable("test-volumemanager"
     tests/test-volumemanager.cpp

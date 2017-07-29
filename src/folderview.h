@@ -66,7 +66,8 @@ public:
     friend class FolderViewTreeView;
     friend class FolderViewListView;
 
-    explicit FolderView(ViewMode _mode = IconMode, QWidget* parent = 0);
+    explicit FolderView(QWidget* parent = 0, ViewMode _mode = IconMode);
+
     virtual ~FolderView();
 
     void setViewMode(ViewMode _mode);
