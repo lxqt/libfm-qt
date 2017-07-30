@@ -329,11 +329,17 @@ void FileMenu::onPasteTriggered() {
 }
 
 void FileMenu::onRenameTriggered() {
-    if (QAbstractItemView* view = qobject_cast<QAbstractItemView*>(parentWidget())) {
-        // if there is a view and this is a single file, just edit the current index
-        if (view->currentIndex().isValid() && files_.size() == 1) {
-            view->edit(view->currentIndex());
-            return;
+    // if there is a view and this is a single file, just edit the current index
+    if(files_.size() == 1) {
+        if (QAbstractItemView* view = qobject_cast<QAbstractItemView*>(parentWidget())) {
+            QModelIndexList selIndexes = view->selectionModel()->selectedIndexes();
+            if(selIndexes.size() > 1) { // in the detailed list mode, only the first index is editable
+                view->setCurrentIndex(selIndexes.at(0));
+            }
+            if (view->currentIndex().isValid()) {
+                view->edit(view->currentIndex());
+                return;
+            }
         }
     }
     for(auto& info: files_) {
