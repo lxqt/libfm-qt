@@ -76,6 +76,10 @@ public:
 
     std::shared_ptr<const Fm::FileInfo> fileInfoFromIndex(const QModelIndex& index) const;
 
+    std::shared_ptr<const Fm::FileInfo> fileInfoFromPath(const FilePath& path) const;
+
+    QModelIndex indexFromPath(const FilePath& path) const;
+
     virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
     virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
 

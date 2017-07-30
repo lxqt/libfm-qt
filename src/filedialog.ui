@@ -17,7 +17,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,1,0">
      <item>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="lookInLabel">
        <property name="text">
         <string>Location:</string>
        </property>
@@ -37,6 +37,9 @@
           <iconset theme="go-previous">
            <normaloff>.</normaloff>.</iconset>
          </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item>
@@ -47,6 +50,9 @@
          <property name="icon">
           <iconset theme="go-next">
            <normaloff>.</normaloff>.</iconset>
+         </property>
+         <property name="autoRaise">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -59,6 +65,9 @@
           <iconset theme="go-up">
            <normaloff>.</normaloff>.</iconset>
          </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item>
@@ -70,12 +79,18 @@
           <iconset theme="folder">
            <normaloff>.</normaloff>.</iconset>
          </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item>
         <widget class="QToolButton" name="viewModeBtn">
          <property name="text">
           <string>View mode</string>
+         </property>
+         <property name="autoRaise">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -115,7 +130,7 @@
    <item>
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="fileNameLabel">
        <property name="text">
         <string>File name:</string>
        </property>
@@ -125,7 +140,7 @@
       <widget class="QLineEdit" name="fileName"/>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="fileTypeLabel">
        <property name="text">
         <string>File type:</string>
        </property>
@@ -152,7 +167,7 @@
   <customwidget>
    <class>Fm::SidePane</class>
    <extends>QWidget</extends>
-   <header location="global">libfm-qt/sidepane.h</header>
+   <header location="global">sidepane.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

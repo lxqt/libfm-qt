@@ -156,12 +156,32 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
 }
 
 std::shared_ptr<const Fm::FileInfo> ProxyFolderModel::fileInfoFromIndex(const QModelIndex& index) const {
-    FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
-    if(srcModel) {
-        QModelIndex srcIndex = mapToSource(index);
-        return srcModel->fileInfoFromIndex(srcIndex);
+    if(index.isValid()) {
+        FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
+        if(srcModel) {
+            QModelIndex srcIndex = mapToSource(index);
+            return srcModel->fileInfoFromIndex(srcIndex);
+        }
     }
     return nullptr;
+}
+
+QModelIndex ProxyFolderModel::indexFromPath(const FilePath &path) const {
+    QModelIndex ret;
+    int n_rows = rowCount();
+    for(int row = 0; row < n_rows; ++row) {
+        auto idx = index(row, FolderModel::ColumnFileName, QModelIndex());
+        auto fi = fileInfoFromIndex(idx);
+        if(fi->path() == path) { // found the item
+            ret = idx;
+            break;
+        }
+    }
+    return ret;
+}
+
+std::shared_ptr<const FileInfo> ProxyFolderModel::fileInfoFromPath(const FilePath &path) const {
+    return fileInfoFromIndex(indexFromPath(path));
 }
 
 void ProxyFolderModel::setShowThumbnails(bool show) {
