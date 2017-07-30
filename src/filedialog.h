@@ -22,6 +22,10 @@ public:
     ~FileDialog() = default;
 
     // Some QFileDialog compatible interface
+    void accept() override;
+
+    void reject() override;
+
     QFileDialog::Options options() const {
         return options_;
     }
@@ -97,36 +101,25 @@ public:
         return defaultSuffix_;
     }
 
-    // not supported yet
-    void setHistory(const QStringList &paths);
-    // not supported yet
-    QStringList history() const;
-
     void setLabelText(QFileDialog::DialogLabel label, const QString &text);
     QString labelText(QFileDialog::DialogLabel label) const;
 
-    bool isLabelExplicitlySet(QFileDialog::DialogLabel label);
-
-#if 0
-    // not supported yet
-    QUrl initialDirectory() const;
-    // not supported yet
-    void setInitialDirectory(const QUrl &directory);
-
-    QString initiallySelectedNameFilter() const;
-    void setInitiallySelectedNameFilter(const QString & filter);
-
-    QList<QUrl> initiallySelectedFiles() const;
-    void setInitiallySelectedFiles(const QList<QUrl> &fileUrls);
-#endif
 
 public Q_SLOTS:
     void setDirectoryPath(FilePath directory);
 
+private Q_SLOTS:
+    void onCurrentRowChanged(const QModelIndex &current, const QModelIndex &previous);
+    void onSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+
 Q_SIGNALS:
+    // emitted when the dialog is accepted and some files are selected
     void fileSelected(const QUrl &file);
     void filesSelected(const QList<QUrl> &files);
+
+    // emitted whenever selection changes (including no selected files)
     void currentChanged(const QUrl &path);
+
     void directoryEntered(const QUrl &directory);
     void filterSelected(const QString &filter);
 
@@ -157,9 +150,9 @@ private:
     QStringList nameFilters_;
     QStringList mimeTypeFilters_;
     QString defaultSuffix_;
-    unsigned int isLabelExplicitlySetMask_;
     FileDialogFilter modelFilter_;
     QString currentNameFilter_;
+    QList<QUrl> selectedFiles_;
 };
 
 

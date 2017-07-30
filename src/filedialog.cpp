@@ -17,7 +17,9 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     folderModel_{nullptr},
     proxyModel_{nullptr},
     options_{0},
-    isLabelExplicitlySetMask_{0},
+    viewMode_{QFileDialog::Detail},
+    fileMode_{QFileDialog::AnyFile},
+    acceptMode_{QFileDialog::AcceptOpen},
     modelFilter_{this} {
 
     ui.setupUi(this);
@@ -47,6 +49,10 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     });
     ui.folderView->setModel(proxyModel_);
 
+    // selection changes
+    connect(ui.folderView->selectionModel(), &QItemSelectionModel::currentRowChanged, this, &FileDialog::onCurrentRowChanged);
+    connect(ui.folderView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &FileDialog::onSelectionChanged);
+
     // file type
     connect(ui.fileTypeCombo, &QComboBox::currentTextChanged, [this](const QString& text) {
         selectNameFilter(text);
@@ -59,6 +65,43 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         setDirectoryPath(path);
         directoryPath_ = std::move(path);
     }
+}
+
+void FileDialog::accept() {
+    // handle selected filenames
+    selectedFiles_.clear();
+    // parse the file names from the text entry
+    QStringList parsedNames;
+    auto fileNames = ui.fileName->text();
+    // check if there are multiple file names (containing ")
+    auto firstQuote = fileNames.indexOf('\"');
+    auto lastQuote = fileNames.lastIndexOf('\"');
+    if(firstQuote != -1 && lastQuote != -1) {
+        // split the names
+        QRegExp sep{"\"\\s+\""};  // separated with " "
+        parsedNames = fileNames.mid(firstQuote, lastQuote - firstQuote).split(sep);
+    }
+    else {
+        parsedNames << fileNames;
+    }
+
+    // get full paths for the filenames and convert them to URLs
+    for(auto& name: parsedNames) {
+        auto fullPath = directoryPath_.child(name.toLocal8Bit().constData());
+        selectedFiles_.append(QUrl::fromEncoded(fullPath.uri().get()));
+    }
+
+    Q_EMIT filesSelected(selectedFiles_);
+
+    if(selectedFiles_.size() == 1) {
+        Q_EMIT fileSelected(selectedFiles_[0]);
+    }
+
+    QDialog::accept();
+}
+
+void FileDialog::reject() {
+    QDialog::reject();
 }
 
 void FileDialog::setDirectory(const QUrl &directory) {
@@ -82,6 +125,38 @@ void FileDialog::setDirectoryPath(FilePath directory) {
         oldModel->unref();
     }
     directoryPath_ = std::move(directory);
+
+    QUrl uri = QUrl::fromEncoded(directory.uri().get());
+    Q_EMIT directoryEntered(uri);
+}
+
+void FileDialog::onCurrentRowChanged(const QModelIndex &current, const QModelIndex &previous) {
+    // emit currentChanged signal
+    QUrl currentUrl;
+    if(current.isValid()) {
+        // emit changed siangl for newly selected items
+        auto fi = proxyModel_->fileInfoFromIndex(current);
+        if(fi) {
+            currentUrl = QUrl::fromEncoded(fi->path().uri().get());
+        }
+    }
+    Q_EMIT currentChanged(currentUrl);
+}
+
+void FileDialog::onSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
+    QString fileNames;
+    auto selFiles = ui.folderView->selectedFilePaths();
+    for(auto& fileInfo: selFiles) {
+        if(!fileNames.isEmpty()) {
+            fileNames += ' ';
+        }
+        // FIXME: use a more reliable way to quote file names.
+        // otherwise names with embedded " will break.
+        fileNames += '\"';
+        fileNames += fileInfo.baseName().get();
+        fileNames += '\"';
+    }
+    ui.fileName->setText(fileNames);
 }
 
 QUrl FileDialog::directory() const {
@@ -102,13 +177,9 @@ void FileDialog::selectFile(const QUrl& filename) {
 }
 
 QList<QUrl> FileDialog::selectedFiles() {
-    QList<QUrl> urls;
-    auto selFiles = ui.folderView->selectedFilePaths();
-    for(auto& path: selFiles) {
-        urls.append(QUrl(path.uri().get()));
-    }
-    return urls;
+    return selectedFiles_;
 }
+
 
 void FileDialog::setFilter() {
     // FIXME: what's this?
@@ -121,6 +192,7 @@ void FileDialog::selectNameFilter(const QString& filter) {
 
         modelFilter_.update();
         proxyModel_->invalidate();
+        Q_EMIT filterSelected(filter);
     }
 }
 
@@ -158,12 +230,18 @@ void FileDialog::setViewMode(QFileDialog::ViewMode mode) {
 void FileDialog::setFileMode(QFileDialog::FileMode mode) {
     fileMode_ = mode;
     // TODO:
+    if(mode == QFileDialog::ExistingFiles) {
+        // TODO: enable multiple selection
+    }
+    else {
+        // TODO: limit to single selection
+    }
 }
 
 
 void FileDialog::setAcceptMode(QFileDialog::AcceptMode mode) {
     acceptMode_ = mode;
-    // TODO:
+    // TODO: open or save (default window title)
 }
 
 
@@ -217,7 +295,6 @@ void FileDialog::setLabelText(QFileDialog::DialogLabel label, const QString& tex
     default:
         break;
     }
-    isLabelExplicitlySetMask_ |= label;
 }
 
 QString FileDialog::labelText(QFileDialog::DialogLabel label) const {
@@ -244,9 +321,6 @@ QString FileDialog::labelText(QFileDialog::DialogLabel label) const {
     return text;
 }
 
-bool FileDialog::isLabelExplicitlySet(QFileDialog::DialogLabel label) {
-    return (isLabelExplicitlySetMask_ & label) != 0;
-}
 
 bool FileDialog::FileDialogFilter::filterAcceptsRow(const ProxyFolderModel *model, const std::shared_ptr<const FileInfo> &info) const {
     if(dlg_->fileMode_ & QFileDialog::Directory) {
@@ -293,33 +367,5 @@ void FileDialog::FileDialogFilter::update() {
         patterns_.emplace_back(QRegExp(glob, Qt::CaseInsensitive, QRegExp::Wildcard));
     }
 }
-
-#if 0
-
-QUrl FileDialog::initialDirectory() const {
-    return QUrl();
-}
-
-void FileDialog::setInitialDirectory(const QUrl& directory) {
-
-}
-
-QString FileDialog::initiallySelectedNameFilter() const {
-
-}
-
-void FileDialog::setInitiallySelectedNameFilter(const QString&filter) {
-
-}
-
-QList<QUrl> FileDialog::initiallySelectedFiles() const {
-
-}
-
-void FileDialog::setInitiallySelectedFiles(const QList<QUrl>& fileUrls) {
-
-}
-
-#endif
 
 } // namespace Fm
