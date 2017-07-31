@@ -35,7 +35,6 @@ public:
     }
 
     // interface for QPlatformFileDialogHelper
-    bool defaultNameFilterDisables() const; // FIXME: what's this?
 
     void setDirectory(const QUrl &directory);
 
@@ -44,8 +43,6 @@ public:
     void selectFile(const QUrl &filename);
 
     QList<QUrl> selectedFiles();
-
-    void setFilter();
 
     void selectNameFilter(const QString &filter);
 
@@ -79,11 +76,6 @@ public:
         return acceptMode_;
     }
 
-    // not supported
-    void setSidebarUrls(const QList<QUrl> &urls) {}
-    // not supported
-    QList<QUrl> sidebarUrls() const {}
-
     void setNameFilters(const QStringList &filters);
     QStringList nameFilters() const {
         return nameFilters_;
@@ -95,7 +87,13 @@ public:
     }
 
     void setDefaultSuffix(const QString &suffix) {
-        defaultSuffix_ = suffix;
+        if(!suffix.isEmpty() && suffix[0] == '.') {
+            // if the first char is dot, remove it.
+            defaultSuffix_ = suffix.mid(1);
+        }
+        else {
+            defaultSuffix_ = suffix;
+        }
     }
     QString defaultSuffix() const {
         return defaultSuffix_;
@@ -103,7 +101,6 @@ public:
 
     void setLabelText(QFileDialog::DialogLabel label, const QString &text);
     QString labelText(QFileDialog::DialogLabel label) const;
-
 
 public Q_SLOTS:
     void setDirectoryPath(FilePath directory);
@@ -135,6 +132,8 @@ private:
         std::vector<QRegExp> patterns_;
 
     };
+
+    void updateSelectionMode();
 
 private:
     Ui::FileDialog ui;

@@ -48,6 +48,8 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         }
     });
     ui.folderView->setModel(proxyModel_);
+    // update selection mode for the view
+    updateSelectionMode();
 
     // selection changes
     connect(ui.folderView->selectionModel(), &QItemSelectionModel::currentRowChanged, this, &FileDialog::onCurrentRowChanged);
@@ -87,6 +89,11 @@ void FileDialog::accept() {
 
     // get full paths for the filenames and convert them to URLs
     for(auto& name: parsedNames) {
+        // add default filename extension as needed
+        if(!defaultSuffix_.isEmpty() && name.lastIndexOf('.') == -1) {
+            name += '.';
+            name += defaultSuffix_;
+        }
         auto fullPath = directoryPath_.child(name.toLocal8Bit().constData());
         selectedFiles_.append(QUrl::fromEncoded(fullPath.uri().get()));
     }
@@ -145,18 +152,41 @@ void FileDialog::onCurrentRowChanged(const QModelIndex &current, const QModelInd
 
 void FileDialog::onSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
     QString fileNames;
-    auto selFiles = ui.folderView->selectedFilePaths();
+    auto selFiles = ui.folderView->selectedFiles();
     for(auto& fileInfo: selFiles) {
-        if(!fileNames.isEmpty()) {
-            fileNames += ' ';
+        if(fileMode_ == QFileDialog::Directory && !fileInfo->isDir()) {
+            // if we want to select dir, ignore selected files
+            continue;
         }
-        // FIXME: use a more reliable way to quote file names.
-        // otherwise names with embedded " will break.
-        fileNames += '\"';
-        fileNames += fileInfo.baseName().get();
-        fileNames += '\"';
+        else if(fileInfo->isDir()) {
+            // if we want to select files, ignore selected dirs
+            continue;
+        }
+
+        auto baseName = fileInfo->path().baseName();
+        if(fileMode_ == QFileDialog::ExistingFiles) {
+            // support multiple selection
+            if(!fileNames.isEmpty()) {
+                fileNames += ' ';
+            }
+            // FIXME: use a more reliable way to quote file names.
+            // otherwise names with embedded " will break.
+            fileNames += '\"';
+            fileNames += baseName.get();
+            fileNames += '\"';
+        }
+        else {
+            // support single selection only
+            fileNames = baseName.get();
+            break;
+        }
     }
     ui.fileName->setText(fileNames);
+}
+
+void FileDialog::updateSelectionMode() {
+    // enable multiple selection?
+    ui.folderView->childView()->setSelectionMode(fileMode_ == QFileDialog::ExistingFiles ? QAbstractItemView::ExtendedSelection : QAbstractItemView::SingleSelection);
 }
 
 QUrl FileDialog::directory() const {
@@ -172,18 +202,17 @@ void FileDialog::selectFile(const QUrl& filename) {
     // FIXME: add a method to Fm::FolderView to select files
 
     // FIXME: need to add this for detailed list
-    //int flags = QItemSelectionModel::Rows;
-    ui.folderView->selectionModel()->select(idx, QItemSelectionModel::Select);
+    QItemSelectionModel::SelectionFlags flags = QItemSelectionModel::Select;
+    if(viewMode_ == QFileDialog::Detail) {
+        flags |= QItemSelectionModel::Rows;
+    }
+    ui.folderView->selectionModel()->select(idx, flags);
 }
 
 QList<QUrl> FileDialog::selectedFiles() {
     return selectedFiles_;
 }
 
-
-void FileDialog::setFilter() {
-    // FIXME: what's this?
-}
 
 void FileDialog::selectNameFilter(const QString& filter) {
     if(filter != currentNameFilter_) {
@@ -224,18 +253,17 @@ void FileDialog::setViewMode(QFileDialog::ViewMode mode) {
     default:
         break;
     }
+
+    // update selection mode for the view
+    updateSelectionMode();
 }
 
 
 void FileDialog::setFileMode(QFileDialog::FileMode mode) {
     fileMode_ = mode;
-    // TODO:
-    if(mode == QFileDialog::ExistingFiles) {
-        // TODO: enable multiple selection
-    }
-    else {
-        // TODO: limit to single selection
-    }
+
+    // enable multiple selection?
+    updateSelectionMode();
 }
 
 
@@ -325,7 +353,8 @@ QString FileDialog::labelText(QFileDialog::DialogLabel label) const {
 bool FileDialog::FileDialogFilter::filterAcceptsRow(const ProxyFolderModel *model, const std::shared_ptr<const FileInfo> &info) const {
     if(dlg_->fileMode_ & QFileDialog::Directory) {
         // we only want to select directories
-        if(!info->isDir() && dlg_->options_& QFileDialog::ShowDirsOnly) { // not a dir
+        if(!info->isDir()) { // not a dir
+            // NOTE: here we ignore dlg_->options_& QFileDialog::ShowDirsOnly option.
             return false;
         }
     }
