@@ -104,10 +104,12 @@ public:
 
 public Q_SLOTS:
     void setDirectoryPath(FilePath directory);
+    void selectFilePath(const FilePath& path);
 
 private Q_SLOTS:
     void onCurrentRowChanged(const QModelIndex &current, const QModelIndex &previous);
     void onSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+    void onFileClicked(int type, const std::shared_ptr<const Fm::FileInfo>& file);
 
 Q_SIGNALS:
     // emitted when the dialog is accepted and some files are selected

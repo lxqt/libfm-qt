@@ -42,11 +42,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     proxyModel_->addFilter(&modelFilter_);
 
     ui.folderView->setViewMode(Fm::FolderView::DetailedListMode);
-    connect(ui.folderView, &FolderView::clicked, [this](int type, const std::shared_ptr<const Fm::FileInfo>& file){
-        if(file && type == FolderView::ActivatedClick) {
-            setDirectoryPath(file->path());
-        }
-    });
+    connect(ui.folderView, &FolderView::clicked, this, &FileDialog::onFileClicked);
     ui.folderView->setModel(proxyModel_);
     // update selection mode for the view
     updateSelectionMode();
@@ -137,6 +133,19 @@ void FileDialog::setDirectoryPath(FilePath directory) {
     Q_EMIT directoryEntered(uri);
 }
 
+void FileDialog::selectFilePath(const FilePath &path) {
+    auto idx = proxyModel_->indexFromPath(path);
+
+    // FIXME: add a method to Fm::FolderView to select files
+
+    // FIXME: need to add this for detailed list
+    QItemSelectionModel::SelectionFlags flags = QItemSelectionModel::Select;
+    if(viewMode_ == QFileDialog::Detail) {
+        flags |= QItemSelectionModel::Rows;
+    }
+    ui.folderView->selectionModel()->select(idx, flags);
+}
+
 void FileDialog::onCurrentRowChanged(const QModelIndex &current, const QModelIndex &previous) {
     // emit currentChanged signal
     QUrl currentUrl;
@@ -184,6 +193,30 @@ void FileDialog::onSelectionChanged(const QItemSelection &selected, const QItemS
     ui.fileName->setText(fileNames);
 }
 
+void FileDialog::onFileClicked(int type, const std::shared_ptr<const FileInfo> &file) {
+    bool canAccept = false;
+    if(file && type == FolderView::ActivatedClick) {
+        if(file->isDir()) {
+            if(fileMode_ == QFileDialog::Directory) {
+                // select directory and a dir item is activated
+                canAccept = true;
+            }
+            else {
+                setDirectoryPath(file->path());
+            }
+        }
+        else if(fileMode_ != QFileDialog::Directory) {
+            // select file(s) and a file item is activated
+            canAccept = true;
+        }
+    }
+
+    if(canAccept) {
+        selectFilePath(file->path());
+        accept();
+    }
+}
+
 void FileDialog::updateSelectionMode() {
     // enable multiple selection?
     ui.folderView->childView()->setSelectionMode(fileMode_ == QFileDialog::ExistingFiles ? QAbstractItemView::ExtendedSelection : QAbstractItemView::SingleSelection);
@@ -197,16 +230,7 @@ QUrl FileDialog::directory() const {
 void FileDialog::selectFile(const QUrl& filename) {
     auto urlStr = filename.toEncoded();
     auto path = FilePath::fromUri(urlStr.constData());
-    auto idx = proxyModel_->indexFromPath(path);
-
-    // FIXME: add a method to Fm::FolderView to select files
-
-    // FIXME: need to add this for detailed list
-    QItemSelectionModel::SelectionFlags flags = QItemSelectionModel::Select;
-    if(viewMode_ == QFileDialog::Detail) {
-        flags |= QItemSelectionModel::Rows;
-    }
-    ui.folderView->selectionModel()->select(idx, flags);
+    selectFilePath(path);
 }
 
 QList<QUrl> FileDialog::selectedFiles() {
