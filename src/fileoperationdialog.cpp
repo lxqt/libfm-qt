@@ -29,7 +29,8 @@ namespace Fm {
 FileOperationDialog::FileOperationDialog(FileOperation* _operation):
     QDialog(nullptr),
     operation(_operation),
-    defaultOption(-1) {
+    defaultOption(-1),
+    ignoreNonCriticalErrors_(false) {
 
     ui = new Ui::FileOperationDialog();
     ui->setupUi(this);
@@ -131,9 +132,17 @@ int FileOperationDialog::askRename(FmFileInfo* src, FmFileInfo* dest, QString& n
 
 FmJobErrorAction FileOperationDialog::error(GError* err, FmJobErrorSeverity severity) {
     if(severity >= FM_JOB_ERROR_MODERATE) {
-        QMessageBox::critical(this, tr("Error"), QString::fromUtf8(err->message));
         if(severity == FM_JOB_ERROR_CRITICAL) {
+            QMessageBox::critical(this, tr("Error"), QString::fromUtf8(err->message));
             return FM_JOB_ABORT;
+        }
+        if (ignoreNonCriticalErrors_) {
+            return FM_JOB_CONTINUE;
+        }
+        QMessageBox::StandardButton stb = QMessageBox::critical(this, tr("Error"), QString::fromUtf8(err->message),
+                                                                QMessageBox::Ok | QMessageBox::Ignore);
+        if (stb == QMessageBox::Ignore) {
+            ignoreNonCriticalErrors_ = true;
         }
     }
     return FM_JOB_CONTINUE;
