@@ -58,6 +58,7 @@ private:
     Ui::FileOperationDialog* ui;
     FileOperation* operation;
     int defaultOption;
+    bool ignoreNonCriticalErrors_;
 };
 
 }
