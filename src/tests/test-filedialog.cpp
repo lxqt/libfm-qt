@@ -36,7 +36,9 @@ int main(int argc, char** argv) {
     */
 
     Fm::FileDialog dlg;
-    //dlg.setFileMode(QFileDialog::ExistingFile);
+    // dlg.setFileMode(QFileDialog::ExistingFile);
+    dlg.setFileMode(QFileDialog::ExistingFiles);
+    // dlg.setFileMode(QFileDialog::Directory);
     dlg.setNameFilters(QStringList() << "All (*)" << "Text (*.txt)" << "Images (*.gif *.jpeg *.jpg)");
 
     dlg.exec();

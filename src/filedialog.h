@@ -136,6 +136,8 @@ private:
     };
 
     void updateSelectionMode();
+    void doAccept();
+    void onFileInfoJobFinished();
 
 private:
     Ui::FileDialog ui;

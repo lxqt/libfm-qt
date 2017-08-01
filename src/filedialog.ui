@@ -27,7 +27,7 @@
       <widget class="Fm::PathBar" name="location" native="true"/>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QHBoxLayout" name="toolbarLayout">
        <item>
         <widget class="QToolButton" name="goBackBtn">
          <property name="text">

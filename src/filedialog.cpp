@@ -1,12 +1,14 @@
-#include "filedialog.h"
+﻿#include "filedialog.h"
 #include "cachedfoldermodel.h"
 #include "proxyfoldermodel.h"
 #include "utilities.h"
+#include "core/fileinfojob.h"
 
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QMimeType>
 #include <QMimeDatabase>
+#include <QMessageBox>
 #include <QDebug>
 
 namespace Fm {
@@ -71,36 +73,50 @@ void FileDialog::accept() {
     // parse the file names from the text entry
     QStringList parsedNames;
     auto fileNames = ui.fileName->text();
-    // check if there are multiple file names (containing ")
-    auto firstQuote = fileNames.indexOf('\"');
-    auto lastQuote = fileNames.lastIndexOf('\"');
-    if(firstQuote != -1 && lastQuote != -1) {
-        // split the names
-        QRegExp sep{"\"\\s+\""};  // separated with " "
-        parsedNames = fileNames.mid(firstQuote, lastQuote - firstQuote).split(sep);
+    if(fileNames.isEmpty()) {
+        // when selecting a dir and the name is not provided, just select current dir in the view
+        if(fileMode_ == QFileDialog::Directory) {
+            selectedFiles_.append(directory());
+        }
+        else {
+            QMessageBox::critical(this, tr("Error"), tr("Please select a file"));
+            return;
+        }
     }
     else {
-        parsedNames << fileNames;
-    }
-
-    // get full paths for the filenames and convert them to URLs
-    for(auto& name: parsedNames) {
-        // add default filename extension as needed
-        if(!defaultSuffix_.isEmpty() && name.lastIndexOf('.') == -1) {
-            name += '.';
-            name += defaultSuffix_;
+        // check if there are multiple file names (containing ")
+        auto firstQuote = fileNames.indexOf('\"');
+        auto lastQuote = fileNames.lastIndexOf('\"');
+        if(firstQuote != -1 && lastQuote != -1) {
+            // split the names
+            QRegExp sep{"\"\\s+\""};  // separated with " "
+            parsedNames = fileNames.mid(firstQuote + 1, lastQuote - firstQuote - 1).split(sep);
         }
-        auto fullPath = directoryPath_.child(name.toLocal8Bit().constData());
-        selectedFiles_.append(QUrl::fromEncoded(fullPath.uri().get()));
+        else {
+            parsedNames << fileNames;
+        }
+
+        // get full paths for the filenames and convert them to URLs
+        for(auto& name: parsedNames) {
+            // add default filename extension as needed
+            if(!defaultSuffix_.isEmpty() && name.lastIndexOf('.') == -1) {
+                name += '.';
+                name += defaultSuffix_;
+            }
+            auto fullPath = directoryPath_.child(name.toLocal8Bit().constData());
+            selectedFiles_.append(QUrl::fromEncoded(fullPath.uri().get()));
+        }
     }
 
-    Q_EMIT filesSelected(selectedFiles_);
+    // check existence of the selected files and if their types are correct
+    // async operation, call doAccept() in the callback.
+    ui.buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 
-    if(selectedFiles_.size() == 1) {
-        Q_EMIT fileSelected(selectedFiles_[0]);
-    }
-
-    QDialog::accept();
+    auto pathList = pathListFromQUrls(selectedFiles_);
+    auto job = new FileInfoJob(pathList);
+    job->setAutoDelete(true);
+    connect(job, &Job::finished, this, &FileDialog::onFileInfoJobFinished);
+    job->runAsync();
 }
 
 void FileDialog::reject() {
@@ -163,9 +179,11 @@ void FileDialog::onSelectionChanged(const QItemSelection &selected, const QItemS
     QString fileNames;
     auto selFiles = ui.folderView->selectedFiles();
     for(auto& fileInfo: selFiles) {
-        if(fileMode_ == QFileDialog::Directory && !fileInfo->isDir()) {
+        if(fileMode_ == QFileDialog::Directory) {
             // if we want to select dir, ignore selected files
-            continue;
+            if(!fileInfo->isDir()) {
+                continue;
+            }
         }
         else if(fileInfo->isDir()) {
             // if we want to select files, ignore selected dirs
@@ -197,12 +215,11 @@ void FileDialog::onFileClicked(int type, const std::shared_ptr<const FileInfo> &
     bool canAccept = false;
     if(file && type == FolderView::ActivatedClick) {
         if(file->isDir()) {
+            // chdir into the activated dir
+            setDirectoryPath(file->path());
+
             if(fileMode_ == QFileDialog::Directory) {
-                // select directory and a dir item is activated
-                canAccept = true;
-            }
-            else {
-                setDirectoryPath(file->path());
+                ui.fileName->clear();
             }
         }
         else if(fileMode_ != QFileDialog::Directory) {
@@ -220,6 +237,71 @@ void FileDialog::onFileClicked(int type, const std::shared_ptr<const FileInfo> &
 void FileDialog::updateSelectionMode() {
     // enable multiple selection?
     ui.folderView->childView()->setSelectionMode(fileMode_ == QFileDialog::ExistingFiles ? QAbstractItemView::ExtendedSelection : QAbstractItemView::SingleSelection);
+}
+
+void FileDialog::doAccept() {
+
+    Q_EMIT filesSelected(selectedFiles_);
+
+    if(selectedFiles_.size() == 1) {
+        Q_EMIT fileSelected(selectedFiles_[0]);
+    }
+
+    QDialog::accept();
+}
+
+void FileDialog::onFileInfoJobFinished() {
+    auto job = static_cast<FileInfoJob*>(sender());
+    if(job->isCancelled()) {
+        selectedFiles_.clear();
+        reject();
+    }
+    else {
+        QString error;
+        // check if the files exist and their types are correct
+        auto paths = job->paths();
+        auto files = job->files();
+        for(size_t i = 0; i < paths.size(); ++i) {
+            const auto& path = paths[i];
+            if(i >= files.size() || files[i]->path() != path) {
+                // the file path is not found and does not have file info
+                if(fileMode_ != QFileDialog::AnyFile) {
+                    // if we do not allow non-existent file, this is an error.
+                    error = tr("Path \"%1\" does not exist").arg(path.displayName().get());
+                    break;
+                }
+                ++i; // skip the file
+                continue;
+            }
+
+            // FIXME: currently, if a path is not found, FmFileInfoJob does not return its file info object.
+            // This is bad API design. We may return nullptr for the failed file info query instead.
+            const auto& file = files[i];
+            // check if the file type is correct
+            if(fileMode_ == QFileDialog::Directory) {
+                if(!file->isDir()) {
+                    // we're selecting dirs, but the selected file path does not point to a dir
+                    error = tr("\"%1\" is not a directory").arg(path.displayName().get());
+                    break;
+                }
+            }
+            else if(file->isDir() || file->isShortcut()) {
+                // we're selecting files, but the selected file path refers to a dir or shortcut (such as computer:///)
+                error = tr("\"%1\" is not a file").arg(path.displayName().get());;
+                break;
+            }
+        }
+
+        if(error.isEmpty()) {
+            // no error!
+            doAccept();
+        }
+        else {
+            QMessageBox::critical(this, tr("Error"), error);
+            selectedFiles_.clear();
+        }
+    }
+    ui.buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
 }
 
 QUrl FileDialog::directory() const {
@@ -284,6 +366,10 @@ void FileDialog::setViewMode(QFileDialog::ViewMode mode) {
 
 
 void FileDialog::setFileMode(QFileDialog::FileMode mode) {
+    if(mode == QFileDialog::DirectoryOnly) {
+        // directly only is deprecated and not allowed.
+        mode = QFileDialog::Directory;
+    }
     fileMode_ = mode;
 
     // enable multiple selection?
@@ -375,7 +461,7 @@ QString FileDialog::labelText(QFileDialog::DialogLabel label) const {
 
 
 bool FileDialog::FileDialogFilter::filterAcceptsRow(const ProxyFolderModel *model, const std::shared_ptr<const FileInfo> &info) const {
-    if(dlg_->fileMode_ & QFileDialog::Directory) {
+    if(dlg_->fileMode_ == QFileDialog::Directory) {
         // we only want to select directories
         if(!info->isDir()) { // not a dir
             // NOTE: here we ignore dlg_->options_& QFileDialog::ShowDirsOnly option.
