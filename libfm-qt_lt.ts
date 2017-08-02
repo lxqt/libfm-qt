@@ -323,7 +323,7 @@
     <message>
         <location filename="../../core/dirlistjob.cpp" line="45"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>Nurodytas katalogas &quot;%1&quot; yra neteisingas</translation>
     </message>
 </context>
 <context>
@@ -638,12 +638,12 @@ Ar norite vietoj to, juos ištrinti?</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="380"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkti piktogramą</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="382"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Paveikslai (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="478"/>
@@ -966,11 +966,11 @@ Pakeista: %2</translation>
     </message>
     <message>
         <source>Shows list of common places, devices, and bookmarks in sidebar</source>
-        <translation type="vanished">Rodo bendrų vietų, įrenginių ir žymelių sąrašą šoninėje juostoje</translation>
+        <translation>Rodo bendrų vietų, įrenginių ir žymelių sąrašą šoninėje juostoje</translation>
     </message>
     <message>
         <source>Shows tree of directories in sidebar</source>
-        <translation type="vanished">Rodo katalogų medį šoninėje juostoje</translation>
+        <translation>Rodo katalogų medį šoninėje juostoje</translation>
     </message>
 </context>
 <context>
@@ -1080,7 +1080,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="520"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Tinkintos piktogramos klaida</translation>
     </message>
 </context>
 <context>
