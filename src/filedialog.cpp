@@ -65,7 +65,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     // setup toolbar buttons
     auto toolbar = new QToolBar(this);
     auto newFolderAction = toolbar->addAction(QIcon::fromTheme("folder-new"), tr("Create Folder"));
-    connect(newFolderAction, &QAction::activate, this, &FileDialog::onNewFolder);
+    connect(newFolderAction, &QAction::triggered, this, &FileDialog::onNewFolder);
     toolbar->addSeparator();
 
     auto viewModeGroup = new QActionGroup(this);
