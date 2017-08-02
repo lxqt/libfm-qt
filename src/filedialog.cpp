@@ -9,6 +9,7 @@
 #include <QMimeType>
 #include <QMimeDatabase>
 #include <QMessageBox>
+#include <QToolBar>
 #include <QDebug>
 
 namespace Fm {
@@ -19,7 +20,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     folderModel_{nullptr},
     proxyModel_{nullptr},
     options_{0},
-    viewMode_{QFileDialog::Detail},
+    viewMode_{FolderView::DetailedListMode},
     fileMode_{QFileDialog::AnyFile},
     acceptMode_{QFileDialog::AcceptOpen},
     modelFilter_{this} {
@@ -43,7 +44,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
 
     proxyModel_->addFilter(&modelFilter_);
 
-    ui.folderView->setViewMode(Fm::FolderView::DetailedListMode);
+    ui.folderView->setViewMode(viewMode_);
     connect(ui.folderView, &FolderView::clicked, this, &FileDialog::onFileClicked);
     ui.folderView->setModel(proxyModel_);
     // update selection mode for the view
@@ -61,10 +62,46 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     setNameFilters(QStringList() << tr("All Files (*)"));
     ui.fileTypeCombo->setCurrentIndex(0);
 
+    // setup toolbar buttons
+    auto toolbar = new QToolBar(this);
+    auto newFolderAction = toolbar->addAction(QIcon::fromTheme("folder-new"), tr("Create Folder"));
+    connect(newFolderAction, &QAction::activate, this, &FileDialog::onNewFolder);
+    toolbar->addSeparator();
+
+    auto viewModeGroup = new QActionGroup(this);
+    iconViewAction_ = toolbar->addAction(style()->standardIcon(QStyle::SP_FileDialogContentsView), tr("Icon View"));
+    iconViewAction_->setCheckable(true);
+    connect(iconViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
+    viewModeGroup->addAction(iconViewAction_);
+    thumbnailViewAction_ = toolbar->addAction(style()->standardIcon(QStyle::SP_FileDialogInfoView), tr("Thumbnail View"));
+    thumbnailViewAction_->setCheckable(true);
+    connect(thumbnailViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
+    viewModeGroup->addAction(thumbnailViewAction_);
+    compactViewAction_ = toolbar->addAction(style()->standardIcon(QStyle::SP_FileDialogListView), tr("Compact View"));
+    compactViewAction_->setCheckable(true);
+    connect(compactViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
+    viewModeGroup->addAction(compactViewAction_);
+    detailedViewAction_ = toolbar->addAction(style()->standardIcon(QStyle::SP_FileDialogDetailedView), tr("Detailed List View"));
+    detailedViewAction_->setCheckable(true);
+    connect(detailedViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
+    viewModeGroup->addAction(detailedViewAction_);
+    ui.toolbarLayout->addWidget(toolbar);
+
+    setViewMode(viewMode_);
+
+    // setup the splitter
+    // FIXME: make these sizes configurable
+    QList<int> sizes;
+    sizes.append(200);
+    sizes.append(320);
+    ui.splitter->setSizes(sizes);
+
+    // browse to the directory
     if(path.isValid()) {
         setDirectoryPath(path);
         directoryPath_ = std::move(path);
     }
+    ui.fileName->setFocus();
 }
 
 void FileDialog::accept() {
@@ -234,6 +271,33 @@ void FileDialog::onFileClicked(int type, const std::shared_ptr<const FileInfo> &
     }
 }
 
+void FileDialog::onNewFolder() {
+    createFileOrFolder(CreateNewFolder, directoryPath_, nullptr, this);
+}
+
+void FileDialog::onViewModeToggled(bool active) {
+    if(active) {
+        auto action = static_cast<QAction*>(sender());
+        FolderView::ViewMode newMode;
+        if(action == iconViewAction_) {
+            newMode = FolderView::IconMode;
+        }
+        else if(action == thumbnailViewAction_) {
+            newMode = FolderView::ThumbnailMode;
+        }
+        else if(action == compactViewAction_) {
+            newMode = FolderView::CompactMode;
+        }
+        else if(action == detailedViewAction_) {
+            newMode = FolderView::DetailedListMode;
+        }
+        else {
+            return;
+        }
+        setViewMode(newMode);
+    }
+}
+
 void FileDialog::updateSelectionMode() {
     // enable multiple selection?
     ui.folderView->childView()->setSelectionMode(fileMode_ == QFileDialog::ExistingFiles ? QAbstractItemView::ExtendedSelection : QAbstractItemView::SingleSelection);
@@ -346,20 +410,25 @@ void FileDialog::setFilter(QDir::Filters filters) {
     // TODO:
 }
 
-void FileDialog::setViewMode(QFileDialog::ViewMode mode) {
+void FileDialog::setViewMode(FolderView::ViewMode mode) {
     viewMode_ = mode;
-
+    ui.folderView->setViewMode(mode);
     switch(mode) {
-    case QFileDialog::Detail:
-        ui.folderView->setViewMode(FolderView::DetailedListMode);
+    case FolderView::IconMode:
+        iconViewAction_->setChecked(true);
         break;
-    case QFileDialog::List:
-        ui.folderView->setViewMode(FolderView::CompactMode);
+    case FolderView::ThumbnailMode:
+        thumbnailViewAction_->setChecked(true);
+        break;
+    case FolderView::CompactMode:
+        compactViewAction_->setChecked(true);
+        break;
+    case FolderView::DetailedListMode:
+        detailedViewAction_->setChecked(true);
         break;
     default:
         break;
     }
-
     // update selection mode for the view
     updateSelectionMode();
 }

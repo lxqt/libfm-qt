@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0,0">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,1,0">
+    <layout class="QHBoxLayout" name="toolbarLayout" stretch="0,1">
      <item>
       <widget class="QLabel" name="lookInLabel">
        <property name="text">
@@ -25,76 +25,6 @@
      </item>
      <item>
       <widget class="Fm::PathBar" name="location" native="true"/>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="toolbarLayout">
-       <item>
-        <widget class="QToolButton" name="goBackBtn">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset theme="go-previous">
-           <normaloff>.</normaloff>.</iconset>
-         </property>
-         <property name="autoRaise">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="goForwardBtn">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset theme="go-next">
-           <normaloff>.</normaloff>.</iconset>
-         </property>
-         <property name="autoRaise">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="goUpBtn">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset theme="go-up">
-           <normaloff>.</normaloff>.</iconset>
-         </property>
-         <property name="autoRaise">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="newDirBtn">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset theme="folder">
-           <normaloff>.</normaloff>.</iconset>
-         </property>
-         <property name="autoRaise">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="viewModeBtn">
-         <property name="text">
-          <string>View mode</string>
-         </property>
-         <property name="autoRaise">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </item>
     </layout>
    </item>

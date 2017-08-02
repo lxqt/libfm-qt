@@ -61,8 +61,8 @@ public:
     // not yet supported
     void setFilter(QDir::Filters filters);
 
-    void setViewMode(QFileDialog::ViewMode mode);
-    QFileDialog::ViewMode viewMode() const {
+    void setViewMode(FolderView::ViewMode mode);
+    FolderView::ViewMode viewMode() const {
         return viewMode_;
     }
 
@@ -110,6 +110,8 @@ private Q_SLOTS:
     void onCurrentRowChanged(const QModelIndex &current, const QModelIndex &previous);
     void onSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
     void onFileClicked(int type, const std::shared_ptr<const Fm::FileInfo>& file);
+    void onNewFolder();
+    void onViewModeToggled(bool active);
 
 Q_SIGNALS:
     // emitted when the dialog is accepted and some files are selected
@@ -147,7 +149,7 @@ private:
 
     QFileDialog::Options options_;
     QDir::Filters filters_;
-    QFileDialog::ViewMode viewMode_;
+    FolderView::ViewMode viewMode_;
     QFileDialog::FileMode fileMode_;
     QFileDialog::AcceptMode acceptMode_;
     QStringList nameFilters_;
@@ -156,6 +158,11 @@ private:
     FileDialogFilter modelFilter_;
     QString currentNameFilter_;
     QList<QUrl> selectedFiles_;
+    // view modes
+    QAction* iconViewAction_;
+    QAction* thumbnailViewAction_;
+    QAction* compactViewAction_;
+    QAction* detailedViewAction_;
 };
 
 
