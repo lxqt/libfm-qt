@@ -3,6 +3,7 @@
 #include "proxyfoldermodel.h"
 #include "utilities.h"
 #include "core/fileinfojob.h"
+#include "ui_filedialog.h"
 
 #include <QDialogButtonBox>
 #include <QPushButton>
@@ -17,6 +18,7 @@ namespace Fm {
 
 FileDialog::FileDialog(QWidget* parent, FilePath path) :
     QDialog(parent),
+    ui{new Ui::FileDialog()},
     folderModel_{nullptr},
     proxyModel_{nullptr},
     options_{0},
@@ -25,14 +27,14 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     acceptMode_{QFileDialog::AcceptOpen},
     modelFilter_{this} {
 
-    ui.setupUi(this);
+    ui->setupUi(this);
 
     // path bar
-    connect(ui.location, &PathBar::chdir, this, &FileDialog::setDirectoryPath);
+    connect(ui->location, &PathBar::chdir, this, &FileDialog::setDirectoryPath);
 
     // side pane
-    ui.sidePane->setMode(Fm::SidePane::ModePlaces);
-    connect(ui.sidePane, &SidePane::chdirRequested, [this](int type, const FilePath &path) {
+    ui->sidePane->setMode(Fm::SidePane::ModePlaces);
+    connect(ui->sidePane, &SidePane::chdirRequested, [this](int type, const FilePath &path) {
         setDirectoryPath(path);
     });
 
@@ -44,23 +46,23 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
 
     proxyModel_->addFilter(&modelFilter_);
 
-    ui.folderView->setViewMode(viewMode_);
-    connect(ui.folderView, &FolderView::clicked, this, &FileDialog::onFileClicked);
-    ui.folderView->setModel(proxyModel_);
+    ui->folderView->setViewMode(viewMode_);
+    connect(ui->folderView, &FolderView::clicked, this, &FileDialog::onFileClicked);
+    ui->folderView->setModel(proxyModel_);
     // update selection mode for the view
     updateSelectionMode();
 
     // selection changes
-    connect(ui.folderView->selectionModel(), &QItemSelectionModel::currentRowChanged, this, &FileDialog::onCurrentRowChanged);
-    connect(ui.folderView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &FileDialog::onSelectionChanged);
+    connect(ui->folderView->selectionModel(), &QItemSelectionModel::currentRowChanged, this, &FileDialog::onCurrentRowChanged);
+    connect(ui->folderView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &FileDialog::onSelectionChanged);
 
     // file type
-    connect(ui.fileTypeCombo, &QComboBox::currentTextChanged, [this](const QString& text) {
+    connect(ui->fileTypeCombo, &QComboBox::currentTextChanged, [this](const QString& text) {
         selectNameFilter(text);
     });
     // default filename pattern
     setNameFilters(QStringList() << tr("All Files (*)"));
-    ui.fileTypeCombo->setCurrentIndex(0);
+    ui->fileTypeCombo->setCurrentIndex(0);
 
     // setup toolbar buttons
     auto toolbar = new QToolBar(this);
@@ -85,7 +87,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     detailedViewAction_->setCheckable(true);
     connect(detailedViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(detailedViewAction_);
-    ui.toolbarLayout->addWidget(toolbar);
+    ui->toolbarLayout->addWidget(toolbar);
 
     setViewMode(viewMode_);
 
@@ -94,14 +96,17 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     QList<int> sizes;
     sizes.append(200);
     sizes.append(320);
-    ui.splitter->setSizes(sizes);
+    ui->splitter->setSizes(sizes);
 
     // browse to the directory
     if(path.isValid()) {
         setDirectoryPath(path);
         directoryPath_ = std::move(path);
     }
-    ui.fileName->setFocus();
+    ui->fileName->setFocus();
+}
+
+FileDialog::~FileDialog() {
 }
 
 void FileDialog::accept() {
@@ -109,7 +114,7 @@ void FileDialog::accept() {
     selectedFiles_.clear();
     // parse the file names from the text entry
     QStringList parsedNames;
-    auto fileNames = ui.fileName->text();
+    auto fileNames = ui->fileName->text();
     if(fileNames.isEmpty()) {
         // when selecting a dir and the name is not provided, just select current dir in the view
         if(fileMode_ == QFileDialog::Directory) {
@@ -147,7 +152,7 @@ void FileDialog::accept() {
 
     // check existence of the selected files and if their types are correct
     // async operation, call doAccept() in the callback.
-    ui.buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 
     auto pathList = pathListFromQUrls(selectedFiles_);
     auto job = new FileInfoJob(pathList);
@@ -168,9 +173,9 @@ void FileDialog::setDirectory(const QUrl &directory) {
 // interface for QPlatformFileDialogHelper
 
 void FileDialog::setDirectoryPath(FilePath directory) {
-    ui.location->setPath(directory);
-    ui.sidePane->chdir(directory);
-    ui.folderView->model();
+    ui->location->setPath(directory);
+    ui->sidePane->chdir(directory);
+    ui->folderView->model();
 
     auto oldModel = folderModel_;
     folderModel_ = Fm::CachedFolderModel::modelFromPath(directory);
@@ -196,7 +201,7 @@ void FileDialog::selectFilePath(const FilePath &path) {
     if(viewMode_ == QFileDialog::Detail) {
         flags |= QItemSelectionModel::Rows;
     }
-    ui.folderView->selectionModel()->select(idx, flags);
+    ui->folderView->selectionModel()->select(idx, flags);
 }
 
 void FileDialog::onCurrentRowChanged(const QModelIndex &current, const QModelIndex &previous) {
@@ -214,7 +219,7 @@ void FileDialog::onCurrentRowChanged(const QModelIndex &current, const QModelInd
 
 void FileDialog::onSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
     QString fileNames;
-    auto selFiles = ui.folderView->selectedFiles();
+    auto selFiles = ui->folderView->selectedFiles();
     for(auto& fileInfo: selFiles) {
         if(fileMode_ == QFileDialog::Directory) {
             // if we want to select dir, ignore selected files
@@ -245,7 +250,7 @@ void FileDialog::onSelectionChanged(const QItemSelection &selected, const QItemS
             break;
         }
     }
-    ui.fileName->setText(fileNames);
+    ui->fileName->setText(fileNames);
 }
 
 void FileDialog::onFileClicked(int type, const std::shared_ptr<const FileInfo> &file) {
@@ -256,7 +261,7 @@ void FileDialog::onFileClicked(int type, const std::shared_ptr<const FileInfo> &
             setDirectoryPath(file->path());
 
             if(fileMode_ == QFileDialog::Directory) {
-                ui.fileName->clear();
+                ui->fileName->clear();
             }
         }
         else if(fileMode_ != QFileDialog::Directory) {
@@ -300,7 +305,7 @@ void FileDialog::onViewModeToggled(bool active) {
 
 void FileDialog::updateSelectionMode() {
     // enable multiple selection?
-    ui.folderView->childView()->setSelectionMode(fileMode_ == QFileDialog::ExistingFiles ? QAbstractItemView::ExtendedSelection : QAbstractItemView::SingleSelection);
+    ui->folderView->childView()->setSelectionMode(fileMode_ == QFileDialog::ExistingFiles ? QAbstractItemView::ExtendedSelection : QAbstractItemView::SingleSelection);
 }
 
 void FileDialog::doAccept() {
@@ -365,7 +370,7 @@ void FileDialog::onFileInfoJobFinished() {
             selectedFiles_.clear();
         }
     }
-    ui.buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
 }
 
 QUrl FileDialog::directory() const {
@@ -387,7 +392,7 @@ QList<QUrl> FileDialog::selectedFiles() {
 void FileDialog::selectNameFilter(const QString& filter) {
     if(filter != currentNameFilter_) {
         currentNameFilter_ = filter;
-        ui.fileTypeCombo->setCurrentText(filter);
+        ui->fileTypeCombo->setCurrentText(filter);
 
         modelFilter_.update();
         proxyModel_->invalidate();
@@ -412,7 +417,7 @@ void FileDialog::setFilter(QDir::Filters filters) {
 
 void FileDialog::setViewMode(FolderView::ViewMode mode) {
     viewMode_ = mode;
-    ui.folderView->setViewMode(mode);
+    ui->folderView->setViewMode(mode);
     switch(mode) {
     case FolderView::IconMode:
         iconViewAction_->setChecked(true);
@@ -454,8 +459,8 @@ void FileDialog::setAcceptMode(QFileDialog::AcceptMode mode) {
 
 void FileDialog::setNameFilters(const QStringList& filters) {
     nameFilters_ = filters;
-    ui.fileTypeCombo->clear();
-    ui.fileTypeCombo->addItems(filters);
+    ui->fileTypeCombo->clear();
+    ui->fileTypeCombo->addItems(filters);
 }
 
 
@@ -485,19 +490,19 @@ void FileDialog::setMimeTypeFilters(const QStringList& filters) {
 void FileDialog::setLabelText(QFileDialog::DialogLabel label, const QString& text) {
     switch(label) {
     case QFileDialog::LookIn:
-        ui.lookInLabel->setText(text);
+        ui->lookInLabel->setText(text);
         break;
     case QFileDialog::FileName:
-        ui.fileNameLabel->setText(text);
+        ui->fileNameLabel->setText(text);
         break;
     case QFileDialog::FileType:
-        ui.fileTypeLabel->setText(text);
+        ui->fileTypeLabel->setText(text);
         break;
     case QFileDialog::Accept:
-        ui.buttonBox->button(QDialogButtonBox::Ok)->setText(text);
+        ui->buttonBox->button(QDialogButtonBox::Ok)->setText(text);
         break;
     case QFileDialog::Reject:
-        ui.buttonBox->button(QDialogButtonBox::Cancel)->setText(text);
+        ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(text);
         break;
     default:
         break;
@@ -508,19 +513,19 @@ QString FileDialog::labelText(QFileDialog::DialogLabel label) const {
     QString text;
     switch(label) {
     case QFileDialog::LookIn:
-        text = ui.lookInLabel->text();
+        text = ui->lookInLabel->text();
         break;
     case QFileDialog::FileName:
-        text = ui.fileNameLabel->text();
+        text = ui->fileNameLabel->text();
         break;
     case QFileDialog::FileType:
-        text = ui.fileTypeLabel->text();
+        text = ui->fileTypeLabel->text();
         break;
     case QFileDialog::Accept:
-        ui.buttonBox->button(QDialogButtonBox::Ok)->text();
+        ui->buttonBox->button(QDialogButtonBox::Ok)->text();
         break;
     case QFileDialog::Reject:
-        ui.buttonBox->button(QDialogButtonBox::Cancel)->text();
+        ui->buttonBox->button(QDialogButtonBox::Cancel)->text();
         break;
     default:
         break;

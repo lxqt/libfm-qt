@@ -3,11 +3,16 @@
 
 #include "libfmqtglobals.h"
 #include "core/filepath.h"
-#include "ui_filedialog.h"
 
 #include <QFileDialog>
 #include <QRegExp>
 #include <vector>
+#include <memory>
+#include "folderview.h"
+
+namespace Ui {
+class FileDialog;
+}
 
 namespace Fm {
 
@@ -19,7 +24,7 @@ class LIBFM_QT_API FileDialog : public QDialog {
 public:
     explicit FileDialog(QWidget *parent = 0, FilePath path = FilePath::homeDir());
 
-    ~FileDialog() = default;
+    ~FileDialog();
 
     // Some QFileDialog compatible interface
     void accept() override;
@@ -142,7 +147,7 @@ private:
     void onFileInfoJobFinished();
 
 private:
-    Ui::FileDialog ui;
+    std::unique_ptr<Ui::FileDialog> ui;
     CachedFolderModel* folderModel_;
     ProxyFolderModel* proxyModel_;
     FilePath directoryPath_;
