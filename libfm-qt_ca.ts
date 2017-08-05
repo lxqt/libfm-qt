@@ -323,7 +323,7 @@
     <message>
         <location filename="../../core/dirlistjob.cpp" line="45"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>El directori especificat «%1» no és vàlid</translation>
     </message>
 </context>
 <context>
@@ -638,12 +638,12 @@ En lloc seu, voleu suprimir-los?</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="380"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccioneu una icona</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="382"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Imatges (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="478"/>
@@ -966,11 +966,11 @@ Modificat: %2</translation>
     </message>
     <message>
         <source>Shows list of common places, devices, and bookmarks in sidebar</source>
-        <translation type="vanished">Mostra la llista dels llocs comuns, dispositius i marcadors a la barra lateral</translation>
+        <translation>Mostra la llista dels llocs comuns, dispositius i marcadors a la barra lateral</translation>
     </message>
     <message>
         <source>Shows tree of directories in sidebar</source>
-        <translation type="vanished">Mostra l&apos;arbre dels directoris a la barra lateral</translation>
+        <translation>Mostra l&apos;arbre dels directoris a la barra lateral</translation>
     </message>
 </context>
 <context>
@@ -1081,7 +1081,7 @@ Modificat: %2</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="520"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Error de la icona personalitzada</translation>
     </message>
 </context>
 <context>
