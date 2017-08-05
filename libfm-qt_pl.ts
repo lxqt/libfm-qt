@@ -137,7 +137,7 @@
     <message>
         <location filename="../../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation>Przygotowanie...</translation>
+        <translation>Przygotowanie…</translation>
     </message>
     <message>
         <location filename="../../file-operation-dialog.ui" line="75"/>
@@ -331,7 +331,7 @@
     <message>
         <location filename="../../dirtreemodelitem.cpp" line="85"/>
         <source>Loading...</source>
-        <translation>Wczytywanie...</translation>
+        <translation>Wczytywanie…</translation>
     </message>
     <message>
         <location filename="../../dirtreemodelitem.cpp" line="268"/>
@@ -461,7 +461,7 @@ Co chcesz zrobić z tym plikiem?</translation>
     <message>
         <location filename="../../filemenu.cpp" line="86"/>
         <source>Open With...</source>
-        <translation>Otwórz za pomocą...</translation>
+        <translation>Otwórz za pomocą…</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="114"/>
@@ -471,7 +471,7 @@ Co chcesz zrobić z tym plikiem?</translation>
     <message>
         <location filename="../../filemenu.cpp" line="188"/>
         <source>Extract to...</source>
-        <translation>Rozpakuj do...</translation>
+        <translation>Rozpakuj do…</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="193"/>
