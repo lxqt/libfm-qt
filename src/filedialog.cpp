@@ -471,7 +471,7 @@ void FileDialog::setNameFilters(const QStringList& filters) {
         nameFilters_ = filters;
     }
     ui->fileTypeCombo->clear();
-    ui->fileTypeCombo->addItems(filters);
+    ui->fileTypeCombo->addItems(nameFilters_);
 }
 
 void FileDialog::setMimeTypeFilters(const QStringList& filters) {
