@@ -1,4 +1,4 @@
-﻿#include "filedialog.h"
+#include "filedialog.h"
 #include "cachedfoldermodel.h"
 #include "proxyfoldermodel.h"
 #include "utilities.h"
@@ -11,6 +11,7 @@
 #include <QMimeDatabase>
 #include <QMessageBox>
 #include <QToolBar>
+#include <QCompleter>
 #include <QDebug>
 
 namespace Fm {
@@ -49,6 +50,10 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     ui->folderView->setViewMode(viewMode_);
     connect(ui->folderView, &FolderView::clicked, this, &FileDialog::onFileClicked);
     ui->folderView->setModel(proxyModel_);
+    // set the completer
+    QCompleter* completer = new QCompleter();
+    completer->setModel(proxyModel_);
+    ui->fileName->setCompleter(completer);
     // update selection mode for the view
     updateSelectionMode();
 
@@ -60,8 +65,8 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     connect(ui->fileTypeCombo, &QComboBox::currentTextChanged, [this](const QString& text) {
         selectNameFilter(text);
     });
-    // default filename pattern
-    setNameFilters(QStringList() << tr("All Files (*)"));
+    ui->fileTypeCombo->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
+    ui->fileTypeCombo->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     ui->fileTypeCombo->setCurrentIndex(0);
 
     // setup toolbar buttons
@@ -220,6 +225,7 @@ void FileDialog::onCurrentRowChanged(const QModelIndex &current, const QModelInd
 void FileDialog::onSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
     QString fileNames;
     auto selFiles = ui->folderView->selectedFiles();
+    bool multiple(selFiles.size() > 1);
     for(auto& fileInfo: selFiles) {
         if(fileMode_ == QFileDialog::Directory) {
             // if we want to select dir, ignore selected files
@@ -233,7 +239,7 @@ void FileDialog::onSelectionChanged(const QItemSelection &selected, const QItemS
         }
 
         auto baseName = fileInfo->path().baseName();
-        if(fileMode_ == QFileDialog::ExistingFiles) {
+        if(multiple) {
             // support multiple selection
             if(!fileNames.isEmpty()) {
                 fileNames += ' ';
@@ -456,13 +462,17 @@ void FileDialog::setAcceptMode(QFileDialog::AcceptMode mode) {
     // TODO: open or save (default window title)
 }
 
-
 void FileDialog::setNameFilters(const QStringList& filters) {
-    nameFilters_ = filters;
+    if(filters.isEmpty()) {
+        // default filename pattern
+        nameFilters_ = (QStringList() << tr("All Files (*)"));
+    }
+    else {
+        nameFilters_ = filters;
+    }
     ui->fileTypeCombo->clear();
     ui->fileTypeCombo->addItems(filters);
 }
-
 
 void FileDialog::setMimeTypeFilters(const QStringList& filters) {
     mimeTypeFilters_ = filters;
