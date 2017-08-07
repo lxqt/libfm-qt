@@ -104,6 +104,13 @@ public:
         return defaultSuffix_;
     }
 
+    void setConfirmOverwrite(bool enabled) {
+        confirmOverwrite_ = enabled;
+    }
+    bool confirmOverwrite() const {
+        return confirmOverwrite_;
+    }
+
     void setLabelText(QFileDialog::DialogLabel label, const QString &text);
     QString labelText(QFileDialog::DialogLabel label) const;
 
@@ -157,6 +164,7 @@ private:
     FolderView::ViewMode viewMode_;
     QFileDialog::FileMode fileMode_;
     QFileDialog::AcceptMode acceptMode_;
+    bool confirmOverwrite_;
     QStringList nameFilters_;
     QStringList mimeTypeFilters_;
     QString defaultSuffix_;

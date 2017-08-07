@@ -27,6 +27,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     viewMode_{FolderView::DetailedListMode},
     fileMode_{QFileDialog::AnyFile},
     acceptMode_{QFileDialog::AcceptOpen},
+    confirmOverwrite_{true},
     modelFilter_{this} {
 
     ui->setupUi(this);
@@ -120,6 +121,37 @@ FileDialog::~FileDialog() {
 void FileDialog::accept() {
     // handle selected filenames
     selectedFiles_.clear();
+
+    // if a folder is selected in file mode, chdir into it (as QFileDialog does)
+    // by giving priority to the current index and, if it isn't a folder,
+    // to the first selected folder
+    if(fileMode_ != QFileDialog::Directory) {
+        std::shared_ptr<const Fm::FileInfo> selectedFolder = nullptr;
+        // check if the current index is a folder
+        QItemSelectionModel* selModel = ui->folderView->selectionModel();
+        QModelIndex cur = selModel->currentIndex();
+        if(cur.isValid() && selModel->isSelected(cur)) {
+            auto file = proxyModel_->fileInfoFromIndex(cur);
+            if(file && file->isDir()) {
+                selectedFolder = file;
+            }
+        }
+        if(!selectedFolder) { // find the first selected folder
+            auto list = ui->folderView->selectedFiles();
+            for(auto it = list.cbegin(); it != list.cend(); ++it) {
+                auto& item = *it;
+                if(item->isDir()) {
+                    selectedFolder = item;
+                    break;
+                }
+            }
+        }
+        if(selectedFolder) {
+            setDirectoryPath(selectedFolder->path());
+            return;
+        }
+    }
+
     // parse the file names from the text entry
     QStringList parsedNames;
     auto fileNames = ui->fileName->text();
@@ -143,6 +175,29 @@ void FileDialog::accept() {
             parsedNames = fileNames.mid(firstQuote + 1, lastQuote - firstQuote - 1).split(sep);
         }
         else {
+            if(fileMode_ != QFileDialog::Directory) {
+                auto childPath = directoryPath_.child(fileNames.toLocal8Bit().constData());
+                QFileInfo info = QFileInfo(childPath.toString().get());
+                if(info.exists()) {
+                    // if the typed name belongs to a (nonselected) directory, chdir into it
+                    if(info.isDir()) {
+                        setDirectoryPath(childPath);
+                        return;
+                    }
+                    // overwrite prompt (as in QFileDialog::accept)
+                    if(fileMode_ == QFileDialog::AnyFile
+                       && acceptMode_ != QFileDialog::AcceptOpen
+                       && confirmOverwrite_) {
+                           if (QMessageBox::warning(this, windowTitle(),
+                                                    tr("%1 already exists.\nDo you want to replace it?")
+                                                    .arg(fileNames),
+                                                    QMessageBox::Yes | QMessageBox::No, QMessageBox::No)
+                                   == QMessageBox::No) {
+                            return;
+                        }
+                    }
+                }
+            }
             parsedNames << fileNames;
         }
 
