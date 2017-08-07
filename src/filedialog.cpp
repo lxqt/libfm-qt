@@ -518,7 +518,12 @@ void FileDialog::setFileMode(QFileDialog::FileMode mode) {
 
 void FileDialog::setAcceptMode(QFileDialog::AcceptMode mode) {
     acceptMode_ = mode;
-    // TODO: open or save (default window title)
+    if(acceptMode_ == QFileDialog::AcceptOpen) {
+        setLabelText(QFileDialog::Accept, tr("&Open"));
+    }
+    else if(acceptMode_ == QFileDialog::AcceptSave) {
+        setLabelText(QFileDialog::Accept, tr("&Save"));
+    }
 }
 
 void FileDialog::setNameFilters(const QStringList& filters) {
