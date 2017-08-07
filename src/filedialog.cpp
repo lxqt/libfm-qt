@@ -12,6 +12,7 @@
 #include <QMessageBox>
 #include <QToolBar>
 #include <QCompleter>
+#include <QTimer>
 #include <QDebug>
 
 namespace Fm {
@@ -31,11 +32,13 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     ui->setupUi(this);
 
     // path bar
-    connect(ui->location, &PathBar::chdir, this, &FileDialog::setDirectoryPath);
+    connect(ui->location, &PathBar::chdir, [this](const FilePath &path) {
+        setDirectoryPath(path);
+    });
 
     // side pane
     ui->sidePane->setMode(Fm::SidePane::ModePlaces);
-    connect(ui->sidePane, &SidePane::chdirRequested, [this](int type, const FilePath &path) {
+    connect(ui->sidePane, &SidePane::chdirRequested, [this](int /*type*/, const FilePath &path) {
         setDirectoryPath(path);
     });
 
@@ -47,19 +50,18 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
 
     proxyModel_->addFilter(&modelFilter_);
 
-    ui->folderView->setViewMode(viewMode_);
     connect(ui->folderView, &FolderView::clicked, this, &FileDialog::onFileClicked);
     ui->folderView->setModel(proxyModel_);
+    ui->folderView->setAutoSelectionDelay(0);
     // set the completer
-    QCompleter* completer = new QCompleter();
+    QCompleter* completer = new QCompleter(this);
     completer->setModel(proxyModel_);
     ui->fileName->setCompleter(completer);
+    connect(completer, static_cast<void(QCompleter::*)(const QString &)>(&QCompleter::activated), [this](const QString &text){
+        selectFilePath(directoryPath_.child(text.toLocal8Bit().constData()), true);
+    });
     // update selection mode for the view
     updateSelectionMode();
-
-    // selection changes
-    connect(ui->folderView->selectionModel(), &QItemSelectionModel::currentRowChanged, this, &FileDialog::onCurrentRowChanged);
-    connect(ui->folderView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &FileDialog::onSelectionChanged);
 
     // file type
     connect(ui->fileTypeCombo, &QComboBox::currentTextChanged, [this](const QString& text) {
@@ -112,6 +114,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
 }
 
 FileDialog::~FileDialog() {
+    freeFolder();
 }
 
 void FileDialog::accept() {
@@ -172,44 +175,76 @@ void FileDialog::reject() {
 
 void FileDialog::setDirectory(const QUrl &directory) {
     auto path = Fm::FilePath::fromUri(directory.toEncoded().constData());
-    setDirectoryPath(path);
+    if(path.isValid()) {
+        setDirectoryPath(path);
+    }
 }
 
 // interface for QPlatformFileDialogHelper
 
-void FileDialog::setDirectoryPath(FilePath directory) {
+void FileDialog::freeFolder() {
+    if(folder_) {
+        disconnect(folder_.get(), nullptr, this, nullptr); // disconnect from all signals
+        folder_ = nullptr;
+    }
+}
+
+void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath) {
+    if(directoryPath_ == directory) {
+        return;
+    }
     ui->location->setPath(directory);
     ui->sidePane->chdir(directory);
-    ui->folderView->model();
 
-    auto oldModel = folderModel_;
-    folderModel_ = Fm::CachedFolderModel::modelFromPath(directory);
-    proxyModel_->setSourceModel(folderModel_);
+   if(folder_) {
+        if(folderModel_) {
+            //stopWatchingNewFiles();
+            proxyModel_->setSourceModel(nullptr);
+            folderModel_->unref(); // unref the cached model
+            folderModel_ = nullptr;
+        }
+        freeFolder();
+   }
 
-    if(oldModel != nullptr) {
-        // FIXME: is this correct?
-        oldModel->unref();
-    }
     directoryPath_ = std::move(directory);
+    folder_ = Fm::Folder::fromPath(directoryPath_);
+    folderModel_ = CachedFolderModel::modelFromFolder(folder_);
+    proxyModel_->setSourceModel(folderModel_);
 
     QUrl uri = QUrl::fromEncoded(directory.uri().get());
     Q_EMIT directoryEntered(uri);
+
+    // select the path if valid
+    if(selectedPath.isValid()) {
+        connect(folder_.get(), &Fm::Folder::finishLoading, [this, selectedPath]() {
+            selectFilePath(selectedPath);
+        });
+    }
 }
 
-void FileDialog::selectFilePath(const FilePath &path) {
+void FileDialog::selectFilePath(const FilePath &path, bool singleSelection) {
     auto idx = proxyModel_->indexFromPath(path);
+    if(!idx.isValid()) {
+        // just set file name
+        ui->fileName->setText(path.baseName().get());
+        return;
+    }
 
     // FIXME: add a method to Fm::FolderView to select files
 
     // FIXME: need to add this for detailed list
-    QItemSelectionModel::SelectionFlags flags = QItemSelectionModel::Select;
-    if(viewMode_ == QFileDialog::Detail) {
+    QItemSelectionModel::SelectionFlags flags = singleSelection ? QItemSelectionModel::ClearAndSelect
+                                                                : QItemSelectionModel::Select;
+    if(viewMode_ == FolderView::DetailedListMode) {
         flags |= QItemSelectionModel::Rows;
     }
     ui->folderView->selectionModel()->select(idx, flags);
+    QTimer::singleShot(0, [this, idx]() {
+        ui->folderView->childView()->scrollTo(idx, QAbstractItemView::PositionAtCenter);
+    });
 }
 
-void FileDialog::onCurrentRowChanged(const QModelIndex &current, const QModelIndex &previous) {
+void FileDialog::onCurrentRowChanged(const QModelIndex &current, const QModelIndex& /*previous*/) {
     // emit currentChanged signal
     QUrl currentUrl;
     if(current.isValid()) {
@@ -222,10 +257,13 @@ void FileDialog::onCurrentRowChanged(const QModelIndex &current, const QModelInd
     Q_EMIT currentChanged(currentUrl);
 }
 
-void FileDialog::onSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
-    QString fileNames;
+void FileDialog::onSelectionChanged(const QItemSelection& /*selected*/, const QItemSelection& /*deselected*/) {
     auto selFiles = ui->folderView->selectedFiles();
+    if(selFiles.empty()) {
+        return;
+    }
     bool multiple(selFiles.size() > 1);
+    QString fileNames;
     for(auto& fileInfo: selFiles) {
         if(fileMode_ == QFileDialog::Directory) {
             // if we want to select dir, ignore selected files
@@ -256,7 +294,10 @@ void FileDialog::onSelectionChanged(const QItemSelection &selected, const QItemS
             break;
         }
     }
-    ui->fileName->setText(fileNames);
+    // change the text only if there is a name
+    if(!fileNames.isEmpty()) {
+        ui->fileName->setText(fileNames);
+    }
 }
 
 void FileDialog::onFileClicked(int type, const std::shared_ptr<const FileInfo> &file) {
@@ -387,7 +428,16 @@ QUrl FileDialog::directory() const {
 void FileDialog::selectFile(const QUrl& filename) {
     auto urlStr = filename.toEncoded();
     auto path = FilePath::fromUri(urlStr.constData());
-    selectFilePath(path);
+    auto parent = path.parent();
+    if(parent.isValid() && parent != directoryPath_) {
+        // chdir into file's parent if it isn't the current directory
+        setDirectoryPath(parent, path);
+    }
+    else {
+        QTimer::singleShot(0, [this, path]() {
+            selectFilePath(path);
+        });
+    }
 }
 
 QList<QUrl> FileDialog::selectedFiles() {
@@ -423,6 +473,12 @@ void FileDialog::setFilter(QDir::Filters filters) {
 
 void FileDialog::setViewMode(FolderView::ViewMode mode) {
     viewMode_ = mode;
+
+    // Since setModel() is called by FolderView::setViewMode(), the selectionModel will be replaced by one
+    // created by the view. So, we need to deal with selection changes again after setting the view mode.
+    disconnect(ui->folderView->selectionModel(), &QItemSelectionModel::currentRowChanged, this, &FileDialog::onCurrentRowChanged);
+    disconnect(ui->folderView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &FileDialog::onSelectionChanged);
+
     ui->folderView->setViewMode(mode);
     switch(mode) {
     case FolderView::IconMode:
@@ -440,6 +496,9 @@ void FileDialog::setViewMode(FolderView::ViewMode mode) {
     default:
         break;
     }
+    // selection changes
+    connect(ui->folderView->selectionModel(), &QItemSelectionModel::currentRowChanged, this, &FileDialog::onCurrentRowChanged);
+    connect(ui->folderView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &FileDialog::onSelectionChanged);
     // update selection mode for the view
     updateSelectionMode();
 }
@@ -544,7 +603,7 @@ QString FileDialog::labelText(QFileDialog::DialogLabel label) const {
 }
 
 
-bool FileDialog::FileDialogFilter::filterAcceptsRow(const ProxyFolderModel *model, const std::shared_ptr<const FileInfo> &info) const {
+bool FileDialog::FileDialogFilter::filterAcceptsRow(const ProxyFolderModel* /*model*/, const std::shared_ptr<const FileInfo> &info) const {
     if(dlg_->fileMode_ == QFileDialog::Directory) {
         // we only want to select directories
         if(!info->isDir()) { // not a dir

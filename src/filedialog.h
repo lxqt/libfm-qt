@@ -107,13 +107,9 @@ public:
     void setLabelText(QFileDialog::DialogLabel label, const QString &text);
     QString labelText(QFileDialog::DialogLabel label) const;
 
-public Q_SLOTS:
-    void setDirectoryPath(FilePath directory);
-    void selectFilePath(const FilePath& path);
-
 private Q_SLOTS:
-    void onCurrentRowChanged(const QModelIndex &current, const QModelIndex &previous);
-    void onSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+    void onCurrentRowChanged(const QModelIndex &current, const QModelIndex& /*previous*/);
+    void onSelectionChanged(const QItemSelection& /*selected*/, const QItemSelection& /*deselected*/);
     void onFileClicked(int type, const std::shared_ptr<const Fm::FileInfo>& file);
     void onNewFolder();
     void onViewModeToggled(bool active);
@@ -134,7 +130,7 @@ private:
     class FileDialogFilter: public ProxyFolderModelFilter {
     public:
         FileDialogFilter(FileDialog* dlg): dlg_{dlg} {}
-        virtual bool filterAcceptsRow(const ProxyFolderModel* model, const std::shared_ptr<const Fm::FileInfo>& info) const override;
+        virtual bool filterAcceptsRow(const ProxyFolderModel* /*model*/, const std::shared_ptr<const Fm::FileInfo>& info) const override;
         void update();
 
         FileDialog* dlg_;
@@ -142,15 +138,19 @@ private:
 
     };
 
+    void selectFilePath(const FilePath& path, bool singleSelection = false);
+    void setDirectoryPath(FilePath directory, FilePath selectedPath = FilePath());
     void updateSelectionMode();
     void doAccept();
     void onFileInfoJobFinished();
+    void freeFolder();
 
 private:
     std::unique_ptr<Ui::FileDialog> ui;
     CachedFolderModel* folderModel_;
     ProxyFolderModel* proxyModel_;
     FilePath directoryPath_;
+    std::shared_ptr<Fm::Folder> folder_;
 
     QFileDialog::Options options_;
     QDir::Filters filters_;
