@@ -293,7 +293,9 @@ void FileDialog::selectFilePath(const FilePath &path, bool singleSelection) {
     if(viewMode_ == FolderView::DetailedListMode) {
         flags |= QItemSelectionModel::Rows;
     }
-    ui->folderView->selectionModel()->select(idx, flags);
+    QItemSelectionModel* selModel = ui->folderView->selectionModel();
+    selModel->select(idx, flags);
+    selModel->setCurrentIndex(idx, QItemSelectionModel::Current);
     QTimer::singleShot(0, [this, idx]() {
         ui->folderView->childView()->scrollTo(idx, QAbstractItemView::PositionAtCenter);
     });
