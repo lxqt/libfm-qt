@@ -107,6 +107,8 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
         goto _file_is_symlink;
     }
 
+    isShortcut_ = false;
+
     switch(type) {
     case G_FILE_TYPE_SHORTCUT:
         isShortcut_ = true;
