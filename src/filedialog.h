@@ -145,12 +145,25 @@ private:
 
     };
 
-    void selectFilePath(const FilePath& path, bool singleSelection = false);
+    bool isLabelExplicitlySet(QFileDialog::DialogLabel label) const {
+        return !explicitLabels_[label].isEmpty();
+    }
+    void setLabelExplicitly(QFileDialog::DialogLabel label, const QString& text) {
+        explicitLabels_[label] = text;
+    }
+    void setLabelTextControl(QFileDialog::DialogLabel label, const QString &text);
+    void updateSaveButtonText(bool saveOnFolder);
+    void updateAcceptButtonState();
+
+    std::shared_ptr<const Fm::FileInfo> firstSelectedDir() const;
+    bool selectFilePath(const FilePath& path);
+    void selectFilePathWithDelay(const FilePath& path);
     void setDirectoryPath(FilePath directory, FilePath selectedPath = FilePath());
     void updateSelectionMode();
     void doAccept();
     void onFileInfoJobFinished();
     void freeFolder();
+    QStringList parseNames() const;
 
 private:
     std::unique_ptr<Ui::FileDialog> ui;
@@ -176,6 +189,8 @@ private:
     QAction* thumbnailViewAction_;
     QAction* compactViewAction_;
     QAction* detailedViewAction_;
+    // dialog labels that can be explicitly set
+    QString explicitLabels_[5];
 };
 
 

@@ -58,8 +58,30 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     QCompleter* completer = new QCompleter(this);
     completer->setModel(proxyModel_);
     ui->fileName->setCompleter(completer);
-    connect(completer, static_cast<void(QCompleter::*)(const QString &)>(&QCompleter::activated), [this](const QString &text){
-        selectFilePath(directoryPath_.child(text.toLocal8Bit().constData()), true);
+    connect(completer, static_cast<void(QCompleter::*)(const QString &)>(&QCompleter::activated), [this](const QString &text) {
+        ui->folderView->selectionModel()->clearSelection();
+        selectFilePath(directoryPath_.child(text.toLocal8Bit().constData()));
+    });
+    // select typed paths if it they exist
+    connect(ui->fileName, &QLineEdit::textEdited, [this](const QString& text) {
+        ui->folderView->selectionModel()->clearSelection();
+        if(text.isEmpty()) {
+            updateAcceptButtonState();
+            updateSaveButtonText(false);
+        }
+        else {
+            bool selected(false);
+            QStringList parsedNames = parseNames();
+            for(auto& name: parsedNames) {
+                if(selectFilePath(directoryPath_.child(name.toLocal8Bit().constData()))) {
+                    selected = true;
+                }
+            }
+            if(!selected) { // update "accept" button because onSelectionChanged isn't called
+                ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(acceptMode_ != QFileDialog::AcceptOpen);
+                updateSaveButtonText(false);
+            }
+        }
     });
     // update selection mode for the view
     updateSelectionMode();
@@ -107,15 +129,52 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     ui->splitter->setSizes(sizes);
 
     // browse to the directory
-    if(path.isValid()) {
+    if(path.isValid() && QFileInfo(path.toString().get()).isDir()) {
         setDirectoryPath(path);
-        directoryPath_ = std::move(path);
     }
+    else {
+        setDirectoryPath(FilePath::homeDir());
+    }
+
     ui->fileName->setFocus();
 }
 
 FileDialog::~FileDialog() {
     freeFolder();
+}
+
+
+QStringList FileDialog::parseNames() const {
+    // parse the file names from the text entry
+    QStringList parsedNames;
+    auto fileNames = ui->fileName->text();
+    if(!fileNames.isEmpty()) {
+        // check if there are multiple file names (containing ")
+        auto firstQuote = fileNames.indexOf('\"');
+        auto lastQuote = fileNames.lastIndexOf('\"');
+        if(firstQuote != -1 && lastQuote != -1) {
+           // split the names
+            QRegExp sep{"\"\\s+\""};  // separated with " "
+            parsedNames = fileNames.mid(firstQuote + 1, lastQuote - firstQuote - 1).split(sep);
+        }
+        else {
+            parsedNames << fileNames;
+        }
+    }
+    return parsedNames;
+}
+
+std::shared_ptr<const Fm::FileInfo> FileDialog::firstSelectedDir() const {
+    std::shared_ptr<const Fm::FileInfo> selectedFolder = nullptr;
+    auto list = ui->folderView->selectedFiles();
+    for(auto it = list.cbegin(); it != list.cend(); ++it) {
+        auto& item = *it;
+        if(item->isDir()) {
+            selectedFolder = item;
+            break;
+        }
+    }
+    return selectedFolder;
 }
 
 void FileDialog::accept() {
@@ -136,15 +195,8 @@ void FileDialog::accept() {
                 selectedFolder = file;
             }
         }
-        if(!selectedFolder) { // find the first selected folder
-            auto list = ui->folderView->selectedFiles();
-            for(auto it = list.cbegin(); it != list.cend(); ++it) {
-                auto& item = *it;
-                if(item->isDir()) {
-                    selectedFolder = item;
-                    break;
-                }
-            }
+        if(!selectedFolder) {
+            selectedFolder = firstSelectedDir();
         }
         if(selectedFolder) {
             setDirectoryPath(selectedFolder->path());
@@ -152,10 +204,8 @@ void FileDialog::accept() {
         }
     }
 
-    // parse the file names from the text entry
-    QStringList parsedNames;
-    auto fileNames = ui->fileName->text();
-    if(fileNames.isEmpty()) {
+    QStringList parsedNames = parseNames();
+    if(parsedNames.isEmpty()) {
         // when selecting a dir and the name is not provided, just select current dir in the view
         if(fileMode_ == QFileDialog::Directory) {
             selectedFiles_.append(directory());
@@ -166,39 +216,29 @@ void FileDialog::accept() {
         }
     }
     else {
-        // check if there are multiple file names (containing ")
-        auto firstQuote = fileNames.indexOf('\"');
-        auto lastQuote = fileNames.lastIndexOf('\"');
-        if(firstQuote != -1 && lastQuote != -1) {
-            // split the names
-            QRegExp sep{"\"\\s+\""};  // separated with " "
-            parsedNames = fileNames.mid(firstQuote + 1, lastQuote - firstQuote - 1).split(sep);
-        }
-        else {
-            if(fileMode_ != QFileDialog::Directory) {
-                auto childPath = directoryPath_.child(fileNames.toLocal8Bit().constData());
-                QFileInfo info = QFileInfo(childPath.toString().get());
-                if(info.exists()) {
-                    // if the typed name belongs to a (nonselected) directory, chdir into it
-                    if(info.isDir()) {
-                        setDirectoryPath(childPath);
+        if(fileMode_ != QFileDialog::Directory) {
+            auto firstName = parsedNames.at(0);
+            auto childPath = directoryPath_.child(firstName.toLocal8Bit().constData());
+            QFileInfo info = QFileInfo(childPath.toString().get());
+            if(info.exists()) {
+                // if the typed name belongs to a (nonselected) directory, chdir into it
+                if(info.isDir()) {
+                    setDirectoryPath(childPath);
+                    return;
+                }
+                // overwrite prompt (as in QFileDialog::accept)
+                if(fileMode_ == QFileDialog::AnyFile
+                   && acceptMode_ != QFileDialog::AcceptOpen
+                   && confirmOverwrite_) {
+                       if (QMessageBox::warning(this, windowTitle(),
+                                                tr("%1 already exists.\nDo you want to replace it?")
+                                                .arg(firstName),
+                                                QMessageBox::Yes | QMessageBox::No, QMessageBox::No)
+                               == QMessageBox::No) {
                         return;
-                    }
-                    // overwrite prompt (as in QFileDialog::accept)
-                    if(fileMode_ == QFileDialog::AnyFile
-                       && acceptMode_ != QFileDialog::AcceptOpen
-                       && confirmOverwrite_) {
-                           if (QMessageBox::warning(this, windowTitle(),
-                                                    tr("%1 already exists.\nDo you want to replace it?")
-                                                    .arg(fileNames),
-                                                    QMessageBox::Yes | QMessageBox::No, QMessageBox::No)
-                                   == QMessageBox::No) {
-                            return;
-                        }
                     }
                 }
             }
-            parsedNames << fileNames;
         }
 
         // get full paths for the filenames and convert them to URLs
@@ -230,9 +270,7 @@ void FileDialog::reject() {
 
 void FileDialog::setDirectory(const QUrl &directory) {
     auto path = Fm::FilePath::fromUri(directory.toEncoded().constData());
-    if(path.isValid()) {
-        setDirectoryPath(path);
-    }
+    setDirectoryPath(path);
 }
 
 // interface for QPlatformFileDialogHelper
@@ -245,7 +283,10 @@ void FileDialog::freeFolder() {
 }
 
 void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath) {
-    if(directoryPath_ == directory) {
+    if(!directory.isValid()
+       || directoryPath_ == directory
+       || !QFileInfo(directory.toString().get()).isDir()) {
+        updateAcceptButtonState(); // FIXME: is this needed?
         return;
     }
     ui->location->setPath(directory);
@@ -271,25 +312,32 @@ void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath) {
 
     // select the path if valid
     if(selectedPath.isValid()) {
-        connect(folder_.get(), &Fm::Folder::finishLoading, [this, selectedPath]() {
-            selectFilePath(selectedPath);
-        });
+        if(folder_->isLoaded()) {
+            selectFilePathWithDelay(selectedPath);
+        }
+        else {
+            connect(folder_.get(), &Fm::Folder::finishLoading, [this, selectedPath]() {
+                selectFilePathWithDelay(selectedPath);
+            });
+        }
     }
+    else {
+        updateAcceptButtonState();
+        updateSaveButtonText(false);
+    }
+
 }
 
-void FileDialog::selectFilePath(const FilePath &path, bool singleSelection) {
+bool FileDialog::selectFilePath(const FilePath &path) {
     auto idx = proxyModel_->indexFromPath(path);
     if(!idx.isValid()) {
-        // just set file name
-        ui->fileName->setText(path.baseName().get());
-        return;
+        return false;
     }
 
     // FIXME: add a method to Fm::FolderView to select files
 
     // FIXME: need to add this for detailed list
-    QItemSelectionModel::SelectionFlags flags = singleSelection ? QItemSelectionModel::ClearAndSelect
-                                                                : QItemSelectionModel::Select;
+    QItemSelectionModel::SelectionFlags flags = QItemSelectionModel::Select;
     if(viewMode_ == FolderView::DetailedListMode) {
         flags |= QItemSelectionModel::Rows;
     }
@@ -298,6 +346,21 @@ void FileDialog::selectFilePath(const FilePath &path, bool singleSelection) {
     selModel->setCurrentIndex(idx, QItemSelectionModel::Current);
     QTimer::singleShot(0, [this, idx]() {
         ui->folderView->childView()->scrollTo(idx, QAbstractItemView::PositionAtCenter);
+    });
+    return true;
+}
+
+void FileDialog::selectFilePathWithDelay(const FilePath &path) {
+    QTimer::singleShot(0, [this, path]() {
+        if(acceptMode_ == QFileDialog::AcceptSave) {
+            // with a save dialog, always put the base name in line-edit, regardless of selection
+            ui->fileName->setText(path.baseName().get());
+        }
+        // update "accept" button because there might be no selection later
+        updateAcceptButtonState();
+        updateSaveButtonText(false);
+        // try to select path
+        selectFilePath(path);
     });
 }
 
@@ -317,9 +380,12 @@ void FileDialog::onCurrentRowChanged(const QModelIndex &current, const QModelInd
 void FileDialog::onSelectionChanged(const QItemSelection& /*selected*/, const QItemSelection& /*deselected*/) {
     auto selFiles = ui->folderView->selectedFiles();
     if(selFiles.empty()) {
+        updateAcceptButtonState();
+        updateSaveButtonText(false);
         return;
     }
     bool multiple(selFiles.size() > 1);
+    bool hasDir(false);
     QString fileNames;
     for(auto& fileInfo: selFiles) {
         if(fileMode_ == QFileDialog::Directory) {
@@ -330,6 +396,7 @@ void FileDialog::onSelectionChanged(const QItemSelection& /*selected*/, const QI
         }
         else if(fileInfo->isDir()) {
             // if we want to select files, ignore selected dirs
+            hasDir = true;
             continue;
         }
 
@@ -351,22 +418,24 @@ void FileDialog::onSelectionChanged(const QItemSelection& /*selected*/, const QI
             break;
         }
     }
-    // change the text only if there is a name
-    if(!fileNames.isEmpty()) {
+    // change the text only if there is a name and also
+    // the selection isn't changed by typing inside name line-edit
+    if(!fileNames.isEmpty() && !ui->fileName->hasFocus()) {
         ui->fileName->setText(fileNames);
     }
+    updateSaveButtonText(hasDir);
+    updateAcceptButtonState();
 }
 
 void FileDialog::onFileClicked(int type, const std::shared_ptr<const FileInfo> &file) {
     bool canAccept = false;
     if(file && type == FolderView::ActivatedClick) {
         if(file->isDir()) {
-            // chdir into the activated dir
-            setDirectoryPath(file->path());
-
             if(fileMode_ == QFileDialog::Directory) {
                 ui->fileName->clear();
             }
+            // chdir into the activated dir
+            setDirectoryPath(file->path());
         }
         else if(fileMode_ != QFileDialog::Directory) {
             // select file(s) and a file item is activated
@@ -491,9 +560,7 @@ void FileDialog::selectFile(const QUrl& filename) {
         setDirectoryPath(parent, path);
     }
     else {
-        QTimer::singleShot(0, [this, path]() {
-            selectFilePath(path);
-        });
+        selectFilePathWithDelay(path);
     }
 }
 
@@ -576,10 +643,10 @@ void FileDialog::setFileMode(QFileDialog::FileMode mode) {
 void FileDialog::setAcceptMode(QFileDialog::AcceptMode mode) {
     acceptMode_ = mode;
     if(acceptMode_ == QFileDialog::AcceptOpen) {
-        setLabelText(QFileDialog::Accept, tr("&Open"));
+        setLabelTextControl(QFileDialog::Accept, tr("&Open"));
     }
     else if(acceptMode_ == QFileDialog::AcceptSave) {
-        setLabelText(QFileDialog::Accept, tr("&Save"));
+        setLabelTextControl(QFileDialog::Accept, tr("&Save"));
     }
 }
 
@@ -617,8 +684,7 @@ void FileDialog::setMimeTypeFilters(const QStringList& filters) {
     setNameFilters(nameFilters);
 }
 
-
-void FileDialog::setLabelText(QFileDialog::DialogLabel label, const QString& text) {
+void FileDialog::setLabelTextControl(QFileDialog::DialogLabel label, const QString& text) {
     switch(label) {
     case QFileDialog::LookIn:
         ui->lookInLabel->setText(text);
@@ -638,6 +704,11 @@ void FileDialog::setLabelText(QFileDialog::DialogLabel label, const QString& tex
     default:
         break;
     }
+}
+
+void FileDialog::setLabelText(QFileDialog::DialogLabel label, const QString& text) {
+    setLabelExplicitly(label, text);
+    setLabelTextControl(label, text);
 }
 
 QString FileDialog::labelText(QFileDialog::DialogLabel label) const {
@@ -664,6 +735,91 @@ QString FileDialog::labelText(QFileDialog::DialogLabel label) const {
     return text;
 }
 
+void FileDialog::updateSaveButtonText(bool saveOnFolder) {
+    if(fileMode_ != QFileDialog::Directory
+       && acceptMode_ == QFileDialog::AcceptSave) {
+        // change save button to open button when there is a dir with the save name,
+        // otherwise restore it to a save button again
+        if(!saveOnFolder) {
+            QStringList parsedNames = parseNames();
+            if(!parsedNames.isEmpty()) {
+                QString curDir(directoryPath_.toString().get());
+                curDir += QLatin1String("/");
+                if(QFileInfo(curDir + parsedNames.at(0)).isDir()) {
+                    saveOnFolder = true;
+                }
+            }
+        }
+        if(saveOnFolder) {
+            setLabelTextControl(QFileDialog::Accept, tr("&Open"));
+        }
+        else {
+            // restore save button text appropriately
+            if(isLabelExplicitlySet(QFileDialog::Accept)) {
+                setLabelTextControl(QFileDialog::Accept, explicitLabels_[QFileDialog::Accept]);
+            }
+            else {
+                setLabelTextControl(QFileDialog::Accept, tr("&Save"));
+            }
+        }
+    }
+}
+
+void FileDialog::updateAcceptButtonState() {
+    bool enable(false);
+    if(fileMode_ != QFileDialog::Directory) {
+        if(acceptMode_ == QFileDialog::AcceptOpen)
+        {
+            // enable "open" button when there is a file whose name is listed
+            QStringList parsedNames = parseNames();
+            QString curDir(directoryPath_.toString().get());
+            curDir += QLatin1String("/");
+            for(auto& name: parsedNames) {
+                if(QFileInfo(curDir + name).exists()) {
+                    enable = true;
+                    break;
+                }
+            }
+            if(!enable && firstSelectedDir()) {
+                // enable "open" button if a dir is selected
+                enable = true;
+            }
+        }
+        else if(acceptMode_ == QFileDialog::AcceptSave) {
+            // enable "save" button when there is a name or a dir selection
+            if(!ui->fileName->text().isEmpty()) {
+                enable = true;
+            }
+            else if(firstSelectedDir()) {
+                enable = true;
+            }
+        }
+    }
+    else if(fileMode_ == QFileDialog::Directory
+            && acceptMode_ != QFileDialog::AcceptSave) {
+        QStringList parsedNames = parseNames();
+        if(parsedNames.isEmpty()) {
+            // in the dir mode, the current dir will be opened
+            // if no dir is selected and the name list is empty
+            enable = true;
+        }
+        else {
+            QString curDir(directoryPath_.toString().get());
+            curDir += QLatin1String("/");
+            for(auto& name: parsedNames) {
+                if(QFileInfo(curDir + name).isDir()) {
+                    // the name of a dir is listed
+                    enable = true;
+                    break;
+                }
+            }
+        }
+    }
+    else {
+        enable = true;
+    }
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(enable);
+}
 
 bool FileDialog::FileDialogFilter::filterAcceptsRow(const ProxyFolderModel* /*model*/, const std::shared_ptr<const FileInfo> &info) const {
     if(dlg_->fileMode_ == QFileDialog::Directory) {
@@ -692,7 +848,7 @@ bool FileDialog::FileDialogFilter::filterAcceptsRow(const ProxyFolderModel* /*mo
 }
 
 void FileDialog::FileDialogFilter::update() {
-    // update filename pattersn
+    // update filename patterns
     patterns_.clear();
     QString nameFilter = dlg_->currentNameFilter_;
     // if the filter contains (...), only get the part between the parenthesis.

@@ -172,7 +172,7 @@ QModelIndex ProxyFolderModel::indexFromPath(const FilePath &path) const {
     for(int row = 0; row < n_rows; ++row) {
         auto idx = index(row, FolderModel::ColumnFileName, QModelIndex());
         auto fi = fileInfoFromIndex(idx);
-        if(fi->path() == path) { // found the item
+        if(fi && fi->path() == path) { // found the item
             ret = idx;
             break;
         }
