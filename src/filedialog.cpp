@@ -642,6 +642,10 @@ void FileDialog::setFileMode(QFileDialog::FileMode mode) {
 
 void FileDialog::setAcceptMode(QFileDialog::AcceptMode mode) {
     acceptMode_ = mode;
+    // set "open/save" label if it isn't set explicitly
+    if(isLabelExplicitlySet(QFileDialog::Accept)) {
+        return;
+    }
     if(acceptMode_ == QFileDialog::AcceptOpen) {
         setLabelTextControl(QFileDialog::Accept, tr("&Open"));
     }
