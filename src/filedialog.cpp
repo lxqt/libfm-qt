@@ -121,12 +121,8 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
 
     setViewMode(viewMode_);
 
-    // setup the splitter
-    // FIXME: make these sizes configurable
-    QList<int> sizes;
-    sizes.append(200);
-    sizes.append(320);
-    ui->splitter->setSizes(sizes);
+    // set the default splitter position
+    setSplitterPos(200);
 
     // browse to the directory
     if(path.isValid() && QFileInfo(path.toString().get()).isDir()) {
@@ -143,22 +139,38 @@ FileDialog::~FileDialog() {
     freeFolder();
 }
 
+int FileDialog::splitterPos() const {
+    return ui->splitter->sizes().at(0);
+}
 
+void FileDialog::setSplitterPos(int pos) {
+    QList<int> sizes;
+    sizes.append(qMax(pos, 0));
+    sizes.append(320);
+    ui->splitter->setSizes(sizes);
+}
+
+// This should always be used instead of getting text directly from the entry.
 QStringList FileDialog::parseNames() const {
     // parse the file names from the text entry
     QStringList parsedNames;
     auto fileNames = ui->fileName->text();
     if(!fileNames.isEmpty()) {
-        // check if there are multiple file names (containing ")
-        auto firstQuote = fileNames.indexOf('\"');
-        auto lastQuote = fileNames.lastIndexOf('\"');
-        if(firstQuote != -1 && lastQuote != -1) {
+        /* check if there are multiple file names (containing "),
+           considering the fact that inside quotes were escaped by \ */
+        auto firstQuote = fileNames.indexOf(QLatin1Char('\"'));
+        auto lastQuote = fileNames.lastIndexOf(QLatin1Char('\"'));
+        if(firstQuote != -1 && lastQuote != -1
+           && firstQuote != lastQuote
+           && (firstQuote == 0 || fileNames.at(firstQuote - 1) != QLatin1Char('\\'))
+           && fileNames.at(lastQuote - 1) != QLatin1Char('\\')) {
            // split the names
             QRegExp sep{"\"\\s+\""};  // separated with " "
             parsedNames = fileNames.mid(firstQuote + 1, lastQuote - firstQuote - 1).split(sep);
+            parsedNames.replaceInStrings(QLatin1String("\\\""), QLatin1String("\""));
         }
         else {
-            parsedNames << fileNames;
+            parsedNames << fileNames.replace(QLatin1String("\\\""), QLatin1String("\""));
         }
     }
     return parsedNames;
@@ -406,15 +418,17 @@ void FileDialog::onSelectionChanged(const QItemSelection& /*selected*/, const QI
             if(!fileNames.isEmpty()) {
                 fileNames += ' ';
             }
-            // FIXME: use a more reliable way to quote file names.
-            // otherwise names with embedded " will break.
-            fileNames += '\"';
-            fileNames += baseName.get();
-            fileNames += '\"';
+            fileNames += QLatin1Char('\"');
+            // escape inside quotes with \ to distinguish between them
+            // and the quotes used for separating file names from each other
+            QString name(baseName.get());
+            fileNames += name.replace(QLatin1String("\""), QLatin1String("\\\""));
+            fileNames += QLatin1Char('\"');
         }
         else {
             // support single selection only
-            fileNames = baseName.get();
+            QString name(baseName.get());
+            fileNames = name.replace(QLatin1String("\""), QLatin1String("\\\""));
             break;
         }
     }
@@ -748,7 +762,7 @@ void FileDialog::updateSaveButtonText(bool saveOnFolder) {
             QStringList parsedNames = parseNames();
             if(!parsedNames.isEmpty()) {
                 QString curDir(directoryPath_.toString().get());
-                curDir += QLatin1String("/");
+                curDir += QDir::separator();
                 if(QFileInfo(curDir + parsedNames.at(0)).isDir()) {
                     saveOnFolder = true;
                 }
@@ -777,7 +791,7 @@ void FileDialog::updateAcceptButtonState() {
             // enable "open" button when there is a file whose name is listed
             QStringList parsedNames = parseNames();
             QString curDir(directoryPath_.toString().get());
-            curDir += QLatin1String("/");
+            curDir += QDir::separator();
             for(auto& name: parsedNames) {
                 if(QFileInfo(curDir + name).exists()) {
                     enable = true;
@@ -809,7 +823,7 @@ void FileDialog::updateAcceptButtonState() {
         }
         else {
             QString curDir(directoryPath_.toString().get());
-            curDir += QLatin1String("/");
+            curDir += QDir::separator();
             for(auto& name: parsedNames) {
                 if(QFileInfo(curDir + name).isDir()) {
                     // the name of a dir is listed

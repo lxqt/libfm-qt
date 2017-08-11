@@ -114,6 +114,9 @@ public:
     void setLabelText(QFileDialog::DialogLabel label, const QString &text);
     QString labelText(QFileDialog::DialogLabel label) const;
 
+    int splitterPos() const;
+    void setSplitterPos(int pos);
+
 private Q_SLOTS:
     void onCurrentRowChanged(const QModelIndex &current, const QModelIndex& /*previous*/);
     void onSelectionChanged(const QItemSelection& /*selected*/, const QItemSelection& /*deselected*/);
@@ -142,7 +145,6 @@ private:
 
         FileDialog* dlg_;
         std::vector<QRegExp> patterns_;
-
     };
 
     bool isLabelExplicitlySet(QFileDialog::DialogLabel label) const {
