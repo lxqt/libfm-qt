@@ -103,6 +103,22 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
 
     // setup toolbar buttons
     auto toolbar = new QToolBar(this);
+    // back button
+    backAction_ = toolbar->addAction(QIcon::fromTheme("go-previous"), tr("Go Back"));
+    backAction_->setShortcut(QKeySequence(tr("Alt+Left", "Go Back")));
+    connect(backAction_, &QAction::triggered, [this]() {
+        history_.backward();
+        setDirectoryPath(history_.currentPath(), FilePath(), false);
+    });
+    // forward button
+    forwardAction_ = toolbar->addAction(QIcon::fromTheme("go-next"), tr("Go Forward"));
+    forwardAction_->setShortcut(QKeySequence(tr("Alt+Right", "Go Forward")));
+    connect(forwardAction_, &QAction::triggered, [this]() {
+        history_.forward();
+        setDirectoryPath(history_.currentPath(), FilePath(), false);
+    });
+    toolbar->addSeparator();
+    // reload button
     auto reloadAction = toolbar->addAction(QIcon::fromTheme("view-refresh"), tr("Reload"));
     reloadAction->setShortcut(QKeySequence(tr("F5", "Reload")));
     connect(reloadAction, &QAction::triggered, [this]() {
@@ -112,11 +128,11 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
             folder_->reload();
         } // FIXME: reselect paths after reloading
     });
-
+    // new folder button
     auto newFolderAction = toolbar->addAction(QIcon::fromTheme("folder-new"), tr("Create Folder"));
     connect(newFolderAction, &QAction::triggered, this, &FileDialog::onNewFolder);
     toolbar->addSeparator();
-
+    // view buttons
     auto viewModeGroup = new QActionGroup(this);
     iconViewAction_ = toolbar->addAction(style()->standardIcon(QStyle::SP_FileDialogContentsView), tr("Icon View"));
     iconViewAction_->setCheckable(true);
@@ -146,7 +162,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         setDirectoryPath(path);
     }
     else {
-        setDirectoryPath(FilePath::homeDir());
+        goHome();
     }
 
     ui->fileName->setFocus();
@@ -307,19 +323,26 @@ void FileDialog::setDirectory(const QUrl &directory) {
 void FileDialog::freeFolder() {
     if(folder_) {
         QObject::disconnect(folderConnection_); // folderConnection_ can be invalid
+        disconnect(folder_.get(), nullptr, this, nullptr);
         folder_ = nullptr;
     }
 }
 
-void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath) {
-    if(!directory.isValid()
-       || directoryPath_ == directory
-       || !QFileInfo(directory.toString().get()).isDir()) {
+void FileDialog::goHome() {
+    setDirectoryPath(FilePath::homeDir());
+}
+
+void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath, bool addHistory) {
+    if(!directory.isValid() || directoryPath_ == directory) {
         updateAcceptButtonState(); // FIXME: is this needed?
         return;
     }
-    ui->location->setPath(directory);
-    ui->sidePane->chdir(directory);
+    if(!QFileInfo(directory.toString().get()).isDir()) {
+        QMessageBox::critical(this, tr("Error"), tr("No such directory:\n\"%1\"").arg(directory.toString().get()));
+        ui->location->setPath(directoryPath_); // toggle the previous path button
+        updateAcceptButtonState();
+        return;
+    }
 
    if(folder_) {
         if(folderModel_) {
@@ -331,9 +354,22 @@ void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath) {
    }
 
     directoryPath_ = std::move(directory);
+
+    ui->location->setPath(directoryPath_);
+    ui->sidePane->chdir(directoryPath_);
+    if(addHistory) {
+        history_.add(directoryPath_);
+    }
+    backAction_->setEnabled(history_.canBackward());
+    forwardAction_->setEnabled(history_.canForward());
+
     folder_ = Fm::Folder::fromPath(directoryPath_);
     folderModel_ = CachedFolderModel::modelFromFolder(folder_);
     proxyModel_->setSourceModel(folderModel_);
+
+    // no lambda in these connections for easy disconnection
+    connect(folder_.get(), &Fm::Folder::removed, this, &FileDialog::goHome);
+    connect(folder_.get(), &Fm::Folder::unmount, this, &FileDialog::goHome);
 
     QUrl uri = QUrl::fromEncoded(directory.uri().get());
     Q_EMIT directoryEntered(uri);

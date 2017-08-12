@@ -9,6 +9,7 @@
 #include <vector>
 #include <memory>
 #include "folderview.h"
+#include "browsehistory.h"
 
 namespace Ui {
 class FileDialog;
@@ -127,6 +128,7 @@ private Q_SLOTS:
     void onFileClicked(int type, const std::shared_ptr<const Fm::FileInfo>& file);
     void onNewFolder();
     void onViewModeToggled(bool active);
+    void goHome();
 
 Q_SIGNALS:
     // emitted when the dialog is accepted and some files are selected
@@ -164,7 +166,7 @@ private:
     std::shared_ptr<const Fm::FileInfo> firstSelectedDir() const;
     bool selectFilePath(const FilePath& path);
     void selectFilePathWithDelay(const FilePath& path);
-    void setDirectoryPath(FilePath directory, FilePath selectedPath = FilePath());
+    void setDirectoryPath(FilePath directory, FilePath selectedPath = FilePath(), bool addHistory = true);
     void updateSelectionMode();
     void doAccept();
     void onFileInfoJobFinished();
@@ -177,6 +179,7 @@ private:
     ProxyFolderModel* proxyModel_;
     FilePath directoryPath_;
     std::shared_ptr<Fm::Folder> folder_;
+    Fm::BrowseHistory history_;
 
     QFileDialog::Options options_;
     QDir::Filters filters_;
@@ -195,6 +198,9 @@ private:
     QAction* thumbnailViewAction_;
     QAction* compactViewAction_;
     QAction* detailedViewAction_;
+    // back and forward buttons:
+    QAction* backAction_;
+    QAction* forwardAction_;
     // dialog labels that can be set explicitly:
     QString explicitLabels_[5];
     // needed for disconnecting Fm::Folder signal from lambda:
