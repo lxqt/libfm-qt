@@ -23,6 +23,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     ui{new Ui::FileDialog()},
     folderModel_{nullptr},
     proxyModel_{nullptr},
+    folder_{nullptr},
     options_{0},
     viewMode_{FolderView::DetailedListMode},
     fileMode_{QFileDialog::AnyFile},
@@ -306,7 +307,6 @@ void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath) {
 
    if(folder_) {
         if(folderModel_) {
-            //stopWatchingNewFiles();
             proxyModel_->setSourceModel(nullptr);
             folderModel_->unref(); // unref the cached model
             folderModel_ = nullptr;
