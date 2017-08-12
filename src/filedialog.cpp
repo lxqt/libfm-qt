@@ -12,6 +12,7 @@
 #include <QMessageBox>
 #include <QToolBar>
 #include <QCompleter>
+#include <QShortcut>
 #include <QTimer>
 #include <QDebug>
 
@@ -95,8 +96,23 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     ui->fileTypeCombo->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     ui->fileTypeCombo->setCurrentIndex(0);
 
+    QShortcut* shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_H), this);
+    connect(shortcut, &QShortcut::activated, [this]() {
+        proxyModel_->setShowHidden(!proxyModel_->showHidden());
+    });
+
     // setup toolbar buttons
     auto toolbar = new QToolBar(this);
+    auto reloadAction = toolbar->addAction(QIcon::fromTheme("view-refresh"), tr("Reload"));
+    reloadAction->setShortcut(QKeySequence(tr("F5", "Reload")));
+    connect(reloadAction, &QAction::triggered, [this]() {
+        if(folder_) {
+            QObject::disconnect(folderConnection_);
+            ui->folderView->selectionModel()->clear();
+            folder_->reload();
+        } // FIXME: reselect paths after reloading
+    });
+
     auto newFolderAction = toolbar->addAction(QIcon::fromTheme("folder-new"), tr("Create Folder"));
     connect(newFolderAction, &QAction::triggered, this, &FileDialog::onNewFolder);
     toolbar->addSeparator();
@@ -290,7 +306,7 @@ void FileDialog::setDirectory(const QUrl &directory) {
 
 void FileDialog::freeFolder() {
     if(folder_) {
-        disconnect(folder_.get(), nullptr, this, nullptr); // disconnect from all signals
+        QObject::disconnect(folderConnection_); // folderConnection_ can be invalid
         folder_ = nullptr;
     }
 }
@@ -328,7 +344,7 @@ void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath) {
             selectFilePathWithDelay(selectedPath);
         }
         else {
-            connect(folder_.get(), &Fm::Folder::finishLoading, [this, selectedPath]() {
+            folderConnection_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, [this, selectedPath]() {
                 selectFilePathWithDelay(selectedPath);
             });
         }
@@ -582,7 +598,6 @@ QList<QUrl> FileDialog::selectedFiles() {
     return selectedFiles_;
 }
 
-
 void FileDialog::selectNameFilter(const QString& filter) {
     if(filter != currentNameFilter_) {
         currentNameFilter_ = filter;
@@ -609,7 +624,6 @@ QString FileDialog::selectedMimeTypeFilter() const {
     }
     return filter;
 }
-
 
 bool FileDialog::isSupportedUrl(const QUrl& url) {
     auto scheme = url.scheme().toLocal8Bit();

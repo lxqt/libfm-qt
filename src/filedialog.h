@@ -190,13 +190,15 @@ private:
     FileDialogFilter modelFilter_;
     QString currentNameFilter_;
     QList<QUrl> selectedFiles_;
-    // view modes
+    // view modes:
     QAction* iconViewAction_;
     QAction* thumbnailViewAction_;
     QAction* compactViewAction_;
     QAction* detailedViewAction_;
-    // dialog labels that can be explicitly set
+    // dialog labels that can be set explicitly:
     QString explicitLabels_[5];
+    // needed for disconnecting Fm::Folder signal from lambda:
+    QMetaObject::Connection folderConnection_;
 };
 
 
