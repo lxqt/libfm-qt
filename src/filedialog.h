@@ -55,6 +55,10 @@ public:
         return currentNameFilter_;
     }
 
+    void selectMimeTypeFilter(const QString &filter);
+
+    QString selectedMimeTypeFilter() const;
+
     bool isSupportedUrl(const QUrl &url);
 
     // options

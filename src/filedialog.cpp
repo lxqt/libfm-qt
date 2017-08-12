@@ -594,6 +594,22 @@ void FileDialog::selectNameFilter(const QString& filter) {
     }
 }
 
+void FileDialog::selectMimeTypeFilter(const QString &filter) {
+    auto idx = mimeTypeFilters_.indexOf(filter);
+    if(idx != -1) {
+        ui->fileTypeCombo->setCurrentIndex(idx);
+    }
+}
+
+QString FileDialog::selectedMimeTypeFilter() const {
+    QString filter;
+    auto idx = mimeTypeFilters_.indexOf(filter);
+    if(idx >= 0 && idx < mimeTypeFilters_.size()) {
+        filter = mimeTypeFilters_[idx];
+    }
+    return filter;
+}
+
 
 bool FileDialog::isSupportedUrl(const QUrl& url) {
     auto scheme = url.scheme().toLocal8Bit();
