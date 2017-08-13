@@ -122,11 +122,21 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     auto reloadAction = toolbar->addAction(QIcon::fromTheme("view-refresh"), tr("Reload"));
     reloadAction->setShortcut(QKeySequence(tr("F5", "Reload")));
     connect(reloadAction, &QAction::triggered, [this]() {
-        if(folder_) {
-            QObject::disconnect(folderConnection_);
+        if(folder_ && folder_->isLoaded()) {
+            QObject::disconnect(lambdaConnection_);
+            auto selFiles = ui->folderView->selectedFiles();
+            // remove the focus from the text entry for its text to be changed if needed
+            ui->folderView->setFocus();
             ui->folderView->selectionModel()->clear();
             folder_->reload();
-        } // FIXME: reselect paths after reloading
+            // reselect files after reloading
+            if(!selFiles.empty()
+               && selFiles.size() <= 50) { // otherwise senseless and CPU-intensive
+                lambdaConnection_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, [this, selFiles]() {
+                    selectFilesOnReload(selFiles);
+                });
+            }
+        }
     });
     // new folder button
     auto newFolderAction = toolbar->addAction(QIcon::fromTheme("folder-new"), tr("Create Folder"));
@@ -322,7 +332,7 @@ void FileDialog::setDirectory(const QUrl &directory) {
 
 void FileDialog::freeFolder() {
     if(folder_) {
-        QObject::disconnect(folderConnection_); // folderConnection_ can be invalid
+        QObject::disconnect(lambdaConnection_); // lambdaConnection_ can be invalid
         disconnect(folder_.get(), nullptr, this, nullptr);
         folder_ = nullptr;
     }
@@ -380,7 +390,7 @@ void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath, boo
             selectFilePathWithDelay(selectedPath);
         }
         else {
-            folderConnection_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, [this, selectedPath]() {
+            lambdaConnection_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, [this, selectedPath]() {
                 selectFilePathWithDelay(selectedPath);
             });
         }
@@ -425,6 +435,15 @@ void FileDialog::selectFilePathWithDelay(const FilePath &path) {
         updateSaveButtonText(false);
         // try to select path
         selectFilePath(path);
+    });
+}
+
+void FileDialog::selectFilesOnReload(const Fm::FileInfoList infos) {
+    QObject::disconnect(lambdaConnection_);
+    QTimer::singleShot(0, [this, infos]() {
+        for(auto& fileInfo: infos) {
+            selectFilePath(fileInfo->path());
+        }
     });
 }
 
