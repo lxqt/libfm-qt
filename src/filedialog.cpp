@@ -128,14 +128,14 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
             // remove the focus from the text entry for its text to be changed if needed
             ui->folderView->setFocus();
             ui->folderView->selectionModel()->clear();
-            folder_->reload();
-            // reselect files after reloading
+            // reselect files on reloading
             if(!selFiles.empty()
                && selFiles.size() <= 50) { // otherwise senseless and CPU-intensive
                 lambdaConnection_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, [this, selFiles]() {
                     selectFilesOnReload(selFiles);
                 });
             }
+            folder_->reload();
         }
     });
     // new folder button
@@ -438,7 +438,7 @@ void FileDialog::selectFilePathWithDelay(const FilePath &path) {
     });
 }
 
-void FileDialog::selectFilesOnReload(const Fm::FileInfoList infos) {
+void FileDialog::selectFilesOnReload(const Fm::FileInfoList& infos) {
     QObject::disconnect(lambdaConnection_);
     QTimer::singleShot(0, [this, infos]() {
         for(auto& fileInfo: infos) {
