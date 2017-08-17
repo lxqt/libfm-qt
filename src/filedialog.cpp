@@ -175,7 +175,8 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         goHome();
     }
 
-    ui->fileName->setFocus();
+    // focus the text entry on showing the dialog
+    QTimer::singleShot(0, ui->fileName, SLOT(setFocus()));
 }
 
 FileDialog::~FileDialog() {
