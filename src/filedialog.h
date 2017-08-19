@@ -164,7 +164,7 @@ private:
     void updateAcceptButtonState();
 
     std::shared_ptr<const Fm::FileInfo> firstSelectedDir() const;
-    bool selectFilePath(const FilePath& path);
+    void selectFilePath(const FilePath& path);
     void selectFilePathWithDelay(const FilePath& path);
     void selectFilesOnReload(const Fm::FileInfoList& infos);
     void setDirectoryPath(FilePath directory, FilePath selectedPath = FilePath(), bool addHistory = true);

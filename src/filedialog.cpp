@@ -65,25 +65,24 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         selectFilePath(directoryPath_.child(text.toLocal8Bit().constData()));
     });
     // select typed paths if it they exist
-    connect(ui->fileName, &QLineEdit::textEdited, [this](const QString& text) {
+    connect(ui->fileName, &QLineEdit::textEdited, [this](const QString& /*text*/) {
+        disconnect(ui->folderView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &FileDialog::onSelectionChanged);
         ui->folderView->selectionModel()->clearSelection();
-        if(text.isEmpty()) {
-            updateAcceptButtonState();
-            updateSaveButtonText(false);
-        }
-        else {
-            bool selected(false);
-            QStringList parsedNames = parseNames();
+        QStringList parsedNames = parseNames();
+        if(!parsedNames.isEmpty()) {
+            QString curDir(directoryPath_.toString().get());
+            curDir += QDir::separator();
             for(auto& name: parsedNames) {
-                if(selectFilePath(directoryPath_.child(name.toLocal8Bit().constData()))) {
-                    selected = true;
+                // when there's no file, checking for file existence is faster than
+                // ProxyFolderModel::indexFromPath(), which is called by selectFilePath()
+                if(QFileInfo(curDir + name).exists()) {
+                    selectFilePath(directoryPath_.child(name.toLocal8Bit().constData()));
                 }
             }
-            if(!selected) { // update "accept" button because onSelectionChanged isn't called
-                ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(acceptMode_ != QFileDialog::AcceptOpen);
-                updateSaveButtonText(false);
-            }
         }
+        updateAcceptButtonState();
+        updateSaveButtonText(false);
+        connect(ui->folderView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &FileDialog::onSelectionChanged);
     });
     // update selection mode for the view
     updateSelectionMode();
@@ -125,8 +124,6 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         if(folder_ && folder_->isLoaded()) {
             QObject::disconnect(lambdaConnection_);
             auto selFiles = ui->folderView->selectedFiles();
-            // remove the focus from the text entry for its text to be changed if needed
-            ui->folderView->setFocus();
             ui->folderView->selectionModel()->clear();
             // reselect files on reloading
             if(!selFiles.empty()
@@ -403,10 +400,10 @@ void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath, boo
 
 }
 
-bool FileDialog::selectFilePath(const FilePath &path) {
+void FileDialog::selectFilePath(const FilePath &path) {
     auto idx = proxyModel_->indexFromPath(path);
     if(!idx.isValid()) {
-        return false;
+        return;
     }
 
     // FIXME: add a method to Fm::FolderView to select files
@@ -422,7 +419,6 @@ bool FileDialog::selectFilePath(const FilePath &path) {
     QTimer::singleShot(0, [this, idx]() {
         ui->folderView->childView()->scrollTo(idx, QAbstractItemView::PositionAtCenter);
     });
-    return true;
 }
 
 void FileDialog::selectFilePathWithDelay(const FilePath &path) {
@@ -504,9 +500,8 @@ void FileDialog::onSelectionChanged(const QItemSelection& /*selected*/, const QI
             break;
         }
     }
-    // change the text only if there is a name and also
-    // the selection isn't changed by typing inside name line-edit
-    if(!fileNames.isEmpty() && !ui->fileName->hasFocus()) {
+    // put the selection list in the text entry
+    if(!fileNames.isEmpty()) {
         ui->fileName->setText(fileNames);
     }
     updateSaveButtonText(hasDir);
