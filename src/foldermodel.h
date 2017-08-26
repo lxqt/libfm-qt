@@ -86,6 +86,7 @@ public:
 
     std::shared_ptr<const Fm::FileInfo> fileInfoFromIndex(const QModelIndex& index) const;
     FolderModelItem* itemFromIndex(const QModelIndex& index) const;
+    QModelIndex indexFromFileInfo(const FileInfo* info);
     QImage thumbnailFromIndex(const QModelIndex& index, int size);
 
     void cacheThumbnails(int size);

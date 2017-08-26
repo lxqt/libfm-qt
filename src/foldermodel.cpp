@@ -519,5 +519,17 @@ QImage FolderModel::thumbnailFromIndex(const QModelIndex& index, int size) {
     return QImage();
 }
 
+QModelIndex FolderModel::indexFromFileInfo(const FileInfo *info) {
+    QModelIndex idx;
+    int rowCount = items.size();
+    for(int row = 0; row < rowCount; ++row) {
+        auto& item = items[row];
+        if(item.info.get() == info) {
+            idx = index(row, 0);
+        }
+    }
+    return idx;
+}
+
 
 } // namespace Fm
