@@ -253,7 +253,13 @@ void FileDialog::accept() {
     if(parsedNames.isEmpty()) {
         // when selecting a dir and the name is not provided, just select current dir in the view
         if(fileMode_ == QFileDialog::Directory) {
-            selectedFiles_.append(directory());
+            auto localPath = directoryPath_.localPath();
+            if(localPath && localPath.get()) {
+                selectedFiles_.append(QUrl::fromLocalFile(localPath.get()));
+            }
+            else {
+                selectedFiles_.append(directory());
+            }
         }
         else {
             QMessageBox::critical(this, tr("Error"), tr("Please select a file"));
@@ -294,7 +300,14 @@ void FileDialog::accept() {
                 name += defaultSuffix_;
             }
             auto fullPath = directoryPath_.child(name.toLocal8Bit().constData());
-            selectedFiles_.append(QUrl::fromEncoded(fullPath.uri().get()));
+            auto localPath = fullPath.localPath();
+            /* add the local path if it exists; otherwise, add the uri */
+            if(localPath && localPath.get()) {
+                selectedFiles_.append(QUrl::fromLocalFile(localPath.get()));
+            }
+            else {
+                selectedFiles_.append(QUrl::fromEncoded(fullPath.uri().get()));
+            }
         }
     }
 
