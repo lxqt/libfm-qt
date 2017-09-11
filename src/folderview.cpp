@@ -562,6 +562,7 @@ void FolderView::setViewMode(ViewMode _mode) {
     mode = _mode;
     QSize iconSize = iconSize_[mode - FirstViewMode];
 
+    FolderItemDelegate* delegate = nullptr;
     if(mode == DetailedListMode) {
         FolderViewTreeView* treeView = new FolderViewTreeView(this);
         connect(treeView, &FolderViewTreeView::activatedFiltered, this, &FolderView::onItemActivated);
@@ -573,7 +574,7 @@ void FolderView::setViewMode(ViewMode _mode) {
         treeView->setAllColumnsShowFocus(false);
 
         // set our own custom delegate
-        FolderItemDelegate* delegate = new FolderItemDelegate(treeView);
+        delegate = new FolderItemDelegate(treeView);
         treeView->setItemDelegateForColumn(FolderModel::ColumnFileName, delegate);
     }
     else {
@@ -589,10 +590,8 @@ void FolderView::setViewMode(ViewMode _mode) {
         setFocusProxy(listView);
 
         // set our own custom delegate
-        FolderItemDelegate* delegate = new FolderItemDelegate(listView);
+        delegate = new FolderItemDelegate(listView);
         listView->setItemDelegateForColumn(FolderModel::ColumnFileName, delegate);
-        // inline renaming
-        connect(delegate,  &QAbstractItemDelegate::closeEditor, this, &FolderView::onClosingEditor);
         // FIXME: should we expose the delegate?
         listView->setMovement(QListView::Static);
         /* If listView is already visible, setMovement() will lay out items again with delay
@@ -644,6 +643,11 @@ void FolderView::setViewMode(ViewMode _mode) {
         view->setAcceptDrops(true);
         view->setDragDropMode(QAbstractItemView::DragDrop);
         view->setDropIndicatorShown(true);
+
+        // inline renaming
+        if(delegate) {
+            connect(delegate, &QAbstractItemDelegate::closeEditor, this, &FolderView::onClosingEditor);
+        }
 
         if(model_) {
             // FIXME: preserve selections
@@ -1026,10 +1030,17 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
             break;
         case QEvent::Wheel:
             // don't let the view scroll during an inline renaming
-            if (view && mode != DetailedListMode) {
-                FolderViewListView* listView = static_cast<FolderViewListView*>(view);
-                FolderItemDelegate* delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
-                if (delegate->hasEditor()) {
+            if (view) {
+                FolderItemDelegate* delegate = nullptr;
+                if(mode == DetailedListMode) {
+                    FolderViewTreeView* treeView = static_cast<FolderViewTreeView*>(view);
+                    delegate = static_cast<FolderItemDelegate*>(treeView->itemDelegateForColumn(FolderModel::ColumnFileName));
+                }
+                else {
+                    FolderViewListView* listView = static_cast<FolderViewListView*>(view);
+                    delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
+                }
+                if (delegate && delegate->hasEditor()) {
                     return true;
                 }
             }
@@ -1143,7 +1154,8 @@ void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm::FileInf
             // show context menu
             auto files = selectedFiles();
             if(!files.empty()) {
-                Fm::FileMenu* fileMenu = (view && mode != DetailedListMode && selectedIndexes().size() == 1)
+                QModelIndexList selIndexes = mode == DetailedListMode ? selectedRows() : selectedIndexes();
+                Fm::FileMenu* fileMenu = (view && selIndexes.size() == 1)
                                          ? new Fm::FileMenu(files, fileInfo, folderPath, QString(), view)
                                          : new Fm::FileMenu(files, fileInfo, folderPath);
                 fileMenu->setFileLauncher(fileLauncher_);
