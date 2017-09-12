@@ -323,7 +323,7 @@
     <message>
         <location filename="../../core/dirlistjob.cpp" line="45"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>La cartella specificata %1 non è valida</translation>
     </message>
 </context>
 <context>
@@ -642,12 +642,12 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="380"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleziona un icona</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="382"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Immagini (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="478"/>
@@ -726,7 +726,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../../foldermenu.cpp" line="137"/>
         <source>Output</source>
-        <translation type="unfinished">Risultato</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="160"/>
@@ -828,12 +828,12 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../../pathbar.cpp" line="126"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Modifica percorso</translation>
     </message>
     <message>
         <location filename="../../pathbar.cpp" line="129"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Copia percorso</translation>
     </message>
 </context>
 <context>
@@ -1100,7 +1100,7 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="520"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore per l&apos;icona personalizzata</translation>
     </message>
 </context>
 <context>
