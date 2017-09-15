@@ -45,6 +45,7 @@ public:
 
     struct Thumbnail {
         int size;
+        bool transparent;
         ThumbnailStatus status;
         QImage image;
     };
@@ -58,9 +59,9 @@ public:
         return info->displayName();
     }
 
-    QIcon icon() const {
+    QIcon icon(bool transparent = false) const {
         const auto i = info->icon();
-        return i ? i->qicon() : QIcon{};
+        return i ? i->qicon(transparent) : QIcon{};
     }
 
     QString ownerName() const;
@@ -71,13 +72,18 @@ public:
 
     const QString &displaySize() const;
 
-    Thumbnail* findThumbnail(int size);
+    bool isCut() const;
+
+    void bindCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet);
+
+    Thumbnail* findThumbnail(int size, bool transparent);
 
     void removeThumbnail(int size);
 
     std::shared_ptr<const Fm::FileInfo> info;
     mutable QString dispMtime_;
     mutable QString dispSize_;
+    std::weak_ptr<const HashSet> cutFilesHashSet_;
     QVector<Thumbnail> thumbnails;
 };
 

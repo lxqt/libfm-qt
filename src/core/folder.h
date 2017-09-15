@@ -80,6 +80,12 @@ public:
 
     const std::shared_ptr<const FileInfo> &info() const;
 
+    bool hadCutFilesUnset();
+
+    bool hasCutFiles();
+
+    void setCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet);
+
     void forEachFile(std::function<void (const std::shared_ptr<const FileInfo>&)> func) const {
         std::lock_guard<std::mutex> lock{mutex_};
         for(auto it = files_.begin(); it != files_.end(); ++it) {
@@ -179,6 +185,9 @@ private:
     bool defer_content_test : 1;
 
     static std::unordered_map<FilePath, std::weak_ptr<Folder>, FilePathHash> cache_;
+    static FilePath cutFilesDirPath_;
+    static FilePath lastCutFilesDirPath_;
+    static std::shared_ptr<const HashSet> cutFilesHashSet_;
     static std::mutex mutex_;
 };
 

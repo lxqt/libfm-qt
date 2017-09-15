@@ -13,7 +13,7 @@ class LIBFM_QT_API FileInfoJob : public Job {
     Q_OBJECT
 public:
 
-    explicit FileInfoJob(FilePathList paths, FilePath commonDirPath = FilePath());
+    explicit FileInfoJob(FilePathList paths, FilePath commonDirPath = FilePath(), const std::shared_ptr<const HashSet>& cutFilesHashSet = nullptr);
 
     const FilePathList& paths() const {
         return paths_;
@@ -33,6 +33,7 @@ private:
     FilePathList paths_;
     FileInfoList results_;
     FilePath commonDirPath_;
+    const std::shared_ptr<const HashSet> cutFilesHashSet_;
 };
 
 } // namespace Fm

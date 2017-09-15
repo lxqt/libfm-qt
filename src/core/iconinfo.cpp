@@ -57,16 +57,28 @@ void IconInfo::updateQIcons() {
     }
 }
 
-QIcon IconInfo::qicon() const {
-    if(Q_UNLIKELY(qicon_.isNull() && gicon_)) {
-        if(!G_IS_FILE_ICON(gicon_.get())) {
-            qicon_ = QIcon(new IconEngine{shared_from_this()});
-        }
-        else {
-            qicon_ = internalQicon_;
+QIcon IconInfo::qicon(const bool& transparent) const {
+    if(Q_LIKELY(!transparent)) {
+        if(Q_UNLIKELY(qicon_.isNull() && gicon_)) {
+            if(!G_IS_FILE_ICON(gicon_.get())) {
+                qicon_ = QIcon(new IconEngine{shared_from_this()});
+            }
+            else {
+                qicon_ = internalQicon_;
+            }
         }
     }
-    return qicon_;
+    else { // transparent == true
+        if(Q_UNLIKELY(qiconTransparent_.isNull() && gicon_)) {
+            if(!G_IS_FILE_ICON(gicon_.get())) {
+                qiconTransparent_ = QIcon(new IconEngine{shared_from_this(), transparent});
+            }
+            else {
+                qiconTransparent_ = internalQicon_;
+            }
+        }
+    }
+    return !transparent ? qicon_ : qiconTransparent_;
 }
 
 QIcon IconInfo::qiconFromNames(const char* const* names) {

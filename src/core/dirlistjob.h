@@ -19,7 +19,7 @@ public:
         DETAILED = 1 << 1
     };
 
-    explicit DirListJob(const FilePath& path, Flags flags);
+    explicit DirListJob(const FilePath& path, Flags flags, const std::shared_ptr<const HashSet>& cutFilesHashSet = nullptr);
 
     FileInfoList& files() {
         return files_;
@@ -54,6 +54,7 @@ private:
     Flags flags;
     std::shared_ptr<const FileInfo> dir_fi;
     FileInfoList files_;
+    const std::shared_ptr<const HashSet> cutFilesHashSet_;
     bool emit_files_found;
     // guint delay_add_files_handler;
     // GSList* files_to_add;

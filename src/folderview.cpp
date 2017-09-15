@@ -29,9 +29,11 @@
 #include "filemenu.h"
 #include "foldermenu.h"
 #include "filelauncher.h"
+#include "utilities.h"
 #include <QTimer>
 #include <QDate>
 #include <QDebug>
+#include <QClipboard>
 #include <QMimeData>
 #include <QHoverEvent>
 #include <QApplication>
@@ -474,6 +476,7 @@ FolderView::FolderView(FolderView::ViewMode _mode, QWidget *parent):
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     connect(this, &FolderView::clicked, this, &FolderView::onFileClicked);
+    connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &FolderView::onClipboardDataChange);
 }
 
 FolderView::~FolderView() {
@@ -1171,6 +1174,33 @@ void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm::FileInf
         if(menu) {
             menu->exec(QCursor::pos());
             delete menu;
+        }
+    }
+}
+
+void FolderView::onClipboardDataChange() {
+    if(model_) {
+        const QClipboard* clipboard = QApplication::clipboard();
+        const QMimeData* data = clipboard->mimeData();
+        Fm::FilePathList paths;
+        bool isCutSelection;
+        std::tie(paths, isCutSelection) = Fm::parseClipboardData(*data);
+        if(!folder()->path().hasUriScheme("search") // skip for search results
+           && isCutSelection
+           && Fm::isCurrentPidClipboardData(*data)) { // set cut files only with this app
+            auto cutDirPath = paths.size() > 0 ? paths[0].parent(): FilePath();
+            if(folder()->path() == cutDirPath) {
+                model_->setCutFiles(selectionModel()->selection());
+            }
+            else if(folder()->hadCutFilesUnset() || folder()->hasCutFiles()) {
+                model_->setCutFiles(QItemSelection());
+            }
+            return;
+        }
+
+        folder()->setCutFiles(std::make_shared<HashSet>()); // clean Folder::cutFilesHashSet_
+        if(folder()->hadCutFilesUnset()) {
+            model_->setCutFiles(QItemSelection()); // update indexes if there were cut files here
         }
     }
 }

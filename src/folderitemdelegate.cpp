@@ -129,7 +129,15 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         QPixmap pixmap = opt.icon.pixmap(option.decorationSize, iconMode);
         // in case the pixmap is smaller than the requested size
         QSize margin = ((option.decorationSize - pixmap.size()) / 2).expandedTo(QSize(0, 0));
+        bool isCut = index.data(FolderModel::FileIsCutRole).toBool();
+        if(isCut) {
+            painter->save();
+            painter->setOpacity(0.45);
+        }
         painter->drawPixmap(iconPos + QPoint(margin.width(), margin.height()), pixmap);
+        if(isCut) {
+            painter->restore();
+        }
 
         // draw some emblems for the item if needed
         if(isSymlink) {

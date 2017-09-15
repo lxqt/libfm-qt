@@ -23,10 +23,12 @@
 #include "libfmqtglobals.h"
 #include <QUrl>
 #include <QList>
+#include <QMimeData>
 #include <libfm/fm.h>
 #include <sys/types.h>
 
 #include <cstdint>
+#include <utility>
 
 #include "core/filepath.h"
 #include "core/fileinfo.h"
@@ -41,11 +43,15 @@ LIBFM_QT_API QByteArray pathListToUriList(const Fm::FilePathList& paths);
 
 LIBFM_QT_API Fm::FilePathList pathListFromQUrls(QList<QUrl> urls);
 
+LIBFM_QT_API std::pair<Fm::FilePathList, bool> parseClipboardData(const QMimeData& data);
+
 LIBFM_QT_API void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent = 0);
 
 LIBFM_QT_API void copyFilesToClipboard(const Fm::FilePathList& files);
 
 LIBFM_QT_API void cutFilesToClipboard(const Fm::FilePathList& files);
+
+LIBFM_QT_API bool isCurrentPidClipboardData(const QMimeData& data);
 
 LIBFM_QT_API void changeFileName(const Fm::FilePath& path, const QString& newName, QWidget* parent);
 

@@ -34,6 +34,9 @@
 namespace Fm {
 
 std::unordered_map<FilePath, std::weak_ptr<Folder>, FilePathHash> Folder::cache_;
+FilePath Folder::cutFilesDirPath_;
+FilePath Folder::lastCutFilesDirPath_;
+std::shared_ptr<const HashSet> Folder::cutFilesHashSet_;
 std::mutex Folder::mutex_;
 
 Folder::Folder():
@@ -251,7 +254,8 @@ void Folder::processPendingChanges() {
         FilePathList paths;
         paths.insert(paths.end(), paths_to_add.cbegin(), paths_to_add.cend());
         paths.insert(paths.end(), paths_to_update.cbegin(), paths_to_update.cend());
-        info_job = new FileInfoJob{paths, dirPath_};
+        info_job = new FileInfoJob{paths, dirPath_,
+                hasCutFiles() ? cutFilesHashSet_ : nullptr};
         paths_to_update.clear();
         paths_to_add.clear();
     }
@@ -451,6 +455,30 @@ void Folder::onFileChangeEvents(GFileMonitor* /*monitor*/, GFile* gf, GFile* /*o
         }
         queueUpdate();
     }
+}
+
+// checks whether there were cut files here
+// and if there were, invalidates this last cut path
+bool Folder::hadCutFilesUnset() {
+    if(lastCutFilesDirPath_ == dirPath_) {
+        lastCutFilesDirPath_ = FilePath();
+        return true;
+    }
+    return false;
+}
+
+bool Folder::hasCutFiles() {
+    return cutFilesHashSet_
+            && !cutFilesHashSet_->empty()
+            && cutFilesDirPath_ == dirPath_;
+}
+
+void Folder::setCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet) {
+    if(cutFilesHashSet_ && !cutFilesHashSet_->empty()) {
+        lastCutFilesDirPath_ = cutFilesDirPath_;
+    }
+    cutFilesDirPath_ = dirPath_;
+    cutFilesHashSet_ = cutFilesHashSet;
 }
 
 void Folder::onDirListFinished() {
@@ -661,7 +689,8 @@ void Folder::reload() {
     /* run a new dir listing job */
     // FIXME:
     // defer_content_test = fm_config->defer_content_test;
-    dirlist_job = new DirListJob(dirPath_, defer_content_test ? DirListJob::FAST : DirListJob::DETAILED);
+    dirlist_job = new DirListJob(dirPath_, defer_content_test ? DirListJob::FAST : DirListJob::DETAILED,
+                                 hasCutFiles() ? cutFilesHashSet_ : nullptr);
     dirlist_job->setAutoDelete(true);
     connect(dirlist_job, &DirListJob::error, this, &Folder::error, Qt::BlockingQueuedConnection);
     connect(dirlist_job, &DirListJob::finished, this, &Folder::onDirListFinished, Qt::BlockingQueuedConnection);
