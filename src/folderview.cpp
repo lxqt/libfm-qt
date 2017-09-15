@@ -314,11 +314,26 @@ void FolderViewTreeView::layoutColumns() {
     if(numCols > 0) {
         int desiredWidth = 0;
         int* widths = new int[numCols]; // array to store the widths every column needs
+        QStyleOptionHeader opt;
+        opt.initFrom(headerView);
+        opt.fontMetrics = QFontMetrics(font());
+        if (headerView->isSortIndicatorShown()) {
+            opt.sortIndicator = QStyleOptionHeader::SortDown;
+        }
+        QAbstractItemModel* model_ = model();
         int column;
         for(column = 0; column < numCols; ++column) {
             int columnId = headerView->logicalIndex(column);
             // get the size that the column needs
-            widths[column] = sizeHintForColumn(columnId);
+            if(model_) {
+                QVariant data = model_->headerData(columnId, Qt::Horizontal, Qt::DisplayRole);
+                if(data.isValid()) {
+                    opt.text = data.isValid() ? data.toString() : QString();
+                }
+            }
+            opt.section = columnId;
+            widths[column] = qMax(sizeHintForColumn(columnId),
+                                  style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(), headerView).width());
             // compute the total width needed
             desiredWidth += widths[column];
         }
@@ -348,7 +363,7 @@ void FolderViewTreeView::layoutColumns() {
 
         // really do the resizing for every column
         for(int column = 0; column < numCols; ++column) {
-            headerView->resizeSection(column, widths[column]);
+            headerView->resizeSection(headerView->logicalIndex(column), widths[column]);
         }
         delete []widths;
     }
