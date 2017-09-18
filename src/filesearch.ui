@@ -54,6 +54,9 @@
             <property name="text">
              <string>Use regular expression</string>
             </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
          </layout>
@@ -228,6 +231,9 @@
            <widget class="QCheckBox" name="contentRegExp">
             <property name="text">
              <string>&amp;Use regular expression</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
             </property>
            </widget>
           </item>

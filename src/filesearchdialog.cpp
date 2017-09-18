@@ -149,4 +149,52 @@ void FileSearchDialog::onRemovePath() {
     }
 }
 
+void FileSearchDialog::setNameCaseInsensitive(bool caseInsensitive) {
+    ui->nameCaseInsensitive->setChecked(caseInsensitive);
+}
+
+void FileSearchDialog::setContentCaseInsensitive(bool caseInsensitive) {
+    ui->contentCaseInsensitive->setChecked(caseInsensitive);
+}
+
+void FileSearchDialog::setNameRegexp(bool reg) {
+    ui->nameRegExp->setChecked(reg);
+}
+
+void FileSearchDialog::setContentRegexp(bool reg) {
+    ui->contentRegExp->setChecked(reg);
+}
+
+void FileSearchDialog::setRecursive(bool rec) {
+    ui->recursiveSearch->setChecked(rec);
+}
+
+void FileSearchDialog::setSearchhHidden(bool hidden) {
+    ui->searchHidden->setChecked(hidden);
+}
+
+bool FileSearchDialog::nameCaseInsensitive() const {
+    return ui->nameCaseInsensitive->isChecked();
+}
+
+bool FileSearchDialog::contentCaseInsensitive() const {
+    return ui->contentCaseInsensitive->isChecked();
+}
+
+bool FileSearchDialog::nameRegexp() const {
+    return ui->nameRegExp->isChecked();
+}
+
+bool FileSearchDialog::contentRegexp() const {
+    return ui->contentRegExp->isChecked();
+}
+
+bool FileSearchDialog::recursive() const {
+    return ui->recursiveSearch->isChecked();
+}
+
+bool FileSearchDialog::searchhHidden() const {
+    return ui->searchHidden->isChecked();
+}
+
 }

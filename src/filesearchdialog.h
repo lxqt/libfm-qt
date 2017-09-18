@@ -41,6 +41,24 @@ public:
 
     virtual void accept();
 
+    bool nameCaseInsensitive() const;
+    void setNameCaseInsensitive(bool caseInsensitive);
+
+    bool contentCaseInsensitive() const;
+    void setContentCaseInsensitive(bool caseInsensitive);
+
+    bool nameRegexp() const;
+    void setNameRegexp(bool reg);
+
+    bool contentRegexp() const;
+    void setContentRegexp(bool reg);
+
+    bool recursive() const;
+    void setRecursive(bool rec);
+
+    bool searchhHidden() const;
+    void setSearchhHidden(bool hidden);
+
 private Q_SLOTS:
     void onAddPath();
     void onRemovePath();
