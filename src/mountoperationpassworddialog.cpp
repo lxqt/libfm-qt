@@ -46,11 +46,17 @@ MountOperationPasswordDialog::MountOperationPasswordDialog(MountOperation* op, G
     }
     else {
         ui->Anonymous->setEnabled(false);
+        ui->asUser->setChecked(true);
     }
     if(!needUserName) {
         ui->username->setEnabled(false);
     }
-    if(!needPassword) {
+    if(needPassword) {
+        if(!needUserName) {
+            ui->password->setFocus();
+        }
+    }
+    else {
         ui->password->setEnabled(false);
     }
     if(!needDomain) {
