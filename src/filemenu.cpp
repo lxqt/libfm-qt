@@ -183,6 +183,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
             // FIXME: port these parts to Fm API
             FmArchiver* archiver = fm_archiver_get_default();
             if(archiver) {
+                addSeparator(); // before all archiver actions
                 if(fm_archiver_is_mime_type_supported(archiver, mime_type->name())) {
                     if(cwd_ && archiver->extract_to_cmd) {
                         QAction* action = new QAction(tr("Extract to..."), this);
