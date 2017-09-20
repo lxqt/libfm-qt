@@ -20,7 +20,6 @@
 #include "pathbar.h"
 #include "pathbar_p.h"
 #include <QToolButton>
-#include <QPushButton>
 #include <QScrollArea>
 #include <QScrollBar>
 #include <QHBoxLayout>
@@ -113,7 +112,8 @@ void PathBar::mousePressEvent(QMouseEvent* event) {
     else if(event->button() == Qt::MiddleButton) {
         PathButton* btn = qobject_cast<PathButton*>(childAt(event->x(), event->y()));
         if(btn != nullptr) {
-            scrollArea_->ensureWidgetVisible(btn, 0);
+            scrollArea_->ensureWidgetVisible(btn,
+                                             1); // a harmless compensation for a miscalculation in Qt
             Q_EMIT middleClickChdir(pathForButton(btn));
         }
     }
@@ -175,13 +175,32 @@ Fm::FilePath PathBar::pathForButton(PathButton* btn) {
 void PathBar::onButtonToggled(bool checked) {
     if(checked) {
         PathButton* btn = static_cast<PathButton*>(sender());
-        scrollArea_->ensureWidgetVisible(btn, 0); // make the button visible
-
         currentPath_ = pathForButton(btn);
         Q_EMIT chdir(currentPath_);
+
+        // since scrolling to the toggled buton will happen correctly only when the
+        // layout is updated and because the update is disabled on creating buttons
+        // in setPath(), the update status can be used as a sign to know when to wait
+        if(updatesEnabled()) {
+            scrollArea_->ensureWidgetVisible(btn, 1);
+        }
+        else {
+            QTimer::singleShot(0, this, SLOT(ensureToggledVisible()));
+        }
     }
 }
 
+void PathBar::ensureToggledVisible() {
+    int buttonCount = buttonsLayout_->count() - 1; // the last item is a spacer
+    for(int i = buttonCount - 1; i >= 0; --i) {
+        if(auto btn = static_cast<PathButton*>(buttonsLayout_->itemAt(i)->widget())) {
+            if(btn->isChecked()) {
+                scrollArea_->ensureWidgetVisible(btn, 1);
+                return;
+            }
+        }
+    }
+}
 
 void PathBar::onScrollButtonClicked() {
     QToolButton* btn = static_cast<QToolButton*>(sender());
@@ -248,7 +267,7 @@ void PathBar::setPath(Fm::FilePath path) {
         }
         auto btn = new PathButton(name.get(), displayName ? displayName.get() : name.get(), isRoot, buttonsWidget_);
         btn->show();
-        connect(btn, &QPushButton::toggled, this, &PathBar::onButtonToggled);
+        connect(btn, &QAbstractButton::toggled, this, &PathBar::onButtonToggled);
         buttonsLayout_->insertWidget(0, btn);
         if(isRoot) { // this is the root element of the path
             break;
@@ -257,6 +276,13 @@ void PathBar::setPath(Fm::FilePath path) {
     }
     buttonsLayout_->addStretch(1); // add a spacer at the tail of the buttons
 
+    // we don't want to scroll vertically. make the scroll area fit the height of the buttons
+    // FIXME: this is a little bit hackish :-(
+    scrollArea_->setFixedHeight(buttonsLayout_->sizeHint().height());
+    updateScrollButtonVisibility();
+
+    // to guarantee that the button will be scrolled to correctly,
+    // it should be toggled only after the layout update starts above
     buttonCount = buttonsLayout_->count() - 1;
     if(buttonCount > 0) {
         PathButton* lastBtn = static_cast<PathButton*>(buttonsLayout_->itemAt(buttonCount - 1)->widget());
@@ -264,10 +290,6 @@ void PathBar::setPath(Fm::FilePath path) {
         lastBtn->setChecked(true);
     }
 
-    // we don't want to scroll vertically. make the scroll area fit the height of the buttons
-    // FIXME: this is a little bit hackish :-(
-    scrollArea_->setFixedHeight(buttonsLayout_->sizeHint().height());
-    updateScrollButtonVisibility();
     setUpdatesEnabled(true);
 }
 

@@ -61,6 +61,7 @@ private Q_SLOTS:
   void onReturnPressed();
   void setArrowEnabledState(int value);
   void setScrollButtonVisibility();
+  void ensureToggledVisible();
 
 protected:
     void resizeEvent(QResizeEvent* event);
