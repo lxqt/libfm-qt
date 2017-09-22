@@ -39,7 +39,7 @@
 
 namespace Fm {
 
-FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> info, Fm::FilePath cwd, const QString& title, QWidget* parent):
+FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> info, Fm::FilePath cwd, bool isWritableDir, const QString& title, QWidget* parent):
     QMenu(title, parent),
     files_{std::move(files)},
     info_{std::move(info)},
@@ -161,6 +161,33 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
         renameAction_ = new QAction(tr("Rename"), this);
         connect(renameAction_, &QAction::triggered, this, &FileMenu::onRenameTriggered);
         addAction(renameAction_);
+
+        // disable actons that can't be used
+        bool hasAccessible(false);
+        bool hasDeletable(false);
+        bool hasRenamable(false);
+        for(auto& file: files_) {
+            if(file->isAccessible()) {
+                hasAccessible = true;
+            }
+            if(file->isDeletable()) {
+                hasDeletable = true;
+            }
+            if(file->canSetName()) {
+                hasRenamable = true;
+            }
+            if (hasAccessible && hasDeletable && hasRenamable) {
+                break;
+            }
+        }
+        copyAction_->setEnabled(hasAccessible);
+        cutAction_->setEnabled(hasDeletable);
+        deleteAction_->setEnabled(hasDeletable);
+        renameAction_->setEnabled(hasRenamable);
+        if(!(sameType_ && info_->isDir()
+             && (files_.size() > 1 ? isWritableDir : info_->isWritable()))) {
+            pasteAction_->setEnabled(false);
+        }
     }
 
     // DES-EMA custom actions integration

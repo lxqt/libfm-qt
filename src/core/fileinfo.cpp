@@ -100,6 +100,24 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
         isAccessible_ = true;
     }
 
+    if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
+        isWritable_ = g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+    }
+    else
+        /* assume it's writable */
+    {
+        isWritable_ = true;
+    }
+
+    if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_ACCESS_CAN_DELETE)) {
+        isDeletable_ = g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_ACCESS_CAN_DELETE);
+    }
+    else
+        /* assume it's deletable */
+    {
+        isDeletable_ = true;
+    }
+
     /* special handling for symlinks */
     if(g_file_info_get_is_symlink(inf.get())) {
         mode_ &= ~S_IFMT; /* reset type */
@@ -145,6 +163,10 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
         isReadOnly_ = false; /* default is R/W */
         if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_FILESYSTEM_READONLY)) {
             isReadOnly_ = g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_FILESYSTEM_READONLY);
+        }
+        /* directories should be writable to be deleted by user */
+        if(isReadOnly_ || !isWritable_) {
+            isDeletable_ = false;
         }
         break;
     case G_FILE_TYPE_SYMBOLIC_LINK:
