@@ -72,9 +72,9 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
     showHiddenAction_->setChecked(model->showHidden());
     connect(showHiddenAction_, &QAction::triggered, this, &FolderMenu::onShowHiddenActionTriggered);
 
-    // DES-EMA custom actions integration
     auto folderInfo = view_->folderInfo();
     if(folderInfo) { // should never be null (see FolderView::onFileClicked)
+        // DES-EMA custom actions integration
         FileInfoList files;
         files.push_back(folderInfo);
         auto custom_actions = FileActionItem::get_actions_for_files(files);
@@ -87,6 +87,9 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
             }
             addCustomActionItem(this, item);
         }
+
+        // disable paste acton if it can't be used
+        pasteAction_->setEnabled(folderInfo->isWritable());
     }
 
     separator4_ = addSeparator();

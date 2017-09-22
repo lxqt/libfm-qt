@@ -115,6 +115,14 @@ public:
         return isAccessible_;
     }
 
+    bool isWritable() const {
+        return isWritable_;
+    }
+
+    bool isDeletable() const {
+        return isDeletable_;
+    }
+
     bool isExecutableType() const;
 
     bool isBackup() const {
@@ -228,6 +236,8 @@ private:
 
     bool isShortcut_ : 1; /* TRUE if file is shortcut type */
     bool isAccessible_ : 1; /* TRUE if can be read by user */
+    bool isWritable_ : 1; /* TRUE if can be written to by user */
+    bool isDeletable_ : 1; /* TRUE if can be deleted by user */
     bool isHidden_ : 1; /* TRUE if file is hidden */
     bool isBackup_ : 1; /* TRUE if file is backup */
     bool isNameChangeable_ : 1; /* TRUE if name can be changed */

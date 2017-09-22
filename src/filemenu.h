@@ -38,7 +38,7 @@ class LIBFM_QT_API FileMenu : public QMenu {
     Q_OBJECT
 
 public:
-    explicit FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> info, Fm::FilePath cwd, const QString& title = QString(), QWidget* parent = nullptr);
+    explicit FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> info, Fm::FilePath cwd, bool isWritableDir = true, const QString& title = QString(), QWidget* parent = nullptr);
     ~FileMenu();
 
     bool useTrash() {

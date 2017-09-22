@@ -1157,15 +1157,20 @@ void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm::FileInf
     }
     else if(type == ContextMenuClick) {
         Fm::FilePath folderPath;
+        bool isWritableDir(true);
         auto files = selectedFiles();
         if(!files.empty()) {
             auto& first = files.front();
             if(files.size() == 1 && first->isDir()) {
                 folderPath = first->path();
+                isWritableDir = first->isWritable();
             }
         }
         if(!folderPath.isValid()) {
             folderPath = path();
+            if(auto info = folderInfo()) {
+                isWritableDir = info->isWritable();
+            }
         }
         QMenu* menu = nullptr;
         if(fileInfo) {
@@ -1174,8 +1179,8 @@ void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm::FileInf
             if(!files.empty()) {
                 QModelIndexList selIndexes = mode == DetailedListMode ? selectedRows() : selectedIndexes();
                 Fm::FileMenu* fileMenu = (view && selIndexes.size() == 1)
-                                         ? new Fm::FileMenu(files, fileInfo, folderPath, QString(), view)
-                                         : new Fm::FileMenu(files, fileInfo, folderPath);
+                                         ? new Fm::FileMenu(files, fileInfo, folderPath, isWritableDir, QString(), view)
+                                         : new Fm::FileMenu(files, fileInfo, folderPath, isWritableDir);
                 fileMenu->setFileLauncher(fileLauncher_);
                 prepareFileMenu(fileMenu);
                 menu = fileMenu;
