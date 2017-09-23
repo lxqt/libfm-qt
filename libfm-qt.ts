@@ -634,7 +634,7 @@ Do you want to delete them instead?</source>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="382"/>
-        <source>Images (*.png *.xpm *.svg *.svgz )</source>
+        <source>Images (*.png *.xpm *.svg *.svgz)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
