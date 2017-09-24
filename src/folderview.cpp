@@ -980,7 +980,17 @@ void FolderView::childDropEvent(QDropEvent* e) {
             QByteArray basename = XdndWorkaround::windowProperty(dndSource, XdndDirectSaveAtom, textAtom, 1024);
 
             // 2. construct the fill URI for the file, and update the source window property.
-            auto filePath = path().child(basename);
+            Fm::FilePath filePath;
+            if(model_) {
+                QModelIndex index = view->indexAt(e->pos());
+                auto info = model_->fileInfoFromIndex(index);
+                if(info && info->isDir()) {
+                    filePath = info->path().child(basename);
+                }
+            }
+            if(!filePath.isValid()) {
+                filePath = path().child(basename);
+            }
             QByteArray fileUri = filePath.uri().get();
             XdndWorkaround::setWindowProperty(dndSource,  XdndDirectSaveAtom, textAtom, (void*)fileUri.constData(), fileUri.length());
 
