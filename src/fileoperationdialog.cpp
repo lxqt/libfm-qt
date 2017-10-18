@@ -21,7 +21,10 @@
 #include "fileoperationdialog.h"
 #include "fileoperation.h"
 #include "renamedialog.h"
+#include <QLabel>
 #include <QMessageBox>
+#include <libfm/fm-config.h>
+#include "utilities.h"
 #include "ui_file-operation-dialog.h"
 
 namespace Fm {
@@ -150,6 +153,12 @@ FmJobErrorAction FileOperationDialog::error(GError* err, FmJobErrorSeverity seve
 
 void FileOperationDialog::setCurFile(QString cur_file) {
     ui->curFile->setText(cur_file);
+}
+
+void FileOperationDialog::setDataTransferred(uint64_t finishedSize, std::uint64_t totalSize) {
+    ui->dataTransferred->setText(QString("%1 / %2")
+                                 .arg(formatFileSize(finishedSize, fm_config->si_unit))
+                                 .arg(formatFileSize(totalSize, fm_config->si_unit)));
 }
 
 void FileOperationDialog::setPercent(unsigned int percent) {
