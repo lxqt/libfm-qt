@@ -180,9 +180,10 @@ void FileOperation::onFileOpsJobFinished(FmFileOpsJob* /*job*/, FileOperation* p
     pThis->handleFinish();
 }
 
-void FileOperation::onFileOpsJobPercent(FmFileOpsJob* /*job*/, guint percent, FileOperation* pThis) {
+void FileOperation::onFileOpsJobPercent(FmFileOpsJob* job, guint percent, FileOperation* pThis) {
     if(pThis->dlg) {
         pThis->dlg->setPercent(percent);
+        pThis->dlg->setDataTransferred(job->finished, job->total);
     }
 }
 

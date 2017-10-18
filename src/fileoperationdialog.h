@@ -22,6 +22,7 @@
 #define FM_FILEOPERATIONDIALOG_H
 
 #include "libfmqtglobals.h"
+#include <cstdint>
 #include <QDialog>
 #include <libfm/fm.h>
 #include "core/filepath.h"
@@ -50,6 +51,7 @@ public:
     void setPrepared();
     void setCurFile(QString cur_file);
     void setPercent(unsigned int percent);
+    void setDataTransferred(std::uint64_t finishedSize, std::uint64_t totalSize);
     void setRemainingTime(unsigned int sec);
 
     virtual void reject();
