@@ -302,7 +302,7 @@
     <message>
         <location filename="../../appchooserdialog.cpp" line="262"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>WYbierz program do otwarcia &quot;%1&quot; plików</translation>
+        <translation>Wybierz program do otwierania plików &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
