@@ -1,7 +1,202 @@
 
-libfm-qt-0.11.2 / 2016-12-21
+libfm-qt-0.12.0 / 2017-10-21
 ============================
 
+  * Add data transferred to file operation dialog.
+  * Bump versions
+  * Disable context-menu actions that cannot be used
+  * Don't export github templates
+  * Fix partially visible toggled path buttons
+  * Add functions to get and set search settings
+  * Fix mistakes in listview column width calculation
+  * Add archiver separator only when needed
+  * Add a separator before archiver actions
+  * Enable XDS subfolder drop
+  * UI improvements for Fm::MountOperationPasswordDialog()
+  * Respect inactiveness when drawing text
+  * Grey out files that have been Ctrl-X'ed (#88)
+  * Ignore button for error dialog
+  * Inline renaming for detailed list view (#110)
+  * Remove redundant code.
+  * Prefer local paths if they exist
+  * Removed QFileInfo (as @PCMan recommended)
+  * Simplification, optimization and a fix
+  * Really focus text entry on showing dialog
+  * Two small fixes
+  * Keep selection on reloading (if not CPU-intensive)
+  * Added back/forward buttons and fixed 3 issues
+  * Reload button, hidden shortcut and a fix
+  * Implement FileDialog::selectMimeTypeFilter() and QString FileDialog::selectedMimeTypeFilter().
+  * Initialize folder_ to null
+  * Fixed the quote issue
+  * Always preserve explicitly set labels
+  * Update OK button text and state when needed
+  * Initialize FileInfo::isShortcut_ (#113)
+  * Set the selected index current
+  * Fixd open/save and overwrite prompt
+  * Set open/save text
+  * Several important fixes
+  * Added a missing change
+  * Preliminary fixes
+  * Hide UI implementation details for Fm::FileDialog.
+  * Revert the backward incompatible changes in the constructor of Fm::FolderView.
+  * Fix a bug in creating new folder for Fm::FileDialog.
+  * Implement toolbar and quick view mode switches for the Fm::FileDialog class.
+  * Correctly check file types and test the existence of the selected files as needed.
+  * Correctly handle item activation.
+  * Correctly handle filename selection for Fm::FileDialog.
+  * Correctly handle selected files.
+  * Implement filename filtering for Fm::FileDialog.
+  * Check nullity of FileInfo before calling FolderMenu
+  * Arrange Custom Actions
+  * Support custom folder icons
+  * Fix multiple pasting of the same cut file(s)
+  * Fix KDE clipboard tag for cut file(s)
+  * Add a basic skeleton for Fm::FileDialog.
+  * Check nullity of QMimeData (#109)
+  * MountOperationQuestionDialog: Fix handling responses
+  * Fix all height issues in horizontal layouts (#103)
+  * Removed a redundant variable (left there from old tests)
+  * Fix major bugs in Directory Tree
+  * Consider desktop text color, now that everything is done here
+  * Inline Renaming
+  * Fix compact view regression (#102)
+  * Fix detailed list crash on double clicking folders
+  * Removed my garbage
+  * Fixed issues about spacings and click region
+  * Make Fm::FolderItemDelegate support painting text shadows and margins so it can completely replace PCManFM::DesktopItemDelegate.
+  * Avoid using grid size on QListView since this disables any spacing settings.
+  * liblxqt make no sense for libfm-qt
+  * Copied issue template
+  * Add noexcept to move constructors and operator=() so they can be used with STL containers.
+  * FolderView: Optimize selectAll() (#97)
+  * Emit fileSizeChanged when needed
+  * Drops Qt5Core_VERSION_STRING (#96)
+  * Update size column info (#90)
+  * Fix Detailed List view DND (#94)
+  * folderview: Don't allow D&D by Back or Forward
+  * More fixes (#87)
+  * Added a missing change signal (#86)
+  * Fix single items when seaching (#85)
+  * Check for nullity of IconInfo (#84)
+  * Address compiler warnings
+  * Remove addRoots() return type
+  * Remove the unused data/translations/ entry
+  * Fix broken folder unmount message caused by incorrect FilePath & GFile* comparison. (#80)
+  * Remove some superfluous semicolons that lead to pedantic warnings (#79)
+  * Ensure one item per file (#77)
+  * Fix the broken filesystem status (free disk space) display. (#78)
+  * Don't make items current on mouseover (#72)
+  * Fixes a FTBFS in superbuild mode (#75)
+  * Replace start tilde in PathEdit (#73)
+  * Really cancel pending thumbnail jobs on chdir (#74)
+  * Move fixes (#70)
+  * Fix invalid pointers (#69)
+  * Continue file selection on next/previous row (#76)
+  * Code reformat: use 4-space indentation to match the coding style of other LXQt components.
+  * Make all constructors explicit so we don't get unwanted object construction by C++.
+  * Prevent a crash since GObjectPtr's move ctor frees resources
+  * GObjectPtr: Detect & handle "self-assignment"
+  * Fix compatibility with Qt 5.6.
+  * No thumbnail for thumbnails
+  * Fix thumbnail update
+  * Fixed `PathBar::setPath()`
+  * Use real name for renaming
+  * Prevent a crash plus fallback icon
+  * Fix custom actions
+  * volumemanager: Return IconInfo as shared_ptr
+  * FolderModelItem: Check IconInfo existence
+  * Bookmarks: Check validity of insert position
+  * Fix a potential crash of bookmark items when the format of the bookmark file is not correct.
+  * Only load desktop entry files for native filesystems.
+  * Fix the missing icon and display name handling of desktop entry files in Fm::FileInfo.
+  * IconEngine: Use weak_ptr for the parent IconInfo
+  * PathBar: Avoid leak upon QLayout::replaceWidget()
+  * Use const iterators
+  * Use the new lxqt-build-tools new FindExif module
+  * Fix the incorrect header inclusion in fileoperation.cpp.
+  * Fix incorrect #include of libfmqtglobals.h.
+  * Fix a bug when copying to and pasting from "x-special/gnome-copied-files" mime-type.
+  * Fix bugs in the Custom Actions C++ port.
+  * Try to port libfm custom actions to C++.
+  * Try to update the content of a folder after its mount status is changed. Handle cancelled dir listing job properly.
+  * Rename namespace Fm2 to Fm.
+  * Remove unused header files of the old C API wrappers.
+  * Fix bugs in search:// support and finish porting file searching to C++. Fix several bugs in Fm2::FileInfo which caused by null parent dir.
+  * Add a missing test case for places view.
+  * Try to add support for menu:// and search:// URI scheme implemented in libfm.
+  * Correctly destroy Fm2::Job objects when their worker threads terminate.
+  * Fix incorrect handling of PathBar button creation which causes infinite loop when the underlying GFile implementation contains bugs.
+  * Fix incorrect path of application menu URI.
+  * Fix QThread related bugs in PathEdit which causes memory leaks.
+  * Fix a bug in DirTreeModelItem causing crashes. Also speed up batch insertion of large amount of items.
+  * Use const iterators (#61)
+  * Fix the broken folder reload().
+  * Make all Fm2::Job derived classes reimplement exec() instead of run() method. The new run() method will emit finished() signal automatically when exec() returns.
+  * Fix memory leaks caused by incorrect use of QThread.
+  * Fix a memory leak in Fm::ThumbnailJob.
+  * Fix memory leaks caused by broken cache.
+  * Fix wrong size of generated thumbnails by external thumbnailers.
+  * Fix memory bugs in Fm2::GErrorPtr and improve the error handling of Fm2::Job and Fm2::Folder.
+  * Fix some errors related to incorrect use of std::remove() in Fm2::Folder. Replace QList with std::vector and use binary search when inserting items for the Fm::DirTreeModelItem.
+  * Change the handling of Fm::FolderView::selChanged signal to make it more efficient.
+  * Port to the new Fm2::TotalSizeJob API.
+  * Fix compatibility with libfm custom actions.
+  * Add some compatibility API which helps migrating old C APIs to the new C++ implementation.
+  * Convert datetime to locale-aware strings using QDateTime.
+  * Use QCollator to perform file sorting.
+  * Fix detailed view.
+  * Finish porting DirTreeModel to the new API. Fix bugs in Fm2::FilePath and Fm2::FileInfo APIs.
+  * Port the libfm terminal emulator related APIs to C++.
+  * Rename some methods in Fm2::Folder and Fm2::FileInfo for consistency.
+  * Port to the new IconInfo API and deprecate manual icon update when the theme is changed.
+  * Rename Fm::Icon to Fm::IconInfo.
+  * Port emblem support to the new libfm C++ API.
+  * Remove unused files, including some old APIs. Replace QVector in BrowseHistory with STL vector.
+  * Fix a bug in Fm::FileMenu.
+  * Port file-click handling to the new C++ API.
+  * Fix bugs in Fm::PathBar getting wrong path when a path button is toggled.
+  * Remove Fm::FilePath(const char* path_str) to avoid ambiguity.
+  * Replace all NULL with C++ 11 nullptr;
+  * Fix FilePath related errors caused by incomplete porting.
+  * Make Fm::FolderConfig support the new Fm::FilePath class.
+  * Fix Fm::BookmarkAction to use the new C++ API.
+  * Fix missing icons of places view caused by memory errors.
+  * Fix memory errors in Fm2::Bookmarks::reorder(). Add a small test case for the places view.
+  * Share the same places model among all views.
+  * Port most of the existing UI-related APIs to the new C++ APIs (excluding the file operations).
+  * Port the path bar to the new Fm2 API.
+  * Implement VolumeManager class which is a QObject wrapper of gio GVolumeMonitor.
+  * Add some getters for Volume and Mount classes.
+  * Properly associate external thumbnailers with mimetypes they support and fix thumbnail generation from thumbnailers.
+  * Start porting thumbnail loaders to the new C++ APIs. Add new Fm::ThumbnailJob used to load thumbnails for a given file list. Add commonDirPath paramter to Fm::FileInfoJob to reduce memory usage.
+  * Add the missing test case for folder view.
+  * Start porting Fm::FolderModel and Fm::FolderView to the new libfm core c++ API.
+  * Work in progress.
+  * Add a c++ wrapper for GFileMonitor. Add LIBFM_QT_API declaration for all public headers.
+  * Port error handling mechanism of FmJob to C++ and improve the GError wrapper class.
+  * Bump year
+  * Add gioptrs.h which defines smart pointer types wrapping gio related data types. Add some basic skeleton for various I/O jobs classes.
+  * Start porting Copyjob and add basic skeleton for untrash and symlink jobs.
+  * Finish porting FmFolder to C++.
+  * Add a very simple test case to test the new Fm core C++ code. Fix bugs in smart pointers and do empty base class optimization for CStrPtr.
+  * Improve Fm::Folder.
+  * Rename UserInfo to UserInfoCache.
+  * Port Fm::Bookmarks to C++.
+  * Port FmDeepCountJob to C++.
+  * Add basic skeletion to Fm::VolumeManager.
+  * Implement Fm2::UserInfo, which is a cache for uid/gid name mapping.
+  * Add basic skeleton for other C++ classes waiting for porting.
+  * Add GSignalHandler to do automatic signal/slot connection management with type safety for GObject.
+  * Add basic skeleton for the C++ 11 port of FmFileInfoJob.
+  * Try to port Fm::Folder and Fm::DirListJob to Qt5 and C++ 11.
+  * Try to port FmIcon, FmFileInfo, and FmMimeType of libfm to clean C++.
+  * Add smart pointer for GObject-derived classes and add Fm::FilePath class which wraps GFile.
+
+0.11.2 / 2016-12-21
+===================
+
+  * Release 0.11.2: Update changelog
   * Fix enabled state of path arrows on starting (#58)
   * bump patch version (#56)
   * Use QByteArray::constData() where we can (#57)
