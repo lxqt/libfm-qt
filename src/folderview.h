@@ -160,6 +160,7 @@ private Q_SLOTS:
     void onAutoSelectionTimeout();
     void onSelChangedTimeout();
     void onClosingEditor(QWidget* editor, QAbstractItemDelegate::EndEditHint hint);
+    void scrollSmoothly();
 
 Q_SIGNALS:
     void clicked(int type, const std::shared_ptr<const Fm::FileInfo>& file);
@@ -181,6 +182,14 @@ private:
     QTimer* selChangedTimer_;
     // the cell margins in the icon and thumbnail modes
     QSize itemDelegateMargins_;
+    // smooth scrolling:
+    struct scollData {
+        int delta;
+        int leftFrames;
+    };
+    QTimer *smoothScrollTimer_;
+    QWheelEvent *wheelEvent_;
+    QList<scollData> queuedScrollSteps_;
 };
 
 }
