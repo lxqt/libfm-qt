@@ -38,8 +38,6 @@ ProxyFolderModel::ProxyFolderModel(QObject* parent):
 }
 
 ProxyFolderModel::~ProxyFolderModel() {
-    qDebug("delete ProxyFolderModel");
-
     if(showThumbnails_ && thumbnailSize_ != 0) {
         FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
         // tell the source model that we don't need the thumnails anymore

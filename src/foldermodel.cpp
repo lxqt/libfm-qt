@@ -40,7 +40,6 @@ FolderModel::FolderModel():
 }
 
 FolderModel::~FolderModel() {
-    qDebug("delete FolderModel");
     // if the thumbnail requests list is not empty, cancel them
     for(auto job: pendingThumbnailJobs_) {
         job->cancel();
