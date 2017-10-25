@@ -51,6 +51,11 @@
 
 Q_DECLARE_OPAQUE_POINTER(FmFileInfo*)
 
+#define SCROLL_FRAMES_PER_SEC 50
+#define SCROLL_DURATION 300 // in ms
+
+static const int scrollAnimFrames = SCROLL_FRAMES_PER_SEC * SCROLL_DURATION / 1000;
+
 using namespace Fm;
 
 FolderViewListView::FolderViewListView(QWidget* parent):
@@ -476,7 +481,9 @@ FolderView::FolderView(FolderView::ViewMode _mode, QWidget *parent):
     autoSelectionDelay_(600),
     autoSelectionTimer_(nullptr),
     selChangedTimer_(nullptr),
-    itemDelegateMargins_(QSize(3, 3)) {
+    itemDelegateMargins_(QSize(3, 3)),
+    smoothScrollTimer_(nullptr),
+    wheelEvent_(nullptr) {
 
     iconSize_[IconMode - FirstViewMode] = QSize(48, 48);
     iconSize_[CompactMode - FirstViewMode] = QSize(24, 24);
@@ -495,6 +502,11 @@ FolderView::FolderView(FolderView::ViewMode _mode, QWidget *parent):
 }
 
 FolderView::~FolderView() {
+    if(smoothScrollTimer_) {
+        disconnect(smoothScrollTimer_, &QTimer::timeout, this, &FolderView::scrollSmoothly);
+        smoothScrollTimer_->stop();
+        delete smoothScrollTimer_;
+    }
 }
 
 void FolderView::onItemActivated(QModelIndex index) {
@@ -566,6 +578,13 @@ void FolderView::onClosingEditor(QWidget* editor, QAbstractItemDelegate::EndEdit
 void FolderView::setViewMode(ViewMode _mode) {
     if(_mode == mode) { // if it's the same more, ignore
         return;
+    }
+    // smooth scrolling is only for icon and thumbnail modes
+    if(smoothScrollTimer_ && (_mode == DetailedListMode || _mode == CompactMode)) {
+        disconnect(smoothScrollTimer_, &QTimer::timeout, this, &FolderView::scrollSmoothly);
+        smoothScrollTimer_->stop();
+        delete smoothScrollTimer_;
+        smoothScrollTimer_ = nullptr;
     }
     // FIXME: retain old selection
 
@@ -1086,12 +1105,78 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                     return true;
                 }
             }
+            // Smooth Scrolling
+            // Some tricks are adapted from <https://github.com/zhou13/qsmoothscrollarea>.
+            else if(mode != DetailedListMode
+                    && event->spontaneous()
+                    && !(QApplication::keyboardModifiers() & (Qt::ShiftModifier | Qt::AltModifier))) {
+                if(QScrollBar* vbar = view->verticalScrollBar()) {
+                    // keep track of the wheel event for smooth scrolling
+                    wheelEvent_ = static_cast<QWheelEvent*>(event);
+                    int delta = wheelEvent_->angleDelta().y();
+                    if((delta > 0 && vbar->value() == vbar->minimum()) || (delta < 0 && vbar->value() == vbar->maximum())) {
+                        break; // the scrollbar can't move
+                    }
+                    // get a rough estimation of the wheel speed and disable animation if it's too high
+                    static QList<qint64> wheelEvents;
+                    wheelEvents << QDateTime::currentMSecsSinceEpoch();
+                    while(wheelEvents.last() - wheelEvents.first() > 500) {
+                        wheelEvents.removeFirst();
+                    }
+                    if(wheelEvents.size() > 10) {
+                        break;
+                    }
+
+                    if(!smoothScrollTimer_) {
+                        smoothScrollTimer_ = new QTimer();
+                        connect(smoothScrollTimer_, &QTimer::timeout, this, &FolderView::scrollSmoothly);
+                    }
+
+                    // set the data for smooth scrolling
+                    scollData data;
+                    data.delta = delta;
+                    data.leftFrames = scrollAnimFrames;
+                    queuedScrollSteps_.append(data);
+                    smoothScrollTimer_->start(1000 / SCROLL_FRAMES_PER_SEC);
+                    return true;
+                }
+            }
             break;
         default:
             break;
         }
     }
     return QObject::eventFilter(watched, event);
+}
+
+void FolderView::scrollSmoothly() {
+    if(!wheelEvent_ || !view->verticalScrollBar()) {
+        return;
+    }
+
+    int totalDelta = 0;
+    QList<scollData>::iterator it = queuedScrollSteps_.begin();
+    while(it != queuedScrollSteps_.end()) {
+        if(it->leftFrames == 1) { // find the exact delta for the last frame
+            totalDelta += it->delta - (scrollAnimFrames - 1) * qRound((qreal)it->delta / (qreal)scrollAnimFrames);
+            it = queuedScrollSteps_.erase(it);
+        }
+        else {
+            totalDelta += qRound((qreal)it->delta / (qreal)scrollAnimFrames);
+            -- it->leftFrames;
+            ++it;
+        }
+    }
+    if(totalDelta != 0) {
+        // as in qevent.cpp -> QWheelEvent::QWheelEvent()
+        QWheelEvent e(wheelEvent_->pos(), wheelEvent_->globalPos(),
+                      totalDelta,
+                      wheelEvent_->buttons(), Qt::NoModifier, Qt::Vertical);
+        QApplication::sendEvent(view->verticalScrollBar(), &e);
+    }
+    if(queuedScrollSteps_.empty()) {
+        smoothScrollTimer_->stop();
+    }
 }
 
 // this slot handles auto-selection of items.
