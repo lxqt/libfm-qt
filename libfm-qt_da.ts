@@ -39,9 +39,9 @@
 &lt;/ul&gt;</source>
         <translation>&lt;b&gt;Disse specielle koder kan bruges i kommandoen:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Repræsenterer et enkelt filnavn&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Repræsenterer ét filnavn&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Repræsenterer flere filnavne&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Repræsenterer en enkelt fils URI&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Repræsenterer én URI af filen&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Repræsenterer flere URI&apos;s&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
@@ -185,7 +185,7 @@
     <message>
         <location filename="../../file-props.ui" line="175"/>
         <source>On-disk size:</source>
-        <translation>Fylder på disk:</translation>
+        <translation>Størrelse på disk:</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="198"/>
@@ -374,7 +374,7 @@
     <message>
         <location filename="../../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation>Lav symbolsk lænke her</translation>
+        <translation>Opret symbolsk henvisning her</translation>
     </message>
     <message>
         <location filename="../../dndactionmenu.cpp" line="41"/>
@@ -425,7 +425,7 @@ Hvad vil du foretage med det?</translation>
     <message>
         <location filename="../../filemenu.cpp" line="120"/>
         <source>Create &amp;New</source>
-        <translation>Opret &amp;Ny</translation>
+        <translation>Opret &amp;ny</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="139"/>
@@ -565,12 +565,12 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="59"/>
         <source>Create Symlinks</source>
-        <translation>Opret symbolske lænker</translation>
+        <translation>Opret symbolske henvisninger</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="60"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>Opretter symbolske lænker for følgende filer:</translation>
+        <translation>Opretter symbolske henvisninger for følgende filer:</translation>
     </message>
     <message>
         <location filename="../../fileoperationdialog.cpp" line="63"/>
@@ -724,7 +724,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../../foldermenu.cpp" line="161"/>
         <source>By Modification Time</source>
-        <translation>Efter senest ændret</translation>
+        <translation>Efter ændringstidspunkt</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="162"/>
@@ -782,7 +782,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../../foldermodel.cpp" line="251"/>
         <source>Modified</source>
-        <translation>Senest ændret</translation>
+        <translation>Ændringstidspunkt</translation>
     </message>
     <message>
         <location filename="../../foldermodel.cpp" line="254"/>
@@ -931,7 +931,7 @@ Size: %2
 Modified: %3</source>
         <translation>Type: %1
 Størrelse: %2
-Senest ændret: %3</translation>
+Ændringstidspunkt: %3</translation>
     </message>
     <message>
         <location filename="../../renamedialog.cpp" line="56"/>
@@ -1031,7 +1031,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../../utilities.cpp" line="150"/>
         <source>Please enter a new name:</source>
-        <translation>Venligst indtast et nyt navn:</translation>
+        <translation>Indtast venligst et nyt navn:</translation>
     </message>
     <message>
         <location filename="../../utilities.cpp" line="143"/>
@@ -1055,7 +1055,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../../utilities.cpp" line="179"/>
         <source>Please enter a new file name:</source>
-        <translation>Venligst indtast et nyt filnavn:</translation>
+        <translation>Indtast venligst et nyt filnavn:</translation>
     </message>
     <message>
         <location filename="../../utilities.cpp" line="180"/>
@@ -1065,7 +1065,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../../utilities.cpp" line="184"/>
         <source>Please enter a new folder name:</source>
-        <translation>Venligst indtast et nyt mappenavn:</translation>
+        <translation>Indtast venligst et nyt mappenavn:</translation>
     </message>
     <message>
         <location filename="../../utilities.cpp" line="185"/>
