@@ -38,6 +38,13 @@ PlacesView::PlacesView(QWidget* parent):
     setHeaderHidden(true);
     setIndentation(12);
 
+    /* merge with the surroundings */
+    setFrameShape(QFrame::NoFrame);
+    QPalette p = palette();
+    p.setColor(QPalette::Base, QColor(Qt::transparent));
+    setPalette(p);
+    viewport()->setAutoFillBackground(false);
+
     connect(this, &QTreeView::clicked, this, &PlacesView::onClicked);
     connect(this, &QTreeView::pressed, this, &PlacesView::onPressed);
 
