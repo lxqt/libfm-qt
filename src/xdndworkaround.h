@@ -52,6 +52,7 @@
 #include <QAbstractNativeEventFilter>
 #include <xcb/xcb.h>
 #include <QByteArray>
+#include <QPointer>
 
 class QDrag;
 
@@ -77,7 +78,7 @@ private:
     // _QBasicDrag* xcbDrag() const;
     void buttonRelease();
 
-    QDrag* lastDrag_;
+    QPointer<QDrag> lastDrag_;
     // xinput related
     bool xinput2Enabled_;
     int xinputOpCode_;
