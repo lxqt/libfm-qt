@@ -1218,8 +1218,10 @@ void FolderView::onClipboardDataChange() {
         if(!folder()->path().hasUriScheme("search") // skip for search results
            && isCutSelection
            && Fm::isCurrentPidClipboardData(*data)) { // set cut files only with this app
-            auto cutDirPath = paths.size() > 0 ? paths[0].parent(): FilePath();
-            if(folder()->path() == cutDirPath) {
+            auto cutDirPath = paths.size() > 0 ? paths[0].parent() : FilePath();
+            // set the cut file(s) only if the cutting is done here
+            if(folder()->path() == cutDirPath
+               && selectedFilePaths() == paths) {
                 model_->setCutFiles(selectionModel()->selection());
             }
             else if(folder()->hadCutFilesUnset() || folder()->hasCutFiles()) {
