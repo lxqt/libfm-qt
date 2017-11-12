@@ -376,7 +376,9 @@ void FileMenu::onRenameTriggered() {
         }
     }
     for(auto& info: files_) {
-        Fm::renameFile(info, nullptr);
+        if(!Fm::renameFile(info, nullptr)) {
+            break;
+        }
     }
 }
 

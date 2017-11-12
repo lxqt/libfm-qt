@@ -55,7 +55,7 @@ LIBFM_QT_API bool isCurrentPidClipboardData(const QMimeData& data);
 
 LIBFM_QT_API void changeFileName(const Fm::FilePath& path, const QString& newName, QWidget* parent);
 
-LIBFM_QT_API void renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent = 0);
+LIBFM_QT_API bool renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent = 0);
 
 enum CreateFileType {
     CreateNewFolder,
