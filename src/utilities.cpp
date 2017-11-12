@@ -169,7 +169,7 @@ void changeFileName(const Fm::FilePath& filePath, const QString& newName, QWidge
     }
 }
 
-void renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent) {
+bool renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent) {
     FilenameDialog dlg(parent);
     dlg.setWindowTitle(QObject::tr("Rename File"));
     dlg.setLabelText(QObject::tr("Please enter a new name:"));
@@ -182,14 +182,15 @@ void renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent) {
     }
 
     if(dlg.exec() != QDialog::Accepted) {
-        return;
+        return false; // stop multiple renaming
     }
 
     QString new_name = dlg.textValue();
     if(new_name == old_name) {
-        return;
+        return true; // let multiple renaming continue
     }
     changeFileName(file->path(), new_name, parent);
+    return true;
 }
 
 // templateFile is a file path used as a template of the new file.
