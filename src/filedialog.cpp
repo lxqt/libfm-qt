@@ -346,40 +346,42 @@ void FileDialog::goHome() {
 }
 
 void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath, bool addHistory) {
-    if(!directory.isValid() || directoryPath_ == directory) {
+    if(!directory.isValid()) {
         updateAcceptButtonState(); // FIXME: is this needed?
         return;
     }
 
-   if(folder_) {
-        if(folderModel_) {
-            proxyModel_->setSourceModel(nullptr);
-            folderModel_->unref(); // unref the cached model
-            folderModel_ = nullptr;
+   if(directoryPath_ != directory) {
+       if(folder_) {
+            if(folderModel_) {
+                proxyModel_->setSourceModel(nullptr);
+                folderModel_->unref(); // unref the cached model
+                folderModel_ = nullptr;
+            }
+            freeFolder();
+       }
+    
+        directoryPath_ = std::move(directory);
+    
+        ui->location->setPath(directoryPath_);
+        ui->sidePane->chdir(directoryPath_);
+        if(addHistory) {
+            history_.add(directoryPath_);
         }
-        freeFolder();
+        backAction_->setEnabled(history_.canBackward());
+        forwardAction_->setEnabled(history_.canForward());
+    
+        folder_ = Fm::Folder::fromPath(directoryPath_);
+        folderModel_ = CachedFolderModel::modelFromFolder(folder_);
+        proxyModel_->setSourceModel(folderModel_);
+    
+        // no lambda in these connections for easy disconnection
+        connect(folder_.get(), &Fm::Folder::removed, this, &FileDialog::goHome);
+        connect(folder_.get(), &Fm::Folder::unmount, this, &FileDialog::goHome);
+    
+        QUrl uri = QUrl::fromEncoded(directory.uri().get());
+        Q_EMIT directoryEntered(uri);
    }
-
-    directoryPath_ = std::move(directory);
-
-    ui->location->setPath(directoryPath_);
-    ui->sidePane->chdir(directoryPath_);
-    if(addHistory) {
-        history_.add(directoryPath_);
-    }
-    backAction_->setEnabled(history_.canBackward());
-    forwardAction_->setEnabled(history_.canForward());
-
-    folder_ = Fm::Folder::fromPath(directoryPath_);
-    folderModel_ = CachedFolderModel::modelFromFolder(folder_);
-    proxyModel_->setSourceModel(folderModel_);
-
-    // no lambda in these connections for easy disconnection
-    connect(folder_.get(), &Fm::Folder::removed, this, &FileDialog::goHome);
-    connect(folder_.get(), &Fm::Folder::unmount, this, &FileDialog::goHome);
-
-    QUrl uri = QUrl::fromEncoded(directory.uri().get());
-    Q_EMIT directoryEntered(uri);
 
     // select the path if valid
     if(selectedPath.isValid()) {
@@ -635,13 +637,8 @@ void FileDialog::selectFile(const QUrl& filename) {
     auto urlStr = filename.toEncoded();
     auto path = FilePath::fromUri(urlStr.constData());
     auto parent = path.parent();
-    if(parent.isValid() && parent != directoryPath_) {
-        // chdir into file's parent if it isn't the current directory
-        setDirectoryPath(parent, path);
-    }
-    else {
-        selectFilePathWithDelay(path);
-    }
+    // chdir into file's parent if needed and select the file
+    setDirectoryPath(parent, path);
 }
 
 QList<QUrl> FileDialog::selectedFiles() {
