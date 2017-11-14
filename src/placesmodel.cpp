@@ -429,6 +429,18 @@ void PlacesModel::onMountRemoved(GVolumeMonitor* monitor, GMount* mount, PlacesM
 }
 
 void PlacesModel::onVolumeAdded(GVolumeMonitor* /*monitor*/, GVolume* volume, PlacesModel* pThis) {
+    // the item may have been added with "mount-added" (as in loopback mounting)
+    bool itemExists = false;
+    GMount* mount = g_volume_get_mount(volume);
+    if(mount) {
+        if(pThis->itemFromMount(mount)) {
+            itemExists = true;
+        }
+        g_object_unref(mount);
+    }
+    if(itemExists) {
+        return;
+    }
     // for some unknown reasons, sometimes we get repeated volume-added
     // signals and added a device more than one. So, make a sanity check here.
     PlacesModelVolumeItem* volumeItem = pThis->itemFromVolume(volume);
