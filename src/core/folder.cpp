@@ -346,10 +346,10 @@ bool Folder::eventFileAdded(const FilePath &path) {
 bool Folder::eventFileChanged(const FilePath &path) {
     bool added;
     // G_LOCK(lists);
-    /* make sure that the file is not already queued for changes or
-     * it's already queued for addition. */
+    /* make sure that the file is not already queued for changes, addition or deletion */
     if(std::find(paths_to_update.cbegin(), paths_to_update.cend(), path) == paths_to_update.cend()
-       && std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) == paths_to_add.cend()) {
+       && std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) == paths_to_add.cend()
+       && std::find(paths_to_del.cbegin(), paths_to_del.cend(), path) == paths_to_del.cend()) {
         /* Since this function is called only when a file already exists, even if that file
            isn't included in "files_" yet, it will be soon due to a previous call to queueUpdate().
            So, here, we should queue it for changes regardless of what "files_" may contain. */
