@@ -156,7 +156,7 @@ bool isCurrentPidClipboardData(const QMimeData& data) {
     return !clip_pid.isEmpty() && clip_pid == curr_pid;
 }
 
-void changeFileName(const Fm::FilePath& filePath, const QString& newName, QWidget* parent) {
+bool changeFileName(const Fm::FilePath& filePath, const QString& newName, QWidget* parent, bool showMessage) {
     auto dest = filePath.parent().child(newName.toLocal8Bit().constData());
     Fm::GErrorPtr err;
     if(!g_file_move(filePath.gfile().get(), dest.gfile().get(),
@@ -165,8 +165,12 @@ void changeFileName(const Fm::FilePath& filePath, const QString& newName, QWidge
                                    G_FILE_COPY_NOFOLLOW_SYMLINKS),
                     nullptr, /* make this cancellable later. */
                     nullptr, nullptr, &err)) {
-        QMessageBox::critical(parent, QObject::tr("Error"), err.message());
+        if (showMessage){
+            QMessageBox::critical(parent, QObject::tr("Error"), err.message());
+        }
+        return false;
     }
+    return true;
 }
 
 void renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent) {

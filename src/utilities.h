@@ -53,7 +53,7 @@ LIBFM_QT_API void cutFilesToClipboard(const Fm::FilePathList& files);
 
 LIBFM_QT_API bool isCurrentPidClipboardData(const QMimeData& data);
 
-LIBFM_QT_API void changeFileName(const Fm::FilePath& path, const QString& newName, QWidget* parent);
+LIBFM_QT_API bool changeFileName(const Fm::FilePath& path, const QString& newName, QWidget* parent, bool showMessage = true);
 
 LIBFM_QT_API void renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent = 0);
 
