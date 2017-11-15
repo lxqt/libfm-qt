@@ -28,7 +28,8 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
     GIcon* gicon;
     GFileType type;
 
-    name_ = g_file_info_get_name(inf.get());
+    if (const char * name = g_file_info_get_name(inf.get()))
+        name_ = name;
 
     dispName_ = g_file_info_get_display_name(inf.get());
 
