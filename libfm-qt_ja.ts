@@ -26,7 +26,7 @@
     <message>
         <location filename="../../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation>アプリケーション名</translation>
+        <translation>アプリケーション名:</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="72"/>
@@ -302,7 +302,7 @@
     <message>
         <location filename="../../appchooserdialog.cpp" line="262"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>ファイルを開くアプリケーションを選択</translation>
+        <translation>ファイル&quot;%1&quot;を開くアプリケーションを選択</translation>
     </message>
 </context>
 <context>
@@ -310,12 +310,12 @@
     <message>
         <location filename="../../createnewmenu.cpp" line="30"/>
         <source>Folder</source>
-        <translation type="unfinished">フォルダー</translation>
+        <translation>フォルダー</translation>
     </message>
     <message>
         <location filename="../../createnewmenu.cpp" line="34"/>
         <source>Blank File</source>
-        <translation type="unfinished">空のファイル</translation>
+        <translation>空のファイル</translation>
     </message>
 </context>
 <context>
@@ -323,7 +323,7 @@
     <message>
         <location filename="../../core/dirlistjob.cpp" line="45"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>指定されたディレクトリ &apos;%1&apos; は妥当ではありません</translation>
     </message>
 </context>
 <context>
@@ -346,17 +346,17 @@
     <message>
         <location filename="../../dirtreeview.cpp" line="211"/>
         <source>Open in New T&amp;ab</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいタブで開く(&amp;a)</translation>
     </message>
     <message>
         <location filename="../../dirtreeview.cpp" line="215"/>
         <source>Open in New Win&amp;dow</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいウィンドウで開く(&amp;d)</translation>
     </message>
     <message>
         <location filename="../../dirtreeview.cpp" line="220"/>
         <source>Open in Termina&amp;l</source>
-        <translation type="unfinished"></translation>
+        <translation>ターミナルで開く(&amp;l)</translation>
     </message>
 </context>
 <context>
@@ -456,7 +456,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../../filemenu.cpp" line="86"/>
         <source>Open With...</source>
-        <translation>アプリケーションで開く</translation>
+        <translation>アプリケーションで開く...</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="114"/>
@@ -466,17 +466,17 @@ What do you want to do with it?</source>
     <message>
         <location filename="../../filemenu.cpp" line="120"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished">新規作成 (&amp;N)</translation>
+        <translation>新規作成 (&amp;N)</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="139"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>復活(&amp;R)</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="188"/>
         <source>Extract to...</source>
-        <translation>展開する</translation>
+        <translation>展開する...</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="193"/>
@@ -499,7 +499,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../../fileoperation.cpp" line="227"/>
         <source>Error</source>
-        <translation type="unfinished">エラー</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../../fileoperation.cpp" line="228"/>
@@ -643,12 +643,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../filepropsdialog.cpp" line="380"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>アイコンを選択</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="382"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>画像 (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="478"/>
@@ -666,17 +666,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../filesearchdialog.cpp" line="128"/>
         <source>Error</source>
-        <translation type="unfinished">エラー</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../../filesearchdialog.cpp" line="128"/>
         <source>You should add at least one directory to search.</source>
-        <translation type="unfinished"></translation>
+        <translation>検索するディレクトリを追加してください。</translation>
     </message>
     <message>
         <location filename="../../filesearchdialog.cpp" line="135"/>
         <source>Select a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>フォルダーの選択</translation>
     </message>
 </context>
 <context>
@@ -731,7 +731,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../foldermenu.cpp" line="137"/>
         <source>Output</source>
-        <translation type="unfinished">出力</translation>
+        <translation>出力</translation>
     </message>
     <message>
         <location filename="../../foldermenu.cpp" line="160"/>
@@ -833,12 +833,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../pathbar.cpp" line="126"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>パスの編集(&amp;E)</translation>
     </message>
     <message>
         <location filename="../../pathbar.cpp" line="129"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>パスのコピー(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -902,32 +902,32 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../placesview.cpp" line="356"/>
         <source>Open in New Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいタブで開く</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="359"/>
         <source>Open in New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいウィンドウで開く</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="379"/>
         <source>Move Bookmark Up</source>
-        <translation type="unfinished"></translation>
+        <translation>ブックマークを上に移動</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="384"/>
         <source>Move Bookmark Down</source>
-        <translation type="unfinished"></translation>
+        <translation>ブックマークを下に移動</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="388"/>
         <source>Rename Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>ブックマークの名前を変更</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="391"/>
         <source>Remove Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>ブックマークを削除</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="400"/>
@@ -1013,7 +1013,7 @@ Modified: %2</source>
     <message>
         <location filename="../../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>ユーザーとして接続(&amp;U)</translation>
+        <translation>ユーザーとして接続(&amp;U):</translation>
     </message>
     <message>
         <location filename="../../mount-operation-password.ui" line="79"/>
@@ -1033,17 +1033,17 @@ Modified: %2</source>
     <message>
         <location filename="../../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation>パスワードを記憶させない</translation>
+        <translation>パスワードを記憶させない(&amp;i)</translation>
     </message>
     <message>
         <location filename="../../mount-operation-password.ui" line="137"/>
         <source>Remember password until you &amp;logout</source>
-        <translation>パスワードをログアウトするまで記憶させる</translation>
+        <translation>パスワードをログアウトするまで記憶させる(&amp;l)</translation>
     </message>
     <message>
         <location filename="../../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation>パスワードを恒久的に記憶させる</translation>
+        <translation>パスワードを恒久的に記憶させる(&amp;f)</translation>
     </message>
 </context>
 <context>
@@ -1070,7 +1070,7 @@ Modified: %2</source>
     <message>
         <location filename="../../utilities.cpp" line="174"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>フォルダの作成</translation>
     </message>
     <message>
         <location filename="../../utilities.cpp" line="179"/>
@@ -1105,7 +1105,7 @@ Modified: %2</source>
     <message>
         <location filename="../../filepropsdialog.cpp" line="520"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>カスタムアイコンのエラー</translation>
     </message>
 </context>
 <context>
@@ -1161,138 +1161,138 @@ Modified: %2</source>
     <message>
         <location filename="../../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルを検索</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>名前/場所</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル名のパターン:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="41"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation>*</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>大文字と小文字を区別しない</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>正規表現を使用する</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="65"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>検索の場所:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="78"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>追加(&amp;A)</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="90"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>削除(&amp;R)</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="119"/>
         <source>Search in sub directories</source>
-        <translation type="unfinished"></translation>
+        <translation>サブディレクトリを検索する</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="126"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>隠しファイルを検索する</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="137"/>
         <source>File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルの種類</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="143"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>次の種類のファイルのみを検索:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="149"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>テキストファイル</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="156"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>画像ファイル</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="163"/>
         <source>Audio files</source>
-        <translation type="unfinished"></translation>
+        <translation>音声ファイル</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="170"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>動画ファイル</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="177"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>文書</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="184"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>フォルダ</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="208"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>内容</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="214"/>
         <source>File contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルを含む:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="223"/>
         <source>Case insensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>大文字小文字を区別しない(&amp;v)</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="230"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>正規表現を使う(&amp;U)</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="254"/>
         <source>Properties</source>
-        <translation type="unfinished">プロパティー</translation>
+        <translation>プロパティ</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="260"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルのサイズ:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="289"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>より大きい:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="303"/>
         <location filename="../../filesearch.ui" line="333"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Bytes</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="308"/>
@@ -1315,22 +1315,22 @@ Modified: %2</source>
     <message>
         <location filename="../../filesearch.ui" line="268"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>より小さい:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="364"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>更新日時:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="372"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>より早い:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="379"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>より遅い:</translation>
     </message>
 </context>
 </TS>
