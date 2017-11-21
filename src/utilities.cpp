@@ -70,7 +70,16 @@ std::pair<Fm::FilePathList, bool> parseClipboardData(const QMimeData& data) {
     bool isCut = false;
     Fm::FilePathList paths;
 
-    if(data.hasFormat("x-special/gnome-copied-files")) {
+    if(data.hasUrls()) {
+        // The KDE way
+        paths = Fm::pathListFromQUrls(data.urls());
+        QByteArray cut = data.data(QStringLiteral("application/x-kde-cutselection"));
+        if(!cut.isEmpty() && QChar::fromLatin1(cut.at(0)) == QLatin1Char('1')) {
+            isCut = true;
+        }
+    }
+
+    if(paths.empty() && data.hasFormat("x-special/gnome-copied-files")) {
         // Gnome, LXDE, and XFCE
         QByteArray gnomeData = data.data("x-special/gnome-copied-files");
         char* pdata = gnomeData.data();
@@ -80,15 +89,6 @@ std::pair<Fm::FilePathList, bool> parseClipboardData(const QMimeData& data) {
             *eol = '\0';
             isCut = (strcmp(pdata, "cut") == 0 ? true : false);
             paths = pathListFromUriList(eol + 1);
-        }
-    }
-
-    if(paths.empty() && data.hasUrls()) {
-        // The KDE way
-        paths = Fm::pathListFromQUrls(data.urls());
-        QByteArray cut = data.data(QStringLiteral("application/x-kde-cutselection"));
-        if(!cut.isEmpty() && QChar::fromLatin1(cut.at(0)) == QLatin1Char('1')) {
-            isCut = true;
         }
     }
 
