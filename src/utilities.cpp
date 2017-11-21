@@ -114,7 +114,8 @@ void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent) {
     }
 }
 
-void copyFilesToClipboard(const Fm::FilePathList& files) {
+static void setFilesToClipboard(const Fm::FilePathList& files, bool isCut)
+{
     QClipboard* clipboard = QApplication::clipboard();
     QMimeData* data = new QMimeData();
     QByteArray ba;
@@ -124,28 +125,26 @@ void copyFilesToClipboard(const Fm::FilePathList& files) {
     data->setData(QStringLiteral("text/x-libfmqt-pid"), ba.setNum(QCoreApplication::applicationPid()));
     // Gnome, LXDE, and XFCE
     // Note: the standard text/urilist format uses CRLF for line breaks, but gnome format uses LF only
-    data->setData("x-special/gnome-copied-files", QByteArray("copy\n") + urilist.replace("\r\n", "\n"));
+    QByteArray gnome_copied_files;
+    gnome_copied_files.reserve(5/*copy/cut\n*/ + urilist.size() + files.size() + 1);
+    gnome_copied_files += isCut ? "cut\n" : "copy\n";
+    gnome_copied_files += urilist.replace("\r\n", "\n");
+    // Note: the trailing \n can make nautilus crash on assertion
+    gnome_copied_files.chop(1);
+    data->setData("x-special/gnome-copied-files", gnome_copied_files);
     // The KDE way
     data->setData("text/uri-list", urilist);
-    // data->setData(QStringLiteral("application/x-kde-cutselection"), QByteArrayLiteral("0"));
+    if (isCut)
+        data->setData(QStringLiteral("application/x-kde-cutselection"), QByteArrayLiteral("1"));
     clipboard->setMimeData(data);
 }
 
-void cutFilesToClipboard(const Fm::FilePathList& files) {
-    QClipboard* clipboard = QApplication::clipboard();
-    QMimeData* data = new QMimeData();
-    QByteArray ba;
-    auto urilist = pathListToUriList(files);
+void copyFilesToClipboard(const Fm::FilePathList& files) {
+    setFilesToClipboard(files, false);
+}
 
-    // Add current pid to trace cut/copy operations to current app
-    data->setData(QStringLiteral("text/x-libfmqt-pid"), ba.setNum(QCoreApplication::applicationPid()));
-    // Gnome, LXDE, and XFCE
-    // Note: the standard text/urilist format uses CRLF for line breaks, but gnome format uses LF only
-    data->setData("x-special/gnome-copied-files", QByteArray("cut\n") + urilist.replace("\r\n", "\n"));
-    // The KDE way
-    data->setData("text/uri-list", urilist);
-    data->setData(QStringLiteral("application/x-kde-cutselection"), QByteArrayLiteral("1"));
-    clipboard->setMimeData(data);
+void cutFilesToClipboard(const Fm::FilePathList& files) {
+    setFilesToClipboard(files, true);
 }
 
 bool isCurrentPidClipboardData(const QMimeData& data) {
