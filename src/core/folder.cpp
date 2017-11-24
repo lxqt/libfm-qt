@@ -477,7 +477,9 @@ void Folder::setCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet) 
     if(cutFilesHashSet_ && !cutFilesHashSet_->empty()) {
         lastCutFilesDirPath_ = cutFilesDirPath_;
     }
-    cutFilesDirPath_ = dirPath_;
+    if(!dirPath_.hasUriScheme("search")) { // the search:/// dir doesn't support file monitoring
+        cutFilesDirPath_ = dirPath_;
+    }
     cutFilesHashSet_ = cutFilesHashSet;
 }
 
@@ -496,8 +498,8 @@ void Folder::onDirListFinished() {
     std::vector<FileInfoPair> files_to_update;
     const auto& infos = job->files();
 
-    // with "search://", there is no update for infos and all of them should be added
-    if(strcmp(dirPath_.uriScheme().get(), "search") == 0) {
+    // with search:///, there is no update for infos and all of them should be added
+    if(dirPath_.hasUriScheme("search")) {
         files_to_add = infos;
         for(auto& file: files_to_add) {
             files_[file->name()] = file;
