@@ -34,8 +34,8 @@
 namespace Fm {
 
 std::unordered_map<FilePath, std::weak_ptr<Folder>, FilePathHash> Folder::cache_;
-FilePath Folder::cutFilesDirPath_;
-FilePath Folder::lastCutFilesDirPath_;
+QString Folder::cutFilesDirPath_;
+QString Folder::lastCutFilesDirPath_;
 std::shared_ptr<const HashSet> Folder::cutFilesHashSet_;
 std::mutex Folder::mutex_;
 
@@ -460,8 +460,8 @@ void Folder::onFileChangeEvents(GFileMonitor* /*monitor*/, GFile* gf, GFile* /*o
 // checks whether there were cut files here
 // and if there were, invalidates this last cut path
 bool Folder::hadCutFilesUnset() {
-    if(lastCutFilesDirPath_ == dirPath_) {
-        lastCutFilesDirPath_ = FilePath();
+    if(lastCutFilesDirPath_ == dirPath_.toString().get()) {
+        lastCutFilesDirPath_ = QString();
         return true;
     }
     return false;
@@ -470,14 +470,14 @@ bool Folder::hadCutFilesUnset() {
 bool Folder::hasCutFiles() {
     return cutFilesHashSet_
             && !cutFilesHashSet_->empty()
-            && cutFilesDirPath_ == dirPath_;
+            && cutFilesDirPath_ == dirPath_.toString().get();
 }
 
 void Folder::setCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet) {
     if(cutFilesHashSet_ && !cutFilesHashSet_->empty()) {
         lastCutFilesDirPath_ = cutFilesDirPath_;
     }
-    cutFilesDirPath_ = dirPath_;
+    cutFilesDirPath_ = dirPath_.toString().get();
     cutFilesHashSet_ = cutFilesHashSet;
 }
 

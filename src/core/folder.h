@@ -185,8 +185,8 @@ private:
     bool defer_content_test : 1;
 
     static std::unordered_map<FilePath, std::weak_ptr<Folder>, FilePathHash> cache_;
-    static FilePath cutFilesDirPath_;
-    static FilePath lastCutFilesDirPath_;
+    static QString cutFilesDirPath_;
+    static QString lastCutFilesDirPath_;
     static std::shared_ptr<const HashSet> cutFilesHashSet_;
     static std::mutex mutex_;
 };
