@@ -305,8 +305,9 @@ void PathBar::openEditor() {
         connect(tempPathEdit_, &PathEdit::returnPressed, this, &PathBar::onReturnPressed);
         connect(tempPathEdit_, &PathEdit::editingFinished, this, &PathBar::closeEditor);
     }
-    tempPathEdit_->setFocus();
     tempPathEdit_->selectAll();
+    QApplication::clipboard()->setText(tempPathEdit_->text(), QClipboard::Selection);
+    QTimer::singleShot(0, tempPathEdit_, SLOT(setFocus()));
 }
 
 void PathBar::closeEditor() {
