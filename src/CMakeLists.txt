@@ -95,9 +95,6 @@ set(libfm_UIS
     filedialog.ui
 )
 
-qt5_wrap_ui(libfm_UIS_H ${libfm_UIS})
-
-
 set(LIBFM_QT_DATA_DIR "${CMAKE_INSTALL_FULL_DATADIR}/libfm-qt")
 set(LIBFM_QT_INTREE_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/include")
 
@@ -114,7 +111,7 @@ lxqt_translate_ts(QM_FILES
 
 add_library(${LIBFM_QT_LIBRARY_NAME} SHARED
     ${libfm_SRCS}
-    ${libfm_UIS_H}
+    ${libfm_UIS}
     ${QM_FILES}
 )
 
