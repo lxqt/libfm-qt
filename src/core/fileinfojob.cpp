@@ -3,9 +3,10 @@
 
 namespace Fm {
 
-FileInfoJob::FileInfoJob(FilePathList paths, FilePath commonDirPath, const std::shared_ptr<const HashSet>& cutFilesHashSet):
+FileInfoJob::FileInfoJob(FilePathList paths, FilePathList deletionPaths, FilePath commonDirPath, const std::shared_ptr<const HashSet>& cutFilesHashSet):
     Job(),
     paths_{std::move(paths)},
+    deletionPaths_{std::move(deletionPaths)},
     commonDirPath_{std::move(commonDirPath)},
     cutFilesHashSet_{cutFilesHashSet} {
 }
@@ -19,8 +20,9 @@ void FileInfoJob::exec() {
                                   G_FILE_QUERY_INFO_NONE, cancellable().get(), &err),
                 false
             };
-            if(!inf)
-                return;
+            if(!inf) {
+                continue;
+            }
 
             // Reuse the same dirPath object when the path remains the same (optimize for files in the same dir)
             auto dirPath = commonDirPath_.isValid() ? commonDirPath_ : path.parent();
