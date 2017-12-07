@@ -346,7 +346,7 @@
     <message>
         <location filename="../../dirtreeview.cpp" line="211"/>
         <source>Open in New T&amp;ab</source>
-        <translation>Megnyi&amp;tás új fülön</translation>
+        <translation>Megnyi&amp;tás új lapon</translation>
     </message>
     <message>
         <location filename="../../dirtreeview.cpp" line="215"/>
@@ -893,7 +893,7 @@ Töröljük őket véglegesen?</translation>
     <message>
         <location filename="../../placesview.cpp" line="356"/>
         <source>Open in New Tab</source>
-        <translation>Megnyitás új fülön</translation>
+        <translation>Megnyitás új lapon</translation>
     </message>
     <message>
         <location filename="../../placesview.cpp" line="359"/>
