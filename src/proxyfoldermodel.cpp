@@ -27,6 +27,7 @@ namespace Fm {
 ProxyFolderModel::ProxyFolderModel(QObject* parent):
     QSortFilterProxyModel(parent),
     showHidden_(false),
+    backupAsHidden_(true),
     folderFirst_(true),
     showThumbnails_(false),
     thumbnailSize_(0) {
@@ -88,6 +89,14 @@ void ProxyFolderModel::setShowHidden(bool show) {
     }
 }
 
+void ProxyFolderModel::setBackupAsHidden(bool backupAsHidden) {
+    if(backupAsHidden != backupAsHidden_) {
+        backupAsHidden_ = backupAsHidden;
+        invalidateFilter();
+        Q_EMIT sortFilterChanged();
+    }
+}
+
 // need to call invalidateFilter() manually.
 void ProxyFolderModel::setFolderFirst(bool folderFirst) {
     if(folderFirst != folderFirst_) {
@@ -108,7 +117,8 @@ bool ProxyFolderModel::filterAcceptsRow(int source_row, const QModelIndex& sourc
     if(!showHidden_) {
         QAbstractItemModel* srcModel = sourceModel();
         QString name = srcModel->data(srcModel->index(source_row, 0, source_parent)).toString();
-        if(name.startsWith(".") || name.endsWith("~")) {
+        if(name.startsWith(QLatin1Char('.'))
+           || (backupAsHidden_ && name.endsWith(QLatin1Char('~')))) {
             return false;
         }
     }

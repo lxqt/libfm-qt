@@ -57,6 +57,11 @@ public:
         return showHidden_;
     }
 
+    void setBackupAsHidden(bool backupAsHidden);
+    bool backupAsHidden() const {
+        return backupAsHidden_;
+    }
+
     void setFolderFirst(bool folderFirst);
     bool folderFirst() {
         return folderFirst_;
@@ -103,6 +108,7 @@ protected:
 private:
     QCollator collator_;
     bool showHidden_;
+    bool backupAsHidden_;
     bool folderFirst_;
     bool showThumbnails_;
     int thumbnailSize_;
