@@ -54,6 +54,7 @@ public:
         ColumnFileSize,
         ColumnFileMTime,
         ColumnFileOwner,
+        ColumnFileGroup,
         NumOfColumns
     };
 
