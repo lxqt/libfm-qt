@@ -43,10 +43,7 @@ QString FolderModelItem::ownerName() const {
     QString name;
     auto user = Fm::UserInfoCache::globalInstance()->userFromId(info->uid());
     if(user) {
-        name = user->realName();
-        if(name.isEmpty()) {
-            name = user->name();
-        }
+        name = user->name();
     }
     return name;
 }

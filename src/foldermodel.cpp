@@ -229,6 +229,8 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
             return item->displaySize();
         case ColumnFileOwner:
             return item->ownerName();
+        case ColumnFileGroup:
+            return item->ownerGroup();
         }
         break;
     }
@@ -273,6 +275,9 @@ QVariant FolderModel::headerData(int section, Qt::Orientation orientation, int r
                 break;
             case ColumnFileOwner:
                 title = tr("Owner");
+                break;
+            case ColumnFileGroup:
+                title = tr("Group");
                 break;
             }
             return QVariant(title);
