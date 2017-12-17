@@ -323,7 +323,7 @@
     <message>
         <location filename="../../core/dirlistjob.cpp" line="45"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>O diretório &quot;%1&quot; é inválido</translation>
     </message>
 </context>
 <context>
@@ -642,12 +642,12 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="380"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecione um ícone</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="382"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Imagens (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="478"/>
@@ -1104,7 +1104,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../../filepropsdialog.cpp" line="520"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Erro no ícone personalizado</translation>
     </message>
 </context>
 <context>
