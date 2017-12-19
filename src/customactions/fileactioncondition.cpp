@@ -378,7 +378,11 @@ bool FileActionCondition::match_folder(const FileInfoList& files, const char* fo
     }
     for(auto& fi: files) {
         auto dirname = fi->dirPath().toString();
-        if(g_pattern_match_string(pattern, dirname.get())) { // at least 1 file is in the folder
+        // Since "/*" is added to the pattern, if the name of the parent directory of
+        // this file is exactly "folder", it should end with "/" to be found as a match.
+        // Otherwise (and even if that name ends with "/"), adding "/" will be harmless.
+        auto path_str = string(dirname.get()) + "/";
+        if(g_pattern_match_string(pattern, path_str.c_str())) { // at least 1 file is in the folder
             if(negated) {
                 return false;
             }
