@@ -373,14 +373,15 @@ bool FileActionCondition::match_folder(const FileInfoList& files, const char* fo
         pattern = g_pattern_spec_new(folder);
     }
     else {
-        auto pat_str = string(folder) + "/*";
+        auto pat_str = g_str_has_suffix(folder, "/") ? string(folder) + "*" // be tolerant
+                                                     : string(folder) + "/*";
         pattern = g_pattern_spec_new(pat_str.c_str());
     }
     for(auto& fi: files) {
-        auto dirname = fi->dirPath().toString();
-        // Since "/*" is added to the pattern, if the name of the parent directory of
-        // this file is exactly "folder", it should end with "/" to be found as a match.
-        // Otherwise (and even if that name ends with "/"), adding "/" will be harmless.
+        auto dirname = fi->isDir() ? fi->path().toString() // also match "folder" itself
+                                   : fi->dirPath().toString();
+        // Since the pattern ends with "/*", if the directory path is equal to "folder",
+        // it should end with "/" to be found as a match. Adding "/" is always harmless.
         auto path_str = string(dirname.get()) + "/";
         if(g_pattern_match_string(pattern, path_str.c_str())) { // at least 1 file is in the folder
             if(negated) {
