@@ -120,7 +120,7 @@ bool ThumbnailJob::isSupportedImageType(const std::shared_ptr<const MimeType>& m
 
 bool ThumbnailJob::isThumbnailOutdated(const std::shared_ptr<const FileInfo>& file, const QImage &thumbnail) const {
     QString thumb_mtime = thumbnail.text("Thumb::MTime");
-    return (thumb_mtime.isEmpty() || thumb_mtime.toInt() != file->mtime());
+    return (thumb_mtime.isEmpty() || thumb_mtime.toULongLong() != file->mtime());
 }
 
 bool ThumbnailJob::readJpegExif(GInputStream *stream, QImage& thumbnail, int& rotate_degrees) {
