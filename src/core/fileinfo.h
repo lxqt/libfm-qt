@@ -90,16 +90,16 @@ public:
         return mimeType_;
     }
 
-    time_t ctime() const {
+    quint64 ctime() const {
         return ctime_;
     }
 
 
-    time_t atime() const {
+    quint64 atime() const {
         return atime_;
     }
 
-    time_t mtime() const {
+    quint64 mtime() const {
         return mtime_;
     }
 
@@ -221,9 +221,9 @@ private:
     uid_t uid_;
     gid_t gid_;
     uint64_t size_;
-    time_t mtime_;
-    time_t atime_;
-    time_t ctime_;
+    quint64 mtime_;
+    quint64 atime_;
+    quint64 ctime_;
 
     uint64_t blksize_;
     uint64_t blocks_;
