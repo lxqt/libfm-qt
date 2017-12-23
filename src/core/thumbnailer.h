@@ -26,7 +26,7 @@ private:
     CStrPtr id_;
     CStrPtr try_exec_; /* FIXME: is this useful? */
     CStrPtr exec_;
-    std::vector<std::shared_ptr<const MimeType>> mimeTypes_;
+    //std::vector<std::shared_ptr<const MimeType>> mimeTypes_;
 
     static std::mutex mutex_;
     static std::vector<std::shared_ptr<Thumbnailer>> allThumbnailers_;

@@ -119,16 +119,17 @@ void Thumbnailer::loadAll() {
             CStrPtr file_path{g_build_filename(dir_path, "thumbnailers", base_name.c_str(), nullptr)};
             if(g_key_file_load_from_file(kf, file_path.get(), G_KEY_FILE_NONE, nullptr)) {
                 auto thumbnailer = std::make_shared<Thumbnailer>(base_name.c_str(), kf);
-                char** mime_types = g_key_file_get_string_list(kf, "Thumbnailer Entry", "MimeType", nullptr, nullptr);
-                if(mime_types && thumbnailer->exec_) {
-                    for(char** name = mime_types; *name; ++name) {
-                        auto mime_type = MimeType::fromName(*name);
-                        if(mime_type) {
-                            thumbnailer->mimeTypes_.push_back(mime_type);
-                            std::const_pointer_cast<MimeType>(mime_type)->addThumbnailer(thumbnailer);
+                if(thumbnailer->exec_) {
+                    char** mime_types = g_key_file_get_string_list(kf, "Thumbnailer Entry", "MimeType", nullptr, nullptr);
+                    if(mime_types) {
+                        for(char** name = mime_types; *name; ++name) {
+                            auto mime_type = MimeType::fromName(*name);
+                            if(mime_type) {
+                                std::const_pointer_cast<MimeType>(mime_type)->addThumbnailer(thumbnailer);
+                            }
                         }
+                        g_strfreev(mime_types);
                     }
-                    g_strfreev(mime_types);
                 }
                 allThumbnailers_.push_back(std::move(thumbnailer));
             }
