@@ -23,6 +23,7 @@
 
 #include "libfmqtglobals.h"
 #include <QTreeView>
+#include <QSortFilterProxyModel>
 #include <libfm/fm.h>
 
 #include <memory>
@@ -32,6 +33,40 @@ namespace Fm {
 
 class PlacesModel;
 class PlacesModelItem;
+class PlacesView;
+
+class LIBFM_QT_API PlacesProxyModel : public QSortFilterProxyModel {
+    Q_OBJECT
+public:
+    explicit PlacesProxyModel(QObject* parent = 0);
+    virtual ~PlacesProxyModel();
+
+    void setHidden(const QString& str, bool hide = true);
+
+    void restoreHiddenItems(const QSet<QString>& items);
+
+    void showAll(bool show);
+
+    bool isShowingAll() const {
+        return showAll_;
+    }
+
+    bool isHidden(const QString& str) const {
+        return hidden_.contains(str);
+    }
+
+    bool hasHidden() const {
+        return !hidden_.isEmpty();
+    }
+
+protected:
+    bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
+
+private:
+    QSet<QString> hidden_;
+    bool showAll_;
+    bool hiddenItemsRestored_;
+};
 
 class LIBFM_QT_API PlacesView : public QTreeView {
     Q_OBJECT
@@ -59,8 +94,11 @@ public:
     }
 #endif
 
+    void restoreHiddenItems(const QSet<QString>& items);
+
 Q_SIGNALS:
     void chdirRequested(int type, const Fm::FilePath& path);
+    void hiddenItemSet(const QString& str, bool hide);
 
 protected Q_SLOTS:
     void onClicked(const QModelIndex& index);
@@ -97,10 +135,13 @@ protected:
 private:
     void onEjectButtonClicked(PlacesModelItem* item);
     void activateRow(int type, const QModelIndex& index);
+    void showAll(bool show);
 
 private:
     std::shared_ptr<PlacesModel> model_;
     Fm::FilePath currentPath_;
+
+    static std::shared_ptr<PlacesProxyModel> proxyModel_; // used to hide items in all views
 };
 
 }

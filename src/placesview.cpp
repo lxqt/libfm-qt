@@ -32,6 +32,107 @@
 
 namespace Fm {
 
+std::shared_ptr<PlacesProxyModel> PlacesView::proxyModel_;
+
+PlacesProxyModel::PlacesProxyModel(QObject* parent) :
+    QSortFilterProxyModel(parent),
+    showAll_(false),
+    hiddenItemsRestored_(false) {
+}
+
+PlacesProxyModel::~PlacesProxyModel() {
+}
+
+void PlacesProxyModel::restoreHiddenItems(const QSet<QString>& items) {
+    // hidden items should be restored only once
+    if(!hiddenItemsRestored_ && !items.isEmpty()) {
+        hidden_.clear();
+        QSet<QString>::const_iterator i = items.constBegin();
+        while (i != items.constEnd()) {
+            if(!(*i).isEmpty()) {
+                hidden_ << *i;
+            }
+            ++i;
+        }
+        hiddenItemsRestored_ = true;
+        invalidateFilter();
+    }
+}
+
+void PlacesProxyModel::setHidden(const QString& str, bool hide) {
+    if(hide) {
+        if(!str.isEmpty()) {
+            hidden_ << str;
+        }
+    }
+    else {
+        hidden_.remove(str);
+    }
+    invalidateFilter();
+}
+
+void PlacesProxyModel::showAll(bool show) {
+    showAll_ = show;
+    invalidateFilter();
+}
+
+bool PlacesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
+    if(showAll_ || hidden_.isEmpty()) {
+        return true;
+    }
+    if(PlacesModel* srcModel = static_cast<PlacesModel*>(sourceModel())) {
+        QModelIndex index = srcModel->index(source_row, 0, source_parent);
+        if(PlacesModelItem* item = static_cast<PlacesModelItem*>(srcModel->itemFromIndex(index))) {
+            if(item->type() == PlacesModelItem::Places) {
+                if(auto path = item->path()) {
+                    if(hidden_.contains(path.toString().get())) {
+                        return false;
+                    }
+                }
+            }
+            else if(item->type() == PlacesModelItem::Volume) {
+                QString str;
+                CStrPtr uuid{g_volume_get_uuid(static_cast<PlacesModelVolumeItem*>(item)->volume())};
+                if(uuid) {
+                    str = uuid.get();
+                }
+                if (hidden_.contains(str)) {
+                    return false;
+                }
+            }
+            // show a root items only if, at least, one of its children is shown
+            else if((source_row == 0 || source_row == 1) && !source_parent.isValid()) {
+                QModelIndex indx = index.child(0, 0);
+                while(PlacesModelItem* childItem = static_cast<PlacesModelItem*>(srcModel->itemFromIndex(indx))) {
+                    if(childItem->type() == PlacesModelItem::Places) {
+                        if(auto path = childItem->path()) {
+                            if(!hidden_.contains(path.toString().get())) {
+                                return true;
+                            }
+                        }
+                    }
+                    else if(childItem->type() == PlacesModelItem::Volume) {
+                        QString str;
+                        CStrPtr uuid{g_volume_get_uuid(static_cast<PlacesModelVolumeItem*>(childItem)->volume())};
+                        if(uuid) {
+                            str = uuid.get();
+                        }
+                        if (!hidden_.contains(str)) {
+                            return true;
+                        }
+                    }
+                    else {
+                        return true;
+                    }
+                    indx = indx.sibling(indx.row() + 1, 0);
+                }
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 PlacesView::PlacesView(QWidget* parent):
     QTreeView(parent) {
     setRootIsDecorated(false);
@@ -56,7 +157,27 @@ PlacesView::PlacesView(QWidget* parent):
     setItemDelegateForColumn(0, delegate);
 
     model_ = PlacesModel::globalInstance();
-    setModel(model_.get());
+    if(!proxyModel_) {
+        proxyModel_ = std::make_shared<PlacesProxyModel>();
+    }
+    if(!proxyModel_->sourceModel()) { // all places-views may have been closed
+        proxyModel_->setSourceModel(model_.get());
+    }
+    setModel(proxyModel_.get());
+
+    // these 2 connections are needed to update filtering
+    connect(model_.get(), &QAbstractItemModel::rowsInserted, this, [this](const QModelIndex&, int, int) {
+        proxyModel_->setHidden(QString()); // just invalidates filter
+        expandAll();
+        // for some reason (a Qt bug?), spanning is reset
+        setFirstColumnSpanned(0, QModelIndex(), true);
+        setFirstColumnSpanned(1, QModelIndex(), true);
+        setFirstColumnSpanned(2, QModelIndex(), true);
+
+    });
+    connect(model_.get(), &QAbstractItemModel::rowsRemoved, this, [this](const QModelIndex&, int, int) {
+        proxyModel_->setHidden(QString());
+    });
 
     QHeaderView* headerView = header();
     headerView->setSectionResizeMode(0, QHeaderView::Stretch);
@@ -91,7 +212,7 @@ void PlacesView::activateRow(int type, const QModelIndex& index) {
     if(!index.parent().isValid()) { // ignore root items
         return;
     }
-    PlacesModelItem* item = static_cast<PlacesModelItem*>(model_->itemFromIndex(index));
+    PlacesModelItem* item = static_cast<PlacesModelItem*>(model_->itemFromIndex(proxyModel_->mapToSource(index)));
     if(item) {
         auto path = item->path();
         if(!path) {
@@ -162,10 +283,10 @@ void PlacesView::onClicked(const QModelIndex& index) {
         activateRow(0, index);
     }
     else if(index.column() == 1) { // column 1 contains eject buttons of the mounted devices
-        if(index.parent() == model_->devicesRoot->index()) { // this is a mounted device
+        if(index.parent() == proxyModel_->mapFromSource(model_->devicesRoot->index())) { // this is a mounted device
             // the eject button is clicked
             QModelIndex itemIndex = index.sibling(index.row(), 0); // the real item is at column 0
-            PlacesModelItem* item = static_cast<PlacesModelItem*>(model_->itemFromIndex(itemIndex));
+            PlacesModelItem* item = static_cast<PlacesModelItem*>(model_->itemFromIndex(proxyModel_->mapToSource(itemIndex)));
             if(item) {
                 // eject the volume or the mount
                 onEjectButtonClicked(item);
@@ -183,7 +304,7 @@ void PlacesView::setCurrentPath(Fm::FilePath path) {
         // TODO: search for item with the path in model_ and select it.
         PlacesModelItem* item = model_->itemFromPath(currentPath_);
         if(item) {
-            selectionModel()->select(item->index(), QItemSelectionModel::SelectCurrent | QItemSelectionModel::Rows);
+            selectionModel()->select(proxyModel_->mapFromSource(item->index()), QItemSelectionModel::SelectCurrent | QItemSelectionModel::Rows);
         }
         else {
             clearSelection();
@@ -259,7 +380,7 @@ void PlacesView::onDeleteBookmark() {
 // virtual
 void PlacesView::commitData(QWidget* editor) {
     QTreeView::commitData(editor);
-    PlacesModelBookmarkItem* item = static_cast<PlacesModelBookmarkItem*>(model_->itemFromIndex(currentIndex()));
+    PlacesModelBookmarkItem* item = static_cast<PlacesModelBookmarkItem*>(model_->itemFromIndex(proxyModel_->mapToSource(currentIndex())));
     auto bookmarkItem = item->bookmark();
     // rename bookmark
     Fm::Bookmarks::globalInstance()->rename(bookmarkItem, item->text());
@@ -345,7 +466,7 @@ void PlacesView::onEjectVolume() {
 
 void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
     QModelIndex index = indexAt(event->pos());
-    if(index.isValid() && index.parent().isValid()) {
+    if(index.isValid()) {
         if(index.column() != 0) { // the real item is at column 0
             index = index.sibling(index.row(), 0);
         }
@@ -354,12 +475,13 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
         // it will be deleted with deleteLater() upon hidden.
         // This is possibly related to #145 - https://github.com/lxde/pcmanfm-qt/issues/145
         QMenu* menu = new QMenu();
-        QAction* action;
-        PlacesModelItem* item = static_cast<PlacesModelItem*>(model_->itemFromIndex(index));
+        QAction* action = nullptr;
+        PlacesModelItem* item = static_cast<PlacesModelItem*>(model_->itemFromIndex(proxyModel_->mapToSource(index)));
 
-        if(item->type() != PlacesModelItem::Mount
-                && (item->type() != PlacesModelItem::Volume
-                    || static_cast<PlacesModelVolumeItem*>(item)->isMounted())) {
+        if(index.parent().isValid()
+           && item->type() != PlacesModelItem::Mount
+           && (item->type() != PlacesModelItem::Volume
+               || static_cast<PlacesModelVolumeItem*>(item)->isMounted())) {
             action = new PlacesModel::ItemAction(item->index(), tr("Open in New Tab"), menu);
             connect(action, &QAction::triggered, this, &PlacesView::onOpenNewTab);
             menu->addAction(action);
@@ -371,11 +493,40 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
         switch(item->type()) {
         case PlacesModelItem::Places: {
             auto path = item->path();
-            auto path_str = path.toString();
             // FIXME: inefficient
-            if(path && strcmp(path_str.get(), "trash:///") == 0) {
-                action = new PlacesModel::ItemAction(item->index(), tr("Empty Trash"), menu);
-                connect(action, &QAction::triggered, this, &PlacesView::onEmptyTrash);
+            if(path) {
+                auto path_str = path.toString();
+                if(strcmp(path_str.get(), "trash:///") == 0) {
+                    action = new PlacesModel::ItemAction(item->index(), tr("Empty Trash"), menu);
+                    auto icn = item->icon();
+                    if(icn && icn->qicon().name() == QLatin1String("user-trash")) { // surely an empty trash
+                        action->setEnabled(false);
+                    }
+                    else {
+                        connect(action, &QAction::triggered, this, &PlacesView::onEmptyTrash);
+                    }
+                    // add the "Empty Trash" item on the top
+                    QList<QAction*> actions = menu->actions();
+                    if(!actions.isEmpty()) {
+                        menu->insertAction(actions.at(0), action);
+                        menu->insertSeparator(actions.at(0));
+                    }
+                    else { // impossible
+                        menu->addAction(action);
+                    }
+                }
+                // add a "Hide" action to the end
+                menu->addSeparator();
+                action = new PlacesModel::ItemAction(item->index(), tr("Hide"), menu);
+                QString pathStr(path_str.get());
+                action->setCheckable(true);
+                if(proxyModel_->isShowingAll()) {
+                    action->setChecked(proxyModel_->isHidden(pathStr));
+                }
+                connect(action, &QAction::triggered, [this, pathStr](bool checked) {
+                    proxyModel_->setHidden(pathStr, checked);
+                    Q_EMIT hiddenItemSet(pathStr, checked);
+                });
                 menu->addAction(action);
             }
             break;
@@ -418,6 +569,25 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
                 connect(action, &QAction::triggered, this, &PlacesView::onEjectVolume);
                 menu->addAction(action);
             }
+            // add a "Hide" action to the end
+            QString str;
+            CStrPtr uuid{g_volume_get_uuid(static_cast<PlacesModelVolumeItem*>(item)->volume())};
+            if(uuid) {
+                str = uuid.get();
+            }
+            if(!str.isEmpty()) {
+                menu->addSeparator();
+                action = new PlacesModel::ItemAction(item->index(), tr("Hide"), menu);
+                action->setCheckable(true);
+                if(proxyModel_->isShowingAll()) {
+                    action->setChecked(proxyModel_->isHidden(str));
+                }
+                connect(action, &QAction::triggered, [this, str](bool checked) {
+                    proxyModel_->setHidden(str, checked);
+                    Q_EMIT hiddenItemSet(str, checked);
+                });
+                menu->addAction(action);
+            }
             break;
         }
         case PlacesModelItem::Mount: {
@@ -427,6 +597,21 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
             break;
         }
         }
+
+        // also add an acton for showing all hidden items
+        if(proxyModel_->hasHidden()) {
+            if(item->type() == PlacesModelItem::Bookmark) {
+                menu->addSeparator();
+            }
+            action = new PlacesModel::ItemAction(item->index(), tr("Show All Entries"), menu);
+            action->setCheckable(true);
+            action->setChecked(proxyModel_->isShowingAll());
+            connect(action, &QAction::triggered, [this](bool checked) {
+                showAll(checked);
+            });
+            menu->addAction(action);
+        }
+
         if(menu->actions().size()) {
             menu->popup(mapToGlobal(event->pos()));
             connect(menu, &QMenu::aboutToHide, menu, &QMenu::deleteLater);
@@ -437,5 +622,19 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
     }
 }
 
+void PlacesView::restoreHiddenItems(const QSet<QString>& items) {
+    proxyModel_->restoreHiddenItems(items);
+}
+
+void PlacesView::showAll(bool show) {
+    proxyModel_->showAll(show);
+    if(show) {
+        expandAll();
+        // for some reason (a Qt bug?), spanning is reset
+        setFirstColumnSpanned(0, QModelIndex(), true);
+        setFirstColumnSpanned(1, QModelIndex(), true);
+        setFirstColumnSpanned(2, QModelIndex(), true);
+    }
+}
 
 } // namespace Fm

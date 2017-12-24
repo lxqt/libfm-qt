@@ -55,34 +55,25 @@ PlacesModel::PlacesModel(QObject* parent):
 
     createTrashItem();
 
-    // FIXME: add an option to hide network:///
-    if(true) {
-        computerItem = new PlacesModelItem("computer", tr("Computer"), Fm::FilePath::fromUri("computer:///"));
-        placesRoot->appendRow(computerItem);
-    }
-    else {
-        computerItem = nullptr;
+    computerItem = new PlacesModelItem("computer", tr("Computer"), Fm::FilePath::fromUri("computer:///"));
+    placesRoot->appendRow(computerItem);
+
+    { // Applications
+        const char* applicaion_icon_names[] = {"system-software-install", "applications-accessories", "application-x-executable"};
+        // NOTE: g_themed_icon_new_from_names() accepts char**, but actually const char** is OK.
+        Fm::GIconPtr gicon{g_themed_icon_new_from_names((char**)applicaion_icon_names, G_N_ELEMENTS(applicaion_icon_names)), false};
+        auto fmicon = Fm::IconInfo::fromGIcon(std::move(gicon));
+        applicationsItem = new PlacesModelItem(fmicon, tr("Applications"), Fm::FilePath::fromUri("menu:///applications/"));
+        placesRoot->appendRow(applicationsItem);
     }
 
-    // FIXME: add an option to hide applications:///
-    const char* applicaion_icon_names[] = {"system-software-install", "applications-accessories", "application-x-executable"};
-    // NOTE: g_themed_icon_new_from_names() accepts char**, but actually const char** is OK.
-    Fm::GIconPtr gicon{g_themed_icon_new_from_names((char**)applicaion_icon_names, G_N_ELEMENTS(applicaion_icon_names)), false};
-    auto fmicon = Fm::IconInfo::fromGIcon(std::move(gicon));
-    applicationsItem = new PlacesModelItem(fmicon, tr("Applications"), Fm::FilePath::fromUri("menu:///applications/"));
-    placesRoot->appendRow(applicationsItem);
-
-    // FIXME: add an option to hide network:///
-    if(true) {
+    { // Network
         const char* network_icon_names[] = {"network", "folder-network", "folder"};
         // NOTE: g_themed_icon_new_from_names() accepts char**, but actually const char** is OK.
         Fm::GIconPtr gicon{g_themed_icon_new_from_names((char**)network_icon_names, G_N_ELEMENTS(network_icon_names)), false};
         auto fmicon = Fm::IconInfo::fromGIcon(std::move(gicon));
         networkItem = new PlacesModelItem(fmicon, tr("Network"), Fm::FilePath::fromUri("network:///"));
         placesRoot->appendRow(networkItem);
-    }
-    else {
-        networkItem = nullptr;
     }
 
     devicesRoot = new QStandardItem(tr("Devices"));

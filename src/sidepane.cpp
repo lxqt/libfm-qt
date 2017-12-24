@@ -64,6 +64,7 @@ void SidePane::setIconSize(QSize size) {
     switch(mode_) {
     case ModePlaces:
         static_cast<PlacesView*>(view_)->setIconSize(size);
+        /* Falls through. */
     case ModeDirTree:
         static_cast<QTreeView*>(view_)->setIconSize(size);
         break;
@@ -159,9 +160,11 @@ void SidePane::setMode(Mode mode) {
     case ModePlaces: {
         PlacesView* placesView = new Fm::PlacesView(this);
         view_ = placesView;
+        placesView->restoreHiddenItems(restorableHiddenPlaces_);
         placesView->setIconSize(iconSize_);
         placesView->setCurrentPath(currentPath_);
         connect(placesView, &PlacesView::chdirRequested, this, &SidePane::chdirRequested);
+        connect(placesView, &PlacesView::hiddenItemSet, this, &SidePane::hiddenPlaceSet);
         break;
     }
     case ModeDirTree: {
@@ -205,6 +208,15 @@ void SidePane::setShowHidden(bool show_hidden) {
         if(model) {
             model->setShowHidden(showHidden_);
         }
+    }
+}
+
+void SidePane::restoreHiddenPlaces(const QSet<QString>& items) {
+    if(mode_ == ModePlaces) {
+        static_cast<PlacesView*>(view_)->restoreHiddenItems(items);
+    }
+    else {
+        restorableHiddenPlaces_.unite(items);
     }
 }
 
