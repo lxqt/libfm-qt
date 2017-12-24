@@ -98,6 +98,8 @@ public:
         setCurrentPath(std::move(path));
     }
 
+    void restoreHiddenPlaces(const QSet<QString>& items);
+
 Q_SIGNALS:
     void chdirRequested(int type, const Fm::FilePath& path);
     void openFolderInNewWindowRequested(const Fm::FilePath& path);
@@ -107,6 +109,8 @@ Q_SIGNALS:
     void modeChanged(Fm::SidePane::Mode mode);
 
     void prepareFileMenu(Fm::FileMenu* menu); // emit before showing a Fm::FileMenu
+
+    void hiddenPlaceSet(const QString& str, bool hide);
 
 protected Q_SLOTS:
     void onComboCurrentIndexChanged(int current);
@@ -122,6 +126,7 @@ private:
     QSize iconSize_;
     Mode mode_;
     bool showHidden_;
+    QSet<QString> restorableHiddenPlaces_;
 };
 
 }
