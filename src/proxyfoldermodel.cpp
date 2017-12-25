@@ -148,17 +148,26 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
             }
         }
 
+        int comp;
         switch(sortColumn()) {
         case FolderModel::ColumnFileMTime:
-            return leftInfo->mtime() < rightInfo->mtime();
+            comp = leftInfo->mtime() - rightInfo->mtime();
+            break;
         case FolderModel::ColumnFileSize:
-            return leftInfo->size() < rightInfo->size();
+            comp = leftInfo->size() - rightInfo->size();
+            break;
         default: {
             QString leftText = left.data(Qt::DisplayRole).toString();
             QString rightText = right.data(Qt::DisplayRole).toString();
-            return collator_.compare(leftText, rightText) < 0;
+            comp = collator_.compare(leftText, rightText);
+            break;
         }
         }
+        // always sort files by their display names when they have the same property
+        if(comp == 0) {
+            return collator_.compare(leftInfo->displayName(), rightInfo->displayName()) < 0;
+        }
+        return comp < 0;
     }
     return QSortFilterProxyModel::lessThan(left, right);
 }
