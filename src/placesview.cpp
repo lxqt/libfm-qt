@@ -415,8 +415,8 @@ void PlacesView::onRenameBookmark() {
     }
     PlacesModelBookmarkItem* item = static_cast<PlacesModelBookmarkItem*>(model_->itemFromIndex(action->index()));
     setFocus();
-    setCurrentIndex(item->index());
-    edit(item->index());
+    setCurrentIndex(proxyModel_->mapFromSource(item->index()));
+    edit(proxyModel_->mapFromSource(item->index()));
 }
 
 void PlacesView::onMountVolume() {
