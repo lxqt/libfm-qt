@@ -87,7 +87,7 @@ QVariant PlacesModelItem::data(int role) const {
 }
 
 PlacesModelBookmarkItem::PlacesModelBookmarkItem(std::shared_ptr<const Fm::BookmarkItem> bm_item):
-    PlacesModelItem{Fm::IconInfo::fromName("folder"), bm_item->name(), bm_item->path()},
+    PlacesModelItem{bm_item->icon(), bm_item->name(), bm_item->path()},
     bookmarkItem_{std::move(bm_item)} {
     setEditable(true);
 }

@@ -1,11 +1,10 @@
 #ifndef FM2_BOOKMARKS_H
 #define FM2_BOOKMARKS_H
 
-#include "../libfmqtglobals.h"
 #include <QObject>
 #include "gobjectptr.h"
-#include "fileinfo.h"
-
+#include "filepath.h"
+#include "iconinfo.h"
 
 namespace Fm {
 
@@ -13,11 +12,7 @@ class LIBFM_QT_API BookmarkItem {
 public:
     friend class Bookmarks;
 
-    explicit BookmarkItem(const FilePath& path, const QString name): path_{path}, name_{name} {
-        if(name_.isEmpty()) { // if the name is not specified, use basename of the path
-            name_ = path_.baseName().get();
-        }
-    }
+    explicit BookmarkItem(const FilePath& path, const QString name);
 
     const QString& name() const {
         return name_;
@@ -27,15 +22,11 @@ public:
         return path_;
     }
 
-    const std::shared_ptr<const FmFileInfo>& info() const {
-        return info_;
+    const std::shared_ptr<const IconInfo>& icon() const {
+        return icon_;
     }
 
 private:
-    void setInfo(const std::shared_ptr<const FmFileInfo>& info) {
-        info_ = info;
-    }
-
     void setName(const QString& name) {
         name_ = name;
     }
@@ -43,7 +34,7 @@ private:
 private:
     FilePath path_;
     QString name_;
-    std::shared_ptr<const FmFileInfo> info_;
+    std::shared_ptr<const IconInfo> icon_;
 };
 
 

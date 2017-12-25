@@ -2,6 +2,7 @@
 #include "cstrptr.h"
 #include <algorithm>
 #include <QTimer>
+#include <QStandardPaths>
 
 namespace Fm {
 
@@ -13,6 +14,60 @@ static inline CStrPtr get_legacy_bookmarks_file(void) {
 
 static inline CStrPtr get_new_bookmarks_file(void) {
     return CStrPtr{g_build_filename(g_get_user_config_dir(), "gtk-3.0", "bookmarks", nullptr)};
+}
+
+BookmarkItem::BookmarkItem(const FilePath& path, const QString name):
+    path_{path},
+    name_{name} {
+    if(name_.isEmpty()) { // if the name is not specified, use basename of the path
+        name_ = path_.baseName().get();
+    }
+    // We cannot rely on FileInfos to set bookmark icons because there is no guarantee
+    // that FileInfos already exist, while their creation is costly. Therefore, we have
+    // to get folder icons directly, as is done at `FileInfo::setFromGFileInfo` and more.
+    auto local_path = path.localPath();
+    auto dot_dir = CStrPtr{g_build_filename(local_path.get(), ".directory", nullptr)};
+    if(g_file_test(dot_dir.get(), G_FILE_TEST_IS_REGULAR)) {
+        GKeyFile* kf = g_key_file_new();
+        if(g_key_file_load_from_file(kf, dot_dir.get(), G_KEY_FILE_NONE, nullptr)) {
+            CStrPtr icon_name{g_key_file_get_string(kf, "Desktop Entry", "Icon", nullptr)};
+            if(icon_name) {
+                icon_ = IconInfo::fromName(icon_name.get());
+            }
+        }
+        g_key_file_free(kf);
+    }
+    if(!icon_ || !icon_->isValid()) {
+        // first check some standard folders that are shared by Qt and GLib
+        if(path_ == FilePath::homeDir()) {
+            icon_ = IconInfo::fromName("user-home");
+        }
+        else if (path_.parent() == FilePath::homeDir()) {
+            QString folderPath = QString::fromUtf8(path_.toString().get());
+            if(folderPath == QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)) {
+                icon_ = IconInfo::fromName("user-desktop");
+            }
+            else if(folderPath == QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)) {
+                icon_ = IconInfo::fromName("folder-documents");
+            }
+            else if(folderPath == QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)) {
+                icon_ = IconInfo::fromName("folder-download");
+            }
+            else if(folderPath == QStandardPaths::writableLocation(QStandardPaths::MusicLocation)) {
+                icon_ = IconInfo::fromName("folder-music");
+            }
+            else if(folderPath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
+                icon_ = IconInfo::fromName("folder-pictures");
+            }
+            else if(folderPath ==  QStandardPaths::writableLocation(QStandardPaths::MoviesLocation)) {
+                icon_ = IconInfo::fromName("folder-videos");
+            }
+        }
+        // fall back to the default folder icon
+        if(!icon_ || !icon_->isValid()) {
+            icon_ = IconInfo::fromName("folder");
+        }
+    }
 }
 
 Bookmarks::Bookmarks(QObject* parent):
