@@ -102,8 +102,8 @@ void EditBookmarksDialog::onAddItem() {
 }
 
 void EditBookmarksDialog::onRemoveItem() {
-    QList<QTreeWidgetItem*> sels = ui->treeWidget->selectedItems();
-    Q_FOREACH(QTreeWidgetItem* item, sels) {
+    const QList<QTreeWidgetItem*> sels = ui->treeWidget->selectedItems();
+    for(QTreeWidgetItem* const item : sels) {
         delete item;
     }
 }

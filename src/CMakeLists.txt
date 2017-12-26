@@ -151,6 +151,7 @@ target_include_directories(${LIBFM_QT_LIBRARY_NAME}
 
 target_compile_definitions(${LIBFM_QT_LIBRARY_NAME}
     PRIVATE "LIBFM_QT_DATA_DIR=\"${LIBFM_QT_DATA_DIR}\""
+            "QT_NO_FOREACH"
     PUBLIC "QT_NO_KEYWORDS"
 )
 

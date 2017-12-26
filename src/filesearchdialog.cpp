@@ -33,7 +33,7 @@ FileSearchDialog::FileSearchDialog(QStringList paths, QWidget* parent, Qt::Windo
     ui->setupUi(this);
     ui->minSize->setMaximum(std::numeric_limits<int>().max());
     ui->maxSize->setMaximum(std::numeric_limits<int>().max());
-    Q_FOREACH(const QString& path, paths) {
+    for(const QString& path : qAsConst(paths)) {
         ui->listView->addItem(path);
     }
 
@@ -144,7 +144,8 @@ void FileSearchDialog::onAddPath() {
 
 void FileSearchDialog::onRemovePath() {
     // remove selected items
-    Q_FOREACH(QListWidgetItem* item, ui->listView->selectedItems()) {
+    const auto itemList = ui->listView->selectedItems();
+    for(QListWidgetItem* const item : itemList) {
         delete item;
     }
 }
