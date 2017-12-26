@@ -350,8 +350,13 @@ QWidget* FolderItemDelegate::createEditor(QWidget* parent, const QStyleOptionVie
         return textEdit;
     }
     else {
-        // return the default line-edit in compact view
-        return QStyledItemDelegate::createEditor(parent, option, index);
+        // return the default line-edit in other views and
+        // ensure that its background isn't transparent (on the side-pane)
+        QWidget* editor = QStyledItemDelegate::createEditor(parent, option, index);
+        QPalette p = editor->palette();
+        p.setColor(QPalette::Base, QApplication::palette().color(QPalette::Base));
+        editor->setPalette(p);
+        return editor;
     }
 }
 
