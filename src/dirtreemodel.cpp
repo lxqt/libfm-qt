@@ -167,7 +167,7 @@ QModelIndex DirTreeModel::indexFromPath(const Fm::FilePath &path) const {
 }
 
 DirTreeModelItem* DirTreeModel::itemFromPath(const Fm::FilePath &path) const {
-    Q_FOREACH(DirTreeModelItem* item, rootItems_) {
+    for(DirTreeModelItem* const item : qAsConst(rootItems_)) {
         if(item->fileInfo_ && path == item->fileInfo_->path()) {
             return item;
         }
@@ -224,7 +224,7 @@ QString DirTreeModel::dispName(const QModelIndex& index) {
 
 void DirTreeModel::setShowHidden(bool show_hidden) {
     showHidden_ = show_hidden;
-    Q_FOREACH(DirTreeModelItem* item, rootItems_) {
+    for(DirTreeModelItem* const item : qAsConst(rootItems_)) {
         item->setShowHidden(show_hidden);
     }
 }

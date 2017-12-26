@@ -171,7 +171,7 @@ PlacesModel::~PlacesModel() {
         g_object_unref(trashMonitor_);
     }
 
-    Q_FOREACH(GMount* mount, shadowedMounts_) {
+    for(GMount* const mount : qAsConst(shadowedMounts_)) {
         g_object_unref(mount);
     }
 }

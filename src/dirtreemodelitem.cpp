@@ -55,12 +55,12 @@ DirTreeModelItem::~DirTreeModelItem() {
     freeFolder();
     // delete child items if needed
     if(!children_.empty()) {
-        Q_FOREACH(DirTreeModelItem* item, children_) {
+        for(DirTreeModelItem* const item : qAsConst(children_)) {
             delete item;
         }
     }
     if(!hiddenChildren_.empty()) {
-        Q_FOREACH(DirTreeModelItem* item, hiddenChildren_) {
+        for(DirTreeModelItem* const item : qAsConst(hiddenChildren_)) {
             delete item;
         }
     }
@@ -124,7 +124,7 @@ void DirTreeModelItem::unloadFolder() {
         // delete all visible child items
         model_->beginRemoveRows(index(), 0, children_.size() - 1);
         if(!children_.empty()) {
-            Q_FOREACH(DirTreeModelItem* item, children_) {
+            for(DirTreeModelItem* const item : qAsConst(children_)) {
                 delete item;
             }
             children_.clear();
@@ -133,7 +133,7 @@ void DirTreeModelItem::unloadFolder() {
 
         // remove hidden children
         if(!hiddenChildren_.empty()) {
-            Q_FOREACH(DirTreeModelItem* item, hiddenChildren_) {
+            for(DirTreeModelItem* const item : qAsConst(hiddenChildren_)) {
                 delete item;
             }
             hiddenChildren_.clear();
@@ -343,7 +343,7 @@ DirTreeModelItem* DirTreeModelItem::childFromName(const char* utf8_name, int* po
 DirTreeModelItem* DirTreeModelItem::childFromPath(Fm::FilePath path, bool recursive) const {
     Q_ASSERT(path != nullptr);
 
-    Q_FOREACH(DirTreeModelItem* item, children_) {
+    for(DirTreeModelItem* const item : qAsConst(children_)) {
         // if(item->fileInfo_)
         //  qDebug() << "child: " << QString::fromUtf8(fm_file_info_get_disp_name(item->fileInfo_));
         if(item->fileInfo_ && item->fileInfo_->path() == path) {
