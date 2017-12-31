@@ -247,7 +247,11 @@ _file_is_symlink:
     atime_ = g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_TIME_ACCESS);
     ctime_ = g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_TIME_CHANGED);
     isHidden_ = g_file_info_get_is_hidden(inf.get());
-    isBackup_ = g_file_info_get_is_backup(inf.get());
+    // g_file_info_get_is_backup() does not cover ".bak" and ".old".
+    // NOTE: Here, dispName_ is not modified for desktop entries yet.
+    isBackup_ = g_file_info_get_is_backup(inf.get())
+                || dispName_.endsWith(QLatin1String(".bak"))
+                || dispName_.endsWith(QLatin1String(".old"));
     isNameChangeable_ = true; /* GVFS tends to ignore this attribute */
     isIconChangeable_ = isHiddenChangeable_ = false;
     if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_ACCESS_CAN_RENAME)) {
