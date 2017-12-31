@@ -323,7 +323,7 @@
     <message>
         <location filename="../../core/dirlistjob.cpp" line="45"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο κατάλογος &apos;%1&apos; δεν είναι έγκυρος</translation>
     </message>
 </context>
 <context>
@@ -638,12 +638,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../filepropsdialog.cpp" line="380"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή εικονιδίου</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="382"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Εικόνες (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="478"/>
@@ -824,12 +824,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../pathbar.cpp" line="126"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Επεξεργασία της διαδρομής</translation>
     </message>
     <message>
         <location filename="../../pathbar.cpp" line="129"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Αντιγραφή της διαδρομής</translation>
     </message>
 </context>
 <context>
@@ -1088,7 +1088,7 @@ Modified: %2</source>
     <message>
         <location filename="../../filepropsdialog.cpp" line="520"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Σφάλμα προσαρμοσμένου εικονιδίου</translation>
     </message>
 </context>
 <context>
