@@ -115,10 +115,9 @@ void ProxyFolderModel::setSortCaseSensitivity(Qt::CaseSensitivity cs) {
 
 bool ProxyFolderModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
     if(!showHidden_) {
-        QAbstractItemModel* srcModel = sourceModel();
-        QString name = srcModel->data(srcModel->index(source_row, 0, source_parent)).toString();
-        if(name.startsWith(QLatin1Char('.'))
-           || (backupAsHidden_ && name.endsWith(QLatin1Char('~')))) {
+        FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
+        auto info = srcModel->fileInfoFromIndex(srcModel->index(source_row, 0, source_parent));
+        if(info && (info->isHidden() || (backupAsHidden_ && info->isBackup()))) {
             return false;
         }
     }
