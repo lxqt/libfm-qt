@@ -6,7 +6,7 @@
     <message>
         <location filename="../../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>选择一个应用程序</translation>
+        <translation>选择应用程序</translation>
     </message>
     <message>
         <location filename="../../app-chooser-dialog.ui" line="36"/>
