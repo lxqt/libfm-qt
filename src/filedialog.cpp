@@ -417,13 +417,13 @@ void FileDialog::selectFilePath(const FilePath &path) {
     QItemSelectionModel* selModel = ui->folderView->selectionModel();
     selModel->select(idx, flags);
     selModel->setCurrentIndex(idx, QItemSelectionModel::Current);
-    QTimer::singleShot(0, [this, idx]() {
+    QTimer::singleShot(0, this, [this, idx]() {
         ui->folderView->childView()->scrollTo(idx, QAbstractItemView::PositionAtCenter);
     });
 }
 
 void FileDialog::selectFilePathWithDelay(const FilePath &path) {
-    QTimer::singleShot(0, [this, path]() {
+    QTimer::singleShot(0, this, [this, path]() {
         if(acceptMode_ == QFileDialog::AcceptSave) {
             // with a save dialog, always put the base name in line-edit, regardless of selection
             ui->fileName->setText(path.baseName().get());
@@ -438,7 +438,7 @@ void FileDialog::selectFilePathWithDelay(const FilePath &path) {
 
 void FileDialog::selectFilesOnReload(const Fm::FileInfoList& infos) {
     QObject::disconnect(lambdaConnection_);
-    QTimer::singleShot(0, [this, infos]() {
+    QTimer::singleShot(0, this, [this, infos]() {
         for(auto& fileInfo: infos) {
             selectFilePath(fileInfo->path());
         }
