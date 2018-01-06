@@ -149,7 +149,7 @@ void FolderViewListView::dragEnterEvent(QDragEnterEvent* event) {
     else {
         QAbstractItemView::dragEnterEvent(event);
     }
-    qDebug("dragEnterEvent");
+    //qDebug("dragEnterEvent");
     //static_cast<FolderView*>(parent())->childDragEnterEvent(event);
 }
 
@@ -675,11 +675,10 @@ void FolderView::setViewMode(ViewMode _mode) {
         view->setSelectionMode(QAbstractItemView::ExtendedSelection);
         layout()->addWidget(view);
 
-        // enable dnd
+        // enable dnd (the drop indicator is set at "FolderView::childDragMoveEvent()")
         view->setDragEnabled(true);
         view->setAcceptDrops(true);
         view->setDragDropMode(QAbstractItemView::DragDrop);
-        view->setDropIndicatorShown(true);
 
         // inline renaming
         if(delegate) {
@@ -960,7 +959,7 @@ void FolderView::invertSelection() {
 }
 
 void FolderView::childDragEnterEvent(QDragEnterEvent* event) {
-    qDebug("drag enter");
+    //qDebug("drag enter");
     if(event->mimeData()->hasFormat("text/uri-list")) {
         event->accept();
     }
@@ -970,12 +969,23 @@ void FolderView::childDragEnterEvent(QDragEnterEvent* event) {
 }
 
 void FolderView::childDragLeaveEvent(QDragLeaveEvent* e) {
-    qDebug("drag leave");
+    //qDebug("drag leave");
     e->accept();
 }
 
-void FolderView::childDragMoveEvent(QDragMoveEvent* /*e*/) {
-    qDebug("drag move");
+void FolderView::childDragMoveEvent(QDragMoveEvent* e) {
+    // Since it isn't possible to drop on a file (see "FolderModel::dropMimeData()"),
+    // we enable the drop indicator only when the cursor is on a folder.
+    QModelIndex index = view->indexAt(e->pos());
+    if(index.isValid() && index.model()) {
+        QVariant data = index.model()->data(index, FolderModel::FileInfoRole);
+        auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
+        if(info && !info->isDir()) {
+            view->setDropIndicatorShown(false);
+            return;
+        }
+    }
+    view->setDropIndicatorShown(true);
 }
 
 void FolderView::childDropEvent(QDropEvent* e) {
