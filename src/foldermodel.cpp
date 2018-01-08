@@ -160,7 +160,8 @@ void FolderModel::setCutFiles(const QItemSelection& selection) {
         if(!selection.isEmpty()) {
             auto cutFilesHashSet = std::make_shared<HashSet>();
             folder_->setCutFiles(cutFilesHashSet);
-            for(const auto& index : selection.indexes()) {
+            const auto indexes = selection.indexes();
+            for(const auto& index : indexes) {
                 auto item = itemFromIndex(index);
                 item->bindCutFiles(cutFilesHashSet);
                 cutFilesHashSet->insert(item->info->path().hash());

@@ -767,7 +767,8 @@ void FileDialog::setMimeTypeFilters(const QStringList& filters) {
         auto nameFilter = mimeType.comment();
         if(!mimeType.suffixes().empty()) {
             nameFilter + " (";
-            for(const auto& suffix: mimeType.suffixes()) {
+            const auto suffixes = mimeType.suffixes();
+            for(const auto& suffix: suffixes) {
                 nameFilter += "*.";
                 nameFilter += suffix;
                 nameFilter += ' ';
