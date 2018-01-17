@@ -32,6 +32,9 @@ FileActionProfile::FileActionProfile(GKeyFile *kf, const char* profile_name) {
             exec_mode = FileActionExecMode::NORMAL;
         }
     }
+    else {
+        exec_mode = FileActionExecMode::NORMAL;
+    }
 
     startup_notify = g_key_file_get_boolean(kf, group_name.c_str(), "StartupNotify", nullptr);
     startup_wm_class = CStrPtr{g_key_file_get_string(kf, group_name.c_str(), "StartupWMClass", nullptr)};
