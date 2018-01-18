@@ -446,6 +446,7 @@ bool FolderModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
             break;
         case Qt::LinkAction:
             FileOperation::symlinkFiles(srcPaths, destPath);
+        /* Falls through. */
         default:
             return false;
         }

@@ -191,7 +191,7 @@ bool CopyJob::copyDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FileP
             g_file_enumerator_close(enu.get(), nullptr, &err);
         }
     }
-    return false;
+    return ret;
 }
 
 bool CopyJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FilePath& dirPath) {
@@ -338,7 +338,7 @@ bool CopyJob::copyPath(const FilePath& srcPath, const GFileInfoPtr& srcInfo, con
 #endif
     }
 
-    return false;
+    return success;
 }
 
 #if 0

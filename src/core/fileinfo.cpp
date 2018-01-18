@@ -131,6 +131,7 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
     switch(type) {
     case G_FILE_TYPE_SHORTCUT:
         isShortcut_ = true;
+    /* Falls through. */
     case G_FILE_TYPE_MOUNTABLE:
         uri = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
         if(uri) {
@@ -185,6 +186,7 @@ _file_is_symlink:
                 mimeType_ = MimeType::guessFromFileName(target_.c_str());
             }
         }
+    /* Falls through. */
     /* continue with absent mime type */
     default: /* G_FILE_TYPE_UNKNOWN G_FILE_TYPE_REGULAR G_FILE_TYPE_SPECIAL */
         if(G_UNLIKELY(!mimeType_)) {

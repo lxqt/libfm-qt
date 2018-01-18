@@ -1078,8 +1078,8 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                     }
                     autoSelectionTimer_->start(autoSelectionDelay_);
                 }
-                break;
             }
+            break;
         case QEvent::HoverLeave:
             if(style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick)) {
                 setCursor(Qt::ArrowCursor);

@@ -51,6 +51,7 @@ bool DndDest::dropMimeData(const QMimeData* data, Qt::DropAction action) {
         break;
       case Qt::LinkAction:
         FileOperation::symlinkFiles(srcPaths, destPath_);
+      /* Falls through. */
       default:
         return false;
     }

@@ -91,12 +91,8 @@ bool PlacesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sourc
                 }
             }
             else if(item->type() == PlacesModelItem::Volume) {
-                QString str;
                 CStrPtr uuid{g_volume_get_uuid(static_cast<PlacesModelVolumeItem*>(item)->volume())};
-                if(uuid) {
-                    str = uuid.get();
-                }
-                if (hidden_.contains(str)) {
+                if(uuid && hidden_.contains(uuid.get())) {
                     return false;
                 }
             }
@@ -112,12 +108,8 @@ bool PlacesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sourc
                         }
                     }
                     else if(childItem->type() == PlacesModelItem::Volume) {
-                        QString str;
                         CStrPtr uuid{g_volume_get_uuid(static_cast<PlacesModelVolumeItem*>(childItem)->volume())};
-                        if(uuid) {
-                            str = uuid.get();
-                        }
-                        if (!hidden_.contains(str)) {
+                        if(uuid == nullptr || !hidden_.contains(uuid.get())) {
                             return true;
                         }
                     }
@@ -570,12 +562,9 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
                 menu->addAction(action);
             }
             // add a "Hide" action to the end
-            QString str;
             CStrPtr uuid{g_volume_get_uuid(static_cast<PlacesModelVolumeItem*>(item)->volume())};
             if(uuid) {
-                str = uuid.get();
-            }
-            if(!str.isEmpty()) {
+                QString str = uuid.get();
                 menu->addSeparator();
                 action = new PlacesModel::ItemAction(item->index(), tr("Hide"), menu);
                 action->setCheckable(true);
