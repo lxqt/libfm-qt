@@ -5,7 +5,7 @@ namespace Fm {
 
 std::unordered_map<GIcon*, std::shared_ptr<IconInfo>, IconInfo::GIconHash, IconInfo::GIconEqual> IconInfo::cache_;
 std::mutex IconInfo::mutex_;
-QIcon IconInfo::fallbackQicon_;
+QList<QIcon> IconInfo::fallbackQicons_;
 
 static const char* fallbackIconNames[] = {
     "unknown",
@@ -14,6 +14,15 @@ static const char* fallbackIconNames[] = {
     "text-x-generic",
     nullptr
 };
+
+static QIcon getFirst(const QList<QIcon> & icons)
+{
+    for (const auto & icon : icons) {
+        if (!icon.isNull())
+            return icon;
+    }
+    return QIcon{};
+}
 
 IconInfo::IconInfo(const char* name):
     gicon_{g_themed_icon_new(name), false} {
@@ -50,10 +59,9 @@ std::shared_ptr<const IconInfo> IconInfo::fromGIcon(GIconPtr gicon) {
 
 void IconInfo::updateQIcons() {
     std::lock_guard<std::mutex> lock{mutex_};
-    fallbackQicon_ = QIcon();
     for(auto& elem: cache_) {
         auto& info = elem.second;
-        info->internalQicon_ = QIcon();
+        info->internalQicons_.clear();
     }
 }
 
@@ -64,7 +72,7 @@ QIcon IconInfo::qicon(const bool& transparent) const {
                 qicon_ = QIcon(new IconEngine{shared_from_this()});
             }
             else {
-                qicon_ = internalQicon_;
+                qicon_ = getFirst(internalQicons_);
             }
         }
     }
@@ -74,24 +82,21 @@ QIcon IconInfo::qicon(const bool& transparent) const {
                 qiconTransparent_ = QIcon(new IconEngine{shared_from_this(), transparent});
             }
             else {
-                qiconTransparent_ = internalQicon_;
+                qiconTransparent_ = getFirst(internalQicons_);
             }
         }
     }
     return !transparent ? qicon_ : qiconTransparent_;
 }
 
-QIcon IconInfo::qiconFromNames(const char* const* names) {
-    const gchar* const* name;
+QList<QIcon> IconInfo::qiconsFromNames(const char* const* names) {
+    QList<QIcon> icons;
     // qDebug("names: %p", names);
-    for(name = names; *name; ++name) {
+    for(const gchar* const* name = names; *name; ++name) {
         // qDebug("icon name=%s", *name);
-        QIcon qicon = QIcon::fromTheme(*name);
-        if(!qicon.isNull()) {
-            return qicon;
-        }
+        icons.push_back(QIcon::fromTheme(*name));
     }
-    return QIcon();
+    return icons;
 }
 
 std::forward_list<std::shared_ptr<const IconInfo>> IconInfo::emblems() const {
@@ -109,30 +114,34 @@ std::forward_list<std::shared_ptr<const IconInfo>> IconInfo::emblems() const {
 }
 
 QIcon IconInfo::internalQicon() const {
-    if(Q_UNLIKELY(internalQicon_.isNull())) {
+    QIcon ret_icon;
+    if(Q_UNLIKELY(internalQicons_.isEmpty())) {
         GIcon* gicon = gicon_.get();
         if(G_IS_EMBLEMED_ICON(gicon_.get())) {
             gicon = g_emblemed_icon_get_icon(G_EMBLEMED_ICON(gicon));
         }
         if(G_IS_THEMED_ICON(gicon)) {
             const gchar* const* names = g_themed_icon_get_names(G_THEMED_ICON(gicon));
-            internalQicon_ = qiconFromNames(names);
+            internalQicons_ = qiconsFromNames(names);
         }
         else if(G_IS_FILE_ICON(gicon)) {
             GFile* file = g_file_icon_get_file(G_FILE_ICON(gicon));
             CStrPtr fpath{g_file_get_path(file)};
-            internalQicon_ = QIcon(fpath.get());
+            internalQicons_.push_back(QIcon(fpath.get()));
         }
 
-        // fallback to default icon
-        if(Q_UNLIKELY(internalQicon_.isNull())) {
-            if(Q_UNLIKELY(fallbackQicon_.isNull())) {
-                fallbackQicon_ = qiconFromNames(fallbackIconNames);
-            }
-            internalQicon_ = fallbackQicon_;
-        }
     }
-    return internalQicon_;
+
+    ret_icon = getFirst(internalQicons_);
+
+    // fallback to default icon
+    if(Q_UNLIKELY(ret_icon.isNull())) {
+        if(Q_UNLIKELY(fallbackQicons_.isEmpty())) {
+            fallbackQicons_ = qiconsFromNames(fallbackIconNames);
+        }
+        ret_icon = getFirst(fallbackQicons_);
+    }
+    return ret_icon;
 }
 
 } // namespace Fm

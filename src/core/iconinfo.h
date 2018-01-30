@@ -77,7 +77,7 @@ public:
 
 private:
 
-    static QIcon qiconFromNames(const char* const* names);
+    static QList<QIcon> qiconsFromNames(const char* const* names);
 
     // actual QIcon loaded by QIcon::fromTheme
     QIcon internalQicon() const;
@@ -98,11 +98,11 @@ private:
     GIconPtr gicon_;
     mutable QIcon qicon_;
     mutable QIcon qiconTransparent_;
-    mutable QIcon internalQicon_;
+    mutable QList<QIcon> internalQicons_;
 
     static std::unordered_map<GIcon*, std::shared_ptr<IconInfo>, GIconHash, GIconEqual> cache_;
     static std::mutex mutex_;
-    static QIcon fallbackQicon_;
+    static QList<QIcon> fallbackQicons_;
 };
 
 } // namespace Fm
