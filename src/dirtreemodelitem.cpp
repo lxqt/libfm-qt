@@ -19,7 +19,6 @@
 
 #include "dirtreemodelitem.h"
 #include "dirtreemodel.h"
-#include "icontheme.h"
 #include <QDebug>
 
 namespace Fm {

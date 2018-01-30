@@ -18,7 +18,6 @@
  */
 
 #include "appchoosercombobox.h"
-#include "icontheme.h"
 #include "appchooserdialog.h"
 #include "utilities.h"
 #include "core/iconinfo.h"

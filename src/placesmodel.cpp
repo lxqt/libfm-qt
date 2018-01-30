@@ -19,7 +19,6 @@
 
 
 #include "placesmodel.h"
-#include "icontheme.h"
 #include <gio/gio.h>
 #include <QDebug>
 #include <QMimeData>

@@ -19,7 +19,6 @@
 
 #include "appmenuview.h"
 #include <QStandardItemModel>
-#include "icontheme.h"
 #include "appmenuview_p.h"
 #include <gio/gdesktopappinfo.h>
 

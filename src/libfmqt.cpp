@@ -21,7 +21,6 @@
 #include "libfmqt.h"
 #include <QLocale>
 #include <QPixmapCache>
-#include "icontheme.h"
 #include "core/thumbnailer.h"
 #include "xdndworkaround.h"
 
@@ -31,7 +30,6 @@ struct LibFmQtData {
     LibFmQtData();
     ~LibFmQtData();
 
-    IconTheme* iconTheme;
     QTranslator translator;
     XdndWorkaround workaround;
     int refCount;
@@ -52,7 +50,6 @@ LibFmQtData::LibFmQtData(): refCount(1) {
     fm_init(nullptr);
     // turn on glib debug message
     // g_setenv("G_MESSAGES_DEBUG", "all", true);
-    iconTheme = new IconTheme();
     Fm::Thumbnailer::loadAll();
     translator.load("libfm-qt_" + QLocale::system().name(), LIBFM_QT_DATA_DIR "/translations");
 
@@ -67,7 +64,6 @@ LibFmQtData::~LibFmQtData() {
     GVfs* vfs = g_vfs_get_default();
     g_vfs_unregister_uri_scheme(vfs, "menu");
     g_vfs_unregister_uri_scheme(vfs, "search");
-    delete iconTheme;
     fm_finalize();
 }
 

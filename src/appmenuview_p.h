@@ -22,7 +22,6 @@
 
 #include <QStandardItem>
 #include <menu-cache/menu-cache.h>
-#include "icontheme.h"
 #include "core/iconinfo.h"
 
 namespace Fm {

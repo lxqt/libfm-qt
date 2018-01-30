@@ -19,7 +19,6 @@
 
 
 #include "foldermodel.h"
-#include "icontheme.h"
 #include <iostream>
 #include <algorithm>
 #include <QtAlgorithms>
