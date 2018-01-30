@@ -27,7 +27,6 @@
 #include <QString>
 #include <QIcon>
 #include <QVector>
-#include "icontheme.h"
 
 #include "core/folder.h"
 

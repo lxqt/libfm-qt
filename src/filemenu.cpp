@@ -20,7 +20,6 @@
 
 #include "filemenu.h"
 #include "createnewmenu.h"
-#include "icontheme.h"
 #include "filepropsdialog.h"
 #include "utilities.h"
 #include "fileoperation.h"

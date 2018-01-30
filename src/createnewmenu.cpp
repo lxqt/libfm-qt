@@ -19,7 +19,6 @@
 
 #include "createnewmenu.h"
 #include "folderview.h"
-#include "icontheme.h"
 #include "utilities.h"
 #include "core/iconinfo.h"
 

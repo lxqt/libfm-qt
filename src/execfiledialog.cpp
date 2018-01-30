@@ -19,7 +19,6 @@
 
 #include "execfiledialog_p.h"
 #include "ui_exec-file.h"
-#include "icontheme.h"
 #include "core/iconinfo.h"
 
 namespace Fm {

@@ -19,7 +19,6 @@
 
 
 #include "placesmodelitem.h"
-#include "icontheme.h"
 #include <gio/gio.h>
 #include <QPainter>
 

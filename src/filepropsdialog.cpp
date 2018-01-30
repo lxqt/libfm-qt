@@ -20,7 +20,6 @@
 
 #include "filepropsdialog.h"
 #include "ui_file-props.h"
-#include "icontheme.h"
 #include "utilities.h"
 #include "fileoperation.h"
 #include <QStringBuilder>

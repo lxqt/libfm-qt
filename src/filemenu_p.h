@@ -20,7 +20,6 @@
 #ifndef FM_FILEMENU_P_H
 #define FM_FILEMENU_P_H
 
-#include "icontheme.h"
 #include <QDebug>
 #include "core/gioptrs.h"
 #include "core/iconinfo.h"
