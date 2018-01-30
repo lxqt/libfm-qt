@@ -243,6 +243,9 @@ void FileOperation::handleFinish() {
 
 // static
 FileOperation* FileOperation::copyFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent) {
+    if(!dest.isValid() || strcmp(dest.uriScheme().get(), "search") == 0) {
+        return nullptr;
+    }
     FileOperation* op = new FileOperation(FileOperation::Copy, std::move(srcFiles), parent);
     op->setDestination(dest);
     op->run();
@@ -251,6 +254,9 @@ FileOperation* FileOperation::copyFiles(Fm::FilePathList srcFiles, Fm::FilePath 
 
 // static
 FileOperation* FileOperation::moveFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent) {
+    if(!dest.isValid() || strcmp(dest.uriScheme().get(), "search") == 0) {
+        return nullptr;
+    }
     FileOperation* op = new FileOperation(FileOperation::Move, std::move(srcFiles), parent);
     op->setDestination(dest);
     op->run();
@@ -259,6 +265,9 @@ FileOperation* FileOperation::moveFiles(Fm::FilePathList srcFiles, Fm::FilePath 
 
 //static
 FileOperation* FileOperation::symlinkFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent) {
+    if(!dest.isValid() || strcmp(dest.uriScheme().get(), "search") == 0) {
+        return nullptr;
+    }
     FileOperation* op = new FileOperation(FileOperation::Link, std::move(srcFiles), parent);
     op->setDestination(dest);
     op->run();
