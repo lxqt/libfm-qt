@@ -1076,7 +1076,7 @@ Zmodyfikowany: %2</translation>
     <message>
         <location filename="../../utilities.cpp" line="184"/>
         <source>Please enter a new folder name:</source>
-        <translation>POdaj nazwę nowego katalogu:</translation>
+        <translation>Podaj nazwę nowego katalogu:</translation>
     </message>
     <message>
         <location filename="../../utilities.cpp" line="185"/>
