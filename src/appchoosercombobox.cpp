@@ -71,8 +71,10 @@ void AppChooserComboBox::setMimeType(std::shared_ptr<const Fm::MimeType> mimeTyp
 
 // returns the currently selected app.
 Fm::GAppInfoPtr AppChooserComboBox::selectedApp() const {
+    // the elements of appInfos_ and the combo indexes before "Customize"
+    // always have a one-to-one correspondence
     int idx = currentIndex();
-    return idx >= 0 ? appInfos_[idx] : Fm::GAppInfoPtr{};
+    return idx >= 0 && !appInfos_.empty() ? appInfos_[idx] : Fm::GAppInfoPtr{};
 }
 
 bool AppChooserComboBox::isChanged() const {
