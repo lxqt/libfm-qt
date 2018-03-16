@@ -313,137 +313,6 @@
     </message>
 </context>
 <context>
-    <name>Fm</name>
-    <message>
-        <location filename="../../filedialog.cpp" line="98"/>
-        <source>Go Back</source>
-        <translation>Précédent</translation>
-    </message>
-    <message>
-        <location filename="../../filedialog.cpp" line="99"/>
-        <source>Alt+Left</source>
-        <comment>Go Back</comment>
-        <translation>Alt+flèche gauche</translation>
-    </message>
-    <message>
-        <location filename="../../filedialog.cpp" line="105"/>
-        <source>Go Forward</source>
-        <translation>Suite</translation>
-    </message>
-    <message>
-        <location filename="../../filedialog.cpp" line="106"/>
-        <source>Alt+Right</source>
-        <comment>Go Forward</comment>
-        <translation>Alt+flèche droite</translation>
-    </message>
-    <message>
-        <location filename="../../filedialog.cpp" line="113"/>
-        <source>Reload</source>
-        <translation>Recharger</translation>
-    </message>
-    <message>
-        <location filename="../../filedialog.cpp" line="114"/>
-        <source>F5</source>
-        <comment>Reload</comment>
-        <translation>F5</translation>
-    </message>
-    <message>
-        <location filename="../../filedialog.cpp" line="131"/>
-        <source>Create Folder</source>
-        <translation>Créer un dossier</translation>
-    </message>
-    <message>
-        <location filename="../../filedialog.cpp" line="136"/>
-        <source>Icon View</source>
-        <translation>Vue par icônes</translation>
-    </message>
-    <message>
-        <location filename="../../filedialog.cpp" line="140"/>
-        <source>Thumbnail View</source>
-        <translation>Vue par miniatures</translation>
-    </message>
-    <message>
-        <location filename="../../filedialog.cpp" line="144"/>
-        <source>Compact View</source>
-        <translation>Vue compacte de la liste</translation>
-    </message>
-    <message>
-        <location filename="../../filedialog.cpp" line="148"/>
-        <source>Detailed List View</source>
-        <translation>Vue détaillée de la liste</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="82"/>
-        <source>Open</source>
-        <translation>Ouvrir</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="86"/>
-        <source>Open With...</source>
-        <translation>Ouvrir avec…</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="114"/>
-        <source>Other Applications</source>
-        <translation>Autres applications</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="120"/>
-        <source>Create &amp;New</source>
-        <translation>Créer un &amp;nouveau</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="139"/>
-        <source>&amp;Restore</source>
-        <translation>&amp;Restaurer</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="145"/>
-        <source>Cut</source>
-        <translation>Couper</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="149"/>
-        <source>Copy</source>
-        <translation>Copier</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="153"/>
-        <source>Paste</source>
-        <translation>Coller</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="157"/>
-        <source>&amp;Move to Trash</source>
-        <translation>&amp;Mettre à la corbeille</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="161"/>
-        <source>Rename</source>
-        <translation>Renommer</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="217"/>
-        <source>Extract to...</source>
-        <translation>Extraire vers…</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="225"/>
-        <source>Extract Here</source>
-        <translation>Extraire ici</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="232"/>
-        <source>Compress</source>
-        <translation>Compresser</translation>
-    </message>
-    <message>
-        <location filename="../../filemenu.cpp" line="242"/>
-        <source>Properties</source>
-        <translation>Propriétés</translation>
-    </message>
-</context>
-<context>
     <name>Fm::AppChooserComboBox</name>
     <message>
         <location filename="../../appchoosercombobox.cpp" line="67"/>
@@ -562,6 +431,64 @@ Qu voulez-voulez vous en faire ?</translation>
 <context>
     <name>Fm::FileDialog</name>
     <message>
+        <location filename="../../filedialog.cpp" line="98"/>
+        <source>Go Back</source>
+        <translation>Précédent</translation>
+    </message>
+    <message>
+        <location filename="../../filedialog.cpp" line="99"/>
+        <source>Alt+Left</source>
+        <comment>Go Back</comment>
+        <translation>Alt+flèche gauche</translation>
+    </message>
+    <message>
+        <location filename="../../filedialog.cpp" line="105"/>
+        <source>Go Forward</source>
+        <translation>Suite</translation>
+    </message>
+    <message>
+        <location filename="../../filedialog.cpp" line="106"/>
+        <source>Alt+Right</source>
+        <comment>Go Forward</comment>
+        <translation>Alt+flèche droite</translation>
+    </message>
+    <message>
+        <location filename="../../filedialog.cpp" line="113"/>
+        <source>Reload</source>
+        <translation>Recharger</translation>
+    </message>
+    <message>
+        <location filename="../../filedialog.cpp" line="114"/>
+        <source>F5</source>
+        <comment>Reload</comment>
+        <translation>F5</translation>
+    </message>
+    <message>
+        <location filename="../../filedialog.cpp" line="131"/>
+        <source>Create Folder</source>
+        <translation>Créer un dossier</translation>
+    </message>
+    <message>
+        <location filename="../../filedialog.cpp" line="136"/>
+        <source>Icon View</source>
+        <translation>Vue par icônes</translation>
+    </message>
+    <message>
+        <location filename="../../filedialog.cpp" line="140"/>
+        <source>Thumbnail View</source>
+        <translation>Vue par miniatures</translation>
+    </message>
+    <message>
+        <location filename="../../filedialog.cpp" line="144"/>
+        <source>Compact View</source>
+        <translation>Vue compacte de la liste</translation>
+    </message>
+    <message>
+        <location filename="../../filedialog.cpp" line="148"/>
+        <source>Detailed List View</source>
+        <translation>Vue détaillée de la liste</translation>
+    </message>
+    <message>
         <location filename="../../filedialog.cpp" line="265"/>
         <location filename="../../filedialog.cpp" line="622"/>
         <source>Error</source>
@@ -615,9 +542,75 @@ Voulez-vous le remplacer ?</translation>
 <context>
     <name>Fm::FileMenu</name>
     <message>
+        <location filename="../../filemenu.cpp" line="82"/>
+        <source>Open</source>
+        <translation type="unfinished">Ouvrir</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="86"/>
+        <source>Open With...</source>
+        <translation type="unfinished">Ouvrir avec…</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="114"/>
+        <source>Other Applications</source>
+        <translation type="unfinished">Autres applications</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="120"/>
+        <source>Create &amp;New</source>
+        <translation type="unfinished">Créer un &amp;nouveau</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="139"/>
+        <source>&amp;Restore</source>
+        <translation type="unfinished">&amp;Restaurer</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="145"/>
+        <source>Cut</source>
+        <translation type="unfinished">Couper</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="149"/>
+        <source>Copy</source>
+        <translation type="unfinished">Copier</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="153"/>
+        <source>Paste</source>
+        <translation type="unfinished">Coller</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="157"/>
         <location filename="../../filemenu.cpp" line="387"/>
         <source>&amp;Move to Trash</source>
         <translation>&amp;Mettre à la corbeille</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="161"/>
+        <source>Rename</source>
+        <translation type="unfinished">Renommer</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="217"/>
+        <source>Extract to...</source>
+        <translation type="unfinished">Extraire vers…</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="225"/>
+        <source>Extract Here</source>
+        <translation type="unfinished">Extraire ici</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="232"/>
+        <source>Compress</source>
+        <translation type="unfinished">Compresser</translation>
+    </message>
+    <message>
+        <location filename="../../filemenu.cpp" line="242"/>
+        <source>Properties</source>
+        <translation type="unfinished">Propriétés</translation>
     </message>
     <message>
         <location filename="../../filemenu.cpp" line="330"/>
