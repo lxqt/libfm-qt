@@ -99,6 +99,7 @@ public:
 Q_SIGNALS:
     void thumbnailLoaded(const QModelIndex& index, int size);
     void fileSizeChanged(const QModelIndex& index);
+    void filesAdded(FileInfoList infoList);
 
 protected Q_SLOTS:
 
