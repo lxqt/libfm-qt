@@ -909,6 +909,43 @@ QModelIndex FolderView::indexFromFolderPath(const Fm::FilePath& folderPath) cons
     return QModelIndex();
 }
 
+void FolderView::selectFiles(const Fm::FileInfoList& files, bool add) {
+  if(!model_ || files.empty()) {
+      return;
+  }
+  if(!add) {
+      selectionModel()->clear();
+  }
+  QModelIndex index, firstIndex;
+  int count = model_->rowCount();
+  Fm::FileInfoList list = files;
+  bool singleFile(files.size() == 1);
+  for(int row = 0; row < count; ++row) {
+      if (list.empty()) {
+          break;
+      }
+      index = model_->index(row, 0);
+      auto info = model_->fileInfoFromIndex(index);
+      for(auto it = list.cbegin(); it != list.cend(); ++it) {
+          auto& item = *it;
+          if(item == info) {
+              selectionModel()->select(index, QItemSelectionModel::Select);
+              if (!firstIndex.isValid()) {
+                  firstIndex = index;
+              }
+              list.erase(it);
+              break;
+          }
+      }
+  }
+  if (firstIndex.isValid()) {
+      view->scrollTo(firstIndex, QAbstractItemView::EnsureVisible);
+      if (singleFile) { // give focus to the single file
+          selectionModel()->setCurrentIndex(firstIndex, QItemSelectionModel::Current);
+      }
+  }
+}
+
 Fm::FileInfoList FolderView::selectedFiles() const {
     if(model_) {
         QModelIndexList selIndexes = mode == DetailedListMode ? selectedRows() : selectedIndexes();

@@ -85,6 +85,7 @@ void FolderModel::onFilesAdded(const Fm::FileInfoList& files) {
         items.append(item);
     }
     endInsertRows();
+    Q_EMIT filesAdded(files);
 }
 
 void FolderModel::onFilesChanged(std::vector<Fm::FileInfoPair>& files) {

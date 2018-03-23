@@ -102,6 +102,7 @@ public:
     Fm::FilePathList selectedFilePaths() const;
     bool hasSelection() const;
     QModelIndex indexFromFolderPath(const Fm::FilePath& folderPath) const;
+    void selectFiles(const Fm::FileInfoList& files, bool add = false);
 
     void selectAll();
 
