@@ -111,6 +111,16 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     auto file = index.data(fileInfoRole_).value<std::shared_ptr<const Fm::FileInfo>>();
     const auto& emblems = file ? file->emblems() : icon_emblems;
 
+    QStyleOptionViewItem opt = option;
+    initStyleOption(&opt, index);
+
+    // distinguish the hidden items visually by making their texts italic
+    if(file && file->isHidden()) {
+        QFont f(opt.font);
+        f.setItalic(true);
+        opt.font = f;
+    }
+
     bool isSymlink = file && file->isSymlink();
     // vertical layout (icon mode, thumbnail mode)
     if(option.decorationPosition == QStyleOptionViewItem::Top ||
@@ -118,8 +128,6 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         painter->save();
         painter->setClipRect(option.rect);
 
-        QStyleOptionViewItem opt = option;
-        initStyleOption(&opt, index);
         opt.decorationAlignment = Qt::AlignHCenter | Qt::AlignTop;
         opt.displayAlignment = Qt::AlignTop | Qt::AlignHCenter;
 
@@ -168,12 +176,10 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         // let QStyledItemDelegate does its default painting
         // FIXME: For better text alignment, here we should increase
         // the icon width if it's smaller that the requested size
-        QStyledItemDelegate::paint(painter, option, index);
+        QStyledItemDelegate::paint(painter, opt, index);
 
         // draw emblems if needed
         if(isSymlink || !emblems.empty()) {
-            QStyleOptionViewItem opt = option;
-            initStyleOption(&opt, index);
             QIcon::Mode iconMode = iconModeFromState(opt.state);
             // draw some emblems for the item if needed
             if(isSymlink) {
@@ -249,7 +255,8 @@ void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItem& opt, 
         return;
     }
 
-    // ?????
+    // Respect the active and inactive palettes (some styles can use different colors for them).
+    // Also, take into account a probable disabled palette.
     QPalette::ColorGroup cg = (opt.state & QStyle::State_Enabled)
                                   ? (opt.state & QStyle::State_Active)
                                       ? QPalette::Active
