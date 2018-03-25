@@ -337,8 +337,8 @@ int execModelessDialog(QDialog* dlg) {
 }
 
 // check if GVFS can support this uri scheme (lower case)
-// NOTE: this does not work reliably due to some problems in gio/gvfs and causes bug lxde/lxqt#512
-// https://github.com/lxde/lxqt/issues/512
+// NOTE: this does not work reliably due to some problems in gio/gvfs and causes bug lxqt/lxqt#512
+// https://github.com/lxqt/lxqt/issues/512
 // Use uriExists() whenever possible.
 bool isUriSchemeSupported(const char* uriScheme) {
     const gchar* const* schemes = g_vfs_get_supported_uri_schemes(g_vfs_get_default());

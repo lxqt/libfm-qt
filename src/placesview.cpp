@@ -465,7 +465,7 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
 
         // Do not take the ownership of the menu since
         // it will be deleted with deleteLater() upon hidden.
-        // This is possibly related to #145 - https://github.com/lxde/pcmanfm-qt/issues/145
+        // This is possibly related to #145 - https://github.com/lxqt/pcmanfm-qt/issues/145
         QMenu* menu = new QMenu();
         QAction* action = nullptr;
         PlacesModelItem* item = static_cast<PlacesModelItem*>(model_->itemFromIndex(proxyModel_->mapToSource(index)));

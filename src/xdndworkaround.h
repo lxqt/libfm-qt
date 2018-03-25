@@ -24,7 +24,7 @@
  * #49947: Drop events have broken mimeData()->urls() and text/uri-list.
  * #47981: Qt5.4 regression: Dropping text/urilist over browser windows stop working.
  *
- * Related LXQt bug: https://github.com/lxde/lxqt/issues/688
+ * Related LXQt bug: https://github.com/lxqt/lxqt/issues/688
  *
  * This workaround is not 100% reliable, but it should work most of the time.
  * In theory, when there are multiple drag and drops at nearly the same time and
