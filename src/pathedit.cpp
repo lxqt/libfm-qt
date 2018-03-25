@@ -112,7 +112,7 @@ bool PathEdit::event(QEvent* e) {
         if(keyEvent->key() == Qt::Key_Tab && keyEvent->modifiers() == Qt::NoModifier) { // Tab key is pressed
             e->accept();
             // do auto-completion when the user press the Tab key.
-            // This fixes #201: https://github.com/lxde/pcmanfm-qt/issues/201
+            // This fixes #201: https://github.com/lxqt/pcmanfm-qt/issues/201
             autoComplete();
             return true;
         }
