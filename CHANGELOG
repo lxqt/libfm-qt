@@ -435,7 +435,7 @@ libfm-qt-0.12.0 / 2017-10-21
   * Avoid showing the popup menu when moving desktop items.
   * Improve handling of file selection and fixing FolderView::selectAll(), which is reported in #45. Delay the handling of selectionChanged() signal to avoid too frequent UI updates.
   * Little adjustment for the grid of the folder view to decrease unnecessary margins.
-  * Use a new way to optimize the size of filename display based on current view mode and font size. This also fixes lxqt/lxde-qt #198 - PCmanFM-qt incorrectly displays 256x256 Thumbnails.
+  * Use a new way to optimize the size of filename display based on current view mode and font size. This also fixes lxqt/lxqt #198 - PCmanFM-qt incorrectly displays 256x256 Thumbnails.
   * Fully support single click activation and auto-selection with associated options added to the preference dialog.
   * Add single click and auto-selection on hover support to Fm::FolderView.
   * New files added from LXDE Pootle server based on templates
@@ -447,7 +447,7 @@ libfm-qt-0.12.0 / 2017-10-21
   * Do not detect filename extension and select the whole filename by default while renaming directories. This closes bug #71 - Don't try to detect extensions on directories. * API changed: Fm::renameFile() now accepect FmFileInfo as its first parameter.
   * Fix bug #80 - make execute in context menu doesn't do change permissions.
   * Revert "fixed selection issue #45" This patch breaks copying files by DND in icon view mode and moving desktop icons.
-  * Use qss instead of QPalette to set the background color of ColorButton. This fixed bug #192 of lxde-qt.
+  * Use qss instead of QPalette to set the background color of ColorButton. This fixed bug lxqt/lxqt#192.
   * Rename the library from libfm-qt to libfm-qt5 when built with Qt5.
   * fixed selection issue #45
   * Fix middle click position calculation in detailed view mode

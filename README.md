@@ -3,7 +3,7 @@
 ## Overview
 
 libfm-qt is the Qt port of libfm, a library providing components to build
-desktop file managers which belongs to [LXDE](http://lxde.org).
+desktop file managers which belongs to [LXDE](https://lxde.org).
 
 libfm-qt is licensed under the terms of the
 [LGPLv2.1](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html)

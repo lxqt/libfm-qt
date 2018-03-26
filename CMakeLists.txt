@@ -11,7 +11,7 @@ set(LIBFM_QT_VERSION ${LIBFM_QT_VERSION_MAJOR}.${LIBFM_QT_VERSION_MINOR}.${LIBFM
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 # We use the libtool versioning scheme for the internal so name, "current:revision:age"
-# http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html#Updating-version-info
+# https://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html#Updating-version-info
 # https://www.sourceware.org/autobook/autobook/autobook_91.html
 # http://pusling.com/blog/?p=352
 # Actually, libtool uses different ways on different operating systems. So there is no
@@ -71,8 +71,7 @@ add_subdirectory(data)
 
 # add Doxygen support to generate API docs
 # References:
-# http://majewsky.wordpress.com/2010/08/14/tip-of-the-day-cmake-and-doxygen/
-# http://www.bluequartz.net/projects/EIM_Segmentation/SoftwareDocumentation/html/usewithcmakeproject.html
+# https://majewsky.wordpress.com/2010/08/14/tip-of-the-day-cmake-and-doxygen/
 option(BUILD_DOCUMENTATION "Use Doxygen to create the HTML based API documentation" OFF)
 if(BUILD_DOCUMENTATION)
     find_package(Doxygen REQUIRED)

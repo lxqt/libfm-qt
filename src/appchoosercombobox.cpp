@@ -32,7 +32,7 @@ AppChooserComboBox::AppChooserComboBox(QWidget* parent):
 
     // the new Qt5 signal/slot syntax cannot handle overloaded methods by default
     // hence a type-casting is needed here. really ugly!
-    // reference: http://qt-project.org/forums/viewthread/21513
+    // reference: https://forum.qt.io/topic/20998/qt5-new-signals-slots-syntax-does-not-work-solved
     connect((QComboBox*)this, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &AppChooserComboBox::onCurrentIndexChanged);
 }
 
