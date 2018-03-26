@@ -176,7 +176,7 @@ bool XdndWorkaround::clientMessage(xcb_client_message_event_t* event) {
 
     // NOTE: Because of the limitation of Qt, this hack is required to provide
     // Xdnd direct save (XDS) protocol support.
-    // http://www.freedesktop.org/wiki/Specifications/XDS/#index4h2
+    // https://www.freedesktop.org/wiki/Specifications/XDS/#index4h2
     //
     // XDS requires that the drop target should get and set the window property of the
     // drag source to pass the file path, but in Qt there is NO way to know the

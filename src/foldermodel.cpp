@@ -370,7 +370,7 @@ QStringList FolderModel::mimeTypes() const {
     // now types contains "application/x-qabstractitemmodeldatalist"
 
     // add support for freedesktop Xdnd direct save (XDS) protocol.
-    // http://www.freedesktop.org/wiki/Specifications/XDS/#index4h2
+    // https://www.freedesktop.org/wiki/Specifications/XDS/#index4h2
     // the real implementation is in FolderView::childDropEvent().
     types << "XdndDirectSave0";
     types << "text/uri-list";

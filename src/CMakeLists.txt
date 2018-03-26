@@ -213,7 +213,7 @@ export(TARGETS ${LIBFM_QT_LIBRARY_NAME}
 set(REQUIRED_QT "Qt5Widgets >= ${REQUIRED_QT_VERSION} Qt5X11Extras >= ${REQUIRED_QT_VERSION}")
 configure_file(libfm-qt.pc.in lib${LIBFM_QT_LIBRARY_NAME}.pc @ONLY)
 # FreeBSD loves to install files to different locations
-# http://www.freebsd.org/doc/handbook/dirstructure.html
+# https://www.freebsd.org/doc/handbook/dirstructure.html
 if(${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
     install(FILES
         "${CMAKE_CURRENT_BINARY_DIR}/lib${LIBFM_QT_LIBRARY_NAME}.pc"

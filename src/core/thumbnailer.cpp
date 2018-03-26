@@ -21,7 +21,7 @@ CStrPtr Thumbnailer::commandForUri(const char* uri, const char* output_file, gui
         /* FIXME: how to handle TryExec? */
 
         /* parse the command line and do required substitutions according to:
-         * http://developer.gnome.org/integration-guide/stable/thumbnailer.html.en
+         * https://developer.gnome.org/integration-guide/stable/thumbnailer.html.en
          */
         GString* cmd_line = g_string_sized_new(1024);
         const char* p;
