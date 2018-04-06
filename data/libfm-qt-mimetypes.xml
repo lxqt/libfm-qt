@@ -3,7 +3,7 @@
     Additional mime-types provided by libfm, adding some
     missing but frequently seen globs for some common mime-types.
 -->
-<mime-info xmlns='https://www.freedesktop.org/standards/shared-mime-info'>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
 
   <mime-type type="text/plain">
     <glob pattern="*.ini"/>
