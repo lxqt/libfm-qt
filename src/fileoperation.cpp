@@ -27,6 +27,7 @@
 #include "path.h"
 
 #include "core/compat_p.h"
+#include "core/deletejob.h"
 
 namespace Fm {
 
@@ -47,6 +48,8 @@ FileOperation::FileOperation(Type type, Fm::FilePathList srcPaths, QObject* pare
 
     switch(type_) {
     case Delete:
+        job_ = new Fm::DeleteJob(srcPaths_);
+        break;
     case Copy:
     case Move:
     case Link:

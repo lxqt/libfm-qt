@@ -126,6 +126,17 @@ bool DeleteJob::deleteDirContent(const FilePath& path, GFileInfoPtr inf) {
 }
 
 
+DeleteJob::DeleteJob(const FilePathList &paths): paths_{paths} {
+    setCalcProgressUsingSize(false);
+}
+
+DeleteJob::DeleteJob(FilePathList &&paths): paths_{paths} {
+    setCalcProgressUsingSize(false);
+}
+
+DeleteJob::~DeleteJob() {
+}
+
 void DeleteJob::exec() {
     /* prepare the job, count total work needed with FmDeepCountJob */
     TotalSizeJob totalSizeJob{paths_, TotalSizeJob::Flags::PREPARE_DELETE};
