@@ -26,6 +26,7 @@
 #include <QElapsedTimer>
 #include <libfm/fm.h>
 #include "core/filepath.h"
+#include "core/fileoperationjob.h"
 
 class QTimer;
 
@@ -53,35 +54,60 @@ public:
     void setDestination(Fm::FilePath dest);
 
     void setChmod(mode_t newMode, mode_t newModeMask) {
-        fm_file_ops_job_set_chmod(job_, newMode, newModeMask);
+        if(legacyJob_) {
+            fm_file_ops_job_set_chmod(legacyJob_, newMode, newModeMask);
+        }
     }
 
     void setChown(gint uid, gint gid) {
-        fm_file_ops_job_set_chown(job_, uid, gid);
+        if(legacyJob_) {
+            fm_file_ops_job_set_chown(legacyJob_, uid, gid);
+        }
     }
 
     // This only work for change attr jobs.
     void setRecursiveChattr(bool recursive) {
-        fm_file_ops_job_set_recursive(job_, (gboolean)recursive);
+        if(legacyJob_) {
+            fm_file_ops_job_set_recursive(legacyJob_, (gboolean)recursive);
+        }
     }
 
     bool run();
 
     void cancel() {
-        if(job_) {
-            fm_job_cancel(FM_JOB(job_));
+        if(legacyJob_) {
+            fm_job_cancel(FM_JOB(legacyJob_));
+        }
+        else if(job_) {
+            job_->cancel();
         }
     }
 
     bool isRunning() const {
-        return job_ ? fm_job_is_running(FM_JOB(job_)) : false;
+        if(legacyJob_) {
+            return legacyJob_ ? fm_job_is_running(FM_JOB(legacyJob_)) : false;
+        }
+        else if(job_) {
+            return true;
+        }
+        return false;
     }
 
     bool isCancelled() const {
-        return job_ ? fm_job_is_cancelled(FM_JOB(job_)) : false;
+        if(legacyJob_) {
+            return legacyJob_ ? fm_job_is_cancelled(FM_JOB(legacyJob_)) : false;
+        }
+        else if(job_) {
+            return job_->isCancelled();
+        }
+        return false;
     }
 
-    FmFileOpsJob* job() {
+    FmFileOpsJob* legacyJob() {
+        return legacyJob_;
+    }
+
+    Fm::FileOperationJob* job() {
         return job_;
     }
 
@@ -93,7 +119,7 @@ public:
     }
 
     Type type() {
-        return (Type)job_->type;
+        return type_;
     }
 
     // convinient static functions
@@ -108,6 +134,13 @@ public:
 Q_SIGNALS:
     void finished();
 
+private Q_SLOTS:
+    void onJobPrepared();
+    void onJobFinish();
+    void onJobCancalled();
+    void onJobError(const GErrorPtr& err, Fm::Job::ErrorSeverity severity, Fm::Job::ErrorAction& response);
+    void onJobFileExists(const FileInfo& src, const FileInfo& dest, Fm::FileOperationJob::FileExistsAction& response, FilePath& newDest);
+
 private:
     static gint onFileOpsJobAsk(FmFileOpsJob* job, const char* question, char* const* options, FileOperation* pThis);
     static gint onFileOpsJobAskRename(FmFileOpsJob* job, FmFileInfo* src, FmFileInfo* dest, char** new_name, FileOperation* pThis);
@@ -118,7 +151,6 @@ private:
     static void onFileOpsJobFinished(FmFileOpsJob* job, FileOperation* pThis);
     static void onFileOpsJobCancelled(FmFileOpsJob* job, FileOperation* pThis);
 
-    void handleFinish();
     void disconnectJob();
     void showDialog();
 
@@ -146,11 +178,14 @@ private Q_SLOTS:
     void onUiTimeout();
 
 private:
-    FmFileOpsJob* job_;
-    FileOperationDialog* dlg;
+    Type type_;
+    Fm::FileOperationJob* job_;  // new C++ job implementations
+    FmFileOpsJob* legacyJob_;   // legacy C jobs depending on libfm (backward compatibility)
+    FileOperationDialog* dlg_;
     Fm::FilePath destPath;
-    Fm::FilePathList srcPaths;
-    QTimer* uiTimer;
+    Fm::FilePath curFilePath_;
+    Fm::FilePathList srcPaths_;
+    QTimer* uiTimer_;
     QElapsedTimer* elapsedTimer_;
     qint64 lastElapsed_;
     bool updateRemainingTime_;
