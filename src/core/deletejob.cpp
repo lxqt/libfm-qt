@@ -25,6 +25,9 @@ bool DeleteJob::deleteFile(const FilePath& path, GFileInfoPtr inf) {
         }
     }
 
+    // TODO: get parent dir of the current path.
+    //       if there is a Fm::Folder object created for it, block the update for the folder temporarily.
+
     /* currently processed file. */
     setCurrentFile(path);
 
@@ -33,11 +36,21 @@ bool DeleteJob::deleteFile(const FilePath& path, GFileInfoPtr inf) {
         deleteDirContent(path, inf);
     }
 
+    bool isTrashRoot = false;
+    // special handling for trash:///
+    if(!path.isNative() && g_strcmp0(path.uriScheme().get(), "trash") == 0) {
+        // little trick: basename of trash root is /
+        auto basename = path.baseName();
+        if(basename && basename[0] == G_DIR_SEPARATOR) {
+            isTrashRoot = true;
+        }
+    }
+
     bool hasError = false;
     while(!isCancelled()) {
         GErrorPtr err;
-        // try to delete the path directly
-        if(g_file_delete(path.gfile().get(), cancellable().get(), &err)) {
+        // try to delete the path directly (but don't delete if it's trash:///)
+        if(isTrashRoot || g_file_delete(path.gfile().get(), cancellable().get(), &err)) {
             break;
         }
         if(err) {
@@ -69,23 +82,6 @@ bool DeleteJob::deleteFile(const FilePath& path, GFileInfoPtr inf) {
 }
 
 bool DeleteJob::deleteDirContent(const FilePath& path, GFileInfoPtr inf) {
-#if 0
-    FmFolder* sub_folder;
-    /* special handling for trash:/// */
-    if(!g_file_is_native(gf)) {
-        char* scheme = g_file_get_uri_scheme(gf);
-        if(g_strcmp0(scheme, "trash") == 0) {
-            /* little trick: basename of trash root is /. */
-            char* basename = g_file_get_basename(gf);
-            if(basename && basename[0] == G_DIR_SEPARATOR) {
-                is_trash_root = true;
-            }
-            g_free(basename);
-        }
-        g_free(scheme);
-    }
-#endif
-
     GErrorPtr err;
     GFileEnumeratorPtr enu {
         g_file_enumerate_children(path.gfile().get(), gfile_info_query_attribs,
