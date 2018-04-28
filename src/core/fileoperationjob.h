@@ -24,11 +24,25 @@ public:
 
     explicit FileOperationJob();
 
+    // get total amount of work to do
     bool totalAmount(std::uint64_t& fileSize, std::uint64_t& fileCount) const;
 
+    // get currently finished job amount
     bool finishedAmount(std::uint64_t& finishedSize, std::uint64_t& finishedCount) const;
 
+    // get the current file
+    FilePath currentFile() const;
+
+    // get progress of the current file
     bool currentFileProgress(FilePath& path, std::uint64_t& totalSize, std::uint64_t& finishedSize) const;
+
+    // is the job calculate progress based on file size or file counts
+    bool calcProgressUsingSize() const {
+        return calcProgressUsingSize_;
+    }
+
+    // get currently finished amount (0.0 to 1.0)
+    virtual double progress() const;
 
 Q_SIGNALS:
 
@@ -55,8 +69,13 @@ protected:
 
     void setCurrentFileProgress(uint64_t totalSize, uint64_t finishedSize);
 
+    void setCalcProgressUsingSize(bool value) {
+        calcProgressUsingSize_ = value;
+    }
+
 private:
     bool hasTotalAmount_;
+    bool calcProgressUsingSize_;
     std::uint64_t totalSize_;
     std::uint64_t totalCount_;
     std::uint64_t finishedSize_;
