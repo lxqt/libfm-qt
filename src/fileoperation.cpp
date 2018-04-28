@@ -28,6 +28,8 @@
 
 #include "core/compat_p.h"
 #include "core/deletejob.h"
+#include "core/trashjob.h"
+
 
 namespace Fm {
 
@@ -50,11 +52,13 @@ FileOperation::FileOperation(Type type, Fm::FilePathList srcPaths, QObject* pare
     case Delete:
         job_ = new Fm::DeleteJob(srcPaths_);
         break;
+    case Trash:
+        job_ = new Fm::TrashJob(srcPaths_);
+        break;
+    case UnTrash:
     case Copy:
     case Move:
     case Link:
-    case Trash:
-    case UnTrash:
     case ChangeAttr:
         legacyJob_ = fm_file_ops_job_new((FmFileOpType)type_, Fm::_convertPathList(srcPaths_));
     default:
@@ -321,27 +325,24 @@ void FileOperation::onJobFinish() {
     }
     Q_EMIT finished();
 
-    if(legacyJob_) { // legacy libfm C jobs
-        /* special handling for trash
-         * FIXME: need to refactor this to use a more elegant way later. */
-        if(legacyJob_->type == FM_FILE_OP_TRASH) { /* FIXME: direct access to job struct! */
-            auto unable_to_trash = static_cast<FmPathList*>(g_object_get_data(G_OBJECT(legacyJob_), "trash-unsupported"));
-            /* some files cannot be trashed because underlying filesystems don't support it. */
-            if(unable_to_trash) { /* delete them instead */
-                Fm::FilePathList filesToDel;
-                for(GList* l = fm_path_list_peek_head_link(unable_to_trash); l; l = l->next) {
-                    filesToDel.push_back(Fm::FilePath{fm_path_to_gfile(FM_PATH(l->data)), false});
-                }
-                /* FIXME: parent window might be already destroyed! */
-                QWidget* parent = nullptr; // FIXME: currently, parent window is not set
-                if(QMessageBox::question(parent, tr("Error"),
-                                         tr("Some files cannot be moved to trash can because "
-                                            "the underlying file systems don't support this operation.\n"
-                                            "Do you want to delete them instead?")) == QMessageBox::Yes) {
-                    deleteFiles(std::move(filesToDel), false);
-                }
+    // special handling for trash job
+    if(type_ == Trash && !job_->isCancelled()) {
+        auto trashJob = static_cast<Fm::TrashJob*>(job_);
+        /* some files cannot be trashed because underlying filesystems don't support it. */
+        auto unsupportedFiles = trashJob->unsupportedFiles();
+        if(!unsupportedFiles.empty()) { /* delete them instead */
+            /* FIXME: parent window might be already destroyed! */
+            QWidget* parent = nullptr; // FIXME: currently, parent window is not set
+            if(QMessageBox::question(parent, tr("Error"),
+                                     tr("Some files cannot be moved to trash can because "
+                                        "the underlying file systems don't support this operation.\n"
+                                        "Do you want to delete them instead?")) == QMessageBox::Yes) {
+                deleteFiles(std::move(unsupportedFiles), false);
             }
         }
+    }
+
+    if(legacyJob_) { // legacy libfm C jobs
         g_object_unref(legacyJob_);
         legacyJob_ = nullptr;
     }

@@ -3,9 +3,13 @@
 namespace Fm {
 
 TrashJob::TrashJob(const FilePathList& paths): paths_{paths} {
+    // calculate progress using finished file counts rather than their sizes
+    setCalcProgressUsingSize(false);
 }
 
 TrashJob::TrashJob(const FilePathList&& paths): paths_{paths} {
+    // calculate progress using finished file counts rather than their sizes
+    setCalcProgressUsingSize(false);
 }
 
 void TrashJob::exec() {
@@ -20,33 +24,32 @@ void TrashJob::exec() {
 
         setCurrentFile(path);
 
-        for(;;) {
-            GErrorPtr err;
-            GFile* gf = path.gfile().get();
-            GFileInfoPtr inf{
-                g_file_query_info(gf, G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME, G_FILE_QUERY_INFO_NONE,
-                cancellable().get(), &err),
-                false
-            };
+        // TODO: get parent dir of the current path.
+        //       if there is a Fm::Folder object created for it, block the update for the folder temporarily.
 
-            bool ret = FALSE;
+        for(;;) {  // retry the i/o operation on errors
+            auto gf = path.gfile();
+            bool ret = false;
+            // FIXME: do not depend on fm_config
             if(fm_config->no_usb_trash) {
-                err.reset();
-                GMountPtr mnt{g_file_find_enclosing_mount(gf, nullptr, &err), false};
+                GMountPtr mnt{g_file_find_enclosing_mount(gf.get(), nullptr, nullptr), false};
                 if(mnt) {
                     ret = g_mount_can_unmount(mnt.get()); /* TRUE if it's removable media */
                     if(ret) {
                         unsupportedFiles_.push_back(path);
+                        break;  // don't trash the file
                     }
                 }
             }
 
-            if(!ret) {
-                err.reset();
-                ret = g_file_trash(gf, cancellable().get(), &err);
+            // move the file to trash
+            GErrorPtr err;
+            ret = g_file_trash(gf.get(), cancellable().get(), &err);
+            if(ret) {  // trash operation succeeded
+                break;
             }
-            if(!ret) {
-                /* if trashing is not supported by the file system */
+            else {  // failed
+                // if trashing is not supported by the file system
                 if(err.domain() == G_IO_ERROR && err.code() == G_IO_ERROR_NOT_SUPPORTED) {
                     unsupportedFiles_.push_back(path);
                 }
