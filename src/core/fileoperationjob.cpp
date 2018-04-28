@@ -4,6 +4,7 @@ namespace Fm {
 
 FileOperationJob::FileOperationJob():
     hasTotalAmount_{false},
+    calcProgressUsingSize_{true},
     totalSize_{0},
     totalCount_{0},
     finishedSize_{0},
@@ -29,6 +30,22 @@ bool FileOperationJob::currentFileProgress(FilePath& path, uint64_t& totalSize, 
         finishedSize = currentFileFinished_;
     }
     return currentFile_.isValid();
+}
+
+double FileOperationJob::progress() const {
+    std::lock_guard<std::mutex> lock{mutex_};
+    double finishedRatio;
+    if(calcProgressUsingSize_) {
+        finishedRatio = totalSize_ > 0 ? double(finishedSize_) / totalSize_ : 0.0;
+    }
+    else {
+        finishedRatio = totalCount_ > 0 ? double(finishedCount_) / totalCount_ : 0.0;
+    }
+
+    if(finishedRatio > 1.0) {
+        finishedRatio = 1.0;
+    }
+    return finishedRatio;
 }
 
 FileOperationJob::FileExistsAction FileOperationJob::askRename(const FileInfo &src, const FileInfo &dest, FilePath &newDest) {
@@ -63,6 +80,12 @@ void FileOperationJob::addFinishedAmount(uint64_t finishedSize, uint64_t finishe
     std::lock_guard<std::mutex> locl{mutex_};
     finishedSize_ += finishedSize;
     finishedCount_ += finishedCount;
+}
+
+FilePath FileOperationJob::currentFile() const {
+    std::lock_guard<std::mutex> locl{mutex_};
+    auto ret = currentFile_;
+    return ret;
 }
 
 void FileOperationJob::setCurrentFile(const FilePath& path) {
