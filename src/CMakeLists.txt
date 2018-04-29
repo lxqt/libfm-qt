@@ -11,6 +11,7 @@ set(libfm_core_SRCS
     core/job.cpp
     core/copyjob.cpp
     core/deletejob.cpp
+    core/movejob.cpp
     core/dirlistjob.cpp
     core/filechangeattrjob.cpp
     core/fileinfojob.cpp

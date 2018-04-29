@@ -29,6 +29,7 @@
 #include "core/compat_p.h"
 #include "core/deletejob.h"
 #include "core/trashjob.h"
+#include "core/copyjob.h"
 
 
 namespace Fm {
@@ -49,6 +50,12 @@ FileOperation::FileOperation(Type type, Fm::FilePathList srcPaths, QObject* pare
     autoDestroy_(true) {
 
     switch(type_) {
+    case Copy:
+        job_ = new Fm::CopyJob(srcPaths_, CopyJob::Mode::COPY);
+        break;
+    case Move:
+        job_ = new Fm::CopyJob(srcPaths_, CopyJob::Mode::MOVE);
+        break;
     case Delete:
         job_ = new Fm::DeleteJob(srcPaths_);
         break;
@@ -56,8 +63,6 @@ FileOperation::FileOperation(Type type, Fm::FilePathList srcPaths, QObject* pare
         job_ = new Fm::TrashJob(srcPaths_);
         break;
     case UnTrash:
-    case Copy:
-    case Move:
     case Link:
     case ChangeAttr:
         legacyJob_ = fm_file_ops_job_new((FmFileOpType)type_, Fm::_convertPathList(srcPaths_));
@@ -129,9 +134,19 @@ FileOperation::~FileOperation() {
 }
 
 void FileOperation::setDestination(Fm::FilePath dest) {
-    destPath = std::move(dest);
-    auto tmp = Fm::Path::newForGfile(dest.gfile().get());
-    fm_file_ops_job_set_dest(legacyJob_, tmp.dataPtr());
+    destPath_ = std::move(dest);
+    switch(type_) {
+    case Copy:
+    case Move:
+        if(job_) {
+            static_cast<CopyJob*>(job_)->setDestDirPath(destPath_);
+        }
+        else if(legacyJob_) {
+            auto tmp = Fm::Path::newForGfile(dest.gfile().get());
+            fm_file_ops_job_set_dest(legacyJob_, tmp.dataPtr());
+        }
+        break;
+    };
 }
 
 bool FileOperation::run() {
@@ -204,8 +219,8 @@ void FileOperation::showDialog() {
         dlg_ = new FileOperationDialog(this);
         dlg_->setSourceFiles(srcPaths_);
 
-        if(destPath) {
-            dlg_->setDestPath(destPath);
+        if(destPath_) {
+            dlg_->setDestPath(destPath_);
         }
 
         if(curFile.isEmpty()) {
@@ -227,28 +242,15 @@ gint FileOperation::onFileOpsJobAsk(FmFileOpsJob* /*job*/, const char* question,
 }
 
 void FileOperation::onJobFileExists(const FileInfo& src, const FileInfo& dest, Fm::FileOperationJob::FileExistsAction& response, FilePath& newDest) {
-    /*
     pauseElapsedTimer();
     showDialog();
-    QString newName;
-    response = (Fm::FileOperationJob::FileExistsAction)dlg->askRename(src, dest, newName);
-    if(!newName.isEmpty()) {
-        *new_name = g_strdup(newName.toUtf8().constData());
-    }
+    response = dlg_->askRename(src, dest, newDest);
     resumeElapsedTimer();
-    */
 }
 
 gint FileOperation::onFileOpsJobAskRename(FmFileOpsJob* /*job*/, FmFileInfo* src, FmFileInfo* dest, char** new_name, FileOperation* pThis) {
-    pThis->pauseElapsedTimer();
-    pThis->showDialog();
-    QString newName;
-    int ret = pThis->dlg_->askRename(src, dest, newName);
-    if(!newName.isEmpty()) {
-        *new_name = g_strdup(newName.toUtf8().constData());
-    }
-    pThis->resumeElapsedTimer();
-    return ret;
+    qDebug("not implemented");
+    return 0;
 }
 
 void FileOperation::onJobCancalled() {

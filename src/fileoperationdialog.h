@@ -27,6 +27,7 @@
 #include <libfm/fm.h>
 #include "core/filepath.h"
 #include "core/fileinfo.h"
+#include "core/fileoperationjob.h"
 
 namespace Ui {
 class FileOperationDialog;
@@ -46,7 +47,9 @@ public:
     void setDestPath(const Fm::FilePath& dest);
 
     int ask(QString question, char* const* options);
-    int askRename(FmFileInfo* src, FmFileInfo* dest, QString& new_name);
+
+    FileOperationJob::FileExistsAction askRename(const FileInfo& src, const FileInfo& dest, FilePath& newDest);
+
     FmJobErrorAction error(GError* err, FmJobErrorSeverity severity);
     void setPrepared();
     void setCurFile(QString cur_file);

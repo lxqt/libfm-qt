@@ -16,28 +16,32 @@ public:
         MOVE
     };
 
-    explicit CopyJob(const FilePathList& paths, const FilePath& destDirPath, Mode mode = Mode::COPY);
+    explicit CopyJob(FilePathList srcPaths, Mode mode = Mode::COPY);
+    explicit CopyJob(FilePathList srcPaths, FilePathList destPaths, Mode mode = Mode::COPY);
+    explicit CopyJob(FilePathList srcPaths, const FilePath &destDirPath, Mode mode = Mode::COPY);
 
-    explicit CopyJob(const FilePathList&& paths, const FilePath&& destDirPath, Mode mode = Mode::COPY);
+    void setDestPaths(FilePathList destPaths);
+    void setDestDirPath(const FilePath &destDirPath);
 
 protected:
     void exec() override;
 
 private:
-    bool copyPath(const FilePath& srcPath, const FilePath& destPath, const char *destFileName);
-    bool copyPath(const FilePath &srcPath, const GFileInfoPtr &srcInfo, const FilePath &destDirPath, const char *destFileName);
-    bool copyRegularFile(const FilePath &srcPath, GFileInfoPtr srcFile, const FilePath& destPath);
-    bool copySpecialFile(const FilePath &srcPath, GFileInfoPtr srcFile, const FilePath& destPath);
-    bool copyDir(const FilePath &srcPath, GFileInfoPtr srcFile, const FilePath& destPath);
-    bool makeDir(const FilePath &srcPath, GFileInfoPtr srcFile, const FilePath& dirPath);
+    bool processPath(const FilePath& srcPath, const FilePath& destPath, const char *destFileName);
+    bool movePath(const FilePath &srcPath, const GFileInfoPtr &srcInfo, const FilePath &destDirPath, const char *destFileName);
+    bool copyPath(const FilePath &srcPath, const GFileInfoPtr &srcInfo, const FilePath &destDirPath, const char *destFileName, bool &deleteSrc);
+    bool copyOrMoveFile(Mode mode, const FilePath &srcPath, const GFileInfoPtr& srcInfo, FilePath &destPath, bool &deleteSrc);
+    bool copySpecialFile(const FilePath &srcPath, const GFileInfoPtr& srcInfo, FilePath& destPath);
+    bool copyDir(const FilePath &srcPath, GFileInfoPtr srcInfo, FilePath &destPath, bool &deleteSrc);
+    bool makeDir(const FilePath &srcPath, GFileInfoPtr srcInfo, FilePath &destPath);
 
-    static void gfileProgressCallback(goffset current_num_bytes, goffset total_num_bytes, CopyJob* _this);
+    static void gfileCopyProgressCallback(goffset current_num_bytes, goffset total_num_bytes, CopyJob* _this);
 
-private:
+protected:
     FilePathList srcPaths_;
-    FilePath destDirPath_;
+    FilePathList destPaths_;
     Mode mode_;
-    bool skip_dir_content;
+    bool skipDirContent_;
 };
 
 

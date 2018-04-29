@@ -194,6 +194,10 @@ public:
         return dispName_;
     }
 
+    QString description() const {
+        return QString::fromUtf8(mimeType_ ? mimeType_->desc() : "");
+    }
+
     FilePath path() const {
         return dirPath_ ? dirPath_.child(name_.c_str()) : FilePath::fromPathStr(name_.c_str());
     }

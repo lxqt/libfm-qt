@@ -4,132 +4,168 @@
 
 namespace Fm {
 
-CopyJob::CopyJob(const FilePathList& paths, const FilePath& destDirPath, Mode mode):
+CopyJob::CopyJob(FilePathList srcPaths, Mode mode):
     FileOperationJob{},
-    srcPaths_{paths},
-    destDirPath_{destDirPath},
+    srcPaths_{std::move(srcPaths)},
     mode_{mode},
-    skip_dir_content{false} {
+    skipDirContent_{false} {
 }
 
-CopyJob::CopyJob(const FilePathList &&paths, const FilePath &&destDirPath, Mode mode):
-    FileOperationJob{},
-    srcPaths_{paths},
-    destDirPath_{destDirPath},
-    mode_{mode},
-    skip_dir_content{false} {
+CopyJob::CopyJob(FilePathList srcPaths, FilePathList destPaths, Mode mode):
+    CopyJob{std::move(srcPaths), mode} {
+    destPaths_ = std::move(destPaths);
 }
 
-void CopyJob::gfileProgressCallback(goffset current_num_bytes, goffset total_num_bytes, CopyJob* _this) {
+CopyJob::CopyJob(FilePathList srcPaths, const FilePath& destDirPath, Mode mode):
+    CopyJob{std::move(srcPaths), mode} {
+    setDestDirPath(destDirPath);
+}
+
+void CopyJob::setDestPaths(FilePathList destPaths) {
+    destPaths_ = std::move(destPaths);
+}
+
+void CopyJob::setDestDirPath(const FilePath& destDirPath) {
+    destPaths_.clear();
+    destPaths_.reserve(srcPaths_.size());
+    for(const auto& srcPath: srcPaths_) {
+        destPaths_.emplace_back(destDirPath.child(srcPath.baseName().get()));
+    }
+}
+
+void CopyJob::gfileCopyProgressCallback(goffset current_num_bytes, goffset total_num_bytes, CopyJob* _this) {
     _this->setCurrentFileProgress(total_num_bytes, current_num_bytes);
 }
 
-bool CopyJob::copyRegularFile(const FilePath& srcPath, GFileInfoPtr /*srcFile*/, const FilePath& destPath) {
+bool CopyJob::copyOrMoveFile(Mode mode, const FilePath& srcPath, const GFileInfoPtr& srcInfo, FilePath& destPath, bool& deleteSrc) {
     int flags = G_FILE_COPY_ALL_METADATA | G_FILE_COPY_NOFOLLOW_SYMLINKS;
     GErrorPtr err;
-_retry_copy:
-    if(!g_file_copy(srcPath.gfile().get(), destPath.gfile().get(), GFileCopyFlags(flags), cancellable().get(),
-                    GFileProgressCallback(gfileProgressCallback), this, &err)) {
-        flags &= ~G_FILE_COPY_OVERWRITE;
-        /* handle existing files or file name conflict */
-        if(err.domain() == G_IO_ERROR && (err.code() == G_IO_ERROR_EXISTS ||
-                                         err.code() == G_IO_ERROR_INVALID_FILENAME ||
-                                         err.code() == G_IO_ERROR_FILENAME_TOO_LONG)) {
-#if 0
-            GFile* dest_cp = new_dest;
-            bool dest_exists = (err->code == G_IO_ERROR_EXISTS);
-            FmFileOpOption opt = 0;
-            g_error_free(err);
-            err = nullptr;
+    bool retry;
+    // choose whether we do copy or move here
+    auto gfileOperationFunc = (mode == Mode::COPY ? g_file_copy : g_file_move);
+    auto progresCallback = (mode == Mode::COPY ? GFileProgressCallback(gfileCopyProgressCallback) : nullptr);
+    do {
+        retry = false;
+        err.reset();
 
-            new_dest = nullptr;
-            opt = _fm_file_ops_job_ask_new_name(job, src, dest, &new_dest, dest_exists);
-            if(!new_dest) { /* restoring status quo */
-                new_dest = dest_cp;
+        // reset progress of the current file (only for copy)
+        if(mode == Mode::COPY) {
+            auto size = g_file_info_get_size(srcInfo.get());
+            setCurrentFileProgress(size, 0);
+        }
+
+        // do the file operation (copy or move)
+        if(!gfileOperationFunc(srcPath.gfile().get(), destPath.gfile().get(), GFileCopyFlags(flags), cancellable().get(),
+                               progresCallback, this, &err)) {
+            flags &= ~G_FILE_COPY_OVERWRITE;
+            /* handle existing files or file name conflict */
+            if(err.domain() == G_IO_ERROR && (err.code() == G_IO_ERROR_EXISTS ||
+                                             err.code() == G_IO_ERROR_INVALID_FILENAME ||
+                                             err.code() == G_IO_ERROR_FILENAME_TOO_LONG)) {
+                err.reset();
+
+                // get info of the existing file
+                GFileInfoPtr destInfo = GFileInfoPtr {
+                    g_file_query_info(destPath.gfile().get(),
+                    gfile_info_query_attribs,
+                    G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                    cancellable().get(), &err),
+                    false
+                };
+
+                // ask the user to rename or overwrite the existing file
+                if(!isCancelled() && destInfo) {
+                    FilePath newDestPath;
+                    FileExistsAction opt = askRename(FileInfo{srcInfo, srcPath.parent()},
+                                                     FileInfo{destInfo, destPath.parent()},
+                                                     newDestPath);
+                    switch(opt) {
+                    case FileOperationJob::RENAME:
+                        // try a new file name
+                        if(newDestPath.isValid()) {
+                            destPath = std::move(newDestPath);
+                            // FIXME: handle the error when newDestPath is invalid.
+                        }
+                        retry = true;
+                        break;
+                    case FileOperationJob::OVERWRITE:
+                        // overwrite existing file
+                        flags |= G_FILE_COPY_OVERWRITE;
+                        retry = true;
+                        break;
+                    case FileOperationJob::CANCEL:
+                        // cancel the whole job.
+                        cancel();
+                        break;
+                    case FileOperationJob::SKIP:
+                        // skip current file and don't copy it
+                        deleteSrc = false; /* don't delete source file. */
+                        return true;
+                    case FileOperationJob::SKIP_ERROR: ; /* FIXME */
+                        return true;
+                    }
+                    err.reset();
+                }
             }
-            else if(dest_cp) { /* we got new new_dest, forget old one */
-                g_object_unref(dest_cp);
+
+            // show error message
+            if(err) {
+                ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
+                err.reset();
+                if(act == ErrorAction::RETRY) {
+                    // the user wants retry the operation again
+                    retry = true;
+                    continue;
+                }
+                const bool is_no_space = (err.domain() == G_IO_ERROR && err.code() == G_IO_ERROR_NO_SPACE);
+                /* FIXME: ask to leave partial content? */
+                if(is_no_space) {
+                    // run out of disk space. delete the partial content we copied.
+                    g_file_delete(destPath.gfile().get(), cancellable().get(), nullptr);
+                }
+                deleteSrc = false;
             }
-            switch(opt) {
-            case FM_FILE_OP_RENAME:
-                dest = new_dest;
-                goto _retry_copy;
-                break;
-            case FM_FILE_OP_OVERWRITE:
-                flags |= G_FILE_COPY_OVERWRITE;
-                goto _retry_copy;
-                break;
-            case FM_FILE_OP_CANCEL:
-                fm_job_cancel(fmjob);
-                break;
-            case FM_FILE_OP_SKIP:
-                ret = true;
-                delete_src = false; /* don't delete source file. */
-                break;
-            case FM_FILE_OP_SKIP_ERROR: ; /* FIXME */
-            }
-#endif
         }
         else {
-            ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
-            err.reset();
-            if(act == ErrorAction::RETRY) {
-                // FIXME: job->current_file_finished = 0;
-                goto _retry_copy;
-            }
-# if 0
-            const bool is_no_space = (err.domain() == G_IO_ERROR &&
-                                err.code() == G_IO_ERROR_NO_SPACE);
-            /* FIXME: ask to leave partial content? */
-            if(is_no_space) {
-                g_file_delete(dest, fm_job_get_cancellable(fmjob), nullptr);
-            }
-            ret = false;
-            delete_src = false;
-#endif
+            return true;
         }
-        err.reset();
-    }
-    else {
-        return true;
-    }
+    } while(retry && !isCancelled());
     return false;
 }
 
-bool CopyJob::copySpecialFile(const FilePath& srcPath, GFileInfoPtr srcFile, const FilePath& destPath) {
+bool CopyJob::copySpecialFile(const FilePath& srcPath, const GFileInfoPtr& srcInfo, FilePath &destPath) {
     bool ret = false;
-    GError* err = nullptr;
-    /* only handle FIFO for local files */
+    // only handle FIFO for local files
     if(srcPath.isNative() && destPath.isNative()) {
         auto src_path = srcPath.localPath();
         struct stat src_st;
         int r;
         r = lstat(src_path.get(), &src_st);
         if(r == 0) {
-            /* Handle FIFO on native file systems. */
+            // Handle FIFO on native file systems.
             if(S_ISFIFO(src_st.st_mode)) {
                 auto dest_path = destPath.localPath();
                 if(mkfifo(dest_path.get(), src_st.st_mode) == 0) {
                     ret = true;
                 }
             }
-            /* FIXME: how about block device, char device, and socket? */
+            // FIXME: how about block device, char device, and socket?
         }
     }
     if(!ret) {
+        GErrorPtr err;
         g_set_error(&err, G_IO_ERROR, G_IO_ERROR_FAILED,
                     ("Cannot copy file '%s': not supported"),
-                    g_file_info_get_display_name(srcFile.get()));
-        // emitError( err, ErrorSeverity::MODERATE);
-        g_clear_error(&err);
+                    g_file_info_get_display_name(srcInfo.get()));
+        emitError(err, ErrorSeverity::MODERATE);
     }
     return ret;
 }
 
-bool CopyJob::copyDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FilePath& destPath) {
+bool CopyJob::copyDir(const FilePath& srcPath, GFileInfoPtr srcInfo, FilePath& destPath, bool& deleteSrc) {
     bool ret = false;
-    if(makeDir(srcPath, srcFile, destPath)) {
-        GError* err = nullptr;
+    if(makeDir(srcPath, srcInfo, destPath)) {
+        GErrorPtr err;
         auto enu = GFileEnumeratorPtr{
                 g_file_enumerate_children(srcPath.gfile().get(),
                                           gfile_info_query_attribs,
@@ -141,18 +177,19 @@ bool CopyJob::copyDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FileP
             int n_copied = 0;
             ret = true;
             while(!isCancelled()) {
-                auto inf = GFileInfoPtr{g_file_enumerator_next_file(enu.get(), cancellable().get(), &err), false};
+                err.reset();
+                GFileInfoPtr inf{g_file_enumerator_next_file(enu.get(), cancellable().get(), &err), false};
                 if(inf) {
                     ++n_children;
                     /* don't overwrite dir content, only calculate progress. */
-                    if(Q_UNLIKELY(skip_dir_content)) {
+                    if(Q_UNLIKELY(skipDirContent_)) {
                         /* FIXME: this is incorrect as we don't do the calculation recursively. */
                         addFinishedAmount(g_file_info_get_size(inf.get()), 1);
                     }
                     else {
                         const char* name = g_file_info_get_name(inf.get());
                         FilePath childPath = srcPath.child(name);
-                        bool child_ret = copyPath(childPath, inf, destPath, name);
+                        bool child_ret = copyPath(childPath, inf, destPath, name, deleteSrc);
                         if(child_ret) {
                             ++n_copied;
                         }
@@ -163,9 +200,8 @@ bool CopyJob::copyDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FileP
                 }
                 else {
                     if(err) {
-                        // FIXME: emitError( err, ErrorSeverity::MODERATE);
-                        g_error_free(err);
-                        err = nullptr;
+                        emitError(err, ErrorSeverity::MODERATE);
+                        err.reset();
                         /* ErrorAction::RETRY is not supported here */
                         ret = false;
                     }
@@ -178,7 +214,7 @@ bool CopyJob::copyDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FileP
                             /* some files are not copied */
                             if(n_children != n_copied) {
                                 /* if the copy actions are skipped deliberately, it's ok */
-                                if(!skip_dir_content) {
+                                if(!skipDirContent_) {
                                     ret = false;
                                 }
                             }
@@ -190,95 +226,100 @@ bool CopyJob::copyDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FileP
             }
             g_file_enumerator_close(enu.get(), nullptr, &err);
         }
+        else {
+            if(err) {
+                emitError(err, ErrorSeverity::MODERATE);
+            }
+        }
     }
     return ret;
 }
 
-bool CopyJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcFile, const FilePath& dirPath) {
-    GError* err = nullptr;
-    if(isCancelled())
+bool CopyJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcInfo, FilePath& destPath) {
+    if(isCancelled()) {
         return false;
+    }
 
-    FilePath destPath = dirPath;
     bool mkdir_done = false;
     do {
+        GErrorPtr err;
         mkdir_done = g_file_make_directory(destPath.gfile().get(), cancellable().get(), &err);
-        if(err->domain == G_IO_ERROR && (err->code == G_IO_ERROR_EXISTS ||
-                                         err->code == G_IO_ERROR_INVALID_FILENAME ||
-                                         err->code == G_IO_ERROR_FILENAME_TOO_LONG)) {
-            GFileInfoPtr destFile;
-            // FIXME: query its info
-            FilePath newDestPath;
-            FileExistsAction opt = askRename(FileInfo{srcFile, srcPath.parent()}, FileInfo{destFile, dirPath.parent()}, newDestPath);
-            g_error_free(err);
-            err = nullptr;
+        if(!mkdir_done) {
+            if(err->domain == G_IO_ERROR && (err->code == G_IO_ERROR_EXISTS ||
+                                             err->code == G_IO_ERROR_INVALID_FILENAME ||
+                                             err->code == G_IO_ERROR_FILENAME_TOO_LONG)) {
+                GFileInfoPtr destInfo = GFileInfoPtr {
+                    g_file_query_info(destPath.gfile().get(),
+                    gfile_info_query_attribs,
+                    G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                    cancellable().get(), nullptr),
+                    false
+                };
+                if(!destInfo) {
+                    // FIXME: error handling
+                    break;
+                }
 
-            switch(opt) {
-            case FileOperationJob::RENAME:
-                destPath = newDestPath;
-                break;
-            case FileOperationJob::SKIP:
-                /* when a dir is skipped, we need to know its total size to calculate correct progress */
-                // job->finished += size;
-                // fm_file_ops_job_emit_percent(job);
-                // job->skip_dir_content = skip_dir_content = true;
-                mkdir_done = true; /* pretend that dir creation succeeded */
-                break;
-            case FileOperationJob::OVERWRITE:
-                mkdir_done = true; /* pretend that dir creation succeeded */
-                break;
-            case FileOperationJob::CANCEL:
-                cancel();
-                break;
-            case FileOperationJob::SKIP_ERROR: ; /* FIXME */
+                FilePath newDestPath;
+                FileExistsAction opt = askRename(FileInfo{srcInfo, srcPath.parent()}, FileInfo{destInfo, destPath.parent()}, newDestPath);
+                switch(opt) {
+                case FileOperationJob::RENAME:
+                    destPath = std::move(newDestPath);
+                    break;
+                case FileOperationJob::SKIP:
+                    /* when a dir is skipped, we need to know its total size to calculate correct progress */
+                    skipDirContent_ = true;
+                    mkdir_done = true; /* pretend that dir creation succeeded */
+                    break;
+                case FileOperationJob::OVERWRITE:
+                    mkdir_done = true; /* pretend that dir creation succeeded */
+                    break;
+                case FileOperationJob::CANCEL:
+                    cancel();
+                    return false;
+                case FileOperationJob::SKIP_ERROR: ; /* FIXME */
+                }
+            }
+            else {
+                ErrorAction act = emitError(err, ErrorSeverity::MODERATE);
+                if(act != ErrorAction::RETRY) {
+                    break;
+                }
             }
         }
-        else {
-#if 0
-            ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
-            g_error_free(err);
-            err = nullptr;
-            if(act == ErrorAction::RETRY) {
-                goto _retry_mkdir;
-            }
-#endif
-            break;
-        }
-        // job->finished += size;
     } while(!mkdir_done && !isCancelled());
 
+    bool chmod_done = false;
     if(mkdir_done && !isCancelled()) {
-        bool chmod_done = false;
-        mode_t mode = g_file_info_get_attribute_uint32(srcFile.get(), G_FILE_ATTRIBUTE_UNIX_MODE);
+        mode_t mode = g_file_info_get_attribute_uint32(srcInfo.get(), G_FILE_ATTRIBUTE_UNIX_MODE);
         if(mode) {
             mode |= (S_IRUSR | S_IWUSR); /* ensure we have rw permission to this file. */
             do {
-                /* chmod the newly created dir properly */
+                GErrorPtr err;
+                // chmod the newly created dir properly
                 // if(!fm_job_is_cancelled(fmjob) && !job->skip_dir_content)
                 chmod_done = g_file_set_attribute_uint32(destPath.gfile().get(),
                                                          G_FILE_ATTRIBUTE_UNIX_MODE,
                                                          mode, G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
                                                          cancellable().get(), &err);
                 if(!chmod_done) {
-/*
-                    ErrorAction act = emitError( err, ErrorSeverity::MODERATE);
-                    g_error_free(err);
-                    err = nullptr;
-                    if(act == ErrorAction::RETRY) {
-                        goto _retry_chmod_for_dir;
+                    ErrorAction act = emitError(err, ErrorSeverity::MODERATE);
+                    if(act != ErrorAction::RETRY) {
+                        break;
                     }
-*/
                     /* FIXME: some filesystems may not support this. */
                 }
             } while(!chmod_done && !isCancelled());
-            // finished += size;
-            // fm_file_ops_job_emit_percent(job);
         }
     }
-    return false;
+
+    addFinishedAmount(g_file_info_get_size(srcInfo.get()), 1);
+    return mkdir_done && chmod_done;
 }
 
-bool CopyJob::copyPath(const FilePath& srcPath, const FilePath& destDirPath, const char* destFileName) {
+bool CopyJob::processPath(const FilePath& srcPath, const FilePath& destDirPath, const char* destFileName) {
+    setCurrentFile(srcPath);
+
     GErrorPtr err;
     GFileInfoPtr srcInfo = GFileInfoPtr {
         g_file_query_info(srcPath.gfile().get(),
@@ -288,13 +329,22 @@ bool CopyJob::copyPath(const FilePath& srcPath, const FilePath& destDirPath, con
         false
     };
     if(!srcInfo || isCancelled()) {
+        // FIXME: report error
         return false;
     }
-    return copyPath(srcPath, srcInfo, destDirPath, destFileName);
+
+    bool ret;
+    if(mode_ == Mode::MOVE) {
+        ret = movePath(srcPath, srcInfo, destDirPath, destFileName);
+    }
+    else {
+        bool deleteSrc = false;
+        ret = copyPath(srcPath, srcInfo, destDirPath, destFileName, deleteSrc);
+    }
+    return ret;
 }
 
-bool CopyJob::copyPath(const FilePath& srcPath, const GFileInfoPtr& srcInfo, const FilePath& destDirPath, const char* destFileName) {
-    setCurrentFile(srcPath);
+bool CopyJob::movePath(const FilePath &srcPath, const GFileInfoPtr &srcInfo, const FilePath &destDirPath, const char *destFileName) {
     GErrorPtr err;
     GFileInfoPtr destDirInfo = GFileInfoPtr {
         g_file_query_info(destDirPath.gfile().get(),
@@ -305,9 +355,32 @@ bool CopyJob::copyPath(const FilePath& srcPath, const GFileInfoPtr& srcInfo, con
     };
 
     if(!destDirInfo || isCancelled()) {
+        // FIXME: report errors
         return false;
     }
 
+    // If src and dest are on the same filesystem, do move.
+    // Otherwise, do copy & delete src files.
+    auto src_fs = g_file_info_get_attribute_string(srcInfo.get(), "id::filesystem");
+    auto dest_fs = g_file_info_get_attribute_string(destDirInfo.get(), "id::filesystem");
+    bool ret;
+    bool deleteSrc;
+    if(g_strcmp0(src_fs, dest_fs) == 0) {
+        // src and dest are on the same filesystem
+        auto destPath = destDirPath.child(destFileName);
+        deleteSrc = false;
+        ret = copyOrMoveFile(Mode::MOVE, srcPath, srcInfo, destPath, deleteSrc);
+    }
+    else {
+        deleteSrc = true;
+        // cross device/filesystem move: copy & delete
+        ret = copyPath(srcPath, srcInfo, destDirPath, destFileName, deleteSrc);
+    }
+    return ret;
+}
+
+bool CopyJob::copyPath(const FilePath& srcPath, const GFileInfoPtr& srcInfo, const FilePath& destDirPath, const char* destFileName, bool& deleteSrc) {
+    // FIXME: set this to true for cross-device move
     auto size = g_file_info_get_size(srcInfo.get());
     setCurrentFileProgress(size, 0);
 
@@ -315,18 +388,23 @@ bool CopyJob::copyPath(const FilePath& srcPath, const GFileInfoPtr& srcInfo, con
     bool success = false;
     switch(g_file_info_get_file_type(srcInfo.get())) {
     case G_FILE_TYPE_DIRECTORY:
-        success = copyDir(srcPath, srcInfo, destPath);
+        success = copyDir(srcPath, srcInfo, destPath, deleteSrc);
         break;
     case G_FILE_TYPE_SPECIAL:
         success = copySpecialFile(srcPath, srcInfo, destPath);
         break;
     default:
-        success = copyRegularFile(srcPath, srcInfo, destPath);
+        success = copyOrMoveFile(Mode::COPY, srcPath, srcInfo, destPath, deleteSrc);
         break;
     }
 
     if(success) {
         addFinishedAmount(size, 1);
+
+        if(deleteSrc) {
+            // delete the source file for cross-filesystem move
+            // TODO: delete the src file
+        }
 #if 0
 
         if(ret && dest_folder) {
@@ -430,7 +508,9 @@ bool _fm_file_ops_job_copy_run(FmFileOpsJob* job) {
 #endif
 
 void CopyJob::exec() {
-    TotalSizeJob totalSizeJob{srcPaths_};
+    // calculate the total size of files to copy
+    auto totalSizeFlags = (mode_ == Mode::COPY ? TotalSizeJob::DEFAULT : TotalSizeJob::PREPARE_MOVE);
+    TotalSizeJob totalSizeJob{srcPaths_, totalSizeFlags};
     connect(&totalSizeJob, &TotalSizeJob::error, this, &CopyJob::error);
     connect(this, &CopyJob::cancelled, &totalSizeJob, &TotalSizeJob::cancel);
     totalSizeJob.run();
@@ -438,14 +518,24 @@ void CopyJob::exec() {
         return;
     }
 
+    // ready to start
     setTotalAmount(totalSizeJob.totalSize(), totalSizeJob.fileCount());
     Q_EMIT preparedToRun();
 
-    for(auto& srcPath : srcPaths_) {
+    if(srcPaths_.size() != destPaths_.size()) {
+        qWarning("error: srcPaths.size() != destPaths.size() when copying files");
+        return;
+    }
+
+    // copy the files
+    for(size_t i = 0; i < srcPaths_.size(); ++i) {
         if(isCancelled()) {
             break;
         }
-        copyPath(srcPath, destDirPath_, srcPath.baseName().get());
+        const auto& srcPath = srcPaths_[i];
+        const auto& destPath = destPaths_[i];
+        auto destDirPath = destPath.parent();
+        processPath(srcPath, destDirPath, destPath.baseName().get());
     }
 }
 
