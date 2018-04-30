@@ -49,6 +49,7 @@ public:
 
 public:
     explicit FileOperation(Type type, Fm::FilePathList srcFiles, QObject* parent = 0);
+
     virtual ~FileOperation();
 
     void setDestination(Fm::FilePath dest);
@@ -182,7 +183,7 @@ private:
     Fm::FileOperationJob* job_;  // new C++ job implementations
     FmFileOpsJob* legacyJob_;   // legacy C jobs depending on libfm (backward compatibility)
     FileOperationDialog* dlg_;
-    Fm::FilePath destPath;
+    Fm::FilePath destPath_;
     Fm::FilePath curFilePath_;
     Fm::FilePathList srcPaths_;
     QTimer* uiTimer_;

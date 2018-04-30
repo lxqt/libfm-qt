@@ -22,11 +22,14 @@
 #include "ui_rename-dialog.h"
 #include <QStringBuilder>
 #include <QPushButton>
+#include <QDateTime>
+
 #include "core/iconinfo.h"
+#include "utilities.h"
 
 namespace Fm {
 
-RenameDialog::RenameDialog(FmFileInfo* src, FmFileInfo* dest, QWidget* parent, Qt::WindowFlags f):
+RenameDialog::RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* parent, Qt::WindowFlags f):
     QDialog(parent, f),
     action_(ActionIgnore),
     applyToAll_(false) {
@@ -34,54 +37,57 @@ RenameDialog::RenameDialog(FmFileInfo* src, FmFileInfo* dest, QWidget* parent, Q
     ui = new Ui::RenameDialog();
     ui->setupUi(this);
 
-    FmPath* path = fm_file_info_get_path(dest);
-    FmIcon* srcIcon = fm_file_info_get_icon(src);
-    FmIcon* destIcon = fm_file_info_get_icon(dest);
+    auto path = dest.path();
+    auto srcIcon = src.icon();
+    auto destIcon = dest.icon();
 
     // show info for the source file
-    QIcon icon = Fm::IconInfo::fromGIcon(G_ICON(srcIcon))->qicon();
+    QIcon icon = srcIcon->qicon();
+    // FIXME: deprecate fm_config
     QSize iconSize(fm_config->big_icon_size, fm_config->big_icon_size);
     QPixmap pixmap = icon.pixmap(iconSize);
     ui->srcIcon->setPixmap(pixmap);
 
     QString infoStr;
-    const char* disp_size = fm_file_info_get_disp_size(src);
-    if(disp_size) {
+    // FIXME: deprecate fm_config
+    auto disp_size = Fm::formatFileSize(src.size(), fm_config->si_unit);
+    auto srcMtime = QDateTime::fromMSecsSinceEpoch(src.mtime() * 1000).toString(Qt::SystemLocaleShortDate);
+    if(!disp_size.isEmpty()) {
         infoStr = QString(tr("Type: %1\nSize: %2\nModified: %3"))
-                  .arg(QString::fromUtf8(fm_file_info_get_desc(src)))
-                  .arg(QString::fromUtf8(disp_size))
-                  .arg(QString::fromUtf8(fm_file_info_get_disp_mtime(src)));
+                  .arg(src.description())
+                  .arg(disp_size)
+                  .arg(srcMtime);
     }
     else {
         infoStr = QString(tr("Type: %1\nModified: %2"))
-                  .arg(QString::fromUtf8(fm_file_info_get_desc(src)))
-                  .arg(QString::fromUtf8(fm_file_info_get_disp_mtime(src)));
+                  .arg(src.description())
+                  .arg(srcMtime);
     }
     ui->srcInfo->setText(infoStr);
 
     // show info for the dest file
-    icon = Fm::IconInfo::fromGIcon(G_ICON(destIcon))->qicon();
+    icon = destIcon->qicon();
     pixmap = icon.pixmap(iconSize);
     ui->destIcon->setPixmap(pixmap);
 
-    disp_size = fm_file_info_get_disp_size(dest);
-    if(disp_size) {
+    disp_size = Fm::formatFileSize(dest.size(), fm_config->si_unit);
+    auto destMtime = QDateTime::fromMSecsSinceEpoch(dest.mtime() * 1000).toString(Qt::SystemLocaleShortDate);
+    if(!disp_size.isEmpty()) {
         infoStr = QString(tr("Type: %1\nSize: %2\nModified: %3"))
-                  .arg(QString::fromUtf8(fm_file_info_get_desc(dest)))
-                  .arg(QString::fromUtf8(disp_size))
-                  .arg(QString::fromUtf8(fm_file_info_get_disp_mtime(dest)));
+                  .arg(dest.description())
+                  .arg(disp_size)
+                  .arg(destMtime);
     }
     else {
         infoStr = QString(tr("Type: %1\nModified: %2"))
-                  .arg(QString::fromUtf8(fm_file_info_get_desc(dest)))
-                  .arg(QString::fromUtf8(fm_file_info_get_disp_mtime(dest)));
+                  .arg(dest.description())
+                  .arg(destMtime);
     }
     ui->destInfo->setText(infoStr);
 
-    char* basename = fm_path_display_basename(path);
-    ui->fileName->setText(QString::fromUtf8(basename));
-    oldName_ = basename;
-    g_free(basename);
+    auto basename = path.baseName();
+    ui->fileName->setText(QString::fromUtf8(basename.get()));
+    oldName_ = basename.get();
     connect(ui->fileName, &QLineEdit::textChanged, this, &RenameDialog::onFileNameChanged);
 
     // add "Rename" button

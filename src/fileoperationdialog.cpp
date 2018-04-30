@@ -27,6 +27,7 @@
 #include "utilities.h"
 #include "ui_file-operation-dialog.h"
 
+
 namespace Fm {
 
 FileOperationDialog::FileOperationDialog(FileOperation* _operation):
@@ -100,35 +101,41 @@ int FileOperationDialog::ask(QString /*question*/, char* const* /*options*/) {
     return 0;
 }
 
-int FileOperationDialog::askRename(FmFileInfo* src, FmFileInfo* dest, QString& new_name) {
-    int ret;
+
+FileOperationJob::FileExistsAction FileOperationDialog::askRename(const FileInfo &src, const FileInfo &dest, FilePath &newDest) {
+    FileOperationJob::FileExistsAction ret;
     if(defaultOption == -1) { // default action is not set, ask the user
         RenameDialog dlg(src, dest, this);
         dlg.exec();
         switch(dlg.action()) {
         case RenameDialog::ActionOverwrite:
-            ret = FM_FILE_OP_OVERWRITE;
+            ret = FileOperationJob::OVERWRITE;
             if(dlg.applyToAll()) {
                 defaultOption = ret;
             }
             break;
-        case RenameDialog::ActionRename:
-            ret = FM_FILE_OP_RENAME;
-            new_name = dlg.newName();
+        case RenameDialog::ActionRename: {
+            ret = FileOperationJob::RENAME;
+            auto newName = dlg.newName();
+            if(!newName.isEmpty()) {
+                auto destDirPath = dest.path().parent();
+                newDest = destDirPath.child(newName.toUtf8().constData());
+            }
             break;
+        }
         case RenameDialog::ActionIgnore:
-            ret = FM_FILE_OP_SKIP;
+            ret = FileOperationJob::SKIP;
             if(dlg.applyToAll()) {
                 defaultOption = ret;
             }
             break;
         default:
-            ret = FM_FILE_OP_CANCEL;
+            ret = FileOperationJob::CANCEL;
             break;
         }
     }
     else {
-        ret = defaultOption;
+        ret = (FileOperationJob::FileExistsAction)defaultOption;
     }
     return ret;
 }
