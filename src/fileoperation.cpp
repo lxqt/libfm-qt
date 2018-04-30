@@ -26,7 +26,6 @@
 #include <QDebug>
 #include "path.h"
 
-#include "core/compat_p.h"
 #include "core/deletejob.h"
 #include "core/trashjob.h"
 #include "core/untrashjob.h"
@@ -42,7 +41,6 @@ FileOperation::FileOperation(Type type, Fm::FilePathList srcPaths, QObject* pare
     QObject(parent),
     type_{type},
     job_{nullptr},
-    legacyJob_{nullptr},
     dlg_{nullptr},
     srcPaths_{std::move(srcPaths)},
     uiTimer_(nullptr),
@@ -77,18 +75,7 @@ FileOperation::FileOperation(Type type, Fm::FilePathList srcPaths, QObject* pare
         break;
     }
 
-    if(legacyJob_) {
-        // legacy C jobs in libfm
-        g_signal_connect(legacyJob_, "ask", G_CALLBACK(onFileOpsJobAsk), this);
-        g_signal_connect(legacyJob_, "ask-rename", G_CALLBACK(onFileOpsJobAskRename), this);
-        g_signal_connect(legacyJob_, "error", G_CALLBACK(onFileOpsJobError), this);
-        g_signal_connect(legacyJob_, "prepared", G_CALLBACK(onFileOpsJobPrepared), this);
-        g_signal_connect(legacyJob_, "cur-file", G_CALLBACK(onFileOpsJobCurFile), this);
-        g_signal_connect(legacyJob_, "percent", G_CALLBACK(onFileOpsJobPercent), this);
-        g_signal_connect(legacyJob_, "finished", G_CALLBACK(onFileOpsJobFinished), this);
-        g_signal_connect(legacyJob_, "cancelled", G_CALLBACK(onFileOpsJobCancelled), this);
-    }
-    else if(job_) {
+    if(job_) {
         // automatically delete the job object when it's finished.
         job_->setAutoDelete(true);
 
@@ -104,17 +91,7 @@ FileOperation::FileOperation(Type type, Fm::FilePathList srcPaths, QObject* pare
 }
 
 void FileOperation::disconnectJob() {
-    if(legacyJob_) {
-        g_signal_handlers_disconnect_by_func(legacyJob_, (gpointer)G_CALLBACK(onFileOpsJobAsk), this);
-        g_signal_handlers_disconnect_by_func(legacyJob_, (gpointer)G_CALLBACK(onFileOpsJobAskRename), this);
-        g_signal_handlers_disconnect_by_func(legacyJob_, (gpointer)G_CALLBACK(onFileOpsJobError), this);
-        g_signal_handlers_disconnect_by_func(legacyJob_, (gpointer)G_CALLBACK(onFileOpsJobPrepared), this);
-        g_signal_handlers_disconnect_by_func(legacyJob_, (gpointer)G_CALLBACK(onFileOpsJobCurFile), this);
-        g_signal_handlers_disconnect_by_func(legacyJob_, (gpointer)G_CALLBACK(onFileOpsJobPercent), this);
-        g_signal_handlers_disconnect_by_func(legacyJob_, (gpointer)G_CALLBACK(onFileOpsJobFinished), this);
-        g_signal_handlers_disconnect_by_func(legacyJob_, (gpointer)G_CALLBACK(onFileOpsJobCancelled), this);
-    }
-    else if(job_) {
+    if(job_) {
         disconnect(job_, &Fm::Job::finished, this, &Fm::FileOperation::onJobFinish);
         disconnect(job_, &Fm::Job::cancelled, this, &Fm::FileOperation::onJobCancalled);
         disconnect(job_, &Fm::Job::error, this, &Fm::FileOperation::onJobError);
@@ -133,11 +110,6 @@ FileOperation::~FileOperation() {
         delete elapsedTimer_;
         elapsedTimer_ = nullptr;
     }
-
-    if(legacyJob_) {
-        disconnectJob();
-        g_object_unref(legacyJob_);
-    }
 }
 
 void FileOperation::setDestination(Fm::FilePath dest) {
@@ -148,10 +120,6 @@ void FileOperation::setDestination(Fm::FilePath dest) {
     case Link:
         if(job_) {
             static_cast<FileTransferJob*>(job_)->setDestDirPath(destPath_);
-        }
-        else if(legacyJob_) {
-            auto tmp = Fm::Path::newForGfile(dest.gfile().get());
-            fm_file_ops_job_set_dest(legacyJob_, tmp.dataPtr());
         }
         break;
     };
@@ -193,12 +161,7 @@ bool FileOperation::run() {
     uiTimer_->start(SHOW_DLG_DELAY);
     connect(uiTimer_, &QTimer::timeout, this, &FileOperation::onUiTimeout);
 
-    if(legacyJob_) {
-        // the job is still using the legacy libfm jobs
-        return fm_job_run_async(FM_JOB(legacyJob_));
-    }
-    else if(job_) {
-        // new C++-based jobs
+    if(job_) {
         job_->runAsync();
         return true;
     }
@@ -206,10 +169,7 @@ bool FileOperation::run() {
 }
 
 void FileOperation::cancel() {
-    if(legacyJob_) {
-        fm_job_cancel(FM_JOB(legacyJob_));
-    }
-    else if(job_) {
+    if(job_) {
         job_->cancel();
     }
 }
@@ -217,15 +177,7 @@ void FileOperation::cancel() {
 void FileOperation::onUiTimeout() {
     if(dlg_) {
         // estimate remaining time based on past history
-        if(legacyJob_) { // legacy libfm C jobs
-            // FIXME: avoid directly access data member of FmFileOpsJob
-            if(Q_LIKELY(legacyJob_->percent > 0 && updateRemainingTime_)) {
-                gint64 remaining = elapsedTime() * ((double(100 - legacyJob_->percent) / legacyJob_->percent) / 1000);
-                dlg_->setRemainingTime(remaining);
-            }
-            dlg_->setCurFile(curFile);
-        }
-        else if(job_) { // new C++ jobs
+        if(job_) {
             Fm::FilePath curFilePath = job_->currentFile();
             std::uint64_t totalSize, totalCount, finishedSize, finishedCount;
             // calculate current job progress
@@ -388,14 +340,6 @@ void FileOperation::onJobFinish() {
                 deleteFiles(std::move(unsupportedFiles), false);
             }
         }
-    }
-
-    if(legacyJob_) { // legacy libfm C jobs
-        g_object_unref(legacyJob_);
-        legacyJob_ = nullptr;
-    }
-    else if(job_) { // new C++ jobs
-        // TODO:
     }
 
     if(autoDestroy_) {

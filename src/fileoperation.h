@@ -24,7 +24,6 @@
 #include "libfmqtglobals.h"
 #include <QObject>
 #include <QElapsedTimer>
-#include <libfm/fm.h>
 #include "core/filepath.h"
 #include "core/fileoperationjob.h"
 
@@ -38,13 +37,13 @@ class LIBFM_QT_API FileOperation : public QObject {
     Q_OBJECT
 public:
     enum Type {
-        Copy = FM_FILE_OP_COPY,
-        Move = FM_FILE_OP_MOVE,
-        Link = FM_FILE_OP_LINK,
-        Delete = FM_FILE_OP_DELETE,
-        Trash = FM_FILE_OP_TRASH,
-        UnTrash = FM_FILE_OP_UNTRASH,
-        ChangeAttr = FM_FILE_OP_CHANGE_ATTR
+        Copy,
+        Move,
+        Link,
+        Delete,
+        Trash,
+        UnTrash,
+        ChangeAttr
     };
 
 public:
@@ -66,27 +65,14 @@ public:
     void cancel();
 
     bool isRunning() const {
-        if(legacyJob_) {
-            return legacyJob_ ? fm_job_is_running(FM_JOB(legacyJob_)) : false;
-        }
-        else if(job_) {
-            return true;
-        }
-        return false;
+        return job_ && !isCancelled();
     }
 
     bool isCancelled() const {
-        if(legacyJob_) {
-            return legacyJob_ ? fm_job_is_cancelled(FM_JOB(legacyJob_)) : false;
-        }
-        else if(job_) {
+        if(job_) {
             return job_->isCancelled();
         }
         return false;
-    }
-
-    FmFileOpsJob* legacyJob() {
-        return legacyJob_;
     }
 
     Fm::FileOperationJob* job() {
@@ -161,8 +147,7 @@ private Q_SLOTS:
 
 private:
     Type type_;
-    Fm::FileOperationJob* job_;  // new C++ job implementations
-    FmFileOpsJob* legacyJob_;   // legacy C jobs depending on libfm (backward compatibility)
+    Fm::FileOperationJob* job_;
     FileOperationDialog* dlg_;
     Fm::FilePath destPath_;
     Fm::FilePath curFilePath_;
