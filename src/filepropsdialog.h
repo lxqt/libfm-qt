@@ -80,8 +80,8 @@ private:
 
     std::shared_ptr<const Fm::MimeType> mimeType; // mime type of the files
 
-    gint32 uid; // owner uid of the files, -1 means all files do not have the same uid
-    gint32 gid; // owner gid of the files, -1 means all files do not have the same uid
+    uid_t uid; // owner uid of the files, INVALID_UID means all files do not have the same uid
+    gid_t gid; // owner gid of the files, INVALID_GID means all files do not have the same uid
     mode_t ownerPerm; // read permission of the files, -1 means not all files have the same value
     int ownerPermSel;
     mode_t groupPerm; // read permission of the files, -1 means not all files have the same value

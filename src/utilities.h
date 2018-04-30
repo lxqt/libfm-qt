@@ -65,9 +65,13 @@ enum CreateFileType {
 
 LIBFM_QT_API void createFileOrFolder(CreateFileType type, Fm::FilePath parentDir, FmTemplate* templ = nullptr, QWidget* parent = 0);
 
+constexpr uid_t INVALID_UID = uid_t(-1);
+
 LIBFM_QT_API uid_t uidFromName(QString name);
 
 LIBFM_QT_API QString uidToName(uid_t uid);
+
+constexpr gid_t INVALID_GID = gid_t(-1);
 
 LIBFM_QT_API gid_t gidFromName(QString name);
 
