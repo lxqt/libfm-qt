@@ -122,7 +122,9 @@ void FileOperation::setDestination(Fm::FilePath dest) {
             static_cast<FileTransferJob*>(job_)->setDestDirPath(destPath_);
         }
         break;
-    };
+    default:
+        break;
+    }
 }
 
 void FileOperation::setChmod(mode_t newMode, mode_t newModeMask) {
