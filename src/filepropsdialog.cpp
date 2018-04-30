@@ -402,9 +402,9 @@ void FilePropsDialog::accept() {
     }
 
     // check if chown or chmod is needed
-    gint32 newUid = uidFromName(ui->owner->text());
-    gint32 newGid = gidFromName(ui->ownerGroup->text());
-    bool needChown = (newUid != -1 && newUid != uid) || (newGid != -1 && newGid != gid);
+    uid_t newUid = uidFromName(ui->owner->text());
+    gid_t newGid = gidFromName(ui->ownerGroup->text());
+    bool needChown = (newUid != INVALID_UID && newUid != uid) || (newGid != INVALID_GID && newGid != gid);
 
     int newOwnerPermSel = ui->ownerPerm->currentIndex();
     int newGroupPermSel = ui->groupPerm->currentIndex();
@@ -420,10 +420,10 @@ void FilePropsDialog::accept() {
         if(needChown) {
             // don't do chown if new uid/gid and the original ones are actually the same.
             if(newUid == uid) {
-                newUid = -1;
+                newUid = INVALID_UID;
             }
             if(newGid == gid) {
-                newGid = -1;
+                newGid = INVALID_GID;
             }
             op->setChown(newUid, newGid);
         }
