@@ -31,7 +31,8 @@
 #include "core/trashjob.h"
 #include "core/untrashjob.h"
 #include "core/filetransferjob.h"
-
+#include "core/filechangeattrjob.h"
+#include "utilities.h"
 
 namespace Fm {
 
@@ -70,7 +71,8 @@ FileOperation::FileOperation(Type type, Fm::FilePathList srcPaths, QObject* pare
         job_ = new Fm::UntrashJob(srcPaths_);
         break;
     case ChangeAttr:
-        legacyJob_ = fm_file_ops_job_new((FmFileOpType)type_, Fm::_convertPathList(srcPaths_));
+        job_ = new Fm::FileChangeAttrJob(srcPaths_);
+        break;
     default:
         break;
     }
@@ -155,6 +157,35 @@ void FileOperation::setDestination(Fm::FilePath dest) {
     };
 }
 
+void FileOperation::setChmod(mode_t newMode, mode_t newModeMask) {
+    if(job_) {
+        auto job = static_cast<FileChangeAttrJob*>(job_);
+        job->setFileModeEnabled(true);
+        job->setFileMode(newMode, newModeMask);
+    }
+}
+
+void FileOperation::setChown(uid_t uid, gid_t gid) {
+    if(job_) {
+        auto job = static_cast<FileChangeAttrJob*>(job_);
+        if(uid != INVALID_UID) {
+            job->setOwnerEnabled(true);
+            job->setOwner(uid);
+        }
+        if(gid != INVALID_GID) {
+            job->setGroupEnabled(true);
+            job->setGroup(gid);
+        }
+    }
+}
+
+void FileOperation::setRecursiveChattr(bool recursive) {
+    if(job_) {
+        auto job = static_cast<FileChangeAttrJob*>(job_);
+        job->setRecursive(recursive);
+    }
+}
+
 bool FileOperation::run() {
     delete uiTimer_;
     // run the job
@@ -172,6 +203,15 @@ bool FileOperation::run() {
         return true;
     }
     return false;
+}
+
+void FileOperation::cancel() {
+    if(legacyJob_) {
+        fm_job_cancel(FM_JOB(legacyJob_));
+    }
+    else if(job_) {
+        job_->cancel();
+    }
 }
 
 void FileOperation::onUiTimeout() {

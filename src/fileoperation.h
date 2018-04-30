@@ -54,35 +54,16 @@ public:
 
     void setDestination(Fm::FilePath dest);
 
-    void setChmod(mode_t newMode, mode_t newModeMask) {
-        if(legacyJob_) {
-            fm_file_ops_job_set_chmod(legacyJob_, newMode, newModeMask);
-        }
-    }
+    void setChmod(mode_t newMode, mode_t newModeMask);
 
-    void setChown(gint uid, gint gid) {
-        if(legacyJob_) {
-            fm_file_ops_job_set_chown(legacyJob_, uid, gid);
-        }
-    }
+    void setChown(uid_t uid, gid_t gid);
 
     // This only work for change attr jobs.
-    void setRecursiveChattr(bool recursive) {
-        if(legacyJob_) {
-            fm_file_ops_job_set_recursive(legacyJob_, (gboolean)recursive);
-        }
-    }
+    void setRecursiveChattr(bool recursive);
 
     bool run();
 
-    void cancel() {
-        if(legacyJob_) {
-            fm_job_cancel(FM_JOB(legacyJob_));
-        }
-        else if(job_) {
-            job_->cancel();
-        }
-    }
+    void cancel();
 
     bool isRunning() const {
         if(legacyJob_) {
