@@ -149,7 +149,9 @@ void FileOperation::setDestination(Fm::FilePath dest) {
             fm_file_ops_job_set_dest(legacyJob_, tmp.dataPtr());
         }
         break;
-    };
+    default:
+        break;
+    }
 }
 
 bool FileOperation::run() {
