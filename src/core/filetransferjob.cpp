@@ -217,7 +217,7 @@ bool FileTransferJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcInfo, Fil
     bool mkdir_done = false;
     do {
         GErrorPtr err;
-        mkdir_done = g_file_make_directory(destPath.gfile().get(), cancellable().get(), &err);
+        mkdir_done = g_file_make_directory_with_parents(destPath.gfile().get(), cancellable().get(), &err);
         if(!mkdir_done) {
             if(err->domain == G_IO_ERROR && (err->code == G_IO_ERROR_EXISTS ||
                                              err->code == G_IO_ERROR_INVALID_FILENAME ||
@@ -411,11 +411,12 @@ bool FileTransferJob::moveFile(const FilePath &srcPath, const GFileInfoPtr &srcI
     }
 
     // If src and dest are on the same filesystem, do move.
+    // Exception: if src FS is trash:///, we always do move
     // Otherwise, do copy & delete src files.
     auto src_fs = g_file_info_get_attribute_string(srcInfo.get(), "id::filesystem");
     auto dest_fs = g_file_info_get_attribute_string(destDirInfo.get(), "id::filesystem");
     bool ret;
-    if(g_strcmp0(src_fs, dest_fs) == 0) {
+    if(src_fs && dest_fs && (strcmp(src_fs, dest_fs) == 0 || g_str_has_prefix(src_fs, "trash"))) {
         // src and dest are on the same filesystem
         auto destPath = destDirPath.child(destFileName);
         ret = moveFileSameFs(srcPath, srcInfo, destPath);

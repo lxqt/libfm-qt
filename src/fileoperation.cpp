@@ -29,6 +29,7 @@
 #include "core/compat_p.h"
 #include "core/deletejob.h"
 #include "core/trashjob.h"
+#include "core/untrashjob.h"
 #include "core/filetransferjob.h"
 
 
@@ -66,6 +67,8 @@ FileOperation::FileOperation(Type type, Fm::FilePathList srcPaths, QObject* pare
         job_ = new Fm::TrashJob(srcPaths_);
         break;
     case UnTrash:
+        job_ = new Fm::UntrashJob(srcPaths_);
+        break;
     case ChangeAttr:
         legacyJob_ = fm_file_ops_job_new((FmFileOpType)type_, Fm::_convertPathList(srcPaths_));
     default:
