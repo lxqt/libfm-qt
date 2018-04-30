@@ -29,7 +29,40 @@ void FileTransferJob::setDestDirPath(const FilePath& destDirPath) {
     destPaths_.clear();
     destPaths_.reserve(srcPaths_.size());
     for(const auto& srcPath: srcPaths_) {
-        destPaths_.emplace_back(destDirPath.child(srcPath.baseName().get()));
+        FilePath destPath;
+        if(mode_ == Mode::LINK && !srcPath.isNative()) {
+            // special handling for URLs
+            auto fullBasename = srcPath.baseName();
+            char* basename = fullBasename.get();
+            char* dname = nullptr;
+            // if we drop URI query onto native filesystem, omit query part
+            if(!srcPath.isNative()) {
+                dname = strchr(basename, '?');
+            }
+            // if basename consist only from query then use first part of it
+            if(dname == basename) {
+                basename++;
+                dname = strchr(basename, '&');
+            }
+
+            CStrPtr _basename;
+            if(dname) {
+                _basename = CStrPtr{g_strndup(basename, dname - basename)};
+                dname = strrchr(_basename.get(), G_DIR_SEPARATOR);
+                g_debug("cutting '%s' to '%s'", basename, dname ? &dname[1] : _basename.get());
+                if(dname) {
+                    basename = &dname[1];
+                }
+                else {
+                    basename = _basename.get();
+                }
+            }
+            destPath = destDirPath.child(basename);
+        }
+        else {
+            destPath = destDirPath.child(srcPath.baseName().get());
+        }
+        destPaths_.emplace_back(std::move(destPath));
     }
 }
 
@@ -115,7 +148,7 @@ bool FileTransferJob::copyDirContent(const FilePath& srcPath, GFileInfoPtr srcIn
     GErrorPtr err;
     auto enu = GFileEnumeratorPtr{
             g_file_enumerate_children(srcPath.gfile().get(),
-                                      gfile_info_query_attribs,
+                                      gfile_info_query_attribs,  // FIXME: do not reference this from libfm
                                       G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
                                       cancellable().get(), &err),
             false};
@@ -300,9 +333,9 @@ bool FileTransferJob::handleError(GErrorPtr &err, const FilePath &srcPath, const
                 break;
             case FileOperationJob::SKIP:
                 // skip current file and don't copy it
-                retry = false;
             case FileOperationJob::SKIP_ERROR: ; /* FIXME */
                 retry = false;
+                break;
             }
             err.reset();
         }
@@ -351,7 +384,10 @@ bool FileTransferJob::processPath(const FilePath& srcPath, const FilePath& destD
         break;
     }
     case Mode::LINK:
-        // Not implemented yet
+        ret = linkFile(srcPath, srcInfo, destDirPath, destFileName);
+        break;
+    default:
+        ret = false;
         break;
     }
     return ret;
@@ -448,6 +484,123 @@ bool FileTransferJob::copyFile(const FilePath& srcPath, const GFileInfoPtr& srcI
     }
     return success;
 }
+
+bool FileTransferJob::linkFile(const FilePath &srcPath, const GFileInfoPtr &srcInfo, const FilePath &destDirPath, const char *destFileName) {
+    setCurrentFile(srcPath);
+
+    bool ret = false;
+    // cannot create links on non-native filesystems
+    if(!destDirPath.isNative()) {
+        auto msg = tr("Cannot create a link on non-native filesystem");
+        GErrorPtr err{g_error_new_literal(G_IO_ERROR, G_IO_ERROR_FAILED, msg.toUtf8().constData())};
+        emitError(err, ErrorSeverity::CRITICAL);
+        return false;
+    }
+
+    if(srcPath.isNative()) {
+        // create symlinks for native files
+        auto destPath = destDirPath.child(destFileName);
+        ret = createSymlink(srcPath, srcInfo, destPath);
+    }
+    else {
+        // ensure that the dest file has *.desktop filename extension.
+        CStrPtr desktopEntryFileName{g_strconcat(destFileName, ".desktop", nullptr)};
+        auto destPath = destDirPath.child(desktopEntryFileName.get());
+        ret = createShortcut(srcPath, srcInfo, destPath);
+    }
+
+    // update progress
+    // FIXME: increase the progress by 1 byte is not appropriate
+    addFinishedAmount(1, 1);
+    return ret;
+}
+
+bool FileTransferJob::createSymlink(const FilePath &srcPath, const GFileInfoPtr &srcInfo, FilePath &destPath) {
+    bool ret = false;
+    auto src = srcPath.localPath();
+    int flags = 0;
+    GErrorPtr err;
+    bool retry;
+    do {
+        retry = false;
+        if(flags & G_FILE_COPY_OVERWRITE) {  // overwrite existing file
+            // creating symlink cannot overwrite existing files directly, so we delete the existing file first.
+            g_file_delete(destPath.gfile().get(), cancellable().get(), nullptr);
+        }
+        if(!g_file_make_symbolic_link(destPath.gfile().get(), src.get(), cancellable().get(), &err)) {
+            retry = handleError(err, srcPath, srcInfo, destPath, flags);
+        }
+        else {
+            ret = true;
+            break;
+        }
+    } while(!isCancelled() && retry);
+    return ret;
+}
+
+bool FileTransferJob::createShortcut(const FilePath &srcPath, const GFileInfoPtr &srcInfo, FilePath &destPath) {
+    bool ret = false;
+    const char* iconName = nullptr;
+    GIcon* icon = g_file_info_get_icon(srcInfo.get());
+    if(icon && G_IS_THEMED_ICON(icon)) {
+        auto iconNames = g_themed_icon_get_names(G_THEMED_ICON(icon));
+        if(iconNames && iconNames[0]) {
+            iconName = iconNames[0];
+        }
+    }
+
+    CStrPtr srcPathUri;
+    auto uri = g_file_info_get_attribute_string(srcInfo.get(), G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+    if(!uri) {
+        srcPathUri = srcPath.uri();
+        uri = srcPathUri.get();
+    }
+
+    CStrPtr srcPathDispName;
+    auto name = g_file_info_get_display_name(srcInfo.get());
+    if(!name) {
+        srcPathDispName = srcPath.displayName();
+        name = srcPathDispName.get();
+    }
+
+    GKeyFile* kf = g_key_file_new();
+    if(kf) {
+        g_key_file_set_string(kf, G_KEY_FILE_DESKTOP_GROUP, G_KEY_FILE_DESKTOP_KEY_TYPE, "Link");
+        g_key_file_set_string(kf, G_KEY_FILE_DESKTOP_GROUP, G_KEY_FILE_DESKTOP_KEY_NAME, name);
+        if(iconName) {
+            g_key_file_set_string(kf, G_KEY_FILE_DESKTOP_GROUP, G_KEY_FILE_DESKTOP_KEY_ICON, iconName);
+        }
+        if(uri) {
+            g_key_file_set_string(kf, G_KEY_FILE_DESKTOP_GROUP, G_KEY_FILE_DESKTOP_KEY_URL, uri);
+        }
+        gsize contentLen;
+        CStrPtr content{g_key_file_to_data(kf, &contentLen, nullptr)};
+        g_key_file_free(kf);
+
+        int flags = 0;
+        if(content) {
+            bool retry;
+            GErrorPtr err;
+            do {
+                retry = false;
+                if(flags & G_FILE_COPY_OVERWRITE) {  // overwrite existing file
+                    g_file_delete(destPath.gfile().get(), cancellable().get(), nullptr);
+                }
+
+                if(!g_file_replace_contents(destPath.gfile().get(), content.get(), contentLen, nullptr, false, G_FILE_CREATE_NONE, nullptr, cancellable().get(), &err)) {
+                    retry = handleError(err, srcPath, srcInfo, destPath, flags);
+                    err.reset();
+                }
+                else {
+                    ret = true;
+                }
+            } while(!isCancelled() && retry);
+            ret = true;
+        }
+    }
+    return ret;
+}
+
 
 #if 0
 

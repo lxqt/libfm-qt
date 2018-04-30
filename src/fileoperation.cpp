@@ -56,6 +56,9 @@ FileOperation::FileOperation(Type type, Fm::FilePathList srcPaths, QObject* pare
     case Move:
         job_ = new FileTransferJob(srcPaths_, FileTransferJob::Mode::MOVE);
         break;
+    case Link:
+        job_ = new FileTransferJob(srcPaths_, FileTransferJob::Mode::LINK);
+        break;
     case Delete:
         job_ = new Fm::DeleteJob(srcPaths_);
         break;
@@ -63,7 +66,6 @@ FileOperation::FileOperation(Type type, Fm::FilePathList srcPaths, QObject* pare
         job_ = new Fm::TrashJob(srcPaths_);
         break;
     case UnTrash:
-    case Link:
     case ChangeAttr:
         legacyJob_ = fm_file_ops_job_new((FmFileOpType)type_, Fm::_convertPathList(srcPaths_));
     default:
@@ -138,6 +140,7 @@ void FileOperation::setDestination(Fm::FilePath dest) {
     switch(type_) {
     case Copy:
     case Move:
+    case Link:
         if(job_) {
             static_cast<FileTransferJob*>(job_)->setDestDirPath(destPath_);
         }
