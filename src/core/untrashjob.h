@@ -6,15 +6,15 @@
 
 namespace Fm {
 
-class LIBFM_QT_API UntrashJob : public Fm::FileOperationJob {
+class LIBFM_QT_API UntrashJob : public FileOperationJob {
 public:
-    explicit UntrashJob();
+    explicit UntrashJob(FilePathList srcPaths);
 
 protected:
     void exec() override;
 
 private:
-    bool ensure_parent_dir(GFile *orig_path);
+    FilePathList srcPaths_;
 };
 
 } // namespace Fm
