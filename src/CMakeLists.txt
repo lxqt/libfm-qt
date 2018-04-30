@@ -9,7 +9,7 @@ set(libfm_core_SRCS
     core/filemonitor.cpp
     # i/o jobs
     core/job.cpp
-    core/copyjob.cpp
+    core/filetransferjob.cpp
     core/deletejob.cpp
     core/dirlistjob.cpp
     core/filechangeattrjob.cpp

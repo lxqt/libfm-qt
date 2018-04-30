@@ -36,7 +36,7 @@ double FileOperationJob::progress() const {
     std::lock_guard<std::mutex> lock{mutex_};
     double finishedRatio;
     if(calcProgressUsingSize_) {
-        finishedRatio = totalSize_ > 0 ? double(finishedSize_) / totalSize_ : 0.0;
+        finishedRatio = totalSize_ > 0 ? double(finishedSize_ + currentFileFinished_) / totalSize_ : 0.0;
     }
     else {
         finishedRatio = totalCount_ > 0 ? double(finishedCount_) / totalCount_ : 0.0;
