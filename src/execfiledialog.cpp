@@ -23,32 +23,33 @@
 
 namespace Fm {
 
-ExecFileDialog::ExecFileDialog(FmFileInfo* file, QWidget* parent, Qt::WindowFlags f):
+ExecFileDialog::ExecFileDialog(const FileInfo &fileInfo, QWidget* parent, Qt::WindowFlags f):
     QDialog(parent, f),
     ui(new Ui::ExecFileDialog()),
-    fileInfo_(fm_file_info_ref(file)),
-    result_(FM_FILE_LAUNCHER_EXEC_CANCEL) {
+    result_(BasicFileLauncher::ExecAction::DIRECT_EXEC) {
 
     ui->setupUi(this);
     // show file icon
-    GIcon* gicon = G_ICON(fm_file_info_get_icon(fileInfo_));
-    ui->icon->setPixmap(Fm::IconInfo::fromGIcon(gicon)->qicon().pixmap(QSize(48, 48)));
+    auto gicon = fileInfo.icon();
+    if(gicon) {
+        ui->icon->setPixmap(gicon->qicon().pixmap(QSize(48, 48)));
+    }
 
     QString msg;
-    if(fm_file_info_is_desktop_entry(file)) {
+    if(fileInfo.isDesktopEntry()) {
         msg = tr("This file '%1' seems to be a desktop entry.\nWhat do you want to do with it?")
-              .arg(QString::fromUtf8(fm_file_info_get_disp_name(file)));
+              .arg(fileInfo.displayName());
         ui->exec->setDefault(true);
         ui->execTerm->hide();
     }
-    else if(fm_file_info_is_text(file)) {
+    else if(fileInfo.isText()) {
         msg = tr("This text file '%1' seems to be an executable script.\nWhat do you want to do with it?")
-              .arg(QString::fromUtf8(fm_file_info_get_disp_name(file)));
+              .arg(fileInfo.displayName());
         ui->execTerm->setDefault(true);
     }
     else {
         msg = tr("This file '%1' is executable. Do you want to execute it?")
-              .arg(QString::fromUtf8(fm_file_info_get_disp_name(file)));
+              .arg(fileInfo.displayName());
         ui->exec->setDefault(true);
         ui->open->hide();
     }
@@ -57,23 +58,27 @@ ExecFileDialog::ExecFileDialog(FmFileInfo* file, QWidget* parent, Qt::WindowFlag
 
 ExecFileDialog::~ExecFileDialog() {
     delete ui;
-    if(fileInfo_) {
-        fm_file_info_unref(fileInfo_);
-    }
 }
 
 void ExecFileDialog::accept() {
     QObject* _sender = sender();
     if(_sender == ui->exec) {
-        result_ = FM_FILE_LAUNCHER_EXEC;
+        result_ = BasicFileLauncher::ExecAction::DIRECT_EXEC;
     }
     else if(_sender == ui->execTerm) {
-        result_ = FM_FILE_LAUNCHER_EXEC_IN_TERMINAL;
+        result_ = BasicFileLauncher::ExecAction::EXEC_IN_TERMINAL;
     }
     else if(_sender == ui->open) {
-        result_ = FM_FILE_LAUNCHER_EXEC_OPEN;
+        result_ = BasicFileLauncher::ExecAction::OPEN_WITH_DEFAULT_APP;
+    }
+    else {
+        result_ = BasicFileLauncher::ExecAction::CANCEL;
     }
     QDialog::accept();
+}
+
+void ExecFileDialog::reject() {
+    result_ = BasicFileLauncher::ExecAction::CANCEL;
 }
 
 } // namespace Fm
