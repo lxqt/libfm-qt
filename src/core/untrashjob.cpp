@@ -53,8 +53,23 @@ void UntrashJob::exec() {
     // However without this, the signals/slots here will cause deadlocks.
     connect(&fileTransferJob, &FileTransferJob::preparedToRun, this, &UntrashJob::preparedToRun, Qt::DirectConnection);
     connect(&fileTransferJob, &FileTransferJob::error, this, &UntrashJob::error, Qt::DirectConnection);
-    connect(&fileTransferJob, &FileTransferJob::cancelled, this, &UntrashJob::cancel, Qt::DirectConnection);
     connect(&fileTransferJob, &FileTransferJob::fileExists, this, &UntrashJob::fileExists, Qt::DirectConnection);
+
+    // cancel the file transfer subjob if the parent job is cancelled
+    connect(this, &UntrashJob::cancelled, &fileTransferJob,
+            [&fileTransferJob]() {
+                if(!fileTransferJob.isCancelled()) {
+                    fileTransferJob.cancel();
+                }
+            }, Qt::DirectConnection);
+
+    // cancel the parent job if the file transfer subjob is cancelled
+    connect(&fileTransferJob, &FileTransferJob::cancelled, this,
+            [this]() {
+                if(!isCancelled()) {
+                    cancel();
+                }
+            }, Qt::DirectConnection);
     fileTransferJob.run();
 }
 
