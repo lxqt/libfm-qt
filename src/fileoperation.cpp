@@ -241,14 +241,6 @@ void FileOperation::showDialog() {
     }
 }
 
-gint FileOperation::onFileOpsJobAsk(FmFileOpsJob* /*job*/, const char* question, char* const* options, FileOperation* pThis) {
-    pThis->pauseElapsedTimer();
-    pThis->showDialog();
-    int ret = pThis->dlg_->ask(QString::fromUtf8(question), options);
-    pThis->resumeElapsedTimer();
-    return ret;
-}
-
 void FileOperation::onJobFileExists(const FileInfo& src, const FileInfo& dest, Fm::FileOperationJob::FileExistsAction& response, FilePath& newDest) {
     pauseElapsedTimer();
     showDialog();
@@ -256,53 +248,15 @@ void FileOperation::onJobFileExists(const FileInfo& src, const FileInfo& dest, F
     resumeElapsedTimer();
 }
 
-gint FileOperation::onFileOpsJobAskRename(FmFileOpsJob* /*job*/, FmFileInfo* src, FmFileInfo* dest, char** new_name, FileOperation* pThis) {
-    qDebug("not implemented");
-    return 0;
-}
-
 void FileOperation::onJobCancalled() {
     qDebug("file operation is cancelled!");
-}
-
-void FileOperation::onFileOpsJobCancelled(FmFileOpsJob* /*job*/, FileOperation* pThis) {
-    pThis->onJobCancalled();
-}
-
-void FileOperation::onFileOpsJobCurFile(FmFileOpsJob* /*job*/, const char* cur_file, FileOperation* pThis) {
-    pThis->curFile = QString::fromUtf8(cur_file);
-
-    // We update the current file name in a timeout slot because drawing a string
-    // in the UI is expansive. Updating the label text too often cause
-    // significant impact on performance.
-    // if(pThis->dlg)
-    //  pThis->dlg->setCurFile(pThis->curFile);
 }
 
 void FileOperation::onJobError(const GErrorPtr& err, Fm::Job::ErrorSeverity severity, Fm::Job::ErrorAction& response) {
     pauseElapsedTimer();
     showDialog();
-    response = Fm::Job::ErrorAction(dlg_->error(err.get(), FmJobErrorSeverity(severity)));
+    response = Fm::Job::ErrorAction(dlg_->error(err.get(), severity));
     resumeElapsedTimer();
-}
-
-FmJobErrorAction FileOperation::onFileOpsJobError(FmFileOpsJob* /*job*/, GError* err, FmJobErrorSeverity severity, FileOperation* pThis) {
-    pThis->pauseElapsedTimer();
-    pThis->showDialog();
-    FmJobErrorAction act = pThis->dlg_->error(err, severity);
-    pThis->resumeElapsedTimer();
-    return act;
-}
-
-void FileOperation::onFileOpsJobFinished(FmFileOpsJob* /*job*/, FileOperation* pThis) {
-    pThis->onJobFinish();
-}
-
-void FileOperation::onFileOpsJobPercent(FmFileOpsJob* job, guint percent, FileOperation* pThis) {
-    if(pThis->dlg_) {
-        pThis->dlg_->setPercent(percent);
-        pThis->dlg_->setDataTransferred(job->finished, job->total);
-    }
 }
 
 void FileOperation::onJobPrepared() {
@@ -313,10 +267,6 @@ void FileOperation::onJobPrepared() {
     if(dlg_) {
         dlg_->setPrepared();
     }
-}
-
-void FileOperation::onFileOpsJobPrepared(FmFileOpsJob* /*job*/, FileOperation* pThis) {
-    pThis->onJobPrepared();
 }
 
 void FileOperation::onJobFinish() {

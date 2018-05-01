@@ -50,7 +50,7 @@ public:
 
     FileOperationJob::FileExistsAction askRename(const FileInfo& src, const FileInfo& dest, FilePath& newDest);
 
-    FmJobErrorAction error(GError* err, FmJobErrorSeverity severity);
+    Job::ErrorAction error(GError* err, Job::ErrorSeverity severity);
     void setPrepared();
     void setCurFile(QString cur_file);
     void setPercent(unsigned int percent);

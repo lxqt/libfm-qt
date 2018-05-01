@@ -42,35 +42,35 @@ FileOperationDialog::FileOperationDialog(FileOperation* _operation):
     QString title;
     QString message;
     switch(_operation->type()) {
-    case FM_FILE_OP_MOVE:
+    case FileOperation::Move:
         title = tr("Move files");
         message = tr("Moving the following files to destination folder:");
         break;
-    case FM_FILE_OP_COPY:
+    case FileOperation::Copy:
         title = tr("Copy Files");
         message = tr("Copying the following files to destination folder:");
         break;
-    case FM_FILE_OP_TRASH:
+    case FileOperation::Trash:
         title = tr("Trash Files");
         message = tr("Moving the following files to trash can:");
         break;
-    case FM_FILE_OP_DELETE:
+    case FileOperation::Delete:
         title = tr("Delete Files");
         message = tr("Deleting the following files:");
         ui->dest->hide();
         ui->destLabel->hide();
         break;
-    case FM_FILE_OP_LINK:
+    case FileOperation::Link:
         title = tr("Create Symlinks");
         message = tr("Creating symlinks for the following files:");
         break;
-    case FM_FILE_OP_CHANGE_ATTR:
+    case FileOperation::ChangeAttr:
         title = tr("Change Attributes");
         message = tr("Changing attributes of the following files:");
         ui->dest->hide();
         ui->destLabel->hide();
         break;
-    case FM_FILE_OP_UNTRASH:
+    case FileOperation::UnTrash:
         title = tr("Restore Trashed Files");
         message = tr("Restoring the following files from trash can:");
         ui->dest->hide();
@@ -140,14 +140,14 @@ FileOperationJob::FileExistsAction FileOperationDialog::askRename(const FileInfo
     return ret;
 }
 
-FmJobErrorAction FileOperationDialog::error(GError* err, FmJobErrorSeverity severity) {
-    if(severity >= FM_JOB_ERROR_MODERATE) {
-        if(severity == FM_JOB_ERROR_CRITICAL) {
+Job::ErrorAction FileOperationDialog::error(GError* err, Job::ErrorSeverity severity) {
+    if(severity >= Job::ErrorSeverity::MODERATE) {
+        if(severity == Job::ErrorSeverity::CRITICAL) {
             QMessageBox::critical(this, tr("Error"), QString::fromUtf8(err->message));
-            return FM_JOB_ABORT;
+            return Job::ErrorAction::ABORT;
         }
         if (ignoreNonCriticalErrors_) {
-            return FM_JOB_CONTINUE;
+            return Job::ErrorAction::CONTINUE;
         }
         QMessageBox::StandardButton stb = QMessageBox::critical(this, tr("Error"), QString::fromUtf8(err->message),
                                                                 QMessageBox::Ok | QMessageBox::Ignore);
@@ -155,7 +155,7 @@ FmJobErrorAction FileOperationDialog::error(GError* err, FmJobErrorSeverity seve
             ignoreNonCriticalErrors_ = true;
         }
     }
-    return FM_JOB_CONTINUE;
+    return Job::ErrorAction::CONTINUE;
 }
 
 void FileOperationDialog::setCurFile(QString cur_file) {

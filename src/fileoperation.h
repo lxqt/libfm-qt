@@ -110,14 +110,6 @@ private Q_SLOTS:
     void onJobFileExists(const FileInfo& src, const FileInfo& dest, Fm::FileOperationJob::FileExistsAction& response, FilePath& newDest);
 
 private:
-    static gint onFileOpsJobAsk(FmFileOpsJob* job, const char* question, char* const* options, FileOperation* pThis);
-    static gint onFileOpsJobAskRename(FmFileOpsJob* job, FmFileInfo* src, FmFileInfo* dest, char** new_name, FileOperation* pThis);
-    static FmJobErrorAction onFileOpsJobError(FmFileOpsJob* job, GError* err, FmJobErrorSeverity severity, FileOperation* pThis);
-    static void onFileOpsJobPrepared(FmFileOpsJob* job, FileOperation* pThis);
-    static void onFileOpsJobCurFile(FmFileOpsJob* job, const char* cur_file, FileOperation* pThis);
-    static void onFileOpsJobPercent(FmFileOpsJob* job, guint percent, FileOperation* pThis);
-    static void onFileOpsJobFinished(FmFileOpsJob* job, FileOperation* pThis);
-    static void onFileOpsJobCancelled(FmFileOpsJob* job, FileOperation* pThis);
 
     void disconnectJob();
     void showDialog();
@@ -147,11 +139,11 @@ private Q_SLOTS:
 
 private:
     Type type_;
-    Fm::FileOperationJob* job_;
+    FileOperationJob* job_;
     FileOperationDialog* dlg_;
-    Fm::FilePath destPath_;
-    Fm::FilePath curFilePath_;
-    Fm::FilePathList srcPaths_;
+    FilePath destPath_;
+    FilePath curFilePath_;
+    FilePathList srcPaths_;
     QTimer* uiTimer_;
     QElapsedTimer* elapsedTimer_;
     qint64 lastElapsed_;
