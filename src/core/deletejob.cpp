@@ -84,7 +84,7 @@ bool DeleteJob::deleteFile(const FilePath& path, GFileInfoPtr inf) {
 bool DeleteJob::deleteDirContent(const FilePath& path, GFileInfoPtr inf) {
     GErrorPtr err;
     GFileEnumeratorPtr enu {
-        g_file_enumerate_children(path.gfile().get(), gfile_info_query_attribs,
+        g_file_enumerate_children(path.gfile().get(), defaultGFileInfoQueryAttribs,
         G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
         cancellable().get(), &err),
         false

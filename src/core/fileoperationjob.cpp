@@ -64,37 +64,37 @@ bool FileOperationJob::finishedAmount(uint64_t& finishedSize, uint64_t& finished
 }
 
 void FileOperationJob::setTotalAmount(uint64_t fileSize, uint64_t fileCount) {
-    std::lock_guard<std::mutex> locl{mutex_};
+    std::lock_guard<std::mutex> lock{mutex_};
     hasTotalAmount_ = true;
     totalSize_ = fileSize;
     totalCount_ = fileCount;
 }
 
 void FileOperationJob::setFinishedAmount(uint64_t finishedSize, uint64_t finishedCount) {
-    std::lock_guard<std::mutex> locl{mutex_};
+    std::lock_guard<std::mutex> lock{mutex_};
     finishedSize_ = finishedSize;
     finishedCount_ = finishedCount;
 }
 
 void FileOperationJob::addFinishedAmount(uint64_t finishedSize, uint64_t finishedCount) {
-    std::lock_guard<std::mutex> locl{mutex_};
+    std::lock_guard<std::mutex> lock{mutex_};
     finishedSize_ += finishedSize;
     finishedCount_ += finishedCount;
 }
 
 FilePath FileOperationJob::currentFile() const {
-    std::lock_guard<std::mutex> locl{mutex_};
+    std::lock_guard<std::mutex> lock{mutex_};
     auto ret = currentFile_;
     return ret;
 }
 
 void FileOperationJob::setCurrentFile(const FilePath& path) {
-    std::lock_guard<std::mutex> locl{mutex_};
+    std::lock_guard<std::mutex> lock{mutex_};
     currentFile_ = path;
 }
 
 void FileOperationJob::setCurrentFileProgress(uint64_t totalSize, uint64_t finishedSize) {
-    std::lock_guard<std::mutex> locl{mutex_};
+    std::lock_guard<std::mutex> lock{mutex_};
     currentFileSize_ = totalSize;
     currentFileFinished_ = finishedSize;
 }

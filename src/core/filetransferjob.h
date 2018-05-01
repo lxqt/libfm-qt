@@ -21,6 +21,7 @@ public:
     explicit FileTransferJob(FilePathList srcPaths, FilePathList destPaths, Mode mode = Mode::COPY);
     explicit FileTransferJob(FilePathList srcPaths, const FilePath &destDirPath, Mode mode = Mode::COPY);
 
+    void setSrcPaths(FilePathList srcPaths);
     void setDestPaths(FilePathList destPaths);
     void setDestDirPath(const FilePath &destDirPath);
 
@@ -49,7 +50,6 @@ private:
     FilePathList srcPaths_;
     FilePathList destPaths_;
     Mode mode_;
-    bool skipDirContent_;
 };
 
 

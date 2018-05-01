@@ -4,12 +4,12 @@
 
 namespace Fm {
 
-const char gfile_info_query_attribs[] = "standard::*,"
-                                        "unix::*,"
-                                        "time::*,"
-                                        "access::*,"
-                                        "id::filesystem,"
-                                        "metadata::emblems";
+const char defaultGFileInfoQueryAttribs[] = "standard::*,"
+                                            "unix::*,"
+                                            "time::*,"
+                                            "access::*,"
+                                            "id::filesystem,"
+                                            "metadata::emblems";
 
 FileInfo::FileInfo() {
     // FIXME: initialize numeric data members

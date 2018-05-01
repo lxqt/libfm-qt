@@ -7,8 +7,7 @@ namespace Fm {
 FileTransferJob::FileTransferJob(FilePathList srcPaths, Mode mode):
     FileOperationJob{},
     srcPaths_{std::move(srcPaths)},
-    mode_{mode},
-    skipDirContent_{false} {
+    mode_{mode} {
 }
 
 FileTransferJob::FileTransferJob(FilePathList srcPaths, FilePathList destPaths, Mode mode):
@@ -19,6 +18,10 @@ FileTransferJob::FileTransferJob(FilePathList srcPaths, FilePathList destPaths, 
 FileTransferJob::FileTransferJob(FilePathList srcPaths, const FilePath& destDirPath, Mode mode):
     FileTransferJob{std::move(srcPaths), mode} {
     setDestDirPath(destDirPath);
+}
+
+void FileTransferJob::setSrcPaths(FilePathList srcPaths) {
+    srcPaths_ = std::move(srcPaths);
 }
 
 void FileTransferJob::setDestPaths(FilePathList destPaths) {
@@ -148,7 +151,7 @@ bool FileTransferJob::copyDirContent(const FilePath& srcPath, GFileInfoPtr srcIn
     GErrorPtr err;
     auto enu = GFileEnumeratorPtr{
             g_file_enumerate_children(srcPath.gfile().get(),
-                                      gfile_info_query_attribs,  // FIXME: do not reference this from libfm
+                                      defaultGFileInfoQueryAttribs,
                                       G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
                                       cancellable().get(), &err),
             false};
@@ -224,7 +227,7 @@ bool FileTransferJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcInfo, Fil
                                              err->code == G_IO_ERROR_FILENAME_TOO_LONG)) {
                 GFileInfoPtr destInfo = GFileInfoPtr {
                     g_file_query_info(destPath.gfile().get(),
-                    gfile_info_query_attribs,
+                    defaultGFileInfoQueryAttribs,
                     G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
                     cancellable().get(), nullptr),
                     false
@@ -242,7 +245,6 @@ bool FileTransferJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcInfo, Fil
                     break;
                 case FileOperationJob::SKIP:
                     /* when a dir is skipped, we need to know its total size to calculate correct progress */
-                    skipDirContent_ = true;
                     mkdir_done = true; /* pretend that dir creation succeeded */
                     break;
                 case FileOperationJob::OVERWRITE:
@@ -300,7 +302,7 @@ bool FileTransferJob::handleError(GErrorPtr &err, const FilePath &srcPath, const
         // get info of the existing file
         GFileInfoPtr destInfo = GFileInfoPtr {
             g_file_query_info(destPath.gfile().get(),
-            gfile_info_query_attribs,
+            defaultGFileInfoQueryAttribs,
             G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
             cancellable().get(), nullptr),
             false
@@ -363,7 +365,7 @@ bool FileTransferJob::processPath(const FilePath& srcPath, const FilePath& destD
     GErrorPtr err;
     GFileInfoPtr srcInfo = GFileInfoPtr {
         g_file_query_info(srcPath.gfile().get(),
-        gfile_info_query_attribs,
+        defaultGFileInfoQueryAttribs,
         G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
         cancellable().get(), &err),
         false

@@ -73,6 +73,10 @@ protected:
         calcProgressUsingSize_ = value;
     }
 
+    std::mutex& mutex() {
+        return mutex_;
+    }
+
 private:
     bool hasTotalAmount_;
     bool calcProgressUsingSize_;

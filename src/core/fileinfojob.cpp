@@ -16,7 +16,7 @@ void FileInfoJob::exec() {
         if(!isCancelled()) {
             GErrorPtr err;
             GFileInfoPtr inf{
-                g_file_query_info(path.gfile().get(), gfile_info_query_attribs,
+                g_file_query_info(path.gfile().get(), defaultGFileInfoQueryAttribs,
                                   G_FILE_QUERY_INFO_NONE, cancellable().get(), &err),
                 false
             };

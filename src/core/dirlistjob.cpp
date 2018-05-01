@@ -25,7 +25,7 @@ void DirListJob::exec() {
 _retry:
     err.reset();
     dir_inf = GFileInfoPtr{
-        g_file_query_info(dir_gfile.get(), gfile_info_query_attribs,
+        g_file_query_info(dir_gfile.get(), defaultGFileInfoQueryAttribs,
                           G_FILE_QUERY_INFO_NONE, cancellable().get(), &err),
         false
     };
@@ -58,7 +58,7 @@ _retry:
     // FIXME:  _fm_file_info_job_update_fs_readonly(gf, inf, nullptr, nullptr);
     err.reset();
     GFileEnumeratorPtr enu = GFileEnumeratorPtr{
-            g_file_enumerate_children(dir_gfile.get(), gfile_info_query_attribs,
+            g_file_enumerate_children(dir_gfile.get(), defaultGFileInfoQueryAttribs,
                                       G_FILE_QUERY_INFO_NONE, cancellable().get(), &err),
             false
     };

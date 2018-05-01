@@ -2,12 +2,7 @@
 
 namespace Fm {
 
-TrashJob::TrashJob(const FilePathList& paths): paths_{paths} {
-    // calculate progress using finished file counts rather than their sizes
-    setCalcProgressUsingSize(false);
-}
-
-TrashJob::TrashJob(const FilePathList&& paths): paths_{paths} {
+TrashJob::TrashJob(FilePathList paths): paths_{std::move(paths)} {
     // calculate progress using finished file counts rather than their sizes
     setCalcProgressUsingSize(false);
 }
