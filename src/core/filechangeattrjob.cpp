@@ -33,12 +33,17 @@ FileChangeAttrJob::FileChangeAttrJob(FilePathList paths):
     hidden_{false},
     // target uri
     targetUriEnabled_{false} {
+
+    // the progress of chmod/chown is not related to file size
+    setCalcProgressUsingSize(false);
 }
 
 void FileChangeAttrJob::exec() {
     // count total amount of the work
     if(recursive_) {
         TotalSizeJob totalSizeJob{paths_};
+        connect(&totalSizeJob, &TotalSizeJob::error, this, &FileChangeAttrJob::error);
+        connect(this, &FileChangeAttrJob::cancelled, &totalSizeJob, &TotalSizeJob::cancel);
         totalSizeJob.run();
         std::uint64_t totalSize, totalCount;
         totalSizeJob.totalAmount(totalSize, totalCount);
