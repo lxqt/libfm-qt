@@ -163,14 +163,21 @@ void FileOperationDialog::setCurFile(QString cur_file) {
 }
 
 void FileOperationDialog::setDataTransferred(uint64_t finishedSize, std::uint64_t totalSize) {
-    ui->dataTransferred->setText(QString("%1 / %2")
+    ui->filesProcessed->setText(QString("%1 / %2")
                                  .arg(formatFileSize(finishedSize, fm_config->si_unit))
                                  .arg(formatFileSize(totalSize, fm_config->si_unit)));
+}
+
+void FileOperationDialog::setFilesProcessed(uint64_t finishedCount, uint64_t totalCount) {
+    ui->filesProcessed->setText(QString("%1 / %2")
+                                 .arg(finishedCount)
+                                 .arg(totalCount));
 }
 
 void FileOperationDialog::setPercent(unsigned int percent) {
     ui->progressBar->setValue(percent);
 }
+
 
 void FileOperationDialog::setRemainingTime(unsigned int sec) {
     unsigned int min = 0;

@@ -181,15 +181,23 @@ void FileOperation::onUiTimeout() {
         // estimate remaining time based on past history
         if(job_) {
             Fm::FilePath curFilePath = job_->currentFile();
-            std::uint64_t totalSize, totalCount, finishedSize, finishedCount;
-            // calculate current job progress
-            job_->totalAmount(totalSize, totalCount);
-            job_->finishedAmount(finishedSize, finishedCount);
             // update progress bar
             double finishedRatio = job_->progress();
             if(finishedRatio > 0.0 && updateRemainingTime_) {
                 dlg_->setPercent(int(finishedRatio * 100));
-                dlg_->setDataTransferred(finishedSize, totalSize);
+
+                std::uint64_t totalSize, totalCount, finishedSize, finishedCount;
+                job_->totalAmount(totalSize, totalCount);
+                job_->finishedAmount(finishedSize, finishedCount);
+
+                // only show data transferred if the job progress can be calculated by file size.
+                // for jobs not related to data transfer (for example: change attr, delete,...), hide the UI
+                if(job_->calcProgressUsingSize()) {
+                    dlg_->setDataTransferred(finishedSize, totalSize);
+                }
+                else {
+                    dlg_->setFilesProcessed(finishedCount, totalCount);
+                }
 
                 double remainRatio = 1.0 - finishedRatio;
                 gint64 remaining = elapsedTime() * (remainRatio / finishedRatio) / 1000;

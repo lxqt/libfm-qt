@@ -55,6 +55,7 @@ public:
     void setCurFile(QString cur_file);
     void setPercent(unsigned int percent);
     void setDataTransferred(std::uint64_t finishedSize, std::uint64_t totalSize);
+    void setFilesProcessed(std::uint64_t finishedCount, std::uint64_t totalCount);
     void setRemainingTime(unsigned int sec);
 
     virtual void reject();
