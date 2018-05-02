@@ -75,3 +75,6 @@ desktop_id=terminology.desktop
 open_arg=-e
 noclose_arg=--hold -e
 desktop_id=termite.desktop
+
+[kitty]
+desktop_id=kitty.desktop
