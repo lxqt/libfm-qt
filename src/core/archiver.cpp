@@ -112,6 +112,7 @@ bool Archiver::extractArchivesTo(GAppLaunchContext* ctx, const FilePathList& fil
 
 // static
 Archiver* Archiver::defaultArchiver() {
+    allArchivers(); // to have a preliminary default archiver
     return defaultArchiver_;
 }
 
