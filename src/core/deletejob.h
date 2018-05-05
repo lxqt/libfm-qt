@@ -11,14 +11,11 @@ namespace Fm {
 class LIBFM_QT_API DeleteJob : public Fm::FileOperationJob {
     Q_OBJECT
 public:
-    explicit DeleteJob(const FilePathList& paths): paths_{paths} {
-    }
+    explicit DeleteJob(const FilePathList& paths);
 
-    explicit DeleteJob(FilePathList&& paths): paths_{paths} {
-    }
+    explicit DeleteJob(FilePathList&& paths);
 
-    ~DeleteJob() {
-    }
+    ~DeleteJob();
 
 protected:
     void exec() override;

@@ -10,8 +10,7 @@ namespace Fm {
 class LIBFM_QT_API TrashJob : public Fm::FileOperationJob {
     Q_OBJECT
 public:
-    explicit TrashJob(const FilePathList& paths);
-    explicit TrashJob(const FilePathList&& paths);
+    explicit TrashJob(FilePathList paths);
 
     FilePathList unsupportedFiles() const {
         return unsupportedFiles_;

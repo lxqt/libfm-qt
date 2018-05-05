@@ -61,37 +61,34 @@ _retry_query_info:
     /* prepare for moving across different devices */
     if(flags_ & PREPARE_MOVE) {
         fs_id = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_ID_FILESYSTEM);
-        fs_id = g_intern_string(fs_id);
-        if(g_strcmp0(fs_id, dest_fs_id) != 0) {
+        if(fs_id && dest_fs_id && (strcmp(fs_id, dest_fs_id) == 0 || g_str_has_prefix(fs_id, "trash"))) {
+            // same filesystem or move from trash:///
+            descend = false;
+        }
+        else {
             /* files on different device requires an additional 'delete' for the source file. */
             ++totalSize_; /* this is for the additional delete */
             ++totalOndiskSize_;
             ++fileCount_;
-        }
-        else {
-            descend = false;
+            descend = true;
         }
     }
 
     if(type == G_FILE_TYPE_DIRECTORY) {
-#if 0
-        FmPath* fm_path = fm_path_new_for_gfile(gf);
         /* check if we need to decends into the dir. */
-        /* trash:/// doesn't support deleting files recursively */
-        if(flags & PREPARE_DELETE && fm_path_is_trash(fm_path) && ! fm_path_is_trash_root(fm_path)) {
+        /* trash:/// doesn't support deleting files recursively (but we want to descend into trash root "trash:///" */
+        if(flags_ & PREPARE_DELETE && path.hasUriScheme("trash") && path.baseName()[0] != '/') {
             descend = false;
         }
         else {
             /* only descends into files on the same filesystem */
-            if(flags & FM_DC_JOB_SAME_FS) {
-                fs_id = g_file_info_get_attribute_string(inf, G_FILE_ATTRIBUTE_ID_FILESYSTEM);
+            if(flags_ & SAME_FS) {
+                fs_id = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_ID_FILESYSTEM);
                 descend = (g_strcmp0(fs_id, dest_fs_id) == 0);
             }
         }
-        fm_path_unref(fm_path);
-#endif
-        inf = nullptr;
 
+        inf = nullptr;
         if(descend) {
 _retry_enum_children:
             GErrorPtr err;

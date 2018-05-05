@@ -24,8 +24,8 @@
 #include "libfmqtglobals.h"
 #include <QObject>
 #include <QElapsedTimer>
-#include <libfm/fm.h>
 #include "core/filepath.h"
+#include "core/fileoperationjob.h"
 
 class QTimer;
 
@@ -37,51 +37,45 @@ class LIBFM_QT_API FileOperation : public QObject {
     Q_OBJECT
 public:
     enum Type {
-        Copy = FM_FILE_OP_COPY,
-        Move = FM_FILE_OP_MOVE,
-        Link = FM_FILE_OP_LINK,
-        Delete = FM_FILE_OP_DELETE,
-        Trash = FM_FILE_OP_TRASH,
-        UnTrash = FM_FILE_OP_UNTRASH,
-        ChangeAttr = FM_FILE_OP_CHANGE_ATTR
+        Copy,
+        Move,
+        Link,
+        Delete,
+        Trash,
+        UnTrash,
+        ChangeAttr
     };
 
 public:
     explicit FileOperation(Type type, Fm::FilePathList srcFiles, QObject* parent = 0);
+
     virtual ~FileOperation();
 
     void setDestination(Fm::FilePath dest);
 
-    void setChmod(mode_t newMode, mode_t newModeMask) {
-        fm_file_ops_job_set_chmod(job_, newMode, newModeMask);
-    }
+    void setChmod(mode_t newMode, mode_t newModeMask);
 
-    void setChown(gint uid, gint gid) {
-        fm_file_ops_job_set_chown(job_, uid, gid);
-    }
+    void setChown(uid_t uid, gid_t gid);
 
     // This only work for change attr jobs.
-    void setRecursiveChattr(bool recursive) {
-        fm_file_ops_job_set_recursive(job_, (gboolean)recursive);
-    }
+    void setRecursiveChattr(bool recursive);
 
     bool run();
 
-    void cancel() {
-        if(job_) {
-            fm_job_cancel(FM_JOB(job_));
-        }
-    }
+    void cancel();
 
     bool isRunning() const {
-        return job_ ? fm_job_is_running(FM_JOB(job_)) : false;
+        return job_ && !isCancelled();
     }
 
     bool isCancelled() const {
-        return job_ ? fm_job_is_cancelled(FM_JOB(job_)) : false;
+        if(job_) {
+            return job_->isCancelled();
+        }
+        return false;
     }
 
-    FmFileOpsJob* job() {
+    Fm::FileOperationJob* job() {
         return job_;
     }
 
@@ -93,7 +87,7 @@ public:
     }
 
     Type type() {
-        return (Type)job_->type;
+        return type_;
     }
 
     // convinient static functions
@@ -108,17 +102,15 @@ public:
 Q_SIGNALS:
     void finished();
 
-private:
-    static gint onFileOpsJobAsk(FmFileOpsJob* job, const char* question, char* const* options, FileOperation* pThis);
-    static gint onFileOpsJobAskRename(FmFileOpsJob* job, FmFileInfo* src, FmFileInfo* dest, char** new_name, FileOperation* pThis);
-    static FmJobErrorAction onFileOpsJobError(FmFileOpsJob* job, GError* err, FmJobErrorSeverity severity, FileOperation* pThis);
-    static void onFileOpsJobPrepared(FmFileOpsJob* job, FileOperation* pThis);
-    static void onFileOpsJobCurFile(FmFileOpsJob* job, const char* cur_file, FileOperation* pThis);
-    static void onFileOpsJobPercent(FmFileOpsJob* job, guint percent, FileOperation* pThis);
-    static void onFileOpsJobFinished(FmFileOpsJob* job, FileOperation* pThis);
-    static void onFileOpsJobCancelled(FmFileOpsJob* job, FileOperation* pThis);
+private Q_SLOTS:
+    void onJobPrepared();
+    void onJobFinish();
+    void onJobCancalled();
+    void onJobError(const GErrorPtr& err, Fm::Job::ErrorSeverity severity, Fm::Job::ErrorAction& response);
+    void onJobFileExists(const FileInfo& src, const FileInfo& dest, Fm::FileOperationJob::FileExistsAction& response, FilePath& newDest);
 
-    void handleFinish();
+private:
+
     void disconnectJob();
     void showDialog();
 
@@ -146,11 +138,13 @@ private Q_SLOTS:
     void onUiTimeout();
 
 private:
-    FmFileOpsJob* job_;
-    FileOperationDialog* dlg;
-    Fm::FilePath destPath;
-    Fm::FilePathList srcPaths;
-    QTimer* uiTimer;
+    Type type_;
+    FileOperationJob* job_;
+    FileOperationDialog* dlg_;
+    FilePath destPath_;
+    FilePath curFilePath_;
+    FilePathList srcPaths_;
+    QTimer* uiTimer_;
     QElapsedTimer* elapsedTimer_;
     qint64 lastElapsed_;
     bool updateRemainingTime_;

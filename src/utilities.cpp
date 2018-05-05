@@ -266,7 +266,7 @@ _retry:
 uid_t uidFromName(QString name) {
     uid_t ret;
     if(name.isEmpty()) {
-        return -1;
+        return INVALID_UID;
     }
     if(name.at(0).digitValue() != -1) {
         ret = uid_t(name.toUInt());
@@ -274,7 +274,7 @@ uid_t uidFromName(QString name) {
     else {
         struct passwd* pw = getpwnam(name.toLatin1());
         // FIXME: use getpwnam_r instead later to make it reentrant
-        ret = pw ? pw->pw_uid : -1;
+        ret = pw ? pw->pw_uid : INVALID_UID;
     }
 
     return ret;
@@ -297,7 +297,7 @@ QString uidToName(uid_t uid) {
 gid_t gidFromName(QString name) {
     gid_t ret;
     if(name.isEmpty()) {
-        return -1;
+        return INVALID_GID;
     }
     if(name.at(0).digitValue() != -1) {
         ret = gid_t(name.toUInt());
@@ -305,7 +305,7 @@ gid_t gidFromName(QString name) {
     else {
         // FIXME: use getgrnam_r instead later to make it reentrant
         struct group* grp = getgrnam(name.toLatin1());
-        ret = grp ? grp->gr_gid : -1;
+        ret = grp ? grp->gr_gid : INVALID_GID;
     }
 
     return ret;

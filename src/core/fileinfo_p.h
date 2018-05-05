@@ -3,7 +3,7 @@
 
 namespace Fm {
 
-    extern const char gfile_info_query_attribs[];
+    extern const char defaultGFileInfoQueryAttribs[];
 
 } // namespace Fm
 
