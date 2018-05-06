@@ -350,6 +350,30 @@ bool FileInfo::isExecutableType() const {
         }
         return false;
     }
+    else if(isDesktopEntry()) {
+        /* treat desktop entries as executables if
+         they are native and have read permission */
+        if(isNative() && (mode_ & (S_IRUSR|S_IRGRP|S_IROTH))) {
+            if(isShortcut() && !target_.empty()) {
+                /* handle shortcuts from desktop to menu entries:
+                   first check for entries in /usr/share/applications and such
+                   which may be considered as a safe desktop entry path
+                   then check if that is a shortcut to a native file
+                   otherwise it is a link to a file under menu:// */
+                if (!g_str_has_prefix(target_.c_str(), "/usr/share/")) {
+                    auto target = FilePath::fromPathStr(target_.c_str());
+                    bool is_native = target.isNative();
+                    if (is_native) {
+                        return true;
+                    }
+                }
+            }
+            else {
+                return true;
+            }
+        }
+        return false;
+    }
     return mimeType_->canBeExecutable();
 }
 

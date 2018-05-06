@@ -163,7 +163,7 @@ public:
     }
 
     bool isDir() const {
-        return mimeType_->isDir();
+        return S_ISDIR(mode_) || mimeType_->isDir();
     }
 
     bool isNative() const {
