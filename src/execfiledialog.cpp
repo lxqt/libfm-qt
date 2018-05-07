@@ -79,6 +79,7 @@ void ExecFileDialog::accept() {
 
 void ExecFileDialog::reject() {
     result_ = BasicFileLauncher::ExecAction::CANCEL;
+    QDialog::reject();
 }
 
 } // namespace Fm
