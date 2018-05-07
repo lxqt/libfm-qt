@@ -214,7 +214,7 @@ _file_is_symlink:
             g_key_file_free(kf);
         }
      }
-    
+
     if(!icon_) {
         /* try file-specific icon first */
         gicon = g_file_info_get_icon(inf.get());
@@ -333,24 +333,7 @@ bool FileInfo::canThumbnail() const {
 
 /* full path of the file is required by this function */
 bool FileInfo::isExecutableType() const {
-    if(isText()) { /* g_content_type_can_be_executable reports text files as executables too */
-        /* We don't execute remote files nor files in trash */
-        if(isNative() && (mode_ & (S_IXOTH | S_IXGRP | S_IXUSR))) {
-            /* it has executable bits so lets check shell-bang */
-            auto pathStr = path().toString();
-            int fd = open(pathStr.get(), O_RDONLY);
-            if(fd >= 0) {
-                char buf[2];
-                ssize_t rdlen = read(fd, &buf, 2);
-                close(fd);
-                if(rdlen == 2 && buf[0] == '#' && buf[1] == '!') {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-    else if(isDesktopEntry()) {
+    if(isDesktopEntry()) {
         /* treat desktop entries as executables if
          they are native and have read permission */
         if(isNative() && (mode_ & (S_IRUSR|S_IRGRP|S_IROTH))) {
@@ -370,6 +353,23 @@ bool FileInfo::isExecutableType() const {
             }
             else {
                 return true;
+            }
+        }
+        return false;
+    }
+    else if(isText()) { /* g_content_type_can_be_executable reports text files as executables too */
+        /* We don't execute remote files nor files in trash */
+        if(isNative() && (mode_ & (S_IXOTH | S_IXGRP | S_IXUSR))) {
+            /* it has executable bits so lets check shell-bang */
+            auto pathStr = path().toString();
+            int fd = open(pathStr.get(), O_RDONLY);
+            if(fd >= 0) {
+                char buf[2];
+                ssize_t rdlen = read(fd, &buf, 2);
+                close(fd);
+                if(rdlen == 2 && buf[0] == '#' && buf[1] == '!') {
+                    return true;
+                }
             }
         }
         return false;

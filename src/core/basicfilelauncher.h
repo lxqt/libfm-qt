@@ -33,6 +33,8 @@ public:
 
     bool launchDesktopEntry(const char* desktopEntryName, const FilePathList& paths = FilePathList{}, GAppLaunchContext* ctx = nullptr);
 
+    bool launchShortcut(const FileInfo &fileInfo, GAppLaunchContext* ctx = nullptr);
+
     bool launchWithDefaultApp(const FileInfo& fileInfo, GAppLaunchContext* ctx = nullptr);
 
     bool launchWithApp(GAppInfo* app, const FilePathList& paths, GAppLaunchContext* ctx = nullptr);

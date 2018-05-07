@@ -12,7 +12,8 @@
 
 namespace Fm {
 
-BasicFileLauncher::BasicFileLauncher() {
+BasicFileLauncher::BasicFileLauncher():
+    quickExec_{false} {
 }
 
 BasicFileLauncher::~BasicFileLauncher() {
@@ -21,7 +22,6 @@ BasicFileLauncher::~BasicFileLauncher() {
 bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchContext* ctx) {
     std::unordered_map<std::string, FileInfoList> mimeTypeToFiles;
     FileInfoList folderInfos;
-    FilePathList shortcutTargetPaths;
     // classify files according to different mimetypes
     for(auto& fileInfo : fileInfos) {
         if(fileInfo->isDir() || fileInfo->isMountable()) {
@@ -37,24 +37,7 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
         }
         else if(fileInfo->isShortcut()) {
             // for shortcuts, launch their targets instead
-            auto target = fileInfo->target();
-            auto scheme = CStrPtr{g_uri_parse_scheme(target.c_str())};
-            if(scheme) {
-                // collect the uri schemes we support
-                if(strcmp(scheme.get(), "file") == 0
-                        || strcmp(scheme.get(), "trash") == 0
-                        || strcmp(scheme.get(), "network") == 0
-                        || strcmp(scheme.get(), "computer") == 0
-                        || strcmp(scheme.get(), "trash") == 0) {
-                    shortcutTargetPaths.emplace_back(FilePath::fromUri(fileInfo->target().c_str()));
-                }
-                else {
-                    // ask gio to launch the default handler for the uri scheme
-                    GAppInfoPtr app{g_app_info_get_default_for_uri_scheme(scheme.get()), false};
-                    FilePathList uris{FilePath::fromUri(fileInfo->target().c_str())};
-                    launchWithApp(app.get(), uris, ctx);
-                }
-            }
+            launchShortcut(*fileInfo, ctx);
         }
         else {
             auto& mimeType = fileInfo->mimeType();
@@ -80,10 +63,6 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
         if(app) {
             launchWithApp(app.get(), files.paths(), ctx);
         }
-    }
-
-    if(!shortcutTargetPaths.empty()) {
-        launchPaths(shortcutTargetPaths, ctx);
     }
 
     return true;
@@ -168,12 +147,17 @@ bool BasicFileLauncher::launchDesktopEntry(const FileInfo& fileInfo, const FileP
         switch(act) {
         case ExecAction::EXEC_IN_TERMINAL:
         case ExecAction::DIRECT_EXEC: {
-            if(target.empty()) {
-                filename = fileInfo.path().localPath();
+            if(fileInfo.isShortcut()) {
+                launchShortcut(fileInfo, ctx);
             }
-            desktopEntryName = !target.empty() ? target.c_str() : filename.get();
+            else {
+                if(target.empty()) {
+                    filename = fileInfo.path().localPath();
+                }
+                desktopEntryName = !target.empty() ? target.c_str() : filename.get();
+            }
+            break;
         }
-        /* Falls through. */
         case ExecAction::OPEN_WITH_DEFAULT_APP:
             return launchWithDefaultApp(fileInfo, ctx);
         case ExecAction::CANCEL:
@@ -220,6 +204,32 @@ bool BasicFileLauncher::launchDesktopEntry(const char *desktopEntryName, const F
         showError(ctx, err);
     }
     return ret;
+}
+
+bool BasicFileLauncher::launchShortcut(const FileInfo& fileInfo, GAppLaunchContext* ctx) {
+    FilePathList shortcutTargetPaths;
+    auto target = fileInfo.target();
+    auto scheme = CStrPtr{g_uri_parse_scheme(target.c_str())};
+    if(scheme) {
+        // collect the uri schemes we support
+        if(strcmp(scheme.get(), "file") == 0
+                || strcmp(scheme.get(), "trash") == 0
+                || strcmp(scheme.get(), "network") == 0
+                || strcmp(scheme.get(), "computer") == 0
+                || strcmp(scheme.get(), "trash") == 0) {
+            shortcutTargetPaths.emplace_back(FilePath::fromUri(fileInfo.target().c_str()));
+        }
+        else {
+            // ask gio to launch the default handler for the uri scheme
+            GAppInfoPtr app{g_app_info_get_default_for_uri_scheme(scheme.get()), false};
+            FilePathList uris{FilePath::fromUri(fileInfo.target().c_str())};
+            return launchWithApp(app.get(), uris, ctx);
+        }
+    }
+    if(!shortcutTargetPaths.empty()) {
+        launchPaths(shortcutTargetPaths, ctx);
+    }
+    return true;
 }
 
 bool BasicFileLauncher::launchExecutable(const FileInfo& fileInfo, GAppLaunchContext* ctx) {

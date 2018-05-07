@@ -57,7 +57,7 @@ int FileLauncher::ask(const char* /*msg*/, char* const* /*btn_labels*/, int /*de
     return -1;
 }
 
-GAppInfoPtr FileLauncher::chooseApp(const FileInfoList &fileInfos, const char *mimeType, GErrorPtr& /*err*/) {
+GAppInfoPtr FileLauncher::chooseApp(const FileInfoList& /*fileInfos*/, const char *mimeType, GErrorPtr& /*err*/) {
     AppChooserDialog dlg(nullptr);
     GAppInfoPtr app;
     if(mimeType) {
