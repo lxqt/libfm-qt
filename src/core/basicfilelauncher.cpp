@@ -113,7 +113,7 @@ bool BasicFileLauncher::launchPaths(FilePathList paths, GAppLaunchContext* ctx) 
     return false;
 }
 
-GAppInfoPtr BasicFileLauncher::chooseApp(const FileInfoList& /* fileInfos */, const char* mimeType, GErrorPtr& /* err */) {
+GAppInfoPtr BasicFileLauncher::chooseApp(const FileInfoList& /* fileInfos */, const char* /*mimeType*/, GErrorPtr& /* err */) {
     return GAppInfoPtr{};
 }
 
@@ -173,9 +173,12 @@ bool BasicFileLauncher::launchDesktopEntry(const FileInfo& fileInfo, const FileP
             }
             desktopEntryName = !target.empty() ? target.c_str() : filename.get();
         }
+        /* Falls through. */
         case ExecAction::OPEN_WITH_DEFAULT_APP:
             return launchWithDefaultApp(fileInfo, ctx);
         case ExecAction::CANCEL:
+            return false;
+        default:
             return false;
         }
     }
@@ -229,7 +232,7 @@ bool BasicFileLauncher::launchExecutable(const FileInfo& fileInfo, GAppLaunchCon
         switch(act) {
         case ExecAction::EXEC_IN_TERMINAL:
             flags |= G_APP_INFO_CREATE_NEEDS_TERMINAL;
-        /* NOTE: no break here */
+        /* Falls through. */
         case ExecAction::DIRECT_EXEC: {
             /* filename may contain spaces. Fix #3143296 */
             CStrPtr quoted{g_shell_quote(filename.get())};

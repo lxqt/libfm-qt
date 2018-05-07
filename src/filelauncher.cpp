@@ -57,7 +57,7 @@ int FileLauncher::ask(const char* /*msg*/, char* const* /*btn_labels*/, int /*de
     return -1;
 }
 
-GAppInfoPtr FileLauncher::chooseApp(const FileInfoList &fileInfos, const char *mimeType, GErrorPtr &err) {
+GAppInfoPtr FileLauncher::chooseApp(const FileInfoList &fileInfos, const char *mimeType, GErrorPtr& /*err*/) {
     AppChooserDialog dlg(nullptr);
     GAppInfoPtr app;
     if(mimeType) {
@@ -77,7 +77,7 @@ bool FileLauncher::openFolder(GAppLaunchContext *ctx, const FileInfoList &folder
     return BasicFileLauncher::openFolder(ctx, folderInfos, err);
 }
 
-bool FileLauncher::showError(GAppLaunchContext *ctx, GErrorPtr &err, const FilePath &path) {
+bool FileLauncher::showError(GAppLaunchContext* /*ctx*/, GErrorPtr &err, const FilePath &path) {
     /* ask for mount if trying to launch unmounted path */
     if(err->domain == G_IO_ERROR) {
         if(path && err->code == G_IO_ERROR_NOT_MOUNTED) {
