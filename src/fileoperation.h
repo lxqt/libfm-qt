@@ -53,6 +53,8 @@ public:
 
     void setDestination(Fm::FilePath dest);
 
+    void setDestFiles(FilePathList destFiles);
+
     void setChmod(mode_t newMode, mode_t newModeMask);
 
     void setChown(uid_t uid, gid_t gid);
@@ -92,11 +94,35 @@ public:
 
     // convinient static functions
     static FileOperation* copyFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent = 0);
+
+    static FileOperation* copyFiles(Fm::FilePathList srcFiles, Fm::FilePathList destFiles, QWidget* parent = 0);
+
+    static FileOperation* copyFile(Fm::FilePath srcFile, Fm::FilePath destFile, QWidget* parent = 0) {
+        return copyFiles(FilePathList{std::move(srcFile)}, FilePathList{std::move(destFile)}, parent);
+    }
+
     static FileOperation* moveFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent = 0);
+
+    static FileOperation* moveFiles(Fm::FilePathList srcFiles, Fm::FilePathList destFiles, QWidget* parent = 0);
+
+    static FileOperation* moveFile(Fm::FilePath srcFile, Fm::FilePath destFile, QWidget* parent = 0) {
+        return moveFiles(FilePathList{std::move(srcFile)}, FilePathList{std::move(destFile)}, parent);
+    }
+
     static FileOperation* symlinkFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent = 0);
+
+    static FileOperation* symlinkFiles(Fm::FilePathList srcFiles, Fm::FilePathList destFiles, QWidget* parent = 0);
+
+    static FileOperation* symlinkFile(Fm::FilePath srcFile, Fm::FilePath destFile, QWidget* parent = 0) {
+        return symlinkFiles(FilePathList{std::move(srcFile)}, FilePathList{std::move(destFile)}, parent);
+    }
+
     static FileOperation* deleteFiles(Fm::FilePathList srcFiles, bool promp = true, QWidget* parent = 0);
+
     static FileOperation* trashFiles(Fm::FilePathList srcFiles, bool promp = true, QWidget* parent = 0);
+
     static FileOperation* unTrashFiles(Fm::FilePathList srcFiles, QWidget* parent = 0);
+
     static FileOperation* changeAttrFiles(Fm::FilePathList srcFiles, QWidget* parent = 0);
 
 Q_SIGNALS:
