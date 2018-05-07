@@ -22,6 +22,7 @@ BasicFileLauncher::~BasicFileLauncher() {
 bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchContext* ctx) {
     std::unordered_map<std::string, FileInfoList> mimeTypeToFiles;
     FileInfoList folderInfos;
+    FilePathList shortcutTargetPaths;
     // classify files according to different mimetypes
     for(auto& fileInfo : fileInfos) {
         if(fileInfo->isDir() || fileInfo->isMountable()) {
@@ -37,7 +38,10 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
         }
         else if(fileInfo->isShortcut()) {
             // for shortcuts, launch their targets instead
-            launchShortcut(*fileInfo, ctx);
+            auto path = handleShortcut(*fileInfo, ctx);
+            if(path.isValid()) {
+                shortcutTargetPaths.emplace_back(path);
+            }
         }
         else {
             auto& mimeType = fileInfo->mimeType();
@@ -63,6 +67,10 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
         if(app) {
             launchWithApp(app.get(), files.paths(), ctx);
         }
+    }
+
+    if(!shortcutTargetPaths.empty()) {
+        launchPaths(shortcutTargetPaths, ctx);
     }
 
     return true;
@@ -142,13 +150,17 @@ bool BasicFileLauncher::launchDesktopEntry(const FileInfo& fileInfo, const FileP
     auto target = fileInfo.target();
     CStrPtr filename;
     const char* desktopEntryName = nullptr;
+    FilePathList shortcutTargetPaths;
     if(fileInfo.isExecutableType()) {
         auto act = quickExec_ ? ExecAction::DIRECT_EXEC : askExecFile(fileInfo);
         switch(act) {
         case ExecAction::EXEC_IN_TERMINAL:
         case ExecAction::DIRECT_EXEC: {
             if(fileInfo.isShortcut()) {
-                launchShortcut(fileInfo, ctx);
+              auto path = handleShortcut(fileInfo, ctx);
+              if(path.isValid()) {
+                  shortcutTargetPaths.emplace_back(path);
+              }
             }
             else {
                 if(target.empty()) {
@@ -178,6 +190,9 @@ bool BasicFileLauncher::launchDesktopEntry(const FileInfo& fileInfo, const FileP
     if(desktopEntryName) {
         return launchDesktopEntry(desktopEntryName, paths, ctx);
     }
+    if(!shortcutTargetPaths.empty()) {
+        launchPaths(shortcutTargetPaths, ctx);
+    }
     return false;
 }
 
@@ -206,8 +221,7 @@ bool BasicFileLauncher::launchDesktopEntry(const char *desktopEntryName, const F
     return ret;
 }
 
-bool BasicFileLauncher::launchShortcut(const FileInfo& fileInfo, GAppLaunchContext* ctx) {
-    FilePathList shortcutTargetPaths;
+FilePath BasicFileLauncher::handleShortcut(const FileInfo& fileInfo, GAppLaunchContext* ctx) {
     auto target = fileInfo.target();
     auto scheme = CStrPtr{g_uri_parse_scheme(target.c_str())};
     if(scheme) {
@@ -217,19 +231,16 @@ bool BasicFileLauncher::launchShortcut(const FileInfo& fileInfo, GAppLaunchConte
                 || strcmp(scheme.get(), "network") == 0
                 || strcmp(scheme.get(), "computer") == 0
                 || strcmp(scheme.get(), "trash") == 0) {
-            shortcutTargetPaths.emplace_back(FilePath::fromUri(fileInfo.target().c_str()));
+            return FilePath::fromUri(fileInfo.target().c_str());
         }
         else {
             // ask gio to launch the default handler for the uri scheme
             GAppInfoPtr app{g_app_info_get_default_for_uri_scheme(scheme.get()), false};
             FilePathList uris{FilePath::fromUri(fileInfo.target().c_str())};
-            return launchWithApp(app.get(), uris, ctx);
+            launchWithApp(app.get(), uris, ctx);
         }
     }
-    if(!shortcutTargetPaths.empty()) {
-        launchPaths(shortcutTargetPaths, ctx);
-    }
-    return true;
+    return FilePath();
 }
 
 bool BasicFileLauncher::launchExecutable(const FileInfo& fileInfo, GAppLaunchContext* ctx) {

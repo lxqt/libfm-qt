@@ -33,8 +33,6 @@ public:
 
     bool launchDesktopEntry(const char* desktopEntryName, const FilePathList& paths = FilePathList{}, GAppLaunchContext* ctx = nullptr);
 
-    bool launchShortcut(const FileInfo &fileInfo, GAppLaunchContext* ctx = nullptr);
-
     bool launchWithDefaultApp(const FileInfo& fileInfo, GAppLaunchContext* ctx = nullptr);
 
     bool launchWithApp(GAppInfo* app, const FilePathList& paths, GAppLaunchContext* ctx = nullptr);
@@ -60,6 +58,10 @@ protected:
     virtual ExecAction askExecFile(const FileInfo& file);
 
     virtual int ask(const char* msg, char* const* btn_labels, int default_btn);
+
+private:
+
+    FilePath handleShortcut(const FileInfo &fileInfo, GAppLaunchContext* ctx = nullptr);
 
 private:
     bool quickExec_; // Don't ask options on launch executable file
