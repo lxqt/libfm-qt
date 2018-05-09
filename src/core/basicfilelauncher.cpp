@@ -240,6 +240,10 @@ FilePath BasicFileLauncher::handleShortcut(const FileInfo& fileInfo, GAppLaunchC
             launchWithApp(app.get(), uris, ctx);
         }
     }
+    else {
+        // see it as a local path
+        return FilePath::fromLocalPath(fileInfo.target().c_str());
+    }
     return FilePath();
 }
 
