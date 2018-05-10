@@ -270,9 +270,10 @@ public:
     }
 };
 
+// smart pointer to FileInfo objects (once created, FileInfo objects should stay immutable so const is needed here)
+typedef std::shared_ptr<const FileInfo> FileInfoPtr;
 
-typedef std::pair<std::shared_ptr<const FileInfo>, std::shared_ptr<const FileInfo>> FileInfoPair;
-
+typedef std::pair<FileInfoPtr, FileInfoPtr> FileInfoPair;
 
 }
 
