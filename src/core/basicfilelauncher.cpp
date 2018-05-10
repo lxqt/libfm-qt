@@ -34,7 +34,8 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
         else if(fileInfo->isMountable()) {
             if(fileInfo->target().empty()) {
                 // the mountable is not yet mounted so we have no target URI.
-                GErrorPtr err{G_IO_ERROR, G_IO_ERROR_NOT_MOUNTED, "Not mounted"};
+                GErrorPtr err{G_IO_ERROR, G_IO_ERROR_NOT_MOUNTED,
+                            QObject::tr("The path is not mounted.")};
                 if(!showError(ctx, err, fileInfo->path(), fileInfo)) {
                     // the user fail to handle the error, skip this file.
                     continue;
@@ -51,15 +52,15 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
         }
         else if(fileInfo->isDesktopEntry()) {
             // launch the desktop entry
-            launchDesktopEntry(*fileInfo, FilePathList{}, ctx);
+            launchDesktopEntry(fileInfo, FilePathList{}, ctx);
         }
         else if(fileInfo->isExecutableType()) {
             // directly execute the file
-            launchExecutable(*fileInfo, ctx);
+            launchExecutable(fileInfo, ctx);
         }
         else if(fileInfo->isShortcut()) {
             // for shortcuts, launch their targets instead
-            auto path = handleShortcut(*fileInfo, ctx);
+            auto path = handleShortcut(fileInfo, ctx);
             if(path.isValid()) {
                 pathsToLaunch.emplace_back(path);
             }
@@ -138,11 +139,11 @@ bool BasicFileLauncher::openFolder(GAppLaunchContext* ctx, const FileInfoList& f
     return false;
 }
 
-BasicFileLauncher::ExecAction BasicFileLauncher::askExecFile(const FileInfo& /* file */) {
+BasicFileLauncher::ExecAction BasicFileLauncher::askExecFile(const FileInfoPtr & /* file */) {
     return ExecAction::DIRECT_EXEC;
 }
 
-bool BasicFileLauncher::showError(GAppLaunchContext* /* ctx */, GErrorPtr& /* err */, const FilePath& /* path */, std::shared_ptr<const FileInfo> info) {
+bool BasicFileLauncher::showError(GAppLaunchContext* /* ctx */, GErrorPtr& /* err */, const FilePath& /* path */, const FileInfoPtr& /* info */) {
     return false;
 }
 
@@ -158,7 +159,7 @@ bool BasicFileLauncher::launchWithApp(GAppInfo* app, const FilePathList& paths, 
     }
     GErrorPtr err;
     bool ret = bool(g_app_info_launch_uris(app, uris, ctx, &err));
-    g_list_foreach(uris, (GFunc)g_free, nullptr);
+    g_list_foreach(uris, reinterpret_cast<GFunc>(g_free), nullptr);
     g_list_free(uris);
     if(!ret) {
         // FIXME: show error for all files
@@ -168,18 +169,18 @@ bool BasicFileLauncher::launchWithApp(GAppInfo* app, const FilePathList& paths, 
 }
 
 
-bool BasicFileLauncher::launchDesktopEntry(const FileInfo& fileInfo, const FilePathList &paths, GAppLaunchContext* ctx) {
+bool BasicFileLauncher::launchDesktopEntry(const FileInfoPtr &fileInfo, const FilePathList &paths, GAppLaunchContext* ctx) {
     /* treat desktop entries as executables */
-    auto target = fileInfo.target();
+    auto target = fileInfo->target();
     CStrPtr filename;
     const char* desktopEntryName = nullptr;
     FilePathList shortcutTargetPaths;
-    if(fileInfo.isExecutableType()) {
+    if(fileInfo->isExecutableType()) {
         auto act = quickExec_ ? ExecAction::DIRECT_EXEC : askExecFile(fileInfo);
         switch(act) {
         case ExecAction::EXEC_IN_TERMINAL:
         case ExecAction::DIRECT_EXEC: {
-            if(fileInfo.isShortcut()) {
+            if(fileInfo->isShortcut()) {
                 auto path = handleShortcut(fileInfo, ctx);
                 if(path.isValid()) {
                     shortcutTargetPaths.emplace_back(path);
@@ -187,7 +188,7 @@ bool BasicFileLauncher::launchDesktopEntry(const FileInfo& fileInfo, const FileP
             }
             else {
                 if(target.empty()) {
-                    filename = fileInfo.path().localPath();
+                    filename = fileInfo->path().localPath();
                 }
                 desktopEntryName = !target.empty() ? target.c_str() : filename.get();
             }
@@ -202,10 +203,10 @@ bool BasicFileLauncher::launchDesktopEntry(const FileInfo& fileInfo, const FileP
         }
     }
     /* make exception for desktop entries under menu */
-    else if(fileInfo.isNative() /* an exception */ ||
-            fileInfo.path().hasUriScheme("menu")) {
+    else if(fileInfo->isNative() /* an exception */ ||
+            fileInfo->path().hasUriScheme("menu")) {
         if(target.empty()) {
-            filename = fileInfo.path().localPath();
+            filename = fileInfo->path().localPath();
         }
         desktopEntryName = !target.empty() ? target.c_str() : filename.get();
     }
@@ -244,8 +245,8 @@ bool BasicFileLauncher::launchDesktopEntry(const char *desktopEntryName, const F
     return ret;
 }
 
-FilePath BasicFileLauncher::handleShortcut(const FileInfo& fileInfo, GAppLaunchContext* ctx) {
-    auto target = fileInfo.target();
+FilePath BasicFileLauncher::handleShortcut(const FileInfoPtr& fileInfo, GAppLaunchContext* ctx) {
+    auto target = fileInfo->target();
     auto scheme = CStrPtr{g_uri_parse_scheme(target.c_str())};
     if(scheme) {
         // collect the uri schemes we support
@@ -254,25 +255,25 @@ FilePath BasicFileLauncher::handleShortcut(const FileInfo& fileInfo, GAppLaunchC
                 || strcmp(scheme.get(), "network") == 0
                 || strcmp(scheme.get(), "computer") == 0
                 || strcmp(scheme.get(), "trash") == 0) {
-            return FilePath::fromUri(fileInfo.target().c_str());
+            return FilePath::fromUri(fileInfo->target().c_str());
         }
         else {
             // ask gio to launch the default handler for the uri scheme
             GAppInfoPtr app{g_app_info_get_default_for_uri_scheme(scheme.get()), false};
-            FilePathList uris{FilePath::fromUri(fileInfo.target().c_str())};
+            FilePathList uris{FilePath::fromUri(fileInfo->target().c_str())};
             launchWithApp(app.get(), uris, ctx);
         }
     }
     else {
         // see it as a local path
-        return FilePath::fromLocalPath(fileInfo.target().c_str());
+        return FilePath::fromLocalPath(fileInfo->target().c_str());
     }
     return FilePath();
 }
 
-bool BasicFileLauncher::launchExecutable(const FileInfo& fileInfo, GAppLaunchContext* ctx) {
+bool BasicFileLauncher::launchExecutable(const FileInfoPtr &fileInfo, GAppLaunchContext* ctx) {
     /* if it's an executable file, directly execute it. */
-    auto filename = fileInfo.path().localPath();
+    auto filename = fileInfo->path().localPath();
     /* FIXME: we need to use eaccess/euidaccess here. */
     if(g_file_test(filename.get(), G_FILE_TEST_IS_EXECUTABLE)) {
         auto act = quickExec_ ? ExecAction::DIRECT_EXEC : askExecFile(fileInfo);
@@ -285,7 +286,7 @@ bool BasicFileLauncher::launchExecutable(const FileInfo& fileInfo, GAppLaunchCon
             /* filename may contain spaces. Fix #3143296 */
             CStrPtr quoted{g_shell_quote(filename.get())};
             // FIXME: remove libfm dependency
-            GAppInfoPtr app{fm_app_info_create_from_commandline(quoted.get(), NULL, GAppInfoCreateFlags(flags), NULL)};
+            GAppInfoPtr app{fm_app_info_create_from_commandline(quoted.get(), nullptr, GAppInfoCreateFlags(flags), nullptr)};
             if(app) {
                 CStrPtr run_path{g_path_get_dirname(filename.get())};
                 CStrPtr cwd;
@@ -328,16 +329,16 @@ bool BasicFileLauncher::launchExecutable(const FileInfo& fileInfo, GAppLaunchCon
     return false;
 }
 
-bool BasicFileLauncher::launchWithDefaultApp(const FileInfo &fileInfo, GAppLaunchContext* ctx) {
+bool BasicFileLauncher::launchWithDefaultApp(const FileInfoPtr &fileInfo, GAppLaunchContext* ctx) {
     FileInfoList files;
-    files.emplace_back(std::make_shared<FileInfo>(fileInfo));
+    files.emplace_back(fileInfo);
     GErrorPtr err;
-    GAppInfoPtr app{g_app_info_get_default_for_type(fileInfo.mimeType()->name(), false), false};
+    GAppInfoPtr app{g_app_info_get_default_for_type(fileInfo->mimeType()->name(), false), false};
     if(app) {
         return launchWithApp(app.get(), files.paths(), ctx);
     }
     else {
-        showError(ctx, err, fileInfo.path());
+        showError(ctx, err, fileInfo->path());
     }
     return false;
 }

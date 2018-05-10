@@ -77,7 +77,7 @@ bool FileLauncher::openFolder(GAppLaunchContext *ctx, const FileInfoList &folder
     return BasicFileLauncher::openFolder(ctx, folderInfos, err);
 }
 
-bool FileLauncher::showError(GAppLaunchContext* /*ctx*/, GErrorPtr &err, const FilePath &path, std::shared_ptr<const FileInfo> info) {
+bool FileLauncher::showError(GAppLaunchContext* /*ctx*/, GErrorPtr &err, const FilePath &path, const FileInfoPtr &info) {
     /* ask for mount if trying to launch unmounted path */
     if(err->domain == G_IO_ERROR) {
         if(path && err->code == G_IO_ERROR_NOT_MOUNTED) {
@@ -104,9 +104,9 @@ bool FileLauncher::showError(GAppLaunchContext* /*ctx*/, GErrorPtr &err, const F
     return false;
 }
 
-BasicFileLauncher::ExecAction FileLauncher::askExecFile(const FileInfo &file) {
+BasicFileLauncher::ExecAction FileLauncher::askExecFile(const FileInfoPtr &file) {
     auto res = BasicFileLauncher::ExecAction::CANCEL;
-    ExecFileDialog dlg(file);
+    ExecFileDialog dlg(*file);
     if(execModelessDialog(&dlg) == QDialog::Accepted) {
         res = dlg.result();
     }
