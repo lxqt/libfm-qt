@@ -253,8 +253,7 @@ FilePath BasicFileLauncher::handleShortcut(const FileInfoPtr& fileInfo, GAppLaun
         if(strcmp(scheme.get(), "file") == 0
                 || strcmp(scheme.get(), "trash") == 0
                 || strcmp(scheme.get(), "network") == 0
-                || strcmp(scheme.get(), "computer") == 0
-                || strcmp(scheme.get(), "trash") == 0) {
+                || strcmp(scheme.get(), "computer") == 0) {
             return FilePath::fromUri(fileInfo->target().c_str());
         }
         else {

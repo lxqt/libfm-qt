@@ -37,14 +37,6 @@ public:
 
     bool launchPaths(QWidget* parent, const FilePathList &paths);
 
-    bool quickExec() const {
-        return quickExec_;
-    }
-
-    void setQuickExec(bool value) {
-        quickExec_ = value;
-    }
-
 protected:
 
     GAppInfoPtr chooseApp(const FileInfoList& fileInfos, const char* mimeType, GErrorPtr& err) override;
@@ -56,10 +48,6 @@ protected:
     ExecAction askExecFile(const FileInfoPtr& file) override;
 
     int ask(const char* msg, char* const* btn_labels, int default_btn) override;
-
-private:
-    static FmFileLauncher funcs;
-    bool quickExec_; // Don't ask options on launch executable file
 };
 
 }

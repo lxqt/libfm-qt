@@ -31,8 +31,7 @@
 
 namespace Fm {
 
-FileLauncher::FileLauncher():
-    quickExec_(false) {
+FileLauncher::FileLauncher() {
 }
 
 FileLauncher::~FileLauncher() {
