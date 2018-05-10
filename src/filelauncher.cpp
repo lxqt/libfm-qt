@@ -77,14 +77,21 @@ bool FileLauncher::openFolder(GAppLaunchContext *ctx, const FileInfoList &folder
     return BasicFileLauncher::openFolder(ctx, folderInfos, err);
 }
 
-bool FileLauncher::showError(GAppLaunchContext* /*ctx*/, GErrorPtr &err, const FilePath &path) {
+bool FileLauncher::showError(GAppLaunchContext* /*ctx*/, GErrorPtr &err, const FilePath &path, std::shared_ptr<const FileInfo> info) {
     /* ask for mount if trying to launch unmounted path */
     if(err->domain == G_IO_ERROR) {
         if(path && err->code == G_IO_ERROR_NOT_MOUNTED) {
             MountOperation* op = new MountOperation(true);
             op->setAutoDestroy(true);
-            op->mount(path);
+            if(info && info->isMountable()) {
+                // this is a mountable shortcut (such as computer:///xxxx.drive)
+                op->mountMountable(path);
+            }
+            else {
+                op->mountEnclosingVolume(path);
+            }
             if(op->wait()) {
+                // if the mount operation succeeds, we can ignore the error and continue
                 return true;
             }
         }

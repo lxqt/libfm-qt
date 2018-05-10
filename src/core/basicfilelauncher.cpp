@@ -1,5 +1,6 @@
 #include "basicfilelauncher.h"
 #include "fileinfojob.h"
+#include "mountoperation.h"
 
 #include <gio/gdesktopappinfo.h>
 #include <glib/gi18n.h>
@@ -9,6 +10,7 @@
 
 #include <QObject>
 #include <QEventLoop>
+#include <QDebug>
 
 namespace Fm {
 
@@ -22,11 +24,30 @@ BasicFileLauncher::~BasicFileLauncher() {
 bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchContext* ctx) {
     std::unordered_map<std::string, FileInfoList> mimeTypeToFiles;
     FileInfoList folderInfos;
-    FilePathList shortcutTargetPaths;
+    FilePathList pathsToLaunch;
     // classify files according to different mimetypes
     for(auto& fileInfo : fileInfos) {
-        if(fileInfo->isDir() || fileInfo->isMountable()) {
+        // qDebug("path: %s, target: %s", fileInfo->path().toString().get(), fileInfo->target().c_str());
+        if(fileInfo->isDir()) {
             folderInfos.emplace_back(fileInfo);
+        }
+        else if(fileInfo->isMountable()) {
+            if(fileInfo->target().empty()) {
+                // the mountable is not yet mounted so we have no target URI.
+                GErrorPtr err{G_IO_ERROR, G_IO_ERROR_NOT_MOUNTED, "Not mounted"};
+                if(!showError(ctx, err, fileInfo->path(), fileInfo)) {
+                    // the user fail to handle the error, skip this file.
+                    continue;
+                }
+
+                // we do not have the target path in the FileInfo object.
+                // try to launch our path again to query the new file info later so we can get the mounted target URI.
+                pathsToLaunch.emplace_back(fileInfo->path());
+            }
+            else {
+                // we have the target path, launch it later
+                pathsToLaunch.emplace_back(FilePath::fromPathStr(fileInfo->target().c_str()));
+            }
         }
         else if(fileInfo->isDesktopEntry()) {
             // launch the desktop entry
@@ -40,7 +61,7 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
             // for shortcuts, launch their targets instead
             auto path = handleShortcut(*fileInfo, ctx);
             if(path.isValid()) {
-                shortcutTargetPaths.emplace_back(path);
+                pathsToLaunch.emplace_back(path);
             }
         }
         else {
@@ -69,8 +90,8 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
         }
     }
 
-    if(!shortcutTargetPaths.empty()) {
-        launchPaths(shortcutTargetPaths, ctx);
+    if(!pathsToLaunch.empty()) {
+        launchPaths(pathsToLaunch, ctx);
     }
 
     return true;
@@ -81,6 +102,8 @@ bool BasicFileLauncher::launchPaths(FilePathList paths, GAppLaunchContext* ctx) 
     QEventLoop eventLoop;
 
     auto job = new FileInfoJob{paths};
+    job->setAutoDelete(false);  // do not automatically delete the job since we want its results later.
+
     GObjectPtr<GAppLaunchContext> ctxPtr{ctx};
     QObject::connect(job, &FileInfoJob::finished,
             [&eventLoop]() {
@@ -119,7 +142,7 @@ BasicFileLauncher::ExecAction BasicFileLauncher::askExecFile(const FileInfo& /* 
     return ExecAction::DIRECT_EXEC;
 }
 
-bool BasicFileLauncher::showError(GAppLaunchContext* /* ctx */, GErrorPtr& /* err */, const FilePath& /* path */) {
+bool BasicFileLauncher::showError(GAppLaunchContext* /* ctx */, GErrorPtr& /* err */, const FilePath& /* path */, std::shared_ptr<const FileInfo> info) {
     return false;
 }
 
@@ -157,10 +180,10 @@ bool BasicFileLauncher::launchDesktopEntry(const FileInfo& fileInfo, const FileP
         case ExecAction::EXEC_IN_TERMINAL:
         case ExecAction::DIRECT_EXEC: {
             if(fileInfo.isShortcut()) {
-              auto path = handleShortcut(fileInfo, ctx);
-              if(path.isValid()) {
-                  shortcutTargetPaths.emplace_back(path);
-              }
+                auto path = handleShortcut(fileInfo, ctx);
+                if(path.isValid()) {
+                    shortcutTargetPaths.emplace_back(path);
+                }
             }
             else {
                 if(target.empty()) {

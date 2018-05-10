@@ -51,7 +51,7 @@ protected:
 
     bool openFolder(GAppLaunchContext* ctx, const FileInfoList& folderInfos, GErrorPtr& err) override;
 
-    bool showError(GAppLaunchContext* ctx, GErrorPtr& err, const FilePath& path = FilePath{}) override;
+    bool showError(GAppLaunchContext* ctx, GErrorPtr& err, const FilePath& path = FilePath{}, std::shared_ptr<const FileInfo> info = nullptr) override;
 
     ExecAction askExecFile(const FileInfo& file) override;
 
