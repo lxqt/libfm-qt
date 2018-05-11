@@ -21,11 +21,43 @@
 #include "folderview.h"
 #include "utilities.h"
 #include "core/iconinfo.h"
+#include "core/templates.h"
+
+#include <algorithm>
 
 namespace Fm {
 
+
+class TemplateAction: public QAction {
+public:
+    TemplateAction(std::shared_ptr<const TemplateItem> item, QObject* parent):
+        QAction(parent) {
+        setTemplateItem(std::move(item));
+    }
+
+    const std::shared_ptr<const TemplateItem> templateItem() const {
+        return templateItem_;
+    }
+
+    void setTemplateItem(std::shared_ptr<const TemplateItem> item) {
+        templateItem_ = std::move(item);
+        auto mimeType = templateItem_->mimeType();
+        setText(QString("%1 (%2)").arg(templateItem_->displayName()).arg(mimeType->desc()));
+        setIcon(templateItem_->icon()->qicon());
+    }
+
+private:
+    std::shared_ptr<const TemplateItem> templateItem_;
+};
+
+
 CreateNewMenu::CreateNewMenu(QWidget* dialogParent, Fm::FilePath dirPath, QWidget* parent):
-    QMenu(parent), dialogParent_(dialogParent), dirPath_(std::move(dirPath)) {
+    QMenu(parent),
+    dialogParent_(dialogParent),
+    dirPath_(std::move(dirPath)),
+    templateSeparator_{nullptr},
+    templates_{Templates::globalInstance()} {
+
     QAction* action = new QAction(QIcon::fromTheme("folder-new"), tr("Folder"), this);
     connect(action, &QAction::triggered, this, &CreateNewMenu::onCreateNewFolder);
     addAction(action);
@@ -35,27 +67,12 @@ CreateNewMenu::CreateNewMenu(QWidget* dialogParent, Fm::FilePath dirPath, QWidge
     addAction(action);
 
     // add more items to "Create New" menu from templates
-    GList* templates = fm_template_list_all(fm_config->only_user_templates);
-    if(templates) {
-        addSeparator();
-        for(GList* l = templates; l; l = l->next) {
-            FmTemplate* templ = (FmTemplate*)l->data;
-            /* we support directories differently */
-            if(fm_template_is_directory(templ)) {
-                continue;
-            }
-            FmMimeType* mime_type = fm_template_get_mime_type(templ);
-            const char* label = fm_template_get_label(templ);
-            QString text = QString("%1 (%2)").arg(QString::fromUtf8(label)).arg(QString::fromUtf8(fm_mime_type_get_desc(mime_type)));
-            FmIcon* icon = fm_template_get_icon(templ);
-            if(!icon) {
-                icon = fm_mime_type_get_icon(mime_type);
-            }
-            QAction* action = addAction(Fm::IconInfo::fromGIcon(G_ICON(icon))->qicon(), text);
-            action->setObjectName(QString::fromUtf8(fm_template_get_name(templ, nullptr)));
-            connect(action, &QAction::triggered, this, &CreateNewMenu::onCreateNew);
-        }
-    }
+    connect(templates_.get(), &Templates::itemAdded, this, &CreateNewMenu::addTemplateItem);
+    connect(templates_.get(), &Templates::itemChanged, this, &CreateNewMenu::updateTemplateItem);
+    connect(templates_.get(), &Templates::itemRemoved, this, &CreateNewMenu::removeTemplateItem);
+    templates_->forEachItem([this](const std::shared_ptr<const TemplateItem>& item) {
+        addTemplateItem(item);
+    });
 }
 
 CreateNewMenu::~CreateNewMenu() {
@@ -74,21 +91,61 @@ void CreateNewMenu::onCreateNewFolder() {
 }
 
 void CreateNewMenu::onCreateNew() {
-    QAction* action = static_cast<QAction*>(sender());
-    QByteArray name = action->objectName().toUtf8();
-    GList* templates = fm_template_list_all(fm_config->only_user_templates);
-    FmTemplate* templ = nullptr;
-    for(GList* l = templates; l; l = l->next) {
-        FmTemplate* t = (FmTemplate*)l->data;
-        if(name == fm_template_get_name(t, nullptr)) {
-            templ = t;
+    TemplateAction* action = static_cast<TemplateAction*>(sender());
+    if(dirPath_) {
+        createFileOrFolder(CreateWithTemplate, dirPath_, action->templateItem().get(), dialogParent_);
+    }
+}
+
+void CreateNewMenu::addTemplateItem(const std::shared_ptr<const TemplateItem> &item) {
+    if(!templateSeparator_) {
+        templateSeparator_= addSeparator();
+    }
+    auto mimeType = item->mimeType();
+    /* we support directories differently */
+    if(mimeType->isDir()) {
+        return;
+    }
+    QAction* action = new TemplateAction{item, this};
+    connect(action, &QAction::triggered, this, &CreateNewMenu::onCreateNew);
+    addAction(action);
+}
+
+void CreateNewMenu::updateTemplateItem(const std::shared_ptr<const TemplateItem> &oldItem, const std::shared_ptr<const TemplateItem> &newItem) {
+    auto allActions = actions();
+    auto separatorPos = allActions.indexOf(templateSeparator_);
+    // all items after the separator are templates
+    for(auto i = separatorPos + 1; i < allActions.size(); ++i) {
+        auto action = static_cast<TemplateAction*>(allActions[i]);
+        if(action->templateItem() == oldItem) {
+            // update the menu item
+            action->setTemplateItem(newItem);
             break;
         }
     }
-    if(templ) { // template found
-        if(dirPath_) {
-            createFileOrFolder(CreateWithTemplate, dirPath_, templ, dialogParent_);
+}
+
+void CreateNewMenu::removeTemplateItem(const std::shared_ptr<const TemplateItem> &item) {
+    if(!templateSeparator_) {
+        return;
+    }
+    auto allActions = actions();
+    auto separatorPos = allActions.indexOf(templateSeparator_);
+    // all items after the separator are templates
+    for(auto i = separatorPos + 1; i < allActions.size(); ++i) {
+        auto action = static_cast<TemplateAction*>(allActions[i]);
+        if(action->templateItem() == item) {
+            // delete the action from the menu
+            removeAction(action);
+            allActions.removeAt(i);
+            break;
         }
+    }
+
+    // no more template items. remove the separator
+    if(separatorPos == allActions.size() - 1) {
+        removeAction(templateSeparator_);
+        templateSeparator_ = nullptr;
     }
 }
 

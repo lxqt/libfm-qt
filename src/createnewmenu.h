@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2012 - 2015  Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -29,6 +29,8 @@
 namespace Fm {
 
 class FolderView;
+class Templates;
+class TemplateItem;
 
 class LIBFM_QT_API CreateNewMenu : public QMenu {
     Q_OBJECT
@@ -39,12 +41,23 @@ public:
 
 protected Q_SLOTS:
     void onCreateNewFolder();
+
     void onCreateNewFile();
+
     void onCreateNew();
+
+private Q_SLOTS:
+    void addTemplateItem(const std::shared_ptr<const TemplateItem>& item);
+
+    void updateTemplateItem(const std::shared_ptr<const TemplateItem>& oldItem, const std::shared_ptr<const TemplateItem>& newItem);
+
+    void removeTemplateItem(const std::shared_ptr<const TemplateItem>& item);
 
 private:
     QWidget* dialogParent_;
     Fm::FilePath dirPath_;
+    QAction* templateSeparator_;
+    std::shared_ptr<Templates> templates_;
 };
 
 }

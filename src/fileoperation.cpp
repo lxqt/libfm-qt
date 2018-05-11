@@ -127,6 +127,20 @@ void FileOperation::setDestination(Fm::FilePath dest) {
     }
 }
 
+void FileOperation::setDestFiles(FilePathList destFiles) {
+    switch(type_) {
+    case Copy:
+    case Move:
+    case Link:
+        if(job_) {
+            static_cast<FileTransferJob*>(job_)->setDestPaths(std::move(destFiles));
+        }
+        break;
+    default:
+        break;
+    }
+}
+
 void FileOperation::setChmod(mode_t newMode, mode_t newModeMask) {
     if(job_) {
         auto job = static_cast<FileChangeAttrJob*>(job_);
@@ -315,6 +329,15 @@ FileOperation* FileOperation::copyFiles(Fm::FilePathList srcFiles, Fm::FilePath 
     return op;
 }
 
+//static
+FileOperation *FileOperation::copyFiles(FilePathList srcFiles, FilePathList destFiles, QWidget *parent) {
+    qDebug("copy: %s -> %s", srcFiles[0].toString().get(), destFiles[0].toString().get());
+    FileOperation* op = new FileOperation(FileOperation::Copy, std::move(srcFiles), parent);
+    op->setDestFiles(std::move(destFiles));
+    op->run();
+    return op;
+}
+
 // static
 FileOperation* FileOperation::moveFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent) {
     FileOperation* op = new FileOperation(FileOperation::Move, std::move(srcFiles), parent);
@@ -324,9 +347,25 @@ FileOperation* FileOperation::moveFiles(Fm::FilePathList srcFiles, Fm::FilePath 
 }
 
 //static
+FileOperation *FileOperation::moveFiles(FilePathList srcFiles, FilePathList destFiles, QWidget *parent) {
+    FileOperation* op = new FileOperation(FileOperation::Move, std::move(srcFiles), parent);
+    op->setDestFiles(std::move(destFiles));
+    op->run();
+    return op;
+}
+
+//static
 FileOperation* FileOperation::symlinkFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent) {
     FileOperation* op = new FileOperation(FileOperation::Link, std::move(srcFiles), parent);
     op->setDestination(dest);
+    op->run();
+    return op;
+}
+
+//static
+FileOperation *FileOperation::symlinkFiles(FilePathList srcFiles, FilePathList destFiles, QWidget *parent) {
+    FileOperation* op = new FileOperation(FileOperation::Link, std::move(srcFiles), parent);
+    op->setDestFiles(std::move(destFiles));
     op->run();
     return op;
 }

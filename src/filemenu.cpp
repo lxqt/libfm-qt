@@ -35,7 +35,6 @@
 #include "filemenu_p.h"
 
 #include "core/archiver.h"
-#include "core/compat_p.h"
 
 namespace Fm {
 
