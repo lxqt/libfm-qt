@@ -229,9 +229,9 @@ void fm_search_set_min_mtime(FmSearch* search, const char* mtime)
 }
 
 /* really build the path */
-FmPath* fm_search_dup_path(FmSearch* search)
+GFile* fm_search_to_gfile(FmSearch* search)
 {
-    FmPath* search_path = NULL;
+    GFile* search_path = NULL;
     GString* search_str = g_string_sized_new(1024);
     /* build the search:// URI to perform the search */
     g_string_append(search_str, "search://");
@@ -310,7 +310,7 @@ FmPath* fm_search_dup_path(FmSearch* search)
         if(search->max_mtime)
             g_string_append_printf(search_str, "&max_mtime=%s", search->max_mtime);
 
-        search_path = fm_path_new_for_uri(search_str->str);
+        search_path = g_file_new_for_uri(search_str->str);
         g_string_free(search_str, TRUE);
     }
     return search_path;

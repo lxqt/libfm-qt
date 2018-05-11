@@ -27,7 +27,7 @@
 #ifndef _FM_SEARCH_H_
 #define _FM_SEARCH_H_
 
-#include <libfm/fm.h>
+#include <gio/gio.h>
 
 G_BEGIN_DECLS
 
@@ -36,7 +36,7 @@ typedef struct _FmSearch         FmSearch;
 FmSearch* fm_search_new(void);
 void fm_search_free(FmSearch* search);
 
-FmPath* fm_search_dup_path(FmSearch* search);
+GFile* fm_search_to_gfile(FmSearch* search);
 
 gboolean fm_search_get_recursive(FmSearch* search);
 void fm_search_set_recursive(FmSearch* search, gboolean recursive);
