@@ -22,7 +22,7 @@
 
 #include "libfmqtglobals.h"
 #include <QDialog>
-#include "path.h"
+#include "core/filepath.h"
 
 namespace Ui {
 class SearchDialog;
@@ -35,7 +35,7 @@ public:
     explicit FileSearchDialog(QStringList paths = QStringList(), QWidget* parent = 0, Qt::WindowFlags f = 0);
     ~FileSearchDialog();
 
-    Path searchUri() const {
+    const FilePath& searchUri() const {
         return searchUri_;
     }
 
@@ -65,7 +65,7 @@ private Q_SLOTS:
 
 private:
     Ui::SearchDialog* ui;
-    Path searchUri_;
+    FilePath searchUri_;
 };
 
 }

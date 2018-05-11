@@ -25,7 +25,6 @@
 #include "placesview.h"
 #include "dirtreeview.h"
 #include "dirtreemodel.h"
-#include "path.h"
 #include "filemenu.h"
 
 namespace Fm {
