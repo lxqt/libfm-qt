@@ -48,10 +48,14 @@ public:
     explicit MountOperation(bool interactive = true, QWidget* parent = 0);
     ~MountOperation();
 
+    FM_QT_DEPRECATED
     void mount(const Fm::FilePath& path) {
-        g_file_mount_enclosing_volume(path.gfile().get(), G_MOUNT_MOUNT_NONE, op, cancellable_,
-                                      (GAsyncReadyCallback)onMountFileFinished, new QPointer<MountOperation>(this));
+        mountEnclosingVolume(path);
     }
+
+    void mountEnclosingVolume(const Fm::FilePath& path);
+
+    void mountMountable(const Fm::FilePath& mountable);
 
     void mount(GVolume* volume) {
         g_volume_mount(volume, G_MOUNT_MOUNT_NONE, op, cancellable_, (GAsyncReadyCallback)onMountVolumeFinished, new QPointer<MountOperation>(this));
@@ -135,6 +139,7 @@ private:
 
     // it's possible that this object is freed when the callback is called by gio, so guarding with QPointer is needed here.
     static void onMountFileFinished(GFile* file, GAsyncResult* res, QPointer<MountOperation>* pThis);
+    static void onMountMountableFinished(GFile* file, GAsyncResult* res, QPointer<MountOperation>* pThis);
     static void onMountVolumeFinished(GVolume* volume, GAsyncResult* res, QPointer<MountOperation>* pThis);
     static void onUnmountMountFinished(GMount* mount, GAsyncResult* res, QPointer<MountOperation>* pThis);
     static void onEjectMountFinished(GMount* mount, GAsyncResult* res, QPointer<MountOperation>* pThis);

@@ -26,6 +26,7 @@
 #include "mountoperationpassworddialog_p.h"
 #include "mountoperationquestiondialog_p.h"
 #include "ui_mount-operation-password.h"
+#include "core/gioptrs.h"
 
 namespace Fm {
 
@@ -83,6 +84,16 @@ MountOperation::~MountOperation() {
     // qDebug("MountOperation deleted");
 }
 
+void MountOperation::mountEnclosingVolume(const FilePath &path) {
+    g_file_mount_enclosing_volume(path.gfile().get(), G_MOUNT_MOUNT_NONE, op, cancellable_,
+                                  (GAsyncReadyCallback)onMountFileFinished, new QPointer<MountOperation>(this));
+}
+
+void MountOperation::mountMountable(const FilePath &mountable) {
+    g_file_mount_mountable(mountable.gfile().get(), G_MOUNT_MOUNT_NONE, op, cancellable_,
+                           (GAsyncReadyCallback)onMountMountableFinished, new QPointer<MountOperation>(this));
+}
+
 void MountOperation::onAbort(GMountOperation* /*_op*/, MountOperation* /*pThis*/) {
 
 }
@@ -138,6 +149,15 @@ void MountOperation::onMountFileFinished(GFile* file, GAsyncResult* res, QPointe
     if(*pThis) {
         GError* error = nullptr;
         g_file_mount_enclosing_volume_finish(file, res, &error);
+        (*pThis)->handleFinish(error);
+    }
+    delete pThis;
+}
+
+void MountOperation::onMountMountableFinished(GFile* file, GAsyncResult* res, QPointer<MountOperation>* pThis) {
+    if(*pThis) {
+        GError* error = nullptr;
+        g_file_mount_mountable_finish(file, res, &error);
         (*pThis)->handleFinish(error);
     }
     delete pThis;

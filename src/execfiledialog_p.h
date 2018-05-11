@@ -20,8 +20,12 @@
 #ifndef FM_EXECFILEDIALOG_H
 #define FM_EXECFILEDIALOG_H
 
+#include "core/basicfilelauncher.h"
+#include "core/fileinfo.h"
+
 #include <QDialog>
-#include <libfm/fm.h>
+
+#include <memory>
 
 namespace Ui {
   class ExecFileDialog;
@@ -33,19 +37,19 @@ class ExecFileDialog : public QDialog {
   Q_OBJECT
 public:
   ~ExecFileDialog();
-  ExecFileDialog(FmFileInfo* fileInfo, QWidget* parent = 0, Qt::WindowFlags f = 0);
+  ExecFileDialog(const FileInfo& fileInfo, QWidget* parent = 0, Qt::WindowFlags f = 0);
 
-  FmFileLauncherExecAction result() {
+  BasicFileLauncher::ExecAction result() {
     return result_;
   }
 
 protected:
-  virtual void accept();
+  virtual void accept() override;
+  virtual void reject() override;
 
 private:
   Ui::ExecFileDialog* ui;
-  FmFileInfo* fileInfo_;
-  FmFileLauncherExecAction result_;
+  BasicFileLauncher::ExecAction result_;
 };
 
 }

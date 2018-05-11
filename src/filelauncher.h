@@ -23,60 +23,31 @@
 
 #include "libfmqtglobals.h"
 #include <QWidget>
-#include <libfm/fm.h>
 #include "core/fileinfo.h"
+#include "core/basicfilelauncher.h"
 
 namespace Fm {
 
-class LIBFM_QT_API FileLauncher {
+class LIBFM_QT_API FileLauncher: public BasicFileLauncher {
 public:
     explicit FileLauncher();
     virtual ~FileLauncher();
 
-    bool launchFiles(QWidget* parent, Fm::FileInfoList file_infos);
+    bool launchFiles(QWidget* parent, const FileInfoList& file_infos);
 
-    bool launchPaths(QWidget* parent, Fm::FilePathList paths);
-
-    bool quickExec() const {
-        return quickExec_;
-    }
-
-    void setQuickExec(bool value) {
-        quickExec_ = value;
-    }
+    bool launchPaths(QWidget* parent, const FilePathList &paths);
 
 protected:
 
-    virtual GAppInfo* getApp(GList* file_infos, FmMimeType* mime_type, GError** err);
-    virtual bool openFolder(GAppLaunchContext* ctx, GList* folder_infos, GError** err);
-    virtual FmFileLauncherExecAction execFile(FmFileInfo* file);
-    virtual bool error(GAppLaunchContext* ctx, GError* err, FmPath* path);
-    virtual int ask(const char* msg, char* const* btn_labels, int default_btn);
+    GAppInfoPtr chooseApp(const FileInfoList& fileInfos, const char* mimeType, GErrorPtr& err) override;
 
-private:
-    bool launchFiles(QWidget* parent, GList* file_infos);
+    bool openFolder(GAppLaunchContext* ctx, const FileInfoList& folderInfos, GErrorPtr& err) override;
 
-    bool launchPaths(QWidget* parent, GList* paths);
+    bool showError(GAppLaunchContext* ctx, GErrorPtr& err, const FilePath& path = FilePath{}, const FileInfoPtr& info = FileInfoPtr{}) override;
 
-    static GAppInfo* _getApp(GList* file_infos, FmMimeType* mime_type, gpointer user_data, GError** err) {
-        return reinterpret_cast<FileLauncher*>(user_data)->getApp(file_infos, mime_type, err);
-    }
-    static gboolean _openFolder(GAppLaunchContext* ctx, GList* folder_infos, gpointer user_data, GError** err) {
-        return reinterpret_cast<FileLauncher*>(user_data)->openFolder(ctx, folder_infos, err);
-    }
-    static FmFileLauncherExecAction _execFile(FmFileInfo* file, gpointer user_data) {
-        return reinterpret_cast<FileLauncher*>(user_data)->execFile(file);
-    }
-    static gboolean _error(GAppLaunchContext* ctx, GError* err, FmPath* file, gpointer user_data) {
-        return reinterpret_cast<FileLauncher*>(user_data)->error(ctx, err, file);
-    }
-    static int _ask(const char* msg, char* const* btn_labels, int default_btn, gpointer user_data) {
-        return reinterpret_cast<FileLauncher*>(user_data)->ask(msg, btn_labels, default_btn);
-    }
+    ExecAction askExecFile(const FileInfoPtr& file) override;
 
-private:
-    static FmFileLauncher funcs;
-    bool quickExec_; // Don't ask options on launch executable file
+    int ask(const char* msg, char* const* btn_labels, int default_btn) override;
 };
 
 }

@@ -214,7 +214,7 @@ _file_is_symlink:
             g_key_file_free(kf);
         }
      }
-    
+
     if(!icon_) {
         /* try file-specific icon first */
         gicon = g_file_info_get_icon(inf.get());
@@ -333,7 +333,31 @@ bool FileInfo::canThumbnail() const {
 
 /* full path of the file is required by this function */
 bool FileInfo::isExecutableType() const {
-    if(isText()) { /* g_content_type_can_be_executable reports text files as executables too */
+    if(isDesktopEntry()) {
+        /* treat desktop entries as executables if
+         they are native and have read permission */
+        if(isNative() && (mode_ & (S_IRUSR|S_IRGRP|S_IROTH))) {
+            if(isShortcut() && !target_.empty()) {
+                /* handle shortcuts from desktop to menu entries:
+                   first check for entries in /usr/share/applications and such
+                   which may be considered as a safe desktop entry path
+                   then check if that is a shortcut to a native file
+                   otherwise it is a link to a file under menu:// */
+                if (!g_str_has_prefix(target_.c_str(), "/usr/share/")) {
+                    auto target = FilePath::fromPathStr(target_.c_str());
+                    bool is_native = target.isNative();
+                    if (is_native) {
+                        return true;
+                    }
+                }
+            }
+            else {
+                return true;
+            }
+        }
+        return false;
+    }
+    else if(isText()) { /* g_content_type_can_be_executable reports text files as executables too */
         /* We don't execute remote files nor files in trash */
         if(isNative() && (mode_ & (S_IXOTH | S_IXGRP | S_IXUSR))) {
             /* it has executable bits so lets check shell-bang */

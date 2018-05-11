@@ -24,6 +24,7 @@ set(libfm_core_SRCS
     core/thumbnailjob.cpp
     # extra desktop services
     core/bookmarks.cpp
+    core/basicfilelauncher.cpp
     core/volumemanager.cpp
     core/userinfocache.cpp
     core/thumbnailer.cpp
