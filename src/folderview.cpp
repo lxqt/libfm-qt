@@ -45,7 +45,6 @@
 #include <QX11Info> // for XDS support
 #include <xcb/xcb.h> // for XDS support
 #include "xdndworkaround.h" // for XDS support
-#include "path.h"
 #include "folderview_p.h"
 #include "utilities.h"
 

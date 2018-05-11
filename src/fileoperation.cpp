@@ -24,7 +24,6 @@
 #include <QElapsedTimer>
 #include <QMessageBox>
 #include <QDebug>
-#include "path.h"
 
 #include "core/deletejob.h"
 #include "core/trashjob.h"

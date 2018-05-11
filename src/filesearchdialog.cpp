@@ -120,7 +120,7 @@ void FileSearchDialog::accept() {
             fm_search_set_min_mtime(search, ui->minTime->date().toString(QStringLiteral("yyyy-MM-dd")).toUtf8().constData());
         }
 
-        searchUri_ = Path::wrapPtr(fm_search_dup_path(search));
+        searchUri_ = FilePath{fm_search_to_gfile(search), false};
 
         fm_search_free(search);
     }
