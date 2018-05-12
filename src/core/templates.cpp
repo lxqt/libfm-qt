@@ -8,7 +8,7 @@ using namespace std;
 
 namespace Fm {
 
-std::shared_ptr<Templates> Templates::globalInstance_;
+std::weak_ptr<Templates> Templates::globalInstance_;
 
 TemplateItem::TemplateItem(std::shared_ptr<const FileInfo> file): fileInfo_{file} {
 }
@@ -39,25 +39,31 @@ Templates::Templates() : QObject() {
     addTemplateDir(dir_name.get());
 
     // $XDG_TEMPLATES_DIR (FIXME: this might change at runtime)
-    addTemplateDir(g_get_user_special_dir(G_USER_DIRECTORY_TEMPLATES));
+    const gchar *special_dir = g_get_user_special_dir(G_USER_DIRECTORY_TEMPLATES);
+    if (special_dir) {
+        addTemplateDir(special_dir);
+    }
 }
 
-
 shared_ptr<Templates> Templates::globalInstance() {
-    if(!globalInstance_) {
-        globalInstance_ = make_shared<Templates>();
+    auto templates = globalInstance_.lock();
+    if(!templates) {
+        templates = make_shared<Templates>();
+        globalInstance_ = templates;
     }
-    return globalInstance_;
+    return templates;
 }
 
 void Templates::addTemplateDir(const char* dirPathName) {
     auto dir_path = FilePath::fromLocalPath(dirPathName);
-    auto folder = Folder::fromPath(dir_path);
-    connect(folder.get(), &Folder::filesAdded, this, &Templates::onFilesAdded);
-    connect(folder.get(), &Folder::filesChanged, this, &Templates::onFilesChanged);
-    connect(folder.get(), &Folder::filesRemoved, this, &Templates::onFilesRemoved);
-    connect(folder.get(), &Folder::removed, this, &Templates::onTemplateDirRemoved);
-    templateFolders_.emplace_back(std::move(folder));
+    if(dir_path.isValid()) {
+        auto folder = Folder::fromPath(dir_path);
+        connect(folder.get(), &Folder::filesAdded, this, &Templates::onFilesAdded);
+        connect(folder.get(), &Folder::filesChanged, this, &Templates::onFilesChanged);
+        connect(folder.get(), &Folder::filesRemoved, this, &Templates::onFilesRemoved);
+        connect(folder.get(), &Folder::removed, this, &Templates::onTemplateDirRemoved);
+        templateFolders_.emplace_back(std::move(folder));
+    }
 }
 
 void Templates::onFilesAdded(FileInfoList& addedFiles) {
