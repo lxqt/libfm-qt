@@ -92,7 +92,7 @@ private Q_SLOTS:
 private:
     std::vector<std::shared_ptr<TemplateItem>> items_;
     std::vector<std::shared_ptr<Folder>> templateFolders_;
-    static std::shared_ptr<Templates> globalInstance_;
+    static std::weak_ptr<Templates> globalInstance_;
 };
 
 } // namespace Fm
