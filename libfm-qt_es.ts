@@ -81,7 +81,7 @@
     <message>
         <location filename="../../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation>&amp;Agregar elemento</translation>
+        <translation>&amp;Añadir elemento</translation>
     </message>
     <message>
         <location filename="../../edit-bookmarks.ui" line="77"/>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation>Propiedades de archivo</translation>
+        <translation>Propiedades del archivo</translation>
     </message>
     <message>
         <location filename="../../file-props.ui" line="41"/>
@@ -648,7 +648,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../../filepropsdialog.cpp" line="478"/>
         <source>Apply changes</source>
-        <translation>Aplicar cambios</translation>
+        <translation>Aplicar los cambios</translation>
     </message>
     <message>
         <location filename="../../filepropsdialog.cpp" line="479"/>
@@ -1029,7 +1029,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../../mount-operation-password.ui" line="137"/>
         <source>Remember password until you &amp;logout</source>
-        <translation>&amp;Recordar la contraseña hasta cerrar sesión</translation>
+        <translation>&amp;Recordar la contraseña hasta cerrar la sesión</translation>
     </message>
     <message>
         <location filename="../../mount-operation-password.ui" line="147"/>
@@ -1257,7 +1257,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="223"/>
         <source>Case insensiti&amp;ve</source>
-        <translation>No distinguir mayúsculas de minúsculas</translation>
+        <translation>No &amp;distinguir mayúsculas de minúsculas</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="230"/>
@@ -1306,7 +1306,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="268"/>
         <source>Smaller than:</source>
-        <translation>Menores que:</translation>
+        <translation>Menor que:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="364"/>
@@ -1316,12 +1316,12 @@ Modificado: %2</translation>
     <message>
         <location filename="../../filesearch.ui" line="372"/>
         <source>Earlier than:</source>
-        <translation>Anteriores a:</translation>
+        <translation>Anterior al:</translation>
     </message>
     <message>
         <location filename="../../filesearch.ui" line="379"/>
         <source>Later than:</source>
-        <translation>Más nuevos que:</translation>
+        <translation>Posterior al:</translation>
     </message>
 </context>
 </TS>
