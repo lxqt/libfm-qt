@@ -115,18 +115,20 @@ void ProxyFolderModel::setSortCaseSensitivity(Qt::CaseSensitivity cs) {
 
 bool ProxyFolderModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
     if(!showHidden_) {
-        FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
-        auto info = srcModel->fileInfoFromIndex(srcModel->index(source_row, 0, source_parent));
-        if(info && (info->isHidden() || (backupAsHidden_ && info->isBackup()))) {
-            return false;
+        if(FolderModel* srcModel = static_cast<FolderModel*>(sourceModel())) {
+            auto info = srcModel->fileInfoFromIndex(srcModel->index(source_row, 0, source_parent));
+            if(info && (info->isHidden() || (backupAsHidden_ && info->isBackup()))) {
+                return false;
+            }
         }
     }
     // apply additional filters if there're any
     for(ProxyFolderModelFilter* const filter : qAsConst(filters_)) {
-        FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
-        auto fileInfo = srcModel->fileInfoFromIndex(srcModel->index(source_row, 0, source_parent));
-        if(!filter->filterAcceptsRow(this, fileInfo)) {
-            return false;
+        if(FolderModel* srcModel = static_cast<FolderModel*>(sourceModel())){
+            auto fileInfo = srcModel->fileInfoFromIndex(srcModel->index(source_row, 0, source_parent));
+            if(!filter->filterAcceptsRow(this, fileInfo)) {
+                return false;
+            }
         }
     }
     return true;
