@@ -59,7 +59,7 @@ void CachedFolderModel::unref() {
     --refCount;
     if(refCount <= 0) {
         folder()->setProperty(cacheKey, QVariant());
-        deleteLater();
+        delete(this);
     }
 }
 
