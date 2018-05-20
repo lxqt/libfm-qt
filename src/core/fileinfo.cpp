@@ -119,14 +119,14 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
         isDeletable_ = true;
     }
 
+    isShortcut_ = false;
+
     /* special handling for symlinks */
     if(g_file_info_get_is_symlink(inf.get())) {
         mode_ &= ~S_IFMT; /* reset type */
         mode_ |= S_IFLNK; /* set type to symlink */
         goto _file_is_symlink;
     }
-
-    isShortcut_ = false;
 
     switch(type) {
     case G_FILE_TYPE_SHORTCUT:
