@@ -1,7 +1,86 @@
 
-libfm-qt-0.12.0 / 2017-10-21
+libfm-qt-0.13.0 / 2018-05-21
 ============================
 
+  * Bumped minor version to 13
+  * Fixed shortcut detection
+  * Delete CachedFolderModel immediately on unreffing it
+  * Fix crashes in new templates code
+  * Remove the C++ wrapper for the old FmPath struct in libfm.
+  * Avoid using FmPath from libfm in FmSearch.
+  * Removed redundant code
+  * Modify Fm::BasicFileLauncher APIs to use Fm::FileInfoPtr consistently.
+  * Add typedef FileInfoPtr for std::shared_ptr<const FileInfo> since it's so frequently used.
+  * Correctly handle the mounting of mountable paths and correctly parse the target URIs of shortcuts.
+  * Add new APIs Fm::MountOperation::mountEnclosingVolume() and Fm::MountOperation::mountMountable() and deprecate Fm::MountOperation::mount().
+  * Also cover local shortcuts
+  * Added "reject" to exec dialog
+  * Delete some libfm compatibility wrappers.
+  * Delete the unused old FmTemplate wrapper.
+  * Create the template items in the "Create New" menu with the new C++ file template APIs.
+  * Port template support to C++ (Fm::Templates class).
+  * Add convinient functions in Fm::FileOperation to set dest paths for file transfer jobs.
+  * Made job async again
+  * Fixed launching of desktop files
+  * Cleanup
+  * CMake: Prevent in-source builds
+  * Fix Fm::FileInfo::isDir() and isExecutableType() to make its behavior consistent with libfm.
+  * Port file lancher to C++ and Implement Fm::BasicFileLauncher base class. * Migrate Fm::FileLauncher to the new C++ implementation.
+  * Port archiver integration to C++ (#182)
+  * Fully port all file operations to C++ 11 (#181)
+  * Add kitty to terminals.list
+  * Italic font for hidden items
+  * Select multiple files
+  * No visible cursor in File Properties labels
+  * Just corrected a misspelling
+  * Elided labels for file operation dialog
+  * fix namespace, fixes lxqt/libfm-qt/issues/174
+  * Misc link fixes
+  * Fixes some pathes after repo move
+  * Fix a cause of crash in `AppChooserComboBox`
+  * build: Bump version
+  * Drop Fm::IconTheme
+  * iconinfo: Properly handle multiple names
+  * Some code cleanup
+  * Fixed custom action execution mode
+  * Don't drop on files
+  * Prevent possible c++11 range-loop container detach
+  * See `.bak` and `.old` as backup extensions; also follow GLib
+  * Ensure that rename editor has opaque background
+  * Use special/custom folder icons for bookmarks
+  * Added two missing cases of `mapFromSource()`
+  * Support hiding items in Places side-pane
+  * Fixed sorting by type/owner
+  * Fix lambda connections in filedialog (#159)
+  * Drop Q_FOREACH
+  * Fix memory leak in thumbnail loading (#150)
+  * Be more tolerant
+  * Fix the "Folders" key in custom actions
+  * Add Group column and don't use owner's full name
+  * Fix comparison of integers of different signs
+  * Guarantee 64-bit time attributes (#148)
+  * Added a proxy setting for backup as hidden (#145)
+  * Fixed the logic of queued deletion
+  * Track folders containing cut files only with QString
+  * Copy selected pathbar text to selection clipboard
+  * Smooth scrolling for icon and thumbnail views
+  * cmake: Handle CMP0071
+  * Prepare libfm-qt for bulk rename
+  * No change queue of files in the deletion queue
+  * FileInfo: Fix potential SEGFAULT
+  * Fix two devices for one mount
+  * Always wait for the folder to load before selecting
+  * Really cancel multiple renaming on cancelling
+  * Prevent a potential crash in xdndworkaround
+  * Fix wrong gray-out of cut files
+  * Merge side-pane with its surroundings
+  * Prompt dialog specifically for desktop files
+  * Remove unnecessary noise
+
+0.12.0 / 2017-10-21
+===================
+
+  * Release 0.12.0: Update changelog
   * Add data transferred to file operation dialog.
   * Bump versions
   * Disable context-menu actions that cannot be used
@@ -262,7 +341,7 @@ libfm-qt-0.12.0 / 2017-10-21
   * Fix item text direction with RTL layout (#33)
   * Set tabstops for mount operation password dialog (#31)
   * Fix memory leak in file open menu (#29)
-  * Fixes https://github.com/lxqt/pcmanfm-qt/issues/351. (#27)
+  * Fixes https://github.com/lxde/pcmanfm-qt/issues/351. (#27)
   * build: Use external translations
   * ts-file removal (#26)
   * Fix memory leaks in file menu (#25)
@@ -270,7 +349,7 @@ libfm-qt-0.12.0 / 2017-10-21
   * translations: fix four typos in messages (#23)
   * Fix memory leak if restoring files from trash
   * Fix rename dialog displaying source info twice
-  * Enable renaming in Properties dialog Fixes https://github.com/lxqt/pcmanfm-qt/issues/324.
+  * Enable renaming in Properties dialog Fixes https://github.com/lxde/pcmanfm-qt/issues/324.
   * Cancel indexing job when closing filepropsdialog
   * Bump year
 
@@ -375,7 +454,7 @@ libfm-qt-0.12.0 / 2017-10-21
   * Fixes an translation regression
   * Updates translations
   * Uses LXQt lxqt_translate_ts() to handle translations
-  * Fix lxqt/lxqt#447 - missing actions in Places' context menus
+  * Fix lxde/lxqt#447 - missing actions in Places' context menus
   * Remove trailing whitespaces
   * polishing German translation
   * Add menu items and shortcuts for new folder and blank file, fixes #163.
@@ -389,7 +468,7 @@ libfm-qt-0.12.0 / 2017-10-21
   * Fix warnings reported by cppcheck.
   * Fix warnings reported by scan-build.
   * Sort indicators in detailed view, store column and order in settings, fixes #109.
-  * Fix lxqt/lxqt#512 - pcmanfm-qt: cannot delete to trash.
+  * Fix lxde/lxqt#512 - pcmanfm-qt: cannot delete to trash.
   * Polish translations added
   * Use 'user-trash' icon for 'Move to Trash'
   * The "Custom" option in the application chooser combo box inside file properties dialog is broken. Fix by preventing recursive signal handler invocation.
@@ -397,8 +476,8 @@ libfm-qt-0.12.0 / 2017-10-21
   * When converting an UID or GID to its name, show the number as string when the user or group does not exists.
   * Add more null checks.
   * Portuguese update
-  * Add very basic "remaining time" display to the progress dialog. Fix lxqt/lxqt#463 - Progress dialog of pcmanfm-qt does not show remaining time.
-  * Fix lxqt/pcmanfm-qt#120 - Foucs "Rename" button when file name changed.
+  * Add very basic "remaining time" display to the progress dialog. Fix lxde/lxqt#463 - Progress dialog of pcmanfm-qt does not show remaining time.
+  * Fix lxde/pcmanfm-qt#120 - Foucs "Rename" button when file name changed.
   * Remove unnecessary '\n' charactor from the translated strings.
   * Fix translations (the newly added string comes from the translation of libfm).
   * Improve trash can handling: provide an option to delete the files if moving to trashcan fails.
@@ -406,7 +485,7 @@ libfm-qt-0.12.0 / 2017-10-21
   * More migration to Qt5 new signal/slot syntax for better type safety & speed.
   * Migrade to new Qt5 signal/slot syntax for better type safety and speed.
   * Fix the broken sorting option.
-  * Fix lxqt/lxqt#448 - PCmanFM-QT renaming place bookmarks does nothing.
+  * Fix lxde/lxqt#448 - PCmanFM-QT renaming place bookmarks does nothing.
   * Support linguistic sorting of file names. This fixes #105.
   * Update the folder model & view after files are changed.
   * Open folders in new tabs by middle clicking on items in the side pane.
@@ -417,7 +496,7 @@ libfm-qt-0.12.0 / 2017-10-21
   * Update Japanese translation
   * Add German translation
   * add Japanese translation
-  * Implement "UnTrash" for files in trash:/// and close lxqt/lxqt#136.
+  * Implement "UnTrash" for files in trash:/// and close lxde/lxqt#136.
   * Add Russian translation
   * Drop Qt4 support in code
   * Clean up CMakeLists.txt and drop Qt4 support
@@ -435,7 +514,7 @@ libfm-qt-0.12.0 / 2017-10-21
   * Avoid showing the popup menu when moving desktop items.
   * Improve handling of file selection and fixing FolderView::selectAll(), which is reported in #45. Delay the handling of selectionChanged() signal to avoid too frequent UI updates.
   * Little adjustment for the grid of the folder view to decrease unnecessary margins.
-  * Use a new way to optimize the size of filename display based on current view mode and font size. This also fixes lxqt/lxqt #198 - PCmanFM-qt incorrectly displays 256x256 Thumbnails.
+  * Use a new way to optimize the size of filename display based on current view mode and font size. This also fixes lxde/lxde-qt #198 - PCmanFM-qt incorrectly displays 256x256 Thumbnails.
   * Fully support single click activation and auto-selection with associated options added to the preference dialog.
   * Add single click and auto-selection on hover support to Fm::FolderView.
   * New files added from LXDE Pootle server based on templates
@@ -447,7 +526,7 @@ libfm-qt-0.12.0 / 2017-10-21
   * Do not detect filename extension and select the whole filename by default while renaming directories. This closes bug #71 - Don't try to detect extensions on directories. * API changed: Fm::renameFile() now accepect FmFileInfo as its first parameter.
   * Fix bug #80 - make execute in context menu doesn't do change permissions.
   * Revert "fixed selection issue #45" This patch breaks copying files by DND in icon view mode and moving desktop icons.
-  * Use qss instead of QPalette to set the background color of ColorButton. This fixed bug lxqt/lxqt#192.
+  * Use qss instead of QPalette to set the background color of ColorButton. This fixed bug #192 of lxde-qt.
   * Rename the library from libfm-qt to libfm-qt5 when built with Qt5.
   * fixed selection issue #45
   * Fix middle click position calculation in detailed view mode
