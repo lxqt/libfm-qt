@@ -28,34 +28,28 @@
 
 namespace Fm {
 
-EditBookmarksDialog::EditBookmarksDialog(FmBookmarks* bookmarks, QWidget* parent, Qt::WindowFlags f):
+EditBookmarksDialog::EditBookmarksDialog(std::shared_ptr<Bookmarks> bookmarks, QWidget* parent, Qt::WindowFlags f):
     QDialog(parent, f),
     ui(new Ui::EditBookmarksDialog()),
-    bookmarks_(FM_BOOKMARKS(g_object_ref(bookmarks))) {
+    bookmarks_(std::move(bookmarks)) {
 
     ui->setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose); // auto delete on close
 
     // load bookmarks
-    GList* allBookmarks = fm_bookmarks_get_all(bookmarks_);
-    for(GList* l = allBookmarks; l; l = l->next) {
-        FmBookmarkItem* bookmark = reinterpret_cast<FmBookmarkItem*>(l->data);
+    for(const auto& bookmark: bookmarks_->items()) {
         QTreeWidgetItem* item = new QTreeWidgetItem();
-        char* path_str = fm_path_display_name(bookmark->path, false);
-        item->setData(0, Qt::DisplayRole, QString::fromUtf8(bookmark->name));
-        item->setData(1, Qt::DisplayRole, QString::fromUtf8(path_str));
+        item->setData(0, Qt::DisplayRole, bookmark->name());
+        item->setData(1, Qt::DisplayRole, bookmark->path().toString().get());
         item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
-        g_free(path_str);
         ui->treeWidget->addTopLevelItem(item);
     }
-    g_list_free_full(allBookmarks, (GDestroyNotify)fm_bookmark_item_unref);
 
     connect(ui->addItem, &QPushButton::clicked, this, &EditBookmarksDialog::onAddItem);
     connect(ui->removeItem, &QPushButton::clicked, this, &EditBookmarksDialog::onRemoveItem);
 }
 
 EditBookmarksDialog::~EditBookmarksDialog() {
-    g_object_unref(bookmarks_);
     delete ui;
 }
 

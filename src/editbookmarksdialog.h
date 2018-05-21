@@ -23,7 +23,7 @@
 
 #include "libfmqtglobals.h"
 #include <QDialog>
-#include <libfm/fm.h>
+#include "core/bookmarks.h"
 
 namespace Ui {
 class EditBookmarksDialog;
@@ -34,7 +34,7 @@ namespace Fm {
 class LIBFM_QT_API EditBookmarksDialog : public QDialog {
     Q_OBJECT
 public:
-    explicit EditBookmarksDialog(FmBookmarks* bookmarks, QWidget* parent = 0, Qt::WindowFlags f = 0);
+    explicit EditBookmarksDialog(std::shared_ptr<Bookmarks> bookmarks, QWidget* parent = 0, Qt::WindowFlags f = 0);
     virtual ~EditBookmarksDialog();
 
     virtual void accept();
@@ -45,7 +45,7 @@ private Q_SLOTS:
 
 private:
     Ui::EditBookmarksDialog* ui;
-    FmBookmarks* bookmarks_;
+    std::shared_ptr<Bookmarks> bookmarks_;
 };
 
 }
