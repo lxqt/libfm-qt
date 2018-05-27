@@ -20,6 +20,8 @@
 #include "appmenuview.h"
 #include <QStandardItemModel>
 #include "appmenuview_p.h"
+#include "core/filepath.h"
+
 #include <gio/gdesktopappinfo.h>
 
 namespace Fm {
@@ -146,16 +148,15 @@ const char* AppMenuView::selectedAppDesktopId() const {
     return nullptr;
 }
 
-FmPath* AppMenuView::selectedAppDesktopPath() const {
+FilePath AppMenuView::selectedAppDesktopPath() const {
     AppMenuViewItem* item = selectedItem();
+    FilePath path;
     if(item && item->isApp()) {
         char* mpath = menu_cache_dir_make_path(MENU_CACHE_DIR(item));
-        FmPath* path = fm_path_new_relative(fm_path_get_apps_menu(),
-                                            mpath + 13 /* skip "/Applications" */);
+        path = FilePath::fromUri("menu://applications/").relativePath(mpath + 13 /* skip "/Applications" */);
         g_free(mpath);
-        return path;
     }
-    return nullptr;
+    return path;
 }
 
 } // namespace Fm

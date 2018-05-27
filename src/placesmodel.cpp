@@ -177,7 +177,7 @@ void PlacesModel::updateTrash() {
         QPointer<PlacesModel> model;
         GFile* gf;
         UpdateTrashData(PlacesModel* _model) : model(_model) {
-            gf = fm_file_new_for_uri("trash:///");
+            gf = g_file_new_for_uri("trash:///");
         }
         ~UpdateTrashData() {
             g_object_unref(gf);
@@ -209,7 +209,7 @@ void PlacesModel::updateTrash() {
 
 void PlacesModel::createTrashItem() {
     GFile* gf;
-    gf = fm_file_new_for_uri("trash:///");
+    gf = g_file_new_for_uri("trash:///");
     // check if trash is supported by the current vfs
     // if gvfs is not installed, this can be unavailable.
     if(!g_file_query_exists(gf, nullptr)) {
@@ -220,7 +220,7 @@ void PlacesModel::createTrashItem() {
     }
     trashItem_ = new PlacesModelItem("user-trash", tr("Trash"), Fm::FilePath::fromUri("trash:///"));
 
-    trashMonitor_ = fm_monitor_directory(gf, nullptr);
+    trashMonitor_ = g_file_monitor_directory(gf, G_FILE_MONITOR_NONE, nullptr, nullptr);
     if(trashMonitor_) {
         g_signal_connect(trashMonitor_, "changed", G_CALLBACK(onTrashChanged), this);
     }

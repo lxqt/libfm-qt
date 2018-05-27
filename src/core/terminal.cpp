@@ -7,6 +7,8 @@ namespace Fm {
 #include <string.h>
 #include <unistd.h>
 
+static std::string defaultTerminalName{"xterm"};
+
 #if !GLIB_CHECK_VERSION(2, 28, 0) && !HAVE_DECL_ENVIRON
 extern char** environ;
 #endif
@@ -122,6 +124,60 @@ std::vector<CStrPtr> allKnownTerminals() {
     }
     g_key_file_free(kf);
     return terminals;
+}
+
+// used by fm-app-info.c
+extern "C" char* expand_terminal(char* cmd, gboolean keep_open, GError** error) {
+    const char* program = nullptr;
+    CStrPtr open_arg;
+    CStrPtr noclose_arg;
+    CStrPtr custom_args;
+
+    /* read system terminals file */
+    GKeyFile* kf = g_key_file_new();
+    if(g_key_file_load_from_file(kf, LIBFM_QT_DATA_DIR "/terminals.list", G_KEY_FILE_NONE, error)) {
+        if(g_key_file_has_group(kf, defaultTerminalName.c_str())) {
+            program = defaultTerminalName.c_str();
+            open_arg = CStrPtr{g_key_file_get_string(kf, program, "open_arg", nullptr)};
+            noclose_arg = CStrPtr{g_key_file_get_string(kf, program, "noclose_arg", nullptr)};
+            custom_args = CStrPtr{g_key_file_get_string(kf, program, "custom_args", nullptr)};
+        }
+    }
+    g_key_file_free(kf);
+
+    const char* opts;
+    /* if %s is not found, fallback to -e */
+    /* bug #3457335: Crash on application start with Terminal=true. */
+    /* fallback to xterm if a terminal emulator is not found. */
+    if(!program) {
+        /* FIXME: we should not hard code xterm here. :-(
+         * It's better to prompt the user and let he or she set
+         * his preferred terminal emulator. */
+        program = "xterm";
+        open_arg = CStrPtr{g_strdup("-e")};
+    }
+
+    if(keep_open && noclose_arg)
+        opts = noclose_arg.get();
+    else
+        opts = open_arg.get();
+
+    char* ret = nullptr;
+    if(custom_args)
+        ret = g_strdup_printf("%s %s %s %s", program, custom_args.get(),
+                              opts, cmd);
+    else
+        ret = g_strdup_printf("%s %s %s", program, opts, cmd);
+
+    return ret;
+}
+
+const std::string defaultTerminal() {
+    return defaultTerminalName;
+}
+
+void setDefaultTerminal(std::string program) {
+    defaultTerminalName = program;
 }
 
 } // namespace Fm

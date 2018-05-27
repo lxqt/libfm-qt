@@ -192,7 +192,7 @@ void PathEdit::reloadCompleter(bool triggeredByFocusInEvent) {
     job->triggeredByFocusInEvent = triggeredByFocusInEvent;
     // need to use fm_file_new_for_commandline_arg() rather than g_file_new_for_commandline_arg().
     // otherwise, our own vfs, such as menu://, won't be loaded.
-    job->dirName = fm_file_new_for_commandline_arg(currentPrefix_.toLocal8Bit().constData());
+    job->dirName = g_file_new_for_commandline_arg(currentPrefix_.toLocal8Bit().constData());
     // qDebug("load: %s", g_file_get_uri(data->dirName));
     cancellable_ = g_cancellable_new();
     job->cancellable = (GCancellable*)g_object_ref(cancellable_);

@@ -22,10 +22,10 @@
 
 #include <QTreeView>
 #include "libfmqtglobals.h"
-#include <libfm/fm.h>
 #include <menu-cache/menu-cache.h>
 
 #include "core/gioptrs.h"
+#include "core/filepath.h"
 
 class QStandardItemModel;
 class QStandardItem;
@@ -46,7 +46,7 @@ public:
 
     QByteArray selectedAppDesktopFilePath() const;
 
-    FmPath* selectedAppDesktopPath() const;
+    FilePath selectedAppDesktopPath() const;
 
     bool isAppSelected() const;
 
