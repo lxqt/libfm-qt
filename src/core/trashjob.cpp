@@ -1,5 +1,7 @@
 #include "trashjob.h"
 
+#include "core/legacy/fm-config.h"
+
 namespace Fm {
 
 TrashJob::TrashJob(FilePathList paths): paths_{std::move(paths)} {

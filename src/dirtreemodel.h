@@ -26,7 +26,6 @@
 #include <QIcon>
 #include <QList>
 #include <QSharedPointer>
-#include <libfm/fm.h>
 #include <vector>
 
 #include "core/fileinfo.h"

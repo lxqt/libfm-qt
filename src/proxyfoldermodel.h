@@ -23,7 +23,6 @@
 
 #include "libfmqtglobals.h"
 #include <QSortFilterProxyModel>
-#include <libfm/fm.h>
 #include <QList>
 #include <QCollator>
 

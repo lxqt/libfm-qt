@@ -26,7 +26,6 @@
 #include <QStandardItem>
 #include <QList>
 #include <QAction>
-#include <libfm/fm.h>
 
 #include "core/fileinfo.h"
 #include "core/filepath.h"

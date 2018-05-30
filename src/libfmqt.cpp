@@ -23,6 +23,7 @@
 #include "core/thumbnailer.h"
 #include "xdndworkaround.h"
 #include "core/vfs/fm-file.h"
+#include "core/legacy/fm-config.h"
 
 namespace Fm {
 
@@ -62,10 +63,10 @@ LibFmQtData::LibFmQtData(): refCount(1) {
     Fm::Thumbnailer::loadAll();
     translator.load("libfm-qt_" + QLocale::system().name(), LIBFM_QT_DATA_DIR "/translations");
 
-    // register some URI schemes implemented by libfm
-    // _fm_file_init();
+    // FIXME: we keep the FmConfig data structure here to keep compatibility with legacy libfm API.
+    fm_config_init();
 
-    // FIXME: move these implementations into libfm-qt to avoid linking with libfm.
+    // register some URI schemes implemented by libfm
     GVfs* vfs = g_vfs_get_default();
     g_vfs_register_uri_scheme(vfs, "menu", lookupMenuUri, nullptr, nullptr, lookupMenuUri, nullptr, nullptr);
     g_vfs_register_uri_scheme(vfs, "search", lookupSearchUri, nullptr, nullptr, lookupSearchUri, nullptr, nullptr);

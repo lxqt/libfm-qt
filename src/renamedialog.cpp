@@ -27,6 +27,8 @@
 #include "core/iconinfo.h"
 #include "utilities.h"
 
+#include "core/legacy/fm-config.h"
+
 namespace Fm {
 
 RenameDialog::RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* parent, Qt::WindowFlags f):

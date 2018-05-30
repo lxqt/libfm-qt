@@ -43,7 +43,7 @@ public:
 
 private:
     virtual ~CachedFolderModel();
-    void setFolder(FmFolder* folder);
+
 private:
     int refCount;
     constexpr static const char* cacheKey = "CachedFolderModel";

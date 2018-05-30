@@ -22,7 +22,6 @@
 #define FM_SIDEPANE_H
 
 #include "libfmqtglobals.h"
-#include <libfm/fm.h>
 #include <QWidget>
 
 #include "core/filepath.h"

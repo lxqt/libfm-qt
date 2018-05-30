@@ -26,7 +26,6 @@
 #include <QItemSelection>
 #include <QIcon>
 #include <QImage>
-#include <libfm/fm.h>
 #include <QList>
 #include <vector>
 #include <utility>

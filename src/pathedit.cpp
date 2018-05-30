@@ -27,7 +27,6 @@
 #include <QDebug>
 #include <QKeyEvent>
 #include <QDir>
-#include <libfm/fm.h>
 
 namespace Fm {
 

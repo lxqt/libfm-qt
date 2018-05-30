@@ -22,7 +22,6 @@
 
 #include "libfmqtglobals.h"
 #include <QTreeView>
-#include <libfm/fm.h>
 
 #include "core/filepath.h"
 

@@ -20,6 +20,7 @@
 
 #include "mountoperation.h"
 #include <glib/gi18n.h> // for _()
+#include <glib/gstdio.h> // for g_chdir()
 #include <QMessageBox>
 #include <QPushButton>
 #include <QEventLoop>

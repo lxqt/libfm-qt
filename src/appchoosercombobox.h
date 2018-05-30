@@ -22,7 +22,6 @@
 
 #include "libfmqtglobals.h"
 #include <QComboBox>
-#include <libfm/fm.h>
 
 #include <vector>
 

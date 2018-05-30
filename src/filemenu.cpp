@@ -36,6 +36,9 @@
 
 #include "core/archiver.h"
 
+#include "core/legacy/fm-app-info.h"
+
+
 namespace Fm {
 
 FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> info, Fm::FilePath cwd, bool isWritableDir, const QString& title, QWidget* parent):

@@ -23,13 +23,7 @@ public:
 
     static QThreadPool* threadPool();
 
-
-    static void setLocalFilesOnly(bool value) {
-        localFilesOnly_ = value;
-        if(fm_config) {
-            fm_config->thumbnail_local = localFilesOnly_;
-        }
-    }
+    static void setLocalFilesOnly(bool value);
 
     static bool localFilesOnly() {
         return localFilesOnly_;
@@ -39,12 +33,7 @@ public:
         return maxThumbnailFileSize_;
     }
 
-    static void setMaxThumbnailFileSize(int size) {
-        maxThumbnailFileSize_ = size;
-        if(fm_config) {
-            fm_config->thumbnail_max = maxThumbnailFileSize_;
-        }
-    }
+    static void setMaxThumbnailFileSize(int size);
 
     const std::vector<QImage>& results() const {
         return results_;

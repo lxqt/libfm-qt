@@ -24,7 +24,6 @@
 #include "libfmqtglobals.h"
 #include <QWidget>
 #include <QDialog>
-#include <libfm/fm.h>
 #include <gio/gio.h>
 #include <QPointer>
 
