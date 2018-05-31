@@ -52,17 +52,23 @@ ProxyFolderModel::~ProxyFolderModel() {
 void ProxyFolderModel::setSourceModel(QAbstractItemModel* model) {
     if(model == sourceModel()) // avoid setting the same model twice
         return;
+    FolderModel* oldSrcModel = static_cast<FolderModel*>(sourceModel());
+#if (QT_VERSION >= QT_VERSION_CHECK(5,11,0))
+    // workaround for Qt-5.11 bug https://bugreports.qt.io/browse/QTBUG-68581
+    if(oldSrcModel) {
+        disconnect(oldSrcModel, SIGNAL(destroyed()), this, SLOT(_q_sourceModelDestroyed()));
+    }
+#endif
     if(model) {
         // we only support Fm::FolderModel
         Q_ASSERT(model->inherits("Fm::FolderModel"));
 
         if(showThumbnails_ && thumbnailSize_ != 0) { // if we're showing thumbnails
-            FolderModel* oldSrcModel = static_cast<FolderModel*>(sourceModel());
-            FolderModel* newSrcModel = static_cast<FolderModel*>(model);
             if(oldSrcModel) { // we need to release cached thumbnails for the old source model
                 oldSrcModel->releaseThumbnails(thumbnailSize_);
                 disconnect(oldSrcModel, SIGNAL(thumbnailLoaded(QModelIndex, int)));
             }
+            FolderModel* newSrcModel = static_cast<FolderModel*>(model);
             if(newSrcModel) { // tell the new source model that we want thumbnails of this size
                 newSrcModel->cacheThumbnails(thumbnailSize_);
                 connect(newSrcModel, &FolderModel::thumbnailLoaded, this, &ProxyFolderModel::onThumbnailLoaded);
