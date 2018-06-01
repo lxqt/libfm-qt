@@ -53,7 +53,7 @@ void ProxyFolderModel::setSourceModel(QAbstractItemModel* model) {
     if(model == sourceModel()) // avoid setting the same model twice
         return;
     FolderModel* oldSrcModel = static_cast<FolderModel*>(sourceModel());
-#if (QT_VERSION >= QT_VERSION_CHECK(5,11,0))
+#if (QT_VERSION == QT_VERSION_CHECK(5,11,0))
     // workaround for Qt-5.11 bug https://bugreports.qt.io/browse/QTBUG-68581
     if(oldSrcModel) {
         disconnect(oldSrcModel, SIGNAL(destroyed()), this, SLOT(_q_sourceModelDestroyed()));
