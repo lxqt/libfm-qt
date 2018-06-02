@@ -1,7 +1,15 @@
 
-libfm-qt-0.13.0 / 2018-05-21
+libfm-qt-0.13.1 / 2018-06-02
 ============================
 
+  * Bump patch version to 1
+  * It's supposedly fixed in Qt-5.11.1
+  * Disconnect old source model
+
+0.13.0 / 2018-05-21
+===================
+
+  * Release 0.13.0: Update changelog
   * Bumped minor version to 13
   * Fixed shortcut detection
   * Delete CachedFolderModel immediately on unreffing it
