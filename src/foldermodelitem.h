@@ -58,6 +58,10 @@ public:
         return info->displayName();
     }
 
+    const std::string& name() const {
+        return info->name();
+    }
+
     QIcon icon(bool transparent = false) const {
         const auto i = info->icon();
         return i ? i->qicon(transparent) : QIcon{};

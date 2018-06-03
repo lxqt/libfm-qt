@@ -35,7 +35,8 @@
 namespace Fm {
 
 FolderModel::FolderModel():
-    hasPendingThumbnailHandler_{false} {
+    hasPendingThumbnailHandler_{false},
+    showFullNames_{false} {
 }
 
 FolderModel::~FolderModel() {
@@ -221,7 +222,8 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
     case Qt::DisplayRole:  {
         switch(index.column()) {
         case ColumnFileName:
-            return item->displayName();
+            return (showFullNames_ && !item->name().empty() ? QString::fromStdString(item->name())
+                                                            : item->displayName());
         case ColumnFileType:
             return QString(info->mimeType()->desc());
         case ColumnFileMTime:

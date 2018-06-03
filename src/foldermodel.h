@@ -96,6 +96,10 @@ public:
 
     void setCutFiles(const QItemSelection& selection);
 
+    void setShowFullName(bool fullName) {
+        showFullNames_ = fullName;
+    }
+
 Q_SIGNALS:
     void thumbnailLoaded(const QModelIndex& index, int size);
     void fileSizeChanged(const QModelIndex& index);
@@ -140,6 +144,8 @@ private:
     bool hasPendingThumbnailHandler_;
     std::vector<Fm::ThumbnailJob*> pendingThumbnailJobs_;
     std::forward_list<ThumbnailData> thumbnailData_;
+
+    bool showFullNames_;
 };
 
 }
