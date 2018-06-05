@@ -144,8 +144,8 @@ target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
 
 # set libtool soname
 set_target_properties(${LIBFM_QT_LIBRARY_NAME} PROPERTIES
-    VERSION ${LIBFM_QT_LIB_VERSION}
-    SOVERSION ${LIBFM_QT_LIB_SOVERSION}
+    VERSION ${LIBFM_QT_ABI_VERSION}
+    SOVERSION ${LIBFM_QT_SOVERSION}
 )
 
 target_include_directories(${LIBFM_QT_LIBRARY_NAME}
