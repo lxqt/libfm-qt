@@ -23,7 +23,6 @@
 #include "renamedialog.h"
 #include <QLabel>
 #include <QMessageBox>
-#include <libfm/fm-config.h>
 #include "utilities.h"
 #include "ui_file-operation-dialog.h"
 
