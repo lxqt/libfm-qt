@@ -479,6 +479,7 @@ FolderView::FolderView(FolderView::ViewMode _mode, QWidget *parent):
     autoSelectionTimer_(nullptr),
     selChangedTimer_(nullptr),
     itemDelegateMargins_(QSize(3, 3)),
+    shadowHidden_(false),
     smoothScrollTimer_(nullptr),
     wheelEvent_(nullptr) {
 
@@ -609,6 +610,7 @@ void FolderView::setViewMode(ViewMode _mode) {
 
         // set our own custom delegate
         delegate = new FolderItemDelegate(treeView);
+        delegate->setShadowHidden(shadowHidden_);
         treeView->setItemDelegateForColumn(FolderModel::ColumnFileName, delegate);
     }
     else {
@@ -625,6 +627,7 @@ void FolderView::setViewMode(ViewMode _mode) {
 
         // set our own custom delegate
         delegate = new FolderItemDelegate(listView);
+        delegate->setShadowHidden(shadowHidden_);
         listView->setItemDelegateForColumn(FolderModel::ColumnFileName, delegate);
         // FIXME: should we expose the delegate?
         listView->setMovement(QListView::Static);
@@ -760,6 +763,24 @@ void FolderView::setMargins(QSize size) {
     if(itemDelegateMargins_ != size.expandedTo(QSize(0, 0))) {
         itemDelegateMargins_ = size.expandedTo(QSize(0, 0));
         updateGridSize();
+    }
+}
+
+void FolderView::setShadowHidden(bool shadowHidden) {
+    if(view && shadowHidden != shadowHidden_) {
+        shadowHidden_ = shadowHidden;
+        FolderItemDelegate* delegate = nullptr;
+        if(mode == DetailedListMode) {
+            FolderViewTreeView* treeView = static_cast<FolderViewTreeView*>(view);
+            delegate = static_cast<FolderItemDelegate*>(treeView->itemDelegateForColumn(FolderModel::ColumnFileName));
+        }
+        else {
+            FolderViewListView* listView = static_cast<FolderViewListView*>(view);
+            delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
+        }
+        if(delegate) {
+            delegate->setShadowHidden(shadowHidden);
+        }
     }
 }
 
