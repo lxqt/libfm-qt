@@ -120,6 +120,8 @@ public:
 
     void setAutoSelectionDelay(int delay);
 
+    void setShadowHidden(bool shadowHidden);
+
 protected:
     virtual bool event(QEvent* event);
     virtual void contextMenuEvent(QContextMenuEvent* event);
@@ -181,6 +183,7 @@ private:
     QTimer* selChangedTimer_;
     // the cell margins in the icon and thumbnail modes
     QSize itemDelegateMargins_;
+    bool shadowHidden_;
     // smooth scrolling:
     struct scollData {
         int delta;

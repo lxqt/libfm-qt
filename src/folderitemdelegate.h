@@ -89,6 +89,10 @@ public:
         return hasEditor_;
     }
 
+    void setShadowHidden(bool value) {
+        shadowHidden_ = value;
+    }
+
     virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
     virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
@@ -116,6 +120,7 @@ private:
     int iconInfoRole_;
     QColor shadowColor_;
     QSize margins_;
+    bool shadowHidden_;
     mutable bool hasEditor_;
 };
 

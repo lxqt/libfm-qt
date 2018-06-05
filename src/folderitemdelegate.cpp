@@ -42,6 +42,7 @@ FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent)
     fileInfoRole_(Fm::FolderModel::FileInfoRole),
     iconInfoRole_(-1),
     margins_(QSize(3, 3)),
+    shadowHidden_(false),
     hasEditor_(false) {
     connect(this,  &QAbstractItemDelegate::closeEditor, [=]{hasEditor_ = false;});
 }
@@ -76,7 +77,7 @@ QSize FolderItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QMo
         return itemSize_;
     }
 
-    // The default size hint of the horizontal layout isn't reliable 
+    // The default size hint of the horizontal layout isn't reliable
     // because Qt calculates the row size based on the real icon size,
     // which may not be equal to the requested icon size on various occasions.
     // So, we do as in QStyledItemDelegate::sizeHint() but use the requested size.
@@ -115,10 +116,12 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     initStyleOption(&opt, index);
 
     // distinguish the hidden items visually by making their texts italic
+    bool shadowIcon(false);
     if(file && file->isHidden()) {
         QFont f(opt.font);
         f.setItalic(true);
         opt.font = f;
+        shadowIcon = shadowHidden_;
     }
 
     bool isSymlink = file && file->isSymlink();
@@ -132,7 +135,7 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         opt.displayAlignment = Qt::AlignTop | Qt::AlignHCenter;
 
         // draw the icon
-        QIcon::Mode iconMode = iconModeFromState(opt.state);
+        QIcon::Mode iconMode = shadowIcon ? QIcon::Disabled : iconModeFromState(opt.state);
         QPoint iconPos(opt.rect.x() + (opt.rect.width() - option.decorationSize.width()) / 2, opt.rect.y() + margins_.height());
         QPixmap pixmap = opt.icon.pixmap(option.decorationSize, iconMode);
         // in case the pixmap is smaller than the requested size
@@ -173,14 +176,22 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     }
     else {  // horizontal layout (list view)
 
-        // let QStyledItemDelegate does its default painting
-        // FIXME: For better text alignment, here we should increase
-        // the icon width if it's smaller that the requested size
-        QStyledItemDelegate::paint(painter, opt, index);
+        // Let the style engine do the painting but make the icon look disabled if shadowed.
+        // NOTE: The shadowing can also be done directly.
+        // WARNING: QStyledItemDelegate shouldn't be used for painting because it resets the icon.
+        // FIXME: For better text alignment, here we could have increased the icon width
+        // when it's smaller than the requested size.
+        if(shadowIcon) {
+            QPixmap pixmap = opt.icon.pixmap(option.decorationSize, QIcon::Disabled);
+            opt.icon = QIcon(pixmap);
+        }
+        const QWidget* widget = opt.widget;
+        QStyle* style = widget ? widget->style() : QApplication::style();
+        style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, widget);
 
         // draw emblems if needed
         if(isSymlink || !emblems.empty()) {
-            QIcon::Mode iconMode = iconModeFromState(opt.state);
+            QIcon::Mode iconMode = shadowIcon ? QIcon::Disabled : iconModeFromState(opt.state);
             // draw some emblems for the item if needed
             if(isSymlink) {
                 QPoint iconPos(opt.rect.x(), opt.rect.y() + (opt.rect.height() - option.decorationSize.height()) / 2);
