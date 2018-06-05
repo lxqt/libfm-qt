@@ -20,7 +20,6 @@
 #ifndef __LIBFM_QT_FM_JOB_H__
 #define __LIBFM_QT_FM_JOB_H__
 
-#include <libfm/fm.h>
 #include <QObject>
 #include <QtGlobal>
 #include <QThread>

@@ -24,7 +24,6 @@
 #include "libfmqtglobals.h"
 #include <QMenu>
 #include <qabstractitemmodel.h>
-#include <libfm/fm.h>
 #include "core/fileinfo.h"
 
 class QAction;

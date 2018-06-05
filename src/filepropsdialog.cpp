@@ -33,6 +33,8 @@
 #include "core/totalsizejob.h"
 #include "core/folder.h"
 
+#include "core/legacy/fm-config.h"
+
 #define DIFFERENT_UIDS    ((uid)-1)
 #define DIFFERENT_GIDS    ((gid)-1)
 #define DIFFERENT_PERMS   ((mode_t)-1)

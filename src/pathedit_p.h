@@ -22,7 +22,6 @@
 #define FM_PATHEDIT_P_H
 
 #include <QObject>
-#include <libfm/fm.h>
 
 namespace Fm {
 

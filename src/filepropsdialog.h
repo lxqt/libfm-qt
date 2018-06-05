@@ -24,7 +24,6 @@
 #include "libfmqtglobals.h"
 #include <QDialog>
 #include <QTimer>
-#include <libfm/fm.h>
 
 #include "core/fileinfo.h"
 #include "core/totalsizejob.h"

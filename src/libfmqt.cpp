@@ -17,12 +17,13 @@
  *
  */
 
-#include <libfm/fm.h>
 #include "libfmqt.h"
 #include <QLocale>
 #include <QPixmapCache>
 #include "core/thumbnailer.h"
 #include "xdndworkaround.h"
+#include "core/vfs/fm-file.h"
+#include "core/legacy/fm-config.h"
 
 namespace Fm {
 
@@ -38,33 +39,45 @@ struct LibFmQtData {
 
 static LibFmQtData* theLibFmData = nullptr;
 
-static GFile* lookupCustomUri(GVfs * /*vfs*/, const char *identifier, gpointer /*user_data*/) {
-    GFile* gf = fm_file_new_for_uri(identifier);
-    return gf;
+extern "C" {
+
+GFile *_fm_vfs_search_new_for_uri(const char *uri);  // defined in vfs-search.c
+GFile *_fm_vfs_menu_new_for_uri(const char *uri);  // defined in vfs-menu.c
+
+}
+
+static GFile* lookupSearchUri(GVfs * /*vfs*/, const char *identifier, gpointer /*user_data*/) {
+    return _fm_vfs_search_new_for_uri(identifier);
+}
+
+static GFile* lookupMenuUri(GVfs * /*vfs*/, const char *identifier, gpointer /*user_data*/) {
+    return _fm_vfs_menu_new_for_uri(identifier);
 }
 
 LibFmQtData::LibFmQtData(): refCount(1) {
 #if !GLIB_CHECK_VERSION(2, 36, 0)
     g_type_init();
 #endif
-    fm_init(nullptr);
     // turn on glib debug message
     // g_setenv("G_MESSAGES_DEBUG", "all", true);
     Fm::Thumbnailer::loadAll();
     translator.load("libfm-qt_" + QLocale::system().name(), LIBFM_QT_DATA_DIR "/translations");
 
+    // FIXME: we keep the FmConfig data structure here to keep compatibility with legacy libfm API.
+    fm_config_init();
+
     // register some URI schemes implemented by libfm
-    // FIXME: move these implementations into libfm-qt to avoid linking with libfm.
     GVfs* vfs = g_vfs_get_default();
-    g_vfs_register_uri_scheme(vfs, "menu", lookupCustomUri, nullptr, nullptr, lookupCustomUri, nullptr, nullptr);
-    g_vfs_register_uri_scheme(vfs, "search", lookupCustomUri, nullptr, nullptr, lookupCustomUri, nullptr, nullptr);
+    g_vfs_register_uri_scheme(vfs, "menu", lookupMenuUri, nullptr, nullptr, lookupMenuUri, nullptr, nullptr);
+    g_vfs_register_uri_scheme(vfs, "search", lookupSearchUri, nullptr, nullptr, lookupSearchUri, nullptr, nullptr);
 }
 
 LibFmQtData::~LibFmQtData() {
+    // _fm_file_finalize();
+
     GVfs* vfs = g_vfs_get_default();
     g_vfs_unregister_uri_scheme(vfs, "menu");
     g_vfs_unregister_uri_scheme(vfs, "search");
-    fm_finalize();
 }
 
 LibFmQt::LibFmQt() {

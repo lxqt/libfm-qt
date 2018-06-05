@@ -26,7 +26,6 @@
 #include <QListView>
 #include <QTreeView>
 #include <QMouseEvent>
-#include <libfm/fm.h>
 #include "foldermodel.h"
 #include "proxyfoldermodel.h"
 

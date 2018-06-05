@@ -12,6 +12,8 @@
 #include <QEventLoop>
 #include <QDebug>
 
+#include "legacy/fm-app-info.h"
+
 namespace Fm {
 
 BasicFileLauncher::BasicFileLauncher():

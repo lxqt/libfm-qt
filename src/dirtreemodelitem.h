@@ -21,7 +21,6 @@
 #define FM_DIRTREEMODELITEM_H
 
 #include "libfmqtglobals.h"
-#include <libfm/fm.h>
 #include <vector>
 #include <QIcon>
 #include <QModelIndex>

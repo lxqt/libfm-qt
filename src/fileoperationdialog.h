@@ -24,7 +24,6 @@
 #include "libfmqtglobals.h"
 #include <cstdint>
 #include <QDialog>
-#include <libfm/fm.h>
 #include "core/filepath.h"
 #include "core/fileinfo.h"
 #include "core/fileoperationjob.h"

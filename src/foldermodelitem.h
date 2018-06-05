@@ -22,7 +22,6 @@
 #define FM_FOLDERMODELITEM_H
 
 #include "libfmqtglobals.h"
-#include <libfm/fm.h>
 #include <QImage>
 #include <QString>
 #include <QIcon>

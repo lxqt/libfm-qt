@@ -7,6 +7,8 @@
 #include <QDir>
 #include "thumbnailer.h"
 
+#include "core/legacy/fm-config.h"
+
 namespace Fm {
 
 QThreadPool* ThumbnailJob::threadPool_ = nullptr;
@@ -260,6 +262,20 @@ QThreadPool* ThumbnailJob::threadPool() {
         threadPool_->setMaxThreadCount(1);
     }
     return threadPool_;
+}
+
+void ThumbnailJob::setLocalFilesOnly(bool value) {
+    localFilesOnly_ = value;
+    if(fm_config) {
+        fm_config->thumbnail_local = localFilesOnly_;
+    }
+}
+
+void ThumbnailJob::setMaxThumbnailFileSize(int size) {
+    maxThumbnailFileSize_ = size;
+    if(fm_config) {
+        fm_config->thumbnail_max = maxThumbnailFileSize_;
+    }
 }
 
 

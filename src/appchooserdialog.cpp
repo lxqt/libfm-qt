@@ -22,6 +22,7 @@
 #include "ui_app-chooser-dialog.h"
 #include <QPushButton>
 #include <gio/gdesktopappinfo.h>
+#include <glib/gstdio.h>
 
 namespace Fm {
 

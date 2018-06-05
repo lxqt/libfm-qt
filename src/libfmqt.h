@@ -24,7 +24,6 @@
 #include "libfmqtglobals.h"
 #include <QtGlobal>
 #include <QTranslator>
-#include <libfm/fm.h>
 
 namespace Fm {
 

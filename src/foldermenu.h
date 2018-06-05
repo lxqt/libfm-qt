@@ -23,7 +23,6 @@
 
 #include "libfmqtglobals.h"
 #include <QMenu>
-#include <libfm/fm.h>
 #include "foldermodel.h"
 
 class QAction;

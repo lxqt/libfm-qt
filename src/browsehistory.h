@@ -23,7 +23,6 @@
 
 #include "libfmqtglobals.h"
 #include <vector>
-#include <libfm/fm.h>
 
 #include "core/filepath.h"
 

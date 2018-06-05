@@ -26,7 +26,6 @@
 #include <QStandardItem>
 #include <QList>
 #include <QAction>
-#include <libfm/fm.h>
 
 #include <memory>
 
@@ -123,7 +122,6 @@ private:
 private:
     std::shared_ptr<Fm::Bookmarks> bookmarks;
     GVolumeMonitor* volumeMonitor;
-    QList<FmJob*> jobs;
     bool showApplications_;
     bool showDesktop_;
     QStandardItem* placesRoot;

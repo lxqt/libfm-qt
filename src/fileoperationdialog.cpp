@@ -27,6 +27,7 @@
 #include "utilities.h"
 #include "ui_file-operation-dialog.h"
 
+#include "core/legacy/fm-config.h"
 
 namespace Fm {
 

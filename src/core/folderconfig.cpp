@@ -49,21 +49,23 @@ bool FolderConfig::open(const Fm::FilePath& path) {
     }
 
     changed_ = FALSE;
-    /* clear .directory file first */
-    auto sub_path = path.child(".directory");
-    configFilePath_ = sub_path.toString();
+    if(path.isNative()) {
+        /* clear .directory file first */
+        auto sub_path = path.child(".directory");
+        configFilePath_ = sub_path.toString();
 
-    // FIXME: this only works for local filesystem and it's a blocking call. :-(
-    if(g_file_test(configFilePath_.get(), G_FILE_TEST_EXISTS)) {
-        keyFile_ = g_key_file_new();
-        if(g_key_file_load_from_file(keyFile_, configFilePath_.get(),
-                                     GKeyFileFlags(G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS),
-                                     nullptr) &&
-                g_key_file_has_group(keyFile_, "File Manager")) {
-            group_ = CStrPtr{g_strdup("File Manager")};
-            return true;
+        // FIXME: this only works for local filesystem and it's a blocking call. :-(
+        if(g_file_test(configFilePath_.get(), G_FILE_TEST_EXISTS)) {
+            keyFile_ = g_key_file_new();
+            if(g_key_file_load_from_file(keyFile_, configFilePath_.get(),
+                                         GKeyFileFlags(G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS),
+                                         nullptr) &&
+                    g_key_file_has_group(keyFile_, "File Manager")) {
+                group_ = CStrPtr{g_strdup("File Manager")};
+                return true;
+            }
+            g_key_file_free(keyFile_);
         }
-        g_key_file_free(keyFile_);
     }
 
     // No per-folder config file.
@@ -262,7 +264,6 @@ void FolderConfig::finalize(void) {
 void FolderConfig::init(const char* globalConfigFile) {
     globalConfigFile_ = CStrPtr{g_strdup(globalConfigFile)};
     fc_cache = g_key_file_new();
-    g_print("INIT FOLDER CONF: %s\n", globalConfigFile);
     if(!g_key_file_load_from_file(fc_cache, globalConfigFile_.get(), G_KEY_FILE_NONE, nullptr)) {
         // fail to load the config file.
         // fallback to the legacy libfm config file for backward compatibility

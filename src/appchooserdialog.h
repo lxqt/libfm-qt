@@ -23,7 +23,6 @@
 
 #include <QDialog>
 #include "libfmqtglobals.h"
-#include <libfm/fm.h>
 
 #include "core/mimetype.h"
 #include "core/gioptrs.h"

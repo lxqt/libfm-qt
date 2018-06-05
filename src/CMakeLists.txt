@@ -1,4 +1,14 @@
 set(libfm_core_SRCS
+    # gio gvfs implementations
+    core/vfs/fm-file.c
+    core/vfs/fm-file.h
+    core/vfs/fm-xml-file.c
+    core/vfs/fm-xml-file.h
+    core/vfs/vfs-menu.c
+    core/vfs/vfs-search.c
+    # other legacy C code
+    core/legacy/fm-config.c
+    core/legacy/fm-app-info.c
     # core data structures
     core/gobjectptr.h
     core/filepath.cpp
@@ -127,7 +137,10 @@ install(EXPORT
 target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
     Qt5::Widgets
     Qt5::X11Extras
-    ${FM_LIBRARIES}
+    ${GLIB_LIBRARIES}
+    ${GLIB_GIO_LIBRARIES}
+    ${GLIB_GOBJECT_LIBRARIES}
+    ${GLIB_GTHREAD_LIBRARIES}
     ${MENUCACHE_LIBRARIES}
     ${XCB_LIBRARIES}
     ${EXIF_LIBRARIES}
@@ -141,9 +154,10 @@ set_target_properties(${LIBFM_QT_LIBRARY_NAME} PROPERTIES
 
 target_include_directories(${LIBFM_QT_LIBRARY_NAME}
     PRIVATE "${Qt5Gui_PRIVATE_INCLUDE_DIRS}"
+        core/legacy
     PUBLIC
-        "${FM_INCLUDE_DIRS}"
-        "${FM_INCLUDE_DIR}/libfm" # to workaround incorrect #include in fm-actions.
+        "${GLIB_INCLUDE_DIRS}"
+        "${GLIB_GIO_UNIX_INCLUDE_DIR}"
         "${MENUCACHE_INCLUDE_DIRS}"
         "${XCB_INCLUDE_DIRS}"
         "${EXIF_INCLUDE_DIRS}"
@@ -155,6 +169,7 @@ target_include_directories(${LIBFM_QT_LIBRARY_NAME}
 target_compile_definitions(${LIBFM_QT_LIBRARY_NAME}
     PRIVATE "LIBFM_QT_DATA_DIR=\"${LIBFM_QT_DATA_DIR}\""
             "QT_NO_FOREACH"
+            "GETTEXT_PACKAGE=\"\""
     PUBLIC "QT_NO_KEYWORDS"
 )
 

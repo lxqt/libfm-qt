@@ -24,7 +24,6 @@
 #include "libfmqtglobals.h"
 #include <QTreeView>
 #include <QSortFilterProxyModel>
-#include <libfm/fm.h>
 
 #include <memory>
 #include "core/filepath.h"

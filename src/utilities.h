@@ -24,7 +24,6 @@
 #include <QUrl>
 #include <QList>
 #include <QMimeData>
-#include <libfm/fm.h>
 #include <sys/types.h>
 
 #include <cstdint>

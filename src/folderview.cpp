@@ -48,8 +48,6 @@
 #include "folderview_p.h"
 #include "utilities.h"
 
-Q_DECLARE_OPAQUE_POINTER(FmFileInfo*)
-
 #define SCROLL_FRAMES_PER_SEC 50
 #define SCROLL_DURATION 300 // in ms
 
