@@ -133,19 +133,21 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     toolbar->addSeparator();
     // view buttons
     auto viewModeGroup = new QActionGroup(this);
-    iconViewAction_ = toolbar->addAction(style()->standardIcon(QStyle::SP_FileDialogContentsView), tr("Icon View"));
+
+    // use generic icons for view actions only if theme icons don't exist
+    iconViewAction_ = toolbar->addAction(QIcon::fromTheme(QLatin1String("view-list-icons"), style()->standardIcon(QStyle::SP_FileDialogContentsView)), tr("Icon View"));
     iconViewAction_->setCheckable(true);
     connect(iconViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(iconViewAction_);
-    thumbnailViewAction_ = toolbar->addAction(style()->standardIcon(QStyle::SP_FileDialogInfoView), tr("Thumbnail View"));
+    thumbnailViewAction_ = toolbar->addAction(QIcon::fromTheme(QLatin1String("dialog-information"), style()->standardIcon(QStyle::SP_FileDialogInfoView)), tr("Thumbnail View"));
     thumbnailViewAction_->setCheckable(true);
     connect(thumbnailViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(thumbnailViewAction_);
-    compactViewAction_ = toolbar->addAction(style()->standardIcon(QStyle::SP_FileDialogListView), tr("Compact View"));
+    compactViewAction_ = toolbar->addAction(QIcon::fromTheme(QLatin1String("view-list-text"), style()->standardIcon(QStyle::SP_FileDialogListView)), tr("Compact View"));
     compactViewAction_->setCheckable(true);
     connect(compactViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(compactViewAction_);
-    detailedViewAction_ = toolbar->addAction(style()->standardIcon(QStyle::SP_FileDialogDetailedView), tr("Detailed List View"));
+    detailedViewAction_ = toolbar->addAction(QIcon::fromTheme(QLatin1String("view-list-details"), style()->standardIcon(QStyle::SP_FileDialogDetailedView)), tr("Detailed List View"));
     detailedViewAction_->setCheckable(true);
     connect(detailedViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(detailedViewAction_);
