@@ -30,11 +30,10 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
     // classify files according to different mimetypes
     for(auto& fileInfo : fileInfos) {
         /*
-        qDebug("path: %s, type: %s, target: %s, isDir: %i, isDesktopEntry: %i",
+        qDebug("path: %s, type: %s, target: %s, isDir: %i, isShortcut: %i, isMountable: %i, isDesktopEntry: %i",
                fileInfo->path().toString().get(), fileInfo->mimeType()->name(), fileInfo->target().c_str(),
-               fileInfo->isDir(), fileInfo->isDesktopEntry());
+               fileInfo->isDir(), fileInfo->isShortcut(), fileInfo->isMountable(), fileInfo->isDesktopEntry());
         */
-
         if(fileInfo->isMountable()) {
             if(fileInfo->target().empty()) {
                 // the mountable is not yet mounted so we have no target URI.
@@ -269,6 +268,7 @@ FilePath BasicFileLauncher::handleShortcut(const FileInfoPtr& fileInfo, GAppLaun
     // if we know the target is a dir, we are not going to open it using other apps
     // for example: `network:///smb-root' is a shortcut targeting `smb:///' and it's also a dir
     if(fileInfo->isDir()) {
+        qDebug("shortcut is dir: %s", target.c_str());
         return FilePath::fromPathStr(target.c_str());
     }
 
