@@ -36,10 +36,9 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
     size_ = g_file_info_get_size(inf.get());
 
     tmp = g_file_info_get_content_type(inf.get());
-    if(!tmp) {
-        tmp = "application/octet-stream";
+    if(tmp) {
+        mimeType_ = MimeType::fromName(tmp);
     }
-    mimeType_ = MimeType::fromName(tmp);
 
     mode_ = g_file_info_get_attribute_uint32(inf.get(), G_FILE_ATTRIBUTE_UNIX_MODE);
 
@@ -194,6 +193,10 @@ _file_is_symlink:
                 mimeType_ = MimeType::guessFromFileName(name_.c_str());
             }
         }
+    }
+
+    if(!mimeType_) {
+        mimeType_ = MimeType::fromName("application/octet-stream");
     }
 
     /* if there is a custom folder icon, use it */

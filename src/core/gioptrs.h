@@ -112,6 +112,10 @@ public:
         return err_;
     }
 
+    const GError* operator->() const {
+        return err_;
+    }
+
     bool operator == (const GErrorPtr& other) const {
         return err_ == other.err_;
     }

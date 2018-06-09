@@ -29,11 +29,13 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
     FilePathList pathsToLaunch;
     // classify files according to different mimetypes
     for(auto& fileInfo : fileInfos) {
-        // qDebug("path: %s, target: %s", fileInfo->path().toString().get(), fileInfo->target().c_str());
-        if(fileInfo->isDir()) {
-            folderInfos.emplace_back(fileInfo);
-        }
-        else if(fileInfo->isMountable()) {
+        /*
+        qDebug("path: %s, type: %s, target: %s, isDir: %i, isDesktopEntry: %i",
+               fileInfo->path().toString().get(), fileInfo->mimeType()->name(), fileInfo->target().c_str(),
+               fileInfo->isDir(), fileInfo->isDesktopEntry());
+        */
+
+        if(fileInfo->isMountable()) {
             if(fileInfo->target().empty()) {
                 // the mountable is not yet mounted so we have no target URI.
                 GErrorPtr err{G_IO_ERROR, G_IO_ERROR_NOT_MOUNTED,
@@ -66,6 +68,9 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
             if(path.isValid()) {
                 pathsToLaunch.emplace_back(path);
             }
+        }
+        else if(fileInfo->isDir()) {
+            folderInfos.emplace_back(fileInfo);
         }
         else {
             auto& mimeType = fileInfo->mimeType();
@@ -103,16 +108,27 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
 bool BasicFileLauncher::launchPaths(FilePathList paths, GAppLaunchContext* ctx) {
     // FIXME: blocking with an event loop is not a good design :-(
     QEventLoop eventLoop;
-
     auto job = new FileInfoJob{paths};
     job->setAutoDelete(false);  // do not automatically delete the job since we want its results later.
 
     GObjectPtr<GAppLaunchContext> ctxPtr{ctx};
+
+    // error handling (for example: handle path not mounted error)
+    QObject::connect(job, &FileInfoJob::error,
+            &eventLoop, [this, job, ctx](const GErrorPtr & err, Job::ErrorSeverity /* severity */ , Job::ErrorAction &act) {
+        auto path = job->currentPath();
+        if(showError(ctx, err, path, nullptr)) {
+            // the user handled the error and ask for retry
+            act = Job::ErrorAction::RETRY;
+        }
+    }, Qt::BlockingQueuedConnection);  // BlockingQueuedConnection is required here to pause the job and wait for user response
+
     QObject::connect(job, &FileInfoJob::finished,
             [&eventLoop]() {
         // exit the event loop when the job is done
         eventLoop.exit();
     });
+
     // run the job in another thread to not block the UI
     job->runAsync();
 
@@ -145,7 +161,7 @@ BasicFileLauncher::ExecAction BasicFileLauncher::askExecFile(const FileInfoPtr &
     return ExecAction::DIRECT_EXEC;
 }
 
-bool BasicFileLauncher::showError(GAppLaunchContext* /* ctx */, GErrorPtr& /* err */, const FilePath& /* path */, const FileInfoPtr& /* info */) {
+bool BasicFileLauncher::showError(GAppLaunchContext* /* ctx */, const GErrorPtr & /* err */, const FilePath& /* path */, const FileInfoPtr& /* info */) {
     return false;
 }
 
@@ -249,13 +265,21 @@ bool BasicFileLauncher::launchDesktopEntry(const char *desktopEntryName, const F
 
 FilePath BasicFileLauncher::handleShortcut(const FileInfoPtr& fileInfo, GAppLaunchContext* ctx) {
     auto target = fileInfo->target();
+
+    // if we know the target is a dir, we are not going to open it using other apps
+    // for example: `network:///smb-root' is a shortcut targeting `smb:///' and it's also a dir
+    if(fileInfo->isDir()) {
+        return FilePath::fromPathStr(target.c_str());
+    }
+
     auto scheme = CStrPtr{g_uri_parse_scheme(target.c_str())};
     if(scheme) {
         // collect the uri schemes we support
         if(strcmp(scheme.get(), "file") == 0
                 || strcmp(scheme.get(), "trash") == 0
                 || strcmp(scheme.get(), "network") == 0
-                || strcmp(scheme.get(), "computer") == 0) {
+                || strcmp(scheme.get(), "computer") == 0
+                || strcmp(scheme.get(), "menu") == 0) {
             return FilePath::fromUri(target.c_str());
         }
         else {
