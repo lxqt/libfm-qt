@@ -150,7 +150,7 @@ public:
     }
 
     bool isMountable() const {
-        return mimeType_->isMountable();
+        return isMountable_;
     }
 
     bool isShortcut() const {
@@ -238,6 +238,7 @@ private:
     std::string target_; /* target of shortcut or mountable. */
 
     bool isShortcut_ : 1; /* TRUE if file is shortcut type */
+    bool isMountable_ : 1; /* TRUE if file is mountable type */
     bool isAccessible_ : 1; /* TRUE if can be read by user */
     bool isWritable_ : 1; /* TRUE if can be written to by user */
     bool isDeletable_ : 1; /* TRUE if can be deleted by user */

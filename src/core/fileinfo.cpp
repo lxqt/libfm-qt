@@ -118,7 +118,8 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
         isDeletable_ = true;
     }
 
-    isShortcut_ = false;
+    isShortcut_ = (type == G_FILE_TYPE_SHORTCUT);
+    isMountable_ = (type == G_FILE_TYPE_MOUNTABLE);
 
     /* special handling for symlinks */
     if(g_file_info_get_is_symlink(inf.get())) {
@@ -129,7 +130,6 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
 
     switch(type) {
     case G_FILE_TYPE_SHORTCUT:
-        isShortcut_ = true;
     /* Falls through. */
     case G_FILE_TYPE_MOUNTABLE:
         uri = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
