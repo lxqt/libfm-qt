@@ -256,18 +256,25 @@ FilePath BasicFileLauncher::handleShortcut(const FileInfoPtr& fileInfo, GAppLaun
                 || strcmp(scheme.get(), "trash") == 0
                 || strcmp(scheme.get(), "network") == 0
                 || strcmp(scheme.get(), "computer") == 0) {
-            return FilePath::fromUri(fileInfo->target().c_str());
+            return FilePath::fromUri(target.c_str());
         }
         else {
             // ask gio to launch the default handler for the uri scheme
-            GAppInfoPtr app{g_app_info_get_default_for_uri_scheme(scheme.get()), false};
-            FilePathList uris{FilePath::fromUri(fileInfo->target().c_str())};
-            launchWithApp(app.get(), uris, ctx);
+            if(GAppInfoPtr app{g_app_info_get_default_for_uri_scheme(scheme.get()), false}) {
+                FilePathList uris{FilePath::fromUri(target.c_str())};
+                launchWithApp(app.get(), uris, ctx);
+            }
+            else {
+                GErrorPtr err{G_IO_ERROR, G_IO_ERROR_FAILED,
+                              QObject::tr("No default application is set to launch '%1'")
+                              .arg(target.c_str())};
+                showError(nullptr, err);
+            }
         }
     }
     else {
         // see it as a local path
-        return FilePath::fromLocalPath(fileInfo->target().c_str());
+        return FilePath::fromLocalPath(target.c_str());
     }
     return FilePath();
 }
