@@ -53,7 +53,7 @@ protected:
 
     virtual bool openFolder(GAppLaunchContext* ctx, const FileInfoList& folderInfos, GErrorPtr& err);
 
-    virtual bool showError(GAppLaunchContext* ctx, GErrorPtr& err, const FilePath& path = FilePath{}, const FileInfoPtr& info = FileInfoPtr{});
+    virtual bool showError(GAppLaunchContext* ctx, const GErrorPtr& err, const FilePath& path = FilePath{}, const FileInfoPtr& info = FileInfoPtr{});
 
     virtual ExecAction askExecFile(const FileInfoPtr& file);
 

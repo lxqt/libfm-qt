@@ -27,6 +27,10 @@ public:
         return results_;
     }
 
+    const FilePath& currentPath() const {
+        return currentPath_;
+    }
+
 Q_SIGNALS:
     void gotInfo(const FilePath& path, std::shared_ptr<const FileInfo>& info);
 
@@ -39,6 +43,7 @@ private:
     FileInfoList results_;
     FilePath commonDirPath_;
     const std::shared_ptr<const HashSet> cutFilesHashSet_;
+    FilePath currentPath_;
 };
 
 } // namespace Fm

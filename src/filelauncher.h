@@ -43,7 +43,7 @@ protected:
 
     bool openFolder(GAppLaunchContext* ctx, const FileInfoList& folderInfos, GErrorPtr& err) override;
 
-    bool showError(GAppLaunchContext* ctx, GErrorPtr& err, const FilePath& path = FilePath{}, const FileInfoPtr& info = FileInfoPtr{}) override;
+    bool showError(GAppLaunchContext* ctx, const GErrorPtr &err, const FilePath& path = FilePath{}, const FileInfoPtr& info = FileInfoPtr{}) override;
 
     ExecAction askExecFile(const FileInfoPtr& file) override;
 
