@@ -91,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Klicken und ziehen Sie, um Elemente zu sortieren</translation>
+        <translation>Benutzen Sie Drag&amp;Drop, um Elemente zu sortieren</translation>
     </message>
 </context>
 <context>
