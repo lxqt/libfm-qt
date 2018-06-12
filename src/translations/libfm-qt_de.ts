@@ -655,7 +655,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="381"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilder (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="477"/>
@@ -1348,7 +1348,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Location:</source>
-        <translation type="unfinished">Ort:</translation>
+        <translation>Ort:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -1358,7 +1358,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished">Dateityp:</translation>
+        <translation>Dateityp:</translation>
     </message>
 </context>
 <context>
