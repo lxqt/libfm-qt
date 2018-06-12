@@ -1415,7 +1415,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="131"/>
         <source>Create Folder</source>
-        <translation type="unfinished">Ordner erstellen</translation>
+        <translation>Ordner erstellen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="136"/>
@@ -1441,7 +1441,7 @@ Geändert: %2</translation>
         <location filename="../filedialog.cpp" line="265"/>
         <location filename="../filedialog.cpp" line="624"/>
         <source>Error</source>
-        <translation type="unfinished">Fehler</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="265"/>
@@ -1473,7 +1473,7 @@ Do you want to replace it?</source>
         <location filename="../filedialog.cpp" line="741"/>
         <location filename="../filedialog.cpp" line="849"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">Ö&amp;ffnen</translation>
+        <translation>Ö&amp;ffnen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="744"/>
