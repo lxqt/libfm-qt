@@ -135,6 +135,7 @@ PlacesView::PlacesView(QWidget* parent):
     setFrameShape(QFrame::NoFrame);
     QPalette p = palette();
     p.setColor(QPalette::Base, QColor(Qt::transparent));
+    p.setColor(QPalette::Text, p.color(QPalette::WindowText));
     setPalette(p);
     viewport()->setAutoFillBackground(false);
 
