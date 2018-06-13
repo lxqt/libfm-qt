@@ -152,7 +152,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficheiros processados:</translation>
     </message>
 </context>
 <context>
@@ -804,7 +804,7 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="283"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupo</translation>
     </message>
 </context>
 <context>
@@ -905,7 +905,7 @@ Deseja apagar permanentemente estes ficheiros?</translation>
         <location filename="../placesview.cpp" line="505"/>
         <location filename="../placesview.cpp" line="562"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Esconder</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="522"/>
@@ -946,7 +946,7 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../placesview.cpp" line="588"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar todas as entradas</translation>
     </message>
 </context>
 <context>
