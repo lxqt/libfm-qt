@@ -152,7 +152,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Apdorota failų:</translation>
     </message>
 </context>
 <context>
@@ -401,7 +401,8 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Atrodo, kad šis failas &quot;%1&quot; yra darbalaukio įrašas.
+Ką norėtumėte su juo daryti?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
@@ -804,7 +805,7 @@ Ar norite vietoj to, juos ištrinti?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupė</translation>
     </message>
 </context>
 <context>
@@ -905,7 +906,7 @@ Ar norite vietoj to, juos ištrinti?</translation>
         <location filename="../placesview.cpp" line="512"/>
         <location filename="../placesview.cpp" line="569"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Slėpti</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="529"/>
@@ -946,7 +947,7 @@ Ar norite vietoj to, juos ištrinti?</translation>
     <message>
         <location filename="../placesview.cpp" line="595"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti visus įrašus</translation>
     </message>
 </context>
 <context>
@@ -1105,17 +1106,17 @@ Pakeista: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="38"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kelias nėra prijungtas.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="241"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Neteisingas darbalaukio įrašo failas: &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="301"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyksta nustatyti darbinį katalogą į &quot;%1&quot;: %2</translation>
     </message>
 </context>
 <context>
@@ -1348,17 +1349,17 @@ Pakeista: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Location:</source>
-        <translation type="unfinished">Vieta:</translation>
+        <translation>Vieta:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Failo pavadinimas:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished">Failo tipas:</translation>
+        <translation>Failo tipas:</translation>
     </message>
 </context>
 <context>
@@ -1366,7 +1367,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyksta sukurti nuorodą ne savoje failų sistemoje</translation>
     </message>
 </context>
 <context>
@@ -1374,7 +1375,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="36"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyksta iškelti failą &quot;%s&quot; iš šiukšlinės: pradinis kelias nėra žinomas</translation>
     </message>
 </context>
 <context>
@@ -1382,109 +1383,110 @@ Pakeista: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="98"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Grįžti</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="99"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Kairėn</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="105"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Pirmyn</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Dešinėn</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="113"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Įkelti iš naujo</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="114"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="131"/>
         <source>Create Folder</source>
-        <translation type="unfinished">Sukurti aplanką</translation>
+        <translation>Sukurti aplanką</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="136"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>Piktogramų rodinys</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="140"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>Miniatiūrų rodinys</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="144"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>Glaustas rodinys</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="148"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>Išsamaus sąrašo rodinys</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="265"/>
         <location filename="../filedialog.cpp" line="624"/>
         <source>Error</source>
-        <translation type="unfinished">Klaida</translation>
+        <translation>Klaida</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="265"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkite failą</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="285"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 jau yra.
+Ar norite jį pakeisti?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="594"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Kelio &quot;%1&quot; nėra</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="608"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; nėra katalogas</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="614"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; nėra failas</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="741"/>
         <location filename="../filedialog.cpp" line="849"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">&amp;Atverti</translation>
+        <translation>&amp;Atverti</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="744"/>
         <location filename="../filedialog.cpp" line="857"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Į&amp;rašyti</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="751"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Visi failai (*)</translation>
     </message>
 </context>
 </TS>
