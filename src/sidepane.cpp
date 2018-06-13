@@ -158,6 +158,15 @@ void SidePane::setMode(Mode mode) {
     switch(mode) {
     case ModePlaces: {
         PlacesView* placesView = new Fm::PlacesView(this);
+
+        // visually merge it with its surroundings
+        placesView->setFrameShape(QFrame::NoFrame);
+        QPalette p = placesView->palette();
+        p.setColor(QPalette::Base, QColor(Qt::transparent));
+        p.setColor(QPalette::Text, p.color(QPalette::WindowText));
+        placesView->setPalette(p);
+        placesView->viewport()->setAutoFillBackground(false);
+
         view_ = placesView;
         placesView->restoreHiddenItems(restorableHiddenPlaces_);
         placesView->setIconSize(iconSize_);

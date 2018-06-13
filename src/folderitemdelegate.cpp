@@ -372,7 +372,8 @@ QWidget* FolderItemDelegate::createEditor(QWidget* parent, const QStyleOptionVie
         // ensure that its background isn't transparent (on the side-pane)
         QWidget* editor = QStyledItemDelegate::createEditor(parent, option, index);
         QPalette p = editor->palette();
-        p.setColor(QPalette::Base, QApplication::palette().color(QPalette::Base));
+        p.setColor(QPalette::Text, qApp->palette().text().color());
+        p.setColor(QPalette::Base, qApp->palette().color(QPalette::Base));
         editor->setPalette(p);
         return editor;
     }
