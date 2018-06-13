@@ -602,7 +602,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>正在恢復下列被刪除的檔案</translation>
+        <translation>正在從垃圾桶恢復下列被刪除的檔案</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
@@ -1024,7 +1024,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
-        <translation></translation>
+        <translation>域名(&amp;D):</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
@@ -1134,7 +1134,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;這個位置已經有一個同名的檔案&lt;/span&gt;&lt;/p&gt;&lt;p&gt;你要取代現有的檔案嗎?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
