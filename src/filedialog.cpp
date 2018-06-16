@@ -70,6 +70,10 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         ui->folderView->selectionModel()->clearSelection();
         QStringList parsedNames = parseNames();
         for(auto& name: parsedNames) {
+            if(!defaultSuffix_.isEmpty() && name.lastIndexOf('.') == -1) {
+                name += '.';
+                name += defaultSuffix_;
+            }
             selectFilePath(directoryPath_.child(name.toLocal8Bit().constData()));
         }
         updateAcceptButtonState();
@@ -271,6 +275,10 @@ void FileDialog::accept() {
     else {
         if(fileMode_ != QFileDialog::Directory) {
             auto firstName = parsedNames.at(0);
+            if(!defaultSuffix_.isEmpty() && firstName.lastIndexOf('.') == -1) {
+                firstName += '.';
+                firstName += defaultSuffix_;
+            }
             auto childPath = directoryPath_.child(firstName.toLocal8Bit().constData());
             auto info = proxyModel_->fileInfoFromPath(childPath);
             if(info) {
@@ -362,9 +370,9 @@ void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath, boo
             }
             freeFolder();
        }
-    
+
         directoryPath_ = std::move(directory);
-    
+
         ui->location->setPath(directoryPath_);
         ui->sidePane->chdir(directoryPath_);
         if(addHistory) {
@@ -372,15 +380,15 @@ void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath, boo
         }
         backAction_->setEnabled(history_.canBackward());
         forwardAction_->setEnabled(history_.canForward());
-    
+
         folder_ = Fm::Folder::fromPath(directoryPath_);
         folderModel_ = CachedFolderModel::modelFromFolder(folder_);
         proxyModel_->setSourceModel(folderModel_);
-    
+
         // no lambda in these connections for easy disconnection
         connect(folder_.get(), &Fm::Folder::removed, this, &FileDialog::goHome);
         connect(folder_.get(), &Fm::Folder::unmount, this, &FileDialog::goHome);
-    
+
         QUrl uri = QUrl::fromEncoded(directory.uri().get());
         Q_EMIT directoryEntered(uri);
    }
