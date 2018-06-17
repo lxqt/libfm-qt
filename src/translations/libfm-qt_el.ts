@@ -152,7 +152,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασμένα αρχεία:</translation>
     </message>
 </context>
 <context>
@@ -401,7 +401,8 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο «%1» φαίνεται να είναι ένα αρχείο επιφάνειας εργασίας.
+Ποια ενέργεια θέλετε να πραγματοποιήσετε;</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
@@ -804,7 +805,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="283"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Ομάδα</translation>
     </message>
 </context>
 <context>
@@ -905,7 +906,7 @@ Do you want to delete them instead?</source>
         <location filename="../placesview.cpp" line="505"/>
         <location filename="../placesview.cpp" line="562"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Απόκρυψη</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="522"/>
@@ -946,7 +947,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="588"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση όλων των καταχωρήσεων</translation>
     </message>
 </context>
 <context>
@@ -1105,12 +1106,12 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Η διαδρομή δεν έχει προσαρτηθεί.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="258"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Μη έγκυρο αρχείο επιφάνειας εργασίας: «%1»</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
@@ -1120,7 +1121,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Αδύνατος ο ορισμός του καταλόγου εργασίας «%1»: %2</translation>
     </message>
 </context>
 <context>
@@ -1353,17 +1354,17 @@ Modified: %2</source>
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Location:</source>
-        <translation type="unfinished">Τοποθεσία:</translation>
+        <translation>Τοποθεσία:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα αρχείου:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished">Τύπος αρχείου:</translation>
+        <translation>Τύπος αρχείου:</translation>
     </message>
 </context>
 <context>
@@ -1371,7 +1372,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Αδύνατη η δημιουργία δεσμού σε μη εγγενές σύστημα αρχείων</translation>
     </message>
 </context>
 <context>
@@ -1379,7 +1380,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="36"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Αδύνατη η επαναφορά του αρχείου «%s» από τα απορρίμματα: άγνωστη αρχική διαδρομή</translation>
     </message>
 </context>
 <context>
@@ -1387,109 +1388,110 @@ Modified: %2</source>
     <message>
         <location filename="../filedialog.cpp" line="98"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετάβαση πίσω</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="99"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Αριστερά</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="105"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετάβαση εμπρός</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Δεξιά</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="113"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναφόρτωση</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="114"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="131"/>
         <source>Create Folder</source>
-        <translation type="unfinished">Δημιουργία φακέλου</translation>
+        <translation>Δημιουργία φακέλου</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="138"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>Προβολή εικονιδίων</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>Προβολή εικόνων επισκόπησης</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>Συμπαγής προβολή</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>Προβολή αναλυτικού κατάστιχου</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="267"/>
         <location filename="../filedialog.cpp" line="626"/>
         <source>Error</source>
-        <translation type="unfinished">Σφάλμα</translation>
+        <translation>Σφάλμα</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="267"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Παρακαλώ επιλέξτε ένα αρχείο</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="287"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο %1 υπάρχει ήδη.
+Θέλετε να το αντικαταστήσετε;</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="596"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Η διαδρομή «%1» δεν υπάρχει</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="610"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Το «%1» δεν είναι κατάλογος</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="616"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Το «%1» δεν είναι αρχείο</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="743"/>
         <location filename="../filedialog.cpp" line="851"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">Ά&amp;νοιγμα</translation>
+        <translation>Ά&amp;νοιγμα</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="746"/>
         <location filename="../filedialog.cpp" line="859"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Απο&amp;θήκευση</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="753"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Όλα τα αρχεία (*)</translation>
     </message>
 </context>
 </TS>
