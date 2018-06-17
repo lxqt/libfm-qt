@@ -513,7 +513,7 @@ What do you want to do with it?</source>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
         <translation>Μερικά αρχεία δεν μπορούν να μετακινηθούν στον κάδο απορριμμάτων διότι το υποκείμενο αρχείο συστήματος δεν υποστηρίζει αυτήν την ενέργεια.
-Θέλετε αντί αυτού να το διαγράψετε;</translation>
+Θέλετε αντί αυτού να τα διαγράψετε;</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="375"/>
