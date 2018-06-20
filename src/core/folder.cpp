@@ -221,7 +221,8 @@ void Folder::onFileInfoFinished() {
             dirInfo_ = info;
         }
         // add/update the file only if it isn't going to be deleted
-        else if(std::find(deletionPaths.cbegin(), deletionPaths.cend(), path) == deletionPaths.cend()) {
+        else if(std::find(deletionPaths.cbegin(), deletionPaths.cend(), path) == deletionPaths.cend()
+                && std::find(paths_to_del_later.cbegin(), paths_to_del_later.cend(), path) == paths_to_del_later.cend()) {
             auto it = files_.find(info->name());
             if(it != files_.end()) { // the file already exists, update
                 files_to_update.push_back(std::make_pair(it->second, info));
@@ -238,13 +239,28 @@ void Folder::onFileInfoFinished() {
     if(!files_to_update.empty()) {
         Q_EMIT filesChanged(files_to_update);
     }
-    // deletion should be done now, after the info job is processed
+    // deletion should be started now, after the info job is processed but,
+    // since info jobs are run asynchronously, it may be completed later
+    for(auto pathIter = paths_to_del_later.begin(); pathIter != paths_to_del_later.end();) {
+        auto name = pathIter->baseName();
+        auto it = files_.find(name.get());
+        if(it != files_.end()) {
+            files_to_delete.push_back(it->second);
+            pathIter = paths_to_del_later.erase(pathIter);
+        }
+        else {
+            ++pathIter;
+        }
+    }
     for(const auto &path: deletionPaths) {
         auto name = path.baseName();
         auto it = files_.find(name.get());
         if(it != files_.end()) {
             files_to_delete.push_back(it->second);
             files_.erase(it);
+        }
+        else { // this path will be deleted later, after another info job
+            paths_to_del_later.push_back(path);
         }
     }
     if(!files_to_delete.empty()) {
@@ -648,6 +664,7 @@ void Folder::reload() {
         paths_to_add.clear();
         paths_to_update.clear();
         paths_to_del.clear();
+        paths_to_del_later.clear();
 
         // cancel any file info job in progress.
         for(auto job: fileinfoJobs_) {
