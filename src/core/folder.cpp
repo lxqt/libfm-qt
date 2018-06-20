@@ -492,8 +492,8 @@ void Folder::onDirListFinished() {
     if(job->isCancelled()) { // this is a cancelled job, ignore!
         if(job == dirlist_job) {
             dirlist_job = nullptr;
+            Q_EMIT finishLoading(); // this was the last job until now
         }
-        Q_EMIT finishLoading();
         return;
     }
     dirInfo_ = job->dirInfo();
@@ -634,6 +634,9 @@ void free_dirlist_job(FmFolder* folder) {
 
 void Folder::reload() {
     // cancel in-progress jobs if there are any
+    if(dirlist_job) {
+        dirlist_job->cancel();
+    }
     GError* err = nullptr;
     // cancel directory monitoring
     if(dirMonitor_) {
