@@ -164,9 +164,10 @@ private:
     /* for file monitor */
     bool has_idle_reload_handler;
     bool has_idle_update_handler;
-    std::vector<FilePath> paths_to_add;
-    std::vector<FilePath> paths_to_update;
-    std::vector<FilePath> paths_to_del;
+    FilePathList paths_to_add;
+    FilePathList paths_to_update;
+    FilePathList paths_to_del;
+    FilePathList paths_to_del_later;
     // GSList* pending_jobs;
     bool pending_change_notify;
     bool filesystem_info_pending;
