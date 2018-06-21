@@ -6,7 +6,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>Seleccione una aplicación</translation>
+        <translation>Elija una aplicación</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
@@ -152,7 +152,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivos procesados:</translation>
     </message>
 </context>
 <context>
@@ -245,7 +245,7 @@
         <location filename="../file-props.ui" line="403"/>
         <location filename="../file-props.ui" line="552"/>
         <source>Other:</source>
-        <translation>Otro:</translation>
+        <translation>Otros:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="420"/>
@@ -307,7 +307,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="262"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Seleccione una aplicación para abrir archivos &quot;%1&quot;</translation>
+        <translation>Seleccione una aplicación para abrir archivos «%1»</translation>
     </message>
 </context>
 <context>
@@ -315,7 +315,7 @@
     <message>
         <location filename="../createnewmenu.cpp" line="61"/>
         <source>Folder</source>
-        <translation>Directorio</translation>
+        <translation>Carpeta</translation>
     </message>
     <message>
         <location filename="../createnewmenu.cpp" line="65"/>
@@ -328,7 +328,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="46"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>El directorio dado &apos;%1&apos; no es válido</translation>
+        <translation>El directorio dado «%1» no es válido</translation>
     </message>
 </context>
 <context>
@@ -401,19 +401,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>El archivo «%1» parece ser un lanzador de programa («desktop entry»).
+¿Qué quiere hacer con él?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>El archivo de texto &apos;%1&apos; parece ser un script ejecutable.
+        <translation>El archivo de texto «%1» parece ser un guion ejecutable.
 ¿Qué desea hacer con él?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>El archivo &apos;%1&apos; es ejecutable. ¿Quiere ejecutarlo?</translation>
+        <translation>El archivo «%1» es ejecutable. ¿Quiere ejecutarlo?</translation>
     </message>
 </context>
 <context>
@@ -512,7 +513,7 @@ What do you want to do with it?</source>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
         <translation>Algunos archivos no pueden moverse a la papelera porque el subsistema de archivos no permite esta operación.
-¿Quiere eliminarlos en su lugar?</translation>
+¿Quiere eliminarlos en vez de moverlos?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="375"/>
@@ -551,7 +552,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>Copiando los siguientes archivos al directorio destino:</translation>
+        <translation>Copiando los siguientes archivos al directorio de destino:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
@@ -655,7 +656,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="381"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation>Imágenes (*.png *.xpm *.svg *.svgz )</translation>
+        <translation>Imágenes (*.png *.xpm *.svg *.svgz)</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="477"/>
@@ -804,7 +805,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupo</translation>
     </message>
 </context>
 <context>
@@ -905,7 +906,7 @@ Do you want to delete them instead?</source>
         <location filename="../placesview.cpp" line="512"/>
         <location filename="../placesview.cpp" line="569"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Ocultar</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="529"/>
@@ -946,7 +947,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="595"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar todas las entradas</translation>
     </message>
 </context>
 <context>
@@ -1105,17 +1106,17 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="38"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>La ruta no está montada.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="241"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivo lanzador (desktop entry) no válido: «%1»</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="301"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>No se puede cambiar el directorio de trabajo a «%1»: %2</translation>
     </message>
 </context>
 <context>
@@ -1158,7 +1159,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>Nombre de &amp;archivo:</translation>
+        <translation>Nombre del &amp;archivo:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
@@ -1348,17 +1349,17 @@ Modificado: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Location:</source>
-        <translation type="unfinished">Ubicación:</translation>
+        <translation>Ubicación:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre del archivo:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished">Tipo de archivo:</translation>
+        <translation>Tipo de archivo:</translation>
     </message>
 </context>
 <context>
@@ -1366,7 +1367,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>No se pueden crear enlaces en sistemas de archivos no nativos</translation>
     </message>
 </context>
 <context>
@@ -1374,7 +1375,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="36"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>No se puede restaurar el archivo «%s» desde la papelera: la ruta original es desconocida</translation>
     </message>
 </context>
 <context>
@@ -1382,29 +1383,29 @@ Modificado: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="98"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Retroceder</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="99"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Izquierda</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="105"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Avanzar</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Derecha</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="113"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Recargar</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="114"/>
@@ -1415,76 +1416,77 @@ Modificado: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="131"/>
         <source>Create Folder</source>
-        <translation type="unfinished">Crear carpeta</translation>
+        <translation>Crear carpeta</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="136"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista de iconos</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="140"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista de miniaturas</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="144"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista compacta</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="148"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista de lista detallada</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="265"/>
         <location filename="../filedialog.cpp" line="624"/>
         <source>Error</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="265"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccione un archivo</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="285"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ya existe %1.
+¿Quiere sobrescribirlo?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="594"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>No existe la ruta «%1»</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="608"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>«%1» no es un directorio</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="614"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>«%1» no es un archivo</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="741"/>
         <location filename="../filedialog.cpp" line="849"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">&amp;Abrir</translation>
+        <translation>&amp;Abrir</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="744"/>
         <location filename="../filedialog.cpp" line="857"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="751"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Todos los archivos (*)</translation>
     </message>
 </context>
 </TS>
