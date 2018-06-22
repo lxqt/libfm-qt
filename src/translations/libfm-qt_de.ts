@@ -328,7 +328,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="46"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>Das spezifizierte Verzeichnis &apos;%1&apos; ist nicht gültig</translation>
     </message>
 </context>
 <context>
@@ -401,7 +401,8 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Diese Datei &apos;%1&apos; scheint ein Desktopeintrag zu sein.
+Was möchten Sie mit dieser Datei tun?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
@@ -650,7 +651,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="381"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle ein Symbol</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="383"/>
@@ -804,7 +805,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="283"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppe</translation>
     </message>
 </context>
 <context>
@@ -833,12 +834,12 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../pathbar.cpp" line="126"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bearbeite Pfad</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="129"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kopiere Pfad</translation>
     </message>
 </context>
 <context>
@@ -905,7 +906,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
         <location filename="../placesview.cpp" line="505"/>
         <location filename="../placesview.cpp" line="562"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbergen</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="522"/>
@@ -946,7 +947,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../placesview.cpp" line="588"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeige alle Einträge</translation>
     </message>
 </context>
 <context>
@@ -1100,17 +1101,17 @@ Geändert: %2</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="521"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefiniertes-Symbol Fehler</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der Pfad ist nicht eingehängt.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="258"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungültiger Desktopeintrag Datei: &apos;1%&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
@@ -1120,7 +1121,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Arbeitsverzeichnis nicht festsetzbar als &apos;%1&apos;: %2</translation>
     </message>
 </context>
 <context>
@@ -1358,7 +1359,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiname:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
@@ -1371,7 +1372,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Verknüpfungserstellung auf fremden Dateisystem nicht möglich</translation>
     </message>
 </context>
 <context>
@@ -1379,7 +1380,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="36"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei &apos;1%&apos; ist nicht wiederherstellbar: ursprünglicher Pfad unbekannt</translation>
     </message>
 </context>
 <context>
@@ -1387,35 +1388,35 @@ Geändert: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="98"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Zurück</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="99"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Links</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="105"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorwärts</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Rechts</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="113"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Neu laden</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="114"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="131"/>
@@ -1425,22 +1426,22 @@ Geändert: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="138"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbolansicht</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>Miniaturansicht</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompaktansicht</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>Detaillierte Listenansicht</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="267"/>
@@ -1451,45 +1452,46 @@ Geändert: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="267"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte wähle eine Datei</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="287"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 existiert bereits
+Soll diese Datei ersetzt werden?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="596"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Pfad &quot;%1&quot; existiert nicht</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="610"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; ist kein Verzeichnis</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="616"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; ist keine Datei</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="743"/>
         <location filename="../filedialog.cpp" line="851"/>
         <source>&amp;Open</source>
-        <translation>Ö&amp;ffnen</translation>
+        <translation>&amp;Öffnen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="746"/>
         <location filename="../filedialog.cpp" line="859"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Speichern</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="753"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Dateien (*)</translation>
     </message>
 </context>
 </TS>
