@@ -305,7 +305,7 @@
 <context>
     <name>Fm::AppChooserDialog</name>
     <message>
-        <location filename="../appchooserdialog.cpp" line="262"/>
+        <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
         <translation>ファイル&quot;%1&quot;を開くアプリケーションを選択</translation>
     </message>
@@ -420,83 +420,83 @@ What do you want to do with it?</source>
 <context>
     <name>Fm::FileMenu</name>
     <message>
-        <location filename="../filemenu.cpp" line="81"/>
+        <location filename="../filemenu.cpp" line="84"/>
         <source>Open</source>
         <translation>開く</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="144"/>
+        <location filename="../filemenu.cpp" line="147"/>
         <source>Cut</source>
         <translation>切り取り</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="148"/>
+        <location filename="../filemenu.cpp" line="151"/>
         <source>Copy</source>
         <translation>コピー</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="152"/>
+        <location filename="../filemenu.cpp" line="155"/>
         <source>Paste</source>
         <translation>貼り付け</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="156"/>
-        <location filename="../filemenu.cpp" line="387"/>
+        <location filename="../filemenu.cpp" line="159"/>
+        <location filename="../filemenu.cpp" line="390"/>
         <source>&amp;Move to Trash</source>
         <translation>ゴミ箱へ移動(&amp;M)</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="328"/>
+        <location filename="../filemenu.cpp" line="331"/>
         <source>Output</source>
         <translation>出力</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="387"/>
+        <location filename="../filemenu.cpp" line="390"/>
         <source>&amp;Delete</source>
         <translation>削除(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="160"/>
+        <location filename="../filemenu.cpp" line="163"/>
         <source>Rename</source>
         <translation>名前を変更する</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="85"/>
+        <location filename="../filemenu.cpp" line="88"/>
         <source>Open With...</source>
         <translation>アプリケーションで開く...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="113"/>
+        <location filename="../filemenu.cpp" line="116"/>
         <source>Other Applications</source>
         <translation>その他のアプリケーション</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="119"/>
+        <location filename="../filemenu.cpp" line="122"/>
         <source>Create &amp;New</source>
         <translation>新規作成 (&amp;N)</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="138"/>
+        <location filename="../filemenu.cpp" line="141"/>
         <source>&amp;Restore</source>
         <translation>復活(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="215"/>
+        <location filename="../filemenu.cpp" line="218"/>
         <source>Extract to...</source>
         <translation>展開する...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="223"/>
+        <location filename="../filemenu.cpp" line="226"/>
         <source>Extract Here</source>
         <translation>ここへ展開する</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="230"/>
+        <location filename="../filemenu.cpp" line="233"/>
         <source>Compress</source>
         <translation>圧縮する</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="240"/>
+        <location filename="../filemenu.cpp" line="243"/>
         <source>Properties</source>
         <translation>プロパティー</translation>
     </message>
@@ -614,57 +614,57 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FilePropsDialog</name>
     <message>
-        <location filename="../filepropsdialog.cpp" line="155"/>
+        <location filename="../filepropsdialog.cpp" line="157"/>
         <source>View folder content</source>
         <translation>フォルダーの内容を表示</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="156"/>
+        <location filename="../filepropsdialog.cpp" line="158"/>
         <source>View and modify folder content</source>
         <translation>フォルダーの内容を表示・変更</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="160"/>
+        <location filename="../filepropsdialog.cpp" line="162"/>
         <source>Read</source>
         <translation>読取り</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="161"/>
+        <location filename="../filepropsdialog.cpp" line="163"/>
         <source>Read and write</source>
         <translation>読取りおよび書込み</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="163"/>
+        <location filename="../filepropsdialog.cpp" line="165"/>
         <source>Forbidden</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="280"/>
+        <location filename="../filepropsdialog.cpp" line="282"/>
         <source>Files of different types</source>
         <translation>異なる種類のファイル</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="303"/>
+        <location filename="../filepropsdialog.cpp" line="305"/>
         <source>Multiple Files</source>
         <translation>複数のファイル</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="379"/>
+        <location filename="../filepropsdialog.cpp" line="381"/>
         <source>Select an icon</source>
         <translation>アイコンを選択</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="381"/>
+        <location filename="../filepropsdialog.cpp" line="383"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
         <translation>画像 (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="477"/>
+        <location filename="../filepropsdialog.cpp" line="479"/>
         <source>Apply changes</source>
         <translation>変更を適用</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="478"/>
+        <location filename="../filepropsdialog.cpp" line="480"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
         <translation>変更をすべてのファイルとサブフォルダーにも再帰的に適用しますか？</translation>
     </message>
@@ -778,32 +778,32 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FolderModel</name>
     <message>
-        <location filename="../foldermodel.cpp" line="266"/>
+        <location filename="../foldermodel.cpp" line="268"/>
         <source>Name</source>
         <translation>名前</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="269"/>
+        <location filename="../foldermodel.cpp" line="271"/>
         <source>Type</source>
         <translation>種類</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="272"/>
+        <location filename="../foldermodel.cpp" line="274"/>
         <source>Size</source>
         <translation>サイズ</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="275"/>
+        <location filename="../foldermodel.cpp" line="277"/>
         <source>Modified</source>
         <translation>更新日時</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="278"/>
+        <location filename="../foldermodel.cpp" line="280"/>
         <source>Owner</source>
         <translation>所有者</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="281"/>
+        <location filename="../foldermodel.cpp" line="283"/>
         <source>Group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -888,64 +888,64 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="492"/>
+        <location filename="../placesview.cpp" line="485"/>
         <source>Empty Trash</source>
         <translation>ゴミ箱を空にする</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="477"/>
+        <location filename="../placesview.cpp" line="470"/>
         <source>Open in New Tab</source>
         <translation>新しいタブで開く</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="480"/>
+        <location filename="../placesview.cpp" line="473"/>
         <source>Open in New Window</source>
         <translation>新しいウィンドウで開く</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="512"/>
-        <location filename="../placesview.cpp" line="569"/>
+        <location filename="../placesview.cpp" line="505"/>
+        <location filename="../placesview.cpp" line="562"/>
         <source>Hide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="529"/>
+        <location filename="../placesview.cpp" line="522"/>
         <source>Move Bookmark Up</source>
         <translation>ブックマークを上に移動</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="534"/>
+        <location filename="../placesview.cpp" line="527"/>
         <source>Move Bookmark Down</source>
         <translation>ブックマークを下に移動</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="538"/>
+        <location filename="../placesview.cpp" line="531"/>
         <source>Rename Bookmark</source>
         <translation>ブックマークの名前を変更</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="541"/>
+        <location filename="../placesview.cpp" line="534"/>
         <source>Remove Bookmark</source>
         <translation>ブックマークを削除</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="550"/>
-        <location filename="../placesview.cpp" line="583"/>
+        <location filename="../placesview.cpp" line="543"/>
+        <location filename="../placesview.cpp" line="576"/>
         <source>Unmount</source>
         <translation>アンマウント</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="554"/>
+        <location filename="../placesview.cpp" line="547"/>
         <source>Mount</source>
         <translation>マウント</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="560"/>
+        <location filename="../placesview.cpp" line="553"/>
         <source>Eject</source>
         <translation>取出し</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="595"/>
+        <location filename="../placesview.cpp" line="588"/>
         <source>Show All Entries</source>
         <translation type="unfinished"></translation>
     </message>
@@ -953,8 +953,8 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::RenameDialog</name>
     <message>
-        <location filename="../renamedialog.cpp" line="56"/>
-        <location filename="../renamedialog.cpp" line="76"/>
+        <location filename="../renamedialog.cpp" line="58"/>
+        <location filename="../renamedialog.cpp" line="78"/>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
@@ -963,20 +963,20 @@ Modified: %3</source>
 更新日時: %3</translation>
     </message>
     <message>
-        <location filename="../renamedialog.cpp" line="62"/>
-        <location filename="../renamedialog.cpp" line="82"/>
+        <location filename="../renamedialog.cpp" line="64"/>
+        <location filename="../renamedialog.cpp" line="84"/>
         <source>Type: %1
 Modified: %2</source>
         <translation>種類: %1
 更新日時: %2</translation>
     </message>
     <message>
-        <location filename="../renamedialog.cpp" line="95"/>
+        <location filename="../renamedialog.cpp" line="97"/>
         <source>&amp;Overwrite</source>
         <translation>上書き(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../renamedialog.cpp" line="97"/>
+        <location filename="../renamedialog.cpp" line="99"/>
         <source>&amp;Rename</source>
         <translation>名前を変更(&amp;R)</translation>
     </message>
@@ -1046,8 +1046,8 @@ Modified: %2</source>
     <name>QObject</name>
     <message>
         <location filename="../filelauncher.cpp" line="101"/>
-        <location filename="../filepropsdialog.cpp" line="502"/>
-        <location filename="../mountoperation.cpp" line="206"/>
+        <location filename="../filepropsdialog.cpp" line="504"/>
+        <location filename="../mountoperation.cpp" line="207"/>
         <location filename="../utilities.cpp" line="169"/>
         <location filename="../utilities.cpp" line="263"/>
         <source>Error</source>
@@ -1099,22 +1099,27 @@ Modified: %2</source>
         <translation>ファイル作成</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="519"/>
+        <location filename="../filepropsdialog.cpp" line="521"/>
         <source>Custom Icon Error</source>
         <translation>カスタムアイコンのエラー</translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="38"/>
+        <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="241"/>
+        <location filename="../core/basicfilelauncher.cpp" line="258"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="301"/>
+        <location filename="../core/basicfilelauncher.cpp" line="293"/>
+        <source>No default application is set to launch &apos;%1&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../core/basicfilelauncher.cpp" line="334"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1419,71 +1424,71 @@ Modified: %2</source>
         <translation type="unfinished">フォルダの作成</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="136"/>
+        <location filename="../filedialog.cpp" line="138"/>
         <source>Icon View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="140"/>
+        <location filename="../filedialog.cpp" line="142"/>
         <source>Thumbnail View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="144"/>
+        <location filename="../filedialog.cpp" line="146"/>
         <source>Compact View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="148"/>
+        <location filename="../filedialog.cpp" line="150"/>
         <source>Detailed List View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="265"/>
-        <location filename="../filedialog.cpp" line="624"/>
+        <location filename="../filedialog.cpp" line="267"/>
+        <location filename="../filedialog.cpp" line="626"/>
         <source>Error</source>
         <translation type="unfinished">エラー</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="265"/>
+        <location filename="../filedialog.cpp" line="267"/>
         <source>Please select a file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="285"/>
+        <location filename="../filedialog.cpp" line="287"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="594"/>
+        <location filename="../filedialog.cpp" line="596"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="608"/>
+        <location filename="../filedialog.cpp" line="610"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="614"/>
+        <location filename="../filedialog.cpp" line="616"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="741"/>
-        <location filename="../filedialog.cpp" line="849"/>
+        <location filename="../filedialog.cpp" line="743"/>
+        <location filename="../filedialog.cpp" line="851"/>
         <source>&amp;Open</source>
         <translation type="unfinished">開く(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="744"/>
-        <location filename="../filedialog.cpp" line="857"/>
+        <location filename="../filedialog.cpp" line="746"/>
+        <location filename="../filedialog.cpp" line="859"/>
         <source>&amp;Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="751"/>
+        <location filename="../filedialog.cpp" line="753"/>
         <source>All Files (*)</source>
         <translation type="unfinished"></translation>
     </message>

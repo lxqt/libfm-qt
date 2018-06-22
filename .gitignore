@@ -1,5 +1,4 @@
 build*/
-src/translations/libfm-qt
 
 # Vim.gitignore
 [._]*.s[a-w][a-z]
