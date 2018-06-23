@@ -1116,7 +1116,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Nėra nustatyta numatytoji programa, skirta paleisti &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
