@@ -281,12 +281,12 @@
     <message>
         <location filename="../file-props.ui" line="607"/>
         <source>SetUID</source>
-        <translation>SetUID</translation>
+        <translation type="unfinished">SetUID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="614"/>
         <source>SetGID</source>
-        <translation>SetGID</translation>
+        <translation type="unfinished">SetGID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="650"/>
