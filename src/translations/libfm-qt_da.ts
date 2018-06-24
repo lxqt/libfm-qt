@@ -451,7 +451,7 @@ Hvad vil du foretage med det?</translation>
     <message>
         <location filename="../filemenu.cpp" line="151"/>
         <source>Copy</source>
-        <translation>Kopier</translation>
+        <translation>Kopiér</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="155"/>
@@ -812,7 +812,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation>fed</translation>
+        <translation>Fed</translation>
     </message>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
@@ -1095,7 +1095,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="220"/>
         <source>Enter a name for the new %1:</source>
-        <translation>Indtast et navn til ny(t) %1: </translation>
+        <translation type="unfinished">Indtast et navn til ny(t) %1:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="521"/>
@@ -1353,7 +1353,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Location:</source>
-        <translation type="unfinished">Placering:</translation>
+        <translation>Placering:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -1363,7 +1363,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished">Filtype:</translation>
+        <translation>Filtype:</translation>
     </message>
 </context>
 <context>
@@ -1420,7 +1420,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="131"/>
         <source>Create Folder</source>
-        <translation type="unfinished">Opret mappe</translation>
+        <translation>Opret mappe</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="138"/>
@@ -1446,7 +1446,7 @@ Senset ændret: %2</translation>
         <location filename="../filedialog.cpp" line="267"/>
         <location filename="../filedialog.cpp" line="626"/>
         <source>Error</source>
-        <translation type="unfinished">Fejl</translation>
+        <translation>Fejl</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="267"/>
@@ -1478,7 +1478,7 @@ Do you want to replace it?</source>
         <location filename="../filedialog.cpp" line="743"/>
         <location filename="../filedialog.cpp" line="851"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">&amp;Åbn</translation>
+        <translation>&amp;Åbn</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="746"/>
