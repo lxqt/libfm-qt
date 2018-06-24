@@ -351,7 +351,7 @@
     <message>
         <location filename="../dirtreeview.cpp" line="211"/>
         <source>Open in New T&amp;ab</source>
-        <translation>Öffnen in neuem T&amp;ab</translation>
+        <translation>Öffnen in neuem &amp;Reiter</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="215"/>
