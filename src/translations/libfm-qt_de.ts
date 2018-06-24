@@ -281,12 +281,12 @@
     <message>
         <location filename="../file-props.ui" line="607"/>
         <source>SetUID</source>
-        <translation type="unfinished">SetUID</translation>
+        <translation>Lege UID fest</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="614"/>
         <source>SetGID</source>
-        <translation type="unfinished">SetGID</translation>
+        <translation>Lege GID fest</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="650"/>
@@ -1116,7 +1116,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Standardanwendung ist zur Ausführung von &apos;1%&apos; bestimmt</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
