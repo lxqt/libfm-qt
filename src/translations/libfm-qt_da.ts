@@ -152,7 +152,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Filer behandlet:</translation>
     </message>
 </context>
 <context>
@@ -804,7 +804,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="283"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppe</translation>
     </message>
 </context>
 <context>
@@ -905,7 +905,7 @@ Vil du slette dem istedet?</translation>
         <location filename="../placesview.cpp" line="505"/>
         <location filename="../placesview.cpp" line="562"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Skjul</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="522"/>
@@ -1095,7 +1095,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="220"/>
         <source>Enter a name for the new %1:</source>
-        <translation type="unfinished">Indtast et navn til ny(t) %1:</translation>
+        <translation>Indtast et navn til det nye %1:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="521"/>
@@ -1105,7 +1105,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stien er ikke monteret.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="258"/>
@@ -1120,7 +1120,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan ikke sætte arbejdsmappe til &apos;%1&apos;: %2</translation>
     </message>
 </context>
 <context>
@@ -1358,7 +1358,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Filnavn:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
@@ -1387,35 +1387,35 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="98"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Gå tilbage</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="99"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Venstre</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="105"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Gå fremad</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Højre</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="113"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Genindlæs</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="114"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="131"/>
@@ -1425,17 +1425,17 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="138"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikonvisning</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>Miniaturevisning</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompakt visning</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
@@ -1451,28 +1451,29 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="267"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Vælg venligst en fil</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="287"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 findes allerede.
+Vil du erstatte den?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="596"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Stien &quot;%1&quot; findes ikke</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="610"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; er ikke en mappe</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="616"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; er ikke en fil</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="743"/>
@@ -1484,12 +1485,12 @@ Do you want to replace it?</source>
         <location filename="../filedialog.cpp" line="746"/>
         <location filename="../filedialog.cpp" line="859"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Gem</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="753"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle filer (*)</translation>
     </message>
 </context>
 </TS>
