@@ -1116,7 +1116,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>No hay ninguna aplicación por defecto configurada para lanzar «%1»</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
