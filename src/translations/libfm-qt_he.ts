@@ -170,42 +170,42 @@
     <message>
         <location filename="../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation></translation>
+        <translation>מיקום:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>File type:</source>
-        <translation></translation>
+        <translation>סוג קובץ:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
         <source>MIME type:</source>
-        <translation></translation>
+        <translation>סוג MIME:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="152"/>
         <source>File size:</source>
-        <translation></translation>
+        <translation>גודל קובץ:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="175"/>
         <source>On-disk size:</source>
-        <translation></translation>
+        <translation>גודל בכונן:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="198"/>
         <source>Last modified:</source>
-        <translation></translation>
+        <translation>שינוי אחרון:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="221"/>
         <source>Link target:</source>
-        <translation></translation>
+        <translation>יעד קישור:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="247"/>
         <source>Open With:</source>
-        <translation></translation>
+        <translation>פתיחה עם:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="264"/>
