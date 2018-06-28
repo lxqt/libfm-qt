@@ -210,73 +210,73 @@
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation></translation>
+        <translation>גישה אחרונה:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="282"/>
         <source>Permissions</source>
-        <translation></translation>
+        <translation>הרשאות</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="297"/>
         <source>Ownership</source>
-        <translation></translation>
+        <translation>בעלות</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="321"/>
         <location filename="../file-props.ui" line="386"/>
         <location filename="../file-props.ui" line="500"/>
         <source>Group:</source>
-        <translation></translation>
+        <translation>קבוצה:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="334"/>
         <location filename="../file-props.ui" line="369"/>
         <location filename="../file-props.ui" line="448"/>
         <source>Owner:</source>
-        <translation></translation>
+        <translation>בעלים:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="350"/>
         <source>Access Control</source>
-        <translation></translation>
+        <translation>בקרת גישה</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="403"/>
         <location filename="../file-props.ui" line="552"/>
         <source>Other:</source>
-        <translation></translation>
+        <translation>אחר:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="420"/>
         <source>Make the file executable</source>
-        <translation></translation>
+        <translation>להפוך את הקובץ למורשה הרצה</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="461"/>
         <location filename="../file-props.ui" line="513"/>
         <location filename="../file-props.ui" line="565"/>
         <source>Read</source>
-        <translation></translation>
+        <translation>קריאה</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="474"/>
         <location filename="../file-props.ui" line="526"/>
         <location filename="../file-props.ui" line="578"/>
         <source>Write</source>
-        <translation></translation>
+        <translation>כתיבה</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="487"/>
         <location filename="../file-props.ui" line="539"/>
         <location filename="../file-props.ui" line="591"/>
         <source>Execute</source>
-        <translation></translation>
+        <translation>הרצה</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="600"/>
         <source>Sticky</source>
-        <translation></translation>
+        <translation>דביק</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="607"/>
@@ -291,7 +291,7 @@
     <message>
         <location filename="../file-props.ui" line="650"/>
         <source>Advanced Mode</source>
-        <translation></translation>
+        <translation>מצב מתקדם</translation>
     </message>
 </context>
 <context>
@@ -299,7 +299,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation></translation>
+        <translation>התאמה אישית</translation>
     </message>
 </context>
 <context>
@@ -307,7 +307,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation></translation>
+        <translation>נא לבחור יישום לפתיחת קובצי „%1”</translation>
     </message>
 </context>
 <context>
@@ -315,12 +315,12 @@
     <message>
         <location filename="../createnewmenu.cpp" line="61"/>
         <source>Folder</source>
-        <translation></translation>
+        <translation>תיקייה</translation>
     </message>
     <message>
         <location filename="../createnewmenu.cpp" line="65"/>
         <source>Blank File</source>
-        <translation></translation>
+        <translation>קובץ ריק</translation>
     </message>
 </context>
 <context>
@@ -328,7 +328,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="46"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation></translation>
+        <translation>התיקייה שצוינה ‚%1’ אינה תקנית</translation>
     </message>
 </context>
 <context>
@@ -336,14 +336,14 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation></translation>
+        <translation>בטעינה…</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation></translation>
+        <translation>&lt;אין תת תיקיות&gt;</translation>
     </message>
 </context>
 <context>
@@ -351,17 +351,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="211"/>
         <source>Open in New T&amp;ab</source>
-        <translation></translation>
+        <translation>פתיחה ב&amp;לשונית חדשה</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="215"/>
         <source>Open in New Win&amp;dow</source>
-        <translation></translation>
+        <translation>פתיחה ב&amp;חלון חדש</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="220"/>
         <source>Open in Termina&amp;l</source>
-        <translation></translation>
+        <translation>פתיחה במ&amp;סוף</translation>
     </message>
 </context>
 <context>
@@ -369,22 +369,22 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation></translation>
+        <translation>להעתיק לכאן</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation></translation>
+        <translation>להעביר לכאן</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation></translation>
+        <translation>יצירת קישור סמלי כאן</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="41"/>
         <source>Cancel</source>
-        <translation></translation>
+        <translation>ביטול</translation>
     </message>
 </context>
 <context>
@@ -392,7 +392,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="92"/>
         <source>New bookmark</source>
-        <translation></translation>
+        <translation>סימנייה חדשה</translation>
     </message>
 </context>
 <context>
