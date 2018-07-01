@@ -48,5 +48,5 @@ https://github.com/lxqt/pcmanfm-qt/issues.
 ### Translation (Weblate)
 
 <a href="https://weblate.lxqt.org/projects/lxqt/libfm-qt/">
-<img src="https://weblate.lxqt.org/widgets/lxqt/libfm-qt/multi-auto.svg" alt="Translation status" />
+<img src="https://weblate.lxqt.org/widgets/lxqt/-/libfm-qt/multi-auto.svg" alt="Translation status" />
 </a>
