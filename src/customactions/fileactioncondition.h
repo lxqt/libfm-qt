@@ -80,7 +80,7 @@ public:
 
     bool match_show_if_running(const FileInfoList& files);
 
-    bool match_mime_type(const FileInfoList& files, const char* type, bool negated);
+    static bool match_mime_type(const FileInfoList& files, const char* type, bool negated);
 
     bool match_mime_types(const FileInfoList& files);
 
