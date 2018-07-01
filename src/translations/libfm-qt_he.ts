@@ -401,18 +401,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation></translation>
+        <translation>נראה כי הקובץ ‚%1’ הוא למעשה רשומת שולחן עבודה.
+מה ברצונך לעשות אתו?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation></translation>
+        <translation>נראה כי קובץ הטקסט ‚%1’ הוא למעשה סקריפט שניתן להריץ.
+מה ברצונך לעשות אתו?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation></translation>
+        <translation>ניתן להריץ את הקובץ ‚%1’. להריץ אותו?</translation>
     </message>
 </context>
 <context>
@@ -420,83 +422,83 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filemenu.cpp" line="84"/>
         <source>Open</source>
-        <translation></translation>
+        <translation>פתיחה</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="88"/>
         <source>Open With...</source>
-        <translation></translation>
+        <translation>פתיחה עם…</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="116"/>
         <source>Other Applications</source>
-        <translation></translation>
+        <translation>יישומים אחרים</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="122"/>
         <source>Create &amp;New</source>
-        <translation></translation>
+        <translation>יצירת &amp;חדש</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="141"/>
         <source>&amp;Restore</source>
-        <translation></translation>
+        <translation>&amp;שחזור</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="147"/>
         <source>Cut</source>
-        <translation></translation>
+        <translation>גזירה</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="151"/>
         <source>Copy</source>
-        <translation></translation>
+        <translation>העתקה</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="155"/>
         <source>Paste</source>
-        <translation></translation>
+        <translation>הדבקה</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="159"/>
         <location filename="../filemenu.cpp" line="390"/>
         <source>&amp;Move to Trash</source>
-        <translation></translation>
+        <translation>העברה ל&amp;אשפה</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="163"/>
         <source>Rename</source>
-        <translation></translation>
+        <translation>שינוי שם</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="218"/>
         <source>Extract to...</source>
-        <translation></translation>
+        <translation>חילוץ אל…</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Extract Here</source>
-        <translation></translation>
+        <translation>חילוץ לכאן</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="233"/>
         <source>Compress</source>
-        <translation></translation>
+        <translation>דחיסה</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="243"/>
         <source>Properties</source>
-        <translation></translation>
+        <translation>מאפיינים</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="331"/>
         <source>Output</source>
-        <translation></translation>
+        <translation>פלט</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="390"/>
         <source>&amp;Delete</source>
-        <translation></translation>
+        <translation>מחי&amp;קה</translation>
     </message>
 </context>
 <context>
@@ -504,29 +506,30 @@ What do you want to do with it?</source>
     <message>
         <location filename="../fileoperation.cpp" line="309"/>
         <source>Error</source>
-        <translation></translation>
+        <translation>שגיאה</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="310"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation></translation>
+        <translation>העברתם של חלק מהקבצים לאשפה אינה אפשרית כיוון שמערכת ההפעלה שתחתיהם אינה תומכת בפעולה זו.
+למחוק אותם במקום?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="375"/>
         <location filename="../fileoperation.cpp" line="392"/>
         <source>Confirm</source>
-        <translation></translation>
+        <translation>אישור</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="376"/>
         <source>Do you want to delete the selected files?</source>
-        <translation></translation>
+        <translation>למחוק את הקבצים הנבחרים?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="393"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation></translation>
+        <translation>להעביר את הקבצים הנבחרים לסל האשפה?</translation>
     </message>
 </context>
 <context>
@@ -534,47 +537,47 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move files</source>
-        <translation></translation>
+        <translation>העברת קבצים</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation></translation>
+        <translation>הקבצים הבאים מועברים לתיקיית היעד:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation></translation>
+        <translation>העתקת קבצים</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation></translation>
+        <translation>הקבצים הבאים מועתקים לתיקיית היעד:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation></translation>
+        <translation>השלכת קבצים לאשפה</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation></translation>
+        <translation>הקבצים הבאים מועברים לסל האשפה:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation></translation>
+        <translation>מחיקת קבצים</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation></translation>
+        <translation>הקבצים הבאים נמחקים:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation></translation>
+        <translation>יצירת קישורים סמליים</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
