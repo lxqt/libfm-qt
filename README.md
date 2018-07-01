@@ -43,3 +43,10 @@ as soon as the distribution upgrades to PCManFM-Qt ≥ 0.10.1.
 
 Issues should go to the tracker of PCManFM-Qt at
 https://github.com/lxqt/pcmanfm-qt/issues.
+
+
+### Translation (Weblate)
+
+<a href="https://weblate.lxqt.org/projects/lxqt/libfm-qt/">
+<img src="https://weblate.lxqt.org/widgets/lxqt/libfm-qt/multi-auto.svg" alt="Translation status" />
+</a>
