@@ -31,7 +31,6 @@ void UntrashJob::exec() {
                 origPaths.emplace_back(FilePath::fromPathStr(orig_path_str));
             }
             else {
-                ErrorAction act;
                 g_set_error(&err, G_IO_ERROR, G_IO_ERROR_FAILED,
                             tr("Cannot untrash file '%s': original path not known").toUtf8().constData(),
                             g_file_info_get_display_name(srcInfo.get()));
