@@ -7,7 +7,7 @@
 namespace Fm {
 
 struct CStrDeleter {
-    void operator()(char* ptr) {
+    void operator()(char* ptr) const {
         g_free(ptr);
     }
 };
@@ -28,7 +28,7 @@ struct CStrEqual {
 };
 
 struct CStrVDeleter {
-    void operator()(char** ptr) {
+    void operator()(char** ptr) const {
         g_strfreev(ptr);
     }
 };

@@ -34,7 +34,7 @@ public:
         destPath_ = std::move(dest);
     }
 
-    const Fm::FilePath& destPath() {
+    const Fm::FilePath& destPath() const {
         return destPath_;
     }
 

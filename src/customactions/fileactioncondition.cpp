@@ -227,7 +227,7 @@ bool FileActionCondition::match_mime_types(const FileInfoList& files) {
     return true;
 }
 
-bool FileActionCondition::match_base_name(const FileInfoList& files, const char* base_name, bool negated) {
+bool FileActionCondition::match_base_name(const FileInfoList& files, const char* base_name, bool negated) const {
     // see if all files has the base_name
     // FIXME: this is inefficient, some optimization is needed later
     GPatternSpec* pattern;
@@ -433,7 +433,7 @@ bool FileActionCondition::match_folders(const FileInfoList& files) {
     return true;
 }
 
-bool FileActionCondition::match_selection_count(const FileInfoList& files) {
+bool FileActionCondition::match_selection_count(const FileInfoList& files) const {
     const int n_files = files.size();
     switch(selection_count_cmp) {
     case '<':
