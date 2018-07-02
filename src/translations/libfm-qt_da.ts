@@ -401,7 +401,8 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Filen &apos;%1&apos; ser ud til at være en skrivebordspost.
+Hvad vil du gøre med den?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
@@ -946,7 +947,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../placesview.cpp" line="588"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis alle poster</translation>
     </message>
 </context>
 <context>
@@ -1110,12 +1111,12 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="258"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ugyldig skrivebordspost-fil: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Der er ikke sat noget standardprogram til at starte &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
@@ -1371,7 +1372,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan ikke oprette et link på filsystem som ikke er indbygget</translation>
     </message>
 </context>
 <context>
@@ -1379,7 +1380,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="36"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan ikke fortryde at filen &apos;%s&apos; blev flyttet til papirkurven: oprindelig sti er ukendt</translation>
     </message>
 </context>
 <context>
@@ -1440,7 +1441,7 @@ Senset ændret: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>Detaljeret liste visning</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="267"/>
