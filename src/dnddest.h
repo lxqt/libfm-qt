@@ -34,12 +34,12 @@ public:
         destPath_ = std::move(dest);
     }
 
-    const Fm::FilePath& destPath() {
+    const Fm::FilePath& destPath() const {
         return destPath_;
     }
 
-    bool isSupported(const QMimeData* data);
-    bool isSupported(QString mimeType);
+    static bool isSupported(const QMimeData* data);
+    static bool isSupported(QString mimeType);
 
     bool dropMimeData(const QMimeData* data, Qt::DropAction action);
 

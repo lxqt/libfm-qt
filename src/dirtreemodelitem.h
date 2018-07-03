@@ -51,7 +51,7 @@ public:
 
     void setShowHidden(bool show);
 
-    bool isQueuedForDeletion() {
+    bool isQueuedForDeletion() const {
         return queuedForDeletion_;
     }
     

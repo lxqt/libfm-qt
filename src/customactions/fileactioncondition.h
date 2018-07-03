@@ -80,11 +80,11 @@ public:
 
     bool match_show_if_running(const FileInfoList& files);
 
-    bool match_mime_type(const FileInfoList& files, const char* type, bool negated);
+    static bool match_mime_type(const FileInfoList& files, const char* type, bool negated);
 
     bool match_mime_types(const FileInfoList& files);
 
-    bool match_base_name(const FileInfoList& files, const char* base_name, bool negated);
+    bool match_base_name(const FileInfoList& files, const char* base_name, bool negated) const;
 
     bool match_base_names(const FileInfoList& files);
 
@@ -96,7 +96,7 @@ public:
 
     bool match_folders(const FileInfoList& files);
 
-    bool match_selection_count(const FileInfoList &files);
+    bool match_selection_count(const FileInfoList &files) const;
 
     bool match_capabilities(const FileInfoList& files);
 
