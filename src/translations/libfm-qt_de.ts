@@ -519,7 +519,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
         <location filename="../fileoperation.cpp" line="375"/>
         <location filename="../fileoperation.cpp" line="392"/>
         <source>Confirm</source>
-        <translation>Bestätigung</translation>
+        <translation>Bestätigen</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="376"/>
