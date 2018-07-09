@@ -6,12 +6,12 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>Zvolte aplikaci</translation>
+        <translation>Zvolte program</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation>Nainstalované aplikace</translation>
+        <translation>Nainstalované programy</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation>Název aplikace:</translation>
+        <translation>Název programu:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -39,10 +39,10 @@
 &lt;/ul&gt;</source>
         <translation>&lt;b&gt;Tyto zástupné symboly mohou být použity v příkazovém řádku:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Reprezentuje jméno jednoho souboru&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Reprezentuje jména více souborů&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Reprezentuje URI jednoho souboru&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Reprezentuje URI více souborů&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Představuje jméno jednoho souboru&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Představuje názvy více souborů&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Představuje URI jednoho souboru&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Představuje URI více souborů&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>Použít aplikaci jako výchozí pro soubory tohoto typu</translation>
+        <translation>Použít program jako výchozí pro soubory tohoto typu</translation>
     </message>
 </context>
 <context>
@@ -71,7 +71,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
         <source>Name</source>
-        <translation>Jméno</translation>
+        <translation>Název</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="47"/>
@@ -91,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Přetažením uprav pořadí</translation>
+        <translation>Přetažením upravte pořadí položek</translation>
     </message>
 </context>
 <context>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation>Spustit v &amp;Terminálu</translation>
+        <translation>Spustit v &amp;terminálu</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
@@ -137,12 +137,12 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation>Příprava...</translation>
+        <translation>Připravuje se...</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress</source>
-        <translation>Průběh</translation>
+        <translation>Postup</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
@@ -180,7 +180,7 @@
     <message>
         <location filename="../file-props.ui" line="129"/>
         <source>MIME type:</source>
-        <translation>Mime typ:</translation>
+        <translation>MIME typ:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="152"/>
@@ -190,12 +190,12 @@
     <message>
         <location filename="../file-props.ui" line="175"/>
         <source>On-disk size:</source>
-        <translation>Zabrané místo:</translation>
+        <translation>Zabrané místo na disku:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="198"/>
         <source>Last modified:</source>
-        <translation>Upraveno:</translation>
+        <translation>Naposledy změněno:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="221"/>
@@ -210,12 +210,12 @@
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation>Poslední přístup:</translation>
+        <translation>Naposledy přistupováno:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="282"/>
         <source>Permissions</source>
-        <translation>Práva</translation>
+        <translation>Oprávnění</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="297"/>
@@ -276,17 +276,17 @@
     <message>
         <location filename="../file-props.ui" line="600"/>
         <source>Sticky</source>
-        <translation></translation>
+        <translation>Trvalý</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="607"/>
         <source>SetUID</source>
-        <translation></translation>
+        <translation>Nastavit UID napevno</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="614"/>
         <source>SetGID</source>
-        <translation></translation>
+        <translation>Nastavit GID napevno</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="650"/>
@@ -307,7 +307,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Vyber program, ve kterém se budou otvírat soubory “%1“</translation>
+        <translation>Vyberte program, ve kterém se budou otvírat soubory “%1“</translation>
     </message>
 </context>
 <context>
@@ -315,7 +315,7 @@
     <message>
         <location filename="../createnewmenu.cpp" line="61"/>
         <source>Folder</source>
-        <translation>Adresář</translation>
+        <translation>Složka</translation>
     </message>
     <message>
         <location filename="../createnewmenu.cpp" line="65"/>
@@ -351,7 +351,7 @@
     <message>
         <location filename="../dirtreeview.cpp" line="211"/>
         <source>Open in New T&amp;ab</source>
-        <translation>Otevřít v novém &amp;panelu</translation>
+        <translation>Otevřít v nové &amp;kartě</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="215"/>
@@ -379,7 +379,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation>Vytvořit zde odkaz</translation>
+        <translation>Vytvořit zde symbolický odkaz</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="41"/>
@@ -1061,7 +1061,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="179"/>
         <source>Please enter a new name:</source>
-        <translation>Zadejte nový název</translation>
+        <translation>Zadejte nový název:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="204"/>
