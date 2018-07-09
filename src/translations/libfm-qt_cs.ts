@@ -152,7 +152,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zpracovaných souborů:</translation>
     </message>
 </context>
 <context>
@@ -328,7 +328,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="46"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>Stanovený adresář &apos;%1&apos; není platný</translation>
     </message>
 </context>
 <context>
@@ -401,7 +401,8 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdá se, že soubor &apos;%1&apos; je položkou na ploše.
+Co s ním chcete dělat?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
@@ -650,12 +651,12 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="381"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat ikonu</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="383"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrázky (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="479"/>
@@ -1353,7 +1354,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Location:</source>
-        <translation type="unfinished">Umístění:</translation>
+        <translation>Umístění:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
