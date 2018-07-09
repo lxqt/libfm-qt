@@ -1364,7 +1364,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished">Typ souboru:</translation>
+        <translation>Typ souboru:</translation>
     </message>
 </context>
 <context>
@@ -1372,7 +1372,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze vytvořit odkaz na cizím souborovém systému</translation>
     </message>
 </context>
 <context>
@@ -1380,7 +1380,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="36"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze obnovit soubor &apos;%s&apos;: původní cesta neznámá</translation>
     </message>
 </context>
 <context>
@@ -1410,38 +1410,38 @@ Změněno: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="113"/>
         <source>Reload</source>
-        <translation>Načíst znovu</translation>
+        <translation>Nahrát znovu</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="114"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="131"/>
         <source>Create Folder</source>
-        <translation type="unfinished">Vytvořit složku</translation>
+        <translation>Vytvořit složku</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="138"/>
         <source>Icon View</source>
-        <translation>Zobrazení s ikonami</translation>
+        <translation>Pohled s ikonami</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Thumbnail View</source>
-        <translation>Zobrazení s náhledy</translation>
+        <translation>Pohled s náhledy</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Compact View</source>
-        <translation>Zhuštěné zobrazení</translation>
+        <translation>Celistvý pohled v seznamu</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
         <source>Detailed List View</source>
-        <translation>Zobrazení podrobného seznamu</translation>
+        <translation>Podrobný pohled v seznamu</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="267"/>
@@ -1480,7 +1480,7 @@ Chcete ho nahradit?</translation>
         <location filename="../filedialog.cpp" line="743"/>
         <location filename="../filedialog.cpp" line="851"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">&amp;Otevřít</translation>
+        <translation>&amp;Otevřít</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="746"/>
