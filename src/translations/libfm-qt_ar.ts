@@ -1050,7 +1050,7 @@ Modified: %2</source>
         <location filename="../utilities.cpp" line="169"/>
         <location filename="../utilities.cpp" line="263"/>
         <source>Error</source>
-        <translation>خطّ</translation>
+        <translation>خطأ</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="178"/>
