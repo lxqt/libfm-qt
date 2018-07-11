@@ -39,7 +39,7 @@
 &lt;/ul&gt;</source>
         <translation>&lt;b&gt;Tyto zástupné symboly mohou být použity v příkazovém řádku:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Představuje jméno jednoho souboru&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Představuje název jednoho souboru&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Představuje názvy více souborů&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Představuje URI jednoho souboru&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Představuje URI více souborů&lt;/li&gt;
@@ -81,12 +81,12 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation>&amp;Přidat položku</translation>
+        <translation>Přid&amp;at položku</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation>&amp;Odebrat položku</translation>
+        <translation>Odeb&amp;rat položku</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
@@ -119,7 +119,7 @@
     <message>
         <location filename="../exec-file.ui" line="85"/>
         <source>Cancel</source>
-        <translation>Zrušit</translation>
+        <translation>Storno</translation>
     </message>
 </context>
 <context>
@@ -127,7 +127,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation>Umístění:</translation>
+        <translation>Cílové umístění:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
@@ -239,7 +239,7 @@
     <message>
         <location filename="../file-props.ui" line="350"/>
         <source>Access Control</source>
-        <translation>Zpřístupnění</translation>
+        <translation>Řízení přístupu</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="403"/>
@@ -264,7 +264,7 @@
         <location filename="../file-props.ui" line="526"/>
         <location filename="../file-props.ui" line="578"/>
         <source>Write</source>
-        <translation>Čtení a zápis</translation>
+        <translation>Zápis</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="487"/>
@@ -299,7 +299,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation>Vlastní</translation>
+        <translation>Přizpůsobit</translation>
     </message>
 </context>
 <context>
@@ -307,7 +307,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Vyberte program, ve kterém se budou otvírat soubory “%1“</translation>
+        <translation>Vyberte program, ve kterém se budou otvírat soubory „%1“</translation>
     </message>
 </context>
 <context>
@@ -328,7 +328,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="46"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>Stanovený adresář &apos;%1&apos; není platný</translation>
+        <translation>Zadaná složka „%1“ není platná</translation>
     </message>
 </context>
 <context>
@@ -336,7 +336,7 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation>Nahrává se...</translation>
+        <translation>Načítání…</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
@@ -351,7 +351,7 @@
     <message>
         <location filename="../dirtreeview.cpp" line="211"/>
         <source>Open in New T&amp;ab</source>
-        <translation>Otevřít v nové &amp;kartě</translation>
+        <translation>Otevřít v nové k&amp;artě</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="215"/>
@@ -361,7 +361,7 @@
     <message>
         <location filename="../dirtreeview.cpp" line="220"/>
         <source>Open in Termina&amp;l</source>
-        <translation>Otevřít v &amp;terminálu</translation>
+        <translation>Otevřít v terminá&amp;lu</translation>
     </message>
 </context>
 <context>
@@ -384,7 +384,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="41"/>
         <source>Cancel</source>
-        <translation>Zrušit</translation>
+        <translation>Storno</translation>
     </message>
 </context>
 <context>
@@ -401,20 +401,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>Zdá se, že soubor &apos;%1&apos; je položkou na ploše.
+        <translation>Zdá se, že soubor „%1“ je položkou na ploše.
 Co s ním chcete dělat?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>Zdá se, že tento textový soubor &apos;%1&apos; je spustitelný skript.
+        <translation>Zdá se, že tento textový soubor „%1“ je spustitelný skript.
 Co s ním chcete dělat?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>Tento soubor &apos;%1&apos; je spustitelný. Chcete jej spustit?</translation>
+        <translation>Tento soubor „%1“ je spustitelný. Chcete jej spustit?</translation>
     </message>
 </context>
 <context>
@@ -473,7 +473,7 @@ Co s ním chcete dělat?</translation>
     <message>
         <location filename="../filemenu.cpp" line="88"/>
         <source>Open With...</source>
-        <translation>Otevřít v ...</translation>
+        <translation>Otevřít s…</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="116"/>
@@ -483,7 +483,7 @@ Co s ním chcete dělat?</translation>
     <message>
         <location filename="../filemenu.cpp" line="218"/>
         <source>Extract to...</source>
-        <translation>Rozbalit do ...</translation>
+        <translation>Rozbalit do…</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
@@ -557,7 +557,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation>Soubory pro koš</translation>
+        <translation>Soubory v Koši</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
@@ -737,7 +737,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="164"/>
         <source>By Modification Time</source>
-        <translation>Podle času</translation>
+        <translation>Podle času změny</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="165"/>
@@ -1372,7 +1372,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation>Nelze vytvořit odkaz na cizím souborovém systému</translation>
+        <translation>Nelze vytvořit odkaz na souborovém systému, který to nepodporuje</translation>
     </message>
 </context>
 <context>
@@ -1380,7 +1380,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="36"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Nelze obnovit soubor &apos;%s&apos;: původní cesta neznámá</translation>
+        <translation>Nedaří se obnovit soubor „%s“: původní umístění není známo</translation>
     </message>
 </context>
 <context>
@@ -1410,7 +1410,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="113"/>
         <source>Reload</source>
-        <translation>Nahrát znovu</translation>
+        <translation>Načíst znovu</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="114"/>
@@ -1436,7 +1436,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Compact View</source>
-        <translation>Celistvý pohled v seznamu</translation>
+        <translation>Zhuštěný pohled v seznamu</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
