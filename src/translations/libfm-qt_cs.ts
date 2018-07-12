@@ -16,7 +16,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation>Vlastní příkaz</translation>
+        <translation>Uživatelem určený příkaz</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
@@ -37,18 +37,18 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;Tyto zástupné symboly mohou být použity v příkazovém řádku:&lt;/b&gt;
+        <translation>&lt;b&gt;V příkazovém řádku je možné využít tato zástupná vyjádření:&lt;/b&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Představuje název jednoho souboru&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Představuje názvy více souborů&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Představuje URI jednoho souboru&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Představuje URI více souborů&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Představuje URI identifikátor jednoho souboru&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Představuje více URI identifikátorů&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>Nechat okno terminálu otevřené</translation>
+        <translation>Po dokončení příkazu nezavírat okno terminálu</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>Použít program jako výchozí pro soubory tohoto typu</translation>
+        <translation>Použít zvolený program jako výchozí akci pro soubory tohoto typu</translation>
     </message>
 </context>
 <context>
@@ -91,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Přetažením upravte pořadí položek</translation>
+        <translation>Pořadí položek upravíte přetažením</translation>
     </message>
 </context>
 <context>
@@ -137,17 +137,17 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation>Připravuje se...</translation>
+        <translation>Připravuje se…</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress</source>
-        <translation>Postup</translation>
+        <translation>Ukazatel průběhu</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
         <source>Time remaining:</source>
-        <translation>Zbývající čas:</translation>
+        <translation>Bude trvat ještě:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
@@ -281,12 +281,12 @@
     <message>
         <location filename="../file-props.ui" line="607"/>
         <source>SetUID</source>
-        <translation>Nastavit UID napevno</translation>
+        <translation>Spouštět s právy vlastníka souboru (SetUID)</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="614"/>
         <source>SetGID</source>
-        <translation>Nastavit GID napevno</translation>
+        <translation>Přebírat skupinu u nových podsložek a souborů (SetGID)</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="650"/>
@@ -307,7 +307,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Vyberte program, ve kterém se budou otvírat soubory „%1“</translation>
+        <translation>Vyberte program, ve kterém budou otevírány soubory „%1“</translation>
     </message>
 </context>
 <context>
@@ -356,7 +356,7 @@
     <message>
         <location filename="../dirtreeview.cpp" line="215"/>
         <source>Open in New Win&amp;dow</source>
-        <translation>Otevřít v novém &amp;okně</translation>
+        <translation>&amp;Otevřít v novém okně</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="220"/>
@@ -369,7 +369,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation>Kopírovat sem</translation>
+        <translation>Zkopírovat sem</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
@@ -401,7 +401,7 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>Zdá se, že soubor „%1“ je položkou na ploše.
+        <translation>Zdá se, že soubor „%1“ je spouštěč.
 Co s ním chcete dělat?</translation>
     </message>
     <message>
@@ -414,7 +414,7 @@ Co s ním chcete dělat?</translation>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>Tento soubor „%1“ je spustitelný. Chcete jej spustit?</translation>
+        <translation>Tento soubor „%1“ je spustitelný. Chcete ho spustit?</translation>
     </message>
 </context>
 <context>
@@ -513,7 +513,7 @@ Co s ním chcete dělat?</translation>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
         <translation>Některé soubory nemohou být přesunuty do koše, protože příslušné souborové systémy nepodporují tuto operaci.
-Chceš je odstranit trvale?</translation>
+Chcete je namísto toho přímo odstranit?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="375"/>
@@ -524,12 +524,12 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../fileoperation.cpp" line="376"/>
         <source>Do you want to delete the selected files?</source>
-        <translation>Chceš smazat vybrané soubory?</translation>
+        <translation>Chcete vybrané soubory smazat?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="393"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation>Chceš přesunout vybrané soubory do koše?</translation>
+        <translation>Chcete vybrané soubory přesunout do koše?</translation>
     </message>
 </context>
 <context>
@@ -542,7 +542,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>Přesunout následující soubory do cílové složky:</translation>
+        <translation>Přesouvání následujících souborů do cílové složky:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -552,7 +552,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>Kopírovat následující soubory do cílové složky:</translation>
+        <translation>Kopírování následujících souborů do cílové složky:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
@@ -562,7 +562,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>Přesunout následující soubory do koše:</translation>
+        <translation>Přesouvání následujících souborů do koše:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
@@ -572,7 +572,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation>Smazat následující soubory:</translation>
+        <translation>Mazání následujících souborů:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
@@ -582,7 +582,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>Vytvořit symbolické odkazy pro následující soubory:</translation>
+        <translation>Vytváření symbolických odkazů pro následující soubory:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
@@ -592,7 +592,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>Změnit vlastnosti následujících souborů:</translation>
+        <translation>Měnění vlastností následujících souborů:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
@@ -602,7 +602,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Obnovit následující soubory z koše:</translation>
+        <translation>Obnovování následujících souborů z koše:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
@@ -621,7 +621,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="158"/>
         <source>View and modify folder content</source>
-        <translation>Zobrazit a měnit obsah složky</translation>
+        <translation>Zobrazit a změnit obsah složky</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="162"/>
@@ -646,7 +646,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="305"/>
         <source>Multiple Files</source>
-        <translation>Více souborů</translation>
+        <translation>Vícero souborů</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="381"/>
@@ -666,7 +666,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="480"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>Chcete tyto změny použít na všechny soubory a podsložky?</translation>
+        <translation>Chcete tyto změny použít také na všechny obsažené soubory a podsložky?</translation>
     </message>
 </context>
 <context>
@@ -702,7 +702,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="54"/>
         <source>Select &amp;All</source>
-        <translation>Vybr&amp;at všechno</translation>
+        <translation>Vybr&amp;at vše</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
@@ -712,7 +712,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="64"/>
         <source>Sorting</source>
-        <translation>Řadit</translation>
+        <translation>Řazení</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
@@ -772,7 +772,7 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="211"/>
         <source>Case Sensitive</source>
-        <translation>Zohlednit velikost písmen</translation>
+        <translation>Rozlišovat malá/VELKÁ písmena</translation>
     </message>
 </context>
 <context>
@@ -834,12 +834,12 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../pathbar.cpp" line="126"/>
         <source>&amp;Edit Path</source>
-        <translation>Upravit popis umístění</translation>
+        <translation>&amp;Upravit popis umístění</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="129"/>
         <source>&amp;Copy Path</source>
-        <translation>Zkopírovat popis umístění</translation>
+        <translation>&amp;Zkopírovat popis umístění</translation>
     </message>
 </context>
 <context>
@@ -911,12 +911,12 @@ Chceš je odstranit trvale?</translation>
     <message>
         <location filename="../placesview.cpp" line="522"/>
         <source>Move Bookmark Up</source>
-        <translation>Přesunout záložku nahoru</translation>
+        <translation>Posunout záložku nahoru</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="527"/>
         <source>Move Bookmark Down</source>
-        <translation>Přesunout záložku dolů</translation>
+        <translation>Posunout záložku dolů</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="531"/>
@@ -1111,12 +1111,12 @@ Změněno: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="258"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>Neplatný soubor položky desktopu: „%1“</translation>
+        <translation>Neplatný soubor spouštěče: „%1“</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>Pro spouštění „%1“ není nastavená výchozí aplikace</translation>
+        <translation>Pro spouštění „%1“ není nastavená žádná výchozí aplikace</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
@@ -1134,7 +1134,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Na tomto místě už je soubor se stejným názvem.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Chcete nahradit existující soubor&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;V tomto umístění se už nachází soubor se stejným názvem.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Chcete nahradit existující soubor?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
@@ -1197,7 +1197,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation>Nezohledňovat velikost písmen</translation>
+        <translation>Nerozlišovat malá/VELKÁ písmena</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="55"/>
@@ -1237,7 +1237,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation>Hledat pouze soubory tohoto typu:</translation>
+        <translation>Hledat pouze soubory těchto typů:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
@@ -1282,7 +1282,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case insensiti&amp;ve</source>
-        <translation>Nezohledňovat &amp;velikost písmen</translation>
+        <translation>Nerozlišovat malá/&amp;VELKÁ písmena</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
@@ -1380,7 +1380,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="36"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Nedaří se obnovit soubor „%s“: původní umístění není známo</translation>
+        <translation>Nelze obnovit soubor „%s“: původní umístění není známo</translation>
     </message>
 </context>
 <context>
@@ -1431,17 +1431,17 @@ Změněno: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Thumbnail View</source>
-        <translation>Pohled s náhledy</translation>
+        <translation>Zobrazení s náhledy</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Compact View</source>
-        <translation>Zhuštěný pohled v seznamu</translation>
+        <translation>Zhuštěné zobrazení</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
         <source>Detailed List View</source>
-        <translation>Podrobný pohled v seznamu</translation>
+        <translation>Podrobný seznam</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="267"/>
