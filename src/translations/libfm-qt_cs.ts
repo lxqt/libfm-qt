@@ -6,12 +6,12 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>Zvolte program</translation>
+        <translation>Zvolte aplikaci</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation>Nainstalované programy</translation>
+        <translation>Nainstalované aplikace</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation>Název programu:</translation>
+        <translation>Název aplikace:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -39,10 +39,10 @@
 &lt;/ul&gt;</source>
         <translation>&lt;b&gt;V příkazovém řádku je možné využít tato zástupná vyjádření:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Představuje název jednoho souboru&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Představuje názvy více souborů&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Představuje jeden soubor&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Představuje vícero souborů&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Představuje URI identifikátor jednoho souboru&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Představuje více URI identifikátorů&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Představuje vícero URI identifikátorů&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>Použít zvolený program jako výchozí akci pro soubory tohoto typu</translation>
+        <translation>Použít zvolenou aplikaci jako výchozí akci pro soubory tohoto typu</translation>
     </message>
 </context>
 <context>
@@ -276,7 +276,7 @@
     <message>
         <location filename="../file-props.ui" line="600"/>
         <source>Sticky</source>
-        <translation>Trvalý</translation>
+        <translation>Mazat/přejmenovávat pouze vlastník (sticky)</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="607"/>
@@ -307,7 +307,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Vyberte program, ve kterém budou otevírány soubory „%1“</translation>
+        <translation>Vyberte aplikace, ve které otevírat soubory „%1“</translation>
     </message>
 </context>
 <context>
@@ -408,7 +408,7 @@ Co s ním chcete dělat?</translation>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>Zdá se, že tento textový soubor „%1“ je spustitelný skript.
+        <translation>Zdá se, že textový soubor „%1“ je spustitelný skript.
 Co s ním chcete dělat?</translation>
     </message>
     <message>
@@ -478,7 +478,7 @@ Co s ním chcete dělat?</translation>
     <message>
         <location filename="../filemenu.cpp" line="116"/>
         <source>Other Applications</source>
-        <translation>Ostatní programy</translation>
+        <translation>Ostatní aplikace</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="218"/>
@@ -512,7 +512,7 @@ Co s ním chcete dělat?</translation>
         <location filename="../fileoperation.cpp" line="310"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>Některé soubory nemohou být přesunuty do koše, protože příslušné souborové systémy nepodporují tuto operaci.
+        <translation>Některé soubory nemohou být přesunuty do koše – souborové systémy, na kterých leží, tuto operaci nepodporují.
 Chcete je namísto toho přímo odstranit?</translation>
     </message>
     <message>
@@ -587,12 +587,12 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation>Změnit vlastnosti</translation>
+        <translation>Změnit atributy</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>Měnění vlastností následujících souborů:</translation>
+        <translation>Měnění atributů u následujících souborů:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
@@ -707,7 +707,7 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
         <source>Invert Selection</source>
-        <translation>Invertovat výběr</translation>
+        <translation>Prohodit výběr</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="64"/>
@@ -737,7 +737,7 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="164"/>
         <source>By Modification Time</source>
-        <translation>Podle času změny</translation>
+        <translation>Podle okamžiku změny</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="165"/>
@@ -1029,17 +1029,17 @@ Změněno: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation>&amp;Zapomenout heslo</translation>
+        <translation>Heslo okamž&amp;itě zapomenout</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password until you &amp;logout</source>
-        <translation>Pamatovat si heslo do odh&amp;lášení</translation>
+        <translation>Zapamatovat si heslo do odh&amp;lášení</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation>Pamatovat si heslo &amp;trvale</translation>
+        <translation>Zapamatovat si heslo &amp;trvale</translation>
     </message>
 </context>
 <context>
@@ -1134,7 +1134,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;V tomto umístění se už nachází soubor se stejným názvem.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Chcete nahradit existující soubor?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;V tomto umístění se už nachází soubor se stejným názvem.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Chcete existující soubor nahradit?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
@@ -1336,7 +1336,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="370"/>
         <source>Last Modified Time:</source>
-        <translation>Čas poslední změny:</translation>
+        <translation>Okamžik poslední změny:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="378"/>
@@ -1426,7 +1426,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="138"/>
         <source>Icon View</source>
-        <translation>Pohled s ikonami</translation>
+        <translation>Zobrazení s ikonami</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
@@ -1436,7 +1436,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Compact View</source>
-        <translation>Zhuštěné zobrazení</translation>
+        <translation>Kompaktní zobrazení</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
