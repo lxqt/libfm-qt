@@ -636,7 +636,7 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="165"/>
         <source>Forbidden</source>
-        <translation>Zakázáno</translation>
+        <translation>Odepřen</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="282"/>
