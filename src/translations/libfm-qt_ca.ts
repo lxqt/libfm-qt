@@ -1024,7 +1024,7 @@ Modificat: %2</translation>
         <location filename="../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
         <translatorcomment>&amp;Domini:</translatorcomment>
-        <translation></translation>
+        <translation>&amp;Domini:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
@@ -1121,7 +1121,7 @@ Modificat: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>No es pot establir el directori de treball a «%1»: %2</translation>
     </message>
 </context>
 <context>
