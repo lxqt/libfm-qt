@@ -512,7 +512,7 @@ What do you want to do with it?</source>
         <location filename="../fileoperation.cpp" line="310"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>تعذّر نقل بعض الملفات إلى المهملات لأن أنظمة الملفات التحتية لا تدعم ذلك.
+        <translation>تعذر نقل بعض الملفات إلى المهملات لأن أنظمة الملفات التحتية لا تدعم ذلك.
 أتريد حذفها بدل نقلها؟</translation>
     </message>
     <message>
