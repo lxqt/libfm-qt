@@ -152,7 +152,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>File elaborati:</translation>
     </message>
 </context>
 <context>
@@ -276,17 +276,17 @@
     <message>
         <location filename="../file-props.ui" line="600"/>
         <source>Sticky</source>
-        <translation>Sticky</translation>
+        <translation>Sticky Bit</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="607"/>
         <source>SetUID</source>
-        <translation>SetUID</translation>
+        <translation>Setta UID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="614"/>
         <source>SetGID</source>
-        <translation>SetGID</translation>
+        <translation>Setta GID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="650"/>
@@ -401,7 +401,8 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo file &apos;%1&apos; sembra un file .desktop.
+Cosa vuoi fare?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
@@ -804,7 +805,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="283"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppo</translation>
     </message>
 </context>
 <context>
@@ -905,7 +906,7 @@ Vuoi invece eliminarli?</translation>
         <location filename="../placesview.cpp" line="505"/>
         <location filename="../placesview.cpp" line="562"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Nascondi</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="522"/>
@@ -946,7 +947,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../placesview.cpp" line="588"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra tutte le risorse</translation>
     </message>
 </context>
 <context>
@@ -1105,22 +1106,22 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo percorso non è montato.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="258"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>File desktop non valido: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessuna applicazione predefinita per eseguire  &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile impostare cartella di lavoro a  &apos;%1&apos;: %2</translation>
     </message>
 </context>
 <context>
@@ -1138,7 +1139,7 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
         <source>dest</source>
-        <translation>dest</translation>
+        <translation>Destinazione</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
