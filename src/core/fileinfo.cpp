@@ -9,7 +9,8 @@ const char defaultGFileInfoQueryAttribs[] = "standard::*,"
                                             "time::*,"
                                             "access::*,"
                                             "id::filesystem,"
-                                            "metadata::emblems";
+                                            "metadata::emblems,"
+                                            "metadata::trust";
 
 FileInfo::FileInfo() {
     // FIXME: initialize numeric data members
@@ -23,6 +24,7 @@ FileInfo::~FileInfo() {
 }
 
 void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath& parentDirPath) {
+    inf_ = inf;
     dirPath_ = parentDirPath;
     const char* tmp, *uri;
     GIcon* gicon;
@@ -378,6 +380,37 @@ bool FileInfo::isExecutableType() const {
         return false;
     }
     return mimeType_->canBeExecutable();
+}
+
+bool FileInfo::isTrustable() const {
+    if(isExecutableType()) {
+        /* to avoid GIO assertion warning: */
+        if(g_file_info_get_attribute_type(inf_.get(), "metadata::trust") == G_FILE_ATTRIBUTE_TYPE_STRING) {
+            if(const auto data = g_file_info_get_attribute_string(inf_.get(), "metadata::trust")) {
+                return (strcmp(data, "true") == 0);
+            }
+        }
+    }
+    return false;
+}
+
+void FileInfo::setTrustable(bool trust) const {
+    if(!isExecutableType()) {
+        return; // "metadata::trust" is only for executables
+    }
+    GObjectPtr<GFileInfo> info {g_file_info_new()}; // used to set only this attribute
+    if(trust) {
+        g_file_info_set_attribute_string(info.get(), "metadata::trust", "true");
+        g_file_info_set_attribute_string(inf_.get(), "metadata::trust", "true");
+    }
+    else {
+        g_file_info_set_attribute(info.get(), "metadata::trust", G_FILE_ATTRIBUTE_TYPE_INVALID, nullptr);
+        g_file_info_set_attribute(inf_.get(), "metadata::trust", G_FILE_ATTRIBUTE_TYPE_INVALID, nullptr);
+    }
+    g_file_set_attributes_from_info(path().gfile().get(),
+                                    info.get(),
+                                    G_FILE_QUERY_INFO_NONE,
+                                    nullptr, nullptr);
 }
 
 

@@ -213,7 +213,12 @@ public:
         return emblems_;
     }
 
+    bool isTrustable() const;
+
+    void setTrustable(bool trust) const;
+
 private:
+    GObjectPtr<GFileInfo> inf_;
     std::string name_;
     QString dispName_;
 
