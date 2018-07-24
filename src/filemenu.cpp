@@ -248,6 +248,18 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
 FileMenu::~FileMenu() {
 }
 
+void FileMenu::addTrustAction() {
+    if(info_->isExecutableType() && (!fileLauncher_ || !fileLauncher_->quickExec())) {
+        QAction* trustAction = new QAction(files_.size() > 1
+                                             ? tr("Trust selected executables")
+                                             : tr("Trust this executable"),
+                                           this);
+        trustAction->setCheckable(true);
+        trustAction->setChecked(info_->isTrustable());
+        connect(trustAction, &QAction::toggled, this, &FileMenu::onTrustToggled);
+        insertAction(propertiesAction_, trustAction);
+    }
+}
 
 void FileMenu::addCustomActionItem(QMenu* menu, std::shared_ptr<const FileActionItem> item) {
     if(!item) { // separator
@@ -329,6 +341,12 @@ void FileMenu::onCustomActionTrigerred() {
     item->launch(nullptr, files_, output);
     if(output) {
         QMessageBox::information(this, tr("Output"), output.get());
+    }
+}
+
+void FileMenu::onTrustToggled(bool checked) {
+    for(auto& file: files_) {
+        file->setTrustable(checked);
     }
 }
 

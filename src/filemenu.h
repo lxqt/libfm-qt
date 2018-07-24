@@ -40,6 +40,8 @@ public:
     explicit FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> info, Fm::FilePath cwd, bool isWritableDir = true, const QString& title = QString(), QWidget* parent = nullptr);
     ~FileMenu();
 
+    void addTrustAction();
+
     bool useTrash() {
         return useTrash_;
     }
@@ -161,6 +163,7 @@ protected:
 protected Q_SLOTS:
     void onOpenTriggered();
     void onOpenWithTriggered();
+    void onTrustToggled(bool checked);
     void onFilePropertiesTriggered();
     void onApplicationTriggered();
     void onCustomActionTrigerred();

@@ -1337,11 +1337,11 @@ void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm::FileInf
             // show context menu
             auto files = selectedFiles();
             if(!files.empty()) {
-                QModelIndexList selIndexes = mode == DetailedListMode ? selectedRows() : selectedIndexes();
-                Fm::FileMenu* fileMenu = (view && selIndexes.size() == 1)
+                Fm::FileMenu* fileMenu = (view && files.size() == 1)
                                          ? new Fm::FileMenu(files, fileInfo, folderPath, isWritableDir, QString(), view)
                                          : new Fm::FileMenu(files, fileInfo, folderPath, isWritableDir);
                 fileMenu->setFileLauncher(fileLauncher_);
+                fileMenu->addTrustAction();
                 prepareFileMenu(fileMenu);
                 menu = fileMenu;
             }

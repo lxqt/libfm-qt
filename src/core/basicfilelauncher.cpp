@@ -193,7 +193,7 @@ bool BasicFileLauncher::launchDesktopEntry(const FileInfoPtr &fileInfo, const Fi
     const char* desktopEntryName = nullptr;
     FilePathList shortcutTargetPaths;
     if(fileInfo->isExecutableType()) {
-        auto act = quickExec_ ? ExecAction::DIRECT_EXEC : askExecFile(fileInfo);
+        auto act = (quickExec_ || fileInfo->isTrustable()) ? ExecAction::DIRECT_EXEC : askExecFile(fileInfo);
         switch(act) {
         case ExecAction::EXEC_IN_TERMINAL:
         case ExecAction::DIRECT_EXEC: {
@@ -308,7 +308,7 @@ bool BasicFileLauncher::launchExecutable(const FileInfoPtr &fileInfo, GAppLaunch
     auto filename = fileInfo->path().localPath();
     /* FIXME: we need to use eaccess/euidaccess here. */
     if(g_file_test(filename.get(), G_FILE_TEST_IS_EXECUTABLE)) {
-        auto act = quickExec_ ? ExecAction::DIRECT_EXEC : askExecFile(fileInfo);
+        auto act = (quickExec_ || fileInfo->isTrustable()) ? ExecAction::DIRECT_EXEC : askExecFile(fileInfo);
         int flags = G_APP_INFO_CREATE_NONE;
         switch(act) {
         case ExecAction::EXEC_IN_TERMINAL:
