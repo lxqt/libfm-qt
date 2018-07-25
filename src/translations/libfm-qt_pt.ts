@@ -401,19 +401,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>O arquivo &apos;%1&apos; parece ser um arquivo desktop.
+O que você desejar fazer?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>Parece que o ficheiro de texto %1 é um script executável.
+        <translation>Parece que o arquivo de texto %1 é um script executável.
 O que pretende fazer com o ficheiro?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>O ficheiro %1 é um executável. Pretende executar o ficheiro?</translation>
+        <translation>O arquivo %1 é um executável. Pretende executar o arquivo?</translation>
     </message>
 </context>
 <context>
@@ -1095,7 +1096,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="205"/>
         <source>Create File</source>
-        <translation>Criar ficheiro</translation>
+        <translation>Criar arquivo</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="521"/>
@@ -1105,17 +1106,17 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>O caminho não está montado.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="258"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivo desktop inválido: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenhum aplicativo configurado para executar &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
