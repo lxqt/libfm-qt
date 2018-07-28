@@ -94,6 +94,7 @@ set(libfm_SRCS
     filedialog.cpp
     fm-search.c # might be moved to libfm later
     xdndworkaround.cpp
+    filedialoghelper.cpp
 )
 
 set(libfm_UIS
