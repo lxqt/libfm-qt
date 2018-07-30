@@ -8,6 +8,8 @@
 #include <QTimer>
 #include <QSettings>
 #include <QtGlobal>
+#include <QApplication>
+#include <QDesktopWidget>
 
 #include <memory>
 
@@ -231,7 +233,9 @@ Fm::FolderView::ViewMode viewModeFromString(const QString& str) {
 void FileDialogHelper::loadSettings() {
     QSettings settings(QSettings::UserScope, "lxqt", "filedialog");
     settings.beginGroup ("Sizes");
-    dlg_->resize(settings.value("WindowSize", QSize(700, 500)).toSize());
+    dlg_->resize(settings.value("WindowSize", QSize(700, 500)).toSize()
+                 // normalize the size to prevent a full-screen window with some WMs
+                 .boundedTo(qApp->desktop()->availableGeometry().size() - QSize(2, 2)));
     dlg_->setSplitterPos(settings.value("SplitterPos", 200).toInt());
     settings.endGroup();
 
