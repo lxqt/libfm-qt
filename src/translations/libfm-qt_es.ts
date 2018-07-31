@@ -37,12 +37,12 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;Estos códigos pueden ser usados en la línea de comandos:&lt;/b&gt;
+        <translation>&lt;b&gt;Estos códigos especiales pueden ser usados en la línea de comandos:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Representa un nombre de archivo&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Representa un solo nombre de archivo&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Representa múltiples nombres de archivos&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Representa una URI para el archivo&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Representa múltiples URIs&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Representa un solo URI del archivo&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Representa múltiples URI&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
@@ -250,7 +250,7 @@
     <message>
         <location filename="../file-props.ui" line="420"/>
         <source>Make the file executable</source>
-        <translation>Marcar como ejecutable</translation>
+        <translation>Hacer el archivo ejecutable</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="461"/>
@@ -512,7 +512,7 @@ What do you want to do with it?</source>
         <location filename="../fileoperation.cpp" line="310"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>Algunos archivos no pueden moverse a la papelera porque el subsistema de archivos no permite esta operación.
+        <translation>Algunos archivos no pueden moverse a la papelera porque los sistemas de archivos subyacentes no permiten esta operación.
 ¿Quiere eliminarlos en vez de moverlos?</translation>
     </message>
     <message>
@@ -542,7 +542,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>Moviendo los siguientes archivos al directorio destino:</translation>
+        <translation>Moviendo los siguientes archivos al directorio de destino:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -616,12 +616,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="157"/>
         <source>View folder content</source>
-        <translation>Ver contenido del directorio</translation>
+        <translation>Ver el contenido de la carpeta</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="158"/>
         <source>View and modify folder content</source>
-        <translation>Ver y modificar el contenido del directorio</translation>
+        <translation>Ver y modificar el contenido de la carpeta</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="162"/>
@@ -767,7 +767,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="201"/>
         <source>Folder First</source>
-        <translation>Primero directorios</translation>
+        <translation>Primero las carpetas</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="211"/>
@@ -1029,7 +1029,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation>Descartar la contraseña &amp;inmediatamente</translation>
+        <translation>Olvidar la contraseña &amp;inmediatamente</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
@@ -1081,12 +1081,12 @@ Modificado: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="214"/>
         <source>Please enter a new folder name:</source>
-        <translation>Introduzca un nuevo nombre de directorio:</translation>
+        <translation>Introduzca el nuevo nombre de la carpeta:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="215"/>
         <source>New folder</source>
-        <translation>Nuevo directorio</translation>
+        <translation>Nueva carpeta</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="220"/>
@@ -1169,7 +1169,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation>Aplicar esta opción a todos los archivos</translation>
+        <translation>Aplicar esta opción a todos los archivos existentes</translation>
     </message>
 </context>
 <context>
@@ -1237,7 +1237,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation>Buscar solo ficheros de los siguientes tipos:</translation>
+        <translation>Buscar solo archivos de los siguientes tipos:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
@@ -1297,7 +1297,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="266"/>
         <source>File Size:</source>
-        <translation>Tamaño de archivo:</translation>
+        <translation>Tamaño del archivo:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="295"/>
