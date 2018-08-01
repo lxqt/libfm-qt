@@ -152,7 +152,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwerkte bestanden:</translation>
     </message>
 </context>
 <context>
@@ -276,7 +276,7 @@
     <message>
         <location filename="../file-props.ui" line="600"/>
         <source>Sticky</source>
-        <translation>Sticky</translation>
+        <translation>Klevend</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="607"/>
@@ -328,7 +328,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="46"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>De opgegeven map &apos;%1&apos; is niet geldig</translation>
     </message>
 </context>
 <context>
@@ -401,7 +401,8 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit bestand &apos;%1&apos; lijkt een bureaubladsnelkoppeling te zijn.
+Wat wilt u ermee doen?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
@@ -650,12 +651,12 @@ Wilt u ze in plaats daarvan blijvend verwijderen?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="381"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies een pictogram</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="383"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingen (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="479"/>
@@ -804,7 +805,7 @@ Wilt u ze in plaats daarvan blijvend verwijderen?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="283"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Groep</translation>
     </message>
 </context>
 <context>
@@ -905,7 +906,7 @@ Wilt u ze in plaats daarvan blijvend verwijderen?</translation>
         <location filename="../placesview.cpp" line="505"/>
         <location filename="../placesview.cpp" line="562"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbergen</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="522"/>
@@ -946,7 +947,7 @@ Wilt u ze in plaats daarvan blijvend verwijderen?</translation>
     <message>
         <location filename="../placesview.cpp" line="588"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon alle invoervelden</translation>
     </message>
 </context>
 <context>
@@ -1100,27 +1101,27 @@ Veranderd: %2</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="521"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout inzake aangepast pictogram</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het pad is niet aangekoppeld.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="258"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ongeldig bureaubladsnelkoppelingsbestand: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Er is geen standaardtoepassing ingesteld om &apos;%1&apos; te starten</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan werkmap niet instellen op &apos;%1&apos;: %2</translation>
     </message>
 </context>
 <context>
@@ -1353,17 +1354,17 @@ Veranderd: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Location:</source>
-        <translation type="unfinished">Locatie:</translation>
+        <translation>Locatie:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsnaam:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished">Bestandsoort:</translation>
+        <translation>Bestandssoort:</translation>
     </message>
 </context>
 <context>
@@ -1371,7 +1372,7 @@ Veranderd: %2</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan geen koppeling aanmaken op een niet-eigen bestandssysteem</translation>
     </message>
 </context>
 <context>
@@ -1379,7 +1380,7 @@ Veranderd: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="36"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan bestand &apos;%s&apos; niet uit de prullenbak halen: oorspronkelijk pad onbekend</translation>
     </message>
 </context>
 <context>
@@ -1387,109 +1388,110 @@ Veranderd: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="98"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga terug</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="99"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Links</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="105"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga vooruit</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Rechts</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="113"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Herladen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="114"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="131"/>
         <source>Create Folder</source>
-        <translation type="unfinished">Map maken</translation>
+        <translation>Map maken</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="138"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogramweergave</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>Miniatuurweergave</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>Compacte weergave</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>Gedetailleerde lijstweergave</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="267"/>
         <location filename="../filedialog.cpp" line="626"/>
         <source>Error</source>
-        <translation type="unfinished">Fout</translation>
+        <translation>Fout</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="267"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies a.u.b. een bestand</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="287"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 bestaat reeds.
+Wilt u het vervangen?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="596"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad &apos;%1&apos; bestaat niet</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="610"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%1&apos; is geen map</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="616"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%1&apos; is geen bestand</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="743"/>
         <location filename="../filedialog.cpp" line="851"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">O&amp;penen</translation>
+        <translation>O&amp;penen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="746"/>
         <location filename="../filedialog.cpp" line="859"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Opslaan</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="753"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle bestanden (*)</translation>
     </message>
 </context>
 </TS>
