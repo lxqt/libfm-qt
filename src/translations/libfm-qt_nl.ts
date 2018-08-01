@@ -307,7 +307,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Kies een toepassing voor het openen van &quot;%1&quot; bestanden</translation>
+        <translation>Kies een toepassing voor het openen van &apos;%1&apos; bestanden</translation>
     </message>
 </context>
 <context>
