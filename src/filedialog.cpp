@@ -91,9 +91,15 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     ui->fileTypeCombo->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     ui->fileTypeCombo->setCurrentIndex(0);
 
+    // shortcut for showing/hiding hidden files
     QShortcut* shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_H), this);
     connect(shortcut, &QShortcut::activated, [this]() {
         proxyModel_->setShowHidden(!proxyModel_->showHidden());
+    });
+    // fullscreen shortcut
+    shortcut = new QShortcut(QKeySequence(Qt::Key_F11), this);
+    connect (shortcut, &QShortcut::activated, [this]() {
+        setWindowState(windowState() ^ Qt::WindowFullScreen);
     });
 
     // setup toolbar buttons
