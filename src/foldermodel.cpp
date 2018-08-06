@@ -36,7 +36,8 @@ namespace Fm {
 
 FolderModel::FolderModel():
     hasPendingThumbnailHandler_{false},
-    showFullNames_{false} {
+    showFullNames_{false},
+    isLoaded_{false} {
 }
 
 FolderModel::~FolderModel() {
@@ -59,17 +60,20 @@ void FolderModel::setFolder(const std::shared_ptr<Fm::Folder>& new_folder) {
         connect(folder_.get(), &Fm::Folder::filesRemoved, this, &FolderModel::onFilesRemoved);
         // handle the case if the folder is already loaded
         if(folder_->isLoaded()) {
+            isLoaded_ = true;
             insertFiles(0, folder_->files());
         }
     }
 }
 
 void FolderModel::onStartLoading() {
+    isLoaded_ = false;
     // remove all items
     removeAll();
 }
 
 void FolderModel::onFinishLoading() {
+    isLoaded_ = true;
 }
 
 void FolderModel::onFilesAdded(const Fm::FileInfoList& files) {
@@ -86,7 +90,10 @@ void FolderModel::onFilesAdded(const Fm::FileInfoList& files) {
         items.append(item);
     }
     endInsertRows();
-    Q_EMIT filesAdded(files);
+
+    if(isLoaded_) {
+        Q_EMIT filesAdded(files);
+    }
 }
 
 void FolderModel::onFilesChanged(std::vector<Fm::FileInfoPair>& files) {

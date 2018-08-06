@@ -145,6 +145,8 @@ private:
     std::forward_list<ThumbnailData> thumbnailData_;
 
     bool showFullNames_;
+
+    bool isLoaded_;
 };
 
 }
