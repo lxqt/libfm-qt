@@ -21,7 +21,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation>Uit te voeren opdracht:</translation>
+        <translation>Uit te voeren opdrachtregel:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
@@ -48,7 +48,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>Houd terminalvenster open na het uitvoeren van opdracht</translation>
+        <translation>Houd terminalvenster open na het uitvoeren van opdrachtregel</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
