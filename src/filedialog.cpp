@@ -124,7 +124,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
             // reselect files on reloading
             if(!selFiles.empty()
                && selFiles.size() <= 50) { // otherwise senseless and CPU-intensive
-                lambdaConnection_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, [this, selFiles]() {
+                lambdaConnection_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, this, [this, selFiles]() {
                     selectFilesOnReload(selFiles);
                 });
             }
@@ -399,7 +399,7 @@ void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath, boo
             selectFilePathWithDelay(selectedPath);
         }
         else {
-            lambdaConnection_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, [this, selectedPath]() {
+            lambdaConnection_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, this, [this, selectedPath]() {
                 selectFilePathWithDelay(selectedPath);
             });
         }
