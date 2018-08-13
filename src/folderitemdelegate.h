@@ -114,6 +114,7 @@ private:
 
 private:
     QIcon symlinkIcon_;
+    QIcon untrustedIcon_;
     QSize iconSize_;
     QSize itemSize_;
     int fileInfoRole_;
