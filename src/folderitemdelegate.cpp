@@ -39,6 +39,7 @@ namespace Fm {
 FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent):
     QStyledItemDelegate(parent ? parent : view),
     symlinkIcon_(QIcon::fromTheme("emblem-symbolic-link")),
+    untrustedIcon_(QIcon::fromTheme("emblem-important")),
     fileInfoRole_(Fm::FolderModel::FileInfoRole),
     iconInfoRole_(-1),
     margins_(QSize(3, 3)),
@@ -125,6 +126,8 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     }
 
     bool isSymlink = file && file->isSymlink();
+    // for practical reasons, an emblem is added only to an untrusted, deletable desktop file
+    bool untrusted = file && !file->isTrustable() && file->isDesktopEntry() && file->isDeletable();
     // vertical layout (icon mode, thumbnail mode)
     if(option.decorationPosition == QStyleOptionViewItem::Top ||
             option.decorationPosition == QStyleOptionViewItem::Bottom) {
@@ -154,6 +157,11 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         if(isSymlink) {
             // draw the emblem for symlinks
             painter->drawPixmap(iconPos, symlinkIcon_.pixmap(option.decorationSize / 2, iconMode));
+        }
+
+        if(untrusted) {
+            // emblem for untrusted, deletable desktop files
+            painter->drawPixmap(iconPos.x(), opt.rect.y() + option.decorationSize.height() / 2, untrustedIcon_.pixmap(option.decorationSize / 2, iconMode));
         }
 
         // draw other emblems if there's any
@@ -190,19 +198,21 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, widget);
 
         // draw emblems if needed
-        if(isSymlink || !emblems.empty()) {
-            QIcon::Mode iconMode = shadowIcon ? QIcon::Disabled : iconModeFromState(opt.state);
-            // draw some emblems for the item if needed
-            if(isSymlink) {
-                QPoint iconPos(opt.rect.x(), opt.rect.y() + (opt.rect.height() - option.decorationSize.height()) / 2);
-                painter->drawPixmap(iconPos, symlinkIcon_.pixmap(option.decorationSize / 2, iconMode));
-            }
-            else {
-                // FIXME: we only support one emblem now
-                QPoint iconPos(opt.rect.x() + option.decorationSize.width() / 2, opt.rect.y() + opt.rect.height() / 2);
-                QIcon emblem = emblems.front()->qicon();
-                painter->drawPixmap(iconPos, emblem.pixmap(option.decorationSize / 2, iconMode));
-            }
+        QIcon::Mode iconMode = shadowIcon ? QIcon::Disabled : iconModeFromState(opt.state);
+        // draw some emblems for the item if needed
+        if(isSymlink) {
+            QPoint iconPos(opt.rect.x(), opt.rect.y() + (opt.rect.height() - option.decorationSize.height()) / 2);
+            painter->drawPixmap(iconPos, symlinkIcon_.pixmap(option.decorationSize / 2, iconMode));
+        }
+        if(untrusted) {
+            QPoint iconPos(opt.rect.x(), opt.rect.y() + opt.rect.height() / 2);
+            painter->drawPixmap(iconPos, untrustedIcon_.pixmap(option.decorationSize / 2, iconMode));
+        }
+        if(!emblems.empty()) {
+            // FIXME: we only support one emblem now
+            QPoint iconPos(opt.rect.x() + option.decorationSize.width() / 2, opt.rect.y() + opt.rect.height() / 2);
+            QIcon emblem = emblems.front()->qicon();
+            painter->drawPixmap(iconPos, emblem.pixmap(option.decorationSize / 2, iconMode));
         }
     }
 }
