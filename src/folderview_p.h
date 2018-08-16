@@ -61,6 +61,10 @@ public:
     return viewOptions();
   }
 
+  inline bool cursorOnSelectionCorner() const {
+      return cursorOnSelectionCorner_;
+  }
+
 Q_SIGNALS:
   void activatedFiltered(const QModelIndex &index);
 
@@ -72,6 +76,7 @@ private Q_SLOTS:
 
 private:
   bool activationAllowed_;
+  mutable bool cursorOnSelectionCorner_;
 };
 
 class FolderViewTreeView : public QTreeView {

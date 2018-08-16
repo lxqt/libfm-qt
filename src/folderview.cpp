@@ -57,10 +57,12 @@ using namespace Fm;
 
 FolderViewListView::FolderViewListView(QWidget* parent):
     QListView(parent),
-    activationAllowed_(true) {
+    activationAllowed_(true),
+    cursorOnSelectionCorner_(false) {
     connect(this, &QListView::activated, this, &FolderViewListView::activation);
     // inline renaming
     setEditTriggers(QAbstractItemView::NoEditTriggers);
+    setMouseTracking(true); // needed with selection corner icon
 }
 
 FolderViewListView::~FolderViewListView() {
@@ -76,6 +78,9 @@ void FolderViewListView::startDrag(Qt::DropActions supportedActions) {
 }
 
 void FolderViewListView::mousePressEvent(QMouseEvent* event) {
+    setSelectionMode(cursorOnSelectionCorner_ && event->button() == Qt::LeftButton
+                         ? QAbstractItemView::MultiSelection
+                         : QAbstractItemView::ExtendedSelection);
     QListView::mousePressEvent(event);
     static_cast<FolderView*>(parent())->childMousePressEvent(event);
 }
@@ -83,12 +88,19 @@ void FolderViewListView::mousePressEvent(QMouseEvent* event) {
 void FolderViewListView::mouseMoveEvent(QMouseEvent* event) {
     // NOTE: Filter the BACK & FORWARD buttons to not Drag & Drop with them.
     // (by default Qt views drag with any button)
-    if (event->buttons() == Qt::NoButton || event->buttons() & ~(Qt::BackButton | Qt::ForwardButton))
+    if (event->buttons() == Qt::NoButton || event->buttons() & ~(Qt::BackButton | Qt::ForwardButton)) {
+        bool cursorOnSelectionCorner = cursorOnSelectionCorner_;
         QListView::mouseMoveEvent(event);
+        // update the index if the cursor enters/leaves the selection corner icon
+        if(cursorOnSelectionCorner != cursorOnSelectionCorner_ && event->buttons() == Qt::NoButton) {
+            update(indexAt(event->pos()));
+        }
+    }
 }
 
 QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
     QModelIndex index = QListView::indexAt(point);
+    cursorOnSelectionCorner_ = false;
     // NOTE: QListView has a severe design flaw here. It does hit-testing based on the
     // total bound rect of the item. The width of an item is determined by max(icon_width, text_width).
     // So if the text label is much wider than the icon, when you click outside the icon but
@@ -101,12 +113,27 @@ QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
         FolderItemDelegate* delegate = static_cast<FolderItemDelegate*>(itemDelegateForColumn(FolderModel::ColumnFileName));
         QSize margins = delegate->getMargins();
         QSize _iconSize = iconSize();
-        if(point.y() < visRect.top() + margins.height()) { // above icon
+        int iconXMargin = (visRect.width() - _iconSize.width()) / 2;
+        int iconLeft = visRect.left() + iconXMargin;
+        int iconTop = visRect.top() + margins.height();
+        // the selection (hover) corner is a rectangle near the top left corner of
+        // the icon and outside it as far as possible, so that its width and height
+        // are 1/3 of the icon size >= 48 px (see FolderItemDelegate::paint)
+        if(_iconSize.width() >= 48) {
+            int s = _iconSize.width() / 3;
+            iconLeft = qMax(visRect.left(), iconLeft - s);
+            iconTop = qMax(visRect.top(), iconTop - s);
+            if(point.x() >= iconLeft &&  point.x() <= iconLeft + s
+               && point.y() >= iconTop &&  point.y() <= iconTop + s) {
+                cursorOnSelectionCorner_ = true;
+                return index;
+            }
+        }
+        if(point.y() < iconTop) { // above icon
             return QModelIndex();
         }
         else if(point.y() < visRect.top() + margins.height() + _iconSize.height()) { // on the icon area
-            int iconXMargin = (visRect.width() - _iconSize.width()) / 2;
-            if(point.x() < (visRect.left() + iconXMargin) || point.x() > (visRect.right() + 1 - iconXMargin)) {
+            if(point.x() < iconLeft || point.x() > (visRect.right() + 1 - iconXMargin)) {
                 // to the left or right of the icon
                 return QModelIndex();
             }
@@ -225,7 +252,7 @@ QModelIndex FolderViewListView::moveCursor(CursorAction cursorAction, Qt::Keyboa
 }
 
 void FolderViewListView::activation(const QModelIndex& index) {
-    if(activationAllowed_) {
+    if(activationAllowed_ && !cursorOnSelectionCorner_) {
         Q_EMIT activatedFiltered(index);
     }
 }
@@ -1248,6 +1275,14 @@ void FolderView::scrollSmoothly() {
 void FolderView::onAutoSelectionTimeout() {
     if(QApplication::mouseButtons() != Qt::NoButton) {
         return;
+    }
+
+    // don't do anything if the cursor is on selection corner icon
+    if(mode != DetailedListMode) {
+        FolderViewListView* listView = static_cast<FolderViewListView*>(view);
+        if(listView->cursorOnSelectionCorner()) {
+            return;
+        }
     }
 
     Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();

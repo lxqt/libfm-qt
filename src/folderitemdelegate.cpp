@@ -40,6 +40,8 @@ FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent)
     QStyledItemDelegate(parent ? parent : view),
     symlinkIcon_(QIcon::fromTheme("emblem-symbolic-link")),
     untrustedIcon_(QIcon::fromTheme("emblem-important")),
+    addIcon_(QIcon::fromTheme("list-add")),
+    removeIcon_(QIcon::fromTheme("list-remove")),
     fileInfoRole_(Fm::FolderModel::FileInfoRole),
     iconInfoRole_(-1),
     margins_(QSize(3, 3)),
@@ -170,6 +172,36 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
             QPoint emblemPos(opt.rect.x() + opt.rect.width() / 2, opt.rect.y() + option.decorationSize.height() / 2);
             QIcon emblem = emblems.front()->qicon();
             painter->drawPixmap(emblemPos, emblem.pixmap(option.decorationSize / 2, iconMode));
+        }
+
+        // Draw select/deselect icons outside the main icon but near its top left corner,
+        // with its 1/3 size and only if the icon size isn't smaller than 48 px
+        // (otherwise, the user could not click on them easily).
+        if(option.decorationSize.width() >= 48 && opt.state & QStyle::State_MouseOver) {
+            int s = option.decorationSize.width() / 3;
+            bool cursorOnSelectionCorner = false;
+            iconPos = QPoint(qMax(opt.rect.x(), iconPos.x() - s),
+                             qMax(opt.rect.y(), iconPos.y() - s));
+            if(const QAbstractItemView* iv = qobject_cast<const QAbstractItemView*>(opt.widget)) {
+                QPoint curPos = iv->viewport()->mapFromGlobal(QCursor::pos());
+                if(curPos.x() >= iconPos.x() && curPos.x() <= iconPos.x() + s
+                   && curPos.y() >= iconPos.y() && curPos.y() <= iconPos.y() + s) {
+                    cursorOnSelectionCorner = true;
+                }
+            }
+            if(!cursorOnSelectionCorner) { // make it translucent when not under the cursor
+                painter->save();
+                painter->setOpacity(0.6);
+            }
+            if(opt.state & QStyle::State_Selected) {
+                painter->drawPixmap(iconPos, removeIcon_.pixmap(QSize(s, s), QIcon::Normal));
+            }
+            else {
+                painter->drawPixmap(iconPos, addIcon_.pixmap(QSize(s, s), QIcon::Normal));
+            }
+            if(!cursorOnSelectionCorner) {
+                painter->restore();
+            }
         }
 
         // draw the text
