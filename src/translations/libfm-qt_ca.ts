@@ -401,20 +401,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>El fitxer &quot;%1&quot; sembla que sigui una entrada d&apos;escriptori.
+        <translation>El fitxer «%1» sembla que sigui una entrada d&apos;escriptori.
 Què en voleu fer?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>Aquest fitxer de text &apos;%1&apos; pel que sembla és un script executable.
+        <translation>Aquest fitxer de text «%1» pel que sembla és un script executable.
 Què voleu fer amb ell?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>Aquest fitxer &apos;%1&apos; és executable. Voleu executar-lo?</translation>
+        <translation>Aquest fitxer «%1» és executable. Voleu executar-lo?</translation>
     </message>
 </context>
 <context>
@@ -1112,12 +1112,12 @@ Modificat: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="258"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>Fitxer d&apos;entrada d&apos;escriptori no vàlid: &quot;%1&quot;</translation>
+        <translation>Fitxer d&apos;entrada d&apos;escriptori no vàlid: «%1»</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>No hi ha cap aplicació predeterminada per obrir &quot;%1&quot;</translation>
+        <translation>No s&apos;ha establert cap aplicació predeterminada per obrir «%1»</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
@@ -1381,7 +1381,7 @@ Modificat: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="36"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>El fitxer &quot;%s&quot; no es pot recuperar de la paperera : no se&apos;n sap el camí original.</translation>
+        <translation>No es pot treure de la paperera el fitxer «%s»: camí original no conegut</translation>
     </message>
 </context>
 <context>
