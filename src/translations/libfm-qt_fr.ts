@@ -21,7 +21,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation>Ligne de commande a exécuter :</translation>
+        <translation>Ligne de commande à exécuter :</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
@@ -37,12 +37,12 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;Ces codes spéciaux peuvent être utilisées dans la ligne de commande :&lt;/b&gt;
+        <translation>&lt;b&gt;Ces codes spéciaux peuvent être utilisés dans la ligne de commande :&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Represente un seul nom de fichier&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Represente plusieurs nom de fichiers&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represente l’URI d&apos;un seul fichier&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represente plusieurs URIs&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Représente un seul nom de fichier&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Représente plusieurs noms de fichiers&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Représente l’URI d&apos;un seul fichier&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Représente plusieurs URIs&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>Définir l’application sélectionnée par défaut pour les fichiers de ce type</translation>
+        <translation>Définir l’application sélectionnée comme action par défaut pour les fichiers de ce type</translation>
     </message>
 </context>
 <context>
