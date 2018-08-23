@@ -21,12 +21,12 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation>Ligne de commande à exécuter :</translation>
+        <translation>Ligne de commande à exécuter:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation>Nom de l’application :</translation>
+        <translation>Nom de l’application:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -127,17 +127,17 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Location:</source>
-        <translation>Emplacement :</translation>
+        <translation>Emplacement:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation>Nom du fichier :</translation>
+        <translation>Nom du fichier:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation>Type de fichier :</translation>
+        <translation>Type de fichier:</translation>
     </message>
 </context>
 <context>
@@ -150,7 +150,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation>Traitement :</translation>
+        <translation>Traitement:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
@@ -165,12 +165,12 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
         <source>Time remaining:</source>
-        <translation>Temps restant :</translation>
+        <translation>Temps restant:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation>Fichiers traités :</translation>
+        <translation>Fichiers traités:</translation>
     </message>
 </context>
 <context>
@@ -188,47 +188,47 @@
     <message>
         <location filename="../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation>Emplacement :</translation>
+        <translation>Emplacement:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>File type:</source>
-        <translation>Type de fichier :</translation>
+        <translation>Type de fichier:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
         <source>MIME type:</source>
-        <translation>Type Mime :</translation>
+        <translation>Type MIME:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="152"/>
         <source>File size:</source>
-        <translation>Taille du fichier :</translation>
+        <translation>Taille du fichier:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="175"/>
         <source>On-disk size:</source>
-        <translation>Taille sur le disque :</translation>
+        <translation>Taille sur le disque:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="198"/>
         <source>Last modified:</source>
-        <translation>Date de dernière modification :</translation>
+        <translation>Date de dernière modification:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="221"/>
         <source>Link target:</source>
-        <translation>Cible du lien :</translation>
+        <translation>Cible du lien:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="247"/>
         <source>Open With:</source>
-        <translation>Ouvrir avec :</translation>
+        <translation>Ouvrir avec:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation>Date de dernier accès :</translation>
+        <translation>Date de dernier accès:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="282"/>
@@ -245,14 +245,14 @@
         <location filename="../file-props.ui" line="386"/>
         <location filename="../file-props.ui" line="500"/>
         <source>Group:</source>
-        <translation>Groupe :</translation>
+        <translation>Groupe:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="334"/>
         <location filename="../file-props.ui" line="369"/>
         <location filename="../file-props.ui" line="448"/>
         <source>Owner:</source>
-        <translation>Propriétaire :</translation>
+        <translation>Propriétaire:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="350"/>
@@ -263,7 +263,7 @@
         <location filename="../file-props.ui" line="403"/>
         <location filename="../file-props.ui" line="552"/>
         <source>Other:</source>
-        <translation>Autre :</translation>
+        <translation>Autre:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="420"/>
@@ -671,7 +671,7 @@ Voulez-vous plutôt les supprimer ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>Déplacement des fichiers suivants vers le dossier de destination en cours :</translation>
+        <translation>Déplacement des fichiers suivants vers le dossier de destination en cours:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -681,7 +681,7 @@ Voulez-vous plutôt les supprimer ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>Copie des fichiers suivants vers le dossier de destination en cours :</translation>
+        <translation>Copie des fichiers suivants vers le dossier de destination en cours:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
@@ -691,7 +691,7 @@ Voulez-vous plutôt les supprimer ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>Déplacement des fichiers suivants vers la corbeille en cours :</translation>
+        <translation>Déplacement des fichiers suivants vers la corbeille en cours:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
@@ -701,7 +701,7 @@ Voulez-vous plutôt les supprimer ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation>Suppression des fichiers suivants :</translation>
+        <translation>Suppression des fichiers suivants:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
@@ -711,7 +711,7 @@ Voulez-vous plutôt les supprimer ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>Création de liens symboliques avec les fichiers suivants en cours :</translation>
+        <translation>Création de liens symboliques avec les fichiers suivants en cours:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
@@ -721,7 +721,7 @@ Voulez-vous plutôt les supprimer ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>Modification des attributs des fichiers suivants en cours :</translation>
+        <translation>Modification des attributs des fichiers suivants en cours:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
@@ -731,7 +731,7 @@ Voulez-vous plutôt les supprimer ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Restauration des fichiers suivants depuis la corbeille en cours :</translation>
+        <translation>Restauration des fichiers suivants depuis la corbeille en cours:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
@@ -1095,17 +1095,17 @@ Voulez-vous plutôt les supprimer ?</translation>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation>Type : %1
-Taille : %2
-Modification : %3</translation>
+        <translation>Type: %1
+Taille: %2
+Modification: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="84"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation>Type : %1
-Modification : %2</translation>
+        <translation>Type: %1
+Modification: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="97"/>
@@ -1136,7 +1136,7 @@ Modification : %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="36"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Ne peut pas sortir le fichier &apos;%s&apos; de la corbeille : le chemin d&apos;origine est inconnu</translation>
+        <translation>Ne peut pas sortir le fichier &apos;%s&apos; de la corbeille: le chemin d&apos;origine est inconnu</translation>
     </message>
 </context>
 <context>
@@ -1154,22 +1154,22 @@ Modification : %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>Connecter comme utilis&amp;sateur :</translation>
+        <translation>Connecter comme utilis&amp;sateur:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
         <source>&amp;Username:</source>
-        <translation>Nom d&apos;&amp;utilisateur :</translation>
+        <translation>Nom d&apos;&amp;utilisateur:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="102"/>
         <source>&amp;Password:</source>
-        <translation>Mot de &amp;passe :</translation>
+        <translation>Mot de &amp;passe:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
-        <translation>&amp;Domaine :</translation>
+        <translation>&amp;Domaine:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
@@ -1206,7 +1206,7 @@ Modification : %2</translation>
     <message>
         <location filename="../utilities.cpp" line="179"/>
         <source>Please enter a new name:</source>
-        <translation>Veuillez entrer un nouveau nom :</translation>
+        <translation>Veuillez entrer un nouveau nom:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="204"/>
@@ -1216,7 +1216,7 @@ Modification : %2</translation>
     <message>
         <location filename="../utilities.cpp" line="209"/>
         <source>Please enter a new file name:</source>
-        <translation>Veuillez entrer un nouveau nom de fichier :</translation>
+        <translation>Veuillez entrer un nouveau nom de fichier:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="210"/>
@@ -1226,7 +1226,7 @@ Modification : %2</translation>
     <message>
         <location filename="../utilities.cpp" line="214"/>
         <source>Please enter a new folder name:</source>
-        <translation>Veuillez entrer un nouveau nom de répertoire :</translation>
+        <translation>Veuillez entrer un nouveau nom de répertoire:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="215"/>
@@ -1236,7 +1236,7 @@ Modification : %2</translation>
     <message>
         <location filename="../utilities.cpp" line="220"/>
         <source>Enter a name for the new %1:</source>
-        <translation>Entrez un nom pour le nouveau %1 :</translation>
+        <translation>Entrez un nom pour le nouveau %1:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="205"/>
@@ -1266,7 +1266,7 @@ Modification : %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>Impossible de définir le répertoire de travail à &apos;%1&apos; : &apos;%2&apos;</translation>
+        <translation>Impossible de définir le répertoire de travail à &apos;%1&apos;: &apos;%2&apos;</translation>
     </message>
 </context>
 <context>
@@ -1332,7 +1332,7 @@ Modification : %2</translation>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation>Motifs dans le nom des fichiers :</translation>
+        <translation>Motifs dans le nom des fichiers:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="41"/>
@@ -1352,7 +1352,7 @@ Modification : %2</translation>
     <message>
         <location filename="../filesearch.ui" line="68"/>
         <source>Places to Search:</source>
-        <translation>Emplacements de la recherche :</translation>
+        <translation>Emplacements de la recherche:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="81"/>
@@ -1382,7 +1382,7 @@ Modification : %2</translation>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation>Rechercher uniquement les types de fichiers suivants :</translation>
+        <translation>Rechercher uniquement les types de fichiers suivants:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
@@ -1422,7 +1422,7 @@ Modification : %2</translation>
     <message>
         <location filename="../filesearch.ui" line="217"/>
         <source>File contains:</source>
-        <translation>Le fichier contient :</translation>
+        <translation>Le fichier contient:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="226"/>
@@ -1442,12 +1442,12 @@ Modification : %2</translation>
     <message>
         <location filename="../filesearch.ui" line="266"/>
         <source>File Size:</source>
-        <translation>Taille du fichier :</translation>
+        <translation>Taille du fichier:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="295"/>
         <source>Larger than:</source>
-        <translation>Plus grands que :</translation>
+        <translation>Plus grands que:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="309"/>
@@ -1476,22 +1476,22 @@ Modification : %2</translation>
     <message>
         <location filename="../filesearch.ui" line="274"/>
         <source>Smaller than:</source>
-        <translation>Plus petits que :</translation>
+        <translation>Plus petits que:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
         <source>Last Modified Time:</source>
-        <translation>Date de dernièremodification :</translation>
+        <translation>Date de dernière modification:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="378"/>
         <source>Earlier than:</source>
-        <translation>Plus récent que :</translation>
+        <translation>Plus récent que:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Later than:</source>
-        <translation>Plus ancien que :</translation>
+        <translation>Plus tard que:</translation>
     </message>
 </context>
 </TS>
