@@ -82,6 +82,7 @@ private:
     PathEdit* tempPathEdit_;
 
     Fm::FilePath currentPath_;   // currently active path
+    PathButton* toggledBtn_;
 };
 
 } // namespace Fm
