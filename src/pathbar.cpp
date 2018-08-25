@@ -37,7 +37,8 @@ namespace Fm {
 
 PathBar::PathBar(QWidget* parent):
     QWidget(parent),
-    tempPathEdit_(nullptr) {
+    tempPathEdit_(nullptr),
+    toggledBtn_(nullptr) {
 
     QHBoxLayout* topLayout = new QHBoxLayout(this);
     topLayout->setContentsMargins(0, 0, 0, 0);
@@ -85,6 +86,7 @@ PathBar::PathBar(QWidget* parent):
 void PathBar::resizeEvent(QResizeEvent* event) {
     QWidget::resizeEvent(event);
     updateScrollButtonVisibility();
+    QTimer::singleShot(0, this, SLOT(ensureToggledVisible()));
 }
 
 void PathBar::wheelEvent(QWheelEvent* event) {
@@ -175,6 +177,7 @@ Fm::FilePath PathBar::pathForButton(PathButton* btn) {
 void PathBar::onButtonToggled(bool checked) {
     if(checked) {
         PathButton* btn = static_cast<PathButton*>(sender());
+        toggledBtn_ = btn;
         currentPath_ = pathForButton(btn);
         Q_EMIT chdir(currentPath_);
 
@@ -191,14 +194,8 @@ void PathBar::onButtonToggled(bool checked) {
 }
 
 void PathBar::ensureToggledVisible() {
-    int buttonCount = buttonsLayout_->count() - 1; // the last item is a spacer
-    for(int i = buttonCount - 1; i >= 0; --i) {
-        if(auto btn = static_cast<PathButton*>(buttonsLayout_->itemAt(i)->widget())) {
-            if(btn->isChecked()) {
-                scrollArea_->ensureWidgetVisible(btn, 1);
-                return;
-            }
-        }
+    if(toggledBtn_ != nullptr && tempPathEdit_ == nullptr) {
+        scrollArea_->ensureWidgetVisible(toggledBtn_, 1);
     }
 }
 
@@ -241,6 +238,7 @@ void PathBar::setPath(Fm::FilePath path) {
      *        all of the buttons. This can reduce flickers. */
 
     setUpdatesEnabled(false);
+    toggledBtn_ = nullptr;
     // we do not have the path in the buttons list
     // destroy existing path element buttons and the spacer
     QLayoutItem* item;
