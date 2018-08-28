@@ -1096,7 +1096,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="220"/>
         <source>Enter a name for the new %1:</source>
-        <translation type="unfinished">Enter a name for the new %1:</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="521"/>
