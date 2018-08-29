@@ -152,7 +152,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>已处理文件：</translation>
     </message>
 </context>
 <context>
@@ -401,7 +401,8 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>此文件“%1”像是桌面快捷方式。
+如何处理？</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
@@ -655,7 +656,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="383"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>图像（*.png *.xpm *.svg *.svgz）</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="479"/>
@@ -804,7 +805,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="283"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>组</translation>
     </message>
 </context>
 <context>
@@ -905,7 +906,7 @@ Do you want to delete them instead?</source>
         <location filename="../placesview.cpp" line="505"/>
         <location filename="../placesview.cpp" line="562"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>隐藏</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="522"/>
@@ -946,7 +947,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="588"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>显示所有快捷方式</translation>
     </message>
 </context>
 <context>
@@ -1105,22 +1106,22 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>该目录未挂载。</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="258"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>无效桌面快捷方式：“%1”</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>没有用于运行“%1”的默认应用</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>无法将工作目录切换至“%1”：%2</translation>
     </message>
 </context>
 <context>
@@ -1353,17 +1354,17 @@ Modified: %2</source>
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Location:</source>
-        <translation type="unfinished">位置:</translation>
+        <translation>位置:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>文件名:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished">文件类型:</translation>
+        <translation>文件类型:</translation>
     </message>
 </context>
 <context>
@@ -1371,7 +1372,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>无法在非原生文件系统中创建链接</translation>
     </message>
 </context>
 <context>
@@ -1379,7 +1380,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="36"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>无法恢复文件“%s”：原路径未知</translation>
     </message>
 </context>
 <context>
@@ -1387,109 +1388,110 @@ Modified: %2</source>
     <message>
         <location filename="../filedialog.cpp" line="98"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>返回</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="99"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+左方向键</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="105"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>前进</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+右方向键</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="113"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>刷新</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="114"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="131"/>
         <source>Create Folder</source>
-        <translation type="unfinished">新建文件夹</translation>
+        <translation>新建文件夹</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="138"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>图标视图</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>缩略图视图</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>列表视图</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>详细信息视图</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="267"/>
         <location filename="../filedialog.cpp" line="626"/>
         <source>Error</source>
-        <translation type="unfinished">错误</translation>
+        <translation>错误</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="267"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>请选择文件</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="287"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 已存在。
+是否替换？</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="596"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>路径“%1”不存在</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="610"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>“%1”不是目录</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="616"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>“%1”不是文件</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="743"/>
         <location filename="../filedialog.cpp" line="851"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">打开(&amp;O)</translation>
+        <translation>打开(&amp;O)</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="746"/>
         <location filename="../filedialog.cpp" line="859"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>保存(&amp;S)</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="753"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>所有文件 (*)</translation>
     </message>
 </context>
 </TS>
