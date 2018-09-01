@@ -152,7 +152,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Feldolgozott fájlok:</translation>
     </message>
 </context>
 <context>
@@ -401,7 +401,8 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>A &apos;%1&apos; állomány egy asztalbeállító fájlnak tűnik.
+Mit szeretne tenni vele?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
@@ -814,7 +815,7 @@ Töröljük őket véglegesen?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Csoport</translation>
     </message>
 </context>
 <context>
@@ -915,7 +916,7 @@ Töröljük őket véglegesen?</translation>
         <location filename="../placesview.cpp" line="505"/>
         <location filename="../placesview.cpp" line="562"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Elrejtés</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="522"/>
@@ -956,7 +957,7 @@ Töröljük őket véglegesen?</translation>
     <message>
         <location filename="../placesview.cpp" line="588"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Minden bejegyzés mutatása</translation>
     </message>
 </context>
 <context>
@@ -1115,7 +1116,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Az elérési út nincs csatolva.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="258"/>
