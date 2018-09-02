@@ -145,7 +145,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation>Destination :</translation>
+        <translation>Destination&#xa0;:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
@@ -438,110 +438,110 @@ Qu voulez-voulez vous en faire ?</translation>
 <context>
     <name>Fm::FileDialog</name>
     <message>
-        <location filename="../filedialog.cpp" line="98"/>
+        <location filename="../filedialog.cpp" line="102"/>
         <source>Go Back</source>
         <translation>Précédent</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="99"/>
+        <location filename="../filedialog.cpp" line="103"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
         <translation>Alt+flèche gauche</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="105"/>
+        <location filename="../filedialog.cpp" line="109"/>
         <source>Go Forward</source>
         <translation>Suite</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="106"/>
+        <location filename="../filedialog.cpp" line="110"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
         <translation>Alt+flèche droite</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="113"/>
+        <location filename="../filedialog.cpp" line="117"/>
         <source>Reload</source>
         <translation>Recharger</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="114"/>
+        <location filename="../filedialog.cpp" line="118"/>
         <source>F5</source>
         <comment>Reload</comment>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="131"/>
+        <location filename="../filedialog.cpp" line="135"/>
         <source>Create Folder</source>
         <translation>Créer un dossier</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="138"/>
+        <location filename="../filedialog.cpp" line="142"/>
         <source>Icon View</source>
         <translation>Vue par icônes</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="142"/>
+        <location filename="../filedialog.cpp" line="146"/>
         <source>Thumbnail View</source>
         <translation>Vue par miniatures</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="146"/>
+        <location filename="../filedialog.cpp" line="150"/>
         <source>Compact View</source>
         <translation>Vue compacte de la liste</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="150"/>
+        <location filename="../filedialog.cpp" line="154"/>
         <source>Detailed List View</source>
         <translation>Vue détaillée de la liste</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="267"/>
-        <location filename="../filedialog.cpp" line="626"/>
+        <location filename="../filedialog.cpp" line="271"/>
+        <location filename="../filedialog.cpp" line="634"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="267"/>
+        <location filename="../filedialog.cpp" line="271"/>
         <source>Please select a file</source>
         <translation>Prière de sélectionner un fichier</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="287"/>
+        <location filename="../filedialog.cpp" line="295"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 existe déjà.
 Voulez-vous le remplacer ?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="596"/>
+        <location filename="../filedialog.cpp" line="604"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>Le patch &quot;%1&quot; n&apos;existe pas</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="610"/>
+        <location filename="../filedialog.cpp" line="618"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&quot;%1&quot; n&apos;est pas un répertoire</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="616"/>
+        <location filename="../filedialog.cpp" line="624"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&quot;%1&quot; n&apos;est pas un fichier</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="743"/>
-        <location filename="../filedialog.cpp" line="851"/>
+        <location filename="../filedialog.cpp" line="751"/>
+        <location filename="../filedialog.cpp" line="859"/>
         <source>&amp;Open</source>
         <translation>&amp;Ouvrir</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="746"/>
-        <location filename="../filedialog.cpp" line="859"/>
+        <location filename="../filedialog.cpp" line="754"/>
+        <location filename="../filedialog.cpp" line="867"/>
         <source>&amp;Save</source>
         <translation>&amp;Enregistrer</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="753"/>
+        <location filename="../filedialog.cpp" line="761"/>
         <source>All Files (*)</source>
         <translation>Tous les fichiers (*)</translation>
     </message>
@@ -590,7 +590,7 @@ Voulez-vous le remplacer ?</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="159"/>
-        <location filename="../filemenu.cpp" line="390"/>
+        <location filename="../filemenu.cpp" line="408"/>
         <source>&amp;Move to Trash</source>
         <translation>&amp;Mettre à la corbeille</translation>
     </message>
@@ -620,12 +620,22 @@ Voulez-vous le remplacer ?</translation>
         <translation>Propriétés</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="331"/>
+        <location filename="../filemenu.cpp" line="254"/>
+        <source>Trust selected executables</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="255"/>
+        <source>Trust this executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="343"/>
         <source>Output</source>
         <translation>Sortie</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="390"/>
+        <location filename="../filemenu.cpp" line="408"/>
         <source>&amp;Delete</source>
         <translation>&amp;Supprimer</translation>
     </message>
@@ -915,32 +925,32 @@ Voulez-vous plutôt les supprimer ?</translation>
 <context>
     <name>Fm::FolderModel</name>
     <message>
-        <location filename="../foldermodel.cpp" line="268"/>
+        <location filename="../foldermodel.cpp" line="275"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="271"/>
+        <location filename="../foldermodel.cpp" line="278"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="274"/>
+        <location filename="../foldermodel.cpp" line="281"/>
         <source>Size</source>
         <translation>Taille</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="277"/>
+        <location filename="../foldermodel.cpp" line="284"/>
         <source>Modified</source>
         <translation>Modifié</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="280"/>
+        <location filename="../foldermodel.cpp" line="287"/>
         <source>Owner</source>
         <translation>Propriétaire</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="283"/>
+        <location filename="../foldermodel.cpp" line="290"/>
         <source>Group</source>
         <translation>Groupe</translation>
     </message>
@@ -969,12 +979,12 @@ Voulez-vous plutôt les supprimer ?</translation>
 <context>
     <name>Fm::PathBar</name>
     <message>
-        <location filename="../pathbar.cpp" line="126"/>
+        <location filename="../pathbar.cpp" line="128"/>
         <source>&amp;Edit Path</source>
         <translation>&amp;Editer le chemin</translation>
     </message>
     <message>
-        <location filename="../pathbar.cpp" line="129"/>
+        <location filename="../pathbar.cpp" line="131"/>
         <source>&amp;Copy Path</source>
         <translation>&amp;Copier le chemin</translation>
     </message>
@@ -1134,7 +1144,7 @@ Modification: %2</translation>
 <context>
     <name>Fm::UntrashJob</name>
     <message>
-        <location filename="../core/untrashjob.cpp" line="36"/>
+        <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
         <translation>Ne peut pas sortir le fichier &apos;%s&apos; de la corbeille: le chemin d&apos;origine est inconnu</translation>
     </message>
@@ -1279,7 +1289,7 @@ Modification: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier avec le même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant ?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier avec le même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant&#xa0;?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
@@ -1309,7 +1319,7 @@ Modification: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>Nom de &amp;fichier :</translation>
+        <translation>Nom de &amp;fichier&#xa0;:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
@@ -1492,6 +1502,19 @@ Modification: %2</translation>
         <location filename="../filesearch.ui" line="385"/>
         <source>Later than:</source>
         <translation>Plus tard que:</translation>
+    </message>
+</context>
+<context>
+    <name>Fm::FileDialogHelper</name>
+    <message>
+        <location filename="../filedialoghelper.cpp" line="133"/>
+        <source>Open File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filedialoghelper.cpp" line="134"/>
+        <source>Save File</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
