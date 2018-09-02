@@ -79,7 +79,18 @@ QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
 
     // generate base name of the thumbnail  => {md5 of uri}.png
     auto origPath = file->path();
-    auto uri = origPath.uri();
+    CStrPtr uri;
+    if(file->isSymlink()) {
+        // use the symlink target in the name to update the thumbnail
+        // if the file is changed to a symlink with the same time stamp
+        auto target = file->target();
+        if(!target.empty()) {
+            uri = FilePath::fromLocalPath(target.c_str()).uri();
+        }
+    }
+    if(!uri) {
+        uri = origPath.uri();
+    }
 
     char thumbnailName[32 + 5];
     // calculate md5 hash for the uri of the original file
