@@ -461,7 +461,7 @@ Hvad vil du foretage med det?</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="159"/>
-        <location filename="../filemenu.cpp" line="390"/>
+        <location filename="../filemenu.cpp" line="408"/>
         <source>&amp;Move to Trash</source>
         <translation>&amp;Smid i papirkurven</translation>
     </message>
@@ -491,12 +491,22 @@ Hvad vil du foretage med det?</translation>
         <translation>Egenskaber</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="331"/>
+        <location filename="../filemenu.cpp" line="254"/>
+        <source>Trust selected executables</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="255"/>
+        <source>Trust this executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="343"/>
         <source>Output</source>
         <translation>Resultat</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="390"/>
+        <location filename="../filemenu.cpp" line="408"/>
         <source>&amp;Delete</source>
         <translation>&amp;Slet</translation>
     </message>
@@ -778,32 +788,32 @@ Vil du slette dem istedet?</translation>
 <context>
     <name>Fm::FolderModel</name>
     <message>
-        <location filename="../foldermodel.cpp" line="268"/>
+        <location filename="../foldermodel.cpp" line="275"/>
         <source>Name</source>
         <translation>Navn</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="271"/>
+        <location filename="../foldermodel.cpp" line="278"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="274"/>
+        <location filename="../foldermodel.cpp" line="281"/>
         <source>Size</source>
         <translation>Størrelse</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="277"/>
+        <location filename="../foldermodel.cpp" line="284"/>
         <source>Modified</source>
         <translation>Ændringstidspunkt</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="280"/>
+        <location filename="../foldermodel.cpp" line="287"/>
         <source>Owner</source>
         <translation>Ejer</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="283"/>
+        <location filename="../foldermodel.cpp" line="290"/>
         <source>Group</source>
         <translation>Gruppe</translation>
     </message>
@@ -832,12 +842,12 @@ Vil du slette dem istedet?</translation>
 <context>
     <name>Fm::PathBar</name>
     <message>
-        <location filename="../pathbar.cpp" line="126"/>
+        <location filename="../pathbar.cpp" line="128"/>
         <source>&amp;Edit Path</source>
         <translation>&amp;Rediger sti</translation>
     </message>
     <message>
-        <location filename="../pathbar.cpp" line="129"/>
+        <location filename="../pathbar.cpp" line="131"/>
         <source>&amp;Copy Path</source>
         <translation>&amp;Kopiér sti</translation>
     </message>
@@ -1378,7 +1388,7 @@ Senset ændret: %2</translation>
 <context>
     <name>Fm::UntrashJob</name>
     <message>
-        <location filename="../core/untrashjob.cpp" line="36"/>
+        <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
         <translation>Kan ikke fortryde at filen &apos;%s&apos; blev flyttet til papirkurven: oprindelig sti er ukendt</translation>
     </message>
@@ -1386,112 +1396,125 @@ Senset ændret: %2</translation>
 <context>
     <name>Fm::FileDialog</name>
     <message>
-        <location filename="../filedialog.cpp" line="98"/>
+        <location filename="../filedialog.cpp" line="102"/>
         <source>Go Back</source>
         <translation>Gå tilbage</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="99"/>
+        <location filename="../filedialog.cpp" line="103"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
         <translation>Alt+Venstre</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="105"/>
+        <location filename="../filedialog.cpp" line="109"/>
         <source>Go Forward</source>
         <translation>Gå fremad</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="106"/>
+        <location filename="../filedialog.cpp" line="110"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
         <translation>Alt+Højre</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="113"/>
+        <location filename="../filedialog.cpp" line="117"/>
         <source>Reload</source>
         <translation>Genindlæs</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="114"/>
+        <location filename="../filedialog.cpp" line="118"/>
         <source>F5</source>
         <comment>Reload</comment>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="131"/>
+        <location filename="../filedialog.cpp" line="135"/>
         <source>Create Folder</source>
         <translation>Opret mappe</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="138"/>
+        <location filename="../filedialog.cpp" line="142"/>
         <source>Icon View</source>
         <translation>Ikonvisning</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="142"/>
+        <location filename="../filedialog.cpp" line="146"/>
         <source>Thumbnail View</source>
         <translation>Miniaturevisning</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="146"/>
+        <location filename="../filedialog.cpp" line="150"/>
         <source>Compact View</source>
         <translation>Kompakt visning</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="150"/>
+        <location filename="../filedialog.cpp" line="154"/>
         <source>Detailed List View</source>
         <translation>Detaljeret liste visning</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="267"/>
-        <location filename="../filedialog.cpp" line="626"/>
+        <location filename="../filedialog.cpp" line="271"/>
+        <location filename="../filedialog.cpp" line="634"/>
         <source>Error</source>
         <translation>Fejl</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="267"/>
+        <location filename="../filedialog.cpp" line="271"/>
         <source>Please select a file</source>
         <translation>Vælg venligst en fil</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="287"/>
+        <location filename="../filedialog.cpp" line="295"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 findes allerede.
 Vil du erstatte den?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="596"/>
+        <location filename="../filedialog.cpp" line="604"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>Stien &quot;%1&quot; findes ikke</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="610"/>
+        <location filename="../filedialog.cpp" line="618"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&quot;%1&quot; er ikke en mappe</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="616"/>
+        <location filename="../filedialog.cpp" line="624"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&quot;%1&quot; er ikke en fil</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="743"/>
-        <location filename="../filedialog.cpp" line="851"/>
+        <location filename="../filedialog.cpp" line="751"/>
+        <location filename="../filedialog.cpp" line="859"/>
         <source>&amp;Open</source>
         <translation>&amp;Åbn</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="746"/>
-        <location filename="../filedialog.cpp" line="859"/>
+        <location filename="../filedialog.cpp" line="754"/>
+        <location filename="../filedialog.cpp" line="867"/>
         <source>&amp;Save</source>
         <translation>&amp;Gem</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="753"/>
+        <location filename="../filedialog.cpp" line="761"/>
         <source>All Files (*)</source>
         <translation>Alle filer (*)</translation>
+    </message>
+</context>
+<context>
+    <name>Fm::FileDialogHelper</name>
+    <message>
+        <location filename="../filedialoghelper.cpp" line="133"/>
+        <source>Open File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filedialoghelper.cpp" line="134"/>
+        <source>Save File</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
