@@ -21,7 +21,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation>Auszuführender Befehl:</translation>
+        <translation>Auszuführende Befehlszeile:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
@@ -39,8 +39,8 @@
 &lt;/ul&gt;</source>
         <translation>&lt;b&gt;Diese speziellen Kürzel können im Befehl verwendet werden&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Repräsentiert eine einzelne Datei&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Repräsentiert mehrere Dateien&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Repräsentiert einen einzelnen Dateinamen&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Repräsentiert mehrere Dateiennamen&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Repräsentiert eine einzelne URI einer Datei&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Repräsentiert mehrere URIs&lt;/li&gt;
 &lt;/ul&gt;</translation>
@@ -132,7 +132,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation>Verarbeitet:</translation>
+        <translation>Verarbeite:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
@@ -152,7 +152,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation>Files verarbeitet:</translation>
+        <translation>Dateien verarbeitet:</translation>
     </message>
 </context>
 <context>
@@ -195,7 +195,7 @@
     <message>
         <location filename="../file-props.ui" line="198"/>
         <source>Last modified:</source>
-        <translation>Letztes Änderungsdatum:</translation>
+        <translation>Zuletzt geändert:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="221"/>
@@ -281,12 +281,12 @@
     <message>
         <location filename="../file-props.ui" line="607"/>
         <source>SetUID</source>
-        <translation>Lege UID fest</translation>
+        <translation>SetUID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="614"/>
         <source>SetGID</source>
-        <translation>Lege GID fest</translation>
+        <translation>SetGID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="650"/>
@@ -307,7 +307,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Wählen Sie eine Anwendung für Dateien vom Typ &quot;%1&quot;</translation>
+        <translation>Wählen Sie eine Anwendung zum Öffnen von Dateien des Typs &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -328,7 +328,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="46"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>Das spezifizierte Verzeichnis &apos;%1&apos; ist nicht gültig</translation>
+        <translation>Das angegebene Verzeichnis &apos;%1&apos; ist nicht gültig</translation>
     </message>
 </context>
 <context>
@@ -336,7 +336,7 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation>Lädt...</translation>
+        <translation>Laden...</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
