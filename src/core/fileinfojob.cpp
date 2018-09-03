@@ -31,7 +31,9 @@ void FileInfoJob::exec() {
                 // Reuse the same dirPath object when the path remains the same (optimize for files in the same dir)
                 auto dirPath = commonDirPath_.isValid() ? commonDirPath_
                                                         : path.hasParent() ? path.parent()
-                                                                           : path; // e.g., trash:///
+                                                            // search:/// does not behave normally
+                                                            : path.hasUriScheme("search") ? FilePath()
+                                                                : path; // e.g., trash:///
                 auto fileInfoPtr = std::make_shared<FileInfo>(inf, dirPath);
 
                 // FIXME: this is not elegant
