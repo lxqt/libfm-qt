@@ -175,6 +175,8 @@ private:
     bool wants_incremental;
     bool stop_emission; /* don't set it 1 bit to not lock other bits */
 
+    // NOTE: Here, FileInfo::path().baseName().get() should be used as the key value, not FileInfo::name(),
+    // because the latter is not always the same as the former and the former will be used for comparison.
     std::unordered_map<const std::string, std::shared_ptr<const FileInfo>, std::hash<std::string>> files_;
 
     /* filesystem info - set in query thread, read in main */

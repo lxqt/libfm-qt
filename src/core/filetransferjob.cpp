@@ -238,7 +238,7 @@ bool FileTransferJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcInfo, Fil
                 }
 
                 FilePath newDestPath;
-                FileExistsAction opt = askRename(FileInfo{srcInfo, srcPath.parent()}, FileInfo{destInfo, destPath.parent()}, newDestPath);
+                FileExistsAction opt = askRename(FileInfo{srcInfo, srcPath}, FileInfo{destInfo, destPath}, newDestPath);
                 switch(opt) {
                 case FileOperationJob::RENAME:
                     destPath = std::move(newDestPath);
@@ -311,8 +311,8 @@ bool FileTransferJob::handleError(GErrorPtr &err, const FilePath &srcPath, const
         // ask the user to rename or overwrite the existing file
         if(!isCancelled() && destInfo) {
             FilePath newDestPath;
-            FileExistsAction opt = askRename(FileInfo{srcInfo, srcPath.parent()},
-                                             FileInfo{destInfo, destPath.parent()},
+            FileExistsAction opt = askRename(FileInfo{srcInfo, srcPath},
+                                             FileInfo{destInfo, destPath},
                                              newDestPath);
             switch(opt) {
             case FileOperationJob::RENAME:

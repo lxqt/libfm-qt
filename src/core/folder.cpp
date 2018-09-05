@@ -223,14 +223,14 @@ void Folder::onFileInfoFinished() {
         // add/update the file only if it isn't going to be deleted
         else if(std::find(deletionPaths.cbegin(), deletionPaths.cend(), path) == deletionPaths.cend()
                 && std::find(paths_to_del_later.cbegin(), paths_to_del_later.cend(), path) == paths_to_del_later.cend()) {
-            auto it = files_.find(info->name());
+            auto it = files_.find(info->path().baseName().get());
             if(it != files_.end()) { // the file already exists, update
                 files_to_update.push_back(std::make_pair(it->second, info));
             }
             else { // newly added
                 files_to_add.push_back(info);
             }
-            files_[info->name()] = info;
+            files_[info->path().baseName().get()] = info;
         }
     }
     if(!files_to_add.empty()) {
@@ -286,8 +286,7 @@ void Folder::processPendingChanges() {
         paths.insert(paths.end(), paths_to_add.cbegin(), paths_to_add.cend());
         paths.insert(paths.end(), paths_to_update.cbegin(), paths_to_update.cend());
         deletionPaths.insert(deletionPaths.end(), paths_to_del.cbegin(), paths_to_del.cend());
-        info_job = new FileInfoJob{paths, deletionPaths, dirPath_,
-                                   hasCutFiles() ? cutFilesHashSet_ : nullptr};
+        info_job = new FileInfoJob{paths, deletionPaths, hasCutFiles() ? cutFilesHashSet_ : nullptr};
         paths_to_update.clear();
         paths_to_add.clear();
         paths_to_del.clear();
@@ -522,21 +521,21 @@ void Folder::onDirListFinished() {
     if(strcmp(dirPath_.uriScheme().get(), "search") == 0) {
         files_to_add = infos;
         for(auto& file: files_to_add) {
-            files_[file->name()] = file;
+            files_[file->path().baseName().get()] = file;
         }
     }
     else {
         auto info_it = infos.cbegin();
         for(; info_it != infos.cend(); ++info_it) {
             const auto& info = *info_it;
-            auto it = files_.find(info->name());
+            auto it = files_.find(info->path().baseName().get());
             if(it != files_.end()) {
                 files_to_update.push_back(std::make_pair(it->second, info));
             }
             else {
                 files_to_add.push_back(info);
             }
-            files_[info->name()] = info;
+            files_[info->path().baseName().get()] = info;
         }
     }
 

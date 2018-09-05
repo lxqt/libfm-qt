@@ -51,7 +51,7 @@ public:
 
     explicit FileInfo();
 
-    explicit FileInfo(const GFileInfoPtr& inf, const FilePath& parentDirPath);
+    explicit FileInfo(const GFileInfoPtr& inf, const FilePath& filePath, const FilePath& parentDirPath = FilePath());
 
     virtual ~FileInfo();
 
@@ -198,14 +198,14 @@ public:
     }
 
     FilePath path() const {
-        return dirPath_ ? dirPath_.child(name_.c_str()) : FilePath::fromPathStr(name_.c_str());
+        return filePath_ ? filePath_ : dirPath_ ? dirPath_.child(name_.c_str()) : FilePath::fromPathStr(name_.c_str());
     }
 
     const FilePath& dirPath() const {
         return dirPath_;
     }
 
-    void setFromGFileInfo(const GFileInfoPtr& inf, const FilePath& parentDirPath);
+    void setFromGFileInfo(const GFileInfoPtr& inf, const FilePath& filePath, const FilePath& parentDirPath);
 
     void bindCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet);
 
@@ -222,6 +222,7 @@ private:
     std::string name_;
     QString dispName_;
 
+    FilePath filePath_;
     FilePath dirPath_;
 
     mode_t mode_;
