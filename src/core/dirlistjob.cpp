@@ -50,7 +50,7 @@ _retry:
     }
     else {
         std::lock_guard<std::mutex> lock{mutex_};
-        dir_fi = std::make_shared<FileInfo>(dir_inf, dir_path.parent());
+        dir_fi = std::make_shared<FileInfo>(dir_inf, dir_path);
     }
 
     FileInfoList foundFiles;
@@ -99,7 +99,7 @@ _retry:
                 }
                 fi = fm_file_info_new_from_g_file_data(child, inf, sub);
 #endif
-                auto fileInfo = std::make_shared<FileInfo>(inf, realParentPath);
+                auto fileInfo = std::make_shared<FileInfo>(inf, FilePath(), realParentPath);
                 if(emit_files_found) {
                     // Q_EMIT filesFound();
                 }

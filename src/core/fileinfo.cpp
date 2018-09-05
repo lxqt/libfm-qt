@@ -16,16 +16,22 @@ FileInfo::FileInfo() {
     // FIXME: initialize numeric data members
 }
 
-FileInfo::FileInfo(const GFileInfoPtr& inf, const FilePath& parentDirPath) {
-    setFromGFileInfo(inf, parentDirPath);
+FileInfo::FileInfo(const GFileInfoPtr& inf, const FilePath& filePath, const FilePath& parentDirPath) {
+    setFromGFileInfo(inf, filePath, parentDirPath);
 }
 
 FileInfo::~FileInfo() {
 }
 
-void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath& parentDirPath) {
+void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath& filePath, const FilePath& parentDirPath) {
     inf_ = inf;
-    dirPath_ = parentDirPath;
+    filePath_ = filePath;
+    if (filePath_ && filePath_.hasParent()) {
+        dirPath_ = filePath_.parent();
+    }
+    else {
+        dirPath_ = parentDirPath;
+    }
     const char* tmp, *uri;
     GIcon* gicon;
     GFileType type;
