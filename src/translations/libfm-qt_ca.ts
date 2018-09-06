@@ -493,12 +493,12 @@ Què voleu fer amb ell?</translation>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Confia amb els executables seleccionats</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="255"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Confia amb aquest executable</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="343"/>
@@ -1510,12 +1510,12 @@ Voleu substituir-ho?</translation>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Obre un fitxer</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Desa el fitxer</translation>
     </message>
 </context>
 </TS>
