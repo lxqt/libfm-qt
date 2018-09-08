@@ -100,7 +100,10 @@ void FolderViewListView::mouseMoveEvent(QMouseEvent* event) {
 
 QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
     QModelIndex index = QListView::indexAt(point);
-    cursorOnSelectionCorner_ = false;
+    bool isCursorPos(point == viewport()->mapFromGlobal(QCursor::pos()));
+    if(isCursorPos) {
+        cursorOnSelectionCorner_ = false;
+    }
     // NOTE: QListView has a severe design flaw here. It does hit-testing based on the
     // total bound rect of the item. The width of an item is determined by max(icon_width, text_width).
     // So if the text label is much wider than the icon, when you click outside the icon but
@@ -119,7 +122,7 @@ QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
         // the selection (hover) corner is a rectangle near the top left corner of
         // the icon and outside it as far as possible, so that its width and height
         // are 1/3 of the icon size >= 48 px (see FolderItemDelegate::paint)
-        if(_iconSize.width() >= 48) {
+        if(isCursorPos && _iconSize.width() >= 48) {
             int s = _iconSize.width() / 3;
             iconLeft = qMax(visRect.left(), iconLeft - s);
             iconTop = qMax(visRect.top(), iconTop - s);
