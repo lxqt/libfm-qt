@@ -1070,7 +1070,7 @@ Değiştirild: %2</translation>
         <location filename="../utilities.cpp" line="169"/>
         <location filename="../utilities.cpp" line="263"/>
         <source>Error</source>
-        <translation>Hata</translation>
+        <translation type="unfinished">Hata</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="204"/>
