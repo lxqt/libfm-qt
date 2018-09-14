@@ -165,7 +165,7 @@
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation>Generalt</translation>
+        <translation>Generelt</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
@@ -361,7 +361,7 @@
     <message>
         <location filename="../dirtreeview.cpp" line="220"/>
         <source>Open in Termina&amp;l</source>
-        <translation>Åbn i Termina&amp;l</translation>
+        <translation>Åbn i termina&amp;l</translation>
     </message>
 </context>
 <context>
@@ -828,7 +828,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation>kursiv</translation>
+        <translation>Kursiv</translation>
     </message>
 </context>
 <context>
