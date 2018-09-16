@@ -68,6 +68,11 @@ FilePropsDialog::FilePropsDialog(Fm::FileInfoList files, QWidget* parent, Qt::Wi
 
     initGeneralPage();
     initPermissionsPage();
+
+    if(!singleFile || !hasDir) { // not a single dir
+        ui->contentsLabel->hide();
+        ui->fileNumber->hide();
+    }
 }
 
 FilePropsDialog::~FilePropsDialog() {
@@ -347,6 +352,17 @@ void FilePropsDialog::onFileSizeTimerTimeout() {
               QString(" (%1 B)").arg(totalSizeJob->totalOnDiskSize());
         // tr(" (%n) byte(s)", "", deepCountJob->total_ondisk_size);
         ui->onDiskSize->setText(str);
+
+        if(ui->contentsLabel->isVisible()) {
+            unsigned int fc =  totalSizeJob->fileCount(); // the directory is included
+            if (fc <= 1)
+                str = tr("no file");
+            else if (fc == 2)
+                str = tr("one file");
+            else
+                str = tr("%1 files").arg(fc - 1);
+            ui->fileNumber->setText(str);
+        }
     }
 }
 
@@ -387,7 +403,7 @@ void FilePropsDialog::onIconButtonclicked() {
             QString iconName = parts.at(parts.count() - 1);
             int ln = iconName.lastIndexOf(".");
             if(ln > -1) {
-                iconName.remove(ln, iconName.length() - ln); 
+                iconName.remove(ln, iconName.length() - ln);
                 customIcon = QIcon::fromTheme(iconName);
                 ui->iconButton->setIcon(customIcon);
             }
