@@ -49,6 +49,7 @@ void TrashJob::exec() {
                 // if trashing is not supported by the file system
                 if(err.domain() == G_IO_ERROR && err.code() == G_IO_ERROR_NOT_SUPPORTED) {
                     unsupportedFiles_.push_back(path);
+                     break;
                 }
                 else {
                     ErrorAction act = emitError(err, ErrorSeverity::MODERATE);
