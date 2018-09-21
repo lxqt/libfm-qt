@@ -321,6 +321,25 @@ void FilePropsDialog::initGeneralPage() {
     connect(totalSizeJob, &Fm::TotalSizeJob::finished, this, &FilePropsDialog::onDeepCountJobFinished, Qt::BlockingQueuedConnection);
     totalSizeJob->setAutoDelete(true);
     totalSizeJob->runAsync();
+
+    // disk usage
+    auto folder = Fm::Folder::fromPath(fileInfo->dirPath());
+    if(!folder->isLoaded() && fileInfo->isDir()) { // an empty space is right clicked
+        folder = Fm::Folder::fromPath(fileInfo->path());
+    }
+    guint64 free, total;
+    if(folder->getFilesystemInfo(&total, &free)) {
+        ui->progressBar->setValue(qRound(static_cast<qreal>((total - free) * 100) / static_cast<qreal>(total)));
+        ui->progressBar->setFormat(tr("%p% used"));
+        ui->spaceLabel->setText(tr("%1 Free of %2")
+                                .arg(formatFileSize(free, false))
+                                .arg(formatFileSize(total, false)));
+    }
+    else {
+        ui->deviceLabel->setVisible(false);
+        ui->spaceLabel->setVisible(false);
+        ui->progressBar->setVisible(false);
+    }
 }
 
 void FilePropsDialog::onDeepCountJobFinished() {
