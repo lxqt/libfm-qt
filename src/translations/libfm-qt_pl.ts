@@ -458,12 +458,12 @@ Co chcesz zrobić z tym plikiem?</translation>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Ufaj zaznaczonym plikom wykonywalnym</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="255"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Ufaj temu plikowi wykonywalnemu</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="343"/>
@@ -1509,12 +1509,12 @@ Czy chcesz go zamienić?</translation>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Otwórz plik</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapisz plik</translation>
     </message>
 </context>
 </TS>
