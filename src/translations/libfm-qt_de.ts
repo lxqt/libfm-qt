@@ -458,12 +458,12 @@ Was möchten Sie damit tun?</translation>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgewählten ausführbaren Dateien vertrauen</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="255"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieser ausführbaren Datei vertrauen</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="343"/>
@@ -1509,12 +1509,12 @@ Soll diese Datei ersetzt werden?</translation>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei öffnen</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei speichern</translation>
     </message>
 </context>
 </TS>
