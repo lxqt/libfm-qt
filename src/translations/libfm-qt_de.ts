@@ -114,7 +114,7 @@
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation>In einem &amp;Terminal ausführen</translation>
+        <translation>Im &amp;Terminal ausführen</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
@@ -291,7 +291,7 @@
     <message>
         <location filename="../file-props.ui" line="650"/>
         <source>Advanced Mode</source>
-        <translation>Erweiterte Einstellungen</translation>
+        <translation>Erweiterter Modus</translation>
     </message>
 </context>
 <context>
