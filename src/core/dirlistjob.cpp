@@ -127,7 +127,9 @@ _retry:
         g_file_enumerator_close(enu.get(), cancellable().get(), &err);
     }
     else {
-        emitError(err, ErrorSeverity::CRITICAL);
+        emitError(err, err.domain() == G_IO_ERROR && err.code() == G_IO_ERROR_CANCELLED
+                       ? ErrorSeverity::MILD // may happen at Folder::reload()
+                       : ErrorSeverity::CRITICAL);
     }
 
     // qDebug() << "END LISTING:" << dir_path.toString().get();
