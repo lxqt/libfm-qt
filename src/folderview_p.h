@@ -103,6 +103,10 @@ public:
   virtual void resizeEvent(QResizeEvent* event);
   void queueLayoutColumns();
 
+  virtual void keyboardSearch(const QString &search) {
+    QAbstractItemView::keyboardSearch(search); // let items be selected by typing
+  }
+
 Q_SIGNALS:
   void activatedFiltered(const QModelIndex &index);
 
