@@ -74,6 +74,7 @@ PathEdit::PathEdit(QWidget* parent):
     completer_(new QCompleter()),
     model_(new QStringListModel()),
     cancellable_(nullptr) {
+    completer_->setCaseSensitivity(Qt::CaseInsensitive);
     setCompleter(completer_);
     completer_->setModel(model_);
     connect(this, &PathEdit::textChanged, this, &PathEdit::onTextChanged);
