@@ -208,32 +208,30 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
     // archiver integration
     // FIXME: we need to modify upstream libfm to include some Qt-based archiver programs.
     if(!allVirtual_) {
-        if(sameType_) {
-            auto archiver = Archiver::defaultArchiver();
-            if(archiver) {
-                if(archiver->isMimeTypeSupported(mime_type->name())) {
-                    QAction* archiverSeparator = nullptr;
-                    if(cwd_ && archiver->canExtractArchivesTo()) {
-                        archiverSeparator = addSeparator();
-                        QAction* action = new QAction(tr("Extract to..."), this);
-                        connect(action, &QAction::triggered, this, &FileMenu::onExtract);
-                        addAction(action);
-                    }
-                    if(archiver->canExtractArchives()) {
-                        if(!archiverSeparator) {
-                            addSeparator();
-                        }
-                        QAction* action = new QAction(tr("Extract Here"), this);
-                        connect(action, &QAction::triggered, this, &FileMenu::onExtractHere);
-                        addAction(action);
-                    }
-                }
-                else if(archiver->canCreateArchive()){
-                    addSeparator();
-                    QAction* action = new QAction(tr("Compress"), this);
-                    connect(action, &QAction::triggered, this, &FileMenu::onCompress);
+        auto archiver = Archiver::defaultArchiver();
+        if(archiver) {
+            if(sameType_ && archiver->isMimeTypeSupported(mime_type->name())) {
+                QAction* archiverSeparator = nullptr;
+                if(cwd_ && archiver->canExtractArchivesTo()) {
+                    archiverSeparator = addSeparator();
+                    QAction* action = new QAction(tr("Extract to..."), this);
+                    connect(action, &QAction::triggered, this, &FileMenu::onExtract);
                     addAction(action);
                 }
+                if(archiver->canExtractArchives()) {
+                    if(!archiverSeparator) {
+                        addSeparator();
+                    }
+                    QAction* action = new QAction(tr("Extract Here"), this);
+                    connect(action, &QAction::triggered, this, &FileMenu::onExtractHere);
+                    addAction(action);
+                }
+            }
+            else if(archiver->canCreateArchive()){
+                addSeparator();
+                QAction* action = new QAction(tr("Compress"), this);
+                connect(action, &QAction::triggered, this, &FileMenu::onCompress);
+                addAction(action);
             }
         }
     }
