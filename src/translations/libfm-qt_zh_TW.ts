@@ -468,12 +468,12 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>信任已選擇的執行檔</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="255"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>信任此執行檔</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="343"/>
@@ -1509,12 +1509,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>開啟檔案</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>儲存檔案</translation>
     </message>
 </context>
 </TS>
