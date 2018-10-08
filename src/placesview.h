@@ -135,6 +135,7 @@ private:
     void onEjectButtonClicked(PlacesModelItem* item);
     void activateRow(int type, const QModelIndex& index);
     void showAll(bool show);
+    void spanFirstColumn();
 
 private:
     std::shared_ptr<PlacesModel> model_;
