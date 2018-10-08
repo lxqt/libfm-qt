@@ -155,10 +155,7 @@ PlacesView::PlacesView(QWidget* parent):
         proxyModel_->setHidden(QString()); // just invalidates filter
         expandAll();
         // for some reason (a Qt bug?), spanning is reset
-        setFirstColumnSpanned(0, QModelIndex(), true);
-        setFirstColumnSpanned(1, QModelIndex(), true);
-        setFirstColumnSpanned(2, QModelIndex(), true);
-
+        spanFirstColumn();
     });
     connect(model_.get(), &QAbstractItemModel::rowsRemoved, this, [this](const QModelIndex&, int, int) {
         proxyModel_->setHidden(QString());
@@ -170,10 +167,7 @@ PlacesView::PlacesView(QWidget* parent):
     headerView->setStretchLastSection(false);
     expandAll();
 
-    // FIXME: is there any better way to make the first column span the whole row?
-    setFirstColumnSpanned(0, QModelIndex(), true); // places root
-    setFirstColumnSpanned(1, QModelIndex(), true); // devices root
-    setFirstColumnSpanned(2, QModelIndex(), true); // bookmarks root
+    spanFirstColumn();
 
     // the 2nd column is for the eject buttons
     setSelectionBehavior(QAbstractItemView::SelectRows); // FIXME: why this does not work?
@@ -191,6 +185,27 @@ PlacesView::PlacesView(QWidget* parent):
 
 PlacesView::~PlacesView() {
     // qDebug("delete PlacesView");
+}
+
+void PlacesView::spanFirstColumn() {
+    // FIXME: is there any better way to make the first column span the whole row?
+    setFirstColumnSpanned(0, QModelIndex(), true); // places root
+    setFirstColumnSpanned(1, QModelIndex(), true); // devices root
+    setFirstColumnSpanned(2, QModelIndex(), true); // bookmarks root
+    // NOTE: The first column of the devices children shouldn't be spanned
+    // because the second column contains eject buttons.
+    QModelIndex indx = proxyModel_->mapFromSource(model_->placesRoot->index());
+    if(indx.isValid()) {
+        for(int i = 0; i < indx.model()->rowCount(indx); ++i) {
+            setFirstColumnSpanned(i, indx, true);
+        }
+    }
+    indx = proxyModel_->mapFromSource(model_->bookmarksRoot->index());
+    if(indx.isValid()) {
+        for(int i = 0; i < indx.model()->rowCount(indx); ++i) {
+            setFirstColumnSpanned(i, indx, true);
+        }
+    }
 }
 
 void PlacesView::activateRow(int type, const QModelIndex& index) {
@@ -613,9 +628,7 @@ void PlacesView::showAll(bool show) {
     if(show) {
         expandAll();
         // for some reason (a Qt bug?), spanning is reset
-        setFirstColumnSpanned(0, QModelIndex(), true);
-        setFirstColumnSpanned(1, QModelIndex(), true);
-        setFirstColumnSpanned(2, QModelIndex(), true);
+        spanFirstColumn();
     }
 }
 
