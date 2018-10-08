@@ -448,11 +448,16 @@ void PlacesModel::onVolumeChanged(GVolumeMonitor* /*monitor*/, GVolume* volume, 
     PlacesModelVolumeItem* item = pThis->itemFromVolume(volume);
     if(item) {
         item->update();
+        QStandardItem* ejectBtn = item->parent()->child(item->row(), 1);
+        Q_ASSERT(ejectBtn);
         if(!item->isMounted()) { // the volume is unmounted, remove the eject button if needed
             // remove the eject button for the volume (at column 1 of the same row)
-            QStandardItem* ejectBtn = item->parent()->child(item->row(), 1);
-            Q_ASSERT(ejectBtn);
             ejectBtn->setIcon(QIcon());
+        }
+        else if(ejectBtn->icon().isNull()) {
+            // this function may be called before onMountAdded(),
+            // so that the path is set but the eject icon isn't added yet
+            ejectBtn->setIcon(pThis->ejectIcon_);
         }
     }
 }
