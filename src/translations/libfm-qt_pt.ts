@@ -37,18 +37,18 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;Pode utilizar os seguintes códigos na linha de comandos:&lt;/b&gt;
+        <translation>&lt;b&gt;Esses códigos especiais podem ser usados na linha de comando:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: é o nome de um ficheiro&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: é o nome de vários ficheiros&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: é o URI do ficheiro&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: é o URI de vários ficheiros&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Representa um único nome de arquivo&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Representa vários nomes de arquivos&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Representa um único URI do arquivo&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Representa vários URIs&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>Manter janela de terminal aberta depois de executar o comando</translation>
+        <translation>Manter janela de terminal aberta depois da execução do comando</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>Utilizar a aplicação selecionada como padrão para este tipo de ficheiro</translation>
+        <translation>Definir a aplicação selecionada como padrão para este tipo de arquivo</translation>
     </message>
 </context>
 <context>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation>Editar marcadores</translation>
+        <translation>Editar Favoritos</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
@@ -91,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Arraste e largue para organizar itens</translation>
+        <translation>Usar arraste e solte para organizar itens</translation>
     </message>
 </context>
 <context>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation>Executar ficheiro</translation>
+        <translation>Executar arquivo</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="39"/>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation>Executar no &amp;terminal</translation>
+        <translation>Executar no &amp;Terminal</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
@@ -160,7 +160,7 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation>Propriedades do ficheiro</translation>
+        <translation>Propriedades do arquivo</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
@@ -175,7 +175,7 @@
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>File type:</source>
-        <translation>Tipo de ficheiro:</translation>
+        <translation>Tipo de arquivo:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
@@ -185,7 +185,7 @@
     <message>
         <location filename="../file-props.ui" line="152"/>
         <source>File size:</source>
-        <translation>Tamanho do ficheiro:</translation>
+        <translation>Tamanho do arquivo:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="175"/>
@@ -200,12 +200,12 @@
     <message>
         <location filename="../file-props.ui" line="221"/>
         <source>Link target:</source>
-        <translation>Destino da ligação:</translation>
+        <translation>Destino do link:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="247"/>
         <source>Open With:</source>
-        <translation>Abrir com:</translation>
+        <translation>Abrir Com:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="264"/>
@@ -220,7 +220,7 @@
     <message>
         <location filename="../file-props.ui" line="297"/>
         <source>Ownership</source>
-        <translation>Titulariedade</translation>
+        <translation>Titularidade</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="321"/>
@@ -234,12 +234,12 @@
         <location filename="../file-props.ui" line="369"/>
         <location filename="../file-props.ui" line="448"/>
         <source>Owner:</source>
-        <translation>Dono:</translation>
+        <translation>Proprietário:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="350"/>
         <source>Access Control</source>
-        <translation>Controlo de acesso</translation>
+        <translation>Controle de acesso</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="403"/>
@@ -250,7 +250,7 @@
     <message>
         <location filename="../file-props.ui" line="420"/>
         <source>Make the file executable</source>
-        <translation>Marcar como executável</translation>
+        <translation>Marcar o arquivo como executável</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="461"/>
@@ -264,7 +264,7 @@
         <location filename="../file-props.ui" line="526"/>
         <location filename="../file-props.ui" line="578"/>
         <source>Write</source>
-        <translation>Escrita</translation>
+        <translation>Gravação</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="487"/>
