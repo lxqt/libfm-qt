@@ -48,7 +48,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>Держать окно терминала открытым после выполнения команды</translation>
+        <translation>Не закрывать окно терминала после выполнения команды</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
@@ -1014,12 +1014,12 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation>Подсоединить &amp;анонимно</translation>
+        <translation>Подключиться &amp;анонимно</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>Подсоединить как &amp;пользователь:</translation>
+        <translation>Подключиться как &amp;пользователь:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
