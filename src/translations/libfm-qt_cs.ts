@@ -458,12 +458,12 @@ Co s ním chcete dělat?</translation>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Důvěřovat zvoleným proměnným</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="255"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Důvěřovat tomuto spustitelnému souboru</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="343"/>
@@ -1509,12 +1509,12 @@ Chcete ho nahradit?</translation>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít soubor</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit soubor</translation>
     </message>
 </context>
 </TS>
