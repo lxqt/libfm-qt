@@ -6,27 +6,27 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation></translation>
+        <translation>Velg et program</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation></translation>
+        <translation>Installerte programmer</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation></translation>
+        <translation>Selvvalgt kommando</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation></translation>
+        <translation>Kommandolinje å kjøre:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation></translation>
+        <translation>Programnavn:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -37,22 +37,28 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation></translation>
+        <translation>&lt;b&gt;Disse spesielle kodene kan brukes i en kommandolinje:&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Representerer et enkelt filnavn&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Representerer flere filnavn&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Representerer en enkelt URI for filen&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Representerer flere URIer&lt;/li&gt;
+&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation></translation>
+        <translation>Hold terminalvinduet åpent etter å ha kjørt kommandoen</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation></translation>
+        <translation>Kjør i terminalemulator</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation></translation>
+        <translation>Bruk valgte program som standardprogram for denne filtypen</translation>
     </message>
 </context>
 <context>
@@ -60,17 +66,17 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation></translation>
+        <translation>Rediger bokmerker</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
         <source>Name</source>
-        <translation></translation>
+        <translation>Navn</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="47"/>
         <source>Location</source>
-        <translation></translation>
+        <translation>Sted</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
@@ -85,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation></translation>
+        <translation>Bruk dra og slipp for å forandre rekkefølge</translation>
     </message>
 </context>
 <context>
@@ -93,7 +99,7 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation></translation>
+        <translation>Kjør fil</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="39"/>
@@ -113,7 +119,7 @@
     <message>
         <location filename="../exec-file.ui" line="85"/>
         <source>Cancel</source>
-        <translation></translation>
+        <translation>Avbryt</translation>
     </message>
 </context>
 <context>
@@ -121,32 +127,32 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation></translation>
+        <translation>Mål:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation></translation>
+        <translation>Behandler:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation></translation>
+        <translation>Forbereder...</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress</source>
-        <translation></translation>
+        <translation>Framdrift</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
         <source>Time remaining:</source>
-        <translation></translation>
+        <translation>Tid igjen:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation></translation>
+        <translation>Filer behandlet:</translation>
     </message>
 </context>
 <context>
@@ -154,22 +160,22 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation></translation>
+        <translation>Filegenskaper</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation></translation>
+        <translation>Generelt</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation></translation>
+        <translation>Plassering:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>File type:</source>
-        <translation></translation>
+        <translation>Filtype:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
@@ -179,98 +185,98 @@
     <message>
         <location filename="../file-props.ui" line="152"/>
         <source>File size:</source>
-        <translation></translation>
+        <translation>Filstørrelse:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="175"/>
         <source>On-disk size:</source>
-        <translation></translation>
+        <translation>Størrelse på disken:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="198"/>
         <source>Last modified:</source>
-        <translation></translation>
+        <translation>Sist endret:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="221"/>
         <source>Link target:</source>
-        <translation></translation>
+        <translation>Lenke til:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="247"/>
         <source>Open With:</source>
-        <translation></translation>
+        <translation>Åpne med:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation></translation>
+        <translation>Sist brukt:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="282"/>
         <source>Permissions</source>
-        <translation></translation>
+        <translation>Tillatelser</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="297"/>
         <source>Ownership</source>
-        <translation></translation>
+        <translation>Eierskap</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="321"/>
         <location filename="../file-props.ui" line="386"/>
         <location filename="../file-props.ui" line="500"/>
         <source>Group:</source>
-        <translation></translation>
+        <translation>Gruppe:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="334"/>
         <location filename="../file-props.ui" line="369"/>
         <location filename="../file-props.ui" line="448"/>
         <source>Owner:</source>
-        <translation></translation>
+        <translation>Eier:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="350"/>
         <source>Access Control</source>
-        <translation></translation>
+        <translation>Tilgangskontroll</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="403"/>
         <location filename="../file-props.ui" line="552"/>
         <source>Other:</source>
-        <translation></translation>
+        <translation>Annet:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="420"/>
         <source>Make the file executable</source>
-        <translation></translation>
+        <translation>Gjør filen kjørbar</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="461"/>
         <location filename="../file-props.ui" line="513"/>
         <location filename="../file-props.ui" line="565"/>
         <source>Read</source>
-        <translation></translation>
+        <translation>Les</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="474"/>
         <location filename="../file-props.ui" line="526"/>
         <location filename="../file-props.ui" line="578"/>
         <source>Write</source>
-        <translation></translation>
+        <translation>Skriv</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="487"/>
         <location filename="../file-props.ui" line="539"/>
         <location filename="../file-props.ui" line="591"/>
         <source>Execute</source>
-        <translation></translation>
+        <translation>Kjør</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="600"/>
         <source>Sticky</source>
-        <translation></translation>
+        <translation>Blivende</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="607"/>
@@ -285,7 +291,7 @@
     <message>
         <location filename="../file-props.ui" line="650"/>
         <source>Advanced Mode</source>
-        <translation></translation>
+        <translation>Avansert modus</translation>
     </message>
 </context>
 <context>
@@ -293,7 +299,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation></translation>
+        <translation>Tilpassing</translation>
     </message>
 </context>
 <context>
@@ -301,7 +307,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation></translation>
+        <translation>Velg et program for å åpne &quot;%1&quot;-filer</translation>
     </message>
 </context>
 <context>
@@ -309,12 +315,12 @@
     <message>
         <location filename="../createnewmenu.cpp" line="61"/>
         <source>Folder</source>
-        <translation></translation>
+        <translation>Mappe</translation>
     </message>
     <message>
         <location filename="../createnewmenu.cpp" line="65"/>
         <source>Blank File</source>
-        <translation></translation>
+        <translation>Tom fil</translation>
     </message>
 </context>
 <context>
@@ -322,7 +328,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="46"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation></translation>
+        <translation>Den valgte mappa &apos;%1&apos; er ikke gyldig</translation>
     </message>
 </context>
 <context>
@@ -330,14 +336,14 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation></translation>
+        <translation>Jobber...</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation></translation>
+        <translation>&lt;Ingen undermapper&gt;</translation>
     </message>
 </context>
 <context>
@@ -345,17 +351,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="211"/>
         <source>Open in New T&amp;ab</source>
-        <translation></translation>
+        <translation>Åpne i ny fane</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="215"/>
         <source>Open in New Win&amp;dow</source>
-        <translation></translation>
+        <translation>Åpne i nytt vindu</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="220"/>
         <source>Open in Termina&amp;l</source>
-        <translation></translation>
+        <translation>Åpne i terminal</translation>
     </message>
 </context>
 <context>
@@ -363,22 +369,22 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation></translation>
+        <translation>Kopier hit</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation></translation>
+        <translation>Flytt hit</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation></translation>
+        <translation>Lag symbolsk lenke hit</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="41"/>
         <source>Cancel</source>
-        <translation></translation>
+        <translation>Avbryt</translation>
     </message>
 </context>
 <context>
@@ -386,7 +392,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="92"/>
         <source>New bookmark</source>
-        <translation></translation>
+        <translation>Nytt bokmerke</translation>
     </message>
 </context>
 <context>
@@ -395,18 +401,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation></translation>
+        <translation>Filen &apos;%1&apos; ser ut til å være en skrivebordsfil.
+Hva vil du gjøre med den?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation></translation>
+        <translation>Tekstfilen &apos;%1&apos; ser ut til å være et kjørbart script.
+Hva vil du gjøre med det?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation></translation>
+        <translation>File &apos;%1&apos; er kjørbar. Hva vil du gjøre med den?</translation>
     </message>
 </context>
 <context>
@@ -414,93 +422,93 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filemenu.cpp" line="84"/>
         <source>Open</source>
-        <translation></translation>
+        <translation>Åpne</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="88"/>
         <source>Open With...</source>
-        <translation></translation>
+        <translation>Åpne med...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="116"/>
         <source>Other Applications</source>
-        <translation></translation>
+        <translation>Andre programmer</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="122"/>
         <source>Create &amp;New</source>
-        <translation></translation>
+        <translation>Lag &amp;Ny</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="141"/>
         <source>&amp;Restore</source>
-        <translation></translation>
+        <translation>&amp;Gjenopprett</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="147"/>
         <source>Cut</source>
-        <translation></translation>
+        <translation>Klipp ut</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="151"/>
         <source>Copy</source>
-        <translation></translation>
+        <translation>Kopier</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="155"/>
         <source>Paste</source>
-        <translation></translation>
+        <translation>Lim inn</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="159"/>
         <location filename="../filemenu.cpp" line="408"/>
         <source>&amp;Move to Trash</source>
-        <translation></translation>
+        <translation>&amp;Flytt til søppeldunken</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="163"/>
         <source>Rename</source>
-        <translation></translation>
+        <translation>Gi nytt navn</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="218"/>
         <source>Extract to...</source>
-        <translation></translation>
+        <translation>Pakk ut til...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Extract Here</source>
-        <translation></translation>
+        <translation>Pakk ut her</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="233"/>
         <source>Compress</source>
-        <translation></translation>
+        <translation>Pakk sammen</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="243"/>
         <source>Properties</source>
-        <translation></translation>
+        <translation>Egenskaper</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Trust selected executables</source>
-        <translation></translation>
+        <translation>Stol på valgte programmer</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="255"/>
         <source>Trust this executable</source>
-        <translation></translation>
+        <translation>Stol på dette programmet</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="343"/>
         <source>Output</source>
-        <translation></translation>
+        <translation>Utverdi</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="408"/>
         <source>&amp;Delete</source>
-        <translation></translation>
+        <translation>&amp;Slett</translation>
     </message>
 </context>
 <context>
@@ -508,29 +516,30 @@ What do you want to do with it?</source>
     <message>
         <location filename="../fileoperation.cpp" line="309"/>
         <source>Error</source>
-        <translation></translation>
+        <translation>Feil</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="310"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation></translation>
+        <translation>Noen filer kan ikke bli flyttet til søppeldunken fordi det underliggende filsystemet ikke støtter denne operasjonen.
+Vil du slette dem i stedet?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="375"/>
         <location filename="../fileoperation.cpp" line="392"/>
         <source>Confirm</source>
-        <translation></translation>
+        <translation>Bekreft</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="376"/>
         <source>Do you want to delete the selected files?</source>
-        <translation></translation>
+        <translation>Vil du slette de valgte filene?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="393"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation></translation>
+        <translation>Vil du flytte de valgte filene til søppeldunken?</translation>
     </message>
 </context>
 <context>
@@ -538,78 +547,78 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move files</source>
-        <translation></translation>
+        <translation>Flytt filer</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation></translation>
+        <translation>Flytter følgende filer til valgt mappe:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation></translation>
+        <translation>Kopier filer</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation></translation>
+        <translation>Kopierer følgende filer til valgt mappe:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation></translation>
+        <translation>Søppeldunkfiler</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation></translation>
+        <translation>Flytter følgende filer til søppeldunken:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation></translation>
+        <translation>Slett filer</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation></translation>
+        <translation>Sletter følgende filer:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation></translation>
+        <translation>Skap symbolsk lenke</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation></translation>
+        <translation>Skaper symbolske lenker for følgende filer:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation></translation>
+        <translation>Forandr egenskaper</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation></translation>
+        <translation>Forandrer egenskaper for følgende filer:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation></translation>
+        <translation>Gjenskapte kastede filer</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation></translation>
+        <translation>Gjenskaper følgende filer fra søppeldunken:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
         <location filename="../fileoperationdialog.cpp" line="152"/>
         <source>Error</source>
-        <translation></translation>
+        <translation>Feil</translation>
     </message>
 </context>
 <context>
@@ -617,57 +626,57 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="157"/>
         <source>View folder content</source>
-        <translation></translation>
+        <translation>Se mappeinnhold</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="158"/>
         <source>View and modify folder content</source>
-        <translation></translation>
+        <translation>Se og forandr mappeinnhold</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="162"/>
         <source>Read</source>
-        <translation></translation>
+        <translation>Les</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="163"/>
         <source>Read and write</source>
-        <translation></translation>
+        <translation>Les og skriv</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="165"/>
         <source>Forbidden</source>
-        <translation></translation>
+        <translation>Forbudt</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="282"/>
         <source>Files of different types</source>
-        <translation></translation>
+        <translation>Filer av ulike typer</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="305"/>
         <source>Multiple Files</source>
-        <translation></translation>
+        <translation>Flere filer</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="381"/>
         <source>Select an icon</source>
-        <translation></translation>
+        <translation>Velg et symbol</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="383"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation></translation>
+        <translation>bilder (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="479"/>
         <source>Apply changes</source>
-        <translation></translation>
+        <translation>Utfør endringer</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="480"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation></translation>
+        <translation>Vil du utføre disse endringene for alle filer og undermapper?</translation>
     </message>
 </context>
 <context>
@@ -675,17 +684,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>Error</source>
-        <translation></translation>
+        <translation>Feil</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>You should add at least one directory to search.</source>
-        <translation></translation>
+        <translation>Du bør legge til minst en mappe å søke.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="135"/>
         <source>Select a folder</source>
-        <translation></translation>
+        <translation>Velg en mappe</translation>
     </message>
 </context>
 <context>
@@ -693,87 +702,87 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="41"/>
         <source>Create &amp;New</source>
-        <translation></translation>
+        <translation>Skap &amp;Ny</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="48"/>
         <source>&amp;Paste</source>
-        <translation></translation>
+        <translation>&amp;Lim inn</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="54"/>
         <source>Select &amp;All</source>
-        <translation></translation>
+        <translation>Velg &amp;alt</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
         <source>Invert Selection</source>
-        <translation></translation>
+        <translation>Inverterter valg</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="64"/>
         <source>Sorting</source>
-        <translation></translation>
+        <translation>Sortering</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
         <source>Show Hidden</source>
-        <translation></translation>
+        <translation>Vis skjulte</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="97"/>
         <source>Folder Pr&amp;operties</source>
-        <translation></translation>
+        <translation>Mappe-&amp;egenskaper</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="140"/>
         <source>Output</source>
-        <translation></translation>
+        <translation>Utverdi</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="163"/>
         <source>By File Name</source>
-        <translation></translation>
+        <translation>Etter filnavn</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="164"/>
         <source>By Modification Time</source>
-        <translation></translation>
+        <translation>Etter sist endret</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="165"/>
         <source>By File Size</source>
-        <translation></translation>
+        <translation>Etter størrelse</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By File Type</source>
-        <translation></translation>
+        <translation>Etter type</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="167"/>
         <source>By File Owner</source>
-        <translation></translation>
+        <translation>Etter eier</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="179"/>
         <source>Ascending</source>
-        <translation></translation>
+        <translation>Økende</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="184"/>
         <source>Descending</source>
-        <translation></translation>
+        <translation>Minskende</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="201"/>
         <source>Folder First</source>
-        <translation></translation>
+        <translation>Mapper først</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="211"/>
         <source>Case Sensitive</source>
-        <translation></translation>
+        <translation>Forskjell på STORE og små bokstaver</translation>
     </message>
 </context>
 <context>
@@ -781,7 +790,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="275"/>
         <source>Name</source>
-        <translation></translation>
+        <translation>Navn</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="278"/>
@@ -791,22 +800,22 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>Size</source>
-        <translation></translation>
+        <translation>Størrelse</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="284"/>
         <source>Modified</source>
-        <translation></translation>
+        <translation>Sist endret</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="287"/>
         <source>Owner</source>
-        <translation></translation>
+        <translation>Eier</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Group</source>
-        <translation></translation>
+        <translation>Gruppe</translation>
     </message>
 </context>
 <context>
@@ -814,12 +823,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation></translation>
+        <translation>Fet</translation>
     </message>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation></translation>
+        <translation>Kursiv</translation>
     </message>
 </context>
 <context>
@@ -827,7 +836,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../mountoperationpassworddialog.cpp" line="40"/>
         <source>&amp;Connect</source>
-        <translation></translation>
+        <translation>&amp;Koble til</translation>
     </message>
 </context>
 <context>
@@ -835,12 +844,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../pathbar.cpp" line="128"/>
         <source>&amp;Edit Path</source>
-        <translation></translation>
+        <translation>&amp;Forandr sti</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="131"/>
         <source>&amp;Copy Path</source>
-        <translation></translation>
+        <translation>&amp;Kopier sti</translation>
     </message>
 </context>
 <context>
@@ -848,42 +857,42 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesmodel.cpp" line="43"/>
         <source>Places</source>
-        <translation></translation>
+        <translation>Steder</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="51"/>
         <source>Desktop</source>
-        <translation></translation>
+        <translation>Skrivebord</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="57"/>
         <source>Computer</source>
-        <translation></translation>
+        <translation>Datamaskin</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="65"/>
         <source>Applications</source>
-        <translation></translation>
+        <translation>Programmer</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="74"/>
         <source>Network</source>
-        <translation></translation>
+        <translation>Nettverk</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="78"/>
         <source>Devices</source>
-        <translation></translation>
+        <translation>Dingser</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="132"/>
         <source>Bookmarks</source>
-        <translation></translation>
+        <translation>Bokmerker</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="221"/>
         <source>Trash</source>
-        <translation></translation>
+        <translation>Søppeldunk</translation>
     </message>
 </context>
 <context>
@@ -891,64 +900,64 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="470"/>
         <source>Open in New Tab</source>
-        <translation></translation>
+        <translation>Åpne i ny fane</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="473"/>
         <source>Open in New Window</source>
-        <translation></translation>
+        <translation>Åpne i nytt vindu</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="485"/>
         <source>Empty Trash</source>
-        <translation></translation>
+        <translation>Tøm søppeldunk</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="505"/>
         <location filename="../placesview.cpp" line="562"/>
         <source>Hide</source>
-        <translation></translation>
+        <translation>Skjul</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="522"/>
         <source>Move Bookmark Up</source>
-        <translation></translation>
+        <translation>Flytt bokmerke oppover</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="527"/>
         <source>Move Bookmark Down</source>
-        <translation></translation>
+        <translation>Flytt bokmerke nedover</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="531"/>
         <source>Rename Bookmark</source>
-        <translation></translation>
+        <translation>Gi nytt navn til bokmerke</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="534"/>
         <source>Remove Bookmark</source>
-        <translation></translation>
+        <translation>Fjern bokmerke</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="543"/>
         <location filename="../placesview.cpp" line="576"/>
         <source>Unmount</source>
-        <translation></translation>
+        <translation>Løs ut</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="547"/>
         <source>Mount</source>
-        <translation></translation>
+        <translation>Last inn</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="553"/>
         <source>Eject</source>
-        <translation></translation>
+        <translation>Spytt ut</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="588"/>
         <source>Show All Entries</source>
-        <translation></translation>
+        <translation>Vis alle</translation>
     </message>
 </context>
 <context>
@@ -959,24 +968,27 @@ Do you want to delete them instead?</source>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation></translation>
+        <translation>Type: %1
+Størrelse %2
+Sist endret: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="84"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation></translation>
+        <translation>Type: %1
+Sist endret: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="97"/>
         <source>&amp;Overwrite</source>
-        <translation></translation>
+        <translation>&amp;Skriv over</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="99"/>
         <source>&amp;Rename</source>
-        <translation></translation>
+        <translation>&amp;Gi nytt navn</translation>
     </message>
 </context>
 <context>
@@ -984,12 +996,12 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Places</source>
-        <translation></translation>
+        <translation>Steder</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Directory Tree</source>
-        <translation></translation>
+        <translation>Filtre</translation>
     </message>
 </context>
 <context>
@@ -997,47 +1009,47 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation></translation>
+        <translation>Last inn</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation></translation>
+        <translation>Koble til &amp;anonymt</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation></translation>
+        <translation>Koble til som &amp;bruker:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
         <source>&amp;Username:</source>
-        <translation></translation>
+        <translation>&amp;Brukernavn:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="102"/>
         <source>&amp;Password:</source>
-        <translation></translation>
+        <translation>&amp;Passord:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
-        <translation></translation>
+        <translation>&amp;Domene:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation></translation>
+        <translation>Glem passord &amp;umiddelbart</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password until you &amp;logout</source>
-        <translation></translation>
+        <translation>Husk passord til du &amp;logger ut</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation></translation>
+        <translation>Husk &amp;alltid</translation>
     </message>
 </context>
 <context>
@@ -1045,12 +1057,12 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="178"/>
         <source>Rename File</source>
-        <translation></translation>
+        <translation>Gi nytt filnavn</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="179"/>
         <source>Please enter a new name:</source>
-        <translation></translation>
+        <translation>Skriv inn nytt navn:</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="101"/>
@@ -1059,67 +1071,67 @@ Modified: %2</source>
         <location filename="../utilities.cpp" line="169"/>
         <location filename="../utilities.cpp" line="263"/>
         <source>Error</source>
-        <translation></translation>
+        <translation>Feil</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="204"/>
         <source>Create Folder</source>
-        <translation></translation>
+        <translation>Lag mappe</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="205"/>
         <source>Create File</source>
-        <translation></translation>
+        <translation>Lag fil</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="209"/>
         <source>Please enter a new file name:</source>
-        <translation></translation>
+        <translation>Skriv inn et nytt filnavn:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="210"/>
         <source>New text file</source>
-        <translation></translation>
+        <translation>Ny tekstfil</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="214"/>
         <source>Please enter a new folder name:</source>
-        <translation></translation>
+        <translation>Skriv inn et nytt mappenavn:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="215"/>
         <source>New folder</source>
-        <translation></translation>
+        <translation>Ny mappe</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="220"/>
         <source>Enter a name for the new %1:</source>
-        <translation></translation>
+        <translation>Skriv inn et nytt navn for den nye %1:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="521"/>
         <source>Custom Icon Error</source>
-        <translation></translation>
+        <translation>Feil med selvvalgt symbol</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation></translation>
+        <translation>Stien er ikke lastet inn.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="258"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation></translation>
+        <translation>Ugyldig skrivebordsfil: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation></translation>
+        <translation>Ingen program er satt til å åpne &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation></translation>
+        <translation>Kan ikke sette arbeidsmappen til &apos;%1&apos;: %2</translation>
     </message>
 </context>
 <context>
@@ -1127,47 +1139,47 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation></translation>
+        <translation>Bekreft for å bytte filer</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Det er allerede en fil med samme navn på dette stedet.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Ønsker du å bytte ut den eksisterende filen?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
         <source>dest</source>
-        <translation></translation>
+        <translation>til</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation></translation>
+        <translation>med følgende fil?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
         <source>src file info</source>
-        <translation></translation>
+        <translation>kildefil info</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="89"/>
         <source>dest file info</source>
-        <translation></translation>
+        <translation>tilfil info</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="102"/>
         <source>src</source>
-        <translation></translation>
+        <translation>kilde</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation></translation>
+        <translation>&amp;Filnavn:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation></translation>
+        <translation>Bruk dette valget på alle eksisterende filer</translation>
     </message>
 </context>
 <context>
@@ -1175,17 +1187,17 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation></translation>
+        <translation>Søk filer</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation></translation>
+        <translation>Navn/Sted</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation></translation>
+        <translation>Filnavnmønstre:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="41"/>
@@ -1195,112 +1207,112 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation></translation>
+        <translation>Ignorer STORE og små bokstaver</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation></translation>
+        <translation>Bruk regular expression</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="68"/>
         <source>Places to Search:</source>
-        <translation></translation>
+        <translation>Steder å søke:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="81"/>
         <source>&amp;Add</source>
-        <translation></translation>
+        <translation>&amp;Legg til</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="93"/>
         <source>&amp;Remove</source>
-        <translation></translation>
+        <translation>&amp;Fjern</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in sub directories</source>
-        <translation></translation>
+        <translation>Søk i undermapper</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="129"/>
         <source>Search for hidden files</source>
-        <translation></translation>
+        <translation>Søk etter skjulte filer</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="140"/>
         <source>File Type</source>
-        <translation></translation>
+        <translation>Filtype</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation></translation>
+        <translation>Bare søk etter følgende filtyper:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
         <source>Text files</source>
-        <translation></translation>
+        <translation>Tekstfiler</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="159"/>
         <source>Image files</source>
-        <translation></translation>
+        <translation>Bildefiler</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="166"/>
         <source>Audio files</source>
-        <translation></translation>
+        <translation>Lydfiler</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="173"/>
         <source>Video files</source>
-        <translation></translation>
+        <translation>Videofiler</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="180"/>
         <source>Documents</source>
-        <translation></translation>
+        <translation>Dokumenter</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="187"/>
         <source>Folders</source>
-        <translation></translation>
+        <translation>Mapper</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="211"/>
         <source>Content</source>
-        <translation></translation>
+        <translation>Innhold</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="217"/>
         <source>File contains:</source>
-        <translation></translation>
+        <translation>Fil inneholder:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case insensiti&amp;ve</source>
-        <translation></translation>
+        <translation>Ignorerer STORE&amp; og små bokstaver</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>&amp;Use regular expression</source>
-        <translation></translation>
+        <translation>&amp;Bruk regular expression</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="260"/>
         <source>Properties</source>
-        <translation></translation>
+        <translation>Egenskaper</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="266"/>
         <source>File Size:</source>
-        <translation></translation>
+        <translation>Filstørrelse:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="295"/>
         <source>Larger than:</source>
-        <translation></translation>
+        <translation>Større enn:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="309"/>
@@ -1329,22 +1341,22 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="274"/>
         <source>Smaller than:</source>
-        <translation></translation>
+        <translation>Mindre enn:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
         <source>Last Modified Time:</source>
-        <translation></translation>
+        <translation>Sist endret:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="378"/>
         <source>Earlier than:</source>
-        <translation></translation>
+        <translation>Før:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Later than:</source>
-        <translation></translation>
+        <translation>Etter:</translation>
     </message>
 </context>
 <context>
@@ -1352,17 +1364,17 @@ Modified: %2</source>
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Location:</source>
-        <translation></translation>
+        <translation>Sted:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation></translation>
+        <translation>Filnavn:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation></translation>
+        <translation>Filtype:</translation>
     </message>
 </context>
 <context>
@@ -1370,7 +1382,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation></translation>
+        <translation>Kan ikke lage en lenke på et fremmed filsystem</translation>
     </message>
 </context>
 <context>
@@ -1378,7 +1390,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation></translation>
+        <translation>Kan ikke gjenopprette filen &apos;%s&apos;: original plassering ukjent</translation>
     </message>
 </context>
 <context>
@@ -1386,29 +1398,29 @@ Modified: %2</source>
     <message>
         <location filename="../filedialog.cpp" line="102"/>
         <source>Go Back</source>
-        <translation></translation>
+        <translation>Gå tilbake</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="103"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation></translation>
+        <translation>Alt+Venstre</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="109"/>
         <source>Go Forward</source>
-        <translation></translation>
+        <translation>Gå forover</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="110"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation></translation>
+        <translation>Alt+Høyre</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="117"/>
         <source>Reload</source>
-        <translation></translation>
+        <translation>Last på nytt</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="118"/>
@@ -1419,76 +1431,77 @@ Modified: %2</source>
     <message>
         <location filename="../filedialog.cpp" line="135"/>
         <source>Create Folder</source>
-        <translation></translation>
+        <translation>Lag mappe</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Icon View</source>
-        <translation></translation>
+        <translation>Symbolvisning</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Thumbnail View</source>
-        <translation></translation>
+        <translation>Forhåndsvisningsvisning</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
         <source>Compact View</source>
-        <translation></translation>
+        <translation>Kompaktvisning</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="154"/>
         <source>Detailed List View</source>
-        <translation></translation>
+        <translation>Detaljert listevisning</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
         <location filename="../filedialog.cpp" line="634"/>
         <source>Error</source>
-        <translation></translation>
+        <translation>Feil</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
         <source>Please select a file</source>
-        <translation></translation>
+        <translation>Velg en fil</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="295"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation></translation>
+        <translation>%1 finnes allerede.
+Vil du bytte den ut?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="604"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation></translation>
+        <translation>Stien &quot;%1&quot; finnes ikke</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="618"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation></translation>
+        <translation>&quot;%1&quot; er ikke en mappe</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="624"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation></translation>
+        <translation>&quot;%1&quot; er ikke en fil</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="751"/>
         <location filename="../filedialog.cpp" line="859"/>
         <source>&amp;Open</source>
-        <translation></translation>
+        <translation>&amp;Åpne</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="754"/>
         <location filename="../filedialog.cpp" line="867"/>
         <source>&amp;Save</source>
-        <translation></translation>
+        <translation>&amp;Lagre</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="761"/>
         <source>All Files (*)</source>
-        <translation></translation>
+        <translation>Alle filer (*)</translation>
     </message>
 </context>
 <context>
@@ -1496,12 +1509,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation></translation>
+        <translation>Åpne fil</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
         <source>Save File</source>
-        <translation></translation>
+        <translation>Lagre fil</translation>
     </message>
 </context>
 </TS>
