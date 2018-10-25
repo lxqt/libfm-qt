@@ -1369,7 +1369,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation>Nome do ficheiro</translation>
+        <translation>Nome do ficheiro:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
