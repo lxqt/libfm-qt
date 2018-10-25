@@ -1297,7 +1297,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Usar expresións regulares</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="260"/>
@@ -1307,56 +1307,56 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="266"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño do ficheiro:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="295"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Maior que:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="309"/>
         <location filename="../filesearch.ui" line="339"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Bytes</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="314"/>
         <location filename="../filesearch.ui" line="344"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="319"/>
         <location filename="../filesearch.ui" line="349"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>MiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="324"/>
         <location filename="../filesearch.ui" line="354"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>GiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="274"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Menor que:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Data  da última modificación:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="378"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Anterior a:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Posterior a:</translation>
     </message>
 </context>
 <context>
@@ -1369,7 +1369,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome do ficheiro</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
@@ -1382,7 +1382,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Non é posíbel crear ligazóns en sistemas de ficheiros non nativos</translation>
     </message>
 </context>
 <context>
@@ -1390,7 +1390,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Non é posíbel restaurar o ficheiro «%s» dende o lixo: descoñecese a ruta orixinal</translation>
     </message>
 </context>
 <context>
@@ -1398,60 +1398,60 @@ Modificado: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="102"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Volver atrás</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="103"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Esquerda</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="109"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Avanzar</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="110"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Dereita</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="117"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargar de novo</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="118"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="135"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Crear un cartafol</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista en Iconas</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista de miniaturas</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista compacta</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="154"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver como lista detallada</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
@@ -1462,45 +1462,46 @@ Modificado: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccione un ficheiro</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="295"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Xa existe %1.
+Quere sobrescribilo?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="604"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Non existe a ruta «%1»</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="618"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>«%1» non é un directorio</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="624"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>«%1» no es un ficheiro</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="751"/>
         <location filename="../filedialog.cpp" line="859"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Abrir</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="754"/>
         <location filename="../filedialog.cpp" line="867"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Gardar</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="761"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Todos os ficheiros (*)</translation>
     </message>
 </context>
 <context>
@@ -1508,12 +1509,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir ficheiro</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Gardar o ficheiro</translation>
     </message>
 </context>
 </TS>
