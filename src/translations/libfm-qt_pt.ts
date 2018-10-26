@@ -276,7 +276,7 @@
     <message>
         <location filename="../file-props.ui" line="600"/>
         <source>Sticky</source>
-        <translation>Fixo</translation>
+        <translation>Espesso</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="607"/>
@@ -307,7 +307,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Selecione a aplicação para abrir os ficheiros %1</translation>
+        <translation>Selecione um aplicativo para abrir &quot;%1&quot; arquivos</translation>
     </message>
 </context>
 <context>
@@ -320,7 +320,7 @@
     <message>
         <location filename="../createnewmenu.cpp" line="65"/>
         <source>Blank File</source>
-        <translation>Ficheiro vazio</translation>
+        <translation>Arquivo em Branco</translation>
     </message>
 </context>
 <context>
@@ -328,7 +328,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="46"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>O diretório &quot;%1&quot; é inválido</translation>
+        <translation>O diretório especificado &apos;%1&apos; é inválido</translation>
     </message>
 </context>
 <context>
@@ -336,14 +336,14 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation>A carregar...</translation>
+        <translation>Carregando...</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation>&lt;Não existem subpastas&gt;</translation>
+        <translation>&lt;Nenhuma subpastas&gt;</translation>
     </message>
 </context>
 <context>
@@ -351,17 +351,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="211"/>
         <source>Open in New T&amp;ab</source>
-        <translation>Abrir em novo sep&amp;arador</translation>
+        <translation>Abrir em Nova &amp;Aba</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="215"/>
         <source>Open in New Win&amp;dow</source>
-        <translation>Abrir em nova ja&amp;nela</translation>
+        <translation>Abrir em Nova Ja&amp;nela</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="220"/>
         <source>Open in Termina&amp;l</source>
-        <translation>Abrir no termina&amp;l</translation>
+        <translation>Abrir no Termina&amp;l</translation>
     </message>
 </context>
 <context>
@@ -379,7 +379,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation>Criar ligação simbólica aqui</translation>
+        <translation>Criar link simbólico aqui</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="41"/>
@@ -392,7 +392,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="92"/>
         <source>New bookmark</source>
-        <translation>Novo marcador</translation>
+        <translation>Novo favorito</translation>
     </message>
 </context>
 <context>
@@ -443,17 +443,17 @@ O que pretende fazer com o ficheiro?</translation>
         <location filename="../filemenu.cpp" line="159"/>
         <location filename="../filemenu.cpp" line="408"/>
         <source>&amp;Move to Trash</source>
-        <translation>&amp;Mover para o lixo</translation>
+        <translation>&amp;Mover para lixeira</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Confiar em executáveis selecionados</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="255"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Confiar neste executável</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="343"/>
@@ -463,7 +463,7 @@ O que pretende fazer com o ficheiro?</translation>
     <message>
         <location filename="../filemenu.cpp" line="408"/>
         <source>&amp;Delete</source>
-        <translation>&amp;Apagar</translation>
+        <translation>&amp;Excluir</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="163"/>
@@ -473,17 +473,17 @@ O que pretende fazer com o ficheiro?</translation>
     <message>
         <location filename="../filemenu.cpp" line="88"/>
         <source>Open With...</source>
-        <translation>Abrir com...</translation>
+        <translation>Abrir Com...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="116"/>
         <source>Other Applications</source>
-        <translation>Outras aplicações</translation>
+        <translation>Outras Aplicações</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="122"/>
         <source>Create &amp;New</source>
-        <translation>Criar &amp;novo(a)</translation>
+        <translation>Criar &amp;Novo</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="141"/>
@@ -529,7 +529,7 @@ Deseja apagar permanentemente estes ficheiros?</translation>
         <location filename="../fileoperation.cpp" line="375"/>
         <location filename="../fileoperation.cpp" line="392"/>
         <source>Confirm</source>
-        <translation>Confirmação</translation>
+        <translation>Confirmar</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="376"/>
@@ -547,7 +547,7 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move files</source>
-        <translation>Mover ficheiros</translation>
+        <translation>Mover arquivos</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
@@ -557,7 +557,7 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation>Copiar ficheiros</translation>
+        <translation>Copiar Arquivos</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
@@ -567,7 +567,7 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation>Destruir ficheiros</translation>
+        <translation>Lixeira</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
@@ -597,7 +597,7 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation>Alterar atributos</translation>
+        <translation>Alterar Atributos</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
