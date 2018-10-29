@@ -1035,7 +1035,6 @@ void FolderView::selectAll() {
 void FolderView::invertSelection() {
     if(model_) {
         QItemSelectionModel* selModel = view->selectionModel();
-        int rows = model_->rowCount();
         QItemSelectionModel::SelectionFlags flags;
         if(mode == DetailedListMode) {
             flags |= QItemSelectionModel::Rows;
