@@ -409,12 +409,12 @@ O que você desejar fazer?</translation>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
         <translation>Parece que o arquivo de texto %1 é um script executável.
-O que pretende fazer com o ficheiro?</translation>
+O que deseja fazer?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>O arquivo %1 é um executável. Pretende executar o arquivo?</translation>
+        <translation>O arquivo %1 é um executável. Deseja executar o arquivo?</translation>
     </message>
 </context>
 <context>
@@ -522,8 +522,8 @@ O que pretende fazer com o ficheiro?</translation>
         <location filename="../fileoperation.cpp" line="310"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>Alguns ficheiros não podem ser movidos para o lixo porque o sistema de ficheiros não suporta esta operação.
-Deseja apagar permanentemente estes ficheiros?</translation>
+        <translation>Alguns arquivos não podem ser movidos para a lixeira porque o sistema de arquivos não suporta esta operação.
+Deseja apagar permanentemente estes arquivos?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="375"/>
@@ -534,12 +534,12 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../fileoperation.cpp" line="376"/>
         <source>Do you want to delete the selected files?</source>
-        <translation>Quer mesmo apagar o(s) ficheiro(s) selecionado(s)?</translation>
+        <translation>Deseja apagar o(s) arquivo(s) selecionado(s)?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="393"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation>Quer mesmo mover o(s) ficheiro(s) selecionado(s) para o lixo?</translation>
+        <translation>Deseja mover o(s) arquivo(s) selecionado(s) para a lixeira?</translation>
     </message>
 </context>
 <context>
@@ -552,7 +552,7 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>A mover os ficheiros para a pasta de destino:</translation>
+        <translation>A mover os arquivos para a pasta de destino:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -562,7 +562,7 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>A copiar os ficheiros para a pasta de destino:</translation>
+        <translation>A copiar os arquivos para a pasta de destino:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
@@ -572,17 +572,17 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>A mover os ficheiros para o lixo:</translation>
+        <translation>A mover os arquivos para a lixeira:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation>Apagar ficheiros</translation>
+        <translation>Apagar arquivos</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation>A apagar estes ficheiros:</translation>
+        <translation>A apagar estes arquivos:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
@@ -592,7 +592,7 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>A criar ligações simbólicas a estes ficheiros:</translation>
+        <translation>A criar ligações simbólicas a estes arquivos:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
@@ -602,17 +602,17 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>A alterar os atributos destes ficheiros:</translation>
+        <translation>A alterar os atributos destes arquivos:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation>Restaurar ficheiros apagados</translation>
+        <translation>Restaurar arquivos apagados</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Restaurar estes ficheiros do lixo:</translation>
+        <translation>Restaurar estes arquivos da lixeira:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
@@ -651,7 +651,7 @@ Deseja apagar permanentemente estes ficheiros?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="282"/>
         <source>Files of different types</source>
-        <translation>Ficheiros de outro tipo</translation>
+        <translation>Arquivos de outro tipo</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="305"/>
