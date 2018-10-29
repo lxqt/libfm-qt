@@ -1035,15 +1035,16 @@ void FolderView::selectAll() {
 void FolderView::invertSelection() {
     if(model_) {
         QItemSelectionModel* selModel = view->selectionModel();
-        int rows = model_->rowCount();
-        QItemSelectionModel::SelectionFlags flags = QItemSelectionModel::Toggle;
+        QItemSelectionModel::SelectionFlags flags;
         if(mode == DetailedListMode) {
             flags |= QItemSelectionModel::Rows;
         }
-        for(int row = 0; row < rows; ++row) {
-            QModelIndex index = model_->index(row, 0);
-            selModel->select(index, flags);
-        }
+        // we don't use a "for" loop on rows because it would be slow
+        const QItemSelection _all{model_->index(0, 0), model_->index(model_->rowCount() - 1, 0)};
+        const QItemSelection _old{selModel->selection()};
+        
+        selModel->select(_all, QItemSelectionModel::Select);
+        selModel->select(_old, QItemSelectionModel::Deselect);
     }
 }
 
