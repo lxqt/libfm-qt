@@ -1039,7 +1039,7 @@ void FolderView::invertSelection() {
         if(mode == DetailedListMode) {
             flags |= QItemSelectionModel::Rows;
         }
-        //For loop on each row is slow with this no for loop
+        // we don't use a "for" loop on rows because it would be slow
         const QItemSelection _all{model_->index(0, 0), model_->index(model_->rowCount() - 1, 0)};
         const QItemSelection _old{selModel->selection()};
         
