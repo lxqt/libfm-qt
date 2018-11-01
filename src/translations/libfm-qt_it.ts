@@ -448,12 +448,12 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Fidati degli eseguibili selezionati</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="255"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Fidati del eseguibile</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="343"/>
@@ -1364,17 +1364,17 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Location:</source>
-        <translation type="unfinished">Posizione:</translation>
+        <translation>Posizione:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome del file:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished">Tipo file:</translation>
+        <translation>Tipo file:</translation>
     </message>
 </context>
 <context>
@@ -1382,7 +1382,7 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile creare un collegamento su un filesystem non nativo</translation>
     </message>
 </context>
 <context>
@@ -1390,7 +1390,7 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile ripristinare il file &apos;%1&apos;: percorso originale sconosciuto</translation>
     </message>
 </context>
 <context>
@@ -1398,109 +1398,110 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../filedialog.cpp" line="102"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Indietro</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="103"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Sinistra</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="109"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Avanti</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="110"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Destra</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="117"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricarica</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="118"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="135"/>
         <source>Create Folder</source>
-        <translation type="unfinished">Crea cartella</translation>
+        <translation>Crea cartella</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista icone</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista miniature</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista compatta</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="154"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista dettagliata</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
         <location filename="../filedialog.cpp" line="634"/>
         <source>Error</source>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Per favore selezionare un file</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="295"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 esiste già.
+Sostituirlo?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="604"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Il percorso &quot;%1&quot; non esiste</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="618"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; non è una cartella</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="624"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; non  è un file</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="751"/>
         <location filename="../filedialog.cpp" line="859"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">&amp;Apri</translation>
+        <translation>&amp;Apri</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="754"/>
         <location filename="../filedialog.cpp" line="867"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Salva</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="761"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutti file (*)</translation>
     </message>
 </context>
 <context>
@@ -1508,12 +1509,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Apri file</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Salva file</translation>
     </message>
 </context>
 </TS>
