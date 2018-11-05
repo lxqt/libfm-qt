@@ -538,7 +538,9 @@ FolderView::~FolderView() {
 }
 
 void FolderView::onItemActivated(QModelIndex index) {
-    if(index.isValid() && index.model()) {
+    QItemSelectionModel* selModel = selectionModel();
+    if(index.isValid() && index.model()
+       && selModel && selModel->isSelected(index)) { // do nothing when the item is not selected
         QVariant data = index.model()->data(index, FolderModel::FileInfoRole);
         auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
         if(info) {
