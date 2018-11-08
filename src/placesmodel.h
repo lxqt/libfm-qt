@@ -129,6 +129,7 @@ private:
     QStandardItem* bookmarksRoot;
     PlacesModelItem* trashItem_;
     GFileMonitor* trashMonitor_;
+    QTimer* trashUpdateTimer_;
     PlacesModelItem* desktopItem;
     PlacesModelItem* homeItem;
     PlacesModelItem* computerItem;
