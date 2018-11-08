@@ -36,6 +36,8 @@ PlacesModel::PlacesModel(QObject* parent):
     QStandardItemModel(parent),
     showApplications_(true),
     showDesktop_(true),
+    trashMonitor_(nullptr),
+    trashUpdateTimer_(nullptr),
     // FIXME: this seems to be broken when porting to new API.
     ejectIcon_(QIcon::fromTheme("media-eject")) {
     setColumnCount(2);
@@ -168,7 +170,9 @@ PlacesModel::~PlacesModel() {
 
 // static
 void PlacesModel::onTrashChanged(GFileMonitor* /*monitor*/, GFile* /*gf*/, GFile* /*other*/, GFileMonitorEvent /*evt*/, PlacesModel* pThis) {
-    QTimer::singleShot(0, pThis, SLOT(updateTrash()));
+    if(pThis->trashUpdateTimer_ != nullptr && !pThis->trashUpdateTimer_->isActive()) {
+        pThis->trashUpdateTimer_->start(250); // don't update trash very fast
+    }
 }
 
 void PlacesModel::updateTrash() {
@@ -222,6 +226,11 @@ void PlacesModel::createTrashItem() {
 
     trashMonitor_ = g_file_monitor_directory(gf, G_FILE_MONITOR_NONE, nullptr, nullptr);
     if(trashMonitor_) {
+        if(trashUpdateTimer_ == nullptr) {
+            trashUpdateTimer_ = new QTimer(this);
+            trashUpdateTimer_->setSingleShot(true);
+            connect(trashUpdateTimer_, &QTimer::timeout, this, &PlacesModel::updateTrash);
+        }
         g_signal_connect(trashMonitor_, "changed", G_CALLBACK(onTrashChanged), this);
     }
     g_object_unref(gf);
@@ -250,6 +259,11 @@ void PlacesModel::setShowTrash(bool show) {
     }
     else {
         if(trashItem_) {
+            if(trashUpdateTimer_) {
+                trashUpdateTimer_->stop();
+                delete trashUpdateTimer_;
+                trashUpdateTimer_ = nullptr;
+            }
             if(trashMonitor_) {
                 g_signal_handlers_disconnect_by_func(trashMonitor_, (gpointer)G_CALLBACK(onTrashChanged), this);
                 g_object_unref(trashMonitor_);
