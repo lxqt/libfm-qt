@@ -567,7 +567,7 @@ Desexa eliminalos no seu canto?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation>Deitar no lixo os ficheiros</translation>
+        <translation>Deitar os ficheiros no lixo</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
@@ -1126,7 +1126,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="293"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>Non foi estabelecida ningunha aplicación predeterminada para lanzar «%1»</translation>
+        <translation>Non foi estabelecida ningunha aplicación predeterminada para iniciar «%1»</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="334"/>
@@ -1292,7 +1292,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case insensiti&amp;ve</source>
-        <translation>Non &amp;distinguir maiúsculas e minúsculas</translation>
+        <translation>&amp;Non distinguir maiúsculas e minúsculas</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
@@ -1484,7 +1484,7 @@ Quere sobrescribilo?</translation>
     <message>
         <location filename="../filedialog.cpp" line="624"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation>«%1» no es un ficheiro</translation>
+        <translation>«%1» non é un ficheiro</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="751"/>
