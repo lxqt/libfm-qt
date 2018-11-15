@@ -252,7 +252,21 @@ bool BasicFileLauncher::launchDesktopEntry(const char *desktopEntryName, const F
        it cannot be launched in fact */
 
     if(app) {
-        return launchWithApp(app, paths, ctx);
+        // don't call launchWithApp() because it calls g_app_info_launch_uris(),
+        // which uses the hard-coded terminal list of GLib -> gdesktopappinfo.c
+        GList* uris = nullptr;
+        for(auto& path : paths) {
+            auto uri = path.uri();
+            uris = g_list_prepend(uris, uri.release());
+        }
+        GErrorPtr err;
+        ret = bool(fm_app_info_launch(app, uris, ctx, &err));
+        g_list_foreach(uris, reinterpret_cast<GFunc>(g_free), nullptr);
+        g_list_free(uris);
+        if(!ret) {
+            // FIXME: show error for all files
+            showError(ctx, err, paths[0]);
+        }
     }
     else {
         QString msg = QObject::tr("Invalid desktop entry file: '%1'").arg(desktopEntryName);
