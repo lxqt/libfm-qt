@@ -458,7 +458,7 @@ Co s ním chcete dělat?</translation>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Trust selected executables</source>
-        <translation>Důvěřovat zvoleným proměnným</translation>
+        <translation>Důvěřovat označeným spustitelným</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="255"/>
