@@ -70,6 +70,7 @@ CreateNewMenu::CreateNewMenu(QWidget* dialogParent, Fm::FilePath dirPath, QWidge
     connect(templates_.get(), &Templates::itemAdded, this, &CreateNewMenu::addTemplateItem);
     connect(templates_.get(), &Templates::itemChanged, this, &CreateNewMenu::updateTemplateItem);
     connect(templates_.get(), &Templates::itemRemoved, this, &CreateNewMenu::removeTemplateItem);
+    // when a template directory is already loaded
     templates_->forEachItem([this](const std::shared_ptr<const TemplateItem>& item) {
         addTemplateItem(item);
     });
@@ -106,9 +107,31 @@ void CreateNewMenu::addTemplateItem(const std::shared_ptr<const TemplateItem> &i
     if(mimeType->isDir()) {
         return;
     }
+
     QAction* action = new TemplateAction{item, this};
     connect(action, &QAction::triggered, this, &CreateNewMenu::onCreateNew);
-    addAction(action);
+
+    // sort actions alphabetically
+    const auto allActions = actions();
+    auto separatorPos = allActions.indexOf(templateSeparator_);
+    if(allActions.size() == separatorPos + 1) {
+        addAction(action);
+    }
+    else {
+        // checking actions from end to start is usually faster
+        for(auto i = allActions.size() - 1; i > separatorPos; --i) {
+            if(QString::compare(action->text(), allActions[i]->text(), Qt::CaseInsensitive) > 0) {
+                if(i == allActions.size() - 1) {
+                    addAction(action);
+                }
+                else {
+                    insertAction(allActions[i + 1], action);
+                }
+                return;
+            }
+        }
+        insertAction(allActions[separatorPos + 1], action);
+    }
 }
 
 void CreateNewMenu::updateTemplateItem(const std::shared_ptr<const TemplateItem> &oldItem, const std::shared_ptr<const TemplateItem> &newItem) {
