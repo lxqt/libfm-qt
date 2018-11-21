@@ -58,6 +58,10 @@ void Templates::addTemplateDir(const char* dirPathName) {
     auto dir_path = FilePath::fromLocalPath(dirPathName);
     if(dir_path.isValid()) {
         auto folder = Folder::fromPath(dir_path);
+        if(folder->isLoaded()) {
+            auto file = folder->files();
+            onFilesAdded(file);
+        }
         connect(folder.get(), &Folder::filesAdded, this, &Templates::onFilesAdded);
         connect(folder.get(), &Folder::filesChanged, this, &Templates::onFilesChanged);
         connect(folder.get(), &Folder::filesRemoved, this, &Templates::onFilesRemoved);
