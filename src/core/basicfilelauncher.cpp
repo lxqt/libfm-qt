@@ -180,7 +180,7 @@ bool BasicFileLauncher::launchWithApp(GAppInfo* app, const FilePathList& paths, 
     g_list_free(uris);
     if(!ret) {
         // FIXME: show error for all files
-        showError(ctx, err, paths[0]);
+        showError(ctx, err, paths.empty() ? FilePath{} : paths[0]);
     }
     return ret;
 }
@@ -265,7 +265,7 @@ bool BasicFileLauncher::launchDesktopEntry(const char *desktopEntryName, const F
         g_list_free(uris);
         if(!ret) {
             // FIXME: show error for all files
-            showError(ctx, err, paths[0]);
+            showError(ctx, err, paths.empty() ? FilePath{} : paths[0]);
         }
     }
     else {
