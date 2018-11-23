@@ -6,27 +6,27 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation></translation>
+        <translation>Escolha um Aplicativo</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation></translation>
+        <translation>Aplicativos Instalados</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation></translation>
+        <translation>Comando Personalizado</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation></translation>
+        <translation>Linha de comandos a executar:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation></translation>
+        <translation>Nome do aplicativo:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -37,22 +37,28 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation></translation>
+        <translation>&lt;b&gt;Esses códigos especiais podem ser usados na linha de comando:&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Representa um único nome de arquivo&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Representa vários nomes de arquivos&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Representa um único URI do arquivo&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Representa vários URIs&lt;/li&gt;
+&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation></translation>
+        <translation>Manter janela de terminal aberta depois da execução do comando</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation></translation>
+        <translation>Executar no emulador de terminal</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation></translation>
+        <translation>Definir a aplicação selecionada como padrão para este tipo de arquivo</translation>
     </message>
 </context>
 <context>
@@ -60,32 +66,32 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation></translation>
+        <translation>Editar Favoritos</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
         <source>Name</source>
-        <translation></translation>
+        <translation>Nome</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="47"/>
         <source>Location</source>
-        <translation></translation>
+        <translation>Localização</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation></translation>
+        <translation>&amp;Adicionar Item</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation></translation>
+        <translation>&amp;Remover Item</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation></translation>
+        <translation>Usar arrastar e soltar para organizar itens</translation>
     </message>
 </context>
 <context>
@@ -93,27 +99,27 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation></translation>
+        <translation>Executar arquivo</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="39"/>
         <source>&amp;Open</source>
-        <translation></translation>
+        <translation>&amp;Abrir</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="52"/>
         <source>E&amp;xecute</source>
-        <translation></translation>
+        <translation>E&amp;xecutar</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation></translation>
+        <translation>Executar no &amp;Terminal</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
         <source>Cancel</source>
-        <translation></translation>
+        <translation>Cancelar</translation>
     </message>
 </context>
 <context>
@@ -121,32 +127,32 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation></translation>
+        <translation>Destino:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation></translation>
+        <translation>Processamento:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation></translation>
+        <translation>Preparação...</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress</source>
-        <translation></translation>
+        <translation>Progresso</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
         <source>Time remaining:</source>
-        <translation></translation>
+        <translation>Tempo restante:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation></translation>
+        <translation>Arquivos processados:</translation>
     </message>
 </context>
 <context>
@@ -154,81 +160,81 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation></translation>
+        <translation>Propriedades do Arquivo</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation></translation>
+        <translation>Geral</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation></translation>
+        <translation>Localização:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>File type:</source>
-        <translation></translation>
+        <translation>Tipo de arquivo:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
         <source>MIME type:</source>
-        <translation></translation>
+        <translation>Tipo MIME:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="152"/>
         <source>File size:</source>
-        <translation></translation>
+        <translation>Tamanho do arquivo:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="175"/>
         <source>On-disk size:</source>
-        <translation></translation>
+        <translation>Tamanho no disco:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="198"/>
         <source>Last modified:</source>
-        <translation></translation>
+        <translation>Última modificação:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="221"/>
         <source>Link target:</source>
-        <translation></translation>
+        <translation>Destino do link:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="247"/>
         <source>Open With:</source>
-        <translation></translation>
+        <translation>Abrir com:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation></translation>
+        <translation>Último acesso:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="282"/>
         <source>Permissions</source>
-        <translation></translation>
+        <translation>Permissões</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="297"/>
         <source>Ownership</source>
-        <translation></translation>
+        <translation>Propriedades</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="321"/>
         <location filename="../file-props.ui" line="386"/>
         <location filename="../file-props.ui" line="500"/>
         <source>Group:</source>
-        <translation></translation>
+        <translation>Grupo:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="334"/>
         <location filename="../file-props.ui" line="369"/>
         <location filename="../file-props.ui" line="448"/>
         <source>Owner:</source>
-        <translation></translation>
+        <translation>Proprietário:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="350"/>
