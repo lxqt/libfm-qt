@@ -81,12 +81,12 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation></translation>
+        <translation>&amp;Legg til</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation></translation>
+        <translation>&amp;Fjern</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
@@ -109,12 +109,12 @@
     <message>
         <location filename="../exec-file.ui" line="52"/>
         <source>E&amp;xecute</source>
-        <translation></translation>
+        <translation>K&amp;jør</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation></translation>
+        <translation>Kjør i ter&amp;minal</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
@@ -180,7 +180,7 @@
     <message>
         <location filename="../file-props.ui" line="129"/>
         <source>MIME type:</source>
-        <translation></translation>
+        <translation>MIME-type:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="152"/>
