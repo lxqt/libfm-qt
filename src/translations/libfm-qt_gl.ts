@@ -1044,7 +1044,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password until you &amp;logout</source>
-        <translation>Lembrar o contrasinal ata &amp;saír da sesión</translation>
+        <translation>Lembrar o contrasinal ata &amp;pechar a sesión</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
