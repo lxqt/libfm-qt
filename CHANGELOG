@@ -1,3 +1,35 @@
+0.14.0 / 2018-11-28
+============================
+
+ * Completely dropped libfm dependency.
+ * An option for showing full names instead of display names.
+ * An option for shadowing hidden icons.
+ * Fixed handling of mounts and SMB.
+ * Fixed overwrite prompt in LXQt file dialog.
+ * Fixed rare showing of nonexistent files.
+ * Moved Qt file dialog helper into libfm-qt.
+ * Support adding metadata for trusting executables and add an emblem to untrusted desktop files inside home.
+ * Fixed a problem in selecting newly created files.
+ * Fixed a random crash by adding context to folder lambda connections of file dialog.
+ * Selection/deselection corner marks on mouse-over.
+ * Ensure visibility of toggled path button on resizing window.
+ * Use target URI for symlink thumbnails.
+ * Return the correct path in "FileInfo::path()" by giving the path itself to the ctor of "FileInfo" wherever possible.
+ * Fixed an infinite loop on trashing a file that couldn't be trashed.
+ * Added dir file number to Properties dialog.
+ * Added device usge bar to Properties dialog.
+ * Volume tooltips on side-pane.
+ * Fix selection on file creation in detailed list view.
+ * Removed senseless "Canceled Operation" messages.
+ * Let items be selected by typing in detaled list view too.
+ * Made path-edit completer insensitive to case.
+ * Allow compressing a selection of different mimetypes in the context menu.
+ * Span first column of Places pane (not for Devices), so that names aren't elided unnecessarily.
+ * Fixed randomly missing eject button with mounting.
+ * Don't launch unselected current item on pressing Enter.
+ * Don't update trash icon too often.
+ * Fixed crash on launching desktop files with empty Exec.
+ * Fixes for template actions (showing them sorted).
 
 libfm-qt-0.13.1 / 2018-06-02
 ============================
