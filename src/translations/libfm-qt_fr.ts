@@ -150,17 +150,17 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation>Traitement:</translation>
+        <translation>En Traitement:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation>Préparation…</translation>
+        <translation>En Préparation…</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress</source>
-        <translation>Progression</translation>
+        <translation>En Progression</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
