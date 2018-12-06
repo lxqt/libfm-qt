@@ -118,6 +118,13 @@ void IconEngine::virtual_hook(int id, void* data) {
         break;
     }
 #endif
+#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
+    case QIconEngine::ScaledPixmapHook: {
+        auto* arg = reinterpret_cast<QIconEngine::ScaledPixmapArgument*>(data);
+        arg->pixmap = info ? info->internalQicon().pixmap(arg->size, arg->mode, arg->state) : QPixmap{};
+        break;
+    }
+#endif
     }
 }
 
