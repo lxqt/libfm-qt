@@ -123,6 +123,24 @@
     </message>
 </context>
 <context>
+    <name>FileDialog</name>
+    <message>
+        <location filename="../filedialog.ui" line="22"/>
+        <source>Location:</source>
+        <translation>位置:</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.ui" line="65"/>
+        <source>File name:</source>
+        <translation>文件名:</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.ui" line="75"/>
+        <source>File type:</source>
+        <translation>文件类型:</translation>
+    </message>
+</context>
+<context>
     <name>FileOperationDialog</name>
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
@@ -213,83 +231,93 @@
         <translation>访问时间:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="282"/>
+        <location filename="../file-props.ui" line="281"/>
+        <source>Contains:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../file-props.ui" line="317"/>
+        <source>Device Usage:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../file-props.ui" line="349"/>
         <source>Permissions</source>
         <translation>权限</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="297"/>
+        <location filename="../file-props.ui" line="364"/>
         <source>Ownership</source>
         <translation>所有权</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="321"/>
-        <location filename="../file-props.ui" line="386"/>
-        <location filename="../file-props.ui" line="500"/>
+        <location filename="../file-props.ui" line="388"/>
+        <location filename="../file-props.ui" line="453"/>
+        <location filename="../file-props.ui" line="567"/>
         <source>Group:</source>
         <translation>组:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="334"/>
-        <location filename="../file-props.ui" line="369"/>
-        <location filename="../file-props.ui" line="448"/>
+        <location filename="../file-props.ui" line="401"/>
+        <location filename="../file-props.ui" line="436"/>
+        <location filename="../file-props.ui" line="515"/>
         <source>Owner:</source>
         <translation>所有者:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="350"/>
+        <location filename="../file-props.ui" line="417"/>
         <source>Access Control</source>
         <translation>访问限制</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="403"/>
-        <location filename="../file-props.ui" line="552"/>
+        <location filename="../file-props.ui" line="470"/>
+        <location filename="../file-props.ui" line="619"/>
         <source>Other:</source>
         <translation>其他:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="420"/>
+        <location filename="../file-props.ui" line="487"/>
         <source>Make the file executable</source>
         <translation>使文件可执行</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="461"/>
-        <location filename="../file-props.ui" line="513"/>
-        <location filename="../file-props.ui" line="565"/>
+        <location filename="../file-props.ui" line="528"/>
+        <location filename="../file-props.ui" line="580"/>
+        <location filename="../file-props.ui" line="632"/>
         <source>Read</source>
         <translation>只读</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="474"/>
-        <location filename="../file-props.ui" line="526"/>
-        <location filename="../file-props.ui" line="578"/>
+        <location filename="../file-props.ui" line="541"/>
+        <location filename="../file-props.ui" line="593"/>
+        <location filename="../file-props.ui" line="645"/>
         <source>Write</source>
         <translation>写入</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="487"/>
-        <location filename="../file-props.ui" line="539"/>
-        <location filename="../file-props.ui" line="591"/>
+        <location filename="../file-props.ui" line="554"/>
+        <location filename="../file-props.ui" line="606"/>
+        <location filename="../file-props.ui" line="658"/>
         <source>Execute</source>
         <translation>执行</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="600"/>
+        <location filename="../file-props.ui" line="667"/>
         <source>Sticky</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="607"/>
+        <location filename="../file-props.ui" line="674"/>
         <source>SetUID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="614"/>
+        <location filename="../file-props.ui" line="681"/>
         <source>SetGID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="650"/>
+        <location filename="../file-props.ui" line="717"/>
         <source>Advanced Mode</source>
         <translation>高级模式</translation>
     </message>
@@ -418,6 +446,130 @@ What do you want to do with it?</source>
     </message>
 </context>
 <context>
+    <name>Fm::FileDialog</name>
+    <message>
+        <location filename="../filedialog.cpp" line="102"/>
+        <source>Go Back</source>
+        <translation>返回</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="103"/>
+        <source>Alt+Left</source>
+        <comment>Go Back</comment>
+        <translation>Alt+左方向键</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="109"/>
+        <source>Go Forward</source>
+        <translation>前进</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="110"/>
+        <source>Alt+Right</source>
+        <comment>Go Forward</comment>
+        <translation>Alt+右方向键</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="117"/>
+        <source>Reload</source>
+        <translation>刷新</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="118"/>
+        <source>F5</source>
+        <comment>Reload</comment>
+        <translation>F5</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="135"/>
+        <source>Create Folder</source>
+        <translation>新建文件夹</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="142"/>
+        <source>Icon View</source>
+        <translation>图标视图</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="146"/>
+        <source>Thumbnail View</source>
+        <translation>缩略图视图</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="150"/>
+        <source>Compact View</source>
+        <translation>列表视图</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="154"/>
+        <source>Detailed List View</source>
+        <translation>详细信息视图</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="271"/>
+        <location filename="../filedialog.cpp" line="634"/>
+        <source>Error</source>
+        <translation>错误</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="271"/>
+        <source>Please select a file</source>
+        <translation>请选择文件</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="295"/>
+        <source>%1 already exists.
+Do you want to replace it?</source>
+        <translation>%1 已存在。
+是否替换？</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="604"/>
+        <source>Path &quot;%1&quot; does not exist</source>
+        <translation>路径“%1”不存在</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="618"/>
+        <source>&quot;%1&quot; is not a directory</source>
+        <translation>“%1”不是目录</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="624"/>
+        <source>&quot;%1&quot; is not a file</source>
+        <translation>“%1”不是文件</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="751"/>
+        <location filename="../filedialog.cpp" line="859"/>
+        <source>&amp;Open</source>
+        <translation>打开(&amp;O)</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="754"/>
+        <location filename="../filedialog.cpp" line="867"/>
+        <source>&amp;Save</source>
+        <translation>保存(&amp;S)</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="761"/>
+        <source>All Files (*)</source>
+        <translation>所有文件 (*)</translation>
+    </message>
+</context>
+<context>
+    <name>Fm::FileDialogHelper</name>
+    <message>
+        <location filename="../filedialoghelper.cpp" line="133"/>
+        <source>Open File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filedialoghelper.cpp" line="134"/>
+        <source>Save File</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Fm::FileMenu</name>
     <message>
         <location filename="../filemenu.cpp" line="84"/>
@@ -461,7 +613,7 @@ What do you want to do with it?</source>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="159"/>
-        <location filename="../filemenu.cpp" line="408"/>
+        <location filename="../filemenu.cpp" line="406"/>
         <source>&amp;Move to Trash</source>
         <translation>移至回收站(&amp;M)</translation>
     </message>
@@ -471,42 +623,42 @@ What do you want to do with it?</source>
         <translation>重命名</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="218"/>
+        <location filename="../filemenu.cpp" line="217"/>
         <source>Extract to...</source>
         <translation>解压到...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="226"/>
+        <location filename="../filemenu.cpp" line="225"/>
         <source>Extract Here</source>
         <translation>解压至此</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="233"/>
+        <location filename="../filemenu.cpp" line="232"/>
         <source>Compress</source>
         <translation>压缩</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="243"/>
+        <location filename="../filemenu.cpp" line="241"/>
         <source>Properties</source>
         <translation>属性</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="254"/>
+        <location filename="../filemenu.cpp" line="252"/>
         <source>Trust selected executables</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="255"/>
+        <location filename="../filemenu.cpp" line="253"/>
         <source>Trust this executable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="343"/>
+        <location filename="../filemenu.cpp" line="341"/>
         <source>Output</source>
         <translation>输出</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="408"/>
+        <location filename="../filemenu.cpp" line="406"/>
         <source>&amp;Delete</source>
         <translation>删除(&amp;D)</translation>
     </message>
@@ -624,57 +776,82 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FilePropsDialog</name>
     <message>
-        <location filename="../filepropsdialog.cpp" line="157"/>
+        <location filename="../filepropsdialog.cpp" line="162"/>
         <source>View folder content</source>
         <translation>查看文件夹内容</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="158"/>
+        <location filename="../filepropsdialog.cpp" line="163"/>
         <source>View and modify folder content</source>
         <translation>查看并修改文件夹内容</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="162"/>
+        <location filename="../filepropsdialog.cpp" line="167"/>
         <source>Read</source>
         <translation>只读</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="163"/>
+        <location filename="../filepropsdialog.cpp" line="168"/>
         <source>Read and write</source>
         <translation>读写</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="165"/>
+        <location filename="../filepropsdialog.cpp" line="170"/>
         <source>Forbidden</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="282"/>
+        <location filename="../filepropsdialog.cpp" line="287"/>
         <source>Files of different types</source>
         <translation>不同类型的文件</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="305"/>
+        <location filename="../filepropsdialog.cpp" line="310"/>
         <source>Multiple Files</source>
         <translation>多个文件</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="381"/>
+        <location filename="../filepropsdialog.cpp" line="333"/>
+        <source>%p% used</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filepropsdialog.cpp" line="334"/>
+        <source>%1 Free of %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filepropsdialog.cpp" line="378"/>
+        <source>no file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filepropsdialog.cpp" line="380"/>
+        <source>one file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filepropsdialog.cpp" line="382"/>
+        <source>%1 files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filepropsdialog.cpp" line="416"/>
         <source>Select an icon</source>
         <translation>选择图标</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="383"/>
+        <location filename="../filepropsdialog.cpp" line="418"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
         <translation>图像（*.png *.xpm *.svg *.svgz）</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="479"/>
+        <location filename="../filepropsdialog.cpp" line="514"/>
         <source>Apply changes</source>
         <translation>应用更改</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="480"/>
+        <location filename="../filepropsdialog.cpp" line="515"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
         <translation>您是否要将这些更改应用于所有子文件夹和文件?</translation>
     </message>
@@ -695,6 +872,14 @@ Do you want to delete them instead?</source>
         <location filename="../filesearchdialog.cpp" line="135"/>
         <source>Select a folder</source>
         <translation>选择一个文件夹</translation>
+    </message>
+</context>
+<context>
+    <name>Fm::FileTransferJob</name>
+    <message>
+        <location filename="../core/filetransferjob.cpp" line="497"/>
+        <source>Cannot create a link on non-native filesystem</source>
+        <translation>无法在非原生文件系统中创建链接</translation>
     </message>
 </context>
 <context>
@@ -855,42 +1040,42 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::PlacesModel</name>
     <message>
-        <location filename="../placesmodel.cpp" line="43"/>
+        <location filename="../placesmodel.cpp" line="45"/>
         <source>Places</source>
         <translation>位置</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="51"/>
+        <location filename="../placesmodel.cpp" line="53"/>
         <source>Desktop</source>
         <translation>桌面</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="57"/>
+        <location filename="../placesmodel.cpp" line="59"/>
         <source>Computer</source>
         <translation>计算机</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="65"/>
+        <location filename="../placesmodel.cpp" line="67"/>
         <source>Applications</source>
         <translation>应用程序</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="74"/>
+        <location filename="../placesmodel.cpp" line="76"/>
         <source>Network</source>
         <translation>网络</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="78"/>
+        <location filename="../placesmodel.cpp" line="80"/>
         <source>Devices</source>
         <translation>设备</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="132"/>
+        <location filename="../placesmodel.cpp" line="134"/>
         <source>Bookmarks</source>
         <translation>书签</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="221"/>
+        <location filename="../placesmodel.cpp" line="225"/>
         <source>Trash</source>
         <translation>回收站</translation>
     </message>
@@ -898,64 +1083,64 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="470"/>
+        <location filename="../placesview.cpp" line="485"/>
         <source>Open in New Tab</source>
         <translation>在新标签页中打开</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="473"/>
+        <location filename="../placesview.cpp" line="488"/>
         <source>Open in New Window</source>
         <translation>在新窗口中打开</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="485"/>
+        <location filename="../placesview.cpp" line="500"/>
         <source>Empty Trash</source>
         <translation>清空回收站</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="505"/>
-        <location filename="../placesview.cpp" line="562"/>
+        <location filename="../placesview.cpp" line="520"/>
+        <location filename="../placesview.cpp" line="577"/>
         <source>Hide</source>
         <translation>隐藏</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="522"/>
+        <location filename="../placesview.cpp" line="537"/>
         <source>Move Bookmark Up</source>
         <translation>上移书签</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="527"/>
+        <location filename="../placesview.cpp" line="542"/>
         <source>Move Bookmark Down</source>
         <translation>下移书签</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="531"/>
+        <location filename="../placesview.cpp" line="546"/>
         <source>Rename Bookmark</source>
         <translation>重命名书签</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="534"/>
+        <location filename="../placesview.cpp" line="549"/>
         <source>Remove Bookmark</source>
         <translation>移除书签</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="543"/>
-        <location filename="../placesview.cpp" line="576"/>
+        <location filename="../placesview.cpp" line="558"/>
+        <location filename="../placesview.cpp" line="591"/>
         <source>Unmount</source>
         <translation>卸载</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="547"/>
+        <location filename="../placesview.cpp" line="562"/>
         <source>Mount</source>
         <translation>挂载</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="553"/>
+        <location filename="../placesview.cpp" line="568"/>
         <source>Eject</source>
         <translation>弹出</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="588"/>
+        <location filename="../placesview.cpp" line="603"/>
         <source>Show All Entries</source>
         <translation>显示所有快捷方式</translation>
     </message>
@@ -1002,6 +1187,14 @@ Modified: %2</source>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Directory Tree</source>
         <translation>目录树</translation>
+    </message>
+</context>
+<context>
+    <name>Fm::UntrashJob</name>
+    <message>
+        <location filename="../core/untrashjob.cpp" line="35"/>
+        <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
+        <translation>无法恢复文件“%s”：原路径未知</translation>
     </message>
 </context>
 <context>
@@ -1066,7 +1259,7 @@ Modified: %2</source>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="101"/>
-        <location filename="../filepropsdialog.cpp" line="504"/>
+        <location filename="../filepropsdialog.cpp" line="539"/>
         <location filename="../mountoperation.cpp" line="207"/>
         <location filename="../utilities.cpp" line="169"/>
         <location filename="../utilities.cpp" line="263"/>
@@ -1109,7 +1302,7 @@ Modified: %2</source>
         <translation>请为新的%1输入名称:</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="521"/>
+        <location filename="../filepropsdialog.cpp" line="556"/>
         <source>Custom Icon Error</source>
         <translation>自定义图标错误</translation>
     </message>
@@ -1119,19 +1312,24 @@ Modified: %2</source>
         <translation>该目录未挂载。</translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="258"/>
+        <location filename="../core/basicfilelauncher.cpp" line="272"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
         <translation>无效桌面快捷方式：“%1”</translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="293"/>
+        <location filename="../core/basicfilelauncher.cpp" line="307"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
         <translation>没有用于运行“%1”的默认应用</translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="334"/>
+        <location filename="../core/basicfilelauncher.cpp" line="348"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
         <translation>无法将工作目录切换至“%1”：%2</translation>
+    </message>
+    <message>
+        <location filename="../placesmodelitem.cpp" line="123"/>
+        <source>Identifier: </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1357,164 +1555,6 @@ Modified: %2</source>
         <location filename="../filesearch.ui" line="385"/>
         <source>Later than:</source>
         <translation>晚于:</translation>
-    </message>
-</context>
-<context>
-    <name>FileDialog</name>
-    <message>
-        <location filename="../filedialog.ui" line="22"/>
-        <source>Location:</source>
-        <translation>位置:</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.ui" line="65"/>
-        <source>File name:</source>
-        <translation>文件名:</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.ui" line="75"/>
-        <source>File type:</source>
-        <translation>文件类型:</translation>
-    </message>
-</context>
-<context>
-    <name>Fm::FileTransferJob</name>
-    <message>
-        <location filename="../core/filetransferjob.cpp" line="497"/>
-        <source>Cannot create a link on non-native filesystem</source>
-        <translation>无法在非原生文件系统中创建链接</translation>
-    </message>
-</context>
-<context>
-    <name>Fm::UntrashJob</name>
-    <message>
-        <location filename="../core/untrashjob.cpp" line="35"/>
-        <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>无法恢复文件“%s”：原路径未知</translation>
-    </message>
-</context>
-<context>
-    <name>Fm::FileDialog</name>
-    <message>
-        <location filename="../filedialog.cpp" line="102"/>
-        <source>Go Back</source>
-        <translation>返回</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="103"/>
-        <source>Alt+Left</source>
-        <comment>Go Back</comment>
-        <translation>Alt+左方向键</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="109"/>
-        <source>Go Forward</source>
-        <translation>前进</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="110"/>
-        <source>Alt+Right</source>
-        <comment>Go Forward</comment>
-        <translation>Alt+右方向键</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="117"/>
-        <source>Reload</source>
-        <translation>刷新</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="118"/>
-        <source>F5</source>
-        <comment>Reload</comment>
-        <translation>F5</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="135"/>
-        <source>Create Folder</source>
-        <translation>新建文件夹</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="142"/>
-        <source>Icon View</source>
-        <translation>图标视图</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="146"/>
-        <source>Thumbnail View</source>
-        <translation>缩略图视图</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="150"/>
-        <source>Compact View</source>
-        <translation>列表视图</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="154"/>
-        <source>Detailed List View</source>
-        <translation>详细信息视图</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="271"/>
-        <location filename="../filedialog.cpp" line="634"/>
-        <source>Error</source>
-        <translation>错误</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="271"/>
-        <source>Please select a file</source>
-        <translation>请选择文件</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="295"/>
-        <source>%1 already exists.
-Do you want to replace it?</source>
-        <translation>%1 已存在。
-是否替换？</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="604"/>
-        <source>Path &quot;%1&quot; does not exist</source>
-        <translation>路径“%1”不存在</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="618"/>
-        <source>&quot;%1&quot; is not a directory</source>
-        <translation>“%1”不是目录</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="624"/>
-        <source>&quot;%1&quot; is not a file</source>
-        <translation>“%1”不是文件</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="751"/>
-        <location filename="../filedialog.cpp" line="859"/>
-        <source>&amp;Open</source>
-        <translation>打开(&amp;O)</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="754"/>
-        <location filename="../filedialog.cpp" line="867"/>
-        <source>&amp;Save</source>
-        <translation>保存(&amp;S)</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="761"/>
-        <source>All Files (*)</source>
-        <translation>所有文件 (*)</translation>
-    </message>
-</context>
-<context>
-    <name>Fm::FileDialogHelper</name>
-    <message>
-        <location filename="../filedialoghelper.cpp" line="133"/>
-        <source>Open File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../filedialoghelper.cpp" line="134"/>
-        <source>Save File</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

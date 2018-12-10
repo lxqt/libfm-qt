@@ -123,6 +123,24 @@
     </message>
 </context>
 <context>
+    <name>FileDialog</name>
+    <message>
+        <location filename="../filedialog.ui" line="22"/>
+        <source>Location:</source>
+        <translation>Lokasi:</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.ui" line="65"/>
+        <source>File name:</source>
+        <translation>Nama berkas:</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.ui" line="75"/>
+        <source>File type:</source>
+        <translation>Tipe berkas:</translation>
+    </message>
+</context>
+<context>
     <name>FileOperationDialog</name>
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
@@ -213,83 +231,93 @@
         <translation>Terakhir diakses:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="282"/>
+        <location filename="../file-props.ui" line="281"/>
+        <source>Contains:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../file-props.ui" line="317"/>
+        <source>Device Usage:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../file-props.ui" line="349"/>
         <source>Permissions</source>
         <translation>Hak akses</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="297"/>
+        <location filename="../file-props.ui" line="364"/>
         <source>Ownership</source>
         <translation>Kepemilikan</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="321"/>
-        <location filename="../file-props.ui" line="386"/>
-        <location filename="../file-props.ui" line="500"/>
+        <location filename="../file-props.ui" line="388"/>
+        <location filename="../file-props.ui" line="453"/>
+        <location filename="../file-props.ui" line="567"/>
         <source>Group:</source>
         <translation>Grup:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="334"/>
-        <location filename="../file-props.ui" line="369"/>
-        <location filename="../file-props.ui" line="448"/>
+        <location filename="../file-props.ui" line="401"/>
+        <location filename="../file-props.ui" line="436"/>
+        <location filename="../file-props.ui" line="515"/>
         <source>Owner:</source>
         <translation>Pemilik:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="350"/>
+        <location filename="../file-props.ui" line="417"/>
         <source>Access Control</source>
         <translation>Kontrol Akses</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="403"/>
-        <location filename="../file-props.ui" line="552"/>
+        <location filename="../file-props.ui" line="470"/>
+        <location filename="../file-props.ui" line="619"/>
         <source>Other:</source>
         <translation>Lainnya:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="420"/>
+        <location filename="../file-props.ui" line="487"/>
         <source>Make the file executable</source>
         <translation>Buat berkas dapat dieksekusi</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="461"/>
-        <location filename="../file-props.ui" line="513"/>
-        <location filename="../file-props.ui" line="565"/>
+        <location filename="../file-props.ui" line="528"/>
+        <location filename="../file-props.ui" line="580"/>
+        <location filename="../file-props.ui" line="632"/>
         <source>Read</source>
         <translation>Baca</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="474"/>
-        <location filename="../file-props.ui" line="526"/>
-        <location filename="../file-props.ui" line="578"/>
+        <location filename="../file-props.ui" line="541"/>
+        <location filename="../file-props.ui" line="593"/>
+        <location filename="../file-props.ui" line="645"/>
         <source>Write</source>
         <translation>Tulis</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="487"/>
-        <location filename="../file-props.ui" line="539"/>
-        <location filename="../file-props.ui" line="591"/>
+        <location filename="../file-props.ui" line="554"/>
+        <location filename="../file-props.ui" line="606"/>
+        <location filename="../file-props.ui" line="658"/>
         <source>Execute</source>
         <translation>Eksekusi</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="600"/>
+        <location filename="../file-props.ui" line="667"/>
         <source>Sticky</source>
         <translation>Sticky</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="607"/>
+        <location filename="../file-props.ui" line="674"/>
         <source>SetUID</source>
         <translation>SetUID</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="614"/>
+        <location filename="../file-props.ui" line="681"/>
         <source>SetGID</source>
         <translation>SetGID</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="650"/>
+        <location filename="../file-props.ui" line="717"/>
         <source>Advanced Mode</source>
         <translation>Mode Lanjutan</translation>
     </message>
@@ -418,6 +446,130 @@ Apa yang ingin Anda lakukan dengannya?</translation>
     </message>
 </context>
 <context>
+    <name>Fm::FileDialog</name>
+    <message>
+        <location filename="../filedialog.cpp" line="102"/>
+        <source>Go Back</source>
+        <translation>Kembali</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="103"/>
+        <source>Alt+Left</source>
+        <comment>Go Back</comment>
+        <translation>Alt+Left</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="109"/>
+        <source>Go Forward</source>
+        <translation>Maju</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="110"/>
+        <source>Alt+Right</source>
+        <comment>Go Forward</comment>
+        <translation>Alt+Right</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="117"/>
+        <source>Reload</source>
+        <translation>Muat ulang</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="118"/>
+        <source>F5</source>
+        <comment>Reload</comment>
+        <translation>F5</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="135"/>
+        <source>Create Folder</source>
+        <translation>Buat Folder</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="142"/>
+        <source>Icon View</source>
+        <translation>Tampilan Ikon</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="146"/>
+        <source>Thumbnail View</source>
+        <translation>Tampilan Gambar Kecil</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="150"/>
+        <source>Compact View</source>
+        <translation>Tampilan Kompak</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="154"/>
+        <source>Detailed List View</source>
+        <translation>Tampilan Daftar Rinci</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="271"/>
+        <location filename="../filedialog.cpp" line="634"/>
+        <source>Error</source>
+        <translation>Kesalahan</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="271"/>
+        <source>Please select a file</source>
+        <translation>Silakan pilih berkas</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="295"/>
+        <source>%1 already exists.
+Do you want to replace it?</source>
+        <translation>%1 sudah ada.
+Apakah Anda ingin menggantinya?</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="604"/>
+        <source>Path &quot;%1&quot; does not exist</source>
+        <translation>Jalur &quot;%1&quot; tidak ada</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="618"/>
+        <source>&quot;%1&quot; is not a directory</source>
+        <translation>&quot;%1&quot; bukan sebuah direktori</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="624"/>
+        <source>&quot;%1&quot; is not a file</source>
+        <translation>&quot;%1&quot; bukan sebuah berkas</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="751"/>
+        <location filename="../filedialog.cpp" line="859"/>
+        <source>&amp;Open</source>
+        <translation>&amp;Buka</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="754"/>
+        <location filename="../filedialog.cpp" line="867"/>
+        <source>&amp;Save</source>
+        <translation>&amp;Simpan</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="761"/>
+        <source>All Files (*)</source>
+        <translation>Semua Berkas (*)</translation>
+    </message>
+</context>
+<context>
+    <name>Fm::FileDialogHelper</name>
+    <message>
+        <location filename="../filedialoghelper.cpp" line="133"/>
+        <source>Open File</source>
+        <translation>Buka Berkas</translation>
+    </message>
+    <message>
+        <location filename="../filedialoghelper.cpp" line="134"/>
+        <source>Save File</source>
+        <translation>Simpan Berkas</translation>
+    </message>
+</context>
+<context>
     <name>Fm::FileMenu</name>
     <message>
         <location filename="../filemenu.cpp" line="84"/>
@@ -461,7 +613,7 @@ Apa yang ingin Anda lakukan dengannya?</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="159"/>
-        <location filename="../filemenu.cpp" line="408"/>
+        <location filename="../filemenu.cpp" line="406"/>
         <source>&amp;Move to Trash</source>
         <translation>Pindah ke Tempat Sampah</translation>
     </message>
@@ -471,42 +623,42 @@ Apa yang ingin Anda lakukan dengannya?</translation>
         <translation>Ubah nama</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="218"/>
+        <location filename="../filemenu.cpp" line="217"/>
         <source>Extract to...</source>
         <translation>Ekstrak ke...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="226"/>
+        <location filename="../filemenu.cpp" line="225"/>
         <source>Extract Here</source>
         <translation>Ekstrak Disini</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="233"/>
+        <location filename="../filemenu.cpp" line="232"/>
         <source>Compress</source>
         <translation>Kompres</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="243"/>
+        <location filename="../filemenu.cpp" line="241"/>
         <source>Properties</source>
         <translation>Properti</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="254"/>
+        <location filename="../filemenu.cpp" line="252"/>
         <source>Trust selected executables</source>
         <translation>Percayai executable yang dipilih</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="255"/>
+        <location filename="../filemenu.cpp" line="253"/>
         <source>Trust this executable</source>
         <translation>Percayai executable ini</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="343"/>
+        <location filename="../filemenu.cpp" line="341"/>
         <source>Output</source>
         <translation>Keluaran</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="408"/>
+        <location filename="../filemenu.cpp" line="406"/>
         <source>&amp;Delete</source>
         <translation>Hapus</translation>
     </message>
@@ -624,57 +776,82 @@ Apakah Anda ingin menghapusnya saja?</translation>
 <context>
     <name>Fm::FilePropsDialog</name>
     <message>
-        <location filename="../filepropsdialog.cpp" line="157"/>
+        <location filename="../filepropsdialog.cpp" line="162"/>
         <source>View folder content</source>
         <translation>Lihat konten folder</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="158"/>
+        <location filename="../filepropsdialog.cpp" line="163"/>
         <source>View and modify folder content</source>
         <translation>Lihat dan ubah konten folder</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="162"/>
+        <location filename="../filepropsdialog.cpp" line="167"/>
         <source>Read</source>
         <translation>Baca</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="163"/>
+        <location filename="../filepropsdialog.cpp" line="168"/>
         <source>Read and write</source>
         <translation>Baca dan Tulis</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="165"/>
+        <location filename="../filepropsdialog.cpp" line="170"/>
         <source>Forbidden</source>
         <translation>Terlarang</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="282"/>
+        <location filename="../filepropsdialog.cpp" line="287"/>
         <source>Files of different types</source>
         <translation>Berkas dari berbagai tipe</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="305"/>
+        <location filename="../filepropsdialog.cpp" line="310"/>
         <source>Multiple Files</source>
         <translation>Beberapa Berkas</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="381"/>
+        <location filename="../filepropsdialog.cpp" line="333"/>
+        <source>%p% used</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filepropsdialog.cpp" line="334"/>
+        <source>%1 Free of %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filepropsdialog.cpp" line="378"/>
+        <source>no file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filepropsdialog.cpp" line="380"/>
+        <source>one file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filepropsdialog.cpp" line="382"/>
+        <source>%1 files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filepropsdialog.cpp" line="416"/>
         <source>Select an icon</source>
         <translation>Pilih ikon</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="383"/>
+        <location filename="../filepropsdialog.cpp" line="418"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
         <translation>Gambar (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="479"/>
+        <location filename="../filepropsdialog.cpp" line="514"/>
         <source>Apply changes</source>
         <translation>Terapkan perubahan</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="480"/>
+        <location filename="../filepropsdialog.cpp" line="515"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
         <translation>Apakah Anda ingin secara rekursif menerapkan perubahan ini ke semua berkas dan sub-folder?</translation>
     </message>
@@ -695,6 +872,14 @@ Apakah Anda ingin menghapusnya saja?</translation>
         <location filename="../filesearchdialog.cpp" line="135"/>
         <source>Select a folder</source>
         <translation>Pilih folder</translation>
+    </message>
+</context>
+<context>
+    <name>Fm::FileTransferJob</name>
+    <message>
+        <location filename="../core/filetransferjob.cpp" line="497"/>
+        <source>Cannot create a link on non-native filesystem</source>
+        <translation>Tidak dapat membuat tautan pada berkas sistem non-native</translation>
     </message>
 </context>
 <context>
@@ -855,42 +1040,42 @@ Apakah Anda ingin menghapusnya saja?</translation>
 <context>
     <name>Fm::PlacesModel</name>
     <message>
-        <location filename="../placesmodel.cpp" line="43"/>
+        <location filename="../placesmodel.cpp" line="45"/>
         <source>Places</source>
         <translation>Tempat</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="51"/>
+        <location filename="../placesmodel.cpp" line="53"/>
         <source>Desktop</source>
         <translation>Desktop</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="57"/>
+        <location filename="../placesmodel.cpp" line="59"/>
         <source>Computer</source>
         <translation>Komputer</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="65"/>
+        <location filename="../placesmodel.cpp" line="67"/>
         <source>Applications</source>
         <translation>Aplikasi</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="74"/>
+        <location filename="../placesmodel.cpp" line="76"/>
         <source>Network</source>
         <translation>Jaringan</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="78"/>
+        <location filename="../placesmodel.cpp" line="80"/>
         <source>Devices</source>
         <translation>Perangkat</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="132"/>
+        <location filename="../placesmodel.cpp" line="134"/>
         <source>Bookmarks</source>
         <translation>Markah</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="221"/>
+        <location filename="../placesmodel.cpp" line="225"/>
         <source>Trash</source>
         <translation>Tempat Sampah</translation>
     </message>
@@ -898,64 +1083,64 @@ Apakah Anda ingin menghapusnya saja?</translation>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="470"/>
+        <location filename="../placesview.cpp" line="485"/>
         <source>Open in New Tab</source>
         <translation>Buka di Tab Baru</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="473"/>
+        <location filename="../placesview.cpp" line="488"/>
         <source>Open in New Window</source>
         <translation>Buka di Jendela Baru</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="485"/>
+        <location filename="../placesview.cpp" line="500"/>
         <source>Empty Trash</source>
         <translation>Kosongkan Tempat Sampah</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="505"/>
-        <location filename="../placesview.cpp" line="562"/>
+        <location filename="../placesview.cpp" line="520"/>
+        <location filename="../placesview.cpp" line="577"/>
         <source>Hide</source>
         <translation>Sembunyikan</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="522"/>
+        <location filename="../placesview.cpp" line="537"/>
         <source>Move Bookmark Up</source>
         <translation>Pindahkan Markah Keatas</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="527"/>
+        <location filename="../placesview.cpp" line="542"/>
         <source>Move Bookmark Down</source>
         <translation>Pindahkan Markah Kebawah</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="531"/>
+        <location filename="../placesview.cpp" line="546"/>
         <source>Rename Bookmark</source>
         <translation>Ubah Nama Markah</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="534"/>
+        <location filename="../placesview.cpp" line="549"/>
         <source>Remove Bookmark</source>
         <translation>Hapus Markah</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="543"/>
-        <location filename="../placesview.cpp" line="576"/>
+        <location filename="../placesview.cpp" line="558"/>
+        <location filename="../placesview.cpp" line="591"/>
         <source>Unmount</source>
         <translation>Lepat Kait</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="547"/>
+        <location filename="../placesview.cpp" line="562"/>
         <source>Mount</source>
         <translation>Kaitkan</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="553"/>
+        <location filename="../placesview.cpp" line="568"/>
         <source>Eject</source>
         <translation>Keluarkan</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="588"/>
+        <location filename="../placesview.cpp" line="603"/>
         <source>Show All Entries</source>
         <translation>Tampilkan semua entri</translation>
     </message>
@@ -1002,6 +1187,14 @@ Dimodifikasi: %2</translation>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Directory Tree</source>
         <translation>Pohon Direktori</translation>
+    </message>
+</context>
+<context>
+    <name>Fm::UntrashJob</name>
+    <message>
+        <location filename="../core/untrashjob.cpp" line="35"/>
+        <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
+        <translation>Tidak dapat mengembalikan berkas &apos;%s&apos;: jalur asal tidak diketahui</translation>
     </message>
 </context>
 <context>
@@ -1066,7 +1259,7 @@ Dimodifikasi: %2</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="101"/>
-        <location filename="../filepropsdialog.cpp" line="504"/>
+        <location filename="../filepropsdialog.cpp" line="539"/>
         <location filename="../mountoperation.cpp" line="207"/>
         <location filename="../utilities.cpp" line="169"/>
         <location filename="../utilities.cpp" line="263"/>
@@ -1109,7 +1302,7 @@ Dimodifikasi: %2</translation>
         <translation>Masukkan nama untuk %1 baru:</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="521"/>
+        <location filename="../filepropsdialog.cpp" line="556"/>
         <source>Custom Icon Error</source>
         <translation>Kesalahan Ikon Kustom</translation>
     </message>
@@ -1119,19 +1312,24 @@ Dimodifikasi: %2</translation>
         <translation>Jalur ini tidak dimount.</translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="258"/>
+        <location filename="../core/basicfilelauncher.cpp" line="272"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
         <translation>Berkas entri desktop tidak valid: &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="293"/>
+        <location filename="../core/basicfilelauncher.cpp" line="307"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
         <translation>Tidak ada aplikasi default yang diatur untuk menjalankan &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="334"/>
+        <location filename="../core/basicfilelauncher.cpp" line="348"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
         <translation>Tidak dapat mengatur direktori kerja menjadi &apos;%1&apos;: %2</translation>
+    </message>
+    <message>
+        <location filename="../placesmodelitem.cpp" line="123"/>
+        <source>Identifier: </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1357,164 +1555,6 @@ Dimodifikasi: %2</translation>
         <location filename="../filesearch.ui" line="385"/>
         <source>Later than:</source>
         <translation>Lebih lambat dari:</translation>
-    </message>
-</context>
-<context>
-    <name>FileDialog</name>
-    <message>
-        <location filename="../filedialog.ui" line="22"/>
-        <source>Location:</source>
-        <translation>Lokasi:</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.ui" line="65"/>
-        <source>File name:</source>
-        <translation>Nama berkas:</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.ui" line="75"/>
-        <source>File type:</source>
-        <translation>Tipe berkas:</translation>
-    </message>
-</context>
-<context>
-    <name>Fm::FileTransferJob</name>
-    <message>
-        <location filename="../core/filetransferjob.cpp" line="497"/>
-        <source>Cannot create a link on non-native filesystem</source>
-        <translation>Tidak dapat membuat tautan pada berkas sistem non-native</translation>
-    </message>
-</context>
-<context>
-    <name>Fm::UntrashJob</name>
-    <message>
-        <location filename="../core/untrashjob.cpp" line="35"/>
-        <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Tidak dapat mengembalikan berkas &apos;%s&apos;: jalur asal tidak diketahui</translation>
-    </message>
-</context>
-<context>
-    <name>Fm::FileDialog</name>
-    <message>
-        <location filename="../filedialog.cpp" line="102"/>
-        <source>Go Back</source>
-        <translation>Kembali</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="103"/>
-        <source>Alt+Left</source>
-        <comment>Go Back</comment>
-        <translation>Alt+Left</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="109"/>
-        <source>Go Forward</source>
-        <translation>Maju</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="110"/>
-        <source>Alt+Right</source>
-        <comment>Go Forward</comment>
-        <translation>Alt+Right</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="117"/>
-        <source>Reload</source>
-        <translation>Muat ulang</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="118"/>
-        <source>F5</source>
-        <comment>Reload</comment>
-        <translation>F5</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="135"/>
-        <source>Create Folder</source>
-        <translation>Buat Folder</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="142"/>
-        <source>Icon View</source>
-        <translation>Tampilan Ikon</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="146"/>
-        <source>Thumbnail View</source>
-        <translation>Tampilan Gambar Kecil</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="150"/>
-        <source>Compact View</source>
-        <translation>Tampilan Kompak</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="154"/>
-        <source>Detailed List View</source>
-        <translation>Tampilan Daftar Rinci</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="271"/>
-        <location filename="../filedialog.cpp" line="634"/>
-        <source>Error</source>
-        <translation>Kesalahan</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="271"/>
-        <source>Please select a file</source>
-        <translation>Silakan pilih berkas</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="295"/>
-        <source>%1 already exists.
-Do you want to replace it?</source>
-        <translation>%1 sudah ada.
-Apakah Anda ingin menggantinya?</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="604"/>
-        <source>Path &quot;%1&quot; does not exist</source>
-        <translation>Jalur &quot;%1&quot; tidak ada</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="618"/>
-        <source>&quot;%1&quot; is not a directory</source>
-        <translation>&quot;%1&quot; bukan sebuah direktori</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="624"/>
-        <source>&quot;%1&quot; is not a file</source>
-        <translation>&quot;%1&quot; bukan sebuah berkas</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="751"/>
-        <location filename="../filedialog.cpp" line="859"/>
-        <source>&amp;Open</source>
-        <translation>&amp;Buka</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="754"/>
-        <location filename="../filedialog.cpp" line="867"/>
-        <source>&amp;Save</source>
-        <translation>&amp;Simpan</translation>
-    </message>
-    <message>
-        <location filename="../filedialog.cpp" line="761"/>
-        <source>All Files (*)</source>
-        <translation>Semua Berkas (*)</translation>
-    </message>
-</context>
-<context>
-    <name>Fm::FileDialogHelper</name>
-    <message>
-        <location filename="../filedialoghelper.cpp" line="133"/>
-        <source>Open File</source>
-        <translation>Buka Berkas</translation>
-    </message>
-    <message>
-        <location filename="../filedialoghelper.cpp" line="134"/>
-        <source>Save File</source>
-        <translation>Simpan Berkas</translation>
     </message>
 </context>
 </TS>
