@@ -813,7 +813,7 @@ Desexa eliminalos no seu canto?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>%p% used</source>
-        <translation>%p% usado</translation>
+        <translation>%p% utilizado</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="334"/>
