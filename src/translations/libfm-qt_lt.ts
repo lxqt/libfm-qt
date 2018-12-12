@@ -1329,7 +1329,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Identifikatorius: </translation>
     </message>
 </context>
 <context>
