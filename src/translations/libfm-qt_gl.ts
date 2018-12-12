@@ -160,7 +160,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress</source>
-        <translation>Progreso</translation>
+        <translation>En progreso</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
