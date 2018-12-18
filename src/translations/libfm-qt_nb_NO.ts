@@ -233,12 +233,12 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Inneholder:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="317"/>
         <source>Device Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Brukt på enheten:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="349"/>
@@ -813,27 +813,27 @@ Vil du slette dem i stedet?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% brukt</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="334"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ledig på %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="378"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>ingen fil</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="380"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation>en fil</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
         <source>%1 files</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 filer</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="416"/>
@@ -1329,7 +1329,7 @@ Sist endret: %2</translation>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Identifikasjon: </translation>
     </message>
 </context>
 <context>
