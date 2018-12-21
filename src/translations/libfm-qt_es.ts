@@ -818,7 +818,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="334"/>
         <source>%1 Free of %2</source>
-        <translation>%1 libre de %2</translation>
+        <translation>%1 libre(s) de %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="378"/>
