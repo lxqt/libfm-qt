@@ -167,7 +167,6 @@ private:
     FilePathList paths_to_add;
     FilePathList paths_to_update;
     FilePathList paths_to_del;
-    FilePathList paths_to_del_later;
     // GSList* pending_jobs;
     bool pending_change_notify;
     bool filesystem_info_pending;
