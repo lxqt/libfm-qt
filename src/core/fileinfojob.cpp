@@ -3,10 +3,9 @@
 
 namespace Fm {
 
-FileInfoJob::FileInfoJob(FilePathList paths, FilePathList deletionPaths, const std::shared_ptr<const HashSet>& cutFilesHashSet):
+FileInfoJob::FileInfoJob(FilePathList paths, const std::shared_ptr<const HashSet>& cutFilesHashSet):
     Job(),
     paths_{std::move(paths)},
-    deletionPaths_{std::move(deletionPaths)},
     cutFilesHashSet_{cutFilesHashSet} {
 }
 

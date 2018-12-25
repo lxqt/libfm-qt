@@ -201,15 +201,30 @@ void Folder::onFileInfoFinished() {
     FileInfoJob* job = static_cast<FileInfoJob*>(sender());
     fileinfoJobs_.erase(std::find(fileinfoJobs_.cbegin(), fileinfoJobs_.cend(), job));
 
-    if(job->isCancelled())
+    /* NOTE: The pending changes should be processed in the order reported by GIO;
+       otherwise; the final file info might be wrong. Here, we ensure that the next
+       pending changes are processed only after the current info job is finished. */
+
+    if(job->isCancelled()) {
+        has_idle_update_handler = false; // allow future updates
         return;
+    }
+
+    // process the changes accumulated during this info job
+    if(filesystem_info_pending // means a pending change; see "onFileSystemInfoFinished()"
+       || !paths_to_update.empty() || !paths_to_add.empty() || !paths_to_del.empty()) {
+        QTimer::singleShot(0, this, &Folder::processPendingChanges);
+    }
+    // there's no pending change at the moment; let the next one be processed
+    else {
+        has_idle_update_handler = false;
+    }
 
     FileInfoList files_to_add;
     FileInfoList files_to_delete;
     std::vector<FileInfoPair> files_to_update;
 
     const auto& paths = job->paths();
-    const auto& deletionPaths = job->deletionPaths();
     const auto& infos = job->files();
     auto path_it = paths.cbegin();
     auto info_it = infos.cbegin();
@@ -220,9 +235,7 @@ void Folder::onFileInfoFinished() {
         if(path == dirPath_) { // got the info for the folder itself.
             dirInfo_ = info;
         }
-        // add/update the file only if it isn't going to be deleted
-        else if(std::find(deletionPaths.cbegin(), deletionPaths.cend(), path) == deletionPaths.cend()
-                && std::find(paths_to_del_later.cbegin(), paths_to_del_later.cend(), path) == paths_to_del_later.cend()) {
+        else {
             auto it = files_.find(info->path().baseName().get());
             if(it != files_.end()) { // the file already exists, update
                 files_to_update.push_back(std::make_pair(it->second, info));
@@ -239,57 +252,32 @@ void Folder::onFileInfoFinished() {
     if(!files_to_update.empty()) {
         Q_EMIT filesChanged(files_to_update);
     }
-    // deletion should be started now, after the info job is processed but,
-    // since info jobs are run asynchronously, it may be completed later
-    for(auto pathIter = paths_to_del_later.begin(); pathIter != paths_to_del_later.end();) {
-        auto name = pathIter->baseName();
-        auto it = files_.find(name.get());
-        if(it != files_.end()) {
-            files_to_delete.push_back(it->second);
-            pathIter = paths_to_del_later.erase(pathIter);
-        }
-        else {
-            ++pathIter;
-        }
-    }
-    for(const auto &path: deletionPaths) {
-        auto name = path.baseName();
-        auto it = files_.find(name.get());
-        if(it != files_.end()) {
-            files_to_delete.push_back(it->second);
-            files_.erase(it);
-        }
-        else { // this path will be deleted later, after another info job
-            paths_to_del_later.push_back(path);
-        }
-    }
-    if(!files_to_delete.empty()) {
-        Q_EMIT filesRemoved(files_to_delete);
-    }
     Q_EMIT contentChanged();
 }
 
 void Folder::processPendingChanges() {
-    has_idle_update_handler = false;
     // FmFileInfoJob* job = nullptr;
     std::lock_guard<std::mutex> lock{mutex_};
 
     // idle_handler = 0;
     /* if we were asked to block updates let delay it for now */
     if(stop_emission) {
+        has_idle_update_handler = false;
         return;
     }
 
     FileInfoJob* info_job = nullptr;
-    if(!paths_to_update.empty() || !paths_to_add.empty() || !paths_to_del.empty()) {
-        FilePathList paths, deletionPaths;
+    if(!paths_to_update.empty() || !paths_to_add.empty()) {
+        FilePathList paths;
         paths.insert(paths.end(), paths_to_add.cbegin(), paths_to_add.cend());
         paths.insert(paths.end(), paths_to_update.cbegin(), paths_to_update.cend());
-        deletionPaths.insert(deletionPaths.end(), paths_to_del.cbegin(), paths_to_del.cend());
-        info_job = new FileInfoJob{paths, deletionPaths, hasCutFiles() ? cutFilesHashSet_ : nullptr};
+        info_job = new FileInfoJob{paths, hasCutFiles() ? cutFilesHashSet_ : nullptr};
         paths_to_update.clear();
         paths_to_add.clear();
-        paths_to_del.clear();
+    }
+    else {
+        // let the next pending changes be processed; see "onFileInfoFinished()"
+        has_idle_update_handler = false;
     }
 
     if(info_job) {
@@ -305,6 +293,24 @@ void Folder::processPendingChanges() {
             g_critical("failed to start folder update job");
         }
 #endif
+    }
+
+    // process deletion
+    if(!paths_to_del.empty()) {
+        FileInfoList deleted_files;
+        for(const auto &path: paths_to_del) {
+            auto name = path.baseName();
+            auto it = files_.find(name.get());
+            if(it != files_.end()) {
+                deleted_files.push_back(it->second);
+                files_.erase(it);
+            }
+        }
+        if(!deleted_files.empty()) {
+            Q_EMIT filesRemoved(deleted_files);
+            Q_EMIT contentChanged();
+        }
+        paths_to_del.clear();
     }
 
     if(pending_change_notify) {
@@ -330,29 +336,29 @@ void Folder::queueUpdate() {
 }
 
 
+/* NOTE: When queuing files for addition/update/deletion in the following functions,
+   the currently detected files (namely, "files_") should not be taken into account
+   because they might be changed soon due to a previous call to queueUpdate(). */
+
 /* returns true if reference was taken from path */
 bool Folder::eventFileAdded(const FilePath &path) {
     bool added = true;
     // G_LOCK(lists);
-    /* make sure that the file is not already queued for addition. */
-    if(std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) == paths_to_add.cend()) {
-        if(files_.find(path.baseName().get()) != files_.end()) { // the file already exists, update instead
-            if(std::find(paths_to_update.cbegin(), paths_to_update.cend(), path) == paths_to_update.cend()) {
-                paths_to_update.push_back(path);
-            }
-        }
-        else { // newly added file
-            paths_to_add.push_back(path);
-        }
-        /* bug #3591771: 'ln -fns . test' leave no file visible in folder.
-           If it is queued for deletion then cancel that operation */
+    if(std::find(paths_to_del.cbegin(), paths_to_del.cend(), path) != paths_to_del.cend()) {
+        // if the file was going to be deleted, its addition means an update,
+        // so remove it from the deletion queue and add it to the update queue
         paths_to_del.erase(std::remove(paths_to_del.begin(), paths_to_del.end(), path), paths_to_del.cend());
+        if(std::find(paths_to_update.cbegin(), paths_to_update.cend(), path) == paths_to_update.cend()) {
+            paths_to_update.push_back(path);
+        }
     }
-    else
-        /* file already queued for adding, don't duplicate */
-    {
+    else if(std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) == paths_to_add.cend()) {
+        paths_to_add.push_back(path);
+    }
+    else { // file already queued for adding, don't duplicate
         added = false;
     }
+
     if(added) {
         queueUpdate();
     }
@@ -363,13 +369,8 @@ bool Folder::eventFileAdded(const FilePath &path) {
 bool Folder::eventFileChanged(const FilePath &path) {
     bool added;
     // G_LOCK(lists);
-    /* make sure that the file is not already queued for changes, addition or deletion */
     if(std::find(paths_to_update.cbegin(), paths_to_update.cend(), path) == paths_to_update.cend()
-       && std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) == paths_to_add.cend()
-       && std::find(paths_to_del.cbegin(), paths_to_del.cend(), path) == paths_to_del.cend()) {
-        /* Since this function is called only when a file already exists, even if that file
-           isn't included in "files_" yet, it will be soon due to a previous call to queueUpdate().
-           So, here, we should queue it for changes regardless of what "files_" may contain. */
+       && std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) == paths_to_add.cend()) {
         paths_to_update.push_back(path);
         added = true;
         queueUpdate();
@@ -382,23 +383,25 @@ bool Folder::eventFileChanged(const FilePath &path) {
 }
 
 void Folder::eventFileDeleted(const FilePath& path) {
+    bool deleted = true;
     // qDebug() << "delete " << path.baseName().get();
     // G_LOCK(lists);
-    /* Queue the file for deletion only if it is not in the addition queue but
-       if it is, remove it from that queue instead of queueing it for deletion.
-       Moreover, as was the case with eventFileChanged(), here too queueing
-       should be done regardless of what "files_" may contain. */
-    if(std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) == paths_to_add.cend()) {
-        if(std::find(paths_to_del.cbegin(), paths_to_del.cend(), path) == paths_to_del.cend()) {
-            paths_to_del.push_back(path);
-        }
-    }
-    else {
+    if(std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) != paths_to_add.cend()) {
+        // if the file was going to be added, just remove it from the addition queue
         paths_to_add.erase(std::remove(paths_to_add.begin(), paths_to_add.end(), path), paths_to_add.cend());
     }
-    /* the update queue should be canceled for a file that is going to be deleted */
-    paths_to_update.erase(std::remove(paths_to_update.begin(), paths_to_update.end(), path), paths_to_update.cend());
-    queueUpdate();
+    else if(std::find(paths_to_del.cbegin(), paths_to_del.cend(), path) == paths_to_del.cend()) {
+        paths_to_del.push_back(path);
+        // the update queue should be cancelled for a file that is going to be deleted
+        paths_to_update.erase(std::remove(paths_to_update.begin(), paths_to_update.end(), path), paths_to_update.cend());
+    }
+    else {
+        deleted = false;
+    }
+
+    if(deleted) {
+        queueUpdate();
+    }
     // G_UNLOCK(lists);
 }
 
@@ -666,7 +669,6 @@ void Folder::reload() {
         paths_to_add.clear();
         paths_to_update.clear();
         paths_to_del.clear();
-        paths_to_del_later.clear();
 
         // cancel any file info job in progress.
         for(auto job: fileinfoJobs_) {
@@ -674,6 +676,9 @@ void Folder::reload() {
             disconnect(job, &FileInfoJob::finished, this, &Folder::onFileInfoFinished);
         }
         fileinfoJobs_.clear();
+
+        // ensure future changes will be processed
+        has_idle_update_handler = false;
     }
 
     /* remove all existing files */
