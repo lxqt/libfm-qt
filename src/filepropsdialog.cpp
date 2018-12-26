@@ -379,7 +379,7 @@ void FilePropsDialog::onFileSizeTimerTimeout() {
             else if (fc == 2)
                 str = tr("one file");
             else
-                str = tr("%1 files").arg(fc - 1);
+                str = tr("%Ln files", "", fc - 1);
             ui->fileNumber->setText(str);
         }
     }
