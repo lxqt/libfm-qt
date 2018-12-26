@@ -233,12 +233,12 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Obsahuje:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="317"/>
         <source>Device Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Využití zařízení:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="349"/>
@@ -813,27 +813,27 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% použito</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="334"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>volných %1 z %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="378"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>žádný soubor</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="380"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation>jeden soubor</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
         <source>%1 files</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 souborů</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="416"/>
@@ -1329,7 +1329,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Identifikátor: </translation>
     </message>
 </context>
 <context>
