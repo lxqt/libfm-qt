@@ -233,12 +233,12 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Содержимое:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="317"/>
         <source>Device Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Свободно на диске:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="349"/>
@@ -561,12 +561,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Открыть файл</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранить файл</translation>
     </message>
 </context>
 <context>
@@ -645,12 +645,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="252"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Доверять выбранным исполняемым файлам</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="253"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Доверять этому исполняемому файлу</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="341"/>
@@ -813,17 +813,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% занято</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="334"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 свободно из %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="378"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>нет файлов</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="380"/>
