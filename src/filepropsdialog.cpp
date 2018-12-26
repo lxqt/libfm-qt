@@ -376,10 +376,8 @@ void FilePropsDialog::onFileSizeTimerTimeout() {
             unsigned int fc =  totalSizeJob->fileCount(); // the directory is included
             if (fc <= 1)
                 str = tr("no file");
-            else if (fc == 2)
-                str = tr("one file");
             else
-                str = tr("%1 files").arg(fc - 1);
+                str = tr("%n file(s)", "", fc - 1);
             ui->fileNumber->setText(str);
         }
     }
