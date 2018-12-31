@@ -183,7 +183,7 @@
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation>Allgemeines</translation>
+        <translation>Allgemein</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
@@ -233,12 +233,12 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Enthält:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="317"/>
         <source>Device Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerätenutzung:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="349"/>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Wählen Sie eine Anwendung zum Öffnen von Dateien des Typs &quot;%1&quot;</translation>
+        <translation>Wählen Sie eine Anwendung zum Öffnen von Dateien des Typs &quot;%1&quot; aus</translation>
     </message>
 </context>
 <context>
@@ -384,12 +384,12 @@
     <message>
         <location filename="../dirtreeview.cpp" line="215"/>
         <source>Open in New Win&amp;dow</source>
-        <translation>Öffnen in neuem &amp;Fenster</translation>
+        <translation>In neuem &amp;Fenster öffnen</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="220"/>
         <source>Open in Termina&amp;l</source>
-        <translation>Öffnen in Termina&amp;l</translation>
+        <translation>Im Termina&amp;l öffnen</translation>
     </message>
 </context>
 <context>
@@ -429,20 +429,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>Diese Datei &apos;%1&apos; scheint ein Desktopeintrag zu sein.
-Was möchten Sie mit dieser Datei tun?</translation>
+        <translation>Diese Datei &apos;%1&apos; scheint ein Schreibtischeintrag zu sein.
+Was möchten Sie damit tun?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>Die Textdatei &apos;%1&apos; scheint ein ausführbares Skript zu sein.
+        <translation>Diese Textdatei &apos;%1&apos; scheint ein ausführbares Skript zu sein.
 Was möchten Sie damit tun?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>Die Datei &apos;%1&apos; ist ausführbar. Möchten Sie sie ausführen?</translation>
+        <translation>Diese Datei &apos;%1&apos; ist ausführbar. Möchten Sie sie ausführen?</translation>
     </message>
 </context>
 <context>
@@ -514,14 +514,14 @@ Was möchten Sie damit tun?</translation>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
         <source>Please select a file</source>
-        <translation>Bitte wähle eine Datei</translation>
+        <translation>Bitte wählen Sie eine Datei aus</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="295"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation>%1 existiert bereits
-Soll diese Datei ersetzt werden?</translation>
+        <translation>%1 existiert bereits.
+Möchten Sie sie ersetzen?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="604"/>
@@ -605,7 +605,7 @@ Soll diese Datei ersetzt werden?</translation>
         <location filename="../filemenu.cpp" line="159"/>
         <location filename="../filemenu.cpp" line="406"/>
         <source>&amp;Move to Trash</source>
-        <translation>In den &amp;Papierkorb verschieben</translation>
+        <translation>In den Papierkorb &amp;verschieben</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="252"/>
@@ -675,7 +675,7 @@ Soll diese Datei ersetzt werden?</translation>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
         <translation>Einige Dateien können nicht in den Papierkorb verschoben werden, da die zugrundeliegenden Dateisysteme den Vorgang nicht unterstützen.
-Sollen die Dateien stattdessen gelöscht werden?</translation>
+Möchtest Sie sie stattdessen löschen?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="375"/>
@@ -739,12 +739,12 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation>Symbolische Verknüpfung erstellen</translation>
+        <translation>Symbolische Verknüpfungen erstellen</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>Symbolische Verknüpfungen für die folgenden Dateien erstellen:</translation>
+        <translation>Erstelle symbolische Verknüpfungen für die folgenden Dateien:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
@@ -754,7 +754,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>Eigenschaften der folgenden Dateien ändern:</translation>
+        <translation>Ändere die Eigenschaften der folgenden Dateien:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
@@ -764,7 +764,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Folgende Dateien aus dem Papierkorb wiederherstellen:</translation>
+        <translation>Stelle folgende Dateien aus dem Papierkorb wieder her:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
@@ -783,7 +783,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="163"/>
         <source>View and modify folder content</source>
-        <translation>Ordnerinhalt ansehen und modifizieren</translation>
+        <translation>Ordnerinhalt ansehen und verändern</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="167"/>
@@ -793,7 +793,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="168"/>
         <source>Read and write</source>
-        <translation>Lesen und schreiben</translation>
+        <translation>Lesen und Schreiben</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="170"/>
@@ -813,32 +813,32 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% benutzt</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="334"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 frei von %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="378"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>keine Datei</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="380"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation>eine Datei</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
         <source>%1 files</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Dateien</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="416"/>
         <source>Select an icon</source>
-        <translation>Wähle ein Symbol</translation>
+        <translation>Wählen Sie ein Symbol aus</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="418"/>
@@ -853,7 +853,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="515"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>Möchten Sie die Änderungen auf alle Dateien und Unterverzeichnisse anwenden?</translation>
+        <translation>Möchten Sie diese Änderungen rekursiv auf alle Dateien und Unterordner anwenden?</translation>
     </message>
 </context>
 <context>
@@ -866,12 +866,12 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>You should add at least one directory to search.</source>
-        <translation>Sie sollten mindestens einen Ordner für die Suche hinzufügen.</translation>
+        <translation>Sie sollten mindestens ein Verzeichnis zur Suche hinzufügen.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="135"/>
         <source>Select a folder</source>
-        <translation>Einen Ordner wählen</translation>
+        <translation>Wählen Sie einen Ordner aus</translation>
     </message>
 </context>
 <context>
@@ -879,7 +879,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation>Verknüpfungserstellung auf fremden Dateisystem nicht möglich</translation>
+        <translation>Kann keine Verknüpfung auf einem nicht-nativen Dateisystem erstellen</translation>
     </message>
 </context>
 <context>
@@ -897,7 +897,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="54"/>
         <source>Select &amp;All</source>
-        <translation>&amp;Alle auswählen</translation>
+        <translation>&amp;Alles auswählen</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
@@ -917,7 +917,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="97"/>
         <source>Folder Pr&amp;operties</source>
-        <translation>Ordner&amp;eigenschaften</translation>
+        <translation>&amp;Ordnereigenschaften</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="140"/>
@@ -932,7 +932,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="164"/>
         <source>By Modification Time</source>
-        <translation>Nach Änderungsdatum</translation>
+        <translation>Nach Änderungszeit</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="165"/>
@@ -942,12 +942,12 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By File Type</source>
-        <translation>Nach Typ</translation>
+        <translation>Nach Dateityp</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="167"/>
         <source>By File Owner</source>
-        <translation>Nach Besitzer</translation>
+        <translation>Nach Dateibesitzer</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="179"/>
@@ -1029,12 +1029,12 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../pathbar.cpp" line="128"/>
         <source>&amp;Edit Path</source>
-        <translation>&amp;Bearbeite Pfad</translation>
+        <translation>Pfad b&amp;earbeiten</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="131"/>
         <source>&amp;Copy Path</source>
-        <translation>&amp;Kopiere Pfad</translation>
+        <translation>Pfad &amp;kopieren</translation>
     </message>
 </context>
 <context>
@@ -1090,28 +1090,28 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../placesview.cpp" line="485"/>
         <source>Open in New Tab</source>
-        <translation>Öffnen in neuem Tab</translation>
+        <translation>In neuem Tab öffnen</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="488"/>
         <source>Open in New Window</source>
-        <translation>Öffnen in neuem Fenster</translation>
+        <translation>In neuem Fenster öffnen</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="520"/>
         <location filename="../placesview.cpp" line="577"/>
         <source>Hide</source>
-        <translation>Verbergen</translation>
+        <translation>Ausblenden</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="537"/>
         <source>Move Bookmark Up</source>
-        <translation>Nach oben verschieben</translation>
+        <translation>Lesezeichen nach oben verschieben</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="542"/>
         <source>Move Bookmark Down</source>
-        <translation>Nach unten verschieben</translation>
+        <translation>Lesezeichen nach unten verschieben</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="546"/>
@@ -1142,7 +1142,7 @@ Sollen die Dateien stattdessen gelöscht werden?</translation>
     <message>
         <location filename="../placesview.cpp" line="603"/>
         <source>Show All Entries</source>
-        <translation>Zeige alle Einträge</translation>
+        <translation>Alle Einträge anzeigen</translation>
     </message>
 </context>
 <context>
@@ -1168,7 +1168,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="97"/>
         <source>&amp;Overwrite</source>
-        <translation>Über&amp;schreiben</translation>
+        <translation>&amp;Überschreiben</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="99"/>
@@ -1194,7 +1194,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Datei &apos;1%&apos; ist nicht wiederherstellbar: ursprünglicher Pfad unbekannt</translation>
+        <translation>Datei &apos;1%&apos; ist aus dem Papierkorb nicht wieder herstellbar: ursprünglicher Pfad nicht bekannt</translation>
     </message>
 </context>
 <context>
@@ -1212,12 +1212,12 @@ Geändert: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>Verbinden als &amp;Benutzer:</translation>
+        <translation>Als &amp;Benutzer verbinden:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
         <source>&amp;Username:</source>
-        <translation>Benutzer&amp;name:</translation>
+        <translation>Ben&amp;utzername:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="102"/>
@@ -1237,7 +1237,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password until you &amp;logout</source>
-        <translation>Passwort &amp;erst beim Abmelden vergessen</translation>
+        <translation>Passwort bis zum Abme&amp;lden merken</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1314,22 +1314,22 @@ Geändert: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="272"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>Ungültiger Desktopeintrag Datei: &apos;1%&apos;</translation>
+        <translation>Ungültige Schreibtischeintragsdatei: &apos;1%&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="307"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>Keine Standardanwendung zur Ausführung von &apos;%1&apos; gesetzt</translation>
+        <translation>Es ist keine Standardanwendung zum Starten von &apos;%1&apos; festgelegt</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="348"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>Arbeitsverzeichnis nicht festsetzbar als &apos;%1&apos;: %2</translation>
+        <translation>Arbeitsverzeichnis kann nicht auf &apos;%1&apos; festgelegt werden: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Bezeichner: </translation>
     </message>
 </context>
 <context>
@@ -1342,7 +1342,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Es gibt bereits eine gleichnamige Datei an diesem Ort.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Möchten Sie die Datei ersetzen?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Es gibt bereits eine gleichnamige Datei an diesem Ort.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Möchten Sie die vorhandene Datei ersetzen?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
@@ -1352,7 +1352,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation>Mit der folgenden Datei?</translation>
+        <translation>mit der folgenden Datei?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
@@ -1377,7 +1377,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation>Diese Aktion auf alle existierenden Dateien anwenden</translation>
+        <translation>Diese Option auf alle existierenden Dateien anwenden</translation>
     </message>
 </context>
 <context>
@@ -1405,7 +1405,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation>Groß- und Kleinschreibung ignorieren</translation>
+        <translation>Groß-/Kleinschreibung ignorieren</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="55"/>
@@ -1425,12 +1425,12 @@ Geändert: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="93"/>
         <source>&amp;Remove</source>
-        <translation>&amp;Entfernen</translation>
+        <translation>Entfe&amp;rnen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in sub directories</source>
-        <translation>In Unterordnern suchen</translation>
+        <translation>In Unterverzeichnissen suchen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="129"/>
@@ -1490,7 +1490,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case insensiti&amp;ve</source>
-        <translation>Groß- und Kleinschreibung ig&amp;norieren</translation>
+        <translation>Groß- /Kleinschreibung ig&amp;norieren</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
@@ -1544,7 +1544,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="370"/>
         <source>Last Modified Time:</source>
-        <translation>Letztes Änderungsdatum:</translation>
+        <translation>Letzte Änderungszeit:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="378"/>
