@@ -6,12 +6,12 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>Escolla unha aplicación</translation>
+        <translation>Escolla un aplicativo</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation>Aplicacións instaladas</translation>
+        <translation>Aplicativos instalados</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation>Nome da aplicación:</translation>
+        <translation>Nome do aplicativo:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>Estabelecer a aplicación seleccionada como predeterminada para este tipo de ficheiro</translation>
+        <translation>Estabelecer o aplicativo seleccionado como predeterminado para este tipo de ficheiro</translation>
     </message>
 </context>
 <context>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Seleccione unha aplicación para abrir os ficheiros «%1»</translation>
+        <translation>Seleccione un aplicativo para abrir os ficheiros «%1»</translation>
     </message>
 </context>
 <context>
@@ -630,7 +630,7 @@ Quere sobrescribilo?</translation>
     <message>
         <location filename="../filemenu.cpp" line="116"/>
         <source>Other Applications</source>
-        <translation>Outras aplicacións</translation>
+        <translation>Outros aplicativos</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="122"/>
@@ -1062,7 +1062,7 @@ Desexa eliminalos no seu canto?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="67"/>
         <source>Applications</source>
-        <translation>Aplicacións</translation>
+        <translation>Aplicativos</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="76"/>
@@ -1319,7 +1319,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="307"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>Non foi estabelecida ningunha aplicación predeterminada para iniciar «%1»</translation>
+        <translation>Non foi estabelecido ningún aplicativo predeterminado para iniciar «%1»</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="348"/>
