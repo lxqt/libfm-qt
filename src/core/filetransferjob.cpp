@@ -449,7 +449,18 @@ bool FileTransferJob::copyFile(const FilePath& srcPath, const GFileInfoPtr& srcI
     if(!skip) {
         switch(file_type) {
         case G_FILE_TYPE_DIRECTORY:
-            success = makeDir(srcPath, srcInfo, destPath);
+            // prevent a dir from being copied into itself
+            if(srcPath.isPrefixOf(destPath)) {
+                GErrorPtr err = GErrorPtr{
+                                G_IO_ERROR,
+                                G_IO_ERROR_NOT_SUPPORTED,
+                                tr("Cannot copy a directory into itself!")
+                };
+                emitError(err, ErrorSeverity::MODERATE);
+            }
+            else {
+                success = makeDir(srcPath, srcInfo, destPath);
+            }
             break;
         case G_FILE_TYPE_SPECIAL:
             success = copySpecialFile(srcPath, srcInfo, destPath);

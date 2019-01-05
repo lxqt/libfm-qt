@@ -83,11 +83,11 @@ public:
         return g_file_has_parent(gfile_.get(), nullptr);
     }
 
-    bool isParentOf(const FilePath& other) {
+    bool isParentOf(const FilePath& other) const {
         return g_file_has_parent(other.gfile_.get(), gfile_.get());
     }
 
-    bool isPrefixOf(const FilePath& other) {
+    bool isPrefixOf(const FilePath& other) const {
         return g_file_has_prefix(other.gfile_.get(), gfile_.get());
     }
 
