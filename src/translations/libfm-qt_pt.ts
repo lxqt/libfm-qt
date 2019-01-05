@@ -39,10 +39,10 @@
 &lt;/ul&gt;</source>
         <translation>&lt;b&gt;Esses códigos especiais podem ser usados na linha de comando:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Representa um único nome de arquivo&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Representa vários nomes de arquivos&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Representa um único URI do arquivo&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Representa vários URIs&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Representa um único nome de ficheiro&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Representa vários nomes de ficheiros&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Representa um único URI do ficheiro&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Representa vários URI&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>Definir a aplicação selecionada como padrão para este tipo de arquivo</translation>
+        <translation>Definir a aplicação selecionada como padrão para este tipo de ficheiro</translation>
     </message>
 </context>
 <context>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation>Executar arquivo</translation>
+        <translation>Executar ficheiro</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="39"/>
@@ -132,12 +132,12 @@
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation>Nome do arquivo:</translation>
+        <translation>Nome do ficheiro:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation>Tipo de arquivo:</translation>
+        <translation>Tipo de ficheiro:</translation>
     </message>
 </context>
 <context>
@@ -178,7 +178,7 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation>Propriedades do arquivo</translation>
+        <translation>Propriedades do ficheiro</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
@@ -193,7 +193,7 @@
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>File type:</source>
-        <translation>Tipo de arquivo:</translation>
+        <translation>Tipo de ficheiro:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
@@ -203,7 +203,7 @@
     <message>
         <location filename="../file-props.ui" line="152"/>
         <source>File size:</source>
-        <translation>Tamanho do arquivo:</translation>
+        <translation>Tamanho do ficheiro:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="175"/>
@@ -233,12 +233,12 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Contém:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="317"/>
         <source>Device Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilização do dispositivo:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="349"/>
@@ -278,7 +278,7 @@
     <message>
         <location filename="../file-props.ui" line="487"/>
         <source>Make the file executable</source>
-        <translation>Marcar o arquivo como executável</translation>
+        <translation>Marcar o ficheiro como executável</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="528"/>
@@ -348,7 +348,7 @@
     <message>
         <location filename="../createnewmenu.cpp" line="65"/>
         <source>Blank File</source>
-        <translation>Arquivo em Branco</translation>
+        <translation>Ficheiro vazio</translation>
     </message>
 </context>
 <context>
@@ -429,8 +429,8 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>O arquivo &apos;%1&apos; parece ser um arquivo desktop.
-O que você desejar fazer?</translation>
+        <translation>Parece que &apos;%1&apos; é uma entrada da área de trabalho.
+O que você deseja fazer?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
@@ -803,27 +803,27 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="287"/>
         <source>Files of different types</source>
-        <translation>Arquivos de outro tipo</translation>
+        <translation>Ficheiros de outro tipo</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="310"/>
         <source>Multiple Files</source>
-        <translation>Vários Arquivos</translation>
+        <translation>Vários ficheiros</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% utilizado</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="334"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 de %2 livre</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="378"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>nenhum ficheiro</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="380"/>
