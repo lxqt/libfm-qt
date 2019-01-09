@@ -838,7 +838,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="416"/>
         <source>Select an icon</source>
-        <translation>Выберите иконку</translation>
+        <translation>Выберите значок</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="418"/>
