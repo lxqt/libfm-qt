@@ -214,7 +214,10 @@ void FolderViewListView::dropEvent(QDropEvent* e) {
 
 void FolderViewListView::mouseReleaseEvent(QMouseEvent* event) {
     bool activationWasAllowed = activationAllowed_;
-    if((!style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this)) || (event->button() != Qt::LeftButton)) {
+    if(!style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this)
+       || event->button() != Qt::LeftButton
+       // no activation with mouse when the cursor is on the selection corner
+       || cursorOnSelectionCorner_) {
         activationAllowed_ = false;
     }
 
@@ -225,7 +228,10 @@ void FolderViewListView::mouseReleaseEvent(QMouseEvent* event) {
 
 void FolderViewListView::mouseDoubleClickEvent(QMouseEvent* event) {
     bool activationWasAllowed = activationAllowed_;
-    if((style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this)) || (event->button() != Qt::LeftButton)) {
+    if(style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this)
+       || event->button() != Qt::LeftButton
+       // no activation with mouse when the cursor is on the selection corner
+       || cursorOnSelectionCorner_) {
         activationAllowed_ = false;
     }
 
@@ -255,7 +261,7 @@ QModelIndex FolderViewListView::moveCursor(CursorAction cursorAction, Qt::Keyboa
 }
 
 void FolderViewListView::activation(const QModelIndex& index) {
-    if(activationAllowed_ && !cursorOnSelectionCorner_) {
+    if(activationAllowed_) {
         Q_EMIT activatedFiltered(index);
     }
 }
