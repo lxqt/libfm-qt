@@ -764,7 +764,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>正在從垃圾桶恢復下列被刪除的檔案</translation>
+        <translation>正在從垃圾桶恢復下列被刪除的檔案：</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
@@ -1309,7 +1309,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation>這個路徑尚未掛載</translation>
+        <translation>這個路徑尚未掛載。</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="272"/>
