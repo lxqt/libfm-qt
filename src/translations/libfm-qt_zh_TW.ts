@@ -1347,7 +1347,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
         <source>dest</source>
-        <translation></translation>
+        <translation type="unfinished">目標</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
@@ -1357,17 +1357,17 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
         <source>src file info</source>
-        <translation>src file info</translation>
+        <translation type="unfinished">來源檔案資訊</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="89"/>
         <source>dest file info</source>
-        <translation>dest file info</translation>
+        <translation type="unfinished">目標檔案資訊</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="102"/>
         <source>src</source>
-        <translation>src</translation>
+        <translation type="unfinished">來源</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
