@@ -204,7 +204,7 @@ QStringList FileDialog::parseNames() const {
            && (firstQuote == 0 || fileNames.at(firstQuote - 1) != QLatin1Char('\\'))
            && fileNames.at(lastQuote - 1) != QLatin1Char('\\')) {
            // split the names
-            QRegExp sep{"\"\\s+\""};  // separated with " "
+            QRegularExpression sep{"\"\\s+\""};  // separated with " "
             parsedNames = fileNames.mid(firstQuote + 1, lastQuote - firstQuote - 1).split(sep);
             parsedNames.replaceInStrings(QLatin1String("\\\""), QLatin1String("\""));
         }
@@ -776,7 +776,7 @@ void FileDialog::setMimeTypeFilters(const QStringList& filters) {
         auto mimeType = db.mimeTypeForName(filter);
         auto nameFilter = mimeType.comment();
         if(!mimeType.suffixes().empty()) {
-            nameFilter + " (";
+            nameFilter += " (";
             const auto suffixes = mimeType.suffixes();
             for(const auto& suffix: suffixes) {
                 nameFilter += "*.";
@@ -943,7 +943,7 @@ bool FileDialog::FileDialogFilter::filterAcceptsRow(const ProxyFolderModel* /*mo
     bool nameMatched = false;
     auto& name = info->displayName();
     for(const auto& pattern: patterns_) {
-        if(pattern.exactMatch(name)) {
+        if(name.indexOf(pattern) == 0) {
             nameMatched = true;
             break;
         }
@@ -965,10 +965,13 @@ void FileDialog::FileDialogFilter::update() {
         }
         nameFilter = nameFilter.mid(left, right - left);
     }
-    // parse the "*.ext1 *.ext2 *.ext3 ..." list into QRegExp objects
+    // parse the "*.ext1 *.ext2 *.ext3 ..." list into QRegularExpression objects
     auto globs = nameFilter.simplified().split(' ');
     for(const auto& glob: globs) {
-        patterns_.emplace_back(QRegExp(glob, Qt::CaseInsensitive, QRegExp::Wildcard));
+        // NOTE: Use QRegularExpression::anchoredPattern() later, when Qt 5.12 is required.
+        patterns_.emplace_back(QRegularExpression("\\A(?:"
+                                                    + QRegularExpression::wildcardToRegularExpression(glob)
+                                                    + ")\\z", QRegularExpression::CaseInsensitiveOption));
     }
 }
 

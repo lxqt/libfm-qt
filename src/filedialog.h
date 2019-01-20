@@ -5,7 +5,7 @@
 #include "core/filepath.h"
 
 #include <QFileDialog>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <vector>
 #include <memory>
 #include "folderview.h"
@@ -150,7 +150,7 @@ private:
         void update();
 
         FileDialog* dlg_;
-        std::vector<QRegExp> patterns_;
+        std::vector<QRegularExpression> patterns_;
     };
 
     bool isLabelExplicitlySet(QFileDialog::DialogLabel label) const {
