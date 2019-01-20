@@ -204,7 +204,11 @@ QStringList FileDialog::parseNames() const {
            && (firstQuote == 0 || fileNames.at(firstQuote - 1) != QLatin1Char('\\'))
            && fileNames.at(lastQuote - 1) != QLatin1Char('\\')) {
            // split the names
+#if (QT_VERSION >= QT_VERSION_CHECK(5,12,0))
             QRegularExpression sep{"\"\\s+\""};  // separated with " "
+#else
+            QRegExp sep{"\"\\s+\""};  // separated with " "
+#endif
             parsedNames = fileNames.mid(firstQuote + 1, lastQuote - firstQuote - 1).split(sep);
             parsedNames.replaceInStrings(QLatin1String("\\\""), QLatin1String("\""));
         }
@@ -943,7 +947,11 @@ bool FileDialog::FileDialogFilter::filterAcceptsRow(const ProxyFolderModel* /*mo
     bool nameMatched = false;
     auto& name = info->displayName();
     for(const auto& pattern: patterns_) {
+#if (QT_VERSION >= QT_VERSION_CHECK(5,12,0))
         if(name.indexOf(pattern) == 0) {
+#else
+        if(pattern.exactMatch(name)) {
+#endif
             nameMatched = true;
             break;
         }
@@ -968,10 +976,13 @@ void FileDialog::FileDialogFilter::update() {
     // parse the "*.ext1 *.ext2 *.ext3 ..." list into QRegularExpression objects
     auto globs = nameFilter.simplified().split(' ');
     for(const auto& glob: globs) {
-        // NOTE: Use QRegularExpression::anchoredPattern() later, when Qt 5.12 is required.
+#if (QT_VERSION >= QT_VERSION_CHECK(5,12,0))
         patterns_.emplace_back(QRegularExpression("\\A(?:"
                                                     + QRegularExpression::wildcardToRegularExpression(glob)
                                                     + ")\\z", QRegularExpression::CaseInsensitiveOption));
+#else
+        patterns_.emplace_back(QRegExp(glob, Qt::CaseInsensitive, QRegExp::Wildcard));
+#endif
     }
 }
 
