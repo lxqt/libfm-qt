@@ -1,4 +1,4 @@
-0.14.0 / 2018-11-28
+libfm-qt-0.14.0 / 2019-01-25
 ============================
 
  * Completely dropped libfm dependency.
@@ -38,8 +38,8 @@ libfm-qt-0.13.1 / 2018-06-02
   * It's supposedly fixed in Qt-5.11.1
   * Disconnect old source model
 
-0.13.0 / 2018-05-21
-===================
+libfm-qt-0.13.0 / 2018-05-21
+============================
 
   * Release 0.13.0: Update changelog
   * Bumped minor version to 13
@@ -117,8 +117,8 @@ libfm-qt-0.13.1 / 2018-06-02
   * Prompt dialog specifically for desktop files
   * Remove unnecessary noise
 
-0.12.0 / 2017-10-21
-===================
+libfm-qt-0.12.0 / 2017-10-21
+============================
 
   * Release 0.12.0: Update changelog
   * Add data transferred to file operation dialog.
@@ -312,8 +312,8 @@ libfm-qt-0.13.1 / 2018-06-02
   * Try to port FmIcon, FmFileInfo, and FmMimeType of libfm to clean C++.
   * Add smart pointer for GObject-derived classes and add Fm::FilePath class which wraps GFile.
 
-0.11.2 / 2016-12-21
-===================
+libfm-qt-0.11.2 / 2016-12-21
+============================
 
   * Release 0.11.2: Update changelog
   * Fix enabled state of path arrows on starting (#58)
@@ -364,8 +364,8 @@ libfm-qt-0.13.1 / 2018-06-02
   * Remove cpack (#44)
   * Also Consider GEmblemedIcon (#41)
 
-0.11.1 / 2016-09-24
-===================
+libfm-qt-0.11.1 / 2016-09-24
+============================
 
   * Release 0.11.1: Add changelog
   * Bump version to 0.11.1 (#39)
@@ -393,8 +393,8 @@ libfm-qt-0.13.1 / 2018-06-02
   * Cancel indexing job when closing filepropsdialog
   * Bump year
 
-0.11.0 / 2016-02-27
-===================
+libfm-qt-0.11.0 / 2016-02-27
+============================
 
   * Bump version number and ABI version and preparing for the initial release.
   * Redirect focus operation on the folderview to the actual widget
