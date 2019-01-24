@@ -119,7 +119,7 @@
           <item>
            <widget class="QCheckBox" name="recursiveSearch">
             <property name="text">
-             <string>Search in sub directories</string>
+             <string>Search in subdirectories</string>
             </property>
            </widget>
           </item>
