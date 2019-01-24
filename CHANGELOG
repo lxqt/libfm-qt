@@ -30,6 +30,11 @@ libfm-qt-0.14.0 / 2019-01-25
  * Don't update trash icon too often.
  * Fixed crash on launching desktop files with empty Exec.
  * Fixes for template actions (showing them sorted).
+ * Prevent a directory from being copied into itself (or into a subdir of itself); show an error message instead.
+ * Fixed a problem in deletion queues -- while monitoring a directory -- by preventing file info jobs from overlapping each other.
+ * Allow item activation by pressing ENTER when the cursor is over its selection corner.
+ * Fixed mimetype filters in LXQt file dialog.
+ * Fixed view icons with HDPI scaling.
 
 libfm-qt-0.13.1 / 2018-06-02
 ============================
