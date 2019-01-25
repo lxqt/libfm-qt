@@ -356,7 +356,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="46"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>Указанная директория &apos;%1&apos; некорректна</translation>
+        <translation>Указанный каталог &apos;%1&apos; некорректен</translation>
     </message>
 </context>
 <context>
@@ -866,7 +866,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>You should add at least one directory to search.</source>
-        <translation>Вы должны добавить не менее одного места для поиска.</translation>
+        <translation>Вы должны добавить не менее одного каталога для поиска.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="135"/>
@@ -967,7 +967,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="211"/>
         <source>Case Sensitive</source>
-        <translation>Чувствительность к регистру</translation>
+        <translation>Учитывать регистр</translation>
     </message>
 </context>
 <context>
@@ -1186,7 +1186,7 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Directory Tree</source>
-        <translation>Дерево папок</translation>
+        <translation>Дерево каталогов</translation>
     </message>
 </context>
 <context>
@@ -1194,7 +1194,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Не удается восстановить файл «%s»: не найден первоначальный путь</translation>
+        <translation>Не удаётся восстановить файл «%s»: не найден первоначальный путь</translation>
     </message>
 </context>
 <context>
@@ -1329,7 +1329,7 @@ Modified: %2</source>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished">Устройство: </translation>
+        <translation>Устройство: </translation>
     </message>
 </context>
 <context>
@@ -1405,7 +1405,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation>Нечувствительный к регистру поиск</translation>
+        <translation>Игнорировать регистр</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="55"/>
@@ -1490,7 +1490,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case insensiti&amp;ve</source>
-        <translation>Нечувствительн&amp;ый к регистру поиск</translation>
+        <translation>Игнорировать регистр</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
