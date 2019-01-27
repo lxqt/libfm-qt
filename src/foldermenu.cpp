@@ -142,13 +142,12 @@ void FolderMenu::onCustomActionTrigerred() {
     }
 }
 
-void FolderMenu::addSortMenuItem(QString title, int id) {
+void FolderMenu::addSortMenuItem(const QString &title) {
     QAction* action = new QAction(title, this);
     sortMenu_->addAction(action);
     action->setCheckable(true);
     sortActionGroup_->addAction(action);
     connect(action, &QAction::triggered, this, &FolderMenu::onSortActionTriggered);
-    sortActions_[id] = action;
 }
 
 void FolderMenu::createSortMenu() {
@@ -158,18 +157,18 @@ void FolderMenu::createSortMenu() {
     sortActionGroup_ = new QActionGroup(sortMenu_);
     sortActionGroup_->setExclusive(true);
 
-    std::memset(sortActions_, 0, sizeof(sortActions_));
-
-    addSortMenuItem(tr("By File Name"), FolderModel::ColumnFileName);
-    addSortMenuItem(tr("By Modification Time"), FolderModel::ColumnFileMTime);
-    addSortMenuItem(tr("By File Size"), FolderModel::ColumnFileSize);
-    addSortMenuItem(tr("By File Type"), FolderModel::ColumnFileType);
-    addSortMenuItem(tr("By File Owner"), FolderModel::ColumnFileOwner);
+    // the number of actions is FolderModel::NumOfColumns but it will be checked later
+    addSortMenuItem(tr("By File Name"));
+    addSortMenuItem(tr("By Modification Time"));
+    addSortMenuItem(tr("By File Size"));
+    addSortMenuItem(tr("By File Type"));
+    addSortMenuItem(tr("By File Owner"));
+    addSortMenuItem(tr("By File Group"));
 
     int col = model->sortColumn();
-
-    if(col >= 0 && col < FolderModel::NumOfColumns) {
-        sortActions_[col]->setChecked(true);;
+    const auto actions = sortActionGroup_->actions();
+    if(col >= 0 && col < actions.size()) {
+        actions.at(col)->setChecked(true);
     }
 
     sortMenu_->addSeparator();
@@ -237,14 +236,11 @@ void FolderMenu::onInvertSelectionActionTriggered() {
 void FolderMenu::onSortActionTriggered(bool /*checked*/) {
     ProxyFolderModel* model = view_->model();
 
-    if(model) {
+    if(model && sortActionGroup_) {
         QAction* action = static_cast<QAction*>(sender());
-
-        for(int col = 0; col < FolderModel::NumOfColumns; ++col) {
-            if(action == sortActions_[col]) {
-                model->sort(col, model->sortOrder());
-                break;
-            }
+        int col = sortActionGroup_->actions().indexOf(action);
+        if(col >= 0 && col < FolderModel::NumOfColumns) {
+            model->sort(col, model->sortOrder());
         }
     }
 }
