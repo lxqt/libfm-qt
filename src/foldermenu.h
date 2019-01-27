@@ -104,7 +104,7 @@ protected Q_SLOTS:
 
 private:
     void createSortMenu();
-    void addSortMenuItem(QString title, int id);
+    void addSortMenuItem(const QString &title);
 
 private:
     FolderView* view_;
@@ -118,7 +118,6 @@ private:
     QAction* sortAction_;
     QActionGroup* sortActionGroup_;
     QMenu* sortMenu_;
-    QAction* sortActions_[FolderModel::NumOfColumns];
     QAction* actionAscending_;
     QAction* actionDescending_;
     QAction* showHiddenAction_;
