@@ -828,12 +828,12 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="380"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation>um arquivo</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
         <source>%1 files</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 arquivos</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="416"/>
@@ -1329,7 +1329,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Identificador: </translation>
     </message>
 </context>
 <context>
