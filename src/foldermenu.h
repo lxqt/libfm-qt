@@ -104,7 +104,7 @@ protected Q_SLOTS:
 
 private:
     void createSortMenu();
-    void addSortMenuItem(const QString &title);
+    void addSortMenuItem(const QString &title, int id);
 
 private:
     FolderView* view_;

@@ -142,10 +142,12 @@ void FolderMenu::onCustomActionTrigerred() {
     }
 }
 
-void FolderMenu::addSortMenuItem(const QString &title) {
+void FolderMenu::addSortMenuItem(const QString &title, int id) {
     QAction* action = new QAction(title, this);
+    action->setData(QVariant(id));
     sortMenu_->addAction(action);
     action->setCheckable(true);
+    action->setChecked(id == view_->model()->sortColumn());
     sortActionGroup_->addAction(action);
     connect(action, &QAction::triggered, this, &FolderMenu::onSortActionTriggered);
 }
@@ -157,19 +159,12 @@ void FolderMenu::createSortMenu() {
     sortActionGroup_ = new QActionGroup(sortMenu_);
     sortActionGroup_->setExclusive(true);
 
-    // the number of actions is FolderModel::NumOfColumns but it will be checked later
-    addSortMenuItem(tr("By File Name"));
-    addSortMenuItem(tr("By Modification Time"));
-    addSortMenuItem(tr("By File Size"));
-    addSortMenuItem(tr("By File Type"));
-    addSortMenuItem(tr("By File Owner"));
-    addSortMenuItem(tr("By File Group"));
-
-    int col = model->sortColumn();
-    const auto actions = sortActionGroup_->actions();
-    if(col >= 0 && col < actions.size()) {
-        actions.at(col)->setChecked(true);
-    }
+    addSortMenuItem(tr("By File Name"), FolderModel::ColumnFileName);
+    addSortMenuItem(tr("By Modification Time"), FolderModel::ColumnFileMTime);
+    addSortMenuItem(tr("By File Size"), FolderModel::ColumnFileSize);
+    addSortMenuItem(tr("By File Type"), FolderModel::ColumnFileType);
+    addSortMenuItem(tr("By File Owner"), FolderModel::ColumnFileOwner);
+    addSortMenuItem(tr("By File Group"), FolderModel::ColumnFileGroup);
 
     sortMenu_->addSeparator();
 
@@ -238,9 +233,16 @@ void FolderMenu::onSortActionTriggered(bool /*checked*/) {
 
     if(model && sortActionGroup_) {
         QAction* action = static_cast<QAction*>(sender());
-        int col = sortActionGroup_->actions().indexOf(action);
-        if(col >= 0 && col < FolderModel::NumOfColumns) {
-            model->sort(col, model->sortOrder());
+
+        const auto actions = sortActionGroup_->actions();
+        for(auto a : actions) {
+            if(a == action) {
+                int col = a->data().toInt();
+                if(col >= 0 && col < FolderModel::NumOfColumns) {
+                    model->sort(col, model->sortOrder());
+                }
+                break;
+            }
         }
     }
 }
