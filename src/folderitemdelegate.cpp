@@ -128,6 +128,7 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     }
 
     bool isSymlink = file && file->isSymlink();
+    bool isCut = index.data(FolderModel::FileIsCutRole).toBool();
     // for practical reasons, an emblem is added only to an untrusted, deletable desktop file
     bool untrusted = file && !file->isTrustable() && file->isDesktopEntry() && file->isDeletable();
     // vertical layout (icon mode, thumbnail mode)
@@ -145,7 +146,6 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         QPixmap pixmap = opt.icon.pixmap(option.decorationSize, iconMode);
         // in case the pixmap is smaller than the requested size
         QSize margin = ((option.decorationSize - pixmap.size()) / 2).expandedTo(QSize(0, 0));
-        bool isCut = index.data(FolderModel::FileIsCutRole).toBool();
         if(isCut) {
             painter->save();
             painter->setOpacity(0.45);
@@ -216,21 +216,41 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     }
     else {  // horizontal layout (list view)
 
-        // Let the style engine do the painting but make the icon look disabled if shadowed.
+        // Let the style engine do the painting but take care of shadowed and cut icons.
         // NOTE: The shadowing can also be done directly.
         // WARNING: QStyledItemDelegate shouldn't be used for painting because it resets the icon.
         // FIXME: For better text alignment, here we could have increased the icon width
         // when it's smaller than the requested size.
-        if(shadowIcon) {
-            QPixmap pixmap = opt.icon.pixmap(option.decorationSize, QIcon::Disabled);
-            opt.icon = QIcon(pixmap);
+
+        QIcon::Mode iconMode = shadowIcon ? QIcon::Disabled : iconModeFromState(opt.state);
+
+        if(!opt.icon.isNull()) {
+            if(shadowIcon) {
+                QPixmap pixmap = opt.icon.pixmap(option.decorationSize, iconMode);
+                opt.icon = QIcon(pixmap);
+            }
+
+            if(isCut) {
+                QPixmap pixmap = opt.icon.pixmap(option.decorationSize, iconMode);
+                QImage img = pixmap.toImage().convertToFormat(QImage::Format_ARGB32_Premultiplied);
+                img.fill(Qt::transparent);
+                QPainter p(&img);
+                p.setOpacity(0.45);
+                p.drawPixmap(0, 0, pixmap);
+                p.end();
+                opt.icon = QIcon(QPixmap::fromImage(img));
+            }
         }
+
         const QWidget* widget = opt.widget;
         QStyle* style = widget ? widget->style() : QApplication::style();
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, widget);
 
-        // draw emblems if needed
-        QIcon::Mode iconMode = shadowIcon ? QIcon::Disabled : iconModeFromState(opt.state);
+        if(isCut && !opt.icon.isNull()) {
+            // restore the original icon to not make it translucent more than once
+            opt.icon = option.icon;
+        }
+
         // draw some emblems for the item if needed
         if(isSymlink) {
             QPoint iconPos(opt.rect.x(), opt.rect.y() + (opt.rect.height() - option.decorationSize.height()) / 2);
