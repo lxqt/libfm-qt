@@ -35,7 +35,7 @@ class FolderViewListView : public QListView {
   Q_OBJECT
 public:
   friend class FolderView;
-  FolderViewListView(QWidget* parent = 0);
+  FolderViewListView(QWidget* parent = nullptr);
   virtual ~FolderViewListView();
   virtual void startDrag(Qt::DropActions supportedActions);
   virtual void mousePressEvent(QMouseEvent* event);
@@ -83,7 +83,7 @@ class FolderViewTreeView : public QTreeView {
   Q_OBJECT
 public:
   friend class FolderView;
-  FolderViewTreeView(QWidget* parent = 0);
+  FolderViewTreeView(QWidget* parent = nullptr);
   virtual ~FolderViewTreeView();
   virtual void setModel(QAbstractItemModel* model);
   virtual void mousePressEvent(QMouseEvent* event);
@@ -107,18 +107,28 @@ public:
     QAbstractItemView::keyboardSearch(search); // let items be selected by typing
   }
 
+  void setCustomColumnWidths(const QList<int> &widths);
+
+  void setHiddenColumns(const QSet<int> &columns);
+
 Q_SIGNALS:
   void activatedFiltered(const QModelIndex &index);
+  void columnResizedByUser(int visualIndex, int newWidth);
+  void autoResizeEnabled();
+  void columnHiddenByUser(int visibleIndex, bool hidden);
 
 private Q_SLOTS:
   void layoutColumns();
   void activation(const QModelIndex &index);
   void onSortFilterChanged();
+  void headerContextMenu(const QPoint &p);
 
 private:
   bool doingLayout_;
   QTimer* layoutTimer_;
   bool activationAllowed_;
+  QList<int> customColumnWidths_;
+  QSet<int> hiddenColumns_;
 };
 
 
