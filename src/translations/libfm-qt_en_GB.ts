@@ -321,7 +321,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation></translation>
+        <translation>Customise</translation>
     </message>
 </context>
 <context>
