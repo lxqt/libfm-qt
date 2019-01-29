@@ -247,7 +247,7 @@ FileMenu::~FileMenu() {
 }
 
 void FileMenu::addTrustAction() {
-    if(info_->isExecutableType() && (!fileLauncher_ || !fileLauncher_->quickExec())) {
+    if(info_->isExecutableType()) {
         QAction* trustAction = new QAction(files_.size() > 1
                                              ? tr("Trust selected executables")
                                              : tr("Trust this executable"),
