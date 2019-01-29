@@ -42,6 +42,8 @@
 #include <QMessageBox>
 #include <QLineEdit>
 #include <QTextEdit>
+#include <QWidgetAction> // for detailed list header context menu
+#include <QLabel> // for detailed list header context menu
 #include <QX11Info> // for XDS support
 #include <xcb/xcb.h> // for XDS support
 #include "xdndworkaround.h" // for XDS support
@@ -274,11 +276,28 @@ FolderViewTreeView::FolderViewTreeView(QWidget* parent):
     layoutTimer_(nullptr),
     activationAllowed_(true) {
 
+    header()->setSectionResizeMode(QHeaderView::Interactive);
     header()->setStretchLastSection(true);
+
+    // get the new width if the section is resized by user
+    connect(header(), &QHeaderView::sectionResized, [this](int logicalIndex, int/* oldSize*/, int newSize) {
+        if(doingLayout_ || customColumnWidths_.isEmpty()) {
+            return;
+        }
+        int vIndx = header()->visualIndex(logicalIndex);
+        if(vIndx >= 0 && vIndx < customColumnWidths_.size()) {
+            customColumnWidths_[vIndx] = newSize;
+            Q_EMIT columnResizedByUser(vIndx, newSize);
+            queueLayoutColumns();
+        }
+    });
+
+    // header context menu for configuring its resizing and hidden sections
+    header()->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(header(), &QWidget::customContextMenuRequested, this, &FolderViewTreeView::headerContextMenu);
+
     setIndentation(0);
-    /* the default true value may cause a crash on entering a folder
-       by double clicking because of the viewport update done by
-       QTreeView::mouseDoubleClickEvent() (a Qt bug?) */
+    // the default true value may cause a crash on entering a folder by double clicking (a Qt bug?)
     setExpandsOnDoubleClick(false);
 
     connect(this, &QTreeView::activated, this, &FolderViewTreeView::activation);
@@ -290,6 +309,82 @@ FolderViewTreeView::~FolderViewTreeView() {
     if(layoutTimer_) {
         delete layoutTimer_;
     }
+}
+
+void FolderViewTreeView::setCustomColumnWidths(const QList<int> &widths) {
+    // enables cutomizable widths if "widths" is not empty; otherwise, enables auto-resizing
+    if(customColumnWidths_ == widths) {
+        return;
+    }
+    customColumnWidths_.clear();
+    customColumnWidths_ = widths;
+    header()->setStretchLastSection(widths.isEmpty());
+    queueLayoutColumns();
+    if(widths.isEmpty()) {
+        Q_EMIT autoResizeEnabled();
+    }
+}
+
+void FolderViewTreeView::setHiddenColumns(const QSet<int> &columns) {
+    if(hiddenColumns_ == columns) {
+        return;
+    }
+    hiddenColumns_.clear();
+    hiddenColumns_ = columns;
+    queueLayoutColumns();
+}
+
+void FolderViewTreeView::headerContextMenu(const QPoint &p) {
+    QMenu menu;
+    QAction *action = menu.addAction (tr("Auto-resize columns"));
+    action->setCheckable(true);
+    action->setChecked(customColumnWidths_.isEmpty());
+    connect(action, &QAction::triggered, action, [this] (bool checked) {
+        QList<int> widths;
+        if(!checked) {
+            for(int column = 0; column < FolderModel::NumOfColumns; ++column) {
+                widths << 0;
+            }
+            // one signal is enough to make a raw FolderView::customColumnWidths_
+            Q_EMIT columnResizedByUser(0, 0);
+        }
+        setCustomColumnWidths(widths);
+    });
+    if(model()) {
+        menu.addSeparator();
+        QWidgetAction *labelAction = new QWidgetAction(&menu);
+        QLabel *label = new QLabel("<center><b>" + tr("Visible Columns") + "</b></center>");
+        labelAction->setDefaultWidget(label);
+        menu.addAction (labelAction);
+
+        int filenameColumn = header()->visualIndex(FolderModel::ColumnFileName);
+        int numCols = header()->count();
+        for(int column = 0; column < numCols; ++column) {
+            int columnId = header()->logicalIndex(column);
+            if(columnId >= 0 && columnId < FolderModel::NumOfColumns) {
+                action = menu.addAction (model()->headerData(columnId, Qt::Horizontal, Qt::DisplayRole).toString());
+                action->setCheckable(true);
+                if(columnId == filenameColumn) { // never hide the name column
+                    action->setChecked(true);
+                    action->setDisabled(true);
+                }
+                else {
+                    action->setChecked(!header()->isSectionHidden(columnId));
+                    connect(action, &QAction::triggered, action, [this, column, columnId] (bool checked) {
+                        if(checked) {
+                            hiddenColumns_.remove(column);
+                        }
+                        else {
+                            hiddenColumns_ << column;
+                        }
+                        Q_EMIT columnHiddenByUser(column, !checked);
+                        queueLayoutColumns();
+                    });
+                }
+            }
+        }
+    }
+    menu.exec(header()->mapToGlobal(p));
 }
 
 void FolderViewTreeView::setModel(QAbstractItemModel* model) {
@@ -362,41 +457,80 @@ void FolderViewTreeView::layoutColumns() {
         int column;
         for(column = 0; column < numCols; ++column) {
             int columnId = headerView->logicalIndex(column);
-            // get the size that the column needs
-            if(model_) {
-                QVariant data = model_->headerData(columnId, Qt::Horizontal, Qt::DisplayRole);
-                if(data.isValid()) {
-                    opt.text = data.isValid() ? data.toString() : QString();
+
+            // handle hidden columns
+            bool wasHidden = false;
+            if(headerView->isSectionHidden(columnId)) {
+                if(!hiddenColumns_.contains(columnId)) {
+                    headerView->setSectionHidden(columnId, false);
+                    wasHidden = true;
+                }
+                else {
+                    continue;
                 }
             }
-            opt.section = columnId;
-            widths[column] = qMax(sizeHintForColumn(columnId),
-                                  style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(), headerView).width());
+            else if(hiddenColumns_.contains(columnId)) {
+                headerView->setSectionHidden(columnId, true);
+                continue;
+            }
+
+            if(customColumnWidths_.size() > column) {
+                // see FolderView::setCustomColumnWidths for the meaning of custom width <= 0
+                if(customColumnWidths_.at(column) > 0) {
+                    widths[column] = qMax(customColumnWidths_.at(column), headerView->minimumSectionSize());
+                }
+                else {
+                    if(wasHidden) {
+                        // WARNING: When a section is shown in the interactive mode, Qt gives
+                        // a huge width to it. As a workaround, the width is set to the minimum here.
+                        customColumnWidths_[column] = widths[column] = headerView->minimumSectionSize();
+                    }
+                    else {
+                        customColumnWidths_[column] = widths[column] = headerView->sectionSize(columnId);
+                    }
+                    Q_EMIT columnResizedByUser(column, customColumnWidths_.at(column));
+                }
+            }
+            else {
+                // get the size that the column needs
+                if(model_) {
+                    QVariant data = model_->headerData(columnId, Qt::Horizontal, Qt::DisplayRole);
+                    if(data.isValid()) {
+                        opt.text = data.isValid() ? data.toString() : QString();
+                    }
+                }
+                opt.section = columnId;
+                widths[column] = qMax(sizeHintForColumn(columnId),
+                                    style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(),
+                                                                headerView).width());
+            }
             // compute the total width needed
             desiredWidth += widths[column];
         }
 
         int filenameColumn = headerView->visualIndex(FolderModel::ColumnFileName);
-        // if the total witdh we want exceeds the available space
-        if(desiredWidth > availWidth) {
-            // Compute the width available for the filename column
-            int filenameAvailWidth = availWidth - desiredWidth + widths[filenameColumn];
+        if(customColumnWidths_.size() <= filenameColumn) { // practically means no custom width
+            // if the total witdh we want exceeds the available space
+            if(desiredWidth > availWidth) {
+                // Compute the width available for the filename column
+                int filenameAvailWidth = availWidth - desiredWidth + widths[filenameColumn];
 
-            // Compute the minimum acceptable width for the filename column
-            int filenameMinWidth = qMin(200, sizeHintForColumn(filenameColumn));
+                // Compute the minimum acceptable width for the filename column
+                int filenameMinWidth = qMin(200, sizeHintForColumn(filenameColumn));
 
-            if(filenameAvailWidth > filenameMinWidth) {
-                // Shrink the filename column to the available width
-                widths[filenameColumn] = filenameAvailWidth;
+                if(filenameAvailWidth > filenameMinWidth) {
+                    // Shrink the filename column to the available width
+                    widths[filenameColumn] = filenameAvailWidth;
+                }
+                else {
+                    // Set the filename column to its minimum width
+                    widths[filenameColumn] = filenameMinWidth;
+                }
             }
             else {
-                // Set the filename column to its minimum width
-                widths[filenameColumn] = filenameMinWidth;
+                // Fill the extra available space with the filename column
+                widths[filenameColumn] += availWidth - desiredWidth;
             }
-        }
-        else {
-            // Fill the extra available space with the filename column
-            widths[filenameColumn] += availWidth - desiredWidth;
         }
 
         // really do the resizing for every column
@@ -411,6 +545,7 @@ void FolderViewTreeView::layoutColumns() {
         delete layoutTimer_;
         layoutTimer_ = nullptr;
     }
+    setUpdatesEnabled(true);
 }
 
 void FolderViewTreeView::resizeEvent(QResizeEvent* event) {
@@ -427,8 +562,9 @@ void FolderViewTreeView::resizeEvent(QResizeEvent* event) {
 }
 
 void FolderViewTreeView::rowsInserted(const QModelIndex& parent, int start, int end) {
-    QTreeView::rowsInserted(parent, start, end);
+    setUpdatesEnabled(false); // prevent header text flickering
     queueLayoutColumns();
+    QTreeView::rowsInserted(parent, start, end);
 }
 
 void FolderViewTreeView::rowsAboutToBeRemoved(const QModelIndex& parent, int start, int end) {
@@ -449,8 +585,9 @@ void FolderViewTreeView::reset() {
     // might not be called. Hence we also have to re-layout the columns when the model is reset.
     // This fixes bug #190
     // https://github.com/lxqt/pcmanfm-qt/issues/190
-    QTreeView::reset();
+    setUpdatesEnabled(false); // prevent header text flickering
     queueLayoutColumns();
+    QTreeView::reset();
 }
 
 void FolderViewTreeView::queueLayoutColumns() {
@@ -540,6 +677,34 @@ FolderView::~FolderView() {
         disconnect(smoothScrollTimer_, &QTimer::timeout, this, &FolderView::scrollSmoothly);
         smoothScrollTimer_->stop();
         delete smoothScrollTimer_;
+    }
+}
+
+void FolderView::setCustomColumnWidths(const QList<int> &widths) {
+    customColumnWidths_.clear();
+    customColumnWidths_ = widths;
+    // Complete the widths list with zeros if needed. A value of <= 0 means that
+    // the initial custom width of the column should be set to its current width.
+    if(!customColumnWidths_.isEmpty()) {
+        for(int i = customColumnWidths_.size(); i < FolderModel::NumOfColumns; ++i) {
+            customColumnWidths_ << 0;
+        }
+    }
+    // resize header sections to custom widths if the tree view exists
+    if(mode == DetailedListMode) {
+        if(FolderViewTreeView* treeView = static_cast<FolderViewTreeView*>(view)) {
+            treeView->setCustomColumnWidths(customColumnWidths_);
+        }
+    }
+}
+
+void FolderView::setHiddenColumns(const QList<int> &columns) {
+    hiddenColumns_.clear();
+    hiddenColumns_ = columns.toSet();
+    if(mode == DetailedListMode) {
+        if(FolderViewTreeView* treeView = static_cast<FolderViewTreeView*>(view)) {
+            treeView->setHiddenColumns(hiddenColumns_);
+        }
     }
 }
 
@@ -638,7 +803,39 @@ void FolderView::setViewMode(ViewMode _mode) {
     FolderItemDelegate* delegate = nullptr;
     if(mode == DetailedListMode) {
         FolderViewTreeView* treeView = new FolderViewTreeView(this);
+        treeView->setCustomColumnWidths(customColumnWidths_);
+        treeView->setHiddenColumns(hiddenColumns_);
         connect(treeView, &FolderViewTreeView::activatedFiltered, this, &FolderView::onItemActivated);
+        // update the list of custom widhts when the user changes it
+        connect(treeView, &FolderViewTreeView::columnResizedByUser, [this](int visualIndex, int newWidth) {
+            if(visualIndex >= 0) {
+                if(visualIndex < customColumnWidths_.size()){
+                    customColumnWidths_[visualIndex] = newWidth;
+                }
+                else {
+                    customColumnWidths_ << newWidth;
+                }
+                // complete the widths list with zeros if needed
+                for(int i = customColumnWidths_.size(); i < FolderModel::NumOfColumns; ++i) {
+                    customColumnWidths_ << 0;
+                }
+                Q_EMIT columnResizedByUser();
+            }
+        });
+        connect(treeView, &FolderViewTreeView::autoResizeEnabled, [this]() {
+            customColumnWidths_.clear();
+            Q_EMIT columnResizedByUser();
+        });
+        // update the list of hidden columns when the user changes it
+        connect(treeView, &FolderViewTreeView::columnHiddenByUser, [this](int visibleIndex, bool hidden) {
+            if(hidden) {
+                hiddenColumns_ << visibleIndex;
+            }
+            else {
+                hiddenColumns_.remove(visibleIndex);
+            }
+            Q_EMIT columnHiddenByUser();
+        });
         setFocusProxy(treeView);
 
         view = treeView;
@@ -1050,7 +1247,7 @@ void FolderView::invertSelection() {
         // we don't use a "for" loop on rows because it would be slow
         const QItemSelection _all{model_->index(0, 0), model_->index(model_->rowCount() - 1, 0)};
         const QItemSelection _old{selModel->selection()};
-        
+
         selModel->select(_all, QItemSelectionModel::Select);
         selModel->select(_old, QItemSelectionModel::Deselect);
     }

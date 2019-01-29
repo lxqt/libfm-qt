@@ -64,7 +64,7 @@ public:
     friend class FolderViewTreeView;
     friend class FolderViewListView;
 
-    explicit FolderView(ViewMode _mode = IconMode, QWidget* parent = 0);
+    explicit FolderView(ViewMode _mode = IconMode, QWidget* parent = nullptr);
 
     explicit FolderView(QWidget* parent): FolderView{IconMode, parent} {}
 
@@ -122,6 +122,16 @@ public:
 
     void setShadowHidden(bool shadowHidden);
 
+    QList<int> getCustomColumnWidths() const {
+        return customColumnWidths_;
+    }
+    void setCustomColumnWidths(const QList<int> &widths);
+
+    QList<int> getHiddenColumns() const {
+        return hiddenColumns_.toList();
+    }
+    void setHiddenColumns(const QList<int> &columns);
+
 protected:
     virtual bool event(QEvent* event);
     virtual void contextMenuEvent(QContextMenuEvent* event);
@@ -170,6 +180,9 @@ Q_SIGNALS:
     void selChanged();
     void sortChanged();
 
+    void columnResizedByUser();
+    void columnHiddenByUser();
+
 private:
 
     QAbstractItemView* view;
@@ -192,6 +205,8 @@ private:
     QTimer *smoothScrollTimer_;
     QWheelEvent *wheelEvent_;
     QList<scollData> queuedScrollSteps_;
+    QList<int> customColumnWidths_;
+    QSet<int> hiddenColumns_;
 };
 
 }
