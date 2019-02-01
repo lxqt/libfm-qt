@@ -7,3 +7,5 @@ build*/
 Session.vim
 .netrwhist
 *~
+.kdev4
+*.kdev4
