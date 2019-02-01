@@ -2,6 +2,8 @@
 #include "fileinfo_p.h"
 #include <gio/gio.h>
 
+#define METADATA_TRUST "metadata::trust"
+
 namespace Fm {
 
 const char defaultGFileInfoQueryAttribs[] = "standard::*,"
@@ -10,7 +12,7 @@ const char defaultGFileInfoQueryAttribs[] = "standard::*,"
                                             "access::*,"
                                             "id::filesystem,"
                                             "metadata::emblems,"
-                                            "metadata::trust";
+                                            METADATA_TRUST;
 
 FileInfo::FileInfo() {
     // FIXME: initialize numeric data members
@@ -391,8 +393,8 @@ bool FileInfo::isExecutableType() const {
 bool FileInfo::isTrustable() const {
     if(isExecutableType()) {
         /* to avoid GIO assertion warning: */
-        if(g_file_info_get_attribute_type(inf_.get(), "metadata::trust") == G_FILE_ATTRIBUTE_TYPE_STRING) {
-            if(const auto data = g_file_info_get_attribute_string(inf_.get(), "metadata::trust")) {
+        if(g_file_info_get_attribute_type(inf_.get(), METADATA_TRUST) == G_FILE_ATTRIBUTE_TYPE_STRING) {
+            if(const auto data = g_file_info_get_attribute_string(inf_.get(), METADATA_TRUST)) {
                 return (strcmp(data, "true") == 0);
             }
         }
@@ -402,16 +404,16 @@ bool FileInfo::isTrustable() const {
 
 void FileInfo::setTrustable(bool trust) const {
     if(!isExecutableType()) {
-        return; // "metadata::trust" is only for executables
+        return; // METADATA_TRUST is only for executables
     }
     GObjectPtr<GFileInfo> info {g_file_info_new()}; // used to set only this attribute
     if(trust) {
-        g_file_info_set_attribute_string(info.get(), "metadata::trust", "true");
-        g_file_info_set_attribute_string(inf_.get(), "metadata::trust", "true");
+        g_file_info_set_attribute_string(info.get(), METADATA_TRUST, "true");
+        g_file_info_set_attribute_string(inf_.get(), METADATA_TRUST, "true");
     }
     else {
-        g_file_info_set_attribute(info.get(), "metadata::trust", G_FILE_ATTRIBUTE_TYPE_INVALID, nullptr);
-        g_file_info_set_attribute(inf_.get(), "metadata::trust", G_FILE_ATTRIBUTE_TYPE_INVALID, nullptr);
+        g_file_info_set_attribute(info.get(), METADATA_TRUST, G_FILE_ATTRIBUTE_TYPE_INVALID, nullptr);
+        g_file_info_set_attribute(inf_.get(), METADATA_TRUST, G_FILE_ATTRIBUTE_TYPE_INVALID, nullptr);
     }
     g_file_set_attributes_from_info(path().gfile().get(),
                                     info.get(),
