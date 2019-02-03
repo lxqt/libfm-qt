@@ -132,7 +132,7 @@
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル名:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
@@ -450,35 +450,35 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="102"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>戻る</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="103"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Left</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="109"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>進む</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="110"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Right</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="117"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>リロード</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="118"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="135"/>
@@ -488,22 +488,22 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>アイコンの表示</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>サムネールの表示</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>概略の表示</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="154"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>詳細なリストの表示</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
@@ -514,28 +514,29 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルを1つ選択してください</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="295"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1は既にあります。
+これを置き換えますか？</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="604"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>パス&quot;%1&quot;はありません</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="618"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot;はディレクトリではありません</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="624"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot;はファイルではありません</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="751"/>
@@ -547,12 +548,12 @@ Do you want to replace it?</source>
         <location filename="../filedialog.cpp" line="754"/>
         <location filename="../filedialog.cpp" line="867"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>保存(&amp;S)</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="761"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのファイル(*)</translation>
     </message>
 </context>
 <context>
@@ -560,12 +561,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルを開く</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルを保存</translation>
     </message>
 </context>
 <context>
@@ -822,17 +823,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="378"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルがありません</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="380"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation>1つのファイル</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
         <source>%1 files</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 のファイル</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="416"/>
@@ -999,7 +1000,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>グループ</translation>
     </message>
 </context>
 <context>
@@ -1308,7 +1309,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>このパスはマウントされていません</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="272"/>
