@@ -145,7 +145,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation>Destination&#xa0;:</translation>
+        <translation>Destination :</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
@@ -233,12 +233,12 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Contient :</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="317"/>
         <source>Device Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilisation périphérique :</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="349"/>
@@ -813,27 +813,27 @@ Voulez-vous plutôt les supprimer ?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% utilisé</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="334"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Libre sur %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="378"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>aucun fichier</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="380"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation>un fichier</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
         <source>%1 files</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 fichiers</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="416"/>
@@ -1329,7 +1329,7 @@ Modification: %2</translation>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Identifiant : </translation>
     </message>
 </context>
 <context>
@@ -1342,7 +1342,7 @@ Modification: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier avec le même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant&#xa0;?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier avec le même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant ?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
@@ -1372,7 +1372,7 @@ Modification: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>Nom de &amp;fichier&#xa0;:</translation>
+        <translation>Nom de &amp;fichier :</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
