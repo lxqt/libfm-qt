@@ -336,7 +336,7 @@ void PlacesView::dropEvent(QDropEvent* event) {
 void PlacesView::onEmptyTrash() {
     Fm::FilePathList files;
     files.push_back(Fm::FilePath::fromUri("trash:///"));
-    Fm::FileOperation::deleteFiles(std::move(files));
+    Fm::FileOperation::deleteFiles(std::move(files), true, this);
 }
 
 void PlacesView::onMoveBookmarkUp() {

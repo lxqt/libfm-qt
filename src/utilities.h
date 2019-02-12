@@ -45,7 +45,7 @@ LIBFM_QT_API Fm::FilePathList pathListFromQUrls(QList<QUrl> urls);
 
 LIBFM_QT_API std::pair<Fm::FilePathList, bool> parseClipboardData(const QMimeData& data);
 
-LIBFM_QT_API void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent = 0);
+LIBFM_QT_API void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent = nullptr);
 
 LIBFM_QT_API void copyFilesToClipboard(const Fm::FilePathList& files);
 
@@ -55,7 +55,7 @@ LIBFM_QT_API bool isCurrentPidClipboardData(const QMimeData& data);
 
 LIBFM_QT_API bool changeFileName(const Fm::FilePath& path, const QString& newName, QWidget* parent, bool showMessage = true);
 
-LIBFM_QT_API bool renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent = 0);
+LIBFM_QT_API bool renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent = nullptr);
 
 enum CreateFileType {
     CreateNewFolder,
@@ -63,7 +63,7 @@ enum CreateFileType {
     CreateWithTemplate
 };
 
-LIBFM_QT_API void createFileOrFolder(CreateFileType type, FilePath parentDir, const TemplateItem* templ = nullptr, QWidget* parent = 0);
+LIBFM_QT_API void createFileOrFolder(CreateFileType type, FilePath parentDir, const TemplateItem* templ = nullptr, QWidget* parent = nullptr);
 
 constexpr uid_t INVALID_UID = uid_t(-1);
 

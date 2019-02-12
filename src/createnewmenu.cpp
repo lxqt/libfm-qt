@@ -81,13 +81,13 @@ CreateNewMenu::~CreateNewMenu() {
 
 void CreateNewMenu::onCreateNewFile() {
     if(dirPath_) {
-        createFileOrFolder(CreateNewTextFile, dirPath_);
+        createFileOrFolder(CreateNewTextFile, dirPath_, nullptr, dialogParent_);
     }
 }
 
 void CreateNewMenu::onCreateNewFolder() {
     if(dirPath_) {
-        createFileOrFolder(CreateNewFolder, dirPath_);
+        createFileOrFolder(CreateNewFolder, dirPath_, nullptr, dialogParent_);
     }
 }
 

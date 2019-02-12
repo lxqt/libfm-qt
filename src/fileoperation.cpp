@@ -304,9 +304,10 @@ void FileOperation::onJobFinish() {
         /* some files cannot be trashed because underlying filesystems don't support it. */
         auto unsupportedFiles = trashJob->unsupportedFiles();
         if(!unsupportedFiles.empty()) { /* delete them instead */
-            /* FIXME: parent window might be already destroyed! */
-            QWidget* parent = nullptr; // FIXME: currently, parent window is not set
-            if(QMessageBox::question(parent, tr("Error"),
+            /* parent object is not destroyed before this */
+            QWidget* pWidget = qobject_cast<QWidget*>(parent());
+            if(QMessageBox::question(pWidget ? pWidget->window() : nullptr,
+                                     tr("Error"),
                                      tr("Some files cannot be moved to trash can because "
                                         "the underlying file systems don't support this operation.\n"
                                         "Do you want to delete them instead?")) == QMessageBox::Yes) {
@@ -372,7 +373,8 @@ FileOperation *FileOperation::symlinkFiles(FilePathList srcFiles, FilePathList d
 //static
 FileOperation* FileOperation::deleteFiles(Fm::FilePathList srcFiles, bool prompt, QWidget* parent) {
     if(prompt) {
-        int result = QMessageBox::warning(parent, tr("Confirm"),
+        int result = QMessageBox::warning(parent ? parent->window() : nullptr,
+                                          tr("Confirm"),
                                           tr("Do you want to delete the selected files?"),
                                           QMessageBox::Yes | QMessageBox::No,
                                           QMessageBox::No);
@@ -381,7 +383,7 @@ FileOperation* FileOperation::deleteFiles(Fm::FilePathList srcFiles, bool prompt
         }
     }
 
-    FileOperation* op = new FileOperation(FileOperation::Delete, std::move(srcFiles));
+    FileOperation* op = new FileOperation(FileOperation::Delete, std::move(srcFiles), parent);
     op->run();
     return op;
 }
@@ -389,7 +391,8 @@ FileOperation* FileOperation::deleteFiles(Fm::FilePathList srcFiles, bool prompt
 //static
 FileOperation* FileOperation::trashFiles(Fm::FilePathList srcFiles, bool prompt, QWidget* parent) {
     if(prompt) {
-        int result = QMessageBox::warning(parent, tr("Confirm"),
+        int result = QMessageBox::warning(parent ? parent->window() : nullptr,
+                                          tr("Confirm"),
                                           tr("Do you want to move the selected files to trash can?"),
                                           QMessageBox::Yes | QMessageBox::No,
                                           QMessageBox::No);
@@ -398,7 +401,7 @@ FileOperation* FileOperation::trashFiles(Fm::FilePathList srcFiles, bool prompt,
         }
     }
 
-    FileOperation* op = new FileOperation(FileOperation::Trash, std::move(srcFiles));
+    FileOperation* op = new FileOperation(FileOperation::Trash, std::move(srcFiles), parent);
     op->run();
     return op;
 }

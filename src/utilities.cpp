@@ -166,7 +166,7 @@ bool changeFileName(const Fm::FilePath& filePath, const QString& newName, QWidge
                     nullptr, /* make this cancellable later. */
                     nullptr, nullptr, &err)) {
         if (showMessage){
-            QMessageBox::critical(parent, QObject::tr("Error"), err.message());
+            QMessageBox::critical(parent ? parent->window() : nullptr, QObject::tr("Error"), err.message());
         }
         return false;
     }
@@ -174,7 +174,7 @@ bool changeFileName(const Fm::FilePath& filePath, const QString& newName, QWidge
 }
 
 bool renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent) {
-    FilenameDialog dlg(parent);
+    FilenameDialog dlg(parent ? parent->window() : nullptr);
     dlg.setWindowTitle(QObject::tr("Rename File"));
     dlg.setLabelText(QObject::tr("Please enter a new name:"));
     // FIXME: what's the best way to handle non-UTF8 filename encoding here?
@@ -226,7 +226,8 @@ void createFileOrFolder(CreateFileType type, FilePath parentDir, const TemplateI
 _retry:
     // ask the user to input a file name
     bool ok;
-    QString new_name = QInputDialog::getText(parent, dialogTitle,
+    QString new_name = QInputDialog::getText(parent ? parent->window() : nullptr,
+                       dialogTitle,
                        prompt,
                        QLineEdit::Normal,
                        defaultNewName,
@@ -260,7 +261,7 @@ _retry:
             goto _retry;
         }
 
-        QMessageBox::critical(parent, QObject::tr("Error"), err.message());
+        QMessageBox::critical(parent ? parent->window() : nullptr, QObject::tr("Error"), err.message());
     }
 }
 

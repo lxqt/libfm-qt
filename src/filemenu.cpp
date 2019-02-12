@@ -121,7 +121,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
 
     createAction_ = new QAction(tr("Create &New"), this);
     Fm::FilePath dirPath = files_.size() == 1 && info_->isDir() ? path : cwd_;
-    createAction_->setMenu(new CreateNewMenu(nullptr, dirPath, this));
+    createAction_->setMenu(new CreateNewMenu(parent, dirPath, this));
     addAction(createAction_);
 
     separator2_ = addSeparator();
@@ -363,15 +363,15 @@ void FileMenu::onCutTriggered() {
 void FileMenu::onDeleteTriggered() {
     auto paths = files_.paths();
     if(useTrash_) {
-        FileOperation::trashFiles(paths, confirmTrash_);
+        FileOperation::trashFiles(paths, confirmTrash_, parentWidget());
     }
     else {
-        FileOperation::deleteFiles(paths, confirmDelete_);
+        FileOperation::deleteFiles(paths, confirmDelete_, parentWidget());
     }
 }
 
 void FileMenu::onUnTrashTriggered() {
-    FileOperation::unTrashFiles(files_.paths());
+    FileOperation::unTrashFiles(files_.paths(), parentWidget());
 }
 
 void FileMenu::onPasteTriggered() {
