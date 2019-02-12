@@ -47,7 +47,7 @@ public:
     };
 
 public:
-    explicit FileOperation(Type type, Fm::FilePathList srcFiles, QObject* parent = 0);
+    explicit FileOperation(Type type, Fm::FilePathList srcFiles, QObject* parent = nullptr);
 
     virtual ~FileOperation();
 
@@ -93,37 +93,37 @@ public:
     }
 
     // convinient static functions
-    static FileOperation* copyFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent = 0);
+    static FileOperation* copyFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent = nullptr);
 
-    static FileOperation* copyFiles(Fm::FilePathList srcFiles, Fm::FilePathList destFiles, QWidget* parent = 0);
+    static FileOperation* copyFiles(Fm::FilePathList srcFiles, Fm::FilePathList destFiles, QWidget* parent = nullptr);
 
-    static FileOperation* copyFile(Fm::FilePath srcFile, Fm::FilePath destFile, QWidget* parent = 0) {
+    static FileOperation* copyFile(Fm::FilePath srcFile, Fm::FilePath destFile, QWidget* parent = nullptr) {
         return copyFiles(FilePathList{std::move(srcFile)}, FilePathList{std::move(destFile)}, parent);
     }
 
-    static FileOperation* moveFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent = 0);
+    static FileOperation* moveFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent = nullptr);
 
-    static FileOperation* moveFiles(Fm::FilePathList srcFiles, Fm::FilePathList destFiles, QWidget* parent = 0);
+    static FileOperation* moveFiles(Fm::FilePathList srcFiles, Fm::FilePathList destFiles, QWidget* parent = nullptr);
 
-    static FileOperation* moveFile(Fm::FilePath srcFile, Fm::FilePath destFile, QWidget* parent = 0) {
+    static FileOperation* moveFile(Fm::FilePath srcFile, Fm::FilePath destFile, QWidget* parent = nullptr) {
         return moveFiles(FilePathList{std::move(srcFile)}, FilePathList{std::move(destFile)}, parent);
     }
 
-    static FileOperation* symlinkFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent = 0);
+    static FileOperation* symlinkFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent = nullptr);
 
-    static FileOperation* symlinkFiles(Fm::FilePathList srcFiles, Fm::FilePathList destFiles, QWidget* parent = 0);
+    static FileOperation* symlinkFiles(Fm::FilePathList srcFiles, Fm::FilePathList destFiles, QWidget* parent = nullptr);
 
-    static FileOperation* symlinkFile(Fm::FilePath srcFile, Fm::FilePath destFile, QWidget* parent = 0) {
+    static FileOperation* symlinkFile(Fm::FilePath srcFile, Fm::FilePath destFile, QWidget* parent = nullptr) {
         return symlinkFiles(FilePathList{std::move(srcFile)}, FilePathList{std::move(destFile)}, parent);
     }
 
-    static FileOperation* deleteFiles(Fm::FilePathList srcFiles, bool promp = true, QWidget* parent = 0);
+    static FileOperation* deleteFiles(Fm::FilePathList srcFiles, bool promp = true, QWidget* parent = nullptr);
 
-    static FileOperation* trashFiles(Fm::FilePathList srcFiles, bool promp = true, QWidget* parent = 0);
+    static FileOperation* trashFiles(Fm::FilePathList srcFiles, bool promp = true, QWidget* parent = nullptr);
 
-    static FileOperation* unTrashFiles(Fm::FilePathList srcFiles, QWidget* parent = 0);
+    static FileOperation* unTrashFiles(Fm::FilePathList srcFiles, QWidget* parent = nullptr);
 
-    static FileOperation* changeAttrFiles(Fm::FilePathList srcFiles, QWidget* parent = 0);
+    static FileOperation* changeAttrFiles(Fm::FilePathList srcFiles, QWidget* parent = nullptr);
 
 Q_SIGNALS:
     void finished();

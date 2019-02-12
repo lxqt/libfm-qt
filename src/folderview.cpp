@@ -1585,9 +1585,7 @@ void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm::FileInf
             // show context menu
             auto files = selectedFiles();
             if(!files.empty()) {
-                Fm::FileMenu* fileMenu = (view && files.size() == 1)
-                                         ? new Fm::FileMenu(files, fileInfo, folderPath, isWritableDir, QString(), view)
-                                         : new Fm::FileMenu(files, fileInfo, folderPath, isWritableDir);
+                Fm::FileMenu* fileMenu = new Fm::FileMenu(files, fileInfo, folderPath, isWritableDir, QString(), view);
                 fileMenu->setFileLauncher(fileLauncher_);
                 fileMenu->addTrustAction();
                 prepareFileMenu(fileMenu);
