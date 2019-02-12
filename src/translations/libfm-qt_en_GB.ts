@@ -636,7 +636,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="252"/>
         <source>Trust selected executables</source>
-        <translation></translation>
+        <translation>Trust selected executable(s)</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="253"/>
@@ -665,7 +665,8 @@ Do you want to replace it?</source>
         <location filename="../fileoperation.cpp" line="310"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation></translation>
+        <translation>Some files cannot be moved to trash can because the underlying file-systems don&apos;t support this operation.
+Do you want to delete them instead?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="375"/>
@@ -869,7 +870,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation></translation>
+        <translation>Cannot create a link on non-native file-system</translation>
     </message>
 </context>
 <context>
@@ -1181,7 +1182,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation></translation>
+        <translation>Cannot restore file &apos;%s&apos;: original path not known</translation>
     </message>
 </context>
 <context>
