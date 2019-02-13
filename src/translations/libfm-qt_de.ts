@@ -823,7 +823,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="378"/>
         <source>no file</source>
-        <translation>keine Datei</translation>
+        <translation>Keine Datei</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="380"/>
