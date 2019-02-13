@@ -450,7 +450,7 @@ Que quere facer con el?</translation>
     <message>
         <location filename="../filedialog.cpp" line="102"/>
         <source>Go Back</source>
-        <translation>Volver atrás</translation>
+        <translation>Ir cara atrás</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="103"/>
@@ -461,7 +461,7 @@ Que quere facer con el?</translation>
     <message>
         <location filename="../filedialog.cpp" line="109"/>
         <source>Go Forward</source>
-        <translation>Avanzar</translation>
+        <translation>Ir cara adiante</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="110"/>
@@ -1008,12 +1008,12 @@ Desexa eliminalos no seu canto?</translation>
     <message>
         <location filename="../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation>Negra</translation>
+        <translation>Grosa</translation>
     </message>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation>Cursiva</translation>
+        <translation>Itálica</translation>
     </message>
 </context>
 <context>
