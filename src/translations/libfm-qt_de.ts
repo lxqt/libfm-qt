@@ -1029,7 +1029,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../pathbar.cpp" line="128"/>
         <source>&amp;Edit Path</source>
-        <translation>Pfad b&amp;earbeiten</translation>
+        <translation>Pfad &amp;bearbeiten</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="131"/>
@@ -1090,7 +1090,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../placesview.cpp" line="485"/>
         <source>Open in New Tab</source>
-        <translation>In neuem Tab öffnen</translation>
+        <translation>Öffne in neuer Registerkarte</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="488"/>
