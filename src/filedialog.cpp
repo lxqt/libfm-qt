@@ -58,6 +58,8 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     ui->folderView->setAutoSelectionDelay(0);
     // set the completer
     QCompleter* completer = new QCompleter(this);
+    completer->setCaseSensitivity(Qt::CaseInsensitive);
+    completer->setFilterMode(Qt::MatchContains);
     completer->setModel(proxyModel_);
     ui->fileName->setCompleter(completer);
     connect(completer, static_cast<void(QCompleter::*)(const QString &)>(&QCompleter::activated), [this](const QString &text) {
