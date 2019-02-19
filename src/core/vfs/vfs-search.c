@@ -217,6 +217,9 @@ static void _fm_vfs_search_enumerator_dispose(GObject *object)
     G_OBJECT_CLASS(fm_vfs_search_enumerator_parent_class)->dispose(object);
 }
 
+/* The next directory that is a match with the recursive search: */
+static GFileInfo *recur_dir_match = NULL;
+
 static GFileInfo *_fm_vfs_search_enumerator_next_file(GFileEnumerator *enumerator,
                                                       GCancellable *cancellable,
                                                       GError **error)
@@ -250,24 +253,43 @@ static GFileInfo *_fm_vfs_search_enumerator_next_file(GFileEnumerator *enumerato
             enu->iter = iter;
         }
 
-        file_info = g_file_enumerator_next_file(iter->enu, cancellable, &err);
+        gboolean had_recur_dir_match = (recur_dir_match != NULL);
+        file_info = had_recur_dir_match ? recur_dir_match : g_file_enumerator_next_file(iter->enu, cancellable, &err);
         if(file_info && g_file_info_get_name(file_info))
         {
+            gboolean is_recursive = (enu->recursive &&
+                                    /* SF bug #969: very possibly we get multiple instances of the
+                                       same file if we follow symlink to a directory
+                                       FIXME: make it optional? */
+                                    !g_file_info_get_is_symlink(file_info) &&
+                                    g_file_info_get_file_type(file_info) == G_FILE_TYPE_DIRECTORY);
             /* check if directory itself matches criteria */
             if(fm_search_job_match_file(enu, file_info, iter->folder_path,
                                         cancellable, &err))
             {
                 g_debug("found matched: %s", g_file_info_get_name(file_info));
-                return file_info;
+                if(err == NULL && is_recursive)
+                {
+                    if(recur_dir_match)
+                    {
+                        /* directory match was found last time;
+                           search inside it recursively below */
+                        recur_dir_match = NULL;
+                    }
+                    else
+                    {
+                        /* directory match is found; remember it for the
+                           next recursive search before returning it */
+                        recur_dir_match = file_info;
+                        return file_info;
+                    }
+                }
+                else
+                    return file_info;
             }
 
             /* recurse upon each directory */
-            if(err == NULL && enu->recursive &&
-               /* SF bug #969: very possibly we get multiple instances of the
-                  same file if we follow symlink to a directory
-                  FIXME: make it optional? */
-               !g_file_info_get_is_symlink(file_info) &&
-               g_file_info_get_file_type(file_info) == G_FILE_TYPE_DIRECTORY)
+            if(err == NULL && is_recursive)
             {
                 if(enu->show_hidden || !g_file_info_get_is_hidden(file_info))
                 {
@@ -279,7 +301,8 @@ static GFileInfo *_fm_vfs_search_enumerator_next_file(GFileEnumerator *enumerato
                 }
             }
 
-            g_object_unref(file_info);
+            if(!had_recur_dir_match)
+                g_object_unref(file_info);
             if(err == NULL)
                 continue;
         }
@@ -313,6 +336,7 @@ static gboolean _fm_vfs_search_enumerator_close(GFileEnumerator *enumerator,
                                               GCancellable *cancellable,
                                               GError **error)
 {
+    recur_dir_match = NULL;
     FmVfsSearchEnumerator *enu = FM_VFS_SEACRH_ENUMERATOR(enumerator);
     FmSearchIntIter *iter;
 
