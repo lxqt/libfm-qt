@@ -309,12 +309,12 @@
     <message>
         <location filename="../file-props.ui" line="674"/>
         <source>SetUID</source>
-        <translation>SetUID</translation>
+        <translation>Définir l&apos;UID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="681"/>
         <source>SetGID</source>
-        <translation>SetGID</translation>
+        <translation>Définir le GID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="717"/>
@@ -429,7 +429,7 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>Ce fichier &apos;%1&apos; semble être une entrée desktop.
+        <translation>Ce fichier &apos;%1&apos; semble être une entrée du bureau.
 Que voulez-vous faire avec ?</translation>
     </message>
     <message>
@@ -514,7 +514,7 @@ Qu voulez-voulez vous en faire ?</translation>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
         <source>Please select a file</source>
-        <translation>Prière de sélectionner un fichier</translation>
+        <translation>Veuillez sélectionner un fichier</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="295"/>
@@ -526,7 +526,7 @@ Voulez-vous le remplacer ?</translation>
     <message>
         <location filename="../filedialog.cpp" line="604"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation>Le patch &quot;%1&quot; n&apos;existe pas</translation>
+        <translation>Le chemin &quot;%1&quot; n&apos;existe pas</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="618"/>
@@ -561,7 +561,7 @@ Voulez-vous le remplacer ?</translation>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation>Fichier ouvert</translation>
+        <translation>Ouvrir un fichier</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
@@ -674,8 +674,8 @@ Voulez-vous le remplacer ?</translation>
         <location filename="../fileoperation.cpp" line="310"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>Certains fichiers ne peuvent pas être mis à la corbeille car les systèmes de fichiers sous-jacents ne prennent pas en charge cette opération.
-Voulez-vous plutôt les supprimer ?</translation>
+        <translation>Certains fichiers ne peuvent pas être déplacés vers la corbeille car les systèmes de fichiers sous-jacents ne prennent pas en charge cette opération.
+Voulez-vous les supprimer à la place ?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="375"/>
@@ -719,7 +719,7 @@ Voulez-vous plutôt les supprimer ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation>Mettre les fichiers de la corbeille</translation>
+        <translation>Fichiers de la corbeille</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
@@ -866,7 +866,7 @@ Voulez-vous plutôt les supprimer ?</translation>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>You should add at least one directory to search.</source>
-        <translation>Vous devriez indiquer au moins un dossier pour la recherche.</translation>
+        <translation>Vous devez ajouter au moins un répertoire à rechercher.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="135"/>
@@ -897,7 +897,7 @@ Voulez-vous plutôt les supprimer ?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="54"/>
         <source>Select &amp;All</source>
-        <translation>Sélectionner &amp;tous</translation>
+        <translation>Tout sélect&amp;ionner</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
@@ -1329,7 +1329,7 @@ Modification: %2</translation>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished">Identifiant : </translation>
+        <translation>Identifiant : </translation>
     </message>
 </context>
 <context>
