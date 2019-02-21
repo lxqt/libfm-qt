@@ -53,7 +53,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation>Eksekusi di emulator terminal</translation>
+        <translation>Jalankan di emulator terminal</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
@@ -81,12 +81,12 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation>&amp;Tambah Item</translation>
+        <translation>T&amp;ambah Item</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation>&amp;Hapus Item</translation>
+        <translation>Hapus Item</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
@@ -99,12 +99,12 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation>Eksekusi berkas</translation>
+        <translation>Jalankan berkas</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="39"/>
         <source>&amp;Open</source>
-        <translation></translation>
+        <translation>Buka</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="52"/>
@@ -233,12 +233,12 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Berisi:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="317"/>
         <source>Device Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Penggunaan Perangkat:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="349"/>
@@ -813,27 +813,27 @@ Apakah Anda ingin menghapusnya saja?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% digunakan</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="334"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 kosong dari %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="378"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>tidak ada berkas</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="380"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation>satu berkas</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
         <source>%1 files</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 berkas</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="416"/>
@@ -1329,7 +1329,7 @@ Dimodifikasi: %2</translation>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Pengenal: </translation>
     </message>
 </context>
 <context>
@@ -1377,7 +1377,7 @@ Dimodifikasi: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation></translation>
+        <translation>Terapkan opsi ini ke semua file yang ada</translation>
     </message>
 </context>
 <context>
