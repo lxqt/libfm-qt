@@ -48,7 +48,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>Manter janela de terminal aberta depois da execução do comando</translation>
+        <translation>Manter janela de terminal aberta depois de executar o comando</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation>Editar Favoritos</translation>
+        <translation>Editar marcadores</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
@@ -91,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Usar arraste e solte para organizar itens</translation>
+        <translation>Utilize &apos;arrastar e largar&apos; para organizar os itens</translation>
     </message>
 </context>
 <context>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation>Executar no &amp;Terminal</translation>
+        <translation>Executar no &amp;terminal</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
@@ -160,7 +160,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress</source>
-        <translation>Evolução</translation>
+        <translation>Progresso</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
@@ -218,12 +218,12 @@
     <message>
         <location filename="../file-props.ui" line="221"/>
         <source>Link target:</source>
-        <translation>Destino do link:</translation>
+        <translation>Destino da ligação:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="247"/>
         <source>Open With:</source>
-        <translation>Abrir Com:</translation>
+        <translation>Abrir com:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="264"/>
@@ -267,7 +267,7 @@
     <message>
         <location filename="../file-props.ui" line="417"/>
         <source>Access Control</source>
-        <translation>Controle de acesso</translation>
+        <translation>Controlo de acesso</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="470"/>
@@ -278,7 +278,7 @@
     <message>
         <location filename="../file-props.ui" line="487"/>
         <source>Make the file executable</source>
-        <translation>Marcar o ficheiro como executável</translation>
+        <translation>Marcar ficheiro como executável</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="528"/>
@@ -292,7 +292,7 @@
         <location filename="../file-props.ui" line="593"/>
         <location filename="../file-props.ui" line="645"/>
         <source>Write</source>
-        <translation>Gravação</translation>
+        <translation>Escrita</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="554"/>
@@ -304,7 +304,7 @@
     <message>
         <location filename="../file-props.ui" line="667"/>
         <source>Sticky</source>
-        <translation>Espesso</translation>
+        <translation>Fixo</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="674"/>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Selecione um aplicativo para abrir &quot;%1&quot; arquivos</translation>
+        <translation>Selecione uma aplicação para abrir os ficheiros &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -371,7 +371,7 @@
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation>&lt;Nenhuma subpastas&gt;</translation>
+        <translation>&lt;Sem sub-pastas&gt;</translation>
     </message>
 </context>
 <context>
@@ -379,17 +379,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="211"/>
         <source>Open in New T&amp;ab</source>
-        <translation>Abrir em Nova &amp;Aba</translation>
+        <translation>Abrir em novo sep&amp;arador</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="215"/>
         <source>Open in New Win&amp;dow</source>
-        <translation>Abrir em Nova Ja&amp;nela</translation>
+        <translation>Abrir em nova ja&amp;nela</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="220"/>
         <source>Open in Termina&amp;l</source>
-        <translation>Abrir no Termina&amp;l</translation>
+        <translation>Abrir no termina&amp;l</translation>
     </message>
 </context>
 <context>
@@ -407,7 +407,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation>Criar link simbólico aqui</translation>
+        <translation>Criar ligação simbólica aqui</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="41"/>
@@ -420,7 +420,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="92"/>
         <source>New bookmark</source>
-        <translation>Novo favorito</translation>
+        <translation>Novo marcador</translation>
     </message>
 </context>
 <context>
@@ -430,19 +430,19 @@
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
         <translation>Parece que &apos;%1&apos; é uma entrada da área de trabalho.
-O que você deseja fazer?</translation>
+O que deseja fazer?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>Parece que o arquivo de texto %1 é um script executável.
+        <translation>Parece que o ficheiro de texto %1 é um script executável.
 O que deseja fazer?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>O arquivo %1 é um executável. Deseja executar o arquivo?</translation>
+        <translation>O ficheiro %1 é um executável. Deseja executar?</translation>
     </message>
 </context>
 <context>
@@ -450,7 +450,7 @@ O que deseja fazer?</translation>
     <message>
         <location filename="../filedialog.cpp" line="102"/>
         <source>Go Back</source>
-        <translation>Voltar</translation>
+        <translation>Recuar</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="103"/>
@@ -483,27 +483,27 @@ O que deseja fazer?</translation>
     <message>
         <location filename="../filedialog.cpp" line="135"/>
         <source>Create Folder</source>
-        <translation>Criar Pasta</translation>
+        <translation>Criar pasta</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Icon View</source>
-        <translation>Visualização em Ícones</translation>
+        <translation>Vista de ícones</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Thumbnail View</source>
-        <translation>Visualização em Miniaturas</translation>
+        <translation>Vista de miniaturas</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
         <source>Compact View</source>
-        <translation>Visualização Compacta</translation>
+        <translation>Vista compacta</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="154"/>
         <source>Detailed List View</source>
-        <translation>Visualização em Lista Detalhada</translation>
+        <translation>Vista em lista detalhada</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
@@ -514,7 +514,7 @@ O que deseja fazer?</translation>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
         <source>Please select a file</source>
-        <translation>Por favor, selecione um arquivo</translation>
+        <translation>Selecione um ficheiro</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="295"/>
@@ -536,7 +536,7 @@ Deseja substituir?</translation>
     <message>
         <location filename="../filedialog.cpp" line="624"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation>&apos;%1&apos; não é um arquivo</translation>
+        <translation>&apos;%1&apos; não é um ficheiro</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="751"/>
@@ -548,12 +548,12 @@ Deseja substituir?</translation>
         <location filename="../filedialog.cpp" line="754"/>
         <location filename="../filedialog.cpp" line="867"/>
         <source>&amp;Save</source>
-        <translation>&amp;Salvar</translation>
+        <translation>&amp;Guardar</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="761"/>
         <source>All Files (*)</source>
-        <translation>Todos os Arquivos (*)</translation>
+        <translation>Todos os ficheiros (*)</translation>
     </message>
 </context>
 <context>
@@ -561,12 +561,12 @@ Deseja substituir?</translation>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation>Abrir Arquivo</translation>
+        <translation>Abrir ficheiro</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
         <source>Save File</source>
-        <translation>Salvar Arquivo</translation>
+        <translation>Guardar ficheiro</translation>
     </message>
 </context>
 <context>
@@ -595,12 +595,12 @@ Deseja substituir?</translation>
         <location filename="../filemenu.cpp" line="159"/>
         <location filename="../filemenu.cpp" line="406"/>
         <source>&amp;Move to Trash</source>
-        <translation>&amp;Mover para lixeira</translation>
+        <translation>&amp;Mover para o lixo</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="252"/>
         <source>Trust selected executables</source>
-        <translation>Confiar em executáveis selecionados</translation>
+        <translation>Confiar nos executáveis selecionados</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="253"/>
@@ -615,7 +615,7 @@ Deseja substituir?</translation>
     <message>
         <location filename="../filemenu.cpp" line="406"/>
         <source>&amp;Delete</source>
-        <translation>&amp;Excluir</translation>
+        <translation>&amp;Apagar</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="163"/>
@@ -625,17 +625,17 @@ Deseja substituir?</translation>
     <message>
         <location filename="../filemenu.cpp" line="88"/>
         <source>Open With...</source>
-        <translation>Abrir Com...</translation>
+        <translation>Abrir com...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="116"/>
         <source>Other Applications</source>
-        <translation>Outras Aplicações</translation>
+        <translation>Outras aplicações</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="122"/>
         <source>Create &amp;New</source>
-        <translation>Criar &amp;Novo</translation>
+        <translation>Criar &amp;novo(a)</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="141"/>
@@ -674,24 +674,24 @@ Deseja substituir?</translation>
         <location filename="../fileoperation.cpp" line="310"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>Alguns arquivos não podem ser movidos para a lixeira porque o sistema de arquivos não suporta esta operação.
-Deseja apagar permanentemente estes arquivos?</translation>
+        <translation>Alguns ficheiros não podem ser movidos para o lixo porque o sistema de ficheiros subjacente não permite esta operação.
+Deseja, em alternativa, apagar os ficheiros?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="375"/>
         <location filename="../fileoperation.cpp" line="392"/>
         <source>Confirm</source>
-        <translation>Confirmar</translation>
+        <translation>Confirmação</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="376"/>
         <source>Do you want to delete the selected files?</source>
-        <translation>Deseja apagar o(s) arquivo(s) selecionado(s)?</translation>
+        <translation>Deseja apagar os ficheiros selecionados?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="393"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation>Deseja mover o(s) arquivo(s) selecionado(s) para a lixeira?</translation>
+        <translation>Deseja mover os ficheiros selecionados para o lixo?</translation>
     </message>
 </context>
 <context>
@@ -699,42 +699,42 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move files</source>
-        <translation>Mover arquivos</translation>
+        <translation>Mover ficheiros</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>A mover os arquivos para a pasta de destino:</translation>
+        <translation>A mover os ficheiros para a pasta de destino:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation>Copiar Arquivos</translation>
+        <translation>Copiar ficheiros</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>A copiar os arquivos para a pasta de destino:</translation>
+        <translation>A copiar os ficheiros para a pasta de destino:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation>Lixeira</translation>
+        <translation>Reciclar ficheiros</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>A mover os arquivos para a lixeira:</translation>
+        <translation>A mover os ficheiros para o lixo:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation>Apagar arquivos</translation>
+        <translation>Apagar ficheiros</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation>A apagar estes arquivos:</translation>
+        <translation>A apagar estes ficheiros:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
@@ -744,27 +744,27 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>A criar ligações simbólicas a estes arquivos:</translation>
+        <translation>A criar ligações simbólicas para estes ficheiros:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation>Alterar Atributos</translation>
+        <translation>Alterar atributos</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>A alterar os atributos destes arquivos:</translation>
+        <translation>A alterar os atributos destes ficheiros:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation>Restaurar arquivos apagados</translation>
+        <translation>Restaurar ficheiros apagados</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Restaurar estes arquivos da lixeira:</translation>
+        <translation>A restaurar estes ficheiros do lixo:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
@@ -828,12 +828,12 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="380"/>
         <source>one file</source>
-        <translation>um arquivo</translation>
+        <translation>um ficheiro</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
         <source>%1 files</source>
-        <translation>%1 arquivos</translation>
+        <translation>%1 ficheiros</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="416"/>
@@ -853,7 +853,7 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="515"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>Pretende aplicar as alterações a todos os arquivos e subpastas recursivamente?</translation>
+        <translation>Pretende aplicar as alterações recursivamente a todos os ficheiros e sub-pastas?</translation>
     </message>
 </context>
 <context>
@@ -879,7 +879,7 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation>Não é possível criar um link no sistema de arquivos não nativo</translation>
+        <translation>Não é possível criar uma ligação em sistemas não nativos</translation>
     </message>
 </context>
 <context>
@@ -887,22 +887,22 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="41"/>
         <source>Create &amp;New</source>
-        <translation>Criar &amp;Novo(a)</translation>
+        <translation>Criar &amp;novo(a)</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="48"/>
         <source>&amp;Paste</source>
-        <translation>&amp;Colar</translation>
+        <translation>Co&amp;lar</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="54"/>
         <source>Select &amp;All</source>
-        <translation>Selecionar &amp;Tudo</translation>
+        <translation>Selecion&amp;ar tudo</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
         <source>Invert Selection</source>
-        <translation>Inverter Seleção</translation>
+        <translation>Inverter seleção</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="64"/>
@@ -912,12 +912,12 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
         <source>Show Hidden</source>
-        <translation>Exibir Oculto</translation>
+        <translation>Mostrar ocultos</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="97"/>
         <source>Folder Pr&amp;operties</source>
-        <translation>Pr&amp;opriedades da Pasta</translation>
+        <translation>Pr&amp;opriedades da pasta</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="140"/>
@@ -927,27 +927,27 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="163"/>
         <source>By File Name</source>
-        <translation>Por Nome do Arquivo</translation>
+        <translation>Por nome de ficheiro</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="164"/>
         <source>By Modification Time</source>
-        <translation>Por Data de Modificação</translation>
+        <translation>Por data de modificação</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="165"/>
         <source>By File Size</source>
-        <translation>Por Tamanho do Arquivo</translation>
+        <translation>Por tamanho do ficheiro</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By File Type</source>
-        <translation>Por Tipo de Arquivo</translation>
+        <translation>Por tipo de ficheiro</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="167"/>
         <source>By File Owner</source>
-        <translation>Pelo Proprietário do Arquivo</translation>
+        <translation>Pelo dono do ficheiro</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="179"/>
@@ -962,12 +962,12 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="201"/>
         <source>Folder First</source>
-        <translation>Pasta Primeiro</translation>
+        <translation>Pastas primeiro</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="211"/>
         <source>Case Sensitive</source>
-        <translation>Sensível a Maiúsculas e Minúsculas</translation>
+        <translation>Diferenciar maiúsculas/minúsculas</translation>
     </message>
 </context>
 <context>
@@ -1029,12 +1029,12 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../pathbar.cpp" line="128"/>
         <source>&amp;Edit Path</source>
-        <translation>&amp;Editar Caminho</translation>
+        <translation>&amp;Editar caminho</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="131"/>
         <source>&amp;Copy Path</source>
-        <translation>&amp;Copiar Caminho</translation>
+        <translation>&amp;Copiar caminho</translation>
     </message>
 </context>
 <context>
@@ -1047,12 +1047,12 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="53"/>
         <source>Desktop</source>
-        <translation>Área de Trabalho</translation>
+        <translation>Área de trabalho</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="225"/>
         <source>Trash</source>
-        <translation>Lixeira</translation>
+        <translation>Lixo</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="59"/>
@@ -1077,7 +1077,7 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="134"/>
         <source>Bookmarks</source>
-        <translation>Favoritos</translation>
+        <translation>Marcadores</translation>
     </message>
 </context>
 <context>
@@ -1085,17 +1085,17 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../placesview.cpp" line="500"/>
         <source>Empty Trash</source>
-        <translation>Esvaziar Lixeira</translation>
+        <translation>Esvaziar lixo</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="485"/>
         <source>Open in New Tab</source>
-        <translation>Abrir em Nova Aba</translation>
+        <translation>Abrir em novo separador</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="488"/>
         <source>Open in New Window</source>
-        <translation>Abrir em Nova Janela</translation>
+        <translation>Abrir em nova janela</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="520"/>
@@ -1106,22 +1106,22 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../placesview.cpp" line="537"/>
         <source>Move Bookmark Up</source>
-        <translation>Mover Favorito Acima</translation>
+        <translation>Mover marcador para cima</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="542"/>
         <source>Move Bookmark Down</source>
-        <translation>Mover Favorito Abaixo</translation>
+        <translation>Mover marcador para baixo</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="546"/>
         <source>Rename Bookmark</source>
-        <translation>Renomear Favorito</translation>
+        <translation>Renomear marcador</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="549"/>
         <source>Remove Bookmark</source>
-        <translation>Remover Favorito</translation>
+        <translation>Remover marcador</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="558"/>
@@ -1142,7 +1142,7 @@ Deseja apagar permanentemente estes arquivos?</translation>
     <message>
         <location filename="../placesview.cpp" line="603"/>
         <source>Show All Entries</source>
-        <translation>Exibir Todas Entradas</translation>
+        <translation>Mostrar todas as entradas</translation>
     </message>
 </context>
 <context>
@@ -1168,7 +1168,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="97"/>
         <source>&amp;Overwrite</source>
-        <translation>&amp;Sobrescrever</translation>
+        <translation>&amp;Substituir</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="99"/>
@@ -1186,7 +1186,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Directory Tree</source>
-        <translation>Árvore de Diretórios</translation>
+        <translation>Árvore de diretórios</translation>
     </message>
 </context>
 <context>
@@ -1194,7 +1194,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Não é possível restaurar arquivo &apos;%s&apos;: caminho original desconhecido</translation>
+        <translation>Não é possível restaurar &apos;%s&apos;: caminho desconhecido</translation>
     </message>
 </context>
 <context>
@@ -1212,17 +1212,17 @@ Modificado: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>Conectar como u&amp;suário:</translation>
+        <translation>Conectar com o u&amp;tilizador:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
         <source>&amp;Username:</source>
-        <translation>Nome de &amp;usuário:</translation>
+        <translation>Nome de &amp;utilizador:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="102"/>
         <source>&amp;Password:</source>
-        <translation>&amp;Senha:</translation>
+        <translation>&amp;Palavra-passe:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="112"/>
@@ -1232,17 +1232,17 @@ Modificado: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation>Esquecer senha &amp;imediatamente</translation>
+        <translation>Esquecer palavra-passe &amp;imediatamente</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password until you &amp;logout</source>
-        <translation>Lembrar senha até você &amp;sair</translation>
+        <translation>Memorizar pa&amp;lavra-passe até sair da sessão</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation>Lembrar &amp;sempre</translation>
+        <translation>Memori&amp;zar eternamente</translation>
     </message>
 </context>
 <context>
@@ -1259,32 +1259,32 @@ Modificado: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="178"/>
         <source>Rename File</source>
-        <translation>Renomear Arquivo</translation>
+        <translation>Renomear ficheiro</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="179"/>
         <source>Please enter a new name:</source>
-        <translation>Por favor, insira um novo nome:</translation>
+        <translation>Introduza o novo nome:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="204"/>
         <source>Create Folder</source>
-        <translation>Criar Pasta</translation>
+        <translation>Criar pasta</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="209"/>
         <source>Please enter a new file name:</source>
-        <translation>Por favor, insira um novo nome do arquivo:</translation>
+        <translation>Introduza o nome para o ficheiro:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="210"/>
         <source>New text file</source>
-        <translation>Novo arquivo de texto</translation>
+        <translation>Novo ficheiro de texto</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="214"/>
         <source>Please enter a new folder name:</source>
-        <translation>Por favor, insira um novo nome da pasta:</translation>
+        <translation>Introduza o nome para a pasta:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="215"/>
@@ -1294,17 +1294,17 @@ Modificado: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="220"/>
         <source>Enter a name for the new %1:</source>
-        <translation>Digite um nome para o novo %1:</translation>
+        <translation>Introduza  um nome para %1:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="205"/>
         <source>Create File</source>
-        <translation>Criar Arquivo</translation>
+        <translation>Criar ficheiro</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="556"/>
         <source>Custom Icon Error</source>
-        <translation>Erro no Ícone Personalizado</translation>
+        <translation>Erro no ícone personalizado</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
@@ -1314,17 +1314,17 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="272"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>Arquivo desktop inválido: &apos;%1&apos;</translation>
+        <translation>Ficheiro .desktop inválido: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="307"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>Nenhum aplicativo padrão está configurado para executar &apos;%1&apos;</translation>
+        <translation>Não está definida uma aplicação padrão para iniciar &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="348"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>Não é possível configurar o diretório de trabalho para &apos;%1&apos;: %2</translation>
+        <translation>Não é possível definir o diretório de trabalho para &apos;%1&apos;: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
@@ -1337,12 +1337,12 @@ Modificado: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation>Confirmar para substituir arquivos</translation>
+        <translation>Confirmação de substituição</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Já existe um arquivo com o mesmo nome nesta localização.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Deseja substituir o arquivo existente?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Já existe um ficheiro com o mesmo nome nesta localização.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Deseja substituir o ficheiro existente&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
@@ -1352,17 +1352,17 @@ Modificado: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation>com o seguinte arquivo?</translation>
+        <translation>por este?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
         <source>src file info</source>
-        <translation>informações do arquivo de origem</translation>
+        <translation>informações do ficheiro de origem</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="89"/>
         <source>dest file info</source>
-        <translation>informações do arquivo de destino</translation>
+        <translation>informações do ficheiro de destino</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="102"/>
@@ -1372,12 +1372,12 @@ Modificado: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>&amp;Nome do arquivo:</translation>
+        <translation>Nome do &amp;ficheiro:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation>Aplicar opção a todos os arquivos existentes</translation>
+        <translation>Aplicar opção para todos os ficheiros existentes</translation>
     </message>
 </context>
 <context>
@@ -1385,17 +1385,17 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation>Pesquisar Arquivos</translation>
+        <translation>Pesquisar ficheiros</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation>Nome/Localização</translation>
+        <translation>Nome/localização</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation>Padrões de Nome de Arquivos:</translation>
+        <translation>Padrões para nome de ficheiro:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="41"/>
@@ -1405,7 +1405,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation>Não sensível a Maiúsculas e Minúsculas</translation>
+        <translation>Não diferenciar maiúsculas/minúsculas</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="55"/>
@@ -1415,7 +1415,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="68"/>
         <source>Places to Search:</source>
-        <translation>Locais a Pesquisar:</translation>
+        <translation>Locais a pesquisar:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="81"/>
@@ -1430,42 +1430,42 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in sub directories</source>
-        <translation>Pesquisar nos subdiretórios</translation>
+        <translation>Pesquisar nos sub-diretórios</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="129"/>
         <source>Search for hidden files</source>
-        <translation>Pesquisar por arquivos ocultos</translation>
+        <translation>Pesquisar por ficheiros ocultos</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="140"/>
         <source>File Type</source>
-        <translation>Tipo de Arquivo</translation>
+        <translation>Tipo de ficheiro</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation>Apenas pesquisar por arquivos de seguintes tipos:</translation>
+        <translation>Pesquisar apenas por ficheiros deste tipo:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
         <source>Text files</source>
-        <translation>Arquivos de texto</translation>
+        <translation>Ficheiros de texto</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="159"/>
         <source>Image files</source>
-        <translation>Arquivos de imagem</translation>
+        <translation>Imagens</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="166"/>
         <source>Audio files</source>
-        <translation>Arquivos de áudio</translation>
+        <translation>Áudio</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="173"/>
         <source>Video files</source>
-        <translation>Arquivos de vídeo</translation>
+        <translation>Vídeos</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="180"/>
@@ -1485,12 +1485,12 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="217"/>
         <source>File contains:</source>
-        <translation>Arquivo contém:</translation>
+        <translation>Ficheiro contém:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case insensiti&amp;ve</source>
-        <translation>Não sensí&amp;vel a Maiúsculas e Minúsculas</translation>
+        <translation>Não d&amp;iferenciar maiúsculas/minúsculas</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
@@ -1505,12 +1505,12 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="266"/>
         <source>File Size:</source>
-        <translation>Tamanho do Arquivo:</translation>
+        <translation>Tamanho do ficheiro:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="295"/>
         <source>Larger than:</source>
-        <translation>Maior que:</translation>
+        <translation>Maior do que:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="309"/>
@@ -1539,12 +1539,12 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="274"/>
         <source>Smaller than:</source>
-        <translation>Menor que:</translation>
+        <translation>Menor do que:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
         <source>Last Modified Time:</source>
-        <translation>Data da Última Modificação:</translation>
+        <translation>Data da última modificação:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="378"/>
