@@ -320,6 +320,7 @@ void FileMenu::openFilesWithApp(GAppInfo* app) {
         auto uri = file->path().uri();
         uris = g_list_prepend(uris, uri.release());
     }
+    uris = g_list_reverse(uris); // respect the original order
     fm_app_info_launch_uris(app, uris, nullptr, nullptr);
     g_list_foreach(uris, (GFunc)g_free, nullptr);
     g_list_free(uris);
