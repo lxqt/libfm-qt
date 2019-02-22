@@ -225,7 +225,7 @@ export(TARGETS ${LIBFM_QT_LIBRARY_NAME}
 )
 
 # install a pkgconfig file for libfm-qt
-set(REQUIRED_QT "Qt5Widgets >= ${REQUIRED_QT_VERSION} Qt5X11Extras >= ${REQUIRED_QT_VERSION}")
+set(REQUIRED_QT "Qt5Widgets >= ${QT_MINIMUM_VERSION} Qt5X11Extras >= ${QT_MINIMUM_VERSION}")
 configure_file(libfm-qt.pc.in lib${LIBFM_QT_LIBRARY_NAME}.pc @ONLY)
 # FreeBSD loves to install files to different locations
 # https://www.freebsd.org/doc/handbook/dirstructure.html
