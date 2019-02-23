@@ -843,7 +843,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="418"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation>Images (*.png *.xpm *.svg *.svgz )</translation>
+        <translation>Images (*.png *.xpm *.svg *.svgz)</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="514"/>
@@ -1029,7 +1029,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../pathbar.cpp" line="128"/>
         <source>&amp;Edit Path</source>
-        <translation>&amp;Editer le chemin</translation>
+        <translation>&amp;Éditer le chemin</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="131"/>
@@ -1062,7 +1062,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="67"/>
         <source>Applications</source>
-        <translation>Applications</translation>
+        <translation>Application(s)</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="76"/>
@@ -1085,7 +1085,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../placesview.cpp" line="500"/>
         <source>Empty Trash</source>
-        <translation>Vider la corbeille</translation>
+        <translation>Corbeille vide</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="485"/>
@@ -1106,12 +1106,12 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../placesview.cpp" line="537"/>
         <source>Move Bookmark Up</source>
-        <translation>Monter le signet</translation>
+        <translation>Déplacer le signet vers le haut</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="542"/>
         <source>Move Bookmark Down</source>
-        <translation>Descendre le signet</translation>
+        <translation>Déplacer le signet vers le bas</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="546"/>
@@ -1121,7 +1121,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../placesview.cpp" line="549"/>
         <source>Remove Bookmark</source>
-        <translation>Effacer le signet</translation>
+        <translation>Supprimer le signet</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="558"/>
@@ -1168,7 +1168,7 @@ Modification: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="97"/>
         <source>&amp;Overwrite</source>
-        <translation>&amp;Remplacer</translation>
+        <translation>&amp;Écraser</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="99"/>
@@ -1314,7 +1314,7 @@ Modification: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="272"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>Fichier d&apos;entrée desktop invalide &apos;%1&apos;</translation>
+        <translation>Fichier d&apos;entrée de bureau non valide: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="307"/>
@@ -1347,7 +1347,7 @@ Modification: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
         <source>dest</source>
-        <translation>dst</translation>
+        <translation>destination</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
@@ -1357,22 +1357,22 @@ Modification: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
         <source>src file info</source>
-        <translation>infos fichier src</translation>
+        <translation>Informations sur le fichier source</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="89"/>
         <source>dest file info</source>
-        <translation>infos fichier dst</translation>
+        <translation>Informations sur le fichier de destination</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="102"/>
         <source>src</source>
-        <translation>src</translation>
+        <translation>source</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>Nom de &amp;fichier :</translation>
+        <translation>Nom du &amp;fichier :</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
@@ -1410,7 +1410,7 @@ Modification: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation>Utiliser les expressions rationnelles</translation>
+        <translation>Utiliser une expression régulière</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="68"/>
@@ -1495,7 +1495,7 @@ Modification: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>&amp;Use regular expression</source>
-        <translation>&amp;Utiliser les expressions rationelles</translation>
+        <translation>&amp;Utiliser une expression régulière</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="260"/>
@@ -1522,19 +1522,19 @@ Modification: %2</translation>
         <location filename="../filesearch.ui" line="314"/>
         <location filename="../filesearch.ui" line="344"/>
         <source>KiB</source>
-        <translation>KiB</translation>
+        <translation>Ko</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="319"/>
         <location filename="../filesearch.ui" line="349"/>
         <source>MiB</source>
-        <translation>MiB</translation>
+        <translation>Mo</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="324"/>
         <location filename="../filesearch.ui" line="354"/>
         <source>GiB</source>
-        <translation>GiB</translation>
+        <translation>Go</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="274"/>
