@@ -1,40 +1,60 @@
+libfm-qt-0.14.1 / 2019-02-24
+============================
+
+  * Bumped API version to 0.14.1
+  * Aged ABI version to 6.1.0
+  * Respect sorting/selection order when launching files
+  * Generate libfm-qt.pc correctly
+  * Fix recursive search when a dir is matched
+  * Fix crash on showing Properties dialog in special cases
+  * Case-insensitive and match-containing file name completer for file dialog
+  * Give window parents to some app-modal dialogs
+  * Gray out cut files in detailed and compact modes
+  * Added custom widths and visibility for detailed columns
+  * Added missing sort-by-group action
+  * Do not rely on the order of folder menu actions. instead check their data
+  * pathbar: fix an issue with a slot recursive call
+  * Make setting trust possible anytime
+  * Define a macro for "metadata::trust".
+  * Updated translations
+
 libfm-qt-0.14.0 / 2019-01-25
 ============================
 
- * Completely dropped libfm dependency.
- * An option for showing full names instead of display names.
- * An option for shadowing hidden icons.
- * Fixed handling of mounts and SMB.
- * Fixed overwrite prompt in LXQt file dialog.
- * Fixed rare showing of nonexistent files.
- * Moved Qt file dialog helper into libfm-qt.
- * Support adding metadata for trusting executables and add an emblem to untrusted desktop files inside home.
- * Fixed a problem in selecting newly created files.
- * Fixed a random crash by adding context to folder lambda connections of file dialog.
- * Selection/deselection corner marks on mouse-over.
- * Ensure visibility of toggled path button on resizing window.
- * Use target URI for symlink thumbnails.
- * Return the correct path in "FileInfo::path()" by giving the path itself to the ctor of "FileInfo" wherever possible.
- * Fixed an infinite loop on trashing a file that couldn't be trashed.
- * Added dir file number to Properties dialog.
- * Added device usge bar to Properties dialog.
- * Volume tooltips on side-pane.
- * Fix selection on file creation in detailed list view.
- * Removed senseless "Canceled Operation" messages.
- * Let items be selected by typing in detaled list view too.
- * Made path-edit completer insensitive to case.
- * Allow compressing a selection of different mimetypes in the context menu.
- * Span first column of Places pane (not for Devices), so that names aren't elided unnecessarily.
- * Fixed randomly missing eject button with mounting.
- * Don't launch unselected current item on pressing Enter.
- * Don't update trash icon too often.
- * Fixed crash on launching desktop files with empty Exec.
- * Fixes for template actions (showing them sorted).
- * Prevent a directory from being copied into itself (or into a subdir of itself); show an error message instead.
- * Fixed a problem in deletion queues -- while monitoring a directory -- by preventing file info jobs from overlapping each other.
- * Allow item activation by pressing ENTER when the cursor is over its selection corner.
- * Fixed mimetype filters in LXQt file dialog.
- * Fixed view icons with HDPI scaling.
+  * Completely dropped libfm dependency.
+  * An option for showing full names instead of display names.
+  * An option for shadowing hidden icons.
+  * Fixed handling of mounts and SMB.
+  * Fixed overwrite prompt in LXQt file dialog.
+  * Fixed rare showing of nonexistent files.
+  * Moved Qt file dialog helper into libfm-qt.
+  * Support adding metadata for trusting executables and add an emblem to untrusted desktop files inside home.
+  * Fixed a problem in selecting newly created files.
+  * Fixed a random crash by adding context to folder lambda connections of file dialog.
+  * Selection/deselection corner marks on mouse-over.
+  * Ensure visibility of toggled path button on resizing window.
+  * Use target URI for symlink thumbnails.
+  * Return the correct path in "FileInfo::path()" by giving the path itself to the ctor of "FileInfo" wherever possible.
+  * Fixed an infinite loop on trashing a file that couldn't be trashed.
+  * Added dir file number to Properties dialog.
+  * Added device usge bar to Properties dialog.
+  * Volume tooltips on side-pane.
+  * Fix selection on file creation in detailed list view.
+  * Removed senseless "Canceled Operation" messages.
+  * Let items be selected by typing in detaled list view too.
+  * Made path-edit completer insensitive to case.
+  * Allow compressing a selection of different mimetypes in the context menu.
+  * Span first column of Places pane (not for Devices), so that names aren't elided unnecessarily.
+  * Fixed randomly missing eject button with mounting.
+  * Don't launch unselected current item on pressing Enter.
+  * Don't update trash icon too often.
+  * Fixed crash on launching desktop files with empty Exec.
+  * Fixes for template actions (showing them sorted).
+  * Prevent a directory from being copied into itself (or into a subdir of itself); show an error message instead.
+  * Fixed a problem in deletion queues -- while monitoring a directory -- by preventing file info jobs from overlapping each other.
+  * Allow item activation by pressing ENTER when the cursor is over its selection corner.
+  * Fixed mimetype filters in LXQt file dialog.
+  * Fixed view icons with HDPI scaling.
 
 libfm-qt-0.13.1 / 2018-06-02
 ============================
