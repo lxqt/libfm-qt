@@ -95,6 +95,10 @@ public:
   virtual void dragLeaveEvent(QDragLeaveEvent* e);
   virtual void dropEvent(QDropEvent* e);
 
+  // for rubberband
+  virtual void paintEvent(QPaintEvent * event);
+  virtual void setSelection(const QRect &rect, QItemSelectionModel::SelectionFlags command);
+
   virtual void rowsInserted(const QModelIndex& parent,int start, int end);
   virtual void rowsAboutToBeRemoved(const QModelIndex& parent,int start, int end);
   virtual void dataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int>& roles = QVector<int>{});
@@ -129,6 +133,9 @@ private:
   bool activationAllowed_;
   QList<int> customColumnWidths_;
   QSet<int> hiddenColumns_;
+  QPoint mousePressPoint_;
+  QRect rubberBandRect_;
+  QItemSelectionModel::SelectionFlag ctrlDragSelectionFlag_;
 };
 
 

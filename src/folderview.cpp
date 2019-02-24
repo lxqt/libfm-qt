@@ -37,6 +37,7 @@
 #include <QMimeData>
 #include <QHoverEvent>
 #include <QApplication>
+#include <QPainter>
 #include <QScrollBar>
 #include <QMetaType>
 #include <QMessageBox>
@@ -90,7 +91,7 @@ void FolderViewListView::mousePressEvent(QMouseEvent* event) {
 void FolderViewListView::mouseMoveEvent(QMouseEvent* event) {
     // NOTE: Filter the BACK & FORWARD buttons to not Drag & Drop with them.
     // (by default Qt views drag with any button)
-    if (event->buttons() == Qt::NoButton || event->buttons() & ~(Qt::BackButton | Qt::ForwardButton)) {
+    if (event->buttons() == Qt::NoButton || (event->buttons() & ~(Qt::BackButton | Qt::ForwardButton))) {
         bool cursorOnSelectionCorner = cursorOnSelectionCorner_;
         QListView::mouseMoveEvent(event);
         // update the index if the cursor enters/leaves the selection corner icon
@@ -274,7 +275,8 @@ FolderViewTreeView::FolderViewTreeView(QWidget* parent):
     QTreeView(parent),
     doingLayout_(false),
     layoutTimer_(nullptr),
-    activationAllowed_(true) {
+    activationAllowed_(true),
+    ctrlDragSelectionFlag_(QItemSelectionModel::NoUpdate) {
 
     header()->setSectionResizeMode(QHeaderView::Interactive);
     header()->setStretchLastSection(true);
@@ -397,16 +399,116 @@ void FolderViewTreeView::setModel(QAbstractItemModel* model) {
     }
 }
 
+void FolderViewTreeView::paintEvent(QPaintEvent * event) {
+    QTreeView::paintEvent(event);
+    if(rubberBandRect_.isValid()) { // draw rubberband
+        QPainter p(viewport());
+        QStyleOptionRubberBand opt;
+        opt.initFrom(this);
+        opt.shape = QRubberBand::Rectangle;
+        opt.opaque = false;
+        QRect r = rubberBandRect_.adjusted(-horizontalOffset(), -verticalOffset(),
+                                            -horizontalOffset(), -verticalOffset())
+                    .intersected(viewport()->rect()
+                    .adjusted(-16, -16, 16, 16));
+        opt.rect = r;
+        style()->drawControl(QStyle::CE_RubberBand, &opt, &p);
+    }
+}
+
 void FolderViewTreeView::mousePressEvent(QMouseEvent* event) {
-    QTreeView::mousePressEvent(event);
+    QAbstractItemView::mousePressEvent(event);
+
+    // remember mouse press position and determine whether selections should be kept
+    // or removed later, when the cursor moves
+    mousePressPoint_ = event->pos() + QPoint(horizontalOffset(), verticalOffset());
+    QModelIndex index = indexAt(event->pos());
+    if(index.isValid()) {
+        QItemSelectionModel::SelectionFlags command;
+        Qt::KeyboardModifiers modifiers = QApplication::keyboardModifiers();
+        const Qt::MouseButton button = static_cast<const QMouseEvent*>(event)->button();
+        const bool shiftKeyPressed = modifiers & Qt::ShiftModifier;
+        const bool controlKeyPressed = modifiers & Qt::ControlModifier;
+        const bool rightButtonPressed = button & Qt::RightButton;
+        const bool indexIsSelected = selectionModel()->isSelected(index);
+        if(controlKeyPressed && !shiftKeyPressed && !rightButtonPressed) {
+            ctrlDragSelectionFlag_ = indexIsSelected ? QItemSelectionModel::Deselect : QItemSelectionModel::Select;
+        }
+    }
+
     static_cast<FolderView*>(parent())->childMousePressEvent(event);
 }
 
 void FolderViewTreeView::mouseMoveEvent(QMouseEvent* event) {
     // NOTE: Filter the BACK & FORWARD buttons to not Drag & Drop with them.
     // (by default Qt views drag with any button)
-    if (event->buttons() == Qt::NoButton || event->buttons() & ~(Qt::BackButton | Qt::ForwardButton))
-        QTreeView::mouseMoveEvent(event);
+    if(event->buttons() == Qt::NoButton || (event->buttons() & ~(Qt::BackButton | Qt::ForwardButton))) {
+        // handle rubberband
+        if((event->buttons() & Qt::LeftButton)
+            && (rubberBandRect_.isValid()
+                || !indexAt(mousePressPoint_ - QPoint(horizontalOffset(), verticalOffset())).isValid())) {
+            QAbstractItemView::mouseMoveEvent(event);
+
+            // set rubberband rectangle
+            QRect rect(mousePressPoint_, event->pos() + QPoint(horizontalOffset(), verticalOffset()));
+            rect = rect.normalized();
+            QRect r = rect.united(rubberBandRect_);
+            viewport()->update(r.adjusted(-horizontalOffset(), -verticalOffset(),
+                                            -horizontalOffset(), -verticalOffset()));
+            rubberBandRect_ = rect;
+
+            // set state and selection
+            setState(QAbstractItemView::DragSelectingState);
+            Qt::KeyboardModifiers modifiers = QApplication::keyboardModifiers();
+            QItemSelectionModel::SelectionFlags command;
+            if(modifiers & Qt::ControlModifier) {
+                command = QItemSelectionModel::ToggleCurrent;
+            }
+            else if(modifiers & Qt::ShiftModifier) {
+                command = QItemSelectionModel::SelectCurrent;
+            }
+            else {
+                command = QItemSelectionModel::Clear|QItemSelectionModel::SelectCurrent;
+            }
+            command |= QItemSelectionModel::Rows;
+            if(ctrlDragSelectionFlag_ != QItemSelectionModel::NoUpdate && command.testFlag(QItemSelectionModel::Toggle)) {
+                command &= ~QItemSelectionModel::Toggle;
+                command |= ctrlDragSelectionFlag_;
+            }
+            QRect selectionRect = QRect(rubberBandRect_.topLeft(), rubberBandRect_.bottomRight());
+            setSelection(selectionRect, command);
+        }
+        else {
+            QTreeView::mouseMoveEvent(event);
+        }
+    }
+}
+
+void FolderViewTreeView::setSelection(const QRect &rect, QItemSelectionModel::SelectionFlags command) {
+    if(model() && state() == QAbstractItemView::DragSelectingState) { // rubberband selection
+        QRect r = rubberBandRect_.adjusted(-horizontalOffset(), -verticalOffset(),
+                                            -horizontalOffset(), -verticalOffset());
+        r.setLeft(qMax(0, r.left()));
+        r.setTop(qMax(-verticalOffset(), r.top()));
+        QModelIndex top = indexAt(r.topLeft());
+        QItemSelection selection;
+        if(top.isValid()) {
+            top = top.sibling(top.row(), 0);
+             if(top.isValid()) {
+                QModelIndex bottom = indexAt(r.bottomLeft());
+                if(!bottom.isValid()) {
+                    bottom = model()->index(model()->rowCount() - 1, 0);
+                }
+                if(bottom.isValid()) {
+                    selection = QItemSelection(top, bottom);
+                }
+             }
+        }
+        selectionModel()->select(selection, command | QItemSelectionModel::Rows);
+    }
+    else {
+        QTreeView::setSelection(rect, command);
+    }
 }
 
 void FolderViewTreeView::dragEnterEvent(QDragEnterEvent* event) {
@@ -607,9 +709,14 @@ void FolderViewTreeView::mouseReleaseEvent(QMouseEvent* event) {
         activationAllowed_ = false;
     }
 
-    QTreeView::mouseReleaseEvent(event);
+    QAbstractItemView::mouseReleaseEvent(event);
+    viewport()->update(rubberBandRect_.adjusted(-horizontalOffset(), -verticalOffset(),
+                                                -horizontalOffset(), -verticalOffset()));
+    rubberBandRect_ = QRect();
+    ctrlDragSelectionFlag_ = QItemSelectionModel::NoUpdate;
 
     activationAllowed_ = activationWasAllowed;
+
 }
 
 void FolderViewTreeView::mouseDoubleClickEvent(QMouseEvent* event) {
