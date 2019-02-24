@@ -78,3 +78,9 @@ desktop_id=termite.desktop
 
 [kitty]
 desktop_id=kitty.desktop
+
+[st]
+open_arg=-e
+
+[stterm]
+open_arg=-e
