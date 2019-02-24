@@ -16,6 +16,7 @@ libfm-qt-0.14.1 / 2019-02-24
   * pathbar: fix an issue with a slot recursive call
   * Make setting trust possible anytime
   * Define a macro for "metadata::trust".
+  * Add rubber-band selection to detailed list view
   * Updated translations
 
 libfm-qt-0.14.0 / 2019-01-25
