@@ -174,6 +174,7 @@ bool BasicFileLauncher::launchWithApp(GAppInfo* app, const FilePathList& paths, 
         auto uri = path.uri();
         uris = g_list_prepend(uris, uri.release());
     }
+    uris = g_list_reverse(uris);
     GErrorPtr err;
     bool ret = bool(g_app_info_launch_uris(app, uris, ctx, &err));
     g_list_foreach(uris, reinterpret_cast<GFunc>(g_free), nullptr);
@@ -259,6 +260,7 @@ bool BasicFileLauncher::launchDesktopEntry(const char *desktopEntryName, const F
             auto uri = path.uri();
             uris = g_list_prepend(uris, uri.release());
         }
+        uris = g_list_reverse(uris);
         GErrorPtr err;
         ret = bool(fm_app_info_launch(app, uris, ctx, &err));
         g_list_foreach(uris, reinterpret_cast<GFunc>(g_free), nullptr);
