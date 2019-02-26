@@ -6,7 +6,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>Sélectionnez une application</translation>
+        <translation>Sélectionner une application</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
@@ -871,7 +871,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../filesearchdialog.cpp" line="135"/>
         <source>Select a folder</source>
-        <translation>Sélectionnez un dossier</translation>
+        <translation>Sélectionner un dossier</translation>
     </message>
 </context>
 <context>
@@ -1062,7 +1062,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="67"/>
         <source>Applications</source>
-        <translation>Application(s)</translation>
+        <translation>Applications</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="76"/>
@@ -1294,7 +1294,7 @@ Modification: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="220"/>
         <source>Enter a name for the new %1:</source>
-        <translation>Entrez un nom pour le nouveau %1 :</translation>
+        <translation>Entrer un nom pour le nouveau %1 :</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="205"/>
