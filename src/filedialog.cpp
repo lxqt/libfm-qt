@@ -433,8 +433,11 @@ void FileDialog::selectFilePath(const FilePath &path) {
     QItemSelectionModel* selModel = ui->folderView->selectionModel();
     selModel->select(idx, flags);
     selModel->setCurrentIndex(idx, QItemSelectionModel::Current);
-    QTimer::singleShot(0, this, [this, idx]() {
-        ui->folderView->childView()->scrollTo(idx, QAbstractItemView::PositionAtCenter);
+    QTimer::singleShot(0, this, [this, path]() { // idx should no be captured because dir may change
+        auto idx = proxyModel_->indexFromPath(path);
+        if(idx.isValid()) {
+            ui->folderView->childView()->scrollTo(idx, QAbstractItemView::PositionAtCenter);
+        }
     });
 }
 
