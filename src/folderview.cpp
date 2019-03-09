@@ -816,13 +816,28 @@ void FolderView::setHiddenColumns(const QList<int> &columns) {
 }
 
 void FolderView::onItemActivated(QModelIndex index) {
-    QItemSelectionModel* selModel = selectionModel();
-    if(index.isValid() && index.model()
-       && selModel && selModel->isSelected(index)) { // do nothing when the item is not selected
-        QVariant data = index.model()->data(index, FolderModel::FileInfoRole);
-        auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
-        if(info) {
-            if(!(QApplication::keyboardModifiers() & (Qt::ShiftModifier | Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier))) {
+    if(QApplication::keyboardModifiers() & (Qt::ShiftModifier | Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier)) {
+        return;
+    }
+    if(QItemSelectionModel* selModel = selectionModel()) {
+        QVariant data;
+        if(index.isValid() && selModel->isSelected(index)) { // activate index only if it is selected
+            if(index.model()) {
+                data = index.model()->data(index, FolderModel::FileInfoRole);
+            }
+        }
+        else { // if index is not valid or selected, activate the first selected index
+            QModelIndexList selIndexes = mode == DetailedListMode ? selectedRows() : selectedIndexes();
+            if(!selIndexes.isEmpty()) {
+                QModelIndex first = selIndexes.first();
+                if(first.model()) {
+                    data = first.model()->data(first, FolderModel::FileInfoRole);
+                }
+            }
+        }
+        if(data.isValid()) {
+            auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
+            if(info) {
                 Q_EMIT clicked(ActivatedClick, info);
             }
         }
@@ -1163,6 +1178,16 @@ bool FolderView::event(QEvent* event) {
         break;
     case QEvent::FontChange:
         updateGridSize();
+        break;
+    case QEvent::KeyPress:
+        // Pressing Enter activates only the current index. With no current index,
+        // we activate the first selected index on pressing Enter (see onItemActivated).
+        if(view && !view->selectionModel()->currentIndex().isValid()) {
+            int k = static_cast<QKeyEvent*>(event)->key();
+            if(k == Qt::Key_Return || k == Qt::Key_Enter) {
+                onItemActivated(QModelIndex());
+            }
+        }
         break;
     default:
         break;
