@@ -556,6 +556,7 @@ void FolderViewTreeView::layoutColumns() {
             opt.sortIndicator = QStyleOptionHeader::SortDown;
         }
         QAbstractItemModel* model_ = model();
+        int filenameColumn = headerView->visualIndex(FolderModel::ColumnFileName);
         int column;
         for(column = 0; column < numCols; ++column) {
             int columnId = headerView->logicalIndex(column);
@@ -571,7 +572,8 @@ void FolderViewTreeView::layoutColumns() {
                     continue;
                 }
             }
-            else if(hiddenColumns_.contains(columnId)) {
+            else if(hiddenColumns_.contains(columnId)
+                    && columnId != filenameColumn) { // never hide the name column
                 headerView->setSectionHidden(columnId, true);
                 continue;
             }
@@ -610,7 +612,6 @@ void FolderViewTreeView::layoutColumns() {
             desiredWidth += widths[column];
         }
 
-        int filenameColumn = headerView->visualIndex(FolderModel::ColumnFileName);
         if(customColumnWidths_.size() <= filenameColumn) { // practically means no custom width
             // if the total witdh we want exceeds the available space
             if(desiredWidth > availWidth) {
