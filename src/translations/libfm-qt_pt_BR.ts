@@ -21,7 +21,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation>Linha de comandos a executar:</translation>
+        <translation>Linha de comando a executar:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
@@ -42,18 +42,18 @@
 &lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Representa um único nome de arquivo&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Representa vários nomes de arquivos&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Representa um único URI do arquivo&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Representa vários URIs&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Representa várias URL&apos;s&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>Manter janela de terminal aberta depois da execução do comando</translation>
+        <translation>Manter a janela do terminal aberta depois da execução do comando</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation>Executar no emulador de terminal</translation>
+        <translation>Executar no emulador do terminal</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
@@ -81,17 +81,17 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation>&amp;Adicionar item</translation>
+        <translation>&amp;Adicionar Item</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation>&amp;Remover item</translation>
+        <translation>&amp;Remover Item</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Usar arrastar e soltar para organizar itens</translation>
+        <translation>Usar &apos;arrastar e soltar&apos; para reorganizar os itens</translation>
     </message>
 </context>
 <context>
@@ -137,7 +137,7 @@
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation>Tipo do arquivo:</translation>
+        <translation>Tipo de arquivo:</translation>
     </message>
 </context>
 <context>
@@ -208,7 +208,7 @@
     <message>
         <location filename="../file-props.ui" line="175"/>
         <source>On-disk size:</source>
-        <translation>Tamanho no disco:</translation>
+        <translation>Tamanho do disco:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="198"/>
@@ -233,12 +233,12 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Contains:</source>
-        <translation>Contém:</translation>
+        <translation>Contêm:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="317"/>
         <source>Device Usage:</source>
-        <translation>Uso de disco:</translation>
+        <translation>Uso do Disco:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="349"/>
@@ -248,7 +248,7 @@
     <message>
         <location filename="../file-props.ui" line="364"/>
         <source>Ownership</source>
-        <translation>Propriedades</translation>
+        <translation>Propriedade</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="388"/>
@@ -327,7 +327,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation>Customizar</translation>
+        <translation>Personalizar</translation>
     </message>
 </context>
 <context>
@@ -371,7 +371,7 @@
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation>&lt;Nenhuma subpasta&gt;</translation>
+        <translation>&lt;Sem sub-pastas&gt;</translation>
     </message>
 </context>
 <context>
@@ -1299,7 +1299,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="220"/>
         <source>Enter a name for the new %1:</source>
-        <translation>Insira um nome para o novo %1:</translation>
+        <translation>Insira um nome para o novo(a) %1:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="556"/>
