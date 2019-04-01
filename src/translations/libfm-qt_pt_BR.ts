@@ -1299,7 +1299,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="220"/>
         <source>Enter a name for the new %1:</source>
-        <translation>Insira um nome para o novo(a) %1:</translation>
+        <translation>Insira um nome para o(a) novo(a) %1:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="556"/>
