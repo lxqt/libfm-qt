@@ -279,16 +279,17 @@ bool FileTransferJob::makeDir(const FilePath& srcPath, GFileInfoPtr srcInfo, Fil
                                                          mode, G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
                                                          cancellable().get(), &err);
                 if(!chmod_done) {
-                    ErrorAction act = emitError(err, ErrorSeverity::MODERATE);
+                    /* NOTE: Some filesystems may not support this. So, ignore errors for now. */
+                    break;
+                    /*ErrorAction act = emitError(err, ErrorSeverity::MODERATE);
                     if(act != ErrorAction::RETRY) {
                         break;
-                    }
-                    /* FIXME: some filesystems may not support this. */
+                    }*/
                 }
             } while(!chmod_done && !isCancelled());
         }
     }
-    return mkdir_done && chmod_done;
+    return mkdir_done/* && chmod_done*/;
 }
 
 bool FileTransferJob::handleError(GErrorPtr &err, const FilePath &srcPath, const GFileInfoPtr &srcInfo, FilePath &destPath, int& flags) {
