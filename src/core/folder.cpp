@@ -112,6 +112,20 @@ std::shared_ptr<Folder> Folder::fromPath(const FilePath& path) {
     return folder;
 }
 
+// static
+// Checks if this is the path of a folder in use.
+std::shared_ptr<Folder> Folder::findByPath(const FilePath& path) {
+    std::lock_guard<std::mutex> lock{mutex_};
+    auto it = cache_.find(path);
+    if(it != cache_.end()) {
+        auto folder = it->second.lock();
+        if(folder) {
+            return folder;
+        }
+    }
+    return nullptr;
+}
+
 bool Folder::makeDirectory(const char* /*name*/, GError** /*error*/) {
     // TODO:
     // FIXME: what the API is used for in the original libfm C API?
@@ -140,6 +154,10 @@ std::shared_ptr<const FileInfo> Folder::fileByName(const char* name) const {
 
 bool Folder::isEmpty() const {
     return files_.empty();
+}
+
+bool Folder::hasFileMonitor() const {
+    return (dirMonitor_ != nullptr);
 }
 
 FileInfoList Folder::files() const {
