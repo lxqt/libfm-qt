@@ -125,6 +125,9 @@ protected:
     QList<FolderModelItem>::iterator findItemByFileInfo(const Fm::FileInfo* info, int* row);
 
 private:
+    QString makeTooltip(FolderModelItem* item) const;
+
+private:
 
     struct ThumbnailData {
         ThumbnailData(int size):
