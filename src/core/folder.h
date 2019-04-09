@@ -56,6 +56,8 @@ public:
 
     static std::shared_ptr<Folder> fromPath(const FilePath& path);
 
+    static std::shared_ptr<Folder> findByPath(const FilePath& path);
+
     bool makeDirectory(const char* name, GError** error);
 
     void queryFilesystemInfo();
@@ -73,6 +75,8 @@ public:
     std::shared_ptr<const FileInfo> fileByName(const char* name) const;
 
     bool isEmpty() const;
+
+    bool hasFileMonitor() const;
 
     FileInfoList files() const;
 

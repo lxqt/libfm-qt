@@ -316,6 +316,25 @@ void FileOperation::onJobFinish() {
         }
     }
 
+    // reload the containing folder if it is in use but does not have a file monitor
+    std::shared_ptr<Folder> folder = nullptr;
+    if(type_ == Trash || type_ == Delete
+       || type_ == Move) { // moving may be done to this folder
+        if(!srcPaths_.empty()) {
+            if(auto path = srcPaths_[0]) {
+                if(auto parent_path = path.parent()) {
+                    folder = Fm::Folder::findByPath(parent_path);
+                }
+            }
+        }
+    }
+    if(folder == nullptr && destPath_) {
+        folder = Fm::Folder::findByPath(destPath_);
+    }
+    if(folder && folder->isValid() && folder->isLoaded() && !folder->hasFileMonitor()) {
+        folder->reload();
+    }
+
     if(autoDestroy_) {
         delete this;
     }
