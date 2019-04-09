@@ -29,6 +29,7 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QTimer>
+#include <QDateTime>
 #include "utilities.h"
 #include "fileoperation.h"
 
@@ -211,6 +212,36 @@ std::shared_ptr<const Fm::FileInfo> FolderModel::fileInfoFromIndex(const QModelI
     return item ? item->info : nullptr;
 }
 
+QString FolderModel::makeTooltip(FolderModelItem* item) const {
+    // display name (bold)
+    QString tip = QStringLiteral("<p><b>") + item->displayName() + QStringLiteral("</b></p>");
+    // parent dir
+    auto info = item->info;
+    auto parent_path = info->path().parent();
+    auto parent_str = parent_path ? parent_path.displayName() : nullptr;
+    if(parent_str) {
+        tip += QStringLiteral("<p><i>") + tr("Location:") + QStringLiteral("</i> ") + parent_str.get() + QStringLiteral("</p>");
+    }
+    // file type
+    tip += QStringLiteral("<i>") + tr("File type:") + QStringLiteral("</i> ") + info->mimeType()->desc();
+    // file size
+    const QString dSize = item->displaySize();
+    if(!dSize.isEmpty()) { // it's empty for directories
+        tip += QStringLiteral("<br><i>") + tr("File size:") + QStringLiteral("</i> ") + dSize;
+    }
+    // times
+    auto atime = QDateTime::fromMSecsSinceEpoch(info->atime() * 1000);
+    tip += QStringLiteral("<br><i>") + tr("Last modified:") + QStringLiteral("</i> ") + item->displayMtime()
+           + QStringLiteral("<br><i>") + tr("Last accessed:") + QStringLiteral("</i> ") + atime.toString(Qt::SystemLocaleShortDate);
+    // owner
+    const QString owner = item->ownerName();
+    if(!owner.isEmpty()) { // can be empty
+        tip += QStringLiteral("<br><i>") + tr("Owner:") + QStringLiteral("</i> ") + owner
+               + QStringLiteral("<br><i>") + tr("Group:") + QStringLiteral("</i> ") + item->ownerGroup();
+    }
+    return tip;
+}
+
 QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRole*/) const {
     if(!index.isValid() || index.row() > items.size() || index.column() >= NumOfColumns) {
         return QVariant();
@@ -225,7 +256,7 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
 
     switch(role) {
     case Qt::ToolTipRole:
-        return QVariant(item->displayName());
+        return QVariant(makeTooltip(item));
     case Qt::DisplayRole:  {
         switch(index.column()) {
         case ColumnFileName:
