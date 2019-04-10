@@ -298,6 +298,8 @@ void FileOperation::onJobFinish() {
     }
     Q_EMIT finished();
 
+    bool tryReload = true;
+
     // special handling for trash job
     if(type_ == Trash && !job_->isCancelled()) {
         auto trashJob = static_cast<Fm::TrashJob*>(job_);
@@ -313,26 +315,27 @@ void FileOperation::onJobFinish() {
                                         "Do you want to delete them instead?")) == QMessageBox::Yes) {
                 deleteFiles(std::move(unsupportedFiles), false);
             }
+            tryReload = false;
         }
     }
 
     // reload the containing folder if it is in use but does not have a file monitor
-    std::shared_ptr<Folder> folder = nullptr;
-    if(type_ == Trash || type_ == Delete
-       || type_ == Move) { // moving may be done to this folder
-        if(!srcPaths_.empty()) {
-            if(auto path = srcPaths_[0]) {
-                if(auto parent_path = path.parent()) {
-                    folder = Fm::Folder::findByPath(parent_path);
+    if(tryReload) {
+        if(!srcPaths_.empty() && (type_ == Trash || type_ == Delete || type_ == Move)) {
+            auto parent_path = srcPaths_[0].parent();
+            if(parent_path != destPath_) { // otherwise, it will be done below
+                auto folder = Fm::Folder::findByPath(parent_path);
+                if(folder && folder->isValid() && folder->isLoaded() && !folder->hasFileMonitor()) {
+                    folder->reload();
                 }
             }
         }
-    }
-    if(folder == nullptr && destPath_) {
-        folder = Fm::Folder::findByPath(destPath_);
-    }
-    if(folder && folder->isValid() && folder->isLoaded() && !folder->hasFileMonitor()) {
-        folder->reload();
+        if(destPath_) {
+            auto folder = Fm::Folder::findByPath(destPath_);
+            if(folder && folder->isValid() && folder->isLoaded() && !folder->hasFileMonitor()) {
+                folder->reload();
+            }
+        }
     }
 
     if(autoDestroy_) {

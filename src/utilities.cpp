@@ -157,7 +157,8 @@ bool isCurrentPidClipboardData(const QMimeData& data) {
 }
 
 bool changeFileName(const Fm::FilePath& filePath, const QString& newName, QWidget* parent, bool showMessage) {
-    auto dest = filePath.parent().child(newName.toLocal8Bit().constData());
+    auto parent_path = filePath.parent();
+    auto dest = parent_path.child(newName.toLocal8Bit().constData());
     Fm::GErrorPtr err;
     if(!g_file_move(filePath.gfile().get(), dest.gfile().get(),
                     GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
@@ -170,6 +171,13 @@ bool changeFileName(const Fm::FilePath& filePath, const QString& newName, QWidge
         }
         return false;
     }
+
+    // reload the containing folder if it is in use but does not have a file monitor
+    auto folder = Fm::Folder::findByPath(parent_path);
+    if(folder && folder->isValid() && folder->isLoaded() && !folder->hasFileMonitor()) {
+        folder->reload();
+    }
+
     return true;
 }
 
@@ -262,6 +270,12 @@ _retry:
         }
 
         QMessageBox::critical(parent ? parent->window() : nullptr, QObject::tr("Error"), err.message());
+    }
+    else { // reload the containing folder if it is in use but does not have a file monitor
+        auto folder = Fm::Folder::findByPath(parentDir);
+        if(folder && folder->isValid() && folder->isLoaded() && !folder->hasFileMonitor()) {
+            folder->reload();
+        }
     }
 }
 
