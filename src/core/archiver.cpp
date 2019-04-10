@@ -1,7 +1,7 @@
 #include "libfmqtglobals.h"
 #include "archiver.h"
 
-#include <string.h>
+#include <cstring>
 #include <glib.h>
 #include <gio/gdesktopappinfo.h>
 

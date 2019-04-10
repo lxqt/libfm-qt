@@ -1,6 +1,6 @@
 #include "iconinfo.h"
 #include "iconinfo_p.h"
-#include <string.h>
+#include <cstring>
 
 namespace Fm {
 

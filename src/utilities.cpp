@@ -31,7 +31,7 @@
 
 #include <pwd.h>
 #include <grp.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include <glib.h>
 
 namespace Fm {

@@ -22,7 +22,7 @@
  */
 
 #include "folder.h"
-#include <string.h>
+#include <cstring>
 #include <cassert>
 #include <QTimer>
 #include <QDebug>

@@ -29,7 +29,7 @@
 #include <QStandardPaths>
 #include <QFileDialog>
 #include <sys/types.h>
-#include <time.h>
+#include <ctime>
 #include "core/totalsizejob.h"
 #include "core/folder.h"
 

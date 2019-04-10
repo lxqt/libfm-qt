@@ -30,7 +30,7 @@
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
 #include <QDrag>
 #include <QUrl>
-#include <string.h>
+#include <cstring>
 
 // these are private Qt headers which are not part of Qt APIs
 #include <private/qdnd_p.h>  // Too bad that we need to use private headers of Qt :-(
