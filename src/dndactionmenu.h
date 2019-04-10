@@ -31,7 +31,7 @@ class DndActionMenu : public QMenu {
     Q_OBJECT
 public:
     explicit DndActionMenu(Qt::DropActions possibleActions, QWidget* parent = 0);
-    virtual ~DndActionMenu();
+    ~DndActionMenu() override;
 
     static Qt::DropAction askUser(Qt::DropActions possibleActions, QPoint pos);
 

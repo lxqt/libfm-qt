@@ -36,7 +36,7 @@ public:
         }
     }
 
-    virtual ~CustomAction() {
+    ~CustomAction() override {
     }
 
     const std::shared_ptr<const FileActionItem>& item() const {

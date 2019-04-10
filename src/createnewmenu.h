@@ -36,7 +36,7 @@ class LIBFM_QT_API CreateNewMenu : public QMenu {
 
 public:
     explicit CreateNewMenu(QWidget* dialogParent, Fm::FilePath dirPath, QWidget* parent = 0);
-    virtual ~CreateNewMenu();
+    ~CreateNewMenu() override;
 
 protected Q_SLOTS:
     void onCreateNewFolder();

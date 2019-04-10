@@ -32,7 +32,7 @@ class LIBFM_QT_API FolderItemDelegate : public QStyledItemDelegate {
 public:
     explicit FolderItemDelegate(QAbstractItemView* view, QObject* parent = nullptr);
 
-    virtual ~FolderItemDelegate();
+    ~FolderItemDelegate() override;
 
     inline void setItemSize(QSize size) {
         itemSize_ = size;
@@ -93,17 +93,17 @@ public:
         shadowHidden_ = value;
     }
 
-    virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const override;
 
-    virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const override;
 
-    virtual QWidget* createEditor(QWidget* parent, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    QWidget* createEditor(QWidget* parent, const QStyleOptionViewItem& option, const QModelIndex& index) const override;
 
-    virtual void setEditorData(QWidget* editor, const QModelIndex& index) const;
+    void setEditorData(QWidget* editor, const QModelIndex& index) const override;
 
-    virtual bool eventFilter(QObject* object, QEvent* event);
+    bool eventFilter(QObject* object, QEvent* event) override;
 
-    virtual void updateEditorGeometry(QWidget* editor, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    void updateEditorGeometry(QWidget* editor, const QStyleOptionViewItem& option, const QModelIndex& index) const override;
 
     QSize iconViewTextSize(const QModelIndex& index) const;
 

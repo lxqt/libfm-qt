@@ -36,7 +36,7 @@ public:
     PathEdit* edit;
     bool triggeredByFocusInEvent;
 
-    ~PathEditJob() {
+    ~PathEditJob() override {
         g_object_unref(dirName);
         g_object_unref(cancellable);
     }

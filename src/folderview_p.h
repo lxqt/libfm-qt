@@ -36,18 +36,18 @@ class FolderViewListView : public QListView {
 public:
   friend class FolderView;
   FolderViewListView(QWidget* parent = nullptr);
-  virtual ~FolderViewListView();
-  virtual void startDrag(Qt::DropActions supportedActions);
-  virtual void mousePressEvent(QMouseEvent* event);
-  virtual void mouseMoveEvent(QMouseEvent* event);
-  virtual void mouseReleaseEvent(QMouseEvent* event);
-  virtual void mouseDoubleClickEvent(QMouseEvent* event);
-  virtual void dragEnterEvent(QDragEnterEvent* event);
-  virtual void dragMoveEvent(QDragMoveEvent* e);
-  virtual void dragLeaveEvent(QDragLeaveEvent* e);
-  virtual void dropEvent(QDropEvent* e);
+  ~FolderViewListView() override;
+  void startDrag(Qt::DropActions supportedActions) override;
+  void mousePressEvent(QMouseEvent* event) override;
+  void mouseMoveEvent(QMouseEvent* event) override;
+  void mouseReleaseEvent(QMouseEvent* event) override;
+  void mouseDoubleClickEvent(QMouseEvent* event) override;
+  void dragEnterEvent(QDragEnterEvent* event) override;
+  void dragMoveEvent(QDragMoveEvent* e) override;
+  void dragLeaveEvent(QDragLeaveEvent* e) override;
+  void dropEvent(QDropEvent* e) override;
 
-  virtual QModelIndex indexAt(const QPoint & point) const;
+  QModelIndex indexAt(const QPoint & point) const override;
 
   inline void setPositionForIndex(const QPoint & position, const QModelIndex & index) {
     QListView::setPositionForIndex(position, index);
@@ -69,7 +69,7 @@ Q_SIGNALS:
   void activatedFiltered(const QModelIndex &index);
 
 protected:
-  virtual QModelIndex moveCursor(CursorAction cursorAction, Qt::KeyboardModifiers modifiers);
+  QModelIndex moveCursor(CursorAction cursorAction, Qt::KeyboardModifiers modifiers) override;
 
 private Q_SLOTS:
   void activation(const QModelIndex &index);
@@ -84,30 +84,30 @@ class FolderViewTreeView : public QTreeView {
 public:
   friend class FolderView;
   FolderViewTreeView(QWidget* parent = nullptr);
-  virtual ~FolderViewTreeView();
-  virtual void setModel(QAbstractItemModel* model);
-  virtual void mousePressEvent(QMouseEvent* event);
-  virtual void mouseMoveEvent(QMouseEvent* event);
-  virtual void mouseReleaseEvent(QMouseEvent* event);
-  virtual void mouseDoubleClickEvent(QMouseEvent* event);
-  virtual void dragEnterEvent(QDragEnterEvent* event);
-  virtual void dragMoveEvent(QDragMoveEvent* e);
-  virtual void dragLeaveEvent(QDragLeaveEvent* e);
-  virtual void dropEvent(QDropEvent* e);
+  ~FolderViewTreeView() override;
+  void setModel(QAbstractItemModel* model) override;
+  void mousePressEvent(QMouseEvent* event) override;
+  void mouseMoveEvent(QMouseEvent* event) override;
+  void mouseReleaseEvent(QMouseEvent* event) override;
+  void mouseDoubleClickEvent(QMouseEvent* event) override;
+  void dragEnterEvent(QDragEnterEvent* event) override;
+  void dragMoveEvent(QDragMoveEvent* e) override;
+  void dragLeaveEvent(QDragLeaveEvent* e) override;
+  void dropEvent(QDropEvent* e) override;
 
   // for rubberband
-  virtual void paintEvent(QPaintEvent * event);
-  virtual void setSelection(const QRect &rect, QItemSelectionModel::SelectionFlags command);
+  void paintEvent(QPaintEvent * event) override;
+  void setSelection(const QRect &rect, QItemSelectionModel::SelectionFlags command) override;
 
-  virtual void rowsInserted(const QModelIndex& parent,int start, int end);
-  virtual void rowsAboutToBeRemoved(const QModelIndex& parent,int start, int end);
-  virtual void dataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int>& roles = QVector<int>{});
-  virtual void reset();
+  void rowsInserted(const QModelIndex& parent,int start, int end) override;
+  void rowsAboutToBeRemoved(const QModelIndex& parent,int start, int end) override;
+  void dataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int>& roles = QVector<int>{}) override;
+  void reset() override;
 
-  virtual void resizeEvent(QResizeEvent* event);
+  void resizeEvent(QResizeEvent* event) override;
   void queueLayoutColumns();
 
-  virtual void keyboardSearch(const QString &search) {
+  void keyboardSearch(const QString &search) override {
     QAbstractItemView::keyboardSearch(search); // let items be selected by typing
   }
 

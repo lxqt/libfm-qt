@@ -66,7 +66,7 @@ public:
 
 public:
     explicit PlacesModel(QObject* parent = 0);
-    virtual ~PlacesModel();
+    ~PlacesModel() override;
 
     bool showTrash() {
         return trashItem_ != nullptr;
@@ -83,7 +83,7 @@ public:
     }
     void setShowDesktop(bool show);
 
-    QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+    QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
 
     static std::shared_ptr<PlacesModel> globalInstance();
 
@@ -99,11 +99,11 @@ protected:
     PlacesModelMountItem* itemFromMount(GMount* mount);
     PlacesModelBookmarkItem* itemFromBookmark(std::shared_ptr<const Fm::BookmarkItem> bkitem);
 
-    virtual Qt::ItemFlags flags(const QModelIndex& index) const;
-    virtual QStringList mimeTypes() const;
-    virtual QMimeData* mimeData(const QModelIndexList& indexes) const;
-    virtual bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent);
-    Qt::DropActions supportedDropActions() const;
+    Qt::ItemFlags flags(const QModelIndex& index) const override;
+    QStringList mimeTypes() const override;
+    QMimeData* mimeData(const QModelIndexList& indexes) const override;
+    bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) override;
+    Qt::DropActions supportedDropActions() const override;
 
     void createTrashItem();
 

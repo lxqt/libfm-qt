@@ -62,7 +62,7 @@ public:
 
     explicit Job();
 
-    virtual ~Job();
+    ~Job() override;
 
     bool isCancelled() const {
         return g_cancellable_is_cancelled(cancellable_.get());

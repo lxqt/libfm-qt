@@ -64,10 +64,10 @@ private Q_SLOTS:
   void ensureToggledVisible();
 
 protected:
-    void resizeEvent(QResizeEvent* event);
-    void wheelEvent(QWheelEvent* event);
-    void mousePressEvent(QMouseEvent* event);
-    void contextMenuEvent(QContextMenuEvent* event);
+    void resizeEvent(QResizeEvent* event) override;
+    void wheelEvent(QWheelEvent* event) override;
+    void mousePressEvent(QMouseEvent* event) override;
+    void contextMenuEvent(QContextMenuEvent* event) override;
 
 private:
     void updateScrollButtonVisibility();

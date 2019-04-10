@@ -15,7 +15,7 @@ public:
 
     explicit DeleteJob(FilePathList&& paths);
 
-    ~DeleteJob();
+    ~DeleteJob() override;
 
 protected:
     void exec() override;

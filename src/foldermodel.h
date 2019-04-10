@@ -59,7 +59,7 @@ public:
 
 public:
     explicit FolderModel();
-    virtual ~FolderModel();
+    ~FolderModel() override;
 
     const std::shared_ptr<Fm::Folder>& folder() const {
         return folder_;
@@ -71,20 +71,20 @@ public:
         return folder_ ? folder_->path() : Fm::FilePath();
     }
 
-    int rowCount(const QModelIndex& parent = QModelIndex()) const;
-    int columnCount(const QModelIndex& parent) const;
-    QVariant data(const QModelIndex& index, int role) const;
-    QVariant headerData(int section, Qt::Orientation orientation, int role) const;
-    QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const;
-    QModelIndex parent(const QModelIndex& index) const;
+    int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+    int columnCount(const QModelIndex& parent) const override;
+    QVariant data(const QModelIndex& index, int role) const override;
+    QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
+    QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const override;
+    QModelIndex parent(const QModelIndex& index) const override;
     // void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
-    Qt::ItemFlags flags(const QModelIndex& index) const;
+    Qt::ItemFlags flags(const QModelIndex& index) const override;
 
-    virtual QStringList mimeTypes() const;
-    virtual QMimeData* mimeData(const QModelIndexList& indexes) const;
-    virtual Qt::DropActions supportedDropActions() const;
-    virtual bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent);
+    QStringList mimeTypes() const override;
+    QMimeData* mimeData(const QModelIndexList& indexes) const override;
+    Qt::DropActions supportedDropActions() const override;
+    bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) override;
 
     std::shared_ptr<const Fm::FileInfo> fileInfoFromIndex(const QModelIndex& index) const;
     FolderModelItem* itemFromIndex(const QModelIndex& index) const;

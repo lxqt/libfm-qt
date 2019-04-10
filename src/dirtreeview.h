@@ -37,7 +37,7 @@ class LIBFM_QT_API DirTreeView : public QTreeView {
 
 public:
     explicit DirTreeView(QWidget* parent);
-    ~DirTreeView();
+    ~DirTreeView() override;
 
     const Fm::FilePath& currentPath() const {
         return currentPath_;
@@ -49,11 +49,11 @@ public:
         setCurrentPath(std::move(path));
     }
 
-    virtual void setModel(QAbstractItemModel* model);
+    void setModel(QAbstractItemModel* model) override;
 
 protected:
-    virtual void mousePressEvent(QMouseEvent* event);
-    virtual void rowsAboutToBeRemoved(const QModelIndex& parent, int start, int end);
+    void mousePressEvent(QMouseEvent* event) override;
+    void rowsAboutToBeRemoved(const QModelIndex& parent, int start, int end) override;
 
 private:
     void cancelPendingChdir();

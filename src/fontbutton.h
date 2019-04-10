@@ -31,7 +31,7 @@ class LIBFM_QT_API FontButton : public QPushButton {
     Q_OBJECT
 public:
     explicit FontButton(QWidget* parent = 0);
-    virtual ~FontButton();
+    ~FontButton() override;
 
     QFont font() {
         return font_;

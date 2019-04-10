@@ -157,7 +157,7 @@ class LIBFM_QT_API VolumeManager : public QObject {
 public:
     explicit VolumeManager();
 
-    ~VolumeManager();
+    ~VolumeManager() override;
 
     const std::vector<Volume>& volumes() const {
         return volumes_;

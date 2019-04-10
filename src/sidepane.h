@@ -47,7 +47,7 @@ public:
 
 public:
     explicit SidePane(QWidget* parent = 0);
-    virtual ~SidePane();
+    ~SidePane() override;
 
     QSize iconSize() const {
         return iconSize_;

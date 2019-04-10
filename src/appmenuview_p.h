@@ -42,7 +42,7 @@ public:
         }
     }
 
-    ~AppMenuViewItem() {
+    ~AppMenuViewItem() override {
         menu_cache_item_unref(item_);
     }
 
@@ -50,7 +50,7 @@ public:
         return item_;
     }
 
-    int type() const {
+    int type() const override {
         return menu_cache_item_get_type(item_);
     }
 

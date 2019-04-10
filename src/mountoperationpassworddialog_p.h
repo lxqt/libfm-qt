@@ -38,13 +38,13 @@ class MountOperationPasswordDialog : public QDialog {
 
 public:
     explicit MountOperationPasswordDialog(MountOperation* op, GAskPasswordFlags flags);
-    virtual ~MountOperationPasswordDialog();
+    ~MountOperationPasswordDialog() override;
 
     void setMessage(QString message);
     void setDefaultUser(QString user);
     void setDefaultDomain(QString domain);
 
-    virtual void done(int r);
+    void done(int r) override;
 
 private Q_SLOTS:
     void onAnonymousToggled(bool checked);

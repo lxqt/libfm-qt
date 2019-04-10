@@ -31,7 +31,7 @@ namespace Fm {
 class LIBFM_QT_API FileLauncher: public BasicFileLauncher {
 public:
     explicit FileLauncher();
-    virtual ~FileLauncher();
+    ~FileLauncher() override;
 
     bool launchFiles(QWidget* parent, const FileInfoList& file_infos);
 

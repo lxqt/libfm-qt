@@ -47,7 +47,7 @@ public:
 
 public:
     explicit RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* parent = 0, Qt::WindowFlags f = 0);
-    virtual ~RenameDialog();
+    ~RenameDialog() override;
 
     Action action() {
         return action_;
@@ -67,8 +67,8 @@ protected Q_SLOTS:
     void onFileNameChanged(QString newName);
 
 protected:
-    void accept();
-    void reject();
+    void accept() override;
+    void reject() override;
 
 private:
     Ui::RenameDialog* ui;

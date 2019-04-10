@@ -35,7 +35,7 @@ public:
     selectExtension_(false) {
   }
 
-  virtual void showEvent(QShowEvent * event) {
+  void showEvent(QShowEvent * event) override {
     QWidget::showEvent(event);
     if(!selectExtension_) // dot not select filename extension
       QTimer::singleShot(0, this, SLOT(initSelection()));

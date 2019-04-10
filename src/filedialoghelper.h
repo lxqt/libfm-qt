@@ -15,7 +15,7 @@ class LIBFM_QT_API FileDialogHelper : public QPlatformFileDialogHelper {
 public:
     FileDialogHelper();
 
-    virtual ~FileDialogHelper();
+    ~FileDialogHelper() override;
 
     // QPlatformDialogHelper
     void exec() override;

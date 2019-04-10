@@ -34,10 +34,10 @@ class MountOperationQuestionDialog : public QMessageBox {
     Q_OBJECT
 public:
     MountOperationQuestionDialog(MountOperation* op, gchar* message, GStrv choices);
-    virtual ~MountOperationQuestionDialog();
+    ~MountOperationQuestionDialog() override;
 
-    virtual void done(int r);
-    virtual void closeEvent(QCloseEvent *event);
+    void done(int r) override;
+    void closeEvent(QCloseEvent *event) override;
 
 private:
     MountOperation* mountOperation;
