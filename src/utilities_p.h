@@ -61,7 +61,7 @@ private Q_SLOTS:
         int ext = filename.lastIndexOf('.');
         if(ext != -1) {
           // add special cases for tar.gz, tar.bz2, and other tar.* files
-          if(filename.leftRef(ext).endsWith(".tar"))
+          if(filename.leftRef(ext).endsWith(QStringLiteral(".tar")))
             ext -= 4;
 	  // FIXME: should we also handle other special cases?
           lineEdit->setSelection(0, ext);

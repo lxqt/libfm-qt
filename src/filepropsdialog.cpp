@@ -157,7 +157,7 @@ void FilePropsDialog::initPermissionsPage() {
     // Let's make it clear for the users
     // init combo boxes for file permissions here
     QStringList comboItems;
-    comboItems.append("---"); // no change
+    comboItems.append(QStringLiteral("---")); // no change
     if(singleType && hasDir) { // all files are dirs
         comboItems.append(tr("View folder content"));
         comboItems.append(tr("View and modify folder content"));
@@ -367,12 +367,12 @@ void FilePropsDialog::onFileSizeTimerTimeout() {
         // they use unsigned long instead of int.
         // We cannot use Qt here to handle plural forms. So sad. :-(
         QString str = Fm::formatFileSize(totalSizeJob->totalSize(), fm_config->si_unit) %
-                      QString(" (%1 B)").arg(totalSizeJob->totalSize());
+                      QStringLiteral(" (%1 B)").arg(totalSizeJob->totalSize());
         // tr(" (%n) byte(s)", "", deepCountJob->total_size);
         ui->fileSize->setText(str);
 
         str = Fm::formatFileSize(totalSizeJob->totalOnDiskSize(), fm_config->si_unit) %
-              QString(" (%1 B)").arg(totalSizeJob->totalOnDiskSize());
+              QStringLiteral(" (%1 B)").arg(totalSizeJob->totalOnDiskSize());
         // tr(" (%n) byte(s)", "", deepCountJob->total_ondisk_size);
         ui->onDiskSize->setText(str);
 
@@ -393,7 +393,7 @@ void FilePropsDialog::onIconButtonclicked() {
     QString iconDir;
     QString iconThemeName = QIcon::themeName();
     QStringList icons = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
-                                                  "icons",
+                                                  QStringLiteral("icons"),
                                                   QStandardPaths::LocateDirectory);
     for (QStringList::ConstIterator it = icons.constBegin(); it != icons.constEnd(); ++it) {
         QString iconThemeFolder = *it + '/' + iconThemeName;
@@ -411,7 +411,7 @@ void FilePropsDialog::onIconButtonclicked() {
     }
     if(iconDir.isEmpty()) {
         iconDir = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                         "icons",
+                                         QStringLiteral("icons"),
                                          QStandardPaths::LocateDirectory);
         if(iconDir.isEmpty()) {
             return;
@@ -421,10 +421,10 @@ void FilePropsDialog::onIconButtonclicked() {
                                                           iconDir,
                                                           tr("Images (*.png *.xpm *.svg *.svgz )"));
     if(!iconPath.isEmpty()) {
-        QStringList parts = iconPath.split("/", QString::SkipEmptyParts);
+        QStringList parts = iconPath.split(QStringLiteral("/"), QString::SkipEmptyParts);
         if(!parts.isEmpty()) {
             QString iconName = parts.at(parts.count() - 1);
-            int ln = iconName.lastIndexOf(".");
+            int ln = iconName.lastIndexOf(QLatin1String("."));
             if(ln > -1) {
                 iconName.remove(ln, iconName.length() - ln);
                 customIcon = QIcon::fromTheme(iconName);

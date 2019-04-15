@@ -29,7 +29,7 @@ DndActionMenu::DndActionMenu(Qt::DropActions possibleActions, QWidget* parent)
     , linkAction(nullptr)
     , cancelAction(nullptr) {
     if(possibleActions.testFlag(Qt::CopyAction)) {
-        copyAction = addAction(QIcon::fromTheme("edit-copy"), tr("Copy here"));
+        copyAction = addAction(QIcon::fromTheme(QStringLiteral("edit-copy")), tr("Copy here"));
     }
     if(possibleActions.testFlag(Qt::MoveAction)) {
         moveAction = addAction(tr("Move here"));

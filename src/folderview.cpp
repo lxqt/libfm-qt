@@ -1388,7 +1388,7 @@ void FolderView::invertSelection() {
 
 void FolderView::childDragEnterEvent(QDragEnterEvent* event) {
     //qDebug("drag enter");
-    if(event->mimeData()->hasFormat("text/uri-list")) {
+    if(event->mimeData()->hasFormat(QStringLiteral("text/uri-list"))) {
         event->accept();
     }
     else {
@@ -1422,7 +1422,7 @@ void FolderView::childDropEvent(QDropEvent* e) {
     // NOTE: in theory, it's not possible to implement XDS with pure Qt.
     // We achieved this with some dirty XCB/XDND workarounds.
     // Please refer to XdndWorkaround::clientMessage() in xdndworkaround.cpp for details.
-    if(QX11Info::isPlatformX11() && e->mimeData()->hasFormat("XdndDirectSave0")) {
+    if(QX11Info::isPlatformX11() && e->mimeData()->hasFormat(QStringLiteral("XdndDirectSave0"))) {
         e->setDropAction(Qt::CopyAction);
         const QWidget* targetWidget = childView()->viewport();
         // these are dynamic QObject property set by our XDND workarounds in xdndworkaround.cpp.
@@ -1453,7 +1453,7 @@ void FolderView::childDropEvent(QDropEvent* e) {
 
             // 3. send to XDS selection data request with type "XdndDirectSave" to the source window and
             //    receive result from the source window. (S: success, E: error, or F: failure)
-            QByteArray result = e->mimeData()->data("XdndDirectSave0");
+            QByteArray result = e->mimeData()->data(QStringLiteral("XdndDirectSave0"));
             // NOTE: there seems to be some bugs in file-roller so it always replies with "E" even if the
             //       file extraction is finished successfully. Anyways, we ignore any error at the moment.
         }

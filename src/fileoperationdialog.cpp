@@ -163,13 +163,13 @@ void FileOperationDialog::setCurFile(QString cur_file) {
 }
 
 void FileOperationDialog::setDataTransferred(uint64_t finishedSize, std::uint64_t totalSize) {
-    ui->filesProcessed->setText(QString("%1 / %2")
+    ui->filesProcessed->setText(QStringLiteral("%1 / %2")
                                  .arg(formatFileSize(finishedSize, fm_config->si_unit))
                                  .arg(formatFileSize(totalSize, fm_config->si_unit)));
 }
 
 void FileOperationDialog::setFilesProcessed(uint64_t finishedCount, uint64_t totalCount) {
-    ui->filesProcessed->setText(QString("%1 / %2")
+    ui->filesProcessed->setText(QStringLiteral("%1 / %2")
                                  .arg(finishedCount)
                                  .arg(totalCount));
 }
@@ -190,7 +190,7 @@ void FileOperationDialog::setRemainingTime(unsigned int sec) {
             min %= 60;
         }
     }
-    ui->timeRemaining->setText(QString("%1:%2:%3")
+    ui->timeRemaining->setText(QStringLiteral("%1:%2:%3")
                                .arg(hr, 2, 10, QChar('0'))
                                .arg(min, 2, 10, QChar('0'))
                                .arg(sec, 2, 10, QChar('0')));

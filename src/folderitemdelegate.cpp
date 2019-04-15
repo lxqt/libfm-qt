@@ -455,24 +455,24 @@ void FolderItemDelegate::setEditorData(QWidget* editor, const QModelIndex& index
         // select text appropriately
         QTextCursor cur = textEdit->textCursor();
         int end;
-        if (index.data(Fm::FolderModel::FileIsDirRole).toBool() || !currentName.contains(".")) {
+        if (index.data(Fm::FolderModel::FileIsDirRole).toBool() || !currentName.contains(QLatin1String("."))) {
             end = currentName.size();
         }
         else {
-            end = currentName.lastIndexOf(".");
+            end = currentName.lastIndexOf(QLatin1String("."));
         }
         cur.setPosition(end, QTextCursor::KeepAnchor);
         textEdit->setTextCursor(cur);
     }
     else if (QLineEdit* lineEdit = qobject_cast<QLineEdit*>(editor)) {
         lineEdit->setText(currentName);
-        if (!index.data(Fm::FolderModel::FileIsDirRole).toBool() && currentName.contains("."))
+        if (!index.data(Fm::FolderModel::FileIsDirRole).toBool() && currentName.contains(QLatin1String(".")))
         {
             /* Qt will call QLineEdit::selectAll() after calling setEditorData() in
                qabstractitemview.cpp -> QAbstractItemViewPrivate::editor(). Therefore,
                we cannot select a part of the text in the usual way here.  */
             QTimer::singleShot(0, [lineEdit]() {
-                int length = lineEdit->text().lastIndexOf(".");
+                int length = lineEdit->text().lastIndexOf(QLatin1String("."));
                 lineEdit->setSelection(0, length);
             });
         }

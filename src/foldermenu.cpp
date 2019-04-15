@@ -45,7 +45,7 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
 
     separator1_ = addSeparator();
 
-    pasteAction_ = new QAction(QIcon::fromTheme("edit-paste"), tr("&Paste"), this);
+    pasteAction_ = new QAction(QIcon::fromTheme(QStringLiteral("edit-paste")), tr("&Paste"), this);
     addAction(pasteAction_);
     connect(pasteAction_, &QAction::triggered, this, &FolderMenu::onPasteActionTriggered);
 

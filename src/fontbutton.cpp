@@ -42,14 +42,14 @@ void FontButton::setFont(QFont font) {
     font_ = font;
     QString text = font.family();
     if(font.bold()) {
-        text += " ";
+        text += QLatin1String(" ");
         text += tr("Bold");
     }
     if(font.italic()) {
-        text += " ";
+        text += QLatin1String(" ");
         text += tr("Italic");
     }
-    text += QString(" %1").arg(font.pointSize());
+    text += QStringLiteral(" %1").arg(font.pointSize());
     setText(text);
     Q_EMIT changed();
 }

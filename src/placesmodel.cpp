@@ -532,9 +532,9 @@ std::shared_ptr<PlacesModel> PlacesModel::globalInstance() {
 
 bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction /*action*/, int row, int column, const QModelIndex& parent) {
     QStandardItem* item = itemFromIndex(parent);
-    if(data->hasFormat("application/x-bookmark-row")) { // the data being dopped is a bookmark row
+    if(data->hasFormat(QStringLiteral("application/x-bookmark-row"))) { // the data being dopped is a bookmark row
         // decode it and do bookmark reordering
-        QByteArray buf = data->data("application/x-bookmark-row");
+        QByteArray buf = data->data(QStringLiteral("application/x-bookmark-row"));
         QDataStream stream(&buf, QIODevice::ReadOnly);
         int oldPos = -1;
         char* pathStr = nullptr;
@@ -614,7 +614,7 @@ QMimeData* PlacesModel::mimeData(const QModelIndexList& indexes) const {
             // Let's store the pos, name, and path of the bookmark item instead.
             auto pathStr = bookmarkItem->path().toString();
             stream << index.row() << pathStr.get();
-            mime->setData("application/x-bookmark-row", data);
+            mime->setData(QStringLiteral("application/x-bookmark-row"), data);
             return mime;
         }
     }
@@ -622,7 +622,7 @@ QMimeData* PlacesModel::mimeData(const QModelIndexList& indexes) const {
 }
 
 QStringList PlacesModel::mimeTypes() const {
-    return QStringList() << "application/x-bookmark-row" << "text/uri-list";
+    return QStringList() << QStringLiteral("application/x-bookmark-row") << QStringLiteral("text/uri-list");
 }
 
 Qt::DropActions PlacesModel::supportedDropActions() const {

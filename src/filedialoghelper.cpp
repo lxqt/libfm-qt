@@ -229,34 +229,34 @@ Fm::FolderView::ViewMode viewModeFromString(const QString& str) {
 }
 
 void FileDialogHelper::loadSettings() {
-    QSettings settings(QSettings::UserScope, "lxqt", "filedialog");
-    settings.beginGroup ("Sizes");
-    dlg_->resize(settings.value("WindowSize", QSize(700, 500)).toSize());
-    dlg_->setSplitterPos(settings.value("SplitterPos", 200).toInt());
+    QSettings settings(QSettings::UserScope, QStringLiteral("lxqt"), QStringLiteral("filedialog"));
+    settings.beginGroup (QStringLiteral("Sizes"));
+    dlg_->resize(settings.value(QStringLiteral("WindowSize"), QSize(700, 500)).toSize());
+    dlg_->setSplitterPos(settings.value(QStringLiteral("SplitterPos"), 200).toInt());
     settings.endGroup();
 
-   settings.beginGroup ("View");
-   dlg_->setViewMode(viewModeFromString(settings.value("Mode", "Detailed").toString()));
+   settings.beginGroup (QStringLiteral("View"));
+   dlg_->setViewMode(viewModeFromString(settings.value(QStringLiteral("Mode"), "Detailed").toString()));
    settings.endGroup();
 }
 
 void FileDialogHelper::saveSettings() {
-    QSettings settings(QSettings::UserScope, "lxqt", "filedialog");
-    settings.beginGroup ("Sizes");
+    QSettings settings(QSettings::UserScope, QStringLiteral("lxqt"), QStringLiteral("filedialog"));
+    settings.beginGroup (QStringLiteral("Sizes"));
     QSize windowSize = dlg_->size();
-    if(settings.value("WindowSize") != windowSize) { // no redundant write
-        settings.setValue("WindowSize", windowSize);
+    if(settings.value(QStringLiteral("WindowSize")) != windowSize) { // no redundant write
+        settings.setValue(QStringLiteral("WindowSize"), windowSize);
     }
     int splitterPos = dlg_->splitterPos();
-    if(settings.value("SplitterPos") != splitterPos) {
-        settings.setValue("SplitterPos", splitterPos);
+    if(settings.value(QStringLiteral("SplitterPos")) != splitterPos) {
+        settings.setValue(QStringLiteral("SplitterPos"), splitterPos);
     }
     settings.endGroup();
 
-    settings.beginGroup ("View");
+    settings.beginGroup (QStringLiteral("View"));
     QString mode = viewModeToString(dlg_->viewMode());
-    if(settings.value("Mode") != mode) {
-        settings.setValue("Mode", mode);
+    if(settings.value(QStringLiteral("Mode")) != mode) {
+        settings.setValue(QStringLiteral("Mode"), mode);
     }
     settings.endGroup();
 }

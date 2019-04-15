@@ -70,9 +70,9 @@ std::pair<Fm::FilePathList, bool> parseClipboardData(const QMimeData& data) {
     bool isCut = false;
     Fm::FilePathList paths;
 
-    if(data.hasFormat("x-special/gnome-copied-files")) {
+    if(data.hasFormat(QStringLiteral("x-special/gnome-copied-files"))) {
         // Gnome, LXDE, and XFCE
-        QByteArray gnomeData = data.data("x-special/gnome-copied-files");
+        QByteArray gnomeData = data.data(QStringLiteral("x-special/gnome-copied-files"));
         char* pdata = gnomeData.data();
         char* eol = strchr(pdata, '\n');
 
@@ -124,9 +124,9 @@ void copyFilesToClipboard(const Fm::FilePathList& files) {
     data->setData(QStringLiteral("text/x-libfmqt-pid"), ba.setNum(QCoreApplication::applicationPid()));
     // Gnome, LXDE, and XFCE
     // Note: the standard text/urilist format uses CRLF for line breaks, but gnome format uses LF only
-    data->setData("x-special/gnome-copied-files", QByteArray("copy\n") + urilist.replace("\r\n", "\n"));
+    data->setData(QStringLiteral("x-special/gnome-copied-files"), QByteArray("copy\n") + urilist.replace("\r\n", "\n"));
     // The KDE way
-    data->setData("text/uri-list", urilist);
+    data->setData(QStringLiteral("text/uri-list"), urilist);
     // data->setData(QStringLiteral("application/x-kde-cutselection"), QByteArrayLiteral("0"));
     clipboard->setMimeData(data);
 }
@@ -141,9 +141,9 @@ void cutFilesToClipboard(const Fm::FilePathList& files) {
     data->setData(QStringLiteral("text/x-libfmqt-pid"), ba.setNum(QCoreApplication::applicationPid()));
     // Gnome, LXDE, and XFCE
     // Note: the standard text/urilist format uses CRLF for line breaks, but gnome format uses LF only
-    data->setData("x-special/gnome-copied-files", QByteArray("cut\n") + urilist.replace("\r\n", "\n"));
+    data->setData(QStringLiteral("x-special/gnome-copied-files"), QByteArray("cut\n") + urilist.replace("\r\n", "\n"));
     // The KDE way
-    data->setData("text/uri-list", urilist);
+    data->setData(QStringLiteral("text/uri-list"), urilist);
     data->setData(QStringLiteral("application/x-kde-cutselection"), QByteArrayLiteral("1"));
     clipboard->setMimeData(data);
 }
