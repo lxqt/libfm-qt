@@ -30,6 +30,7 @@
 #include <QPainter>
 #include <QTimer>
 #include <QDateTime>
+#include <QString>
 #include "utilities.h"
 #include "fileoperation.h"
 
@@ -220,7 +221,7 @@ QString FolderModel::makeTooltip(FolderModelItem* item) const {
     auto parent_path = info->path().parent();
     auto parent_str = parent_path ? parent_path.displayName() : nullptr;
     if(parent_str) {
-        tip += QStringLiteral("<p><i>") + tr("Location:") + QStringLiteral("</i> ") + parent_str.get() + QStringLiteral("</p>");
+        tip += QStringLiteral("<p><i>") + tr("Location:") + QStringLiteral("</i> ") + QString::fromUtf8(parent_str.get()) + QStringLiteral("</p>");
     }
     // file type
     tip += QStringLiteral("<i>") + tr("File type:") + QStringLiteral("</i> ") + info->mimeType()->desc();
