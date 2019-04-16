@@ -145,7 +145,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     iconViewAction_->setCheckable(true);
     connect(iconViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(iconViewAction_);
-    thumbnailViewAction_ = toolbar->addAction(QIcon::fromTheme(QLatin1String("dialog-information"), style()->standardIcon(QStyle::SP_FileDialogInfoView)), tr("Thumbnail View"));
+    thumbnailViewAction_ = toolbar->addAction(QIcon::fromTheme(QLatin1String("view-preview"), style()->standardIcon(QStyle::SP_FileDialogInfoView)), tr("Thumbnail View"));
     thumbnailViewAction_->setCheckable(true);
     connect(thumbnailViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(thumbnailViewAction_);
