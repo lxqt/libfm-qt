@@ -414,8 +414,8 @@ QStringList FolderModel::mimeTypes() const {
     // add support for freedesktop Xdnd direct save (XDS) protocol.
     // https://www.freedesktop.org/wiki/Specifications/XDS/#index4h2
     // the real implementation is in FolderView::childDropEvent().
-    types << "XdndDirectSave0";
-    types << "text/uri-list";
+    types << QStringLiteral("XdndDirectSave0");
+    types << QStringLiteral("text/uri-list");
     // types << "x-special/gnome-copied-files";
     return types;
 }
@@ -438,7 +438,7 @@ QMimeData* FolderModel::mimeData(const QModelIndexList& indexes) const {
             }
         }
     }
-    data->setData("text/uri-list", urilist);
+    data->setData(QStringLiteral("text/uri-list"), urilist);
 
     return data;
 }
@@ -493,7 +493,7 @@ bool FolderModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
         }
         return true;
     }
-    else if(data->hasFormat("application/x-qabstractitemmodeldatalist")) {
+    else if(data->hasFormat(QStringLiteral("application/x-qabstractitemmodeldatalist"))) {
         return true;
     }
     return QAbstractListModel::dropMimeData(data, action, row, column, parent);

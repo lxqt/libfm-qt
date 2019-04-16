@@ -101,14 +101,14 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     // setup toolbar buttons
     auto toolbar = new QToolBar(this);
     // back button
-    backAction_ = toolbar->addAction(QIcon::fromTheme("go-previous"), tr("Go Back"));
+    backAction_ = toolbar->addAction(QIcon::fromTheme(QStringLiteral("go-previous")), tr("Go Back"));
     backAction_->setShortcut(QKeySequence(tr("Alt+Left", "Go Back")));
     connect(backAction_, &QAction::triggered, [this]() {
         history_.backward();
         setDirectoryPath(history_.currentPath(), FilePath(), false);
     });
     // forward button
-    forwardAction_ = toolbar->addAction(QIcon::fromTheme("go-next"), tr("Go Forward"));
+    forwardAction_ = toolbar->addAction(QIcon::fromTheme(QStringLiteral("go-next")), tr("Go Forward"));
     forwardAction_->setShortcut(QKeySequence(tr("Alt+Right", "Go Forward")));
     connect(forwardAction_, &QAction::triggered, [this]() {
         history_.forward();
@@ -116,7 +116,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     });
     toolbar->addSeparator();
     // reload button
-    auto reloadAction = toolbar->addAction(QIcon::fromTheme("view-refresh"), tr("Reload"));
+    auto reloadAction = toolbar->addAction(QIcon::fromTheme(QStringLiteral("view-refresh")), tr("Reload"));
     reloadAction->setShortcut(QKeySequence(tr("F5", "Reload")));
     connect(reloadAction, &QAction::triggered, [this]() {
         if(folder_ && folder_->isLoaded()) {
@@ -134,7 +134,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         }
     });
     // new folder button
-    auto newFolderAction = toolbar->addAction(QIcon::fromTheme("folder-new"), tr("Create Folder"));
+    auto newFolderAction = toolbar->addAction(QIcon::fromTheme(QStringLiteral("folder-new")), tr("Create Folder"));
     connect(newFolderAction, &QAction::triggered, this, &FileDialog::onNewFolder);
     toolbar->addSeparator();
     // view buttons
@@ -785,10 +785,10 @@ void FileDialog::setMimeTypeFilters(const QStringList& filters) {
         auto mimeType = db.mimeTypeForName(filter);
         auto nameFilter = mimeType.comment();
         if(!mimeType.suffixes().empty()) {
-            nameFilter += " (";
+            nameFilter += QLatin1String(" (");
             const auto suffixes = mimeType.suffixes();
             for(const auto& suffix: suffixes) {
-                nameFilter += "*.";
+                nameFilter += QLatin1String("*.");
                 nameFilter += suffix;
                 nameFilter += ' ';
             }

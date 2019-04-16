@@ -67,7 +67,7 @@ QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
 
     // thumbnails are stored in $XDG_CACHE_HOME/thumbnails/large|normal|failed
     QString thumbnailDir{g_get_user_cache_dir()};
-    thumbnailDir += "/thumbnails/";
+    thumbnailDir += QLatin1String("/thumbnails/");
 
     // don't make thumbnails for files inside the thumbnail directory
     if(FilePath::fromLocalPath(thumbnailDir.toLocal8Bit().constData()).isParentOf(file->dirPath())) {
@@ -132,7 +132,7 @@ bool ThumbnailJob::isSupportedImageType(const std::shared_ptr<const MimeType>& m
 }
 
 bool ThumbnailJob::isThumbnailOutdated(const std::shared_ptr<const FileInfo>& file, const QImage &thumbnail) const {
-    QString thumb_mtime = thumbnail.text("Thumb::MTime");
+    QString thumb_mtime = thumbnail.text(QStringLiteral("Thumb::MTime"));
     return (thumb_mtime.isEmpty() || thumb_mtime.toULongLong() != file->mtime());
 }
 
@@ -229,8 +229,8 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
 
             // save the generated thumbnail to disk (don't save png thumbnails for JPEG EXIF thumbnails since loading them is cheap)
             if(!fromExif) {
-                result.setText("Thumb::MTime", QString::number(file->mtime()));
-                result.setText("Thumb::URI", uri);
+                result.setText(QStringLiteral("Thumb::MTime"), QString::number(file->mtime()));
+                result.setText(QStringLiteral("Thumb::URI"), uri);
                 result.save(thumbnailFilename, "PNG");
             }
             // qDebug() << "save thumbnail:" << thumbnailFilename;
@@ -251,11 +251,11 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
             // Here we waste some time to fix them so next time we don't need to re-generate these thumbnails. :-(
             bool changed = false;
             if(Q_UNLIKELY(result.text("Thumb::MTime").isEmpty())) {
-                result.setText("Thumb::MTime", QString::number(file->mtime()));
+                result.setText(QStringLiteral("Thumb::MTime"), QString::number(file->mtime()));
                 changed = true;
             }
             if(Q_UNLIKELY(result.text("Thumb::URI").isEmpty())) {
-                result.setText("Thumb::URI", uri);
+                result.setText(QStringLiteral("Thumb::URI"), uri);
                 changed = true;
             }
             if(Q_UNLIKELY(changed)) {

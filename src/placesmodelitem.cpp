@@ -125,10 +125,10 @@ void PlacesModelVolumeItem::update() {
         }
         if(CStrPtr uuid{g_volume_get_uuid(volume_)}) {
             if(toolTip.isEmpty()) {
-                toolTip = "UUID: ";
+                toolTip = QLatin1String("UUID: ");
             }
             else {
-                toolTip += "\nUUID: ";
+                toolTip += QLatin1String("\nUUID: ");
             }
             toolTip += uuid.get();
         }

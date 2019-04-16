@@ -42,7 +42,7 @@ public:
     void setTemplateItem(std::shared_ptr<const TemplateItem> item) {
         templateItem_ = std::move(item);
         auto mimeType = templateItem_->mimeType();
-        setText(QString("%1 (%2)").arg(templateItem_->displayName()).arg(mimeType->desc()));
+        setText(QStringLiteral("%1 (%2)").arg(templateItem_->displayName()).arg(mimeType->desc()));
         setIcon(templateItem_->icon()->qicon());
     }
 
@@ -58,11 +58,11 @@ CreateNewMenu::CreateNewMenu(QWidget* dialogParent, Fm::FilePath dirPath, QWidge
     templateSeparator_{nullptr},
     templates_{Templates::globalInstance()} {
 
-    QAction* action = new QAction(QIcon::fromTheme("folder-new"), tr("Folder"), this);
+    QAction* action = new QAction(QIcon::fromTheme(QStringLiteral("folder-new")), tr("Folder"), this);
     connect(action, &QAction::triggered, this, &CreateNewMenu::onCreateNewFolder);
     addAction(action);
 
-    action = new QAction(QIcon::fromTheme("document-new"), tr("Blank File"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("document-new")), tr("Blank File"), this);
     connect(action, &QAction::triggered, this, &CreateNewMenu::onCreateNewFile);
     addAction(action);
 

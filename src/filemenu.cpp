@@ -81,7 +81,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
     // check if the files are all in the trash can
     allTrash_ =  sameFilesystem_ && path.hasUriScheme("trash");
 
-    openAction_ = new QAction(QIcon::fromTheme("document-open"), tr("Open"), this);
+    openAction_ = new QAction(QIcon::fromTheme(QStringLiteral("document-open")), tr("Open"), this);
     connect(openAction_, &QAction::triggered, this, &FileMenu::onOpenTriggered);
     addAction(openAction_);
 
@@ -144,19 +144,19 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
         }
     }
     else { // ordinary files
-        cutAction_ = new QAction(QIcon::fromTheme("edit-cut"), tr("Cut"), this);
+        cutAction_ = new QAction(QIcon::fromTheme(QStringLiteral("edit-cut")), tr("Cut"), this);
         connect(cutAction_, &QAction::triggered, this, &FileMenu::onCutTriggered);
         addAction(cutAction_);
 
-        copyAction_ = new QAction(QIcon::fromTheme("edit-copy"), tr("Copy"), this);
+        copyAction_ = new QAction(QIcon::fromTheme(QStringLiteral("edit-copy")), tr("Copy"), this);
         connect(copyAction_, &QAction::triggered, this, &FileMenu::onCopyTriggered);
         addAction(copyAction_);
 
-        pasteAction_ = new QAction(QIcon::fromTheme("edit-paste"), tr("Paste"), this);
+        pasteAction_ = new QAction(QIcon::fromTheme(QStringLiteral("edit-paste")), tr("Paste"), this);
         connect(pasteAction_, &QAction::triggered, this, &FileMenu::onPasteTriggered);
         addAction(pasteAction_);
 
-        deleteAction_ = new QAction(QIcon::fromTheme("user-trash"), tr("&Move to Trash"), this);
+        deleteAction_ = new QAction(QIcon::fromTheme(QStringLiteral("user-trash")), tr("&Move to Trash"), this);
         connect(deleteAction_, &QAction::triggered, this, &FileMenu::onDeleteTriggered);
         addAction(deleteAction_);
 
@@ -238,7 +238,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
 
     separator3_ = addSeparator();
 
-    propertiesAction_ = new QAction(QIcon::fromTheme("document-properties"), tr("Properties"), this);
+    propertiesAction_ = new QAction(QIcon::fromTheme(QStringLiteral("document-properties")), tr("Properties"), this);
     connect(propertiesAction_, &QAction::triggered, this, &FileMenu::onFilePropertiesTriggered);
     addAction(propertiesAction_);
 }

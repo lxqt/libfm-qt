@@ -43,7 +43,7 @@ void ColorButton::setColor(const QColor& color) {
         color_ = color;
         // use qss instead of QPalette to set the background color
         // otherwise, this won't work when using the gtk style.
-        QString style = QString("QPushButton{background-color:%1;}").arg(color.name());
+        QString style = QStringLiteral("QPushButton{background-color:%1;}").arg(color.name());
         setStyleSheet(style);
         Q_EMIT changed();
     }
