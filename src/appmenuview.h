@@ -38,7 +38,7 @@ class LIBFM_QT_API AppMenuView : public QTreeView {
     Q_OBJECT
 public:
     explicit AppMenuView(QWidget* parent = nullptr);
-    ~AppMenuView();
+    ~AppMenuView() override;
 
     Fm::GAppInfoPtr selectedApp() const;
 
@@ -51,7 +51,7 @@ public:
     bool isAppSelected() const;
 
 Q_SIGNALS:
-    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) override;
 
 private:
     void addMenuItems(QStandardItem* parentItem, MenuCacheDir* dir);

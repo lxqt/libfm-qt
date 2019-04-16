@@ -46,10 +46,10 @@ class LIBFM_QT_API ProxyFolderModel : public QSortFilterProxyModel {
     Q_OBJECT
 public:
     explicit ProxyFolderModel(QObject* parent = 0);
-    virtual ~ProxyFolderModel();
+    ~ProxyFolderModel() override;
 
     // only Fm::FolderModel is allowed for being sourceModel
-    virtual void setSourceModel(QAbstractItemModel* model);
+    void setSourceModel(QAbstractItemModel* model) override;
 
     void setShowHidden(bool show);
     bool showHidden() const {
@@ -86,8 +86,8 @@ public:
 
     QModelIndex indexFromPath(const FilePath& path) const;
 
-    virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
-    virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+    void sort(int column, Qt::SortOrder order = Qt::AscendingOrder) override;
+    QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
 
     void addFilter(ProxyFolderModelFilter* filter);
     void removeFilter(ProxyFolderModelFilter* filter);
@@ -100,8 +100,8 @@ protected Q_SLOTS:
     void onThumbnailLoaded(const QModelIndex& srcIndex, int size);
 
 protected:
-    bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
-    bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
+    bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const override;
+    bool lessThan(const QModelIndex& left, const QModelIndex& right) const override;
     // void reloadAllThumbnails();
 
 private:

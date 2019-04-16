@@ -29,7 +29,7 @@ class LIBFM_QT_API FileDialog : public QDialog {
 public:
     explicit FileDialog(QWidget *parent = 0, FilePath path = FilePath::homeDir());
 
-    ~FileDialog();
+    ~FileDialog() override;
 
     // Some QFileDialog compatible interface
     void accept() override;
@@ -150,7 +150,7 @@ private:
     class FileDialogFilter: public ProxyFolderModelFilter {
     public:
         FileDialogFilter(FileDialog* dlg): dlg_{dlg} {}
-        virtual bool filterAcceptsRow(const ProxyFolderModel* /*model*/, const std::shared_ptr<const Fm::FileInfo>& info) const override;
+        bool filterAcceptsRow(const ProxyFolderModel* /*model*/, const std::shared_ptr<const Fm::FileInfo>& info) const override;
         void update();
 
         FileDialog* dlg_;

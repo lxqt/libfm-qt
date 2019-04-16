@@ -43,7 +43,7 @@ class LIBFM_QT_API Bookmarks : public QObject {
 public:
     explicit Bookmarks(QObject* parent = 0);
 
-    ~Bookmarks();
+    ~Bookmarks() override;
 
     const std::shared_ptr<const BookmarkItem> &insert(const FilePath& path, const QString& name, int pos);
 

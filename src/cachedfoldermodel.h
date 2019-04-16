@@ -42,7 +42,7 @@ public:
     static CachedFolderModel* modelFromPath(const Fm::FilePath& path);
 
 private:
-    virtual ~CachedFolderModel();
+    ~CachedFolderModel() override;
 
 private:
     int refCount;

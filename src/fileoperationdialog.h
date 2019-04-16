@@ -40,7 +40,7 @@ class LIBFM_QT_API FileOperationDialog : public QDialog {
     Q_OBJECT
 public:
     explicit FileOperationDialog(FileOperation* _operation);
-    virtual ~FileOperationDialog();
+    ~FileOperationDialog() override;
 
     void setSourceFiles(const Fm::FilePathList& srcFiles);
     void setDestPath(const Fm::FilePath& dest);
@@ -57,7 +57,7 @@ public:
     void setFilesProcessed(std::uint64_t finishedCount, std::uint64_t totalCount);
     void setRemainingTime(unsigned int sec);
 
-    virtual void reject();
+    void reject() override;
 
 private:
     Ui::FileOperationDialog* ui;

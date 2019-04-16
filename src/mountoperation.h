@@ -45,7 +45,7 @@ class LIBFM_QT_API MountOperation: public QObject {
 
 public:
     explicit MountOperation(bool interactive = true, QWidget* parent = 0);
-    ~MountOperation();
+    ~MountOperation() override;
 
     FM_QT_DEPRECATED
     void mount(const Fm::FilePath& path) {

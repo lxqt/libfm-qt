@@ -52,7 +52,7 @@ public:
 
     explicit Folder(const FilePath& path);
 
-    virtual ~Folder();
+    ~Folder() override;
 
     static std::shared_ptr<Folder> fromPath(const FilePath& path);
 

@@ -22,7 +22,7 @@
  */
 
 #include "folder.h"
-#include <string.h>
+#include <cstring>
 #include <cassert>
 #include <QTimer>
 #include <QDebug>
@@ -44,7 +44,7 @@ Folder::Folder():
     fsInfoJob_{nullptr},
     volumeManager_{VolumeManager::globalInstance()},
     /* for file monitor */
-    has_idle_reload_handler{0},
+    has_idle_reload_handler{false},
     has_idle_update_handler{false},
     pending_change_notify{false},
     filesystem_info_pending{false},

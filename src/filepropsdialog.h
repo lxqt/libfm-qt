@@ -39,9 +39,9 @@ class LIBFM_QT_API FilePropsDialog : public QDialog {
 
 public:
     explicit FilePropsDialog(Fm::FileInfoList files, QWidget* parent = 0, Qt::WindowFlags f = 0);
-    virtual ~FilePropsDialog();
+    ~FilePropsDialog() override;
 
-    virtual void accept();
+    void accept() override;
 
     static FilePropsDialog* showForFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent = 0) {
         Fm::FileInfoList files;

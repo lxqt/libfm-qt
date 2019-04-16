@@ -33,13 +33,13 @@ namespace Fm {
 class LIBFM_QT_API FileSearchDialog : public QDialog {
 public:
     explicit FileSearchDialog(QStringList paths = QStringList(), QWidget* parent = 0, Qt::WindowFlags f = 0);
-    ~FileSearchDialog();
+    ~FileSearchDialog() override;
 
     const FilePath& searchUri() const {
         return searchUri_;
     }
 
-    virtual void accept();
+    void accept() override;
 
     bool nameCaseInsensitive() const;
     void setNameCaseInsensitive(bool caseInsensitive);

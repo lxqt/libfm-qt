@@ -35,9 +35,9 @@ class LIBFM_QT_API EditBookmarksDialog : public QDialog {
     Q_OBJECT
 public:
     explicit EditBookmarksDialog(std::shared_ptr<Bookmarks> bookmarks, QWidget* parent = 0, Qt::WindowFlags f = 0);
-    virtual ~EditBookmarksDialog();
+    ~EditBookmarksDialog() override;
 
-    virtual void accept();
+    void accept() override;
 
 private Q_SLOTS:
     void onAddItem();

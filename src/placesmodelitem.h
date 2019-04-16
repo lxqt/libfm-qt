@@ -48,7 +48,7 @@ public:
     explicit PlacesModelItem(QIcon icon, QString title, Fm::FilePath path = Fm::FilePath{});
     explicit PlacesModelItem(const char* iconName, QString title, Fm::FilePath path = Fm::FilePath{});
     explicit PlacesModelItem(std::shared_ptr<const Fm::IconInfo> icon, QString title, Fm::FilePath path = Fm::FilePath{});
-    ~PlacesModelItem();
+    ~PlacesModelItem() override;
 
     const std::shared_ptr<const Fm::FileInfo>& fileInfo() const {
         return fileInfo_;
@@ -71,9 +71,9 @@ public:
     void setIcon(GIcon* gicon);
     void updateIcon();
 
-    QVariant data(int role = Qt::UserRole + 1) const;
+    QVariant data(int role = Qt::UserRole + 1) const override;
 
-    virtual int type() const {
+    int type() const override {
         return Places;
     }
 
@@ -90,7 +90,7 @@ public:
     bool canEject() {
         return g_volume_can_eject(volume_);
     }
-    virtual int type() const {
+    int type() const override {
         return Volume;
     }
     GVolume* volume() {
@@ -104,7 +104,7 @@ private:
 class LIBFM_QT_API PlacesModelMountItem : public PlacesModelItem {
 public:
     PlacesModelMountItem(GMount* mount);
-    virtual int type() const {
+    int type() const override {
         return Mount;
     }
     GMount* mount() const {
@@ -117,7 +117,7 @@ private:
 
 class LIBFM_QT_API PlacesModelBookmarkItem : public PlacesModelItem {
 public:
-    virtual int type() const {
+    int type() const override {
         return Bookmark;
     }
     PlacesModelBookmarkItem(std::shared_ptr<const Fm::BookmarkItem> bm_item);

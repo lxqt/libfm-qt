@@ -48,7 +48,7 @@ public:
     };
 
     explicit DirTreeModel(QObject* parent);
-    ~DirTreeModel();
+    ~DirTreeModel() override;
 
     void addRoots(Fm::FilePathList rootPaths);
 
@@ -68,13 +68,13 @@ public:
 
     QModelIndex indexFromPath(const Fm::FilePath& path) const;
 
-    virtual Qt::ItemFlags flags(const QModelIndex& index) const;
-    virtual QVariant data(const QModelIndex& index, int role) const;
-    virtual int columnCount(const QModelIndex& parent) const;
-    virtual int rowCount(const QModelIndex& parent) const;
-    virtual QModelIndex parent(const QModelIndex& child) const;
-    virtual QModelIndex index(int row, int column, const QModelIndex& parent) const;
-    virtual bool hasChildren(const QModelIndex& parent = QModelIndex()) const;
+    Qt::ItemFlags flags(const QModelIndex& index) const override;
+    QVariant data(const QModelIndex& index, int role) const override;
+    int columnCount(const QModelIndex& parent) const override;
+    int rowCount(const QModelIndex& parent) const override;
+    QModelIndex parent(const QModelIndex& child) const override;
+    QModelIndex index(int row, int column, const QModelIndex& parent) const override;
+    bool hasChildren(const QModelIndex& parent = QModelIndex()) const override;
 
 Q_SIGNALS:
     void rowLoaded(const QModelIndex& index);

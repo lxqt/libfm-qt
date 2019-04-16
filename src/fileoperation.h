@@ -49,7 +49,7 @@ public:
 public:
     explicit FileOperation(Type type, Fm::FilePathList srcFiles, QObject* parent = nullptr);
 
-    virtual ~FileOperation();
+    ~FileOperation() override;
 
     void setDestination(Fm::FilePath dest);
 

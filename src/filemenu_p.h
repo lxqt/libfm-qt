@@ -40,7 +40,7 @@ public:
         }
     }
 
-    virtual ~AppInfoAction() {
+    ~AppInfoAction() override {
     }
 
     const Fm::GAppInfoPtr& appInfo() const {

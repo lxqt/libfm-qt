@@ -68,7 +68,7 @@ public:
 
     explicit FolderView(QWidget* parent): FolderView{IconMode, parent} {}
 
-    virtual ~FolderView();
+    ~FolderView() override;
 
     void setViewMode(ViewMode _mode);
     ViewMode viewMode() const;
@@ -133,8 +133,8 @@ public:
     void setHiddenColumns(const QList<int> &columns);
 
 protected:
-    virtual bool event(QEvent* event);
-    virtual void contextMenuEvent(QContextMenuEvent* event);
+    bool event(QEvent* event) override;
+    void contextMenuEvent(QContextMenuEvent* event) override;
     virtual void childMousePressEvent(QMouseEvent* event);
     virtual void childDragEnterEvent(QDragEnterEvent* event);
     virtual void childDragMoveEvent(QDragMoveEvent* e);
@@ -149,7 +149,7 @@ protected:
     virtual void prepareFileMenu(Fm::FileMenu* menu);
     virtual void prepareFolderMenu(Fm::FolderMenu* menu);
 
-    virtual bool eventFilter(QObject* watched, QEvent* event);
+    bool eventFilter(QObject* watched, QEvent* event) override;
 
     void updateGridSize(); // called when view mode, icon size, font size or cell margin is changed
 

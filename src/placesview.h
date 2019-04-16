@@ -38,7 +38,7 @@ class LIBFM_QT_API PlacesProxyModel : public QSortFilterProxyModel {
     Q_OBJECT
 public:
     explicit PlacesProxyModel(QObject* parent = 0);
-    virtual ~PlacesProxyModel();
+    ~PlacesProxyModel() override;
 
     void setHidden(const QString& str, bool hide = true);
 
@@ -59,7 +59,7 @@ public:
     }
 
 protected:
-    bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
+    bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const override;
 
 private:
     QSet<QString> hidden_;
@@ -72,7 +72,7 @@ class LIBFM_QT_API PlacesView : public QTreeView {
 
 public:
     explicit PlacesView(QWidget* parent = 0);
-    virtual ~PlacesView();
+    ~PlacesView() override;
 
     void setCurrentPath(Fm::FilePath path);
 
@@ -121,15 +121,15 @@ protected Q_SLOTS:
     void onRenameBookmark();
 
 protected:
-    void drawBranches(QPainter* /*painter*/, const QRect& /*rect*/, const QModelIndex& /*index*/) const {
+    void drawBranches(QPainter* /*painter*/, const QRect& /*rect*/, const QModelIndex& /*index*/) const override {
         // override this method to inhibit drawing of the branch grid lines by Qt.
     }
 
-    virtual void dragMoveEvent(QDragMoveEvent* event);
-    virtual void dropEvent(QDropEvent* event);
-    virtual void contextMenuEvent(QContextMenuEvent* event);
+    void dragMoveEvent(QDragMoveEvent* event) override;
+    void dropEvent(QDropEvent* event) override;
+    void contextMenuEvent(QContextMenuEvent* event) override;
 
-    virtual void commitData(QWidget* editor);
+    void commitData(QWidget* editor) override;
 
 private:
     void onEjectButtonClicked(PlacesModelItem* item);

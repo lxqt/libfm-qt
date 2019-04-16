@@ -38,7 +38,7 @@ class LIBFM_QT_API FileMenu : public QMenu {
 
 public:
     explicit FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> info, Fm::FilePath cwd, bool isWritableDir = true, const QString& title = QString(), QWidget* parent = nullptr);
-    ~FileMenu();
+    ~FileMenu() override;
 
     void addTrustAction();
 

@@ -36,7 +36,7 @@ namespace Fm {
 class ExecFileDialog : public QDialog {
   Q_OBJECT
 public:
-  ~ExecFileDialog();
+  ~ExecFileDialog() override;
   ExecFileDialog(const FileInfo& fileInfo, QWidget* parent = 0, Qt::WindowFlags f = 0);
 
   BasicFileLauncher::ExecAction result() {
@@ -44,8 +44,8 @@ public:
   }
 
 protected:
-  virtual void accept() override;
-  virtual void reject() override;
+  void accept() override;
+  void reject() override;
 
 private:
   Ui::ExecFileDialog* ui;

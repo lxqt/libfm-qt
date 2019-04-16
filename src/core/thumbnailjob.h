@@ -15,7 +15,7 @@ public:
 
     explicit ThumbnailJob(FileInfoList files, int size);
 
-    ~ThumbnailJob();
+    ~ThumbnailJob() override;
 
     int size() const {
         return size_;

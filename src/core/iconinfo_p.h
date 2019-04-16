@@ -33,25 +33,25 @@ public:
 
     IconEngine(std::shared_ptr<const Fm::IconInfo> info, const bool& transparent = false);
 
-    ~IconEngine();
+    ~IconEngine() override;
 
-    virtual QSize actualSize(const QSize& size, QIcon::Mode mode, QIcon::State state) override;
-
-    // not supported
-    virtual void addFile(const QString& /*fileName*/, const QSize& /*size*/, QIcon::Mode /*mode*/, QIcon::State /*state*/) override {}
+    QSize actualSize(const QSize& size, QIcon::Mode mode, QIcon::State state) override;
 
     // not supported
-    virtual void addPixmap(const QPixmap& /*pixmap*/, QIcon::Mode /*mode*/, QIcon::State /*state*/) override {}
+    void addFile(const QString& /*fileName*/, const QSize& /*size*/, QIcon::Mode /*mode*/, QIcon::State /*state*/) override {}
 
-    virtual QIconEngine* clone() const override;
+    // not supported
+    void addPixmap(const QPixmap& /*pixmap*/, QIcon::Mode /*mode*/, QIcon::State /*state*/) override {}
 
-    virtual QString key() const override;
+    QIconEngine* clone() const override;
 
-    virtual void paint(QPainter* painter, const QRect& rect, QIcon::Mode mode, QIcon::State state) override;
+    QString key() const override;
 
-    virtual QPixmap pixmap(const QSize& size, QIcon::Mode mode, QIcon::State state) override;
+    void paint(QPainter* painter, const QRect& rect, QIcon::Mode mode, QIcon::State state) override;
 
-    virtual void virtual_hook(int id, void* data) override;
+    QPixmap pixmap(const QSize& size, QIcon::Mode mode, QIcon::State state) override;
+
+    void virtual_hook(int id, void* data) override;
 
 private:
     std::weak_ptr<const Fm::IconInfo> info_;

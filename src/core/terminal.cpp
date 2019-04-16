@@ -2,7 +2,7 @@
 
 #include <glib.h>
 #include <gio/gdesktopappinfo.h>
-#include <string.h>
+#include <cstring>
 #include <unistd.h>
 
 namespace Fm {

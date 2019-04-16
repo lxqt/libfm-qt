@@ -32,7 +32,7 @@ class LIBFM_QT_API ColorButton : public QPushButton {
 
 public:
     explicit ColorButton(QWidget* parent = 0);
-    virtual ~ColorButton();
+    ~ColorButton() override;
 
     void setColor(const QColor&);
 

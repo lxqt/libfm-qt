@@ -59,7 +59,7 @@ class QDrag;
 class XdndWorkaround : public QAbstractNativeEventFilter {
 public:
     explicit XdndWorkaround();
-    ~XdndWorkaround();
+    ~XdndWorkaround() override;
     bool nativeEventFilter(const QByteArray& eventType, void* message, long* result) override;
     static QByteArray atomName(xcb_atom_t atom);
     static xcb_atom_t internAtom(const char* name, int len = -1);

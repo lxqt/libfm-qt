@@ -36,12 +36,12 @@ class LIBFM_QT_API PathEdit : public QLineEdit {
     Q_OBJECT
 public:
     explicit PathEdit(QWidget* parent = 0);
-    virtual ~PathEdit();
+    ~PathEdit() override;
 
 protected:
-    virtual void focusInEvent(QFocusEvent* e);
-    virtual void focusOutEvent(QFocusEvent* e);
-    virtual bool event(QEvent* e);
+    void focusInEvent(QFocusEvent* e) override;
+    void focusOutEvent(QFocusEvent* e) override;
+    bool event(QEvent* e) override;
 
 private Q_SLOTS:
     void onTextChanged(const QString& text);
