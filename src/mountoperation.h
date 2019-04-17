@@ -44,7 +44,7 @@ class LIBFM_QT_API MountOperation: public QObject {
     Q_OBJECT
 
 public:
-    explicit MountOperation(bool interactive = true, QWidget* parent = 0);
+    explicit MountOperation(bool interactive = true, QWidget* parent = nullptr);
     ~MountOperation() override;
 
     FM_QT_DEPRECATED

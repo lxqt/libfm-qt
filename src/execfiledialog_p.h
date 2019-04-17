@@ -37,7 +37,7 @@ class ExecFileDialog : public QDialog {
   Q_OBJECT
 public:
   ~ExecFileDialog() override;
-  ExecFileDialog(const FileInfo& fileInfo, QWidget* parent = 0, Qt::WindowFlags f = 0);
+  ExecFileDialog(const FileInfo& fileInfo, QWidget* parent = nullptr, Qt::WindowFlags f = 0);
 
   BasicFileLauncher::ExecAction result() {
     return result_;

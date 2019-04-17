@@ -535,7 +535,7 @@ bool FileActionItem::compare_items(std::shared_ptr<const FileActionItem> a, std:
                         if(g_key_file_load_from_file(desktop_file_key, desktop_file.get(), G_KEY_FILE_NONE, nullptr)) {
                             auto actionName = CStrPtr{g_key_file_get_string(desktop_file_key,
                                                                             "Desktop Entry",
-                                                                            "Name", NULL)};
+                                                                            "Name", nullptr)};
                             if(actionName) {
                                 itemNamesList << QString::fromUtf8(actionName.get());
                             }

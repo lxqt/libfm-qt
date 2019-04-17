@@ -35,7 +35,7 @@ class PathEditJob;
 class LIBFM_QT_API PathEdit : public QLineEdit {
     Q_OBJECT
 public:
-    explicit PathEdit(QWidget* parent = 0);
+    explicit PathEdit(QWidget* parent = nullptr);
     ~PathEdit() override;
 
 protected:

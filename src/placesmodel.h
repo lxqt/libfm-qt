@@ -52,7 +52,7 @@ public:
     // QAction used for popup menus
     class ItemAction : public QAction {
     public:
-        explicit ItemAction(const QModelIndex& index, QString text, QObject* parent = 0):
+        explicit ItemAction(const QModelIndex& index, QString text, QObject* parent = nullptr):
             QAction(text, parent),
             index_(index) {
         }
@@ -65,7 +65,7 @@ public:
     };
 
 public:
-    explicit PlacesModel(QObject* parent = 0);
+    explicit PlacesModel(QObject* parent = nullptr);
     ~PlacesModel() override;
 
     bool showTrash() {

@@ -45,7 +45,7 @@ public:
 class LIBFM_QT_API ProxyFolderModel : public QSortFilterProxyModel {
     Q_OBJECT
 public:
-    explicit ProxyFolderModel(QObject* parent = 0);
+    explicit ProxyFolderModel(QObject* parent = nullptr);
     ~ProxyFolderModel() override;
 
     // only Fm::FolderModel is allowed for being sourceModel

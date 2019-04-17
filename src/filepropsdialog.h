@@ -38,19 +38,19 @@ class LIBFM_QT_API FilePropsDialog : public QDialog {
     Q_OBJECT
 
 public:
-    explicit FilePropsDialog(Fm::FileInfoList files, QWidget* parent = 0, Qt::WindowFlags f = 0);
+    explicit FilePropsDialog(Fm::FileInfoList files, QWidget* parent = nullptr, Qt::WindowFlags f = 0);
     ~FilePropsDialog() override;
 
     void accept() override;
 
-    static FilePropsDialog* showForFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent = 0) {
+    static FilePropsDialog* showForFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent = nullptr) {
         Fm::FileInfoList files;
         files.push_back(std::move(file));
         FilePropsDialog* dlg = showForFiles(files, parent);
         return dlg;
     }
 
-    static FilePropsDialog* showForFiles(Fm::FileInfoList files, QWidget* parent = 0) {
+    static FilePropsDialog* showForFiles(Fm::FileInfoList files, QWidget* parent = nullptr) {
         FilePropsDialog* dlg = new FilePropsDialog(std::move(files), parent);
         dlg->show();
         return dlg;

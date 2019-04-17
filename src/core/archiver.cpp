@@ -29,7 +29,7 @@ bool Archiver::isMimeTypeSupported(const char* type) {
 }
 
 bool Archiver::launchProgram(GAppLaunchContext* ctx, const char* cmd, const FilePathList& files, const FilePath& dir) {
-    char* _cmd = NULL;
+    char* _cmd = nullptr;
     const char* dir_place_holder;
     GKeyFile* dummy;
 
@@ -77,12 +77,12 @@ bool Archiver::launchProgram(GAppLaunchContext* ctx, const char* cmd, const File
     g_key_file_free(dummy);
     g_debug("cmd = %s", cmd);
     if(app) {
-        GList* uris = NULL;
+        GList* uris = nullptr;
         for(auto& file: files) {
             uris = g_list_prepend(uris, g_strdup(file.uri().get()));
         }
-        g_app_info_launch_uris(app.get(), uris, ctx, NULL);
-        g_list_foreach(uris, (GFunc)g_free, NULL);
+        g_app_info_launch_uris(app.get(), uris, ctx, nullptr);
+        g_list_foreach(uris, (GFunc)g_free, nullptr);
         g_list_free(uris);
     }
     g_free(_cmd);
@@ -140,7 +140,7 @@ const std::vector<std::unique_ptr<Archiver> >& Archiver::allArchivers() {
     // load all archivers on demand
     if(allArchivers_.empty()) {
         GKeyFile* kf = g_key_file_new();
-        if(g_key_file_load_from_file(kf, LIBFM_QT_DATA_DIR "/archivers.list", G_KEY_FILE_NONE, NULL)) {
+        if(g_key_file_load_from_file(kf, LIBFM_QT_DATA_DIR "/archivers.list", G_KEY_FILE_NONE, nullptr)) {
             gsize n_archivers;
             CStrArrayPtr programs{g_key_file_get_groups(kf, &n_archivers)};
             if(programs) {
@@ -148,10 +148,10 @@ const std::vector<std::unique_ptr<Archiver> >& Archiver::allArchivers() {
                 for(i = 0; i < n_archivers; ++i) {
                     auto program = programs[i];
                     std::unique_ptr<Archiver> archiver{new Archiver{}};
-                    archiver->createCmd_ = CStrPtr{g_key_file_get_string(kf, program, "create", NULL)};
-                    archiver->extractCmd_ = CStrPtr{g_key_file_get_string(kf, program, "extract", NULL)};
-                    archiver->extractToCmd_ = CStrPtr{g_key_file_get_string(kf, program, "extract_to", NULL)};
-                    archiver->mimeTypes_ = CStrArrayPtr{g_key_file_get_string_list(kf, program, "mime_types", NULL, NULL)};
+                    archiver->createCmd_ = CStrPtr{g_key_file_get_string(kf, program, "create", nullptr)};
+                    archiver->extractCmd_ = CStrPtr{g_key_file_get_string(kf, program, "extract", nullptr)};
+                    archiver->extractToCmd_ = CStrPtr{g_key_file_get_string(kf, program, "extract_to", nullptr)};
+                    archiver->mimeTypes_ = CStrArrayPtr{g_key_file_get_string_list(kf, program, "mime_types", nullptr, nullptr)};
                     archiver->program_ = CStrPtr{g_strdup(program)};
 
                     // if default archiver is not set, find the first program existing in the current system.

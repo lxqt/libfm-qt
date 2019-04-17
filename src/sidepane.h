@@ -46,7 +46,7 @@ public:
     };
 
 public:
-    explicit SidePane(QWidget* parent = 0);
+    explicit SidePane(QWidget* parent = nullptr);
     ~SidePane() override;
 
     QSize iconSize() const {

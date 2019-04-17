@@ -29,7 +29,7 @@ class ElidedLabel : public QLabel {
 Q_OBJECT
 
 public:
-    explicit ElidedLabel(QWidget *parent = 0, Qt::WindowFlags f = Qt::WindowFlags()):
+    explicit ElidedLabel(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags()):
         QLabel(parent, f),
         lastWidth_(0) {
             setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);

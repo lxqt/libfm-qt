@@ -37,7 +37,7 @@ class PathButton;
 class LIBFM_QT_API PathBar: public QWidget {
     Q_OBJECT
 public:
-    explicit PathBar(QWidget* parent = 0);
+    explicit PathBar(QWidget* parent = nullptr);
 
     const Fm::FilePath& path() {
         return currentPath_;

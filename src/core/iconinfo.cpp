@@ -156,7 +156,7 @@ extern "C" GIcon* _fm_icon_from_name(const char* name) {
             gicon = g_file_icon_new(gicon_file);
             g_object_unref(gicon_file);
         }
-        else if(G_UNLIKELY((dot = strrchr((char*)name, '.')) != NULL && dot > name &&
+        else if(G_UNLIKELY((dot = strrchr((char*)name, '.')) != nullptr && dot > name &&
                 (g_ascii_strcasecmp(&dot[1], "png") == 0
                  || g_ascii_strcasecmp(&dot[1], "svg") == 0
                  || g_ascii_strcasecmp(&dot[1], "xpm") == 0))) {
