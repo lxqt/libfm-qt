@@ -26,8 +26,6 @@
 #include <QCursor>
 #include <QWidget>
 
-// This part is for Qt >= 5.4 only
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
 #include <QDrag>
 #include <QUrl>
 #include <cstring>
@@ -41,7 +39,6 @@
 #undef XI_ButtonRelease
 #define XI_ButtonRelease                 5
 
-#endif // (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
 
 XdndWorkaround::XdndWorkaround() {
     if(!QX11Info::isPlatformX11()) {
@@ -51,8 +48,6 @@ XdndWorkaround::XdndWorkaround() {
     // we need to filter all X11 events
     qApp->installNativeEventFilter(this);
 
-// This part is for Qt >= 5.4 only
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
     lastDrag_ = nullptr;
 
     // initialize xinput2 since newer versions of Qt5 uses it.
@@ -73,7 +68,6 @@ XdndWorkaround::XdndWorkaround() {
         free(err);
     }
     free(reply);
-#endif // (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
 }
 
 XdndWorkaround::~XdndWorkaround() {
@@ -91,8 +85,6 @@ bool XdndWorkaround::nativeEventFilter(const QByteArray& eventType, void* messag
             return clientMessage(reinterpret_cast<xcb_client_message_event_t*>(event));
         case XCB_SELECTION_NOTIFY:
             return selectionNotify(reinterpret_cast<xcb_selection_notify_event_t*>(event));
-// This part is for Qt >= 5.4 only
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
         case XCB_SELECTION_REQUEST:
             return selectionRequest(reinterpret_cast<xcb_selection_request_event_t*>(event));
         case XCB_GE_GENERIC:
@@ -102,7 +94,6 @@ bool XdndWorkaround::nativeEventFilter(const QByteArray& eventType, void* messag
             // older versions of Qt5 receive mouse events via old XCB events.
             buttonRelease();
             break;
-#endif // Qt >= 5.4
         default:
             break;
         }
@@ -205,12 +196,9 @@ bool XdndWorkaround::clientMessage(xcb_client_message_event_t* event) {
             }
         }
     }
-    // This part is for Qt >= 5.4 only
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
     else if(event_type == "XdndFinished") {
         lastDrag_ = nullptr;
     }
-#endif // Qt >= 5.4
     return false;
 }
 
@@ -219,8 +207,6 @@ bool XdndWorkaround::selectionNotify(xcb_selection_notify_event_t* event) {
     return false;
 }
 
-// This part is for Qt >= 5.4 only
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
 
 bool XdndWorkaround::selectionRequest(xcb_selection_request_event_t* event) {
     xcb_connection_t* conn = QX11Info::connection();
@@ -289,4 +275,3 @@ void XdndWorkaround::buttonRelease() {
     // qDebug() << "BUTTON RELEASE!!!!" << xcbDrag()->canDrop() << lastDrag_;
 }
 
-#endif // QT_VERSION >= QT_VERSION_CHECK(5, 4, 0)

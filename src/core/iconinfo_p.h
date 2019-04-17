@@ -111,13 +111,11 @@ void IconEngine::virtual_hook(int id, void* data) {
         *result = info ? info->internalQicon().name() : QString{};
         break;
     }
-#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
     case QIconEngine::IsNullHook: {
         bool* result = reinterpret_cast<bool*>(data);
         *result = info ? info->internalQicon().isNull() : true;
         break;
     }
-#endif
 #if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
     case QIconEngine::ScaledPixmapHook: {
         auto* arg = reinterpret_cast<QIconEngine::ScaledPixmapArgument*>(data);
