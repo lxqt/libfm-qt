@@ -803,7 +803,7 @@ Deseja apagar permanentemente esses arquivos?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="287"/>
         <source>Files of different types</source>
-        <translation>Arquivos de diferentes tipos</translation>
+        <translation>Arquivos de tipos diferentes</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="310"/>
@@ -813,7 +813,7 @@ Deseja apagar permanentemente esses arquivos?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>%p% used</source>
-        <translation>%p% usado(os)</translation>
+        <translation>%p% usado</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="334"/>
