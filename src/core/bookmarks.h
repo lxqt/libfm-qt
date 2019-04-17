@@ -41,7 +41,7 @@ private:
 class LIBFM_QT_API Bookmarks : public QObject {
     Q_OBJECT
 public:
-    explicit Bookmarks(QObject* parent = 0);
+    explicit Bookmarks(QObject* parent = nullptr);
 
     ~Bookmarks() override;
 

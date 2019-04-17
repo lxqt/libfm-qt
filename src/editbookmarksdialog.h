@@ -34,7 +34,7 @@ namespace Fm {
 class LIBFM_QT_API EditBookmarksDialog : public QDialog {
     Q_OBJECT
 public:
-    explicit EditBookmarksDialog(std::shared_ptr<Bookmarks> bookmarks, QWidget* parent = 0, Qt::WindowFlags f = 0);
+    explicit EditBookmarksDialog(std::shared_ptr<Bookmarks> bookmarks, QWidget* parent = nullptr, Qt::WindowFlags f = 0);
     ~EditBookmarksDialog() override;
 
     void accept() override;

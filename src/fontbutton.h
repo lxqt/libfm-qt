@@ -30,7 +30,7 @@ namespace Fm {
 class LIBFM_QT_API FontButton : public QPushButton {
     Q_OBJECT
 public:
-    explicit FontButton(QWidget* parent = 0);
+    explicit FontButton(QWidget* parent = nullptr);
     ~FontButton() override;
 
     QFont font() {

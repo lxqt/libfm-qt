@@ -37,7 +37,7 @@ class PlacesView;
 class LIBFM_QT_API PlacesProxyModel : public QSortFilterProxyModel {
     Q_OBJECT
 public:
-    explicit PlacesProxyModel(QObject* parent = 0);
+    explicit PlacesProxyModel(QObject* parent = nullptr);
     ~PlacesProxyModel() override;
 
     void setHidden(const QString& str, bool hide = true);
@@ -71,7 +71,7 @@ class LIBFM_QT_API PlacesView : public QTreeView {
     Q_OBJECT
 
 public:
-    explicit PlacesView(QWidget* parent = 0);
+    explicit PlacesView(QWidget* parent = nullptr);
     ~PlacesView() override;
 
     void setCurrentPath(Fm::FilePath path);

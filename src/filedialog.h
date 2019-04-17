@@ -27,7 +27,7 @@ class ProxyFolderModel;
 class LIBFM_QT_API FileDialog : public QDialog {
     Q_OBJECT
 public:
-    explicit FileDialog(QWidget *parent = 0, FilePath path = FilePath::homeDir());
+    explicit FileDialog(QWidget *parent = nullptr, FilePath path = FilePath::homeDir());
 
     ~FileDialog() override;
 

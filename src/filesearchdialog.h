@@ -32,7 +32,7 @@ namespace Fm {
 
 class LIBFM_QT_API FileSearchDialog : public QDialog {
 public:
-    explicit FileSearchDialog(QStringList paths = QStringList(), QWidget* parent = 0, Qt::WindowFlags f = 0);
+    explicit FileSearchDialog(QStringList paths = QStringList(), QWidget* parent = nullptr, Qt::WindowFlags f = 0);
     ~FileSearchDialog() override;
 
     const FilePath& searchUri() const {

@@ -29,7 +29,7 @@ namespace Fm {
 class AppInfoAction : public QAction {
     Q_OBJECT
 public:
-    explicit AppInfoAction(Fm::GAppInfoPtr app, QObject* parent = 0):
+    explicit AppInfoAction(Fm::GAppInfoPtr app, QObject* parent = nullptr):
         QAction(QString::fromUtf8(g_app_info_get_name(app.get())), parent),
         appInfo_{std::move(app)} {
         setToolTip(QString::fromUtf8(g_app_info_get_description(appInfo_.get())));

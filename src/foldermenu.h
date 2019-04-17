@@ -36,7 +36,7 @@ class LIBFM_QT_API FolderMenu : public QMenu {
     Q_OBJECT
 
 public:
-    explicit FolderMenu(FolderView* view, QWidget* parent = 0);
+    explicit FolderMenu(FolderView* view, QWidget* parent = nullptr);
     ~FolderMenu() override;
 
     QAction* createAction() {
