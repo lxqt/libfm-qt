@@ -372,7 +372,7 @@ void FolderViewTreeView::headerContextMenu(const QPoint &p) {
                 }
                 else {
                     action->setChecked(!header()->isSectionHidden(columnId));
-                    connect(action, &QAction::triggered, action, [this, column, columnId] (bool checked) {
+                    connect(action, &QAction::triggered, action, [this, column] (bool checked) {
                         if(checked) {
                             hiddenColumns_.remove(column);
                         }
@@ -424,7 +424,6 @@ void FolderViewTreeView::mousePressEvent(QMouseEvent* event) {
     mousePressPoint_ = event->pos() + QPoint(horizontalOffset(), verticalOffset());
     QModelIndex index = indexAt(event->pos());
     if(index.isValid()) {
-        QItemSelectionModel::SelectionFlags command;
         Qt::KeyboardModifiers modifiers = QApplication::keyboardModifiers();
         const Qt::MouseButton button = static_cast<const QMouseEvent*>(event)->button();
         const bool shiftKeyPressed = modifiers & Qt::ShiftModifier;

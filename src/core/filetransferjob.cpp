@@ -145,7 +145,7 @@ bool FileTransferJob::copySpecialFile(const FilePath& srcPath, const GFileInfoPt
     return ret;
 }
 
-bool FileTransferJob::copyDirContent(const FilePath& srcPath, GFileInfoPtr srcInfo, FilePath& destPath, bool skip) {
+bool FileTransferJob::copyDirContent(const FilePath& srcPath, GFileInfoPtr /*srcInfo*/, FilePath& destPath, bool skip) {
     bool ret = false;
     // copy dir content
     GErrorPtr err;
