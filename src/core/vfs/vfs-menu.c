@@ -26,7 +26,6 @@
 
 #include "fm-file.h"
 #include "glib-compat.h"
-// #include "fm-utils.h"
 #include "fm-xml-file.h"
 
 #include <glib/gi18n-lib.h>

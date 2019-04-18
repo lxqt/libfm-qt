@@ -70,8 +70,6 @@ private:
     bool clientMessage(xcb_client_message_event_t* event);
     bool selectionNotify(xcb_selection_notify_event_t* event);
 
-// This part is for Qt >= 5.4 only
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
 private:
     bool selectionRequest(xcb_selection_request_event_t* event);
     bool genericEvent(xcb_ge_generic_event_t* event);
@@ -84,7 +82,6 @@ private:
     int xinputOpCode_;
     int xinputEventBase_;
     int xinputErrorBase_;
-#endif // Qt >= 5.4
 };
 
 #endif // XDNDWORKAROUND_H
