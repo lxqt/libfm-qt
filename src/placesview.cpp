@@ -157,7 +157,7 @@ PlacesView::PlacesView(QWidget* parent):
         // for some reason (a Qt bug?), spanning is reset
         spanFirstColumn();
     });
-    connect(model_.get(), &QAbstractItemModel::rowsRemoved, this, [this](const QModelIndex&, int, int) {
+    connect(model_.get(), &QAbstractItemModel::rowsRemoved, this, [](const QModelIndex&, int, int) {
         proxyModel_->setHidden(QString());
     });
 
