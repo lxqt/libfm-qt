@@ -90,6 +90,7 @@ void EditBookmarksDialog::accept() {
 void EditBookmarksDialog::onAddItem() {
     QTreeWidgetItem* item = new QTreeWidgetItem();
     item->setData(0, Qt::DisplayRole, tr("New bookmark"));
+    item->setData(1, Qt::DisplayRole, "/");
     item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
     ui->treeWidget->addTopLevelItem(item);
     ui->treeWidget->editItem(item);
