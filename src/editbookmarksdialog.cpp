@@ -77,7 +77,7 @@ void EditBookmarksDialog::accept() {
             QString name = item->data(0, Qt::DisplayRole).toString();
             QUrl url = QUrl::fromUserInput(item->data(1, Qt::DisplayRole).toString());
             if (!url.isValid())
-                url = QUrl("file:///");
+                url = QUrl::fromUserInput(QString::fromUtf8(Fm::FilePath::homeDir().toString().get()));
             file.write(url.toEncoded());
             file.write(" ");
             file.write(name.toUtf8());
@@ -92,7 +92,6 @@ void EditBookmarksDialog::accept() {
 void EditBookmarksDialog::onAddItem() {
     QTreeWidgetItem* item = new QTreeWidgetItem();
     item->setData(0, Qt::DisplayRole, tr("New bookmark"));
-    item->setData(1, Qt::DisplayRole, "/");
     item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
     ui->treeWidget->addTopLevelItem(item);
     ui->treeWidget->editItem(item);
