@@ -76,6 +76,8 @@ void EditBookmarksDialog::accept() {
             }
             QString name = item->data(0, Qt::DisplayRole).toString();
             QUrl url = QUrl::fromUserInput(item->data(1, Qt::DisplayRole).toString());
+            if (!url.isValid())
+                url = "/";
             file.write(url.toEncoded());
             file.write(" ");
             file.write(name.toUtf8());
