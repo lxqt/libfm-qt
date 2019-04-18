@@ -9,6 +9,9 @@ libfm-qt is licensed under the terms of the
 [LGPLv2.1](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html)
 or any later version. See file LICENSE for its full text.   
 
+fm-qt-config.cmake.in is licensed under the terms of the
+[BSD-3-Clause](https://opensource.org/licenses/BSD-3-Clause)
+
 ## Installation
 
 ### Compiling source code
