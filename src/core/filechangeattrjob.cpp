@@ -152,7 +152,7 @@ bool FileChangeAttrJob::processFile(const FilePath& path, const GFileInfoPtr& in
     return ret;
 }
 
-bool FileChangeAttrJob::handleError(GErrorPtr &err, const FilePath &path, const GFileInfoPtr &info, ErrorSeverity severity) {
+bool FileChangeAttrJob::handleError(GErrorPtr &err, const FilePath & /*path*/, const GFileInfoPtr & /*info*/, ErrorSeverity severity) {
     auto act = emitError(err, severity);
     if (act == ErrorAction::RETRY) {
         err.reset();
