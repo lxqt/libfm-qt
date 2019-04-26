@@ -23,6 +23,10 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 # universal way to translate a libtool version-info to a cmake version.
 # We use "(current-age).age.revision" as the cmake version.
 # current: 6, revision: 0, age: 0 => version: 6.0.0
+#
+# TODO:
+# IF YOU REALLY THINK THAT BUMPING THE SOVERSION IS A GOOD IDEA PLEASE CHANGE IT IN 
+# LXQT-QTPLUGIN TO UNTIL LXQT-BUILD-TOOLS WILL TAKE CARE
 set(LIBFM_QT_ABI_VERSION "6.1.0")
 set(LIBFM_QT_SOVERSION "6")
 
