@@ -83,6 +83,13 @@ bool FileTransferJob::moveFileSameFs(const FilePath& srcPath, const GFileInfoPtr
         // do the file operation
         if(!g_file_move(srcPath.gfile().get(), destPath.gfile().get(), GFileCopyFlags(flags), cancellable().get(),
                        nullptr, this, &err)) {
+            // Specially with mounts bound to /mnt, g_file_move() may give the recursive error
+            // and fail, in which case, we ignore the error and try copying and deleting.
+            if(err.code() == G_IO_ERROR_WOULD_RECURSE) {
+              if(auto parent = destPath.parent()) {
+                  return copyFile(srcPath, srcInfo, parent, destPath.baseName().get());
+              }
+            }
             retry = handleError(err, srcPath, srcInfo, destPath, flags);
         }
         else {
