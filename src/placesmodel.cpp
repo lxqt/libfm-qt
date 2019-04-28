@@ -216,9 +216,9 @@ void PlacesModel::setShowTrash(bool show) {
    else if(!show) {
       placesRoot->removeRow(trashItem_->row()); // delete trashItem_;
       trashItem_ = nullptr;
-      }
-   }
+    }
 }
+
 
 PlacesModelItem* PlacesModel::itemFromPath(const Fm::FilePath &path) {
     PlacesModelItem* item = itemFromPath(placesRoot, path);
