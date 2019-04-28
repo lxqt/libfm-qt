@@ -53,6 +53,40 @@ PlacesModel::PlacesModel(QObject* parent):
     placesRoot->appendRow(desktopItem);
 
     trashItem_ = new PlacesModelItem("user-trash", tr("Trash"), Fm::FilePath::fromUri("trash:///"));
+    QTimer* trashUpdateTimer_ = new QTimer(this);
+    trashUpdateTimer_->setSingleShot(true);
+    std::shared_ptr<Folder> trashFolder = Fm::Folder::fromPath(Fm::FilePath::fromPathStr("trash:///"));
+        
+    QObject::connect(trashFolder.get(), &Folder::filesAdded, [=]()
+    {
+        if (trashUpdateTimer_->isActive())
+            return;
+
+        trashUpdateTimer_->start(250);
+
+        QObject::connect(trashUpdateTimer_, &QTimer::timeout, [=]()
+        {
+            const char* icon_name = trashFolder->files().size() > 0 ? "user-trash-full" : "user-trash";
+            auto icon = Fm::IconInfo::fromName(icon_name);
+            trashItem_->setIcon(std::move(icon));
+            Q_EMIT dataChanged(index(trashItem_->row(), 0, QModelIndex()), index(trashItem_->row(), 0, QModelIndex()));
+        });
+    });
+    QObject::connect(trashFolder.get(), &Folder::filesRemoved, [=]()
+    {
+        if (trashUpdateTimer_->isActive())
+            return;
+
+        trashUpdateTimer_->start(250);
+
+        QObject::connect(trashUpdateTimer_, &QTimer::timeout, [=]()
+        {
+            const char* icon_name = trashFolder->files().size() > 0 ? "user-trash-full" : "user-trash";
+            auto icon = Fm::IconInfo::fromName(icon_name);
+            trashItem_->setIcon(std::move(icon));
+            Q_EMIT dataChanged(index(trashItem_->row(), 0, QModelIndex()), index(trashItem_->row(), 0, QModelIndex()));
+        });
+    });
     placesRoot->appendRow(trashItem_);
 
     computerItem = new PlacesModelItem("computer", tr("Computer"), Fm::FilePath::fromUri("computer:///"));
