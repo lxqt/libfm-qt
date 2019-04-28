@@ -90,8 +90,8 @@ PlacesModel::PlacesModel(QObject* parent):
     placesRoot->appendRow(trashItem_);
 
     computerItem = new PlacesModelItem("computer", tr("Computer"), Fm::FilePath::fromUri("computer:///"));
-    placesRoot->insertRow(computerItem);
-
+    placesRoot->appendRow(computerItem);
+        
     { // Applications
         const char* applicaion_icon_names[] = {"system-software-install", "applications-accessories", "application-x-executable"};
         // NOTE: g_themed_icon_new_from_names() accepts char**, but actually const char** is OK.
