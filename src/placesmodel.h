@@ -114,8 +114,6 @@ private:
     static void onMountRemoved(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis);
     static void onMountChanged(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis);
 
-    static void onTrashChanged(GFileMonitor* monitor, GFile* gf, GFile* other, GFileMonitorEvent evt, PlacesModel* pThis);
-
 private:
     std::shared_ptr<Fm::Bookmarks> bookmarks;
     GVolumeMonitor* volumeMonitor;
