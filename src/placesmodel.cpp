@@ -36,8 +36,6 @@ PlacesModel::PlacesModel(QObject* parent):
     QStandardItemModel(parent),
     showApplications_(true),
     showDesktop_(true),
-    trashMonitor_(nullptr),
-    trashUpdateTimer_(nullptr),
     // FIXME: this seems to be broken when porting to new API.
     ejectIcon_(QIcon::fromTheme("media-eject")) {
     setColumnCount(2);
@@ -54,10 +52,11 @@ PlacesModel::PlacesModel(QObject* parent):
                                       Fm::FilePath::fromLocalPath(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation).toLocal8Bit().constData()));
     placesRoot->appendRow(desktopItem);
 
-    createTrashItem();
+    trashItem_ = new PlacesModelItem("user-trash", tr("Trash"), Fm::FilePath::fromUri("trash:///"));
+    placesRoot->appendRow(trashItem_);
 
     computerItem = new PlacesModelItem("computer", tr("Computer"), Fm::FilePath::fromUri("computer:///"));
-    placesRoot->appendRow(computerItem);
+    placesRoot->insertRow(computerItem);
 
     { // Applications
         const char* applicaion_icon_names[] = {"system-software-install", "applications-accessories", "application-x-executable"};
@@ -158,85 +157,10 @@ PlacesModel::~PlacesModel() {
         g_signal_handlers_disconnect_by_func(volumeMonitor, (gpointer)G_CALLBACK(onMountRemoved), this);
         g_object_unref(volumeMonitor);
     }
-    if(trashMonitor_) {
-        g_signal_handlers_disconnect_by_func(trashMonitor_, (gpointer)G_CALLBACK(onTrashChanged), this);
-        g_object_unref(trashMonitor_);
-    }
 
     for(GMount* const mount : qAsConst(shadowedMounts_)) {
         g_object_unref(mount);
     }
-}
-
-// static
-void PlacesModel::onTrashChanged(GFileMonitor* /*monitor*/, GFile* /*gf*/, GFile* /*other*/, GFileMonitorEvent /*evt*/, PlacesModel* pThis) {
-    if(pThis->trashUpdateTimer_ != nullptr && !pThis->trashUpdateTimer_->isActive()) {
-        pThis->trashUpdateTimer_->start(250); // don't update trash very fast
-    }
-}
-
-void PlacesModel::updateTrash() {
-
-    struct UpdateTrashData {
-        QPointer<PlacesModel> model;
-        GFile* gf;
-        UpdateTrashData(PlacesModel* _model) : model(_model) {
-            gf = g_file_new_for_uri("trash:///");
-        }
-        ~UpdateTrashData() {
-            g_object_unref(gf);
-        }
-    };
-
-    if(trashItem_) {
-        UpdateTrashData* data = new UpdateTrashData(this);
-        g_file_query_info_async(data->gf, G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT, G_FILE_QUERY_INFO_NONE, G_PRIORITY_LOW, nullptr,
-        [](GObject * /*source_object*/, GAsyncResult * res, gpointer user_data) {
-            // the callback lambda function is called when the asyn query operation is finished
-            UpdateTrashData* data = reinterpret_cast<UpdateTrashData*>(user_data);
-            PlacesModel* _this = data->model.data();
-            if(_this != nullptr) { // ensure that our model object is not deleted yet
-                Fm::GFileInfoPtr inf{g_file_query_info_finish(data->gf, res, nullptr), false};
-                if(inf) {
-                    if(_this->trashItem_ != nullptr) { // it's possible that when we finish, the trash item is removed
-                        guint32 n = g_file_info_get_attribute_uint32(inf.get(), G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
-                        const char* icon_name = n > 0 ? "user-trash-full" : "user-trash";
-                        auto icon = Fm::IconInfo::fromName(icon_name);
-                        _this->trashItem_->setIcon(std::move(icon));
-                    }
-                }
-            }
-            delete data; // free the data used for this async operation.
-        }, data);
-    }
-}
-
-void PlacesModel::createTrashItem() {
-    GFile* gf;
-    gf = g_file_new_for_uri("trash:///");
-    // check if trash is supported by the current vfs
-    // if gvfs is not installed, this can be unavailable.
-    if(!g_file_query_exists(gf, nullptr)) {
-        g_object_unref(gf);
-        trashItem_ = nullptr;
-        trashMonitor_ = nullptr;
-        return;
-    }
-    trashItem_ = new PlacesModelItem("user-trash", tr("Trash"), Fm::FilePath::fromUri("trash:///"));
-
-    trashMonitor_ = g_file_monitor_directory(gf, G_FILE_MONITOR_NONE, nullptr, nullptr);
-    if(trashMonitor_) {
-        if(trashUpdateTimer_ == nullptr) {
-            trashUpdateTimer_ = new QTimer(this);
-            trashUpdateTimer_->setSingleShot(true);
-            connect(trashUpdateTimer_, &QTimer::timeout, this, &PlacesModel::updateTrash);
-        }
-        g_signal_connect(trashMonitor_, "changed", G_CALLBACK(onTrashChanged), this);
-    }
-    g_object_unref(gf);
-
-    placesRoot->insertRow(desktopItem->row() + 1, trashItem_);
-    QTimer::singleShot(0, this, SLOT(updateTrash()));
 }
 
 void PlacesModel::setShowApplications(bool show) {
@@ -252,27 +176,14 @@ void PlacesModel::setShowDesktop(bool show) {
 }
 
 void PlacesModel::setShowTrash(bool show) {
-    if(show) {
-        if(!trashItem_) {
-            createTrashItem();
-        }
-    }
-    else {
-        if(trashItem_) {
-            if(trashUpdateTimer_) {
-                trashUpdateTimer_->stop();
-                delete trashUpdateTimer_;
-                trashUpdateTimer_ = nullptr;
-            }
-            if(trashMonitor_) {
-                g_signal_handlers_disconnect_by_func(trashMonitor_, (gpointer)G_CALLBACK(onTrashChanged), this);
-                g_object_unref(trashMonitor_);
-                trashMonitor_ = nullptr;
-            }
-            placesRoot->removeRow(trashItem_->row()); // delete trashItem_;
-            trashItem_ = nullptr;
-        }
-    }
+   if(show && !trashItem_) 
+      placesRoot->insertRow(desktopItem->row() +1, trashItem_);        
+       
+   else if(!show) {
+      placesRoot->removeRow(trashItem_->row()); // delete trashItem_;
+      trashItem_ = nullptr;
+      }
+   }
 }
 
 PlacesModelItem* PlacesModel::itemFromPath(const Fm::FilePath &path) {
