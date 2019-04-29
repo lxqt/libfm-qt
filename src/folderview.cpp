@@ -81,9 +81,14 @@ void FolderViewListView::startDrag(Qt::DropActions supportedActions) {
 }
 
 void FolderViewListView::mousePressEvent(QMouseEvent* event) {
-    setSelectionMode(cursorOnSelectionCorner_ && event->button() == Qt::LeftButton
-                         ? QAbstractItemView::MultiSelection
-                         : QAbstractItemView::ExtendedSelection);
+    // switch between the extended and multiple selection modes,
+    // depending on the cursor position, only when there's no other mode
+    if(selectionMode() == QAbstractItemView::ExtendedSelection
+       || selectionMode() == QAbstractItemView::MultiSelection) {
+        setSelectionMode(cursorOnSelectionCorner_ && event->button() == Qt::LeftButton
+                            ? QAbstractItemView::MultiSelection
+                            : QAbstractItemView::ExtendedSelection);
+    }
     QListView::mousePressEvent(event);
     static_cast<FolderView*>(parent())->childMousePressEvent(event);
 }
@@ -125,7 +130,9 @@ QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
         // the selection (hover) corner is a rectangle near the top left corner of
         // the icon and outside it as far as possible, so that its width and height
         // are 1/3 of the icon size >= 48 px (see FolderItemDelegate::paint)
-        if(isCursorPos && _iconSize.width() >= 48) {
+        if(isCursorPos && _iconSize.width() >= 48
+           && (selectionMode() == QAbstractItemView::ExtendedSelection
+               || selectionMode() == QAbstractItemView::MultiSelection)) {
             int s = _iconSize.width() / 3;
             iconLeft = qMax(visRect.left(), iconLeft - s);
             iconTop = qMax(visRect.top(), iconTop - s);
@@ -417,22 +424,26 @@ void FolderViewTreeView::paintEvent(QPaintEvent * event) {
 }
 
 void FolderViewTreeView::mousePressEvent(QMouseEvent* event) {
-    QAbstractItemView::mousePressEvent(event);
-
-    // remember mouse press position and determine whether selections should be kept
-    // or removed later, when the cursor moves
-    mousePressPoint_ = event->pos() + QPoint(horizontalOffset(), verticalOffset());
-    QModelIndex index = indexAt(event->pos());
-    if(index.isValid()) {
-        Qt::KeyboardModifiers modifiers = QApplication::keyboardModifiers();
-        const Qt::MouseButton button = static_cast<const QMouseEvent*>(event)->button();
-        const bool shiftKeyPressed = modifiers & Qt::ShiftModifier;
-        const bool controlKeyPressed = modifiers & Qt::ControlModifier;
-        const bool rightButtonPressed = button & Qt::RightButton;
-        const bool indexIsSelected = selectionModel()->isSelected(index);
-        if(controlKeyPressed && !shiftKeyPressed && !rightButtonPressed) {
-            ctrlDragSelectionFlag_ = indexIsSelected ? QItemSelectionModel::Deselect : QItemSelectionModel::Select;
+    if(selectionMode() == QAbstractItemView::ExtendedSelection) {
+        // remember mouse press position and determine whether selections should be kept
+        // or removed later, when the cursor moves
+        QAbstractItemView::mousePressEvent(event);
+        mousePressPoint_ = event->pos() + QPoint(horizontalOffset(), verticalOffset());
+        QModelIndex index = indexAt(event->pos());
+        if(index.isValid()) {
+            Qt::KeyboardModifiers modifiers = QApplication::keyboardModifiers();
+            const Qt::MouseButton button = static_cast<const QMouseEvent*>(event)->button();
+            const bool shiftKeyPressed = modifiers & Qt::ShiftModifier;
+            const bool controlKeyPressed = modifiers & Qt::ControlModifier;
+            const bool rightButtonPressed = button & Qt::RightButton;
+            const bool indexIsSelected = selectionModel()->isSelected(index);
+            if(controlKeyPressed && !shiftKeyPressed && !rightButtonPressed) {
+                ctrlDragSelectionFlag_ = indexIsSelected ? QItemSelectionModel::Deselect : QItemSelectionModel::Select;
+            }
         }
+    }
+    else {
+        QTreeView::mousePressEvent(event);
     }
 
     static_cast<FolderView*>(parent())->childMousePressEvent(event);
@@ -484,7 +495,8 @@ void FolderViewTreeView::mouseMoveEvent(QMouseEvent* event) {
 }
 
 void FolderViewTreeView::setSelection(const QRect &rect, QItemSelectionModel::SelectionFlags command) {
-    if(model() && state() == QAbstractItemView::DragSelectingState) { // rubberband selection
+    if(selectionMode() == QAbstractItemView::ExtendedSelection
+       && model() && state() == QAbstractItemView::DragSelectingState) { // rubberband selection
         QRect r = rubberBandRect_.adjusted(-horizontalOffset(), -verticalOffset(),
                                             -horizontalOffset(), -verticalOffset());
         r.setLeft(qMax(0, r.left()));
@@ -709,11 +721,16 @@ void FolderViewTreeView::mouseReleaseEvent(QMouseEvent* event) {
         activationAllowed_ = false;
     }
 
-    QAbstractItemView::mouseReleaseEvent(event);
-    viewport()->update(rubberBandRect_.adjusted(-horizontalOffset(), -verticalOffset(),
-                                                -horizontalOffset(), -verticalOffset()));
-    rubberBandRect_ = QRect();
-    ctrlDragSelectionFlag_ = QItemSelectionModel::NoUpdate;
+    if(selectionMode() == QAbstractItemView::ExtendedSelection) {
+        QAbstractItemView::mouseReleaseEvent(event);
+        viewport()->update(rubberBandRect_.adjusted(-horizontalOffset(), -verticalOffset(),
+                                                    -horizontalOffset(), -verticalOffset()));
+        rubberBandRect_ = QRect();
+        ctrlDragSelectionFlag_ = QItemSelectionModel::NoUpdate;
+    }
+    else {
+        QTreeView::mouseReleaseEvent(event);
+    }
 
     activationAllowed_ = activationWasAllowed;
 
