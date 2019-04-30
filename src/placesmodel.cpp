@@ -199,10 +199,12 @@ PlacesModel::~PlacesModel() {
         g_signal_handlers_disconnect_by_func(volumeMonitor, (gpointer)G_CALLBACK(onMountRemoved), this);
         g_object_unref(volumeMonitor);
     }
-    if(trashMonitor_) {
-        g_signal_handlers_disconnect_by_func(trashMonitor_, (gpointer)G_CALLBACK(onTrashChanged), this);
-        g_object_unref(trashMonitor_);
-    }
+//     Qt garbage collector does not handle this stuff ?? 
+//     also this class has globalInstance() and should live as long as the filemanager?
+//     if(trashMonitor_) {
+//         g_signal_handlers_disconnect_by_func(trashMonitor_, (gpointer)G_CALLBACK(onTrashChanged), this);
+//         g_object_unref(trashMonitor_);
+//     }
 
     for(GMount* const mount : qAsConst(shadowedMounts_)) {
         g_object_unref(mount);
@@ -293,27 +295,29 @@ void PlacesModel::setShowDesktop(bool show) {
 }
 
 void PlacesModel::setShowTrash(bool show) {
-    if(show) {
-        if(!trashItem_) {
-            createTrashItem();
-        }
-    }
-    else {
-        if(trashItem_) {
-            if(trashUpdateTimer_) {
-                trashUpdateTimer_->stop();
-                delete trashUpdateTimer_;
-                trashUpdateTimer_ = nullptr;
-            }
-            if(trashMonitor_) {
-                g_signal_handlers_disconnect_by_func(trashMonitor_, (gpointer)G_CALLBACK(onTrashChanged), this);
-                g_object_unref(trashMonitor_);
-                trashMonitor_ = nullptr;
-            }
-            placesRoot->removeRow(trashItem_->row()); // delete trashItem_;
-            trashItem_ = nullptr;
-        }
-    }
+//    what does call this function?, I can't see how it is needed
+//    
+//     if(show) {
+//         if(!trashItem_) {
+//             createTrashItem();
+//         }
+//     }
+//     else {
+//         if(trashItem_) {
+//             if(trashUpdateTimer_) {
+//                 trashUpdateTimer_->stop();
+//                 delete trashUpdateTimer_;
+//                 trashUpdateTimer_ = nullptr;
+//             }
+//             if(trashMonitor_) {
+//                 g_signal_handlers_disconnect_by_func(trashMonitor_, (gpointer)G_CALLBACK(onTrashChanged), this);
+//                 g_object_unref(trashMonitor_);
+//                 trashMonitor_ = nullptr;
+//             }
+//             placesRoot->removeRow(trashItem_->row()); // delete trashItem_;
+//             trashItem_ = nullptr;
+//         }
+//     }
 }
 
 PlacesModelItem* PlacesModel::itemFromPath(const Fm::FilePath &path) {
