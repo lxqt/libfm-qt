@@ -88,7 +88,6 @@ public:
     static std::shared_ptr<PlacesModel> globalInstance();
 
 public Q_SLOTS:
-    void updateTrash();
     void onBookmarksChanged();
 
 protected:
@@ -105,8 +104,6 @@ protected:
     bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) override;
     Qt::DropActions supportedDropActions() const override;
 
-    void createTrashItem();
-
 private:
     void loadBookmarks();
 
@@ -116,8 +113,6 @@ private:
     static void onMountAdded(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis);
     static void onMountRemoved(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis);
     static void onMountChanged(GVolumeMonitor* monitor, GMount* mount, PlacesModel* pThis);
-
-    static void onTrashChanged(GFileMonitor* monitor, GFile* gf, GFile* other, GFileMonitorEvent evt, PlacesModel* pThis);
 
 private:
     std::shared_ptr<Fm::Bookmarks> bookmarks;
