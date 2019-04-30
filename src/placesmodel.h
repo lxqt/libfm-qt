@@ -132,6 +132,7 @@ private:
     PlacesModelItem* applicationsItem;
     QIcon ejectIcon_;
     QList<GMount*> shadowedMounts_;
+    GFile* trashFile;
 
     static std::weak_ptr<PlacesModel> globalInstance_;
 };
