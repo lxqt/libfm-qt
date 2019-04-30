@@ -54,8 +54,49 @@ PlacesModel::PlacesModel(QObject* parent):
                                       Fm::FilePath::fromLocalPath(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation).toLocal8Bit().constData()));
     placesRoot->appendRow(desktopItem);
 
-    createTrashItem();
+    trashItem_ = new PlacesModelItem("user-desktop", tr("Trash"), Fm::FilePath::fromUri("trash:///"));
+    trashFile = g_file_new_for_uri("trash:///");
+    trashMonitor_ = g_file_monitor_directory(trashFile, G_FILE_MONITOR_NONE, nullptr, nullptr);
 
+    if(trashMonitor_ && trashItem_ != nullptr)
+    {
+        static auto startTrashTimer = []
+        {
+            if(PlacesModel::globalInstance()->trashUpdateTimer_ != nullptr && !PlacesModel::globalInstance()->trashUpdateTimer_->isActive())
+                PlacesModel::globalInstance()->trashUpdateTimer_->start(250);
+        };
+        trashUpdateTimer_ = new QTimer(this);
+        trashUpdateTimer_->setSingleShot(true);
+        trashUpdateTimer_->start(0);
+
+        QObject::connect(trashUpdateTimer_, &QTimer::timeout, [=]()
+        {
+            g_file_query_info_async(trashFile,
+                                    G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT,
+                                    G_FILE_QUERY_INFO_NONE, G_PRIORITY_LOW,
+                                    nullptr,
+                                    [](GObject * /*source_object*/, GAsyncResult * res, gpointer /*user_data*/)
+            {
+                auto globalInstance = PlacesModel::globalInstance();
+                Fm::GFileInfoPtr inf{g_file_query_info_finish(globalInstance->trashFile, res, nullptr), false};
+                if(!inf)
+                    return;
+
+                guint32 n = g_file_info_get_attribute_uint32(inf.get(), G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
+                const char* icon_name = n > 0 ? "user-trash-full" : "user-trash";
+                auto icon = Fm::IconInfo::fromName(icon_name);
+                globalInstance->trashItem_->setIcon(std::move(icon));
+                Q_EMIT globalInstance->dataChanged(
+                            globalInstance->index(globalInstance->trashItem_->row(), 0, QModelIndex()),
+                            globalInstance->index(globalInstance->trashItem_->row(), 0, QModelIndex())
+                            );
+            }, nullptr);
+        });
+
+        g_signal_connect(trashMonitor_, "changed", G_CALLBACK(startTrashTimer), this);
+    }
+    placesRoot->appendRow(trashItem_);
+        
     computerItem = new PlacesModelItem("computer", tr("Computer"), Fm::FilePath::fromUri("computer:///"));
     placesRoot->appendRow(computerItem);
 
