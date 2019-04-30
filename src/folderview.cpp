@@ -1545,6 +1545,20 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                     return true;
                 }
             }
+            // row-by-row scrolling when Shift is pressed
+            if (QApplication::keyboardModifiers() & Qt::ShiftModifier)
+            {
+                QScrollBar *sbar = (mode == CompactMode ? view->horizontalScrollBar()
+                                                        : view->verticalScrollBar());
+                if(sbar != nullptr) {
+                    QWheelEvent *we = static_cast<QWheelEvent*>(event);
+                    QWheelEvent e(we->pos(), we->globalPos(),
+                                  we->angleDelta().y() / QApplication::wheelScrollLines(),
+                                  we->buttons(), Qt::NoModifier, Qt::Vertical);
+                    QApplication::sendEvent(sbar, &e);
+                    return true;
+                }
+            }
             // This is to fix #85: Scrolling doesn't work in compact view
             // Actually, I think it's the bug of Qt, not ours.
             // When in compact mode, only the horizontal scroll bar is used and the vertical one is hidden.
@@ -1552,7 +1566,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
             // Qt does not implement such a simple feature, unfortunately.
             // We do it by forwarding the scroll event in the viewport to the horizontal scrollbar.
             // FIXME: if someday Qt supports this, we have to disable the workaround.
-            if(mode == CompactMode) {
+            else if(mode == CompactMode) {
                 QScrollBar* scroll = view->horizontalScrollBar();
                 if(scroll) {
                     QApplication::sendEvent(scroll, event);
