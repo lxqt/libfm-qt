@@ -137,7 +137,7 @@ void PathEdit::onTextChanged(const QString& text) {
         // WARNING: replacing tilde may not be safe here
         return;
     }
-    int pos = text.lastIndexOf('/');
+    int pos = text.lastIndexOf(QLatin1Char('/'));
     if(pos >= 0) {
         ++pos;
     }

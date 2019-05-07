@@ -40,7 +40,7 @@ EditBookmarksDialog::EditBookmarksDialog(std::shared_ptr<Bookmarks> bookmarks, Q
     for(const auto& bookmark: bookmarks_->items()) {
         QTreeWidgetItem* item = new QTreeWidgetItem();
         item->setData(0, Qt::DisplayRole, bookmark->name());
-        item->setData(1, Qt::DisplayRole, bookmark->path().toString().get());
+        item->setData(1, Qt::DisplayRole, QString::fromUtf8(bookmark->path().toString().get()));
         item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
         ui->treeWidget->addTopLevelItem(item);
     }

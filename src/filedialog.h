@@ -101,7 +101,7 @@ public:
     }
 
     void setDefaultSuffix(const QString &suffix) {
-        if(!suffix.isEmpty() && suffix[0] == '.') {
+        if(!suffix.isEmpty() && suffix[0] == QLatin1Char('.')) {
             // if the first char is dot, remove it.
             defaultSuffix_ = suffix.mid(1);
         }

@@ -53,7 +53,7 @@ void AppChooserComboBox::setMimeType(std::shared_ptr<const Fm::MimeType> mimeTyp
         for(GList* l = appInfos_glist; l; l = l->next, ++i) {
             Fm::GAppInfoPtr app{G_APP_INFO(l->data), false};
             GIcon* gicon = g_app_info_get_icon(app.get());
-            addItem(gicon ? Fm::IconInfo::fromGIcon(gicon)->qicon(): QIcon(), g_app_info_get_name(app.get()));
+            addItem(gicon ? Fm::IconInfo::fromGIcon(gicon)->qicon(): QIcon(), QString::fromUtf8(g_app_info_get_name(app.get())));
             if(g_app_info_equal(app.get(), defaultApp_.get())) {
                 defaultAppIndex_ = i;
             }
@@ -112,7 +112,7 @@ void AppChooserComboBox::onCurrentIndexChanged(int index) {
                 else { /* if it's not found, add it to the list */
                     auto it = appInfos_.insert(appInfos_.cbegin(), std::move(app));
                     GIcon* gicon = g_app_info_get_icon(it->get());
-                    insertItem(0, Fm::IconInfo::fromGIcon(gicon)->qicon(), g_app_info_get_name(it->get()));
+                    insertItem(0, Fm::IconInfo::fromGIcon(gicon)->qicon(), QString::fromUtf8(g_app_info_get_name(it->get())));
                     setCurrentIndex(0);
                 }
                 blockOnCurrentIndexChanged_ = false;

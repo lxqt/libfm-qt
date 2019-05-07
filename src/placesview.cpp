@@ -85,14 +85,14 @@ bool PlacesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sourc
         if(PlacesModelItem* item = static_cast<PlacesModelItem*>(srcModel->itemFromIndex(index))) {
             if(item->type() == PlacesModelItem::Places) {
                 if(auto path = item->path()) {
-                    if(hidden_.contains(path.toString().get())) {
+                    if(hidden_.contains(QString::fromUtf8(path.toString().get()))) {
                         return false;
                     }
                 }
             }
             else if(item->type() == PlacesModelItem::Volume) {
                 CStrPtr uuid{g_volume_get_uuid(static_cast<PlacesModelVolumeItem*>(item)->volume())};
-                if(uuid && hidden_.contains(uuid.get())) {
+                if(uuid && hidden_.contains(QString::fromUtf8(uuid.get()))) {
                     return false;
                 }
             }
@@ -102,14 +102,14 @@ bool PlacesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sourc
                 while(PlacesModelItem* childItem = static_cast<PlacesModelItem*>(srcModel->itemFromIndex(indx))) {
                     if(childItem->type() == PlacesModelItem::Places) {
                         if(auto path = childItem->path()) {
-                            if(!hidden_.contains(path.toString().get())) {
+                            if(!hidden_.contains(QString::fromUtf8(path.toString().get()))) {
                                 return true;
                             }
                         }
                     }
                     else if(childItem->type() == PlacesModelItem::Volume) {
                         CStrPtr uuid{g_volume_get_uuid(static_cast<PlacesModelVolumeItem*>(childItem)->volume())};
-                        if(uuid == nullptr || !hidden_.contains(uuid.get())) {
+                        if(uuid == nullptr || !hidden_.contains(QString::fromUtf8(uuid.get()))) {
                             return true;
                         }
                     }
@@ -516,7 +516,7 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
                 // add a "Hide" action to the end
                 menu->addSeparator();
                 action = new PlacesModel::ItemAction(item->index(), tr("Hide"), menu);
-                QString pathStr(path_str.get());
+                QString pathStr(QString::fromUtf8(path_str.get()));
                 action->setCheckable(true);
                 if(proxyModel_->isShowingAll()) {
                     action->setChecked(proxyModel_->isHidden(pathStr));
@@ -570,7 +570,7 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
             // add a "Hide" action to the end
             CStrPtr uuid{g_volume_get_uuid(static_cast<PlacesModelVolumeItem*>(item)->volume())};
             if(uuid) {
-                QString str = uuid.get();
+                QString str = QString::fromUtf8(uuid.get());
                 menu->addSeparator();
                 action = new PlacesModel::ItemAction(item->index(), tr("Hide"), menu);
                 action->setCheckable(true);

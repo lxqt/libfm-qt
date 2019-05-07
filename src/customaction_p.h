@@ -32,7 +32,7 @@ public:
         item_{item} {
         auto& icon_name = item->get_icon();
         if(!icon_name.empty()) {
-            setIcon(QIcon::fromTheme(icon_name.c_str()));
+            setIcon(QIcon::fromTheme(QString::fromUtf8(icon_name.c_str())));
         }
     }
 

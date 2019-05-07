@@ -72,7 +72,7 @@ public:
 
     QString message() const {
         if(err_ != nullptr) {
-            return err_->message;
+            return QString::fromUtf8(err_->message);
         }
         return QString();
     }

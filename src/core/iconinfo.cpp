@@ -95,7 +95,7 @@ QList<QIcon> IconInfo::qiconsFromNames(const char* const* names) {
     // qDebug("names: %p", names);
     for(const gchar* const* name = names; *name; ++name) {
         // qDebug("icon name=%s", *name);
-        icons.push_back(QIcon::fromTheme(*name));
+        icons.push_back(QIcon::fromTheme(QString::fromUtf8(*name)));
     }
     return icons;
 }
@@ -128,7 +128,7 @@ QIcon IconInfo::internalQicon() const {
         else if(G_IS_FILE_ICON(gicon)) {
             GFile* file = g_file_icon_get_file(G_FILE_ICON(gicon));
             CStrPtr fpath{g_file_get_path(file)};
-            internalQicons_.push_back(QIcon(fpath.get()));
+            internalQicons_.push_back(QIcon(QString::fromUtf8(fpath.get())));
         }
 
     }

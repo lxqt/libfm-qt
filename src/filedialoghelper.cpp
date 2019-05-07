@@ -236,7 +236,7 @@ void FileDialogHelper::loadSettings() {
     settings.endGroup();
 
    settings.beginGroup (QStringLiteral("View"));
-   dlg_->setViewMode(viewModeFromString(settings.value(QStringLiteral("Mode"), "Detailed").toString()));
+   dlg_->setViewMode(viewModeFromString(settings.value(QStringLiteral("Mode"), QStringLiteral("Detailed")).toString()));
    settings.endGroup();
 }
 

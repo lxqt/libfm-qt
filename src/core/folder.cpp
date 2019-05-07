@@ -504,7 +504,7 @@ void Folder::onFileChangeEvents(GFileMonitor* /*monitor*/, GFile* gf, GFile* /*o
 // checks whether there were cut files here
 // and if there were, invalidates this last cut path
 bool Folder::hadCutFilesUnset() {
-    if(lastCutFilesDirPath_ == dirPath_.toString().get()) {
+    if(lastCutFilesDirPath_ == QString::fromUtf8(dirPath_.toString().get())) {
         lastCutFilesDirPath_ = QString();
         return true;
     }
@@ -514,14 +514,14 @@ bool Folder::hadCutFilesUnset() {
 bool Folder::hasCutFiles() {
     return cutFilesHashSet_
             && !cutFilesHashSet_->empty()
-            && cutFilesDirPath_ == dirPath_.toString().get();
+            && cutFilesDirPath_ == QString::fromUtf8(dirPath_.toString().get());
 }
 
 void Folder::setCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet) {
     if(cutFilesHashSet_ && !cutFilesHashSet_->empty()) {
         lastCutFilesDirPath_ = cutFilesDirPath_;
     }
-    cutFilesDirPath_ = dirPath_.toString().get();
+    cutFilesDirPath_ = QString::fromUtf8(dirPath_.toString().get());
     cutFilesHashSet_ = cutFilesHashSet;
 }
 

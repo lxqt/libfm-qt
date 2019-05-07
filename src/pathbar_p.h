@@ -47,7 +47,7 @@ public:
         setText(displayName);
 
         if(isRoot) { /* this element is root */
-            QIcon icon = QIcon::fromTheme("drive-harddisk");
+            QIcon icon = QIcon::fromTheme(QStringLiteral("drive-harddisk"));
             setIcon(icon);
         }
     }

@@ -238,7 +238,7 @@ bool XdndWorkaround::selectionRequest(xcb_selection_request_event_t* event) {
             }
             else { // text/uri-list
                 for(const QUrl& uri : uris) {
-                    data.append(uri.toString(QUrl::FullyEncoded));
+                    data.append(uri.toString(QUrl::FullyEncoded).toUtf8());
                     data.append("\r\n");
                 }
             }

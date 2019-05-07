@@ -115,13 +115,13 @@ void PlacesModelVolumeItem::update() {
     if(mount) {
         Fm::FilePath mount_root{g_mount_get_root(mount.get()), false};
         setPath(mount_root);
-        toolTip = mount_root.toString().get();
+        toolTip = QString::fromUtf8(mount_root.toString().get());
     }
     else {
         setPath(Fm::FilePath{});
         if(CStrPtr identifier{g_volume_get_identifier(volume_, G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE)}) {
             toolTip = QObject::tr("Identifier: ");
-            toolTip += identifier.get();
+            toolTip += QLatin1String(identifier.get());
         }
         if(CStrPtr uuid{g_volume_get_uuid(volume_)}) {
             if(toolTip.isEmpty()) {
@@ -130,7 +130,7 @@ void PlacesModelVolumeItem::update() {
             else {
                 toolTip += QLatin1String("\nUUID: ");
             }
-            toolTip += uuid.get();
+            toolTip += QLatin1String(uuid.get());
         }
     }
 
@@ -161,7 +161,7 @@ void PlacesModelMountItem::update() {
     // set path
     Fm::FilePath mount_root{g_mount_get_root(mount_), false};
     setPath(mount_root);
-    setToolTip(mount_root.toString().get());
+    setToolTip(QString::fromUtf8(mount_root.toString().get()));
 
     // set icon
     Fm::GIconPtr gicon{g_mount_get_icon(mount_), false};

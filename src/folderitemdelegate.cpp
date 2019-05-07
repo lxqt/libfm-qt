@@ -38,10 +38,10 @@ namespace Fm {
 
 FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent):
     QStyledItemDelegate(parent ? parent : view),
-    symlinkIcon_(QIcon::fromTheme("emblem-symbolic-link")),
-    untrustedIcon_(QIcon::fromTheme("emblem-important")),
-    addIcon_(QIcon::fromTheme("list-add")),
-    removeIcon_(QIcon::fromTheme("list-remove")),
+    symlinkIcon_(QIcon::fromTheme(QStringLiteral("emblem-symbolic-link"))),
+    untrustedIcon_(QIcon::fromTheme(QStringLiteral("emblem-important"))),
+    addIcon_(QIcon::fromTheme(QStringLiteral("list-add"))),
+    removeIcon_(QIcon::fromTheme(QStringLiteral("list-remove"))),
     fileInfoRole_(Fm::FolderModel::FileInfoRole),
     iconInfoRole_(-1),
     margins_(QSize(3, 3)),

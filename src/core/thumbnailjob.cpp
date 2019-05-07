@@ -66,7 +66,7 @@ QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
     }
 
     // thumbnails are stored in $XDG_CACHE_HOME/thumbnails/large|normal|failed
-    QString thumbnailDir{g_get_user_cache_dir()};
+    QString thumbnailDir{QString::fromUtf8(g_get_user_cache_dir())};
     thumbnailDir += QLatin1String("/thumbnails/");
 
     // don't make thumbnails for files inside the thumbnail directory
@@ -74,7 +74,7 @@ QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
         return QImage();
     }
 
-    const char* subdir = size_ > 128 ? "large" : "normal";
+    QLatin1String subdir = size_ > 128 ? QLatin1String("large") : QLatin1String("normal");
     thumbnailDir += subdir;
 
     // generate base name of the thumbnail  => {md5 of uri}.png
@@ -100,8 +100,8 @@ QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
     g_checksum_reset(md5Calc_); // reset the checksum calculator for next use
 
     QString thumbnailFilename = thumbnailDir;
-    thumbnailFilename += '/';
-    thumbnailFilename += thumbnailName;
+    thumbnailFilename += QLatin1Char('/');
+    thumbnailFilename += QString::fromUtf8(thumbnailName);
     // qDebug() << "thumbnail:" << file->getName().c_str() << thumbnailFilename;
 
     // try to load the thumbnail file if it exists
@@ -230,7 +230,7 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
             // save the generated thumbnail to disk (don't save png thumbnails for JPEG EXIF thumbnails since loading them is cheap)
             if(!fromExif) {
                 result.setText(QStringLiteral("Thumb::MTime"), QString::number(file->mtime()));
-                result.setText(QStringLiteral("Thumb::URI"), uri);
+                result.setText(QStringLiteral("Thumb::URI"), QString::fromUtf8(uri));
                 result.save(thumbnailFilename, "PNG");
             }
             // qDebug() << "save thumbnail:" << thumbnailFilename;
@@ -250,12 +250,12 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
             // Some thumbnailers did not write the proper metadata required by the xdg spec to the output (such as evince-thumbnailer)
             // Here we waste some time to fix them so next time we don't need to re-generate these thumbnails. :-(
             bool changed = false;
-            if(Q_UNLIKELY(result.text("Thumb::MTime").isEmpty())) {
+            if(Q_UNLIKELY(result.text(QStringLiteral("Thumb::MTime")).isEmpty())) {
                 result.setText(QStringLiteral("Thumb::MTime"), QString::number(file->mtime()));
                 changed = true;
             }
-            if(Q_UNLIKELY(result.text("Thumb::URI").isEmpty())) {
-                result.setText(QStringLiteral("Thumb::URI"), uri);
+            if(Q_UNLIKELY(result.text(QStringLiteral("Thumb::URI")).isEmpty())) {
+                result.setText(QStringLiteral("Thumb::URI"), QString::fromUtf8(uri));
                 changed = true;
             }
             if(Q_UNLIKELY(changed)) {

@@ -43,7 +43,7 @@ _retry:
         err = GErrorPtr{
                 G_IO_ERROR,
                 G_IO_ERROR_NOT_DIRECTORY,
-                tr("The specified directory '%1' is not valid").arg(path_str.get())
+                tr("The specified directory '%1' is not valid").arg(QString::fromUtf8(path_str.get()))
         };
         emitError(err, ErrorSeverity::CRITICAL);
         return;

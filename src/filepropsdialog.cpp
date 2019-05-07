@@ -265,8 +265,8 @@ void FilePropsDialog::initGeneralPage() {
             if(!icon) { // get an icon from mime type if needed
                 icon = mimeType->icon();
             }
-            ui->fileType->setText(mimeType->desc());
-            ui->mimeType->setText(mimeType->name());
+            ui->fileType->setText(QString::fromUtf8(mimeType->desc()));
+            ui->mimeType->setText(QString::fromUtf8(mimeType->name()));
         }
         if(icon) {
             ui->iconButton->setIcon(icon->qicon());
@@ -296,7 +296,7 @@ void FilePropsDialog::initGeneralPage() {
 
         ui->fileName->setText(fileInfo->displayName());
         if(parent_str) {
-            ui->location->setText(parent_str.get());
+            ui->location->setText(QString::fromUtf8(parent_str.get()));
         }
         else {
             ui->location->clear();
@@ -396,7 +396,7 @@ void FilePropsDialog::onIconButtonclicked() {
                                                   QStringLiteral("icons"),
                                                   QStandardPaths::LocateDirectory);
     for (QStringList::ConstIterator it = icons.constBegin(); it != icons.constEnd(); ++it) {
-        QString iconThemeFolder = *it + '/' + iconThemeName;
+        QString iconThemeFolder = *it + QLatin1String("/") + iconThemeName;
         if (QDir(iconThemeFolder).exists() && QFileInfo(iconThemeFolder).permission(QFileDevice::ReadUser)) {
             // give priority to the "places" folder
             const QString places = iconThemeFolder + QLatin1String("/places");

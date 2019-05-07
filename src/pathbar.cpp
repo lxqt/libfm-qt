@@ -263,7 +263,7 @@ void PathBar::setPath(Fm::FilePath path) {
         else {
             name = btnPath.baseName();
         }
-        auto btn = new PathButton(name.get(), displayName ? displayName.get() : name.get(), isRoot, buttonsWidget_);
+        auto btn = new PathButton(name.get(), displayName ? QString::fromUtf8(displayName.get()) : QString::fromUtf8(name.get()), isRoot, buttonsWidget_);
         btn->show();
         connect(btn, &QAbstractButton::toggled, this, &PathBar::onButtonToggled);
         buttonsLayout_->insertWidget(0, btn);
@@ -298,7 +298,7 @@ void PathBar::openEditor() {
         scrollArea_->hide();
         scrollToStart_->setVisible(false);
         scrollToEnd_->setVisible(false);
-        tempPathEdit_->setText(currentPath_.toString().get());
+        tempPathEdit_->setText(QString::fromUtf8(currentPath_.toString().get()));
 
         connect(tempPathEdit_, &PathEdit::returnPressed, this, &PathBar::onReturnPressed);
         connect(tempPathEdit_, &PathEdit::editingFinished, this, &PathBar::closeEditor);
@@ -333,7 +333,7 @@ void PathBar::closeEditor() {
 }
 
 void PathBar::copyPath() {
-    QApplication::clipboard()->setText(currentPath_.toString().get());
+    QApplication::clipboard()->setText(QString::fromUtf8(currentPath_.toString().get()));
 }
 
 void PathBar::onReturnPressed() {

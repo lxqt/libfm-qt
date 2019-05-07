@@ -89,7 +89,7 @@ RenameDialog::RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* p
 
     auto basename = path.baseName();
     ui->fileName->setText(QString::fromUtf8(basename.get()));
-    oldName_ = basename.get();
+    oldName_ = QString::fromUtf8(basename.get());
     connect(ui->fileName, &QLineEdit::textChanged, this, &RenameDialog::onFileNameChanged);
 
     // add "Rename" button
