@@ -339,7 +339,7 @@ void FileMenu::onCustomActionTrigerred() {
     CStrPtr output;
     item->launch(nullptr, files_, output);
     if(output) {
-        QMessageBox::information(this, tr("Output"), output.get());
+        QMessageBox::information(this, tr("Output"), QString::fromUtf8(output.get()));
     }
 }
 
@@ -405,7 +405,7 @@ void FileMenu::setUseTrash(bool trash) {
         useTrash_ = trash;
         if(deleteAction_) {
             deleteAction_->setText(useTrash_ ? tr("&Move to Trash") : tr("&Delete"));
-            deleteAction_->setIcon(useTrash_ ? QIcon::fromTheme("user-trash") : QIcon::fromTheme("edit-delete"));
+            deleteAction_->setIcon(useTrash_ ? QIcon::fromTheme(QStringLiteral("user-trash")) : QIcon::fromTheme(QStringLiteral("edit-delete")));
         }
     }
 }

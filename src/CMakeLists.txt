@@ -166,6 +166,11 @@ target_include_directories(${LIBFM_QT_LIBRARY_NAME}
 target_compile_definitions(${LIBFM_QT_LIBRARY_NAME}
     PRIVATE "LIBFM_QT_DATA_DIR=\"${LIBFM_QT_DATA_DIR}\""
             "GETTEXT_PACKAGE=\"\""
+            "QT_USE_QSTRINGBUILDER"
+            "QT_NO_CAST_FROM_ASCII"
+            "QT_NO_CAST_TO_ASCII"
+            "QT_NO_URL_CAST_FROM_STRING"
+            "QT_NO_CAST_FROM_BYTEARRAY"
     PUBLIC "QT_NO_KEYWORDS"
 )
 

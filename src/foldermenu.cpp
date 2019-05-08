@@ -137,7 +137,7 @@ void FolderMenu::onCustomActionTrigerred() {
         file_list.push_back(folderInfo);
         item->launch(nullptr, file_list, output);
         if(output) {
-            QMessageBox::information(this, tr("Output"), output.get());
+            QMessageBox::information(this, tr("Output"), QString::fromUtf8(output.get()));
         }
     }
 }

@@ -39,7 +39,7 @@ PlacesModel::PlacesModel(QObject* parent):
     trashMonitor_(nullptr),
     trashUpdateTimer_(nullptr),
     // FIXME: this seems to be broken when porting to new API.
-    ejectIcon_(QIcon::fromTheme("media-eject")) {
+    ejectIcon_(QIcon::fromTheme(QStringLiteral("media-eject"))) {
     setColumnCount(2);
 
     placesRoot = new QStandardItem(tr("Places"));
@@ -47,7 +47,7 @@ PlacesModel::PlacesModel(QObject* parent):
     placesRoot->setColumnCount(2);
     appendRow(placesRoot);
 
-    homeItem = new PlacesModelItem("user-home", g_get_user_name(), Fm::FilePath::homeDir());
+    homeItem = new PlacesModelItem("user-home", QString::fromUtf8(g_get_user_name()), Fm::FilePath::homeDir());
     placesRoot->appendRow(homeItem);
 
     desktopItem = new PlacesModelItem("user-desktop", tr("Desktop"),
@@ -587,7 +587,7 @@ bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction /*action*/,
                     if(g_file_query_file_type(path.gfile().get(), G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
                                               nullptr) == G_FILE_TYPE_DIRECTORY) {
                         auto disp_name = path.baseName();
-                        bookmarks->insert(path, disp_name.get(), row);
+                        bookmarks->insert(path, QString::fromUtf8(disp_name.get()), row);
                     }
                     return true;
                 }

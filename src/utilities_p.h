@@ -58,7 +58,7 @@ private Q_SLOTS:
       QString filename = lineEdit->text();
       if(!filename.isEmpty()) {
         // only select filename part without extension name.
-        int ext = filename.lastIndexOf('.');
+        int ext = filename.lastIndexOf(QLatin1Char('.'));
         if(ext != -1) {
           // add special cases for tar.gz, tar.bz2, and other tar.* files
           if(filename.leftRef(ext).endsWith(QStringLiteral(".tar")))

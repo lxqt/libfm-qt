@@ -41,7 +41,7 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
     if (const char * name = g_file_info_get_name(inf.get()))
         name_ = name;
 
-    dispName_ = g_file_info_get_display_name(inf.get());
+    dispName_ = QString::fromUtf8(g_file_info_get_display_name(inf.get()));
 
     size_ = g_file_info_get_size(inf.get());
 
@@ -297,7 +297,7 @@ _file_is_symlink:
             /* Use title of the desktop entry for display */
             CStrPtr displayName{g_key_file_get_locale_string(kf, "Desktop Entry", "Name", nullptr, nullptr)};
             if(displayName) {
-                dispName_ = displayName.get();
+                dispName_ = QString::fromUtf8(displayName.get());
             }
             /* handle 'Hidden' key to set hidden attribute */
             if(!isHidden_) {

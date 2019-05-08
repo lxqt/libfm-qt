@@ -224,7 +224,7 @@ QString FolderModel::makeTooltip(FolderModelItem* item) const {
         tip += QStringLiteral("<p><i>") + tr("Location:") + QStringLiteral("</i> ") + QString::fromUtf8(parent_str.get()) + QStringLiteral("</p>");
     }
     // file type
-    tip += QStringLiteral("<i>") + tr("File type:") + QStringLiteral("</i> ") + info->mimeType()->desc();
+    tip += QStringLiteral("<i>") + tr("File type:") + QStringLiteral("</i> ") + QString::fromUtf8(info->mimeType()->desc());
     // file size
     const QString dSize = item->displaySize();
     if(!dSize.isEmpty()) { // it's empty for directories
@@ -264,7 +264,7 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
             return (showFullNames_ && !item->name().empty() ? QString::fromStdString(item->name())
                                                             : item->displayName());
         case ColumnFileType:
-            return QString(info->mimeType()->desc());
+            return QString::fromUtf8(info->mimeType()->desc());
         case ColumnFileMTime:
             return item->displayMtime();
         case ColumnFileSize:

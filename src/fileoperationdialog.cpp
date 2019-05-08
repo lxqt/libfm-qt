@@ -87,12 +87,12 @@ FileOperationDialog::~FileOperationDialog() {
 }
 
 void FileOperationDialog::setDestPath(const Fm::FilePath &dest) {
-    ui->dest->setText(dest.displayName().get());
+    ui->dest->setText(QString::fromUtf8(dest.displayName().get()));
 }
 
 void FileOperationDialog::setSourceFiles(const Fm::FilePathList &srcFiles) {
     for(auto& srcFile : srcFiles) {
-        ui->sourceFiles->addItem(srcFile.displayName().get());
+        ui->sourceFiles->addItem(QString::fromUtf8(srcFile.displayName().get()));
     }
 }
 
@@ -191,9 +191,9 @@ void FileOperationDialog::setRemainingTime(unsigned int sec) {
         }
     }
     ui->timeRemaining->setText(QStringLiteral("%1:%2:%3")
-                               .arg(hr, 2, 10, QChar('0'))
-                               .arg(min, 2, 10, QChar('0'))
-                               .arg(sec, 2, 10, QChar('0')));
+                               .arg(hr, 2, 10, QLatin1Char('0'))
+                               .arg(min, 2, 10, QLatin1Char('0'))
+                               .arg(sec, 2, 10, QLatin1Char('0')));
 }
 
 void FileOperationDialog::setPrepared() {

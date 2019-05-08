@@ -72,8 +72,8 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         ui->folderView->selectionModel()->clearSelection();
         QStringList parsedNames = parseNames();
         for(auto& name: parsedNames) {
-            if(!defaultSuffix_.isEmpty() && name.lastIndexOf('.') == -1) {
-                name += '.';
+            if(!defaultSuffix_.isEmpty() && name.lastIndexOf(QLatin1Char('.')) == -1) {
+                name += QLatin1Char('.');
                 name += defaultSuffix_;
             }
             selectFilePath(directoryPath_.child(name.toLocal8Bit().constData()));
@@ -207,9 +207,9 @@ QStringList FileDialog::parseNames() const {
            && fileNames.at(lastQuote - 1) != QLatin1Char('\\')) {
            // split the names
 #if (QT_VERSION >= QT_VERSION_CHECK(5,12,0))
-            QRegularExpression sep{"\"\\s+\""};  // separated with " "
+            QRegularExpression sep{QStringLiteral("\"\\s+\"")};  // separated with " "
 #else
-            QRegExp sep{"\"\\s+\""};  // separated with " "
+            QRegExp sep{QStringLiteral("\"\\s+\"")};  // separated with " "
 #endif
             parsedNames = fileNames.mid(firstQuote + 1, lastQuote - firstQuote - 1).split(sep);
             parsedNames.replaceInStrings(QLatin1String("\\\""), QLatin1String("\""));
@@ -267,7 +267,7 @@ void FileDialog::accept() {
         if(fileMode_ == QFileDialog::Directory) {
             auto localPath = directoryPath_.localPath();
             if(localPath) {
-                selectedFiles_.append(QUrl::fromLocalFile(localPath.get()));
+                selectedFiles_.append(QUrl::fromLocalFile(QString::fromUtf8(localPath.get())));
             }
             else {
                 selectedFiles_.append(directory());
@@ -281,8 +281,8 @@ void FileDialog::accept() {
     else {
         if(fileMode_ != QFileDialog::Directory) {
             auto firstName = parsedNames.at(0);
-            if(!defaultSuffix_.isEmpty() && firstName.lastIndexOf('.') == -1) {
-                firstName += '.';
+            if(!defaultSuffix_.isEmpty() && firstName.lastIndexOf(QLatin1Char('.')) == -1) {
+                firstName += QLatin1Char('.');
                 firstName += defaultSuffix_;
             }
             auto childPath = directoryPath_.child(firstName.toLocal8Bit().constData());
@@ -311,15 +311,15 @@ void FileDialog::accept() {
         // get full paths for the filenames and convert them to URLs
         for(auto& name: parsedNames) {
             // add default filename extension as needed
-            if(!defaultSuffix_.isEmpty() && name.lastIndexOf('.') == -1) {
-                name += '.';
+            if(!defaultSuffix_.isEmpty() && name.lastIndexOf(QLatin1Char('.')) == -1) {
+                name += QLatin1Char('.');
                 name += defaultSuffix_;
             }
             auto fullPath = directoryPath_.child(name.toLocal8Bit().constData());
             auto localPath = fullPath.localPath();
             /* add the local path if it exists; otherwise, add the uri */
             if(localPath) {
-                selectedFiles_.append(QUrl::fromLocalFile(localPath.get()));
+                selectedFiles_.append(QUrl::fromLocalFile(QString::fromUtf8(localPath.get())));
             }
             else {
                 selectedFiles_.append(QUrl::fromEncoded(fullPath.uri().get()));
@@ -445,7 +445,7 @@ void FileDialog::selectFilePathWithDelay(const FilePath &path) {
     QTimer::singleShot(0, this, [this, path]() {
         if(acceptMode_ == QFileDialog::AcceptSave) {
             // with a save dialog, always put the base name in line-edit, regardless of selection
-            ui->fileName->setText(path.baseName().get());
+            ui->fileName->setText(QString::fromUtf8(path.baseName().get()));
         }
         // update "accept" button because there might be no selection later
         updateAcceptButtonState();
@@ -504,18 +504,18 @@ void FileDialog::onSelectionChanged(const QItemSelection& /*selected*/, const QI
         if(multiple) {
             // support multiple selection
             if(!fileNames.isEmpty()) {
-                fileNames += ' ';
+                fileNames += QLatin1Char(' ');
             }
             fileNames += QLatin1Char('\"');
             // escape inside quotes with \ to distinguish between them
             // and the quotes used for separating file names from each other
-            QString name(baseName.get());
+            QString name(QString::fromUtf8(baseName.get()));
             fileNames += name.replace(QLatin1String("\""), QLatin1String("\\\""));
             fileNames += QLatin1Char('\"');
         }
         else {
             // support single selection only
-            QString name(baseName.get());
+            QString name(QString::fromUtf8(baseName.get()));
             fileNames = name.replace(QLatin1String("\""), QLatin1String("\\\""));
             break;
         }
@@ -610,7 +610,7 @@ void FileDialog::onFileInfoJobFinished() {
                 // the file path is not found and does not have file info
                 if(fileMode_ != QFileDialog::AnyFile) {
                     // if we do not allow non-existent file, this is an error.
-                    error = tr("Path \"%1\" does not exist").arg(path.displayName().get());
+                    error = tr("Path \"%1\" does not exist").arg(QString::fromUtf8(path.displayName().get()));
                     break;
                 }
                 ++i; // skip the file
@@ -624,13 +624,13 @@ void FileDialog::onFileInfoJobFinished() {
             if(fileMode_ == QFileDialog::Directory) {
                 if(!file->isDir()) {
                     // we're selecting dirs, but the selected file path does not point to a dir
-                    error = tr("\"%1\" is not a directory").arg(path.displayName().get());
+                    error = tr("\"%1\" is not a directory").arg(QString::fromUtf8(path.displayName().get()));
                     break;
                 }
             }
             else if(file->isDir() || file->isShortcut()) {
                 // we're selecting files, but the selected file path refers to a dir or shortcut (such as computer:///)
-                error = tr("\"%1\" is not a file").arg(path.displayName().get());;
+                error = tr("\"%1\" is not a file").arg(QString::fromUtf8(path.displayName().get()));;
                 break;
             }
         }
@@ -648,7 +648,7 @@ void FileDialog::onFileInfoJobFinished() {
 }
 
 QUrl FileDialog::directory() const {
-    QUrl url{directoryPath_.uri().get()};
+    QUrl url{QString::fromUtf8(directoryPath_.uri().get())};
     return url;
 }
 
@@ -790,7 +790,7 @@ void FileDialog::setMimeTypeFilters(const QStringList& filters) {
             for(const auto& suffix: suffixes) {
                 nameFilter += QLatin1String("*.");
                 nameFilter += suffix;
-                nameFilter += ' ';
+                nameFilter += QLatin1Char(' ');
             }
             nameFilter[nameFilter.length() - 1] = ')';
         }
@@ -969,22 +969,22 @@ void FileDialog::FileDialogFilter::update() {
     patterns_.clear();
     QString nameFilter = dlg_->currentNameFilter_;
     // if the filter contains (...), only get the part between the parenthesis.
-    auto left = nameFilter.indexOf('(');
+    auto left = nameFilter.indexOf(QLatin1Char('('));
     if(left != -1) {
         ++left;
-        auto right = nameFilter.indexOf(')', left);
+        auto right = nameFilter.indexOf(QLatin1Char(')'), left);
         if(right == -1) {
             right = nameFilter.length();
         }
         nameFilter = nameFilter.mid(left, right - left);
     }
     // parse the "*.ext1 *.ext2 *.ext3 ..." list into QRegularExpression objects
-    auto globs = nameFilter.simplified().split(' ');
+    auto globs = nameFilter.simplified().split(QLatin1Char(' '));
     for(const auto& glob: globs) {
 #if (QT_VERSION >= QT_VERSION_CHECK(5,12,0))
-        patterns_.emplace_back(QRegularExpression("\\A(?:"
+        patterns_.emplace_back(QRegularExpression(QStringLiteral("\\A(?:")
                                                     + QRegularExpression::wildcardToRegularExpression(glob)
-                                                    + ")\\z", QRegularExpression::CaseInsensitiveOption));
+                                                    + QStringLiteral(")\\z"), QRegularExpression::CaseInsensitiveOption));
 #else
         patterns_.emplace_back(QRegExp(glob, Qt::CaseInsensitive, QRegExp::Wildcard));
 #endif

@@ -20,7 +20,7 @@ BookmarkItem::BookmarkItem(const FilePath& path, const QString name):
     path_{path},
     name_{name} {
     if(name_.isEmpty()) { // if the name is not specified, use basename of the path
-        name_ = path_.baseName().get();
+        name_ = QString::fromUtf8(path_.baseName().get());
     }
     // We cannot rely on FileInfos to set bookmark icons because there is no guarantee
     // that FileInfos already exist, while their creation is costly. Therefore, we have
@@ -187,7 +187,7 @@ void Bookmarks::load() {
             sep = strchr(buf, ' ');  // find the separator between URI and name
             if(sep) {
                 *sep = '\0';
-                name = sep + 1;
+                name = QString::fromUtf8(sep + 1);
             }
             auto uri = buf;
             if(uri[0] != '\0') {

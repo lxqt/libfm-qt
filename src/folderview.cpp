@@ -362,7 +362,7 @@ void FolderViewTreeView::headerContextMenu(const QPoint &p) {
     if(model()) {
         menu.addSeparator();
         QWidgetAction *labelAction = new QWidgetAction(&menu);
-        QLabel *label = new QLabel("<center><b>" + tr("Visible Columns") + "</b></center>");
+        QLabel *label = new QLabel(QStringLiteral("<center><b>") + tr("Visible Columns") + QStringLiteral("</b></center>"));
         labelAction->setDefaultWidget(label);
         menu.addAction (labelAction);
 
@@ -1458,11 +1458,11 @@ void FolderView::childDropEvent(QDropEvent* e) {
                 QModelIndex index = view->indexAt(e->pos());
                 auto info = model_->fileInfoFromIndex(index);
                 if(info && info->isDir()) {
-                    filePath = info->path().child(basename);
+                    filePath = info->path().child(basename.constData());
                 }
             }
             if(!filePath.isValid()) {
-                filePath = path().child(basename);
+                filePath = path().child(basename.constData());
             }
             QByteArray fileUri = filePath.uri().get();
             XdndWorkaround::setWindowProperty(dndSource,  XdndDirectSaveAtom, textAtom, (void*)fileUri.constData(), fileUri.length());

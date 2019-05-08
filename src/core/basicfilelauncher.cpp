@@ -271,7 +271,7 @@ bool BasicFileLauncher::launchDesktopEntry(const char *desktopEntryName, const F
         }
     }
     else {
-        QString msg = QObject::tr("Invalid desktop entry file: '%1'").arg(desktopEntryName);
+        QString msg = QObject::tr("Invalid desktop entry file: '%1'").arg(QString::fromUtf8(desktopEntryName));
         GErrorPtr err{G_IO_ERROR, G_IO_ERROR_FAILED, msg};
         showError(ctx, err);
     }
@@ -307,7 +307,7 @@ FilePath BasicFileLauncher::handleShortcut(const FileInfoPtr& fileInfo, GAppLaun
             else {
                 GErrorPtr err{G_IO_ERROR, G_IO_ERROR_FAILED,
                               QObject::tr("No default application is set to launch '%1'")
-                              .arg(target.c_str())};
+                              .arg(QString::fromUtf8(target.c_str()))};
                 showError(nullptr, err);
             }
         }
@@ -347,7 +347,7 @@ bool BasicFileLauncher::launchExecutable(const FileInfoPtr &fileInfo, GAppLaunch
                     if(chdir(run_path.get()) != 0) {
                         cwd.reset();
                         // show errors
-                        QString msg = QObject::tr("Cannot set working directory to '%1': %2").arg(run_path.get()).arg(g_strerror(errno));
+                        QString msg = QObject::tr("Cannot set working directory to '%1': %2").arg(QString::fromUtf8(run_path.get())).arg(QString::fromUtf8(g_strerror(errno)));
                         GErrorPtr err{G_IO_ERROR, g_io_error_from_errno(errno), msg};
                         showError(ctx, err);
                     }

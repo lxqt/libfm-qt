@@ -225,7 +225,7 @@ void createFileOrFolder(CreateFileType type, FilePath parentDir, const TemplateI
 
     case CreateWithTemplate: {
         auto mime = templ->mimeType();
-        prompt = QObject::tr("Enter a name for the new %1:").arg(mime->desc());
+        prompt = QObject::tr("Enter a name for the new %1:").arg(QString::fromUtf8(mime->desc()));
         defaultNewName = QString::fromStdString(templ->name());
     }
     break;
@@ -288,7 +288,7 @@ uid_t uidFromName(QString name) {
         ret = uid_t(name.toUInt());
     }
     else {
-        struct passwd* pw = getpwnam(name.toLatin1());
+        struct passwd* pw = getpwnam(name.toLatin1().constData());
         // FIXME: use getpwnam_r instead later to make it reentrant
         ret = pw ? pw->pw_uid : INVALID_UID;
     }
@@ -301,7 +301,7 @@ QString uidToName(uid_t uid) {
     struct passwd* pw = getpwuid(uid);
 
     if(pw) {
-        ret = pw->pw_name;
+        ret = QString::fromUtf8(pw->pw_name);
     }
     else {
         ret = QString::number(uid);
@@ -320,7 +320,7 @@ gid_t gidFromName(QString name) {
     }
     else {
         // FIXME: use getgrnam_r instead later to make it reentrant
-        struct group* grp = getgrnam(name.toLatin1());
+        struct group* grp = getgrnam(name.toLatin1().constData());
         ret = grp ? grp->gr_gid : INVALID_GID;
     }
 
@@ -332,7 +332,7 @@ QString gidToName(gid_t gid) {
     struct group* grp = getgrgid(gid);
 
     if(grp) {
-        ret = grp->gr_name;
+        ret = QString::fromUtf8(grp->gr_name);
     }
     else {
         ret = QString::number(gid);
@@ -382,7 +382,7 @@ bool uriExists(const char* uri) {
 
 QString formatFileSize(uint64_t size, bool useSI) {
     Fm::CStrPtr str{g_format_size_full(size, useSI ? G_FORMAT_SIZE_DEFAULT : G_FORMAT_SIZE_IEC_UNITS)};
-    return QString(str.get());
+    return QString(QString::fromUtf8(str.get()));
 }
 
 } // namespace Fm

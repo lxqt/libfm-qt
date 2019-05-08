@@ -115,13 +115,13 @@ void MountOperationPasswordDialog::done(int r) {
     if(r == QDialog::Accepted) {
 
         if(needUserName) {
-            g_mount_operation_set_username(gmop, ui->username->text().toUtf8());
+            g_mount_operation_set_username(gmop, ui->username->text().toUtf8().constData());
         }
         if(needDomain) {
-            g_mount_operation_set_domain(gmop, ui->domain->text().toUtf8());
+            g_mount_operation_set_domain(gmop, ui->domain->text().toUtf8().constData());
         }
         if(needPassword) {
-            g_mount_operation_set_password(gmop, ui->password->text().toUtf8());
+            g_mount_operation_set_password(gmop, ui->password->text().toUtf8().constData());
         }
         if(canAnonymous) {
             g_mount_operation_set_anonymous(gmop, ui->Anonymous->isChecked());

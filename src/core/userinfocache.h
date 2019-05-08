@@ -14,7 +14,7 @@ namespace Fm {
 class LIBFM_QT_API UserInfo {
 public:
     explicit UserInfo(uid_t uid, const char* name, const char* realName):
-        uid_{uid}, name_{name}, realName_{realName} {
+        uid_{uid}, name_{QString::fromUtf8(name)}, realName_{QString::fromUtf8(realName)} {
     }
 
     uid_t uid() const {
@@ -38,7 +38,7 @@ private:
 
 class LIBFM_QT_API GroupInfo {
 public:
-    explicit GroupInfo(gid_t gid, const char* name): gid_{gid}, name_{name} {
+    explicit GroupInfo(gid_t gid, const char* name): gid_{gid}, name_{QString::fromUtf8(name)} {
     }
 
     gid_t gid() const {
