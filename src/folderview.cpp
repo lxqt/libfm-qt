@@ -454,7 +454,8 @@ void FolderViewTreeView::mouseMoveEvent(QMouseEvent* event) {
     // (by default Qt views drag with any button)
     if(event->buttons() == Qt::NoButton || (event->buttons() & ~(Qt::BackButton | Qt::ForwardButton))) {
         // handle rubberband
-        if((event->buttons() & Qt::LeftButton)
+        if(selectionMode() == QAbstractItemView::ExtendedSelection
+            && (event->buttons() & Qt::LeftButton)
             && (rubberBandRect_.isValid()
                 || !indexAt(mousePressPoint_ - QPoint(horizontalOffset(), verticalOffset())).isValid())) {
             QAbstractItemView::mouseMoveEvent(event);
