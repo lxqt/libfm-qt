@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>İçerik:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="317"/>
