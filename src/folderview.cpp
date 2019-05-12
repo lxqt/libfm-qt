@@ -367,9 +367,22 @@ void FolderViewTreeView::headerContextMenu(const QPoint &p) {
         menu.addAction (labelAction);
 
         int filenameColumn = header()->visualIndex(FolderModel::ColumnFileName);
+        int dTimeColumn = header()->visualIndex(FolderModel::ColumnFileDTime);
+        bool isTrash = false;
+        if(ProxyFolderModel* proxyModel = qobject_cast<ProxyFolderModel*>(model())) {
+            if(auto model = static_cast<FolderModel*>(proxyModel->sourceModel())) {
+                if(model->path() && strcmp(model->path().toString().get(), "trash:///") == 0) {
+                    isTrash = true;
+                }
+            }
+        }
         int numCols = header()->count();
         for(int column = 0; column < numCols; ++column) {
             int columnId = header()->logicalIndex(column);
+            if(!isTrash && columnId == dTimeColumn) {
+                // no action for the deletion time column if this isn't trash
+                continue;
+            }
             if(columnId >= 0 && columnId < FolderModel::NumOfColumns) {
                 action = menu.addAction (model()->headerData(columnId, Qt::Horizontal, Qt::DisplayRole).toString());
                 action->setCheckable(true);
@@ -569,9 +582,24 @@ void FolderViewTreeView::layoutColumns() {
         }
         QAbstractItemModel* model_ = model();
         int filenameColumn = headerView->visualIndex(FolderModel::ColumnFileName);
+        int dTimeColumn = header()->visualIndex(FolderModel::ColumnFileDTime);
+        bool isTrash = false;
+        if(ProxyFolderModel* proxyModel = qobject_cast<ProxyFolderModel*>(model())) {
+            if(auto model = static_cast<FolderModel*>(proxyModel->sourceModel())) {
+                if(model->path() && strcmp(model->path().toString().get(), "trash:///") == 0) {
+                    isTrash = true;
+                }
+            }
+        }
         int column;
         for(column = 0; column < numCols; ++column) {
             int columnId = headerView->logicalIndex(column);
+
+            if(!isTrash && columnId == dTimeColumn) {
+                // hide the deletion time column if this isn't trash
+                headerView->setSectionHidden(columnId, true);
+                continue;
+            }
 
             // handle hidden columns
             bool wasHidden = false;

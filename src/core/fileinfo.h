@@ -102,6 +102,9 @@ public:
         return mtime_;
     }
 
+    quint64 dtime() const {
+        return dtime_;
+    }
     const std::string& target() const {
         return target_;
     }
@@ -233,6 +236,7 @@ private:
     quint64 mtime_;
     quint64 atime_;
     quint64 ctime_;
+    quint64 dtime_;
 
     uint64_t blksize_;
     uint64_t blocks_;

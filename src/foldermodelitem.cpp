@@ -61,6 +61,14 @@ const QString &FolderModelItem::displayMtime() const {
     return dispMtime_;
 }
 
+const QString &FolderModelItem::displayDtime() const {
+    if(dispDtime_.isEmpty() && info->dtime() > 0) {
+        auto mtime = QDateTime::fromMSecsSinceEpoch(info->dtime() * 1000);
+        dispDtime_ = mtime.toString(Qt::SystemLocaleShortDate);
+    }
+    return dispDtime_;
+}
+
 const QString& FolderModelItem::displaySize() const {
     if(!info->isDir()) {
         // FIXME: choose IEC or SI units
