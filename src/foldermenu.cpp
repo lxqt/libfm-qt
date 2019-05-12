@@ -161,6 +161,11 @@ void FolderMenu::createSortMenu() {
 
     addSortMenuItem(tr("By File Name"), FolderModel::ColumnFileName);
     addSortMenuItem(tr("By Modification Time"), FolderModel::ColumnFileMTime);
+    if(auto folderPath = view_->path()) {
+        if(strcmp(folderPath.toString().get(), "trash:///") == 0) {
+            addSortMenuItem(tr("By Deletion Time"), FolderModel::ColumnFileDTime);
+        }
+    }
     addSortMenuItem(tr("By File Size"), FolderModel::ColumnFileSize);
     addSortMenuItem(tr("By File Type"), FolderModel::ColumnFileType);
     addSortMenuItem(tr("By File Owner"), FolderModel::ColumnFileOwner);

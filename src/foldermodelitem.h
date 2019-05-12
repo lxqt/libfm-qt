@@ -72,6 +72,8 @@ public:
 
     const QString& displayMtime() const;
 
+    const QString& displayDtime() const;
+
     const QString &displaySize() const;
 
     bool isCut() const;
@@ -84,6 +86,7 @@ public:
 
     std::shared_ptr<const Fm::FileInfo> info;
     mutable QString dispMtime_;
+    mutable QString dispDtime_;
     mutable QString dispSize_;
     std::weak_ptr<const HashSet> cutFilesHashSet_;
     QVector<Thumbnail> thumbnails;

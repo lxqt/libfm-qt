@@ -10,6 +10,7 @@ const char defaultGFileInfoQueryAttribs[] = "standard::*,"
                                             "unix::*,"
                                             "time::*,"
                                             "access::*,"
+                                            "trash::deletion-date,"
                                             "id::filesystem,"
                                             "metadata::emblems,"
                                             METADATA_TRUST;
@@ -261,6 +262,12 @@ _file_is_symlink:
     mtime_ = g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_TIME_MODIFIED);
     atime_ = g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_TIME_ACCESS);
     ctime_ = g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_TIME_CHANGED);
+    if(auto dt = g_file_info_get_deletion_date(inf.get())){
+        dtime_ = g_date_time_to_unix(dt);
+    }
+    else {
+        dtime_ = 0;
+    }
     isHidden_ = g_file_info_get_is_hidden(inf.get());
     // g_file_info_get_is_backup() does not cover ".bak" and ".old".
     // NOTE: Here, dispName_ is not modified for desktop entries yet.

@@ -267,6 +267,8 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
             return QString::fromUtf8(info->mimeType()->desc());
         case ColumnFileMTime:
             return item->displayMtime();
+        case ColumnFileDTime:
+            return item->displayDtime();
         case ColumnFileSize:
             return item->displaySize();
         case ColumnFileOwner:
@@ -314,6 +316,9 @@ QVariant FolderModel::headerData(int section, Qt::Orientation orientation, int r
                 break;
             case ColumnFileMTime:
                 title = tr("Modified");
+                break;
+            case ColumnFileDTime:
+                title = tr("Deleted");
                 break;
             case ColumnFileOwner:
                 title = tr("Owner");
