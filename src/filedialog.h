@@ -181,6 +181,7 @@ private:
     void onFileInfoJobFinished();
     void freeFolder();
     QStringList parseNames() const;
+    QString suffix(bool checkDefaultSuffix = true) const;
 
 private:
     std::unique_ptr<Ui::FileDialog> ui;

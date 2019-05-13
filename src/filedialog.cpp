@@ -72,7 +72,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         ui->folderView->selectionModel()->clearSelection();
         QStringList parsedNames = parseNames();
         for(auto& name: parsedNames) {
-            if(!defaultSuffix_.isEmpty() && name.lastIndexOf(QLatin1Char('.')) == -1) {
+            if(!defaultSuffix_.isEmpty() && name.indexOf(QLatin1Char('.'), 1) == -1) { // including ".X"
                 name += QLatin1Char('.');
                 name += defaultSuffix_;
             }
@@ -234,6 +234,29 @@ std::shared_ptr<const Fm::FileInfo> FileDialog::firstSelectedDir() const {
     return selectedFolder;
 }
 
+QString FileDialog::suffix(bool checkDefaultSuffix) const {
+    if(checkDefaultSuffix && !defaultSuffix_.isEmpty()) {
+        return defaultSuffix_;
+    }
+    // in the save mode, still try to make a suffix out of the currrent name filter
+    if(acceptMode_ != QFileDialog::AcceptOpen) {
+        auto left = currentNameFilter_.lastIndexOf(QLatin1Char('('));
+        if(left != -1) {
+            ++left;
+            auto right = currentNameFilter_.indexOf(QLatin1Char(')'), left);
+            if(right != -1) {
+                QString nameFilter = currentNameFilter_.mid(left, right - left);
+                QString suffix = nameFilter.simplified().split(QLatin1Char(' '), QString::SkipEmptyParts).at(0);
+                left = suffix.indexOf(QLatin1Char('.')); // it can be like ".tar.xz"
+                if(left != -1 && suffix.size() - left > 1) {
+                    return suffix.right(suffix.size() - left - 1);
+                }
+            }
+        }
+    }
+    return QString();
+}
+
 void FileDialog::accept() {
     // handle selected filenames
     selectedFiles_.clear();
@@ -279,11 +302,17 @@ void FileDialog::accept() {
         }
     }
     else {
+        QString _suffix;
+        bool suffixFound = false;
         if(fileMode_ != QFileDialog::Directory) {
             auto firstName = parsedNames.at(0);
-            if(!defaultSuffix_.isEmpty() && firstName.lastIndexOf(QLatin1Char('.')) == -1) {
-                firstName += QLatin1Char('.');
-                firstName += defaultSuffix_;
+            if(firstName.indexOf(QLatin1Char('.'), 1) == -1) { // including ".X"
+                _suffix = suffix();
+                suffixFound = true;
+                if(!_suffix.isEmpty()) {
+                    firstName += QLatin1Char('.');
+                    firstName += _suffix;
+                }
             }
             auto childPath = directoryPath_.child(firstName.toLocal8Bit().constData());
             auto info = proxyModel_->fileInfoFromPath(childPath);
@@ -310,10 +339,16 @@ void FileDialog::accept() {
 
         // get full paths for the filenames and convert them to URLs
         for(auto& name: parsedNames) {
-            // add default filename extension as needed
-            if(!defaultSuffix_.isEmpty() && name.lastIndexOf(QLatin1Char('.')) == -1) {
-                name += QLatin1Char('.');
-                name += defaultSuffix_;
+            // add extension as needed
+            if(name.indexOf(QLatin1Char('.'), 1) == -1) {
+                if(!suffixFound) {
+                    _suffix = suffix();
+                    suffixFound = true;
+                }
+                if(!_suffix.isEmpty()) {
+                    name += QLatin1Char('.');
+                    name += _suffix;
+                }
             }
             auto fullPath = directoryPath_.child(name.toLocal8Bit().constData());
             auto localPath = fullPath.localPath();
@@ -669,6 +704,22 @@ void FileDialog::selectNameFilter(const QString& filter) {
         currentNameFilter_ = filter;
         ui->fileTypeCombo->setCurrentText(filter);
 
+        // in save mode, change file name extension if it exists
+        if(acceptMode_ != QFileDialog::AcceptOpen) {
+            auto name = ui->fileName->text();
+            if(!name.isEmpty()) {
+                auto dot = name.indexOf(QLatin1Char('.'), 1); // not ".X"
+                if(dot != -1) {
+                    auto _suffix = suffix(false);
+                    if(!_suffix.isEmpty()) {
+                        name = name.left(dot + 1);
+                        name += _suffix;
+                        ui->fileName->setText(name);
+                    }
+                }
+            }
+        }
+
         modelFilter_.update();
         proxyModel_->invalidate();
         Q_EMIT filterSelected(filter);
@@ -968,8 +1019,9 @@ void FileDialog::FileDialogFilter::update() {
     // update filename patterns
     patterns_.clear();
     QString nameFilter = dlg_->currentNameFilter_;
-    // if the filter contains (...), only get the part between the parenthesis.
-    auto left = nameFilter.indexOf(QLatin1Char('('));
+    // if the filter contains (...), get the part inside the last pair of parentheses
+    // because "NAME (DESCRIPTION) (*.X *.Y)" is also possible
+    auto left = nameFilter.lastIndexOf(QLatin1Char('('));
     if(left != -1) {
         ++left;
         auto right = nameFilter.indexOf(QLatin1Char(')'), left);
