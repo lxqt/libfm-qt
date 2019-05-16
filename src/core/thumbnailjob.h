@@ -1,4 +1,4 @@
-﻿#ifndef FM2_THUMBNAILJOB_H
+#ifndef FM2_THUMBNAILJOB_H
 #define FM2_THUMBNAILJOB_H
 
 #include "../libfmqtglobals.h"
@@ -58,7 +58,7 @@ private:
 
     QImage loadForFile(const std::shared_ptr<const FileInfo>& file);
 
-    bool readJpegExif(GInputStream* stream, QImage& thumbnail, int& rotate_degrees);
+    bool readJpegExif(GInputStream* stream, QImage& thumbnail, QMatrix& matrix);
 
 private:
     FileInfoList files_;
