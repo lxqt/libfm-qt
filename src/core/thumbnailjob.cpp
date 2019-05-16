@@ -136,7 +136,7 @@ bool ThumbnailJob::isThumbnailOutdated(const std::shared_ptr<const FileInfo>& fi
     return (thumb_mtime.isEmpty() || thumb_mtime.toULongLong() != file->mtime());
 }
 
-bool ThumbnailJob::readJpegExif(GInputStream *stream, QImage& thumbnail, int& rotate_degrees) {
+bool ThumbnailJob::readJpegExif(GInputStream *stream, QImage& thumbnail, QMatrix& matrix) {
     /* try to extract thumbnails embedded in jpeg files */
     ExifLoader* exif_loader = exif_loader_new();
     while(!isCancelled()) {
@@ -161,17 +161,31 @@ bool ThumbnailJob::readJpegExif(GInputStream *stream, QImage& thumbnail, int& ro
             /* bo == EXIF_BYTE_ORDER_INTEL ; */
             orient = exif_get_short(orient_ent->data, bo);
             switch(orient) {
-            case 1: /* no rotation */
-                rotate_degrees = 0;
-                break;
-            case 8:
-                rotate_degrees = 90;
+            case 2: // mirror horizontally
+                matrix.scale(-1, 1);
                 break;
             case 3:
-                rotate_degrees = 180;
+                matrix.rotate(180);
+                break;
+            case 4: // mirror vertically
+                matrix.scale(1, -1);
+                break;
+            case 5: // transpose
+                matrix.rotate(-90);
+                matrix.scale(1, -1);
                 break;
             case 6:
-                rotate_degrees = 270;
+                matrix.rotate(90);
+                break;
+            case 7: // transverse
+                matrix.rotate(90);
+                matrix.scale(1, -1);
+                break;
+            case 8:
+                matrix.rotate(270);
+                break;
+            case 1: // no rotation
+            default:
                 break;
             }
         }
@@ -191,10 +205,10 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
         if(!ins)
             return QImage();
         bool fromExif = false;
-        int rotate_degrees = 0;
+        QMatrix matrix;
         if(strcmp(mime_type->name(), "image/jpeg") == 0) { // if this is a jpeg file
             // try to get the thumbnail embedded in EXIF data
-            if(readJpegExif(G_INPUT_STREAM(ins.get()), result, rotate_degrees)) {
+            if(readJpegExif(G_INPUT_STREAM(ins.get()), result, matrix)) {
                 fromExif = true;
             }
         }
@@ -214,17 +228,8 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
                 result = result.scaled(target_size, target_size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
             }
 
-            if(rotate_degrees != 0) {
-                // degree values are 0, 90, 180, and 270 counterclockwise.
-                // In Qt, QMatrix does rotation counterclockwise as well.
-                // However, because the y axis of widget coordinate system is downward,
-                // the real effect of the coordinate transformation becomes clockwise rotation.
-                // So we need to use (360 - degree) here.
-                // Quote from QMatrix API doc:
-                // Note that if you apply a QMatrix to a point defined in widget
-                // coordinates, the direction of the rotation will be clockwise because
-                // the y-axis points downwards.
-                result = result.transformed(QMatrix().rotate(360 - rotate_degrees));
+            if(!matrix.isIdentity()) { // transform the image if needed
+                result = result.transformed(matrix);
             }
 
             // save the generated thumbnail to disk (don't save png thumbnails for JPEG EXIF thumbnails since loading them is cheap)
