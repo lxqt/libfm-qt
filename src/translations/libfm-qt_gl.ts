@@ -912,7 +912,7 @@ Desexa eliminalos no seu canto?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
         <source>Show Hidden</source>
-        <translation>Amosar agachados</translation>
+        <translation>Amosar agochados</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="97"/>
@@ -1101,7 +1101,7 @@ Desexa eliminalos no seu canto?</translation>
         <location filename="../placesview.cpp" line="520"/>
         <location filename="../placesview.cpp" line="577"/>
         <source>Hide</source>
-        <translation>Agachar</translation>
+        <translation>Agochar</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="537"/>
@@ -1435,7 +1435,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="129"/>
         <source>Search for hidden files</source>
-        <translation>Buscar ficheiros agachados</translation>
+        <translation>Buscar ficheiros agochados</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="140"/>
