@@ -430,14 +430,14 @@
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
         <translation>O arquivo &apos;%1&apos; parece ser uma entrada da área de trabalho.
-O que você deseja fazer?</translation>
+O que você deseja fazer com ele?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
         <translation>O arquivo de texto &apos;%1&apos; parece ser um script executável.
-O que você deseja fazer?</translation>
+O que você deseja fazer com ele?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
@@ -521,12 +521,12 @@ O que você deseja fazer?</translation>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 já existe.
-Deseja fazer a substituição?</translation>
+Deseja fazer substitui-lo?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="604"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation>O destino &quot;%1&quot; não existe</translation>
+        <translation>O caminho &quot;%1&quot; não existe</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="618"/>
@@ -1430,7 +1430,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in sub directories</source>
-        <translation>Pesquisar nas sub-pastas</translation>
+        <translation>Pesquisar nas subpastas</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="129"/>
@@ -1445,7 +1445,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation>Pesquisar somente os seguintes tipos de arquivos:</translation>
+        <translation>Pesquisar somente pelos seguintes tipos de arquivos:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
