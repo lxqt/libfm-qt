@@ -1309,7 +1309,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation>このパスはマウントされていません</translation>
+        <translation>このパスはマウントされていません。</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="272"/>
