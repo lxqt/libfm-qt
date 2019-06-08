@@ -23,8 +23,8 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 # universal way to translate a libtool version-info to a cmake version.
 # We use "(current-age).age.revision" as the cmake version.
 # current: 6, revision: 0, age: 0 => version: 6.0.0
-set(LIBFM_QT_ABI_VERSION "6.1.0")
-set(LIBFM_QT_SOVERSION "6")
+set(LIBFM_QT_ABI_VERSION "7.0.0")
+set(LIBFM_QT_SOVERSION "7")
 
 set(GLIB_MINIMUM_VERSION "2.50.0")
 set(LIBMENUCACHE_MINIMUM_VERSION "1.1.0")
