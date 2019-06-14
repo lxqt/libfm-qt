@@ -170,7 +170,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>処理されたファイル:</translation>
     </message>
 </context>
 <context>
@@ -233,12 +233,12 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>内容:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="317"/>
         <source>Device Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク使用量:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="349"/>
@@ -429,7 +429,8 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル&apos;%1&apos;はデスクトップのエントリです。
+どうしますか？</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
@@ -600,12 +601,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="252"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>選択した実行ファイルを信頼する</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="253"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>この実行ファイルを信頼する</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="341"/>
@@ -813,12 +814,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% 使用</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="334"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>空き容量 %1  全体 %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="378"/>
@@ -879,7 +880,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="497"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>ネイティブではないファイルシステムにはリンクを作成できません</translation>
     </message>
 </context>
 <context>
@@ -1101,7 +1102,7 @@ Do you want to delete them instead?</source>
         <location filename="../placesview.cpp" line="520"/>
         <location filename="../placesview.cpp" line="577"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>非表示</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="537"/>
@@ -1142,7 +1143,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="603"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのエントリを表示</translation>
     </message>
 </context>
 <context>
@@ -1194,7 +1195,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル&apos;%s&apos;を削除できません：元のパスが不明です</translation>
     </message>
 </context>
 <context>
@@ -1314,22 +1315,22 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="272"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>無効なデスクトップエントリのファイル： &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="307"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%1&apos;を起動するように設定されている既定のアプリケーションがありません</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="348"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%1&apos;: %2に作業ディレクトリを設定できません</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>ID: </translation>
     </message>
 </context>
 <context>
@@ -1357,7 +1358,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
         <source>src file info</source>
-        <translation></translation>
+        <translation>src ファイルの情報</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="89"/>
@@ -1522,19 +1523,19 @@ Modified: %2</source>
         <location filename="../filesearch.ui" line="314"/>
         <location filename="../filesearch.ui" line="344"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="319"/>
         <location filename="../filesearch.ui" line="349"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>MiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="324"/>
         <location filename="../filesearch.ui" line="354"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>GiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="274"/>
