@@ -77,6 +77,7 @@ private Q_SLOTS:
 private:
   bool activationAllowed_;
   mutable bool cursorOnSelectionCorner_;
+  QPoint globalItemPressPoint_; // to prevent dragging when only the view is scrolled
 };
 
 class FolderViewTreeView : public QTreeView {
@@ -133,6 +134,9 @@ private:
   bool activationAllowed_;
   QList<int> customColumnWidths_;
   QSet<int> hiddenColumns_;
+  QPoint globalItemPressPoint_; // to prevent dragging when only the view is scrolled
+
+  // for rubberband
   QPoint mousePressPoint_;
   QRect rubberBandRect_;
   QItemSelectionModel::SelectionFlag ctrlDragSelectionFlag_;

@@ -81,6 +81,9 @@ void FolderViewListView::startDrag(Qt::DropActions supportedActions) {
 }
 
 void FolderViewListView::mousePressEvent(QMouseEvent* event) {
+    if(event->buttons() == Qt::LeftButton) { // see FolderViewListView::mouseMoveEvent
+        globalItemPressPoint_ = event->globalPos();
+    }
     // switch between the extended and multiple selection modes,
     // depending on the cursor position, only when there's no other mode
     if(selectionMode() == QAbstractItemView::ExtendedSelection
@@ -96,7 +99,11 @@ void FolderViewListView::mousePressEvent(QMouseEvent* event) {
 void FolderViewListView::mouseMoveEvent(QMouseEvent* event) {
     // NOTE: Filter the BACK & FORWARD buttons to not Drag & Drop with them.
     // (by default Qt views drag with any button)
-    if (event->buttons() == Qt::NoButton || (event->buttons() & ~(Qt::BackButton | Qt::ForwardButton))) {
+    if (event->buttons() == Qt::NoButton
+        || ((event->buttons() & ~(Qt::BackButton | Qt::ForwardButton))
+            // don't start drag if the cursor isn't moved since pressing left mouse button on an item
+            // because the user may want to scroll the view with mouse wheel before dragging
+            && !(event->buttons() == Qt::LeftButton && globalItemPressPoint_ == event->globalPos()))) {
         bool cursorOnSelectionCorner = cursorOnSelectionCorner_;
         QListView::mouseMoveEvent(event);
         // update the index if the cursor enters/leaves the selection corner icon
@@ -437,6 +444,9 @@ void FolderViewTreeView::paintEvent(QPaintEvent * event) {
 }
 
 void FolderViewTreeView::mousePressEvent(QMouseEvent* event) {
+    if(event->buttons() == Qt::LeftButton) { // see FolderViewTreeView::mouseMoveEvent
+        globalItemPressPoint_ = event->globalPos();
+    }
     if(selectionMode() == QAbstractItemView::ExtendedSelection) {
         // remember mouse press position and determine whether selections should be kept
         // or removed later, when the cursor moves
@@ -445,10 +455,9 @@ void FolderViewTreeView::mousePressEvent(QMouseEvent* event) {
         QModelIndex index = indexAt(event->pos());
         if(index.isValid()) {
             Qt::KeyboardModifiers modifiers = QApplication::keyboardModifiers();
-            const Qt::MouseButton button = static_cast<const QMouseEvent*>(event)->button();
             const bool shiftKeyPressed = modifiers & Qt::ShiftModifier;
             const bool controlKeyPressed = modifiers & Qt::ControlModifier;
-            const bool rightButtonPressed = button & Qt::RightButton;
+            const bool rightButtonPressed = event->button() & Qt::RightButton;
             const bool indexIsSelected = selectionModel()->isSelected(index);
             if(controlKeyPressed && !shiftKeyPressed && !rightButtonPressed) {
                 ctrlDragSelectionFlag_ = indexIsSelected ? QItemSelectionModel::Deselect : QItemSelectionModel::Select;
@@ -503,7 +512,11 @@ void FolderViewTreeView::mouseMoveEvent(QMouseEvent* event) {
             setSelection(selectionRect, command);
         }
         else {
-            QTreeView::mouseMoveEvent(event);
+            // don't start drag if the cursor isn't moved since pressing left mouse button on an item
+            // because the user may want to scroll the view with mouse wheel before dragging
+            if(!(event->buttons() == Qt::LeftButton && globalItemPressPoint_ == event->globalPos())) {
+                QTreeView::mouseMoveEvent(event);
+            }
         }
     }
 }
