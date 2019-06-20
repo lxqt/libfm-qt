@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Location:</source>
-        <translation type="unfinished">場所:</translation>
+        <translation>場所:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -641,7 +641,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="141"/>
         <source>&amp;Restore</source>
-        <translation>復活(&amp;R)</translation>
+        <translation>元に戻す(&amp;R)</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="217"/>
