@@ -335,7 +335,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>ファイル&quot;%1&quot;を開くアプリケーションを選択</translation>
+        <translation>ファイル &quot;%1&quot; を開くアプリケーションを選択</translation>
     </message>
 </context>
 <context>
@@ -379,17 +379,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="211"/>
         <source>Open in New T&amp;ab</source>
-        <translation>新しいタブで開く(&amp;a)</translation>
+        <translation>新しいタブで開く(&amp;A)</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="215"/>
         <source>Open in New Win&amp;dow</source>
-        <translation>新しいウィンドウで開く(&amp;d)</translation>
+        <translation>新しいウィンドウで開く(&amp;D)</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="220"/>
         <source>Open in Termina&amp;l</source>
-        <translation>ターミナルで開く(&amp;l)</translation>
+        <translation>ターミナルで開く(&amp;L)</translation>
     </message>
 </context>
 <context>
@@ -429,7 +429,7 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>ファイル&apos;%1&apos;はデスクトップのエントリです。
+        <translation>ファイル &apos;%1&apos; はデスクトップのエントリです。
 どうしますか？</translation>
     </message>
     <message>
@@ -515,29 +515,29 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
         <source>Please select a file</source>
-        <translation>ファイルを1つ選択してください</translation>
+        <translation>ファイルを 1 つ選択してください</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="295"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation>%1は既にあります。
+        <translation>%1 は既にあります。
 これを置き換えますか？</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="604"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation>パス&quot;%1&quot;はありません</translation>
+        <translation>パス &quot;%1&quot; はありません</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="618"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation>&quot;%1&quot;はディレクトリではありません</translation>
+        <translation>&quot;%1&quot; はディレクトリではありません</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="624"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation>&quot;%1&quot;はファイルではありません</translation>
+        <translation>&quot;%1&quot; はファイルではありません</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="751"/>
@@ -636,7 +636,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="122"/>
         <source>Create &amp;New</source>
-        <translation>新規作成 (&amp;N)</translation>
+        <translation>新規作成(&amp;N)</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="141"/>
@@ -829,12 +829,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="380"/>
         <source>one file</source>
-        <translation>1つのファイル</translation>
+        <translation>1 個のファイル</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
         <source>%1 files</source>
-        <translation>%1 のファイル</translation>
+        <translation>%1 個のファイル</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="416"/>
@@ -888,12 +888,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="41"/>
         <source>Create &amp;New</source>
-        <translation>新規作成 (&amp;N)</translation>
+        <translation>新規作成(&amp;N)</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="48"/>
         <source>&amp;Paste</source>
-        <translation>ペースト(&amp;P)</translation>
+        <translation>貼り付け(&amp;P)</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="54"/>
@@ -968,7 +968,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="211"/>
         <source>Case Sensitive</source>
-        <translation>大文字小文字を区別</translation>
+        <translation>大文字と小文字を区別</translation>
     </message>
 </context>
 <context>
@@ -1022,7 +1022,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../mountoperationpassworddialog.cpp" line="40"/>
         <source>&amp;Connect</source>
-        <translation>接続&amp;(C)</translation>
+        <translation>接続(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -1195,7 +1195,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>ファイル&apos;%s&apos;を削除できません：元のパスが不明です</translation>
+        <translation>ファイル &apos;%s&apos; を削除できません: 元のパスが不明です</translation>
     </message>
 </context>
 <context>
@@ -1213,7 +1213,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>ユーザーとして接続(&amp;U):</translation>
+        <translation>ユーザーとして接続(&amp;S):</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
@@ -1223,27 +1223,27 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="102"/>
         <source>&amp;Password:</source>
-        <translation>&amp;パスワード(&amp;P):</translation>
+        <translation>パスワード(&amp;P):</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
-        <translation>&amp;ドメイン(&amp;D):</translation>
+        <translation>ドメイン(&amp;D):</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation>パスワードを記憶させない(&amp;i)</translation>
+        <translation>パスワードを記憶させない(&amp;I)</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password until you &amp;logout</source>
-        <translation>パスワードをログアウトするまで記憶させる(&amp;l)</translation>
+        <translation>パスワードをログアウトするまで記憶させる(&amp;L)</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation>パスワードを恒久的に記憶させる(&amp;f)</translation>
+        <translation>パスワードを恒久的に記憶させる(&amp;F)</translation>
     </message>
 </context>
 <context>
@@ -1315,17 +1315,17 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="272"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>無効なデスクトップエントリのファイル： &apos;%1&apos;</translation>
+        <translation>無効なデスクトップエントリのファイル: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="307"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>&apos;%1&apos;を起動するように設定されている既定のアプリケーションがありません</translation>
+        <translation>&apos;%1&apos; を起動するように設定されている既定のアプリケーションがありません</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="348"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>&apos;%1&apos;: %2に作業ディレクトリを設定できません</translation>
+        <translation>&apos;%1&apos; に作業ディレクトリを設定できません: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
@@ -1491,7 +1491,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case insensiti&amp;ve</source>
-        <translation>大文字小文字を区別しない(&amp;v)</translation>
+        <translation>大文字と小文字を区別しない(&amp;V)</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
