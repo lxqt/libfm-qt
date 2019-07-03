@@ -137,7 +137,7 @@
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished">種類:</translation>
+        <translation>種類:</translation>
     </message>
 </context>
 <context>
@@ -429,7 +429,7 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>ファイル &apos;%1&apos; はデスクトップのエントリです。
+        <translation>ファイル &apos;%1&apos; はデスクトップエントリです。
 どうしますか？</translation>
     </message>
     <message>
@@ -484,7 +484,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="135"/>
         <source>Create Folder</source>
-        <translation type="unfinished">フォルダの作成</translation>
+        <translation>フォルダの作成</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
@@ -510,7 +510,7 @@ What do you want to do with it?</source>
         <location filename="../filedialog.cpp" line="271"/>
         <location filename="../filedialog.cpp" line="634"/>
         <source>Error</source>
-        <translation type="unfinished">エラー</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="271"/>
@@ -543,7 +543,7 @@ Do you want to replace it?</source>
         <location filename="../filedialog.cpp" line="751"/>
         <location filename="../filedialog.cpp" line="859"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">開く(&amp;O)</translation>
+        <translation>開く(&amp;O)</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="754"/>
@@ -692,7 +692,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperation.cpp" line="393"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation>選択したファイルをゴミ箱に移しますか？</translation>
+        <translation>選択したファイルをゴミ箱に移動しますか？</translation>
     </message>
 </context>
 <context>
