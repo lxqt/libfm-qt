@@ -98,7 +98,7 @@ bool PlacesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sourc
             }
             // show a root items only if, at least, one of its children is shown
             else if((source_row == 0 || source_row == 1) && !source_parent.isValid()) {
-                QModelIndex indx = index.child(0, 0);
+                QModelIndex indx = index.model()->index(0, 0, index);
                 while(PlacesModelItem* childItem = static_cast<PlacesModelItem*>(srcModel->itemFromIndex(indx))) {
                     if(childItem->type() == PlacesModelItem::Places) {
                         if(auto path = childItem->path()) {
