@@ -215,13 +215,13 @@ std::shared_ptr<const Fm::FileInfo> FolderModel::fileInfoFromIndex(const QModelI
 
 QString FolderModel::makeTooltip(FolderModelItem* item) const {
     // display name (bold)
-    QString tip = QStringLiteral("<p><b>") + item->displayName() + QStringLiteral("</b></p>");
+    QString tip = QStringLiteral("<p><b>") + item->displayName().toHtmlEscaped() + QStringLiteral("</b></p>");
     // parent dir
     auto info = item->info;
     auto parent_path = info->path().parent();
     auto parent_str = parent_path ? parent_path.displayName() : nullptr;
     if(parent_str) {
-        tip += QStringLiteral("<p><i>") + tr("Location:") + QStringLiteral("</i> ") + QString::fromUtf8(parent_str.get()) + QStringLiteral("</p>");
+        tip += QStringLiteral("<p><i>") + tr("Location:") + QStringLiteral("</i> ") + QString::fromUtf8(parent_str.get()).toHtmlEscaped() + QStringLiteral("</p>");
     }
     // file type
     tip += QStringLiteral("<i>") + tr("File type:") + QStringLiteral("</i> ") + QString::fromUtf8(info->mimeType()->desc());
