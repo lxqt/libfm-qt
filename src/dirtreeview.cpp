@@ -283,7 +283,7 @@ void DirTreeView::rowsAboutToBeRemoved(const QModelIndex& parent, int start, int
         selIndex = selectionModel()->selectedRows().at(0);
     }
     for (int i = start; i <= end; ++i) {
-        QModelIndex index = parent.child(i, 0);
+        QModelIndex index = model()->index(i, 0, parent);
         if(index.isValid()) {
             if(index == selIndex) {
                 selectionModel()->clear();

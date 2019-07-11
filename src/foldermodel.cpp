@@ -460,7 +460,7 @@ bool FolderModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
             info = fileInfoFromIndex(parent);
         }
         else {
-            QModelIndex itemIndex = parent.child(row, column);
+            QModelIndex itemIndex = index(row, column, parent);
             info = fileInfoFromIndex(itemIndex);
         }
         if(info) {

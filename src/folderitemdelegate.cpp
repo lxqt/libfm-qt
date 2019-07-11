@@ -315,7 +315,12 @@ void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItem& opt, 
         ++ visibleLines;
     }
     layout.endLayout();
+
+#if (QT_VERSION >= QT_VERSION_CHECK(5,11,0))
+    width = qMax(width, static_cast<qreal>(opt.fontMetrics.horizontalAdvance(elidedText)));
+#else
     width = qMax(width, (qreal)opt.fontMetrics.width(elidedText));
+#endif
 
     // draw background for selected item
     QRectF boundRect = layout.boundingRect();
