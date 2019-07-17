@@ -421,7 +421,7 @@ QStringList FolderModel::mimeTypes() const {
     // the real implementation is in FolderView::childDropEvent().
     types << QStringLiteral("XdndDirectSave0");
     types << QStringLiteral("text/uri-list");
-    // types << "x-special/gnome-copied-files";
+    types << QStringLiteral("libfm/files"); // see FolderModel::mimeData() below
     return types;
 }
 
@@ -444,6 +444,9 @@ QMimeData* FolderModel::mimeData(const QModelIndexList& indexes) const {
         }
     }
     data->setData(QStringLiteral("text/uri-list"), urilist);
+    // NOTE: The mimetype "text/uri-list" changes the list in QMimeData::setData() to get URLs
+    // but some protocols (like MTP) may need the original list to query file info.
+    data->setData(QStringLiteral("libfm/files"), urilist);
 
     return data;
 }
@@ -479,10 +482,19 @@ bool FolderModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
         destPath = path();
     }
 
+    Fm::FilePathList srcPaths;
+    // try to get paths from the original data
+    if(data->hasFormat(QStringLiteral("libfm/files"))) {
+        QByteArray _data = data->data(QStringLiteral("libfm/files"));
+        srcPaths = pathListFromUriList(_data.data());
+    }
+    if(srcPaths.empty() && data->hasUrls()) {
+        srcPaths = Fm::pathListFromQUrls(data->urls());
+    }
+
     // FIXME: should we put this in dropEvent handler of FolderView instead?
-    if(data->hasUrls()) {
+    if(!srcPaths.empty()) {
         //qDebug("drop action: %d", action);
-        auto srcPaths = pathListFromQUrls(data->urls());
         switch(action) {
         case Qt::CopyAction:
             FileOperation::copyFiles(srcPaths, destPath);
