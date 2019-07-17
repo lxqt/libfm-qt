@@ -82,7 +82,12 @@ void FolderViewListView::startDrag(Qt::DropActions supportedActions) {
 
 void FolderViewListView::mousePressEvent(QMouseEvent* event) {
     if(event->buttons() == Qt::LeftButton) { // see FolderViewListView::mouseMoveEvent
-        globalItemPressPoint_ = event->globalPos();
+        if(indexAt(event->pos()).isValid()) {
+            globalItemPressPoint_ = event->globalPos();
+        }
+        else {
+            globalItemPressPoint_ = QPoint();
+        }
     }
     // switch between the extended and multiple selection modes,
     // depending on the cursor position, only when there's no other mode
@@ -1684,6 +1689,16 @@ void FolderView::scrollSmoothly() {
                       wheelEvent_->buttons(), Qt::NoModifier, Qt::Vertical);
         QApplication::sendEvent(view->verticalScrollBar(), &e);
     }
+
+    // update rubberband selection with smooth scrolling
+    if (QApplication::mouseButtons() & Qt::LeftButton) {
+        const QPoint globalPos = QCursor::pos();
+        QPoint pos = view->viewport()->mapFromGlobal(globalPos);
+        QMouseEvent ev(QEvent::MouseMove, pos, view->viewport()->mapTo(view->viewport()->topLevelWidget(), pos), globalPos,
+                       Qt::LeftButton, Qt::LeftButton, QApplication::keyboardModifiers());
+        QApplication::sendEvent(view->viewport(), &ev);
+    }
+
     if(queuedScrollSteps_.empty()) {
         smoothScrollTimer_->stop();
     }
