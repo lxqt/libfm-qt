@@ -28,6 +28,7 @@
 #include <QHeaderView>
 #include <QDebug>
 #include <QGuiApplication>
+#include <QTimer>
 #include "folderitemdelegate.h"
 
 namespace Fm {
@@ -222,18 +223,24 @@ void PlacesView::activateRow(int type, const QModelIndex& index) {
                     GVolume* volume = volumeItem->volume();
                     MountOperation* op = new MountOperation(true, this);
                     op->mount(volume);
-                    // connect(op, SIGNAL(finished(GError*)), SLOT(onMountOperationFinished(GError*)));
-                    // blocking here until the mount operation is finished?
-
-                    // FIXME: update status of the volume after mount is finished!!
-                    if(!op->wait()) {
-                        return;
-                    }
-                    path = item->path();
+                    // WARNING: "QAbstractItemView::mouseReleaseEvent" will be dispatched only
+                    // after this function returns. Therefore, without a single-shot timer, if
+                    // the window is closed before the mount operation is finished, the operation
+                    // will be canceled, this function will return and "mouseReleaseEvent" will
+                    // be sent to a destroyed QAbstractItemView, resulting in a crash.
+                    QTimer::singleShot(0, op, [this, op, type, index] () {
+                        if(op->wait()) {
+                            if(PlacesModelItem* item = static_cast<PlacesModelItem*>(model_->itemFromIndex(proxyModel_->mapToSource(index)))) {
+                                if(auto path = item->path()) {
+                                    Q_EMIT chdirRequested(type, path);
+                                }
+                            }
+                        }
+                    });
                 }
             }
         }
-        if(path) {
+        else {
             Q_EMIT chdirRequested(type, path);
         }
     }
