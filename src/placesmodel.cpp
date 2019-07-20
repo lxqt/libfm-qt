@@ -27,6 +27,8 @@
 #include <QStandardPaths>
 #include "utilities.h"
 #include "placesmodelitem.h"
+#include "dndactionmenu.h"
+#include "fileoperation.h"
 
 namespace Fm {
 
@@ -571,27 +573,55 @@ bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction /*action*/,
     else if(data->hasUrls()) { // files uris are dropped
         if(row == -1 && column == -1) { // drop uris on an item
             if(item && item->parent()) { // need to be a child item
-                PlacesModelItem* placesItem = static_cast<PlacesModelItem*>(item);
-                if(placesItem->path()) {
-                    qDebug() << "dropped dest:" << placesItem->text();
-                    // TODO: copy or move the dragged files to the dir pointed by the item.
-                    qDebug() << "drop on" << item->text();
+                if (item == trashItem_) {
+                    auto paths = pathListFromQUrls(data->urls());
+                    if(!paths.empty()) {
+                        Qt::DropAction action = DndActionMenu::askUser(Qt::MoveAction, QCursor::pos());
+                        if (action == Qt::MoveAction) {
+                            FileOperation::trashFiles(paths, false);
+                        }
+                    }
                 }
+                else if (item != applicationsItem && item != networkItem  && item != computerItem) {
+                    PlacesModelItem* placesItem = static_cast<PlacesModelItem*>(item);
+                    auto destPath = placesItem->path();
+                    if(destPath) {
+                        Qt::DropAction action = DndActionMenu::askUser(Qt::CopyAction | Qt::MoveAction | Qt::LinkAction, QCursor::pos());
+                        auto paths = pathListFromQUrls(data->urls());
+                        if(!paths.empty()) {
+                            switch(action) {
+                            case Qt::CopyAction:
+                                FileOperation::copyFiles(paths, destPath);
+                                break;
+                            case Qt::MoveAction:
+                                FileOperation::moveFiles(paths, destPath);
+                                break;
+                            case Qt::LinkAction:
+                                FileOperation::symlinkFiles(paths, destPath);
+                            /* Falls through. */
+                            default:
+                                return false;
+                            }
+                            return true;
+                        }
+                    }
+                }
+                return false;
             }
         }
-        else { // drop uris on a position between items
-            if(item == bookmarksRoot) { // we only allow dropping on blank row of bookmarks section
-                auto paths = pathListFromQUrls(data->urls());
-                for(auto& path: paths) {
-                    // FIXME: this is a blocking call
-                    if(g_file_query_file_type(path.gfile().get(), G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                                              nullptr) == G_FILE_TYPE_DIRECTORY) {
-                        auto disp_name = path.baseName();
-                        bookmarks->insert(path, QString::fromUtf8(disp_name.get()), row);
-                    }
-                    return true;
+        if(item == bookmarksRoot) {
+            // drop uris on the root bookmark (row == -1 && column == -1 && item && !item->parent())
+            // or on a position between items (row != -1 || column != -1)
+            auto paths = pathListFromQUrls(data->urls());
+            for(auto& path: paths) {
+                // FIXME: this is a blocking call
+                if(g_file_query_file_type(path.gfile().get(), G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                          nullptr) == G_FILE_TYPE_DIRECTORY) {
+                    auto disp_name = path.baseName();
+                    bookmarks->insert(path, QString::fromUtf8(disp_name.get()), row);
                 }
             }
+            return true;
         }
     }
     return false;
