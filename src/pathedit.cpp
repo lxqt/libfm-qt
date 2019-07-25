@@ -21,12 +21,14 @@
 #include "pathedit.h"
 #include "pathedit_p.h"
 #include <QCompleter>
+#include <QAbstractItemView>
 #include <QStringListModel>
 #include <QStringBuilder>
 #include <QThread>
 #include <QDebug>
 #include <QKeyEvent>
 #include <QDir>
+#include <QTimer>
 
 namespace Fm {
 
@@ -46,7 +48,7 @@ void PathEditJob::runJob() {
                 if(type == G_FILE_TYPE_DIRECTORY) {
                     const char* name = g_file_info_get_display_name(inf);
                     // FIXME: encoding conversion here?
-                    subDirs.append(QString::fromUtf8(name));
+                    subDirs.append(QString::fromUtf8(name) + QLatin1String("/"));
                 }
                 g_object_unref(inf);
             }
@@ -63,6 +65,7 @@ void PathEditJob::runJob() {
         g_file_enumerator_close(enu, cancellable, nullptr);
         g_object_unref(enu);
     }
+    subDirs.sort(Qt::CaseInsensitive);
     // finished! let's update the UI in the main thread
     Q_EMIT finished();
     QThread::currentThread()->quit();
@@ -75,6 +78,9 @@ PathEdit::PathEdit(QWidget* parent):
     model_(new QStringListModel()),
     cancellable_(nullptr) {
     completer_->setCaseSensitivity(Qt::CaseInsensitive);
+    // we sorted the subdir list case-insensitively, so we do the same thing
+    // here for performance improvements (see Qt doc)
+    completer_->setModelSorting(QCompleter::CaseInsensitivelySortedModel);
     setCompleter(completer_);
     completer_->setModel(model_);
     connect(this, &PathEdit::textChanged, this, &PathEdit::onTextChanged);
@@ -105,19 +111,75 @@ void PathEdit::focusOutEvent(QFocusEvent* e) {
 }
 
 bool PathEdit::event(QEvent* e) {
-    // Stop Qt from moving the keyboard focus to the next widget when "Tab" is pressed.
-    // Instead, we need to do auto-completion in this case.
     if(e->type() == QEvent::KeyPress) {
         QKeyEvent* keyEvent = static_cast<QKeyEvent*>(e);
-        if(keyEvent->key() == Qt::Key_Tab && keyEvent->modifiers() == Qt::NoModifier) { // Tab key is pressed
+        int key = keyEvent->key();
+        // Stop Qt from moving the keyboard focus to the next widget when "Tab" is pressed.
+        // Instead, we need to do auto-completion in this case.
+        if((key == Qt::Key_Tab && keyEvent->modifiers() == Qt::NoModifier)
+           || key == Qt::Key_Backtab) {
             e->accept();
-            // do auto-completion when the user press the Tab key.
-            // This fixes #201: https://github.com/lxqt/pcmanfm-qt/issues/201
-            autoComplete();
+            // pressing of "Tab" should be filtered out first; hence the single-shot timer
+            QTimer::singleShot(0, completer_, [this, key] {
+                if(!completer_->popup()->isVisible()) {
+                    // NOTE: To open the popup, we should insert the current text because the text
+                    // may not be typed by the user but set by selecting a row from a previous popup,
+                    // in which case, QCompleter::complete() would show only the previous popup.
+
+                    lastTypedText_ = text(); // as if text is typed; matches will be updated
+                    selectAll();
+                    setModified(false); // remove the undo history
+                    insert(lastTypedText_);
+                }
+                else {
+                    selectNextCompletionRow(key != Qt::Key_Backtab);
+                }
+            });
+            return true;
+        }
+        // When the completer popup is visible and "Escape" is pressed, restore the last typed text
+        // in addition to closing the popup
+        if(key == Qt::Key_Escape && completer_->popup()->isVisible() && lastTypedText_!= text()) {
+            e->accept();
+            QTimer::singleShot(0, completer_, [this] {
+                completer_->popup()->hide();
+                setText(lastTypedText_);
+            });
             return true;
         }
     }
     return QLineEdit::event(e);
+}
+
+void PathEdit::selectNextCompletionRow(bool downward) {
+    int rows = completer_->completionCount(); // it is fast because of sorting
+    auto popup = completer_->popup();
+    if(!popup->selectionModel()->hasSelection()) {
+        if(completer_->setCurrentRow(downward ? 0 : rows - 1)) {
+            popup->setCurrentIndex(completer_->currentIndex());
+            // If there is no ambiguity, insert the text to trigger the next popup.
+            // TODO: Just close the popup if users prefer that instead.
+            if(rows == 1) {
+                lastTypedText_ = text();
+                selectAll();
+                setModified(false);
+                insert(lastTypedText_);
+            }
+        }
+    }
+    else {
+        int selectedRow = popup->selectionModel()->selectedRows().at(0).row();
+        completer_->setCurrentRow(selectedRow); // it can be selected by user
+        if(downward) {
+            if(!completer_->setCurrentRow(completer_->currentRow() + 1)) {
+                completer_->setCurrentRow(0);
+            }
+        }
+        else if(!completer_->setCurrentRow(completer_->currentRow() - 1)) {
+            completer_->setCurrentRow(rows - 1);
+        }
+        popup->setCurrentIndex(completer_->currentIndex());
+    }
 }
 
 void PathEdit::onTextEdited(const QString& text) {
@@ -125,9 +187,11 @@ void PathEdit::onTextEdited(const QString& text) {
     if(text == QLatin1String("~") || text.startsWith(QLatin1String("~/"))) {
         QString txt(text);
         txt.replace(0, 1, QDir::homePath());
+        lastTypedText_ = txt;
         setText(txt); // emits textChanged()
         return;
     }
+    lastTypedText_ = text;
 }
 
 void PathEdit::onTextChanged(const QString& text) {
@@ -137,7 +201,10 @@ void PathEdit::onTextChanged(const QString& text) {
         // WARNING: replacing tilde may not be safe here
         return;
     }
-    int pos = text.lastIndexOf(QLatin1Char('/'));
+    // If the text is typed, the last slash means searching child directories.
+    // But, since a slash is appended to the name of each directory match, if the text is
+    // changed by auto-completion, we should ignore the last slash to remain in the parent directory.
+    int pos = text.lastIndexOf(QLatin1Char('/'), lastTypedText_ == text ? -1 : -2);
     if(pos >= 0) {
         ++pos;
     }
@@ -152,27 +219,6 @@ void PathEdit::onTextChanged(const QString& text) {
         // when focusInEvent happens. this avoid unnecessary dir loading.
         if(hasFocus()) {
             reloadCompleter(false);
-        }
-    }
-}
-
-void PathEdit::autoComplete() {
-    // find longest common prefix of the strings currently shown in the candidate list
-    QAbstractItemModel* model = completer_->completionModel();
-    if(model->rowCount() > 0) {
-        int minLen = text().length();
-        QString commonPrefix = model->data(model->index(0, 0)).toString();
-        for(int row = 1; row < model->rowCount() && commonPrefix.length() > minLen; ++row) {
-            QModelIndex index = model->index(row, 0);
-            QString rowText = model->data(index).toString();
-            int prefixLen = 0;
-            while(prefixLen < rowText.length() && prefixLen < commonPrefix.length() && rowText[prefixLen] == commonPrefix[prefixLen]) {
-                ++prefixLen;
-            }
-            commonPrefix.truncate(prefixLen);
-        }
-        if(commonPrefix.length() > minLen) {
-            setText(commonPrefix);
         }
     }
 }

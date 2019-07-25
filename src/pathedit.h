@@ -48,7 +48,7 @@ private Q_SLOTS:
     void onTextEdited(const QString& text);
 
 private:
-    void autoComplete();
+    void selectNextCompletionRow(bool downward);
     void reloadCompleter(bool triggeredByFocusInEvent = false);
     void freeCompleter();
     void onJobFinished();
@@ -58,6 +58,7 @@ private:
     QStringListModel* model_;
     QString currentPrefix_;
     GCancellable* cancellable_;
+    QString lastTypedText_;
 };
 
 }
