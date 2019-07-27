@@ -1102,9 +1102,7 @@ void FolderView::setViewMode(ViewMode _mode) {
         view->setDragDropMode(QAbstractItemView::DragDrop);
 
         // inline renaming
-        if(delegate) {
-            connect(delegate, &QAbstractItemDelegate::closeEditor, this, &FolderView::onClosingEditor);
-        }
+        connect(delegate, &QAbstractItemDelegate::closeEditor, this, &FolderView::onClosingEditor);
 
         if(model_) {
             // FIXME: preserve selections
