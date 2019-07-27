@@ -100,7 +100,6 @@ public:
     GErrorPtr& operator = (GError*&& err) {
         reset();
         err_ = err;
-        err_ = nullptr;
         return *this;
     }
 
