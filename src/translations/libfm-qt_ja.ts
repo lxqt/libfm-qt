@@ -91,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>アイテムを並べ替えるにはドラッグアンドドロップ</translation>
+        <translation>アイテムを並べ替えるにはドラッグアンドドロップします</translation>
     </message>
 </context>
 <context>
@@ -389,7 +389,7 @@
     <message>
         <location filename="../dirtreeview.cpp" line="220"/>
         <source>Open in Termina&amp;l</source>
-        <translation>ターミナルで開く(&amp;L)</translation>
+        <translation>端末で開く(&amp;L)</translation>
     </message>
 </context>
 <context>
@@ -397,12 +397,12 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation>ここへコピー</translation>
+        <translation>ここにコピー</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation>ここへ移動</translation>
+        <translation>ここに移動</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
@@ -494,7 +494,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="146"/>
         <source>Thumbnail View</source>
-        <translation>サムネールの表示</translation>
+        <translation>サムネイルの表示</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="150"/>
@@ -651,7 +651,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="225"/>
         <source>Extract Here</source>
-        <translation>ここへ展開する</translation>
+        <translation>ここに展開する</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="232"/>
@@ -1343,7 +1343,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;この場所にはすでに、同じ名前のファイルがあります。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;既存のファイルを置き換えますか？&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;この場所には、既に同じ名前のファイルがあります。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;既存のファイルを置き換えますか？&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
@@ -1358,7 +1358,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
         <source>src file info</source>
-        <translation>src ファイルの情報</translation>
+        <translation>送り元のファイルの情報</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="89"/>
@@ -1368,7 +1368,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="102"/>
         <source>src</source>
-        <translation>送り元のファイルの情報</translation>
+        <translation>送り元</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
