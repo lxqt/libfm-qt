@@ -10,11 +10,8 @@ TrashJob::TrashJob(FilePathList paths): paths_{std::move(paths)} {
 }
 
 void TrashJob::exec() {
-    for(auto& path : paths_) {
-        if(strcmp(path.uriScheme().get(), "trash") == 0) {
-            paths_.erase(std::find(paths_.begin(), paths_.end(), path));
-        }
-    }
+    //GLib takes care of omitting files already in trash
+    
     setTotalAmount(paths_.size(), paths_.size());
     Q_EMIT preparedToRun();
 
