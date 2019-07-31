@@ -10,10 +10,14 @@ TrashJob::TrashJob(FilePathList paths): paths_{std::move(paths)} {
 }
 
 void TrashJob::exec() {
+    for(auto& path : paths_) {
+        if(strcmp(path.uriScheme().get(), "trash") == 0) {
+            paths_.erase(std::find(paths_.begin(), paths_.end(), path));
+        }
+    }
     setTotalAmount(paths_.size(), paths_.size());
     Q_EMIT preparedToRun();
 
-    /* FIXME: we shouldn't trash a file already in trash:/// */
     for(auto& path : paths_) {
         if(isCancelled()) {
             break;
