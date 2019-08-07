@@ -155,13 +155,17 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
             }
         }
 
-        int comp;
+        int comp = 0;
         switch(sortColumn()) {
         case FolderModel::ColumnFileMTime:
-            comp = leftInfo->mtime() - rightInfo->mtime();
+            if(leftInfo->mtime() != rightInfo->mtime()) { // quint64
+                return leftInfo->mtime() < rightInfo->mtime();
+            }
             break;
         case FolderModel::ColumnFileSize:
-            comp = leftInfo->size() - rightInfo->size();
+            if(leftInfo->size() != rightInfo->size()) { // quint64
+                return leftInfo->size() < rightInfo->size();
+            }
             break;
         default: {
             QString leftText = left.data(Qt::DisplayRole).toString();
