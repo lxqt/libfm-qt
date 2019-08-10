@@ -32,6 +32,7 @@
 #include <QLineEdit>
 #include <QTextEdit>
 #include <QTimer>
+#include <QStandardPaths>
 #include <QDebug>
 
 namespace Fm {
@@ -129,8 +130,14 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
 
     bool isSymlink = file && file->isSymlink();
     bool isCut = index.data(FolderModel::FileIsCutRole).toBool();
-    // for practical reasons, an emblem is added only to an untrusted, deletable desktop file
+    // an emblem is added only to an untrusted, deletable desktop file that isn't inside applications directory
     bool untrusted = file && !file->isTrustable() && file->isDesktopEntry() && file->isDeletable();
+    if(untrusted) {
+        auto parentDir = QString::fromUtf8((file->dirPath().toString().get()));
+        if(QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation).contains(parentDir)) {
+            untrusted = false;
+        }
+    }
     // vertical layout (icon mode, thumbnail mode)
     if(option.decorationPosition == QStyleOptionViewItem::Top ||
             option.decorationPosition == QStyleOptionViewItem::Bottom) {

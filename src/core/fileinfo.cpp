@@ -405,8 +405,9 @@ bool FileInfo::isTrustable() const {
                 return (strcmp(data, "true") == 0);
             }
         }
+        return false;
     }
-    return false;
+    return true;
 }
 
 void FileInfo::setTrustable(bool trust) const {
