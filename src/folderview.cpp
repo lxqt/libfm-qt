@@ -288,6 +288,19 @@ void FolderViewListView::activation(const QModelIndex& index) {
     }
 }
 
+void FolderViewListView::selectAll() {
+    // NOTE: By default QListView::selectAll() selects all columns in the model.
+    // However, QListView only show the first column. Normal selection by mouse
+    // can only select the first column of every row. I consider this discripancy yet
+    // another design flaw of Qt. To make them consistent, we do it ourselves by only
+    // selecting the first column of every row and do not select all columns as Qt does.
+    // I'll report a Qt bug for this later.
+    if(QAbstractItemModel* model_ = model()) {
+        const QItemSelection sel{model_->index(0, 0), model_->index(model_->rowCount() - 1, 0)};
+        selectionModel()->select(sel, QItemSelectionModel::Select);
+    }
+}
+
 //-----------------------------------------------------------------------------
 
 FolderViewTreeView::FolderViewTreeView(QWidget* parent):
@@ -1414,21 +1427,7 @@ Fm::FileInfoList FolderView::selectedFiles() const {
 }
 
 void FolderView::selectAll() {
-    if(mode == DetailedListMode) {
-        view->selectAll();
-    }
-    else {
-        // NOTE: By default QListView::selectAll() selects all columns in the model.
-        // However, QListView only show the first column. Normal selection by mouse
-        // can only select the first column of every row. I consider this discripancy yet
-        // another design flaw of Qt. To make them consistent, we do it ourselves by only
-        // selecting the first column of every row and do not select all columns as Qt does.
-        // I'll report a Qt bug for this later.
-        if(model_) {
-            const QItemSelection sel{model_->index(0, 0), model_->index(model_->rowCount() - 1, 0)};
-            selectionModel()->select(sel, QItemSelectionModel::Select);
-        }
-    }
+    view->selectAll();
 }
 
 void FolderView::invertSelection() {
