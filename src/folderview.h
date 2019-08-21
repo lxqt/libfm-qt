@@ -165,7 +165,6 @@ public Q_SLOTS:
     void onItemActivated(QModelIndex index);
     void onSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
     virtual void onFileClicked(int type, const std::shared_ptr<const Fm::FileInfo>& fileInfo);
-    void onClipboardDataChange();
 
 private Q_SLOTS:
     void onAutoSelectionTimeout();

@@ -117,11 +117,8 @@ void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent) {
 void copyFilesToClipboard(const Fm::FilePathList& files) {
     QClipboard* clipboard = QApplication::clipboard();
     QMimeData* data = new QMimeData();
-    QByteArray ba;
     auto urilist = pathListToUriList(files);
 
-    // Add current pid to trace cut/copy operations to current app
-    data->setData(QStringLiteral("text/x-libfmqt-pid"), ba.setNum(QCoreApplication::applicationPid()));
     // Gnome, LXDE, and XFCE
     // Note: the standard text/urilist format uses CRLF for line breaks, but gnome format uses LF only
     data->setData(QStringLiteral("x-special/gnome-copied-files"), QByteArray("copy\n") + urilist.replace("\r\n", "\n"));
@@ -134,11 +131,8 @@ void copyFilesToClipboard(const Fm::FilePathList& files) {
 void cutFilesToClipboard(const Fm::FilePathList& files) {
     QClipboard* clipboard = QApplication::clipboard();
     QMimeData* data = new QMimeData();
-    QByteArray ba;
     auto urilist = pathListToUriList(files);
 
-    // Add current pid to trace cut/copy operations to current app
-    data->setData(QStringLiteral("text/x-libfmqt-pid"), ba.setNum(QCoreApplication::applicationPid()));
     // Gnome, LXDE, and XFCE
     // Note: the standard text/urilist format uses CRLF for line breaks, but gnome format uses LF only
     data->setData(QStringLiteral("x-special/gnome-copied-files"), QByteArray("cut\n") + urilist.replace("\r\n", "\n"));
@@ -146,14 +140,6 @@ void cutFilesToClipboard(const Fm::FilePathList& files) {
     data->setData(QStringLiteral("text/uri-list"), urilist);
     data->setData(QStringLiteral("application/x-kde-cutselection"), QByteArrayLiteral("1"));
     clipboard->setMimeData(data);
-}
-
-bool isCurrentPidClipboardData(const QMimeData& data) {
-    QByteArray clip_pid = data.data(QStringLiteral("text/x-libfmqt-pid"));
-    QByteArray curr_pid;
-    curr_pid.setNum(QCoreApplication::applicationPid());
-
-    return !clip_pid.isEmpty() && clip_pid == curr_pid;
 }
 
 bool changeFileName(const Fm::FilePath& filePath, const QString& newName, QWidget* parent, bool showMessage) {

@@ -84,11 +84,11 @@ public:
 
     const std::shared_ptr<const FileInfo> &info() const;
 
-    bool hadCutFilesUnset();
-
-    bool hasCutFiles();
-
     void setCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet);
+    bool hasCutFiles() const;
+    bool hadCutFiles();
+
+    void updateCutFiles();
 
     void forEachFile(std::function<void (const std::shared_ptr<const FileInfo>&)> func) const {
         std::lock_guard<std::mutex> lock{mutex_};
@@ -105,6 +105,8 @@ Q_SIGNALS:
     void filesAdded(FileInfoList& addedFiles);
 
     void filesChanged(std::vector<FileInfoPair>& changePairs);
+
+    void cutFilesChanged(std::vector<FileInfoPair>& changePairs);
 
     void filesRemoved(FileInfoList& removedFiles);
 

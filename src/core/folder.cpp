@@ -501,9 +501,24 @@ void Folder::onFileChangeEvents(GFileMonitor* /*monitor*/, GFile* gf, GFile* /*o
     }
 }
 
+void Folder::setCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet) {
+    if(cutFilesHashSet_ && !cutFilesHashSet_->empty()) {
+        lastCutFilesDirPath_ = cutFilesDirPath_;
+    }
+    cutFilesDirPath_ = QString::fromUtf8(dirPath_.toString().get());
+    cutFilesHashSet_ = cutFilesHashSet;
+}
+
+// checks whether there are cut files here
+bool Folder::hasCutFiles() const {
+    return cutFilesHashSet_
+            && !cutFilesHashSet_->empty()
+            && cutFilesDirPath_ == QString::fromUtf8(dirPath_.toString().get());
+}
+
 // checks whether there were cut files here
-// and if there were, invalidates this last cut path
-bool Folder::hadCutFilesUnset() {
+// and if so, invalidates the last cut path
+bool Folder::hadCutFiles() {
     if(lastCutFilesDirPath_ == QString::fromUtf8(dirPath_.toString().get())) {
         lastCutFilesDirPath_ = QString();
         return true;
@@ -511,18 +526,25 @@ bool Folder::hadCutFilesUnset() {
     return false;
 }
 
-bool Folder::hasCutFiles() {
-    return cutFilesHashSet_
-            && !cutFilesHashSet_->empty()
-            && cutFilesDirPath_ == QString::fromUtf8(dirPath_.toString().get());
-}
-
-void Folder::setCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet) {
-    if(cutFilesHashSet_ && !cutFilesHashSet_->empty()) {
-        lastCutFilesDirPath_ = cutFilesDirPath_;
+// can be called to emit a signal whenever the list of cut files changes
+void Folder::updateCutFiles() {
+    auto tmp = files();
+    std::vector<FileInfoPair> cut_files_to_update;
+    for(auto& file : tmp) {
+        auto fileInfoPtr = std::make_shared<FileInfo>(file->gFileInfo(), file->path());
+        if(cutFilesHashSet_
+           && cutFilesHashSet_->count(file->path().hash())) {
+            fileInfoPtr->bindCutFiles(cutFilesHashSet_);
+        }
+        auto it = files_.find(file->path().baseName().get());
+        if(it != files_.end()) {
+            cut_files_to_update.push_back(std::make_pair(it->second, fileInfoPtr));
+        }
+        files_[fileInfoPtr->path().baseName().get()] = fileInfoPtr;
     }
-    cutFilesDirPath_ = QString::fromUtf8(dirPath_.toString().get());
-    cutFilesHashSet_ = cutFilesHashSet;
+    if(!cut_files_to_update.empty()) {
+        Q_EMIT cutFilesChanged(cut_files_to_update);
+    }
 }
 
 void Folder::onDirListFinished() {

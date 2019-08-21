@@ -94,8 +94,6 @@ public:
     void cacheThumbnails(int size);
     void releaseThumbnails(int size);
 
-    void setCutFiles(const QItemSelection& selection);
-
     void setShowFullName(bool fullName) {
         showFullNames_ = fullName;
     }
@@ -111,11 +109,14 @@ protected Q_SLOTS:
     void onFinishLoading();
     void onFilesAdded(const Fm::FileInfoList& files);
     void onFilesChanged(std::vector<Fm::FileInfoPair>& files);
+    void onCutFilesChanged(std::vector<Fm::FileInfoPair>& files);
     void onFilesRemoved(const Fm::FileInfoList& files);
 
     void onThumbnailLoaded(const std::shared_ptr<const Fm::FileInfo>& file, int size, const QImage& image);
     void onThumbnailJobFinished();
     void loadPendingThumbnails();
+
+    void onClipboardDataChange();
 
 protected:
     void queueLoadThumbnail(const std::shared_ptr<const Fm::FileInfo>& file, int size);
@@ -126,6 +127,7 @@ protected:
     QList<FolderModelItem>::iterator findItemByFileInfo(const Fm::FileInfo* info, int* row);
 
 private:
+    void setCutFiles(const Fm::FilePathList& paths);
     QString makeTooltip(FolderModelItem* item) const;
 
 private:

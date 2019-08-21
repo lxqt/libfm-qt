@@ -78,8 +78,6 @@ public:
 
     bool isCut() const;
 
-    void bindCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet);
-
     Thumbnail* findThumbnail(int size, bool transparent);
 
     void removeThumbnail(int size);
@@ -88,7 +86,6 @@ public:
     mutable QString dispMtime_;
     mutable QString dispDtime_;
     mutable QString dispSize_;
-    std::weak_ptr<const HashSet> cutFilesHashSet_;
     QVector<Thumbnail> thumbnails;
 };
 
