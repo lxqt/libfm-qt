@@ -31,6 +31,8 @@
 #include <QTimer>
 #include <QDateTime>
 #include <QString>
+#include <QApplication>
+#include <QClipboard>
 #include "utilities.h"
 #include "fileoperation.h"
 
@@ -40,6 +42,7 @@ FolderModel::FolderModel():
     hasPendingThumbnailHandler_{false},
     showFullNames_{false},
     isLoaded_{false} {
+    connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &FolderModel::onClipboardDataChange);
 }
 
 FolderModel::~FolderModel() {
@@ -59,6 +62,7 @@ void FolderModel::setFolder(const std::shared_ptr<Fm::Folder>& new_folder) {
         connect(folder_.get(), &Fm::Folder::finishLoading, this, &FolderModel::onFinishLoading);
         connect(folder_.get(), &Fm::Folder::filesAdded, this, &FolderModel::onFilesAdded);
         connect(folder_.get(), &Fm::Folder::filesChanged, this, &FolderModel::onFilesChanged);
+        connect(folder_.get(), &Fm::Folder::cutFilesChanged, this, &FolderModel::onCutFilesChanged);
         connect(folder_.get(), &Fm::Folder::filesRemoved, this, &FolderModel::onFilesRemoved);
         // handle the case if the folder is already loaded
         if(folder_->isLoaded()) {
@@ -76,6 +80,10 @@ void FolderModel::onStartLoading() {
 
 void FolderModel::onFinishLoading() {
     isLoaded_ = true;
+    // files may have been cut by another app
+    if(!folder_->hasCutFiles()) {
+        onClipboardDataChange();
+    }
 }
 
 void FolderModel::onFilesAdded(const Fm::FileInfoList& files) {
@@ -116,6 +124,20 @@ void FolderModel::onFilesChanged(std::vector<Fm::FileInfoPair>& files) {
             }
         }
     }
+}
+
+void FolderModel::onCutFilesChanged(std::vector<Fm::FileInfoPair>& files) {
+    for(auto& change : files) {
+        int row;
+        auto& oldInfo = change.first;
+        auto& newInfo = change.second;
+        QList<FolderModelItem>::iterator it = findItemByFileInfo(oldInfo.get(), &row);
+        if(it != items.end()) {
+            FolderModelItem& item = *it;
+            item.info = newInfo;
+        }
+    }
+    Q_EMIT dataChanged(index(0, 0), index(rowCount() - 1, 0)); // update all items
 }
 
 void FolderModel::onFilesRemoved(const Fm::FileInfoList& files) {
@@ -165,19 +187,47 @@ void FolderModel::insertFiles(int row, const Fm::FileInfoList& files) {
     endInsertRows();
 }
 
-void FolderModel::setCutFiles(const QItemSelection& selection) {
+void FolderModel::onClipboardDataChange() {
     if(folder_) {
-        if(!selection.isEmpty()) {
-            auto cutFilesHashSet = std::make_shared<HashSet>();
-            folder_->setCutFiles(cutFilesHashSet);
-            const auto indexes = selection.indexes();
-            for(const auto& index : indexes) {
-                auto item = itemFromIndex(index);
-                item->bindCutFiles(cutFilesHashSet);
-                cutFilesHashSet->insert(item->info->path().hash());
+        const QClipboard* clipboard = QApplication::clipboard();
+        const QMimeData* data = clipboard->mimeData();
+        Fm::FilePathList paths;
+        bool isCutSelection;
+        std::tie(paths, isCutSelection) = Fm::parseClipboardData(*data);
+        if(isCutSelection) { // a file is cut
+            auto cutDirPath = paths.size() > 0 ? paths[0].parent() : FilePath();
+            if(folder_->path() == cutDirPath) { // the cut file is in this folder
+                setCutFiles(paths);
             }
+            else if(folder_->hadCutFiles() || folder_->hasCutFiles()) {
+                if(Folder::findByPath(cutDirPath) == nullptr) {
+                    // the cut file is in a folder that is not loaded (i.e., it is cut by another app)
+                    folder_->setCutFiles(std::make_shared<HashSet>());
+                }
+                folder_->updateCutFiles();
+            }
+            return;
         }
-        Q_EMIT dataChanged(index(0, 0), index(rowCount() - 1, 0));
+        // no file is cut
+        folder_->setCutFiles(std::make_shared<HashSet>()); // clean Folder::cutFilesHashSet_
+        if(folder_->hadCutFiles()) {
+            folder_->updateCutFiles();
+        }
+    }
+}
+
+void FolderModel::setCutFiles(const Fm::FilePathList& paths) {
+    if(folder_ && !paths.empty()) {
+        auto cutFilesHashSet = std::make_shared<HashSet>();
+        folder_->setCutFiles(cutFilesHashSet);
+
+        auto path_it = paths.begin();
+        while(path_it != paths.end()) {
+            const auto& path = *path_it;
+            cutFilesHashSet->insert(path.hash());
+            ++path_it;
+        }
+        folder_->updateCutFiles();
     }
 }
 

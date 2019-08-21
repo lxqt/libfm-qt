@@ -220,6 +220,10 @@ public:
 
     void setTrustable(bool trust) const;
 
+    GObjectPtr<GFileInfo> gFileInfo() const {
+        return inf_;
+    }
+
 private:
     GObjectPtr<GFileInfo> inf_;
     std::string name_;

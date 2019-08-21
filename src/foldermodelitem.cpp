@@ -78,11 +78,7 @@ const QString& FolderModelItem::displaySize() const {
 }
 
 bool FolderModelItem::isCut() const {
-    return !cutFilesHashSet_.expired() || info->isCut();
-}
-
-void FolderModelItem::bindCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet) {
-    cutFilesHashSet_ = cutFilesHashSet;
+    return info->isCut();
 }
 
 // find thumbnail of the specified size
