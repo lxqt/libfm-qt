@@ -264,8 +264,8 @@ std::shared_ptr<const Fm::FileInfo> FolderModel::fileInfoFromIndex(const QModelI
 }
 
 QString FolderModel::makeTooltip(FolderModelItem* item) const {
-    // display name (bold)
-    QString tip = QStringLiteral("<p><b>") + item->displayName().toHtmlEscaped() + QStringLiteral("</b></p>");
+    // name (bold)
+    QString tip = QStringLiteral("<p><b>") + (showFullNames_ ? QString::fromStdString(item->name()) : item->displayName()).toHtmlEscaped() + QStringLiteral("</b></p>");
     // parent dir
     auto info = item->info;
     auto parent_path = info->path().parent();
