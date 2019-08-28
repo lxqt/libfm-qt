@@ -294,7 +294,7 @@ void FilePropsDialog::initGeneralPage() {
         auto parent_path = fileInfo->path().parent();
         auto parent_str = parent_path ? parent_path.displayName(): nullptr;
 
-        ui->fileName->setText(fileInfo->displayName());
+        ui->fileName->setText(QString::fromStdString(fileInfo->name()));
         if(parent_str) {
             ui->location->setText(QString::fromUtf8(parent_str.get()));
         }
@@ -530,7 +530,7 @@ void FilePropsDialog::accept() {
     // Renaming
     if(singleFile) {
         QString new_name = ui->fileName->text();
-        if(fileInfo->displayName() != new_name) {
+        if(QString::fromStdString(fileInfo->name()) != new_name) {
             auto path = fileInfo->path();
             auto parent_path = path.parent();
             auto dest = parent_path.child(new_name.toLocal8Bit().constData());
