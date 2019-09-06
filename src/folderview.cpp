@@ -146,10 +146,10 @@ QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
            && (selectionMode() == QAbstractItemView::ExtendedSelection
                || selectionMode() == QAbstractItemView::MultiSelection)) {
             int s = _iconSize.width() / 3;
-            iconLeft = qMax(visRect.left(), iconLeft - s);
-            iconTop = qMax(visRect.top(), iconTop - s);
-            if(point.x() >= iconLeft &&  point.x() <= iconLeft + s
-               && point.y() >= iconTop &&  point.y() <= iconTop + s) {
+            int icnLeft = qMax(visRect.left(), iconLeft - s);
+            int icnTop = qMax(visRect.top(), iconTop - s);
+            if(point.x() >= icnLeft &&  point.x() <= icnLeft + s
+               && point.y() >= icnTop &&  point.y() <= icnTop + s) {
                 cursorOnSelectionCorner_ = true;
                 return index;
             }
