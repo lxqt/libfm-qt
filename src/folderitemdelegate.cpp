@@ -486,7 +486,7 @@ void FolderItemDelegate::setEditorData(QWidget* editor, const QModelIndex& index
             /* Qt will call QLineEdit::selectAll() after calling setEditorData() in
                qabstractitemview.cpp -> QAbstractItemViewPrivate::editor(). Therefore,
                we cannot select a part of the text in the usual way here.  */
-            QTimer::singleShot(0, [lineEdit]() {
+            QTimer::singleShot(0, lineEdit, [lineEdit]() {
                 int length = lineEdit->text().lastIndexOf(QLatin1String("."));
                 lineEdit->setSelection(0, length);
             });
