@@ -379,7 +379,7 @@
     <message>
         <location filename="../dirtreeview.cpp" line="211"/>
         <source>Open in New T&amp;ab</source>
-        <translation>Otevřít v nové k&amp;artě</translation>
+        <translation>Otevřít v novém p&amp;anelu</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="215"/>
@@ -1329,7 +1329,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation>Identifikátor: </translation>
+        <translation>Zařízení: </translation>
     </message>
 </context>
 <context>
