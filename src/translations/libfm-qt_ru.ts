@@ -833,7 +833,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
         <source>%1 files</source>
-        <translation type="unfinished">Файлов: %1</translation>
+        <translation>Файлов: %1</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="416"/>
@@ -1347,7 +1347,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
         <source>dest</source>
-        <translation></translation>
+        <translation type="unfinished">dest</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
@@ -1357,17 +1357,17 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
         <source>src file info</source>
-        <translation></translation>
+        <translation type="unfinished">src file info</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="89"/>
         <source>dest file info</source>
-        <translation></translation>
+        <translation type="unfinished">dest file info</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="102"/>
         <source>src</source>
-        <translation></translation>
+        <translation type="unfinished">src</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
