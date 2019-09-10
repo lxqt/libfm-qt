@@ -88,6 +88,7 @@ public:
     bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) override;
 
     std::shared_ptr<const Fm::FileInfo> fileInfoFromIndex(const QModelIndex& index) const;
+    std::shared_ptr<const Fm::FileInfo> fileInfoFromPath(const Fm::FilePath& path) const;
     FolderModelItem* itemFromIndex(const QModelIndex& index) const;
     QImage thumbnailFromIndex(const QModelIndex& index, int size);
 
@@ -122,7 +123,6 @@ protected:
     void queueLoadThumbnail(const std::shared_ptr<const Fm::FileInfo>& file, int size);
     void insertFiles(int row, const Fm::FileInfoList& files);
     void removeAll();
-    QList<FolderModelItem>::iterator findItemByPath(const Fm::FilePath& path, int* row);
     QList<FolderModelItem>::iterator findItemByName(const char* name, int* row);
     QList<FolderModelItem>::iterator findItemByFileInfo(const Fm::FileInfo* info, int* row);
 

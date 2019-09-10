@@ -305,19 +305,31 @@ void FileDialog::accept() {
         QString _suffix;
         bool suffixFound = false;
         if(fileMode_ != QFileDialog::Directory) {
+            // WARNING: proxyModel_->fileInfoFromPath() should not be used here
+            // because the item may have been filtered out.
+            if(folderModel_ == nullptr) {
+                return;
+            }
             auto firstName = parsedNames.at(0);
             if(firstName.indexOf(QLatin1Char('.'), 1) == -1) { // including ".X"
                 _suffix = suffix();
                 suffixFound = true;
-                if(!_suffix.isEmpty()) {
-                    firstName += QLatin1Char('.');
-                    firstName += _suffix;
-                }
             }
+            // don't consider the suffix yet because a directory with the same name may exist
             auto childPath = directoryPath_.child(firstName.toLocal8Bit().constData());
-            auto info = proxyModel_->fileInfoFromPath(childPath);
-            if(info) {
+            auto info = folderModel_->fileInfoFromPath(childPath);
+            if(info && info->isDir()) {
                 // if the typed name belongs to a (nonselected) directory, chdir into it
+                setDirectoryPath(childPath);
+                return;
+            }
+            if(!_suffix.isEmpty()) {
+                firstName += QLatin1Char('.');
+                firstName += _suffix;
+                childPath = directoryPath_.child(firstName.toLocal8Bit().constData());
+                info = folderModel_->fileInfoFromPath(childPath);
+            }
+            if(info) {
                 if(info->isDir()) {
                     setDirectoryPath(childPath);
                     return;
@@ -326,11 +338,11 @@ void FileDialog::accept() {
                 if(fileMode_ == QFileDialog::AnyFile
                    && acceptMode_ != QFileDialog::AcceptOpen
                    && confirmOverwrite_) {
-                       if (QMessageBox::warning(this, windowTitle(),
-                                                tr("%1 already exists.\nDo you want to replace it?")
-                                                .arg(firstName),
-                                                QMessageBox::Yes | QMessageBox::No, QMessageBox::No)
-                               == QMessageBox::No) {
+                    if (QMessageBox::warning(this, windowTitle(),
+                                            tr("%1 already exists.\nDo you want to replace it?")
+                                            .arg(firstName),
+                                            QMessageBox::Yes | QMessageBox::No, QMessageBox::No)
+                            == QMessageBox::No) {
                         return;
                     }
                 }

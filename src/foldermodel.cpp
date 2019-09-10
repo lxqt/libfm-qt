@@ -411,22 +411,16 @@ Qt::ItemFlags FolderModel::flags(const QModelIndex& index) const {
     return flags;
 }
 
-// FIXME: this is very inefficient and should be replaced with a
-// more reasonable implementation later.
-QList<FolderModelItem>::iterator FolderModel::findItemByPath(const Fm::FilePath& path, int* row) {
-    QList<FolderModelItem>::iterator it = items.begin();
-    int i = 0;
+std::shared_ptr<const Fm::FileInfo> FolderModel::fileInfoFromPath(const Fm::FilePath& path) const {
+    QList<FolderModelItem>::const_iterator it = items.begin();
     while(it != items.end()) {
-        FolderModelItem& item = *it;
-        auto item_path = item.info->path();
-        if(item_path == path) {
-            *row = i;
-            return it;
+        const FolderModelItem& item = *it;
+        if(item.info->path() == path) {
+            return item.info;
         }
         ++it;
-        ++i;
     }
-    return items.end();
+    return nullptr;
 }
 
 // FIXME: this is very inefficient and should be replaced with a
