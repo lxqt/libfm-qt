@@ -77,6 +77,9 @@ bool FileLauncher::openFolder(GAppLaunchContext *ctx, const FileInfoList &folder
 }
 
 bool FileLauncher::showError(GAppLaunchContext* /*ctx*/, const GErrorPtr &err, const FilePath &path, const FileInfoPtr &info) {
+    if(err == nullptr) {
+        return false;
+    }
     /* ask for mount if trying to launch unmounted path */
     if(err->domain == G_IO_ERROR) {
         if(path && err->code == G_IO_ERROR_NOT_MOUNTED) {
