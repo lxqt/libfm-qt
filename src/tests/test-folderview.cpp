@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
     QToolBar toolbar;
     win.addToolBar(Qt::TopToolBarArea, &toolbar);
     Fm::PathEdit edit;
-    edit.setText(home.toString().get());
+    edit.setText(QString::fromUtf8(home.toString().get()));
     toolbar.addWidget(&edit);
     auto action = new QAction(QStringLiteral("Go"), nullptr);
     toolbar.addAction(action);
