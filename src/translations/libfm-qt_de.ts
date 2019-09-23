@@ -882,7 +882,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="465"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>Verzeichnis kann nicht in sich selbst kopiert werden!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="516"/>
@@ -945,7 +945,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach Löschzeit</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="169"/>
@@ -965,7 +965,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach Dateigruppe</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
@@ -1048,7 +1048,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="371"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelöscht</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="374"/>
@@ -1066,12 +1066,12 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische Größenänderung von Spalten</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Sichtbare Spalten</translation>
     </message>
 </context>
 <context>
@@ -1610,7 +1610,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">In Unterordnern suchen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
