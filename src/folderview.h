@@ -122,6 +122,8 @@ public:
 
     void setShadowHidden(bool shadowHidden);
 
+    void setCtrlRightClick(bool ctrlRightClick);
+
     QList<int> getCustomColumnWidths() const {
         return customColumnWidths_;
     }
@@ -196,6 +198,7 @@ private:
     // the cell margins in the icon and thumbnail modes
     QSize itemDelegateMargins_;
     bool shadowHidden_;
+    bool ctrlRightClick_; // show folder context menu with Ctrl + right click
     // smooth scrolling:
     struct scollData {
         int delta;

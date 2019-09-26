@@ -837,6 +837,7 @@ FolderView::FolderView(FolderView::ViewMode _mode, QWidget *parent):
     selChangedTimer_(nullptr),
     itemDelegateMargins_(QSize(3, 3)),
     shadowHidden_(false),
+    ctrlRightClick_(false),
     smoothScrollTimer_(nullptr),
     wheelEvent_(nullptr) {
 
@@ -1215,6 +1216,10 @@ void FolderView::setShadowHidden(bool shadowHidden) {
     }
 }
 
+void FolderView::setCtrlRightClick(bool ctrlRightClick) {
+    ctrlRightClick_ = ctrlRightClick;
+}
+
 FolderView::ViewMode FolderView::viewMode() const {
     return mode;
 }
@@ -1294,7 +1299,8 @@ void FolderView::childMousePressEvent(QMouseEvent* event) {
 void FolderView::emitClickedAt(ClickType type, const QPoint& pos) {
     // indexAt() needs a point in "viewport" coordinates.
     QModelIndex index = view->indexAt(pos);
-    if(index.isValid()) {
+    if(index.isValid()
+       && (!ctrlRightClick_ || QApplication::keyboardModifiers() != Qt::ControlModifier)) {
         QVariant data = index.data(FolderModel::FileInfoRole);
         auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
         Q_EMIT clicked(type, info);
