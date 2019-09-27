@@ -834,14 +834,14 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln 個のファイル</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="420"/>
         <source>Select an icon</source>
-        <translation>アイコンを選択</translation>
+        <translation>アイコンの選択</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="422"/>
@@ -882,7 +882,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="465"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>ディレクトリをそれ自体の中にコピーできません！</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="516"/>
@@ -945,7 +945,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>削除日時順</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="169"/>
@@ -965,7 +965,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>グループ</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
@@ -993,37 +993,37 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="274"/>
         <source>Location:</source>
-        <translation type="unfinished">場所:</translation>
+        <translation>場所:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="277"/>
         <source>File type:</source>
-        <translation type="unfinished">種類:</translation>
+        <translation>種類:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>File size:</source>
-        <translation type="unfinished">サイズ:</translation>
+        <translation>サイズ:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
         <source>Last modified:</source>
-        <translation type="unfinished">最終更新日時:</translation>
+        <translation>最終更新日時:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">最終アクセス日時:</translation>
+        <translation>最終アクセス日時:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Owner:</source>
-        <translation type="unfinished">所有者:</translation>
+        <translation>所有者:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="291"/>
         <source>Group:</source>
-        <translation type="unfinished">グループ:</translation>
+        <translation>グループ:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="359"/>
@@ -1048,7 +1048,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="371"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>削除日時</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="374"/>
@@ -1066,12 +1066,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>列の自動サイズ変更</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>表示する列</translation>
     </message>
 </context>
 <context>
@@ -1408,7 +1408,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation>ファイルの置換えを確認</translation>
+        <translation>ファイルの置き換えを確認</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
@@ -1610,7 +1610,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>サブディレクトリを検索する</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
