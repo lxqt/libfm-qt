@@ -1007,12 +1007,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
         <source>Last modified:</source>
-        <translation type="unfinished">最後修改:</translation>
+        <translation type="unfinished">最後修改日期:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">最後存取:</translation>
+        <translation type="unfinished">最後存取日期:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
