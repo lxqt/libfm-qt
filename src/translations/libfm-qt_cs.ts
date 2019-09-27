@@ -833,10 +833,10 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln soubor</numerusform>
+            <numerusform>%Ln soubory</numerusform>
+            <numerusform>%Ln souborů</numerusform>
         </translation>
     </message>
     <message>
@@ -883,7 +883,7 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="465"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>Není možné zkopírovat složku samu do sebe!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="516"/>
@@ -946,7 +946,7 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Podle okamžiku smazání</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="169"/>
@@ -966,7 +966,7 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Podle skupiny souboru</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
@@ -994,37 +994,37 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="274"/>
         <source>Location:</source>
-        <translation type="unfinished">Umístění:</translation>
+        <translation>Umístění:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="277"/>
         <source>File type:</source>
-        <translation type="unfinished">Typ souboru:</translation>
+        <translation>Typ souboru:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>File size:</source>
-        <translation type="unfinished">Velikost souboru:</translation>
+        <translation>Velikost souboru:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
         <source>Last modified:</source>
-        <translation type="unfinished">Naposledy změněno:</translation>
+        <translation>Okamžik poslední úpravy:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">Naposledy přistupováno:</translation>
+        <translation>Naposledy přistupováno:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Owner:</source>
-        <translation type="unfinished">Vlastník:</translation>
+        <translation>Vlastník:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="291"/>
         <source>Group:</source>
-        <translation type="unfinished">Skupina:</translation>
+        <translation>Skupina:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="359"/>
@@ -1049,7 +1049,7 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="371"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazáno</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="374"/>
@@ -1067,12 +1067,12 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaticky upravovat šířku sloupců</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazované sloupce</translation>
     </message>
 </context>
 <context>
@@ -1611,7 +1611,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Hledat v podsložkách</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
