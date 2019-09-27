@@ -6,12 +6,12 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>Escolla un aplicativo</translation>
+        <translation>Escolla unha aplicación</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation>Aplicativos instalados</translation>
+        <translation>Aplicacións instaladas</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation>Nome do aplicativo:</translation>
+        <translation>Nome da aplicación:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -48,7 +48,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>Manter a terminal aberta após  a execución da orde</translation>
+        <translation>Manter o terminal aberto após  a execución da orde</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>Estabelecer o aplicativo seleccionado como predeterminado para este tipo de ficheiro</translation>
+        <translation>Estabelecer a aplicación seleccionada como predeterminada para este tipo de ficheiro</translation>
     </message>
 </context>
 <context>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation>Executar nunha &amp;terminal</translation>
+        <translation>Executar nun &amp;terminal</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Seleccione un aplicativo para abrir os ficheiros «%1»</translation>
+        <translation>Seleccione unha aplicación para abrir os ficheiros «%1»</translation>
     </message>
 </context>
 <context>
@@ -450,7 +450,7 @@ Que quere facer con el?</translation>
     <message>
         <location filename="../filedialog.cpp" line="104"/>
         <source>Go Back</source>
-        <translation>Ir cara atrás</translation>
+        <translation>Ir cara a atrás</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="105"/>
@@ -461,7 +461,7 @@ Que quere facer con el?</translation>
     <message>
         <location filename="../filedialog.cpp" line="111"/>
         <source>Go Forward</source>
-        <translation>Ir cara adiante</translation>
+        <translation>Ir cara a adiante</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="112"/>
@@ -630,7 +630,7 @@ Quere sobrescribilo?</translation>
     <message>
         <location filename="../filemenu.cpp" line="116"/>
         <source>Other Applications</source>
-        <translation>Outros aplicativos</translation>
+        <translation>Outras aplicacións</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="122"/>
@@ -833,9 +833,9 @@ Desexa eliminalos no seu canto?</translation>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln ficheiro</numerusform>
+            <numerusform>%Ln ficheiros</numerusform>
         </translation>
     </message>
     <message>
@@ -882,7 +882,7 @@ Desexa eliminalos no seu canto?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="465"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>Non é posíbel copiar un directorio sobre si mesmo!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="516"/>
@@ -945,7 +945,7 @@ Desexa eliminalos no seu canto?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Polo momento da eliminación</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="169"/>
@@ -965,7 +965,7 @@ Desexa eliminalos no seu canto?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Por grupo de ficheiros</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
@@ -993,37 +993,37 @@ Desexa eliminalos no seu canto?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="274"/>
         <source>Location:</source>
-        <translation type="unfinished">Localización:</translation>
+        <translation>Localización:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="277"/>
         <source>File type:</source>
-        <translation type="unfinished">Tipo de ficheiro:</translation>
+        <translation>Tipo de ficheiro:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>File size:</source>
-        <translation type="unfinished">Tamaño do ficheiro:</translation>
+        <translation>Tamaño do ficheiro:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
         <source>Last modified:</source>
-        <translation type="unfinished">Última modificación:</translation>
+        <translation>Última modificación:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">Último acceso:</translation>
+        <translation>Último acceso:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Owner:</source>
-        <translation type="unfinished">Propietario:</translation>
+        <translation>Propietario:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="291"/>
         <source>Group:</source>
-        <translation type="unfinished">Grupo:</translation>
+        <translation>Grupo:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="359"/>
@@ -1048,7 +1048,7 @@ Desexa eliminalos no seu canto?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="371"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminado</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="374"/>
@@ -1066,12 +1066,12 @@ Desexa eliminalos no seu canto?</translation>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Axustar columnas automaticamente</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Columnas visíbeis</translation>
     </message>
 </context>
 <context>
@@ -1133,7 +1133,7 @@ Desexa eliminalos no seu canto?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="69"/>
         <source>Applications</source>
-        <translation>Aplicativos</translation>
+        <translation>Aplicacións</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="78"/>
@@ -1177,12 +1177,12 @@ Desexa eliminalos no seu canto?</translation>
     <message>
         <location filename="../placesview.cpp" line="542"/>
         <source>Move Bookmark Up</source>
-        <translation>Mover o marcador cara arriba</translation>
+        <translation>Mover o marcador cara a arriba</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="547"/>
         <source>Move Bookmark Down</source>
-        <translation>Mover o marcador cara abaixo</translation>
+        <translation>Mover o marcador cara a abaixo</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="551"/>
@@ -1390,7 +1390,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="309"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>Non foi estabelecido ningún aplicativo predeterminado para iniciar «%1»</translation>
+        <translation>Non foi estabelecida ningunha aplicación predeterminada para iniciar «%1»</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="350"/>
@@ -1610,7 +1610,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar nos subdirectorios</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
