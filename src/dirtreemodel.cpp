@@ -44,6 +44,7 @@ void DirTreeModel::onFileInfoJobFinished() {
     for(auto file: job->files()) {
         addRoot(std::move(file));
     }
+    Q_EMIT rootsAdded();
 }
 
 // QAbstractItemModel implementation
