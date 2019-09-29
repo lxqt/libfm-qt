@@ -139,6 +139,13 @@ void SidePane::initDirTree() {
     rootPaths.emplace_back(Fm::FilePath::fromLocalPath("/"));
     model->addRoots(std::move(rootPaths));
     static_cast<DirTreeView*>(view_)->setModel(model);
+    // wait for the roots to be added and only then set the current path
+    connect(model, &DirTreeModel::rootsAdded, view_, [this] {
+        if(mode_ == ModeDirTree) {
+            DirTreeView* dirTreeView = static_cast<DirTreeView*>(view_);
+            dirTreeView->setCurrentPath(currentPath_);
+        }
+    });
 }
 
 void SidePane::setMode(Mode mode) {
@@ -180,7 +187,6 @@ void SidePane::setMode(Mode mode) {
         view_ = dirTreeView;
         initDirTree();
         dirTreeView->setIconSize(iconSize_);
-        dirTreeView->setCurrentPath(currentPath_);
         connect(dirTreeView, &DirTreeView::chdirRequested, this, &SidePane::chdirRequested);
         connect(dirTreeView, &DirTreeView::openFolderInNewWindowRequested,
                 this, &SidePane::openFolderInNewWindowRequested);

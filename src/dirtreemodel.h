@@ -78,6 +78,7 @@ public:
 
 Q_SIGNALS:
     void rowLoaded(const QModelIndex& index);
+    void rootsAdded();
 
 private Q_SLOTS:
     void onFileInfoJobFinished();
