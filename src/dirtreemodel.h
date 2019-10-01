@@ -26,6 +26,7 @@
 #include <QIcon>
 #include <QList>
 #include <QSharedPointer>
+#include <QMimeData>
 #include <vector>
 
 #include "core/fileinfo.h"
@@ -75,6 +76,10 @@ public:
     QModelIndex parent(const QModelIndex& child) const override;
     QModelIndex index(int row, int column, const QModelIndex& parent) const override;
     bool hasChildren(const QModelIndex& parent = QModelIndex()) const override;
+
+protected:
+    bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) override;
+    bool canDropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) const override;
 
 Q_SIGNALS:
     void rowLoaded(const QModelIndex& index);

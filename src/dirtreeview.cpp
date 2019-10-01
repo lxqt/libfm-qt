@@ -45,6 +45,8 @@ DirTreeView::DirTreeView(QWidget* parent):
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, &DirTreeView::customContextMenuRequested,
             this, &DirTreeView::onCustomContextMenuRequested);
+
+    setAcceptDrops(true);
 }
 
 DirTreeView::~DirTreeView() {
