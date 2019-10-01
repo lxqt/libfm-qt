@@ -19,6 +19,9 @@
 
 #include "dirtreemodel.h"
 #include "dirtreemodelitem.h"
+#include "dndactionmenu.h"
+#include "fileoperation.h"
+#include "utilities.h"
 #include <QDebug>
 #include "core/fileinfojob.h"
 
@@ -50,8 +53,11 @@ void DirTreeModel::onFileInfoJobFinished() {
 
 Qt::ItemFlags DirTreeModel::flags(const QModelIndex& index) const {
     DirTreeModelItem* item = itemFromIndex(index);
-    if(item && item->isPlaceHolder()) {
-        return Qt::ItemIsEnabled;
+    if(item) {
+        if(item->isPlaceHolder()) {
+            return Qt::ItemIsEnabled;
+        }
+        return Qt::ItemIsDropEnabled | QAbstractItemModel::flags(index);
     }
     return QAbstractItemModel::flags(index);
 }
@@ -78,6 +84,36 @@ QVariant DirTreeModel::data(const QModelIndex& index, int role) const {
         }
     }
     return QVariant();
+}
+
+bool DirTreeModel::dropMimeData(const QMimeData* data, Qt::DropAction /*action*/, int /*row*/, int /*column*/, const QModelIndex& parent) {
+    if(auto destPath = filePath(parent)) {
+        if(data->hasUrls()) { // files uris are dropped
+            Qt::DropAction action = DndActionMenu::askUser(Qt::CopyAction | Qt::MoveAction | Qt::LinkAction, QCursor::pos());
+            auto paths = pathListFromQUrls(data->urls());
+            if(!paths.empty()) {
+                switch(action) {
+                case Qt::CopyAction:
+                    FileOperation::copyFiles(paths, destPath);
+                    break;
+                case Qt::MoveAction:
+                    FileOperation::moveFiles(paths, destPath);
+                    break;
+                case Qt::LinkAction:
+                    FileOperation::symlinkFiles(paths, destPath);
+                /* Falls through. */
+                default:
+                    return false;
+                }
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool DirTreeModel::canDropMimeData(const QMimeData* /*data*/, Qt::DropAction /*action*/, int /*row*/, int /*column*/, const QModelIndex& parent) const {
+    return parent.isValid();
 }
 
 int DirTreeModel::columnCount(const QModelIndex& /*parent*/) const {
