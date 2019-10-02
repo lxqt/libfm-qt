@@ -163,6 +163,10 @@ PlacesView::PlacesView(QWidget* parent):
     });
 
     QHeaderView* headerView = header();
+    // WARNING: Since Qt 5.11, if the minimum header section width isn't set,
+    // Qt will set it by considering the font size, even without text.
+    // See Qt doc and https://bugreports.qt.io/browse/QTBUG-68503
+    headerView->setMinimumSectionSize(1);
     headerView->setSectionResizeMode(0, QHeaderView::Stretch);
     headerView->setSectionResizeMode(1, QHeaderView::Fixed);
     headerView->setStretchLastSection(false);
@@ -256,7 +260,8 @@ void PlacesView::onPressed(const QModelIndex& index) {
 }
 
 void PlacesView::onIconSizeChanged(const QSize& size) {
-    setColumnWidth(1, size.width() + 5);
+    setColumnWidth(1, size.width() + 2 * (style()->pixelMetric(QStyle::PM_FocusFrameHMargin)
+                                            + 1)); // put it inside the focus rectangle, if any
 }
 
 void PlacesView::onEjectButtonClicked(PlacesModelItem* item) {
