@@ -833,9 +833,9 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln archivo</numerusform>
+            <numerusform>%Ln archivos</numerusform>
         </translation>
     </message>
     <message>
@@ -882,7 +882,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="465"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>¡No se puede copiar un directorio sobre sí mismo!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="516"/>
@@ -945,7 +945,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Por momento de eliminación</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="169"/>
@@ -965,7 +965,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Por grupo de archivo</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
@@ -1048,7 +1048,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="371"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminado</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="374"/>
@@ -1066,12 +1066,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustar columnas automáticamente</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Columnas visibles</translation>
     </message>
 </context>
 <context>
@@ -1610,7 +1610,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar en subdirectorios</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
