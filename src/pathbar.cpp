@@ -261,9 +261,13 @@ void PathBar::setPath(Fm::FilePath path) {
             name = btnPath.toString();
         }
         else {
-            name = btnPath.baseName();
+            displayName = btnPath.baseName();
+            // "name" is used for making the path from its components in PathBar::pathForButton().
+            // So, it should be extracted from g_file_get_parse_name().
+            // (In places like trash:///, FilePath::baseName() cannot be used to make a full path.)
+            name = CStrPtr{g_path_get_basename(btnPath.displayName().get())};
         }
-        auto btn = new PathButton(name.get(), displayName ? QString::fromUtf8(displayName.get()) : QString::fromUtf8(name.get()), isRoot, buttonsWidget_);
+        auto btn = new PathButton(name.get(), QString::fromUtf8(displayName.get()), isRoot, buttonsWidget_);
         btn->show();
         connect(btn, &QAbstractButton::toggled, this, &PathBar::onButtonToggled);
         buttonsLayout_->insertWidget(0, btn);
