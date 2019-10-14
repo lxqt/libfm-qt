@@ -99,7 +99,7 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation>ファイルを実行</translation>
+        <translation>ファイルの実行</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="39"/>
@@ -170,7 +170,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation>処理されたファイル:</translation>
+        <translation>処理済ファイル:</translation>
     </message>
 </context>
 <context>
@@ -705,7 +705,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>次のファイルを対象のフォルダーへ移動:</translation>
+        <translation>次のファイルを対象のフォルダーへ移動しています:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -715,17 +715,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>次のファイルを対象のフォルダーへコピー:</translation>
+        <translation>次のファイルを対象のフォルダーへコピーしています:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation>ファイルをゴミ箱へ入れる</translation>
+        <translation>ファイルをゴミ箱へ移動</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>次のファイルをゴミ箱へ入れる:</translation>
+        <translation>次のファイルをゴミ箱へ移動しています:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
@@ -735,37 +735,37 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation>以下のファイルを削除:</translation>
+        <translation>次のファイルを削除しています:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation>シンボリックリンク作成</translation>
+        <translation>シンボリックリンクの作成</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>以下のファイルのシンボリックリンクを作成:</translation>
+        <translation>次のファイルのシンボリックリンクを作成しています:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation>属性を変更</translation>
+        <translation>属性の変更</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>以下のファイルの属性を変更:</translation>
+        <translation>次のファイルの属性を変更しています:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation>ゴミ箱から戻す</translation>
+        <translation>ファイルをゴミ箱から戻す</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>以下のファイルをゴミ箱から戻す:</translation>
+        <translation>次のファイルをゴミ箱から戻しています:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
@@ -1423,7 +1423,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation>以下のファイルと置き換えますか？</translation>
+        <translation>次のファイルと置き換えますか？</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
@@ -1511,7 +1511,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation>次の種類のファイルのみを検索:</translation>
+        <translation>次の種類のファイルのみを検索する:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
