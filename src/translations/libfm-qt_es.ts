@@ -993,37 +993,37 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="274"/>
         <source>Location:</source>
-        <translation type="unfinished">Ubicación:</translation>
+        <translation>Ubicación:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="277"/>
         <source>File type:</source>
-        <translation type="unfinished">Tipo de archivo:</translation>
+        <translation>Tipo de archivo:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>File size:</source>
-        <translation type="unfinished">Tamaño del archivo:</translation>
+        <translation>Tamaño del archivo:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
         <source>Last modified:</source>
-        <translation type="unfinished">Última modificación:</translation>
+        <translation>Última modificación:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">Último acceso:</translation>
+        <translation>Último acceso:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Owner:</source>
-        <translation type="unfinished">Propietario:</translation>
+        <translation>Propietario:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="291"/>
         <source>Group:</source>
-        <translation type="unfinished">Grupo:</translation>
+        <translation>Grupo:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="359"/>
