@@ -200,12 +200,18 @@ void FolderMenu::createSortMenu() {
     QAction* actionFolderFirst = new QAction(tr("Folder First"), this);
     sortMenu_->addAction(actionFolderFirst);
     actionFolderFirst->setCheckable(true);
-
     if(model->folderFirst()) {
         actionFolderFirst->setChecked(true);
     }
-
     connect(actionFolderFirst, &QAction::triggered, this, &FolderMenu::onFolderFirstActionTriggered);
+
+    QAction* actionHiddenLast = new QAction(tr("Hidden Last"), this);
+    sortMenu_->addAction(actionHiddenLast);
+    actionHiddenLast->setCheckable(true);
+    if(model->hiddenLast()) {
+        actionHiddenLast->setChecked(true);
+    }
+    connect(actionHiddenLast, &QAction::triggered, this, &FolderMenu::onHiddenLastActionTriggered);
 
     QAction* actionCaseSensitive = new QAction(tr("Case Sensitive"), this);
     sortMenu_->addAction(actionCaseSensitive);
@@ -292,6 +298,14 @@ void FolderMenu::onFolderFirstActionTriggered(bool checked) {
 
     if(model) {
         model->setFolderFirst(checked);
+    }
+}
+
+void FolderMenu::onHiddenLastActionTriggered(bool checked) {
+    ProxyFolderModel* model = view_->model();
+
+    if(model) {
+        model->setHiddenLast(checked);
     }
 }
 

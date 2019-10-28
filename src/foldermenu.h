@@ -99,6 +99,7 @@ protected Q_SLOTS:
     void onShowHiddenActionTriggered(bool checked);
     void onCaseSensitiveActionTriggered(bool checked);
     void onFolderFirstActionTriggered(bool checked);
+    void onHiddenLastActionTriggered(bool checked);
     void onPropertiesActionTriggered();
     void onCustomActionTrigerred();
 

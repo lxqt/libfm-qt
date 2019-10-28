@@ -29,6 +29,7 @@ ProxyFolderModel::ProxyFolderModel(QObject* parent):
     showHidden_(false),
     backupAsHidden_(true),
     folderFirst_(true),
+    hiddenLast_(false),
     showThumbnails_(false),
     thumbnailSize_(0) {
 
@@ -112,6 +113,14 @@ void ProxyFolderModel::setFolderFirst(bool folderFirst) {
     }
 }
 
+void ProxyFolderModel::setHiddenLast(bool hiddenLast) {
+    if(hiddenLast != hiddenLast_) {
+        hiddenLast_ = hiddenLast;
+        invalidate();
+        Q_EMIT sortFilterChanged();
+    }
+}
+
 void ProxyFolderModel::setSortCaseSensitivity(Qt::CaseSensitivity cs) {
     collator_.setCaseSensitivity(cs);
     QSortFilterProxyModel::setSortCaseSensitivity(cs);
@@ -152,6 +161,14 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
             bool rightIsFolder = rightInfo->isDir();
             if(leftIsFolder != rightIsFolder) {
                 return sortOrder() == Qt::AscendingOrder ? leftIsFolder : rightIsFolder;
+            }
+        }
+
+        if(hiddenLast_) {
+            bool leftIsHidden = leftInfo->isHidden();
+            bool rightIsHidden = rightInfo->isHidden();
+            if(leftIsHidden != rightIsHidden) {
+                return sortOrder() == Qt::AscendingOrder ? rightIsHidden : leftIsHidden;
             }
         }
 

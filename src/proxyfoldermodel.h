@@ -66,6 +66,11 @@ public:
         return folderFirst_;
     }
 
+    void setHiddenLast(bool hiddenLast);
+    bool hiddenLast() {
+        return hiddenLast_;
+    }
+
     void setSortCaseSensitivity(Qt::CaseSensitivity cs);
 
     bool showThumbnails() {
@@ -107,6 +112,7 @@ private:
     bool showHidden_;
     bool backupAsHidden_;
     bool folderFirst_;
+    bool hiddenLast_;
     bool showThumbnails_;
     int thumbnailSize_;
     QList<ProxyFolderModelFilter*> filters_;
