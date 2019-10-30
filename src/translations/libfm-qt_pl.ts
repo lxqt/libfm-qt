@@ -833,10 +833,10 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln plik</numerusform>
+            <numerusform>%Ln pliki</numerusform>
+            <numerusform>%Ln plików</numerusform>
         </translation>
     </message>
     <message>
@@ -883,7 +883,7 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="465"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie można skopiować katalogu wewnątrz niego!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="516"/>
@@ -946,7 +946,7 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Według czasu usunięcia</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="169"/>
@@ -966,7 +966,7 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Według grupy plików</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
@@ -994,37 +994,37 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="274"/>
         <source>Location:</source>
-        <translation type="unfinished">Położenie:</translation>
+        <translation>Położenie:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="277"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodzaj pliku:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>File size:</source>
-        <translation type="unfinished">Rozmiar pliku:</translation>
+        <translation>Rozmiar pliku:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
         <source>Last modified:</source>
-        <translation type="unfinished">Ostatnia modyfikacja:</translation>
+        <translation>Ostatnia modyfikacja:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">Ostatni dostęp:</translation>
+        <translation>Ostatni dostęp:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Owner:</source>
-        <translation type="unfinished">Właściciel:</translation>
+        <translation>Właściciel:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="291"/>
         <source>Group:</source>
-        <translation type="unfinished">Grupa:</translation>
+        <translation>Grupa:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="359"/>
@@ -1049,7 +1049,7 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="371"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Usunięty</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="374"/>
@@ -1067,12 +1067,12 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatycznie zmieniaj rozmiar kolumn</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Widoczne kolumny</translation>
     </message>
 </context>
 <context>
@@ -1611,7 +1611,7 @@ Zmodyfikowany: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Szukaj w podkatalogach</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
