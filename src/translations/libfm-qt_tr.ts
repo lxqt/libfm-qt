@@ -1066,7 +1066,7 @@ Onun yerine silmek ister misiniz?</translation>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Sütunları otomatik ölçeklendir</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
