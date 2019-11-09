@@ -429,7 +429,7 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>Diese Datei &apos;%1&apos; scheint ein Schreibtischeintrag zu sein.
+        <translation>Diese Datei &apos;%1&apos; scheint ein Arbeitsflächeneintrag zu sein.
 Was möchten Sie damit tun?</translation>
     </message>
     <message>
@@ -833,9 +833,9 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln Datei</numerusform>
+            <numerusform>%Ln Dateien</numerusform>
         </translation>
     </message>
     <message>
@@ -993,37 +993,37 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="274"/>
         <source>Location:</source>
-        <translation type="unfinished">Ort:</translation>
+        <translation>Ort:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="277"/>
         <source>File type:</source>
-        <translation type="unfinished">Dateityp:</translation>
+        <translation>Dateityp:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>File size:</source>
-        <translation type="unfinished">Dateigröße:</translation>
+        <translation>Dateigröße:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
         <source>Last modified:</source>
-        <translation type="unfinished">Zuletzt geändert:</translation>
+        <translation>Zuletzt geändert:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">Letzter Zugriff:</translation>
+        <translation>Letzter Zugriff:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Owner:</source>
-        <translation type="unfinished">Besitzer:</translation>
+        <translation>Eigentümer:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="291"/>
         <source>Group:</source>
-        <translation type="unfinished">Gruppe:</translation>
+        <translation>Gruppe:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="359"/>
@@ -1118,7 +1118,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="55"/>
         <source>Desktop</source>
-        <translation>Schreibtisch</translation>
+        <translation>Arbeitsfläche</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="227"/>
@@ -1385,7 +1385,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="274"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>Ungültige Schreibtischeintragsdatei: &apos;1%&apos;</translation>
+        <translation>Ungültige Arbeitsflächeneintragsdatei: &apos;1%&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="309"/>
@@ -1610,7 +1610,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished">In Unterordnern suchen</translation>
+        <translation>In Unterordnern suchen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
