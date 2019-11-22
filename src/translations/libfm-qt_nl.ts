@@ -833,9 +833,9 @@ Wilt u ze in plaats daarvan blijvend verwijderen?</translation>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln bestanden</numerusform>
+            <numerusform>%Ln bestanden</numerusform>
         </translation>
     </message>
     <message>
