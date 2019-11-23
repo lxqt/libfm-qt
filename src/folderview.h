@@ -199,14 +199,15 @@ private:
     QSize itemDelegateMargins_;
     bool shadowHidden_;
     bool ctrlRightClick_; // show folder context menu with Ctrl + right click
+
     // smooth scrolling:
-    struct scollData {
+    struct scrollData {
         int delta;
         int leftFrames;
     };
+    QList<scrollData> queuedScrollSteps_;
     QTimer *smoothScrollTimer_;
-    QWheelEvent *wheelEvent_;
-    QList<scollData> queuedScrollSteps_;
+
     QList<int> customColumnWidths_;
     QSet<int> hiddenColumns_;
 };
