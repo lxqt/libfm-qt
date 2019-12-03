@@ -1413,7 +1413,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;この場所には、既に同じ名前のファイルがあります。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;既存のファイルを置き換えますか？&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;この場所には、同じ名前のファイルが既にあります。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;既存のファイルを&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
@@ -1423,7 +1423,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation>次のファイルと置き換えますか？</translation>
+        <translation>次のファイルに置き換えますか？</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
@@ -1448,7 +1448,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation>既存のすべてのファイルにも適用する</translation>
+        <translation>すべての既存ファイルにこの処理を適用する</translation>
     </message>
 </context>
 <context>
