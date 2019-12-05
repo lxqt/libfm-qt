@@ -30,7 +30,9 @@ _retry:
         false
     };
     if(!dir_inf) {
-        ErrorAction act = emitError(err, ErrorSeverity::MODERATE);
+        ErrorAction act = emitError(err, err.domain() == G_IO_ERROR && err.code() == G_IO_ERROR_CANCELLED
+                                         ? ErrorSeverity::MILD // may happen with MTP
+                                         : ErrorSeverity::MODERATE);
         if(act == ErrorAction::RETRY) {
             err.reset();
             goto _retry;
