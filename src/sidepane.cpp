@@ -41,8 +41,7 @@ SidePane::SidePane(QWidget* parent):
     verticalLayout->setContentsMargins(0, 0, 0, 0);
 
     combo_ = new QComboBox(this);
-    combo_->setFrame(false);
-    combo_->addItem(tr("Places"));
+    combo_->addItem(tr("Lists")); // "Places" is already used in PlacesModel
     combo_->addItem(tr("Directory Tree"));
     connect(combo_, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SidePane::onComboCurrentIndexChanged);
     verticalLayout->addWidget(combo_);

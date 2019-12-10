@@ -19,7 +19,7 @@
      <item>
       <widget class="QLabel" name="lookInLabel">
        <property name="text">
-        <string>Location:</string>
+        <string>Path:</string>
        </property>
       </widget>
      </item>
