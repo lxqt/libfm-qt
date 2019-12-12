@@ -833,8 +833,8 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln 文件</numerusform>
         </translation>
     </message>
     <message>
@@ -881,7 +881,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="465"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>无法将目录复制到自身！</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="516"/>
@@ -944,7 +944,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>按删除时间</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="169"/>
@@ -964,7 +964,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>按文件组</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
@@ -992,37 +992,37 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="274"/>
         <source>Location:</source>
-        <translation type="unfinished">位置:</translation>
+        <translation>位置:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="277"/>
         <source>File type:</source>
-        <translation type="unfinished">文件类型:</translation>
+        <translation>文件类型:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>File size:</source>
-        <translation type="unfinished">文件大小:</translation>
+        <translation>文件大小:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
         <source>Last modified:</source>
-        <translation type="unfinished">修改时间:</translation>
+        <translation>最后修改时间:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">访问时间:</translation>
+        <translation>最后访问时间:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Owner:</source>
-        <translation type="unfinished">所有者:</translation>
+        <translation>所有者:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="291"/>
         <source>Group:</source>
-        <translation type="unfinished">组:</translation>
+        <translation>组:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="359"/>
@@ -1047,7 +1047,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="371"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="374"/>
@@ -1065,12 +1065,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>自动调整列大小</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>列可见</translation>
     </message>
 </context>
 <context>
