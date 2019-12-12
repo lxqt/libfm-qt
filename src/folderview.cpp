@@ -51,6 +51,8 @@
 #include "folderview_p.h"
 #include "utilities.h"
 
+#include <algorithm>
+
 #define SCROLL_FRAMES_PER_SEC 50
 #define SCROLL_DURATION 300 // in ms
 
@@ -1755,7 +1757,7 @@ void FolderView::onAutoSelectionTimeout() {
             int begin = current.row();
             int end = index.row();
             if(begin > end) {
-                qSwap(begin, end);
+                std::swap(begin, end);
             }
             for(int row = begin; row <= end; ++row) {
                 QModelIndex sel = model_->index(row, 0);
