@@ -492,6 +492,10 @@ void PlacesModel::onBookmarksChanged() {
 }
 
 Qt::ItemFlags PlacesModel::flags(const QModelIndex& index) const {
+    if(!index.isValid()) {
+       // alow dropping on empty space (but also see PlacesModel::canDropMimeData)
+       return Qt::ItemIsDropEnabled;
+    }
     if(index.column() == 1) { // make 2nd column of every row selectable.
         return Qt::ItemIsSelectable | Qt::ItemIsEnabled;
     }
@@ -609,9 +613,12 @@ bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction /*action*/,
                 return false;
             }
         }
-        if(item == bookmarksRoot) {
-            // drop uris on the root bookmark (row == -1 && column == -1 && item && !item->parent())
-            // or on a position between items (row != -1 || column != -1)
+        // Drop uris:
+        // (1) On the root bookmark (row == -1 && column == -1 && item && !item->parent());
+        // (2) Or at a position between items (row != -1 || column != -1);
+        if(item == bookmarksRoot
+           // (3) Or after bookmarks (for users' convenience).
+           || (item == nullptr && row == -1 && column == -1)) {
             auto paths = pathListFromQUrls(data->urls());
             for(auto& path: paths) {
                 // FIXME: this is a blocking call
@@ -625,6 +632,29 @@ bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction /*action*/,
         }
     }
     return false;
+}
+
+bool PlacesModel::canDropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) const {
+    QStandardItem* item = itemFromIndex(parent);;
+    if(item == nullptr && !(row == -1 && column == -1)) {
+        // don't allow dopping (on an empty space) between root items
+        // (dropping between child items is handled by PlacesModel::flags)
+        return false;
+    }
+    if(data->hasFormat(QStringLiteral("application/x-bookmark-row"))) {
+        // as in PlacesModel::dropMimeData
+        bool canDrop = false;
+        if(row == -1 && column == -1) {
+            if(item && item->parent() == bookmarksRoot) {
+                canDrop = true;
+            }
+        }
+        else if(item == bookmarksRoot) {
+            canDrop = true;
+        }
+        return canDrop;
+    }
+    return QStandardItemModel::canDropMimeData(data, action, row, column, parent);
 }
 
 // we only support dragging bookmark items and use our own
