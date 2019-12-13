@@ -1603,6 +1603,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                                                         : view->verticalScrollBar());
                 if(sbar != nullptr) {
                     QWheelEvent *we = static_cast<QWheelEvent*>(event);
+#if (QT_VERSION >= QT_VERSION_CHECK(5,12,0))
                     QWheelEvent e(we->posF(),
                                   we->globalPosF(),
                                   we->pixelDelta(),
@@ -1612,6 +1613,14 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                                   we->phase(),
                                   false,
                                   we->source());
+#else
+                    QWheelEvent e(we->posF(),
+                                  we->globalPosF(),
+                                  we->angleDelta().y() / QApplication::wheelScrollLines(),
+                                  we->buttons(),
+                                  Qt::NoModifier,
+                                  Qt::Vertical);
+#endif
                     QApplication::sendEvent(sbar, &e);
                     return true;
                 }
@@ -1690,6 +1699,7 @@ void FolderView::scrollSmoothly() {
         }
     }
     if(totalDelta != 0) {
+#if (QT_VERSION >= QT_VERSION_CHECK(5,12,0))
         QWheelEvent e(QPointF(),
                       QPointF(),
                       QPoint(),
@@ -1698,6 +1708,14 @@ void FolderView::scrollSmoothly() {
                       Qt::NoModifier,
                       Qt::NoScrollPhase,
                       false);
+#else
+        QWheelEvent e(QPointF(),
+                      QPointF(),
+                      totalDelta,
+                      Qt::NoButton,
+                      Qt::NoModifier,
+                      Qt::Vertical);
+#endif
         QApplication::sendEvent(view->verticalScrollBar(), &e);
     }
 
