@@ -72,7 +72,7 @@ protected:
   QModelIndex moveCursor(CursorAction cursorAction, Qt::KeyboardModifiers modifiers) override;
 
 public Q_SLOTS:
-  void selectAll();
+  void selectAll() override;
 
 private Q_SLOTS:
   void activation(const QModelIndex &index);
