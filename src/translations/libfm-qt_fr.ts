@@ -993,7 +993,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="274"/>
         <source>Location:</source>
-        <translation type="unfinished">Emplacement :</translation>
+        <translation>Emplacement :</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="277"/>
