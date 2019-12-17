@@ -1156,7 +1156,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../placesview.cpp" line="505"/>
         <source>Empty Trash</source>
-        <translation>Corbeille vide</translation>
+        <translation>Vider la corbeille</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="490"/>
