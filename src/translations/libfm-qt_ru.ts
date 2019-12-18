@@ -833,10 +833,10 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln файл</numerusform>
+            <numerusform>%Ln файла</numerusform>
+            <numerusform>%Ln  файлов</numerusform>
         </translation>
     </message>
     <message>
@@ -883,7 +883,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="465"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>Нельзя копировать каталог сам в себя!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="516"/>
