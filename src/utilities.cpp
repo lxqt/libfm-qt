@@ -95,6 +95,58 @@ std::pair<Fm::FilePathList, bool> parseClipboardData(const QMimeData& data) {
     return std::make_pair(paths, isCut);
 }
 
+const std::string pathSocket()
+{
+#ifdef Q_OS_UNIX
+    return "advanced-copier-"+std::to_string(getuid());
+#else
+    QString userName;
+    char uname[1024];
+    DWORD len=1023;
+    if(GetUserNameA(uname, &len)!=FALSE)
+        userName=QString::fromLatin1(toHex(uname));
+    return "advanced-copier-"+userName.toStdString();
+#endif
+}
+
+char * toHex(const char *str)
+{
+    char *p, *sz;
+    size_t len;
+    if (str==NULL)
+        return NULL;
+    len= strlen(str);
+    p = sz = (char *) malloc((len+1)*4);
+    for (size_t i=0; i<len; i++)
+    {
+        sprintf(p, "%.2x00", str[i]);
+        p+=4;
+    }
+    *p=0;
+    return sz;
+}
+
+void ClientCatchcopy::sendRawOrderList(const QStringList & order, QLocalSocket &socket)
+{
+	QByteArray block;
+	QDataStream out(&block, QIODevice::WriteOnly);
+	out.setVersion(QDataStream::Qt_4_4);
+	out << int(0);
+	out << 99;//idNextOrder
+	out << order;
+	out.device()->seek(0);
+	out << block.size();
+	do //cut string list and send it as block of 32KB
+	{
+		QByteArray blockToSend;
+		int byteWriten;
+		blockToSend=block.left(32*1024);//32KB
+		block.remove(0,blockToSend.size());
+		byteWriten = socket.write(blockToSend);
+	}
+	while(block.size());
+}
+
 void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent) {
     QClipboard* clipboard = QApplication::clipboard();
     const QMimeData* data = clipboard->mimeData();
@@ -104,12 +156,30 @@ void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent) {
     std::tie(paths, isCut) = parseClipboardData(*data);
 
     if(!paths.empty()) {
-        if(isCut) {
-            FileOperation::moveFiles(paths, destPath, parent);
-            clipboard->clear(QClipboard::Clipboard);
+        QLocalSocket socket;
+        socket.connectToServer(QString::fromStdString(ExtraSocketCatchcopy::pathSocket()));
+        socket.waitForConnected();
+        if(socket.state()==QLocalSocket::ConnectedState)
+        {
+            sendRawOrderList(QStringList() << "protocol" << CATCHCOPY_PROTOCOL_VERSION);
+            if(isCut) {
+                sendRawOrderList(QStringList() << "mv" << paths << destPath);
+                clipboard->clear(QClipboard::Clipboard);
+            }
+            else {
+                sendRawOrderList(QStringList() << "cp" << paths << destPath);
+            }
+            socket.close();
         }
-        else {
-            FileOperation::copyFiles(paths, destPath, parent);
+        else
+        {
+            if(isCut) {
+                FileOperation::moveFiles(paths, destPath, parent);
+                clipboard->clear(QClipboard::Clipboard);
+            }
+            else {
+                FileOperation::copyFiles(paths, destPath, parent);
+            }
         }
     }
 }

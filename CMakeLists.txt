@@ -34,6 +34,7 @@ set(QT_MINIMUM_VERSION "5.7.1")
 find_package(Qt5Widgets "${QT_MINIMUM_VERSION}" REQUIRED)
 find_package(Qt5LinguistTools "${QT_MINIMUM_VERSION}" REQUIRED)
 find_package(Qt5X11Extras "${QT_MINIMUM_VERSION}" REQUIRED)
+find_package(Qt5Network "${QT_MINIMUM_VERSION}" REQUIRED)
 
 find_package(lxqt-build-tools "${LXQTBT_MINIMUM_VERSION}" REQUIRED)
 find_package(GLIB "${GLIB_MINIMUM_VERSION}" REQUIRED COMPONENTS gio gio-unix gobject gthread)

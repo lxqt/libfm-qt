@@ -25,6 +25,7 @@
 #include <QList>
 #include <QMimeData>
 #include <sys/types.h>
+#include <QLocalSocket>
 
 #include <cstdint>
 #include <utility>
@@ -84,6 +85,10 @@ LIBFM_QT_API bool isUriSchemeSupported(const char* uriScheme);
 LIBFM_QT_API bool uriExists(const char* uri);
 
 LIBFM_QT_API QString formatFileSize(std::uint64_t size, bool useSI = false);
+
+std::string pathSocket();
+char * toHex(const char *str);
+void sendRawOrderList(const QStringList & order, QLocalSocket &socket);
 
 }
 
