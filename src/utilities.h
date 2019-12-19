@@ -25,7 +25,7 @@
 #include <QList>
 #include <QMimeData>
 #include <sys/types.h>
-#include <QLocalSocket>
+#include <QtNetwork/QLocalSocket>
 
 #include <cstdint>
 #include <utility>
