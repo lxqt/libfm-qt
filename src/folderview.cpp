@@ -1596,7 +1596,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                 }
             }
             // row-by-row scrolling when Shift is pressed
-            if (QApplication::keyboardModifiers() & Qt::ShiftModifier
+            if((QApplication::keyboardModifiers() & Qt::ShiftModifier)
                 && (mode == CompactMode || mode == DetailedListMode)) // other modes have smooth scroling
             {
                 QScrollBar *sbar = (mode == CompactMode ? view->horizontalScrollBar()
@@ -1607,7 +1607,14 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                     QWheelEvent e(we->posF(),
                                   we->globalPosF(),
                                   we->pixelDelta(),
+#if (QT_VERSION < QT_VERSION_CHECK(5,14,0))
                                   QPoint (0, we->angleDelta().y() / QApplication::wheelScrollLines()),
+#else
+                                  // the problem with horizontal wheel scrolling from inside view is fixed in Qt 5.14
+                                  mode == CompactMode
+                                    ? QPoint (we->angleDelta().y() / QApplication::wheelScrollLines(), 0)
+                                    : QPoint (0, we->angleDelta().y() / QApplication::wheelScrollLines()),
+#endif
                                   we->buttons(),
                                   Qt::NoModifier,
                                   we->phase(),
@@ -1633,11 +1640,15 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
             // We do it by forwarding the scroll event in the viewport to the horizontal scrollbar.
             // FIXME: if someday Qt supports this, we have to disable the workaround.
             else if(mode == CompactMode) {
+#if (QT_VERSION < QT_VERSION_CHECK(5,14,0))
                 QScrollBar* scroll = view->horizontalScrollBar();
                 if(scroll) {
                     QApplication::sendEvent(scroll, event);
                     return true;
                 }
+#else
+                return false; // the problem with horizontal wheel scrolling from inside view is fixed in Qt 5.14
+#endif
             }
             // Smooth Scrolling
             // Some tricks are adapted from <https://github.com/zhou13/qsmoothscrollarea>.
