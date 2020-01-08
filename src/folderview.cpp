@@ -63,7 +63,8 @@ using namespace Fm;
 FolderViewListView::FolderViewListView(QWidget* parent):
     QListView(parent),
     activationAllowed_(true),
-    cursorOnSelectionCorner_(false) {
+    cursorOnSelectionCorner_(false),
+    mouseLeftPressed_(false) {
     connect(this, &QListView::activated, this, &FolderViewListView::activation);
     // inline renaming
     setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -84,6 +85,7 @@ void FolderViewListView::startDrag(Qt::DropActions supportedActions) {
 
 void FolderViewListView::mousePressEvent(QMouseEvent* event) {
     if(event->buttons() == Qt::LeftButton) { // see FolderViewListView::mouseMoveEvent
+        mouseLeftPressed_ = true;
         if(indexAt(event->pos()).isValid()) {
             globalItemPressPoint_ = event->globalPos();
         }
@@ -104,13 +106,17 @@ void FolderViewListView::mousePressEvent(QMouseEvent* event) {
 }
 
 void FolderViewListView::mouseMoveEvent(QMouseEvent* event) {
-    // NOTE: Filter the BACK & FORWARD buttons to not Drag & Drop with them.
-    // (by default Qt views drag with any button)
     if (event->buttons() == Qt::NoButton
+        // NOTE: Filter the BACK & FORWARD buttons to not Drag & Drop with them.
+        // (by default Qt views drag with any button)
         || ((event->buttons() & ~(Qt::BackButton | Qt::ForwardButton))
-            // don't start drag if the cursor isn't moved since pressing left mouse button on an item
-            // because the user may want to scroll the view with mouse wheel before dragging
-            && !(event->buttons() == Qt::LeftButton && globalItemPressPoint_ == event->globalPos()))) {
+            && !(event->buttons() == Qt::LeftButton
+                    // don't draw rubberband if left mouse button isn't pressed inside view
+                    // (this event may have been sent by FolderView::scrollSmoothly)
+                && (!mouseLeftPressed_
+                    // don't start drag if the cursor isn't moved since pressing left mouse button on an item
+                    // (because the user may want to scroll the view with mouse wheel before dragging)
+                    || globalItemPressPoint_ == event->globalPos())))) {
         bool cursorOnSelectionCorner = cursorOnSelectionCorner_;
         QListView::mouseMoveEvent(event);
         // update the index if the cursor enters/leaves the selection corner icon
@@ -237,6 +243,9 @@ void FolderViewListView::dropEvent(QDropEvent* e) {
 }
 
 void FolderViewListView::mouseReleaseEvent(QMouseEvent* event) {
+    // NOTE: With mouseReleaseEvent, event->buttons() excludes the button that caused the event
+    // and so, it should not be used here. Instead, event->button() is used.
+
     bool activationWasAllowed = activationAllowed_;
     if(!style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this)
        || event->button() != Qt::LeftButton
@@ -248,6 +257,9 @@ void FolderViewListView::mouseReleaseEvent(QMouseEvent* event) {
     QListView::mouseReleaseEvent(event);
 
     activationAllowed_ = activationWasAllowed;
+    if(event->button() == Qt::LeftButton) {
+        mouseLeftPressed_ = false;
+    }
 }
 
 void FolderViewListView::mouseDoubleClickEvent(QMouseEvent* event) {
@@ -986,6 +998,7 @@ void FolderView::setViewMode(ViewMode _mode) {
         smoothScrollTimer_->stop();
         delete smoothScrollTimer_;
         smoothScrollTimer_ = nullptr;
+        queuedScrollSteps_.clear(); // also forget the remaining steps
     }
     // FIXME: retain old selection
 

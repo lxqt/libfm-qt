@@ -80,6 +80,7 @@ private Q_SLOTS:
 private:
   bool activationAllowed_;
   mutable bool cursorOnSelectionCorner_;
+  bool mouseLeftPressed_;
   QPoint globalItemPressPoint_; // to prevent dragging when only the view is scrolled
 };
 
