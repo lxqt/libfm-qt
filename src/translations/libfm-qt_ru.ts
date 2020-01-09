@@ -946,7 +946,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">По времени удаления</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="169"/>
@@ -966,7 +966,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">По группе файла</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
@@ -994,37 +994,37 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="274"/>
         <source>Location:</source>
-        <translation type="unfinished">Расположение:</translation>
+        <translation>Расположение:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="277"/>
         <source>File type:</source>
-        <translation type="unfinished">Тип файла:</translation>
+        <translation>Тип файла:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>File size:</source>
-        <translation type="unfinished">Размер файла:</translation>
+        <translation>Размер файла:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
         <source>Last modified:</source>
-        <translation type="unfinished">Последнее изменение:</translation>
+        <translation>Последнее изменение:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">Последний доступ:</translation>
+        <translation>Последний доступ:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Owner:</source>
-        <translation type="unfinished">Владелец:</translation>
+        <translation>Владелец:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="291"/>
         <source>Group:</source>
-        <translation type="unfinished">Группа:</translation>
+        <translation>Группа:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="359"/>
@@ -1049,7 +1049,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="371"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Удалён</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="374"/>
@@ -1067,12 +1067,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Автоматическое выравнивание колонок</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Видимые колонки</translation>
     </message>
 </context>
 <context>
@@ -1611,7 +1611,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Поиск в подкаталогах</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
