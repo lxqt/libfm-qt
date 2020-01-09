@@ -456,7 +456,7 @@ Mi legyen vele?</translation>
         <location filename="../filedialog.cpp" line="105"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Balnyíl</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="111"/>
@@ -467,7 +467,7 @@ Mi legyen vele?</translation>
         <location filename="../filedialog.cpp" line="112"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Jobbranyíl</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="119"/>
