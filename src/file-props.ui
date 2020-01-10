@@ -305,38 +305,35 @@
          </property>
         </spacer>
        </item>
-       <item row="12" column="0">
-        <widget class="QLabel" name="deviceLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+       <item row="12" column="0" colspan="2">
+        <layout class="QGridLayout" name="gridLayout_3">
+         <property name="horizontalSpacing">
+          <number>10</number>
          </property>
-         <property name="text">
-          <string>Device Usage:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="1">
-        <layout class="QVBoxLayout" name="verticalLayout_4">
-         <property name="spacing">
+         <property name="verticalSpacing">
           <number>5</number>
          </property>
-         <item>
+         <item row="0" column="1">
           <widget class="QProgressBar" name="progressBar">
            <property name="value">
             <number>0</number>
            </property>
           </widget>
          </item>
-         <item>
+         <item row="1" column="1">
           <widget class="QLabel" name="spaceLabel">
            <property name="text">
             <string/>
            </property>
            <property name="wordWrap">
             <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" rowspan="2" alignment="Qt::AlignVCenter">
+          <widget class="QLabel" name="deviceLabel">
+           <property name="text">
+            <string>Device Usage:</string>
            </property>
           </widget>
          </item>
