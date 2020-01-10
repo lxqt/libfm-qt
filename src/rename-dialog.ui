@@ -53,7 +53,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>dest</string>
+        <string notr="true">dest</string>
        </property>
       </widget>
      </item>
@@ -73,7 +73,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>src file info</string>
+        <string notr="true">src file info</string>
        </property>
       </widget>
      </item>
@@ -86,7 +86,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>dest file info</string>
+        <string notr="true">dest file info</string>
        </property>
       </widget>
      </item>
@@ -99,7 +99,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>src</string>
+        <string notr="true">src</string>
        </property>
       </widget>
      </item>
