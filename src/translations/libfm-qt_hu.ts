@@ -132,12 +132,12 @@
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fájlnév:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished">Fájltípus:</translation>
+        <translation>Fájltípus:</translation>
     </message>
 </context>
 <context>
@@ -238,7 +238,7 @@
     <message>
         <location filename="../file-props.ui" line="317"/>
         <source>Device Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Eszközhasználat:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="349"/>
@@ -450,7 +450,7 @@ Mi legyen vele?</translation>
     <message>
         <location filename="../filedialog.cpp" line="104"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Vissza</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="105"/>
@@ -461,7 +461,7 @@ Mi legyen vele?</translation>
     <message>
         <location filename="../filedialog.cpp" line="111"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Előre</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="112"/>
@@ -472,23 +472,23 @@ Mi legyen vele?</translation>
     <message>
         <location filename="../filedialog.cpp" line="119"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Frissítés</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="120"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="137"/>
         <source>Create Folder</source>
-        <translation type="unfinished">Mappakészítés</translation>
+        <translation>Mappa létrehozása</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="144"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ikonnézet</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="148"/>
@@ -514,45 +514,46 @@ Mi legyen vele?</translation>
     <message>
         <location filename="../filedialog.cpp" line="300"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Válassz egy fájlt</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="342"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;1 már létezik.
+Cserélni kívánja?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="660"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Elérési út &quot;%1&quot; nem létezik</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="674"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&quot;%1&quot; nem egy könyvtár</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="680"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; nem egy fájl</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="823"/>
         <location filename="../filedialog.cpp" line="931"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">&amp;Nyitás</translation>
+        <translation>&amp;Megnyitás</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="826"/>
         <location filename="../filedialog.cpp" line="939"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Mentés</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="833"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Minden fájl (*)</translation>
     </message>
 </context>
 <context>
@@ -560,12 +561,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Fájl megnyitása</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Fájl mentése</translation>
     </message>
 </context>
 <context>
@@ -609,12 +610,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="252"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Bízzon meg a futtatható állományokban</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="253"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bízzon meg ebben a futtatható állományban</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="342"/>
@@ -822,18 +823,19 @@ Töröljük őket véglegesen?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">nincs fájl</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="384"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">egy fájl</translation>
     </message>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
+            <numerusform>%Ln fájl</numerusform>
+            <numerusform>%Ln fájl</numerusform>
         </translation>
     </message>
     <message>
@@ -885,7 +887,7 @@ Töröljük őket véglegesen?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="516"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nem lehet hivatkozást létrehozni a nem helyi fájlrendszeren</translation>
     </message>
 </context>
 <context>
@@ -1006,12 +1008,12 @@ Töröljük őket véglegesen?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
         <source>Last modified:</source>
-        <translation type="unfinished">Módosítási idő:</translation>
+        <translation type="unfinished">Utoljára módosítva:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">Utolsó hozzáférés:</translation>
+        <translation>Utoljára módosítva:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
@@ -1046,7 +1048,7 @@ Töröljük őket véglegesen?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="371"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Törölve</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="374"/>
@@ -1064,7 +1066,7 @@ Töröljük őket véglegesen?</translation>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Oszlopok automatikus átméretezése</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
@@ -1263,7 +1265,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nem lehet eltávolítani a(z) &apos;%s&apos; fájlt: az eredeti elérési út nem ismert</translation>
     </message>
 </context>
 <context>
@@ -1388,7 +1390,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="309"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nincs beállítva alapértelmezett alkalmazás a(z) &apos;%1&apos; indításához</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="350"/>
@@ -1398,7 +1400,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Azonosító: </translation>
     </message>
 </context>
 <context>
@@ -1608,7 +1610,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Keresés alkönyvtárakban</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
