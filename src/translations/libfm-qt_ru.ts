@@ -946,7 +946,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished">По времени удаления</translation>
+        <translation>По времени удаления</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="169"/>
@@ -1049,7 +1049,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="371"/>
         <source>Deleted</source>
-        <translation type="unfinished">Удалён</translation>
+        <translation>Удалён</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="374"/>
@@ -1067,12 +1067,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished">Автоматическое выравнивание колонок</translation>
+        <translation>Автоподбор ширины столбцов</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished">Видимые колонки</translation>
+        <translation>Видимые столбцы</translation>
     </message>
 </context>
 <context>
@@ -1611,7 +1611,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished">Поиск в подкаталогах</translation>
+        <translation>Искать в подкаталогах</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
