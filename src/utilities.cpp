@@ -171,8 +171,11 @@ bool renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent) {
     FilenameDialog dlg(parent ? parent->window() : nullptr);
     dlg.setWindowTitle(QObject::tr("Rename File"));
     dlg.setLabelText(QObject::tr("Please enter a new name:"));
-    // FIXME: what's the best way to handle non-UTF8 filename encoding here?
-    auto old_name = QString::fromStdString(file->name());
+    // NOTE: "Edit name" seems the best way to handle non-UTF8 filename encoding.
+    auto old_name = QString::fromUtf8(g_file_info_get_edit_name(file->gFileInfo().get()));
+    if(old_name.isEmpty()) {
+        old_name = QString::fromStdString(file->name());
+    }
     dlg.setTextValue(old_name);
 
     if(file->isDir()) { // select filename extension for directories
