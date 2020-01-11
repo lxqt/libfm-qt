@@ -195,6 +195,10 @@ public:
     const QString& displayName() const {
         return dispName_;
     }
+    
+    const QString& editName() const {
+        return editName_;
+    }
 
     QString description() const {
         return QString::fromUtf8(mimeType_ ? mimeType_->desc() : "");
@@ -228,6 +232,7 @@ private:
     GObjectPtr<GFileInfo> inf_;
     std::string name_;
     QString dispName_;
+    QString editName_;
 
     FilePath filePath_;
     FilePath dirPath_;
