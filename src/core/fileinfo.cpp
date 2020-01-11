@@ -43,7 +43,8 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
         name_ = name;
 
     dispName_ = QString::fromUtf8(g_file_info_get_display_name(inf.get()));
-
+    editName_ = QString::fromUtf8(g_file_info_get_edit_name(inf.get()));
+  
     size_ = g_file_info_get_size(inf.get());
 
     tmp = g_file_info_get_content_type(inf.get());
