@@ -143,15 +143,14 @@ void cutFilesToClipboard(const Fm::FilePathList& files) {
 }
 
 bool changeFileName(const Fm::FilePath& filePath, const QString& newName, QWidget* parent, bool showMessage) {
-    auto parent_path = filePath.parent();
-    auto dest = parent_path.child(newName.toLocal8Bit().constData());
+    // NOTE: g_file_set_display_name() is used instead of g_file_move() because,
+    // otherwise, renaming will not be possible in places like google-drive:///.
     Fm::GErrorPtr err;
-    if(!g_file_move(filePath.gfile().get(), dest.gfile().get(),
-                    GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
-                                   G_FILE_COPY_NO_FALLBACK_FOR_MOVE |
-                                   G_FILE_COPY_NOFOLLOW_SYMLINKS),
-                    nullptr, /* make this cancellable later. */
-                    nullptr, nullptr, &err)) {
+    GFilePtr gfile{g_file_set_display_name(filePath.gfile().get(),
+                                            newName.toLocal8Bit().constData(),
+                                            nullptr, /* make this cancellable later. */
+                                            &err)};
+    if(gfile == nullptr) {
         if (showMessage){
             QMessageBox::critical(parent ? parent->window() : nullptr, QObject::tr("Error"), err.message());
         }
@@ -159,7 +158,7 @@ bool changeFileName(const Fm::FilePath& filePath, const QString& newName, QWidge
     }
 
     // reload the containing folder if it is in use but does not have a file monitor
-    auto folder = Fm::Folder::findByPath(parent_path);
+    auto folder = Fm::Folder::findByPath(filePath.parent());
     if(folder && folder->isValid() && folder->isLoaded() && !folder->hasFileMonitor()) {
         folder->reload();
     }
@@ -171,8 +170,11 @@ bool renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent) {
     FilenameDialog dlg(parent ? parent->window() : nullptr);
     dlg.setWindowTitle(QObject::tr("Rename File"));
     dlg.setLabelText(QObject::tr("Please enter a new name:"));
-    // FIXME: what's the best way to handle non-UTF8 filename encoding here?
-    auto old_name = QString::fromStdString(file->name());
+    // NOTE: "Edit name" seems the best way to handle non-UTF8 filename encoding.
+    auto old_name = QString::fromUtf8(g_file_info_get_edit_name(file->gFileInfo().get()));
+    if(old_name.isEmpty()) {
+        old_name = QString::fromStdString(file->name());
+    }
     dlg.setTextValue(old_name);
 
     if(file->isDir()) { // select filename extension for directories

@@ -975,7 +975,11 @@ void FolderView::onClosingEditor(QWidget* editor, QAbstractItemDelegate::EndEdit
         QVariant data = index.model()->data(index, FolderModel::FileInfoRole);
         auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
         if (info) {
-            auto oldName = QString::fromStdString(info->name());
+            // NOTE: "Edit name" is used to handle invalid filename encoding.
+            auto oldName = QString::fromUtf8(g_file_info_get_edit_name(info->gFileInfo().get()));
+            if(oldName.isEmpty()) {
+                oldName = QString::fromStdString(info->name());
+            }
             if(newName == oldName) {
                 return;
             }
