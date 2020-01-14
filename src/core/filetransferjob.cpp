@@ -383,18 +383,24 @@ bool FileTransferJob::processPath(const FilePath& srcPath, const FilePath& destD
         return false;
     }
 
+    // Use GIO's copy name for destination if existing. This is especially good for copying
+    // from another file system or from places like recent:/// and also handles encoding.
+    const char* destCopyName = g_file_info_get_attribute_string(srcInfo.get(), "standard::copy-name");
+
     bool ret;
     switch(mode_) {
     case Mode::MOVE:
-        ret = moveFile(srcPath, srcInfo, destDirPath, destFileName);
+        ret = moveFile(srcPath, srcInfo, destDirPath, destCopyName ? destCopyName : destFileName);
         break;
     case Mode::COPY: {
         bool deleteSrc = false;
-        ret = copyFile(srcPath, srcInfo, destDirPath, destFileName, deleteSrc);
+        ret = copyFile(srcPath, srcInfo, destDirPath, destCopyName ? destCopyName : destFileName, deleteSrc);
         break;
     }
     case Mode::LINK:
-        ret = linkFile(srcPath, srcInfo, destDirPath, destFileName);
+        ret = linkFile(srcPath, srcInfo, destDirPath,
+                        // see setDestDirPath()
+                        srcPath.isNative() && destCopyName ? destCopyName : destFileName);
         break;
     default:
         ret = false;
