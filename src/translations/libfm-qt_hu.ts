@@ -6,7 +6,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>Alkalmazás választása</translation>
+        <translation>Alkalmazás kiválasztása</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
@@ -178,7 +178,7 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation>Fájljellemzők</translation>
+        <translation>Fájl tulajdonságok</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
@@ -304,7 +304,7 @@
     <message>
         <location filename="../file-props.ui" line="667"/>
         <source>Sticky</source>
-        <translation type="unfinished">Sticky</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="674"/>
@@ -407,7 +407,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation>Szimbolikus link ide</translation>
+        <translation>Szimbolikus link létrehozása</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="41"/>
@@ -456,7 +456,7 @@ Mi legyen vele?</translation>
         <location filename="../filedialog.cpp" line="105"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation>Alt+Balranyíl</translation>
+        <translation>Alt+Bal</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="111"/>
@@ -467,7 +467,7 @@ Mi legyen vele?</translation>
         <location filename="../filedialog.cpp" line="112"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation>Alt+Jobbranyíl</translation>
+        <translation>Alt+Jobb</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="119"/>
@@ -503,7 +503,7 @@ Mi legyen vele?</translation>
     <message>
         <location filename="../filedialog.cpp" line="156"/>
         <source>Detailed List View</source>
-        <translation>Részletes lista nézet</translation>
+        <translation>Lista nézet</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="300"/>
@@ -526,7 +526,7 @@ Cserélni kívánja?</translation>
     <message>
         <location filename="../filedialog.cpp" line="660"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation>Elérési út &quot;%1&quot; nem létezik</translation>
+        <translation>Útvonal &quot;%1&quot; nem létezik</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="674"/>
@@ -605,7 +605,7 @@ Cserélni kívánja?</translation>
         <location filename="../filemenu.cpp" line="159"/>
         <location filename="../filemenu.cpp" line="407"/>
         <source>&amp;Move to Trash</source>
-        <translation type="unfinished">Kukába &amp;mozgat</translation>
+        <translation type="unfinished">Mozgatás &amp;Kukába</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="252"/>
@@ -691,7 +691,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../fileoperation.cpp" line="418"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation>Kukába helyezi a választott fájlokat?</translation>
+        <translation>Kukába mozgatja a kiválasztott fájlokat?</translation>
     </message>
 </context>
 <context>
@@ -699,7 +699,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move files</source>
-        <translation type="unfinished">Fájl áthelyezése</translation>
+        <translation type="unfinished">Fájlok áthelyezése</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
@@ -729,7 +729,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation>Fájltörlés</translation>
+        <translation>Fájlok törlése</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
@@ -744,7 +744,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation type="unfinished">Szimbolikus link készítés a következő fájlokra:</translation>
+        <translation type="unfinished">Szimbolikus link létrehozása a következő fájlokra:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
@@ -856,7 +856,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="519"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>Minden mappára és fájlra alkalmazzuk a változtatásokat?</translation>
+        <translation>Minden mappára és fájlra alkalmazza a változtatásokat?</translation>
     </message>
 </context>
 <context>
@@ -925,7 +925,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="97"/>
         <source>Folder Pr&amp;operties</source>
-        <translation>Mappatulajd&amp;onságok</translation>
+        <translation>Mappa tulajd&amp;onságok</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="140"/>
