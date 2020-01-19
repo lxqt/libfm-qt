@@ -920,7 +920,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
         <source>Show Hidden</source>
-        <translation>Rejtettek is</translation>
+        <translation>Rejtettek megjelenítése</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="97"/>
@@ -1071,7 +1071,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Látható oszlopok</translation>
     </message>
 </context>
 <context>
@@ -1273,7 +1273,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation type="unfinished">Csatlakozás</translation>
+        <translation type="unfinished">Csatolás</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
@@ -1355,7 +1355,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="208"/>
         <source>Please enter a new folder name:</source>
-        <translation>Űj mappanév:</translation>
+        <translation>Új mappanév:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="209"/>
@@ -1380,12 +1380,12 @@ Módosítva: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation>Az elérési út nincs csatolva.</translation>
+        <translation>Az útvonal nincs csatolva.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="274"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Érvénytelen indítófájl: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="309"/>
@@ -1423,7 +1423,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation type="unfinished">Ezzel a fájllal?</translation>
+        <translation type="unfinished">ezzel a fájllal?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
@@ -1476,7 +1476,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation type="unfinished">Kis/nagybetűre érzéketlen</translation>
+        <translation type="unfinished">Nagybetűérzéketlen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="55"/>
@@ -1511,7 +1511,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation>Csak ilyen típusú fájlokat keres:</translation>
+        <translation>Csak ilyen típusú fájlokat keressen:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
@@ -1556,7 +1556,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case insensiti&amp;ve</source>
-        <translation>Kis/nagybetű ér&amp;zéketlen</translation>
+        <translation>Nagybetűér&amp;zéketlen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
