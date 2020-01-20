@@ -883,7 +883,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="465"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation>Нельзя копировать каталог сам в себя!</translation>
+        <translation>Невозможно скопировать каталог внутрь себя самого!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="516"/>
