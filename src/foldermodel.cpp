@@ -472,17 +472,31 @@ QStringList FolderModel::mimeTypes() const {
 QMimeData* FolderModel::mimeData(const QModelIndexList& indexes) const {
     QMimeData* data = QAbstractItemModel::mimeData(indexes);
     //qDebug("FolderModel::mimeData");
-    // build a uri list
-    QByteArray urilist;
+    // build two uri lists, one for internal DND
+    // and the other for DNDing to external apps
+    QByteArray urilist, libfmUrilist;
     urilist.reserve(4096);
+    libfmUrilist.reserve(4096);
 
     for(const auto& index : indexes) {
         FolderModelItem* item = itemFromIndex(index);
         if(item && item->info) {
             auto path = item->info->path();
             if(path.isValid()) {
+                // get the list that will be used by internal DND
                 auto uri = path.uri();
-                urilist.append(uri.get());
+                libfmUrilist.append(uri.get());
+                libfmUrilist.append('\n');
+
+                // also, get the list that will be used when DNDing to external apps,
+                // using local paths as far as possible (for DNDing from remote folders)
+                if(auto localPath = path.localPath()) {
+                    QUrl url = QUrl::fromLocalFile(QString::fromUtf8(localPath.get()));
+                    urilist.append(url.toEncoded());
+                }
+                else {
+                    urilist.append(uri.get());
+                }
                 urilist.append('\n');
             }
         }
@@ -490,7 +504,7 @@ QMimeData* FolderModel::mimeData(const QModelIndexList& indexes) const {
     data->setData(QStringLiteral("text/uri-list"), urilist);
     // NOTE: The mimetype "text/uri-list" changes the list in QMimeData::setData() to get URLs
     // but some protocols (like MTP) may need the original list to query file info.
-    data->setData(QStringLiteral("libfm/files"), urilist);
+    data->setData(QStringLiteral("libfm/files"), libfmUrilist);
 
     return data;
 }
