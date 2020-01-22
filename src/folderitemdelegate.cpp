@@ -148,7 +148,9 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         opt.displayAlignment = Qt::AlignTop | Qt::AlignHCenter;
 
         // draw the icon
-        QIcon::Mode iconMode = shadowIcon ? QIcon::Disabled : iconModeFromState(opt.state);
+        QIcon::Mode iconMode = shadowIcon ? QIcon::Disabled
+                                          // in the icon and thumbnail modes, we select text, not icon
+                                          : iconModeFromState(opt.state & ~QStyle::State_Selected);
         QPoint iconPos(opt.rect.x() + (opt.rect.width() - option.decorationSize.width()) / 2, opt.rect.y() + margins_.height());
         QPixmap pixmap = opt.icon.pixmap(option.decorationSize, iconMode);
         // in case the pixmap is smaller than the requested size
