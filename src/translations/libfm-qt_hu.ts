@@ -238,7 +238,7 @@
     <message>
         <location filename="../file-props.ui" line="317"/>
         <source>Device Usage:</source>
-        <translation>Eszközhasználat:</translation>
+        <translation>Lemezhasználat:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="349"/>
@@ -327,7 +327,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation>Saját beállítás</translation>
+        <translation>Egyéni beállítás</translation>
     </message>
 </context>
 <context>
@@ -437,7 +437,7 @@ Mit szeretne tenni vele?</translation>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
         <translation>Ez a &apos;%1&apos; fájl futtatható szkriptnek tűnik.
-Mi legyen vele?</translation>
+Mit szeretne tenni vele?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
@@ -674,8 +674,8 @@ Cserélni kívánja?</translation>
         <location filename="../fileoperation.cpp" line="313"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>Egyes fájlok nem mozgathatók a kukába, mert a rendszer ezt nem engedélyezi.
-Törli őket véglegesen?</translation>
+        <translation>Egyes fájlok nem helyezhetők át a kukába, mert a rendszer ezt nem támogatja.
+Törli őket?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="399"/>
@@ -691,7 +691,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../fileoperation.cpp" line="418"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation>Kukába mozgatja a kiválasztott fájlokat?</translation>
+        <translation>Áthelyezi a kukába a kiválasztott fájlokat?</translation>
     </message>
 </context>
 <context>
@@ -759,7 +759,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation>Kukába mozgatott fájlok visszaállítása</translation>
+        <translation>Kukába áthelyezett fájlok visszaállítása</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
@@ -925,7 +925,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="97"/>
         <source>Folder Pr&amp;operties</source>
-        <translation>Mappa tulajd&amp;onságok</translation>
+        <translation>Mappatulajd&amp;onságok</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="140"/>
@@ -1408,7 +1408,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation>Fájlfelülírás megerősítése</translation>
+        <translation>Felülírás megerősítése</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
