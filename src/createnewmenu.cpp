@@ -42,7 +42,8 @@ public:
     void setTemplateItem(std::shared_ptr<const TemplateItem> item) {
         templateItem_ = std::move(item);
         auto mimeType = templateItem_->mimeType();
-        setText(QStringLiteral("%1 (%2)").arg(templateItem_->displayName()).arg(QString::fromUtf8(mimeType->desc())));
+        setText(QStringLiteral("%1 (%2)").arg(templateItem_->displayName(),
+                                              QString::fromUtf8(mimeType->desc())));
         setIcon(templateItem_->icon()->qicon());
     }
 

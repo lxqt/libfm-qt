@@ -56,14 +56,13 @@ RenameDialog::RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* p
     auto srcMtime = QDateTime::fromMSecsSinceEpoch(src.mtime() * 1000).toString(Qt::SystemLocaleShortDate);
     if(!disp_size.isEmpty()) {
         infoStr = QString(tr("Type: %1\nSize: %2\nModified: %3"))
-                  .arg(src.description())
-                  .arg(disp_size)
-                  .arg(srcMtime);
+                  .arg(src.description(),
+                       disp_size,
+                       srcMtime);
     }
     else {
         infoStr = QString(tr("Type: %1\nModified: %2"))
-                  .arg(src.description())
-                  .arg(srcMtime);
+                  .arg(src.description(), srcMtime);
     }
     ui->srcInfo->setText(infoStr);
 
@@ -76,14 +75,14 @@ RenameDialog::RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* p
     auto destMtime = QDateTime::fromMSecsSinceEpoch(dest.mtime() * 1000).toString(Qt::SystemLocaleShortDate);
     if(!disp_size.isEmpty()) {
         infoStr = QString(tr("Type: %1\nSize: %2\nModified: %3"))
-                  .arg(dest.description())
-                  .arg(disp_size)
-                  .arg(destMtime);
+                  .arg(dest.description(),
+                       disp_size,
+                       destMtime);
     }
     else {
         infoStr = QString(tr("Type: %1\nModified: %2"))
-                  .arg(dest.description())
-                  .arg(destMtime);
+                  .arg(dest.description(),
+                       destMtime);
     }
     ui->destInfo->setText(infoStr);
 

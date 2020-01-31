@@ -347,7 +347,8 @@ bool BasicFileLauncher::launchExecutable(const FileInfoPtr &fileInfo, GAppLaunch
                     if(chdir(run_path.get()) != 0) {
                         cwd.reset();
                         // show errors
-                        QString msg = QObject::tr("Cannot set working directory to '%1': %2").arg(QString::fromUtf8(run_path.get())).arg(QString::fromUtf8(g_strerror(errno)));
+                        QString msg = QObject::tr("Cannot set working directory to '%1': %2").arg(QString::fromUtf8(run_path.get()),
+                                                                                                  QString::fromUtf8(g_strerror(errno)));
                         GErrorPtr err{G_IO_ERROR, g_io_error_from_errno(errno), msg};
                         showError(ctx, err);
                     }

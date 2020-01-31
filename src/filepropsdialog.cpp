@@ -335,8 +335,8 @@ void FilePropsDialog::initGeneralPage() {
             ui->progressBar->setValue(qRound(static_cast<qreal>((total - free) * 100) / static_cast<qreal>(total)));
             ui->progressBar->setFormat(tr("%p% used"));
             ui->spaceLabel->setText(tr("%1 Free of %2")
-                                    .arg(formatFileSize(free, false))
-                                    .arg(formatFileSize(total, false)));
+                                    .arg(formatFileSize(free, false),
+                                         formatFileSize(total, false)));
         }
     }
     if(!canShowDeviceUsage) {
