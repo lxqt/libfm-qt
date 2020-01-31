@@ -164,8 +164,8 @@ void FileOperationDialog::setCurFile(QString cur_file) {
 
 void FileOperationDialog::setDataTransferred(uint64_t finishedSize, std::uint64_t totalSize) {
     ui->filesProcessed->setText(QStringLiteral("%1 / %2")
-                                 .arg(formatFileSize(finishedSize, fm_config->si_unit))
-                                 .arg(formatFileSize(totalSize, fm_config->si_unit)));
+                                 .arg(formatFileSize(finishedSize, fm_config->si_unit),
+                                      formatFileSize(totalSize, fm_config->si_unit)));
 }
 
 void FileOperationDialog::setFilesProcessed(uint64_t finishedCount, uint64_t totalCount) {
