@@ -207,8 +207,11 @@ bool BasicFileLauncher::launchDesktopEntry(const FileInfoPtr &fileInfo, const Fi
             else {
                 if(target.empty()) {
                     filename = fileInfo->path().localPath();
+                    desktopEntryName = filename.get();
                 }
-                desktopEntryName = !target.empty() ? target.c_str() : filename.get();
+                else {
+                    desktopEntryName = target.c_str();
+                }
             }
             break;
         }
@@ -225,8 +228,11 @@ bool BasicFileLauncher::launchDesktopEntry(const FileInfoPtr &fileInfo, const Fi
             fileInfo->path().hasUriScheme("menu")) {
         if(target.empty()) {
             filename = fileInfo->path().localPath();
+            desktopEntryName = filename.get();
         }
-        desktopEntryName = !target.empty() ? target.c_str() : filename.get();
+        else {
+            desktopEntryName = target.c_str();
+        }
     }
 
     if(desktopEntryName) {
@@ -271,9 +277,20 @@ bool BasicFileLauncher::launchDesktopEntry(const char *desktopEntryName, const F
         }
     }
     else {
-        QString msg = QObject::tr("Invalid desktop entry file: '%1'").arg(QString::fromUtf8(desktopEntryName));
-        GErrorPtr err{G_IO_ERROR, G_IO_ERROR_FAILED, msg};
-        showError(ctx, err);
+        // if no desktop app is found but we have a uri scheme, try to launch it directly
+        auto scheme = CStrPtr{g_uri_parse_scheme(desktopEntryName)};
+        if (scheme) {
+            if(GAppInfoPtr app{g_app_info_get_default_for_uri_scheme(scheme.get()), false}) {
+                FilePathList uris{FilePath::fromUri(desktopEntryName)};
+                launchWithApp(app.get(), uris, ctx);
+                ret = true;
+            }
+        }
+        if (!ret) {
+            QString msg = QObject::tr("Invalid desktop entry file: '%1'").arg(QString::fromUtf8(desktopEntryName));
+            GErrorPtr err{G_IO_ERROR, G_IO_ERROR_FAILED, msg};
+            showError(ctx, err);
+        }
     }
     return ret;
 }
