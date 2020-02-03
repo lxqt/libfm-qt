@@ -88,8 +88,9 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
             addCustomActionItem(this, item);
         }
 
-        // disable paste acton if it can't be used
+        // disable actons that can't be used
         pasteAction_->setEnabled(folderInfo->isWritable());
+        createAction_->setEnabled(folderInfo->isWritable());
     }
 
     separator4_ = addSeparator();
