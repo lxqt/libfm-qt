@@ -189,6 +189,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
         if(!(sameType_ && info_->isDir()
              && (files_.size() > 1 ? isWritableDir : info_->isWritable()))) {
             pasteAction_->setEnabled(false);
+            createAction_->setEnabled(false);
         }
     }
 
