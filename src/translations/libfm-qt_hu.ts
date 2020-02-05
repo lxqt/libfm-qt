@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Location:</source>
-        <translation type="unfinished">Hely:</translation>
+        <translation>Hely:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -364,7 +364,7 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation type="unfinished">Olvasás...</translation>
+        <translation>Betöltés...</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
@@ -436,13 +436,13 @@ Mit szeretne tenni vele?</translation>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>Ez a &apos;%1&apos; fájl futtatható szkriptnek tűnik.
+        <translation>&apos;%1&apos; : Ez a fájl futtatható szkriptnek tűnik.
 Mit szeretne tenni vele?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>Ez a &apos;%1&apos; fájl futtatható. Futtatja?</translation>
+        <translation>&apos;%1&apos; : Ez a fájl futtatható. Futtatja?</translation>
     </message>
 </context>
 <context>
@@ -488,12 +488,12 @@ Mit szeretne tenni vele?</translation>
     <message>
         <location filename="../filedialog.cpp" line="144"/>
         <source>Icon View</source>
-        <translation type="unfinished">Ikonnézet</translation>
+        <translation>Ikonnézet</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="148"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished">Bélyegkép nézet</translation>
+        <translation>Bélyegkép nézet</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="152"/>
@@ -509,7 +509,7 @@ Mit szeretne tenni vele?</translation>
         <location filename="../filedialog.cpp" line="300"/>
         <location filename="../filedialog.cpp" line="690"/>
         <source>Error</source>
-        <translation type="unfinished">Hiba</translation>
+        <translation>Hiba</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="300"/>
@@ -526,12 +526,12 @@ Cserélni kívánja?</translation>
     <message>
         <location filename="../filedialog.cpp" line="660"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation>Útvonal &quot;%1&quot; nem létezik</translation>
+        <translation>&quot;%1&quot; útvonal nem létezik</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="674"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished">&quot;%1&quot; nem egy könyvtár</translation>
+        <translation>&quot;%1&quot; nem egy könyvtár</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="680"/>
@@ -605,7 +605,7 @@ Cserélni kívánja?</translation>
         <location filename="../filemenu.cpp" line="159"/>
         <location filename="../filemenu.cpp" line="407"/>
         <source>&amp;Move to Trash</source>
-        <translation type="unfinished">Mozgatás &amp;Kukába</translation>
+        <translation>Áthelyezés &amp;Kukába</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="252"/>
@@ -615,7 +615,7 @@ Cserélni kívánja?</translation>
     <message>
         <location filename="../filemenu.cpp" line="253"/>
         <source>Trust this executable</source>
-        <translation type="unfinished">Bízzon meg ebben a futtatható állományban</translation>
+        <translation>Bízzon meg ebben a futtatható állományban</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="342"/>
@@ -675,7 +675,7 @@ Cserélni kívánja?</translation>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
         <translation>Egyes fájlok nem helyezhetők át a kukába, mert a rendszer ezt nem támogatja.
-Törli őket?</translation>
+Törli őket véglegesen?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="399"/>
@@ -699,7 +699,7 @@ Törli őket?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move files</source>
-        <translation type="unfinished">Fájlok áthelyezése</translation>
+        <translation>Fájlok áthelyezése</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
@@ -833,7 +833,7 @@ Törli őket?</translation>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln fájl</numerusform>
             <numerusform>%Ln fájl</numerusform>
         </translation>
@@ -856,7 +856,7 @@ Törli őket?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="519"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>Minden mappára és fájlra alkalmazza a változtatásokat?</translation>
+        <translation>Minden tartalmazott mappára és fájlra alkalmazza a változtatásokat?</translation>
     </message>
 </context>
 <context>
@@ -905,7 +905,7 @@ Törli őket?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="54"/>
         <source>Select &amp;All</source>
-        <translation type="unfinished">Minden kije&amp;lölése</translation>
+        <translation type="unfinished">Összes kije&amp;lölése</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
@@ -1092,7 +1092,7 @@ Törli őket?</translation>
     <message>
         <location filename="../mountoperationpassworddialog.cpp" line="40"/>
         <source>&amp;Connect</source>
-        <translation>&amp;Kapcsolódás</translation>
+        <translation>&amp;Csatlakoztatás</translation>
     </message>
 </context>
 <context>
@@ -1588,19 +1588,19 @@ Módosítva: %2</translation>
         <location filename="../filesearch.ui" line="314"/>
         <location filename="../filesearch.ui" line="344"/>
         <source>KiB</source>
-        <translation>Kb</translation>
+        <translation>kB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="319"/>
         <location filename="../filesearch.ui" line="349"/>
         <source>MiB</source>
-        <translation>Mb</translation>
+        <translation>MB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="324"/>
         <location filename="../filesearch.ui" line="354"/>
         <source>GiB</source>
-        <translation>Gb</translation>
+        <translation>GB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="274"/>
