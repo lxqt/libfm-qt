@@ -92,6 +92,7 @@ private Q_SLOTS:
 private:
     std::vector<std::shared_ptr<TemplateItem>> items_;
     std::vector<std::shared_ptr<Folder>> templateFolders_;
+    std::vector<std::shared_ptr<const MimeType>> types_;
     static std::weak_ptr<Templates> globalInstance_;
 };
 

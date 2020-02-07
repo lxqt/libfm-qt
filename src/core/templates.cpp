@@ -1,5 +1,6 @@
 #include "templates.h"
 #include "gioptrs.h"
+#include "core/legacy/fm-config.h"
 
 #include <algorithm>
 #include <QDebug>
@@ -27,11 +28,13 @@ FilePath TemplateItem::filePath() const {
 }
 
 Templates::Templates() : QObject() {
-    auto* data_dirs = g_get_system_data_dirs();
-    // system-wide template dirs
-    for(auto data_dir = data_dirs; *data_dir; ++data_dir) {
-        CStrPtr dir_name{g_build_filename(*data_dir, "templates", nullptr)};
-        addTemplateDir(dir_name.get());
+    if(!fm_config || !fm_config->only_user_templates) {
+        auto* data_dirs = g_get_system_data_dirs();
+        // system-wide template dirs
+        for(auto data_dir = data_dirs; *data_dir; ++data_dir) {
+            CStrPtr dir_name{g_build_filename(*data_dir, "templates", nullptr)};
+            addTemplateDir(dir_name.get());
+        }
     }
 
     // user-specific template dir
@@ -59,9 +62,15 @@ void Templates::addTemplateDir(const char* dirPathName) {
     if(dir_path.isValid()) {
         auto folder = Folder::fromPath(dir_path);
         if(folder->isLoaded()) {
+            bool typeOnce(fm_config && fm_config->template_type_once);
             const auto files = folder->files();
             for(auto& file : files) {
-                items_.emplace_back(std::make_shared<TemplateItem>(file));
+                if(!typeOnce || std::find(types_.cbegin(), types_.cend(), file->mimeType()) == types_.cend()) {
+                    items_.emplace_back(std::make_shared<TemplateItem>(file));
+                    if(typeOnce) {
+                        types_.emplace_back(file->mimeType());
+                    }
+                }
             }
         }
         connect(folder.get(), &Folder::filesAdded, this, &Templates::onFilesAdded);
@@ -78,9 +87,15 @@ void Templates::onFilesAdded(FileInfoList& addedFiles) {
         if(file->isHidden() || file->isDir()) {
             continue;
         }
-        items_.emplace_back(std::make_shared<TemplateItem>(file));
-        // emit a signal for the addition
-        Q_EMIT itemAdded(items_.back());
+        bool typeOnce(fm_config && fm_config->template_type_once);
+        if(!typeOnce || std::find(types_.cbegin(), types_.cend(), file->mimeType()) == types_.cend()) {
+            items_.emplace_back(std::make_shared<TemplateItem>(file));
+            if(typeOnce) {
+                types_.emplace_back(file->mimeType());
+            }
+            // emit a signal for the addition
+            Q_EMIT itemAdded(items_.back());
+        }
     }
 }
 
