@@ -945,7 +945,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Per tempo di eliminazione</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="169"/>
@@ -965,7 +965,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Per gruppo file</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
@@ -993,32 +993,32 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="274"/>
         <source>Location:</source>
-        <translation type="unfinished">Posizione:</translation>
+        <translation>Posizione:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="277"/>
         <source>File type:</source>
-        <translation type="unfinished">Tipo file:</translation>
+        <translation>Tipo file:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>File size:</source>
-        <translation type="unfinished">Dimensione file:</translation>
+        <translation>Dimensione file:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
         <source>Last modified:</source>
-        <translation type="unfinished">Ultima modifica:</translation>
+        <translation>Ultima modifica:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">Ultimo accesso:</translation>
+        <translation>Ultimo accesso:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Owner:</source>
-        <translation type="unfinished">Proprietario:</translation>
+        <translation>Proprietario:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="291"/>
