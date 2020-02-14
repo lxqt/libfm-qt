@@ -724,7 +724,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation type="unfinished">A következő fájlok kukába mozgatása:</translation>
+        <translation>A következő fájlok áthelyezése kukába:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
@@ -744,7 +744,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation type="unfinished">Szimbolikus link létrehozása a következő fájlokra:</translation>
+        <translation>Szimbolikus link létrehozása a következő fájlokra:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
@@ -783,7 +783,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="163"/>
         <source>View and modify folder content</source>
-        <translation type="unfinished">Mappa tartalmának megtekintése és módosítása</translation>
+        <translation>Mappa tartalmának megtekintése és módosítása</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="167"/>
@@ -813,22 +813,22 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="336"/>
         <source>%p% used</source>
-        <translation type="unfinished">%p% használt</translation>
+        <translation>%p% használt</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="337"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished">%1 szabad ebből: %2</translation>
+        <translation>%1 szabad ebből: %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
         <source>no file</source>
-        <translation type="unfinished">nincs fájl</translation>
+        <translation>nincs fájl</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="384"/>
         <source>one file</source>
-        <translation type="unfinished">egy fájl</translation>
+        <translation>egy fájl</translation>
     </message>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
@@ -965,7 +965,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation type="unfinished">Fájlcsoport</translation>
+        <translation>Fájlcsoport</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
@@ -993,22 +993,22 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="274"/>
         <source>Location:</source>
-        <translation type="unfinished">Hely:</translation>
+        <translation>Hely:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="277"/>
         <source>File type:</source>
-        <translation type="unfinished">Fájltípus:</translation>
+        <translation>Fájltípus:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>File size:</source>
-        <translation type="unfinished">Fájlméret:</translation>
+        <translation>Fájlméret:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
         <source>Last modified:</source>
-        <translation type="unfinished">Utoljára módosítva:</translation>
+        <translation>Legutóbb módosítva:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
@@ -1018,12 +1018,12 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Owner:</source>
-        <translation type="unfinished">Tulajdonos:</translation>
+        <translation>Tulajdonos:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="291"/>
         <source>Group:</source>
-        <translation type="unfinished">Csoport:</translation>
+        <translation>Csoport:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="359"/>
@@ -1048,7 +1048,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="371"/>
         <source>Deleted</source>
-        <translation type="unfinished">Törölve</translation>
+        <translation>Törölve</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="374"/>
@@ -1066,7 +1066,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished">Oszlopok automatikus átméretezése</translation>
+        <translation>Oszlopok automatikus átméretezése</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
@@ -1265,7 +1265,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished">Nem lehet eltávolítani a(z) &apos;%s&apos; fájlt: az eredeti elérési út nem ismert</translation>
+        <translation>Nem lehet eltávolítani a(z) &apos;%s&apos; fájlt: az eredeti útvonal nem ismert</translation>
     </message>
 </context>
 <context>
@@ -1273,7 +1273,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation type="unfinished">Csatolás</translation>
+        <translation>Csatolás</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
@@ -1350,7 +1350,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="204"/>
         <source>New text file</source>
-        <translation type="unfinished">Új szövegfájl</translation>
+        <translation>Új szövegfájl</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="208"/>
@@ -1390,17 +1390,17 @@ Módosítva: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="309"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished">Nincs beállítva alapértelmezett alkalmazás a(z) &apos;%1&apos; indításához</translation>
+        <translation>Nincs beállítva alapértelmezett alkalmazás a(z) &apos;%1&apos; megnyitásához</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="350"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A munkakönyvtár nem állítható be a következőre: &apos;%1&apos;: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished">Azonosító: </translation>
+        <translation>Azonosító: </translation>
     </message>
 </context>
 <context>
@@ -1476,7 +1476,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case insensitive</source>
-        <translation type="unfinished">Nagybetűérzéketlen</translation>
+        <translation>Nagybetűérzéketlen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="55"/>
