@@ -93,15 +93,17 @@ void FolderViewListView::mousePressEvent(QMouseEvent* event) {
             globalItemPressPoint_ = QPoint();
         }
     }
-    // switch between the extended and multiple selection modes,
-    // depending on the cursor position, only when there's no other mode
-    if(selectionMode() == QAbstractItemView::ExtendedSelection
-       || selectionMode() == QAbstractItemView::MultiSelection) {
-        setSelectionMode(cursorOnSelectionCorner_ && event->button() == Qt::LeftButton
-                            ? QAbstractItemView::MultiSelection
-                            : QAbstractItemView::ExtendedSelection);
+    // use the selection corner only with the extended and multiple selection modes
+    // and change the mode to multiple temporarily if it is extended
+    QAbstractItemView::SelectionMode sm = selectionMode();
+    if(sm == QAbstractItemView::ExtendedSelection
+       && cursorOnSelectionCorner_ && event->button() == Qt::LeftButton) {
+        setSelectionMode(QAbstractItemView::MultiSelection);
     }
     QListView::mousePressEvent(event);
+    if (sm == QAbstractItemView::ExtendedSelection) {
+        setSelectionMode(sm); // restore the selection mode
+    }
     static_cast<FolderView*>(parent())->childMousePressEvent(event);
 }
 
