@@ -620,6 +620,35 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
     }
 }
 
+void PlacesView::keyPressEvent(QKeyEvent* event) {
+    // prevent propagation of usual modifiers because
+    // they might be used elsewhere in shortcuts, especially with arrow keys
+    if(event->modifiers() & (Qt::ShiftModifier | Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier)) {
+        return;
+    }
+    // activate child items and expand/collapse root items with Enter/Return
+    if(event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter) {
+        QModelIndex index = currentIndex();
+        if(index.isValid()) {
+            if (index.column() != 0) {
+                index = index.sibling(index.row(), 0); // the real item is at column 0
+            }
+            if (index.isValid()) {
+                if (!index.parent().isValid()) { // root item
+                    setExpanded(index, !isExpanded(index));
+                }
+                else {
+                    // may have not been selected yet
+                    selectionModel()->select(index, QItemSelectionModel::SelectCurrent | QItemSelectionModel::Rows);
+                    activateRow(0, index);
+                }
+                return;
+            }
+        }
+    }
+    QTreeView::keyPressEvent(event);
+}
+
 void PlacesView::restoreHiddenItems(const QSet<QString>& items) {
     proxyModel_->restoreHiddenItems(items);
 }
