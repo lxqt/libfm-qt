@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>A választott alkalmazás rendelődjön a fáljtípushoz</translation>
+        <translation>A kiválasztott alkalmazás hozzárendelése a fáljtípushoz</translation>
     </message>
 </context>
 <context>
@@ -170,7 +170,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation>Feldolgozott fájlok:</translation>
+        <translation>Fájlok feldolgozva:</translation>
     </message>
 </context>
 <context>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Alkalmazás választás a &quot;%1&quot; fájl megnyitásához</translation>
+        <translation>Alkalmazás kiválasztás a(z) &quot;%1&quot; fájl megnyitásához</translation>
     </message>
 </context>
 <context>
@@ -472,7 +472,7 @@ Mit szeretne tenni vele?</translation>
     <message>
         <location filename="../filedialog.cpp" line="119"/>
         <source>Reload</source>
-        <translation>Frissítés</translation>
+        <translation>Újratöltés</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="120"/>
@@ -498,7 +498,7 @@ Mit szeretne tenni vele?</translation>
     <message>
         <location filename="../filedialog.cpp" line="152"/>
         <source>Compact View</source>
-        <translation>Tömör nézet</translation>
+        <translation>Kompakt nézet</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="156"/>
@@ -709,7 +709,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation>Fájlmásolás</translation>
+        <translation>Fájlok másolása</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
@@ -1013,7 +1013,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
         <source>Last accessed:</source>
-        <translation>Utoljára hozzáférve:</translation>
+        <translation>Utolsó hozzáférés:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
@@ -1213,7 +1213,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../placesview.cpp" line="608"/>
         <source>Show All Entries</source>
-        <translation>Minden bejegyzés mutatása</translation>
+        <translation>Minden bejegyzés megjelenítése</translation>
     </message>
 </context>
 <context>
@@ -1588,19 +1588,19 @@ Módosítva: %2</translation>
         <location filename="../filesearch.ui" line="314"/>
         <location filename="../filesearch.ui" line="344"/>
         <source>KiB</source>
-        <translation>kB</translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="319"/>
         <location filename="../filesearch.ui" line="349"/>
         <source>MiB</source>
-        <translation>MB</translation>
+        <translation>MiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="324"/>
         <location filename="../filesearch.ui" line="354"/>
         <source>GiB</source>
-        <translation>GB</translation>
+        <translation>GiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="274"/>
