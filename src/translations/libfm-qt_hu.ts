@@ -521,7 +521,7 @@ Mit szeretne tenni vele?</translation>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 már létezik.
-Cserélni kívánja?</translation>
+Le szeretné cserélni?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="660"/>
