@@ -155,7 +155,7 @@ static FmXmlFileItem *_set_default_contents(FmXmlFile *file, const char *basenam
     /* set content:
         <Menu>
             <Name>Applications</Name>
-            <MergeFile type='parent'>/etc/xgd/menus/%s</MergeFile>
+            <MergeFile type='parent'>/etc/xdg/menus/%s</MergeFile>
         </Menu> */
     item = fm_xml_file_item_new(menuTag_Menu);
     fm_xml_file_insert_first(file, item);
@@ -165,7 +165,7 @@ static FmXmlFileItem *_set_default_contents(FmXmlFile *file, const char *basenam
     child = fm_xml_file_item_new(menuTag_MergeFile);
     fm_xml_file_item_set_attribute(child, "type", "parent");
     /* FIXME: what is correct way to handle this? is it required at all? */
-    path = g_strdup_printf("/etc/xgd/menus/%s", basename);
+    path = g_strdup_printf("/etc/xdg/menus/%s", basename);
     fm_xml_file_item_append_text(child, path, -1, FALSE);
     g_free(path);
     fm_xml_file_item_append_child(item, child);
