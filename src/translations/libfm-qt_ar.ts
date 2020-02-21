@@ -833,13 +833,13 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>لا ملفات</numerusform>
+            <numerusform>ملف واحد</numerusform>
+            <numerusform>ملفان اثنان</numerusform>
+            <numerusform>%Ln ملفات</numerusform>
+            <numerusform>%Ln ملفًا</numerusform>
+            <numerusform>%Ln ملف</numerusform>
         </translation>
     </message>
     <message>
@@ -886,7 +886,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="465"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>لا يمكنك نسخ الدليل في نفسه!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="516"/>
@@ -949,7 +949,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>بوقت الحذف</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="169"/>
@@ -969,7 +969,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>بمجموعة الملف</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
@@ -997,37 +997,37 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="274"/>
         <source>Location:</source>
-        <translation type="unfinished">المكان:</translation>
+        <translation>المكان:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="277"/>
         <source>File type:</source>
-        <translation type="unfinished">نوع الملف:</translation>
+        <translation>نوع الملف:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>File size:</source>
-        <translation type="unfinished">حجم الملف:</translation>
+        <translation>حجم الملف:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
         <source>Last modified:</source>
-        <translation type="unfinished">آخر تعديل:</translation>
+        <translation>آخر تعديل:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="286"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">آخر نفاذ:</translation>
+        <translation>آخر نفاذ:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="290"/>
         <source>Owner:</source>
-        <translation type="unfinished">المالك:</translation>
+        <translation>المالك:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="291"/>
         <source>Group:</source>
-        <translation type="unfinished">المجموعة:</translation>
+        <translation>المجموعة:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="359"/>
@@ -1052,7 +1052,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="371"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>الحذف</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="374"/>
@@ -1070,12 +1070,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>غيّر مقاس الأعمدة تلقائيًا</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>الأعمدة الظاهرة</translation>
     </message>
 </context>
 <context>
@@ -1614,7 +1614,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>ابحث في الأدلة الفرعية</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
