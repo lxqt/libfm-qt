@@ -561,7 +561,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="133"/>
         <source>Open File</source>
-        <translation>فتح الملف</translation>
+        <translation>افتح الملف</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="134"/>
