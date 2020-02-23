@@ -966,7 +966,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation type="unfinished">По группе файла</translation>
+        <translation>По группе файла</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
