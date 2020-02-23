@@ -836,7 +836,7 @@ Do you want to delete them instead?</source>
         <translation>
             <numerusform>%Ln файл</numerusform>
             <numerusform>%Ln файла</numerusform>
-            <numerusform>%Ln  файлов</numerusform>
+            <numerusform>%Ln файлов</numerusform>
         </translation>
     </message>
     <message>
@@ -1366,7 +1366,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="214"/>
         <source>Enter a name for the new %1:</source>
-        <translation>Введите имя для нового %1:</translation>
+        <translation>Введите имя нового файла (%1):</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="199"/>
