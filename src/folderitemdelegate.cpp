@@ -152,35 +152,33 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
                                           // in the icon and thumbnail modes, we select text, not icon
                                           : iconModeFromState(opt.state & ~QStyle::State_Selected);
         QPoint iconPos(opt.rect.x() + (opt.rect.width() - option.decorationSize.width()) / 2, opt.rect.y() + margins_.height());
-        QPixmap pixmap = opt.icon.pixmap(option.decorationSize, iconMode);
-        // in case the pixmap is smaller than the requested size
-        QSize margin = ((option.decorationSize - pixmap.size()) / 2).expandedTo(QSize(0, 0));
+        QRect iconRect(iconPos, option.decorationSize);
         if(isCut) {
             painter->save();
             painter->setOpacity(0.45);
         }
-        painter->drawPixmap(iconPos + QPoint(margin.width(), margin.height()), pixmap);
+        opt.icon.paint(painter, iconRect, Qt::AlignCenter, iconMode);
         if(isCut) {
             painter->restore();
         }
 
         // draw some emblems for the item if needed
+        iconRect.setSize(option.decorationSize / 2);
         if(isSymlink) {
             // draw the emblem for symlinks
-            painter->drawPixmap(iconPos, symlinkIcon_.pixmap(option.decorationSize / 2, iconMode));
+            symlinkIcon_.paint(painter, iconRect, Qt::AlignCenter, iconMode);
         }
 
         if(untrusted) {
             // emblem for untrusted, deletable desktop files
-            painter->drawPixmap(iconPos.x(), opt.rect.y() + option.decorationSize.height() / 2, untrustedIcon_.pixmap(option.decorationSize / 2, iconMode));
+            untrustedIcon_.paint(painter, iconRect.translated(0, option.decorationSize.height() / 2), Qt::AlignCenter, iconMode);
         }
 
         // draw other emblems if there's any
         if(!emblems.empty()) {
             // FIXME: we only support one emblem now
-            QPoint emblemPos(opt.rect.x() + opt.rect.width() / 2, opt.rect.y() + option.decorationSize.height() / 2);
             QIcon emblem = emblems.front()->qicon();
-            painter->drawPixmap(emblemPos, emblem.pixmap(option.decorationSize / 2, iconMode));
+            emblem.paint(painter, iconRect.translated(option.decorationSize.width() / 2, option.decorationSize.height() / 2), Qt::AlignCenter, iconMode);
         }
 
         // Draw select/deselect icons outside the main icon but near its top left corner,
@@ -205,11 +203,12 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
                 painter->save();
                 painter->setOpacity(0.6);
             }
+            iconRect = QRect(iconPos, QSize(s, s));
             if(opt.state & QStyle::State_Selected) {
-                painter->drawPixmap(iconPos, removeIcon_.pixmap(QSize(s, s), QIcon::Normal));
+                removeIcon_.paint(painter, iconRect, Qt::AlignCenter, QIcon::Normal);
             }
             else {
-                painter->drawPixmap(iconPos, addIcon_.pixmap(QSize(s, s), QIcon::Normal));
+                addIcon_.paint(painter, iconRect, Qt::AlignCenter, QIcon::Normal);
             }
             if(!cursorOnSelectionCorner) {
                 painter->restore();
@@ -266,17 +265,20 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         // draw some emblems for the item if needed
         if(isSymlink) {
             QPoint iconPos(opt.rect.x(), opt.rect.y() + (opt.rect.height() - option.decorationSize.height()) / 2);
-            painter->drawPixmap(iconPos, symlinkIcon_.pixmap(option.decorationSize / 2, iconMode));
+            QRect iconRect(iconPos, option.decorationSize / 2);
+            symlinkIcon_.paint(painter, iconRect, Qt::AlignCenter, iconMode);
         }
         if(untrusted) {
             QPoint iconPos(opt.rect.x(), opt.rect.y() + opt.rect.height() / 2);
-            painter->drawPixmap(iconPos, untrustedIcon_.pixmap(option.decorationSize / 2, iconMode));
+            QRect iconRect(iconPos, option.decorationSize / 2);
+            untrustedIcon_.paint(painter, iconRect, Qt::AlignCenter, iconMode);
         }
         if(!emblems.empty()) {
             // FIXME: we only support one emblem now
             QPoint iconPos(opt.rect.x() + option.decorationSize.width() / 2, opt.rect.y() + opt.rect.height() / 2);
+            QRect iconRect(iconPos, option.decorationSize / 2);
             QIcon emblem = emblems.front()->qicon();
-            painter->drawPixmap(iconPos, emblem.pixmap(option.decorationSize / 2, iconMode));
+            emblem.paint(painter, iconRect, Qt::AlignCenter, iconMode);
         }
     }
 }
