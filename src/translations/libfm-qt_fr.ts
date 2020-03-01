@@ -37,12 +37,12 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;Ces codes spéciaux peuvent être utilisés dans la ligne de commande :&lt;/b&gt;
+        <translation>&lt;b&gt;Ces codes spéciaux peuvent être utilisés dans la ligne de commande :&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Représente un seul nom de fichier&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Représente plusieurs noms de fichiers&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Représente l’URI d&apos;un seul fichier&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Représente plusieurs URIs&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt; : représente un seul nom de fichier,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt; : représente plusieurs noms de fichiers,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt; : représente l’URI d&apos;un seul fichier,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt; : représente plusieurs URI.&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
@@ -764,7 +764,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Restauration à partir de la corbeille des fichiers suivants  :</translation>
+        <translation>Restauration à partir de la corbeille des fichiers suivants :</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
@@ -998,12 +998,12 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="277"/>
         <source>File type:</source>
-        <translation type="unfinished">Type de fichier :</translation>
+        <translation>Type de fichier :</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="281"/>
         <source>File size:</source>
-        <translation type="unfinished">Taille du fichier :</translation>
+        <translation>Taille du fichier :</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="285"/>
@@ -1224,17 +1224,17 @@ Voulez-vous les supprimer à la place ?</translation>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation>Type: %1
-Taille: %2
-Modification: %3</translation>
+        <translation>Type : %1
+Taille : %2
+Modification : %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="84"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation>Type: %1
-Modification: %2</translation>
+        <translation>Type : %1
+Modification : %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="97"/>
@@ -1265,7 +1265,7 @@ Modification: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Ne peut pas sortir le fichier &apos;%s&apos; de la corbeille: le chemin d&apos;origine est inconnu</translation>
+        <translation>Impossible de sortir le fichier « %s » de la corbeille : le chemin d&apos;origine est inconnu.</translation>
     </message>
 </context>
 <context>
@@ -1395,7 +1395,7 @@ Modification: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="350"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>Impossible de définir le répertoire de travail à &apos;%1&apos;: &apos;%2&apos;</translation>
+        <translation>Impossible de définir le répertoire de travail à « %1 » : « %2 »</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
