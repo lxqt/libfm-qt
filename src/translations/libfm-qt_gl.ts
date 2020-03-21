@@ -48,7 +48,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>Manter o terminal aberto após  a execución da orde</translation>
+        <translation>Manter o terminal aberto após a execución da orde</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
@@ -1615,7 +1615,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="370"/>
         <source>Last Modified Time:</source>
-        <translation>Data  da última modificación:</translation>
+        <translation>Data da última modificación:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="378"/>
