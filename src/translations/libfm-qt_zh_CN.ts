@@ -1609,7 +1609,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>在子文件夹中搜索</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
