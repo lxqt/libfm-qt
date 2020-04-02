@@ -177,8 +177,7 @@ bool BasicFileLauncher::launchWithApp(GAppInfo* app, const FilePathList& paths, 
     uris = g_list_reverse(uris);
     GErrorPtr err;
     bool ret = bool(g_app_info_launch_uris(app, uris, ctx, &err));
-    g_list_foreach(uris, reinterpret_cast<GFunc>(g_free), nullptr);
-    g_list_free(uris);
+    g_list_free_full(uris, g_free);
     if(!ret) {
         // FIXME: show error for all files
         showError(ctx, err, paths.empty() ? FilePath{} : paths[0]);
@@ -269,8 +268,7 @@ bool BasicFileLauncher::launchDesktopEntry(const char *desktopEntryName, const F
         uris = g_list_reverse(uris);
         GErrorPtr err;
         ret = bool(fm_app_info_launch(app, uris, ctx, &err));
-        g_list_foreach(uris, reinterpret_cast<GFunc>(g_free), nullptr);
-        g_list_free(uris);
+        g_list_free_full(uris, g_free);
         if(!ret) {
             // FIXME: show error for all files
             showError(ctx, err, paths.empty() ? FilePath{} : paths[0]);
