@@ -174,8 +174,7 @@ GAppInfo* AppChooserDialog::customCommandToApp() {
                 }
                 g_free(bin2);
             }
-            g_list_foreach(apps, (GFunc)g_object_unref, nullptr);
-            g_list_free(apps);
+            g_list_free_full(apps, g_object_unref);
             if(app) {
                 goto _out;
             }

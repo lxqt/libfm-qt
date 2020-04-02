@@ -82,8 +82,7 @@ bool Archiver::launchProgram(GAppLaunchContext* ctx, const char* cmd, const File
             uris = g_list_prepend(uris, g_strdup(file.uri().get()));
         }
         g_app_info_launch_uris(app.get(), uris, ctx, nullptr);
-        g_list_foreach(uris, (GFunc)g_free, nullptr);
-        g_list_free(uris);
+        g_list_free_full(uris, g_free);
     }
     g_free(_cmd);
     return true;

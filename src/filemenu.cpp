@@ -323,8 +323,7 @@ void FileMenu::openFilesWithApp(GAppInfo* app) {
     }
     uris = g_list_reverse(uris); // respect the original order
     fm_app_info_launch_uris(app, uris, nullptr, nullptr);
-    g_list_foreach(uris, (GFunc)g_free, nullptr);
-    g_list_free(uris);
+    g_list_free_full(uris, g_free);
 }
 
 void FileMenu::onApplicationTriggered() {
