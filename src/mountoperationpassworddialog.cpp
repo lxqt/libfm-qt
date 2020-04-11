@@ -122,6 +122,11 @@ void MountOperationPasswordDialog::done(int r) {
         }
         if(needPassword) {
             g_mount_operation_set_password(gmop, ui->password->text().toUtf8().constData());
+            if(!ui->Anonymous->isChecked()) {
+                g_mount_operation_set_password_save(gmop, ui->storePassword->isChecked() ? G_PASSWORD_SAVE_PERMANENTLY :
+                                                          ui-> sessionPassword->isChecked() ? G_PASSWORD_SAVE_FOR_SESSION :
+                                                          G_PASSWORD_SAVE_NEVER);
+            }
         }
         if(canAnonymous) {
             g_mount_operation_set_anonymous(gmop, ui->Anonymous->isChecked());
