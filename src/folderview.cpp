@@ -69,6 +69,12 @@ FolderViewListView::FolderViewListView(QWidget* parent):
     // inline renaming
     setEditTriggers(QAbstractItemView::NoEditTriggers);
     setMouseTracking(true); // needed with selection corner icon
+
+    viewport()->setAcceptDrops(true);
+    /* If the list view is already visible, setMovement() will lay out items again with delay
+       (see Qt, QListView::setMovement(), d->doDelayedItemsLayout()) and thus drop events will
+       remain disabled for its viewport. So, we should call it here, before showing the view. */
+    setMovement(QListView::Static);
 }
 
 FolderViewListView::~FolderViewListView() {
@@ -1083,14 +1089,6 @@ void FolderView::setViewMode(ViewMode _mode) {
         delegate = new FolderItemDelegate(listView);
         delegate->setShadowHidden(shadowHidden_);
         listView->setItemDelegateForColumn(FolderModel::ColumnFileName, delegate);
-        // FIXME: should we expose the delegate?
-        listView->setMovement(QListView::Static);
-        /* If listView is already visible, setMovement() will lay out items again with delay
-           (see Qt, QListView::setMovement(), d->doDelayedItemsLayout()) and thus drop events
-           will remain disabled for the viewport. So, we should re-enable drop events here. */
-        if(listView->viewport()->isVisible()) {
-            listView->viewport()->setAcceptDrops(true);
-        }
         listView->setResizeMode(QListView::Adjust);
         listView->setWrapping(true);
         switch(mode) {
