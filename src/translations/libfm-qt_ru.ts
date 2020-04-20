@@ -836,7 +836,7 @@ Do you want to delete them instead?</source>
         <translation>
             <numerusform>%Ln файл</numerusform>
             <numerusform>%Ln файла</numerusform>
-            <numerusform>%Ln  файлов</numerusform>
+            <numerusform>%Ln файлов</numerusform>
         </translation>
     </message>
     <message>
@@ -1366,7 +1366,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="214"/>
         <source>Enter a name for the new %1:</source>
-        <translation>Введите имя для нового %1:</translation>
+        <translation>Введите имя нового файла (%1):</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="199"/>
@@ -1419,7 +1419,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="56"/>
         <source>dest</source>
-        <translation type="unfinished">dest</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
@@ -1429,17 +1429,17 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
         <source>src file info</source>
-        <translation type="unfinished">src file info</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="89"/>
         <source>dest file info</source>
-        <translation type="unfinished">dest file info</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="102"/>
         <source>src</source>
-        <translation type="unfinished">src</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>

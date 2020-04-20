@@ -503,7 +503,7 @@ O que deseja fazer?</translation>
     <message>
         <location filename="../filedialog.cpp" line="156"/>
         <source>Detailed List View</source>
-        <translation>Vista em lista detalhada</translation>
+        <translation>Vista detalhada</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="300"/>
@@ -526,17 +526,17 @@ Deseja substituir?</translation>
     <message>
         <location filename="../filedialog.cpp" line="660"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation>Caminho &apos;%1&apos; não existe</translation>
+        <translation>Caminho &quot;%1&quot; não existe</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="674"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation>&apos;%1&apos; não é um diretório</translation>
+        <translation>&quot;%1&quot; não é um diretório</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="680"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation>&apos;%1&apos; não é um ficheiro</translation>
+        <translation>&quot;%1&quot; não é um ficheiro</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="823"/>
@@ -1365,7 +1365,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="214"/>
         <source>Enter a name for the new %1:</source>
-        <translation>Introduza  um nome para %1:</translation>
+        <translation>Introduza um nome para %1:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="199"/>
@@ -1526,12 +1526,12 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="166"/>
         <source>Audio files</source>
-        <translation>Áudio</translation>
+        <translation>Ficheiros de áudio</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="173"/>
         <source>Video files</source>
-        <translation>Vídeos</translation>
+        <translation>Ficheiros de vídeo</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="180"/>

@@ -1372,7 +1372,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="214"/>
         <source>Enter a name for the new %1:</source>
-        <translation></translation>
+        <translation>נא להקליד שם עבור %1 החדש:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="560"/>

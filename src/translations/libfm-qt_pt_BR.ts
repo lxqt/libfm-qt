@@ -882,7 +882,7 @@ Deseja apagar permanentemente esses arquivos?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="465"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation>Não é possível copiar um diretório para si mesmo!</translation>
+        <translation>Não é possível copiar um diretório em si mesmo!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="516"/>
@@ -965,7 +965,7 @@ Deseja apagar permanentemente esses arquivos?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation>Por Grupo de Arquivo</translation>
+        <translation>Por Grupo de Arquivos</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
