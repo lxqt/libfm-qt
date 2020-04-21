@@ -1,3 +1,68 @@
+libfm-qt-0.15.0 / 2020-04-21
+============================
+  * Bumped API version to 0.15.0.
+  * Bumped ABI version to 7.0.0.
+  * Respect original order on launching multiple files.
+  * Prevented a rare random crash in file dialog.
+  * Activate a selected item with Enter/Return.
+  * Never hide name column of detailed list view.
+  * Fixed SMB recursive copy.
+  * Workarounds for lack of file monitoring.
+  * Removed unneeded headers from Fm namespace.
+  * Show more info on item tooltip.
+  * Replaced char raw strings literals.
+  * Don't use implicit string conversions.
+  * Removed duplicated string casts definitions.
+  * Clarified the license usage in libfm-qt and fixed the license header of code we took from libfm.
+  * The final fix of showing nonexistent files.
+  * Workaround for GLib's recursive moving error.
+  * Disabled selection corners in single-selection mode.
+  * Row-by-row scrolling inside view when Shift is pressed.
+  * Smarter extension handling on saving in file dialog.
+  * Fixed a small miscalculation in detailed list rubber-band.
+  * Fixes for smooth scrolling.
+  * Added deletion time to Trash.
+  * Completed the thumbnail transformations based on EXIF.
+  * Replaced methods deprecated by Qt 5.13.
+  * Don't start item DND until the cursor is really moved.
+  * Support DND to Places panel.
+  * Fix crash when window is closed before finishing mount operation.
+  * Fixed DND with MTP.
+  * Easier and richer auto-completion.
+  * Fixed comparison of GiB-sized files.
+  * Corrected lxqt-archiver's mimetypes and added arqiver to archivers list.
+  * Don't show "untrust" emblem where it isn't needed.
+  * Only select first columns on selecting all items of a list view.
+  * Fixed problems in graying-out of cut files.
+  * Fixed a crash in renaming bookmark with dot in its name.
+  * Improved bookmark DND.
+  * Fixed creating bookmark items with NULL path.
+  * Always show real file names in Properties dialog.
+  * Follow view setting when showing file names on tooltips.
+  * Fixed lack of overwrite prompt in some cases with file dialog.
+  * Fixed a potential cause of crash in showing errors.
+  * An option to show folder context menu with Ctrl + right click.
+  * Select the current folder on showing the directory tree.
+  * Support DND to directory tree (in side pane).
+  * Enforce eject button width (on side pane).
+  * Added an option to show hidden file after others.
+  * Set info query cancellation error to mild in dir list job.
+  * Added frame to side pane combo and changed its text.
+  * Fixed horizontal wheel scrolling in compact mode with Qt ≥ 5.14.0.
+  * Keep Device Usage label, progressbar and text together. in properties dialog.
+  * Use GIO's display/copy name when renaming/transferring files.
+  * Consider locale when sorting custom actions.
+  * Better DND from remote folders to external apps.
+  * Made template options work (in pcmanfm-qt).
+  * Activate side-pane's focused item on pressing Enter/Return.
+  * Fixed selection with arrow keys after pressing selection corner.
+  * Disable Create New in context menu when not possible.
+  * Never consider icons selected in icon/thumbnail view.
+  * Also open remote links in desktop entries.
+  * Allow saving mount passwords if gnome-keyring is present.
+  * Fixed disabled file DND in rare cases.
+  * Sharp view icons with scale factors > 1.
+
 libfm-qt-0.14.1 / 2019-02-24
 ============================
 
