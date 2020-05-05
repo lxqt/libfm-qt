@@ -81,12 +81,12 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation>Ho&amp;zzáadás</translation>
+        <translation>&amp;Hozzáadás</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation>Tö&amp;rlés</translation>
+        <translation>&amp;Törlés</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
@@ -178,7 +178,7 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation>Fájl tulajdonságok</translation>
+        <translation>Fájl tulajdonságai</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
@@ -213,7 +213,7 @@
     <message>
         <location filename="../file-props.ui" line="198"/>
         <source>Last modified:</source>
-        <translation>Módosítási idő:</translation>
+        <translation>Legutóbb módosítva:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="221"/>
@@ -327,7 +327,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation>Egyéni beállítás</translation>
+        <translation>Egyéni</translation>
     </message>
 </context>
 <context>
@@ -548,7 +548,7 @@ Le szeretné cserélni?</translation>
         <location filename="../filedialog.cpp" line="826"/>
         <location filename="../filedialog.cpp" line="939"/>
         <source>&amp;Save</source>
-        <translation>&amp;Mentés</translation>
+        <translation>M&amp;entés</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="833"/>
@@ -575,6 +575,16 @@ Le szeretné cserélni?</translation>
         <location filename="../filemenu.cpp" line="84"/>
         <source>Open</source>
         <translation>Megnyitás</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="88"/>
+        <source>Open With...</source>
+        <translation>Megnyitás ezzel...</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="116"/>
+        <source>Other Applications</source>
+        <translation>Más alkalmazások</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="122"/>
@@ -605,42 +615,12 @@ Le szeretné cserélni?</translation>
         <location filename="../filemenu.cpp" line="159"/>
         <location filename="../filemenu.cpp" line="407"/>
         <source>&amp;Move to Trash</source>
-        <translation>Áthelyezés &amp;Kukába</translation>
-    </message>
-    <message>
-        <location filename="../filemenu.cpp" line="252"/>
-        <source>Trust selected executables</source>
-        <translation>Bízzon meg a futtatható állományokban</translation>
-    </message>
-    <message>
-        <location filename="../filemenu.cpp" line="253"/>
-        <source>Trust this executable</source>
-        <translation>Bízzon meg ebben a futtatható állományban</translation>
-    </message>
-    <message>
-        <location filename="../filemenu.cpp" line="342"/>
-        <source>Output</source>
-        <translation>Kimenet</translation>
-    </message>
-    <message>
-        <location filename="../filemenu.cpp" line="407"/>
-        <source>&amp;Delete</source>
-        <translation>&amp;Törlés</translation>
+        <translation>Á&amp;thelyezés kukába</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="163"/>
         <source>Rename</source>
         <translation>Átnevezés</translation>
-    </message>
-    <message>
-        <location filename="../filemenu.cpp" line="88"/>
-        <source>Open With...</source>
-        <translation>Megnyitás ezzel...</translation>
-    </message>
-    <message>
-        <location filename="../filemenu.cpp" line="116"/>
-        <source>Other Applications</source>
-        <translation>Más alkalmazások</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="217"/>
@@ -661,6 +641,26 @@ Le szeretné cserélni?</translation>
         <location filename="../filemenu.cpp" line="241"/>
         <source>Properties</source>
         <translation>Tulajdonságok</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="252"/>
+        <source>Trust selected executables</source>
+        <translation>Bízzon meg a kiválasztott futtatható állományokban</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="253"/>
+        <source>Trust this executable</source>
+        <translation>Bízzon meg ebben a futtatható állományban</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="342"/>
+        <source>Output</source>
+        <translation>Kimenet</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="407"/>
+        <source>&amp;Delete</source>
+        <translation>&amp;Törlés</translation>
     </message>
 </context>
 <context>
@@ -835,7 +835,6 @@ Törli őket véglegesen?</translation>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln fájl</numerusform>
-            <numerusform>%Ln fájl</numerusform>
         </translation>
     </message>
     <message>
@@ -887,7 +886,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="516"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished">Nem lehet hivatkozást létrehozni a nem helyi fájlrendszeren</translation>
+        <translation>Nem lehet hivatkozást létrehozni nem helyi fájlrendszeren</translation>
     </message>
 </context>
 <context>
@@ -935,37 +934,37 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="162"/>
         <source>By File Name</source>
-        <translation>Név</translation>
+        <translation>Név szerint</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="163"/>
         <source>By Modification Time</source>
-        <translation>Módosítási idő</translation>
+        <translation>Módosítási idő szerint</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="166"/>
         <source>By Deletion Time</source>
-        <translation>Törlési idő</translation>
+        <translation>Törlési idő szerint</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="169"/>
         <source>By File Size</source>
-        <translation>Méret</translation>
+        <translation>Méret szerint</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="170"/>
         <source>By File Type</source>
-        <translation>Típus</translation>
+        <translation>Típus szerint</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="171"/>
         <source>By File Owner</source>
-        <translation>Tulajdonos</translation>
+        <translation>Tulajdonos szerint</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Group</source>
-        <translation>Fájlcsoport</translation>
+        <translation>Fájlcsoport szerint</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="178"/>
@@ -1121,11 +1120,6 @@ Törli őket véglegesen?</translation>
         <translation>Asztal</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="227"/>
-        <source>Trash</source>
-        <translation>Kuka</translation>
-    </message>
-    <message>
         <location filename="../placesmodel.cpp" line="61"/>
         <source>Computer</source>
         <translation>Számítógép</translation>
@@ -1150,14 +1144,14 @@ Törli őket véglegesen?</translation>
         <source>Bookmarks</source>
         <translation>Könyvjelzők</translation>
     </message>
+    <message>
+        <location filename="../placesmodel.cpp" line="227"/>
+        <source>Trash</source>
+        <translation>Kuka</translation>
+    </message>
 </context>
 <context>
     <name>Fm::PlacesView</name>
-    <message>
-        <location filename="../placesview.cpp" line="505"/>
-        <source>Empty Trash</source>
-        <translation>Kuka ürítése</translation>
-    </message>
     <message>
         <location filename="../placesview.cpp" line="490"/>
         <source>Open in New Tab</source>
@@ -1167,6 +1161,11 @@ Törli őket véglegesen?</translation>
         <location filename="../placesview.cpp" line="493"/>
         <source>Open in New Window</source>
         <translation>Megnyitás új ablakban</translation>
+    </message>
+    <message>
+        <location filename="../placesview.cpp" line="505"/>
+        <source>Empty Trash</source>
+        <translation>Kuka ürítése</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="525"/>
@@ -1244,7 +1243,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="99"/>
         <source>&amp;Rename</source>
-        <translation>&amp;Átnevezés</translation>
+        <translation>Á&amp;tnevezés</translation>
     </message>
 </context>
 <context>
@@ -1265,7 +1264,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Nem lehet eltávolítani a(z) &apos;%s&apos; fájlt: az eredeti útvonal nem ismert</translation>
+        <translation>Nem lehet visszaállítani a(z) &apos;%s&apos; fájlt: az eredeti útvonal nem ismert</translation>
     </message>
 </context>
 <context>
@@ -1273,17 +1272,17 @@ Módosítva: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation>Csatolás</translation>
+        <translation>Csatlakozás</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation>Névtelen cs&amp;atlakozás</translation>
+        <translation type="unfinished">C&amp;satlakozás névtelenül</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>Felha&amp;sználóként:</translation>
+        <translation>&amp;Csatlakozás felhasználóként:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
@@ -1308,7 +1307,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password until you &amp;logout</source>
-        <translation>Je&amp;lszó elfelejtése kilépéskor</translation>
+        <translation>Jelszó elfelejtése &amp;kilépéskor</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1319,6 +1318,16 @@ Módosítva: %2</translation>
 <context>
     <name>QObject</name>
     <message>
+        <location filename="../utilities.cpp" line="172"/>
+        <source>Rename File</source>
+        <translation>Fájl átnevezése</translation>
+    </message>
+    <message>
+        <location filename="../utilities.cpp" line="173"/>
+        <source>Please enter a new name:</source>
+        <translation type="unfinished">Új név:</translation>
+    </message>
+    <message>
         <location filename="../filelauncher.cpp" line="104"/>
         <location filename="../filepropsdialog.cpp" line="543"/>
         <location filename="../mountoperation.cpp" line="207"/>
@@ -1328,19 +1337,14 @@ Módosítva: %2</translation>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="172"/>
-        <source>Rename File</source>
-        <translation>Fájl átnevezése</translation>
-    </message>
-    <message>
-        <location filename="../utilities.cpp" line="173"/>
-        <source>Please enter a new name:</source>
-        <translation>Új név:</translation>
-    </message>
-    <message>
         <location filename="../utilities.cpp" line="198"/>
         <source>Create Folder</source>
         <translation>Mappa létrehozása</translation>
+    </message>
+    <message>
+        <location filename="../utilities.cpp" line="199"/>
+        <source>Create File</source>
+        <translation>Fájl létrehozása</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="203"/>
@@ -1365,12 +1369,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="214"/>
         <source>Enter a name for the new %1:</source>
-        <translation>Az új %1 neve:</translation>
-    </message>
-    <message>
-        <location filename="../utilities.cpp" line="199"/>
-        <source>Create File</source>
-        <translation>Fájl létrehozása</translation>
+        <translation>Adja meg a(z) új %1 nevét:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="560"/>
@@ -1466,7 +1465,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation>Fájlnév szűrő:</translation>
+        <translation>Fájlnév minta:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="41"/>
@@ -1481,7 +1480,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation>Szabályos kifejezés</translation>
+        <translation>Reguláris kifejezés</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="68"/>
@@ -1561,7 +1560,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>&amp;Use regular expression</source>
-        <translation>Szabvá&amp;nyos kifejezés</translation>
+        <translation>Reg&amp;uláris kifejelezés</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="260"/>
