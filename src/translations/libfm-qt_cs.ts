@@ -126,8 +126,8 @@
     <name>FileDialog</name>
     <message>
         <location filename="../filedialog.ui" line="22"/>
-        <source>Location:</source>
-        <translation>Umístění:</translation>
+        <source>Path:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -236,88 +236,88 @@
         <translation>Obsahuje:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="317"/>
+        <location filename="../file-props.ui" line="336"/>
         <source>Device Usage:</source>
         <translation>Využití zařízení:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="349"/>
+        <location filename="../file-props.ui" line="346"/>
         <source>Permissions</source>
         <translation>Oprávnění</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="364"/>
+        <location filename="../file-props.ui" line="361"/>
         <source>Ownership</source>
         <translation>Vlastnictví</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="388"/>
-        <location filename="../file-props.ui" line="453"/>
-        <location filename="../file-props.ui" line="567"/>
+        <location filename="../file-props.ui" line="385"/>
+        <location filename="../file-props.ui" line="450"/>
+        <location filename="../file-props.ui" line="564"/>
         <source>Group:</source>
         <translation>Skupina:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="401"/>
-        <location filename="../file-props.ui" line="436"/>
-        <location filename="../file-props.ui" line="515"/>
+        <location filename="../file-props.ui" line="398"/>
+        <location filename="../file-props.ui" line="433"/>
+        <location filename="../file-props.ui" line="512"/>
         <source>Owner:</source>
         <translation>Vlastník:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="417"/>
+        <location filename="../file-props.ui" line="414"/>
         <source>Access Control</source>
         <translation>Řízení přístupu</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="470"/>
-        <location filename="../file-props.ui" line="619"/>
+        <location filename="../file-props.ui" line="467"/>
+        <location filename="../file-props.ui" line="616"/>
         <source>Other:</source>
         <translation>Ostatní:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="487"/>
+        <location filename="../file-props.ui" line="484"/>
         <source>Make the file executable</source>
         <translation>Označit soubor jako spustitelný</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="528"/>
-        <location filename="../file-props.ui" line="580"/>
-        <location filename="../file-props.ui" line="632"/>
+        <location filename="../file-props.ui" line="525"/>
+        <location filename="../file-props.ui" line="577"/>
+        <location filename="../file-props.ui" line="629"/>
         <source>Read</source>
         <translation>Čtení</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="541"/>
-        <location filename="../file-props.ui" line="593"/>
-        <location filename="../file-props.ui" line="645"/>
+        <location filename="../file-props.ui" line="538"/>
+        <location filename="../file-props.ui" line="590"/>
+        <location filename="../file-props.ui" line="642"/>
         <source>Write</source>
         <translation>Zápis</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="554"/>
-        <location filename="../file-props.ui" line="606"/>
-        <location filename="../file-props.ui" line="658"/>
+        <location filename="../file-props.ui" line="551"/>
+        <location filename="../file-props.ui" line="603"/>
+        <location filename="../file-props.ui" line="655"/>
         <source>Execute</source>
         <translation>Spuštění</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="667"/>
+        <location filename="../file-props.ui" line="664"/>
         <source>Sticky</source>
         <translation>Mazat/přejmenovávat pouze vlastník (sticky)</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="674"/>
+        <location filename="../file-props.ui" line="671"/>
         <source>SetUID</source>
         <translation>Spouštět s právy vlastníka souboru (SetUID)</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="681"/>
+        <location filename="../file-props.ui" line="678"/>
         <source>SetGID</source>
         <translation>Přebírat skupinu u nových podsložek a souborů (SetGID)</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="717"/>
+        <location filename="../file-props.ui" line="714"/>
         <source>Advanced Mode</source>
         <translation>Pokročilý režim</translation>
     </message>
@@ -333,7 +333,7 @@
 <context>
     <name>Fm::AppChooserDialog</name>
     <message>
-        <location filename="../appchooserdialog.cpp" line="263"/>
+        <location filename="../appchooserdialog.cpp" line="262"/>
         <source>Select an application to open &quot;%1&quot; files</source>
         <translation>Vyberte aplikace, ve které otevírat soubory „%1“</translation>
     </message>
@@ -341,12 +341,12 @@
 <context>
     <name>Fm::CreateNewMenu</name>
     <message>
-        <location filename="../createnewmenu.cpp" line="61"/>
+        <location filename="../createnewmenu.cpp" line="62"/>
         <source>Folder</source>
         <translation>Složka</translation>
     </message>
     <message>
-        <location filename="../createnewmenu.cpp" line="65"/>
+        <location filename="../createnewmenu.cpp" line="66"/>
         <source>Blank File</source>
         <translation>Prázdný soubor</translation>
     </message>
@@ -354,7 +354,7 @@
 <context>
     <name>Fm::DirListJob</name>
     <message>
-        <location filename="../core/dirlistjob.cpp" line="46"/>
+        <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
         <translation>Zadaná složka „%1“ není platná</translation>
     </message>
@@ -377,17 +377,17 @@
 <context>
     <name>Fm::DirTreeView</name>
     <message>
-        <location filename="../dirtreeview.cpp" line="211"/>
+        <location filename="../dirtreeview.cpp" line="213"/>
         <source>Open in New T&amp;ab</source>
         <translation>Otevřít v novém p&amp;anelu</translation>
     </message>
     <message>
-        <location filename="../dirtreeview.cpp" line="215"/>
+        <location filename="../dirtreeview.cpp" line="217"/>
         <source>Open in New Win&amp;dow</source>
         <translation>&amp;Otevřít v novém okně</translation>
     </message>
     <message>
-        <location filename="../dirtreeview.cpp" line="220"/>
+        <location filename="../dirtreeview.cpp" line="222"/>
         <source>Open in Termina&amp;l</source>
         <translation>Otevřít v terminá&amp;lu</translation>
     </message>
@@ -608,12 +608,12 @@ Chcete ho nahradit?</translation>
         <translation>Přesunout do &amp;koše</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="252"/>
+        <location filename="../filemenu.cpp" line="253"/>
         <source>Trust selected executables</source>
         <translation>Důvěřovat označeným spustitelným</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="253"/>
+        <location filename="../filemenu.cpp" line="254"/>
         <source>Trust this executable</source>
         <translation>Důvěřovat tomuto spustitelnému souboru</translation>
     </message>
@@ -643,22 +643,22 @@ Chcete ho nahradit?</translation>
         <translation>Ostatní aplikace</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="217"/>
+        <location filename="../filemenu.cpp" line="218"/>
         <source>Extract to...</source>
         <translation>Rozbalit do…</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="225"/>
+        <location filename="../filemenu.cpp" line="226"/>
         <source>Extract Here</source>
         <translation>Rozbalit sem</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="232"/>
+        <location filename="../filemenu.cpp" line="233"/>
         <source>Compress</source>
         <translation>Komprimovat</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="241"/>
+        <location filename="../filemenu.cpp" line="242"/>
         <source>Properties</source>
         <translation>Vlastnosti</translation>
     </message>
@@ -881,12 +881,12 @@ Chcete je namísto toho přímo odstranit?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="465"/>
+        <location filename="../core/filetransferjob.cpp" line="471"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Není možné zkopírovat složku samu do sebe!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="516"/>
+        <location filename="../core/filetransferjob.cpp" line="522"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Nelze vytvořit odkaz na souborovém systému, který to nepodporuje</translation>
     </message>
@@ -924,67 +924,72 @@ Chcete je namísto toho přímo odstranit?</translation>
         <translation>Zobrazit skryté</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="97"/>
+        <location filename="../foldermenu.cpp" line="98"/>
         <source>Folder Pr&amp;operties</source>
         <translation>Vlastnosti sl&amp;ožky</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="140"/>
+        <location filename="../foldermenu.cpp" line="141"/>
         <source>Output</source>
         <translation>Výstup</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="162"/>
+        <location filename="../foldermenu.cpp" line="163"/>
         <source>By File Name</source>
         <translation>Podle názvu</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="163"/>
+        <location filename="../foldermenu.cpp" line="164"/>
         <source>By Modification Time</source>
         <translation>Podle okamžiku změny</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="166"/>
+        <location filename="../foldermenu.cpp" line="167"/>
         <source>By Deletion Time</source>
         <translation>Podle okamžiku smazání</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="169"/>
+        <location filename="../foldermenu.cpp" line="170"/>
         <source>By File Size</source>
         <translation>Podle velikosti</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="170"/>
+        <location filename="../foldermenu.cpp" line="171"/>
         <source>By File Type</source>
         <translation>Podle typu</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="171"/>
+        <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Owner</source>
         <translation>Podle vlastníka</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="172"/>
+        <location filename="../foldermenu.cpp" line="173"/>
         <source>By File Group</source>
         <translation>Podle skupiny souboru</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="178"/>
+        <location filename="../foldermenu.cpp" line="179"/>
         <source>Ascending</source>
         <translation>Vzestupně</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="183"/>
+        <location filename="../foldermenu.cpp" line="184"/>
         <source>Descending</source>
         <translation>Sestupně</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="200"/>
+        <location filename="../foldermenu.cpp" line="201"/>
         <source>Folder First</source>
         <translation>Složky jako první</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="210"/>
+        <location filename="../foldermenu.cpp" line="209"/>
+        <source>Hidden Last</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../foldermenu.cpp" line="217"/>
         <source>Case Sensitive</source>
         <translation>Rozlišovat malá/VELKÁ písmena</translation>
     </message>
@@ -1065,12 +1070,12 @@ Chcete je namísto toho přímo odstranit?</translation>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="373"/>
+        <location filename="../folderview.cpp" line="395"/>
         <source>Auto-resize columns</source>
         <translation>Automaticky upravovat šířku sloupců</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="390"/>
+        <location filename="../folderview.cpp" line="412"/>
         <source>Visible Columns</source>
         <translation>Zobrazované sloupce</translation>
     </message>
@@ -1155,64 +1160,64 @@ Chcete je namísto toho přímo odstranit?</translation>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="505"/>
+        <location filename="../placesview.cpp" line="501"/>
         <source>Empty Trash</source>
         <translation>Vysypat koš</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="490"/>
+        <location filename="../placesview.cpp" line="486"/>
         <source>Open in New Tab</source>
         <translation>Otevřít v novém panelu</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="493"/>
+        <location filename="../placesview.cpp" line="489"/>
         <source>Open in New Window</source>
         <translation>Otevřít v novém okně</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="525"/>
-        <location filename="../placesview.cpp" line="582"/>
+        <location filename="../placesview.cpp" line="521"/>
+        <location filename="../placesview.cpp" line="578"/>
         <source>Hide</source>
         <translation>Skrýt</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="542"/>
+        <location filename="../placesview.cpp" line="538"/>
         <source>Move Bookmark Up</source>
         <translation>Posunout záložku nahoru</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="547"/>
+        <location filename="../placesview.cpp" line="543"/>
         <source>Move Bookmark Down</source>
         <translation>Posunout záložku dolů</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="551"/>
+        <location filename="../placesview.cpp" line="547"/>
         <source>Rename Bookmark</source>
         <translation>Přejmenovat záložku</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="554"/>
+        <location filename="../placesview.cpp" line="550"/>
         <source>Remove Bookmark</source>
         <translation>Odstranit záložku</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="563"/>
-        <location filename="../placesview.cpp" line="596"/>
+        <location filename="../placesview.cpp" line="559"/>
+        <location filename="../placesview.cpp" line="592"/>
         <source>Unmount</source>
         <translation>Odpojit</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="567"/>
+        <location filename="../placesview.cpp" line="563"/>
         <source>Mount</source>
         <translation>Připojit</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="573"/>
+        <location filename="../placesview.cpp" line="569"/>
         <source>Eject</source>
         <translation>Vysunout</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="608"/>
+        <location filename="../placesview.cpp" line="604"/>
         <source>Show All Entries</source>
         <translation>Zobrazit všechny položky</translation>
     </message>
@@ -1221,7 +1226,7 @@ Chcete je namísto toho přímo odstranit?</translation>
     <name>Fm::RenameDialog</name>
     <message>
         <location filename="../renamedialog.cpp" line="58"/>
-        <location filename="../renamedialog.cpp" line="78"/>
+        <location filename="../renamedialog.cpp" line="77"/>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
@@ -1231,19 +1236,19 @@ Změněno: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
-        <location filename="../renamedialog.cpp" line="84"/>
+        <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
         <translation>Typ: %1
 Změněno: %2</translation>
     </message>
     <message>
-        <location filename="../renamedialog.cpp" line="97"/>
+        <location filename="../renamedialog.cpp" line="96"/>
         <source>&amp;Overwrite</source>
         <translation>&amp;Přepsat</translation>
     </message>
     <message>
-        <location filename="../renamedialog.cpp" line="99"/>
+        <location filename="../renamedialog.cpp" line="98"/>
         <source>&amp;Rename</source>
         <translation>Pře&amp;jmenovat</translation>
     </message>
@@ -1251,12 +1256,12 @@ Změněno: %2</translation>
 <context>
     <name>Fm::SidePane</name>
     <message>
-        <location filename="../sidepane.cpp" line="45"/>
-        <source>Places</source>
-        <translation>Místa</translation>
+        <location filename="../sidepane.cpp" line="44"/>
+        <source>Lists</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sidepane.cpp" line="46"/>
+        <location filename="../sidepane.cpp" line="45"/>
         <source>Directory Tree</source>
         <translation>Strom složek</translation>
     </message>
@@ -1308,8 +1313,8 @@ Změněno: %2</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
-        <source>Remember password until you &amp;logout</source>
-        <translation>Zapamatovat si heslo do odh&amp;lášení</translation>
+        <source>Remember password for &amp;this session</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1323,53 +1328,53 @@ Změněno: %2</translation>
         <location filename="../filelauncher.cpp" line="104"/>
         <location filename="../filepropsdialog.cpp" line="543"/>
         <location filename="../mountoperation.cpp" line="207"/>
-        <location filename="../utilities.cpp" line="156"/>
-        <location filename="../utilities.cpp" line="258"/>
+        <location filename="../utilities.cpp" line="155"/>
+        <location filename="../utilities.cpp" line="260"/>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="172"/>
+        <location filename="../utilities.cpp" line="171"/>
         <source>Rename File</source>
         <translation>Přejmenovat soubor</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="173"/>
+        <location filename="../utilities.cpp" line="172"/>
         <source>Please enter a new name:</source>
         <translation>Zadejte nový název:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="198"/>
+        <location filename="../utilities.cpp" line="200"/>
         <source>Create Folder</source>
         <translation>Vytvořit složku</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="203"/>
+        <location filename="../utilities.cpp" line="205"/>
         <source>Please enter a new file name:</source>
         <translation>Zadejte název pro nový soubor:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="204"/>
+        <location filename="../utilities.cpp" line="206"/>
         <source>New text file</source>
         <translation>Nový textový soubor</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="208"/>
+        <location filename="../utilities.cpp" line="210"/>
         <source>Please enter a new folder name:</source>
         <translation>Zadejte název pro novou složku:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="209"/>
+        <location filename="../utilities.cpp" line="211"/>
         <source>New folder</source>
         <translation>Nová složka</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="214"/>
+        <location filename="../utilities.cpp" line="216"/>
         <source>Enter a name for the new %1:</source>
         <translation>Zadejte název pro nový %1:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="199"/>
+        <location filename="../utilities.cpp" line="201"/>
         <source>Create File</source>
         <translation>Vytvořit soubor</translation>
     </message>
@@ -1384,17 +1389,17 @@ Změněno: %2</translation>
         <translation>Umístění není připojené (mount).</translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="274"/>
+        <location filename="../core/basicfilelauncher.cpp" line="288"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
         <translation>Neplatný soubor spouštěče: „%1“</translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="309"/>
+        <location filename="../core/basicfilelauncher.cpp" line="324"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
         <translation>Pro spouštění „%1“ není nastavená žádná výchozí aplikace</translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="350"/>
+        <location filename="../core/basicfilelauncher.cpp" line="365"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
         <translation>Nedaří se nastavit pracovní složku na „%1“: %2</translation>
     </message>
@@ -1417,29 +1422,9 @@ Změněno: %2</translation>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;V tomto umístění se už nachází soubor se stejným názvem.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Chcete existující soubor nahradit?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../rename-dialog.ui" line="56"/>
-        <source>dest</source>
-        <translation>Cíl</translation>
-    </message>
-    <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
         <translation>následujícím souborem?</translation>
-    </message>
-    <message>
-        <location filename="../rename-dialog.ui" line="76"/>
-        <source>src file info</source>
-        <translation>Informace o zdrojovém souboru</translation>
-    </message>
-    <message>
-        <location filename="../rename-dialog.ui" line="89"/>
-        <source>dest file info</source>
-        <translation>Informace o cílovém souboru</translation>
-    </message>
-    <message>
-        <location filename="../rename-dialog.ui" line="102"/>
-        <source>src</source>
-        <translation>Zdroj</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
