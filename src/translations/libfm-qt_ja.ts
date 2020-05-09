@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>パス:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -985,7 +985,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="209"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>隠しファイルを後へ</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="217"/>
@@ -1257,7 +1257,7 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="44"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>リスト</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
@@ -1313,7 +1313,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>このセッションのためにパスワードを記憶する(&amp;T)</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
