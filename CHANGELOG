@@ -1,3 +1,8 @@
+libfm-qt-0.15.1 / 2020-05-16
+============================
+  * Bumped API version to 0.15.1.
+  * Changed "logout" to "session" in password dialog (because a keyring session may not be the same as a desktop session).
+
 libfm-qt-0.15.0 / 2020-04-21
 ============================
   * Bumped API version to 0.15.0.
