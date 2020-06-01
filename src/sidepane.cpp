@@ -19,6 +19,7 @@
 
 
 #include "sidepane.h"
+#include <QEvent>
 #include <QComboBox>
 #include <QVBoxLayout>
 #include <QHeaderView>
@@ -49,6 +50,19 @@ SidePane::SidePane(QWidget* parent):
 
 SidePane::~SidePane() {
     // qDebug("delete SidePane");
+}
+
+bool SidePane::event(QEvent* event) {
+    // when the SidePane's style changes, we should set the text color of
+    // PlacesView to its window text color again because the latter may have changed
+    if(event->type() == QEvent::StyleChange && mode_ == ModePlaces) {
+        if(PlacesView* placesView = static_cast<PlacesView*>(view_)) {
+            QPalette p = placesView->palette();
+            p.setColor(QPalette::Text, p.color(QPalette::WindowText));
+            placesView->setPalette(p);
+        }
+    }
+    return QWidget::event(event);
 }
 
 void SidePane::onComboCurrentIndexChanged(int current) {
