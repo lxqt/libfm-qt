@@ -16,6 +16,12 @@ namespace Fm {
 inline static const QString viewModeToString(Fm::FolderView::ViewMode value);
 inline static Fm::FolderView::ViewMode viewModeFromString(const QString& str);
 
+inline static const QString sortColumnToString(FolderModel::ColumnId value);
+inline static FolderModel::ColumnId sortColumnFromString(const QString str);
+
+inline static const QString sortOrderToString(Qt::SortOrder order);
+inline static Qt::SortOrder sortOrderFromString(const QString str);
+
 FileDialogHelper::FileDialogHelper() {
     // can only be used after libfm-qt initialization
     dlg_ = std::unique_ptr<Fm::FileDialog>(new Fm::FileDialog());
@@ -228,6 +234,72 @@ Fm::FolderView::ViewMode viewModeFromString(const QString& str) {
     return ret;
 }
 
+static Fm::FolderModel::ColumnId sortColumnFromString(const QString str) {
+    Fm::FolderModel::ColumnId ret;
+    if(str == QLatin1String("name")) {
+        ret = Fm::FolderModel::ColumnFileName;
+    }
+    else if(str == QLatin1String("type")) {
+        ret = Fm::FolderModel::ColumnFileType;
+    }
+    else if(str == QLatin1String("size")) {
+        ret = Fm::FolderModel::ColumnFileSize;
+    }
+    else if(str == QLatin1String("mtime")) {
+        ret = Fm::FolderModel::ColumnFileMTime;
+    }
+    else if(str == QLatin1String("dtime")) {
+        ret = Fm::FolderModel::ColumnFileDTime;
+    }
+    else if(str == QLatin1String("owner")) {
+        ret = Fm::FolderModel::ColumnFileOwner;
+    }
+    else if(str == QLatin1String("group")) {
+        ret = Fm::FolderModel::ColumnFileGroup;
+    }
+    else {
+        ret = Fm::FolderModel::ColumnFileName;
+    }
+    return ret;
+}
+
+static const QString sortColumnToString(Fm::FolderModel::ColumnId value) {
+    QString ret;
+    switch(value) {
+    case Fm::FolderModel::ColumnFileName:
+    default:
+        ret = QLatin1String("name");
+        break;
+    case Fm::FolderModel::ColumnFileType:
+        ret = QLatin1String("type");
+        break;
+    case Fm::FolderModel::ColumnFileSize:
+        ret = QLatin1String("size");
+        break;
+    case Fm::FolderModel::ColumnFileMTime:
+        ret = QLatin1String("mtime");
+        break;
+    case Fm::FolderModel::ColumnFileDTime:
+        ret = QLatin1String("dtime");
+        break;
+    case Fm::FolderModel::ColumnFileOwner:
+        ret = QLatin1String("owner");
+        break;
+    case Fm::FolderModel::ColumnFileGroup:
+        ret = QLatin1String("group");
+        break;
+    }
+    return ret;
+}
+
+static const QString sortOrderToString(Qt::SortOrder order) {
+    return (order == Qt::DescendingOrder ? QLatin1String("descending") : QLatin1String("ascending"));
+}
+
+static Qt::SortOrder sortOrderFromString(const QString str) {
+    return (str == QLatin1String("descending") ? Qt::DescendingOrder : Qt::AscendingOrder);
+}
+
 void FileDialogHelper::loadSettings() {
     QSettings settings(QSettings::UserScope, QStringLiteral("lxqt"), QStringLiteral("filedialog"));
     settings.beginGroup (QStringLiteral("Sizes"));
@@ -237,6 +309,11 @@ void FileDialogHelper::loadSettings() {
 
    settings.beginGroup (QStringLiteral("View"));
    dlg_->setViewMode(viewModeFromString(settings.value(QStringLiteral("Mode"), QStringLiteral("Detailed")).toString()));
+   dlg_->sort(sortColumnFromString(settings.value(QStringLiteral("SortColumn")).toString()), sortOrderFromString(settings.value(QStringLiteral("SortOrder")).toString()));
+   dlg_->setSortFolderFirst(settings.value(QStringLiteral("SortFolderFirst"), true).toBool());
+   dlg_->setSortHiddenLast(settings.value(QStringLiteral("SortHiddenLast"), false).toBool());
+   dlg_->setSortCaseSensitive(settings.value(QStringLiteral("SortCaseSensitive"), false).toBool());
+   dlg_->setShowHidden(settings.value(QStringLiteral("ShowHidden"), false).toBool());
    settings.endGroup();
 }
 
@@ -257,6 +334,30 @@ void FileDialogHelper::saveSettings() {
     QString mode = viewModeToString(dlg_->viewMode());
     if(settings.value(QStringLiteral("Mode")) != mode) {
         settings.setValue(QStringLiteral("Mode"), mode);
+    }
+    QString sortColumn = sortColumnToString(static_cast<Fm::FolderModel::ColumnId>(dlg_->sortColumn()));
+    if(settings.value(QStringLiteral("SortColumn")) != sortColumn) {
+        settings.setValue(QStringLiteral("SortColumn"), sortColumn);
+    }
+    QString sortOrder = sortOrderToString(dlg_->sortOrder());
+    if(settings.value(QStringLiteral("SortOrder")) != sortOrder) {
+        settings.setValue(QStringLiteral("SortOrder"), sortOrder);
+    }
+    bool sortFolderFirst = dlg_->sortFolderFirst();
+    if(settings.value(QStringLiteral("SortFolderFirst")).toBool() != sortFolderFirst) {
+        settings.setValue(QStringLiteral("SortFolderFirst"), sortFolderFirst);
+    }
+    bool sortHiddenLast = dlg_->sortHiddenLast();
+    if(settings.value(QStringLiteral("SortHiddenLast")).toBool() != sortHiddenLast) {
+        settings.setValue(QStringLiteral("SortHiddenLast"), sortHiddenLast);
+    }
+    bool sortCaseSensitive = dlg_->sortCaseSensitive();
+    if(settings.value(QStringLiteral("SortCaseSensitive")).toBool() != sortCaseSensitive) {
+        settings.setValue(QStringLiteral("SortCaseSensitive"), sortCaseSensitive);
+    }
+    bool showHidden = dlg_->showHidden();
+    if(settings.value(QStringLiteral("ShowHidden")).toBool() != showHidden) {
+        settings.setValue(QStringLiteral("ShowHidden"), showHidden);
     }
     settings.endGroup();
 }
