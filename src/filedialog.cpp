@@ -414,15 +414,15 @@ void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath, boo
         return;
     }
 
-   if(directoryPath_ != directory) {
-       if(folder_) {
+    if(directoryPath_ != directory) {
+        if(folder_) {
             if(folderModel_) {
                 proxyModel_->setSourceModel(nullptr);
                 folderModel_->unref(); // unref the cached model
                 folderModel_ = nullptr;
             }
             freeFolder();
-       }
+        }
 
         directoryPath_ = std::move(directory);
 
@@ -444,10 +444,10 @@ void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath, boo
 
         QUrl uri = QUrl::fromEncoded(directory.uri().get());
         Q_EMIT directoryEntered(uri);
-   }
+    }
 
     // select the path if valid
-    if(selectedPath.isValid()) {
+    if(selectedPath.isValid() && folder_) {
         if(folder_->isLoaded()) {
             selectFilePathWithDelay(selectedPath);
         }
@@ -461,7 +461,6 @@ void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath, boo
         updateAcceptButtonState();
         updateSaveButtonText(false);
     }
-
 }
 
 void FileDialog::selectFilePath(const FilePath &path) {
