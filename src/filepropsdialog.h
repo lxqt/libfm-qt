@@ -38,7 +38,7 @@ class LIBFM_QT_API FilePropsDialog : public QDialog {
     Q_OBJECT
 
 public:
-    explicit FilePropsDialog(Fm::FileInfoList files, QWidget* parent = nullptr, Qt::WindowFlags f = 0);
+    explicit FilePropsDialog(Fm::FileInfoList files, QWidget* parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
     ~FilePropsDialog() override;
 
     void accept() override;

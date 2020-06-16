@@ -30,7 +30,7 @@ namespace Fm {
 class FilenameDialog : public QInputDialog {
   Q_OBJECT
 public:
-  FilenameDialog(QWidget* parent = nullptr, Qt::WindowFlags flags = 0):
+  FilenameDialog(QWidget* parent = nullptr, Qt::WindowFlags flags = Qt::WindowFlags()):
     QInputDialog(parent, flags),
     selectExtension_(false) {
   }
