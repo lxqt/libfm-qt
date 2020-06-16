@@ -36,7 +36,7 @@ namespace Fm {
 class LIBFM_QT_API AppChooserDialog : public QDialog {
     Q_OBJECT
 public:
-    explicit AppChooserDialog(std::shared_ptr<const Fm::MimeType> mimeType, QWidget* parent = nullptr, Qt::WindowFlags f = 0);
+    explicit AppChooserDialog(std::shared_ptr<const Fm::MimeType> mimeType, QWidget* parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
     ~AppChooserDialog() override;
 
     void accept() override;

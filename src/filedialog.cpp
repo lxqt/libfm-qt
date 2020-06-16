@@ -25,7 +25,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     folderModel_{nullptr},
     proxyModel_{nullptr},
     folder_{nullptr},
-    options_{0},
+    options_{QFileDialog::Options()},
     viewMode_{FolderView::DetailedListMode},
     fileMode_{QFileDialog::AnyFile},
     acceptMode_{QFileDialog::AcceptOpen},

@@ -46,7 +46,7 @@ public:
     };
 
 public:
-    explicit RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* parent = nullptr, Qt::WindowFlags f = 0);
+    explicit RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
     ~RenameDialog() override;
 
     Action action() {
