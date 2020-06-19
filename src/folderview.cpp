@@ -124,7 +124,7 @@ void FolderViewListView::mouseMoveEvent(QMouseEvent* event) {
                 && (!mouseLeftPressed_
                     // don't start drag if the cursor isn't moved since pressing left mouse button on an item
                     // (because the user may want to scroll the view with mouse wheel before dragging)
-                    || globalItemPressPoint_ == event->globalPos())))) {
+                    || (globalItemPressPoint_ - event->globalPos()).manhattanLength() <= QApplication::startDragDistance())))) {
         bool cursorOnSelectionCorner = cursorOnSelectionCorner_;
         QListView::mouseMoveEvent(event);
         // update the index if the cursor enters/leaves the selection corner icon
@@ -554,7 +554,8 @@ void FolderViewTreeView::mouseMoveEvent(QMouseEvent* event) {
         else {
             // don't start drag if the cursor isn't moved since pressing left mouse button on an item
             // because the user may want to scroll the view with mouse wheel before dragging
-            if(!(event->buttons() == Qt::LeftButton && globalItemPressPoint_ == event->globalPos())) {
+            if(!(event->buttons() == Qt::LeftButton
+                 && (globalItemPressPoint_ - event->globalPos()).manhattanLength() <= QApplication::startDragDistance())) {
                 QTreeView::mouseMoveEvent(event);
             }
         }
@@ -563,7 +564,8 @@ void FolderViewTreeView::mouseMoveEvent(QMouseEvent* event) {
 
 void FolderViewTreeView::setSelection(const QRect &rect, QItemSelectionModel::SelectionFlags command) {
     if(selectionMode() == QAbstractItemView::ExtendedSelection
-       && model() && state() == QAbstractItemView::DragSelectingState) { // rubberband selection
+       && model() && state() == QAbstractItemView::DragSelectingState
+       && rubberBandRect_.isValid()) { // rubberband selection
         QRect r = rubberBandRect_.adjusted(-horizontalOffset(), -verticalOffset(),
                                             -horizontalOffset(), -verticalOffset());
         r.setLeft(qMax(0, r.left()));
