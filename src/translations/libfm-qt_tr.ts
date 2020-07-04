@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yol:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -984,7 +984,7 @@ Onun yerine silmek ister misiniz?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="209"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Gizli Son</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="217"/>
@@ -1256,7 +1256,7 @@ Değiştirild: %2</translation>
     <message>
         <location filename="../sidepane.cpp" line="44"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Listeler</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
@@ -1312,7 +1312,7 @@ Değiştirild: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu o&amp;turum için parolayı hatırla</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
