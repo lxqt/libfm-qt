@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>פתחה:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="262"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>נא לבחור יישום לפתיחת קובצי „%1”</translation>
+        <translation>נא לבחור יישום לפתיחת קבצי &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -356,7 +356,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>התיקייה שצוינה ‚%1’ אינה תקנית</translation>
+        <translation>התיקייה &quot;%1&quot; שצויינה אינה תקנית</translation>
     </message>
 </context>
 <context>
@@ -985,7 +985,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="209"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>הוסתר לאחרונה</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="217"/>
@@ -1118,7 +1118,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesmodel.cpp" line="47"/>
         <source>Places</source>
-        <translation>מיקומים</translation>
+        <translation>מקומות</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="55"/>
@@ -1257,7 +1257,7 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="44"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>רשימות</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
@@ -1270,7 +1270,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>לא ניתן להוציא מהאשפה את ‚%s’: הנתיב המקורי אינו מוכר</translation>
+        <translation>לא ניתן להוציא את &quot;%s%&quot; מהאשפה: הנתיב המקורי לא ידוע</translation>
     </message>
 </context>
 <context>
@@ -1313,7 +1313,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>שמירת הסיסמה עבור הסשן &amp;הזה בזיכרון</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1423,7 +1423,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation>בקובץ הבא?</translation>
+        <translation>עם הקובץ להלן?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
@@ -1456,7 +1456,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="41"/>
         <source>*</source>
-        <translation></translation>
+        <translation>*</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="48"/>
