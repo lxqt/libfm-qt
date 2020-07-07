@@ -273,6 +273,7 @@ bool BasicFileLauncher::launchDesktopEntry(const char *desktopEntryName, const F
             // FIXME: show error for all files
             showError(ctx, err, paths.empty() ? FilePath{} : paths[0]);
         }
+        g_object_unref(app);
     }
     else {
         // if no desktop app is found but we have a uri scheme, try to launch it directly
