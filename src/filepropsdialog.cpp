@@ -439,7 +439,7 @@ void FilePropsDialog::accept() {
     // applications
     if(mimeType && ui->openWith->isChanged()) {
         auto currentApp = ui->openWith->selectedApp();
-        g_app_info_set_as_default_for_type(currentApp.get(), mimeType->name(), nullptr);
+        setDefaultAppForType(currentApp, mimeType);
     }
 
     // check if chown or chmod is needed

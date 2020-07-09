@@ -55,6 +55,8 @@ LIBFM_QT_API bool changeFileName(const Fm::FilePath& path, const QString& newNam
 
 LIBFM_QT_API bool renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent = nullptr);
 
+LIBFM_QT_API void setDefaultAppForType(const Fm::GAppInfoPtr app, std::shared_ptr<const Fm::MimeType> mimeType);
+
 enum CreateFileType {
     CreateNewFolder,
     CreateNewTextFile,
