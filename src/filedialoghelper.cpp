@@ -315,8 +315,13 @@ void FileDialogHelper::loadSettings() {
    dlg_->setSortCaseSensitive(settings.value(QStringLiteral("SortCaseSensitive"), false).toBool());
    dlg_->setShowHidden(settings.value(QStringLiteral("ShowHidden"), false).toBool());
    settings.endGroup();
+
+   settings.beginGroup(QStringLiteral("Places"));
+   dlg_->setHiddenPlaces(settings.value(QStringLiteral("HiddenPlaces")).toStringList().toSet());
+   settings.endGroup();
 }
 
+// This also prevents redundant writings whenever a file dialog is closed without a change in its settings.
 void FileDialogHelper::saveSettings() {
     QSettings settings(QSettings::UserScope, QStringLiteral("lxqt"), QStringLiteral("filedialog"));
     settings.beginGroup (QStringLiteral("Sizes"));
@@ -358,6 +363,17 @@ void FileDialogHelper::saveSettings() {
     bool showHidden = dlg_->showHidden();
     if(settings.value(QStringLiteral("ShowHidden")).toBool() != showHidden) {
         settings.setValue(QStringLiteral("ShowHidden"), showHidden);
+    }
+    settings.endGroup();
+
+    settings.beginGroup(QStringLiteral("Places"));
+    QSet<QString> hiddenPlaces = dlg_->getHiddenPlaces();
+    if(hiddenPlaces.isEmpty()) { // don't save "@Invalid()"
+        settings.remove(QStringLiteral("HiddenPlaces"));
+    }
+    else if(hiddenPlaces != settings.value(QStringLiteral("HiddenPlaces")).toStringList().toSet()) {
+        QStringList sl = hiddenPlaces.toList();
+        settings.setValue(QStringLiteral("HiddenPlaces"), sl);
     }
     settings.endGroup();
 }

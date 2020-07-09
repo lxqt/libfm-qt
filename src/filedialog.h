@@ -142,6 +142,11 @@ public:
     bool showHidden() const;
     void setShowHidden(bool showHidden);
 
+    QSet<QString> getHiddenPlaces() const {
+        return hiddenPlaces_;
+    }
+    void setHiddenPlaces(const QSet<QString>& items);
+
 private Q_SLOTS:
     void onCurrentRowChanged(const QModelIndex &current, const QModelIndex& /*previous*/);
     void onSelectionChanged(const QItemSelection& /*selected*/, const QItemSelection& /*deselected*/);
@@ -149,6 +154,7 @@ private Q_SLOTS:
     void onNewFolder();
     void onViewModeToggled(bool active);
     void goHome();
+    void onSettingHiddenPlace(const QString& str, bool hide);
 
 Q_SIGNALS:
     // emitted when the dialog is accepted and some files are selected
@@ -231,6 +237,7 @@ private:
     QString explicitLabels_[5];
     // needed for disconnecting Fm::Folder signal from lambda:
     QMetaObject::Connection lambdaConnection_;
+    QSet<QString> hiddenPlaces_;
 };
 
 
