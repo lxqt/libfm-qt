@@ -191,6 +191,78 @@ void FileDialog::setSplitterPos(int pos) {
     ui->splitter->setSizes(sizes);
 }
 
+int FileDialog::sortColumn() const {
+    if(proxyModel_) {
+        return proxyModel_->sortColumn();
+    }
+    return 0;
+}
+
+Qt::SortOrder FileDialog::sortOrder() const {
+    if(proxyModel_) {
+        return proxyModel_->sortOrder();
+    }
+    return Qt::AscendingOrder;
+}
+
+void FileDialog::sort(int col, Qt::SortOrder order) {
+    if(proxyModel_) {
+        proxyModel_->sort(col, order);
+    }
+}
+
+bool FileDialog::sortFolderFirst() const {
+    if(proxyModel_) {
+        return proxyModel_->folderFirst();
+    }
+    return true;
+}
+
+void FileDialog::setSortFolderFirst(bool value) {
+    if(proxyModel_) {
+        proxyModel_->setFolderFirst(value);
+    }
+}
+
+bool FileDialog::sortHiddenLast() const {
+    if(proxyModel_) {
+        return proxyModel_->hiddenLast();
+    }
+    return false;
+}
+
+void FileDialog::setSortHiddenLast(bool value) {
+    if(proxyModel_) {
+        proxyModel_->setHiddenLast(value);
+    }
+}
+
+bool FileDialog::sortCaseSensitive() const {
+    if(proxyModel_) {
+        return proxyModel_->sortCaseSensitivity() == Qt::CaseSensitive ? true : false;
+    }
+    return false;
+}
+
+void FileDialog::setSortCaseSensitive(bool value) {
+    if(proxyModel_) {
+        proxyModel_->setSortCaseSensitivity(value ? Qt::CaseSensitive : Qt::CaseInsensitive);
+    }
+}
+
+bool FileDialog::showHidden() const {
+    if(proxyModel_) {
+        return proxyModel_->showHidden();
+    }
+    return false;
+}
+
+void FileDialog::setShowHidden(bool showHidden) {
+    if(proxyModel_) {
+        proxyModel_->setShowHidden(showHidden);
+    }
+}
+
 // This should always be used instead of getting text directly from the entry.
 QStringList FileDialog::parseNames() const {
     // parse the file names from the text entry

@@ -126,6 +126,22 @@ public:
     int splitterPos() const;
     void setSplitterPos(int pos);
 
+    int sortColumn() const;
+    Qt::SortOrder sortOrder() const;
+    void sort(int col, Qt::SortOrder order = Qt::AscendingOrder);
+
+    bool sortFolderFirst() const;
+    void setSortFolderFirst(bool value);
+
+    bool sortHiddenLast() const;
+    void setSortHiddenLast(bool value);
+
+    bool sortCaseSensitive() const;
+    void setSortCaseSensitive(bool value);
+
+    bool showHidden() const;
+    void setShowHidden(bool showHidden);
+
 private Q_SLOTS:
     void onCurrentRowChanged(const QModelIndex &current, const QModelIndex& /*previous*/);
     void onSelectionChanged(const QItemSelection& /*selected*/, const QItemSelection& /*deselected*/);
