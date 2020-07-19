@@ -26,6 +26,7 @@
 #include <QList>
 #include <QStringBuilder>
 #include <QMessageBox>
+#include <QStandardPaths>
 #include "fileoperation.h"
 #include <QEventLoop>
 
@@ -191,6 +192,37 @@ bool renameFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent) {
     }
     changeFileName(file->path(), new_name, parent);
     return true;
+}
+
+void setDefaultAppForType(const Fm::GAppInfoPtr app, std::shared_ptr<const Fm::MimeType> mimeType) {
+    // NOTE: "g_app_info_set_as_default_for_type()" writes to "~/.config/mimeapps.list"
+    // but we want to set the default app only for the current DE (e.g., LXQt).
+    // More importantly, if the DE-specific list already exists and contains some
+    // default apps, it will have priority over "~/.config/mimeapps.list" and so,
+    // "g_app_info_set_as_default_for_type()" could not change those apps.
+
+    if(app == nullptr || mimeType == nullptr) {
+        return;
+    }
+
+    // first find the DE's mimeapps list file
+    QByteArray mimeappsList = "mimeapps.list";
+    QList<QByteArray> desktopsList = qgetenv("XDG_CURRENT_DESKTOP").toLower().split(':');
+    if(!desktopsList.isEmpty()) {
+        mimeappsList = desktopsList.at(0) + "-" + mimeappsList;
+    }
+    QString configDir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+    auto mimeappsListPath = CStrPtr(g_build_filename(configDir.toUtf8().constData(),
+                                                     mimeappsList.constData(),
+                                                     nullptr));
+
+    // set the default app in the DE's mimeapps list
+    const char* desktop_id = g_app_info_get_id(app.get());
+    GKeyFile* kf = g_key_file_new();
+    g_key_file_load_from_file(kf, mimeappsListPath.get(), G_KEY_FILE_NONE, nullptr);
+    g_key_file_set_string(kf, "Default Applications", mimeType->name(), desktop_id);
+    g_key_file_save_to_file(kf, mimeappsListPath.get(), nullptr);
+    g_key_file_free(kf);
 }
 
 // templateFile is a file path used as a template of the new file.
