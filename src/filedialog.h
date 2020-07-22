@@ -147,6 +147,9 @@ public:
     }
     void setHiddenPlaces(const QSet<QString>& items);
 
+protected:
+    bool eventFilter(QObject* watched, QEvent* event) override;
+
 private Q_SLOTS:
     void onCurrentRowChanged(const QModelIndex &current, const QModelIndex& /*previous*/);
     void onSelectionChanged(const QItemSelection& /*selected*/, const QItemSelection& /*deselected*/);

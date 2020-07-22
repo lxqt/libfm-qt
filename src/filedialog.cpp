@@ -173,12 +173,38 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         goHome();
     }
 
+    ui->fileName->installEventFilter(this);
+
     // focus the text entry on showing the dialog
     QTimer::singleShot(0, ui->fileName, SLOT(setFocus()));
 }
 
 FileDialog::~FileDialog() {
     freeFolder();
+}
+
+// Here we make Tab key switch the focus from the main view to the name entry
+// and BackTab do the reverse because QWidget::setTabOrder() cannot do that.
+bool FileDialog::eventFilter(QObject* watched, QEvent* event) {
+    if(event->type() == QEvent::KeyPress) {
+        if(QKeyEvent *ke = static_cast<QKeyEvent*>(event)) {
+            if(watched == ui->folderView->childView() && ui->folderView->childView()->hasFocus()
+               && ke->key() == Qt::Key_Tab && ke->modifiers() == Qt::NoModifier) {
+                ui->fileName->setFocus();
+                // as in Qt -> QLineEdit::focusInEvent()
+                if(!ui->fileName->hasSelectedText()) {
+                    ui->fileName->selectAll();
+                }
+                return true;
+            }
+            if(watched == ui->fileName && ui->fileName->hasFocus()
+               && ke->key() == Qt::Key_Backtab) {
+                ui->folderView->childView()->setFocus();
+                return true;
+            }
+        }
+    }
+    return QDialog::eventFilter(watched, event);
 }
 
 int FileDialog::splitterPos() const {
@@ -885,6 +911,11 @@ void FileDialog::setViewMode(FolderView::ViewMode mode) {
     connect(ui->folderView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &FileDialog::onSelectionChanged);
     // update selection mode for the view
     updateSelectionMode();
+
+    // FolderView::setViewMode() may delete the view to switch between list and tree.
+    // So, the event filter should be re-installed.
+    ui->folderView->childView()->removeEventFilter(this);
+    ui->folderView->childView()->installEventFilter(this);
 }
 
 
