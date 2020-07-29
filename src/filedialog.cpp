@@ -44,6 +44,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     connect(ui->sidePane, &SidePane::chdirRequested, [this](int /*type*/, const FilePath &path) {
         setDirectoryPath(path);
     });
+    connect(ui->sidePane, &SidePane::hiddenPlaceSet, this, &FileDialog::onSettingHiddenPlace);
 
     // folder view
     proxyModel_ = new ProxyFolderModel(this);
@@ -260,6 +261,21 @@ bool FileDialog::showHidden() const {
 void FileDialog::setShowHidden(bool showHidden) {
     if(proxyModel_) {
         proxyModel_->setShowHidden(showHidden);
+    }
+}
+
+void FileDialog::setHiddenPlaces(const QSet<QString>& items) {
+    ui->sidePane->restoreHiddenPlaces(items);
+    hiddenPlaces_.clear();
+    hiddenPlaces_ = items;
+}
+
+void FileDialog::onSettingHiddenPlace(const QString& str, bool hide) {
+    if(hide) {
+        hiddenPlaces_ << str;
+    }
+    else {
+        hiddenPlaces_.remove(str);
     }
 }
 
