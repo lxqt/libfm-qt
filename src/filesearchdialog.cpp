@@ -63,7 +63,7 @@ void FileSearchDialog::accept() {
         fm_search_set_recursive(search, ui->recursiveSearch->isChecked());
         fm_search_set_show_hidden(search, ui->searchHidden->isChecked());
         fm_search_set_name_patterns(search, ui->namePatterns->text().toUtf8().constData());
-        fm_search_set_name_ci(search, ui->nameCaseSensitive->isChecked());
+        fm_search_set_name_ci(search, !ui->nameCaseSensitive->isChecked());
         fm_search_set_name_regex(search, ui->nameRegExp->isChecked());
 
         fm_search_set_content_pattern(search, ui->contentPattern->text().toUtf8().constData());
