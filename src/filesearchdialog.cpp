@@ -63,11 +63,11 @@ void FileSearchDialog::accept() {
         fm_search_set_recursive(search, ui->recursiveSearch->isChecked());
         fm_search_set_show_hidden(search, ui->searchHidden->isChecked());
         fm_search_set_name_patterns(search, ui->namePatterns->text().toUtf8().constData());
-        fm_search_set_name_ci(search, ui->nameCaseInsensitive->isChecked());
+        fm_search_set_name_ci(search, ui->nameCaseSensitive->isChecked());
         fm_search_set_name_regex(search, ui->nameRegExp->isChecked());
 
         fm_search_set_content_pattern(search, ui->contentPattern->text().toUtf8().constData());
-        fm_search_set_content_ci(search, ui->contentCaseInsensitive->isChecked());
+        fm_search_set_content_ci(search, !ui->contentCaseSensitive->isChecked());
         fm_search_set_content_regex(search, ui->contentRegExp->isChecked());
 
         // search for the files of specific mime-types
@@ -151,11 +151,11 @@ void FileSearchDialog::onRemovePath() {
 }
 
 void FileSearchDialog::setNameCaseInsensitive(bool caseInsensitive) {
-    ui->nameCaseInsensitive->setChecked(caseInsensitive);
+    ui->nameCaseSensitive->setChecked(!caseInsensitive);
 }
 
 void FileSearchDialog::setContentCaseInsensitive(bool caseInsensitive) {
-    ui->contentCaseInsensitive->setChecked(caseInsensitive);
+    ui->contentCaseSensitive->setChecked(!caseInsensitive);
 }
 
 void FileSearchDialog::setNameRegexp(bool reg) {
@@ -175,11 +175,11 @@ void FileSearchDialog::setSearchhHidden(bool hidden) {
 }
 
 bool FileSearchDialog::nameCaseInsensitive() const {
-    return ui->nameCaseInsensitive->isChecked();
+    return !ui->nameCaseSensitive->isChecked();
 }
 
 bool FileSearchDialog::contentCaseInsensitive() const {
-    return ui->contentCaseInsensitive->isChecked();
+    return !ui->contentCaseSensitive->isChecked();
 }
 
 bool FileSearchDialog::nameRegexp() const {
