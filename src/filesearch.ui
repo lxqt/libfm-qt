@@ -43,9 +43,9 @@
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="nameCaseInsensitive">
+           <widget class="QCheckBox" name="nameCaseSensitive">
             <property name="text">
-             <string>Case insensitive</string>
+             <string>Case sensitive</string>
             </property>
            </widget>
           </item>
@@ -221,9 +221,9 @@
            <widget class="QLineEdit" name="contentPattern"/>
           </item>
           <item>
-           <widget class="QCheckBox" name="contentCaseInsensitive">
+           <widget class="QCheckBox" name="contentCaseSensitive">
             <property name="text">
-             <string>Case insensiti&amp;ve</string>
+             <string>Case sensiti&amp;ve</string>
             </property>
            </widget>
           </item>
