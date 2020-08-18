@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Percorso:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -833,9 +833,9 @@ Vuoi invece eliminarli?</translation>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln file</numerusform>
+            <numerusform>%Ln files</numerusform>
         </translation>
     </message>
     <message>
@@ -882,7 +882,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="471"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>Una cartella non può essere copiata in se stessa!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="522"/>
@@ -985,7 +985,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="209"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>File nascosti ultimi</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="217"/>
@@ -1028,7 +1028,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="291"/>
         <source>Group:</source>
-        <translation type="unfinished">Gruppo:</translation>
+        <translation>Gruppo:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="359"/>
@@ -1053,7 +1053,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="371"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancellato</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="374"/>
@@ -1071,12 +1071,12 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../folderview.cpp" line="395"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Larghezza colonne automatica</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="412"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Colonne mostrate</translation>
     </message>
 </context>
 <context>
@@ -1313,7 +1313,7 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricorda password per &amp;questa sessione</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1595,7 +1595,7 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca nelle sottocartelle</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
@@ -1610,7 +1610,7 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Later than:</source>
-        <translation>Dopo del:</translation>
+        <translation>Dopo di:</translation>
     </message>
 </context>
 </TS>
