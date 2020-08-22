@@ -76,14 +76,14 @@ Bookmarks::Bookmarks(QObject* parent):
 
     /* trying the gtk-3.0 first and use it if it exists */
     auto fpath = get_new_bookmarks_file();
-    file = FilePath::fromLocalPath(fpath.get());
+    file_ = FilePath::fromLocalPath(fpath.get());
     load();
     if(items_.empty()) { /* not found, use legacy file */
         fpath = get_legacy_bookmarks_file();
-        file = FilePath::fromLocalPath(fpath.get());
+        file_ = FilePath::fromLocalPath(fpath.get());
         load();
     }
-    mon = GObjectPtr<GFileMonitor>{g_file_monitor_file(file.gfile().get(), G_FILE_MONITOR_NONE, nullptr, nullptr), false};
+    mon = GObjectPtr<GFileMonitor>{g_file_monitor_file(file_.gfile().get(), G_FILE_MONITOR_NONE, nullptr, nullptr), false};
     if(mon) {
         g_signal_connect(mon.get(), "changed", G_CALLBACK(_onFileChanged), this);
     }
@@ -93,6 +93,10 @@ Bookmarks::~Bookmarks() {
     if(mon) {
         g_signal_handlers_disconnect_by_data(mon.get(), this);
     }
+}
+
+const FilePath& Bookmarks::bookmarksFile() const {
+    return file_;
 }
 
 const std::shared_ptr<const BookmarkItem>& Bookmarks::insert(const FilePath& path, const QString& name, int pos) {
@@ -158,7 +162,7 @@ void Bookmarks::save() {
     idle_handler = false;
     // G_UNLOCK(bookmarks);
     GError* err = nullptr;
-    if(!g_file_replace_contents(file.gfile().get(), buf.c_str(), buf.length(), nullptr,
+    if(!g_file_replace_contents(file_.gfile().get(), buf.c_str(), buf.length(), nullptr,
                                 FALSE, G_FILE_CREATE_NONE, nullptr, nullptr, &err)) {
         g_critical("%s", err->message);
         g_error_free(err);
@@ -168,7 +172,7 @@ void Bookmarks::save() {
 }
 
 void Bookmarks::load() {
-    auto fpath = file.localPath();
+    auto fpath = file_.localPath();
     FILE* f;
     char buf[1024];
     /* load the file */
