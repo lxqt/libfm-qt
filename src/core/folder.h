@@ -85,8 +85,8 @@ public:
     const std::shared_ptr<const FileInfo> &info() const;
 
     void setCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet);
-    bool hasCutFiles() const;
-    bool hadCutFiles();
+    bool hasCutFile() const;
+    void setNoCutFile();
 
     void updateCutFiles();
 
@@ -192,9 +192,9 @@ private:
     bool has_fs_info : 1;
     bool defer_content_test : 1;
 
+    bool hasCutFile_;
+
     static std::unordered_map<FilePath, std::weak_ptr<Folder>, FilePathHash> cache_;
-    static QString cutFilesDirPath_;
-    static QString lastCutFilesDirPath_;
     static std::shared_ptr<const HashSet> cutFilesHashSet_;
     static std::mutex mutex_;
 };

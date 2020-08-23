@@ -81,7 +81,7 @@ void FolderModel::onStartLoading() {
 void FolderModel::onFinishLoading() {
     isLoaded_ = true;
     // files may have been cut by another app
-    if(!folder_->hasCutFiles()) {
+    if(!folder_->hasCutFile()) {
         onClipboardDataChange();
     }
 }
@@ -199,20 +199,20 @@ void FolderModel::onClipboardDataChange() {
             if(folder_->path() == cutDirPath) { // the cut file is in this folder
                 setCutFiles(paths);
             }
-            else if(folder_->hadCutFiles() || folder_->hasCutFiles()) {
+            else if(folder_->hasCutFile()) {
+                folder_->updateCutFiles();
                 if(Folder::findByPath(cutDirPath) == nullptr) {
-                    // the cut file is in a folder that is not loaded (i.e., it is cut by another app)
+                    // the cut file is in a folder that is not loaded (it may have been cut by another app)
                     folder_->setCutFiles(std::make_shared<HashSet>());
                 }
-                folder_->updateCutFiles();
+                folder_->setNoCutFile();
             }
             return;
         }
         // no file is cut
-        folder_->setCutFiles(std::make_shared<HashSet>()); // clean Folder::cutFilesHashSet_
-        if(folder_->hadCutFiles()) {
-            folder_->updateCutFiles();
-        }
+        folder_->updateCutFiles();
+        folder_->setCutFiles(std::make_shared<HashSet>()); // clear Folder::cutFilesHashSet_
+        folder_->setNoCutFile();
     }
 }
 
@@ -301,8 +301,8 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
     auto info = item->info;
 
     bool isCut = false;
-    if(folder_ && Q_UNLIKELY(folder_->hasCutFiles())) {
-        isCut = item->isCut();
+    if(folder_ && Q_UNLIKELY(folder_->hasCutFile())) {
+        isCut = info->isCut();
     }
 
     switch(role) {
@@ -330,7 +330,7 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
     }
     case Qt::DecorationRole: {
         if(index.column() == 0) {
-            return QVariant(item->icon(isCut));
+            return QVariant(item->icon());
         }
         break;
     }
@@ -629,9 +629,8 @@ void FolderModel::onThumbnailLoaded(const std::shared_ptr<const Fm::FileInfo>& f
         FolderModelItem& item = *it;
         QModelIndex index = createIndex(row, 0, (void*)&item);
         // store the image in the folder model item.
-        FolderModelItem::Thumbnail* thumbnail = item.findThumbnail(size, false);
+        FolderModelItem::Thumbnail* thumbnail = item.findThumbnail(size);
         thumbnail->image = image;
-        thumbnail->transparent = false;
         // qDebug("thumbnail loaded for: %s, size: %d", item.displayName.toUtf8().constData(), size);
         if(image.isNull()) {
             thumbnail->status = FolderModelItem::ThumbnailFailed;
@@ -651,7 +650,7 @@ void FolderModel::onThumbnailLoaded(const std::shared_ptr<const Fm::FileInfo>& f
 QImage FolderModel::thumbnailFromIndex(const QModelIndex& index, int size) {
     FolderModelItem* item = itemFromIndex(index);
     if(item) {
-        FolderModelItem::Thumbnail* thumbnail = item->findThumbnail(size, item->isCut());
+        FolderModelItem::Thumbnail* thumbnail = item->findThumbnail(size);
         // qDebug("FolderModel::thumbnailFromIndex: %d, %s", thumbnail->status, item->displayName.toUtf8().data());
         switch(thumbnail->status) {
         case FolderModelItem::ThumbnailNotChecked: {

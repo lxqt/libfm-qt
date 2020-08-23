@@ -77,59 +77,20 @@ const QString& FolderModelItem::displaySize() const {
     return dispSize_;
 }
 
-bool FolderModelItem::isCut() const {
-    return info->isCut();
-}
-
 // find thumbnail of the specified size
 // The returned thumbnail item is temporary and short-lived
 // If you need to use the struct later, copy it to your own struct to keep it.
-FolderModelItem::Thumbnail* FolderModelItem::findThumbnail(int size, bool transparent) {
+FolderModelItem::Thumbnail* FolderModelItem::findThumbnail(int size) {
     QVector<Thumbnail>::iterator it;
-    Thumbnail* transThumb = nullptr;
     for(it = thumbnails.begin(); it != thumbnails.end(); ++it) {
-        if(it->size == size) {
-            if(it->status != ThumbnailLoaded) {
-                return it;
-            }
-            else { // it->status == ThumbnailLoaded
-                if(it->transparent == false && transparent == true
-                        && size < 48 /* (dirty) needed only for 'compact' and 'details list' view */ ) {
-                    transThumb = it; // save thumb to add transparency later
-                }
-                else {
-                    return it; // an image of the same size and transparency is found
-                }
-            }
+        if(it->size == size) { // an image of the same size is found
+            return it;
         }
     }
-    if(transThumb) {
-        QImage image(transThumb->image);
-
-        if(!image.hasAlphaChannel()) {
-            image = image.convertToFormat(QImage::Format_ARGB32);
-        }
-
-        // add transparency to image
-        QPainter p;
-        p.begin(&image);
-        p.setCompositionMode(QPainter::CompositionMode_DestinationIn);
-        p.fillRect(image.rect(), QColor(0, 0, 0, 115 /* alpha 45% */));
-        p.end();
-
-        // add image to thumbnails
-        Thumbnail thumbnail;
-        thumbnail.status = ThumbnailLoaded;
-        thumbnail.image = image;
-        thumbnail.size = size;
-        thumbnail.transparent = true;
-        thumbnails.append(thumbnail);
-    }
-    else if(it == thumbnails.end()) {
+    if(it == thumbnails.end()) {
         Thumbnail thumbnail;
         thumbnail.status = ThumbnailNotChecked;
         thumbnail.size = size;
-        thumbnail.transparent = false;
         thumbnails.append(thumbnail);
     }
     return &thumbnails.back();
