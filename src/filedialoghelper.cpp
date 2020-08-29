@@ -314,6 +314,13 @@ void FileDialogHelper::loadSettings() {
    dlg_->setSortHiddenLast(settings.value(QStringLiteral("SortHiddenLast"), false).toBool());
    dlg_->setSortCaseSensitive(settings.value(QStringLiteral("SortCaseSensitive"), false).toBool());
    dlg_->setShowHidden(settings.value(QStringLiteral("ShowHidden"), false).toBool());
+
+   dlg_->setShowThumbnails(settings.value(QStringLiteral("ShowThumbnails"), true).toBool());
+   dlg_->setNoItemTooltip(settings.value(QStringLiteral("NoItemTooltip"), false).toBool());
+
+   dlg_->setBigIconSize(settings.value(QStringLiteral("BigIconSize"), 48).toInt());
+   dlg_->setSmallIconSize(settings.value(QStringLiteral("SmallIconSize"), 24).toInt());
+   dlg_->setThumbnailIconSize(settings.value(QStringLiteral("ThumbnailIconSize"), 128).toInt());
    settings.endGroup();
 
    settings.beginGroup(QStringLiteral("Places"));
@@ -363,6 +370,28 @@ void FileDialogHelper::saveSettings() {
     bool showHidden = dlg_->showHidden();
     if(settings.value(QStringLiteral("ShowHidden")).toBool() != showHidden) {
         settings.setValue(QStringLiteral("ShowHidden"), showHidden);
+    }
+
+    bool showThumbnails = dlg_->showThumbnails();
+    if(settings.value(QStringLiteral("ShowThumbnails")).toBool() != showThumbnails) {
+        settings.setValue(QStringLiteral("ShowThumbnails"), showThumbnails);
+    }
+    bool noItemTooltip = dlg_->noItemTooltip();
+    if(settings.value(QStringLiteral("NoItemTooltip")).toBool() != noItemTooltip) {
+        settings.setValue(QStringLiteral("NoItemTooltip"), noItemTooltip);
+    }
+
+    int size = dlg_->bigIconSize();
+    if(settings.value(QStringLiteral("BigIconSize")).toInt() != size) {
+        settings.setValue(QStringLiteral("BigIconSize"), size);
+    }
+    size = dlg_->smallIconSize();
+    if(settings.value(QStringLiteral("SmallIconSize")).toInt() != size) {
+        settings.setValue(QStringLiteral("SmallIconSize"), size);
+    }
+    size = dlg_->thumbnailIconSize();
+    if(settings.value(QStringLiteral("ThumbnailIconSize")).toInt() != size) {
+        settings.setValue(QStringLiteral("ThumbnailIconSize"), size);
     }
     settings.endGroup();
 

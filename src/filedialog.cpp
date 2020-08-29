@@ -4,9 +4,12 @@
 #include "utilities.h"
 #include "core/fileinfojob.h"
 #include "ui_filedialog.h"
+#include "filedialog_p.h"
 
 #include <QDialogButtonBox>
 #include <QPushButton>
+#include <QToolButton>
+#include <QMenu>
 #include <QMimeType>
 #include <QMimeDatabase>
 #include <QMessageBox>
@@ -30,7 +33,8 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     fileMode_{QFileDialog::AnyFile},
     acceptMode_{QFileDialog::AcceptOpen},
     confirmOverwrite_{true},
-    modelFilter_{this} {
+    modelFilter_{this},
+    noItemTooltip_{false} {
 
     ui->setupUi(this);
 
@@ -138,26 +142,88 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     auto newFolderAction = toolbar->addAction(QIcon::fromTheme(QStringLiteral("folder-new")), tr("Create Folder"));
     connect(newFolderAction, &QAction::triggered, this, &FileDialog::onNewFolder);
     toolbar->addSeparator();
-    // view buttons
-    auto viewModeGroup = new QActionGroup(this);
 
+    // Options menu
+    QMenu* menu = new QMenu(toolbar);
+
+    // view actions
+    auto viewModeGroup = new QActionGroup(this);
     // use generic icons for view actions only if theme icons don't exist
-    iconViewAction_ = toolbar->addAction(QIcon::fromTheme(QLatin1String("view-list-icons"), style()->standardIcon(QStyle::SP_FileDialogContentsView)), tr("Icon View"));
+    iconViewAction_ = menu->addAction(QIcon::fromTheme(QLatin1String("view-list-icons"), style()->standardIcon(QStyle::SP_FileDialogContentsView)), tr("Icon View"));
     iconViewAction_->setCheckable(true);
     connect(iconViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(iconViewAction_);
-    thumbnailViewAction_ = toolbar->addAction(QIcon::fromTheme(QLatin1String("view-preview"), style()->standardIcon(QStyle::SP_FileDialogInfoView)), tr("Thumbnail View"));
+    thumbnailViewAction_ = menu->addAction(QIcon::fromTheme(QLatin1String("view-preview"), style()->standardIcon(QStyle::SP_FileDialogInfoView)), tr("Thumbnail View"));
     thumbnailViewAction_->setCheckable(true);
     connect(thumbnailViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(thumbnailViewAction_);
-    compactViewAction_ = toolbar->addAction(QIcon::fromTheme(QLatin1String("view-list-text"), style()->standardIcon(QStyle::SP_FileDialogListView)), tr("Compact View"));
+    compactViewAction_ = menu->addAction(QIcon::fromTheme(QLatin1String("view-list-text"), style()->standardIcon(QStyle::SP_FileDialogListView)), tr("Compact View"));
     compactViewAction_->setCheckable(true);
     connect(compactViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(compactViewAction_);
-    detailedViewAction_ = toolbar->addAction(QIcon::fromTheme(QLatin1String("view-list-details"), style()->standardIcon(QStyle::SP_FileDialogDetailedView)), tr("Detailed List View"));
+    detailedViewAction_ = menu->addAction(QIcon::fromTheme(QLatin1String("view-list-details"), style()->standardIcon(QStyle::SP_FileDialogDetailedView)), tr("Detailed List View"));
     detailedViewAction_->setCheckable(true);
     connect(detailedViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(detailedViewAction_);
+
+    menu->addSeparator();
+
+    // icon size actions
+    QMenu* sizeMenu = new QMenu(tr("Icon Sizes"), toolbar);
+    menu->addMenu(sizeMenu);
+    FileDialogIconSizeAction* bigSizeAction = new FileDialogIconSizeAction(tr("Size of big icons:"), toolbar);
+    bigSizeAction->setBounds(32, 96);
+    connect(bigSizeAction, &FileDialogIconSizeAction::editingFinished, [this, bigSizeAction]() {
+        setBigIconSize(bigSizeAction->value());
+    });
+    sizeMenu->addAction(bigSizeAction);
+
+    FileDialogIconSizeAction* smallSizeAction = new FileDialogIconSizeAction(tr("Size of small icons:"), toolbar);
+    smallSizeAction->setBounds(16, 48);
+    connect(smallSizeAction, &FileDialogIconSizeAction::editingFinished, [this, smallSizeAction]() {
+        setSmallIconSize(smallSizeAction->value());
+    });
+    sizeMenu->addAction(smallSizeAction);
+
+    FileDialogIconSizeAction* thumbnailSizeAction = new FileDialogIconSizeAction(tr("Size of thumbnails:"), toolbar);
+    thumbnailSizeAction->setBounds(64, 256);
+    connect(thumbnailSizeAction, &FileDialogIconSizeAction::editingFinished, [this, thumbnailSizeAction]() {
+        setThumbnailIconSize(thumbnailSizeAction->value());
+    });
+    sizeMenu->addAction(thumbnailSizeAction);
+
+    connect(sizeMenu, &QMenu::aboutToShow, [this, bigSizeAction, smallSizeAction, thumbnailSizeAction]() {
+        bigSizeAction->setValue(bigIconSize());
+        smallSizeAction->setValue(smallIconSize());
+        thumbnailSizeAction->setValue(thumbnailIconSize());
+    });
+
+    menu->addSeparator();
+
+    // thumbnail and tooltip actions
+    auto thumbnailsAction = menu->addAction(tr("Show Thumbnails"));
+    thumbnailsAction->setCheckable(true);
+    connect(thumbnailsAction, &QAction::triggered, [this](bool checked) {
+        setShowThumbnails(checked);
+    });
+    auto tooltipsAction = menu->addAction(tr("Show File Tooltips"));
+    tooltipsAction->setCheckable(true);
+    connect(tooltipsAction, &QAction::triggered, [this](bool checked) {
+        setNoItemTooltip(!checked);
+    });
+    connect(menu, &QMenu::aboutToShow, [this, thumbnailsAction, tooltipsAction]() {
+        thumbnailsAction->setChecked(proxyModel_ ? proxyModel_->showThumbnails() : true);
+        tooltipsAction->setChecked(!noItemTooltip_);
+    });
+
+    // Options menu button
+    auto optionsAction = toolbar->addAction(QIcon::fromTheme(QStringLiteral("preferences-system"), QIcon::fromTheme(QStringLiteral("document-properties"))), tr("Options"));
+    optionsAction->setMenu(menu);
+    // change the popup mode to instant (Qt sets it to MenuButtonPopup)
+    if(QToolButton* optionsBtn = static_cast<QToolButton*>(toolbar->widgetForAction(optionsAction))) {
+        optionsBtn->setPopupMode(QToolButton::InstantPopup);
+    }
+
     ui->toolbarLayout->addWidget(toolbar);
 
     setViewMode(viewMode_);
@@ -183,9 +249,12 @@ FileDialog::~FileDialog() {
     freeFolder();
 }
 
-// Here we make Tab key switch the focus from the main view to the name entry
-// and BackTab do the reverse because QWidget::setTabOrder() cannot do that.
 bool FileDialog::eventFilter(QObject* watched, QEvent* event) {
+    if (watched == ui->folderView->childView()->viewport() && event->type() == QEvent::ToolTip) {
+        return true;
+    }
+    // Here we make Tab key switch the focus from the main view to the name entry
+    // and BackTab do the reverse because QWidget::setTabOrder() cannot do that.
     if(event->type() == QEvent::KeyPress) {
         if(QKeyEvent *ke = static_cast<QKeyEvent*>(event)) {
             if(watched == ui->folderView->childView() && ui->folderView->childView()->hasFocus()
@@ -302,6 +371,63 @@ void FileDialog::onSettingHiddenPlace(const QString& str, bool hide) {
     }
     else {
         hiddenPlaces_.remove(str);
+    }
+}
+
+bool FileDialog::showThumbnails() const {
+    if(proxyModel_) {
+        return proxyModel_->showThumbnails();
+    }
+    return true;
+}
+
+void FileDialog::setShowThumbnails(bool show) {
+    if(proxyModel_) {
+        proxyModel_->setShowThumbnails(show);
+    }
+}
+
+void FileDialog::setNoItemTooltip(bool noItemTooltip) {
+    if(noItemTooltip_ == noItemTooltip) {
+        return;
+    }
+    noItemTooltip_ = noItemTooltip;
+    if(noItemTooltip_) {
+        ui->folderView->childView()->viewport()->installEventFilter(this);
+    }
+    else {
+        ui->folderView->childView()->viewport()->removeEventFilter(this);
+    }
+}
+
+int FileDialog::bigIconSize() const {
+    return ui->folderView->iconSize(FolderView::IconMode).width();
+}
+
+void FileDialog::setBigIconSize(int size) {
+    if(bigIconSize() != size) {
+        ui->folderView->setIconSize(FolderView::IconMode, QSize(size, size));
+    }
+}
+
+int FileDialog::smallIconSize() const {
+    return ui->folderView->iconSize(FolderView::DetailedListMode).width();
+}
+
+void FileDialog::setSmallIconSize(int size) {
+    if(smallIconSize() != size) {
+        ui->folderView->setIconSize(FolderView::DetailedListMode, QSize(size, size));
+        ui->folderView->setIconSize(FolderView::CompactMode, QSize(size, size));
+    }
+}
+
+int FileDialog::thumbnailIconSize() const {
+    return ui->folderView->iconSize(FolderView::ThumbnailMode).width();
+}
+
+void FileDialog::setThumbnailIconSize(int size) {
+    if(thumbnailIconSize() != size) {
+        ui->folderView->setIconSize(FolderView::ThumbnailMode, QSize(size, size));
     }
 }
 
@@ -922,6 +1048,10 @@ void FileDialog::setViewMode(FolderView::ViewMode mode) {
     // So, the event filter should be re-installed.
     ui->folderView->childView()->removeEventFilter(this);
     ui->folderView->childView()->installEventFilter(this);
+    if(noItemTooltip_) {
+        ui->folderView->childView()->viewport()->removeEventFilter(this);
+        ui->folderView->childView()->viewport()->installEventFilter(this);
+    }
 }
 
 

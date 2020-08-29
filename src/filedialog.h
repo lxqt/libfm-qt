@@ -147,6 +147,23 @@ public:
     }
     void setHiddenPlaces(const QSet<QString>& items);
 
+    bool showThumbnails() const;
+    void setShowThumbnails(bool show);
+
+    bool noItemTooltip() const {
+        return noItemTooltip_;
+    }
+    void setNoItemTooltip(bool noItemTooltip);
+
+    int bigIconSize() const;
+    void setBigIconSize(int size);
+
+    int smallIconSize() const;
+    void setSmallIconSize(int size);
+
+    int thumbnailIconSize() const;
+    void setThumbnailIconSize(int size);
+
 protected:
     bool eventFilter(QObject* watched, QEvent* event) override;
 
@@ -238,9 +255,9 @@ private:
     QAction* forwardAction_;
     // dialog labels that can be set explicitly:
     QString explicitLabels_[5];
-    // needed for disconnecting Fm::Folder signal from lambda:
-    QMetaObject::Connection lambdaConnection_;
+    QMetaObject::Connection lambdaConnection_; // needed for disconnecting Fm::Folder signal from lambda:
     QSet<QString> hiddenPlaces_;
+    bool noItemTooltip_;
 };
 
 
