@@ -696,7 +696,13 @@ void FileDialog::onFileClicked(int type, const std::shared_ptr<const FileInfo> &
                 ui->fileName->clear();
             }
             // chdir into the activated dir
-            setDirectoryPath(file->path());
+            if(file->isMountable() && !file->target().empty()) {
+                // a mounted mountable directory (like computer:///root.link)
+                setDirectoryPath(FilePath::fromPathStr(file->target().c_str()));
+            }
+            else {
+                setDirectoryPath(file->path());
+            }
         }
         else if(fileMode_ != QFileDialog::Directory) {
             // select file(s) and a file item is activated
