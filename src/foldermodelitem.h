@@ -43,7 +43,6 @@ public:
 
     struct Thumbnail {
         int size;
-        bool transparent;
         ThumbnailStatus status;
         QImage image;
     };
@@ -61,9 +60,9 @@ public:
         return info->name();
     }
 
-    QIcon icon(bool transparent = false) const {
+    QIcon icon() const {
         const auto i = info->icon();
-        return i ? i->qicon(transparent) : QIcon{};
+        return i ? i->qicon() : QIcon{};
     }
 
     QString ownerName() const;
@@ -76,9 +75,7 @@ public:
 
     const QString &displaySize() const;
 
-    bool isCut() const;
-
-    Thumbnail* findThumbnail(int size, bool transparent);
+    Thumbnail* findThumbnail(int size);
 
     void removeThumbnail(int size);
 
@@ -87,6 +84,7 @@ public:
     mutable QString dispDtime_;
     mutable QString dispSize_;
     QVector<Thumbnail> thumbnails;
+    bool isCut;
 };
 
 }

@@ -43,8 +43,6 @@ LIBFM_QT_API QByteArray pathListToUriList(const Fm::FilePathList& paths);
 
 LIBFM_QT_API Fm::FilePathList pathListFromQUrls(QList<QUrl> urls);
 
-LIBFM_QT_API std::pair<Fm::FilePathList, bool> parseClipboardData(const QMimeData& data);
-
 LIBFM_QT_API void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent = nullptr);
 
 LIBFM_QT_API void copyFilesToClipboard(const Fm::FilePathList& files);

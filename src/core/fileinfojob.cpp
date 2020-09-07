@@ -3,10 +3,9 @@
 
 namespace Fm {
 
-FileInfoJob::FileInfoJob(FilePathList paths, const std::shared_ptr<const HashSet>& cutFilesHashSet):
+FileInfoJob::FileInfoJob(FilePathList paths):
     Job(),
-    paths_{std::move(paths)},
-    cutFilesHashSet_{cutFilesHashSet} {
+    paths_{std::move(paths)} {
 }
 
 void FileInfoJob::exec() {
@@ -27,13 +26,6 @@ void FileInfoJob::exec() {
             };
             if(inf) {
                 auto fileInfoPtr = std::make_shared<FileInfo>(inf, path);
-
-                // FIXME: this is not elegant
-                if(cutFilesHashSet_
-                        && cutFilesHashSet_->count(path.hash())) {
-                    fileInfoPtr->bindCutFiles(cutFilesHashSet_);
-                }
-
                 results_.push_back(fileInfoPtr);
                 Q_EMIT gotInfo(path, results_.back());
             }

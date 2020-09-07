@@ -172,10 +172,6 @@ public:
         return dirPath_ ? dirPath_.isNative() : path().isNative();
     }
 
-    bool isCut() const {
-        return !cutFilesHashSet_.expired();
-    }
-
     mode_t mode() const {
         return mode_;
     }
@@ -209,8 +205,6 @@ public:
     }
 
     void setFromGFileInfo(const GFileInfoPtr& inf, const FilePath& filePath, const FilePath& parentDirPath);
-
-    void bindCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet);
 
     const std::forward_list<std::shared_ptr<const IconInfo>>& emblems() const {
         return emblems_;
@@ -262,9 +256,6 @@ private:
     bool isIconChangeable_ : 1; /* TRUE if icon can be changed */
     bool isHiddenChangeable_ : 1; /* TRUE if hidden can be changed */
     bool isReadOnly_ : 1; /* TRUE if host FS is R/O */
-
-    std::weak_ptr<const HashSet> cutFilesHashSet_;
-    // std::vector<std::tuple<int, void*, void(void*)>> extraData_;
 };
 
 

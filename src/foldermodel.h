@@ -110,7 +110,6 @@ protected Q_SLOTS:
     void onFinishLoading();
     void onFilesAdded(const Fm::FileInfoList& files);
     void onFilesChanged(std::vector<Fm::FileInfoPair>& files);
-    void onCutFilesChanged(std::vector<Fm::FileInfoPair>& files);
     void onFilesRemoved(const Fm::FileInfoList& files);
 
     void onThumbnailLoaded(const std::shared_ptr<const Fm::FileInfo>& file, int size, const QImage& image);
@@ -127,8 +126,8 @@ protected:
     QList<FolderModelItem>::iterator findItemByFileInfo(const Fm::FileInfo* info, int* row);
 
 private:
-    void setCutFiles(const Fm::FilePathList& paths);
     QString makeTooltip(FolderModelItem* item) const;
+    void updateCutFilesSet();
 
 private:
 
@@ -153,6 +152,9 @@ private:
     bool showFullNames_;
 
     bool isLoaded_;
+
+    bool hasCutfile_;
+    HashSet cutFilesHashSet_;
 };
 
 }

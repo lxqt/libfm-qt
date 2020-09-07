@@ -84,12 +84,6 @@ public:
 
     const std::shared_ptr<const FileInfo> &info() const;
 
-    void setCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet);
-    bool hasCutFiles() const;
-    bool hadCutFiles();
-
-    void updateCutFiles();
-
     void forEachFile(std::function<void (const std::shared_ptr<const FileInfo>&)> func) const {
         std::lock_guard<std::mutex> lock{mutex_};
         for(auto it = files_.begin(); it != files_.end(); ++it) {
@@ -105,8 +99,6 @@ Q_SIGNALS:
     void filesAdded(FileInfoList& addedFiles);
 
     void filesChanged(std::vector<FileInfoPair>& changePairs);
-
-    void cutFilesChanged(std::vector<FileInfoPair>& changePairs);
 
     void filesRemoved(FileInfoList& removedFiles);
 
@@ -193,9 +185,6 @@ private:
     bool defer_content_test : 1;
 
     static std::unordered_map<FilePath, std::weak_ptr<Folder>, FilePathHash> cache_;
-    static QString cutFilesDirPath_;
-    static QString lastCutFilesDirPath_;
-    static std::shared_ptr<const HashSet> cutFilesHashSet_;
     static std::mutex mutex_;
 };
 

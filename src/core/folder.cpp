@@ -34,9 +34,6 @@
 namespace Fm {
 
 std::unordered_map<FilePath, std::weak_ptr<Folder>, FilePathHash> Folder::cache_;
-QString Folder::cutFilesDirPath_;
-QString Folder::lastCutFilesDirPath_;
-std::shared_ptr<const HashSet> Folder::cutFilesHashSet_;
 std::mutex Folder::mutex_;
 
 Folder::Folder():
@@ -289,7 +286,7 @@ void Folder::processPendingChanges() {
         FilePathList paths;
         paths.insert(paths.end(), paths_to_add.cbegin(), paths_to_add.cend());
         paths.insert(paths.end(), paths_to_update.cbegin(), paths_to_update.cend());
-        info_job = new FileInfoJob{paths, hasCutFiles() ? cutFilesHashSet_ : nullptr};
+        info_job = new FileInfoJob{paths};
         paths_to_update.clear();
         paths_to_add.clear();
     }
@@ -498,52 +495,6 @@ void Folder::onFileChangeEvents(GFileMonitor* /*monitor*/, GFile* gf, GFile* /*o
         default:
             break;
         }
-    }
-}
-
-void Folder::setCutFiles(const std::shared_ptr<const HashSet>& cutFilesHashSet) {
-    if(cutFilesHashSet_ && !cutFilesHashSet_->empty()) {
-        lastCutFilesDirPath_ = cutFilesDirPath_;
-    }
-    cutFilesDirPath_ = QString::fromUtf8(dirPath_.toString().get());
-    cutFilesHashSet_ = cutFilesHashSet;
-}
-
-// checks whether there are cut files here
-bool Folder::hasCutFiles() const {
-    return cutFilesHashSet_
-            && !cutFilesHashSet_->empty()
-            && cutFilesDirPath_ == QString::fromUtf8(dirPath_.toString().get());
-}
-
-// checks whether there were cut files here
-// and if so, invalidates the last cut path
-bool Folder::hadCutFiles() {
-    if(lastCutFilesDirPath_ == QString::fromUtf8(dirPath_.toString().get())) {
-        lastCutFilesDirPath_ = QString();
-        return true;
-    }
-    return false;
-}
-
-// can be called to emit a signal whenever the list of cut files changes
-void Folder::updateCutFiles() {
-    auto tmp = files();
-    std::vector<FileInfoPair> cut_files_to_update;
-    for(auto& file : tmp) {
-        auto fileInfoPtr = std::make_shared<FileInfo>(file->gFileInfo(), file->path());
-        if(cutFilesHashSet_
-           && cutFilesHashSet_->count(file->path().hash())) {
-            fileInfoPtr->bindCutFiles(cutFilesHashSet_);
-        }
-        auto it = files_.find(file->path().baseName().get());
-        if(it != files_.end()) {
-            cut_files_to_update.push_back(std::make_pair(it->second, fileInfoPtr));
-        }
-        files_[fileInfoPtr->path().baseName().get()] = fileInfoPtr;
-    }
-    if(!cut_files_to_update.empty()) {
-        Q_EMIT cutFilesChanged(cut_files_to_update);
     }
 }
 
@@ -761,8 +712,7 @@ void Folder::reload() {
     /* run a new dir listing job */
     // FIXME:
     // defer_content_test = fm_config->defer_content_test;
-    dirlist_job = new DirListJob(dirPath_, defer_content_test ? DirListJob::FAST : DirListJob::DETAILED,
-                                 hasCutFiles() ? cutFilesHashSet_ : nullptr);
+    dirlist_job = new DirListJob(dirPath_, defer_content_test ? DirListJob::FAST : DirListJob::DETAILED);
     dirlist_job->setAutoDelete(true);
     connect(dirlist_job, &DirListJob::error, this, &Folder::error, Qt::BlockingQueuedConnection);
     connect(dirlist_job, &DirListJob::finished, this, &Folder::onDirListFinished, Qt::BlockingQueuedConnection);
