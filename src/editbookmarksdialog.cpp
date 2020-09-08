@@ -23,8 +23,6 @@
 #include <QByteArray>
 #include <QUrl>
 #include <QSaveFile>
-#include <QStandardPaths>
-#include <QDir>
 
 namespace Fm {
 
@@ -56,17 +54,9 @@ EditBookmarksDialog::~EditBookmarksDialog() {
 void EditBookmarksDialog::accept() {
     // save bookmarks
     // it's easier to recreate the whole bookmark file than
-    // to manipulate FmBookmarks object. So here we generate the file directly.
-    // FIXME: maybe in the future we should add a libfm API to easily replace all FmBookmarks.
-    // Here we use gtk+ 3.0 bookmarks rather than the gtk+ 2.0 one.
-    // Since gtk+ 2.24.12, gtk+2 reads gtk+3 bookmarks file if it exists.
-    // So it's safe to only save gtk+3 bookmarks file.
-    QString path = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
-    path += QLatin1String("/gtk-3.0");
-    if(!QDir().mkpath(path)) {
-        return;    // fail to create ~/.config/gtk-3.0 dir
-    }
-    path += QLatin1String("/bookmarks");
+    // to manipulate Fm::Bookmarks object. So here we generate the file directly.
+    // FIXME: maybe in the future we should add a libfm-qt API to easily replace all Fm::Bookmarks.
+    QString path = QString::fromUtf8(bookmarks_->bookmarksFile().toString().get());
     QSaveFile file(path); // use QSaveFile for atomic file operation
     if(file.open(QIODevice::WriteOnly)) {
         for(int row = 0; ; ++row) {

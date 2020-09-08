@@ -45,6 +45,8 @@ public:
 
     ~Bookmarks() override;
 
+    const FilePath& bookmarksFile() const;
+
     const std::shared_ptr<const BookmarkItem> &insert(const FilePath& path, const QString& name, int pos);
 
     void remove(const std::shared_ptr<const BookmarkItem>& item);
@@ -75,7 +77,7 @@ private:
     void onFileChanged(GFileMonitor* mon, GFile* gf, GFile* other, GFileMonitorEvent evt);
 
 private:
-    FilePath file;
+    FilePath file_;
     GObjectPtr<GFileMonitor> mon;
     std::vector<std::shared_ptr<const BookmarkItem>> items_;
     static std::weak_ptr<Bookmarks> globalInstance_;
