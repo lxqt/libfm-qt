@@ -187,6 +187,17 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
         default: {
             QString leftText = left.data(Qt::DisplayRole).toString();
             QString rightText = right.data(Qt::DisplayRole).toString();
+            // exclude identical file extensions for a more intuitive sorting
+            if(!leftInfo->isDir() && !rightInfo->isDir()) {
+                int leftEnd = leftText.lastIndexOf(QLatin1Char('.'));
+                if(leftEnd > 0) {
+                    int rightEnd = rightText.lastIndexOf(QLatin1Char('.'));
+                    if(rightEnd > 0 && leftText.mid(leftEnd) == rightText.mid(rightEnd)) {
+                        comp = collator_.compare(leftText.left(leftEnd), rightText.left(rightEnd));
+                        break;
+                    }
+                }
+            }
             comp = collator_.compare(leftText, rightText);
             break;
         }
