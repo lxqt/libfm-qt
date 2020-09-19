@@ -85,8 +85,10 @@ PathBar::PathBar(QWidget* parent):
 
 void PathBar::resizeEvent(QResizeEvent* event) {
     QWidget::resizeEvent(event);
-    updateScrollButtonVisibility();
-    QTimer::singleShot(0, this, SLOT(ensureToggledVisible()));
+    if(event->oldSize().width() != event->size().width()) {
+        updateScrollButtonVisibility();
+        QTimer::singleShot(0, this, SLOT(ensureToggledVisible()));
+    }
 }
 
 void PathBar::wheelEvent(QWheelEvent* event) {
@@ -156,6 +158,9 @@ void PathBar::setScrollButtonVisibility() {
         int value = sb->value();
         scrollToStart_->setEnabled(value != sb->minimum());
         scrollToEnd_->setEnabled(value != sb->maximum());
+        // align scroll buttons horizontally
+        scrollToStart_->setMaximumHeight(qMax(buttonsWidget_->height(), scrollToStart_->minimumSizeHint().height()));
+        scrollToEnd_->setMaximumHeight(qMax(buttonsWidget_->height(), scrollToEnd_->minimumSizeHint().height()));
     }
 }
 
