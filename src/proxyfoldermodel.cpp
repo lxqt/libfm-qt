@@ -185,9 +185,27 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
             }
             break;
         default: {
+            // To have a more natural sorting like that of GTK, we consider dot
+            // as a separator and compare sub-strings from left to right.
+            // QString::split() is not used because some dots may not be needed.
             QString leftText = left.data(Qt::DisplayRole).toString();
             QString rightText = right.data(Qt::DisplayRole).toString();
-            comp = collator_.compare(leftText, rightText);
+            int leftStart = 0, rightStart = 0;
+            int leftEnd = 0, rightEnd = 0;
+            for(;;) {
+                leftEnd = leftText.indexOf(QLatin1Char('.'), leftStart);
+                rightEnd = rightText.indexOf(QLatin1Char('.'), rightStart);
+                comp = collator_.compare(leftText.mid(leftStart, leftEnd - leftStart),
+                                         rightText.mid(rightStart, rightEnd - rightStart));
+                if(comp != 0 || leftEnd == -1 || rightEnd == -1) {
+                    break;
+                }
+                leftStart = leftEnd + 1;
+                rightStart = rightEnd + 1;
+            }
+            if(comp == 0) {
+                comp = leftEnd - rightEnd; // covers all remaining cases
+            }
             break;
         }
         }
