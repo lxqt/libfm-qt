@@ -536,7 +536,7 @@ Sostituirlo?</translation>
     <message>
         <location filename="../filedialog.cpp" line="680"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation>&quot;%1&quot; non  è un file</translation>
+        <translation>&quot;%1&quot; non è un file</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="823"/>
@@ -1257,7 +1257,7 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../sidepane.cpp" line="44"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Risorse</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
@@ -1395,12 +1395,12 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="324"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>Nessuna applicazione predefinita per eseguire  &apos;%1&apos;</translation>
+        <translation>Nessuna applicazione predefinita per eseguire &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="365"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>Impossibile impostare cartella di lavoro a  &apos;%1&apos;: %2</translation>
+        <translation>Impossibile impostare cartella di lavoro a &apos;%1&apos;: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
