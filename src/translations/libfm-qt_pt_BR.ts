@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Caminho:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -985,7 +985,7 @@ Deseja apagar permanentemente esses arquivos?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="209"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Oculto por Último</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="217"/>
@@ -1257,7 +1257,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../sidepane.cpp" line="44"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Listas</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
@@ -1313,7 +1313,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Lembrar senha para es&amp;ta sessão</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>

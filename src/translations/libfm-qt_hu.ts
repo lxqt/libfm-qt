@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Útvonal:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -749,7 +749,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation type="unfinished">Attribútum változtatás</translation>
+        <translation>Attribútum szerkesztés</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
@@ -984,7 +984,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="209"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Rejtettek hátra</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="217"/>
@@ -1256,7 +1256,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../sidepane.cpp" line="44"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Listák</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
@@ -1312,7 +1312,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Jelszó &amp;megjegyzése ebben a munkamenetben</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1330,7 +1330,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="172"/>
         <source>Please enter a new name:</source>
-        <translation type="unfinished">Új név:</translation>
+        <translation>Adja meg az új nevet:</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="104"/>

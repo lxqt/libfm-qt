@@ -834,7 +834,9 @@ Do you want to delete them instead?</source>
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
         <translation>
-            <numerusform>קובץ אחד</numerusform>
+            <numerusform>קובץ %Ln</numerusform>
+            <numerusform>%Ln קבצים</numerusform>
+            <numerusform>%Ln קבצים</numerusform>
             <numerusform>%Ln קבצים</numerusform>
         </translation>
     </message>

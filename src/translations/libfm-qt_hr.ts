@@ -590,7 +590,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="122"/>
         <source>Create &amp;New</source>
-        <translation>Stvori &amp;novu …</translation>
+        <translation>Stvori &amp;novu</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="141"/>

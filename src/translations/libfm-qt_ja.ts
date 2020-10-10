@@ -819,7 +819,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="337"/>
         <source>%1 Free of %2</source>
-        <translation>空き容量 %1  全体 %2</translation>
+        <translation>空き容量 %1　全体 %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
