@@ -231,7 +231,7 @@ bool XdndWorkaround::selectionRequest(xcb_selection_request_event_t* event) {
         QMimeData* mime = drag ? drag->mimeData() : nullptr;
         if(mime != nullptr && mime->hasUrls()) {
             QByteArray data;
-            QList<QUrl> uris = mime->urls();
+            const QList<QUrl> uris = mime->urls();
             if(type_name == "text/x-moz-url") {
                 QString mozurl = uris.at(0).toString(QUrl::FullyEncoded);
                 data.append((const char*)mozurl.utf16(), mozurl.length() * 2);

@@ -187,7 +187,7 @@ void FileDialogHelper::applyOptions() {
     }
 #endif
 
-    auto selectedFiles = opt->initiallySelectedFiles();
+    const auto selectedFiles = opt->initiallySelectedFiles();
     for(const auto& selectedFile: selectedFiles) {
         selectFile(selectedFile);
     }
