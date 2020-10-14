@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalur:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
