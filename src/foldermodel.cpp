@@ -68,6 +68,7 @@ void FolderModel::setFolder(const std::shared_ptr<Fm::Folder>& new_folder) {
         if(folder_->isLoaded()) {
             isLoaded_ = true;
             insertFiles(0, folder_->files());
+            onClipboardDataChange(); // files may have been cut
         }
     }
 }
