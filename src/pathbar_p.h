@@ -44,7 +44,7 @@ public:
         int icnSize = style()->pixelMetric(QStyle::PM_ToolBarIconSize);
         setIconSize(QSize(icnSize, icnSize));
 
-        setText(displayName);
+        setText(displayName.replace(QLatin1Char('\n'), QLatin1Char(' '))); // single-line text
 
         if(isRoot) { /* this element is root */
             QIcon icon = QIcon::fromTheme(QStringLiteral("drive-harddisk"));
@@ -69,7 +69,6 @@ public:
     }
 
 private:
-    QString displayName_;
     std::string name_;
 };
 
