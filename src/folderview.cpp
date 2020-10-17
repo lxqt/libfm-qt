@@ -208,46 +208,24 @@ QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
 // TODO: I really should file a bug report to Qt developers.
 
 void FolderViewListView::dragEnterEvent(QDragEnterEvent* event) {
-    if(movement() != Static) {
-        QListView::dragEnterEvent(event);
-    }
-    else {
-        QAbstractItemView::dragEnterEvent(event);
-    }
+    QAbstractItemView::dragEnterEvent(event);
     //qDebug("dragEnterEvent");
     //static_cast<FolderView*>(parent())->childDragEnterEvent(event);
 }
 
 void FolderViewListView::dragLeaveEvent(QDragLeaveEvent* e) {
-    if(movement() != Static) {
-        QListView::dragLeaveEvent(e);
-    }
-    else {
-        QAbstractItemView::dragLeaveEvent(e);
-    }
+    QAbstractItemView::dragLeaveEvent(e);
     static_cast<FolderView*>(parent())->childDragLeaveEvent(e);
 }
 
 void FolderViewListView::dragMoveEvent(QDragMoveEvent* e) {
-    if(movement() != Static) {
-        QListView::dragMoveEvent(e);
-    }
-    else {
-        QAbstractItemView::dragMoveEvent(e);
-    }
+    QAbstractItemView::dragMoveEvent(e);
     static_cast<FolderView*>(parent())->childDragMoveEvent(e);
 }
 
 void FolderViewListView::dropEvent(QDropEvent* e) {
-
     static_cast<FolderView*>(parent())->childDropEvent(e);
-
-    if(movement() != Static) {
-        QListView::dropEvent(e);
-    }
-    else {
-        QAbstractItemView::dropEvent(e);
-    }
+    QAbstractItemView::dropEvent(e);
 }
 
 void FolderViewListView::mouseReleaseEvent(QMouseEvent* event) {
