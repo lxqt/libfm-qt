@@ -166,7 +166,7 @@ za ovu vrstu datoteka</translation>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
         <source>Time remaining:</source>
-        <translation>Preostalo vrijeme</translation>
+        <translation>Preostalo vrijeme:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
@@ -1415,7 +1415,7 @@ Promijenjeno: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation>Potvrdi premještanje datoteka</translation>
+        <translation>Potvrdi zamjenjivanje datoteka</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
@@ -1425,7 +1425,7 @@ Promijenjeno: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation>sa sljedećom datotekom:</translation>
+        <translation>sa sljedećom datotekom?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
