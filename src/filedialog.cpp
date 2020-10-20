@@ -1297,7 +1297,7 @@ void FileDialog::FileDialogFilter::update() {
         nameFilter = nameFilter.mid(left, right - left);
     }
     // parse the "*.ext1 *.ext2 *.ext3 ..." list into QRegularExpression objects
-    auto globs = nameFilter.simplified().split(QLatin1Char(' '));
+    const auto globs = nameFilter.simplified().split(QLatin1Char(' '));
     for(const auto& glob: globs) {
 #if (QT_VERSION >= QT_VERSION_CHECK(5,12,0))
         patterns_.emplace_back(QRegularExpression(QStringLiteral("\\A(?:")
