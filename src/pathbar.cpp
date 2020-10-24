@@ -255,24 +255,31 @@ void PathBar::setPath(Fm::FilePath path) {
     // create new buttons for the new path
     auto btnPath = currentPath_;
     while(btnPath) {
-        Fm::CStrPtr name;
-        Fm::CStrPtr displayName;
+        std::string name;
+        QString displayName;
         auto parent = btnPath.parent();
         // FIXME: some buggy uri types, such as menu://, fail to return NULL when there is no parent path.
         // Instead, the path itself is returned. So we check if the parent path is the same as current path.
         auto isRoot = !parent.isValid() || parent == btnPath;
         if(isRoot) {
-            displayName = btnPath.displayName();
-            name = btnPath.toString();
+            displayName = QString::fromUtf8(btnPath.displayName().get());
+            name = btnPath.toString().get();
         }
         else {
-            displayName = btnPath.baseName();
-            // "name" is used for making the path from its components in PathBar::pathForButton().
-            // So, it should be extracted from g_file_get_parse_name().
-            // (In places like trash:///, FilePath::baseName() cannot be used to make a full path.)
-            name = CStrPtr{g_path_get_basename(btnPath.displayName().get())};
+            displayName = QString::fromUtf8(btnPath.baseName().get());
+            // NOTE: "name" is used for making the path from its components in PathBar::pathForButton().
+            // In places like folders inside trashes of mounted volumes, FilePath::baseName() cannot be
+            // used for making a full path. On the other hand, the base name of FilePath::displayName()
+            // causes trouble when a file name contains newline or tab.
+            //
+            // Therefore, we simply set "name" to the last component of FilePath::toString().
+            auto pathStr = QString::fromUtf8(btnPath.toString().get());
+            pathStr = pathStr.section(QLatin1Char('/'), -1);
+            name = pathStr.toStdString();
         }
-        auto btn = new PathButton(name.get(), QString::fromUtf8(displayName.get()), isRoot, buttonsWidget_);
+        // double ampersands to distinguish them from mnemonics
+        displayName.replace(QLatin1Char('&'), QLatin1String("&&"));
+        auto btn = new PathButton(name, displayName, isRoot, buttonsWidget_);
         btn->show();
         connect(btn, &QAbstractButton::toggled, this, &PathBar::onButtonToggled);
         buttonsLayout_->insertWidget(0, btn);
