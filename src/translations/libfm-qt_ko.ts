@@ -308,17 +308,17 @@
     <message>
         <location filename="../file-props.ui" line="664"/>
         <source>Sticky</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">스티키</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="671"/>
         <source>SetUID</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">UID 설정</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="678"/>
         <source>SetGID</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GID 설정</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="714"/>
@@ -433,7 +433,7 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished">이 파일 &apos;%1&apos;은 데스크톱 앤트리입니다.
+        <translation>이 파일 &apos;%1&apos;은 데스크톱 앤트리입니다.
 무엇을 하길 원하십니까?</translation>
     </message>
     <message>
@@ -1405,7 +1405,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="365"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished">&apos;%1&apos;로 작업 경로를 설정할 수 없습니다：%2</translation>
+        <translation type="unfinished">&apos;%1&apos;로 작업 경로를 설정할 수 없습니다:%2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
