@@ -248,7 +248,7 @@
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Ownership</source>
-        <translation>Besitz</translation>
+        <translation>Eigentum</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="385"/>
@@ -262,7 +262,7 @@
         <location filename="../file-props.ui" line="433"/>
         <location filename="../file-props.ui" line="512"/>
         <source>Owner:</source>
-        <translation>Besitzer:</translation>
+        <translation>Eigentümer:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
