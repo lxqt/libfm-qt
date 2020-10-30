@@ -1,3 +1,21 @@
+libfm-qt-0.16.0 / 2020-11-01
+============================
+  * Clear selection before selecting an item in side-pane.
+  * Update text color of places view if style changes in runtime.
+  * Added a missing nullity check to file dialog code.
+  * Fixed unwanted selection of all items in detailed list mode.
+  * Fixed a memory leak in launching desktop entries.
+  * Remember file sorting, showing of hidden files, hidden places of side-pane, showing of thumbnails, and icon sizes in LXQt file dialog.
+  * Better focus change with Tab/BackTab in file dialog.
+  * Open mount targets of mountable directories when they are clicked in file dialog.
+  * More efficient and simpler code for graying out cut files.
+  * Also consider the legacy bookmarks file in bookmarks dialog.
+  * Guarantee horizontal alignment for pathbar scroll buttons.
+  * Natural (GTK-like) file sorting by treating dot as separator.
+  * Avoid QListView's DND methods in our list view.
+  * Support special chars like `\n` and `\t` in path button name.
+  * Code cleanup.
+
 libfm-qt-0.15.1 / 2020-05-16
 ============================
   * Bumped API version to 0.15.1.
