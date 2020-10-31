@@ -509,37 +509,37 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>アイコンのサイズ</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>大きいアイコンのサイズ:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>小さいアイコンのサイズ:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>サムネイルのサイズ:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>サムネイルを表示する</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルのツールチップを表示する</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>オプション</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
@@ -610,7 +610,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> ピクセル</translation>
     </message>
 </context>
 <context>
@@ -862,7 +862,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="337"/>
         <source>%1 Free of %2</source>
-        <translation>空き容量 %1&#x3000;全体 %2</translation>
+        <translation>空き容量 %1　全体 %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
@@ -1628,7 +1628,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>大文字と小文字の区別</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
@@ -1638,7 +1638,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>大文字と小文字を区別する(&amp;V)</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
