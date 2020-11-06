@@ -1022,7 +1022,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="201"/>
         <source>Folder First</source>
-        <translation>Mappák elöl</translation>
+        <translation>Mappák előre</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="209"/>
