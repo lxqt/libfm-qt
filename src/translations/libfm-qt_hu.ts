@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>A kiválasztott alkalmazás hozzárendelése a fáljtípushoz</translation>
+        <translation>A kiválasztott alkalmazás hozzárendelése a fájltípushoz</translation>
     </message>
 </context>
 <context>
@@ -91,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Húzással rendezhető minden elem</translation>
+        <translation>Húzással rendezhetőek az elemek</translation>
     </message>
 </context>
 <context>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation>Előkészület...</translation>
+        <translation>Előkészítés...</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
@@ -208,7 +208,7 @@
     <message>
         <location filename="../file-props.ui" line="175"/>
         <source>On-disk size:</source>
-        <translation>Mérete a lemezen:</translation>
+        <translation>Méret a lemezen:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="198"/>
@@ -356,7 +356,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>A &apos;%1&apos; mappa érvenytelen</translation>
+        <translation>A &apos;%1&apos; mappa érvénytelen</translation>
     </message>
 </context>
 <context>
@@ -632,7 +632,7 @@ Le szeretné cserélni?</translation>
     <message>
         <location filename="../filemenu.cpp" line="122"/>
         <source>Create &amp;New</source>
-        <translation>&amp;Új létrehozása</translation>
+        <translation>Ú&amp;j létrehozása</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="141"/>
