@@ -508,37 +508,37 @@ Was möchten Sie damit tun?</translation>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Icongrößen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Größe großer Icons:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Größe kleiner Icons:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Größe des Thumbnails:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>Thumbnails anzeigen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Tooltips anzeigen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
@@ -609,7 +609,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -1628,7 +1628,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Groß-/Kleinschreibung beachten</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
@@ -1638,7 +1638,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Groß-/Kleinschreibung beachten</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
