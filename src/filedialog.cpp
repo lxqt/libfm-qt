@@ -1109,7 +1109,7 @@ void FileDialog::setMimeTypeFilters(const QStringList& filters) {
                 nameFilter += suffix;
                 nameFilter += QLatin1Char(' ');
             }
-            nameFilter[nameFilter.length() - 1] = ')';
+            nameFilter[nameFilter.length() - 1] = QLatin1Char(')');
         }
         nameFilters << nameFilter;
     }
