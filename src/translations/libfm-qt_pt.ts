@@ -429,7 +429,7 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>Parece que &apos;%1&apos; é uma entrada da área de trabalho.
+        <translation>Parece que &apos;%1&apos; é uma entrada &apos;desktop&apos;.
 O que deseja fazer?</translation>
     </message>
     <message>
@@ -508,37 +508,37 @@ O que deseja fazer?</translation>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamanho dos ícones</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamanho dos ícones grandes:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamanho dos ícones pequenos:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamanho das miniaturas:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar miniaturas</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar dicas para ficheiros</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Opções</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
@@ -609,7 +609,7 @@ Deseja substituir?</translation>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -1166,7 +1166,7 @@ Deseja, em alternativa, apagar os ficheiros?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="55"/>
         <source>Desktop</source>
-        <translation>Área de trabalho</translation>
+        <translation>Ambiente de trabalho</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="227"/>
@@ -1628,7 +1628,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Diferenciar maiúsculas/minúsculas</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
@@ -1638,7 +1638,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Diferenciar &amp;maiúsculas/minúsculas</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
