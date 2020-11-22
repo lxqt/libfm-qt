@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kelias:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -508,37 +508,37 @@ Ką norėtumėte su juo daryti?</translation>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Piktogramų dydžiai</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Didelių piktogramų dydis:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mažų piktogramų dydis:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Miniatiūrų dydis:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti miniatiūras</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti failų paaiškinimus</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Parinktys</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
@@ -609,7 +609,7 @@ Ar norite jį pakeisti?</translation>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> piks.</translation>
     </message>
 </context>
 <context>
@@ -1029,7 +1029,7 @@ Ar norite vietoj to, juos ištrinti?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="209"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Paslėptus rodyti paskiausiai</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="217"/>
@@ -1301,7 +1301,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Sąrašai</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
@@ -1357,7 +1357,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Prisiminti slaptažodį š&amp;iam seansui</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1629,7 +1629,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Skirti raidžių dydį</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
@@ -1639,7 +1639,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Skirti &amp;raidžių dydį</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
