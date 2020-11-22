@@ -20,10 +20,7 @@ Runtime dependencies are Qt X11 Extras and libfm ≥ 1.2
 (not all features are provided by libfm-qt yet).   
 Additional build dependencies are CMake,
 [lxqt-build-tools](https://github.com/lxqt/lxqt-build-tools) and optionally Git
-to pull latest VCS checkouts. The localization files were outsourced to
-repository [lxqt-l10n](https://github.com/lxqt/lxqt-l10n) so the corresponding
-dependencies are needed, too. Please refer to this repository's `README.md` for
-further information.   
+to pull latest VCS checkouts. 
 
 Code configuration is handled by CMake. CMake variable `CMAKE_INSTALL_PREFIX` 
 has to be set to `/usr` on most operating systems, depending on the way library
