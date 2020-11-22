@@ -81,3 +81,8 @@ desktop_id=kitty.desktop
 
 [st]
 open_arg=-e
+
+[alacritty]
+open_arg=-e
+noclose_arg=--hold -e
+desktop_id=Alacritty.desktop
