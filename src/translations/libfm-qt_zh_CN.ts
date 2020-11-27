@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>路径：</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -304,17 +304,17 @@
     <message>
         <location filename="../file-props.ui" line="664"/>
         <source>Sticky</source>
-        <translation></translation>
+        <translation>粘附</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="671"/>
         <source>SetUID</source>
-        <translation></translation>
+        <translation>设置用户标识符</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="678"/>
         <source>SetGID</source>
-        <translation></translation>
+        <translation>设置组标识符</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="714"/>
@@ -508,37 +508,37 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>图标大小</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>大图标的大小：</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>小图标的大小：</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>缩略图的大小：</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>显示缩略图</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>显示文件信息提示</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>选项</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
@@ -609,7 +609,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> 像素</translation>
     </message>
 </context>
 <context>
@@ -1027,7 +1027,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="209"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>隐藏文件次后</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="217"/>
@@ -1299,7 +1299,7 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>列表</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
@@ -1355,7 +1355,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>本次会话记住密码(&amp;T)</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1627,7 +1627,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>区分大小写</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
@@ -1637,7 +1637,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>区分大小写(&amp;V)</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
