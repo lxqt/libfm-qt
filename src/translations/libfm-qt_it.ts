@@ -533,7 +533,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished">Mostra informazioni sui file</translation>
+        <translation>Mostra suggerimenti sui file</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
