@@ -50,6 +50,7 @@ private:
     FilePathList srcPaths_;
     FilePathList destPaths_;
     Mode mode_;
+    bool hasDestDirPath_;
 };
 
 

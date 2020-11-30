@@ -7,7 +7,8 @@ namespace Fm {
 FileTransferJob::FileTransferJob(FilePathList srcPaths, Mode mode):
     FileOperationJob{},
     srcPaths_{std::move(srcPaths)},
-    mode_{mode} {
+    mode_{mode},
+    hasDestDirPath_{false} {
 }
 
 FileTransferJob::FileTransferJob(FilePathList srcPaths, FilePathList destPaths, Mode mode):
@@ -17,6 +18,7 @@ FileTransferJob::FileTransferJob(FilePathList srcPaths, FilePathList destPaths, 
 
 FileTransferJob::FileTransferJob(FilePathList srcPaths, const FilePath& destDirPath, Mode mode):
     FileTransferJob{std::move(srcPaths), mode} {
+    hasDestDirPath_ = true;
     setDestDirPath(destDirPath);
 }
 
@@ -25,10 +27,12 @@ void FileTransferJob::setSrcPaths(FilePathList srcPaths) {
 }
 
 void FileTransferJob::setDestPaths(FilePathList destPaths) {
+    hasDestDirPath_ = false;
     destPaths_ = std::move(destPaths);
 }
 
 void FileTransferJob::setDestDirPath(const FilePath& destDirPath) {
+    hasDestDirPath_ = true;
     destPaths_.clear();
     destPaths_.reserve(srcPaths_.size());
     for(const auto& srcPath: srcPaths_) {
@@ -390,17 +394,19 @@ bool FileTransferJob::processPath(const FilePath& srcPath, const FilePath& destD
     bool ret;
     switch(mode_) {
     case Mode::MOVE:
-        ret = moveFile(srcPath, srcInfo, destDirPath, destCopyName ? destCopyName : destFileName);
+        ret = moveFile(srcPath, srcInfo, destDirPath,
+                       hasDestDirPath_ && destCopyName ? destCopyName : destFileName);
         break;
     case Mode::COPY: {
         bool deleteSrc = false;
-        ret = copyFile(srcPath, srcInfo, destDirPath, destCopyName ? destCopyName : destFileName, deleteSrc);
+        ret = copyFile(srcPath, srcInfo, destDirPath,
+                       hasDestDirPath_ && destCopyName ? destCopyName : destFileName, deleteSrc);
         break;
     }
     case Mode::LINK:
         ret = linkFile(srcPath, srcInfo, destDirPath,
                         // see setDestDirPath()
-                        srcPath.isNative() && destCopyName ? destCopyName : destFileName);
+                        srcPath.isNative() && hasDestDirPath_ &&  destCopyName ? destCopyName : destFileName);
         break;
     default:
         ret = false;
