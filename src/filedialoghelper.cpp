@@ -3,6 +3,7 @@
 #include "libfmqt.h"
 #include "filedialog.h"
 
+#include <QCoreApplication>
 #include <QWindow>
 #include <QDebug>
 #include <QTimer>
@@ -431,6 +432,8 @@ QPlatformFileDialogHelper *createFileDialogHelper() {
     if(!libfmQtContext_) {
         // initialize libfm-qt only once
         libfmQtContext_ = std::unique_ptr<Fm::LibFmQt>{new Fm::LibFmQt()};
+        // add translations
+        QCoreApplication::installTranslator(libfmQtContext_.get()->translator());
     }
     return new Fm::FileDialogHelper{};
 }
