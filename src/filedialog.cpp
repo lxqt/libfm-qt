@@ -486,7 +486,11 @@ QString FileDialog::suffix(bool checkDefaultSuffix) const {
             auto right = currentNameFilter_.indexOf(QLatin1Char(')'), left);
             if(right != -1) {
                 QString nameFilter = currentNameFilter_.mid(left, right - left);
+#if (QT_VERSION >= QT_VERSION_CHECK(5,15,0))
+                QString suffix = nameFilter.simplified().split(QLatin1Char(' '), Qt::SkipEmptyParts).at(0);
+#else
                 QString suffix = nameFilter.simplified().split(QLatin1Char(' '), QString::SkipEmptyParts).at(0);
+#endif
                 left = suffix.indexOf(QLatin1Char('.')); // it can be like ".tar.xz"
                 if(left != -1 && suffix.size() - left > 1) {
                     return suffix.right(suffix.size() - left - 1);

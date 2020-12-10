@@ -421,7 +421,11 @@ void FilePropsDialog::onIconButtonclicked() {
                                                           iconDir,
                                                           tr("Images (*.png *.xpm *.svg *.svgz )"));
     if(!iconPath.isEmpty()) {
+#if (QT_VERSION >= QT_VERSION_CHECK(5,15,0))
+        QStringList parts = iconPath.split(QStringLiteral("/"), Qt::SkipEmptyParts);
+#else
         QStringList parts = iconPath.split(QStringLiteral("/"), QString::SkipEmptyParts);
+#endif
         if(!parts.isEmpty()) {
             QString iconName = parts.at(parts.count() - 1);
             int ln = iconName.lastIndexOf(QLatin1String("."));
