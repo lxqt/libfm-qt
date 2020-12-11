@@ -309,12 +309,12 @@
     <message>
         <location filename="../file-props.ui" line="671"/>
         <source>SetUID</source>
-        <translation>SetUID</translation>
+        <translation>UID Ayarla</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="678"/>
         <source>SetGID</source>
-        <translation>SetGID</translation>
+        <translation>GID Ayarla</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="714"/>
@@ -508,37 +508,37 @@ Ne yapmak istersiniz?</translation>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Simge Boyutu</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Büyük simge boyutu:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Küçük simge boyutu:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Önizleme boyutu:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>Önizlemeleri Göster</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya İpuçlarını Göster</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçenekler</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
@@ -609,7 +609,7 @@ Değiştirmek istiyor musunuz?</translation>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -877,6 +877,7 @@ Onun yerine silmek ister misiniz?</translation>
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
         <translation>
+            <numerusform>%Ln dosyası</numerusform>
             <numerusform>%Ln dosyası</numerusform>
         </translation>
     </message>
@@ -1627,7 +1628,7 @@ Değiştirild: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Büyük-küçük harf duyarlı</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
@@ -1637,7 +1638,7 @@ Değiştirild: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Büyük/küçük &amp;duyarlı</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
