@@ -109,6 +109,11 @@ FileOperation::~FileOperation() {
         delete elapsedTimer_;
         elapsedTimer_ = nullptr;
     }
+    if(dlg_) {
+        dlg_->done(QDialog::Accepted);
+        delete dlg_;
+        dlg_ = nullptr;
+    }
 }
 
 void FileOperation::setDestination(Fm::FilePath dest) {
