@@ -1028,7 +1028,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="209"/>
         <source>Hidden Last</source>
-        <translation>File nascosti ultimi</translation>
+        <translation>File nascosti in fondo</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="217"/>
