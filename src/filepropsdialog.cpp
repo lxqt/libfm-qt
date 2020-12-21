@@ -593,9 +593,10 @@ void FilePropsDialog::initOwner() {
             ui->ownerGroup->setText(gidToName(gid));
         }
 
-        if(geteuid() != 0) { // on local filesystems, only root can do chown.
+        uid_t userId = geteuid();
+        if(userId != 0) { // on local filesystems, only root can do chown.
             ui->owner->setEnabled(false);
-            ui->ownerGroup->setEnabled(false);
+            ui->ownerGroup->setEnabled(userId == uid);
         }
     }
 }
