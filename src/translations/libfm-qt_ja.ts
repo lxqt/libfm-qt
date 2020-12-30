@@ -1600,7 +1600,7 @@ Modified: %2</source>
         <location filename="../filesearch.ui" line="309"/>
         <location filename="../filesearch.ui" line="339"/>
         <source>Bytes</source>
-        <translation>Bytes</translation>
+        <translation>バイト</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="314"/>
@@ -1628,7 +1628,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation>大文字と小文字の区別</translation>
+        <translation>大文字と小文字を区別する</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>

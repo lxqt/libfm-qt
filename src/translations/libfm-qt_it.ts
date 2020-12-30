@@ -238,7 +238,7 @@
     <message>
         <location filename="../file-props.ui" line="336"/>
         <source>Device Usage:</source>
-        <translation>Utilizzo Device:</translation>
+        <translation>Utilizzo dispositivo:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="346"/>
