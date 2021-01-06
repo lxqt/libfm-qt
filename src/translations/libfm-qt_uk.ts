@@ -127,17 +127,17 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Шлях:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Назва файлу:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished">Тип файлу:</translation>
+        <translation>Тип файлу:</translation>
     </message>
 </context>
 <context>
@@ -170,7 +170,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Опрацьовано файлів:</translation>
     </message>
 </context>
 <context>
@@ -233,12 +233,12 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Містить:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="336"/>
         <source>Device Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Використання пристрою:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="346"/>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Вибір програми для відкриття  &quot;%1&quot; файлів</translation>
+        <translation>Вибір програми для відкриття &quot;%1&quot; файлів</translation>
     </message>
 </context>
 <context>
@@ -356,7 +356,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>Вказана тека &apos;%1&apos; не дійсна</translation>
     </message>
 </context>
 <context>
@@ -429,7 +429,8 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Цей файл &apos;%1&apos; знаходиться на стільниці.
+Що ви хочете зробити з ним?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
@@ -449,55 +450,55 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="109"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Назад</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="110"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Вліво</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="116"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Вперед</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="117"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Вправо</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="124"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Оновити</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="125"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Create Folder</source>
-        <translation type="unfinished">Створити теку</translation>
+        <translation>Створити теку</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="152"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>Подання піктограмами</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="156"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>Подання ескізами</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="160"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>Компактний вигляд</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="164"/>
@@ -543,7 +544,7 @@ What do you want to do with it?</source>
         <location filename="../filedialog.cpp" line="540"/>
         <location filename="../filedialog.cpp" line="935"/>
         <source>Error</source>
-        <translation type="unfinished">Помилка</translation>
+        <translation>Помилка</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
@@ -575,7 +576,7 @@ Do you want to replace it?</source>
         <location filename="../filedialog.cpp" line="1077"/>
         <location filename="../filedialog.cpp" line="1185"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">&amp;Відкрити</translation>
+        <translation>&amp;Відкрити</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1080"/>
@@ -745,7 +746,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>Переміщення наступних файлів до теки призначення:</translation>
+        <translation>Переміщення цих файлів до теки призначення:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -898,7 +899,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="519"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>Ви бажаєте рекурсивно застосувати ці зміни до всіх файлів і підтек? </translation>
+        <translation>Ви бажаєте рекурсивно застосувати ці зміни до всіх файлів і підтек?</translation>
     </message>
 </context>
 <context>
@@ -952,7 +953,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
         <source>Invert Selection</source>
-        <translation>Обернути зазначення</translation>
+        <translation>Обернути вибране</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="64"/>
@@ -1040,37 +1041,37 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="303"/>
         <source>Location:</source>
-        <translation type="unfinished">Розташування:</translation>
+        <translation>Розташування:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="306"/>
         <source>File type:</source>
-        <translation type="unfinished">Тип файлу:</translation>
+        <translation>Тип файлу:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="310"/>
         <source>File size:</source>
-        <translation type="unfinished">Розмір файлу:</translation>
+        <translation>Розмір файлу:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="314"/>
         <source>Last modified:</source>
-        <translation type="unfinished">Востаннє змінено:</translation>
+        <translation>Востаннє змінено:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="315"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">Останній доступ:</translation>
+        <translation>Останній доступ:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>Owner:</source>
-        <translation type="unfinished">Власник:</translation>
+        <translation>Власник:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Group:</source>
-        <translation type="unfinished">Група:</translation>
+        <translation>Група:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="384"/>
@@ -1543,7 +1544,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="159"/>
         <source>Image files</source>
-        <translation>Файли малюнків</translation>
+        <translation>Файли зображень</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="166"/>
