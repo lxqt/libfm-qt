@@ -39,10 +39,10 @@
 &lt;/ul&gt;</source>
         <translation>&lt;b&gt;A parancssorban használható speciális karakterek:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Egy fájnév&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Több fájlnév&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Egy URI&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Több URI&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Egy fájt képvisel&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Több fájlt képvisel&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: A fájl URI-ját képviseli&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Több URI-t képvisel&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
@@ -150,7 +150,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation>Feldolgozva:</translation>
+        <translation>Feldolgozás:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../file-props.ui" line="346"/>
         <source>Permissions</source>
-        <translation>Jogosultságok</translation>
+        <translation>Engedélyek</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
@@ -278,7 +278,7 @@
     <message>
         <location filename="../file-props.ui" line="484"/>
         <source>Make the file executable</source>
-        <translation>Futtatható</translation>
+        <translation>Fájl futtathatóvá tétele</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="525"/>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Alkalmazás kiválasztás a(z) &quot;%1&quot; fájl megnyitásához</translation>
+        <translation>Alkalmazás kiválasztása a(z) &quot;%1&quot; fájl megnyitásához</translation>
     </message>
 </context>
 <context>
@@ -356,7 +356,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>A &apos;%1&apos; mappa érvénytelen</translation>
+        <translation>A megadott &apos;%1&apos; mappa érvénytelen</translation>
     </message>
 </context>
 <context>
@@ -442,7 +442,7 @@ Mit szeretne tenni vele?</translation>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>&apos;%1&apos; : Ez a fájl futtatható. Futtatja?</translation>
+        <translation>&apos;%1&apos; : Ez a fájl futtatható. Szeretné futtatni?</translation>
     </message>
 </context>
 <context>
@@ -717,8 +717,8 @@ Le szeretné cserélni?</translation>
         <location filename="../fileoperation.cpp" line="313"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>Egyes fájlok nem helyezhetők át a kukába, mert a rendszer ezt nem támogatja.
-Törli őket véglegesen?</translation>
+        <translation>Egyes fájlok nem helyezhetők át a kukába, mert a fájlrendszerük nem támogatja ezt a műveletet.
+Szeretné véglegesen törölni őket?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="399"/>
@@ -729,7 +729,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../fileoperation.cpp" line="400"/>
         <source>Do you want to delete the selected files?</source>
-        <translation>Törli a kiválasztott fájlokat?</translation>
+        <translation>Szeretné törölni a kiválasztott fájlokat?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="418"/>
@@ -762,7 +762,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation type="unfinished">Fájlok a kukába</translation>
+        <translation type="unfinished">Szemétfájlok</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
@@ -792,17 +792,17 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation>Attribútum szerkesztés</translation>
+        <translation>Attribútumok változtatása</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>A következő fájlok attribútum változtatása:</translation>
+        <translation>A következő fájlok attribútumainak változtatása:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation>Kukába áthelyezett fájlok visszaállítása</translation>
+        <translation>Kukába helyezett fájlok visszaállítása</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
@@ -878,6 +878,7 @@ Törli őket véglegesen?</translation>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln fájl</numerusform>
+            <numerusform>%Ln fájl</numerusform>
         </translation>
     </message>
     <message>
@@ -929,7 +930,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="522"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation>Nem lehet hivatkozást létrehozni nem helyi fájlrendszeren</translation>
+        <translation>Nem lehet linket létrehozni nem helyi fájlrendszeren</translation>
     </message>
 </context>
 <context>
@@ -947,7 +948,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="54"/>
         <source>Select &amp;All</source>
-        <translation type="unfinished">Összes kije&amp;lölése</translation>
+        <translation>Összes &amp;kijelölése</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
@@ -1007,7 +1008,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="173"/>
         <source>By File Group</source>
-        <translation>Fájlcsoport szerint</translation>
+        <translation>Csoport szerint</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="179"/>
@@ -1118,7 +1119,7 @@ Törli őket véglegesen?</translation>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished">Látható oszlopok</translation>
+        <translation>Látható oszlopok</translation>
     </message>
 </context>
 <context>
@@ -1312,7 +1313,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Nem lehet visszaállítani a(z) &apos;%s&apos; fájlt: az eredeti útvonal nem ismert</translation>
+        <translation>Nem lehet visszaállítani a(z) &apos;%s&apos; fájlt: az eredeti útvonal ismeretlen</translation>
     </message>
 </context>
 <context>
@@ -1325,7 +1326,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation type="unfinished">C&amp;satlakozás névtelenül</translation>
+        <translation>Csatlakozás &amp;névtelenül</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
@@ -1355,7 +1356,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished">Jelszó &amp;megjegyzése ebben a munkamenetben</translation>
+        <translation>Jelszó &amp;megjegyzése ebben a munkamenetben</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1432,7 +1433,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="289"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished">Érvénytelen indítófájl: &apos;%1&apos;</translation>
+        <translation>Érvénytelen indítófájl: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="325"/>
@@ -1442,7 +1443,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="366"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished">A munkakönyvtár nem állítható be a következőre: &apos;%1&apos;: %2</translation>
+        <translation>A munkakönyvtár nem állítható be a következőre: &apos;%1&apos;: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
@@ -1460,7 +1461,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Itt már van ilyen nevű fájl.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Felülírjuk a meglévőt?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Itt már van ilyen nevű fájl.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Felül szeretné írni a meglévőt?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
@@ -1475,7 +1476,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation>Az összes fájlra vonatkozzon</translation>
+        <translation>Alkalmazás az összes fájlra</translation>
     </message>
 </context>
 <context>
@@ -1503,7 +1504,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation>Reguláris kifejezés</translation>
+        <translation>Reguláris kifejezés használata</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="68"/>
@@ -1523,7 +1524,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="129"/>
         <source>Search for hidden files</source>
-        <translation>Rejtett fájlok is</translation>
+        <translation>Rejtett fájlok keresése</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="140"/>
@@ -1578,7 +1579,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>&amp;Use regular expression</source>
-        <translation>Reg&amp;uláris kifejelezés</translation>
+        <translation>Reg&amp;uláris kifejelezés használata</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="260"/>
@@ -1588,7 +1589,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="266"/>
         <source>File Size:</source>
-        <translation>Méret:</translation>
+        <translation>Fájlméret:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="295"/>
@@ -1622,7 +1623,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="274"/>
         <source>Smaller than:</source>
-        <translation>Kissebb mint:</translation>
+        <translation>Kisebb mint:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="48"/>
