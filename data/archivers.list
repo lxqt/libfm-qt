@@ -20,7 +20,7 @@ mime_types=application/x-7z-compressed;application/x-7z-compressed-tar;applicati
 supports_uris=true
 
 [xarchiver]
-create=xarchiver --add-to %F
+create=xarchiver --compress %F
 extract=xarchiver --extract %F
 extract_to=xarchiver --extract-to %d %F
 mime_types=application/x-arj;application/arj;application/x-bzip;application/x-bzip-compressed-tar;application/x-gzip;application/x-rar;application/x-rar-compressed;application/vnd.rar;application/x-tar;application/x-zip;application/x-zip-compressed;application/zip;multipart/x-zip;application/x-7z-compressed;application/x-compressed-tar;application/x-bzip2;application/x-bzip2-compressed-tar;application/x-lzma-compressed-tar;application/x-lzma;application/x-deb;application/deb;application/vnd.debian.binary-package;application/x-xz;application/x-xz-compressed-tar;application/x-rpm;application/x-source-rpm;application/x-lzop;application/x-lzop-compressed-tar;application/x-tzo;application/x-war;application/x-compress;application/x-tarz;application/x-java-archive;application/x-lha;application/x-lhz;
