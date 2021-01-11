@@ -718,8 +718,8 @@ Do you want to replace it?</source>
         <location filename="../fileoperation.cpp" line="313"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>ファイルシステムのサポートがないため、ゴミ箱へ移動できないファイルがあります。
-かわりにこれらを削除しますか?</translation>
+        <translation>ファイルシステムがサポートしていないため、ゴミ箱へ移動できないファイルがあります。
+代りにこれらを削除しますか？</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="399"/>
@@ -735,7 +735,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperation.cpp" line="418"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation>選択したファイルをゴミ箱に移動しますか？</translation>
+        <translation>選択したファイルをゴミ箱へ移動しますか？</translation>
     </message>
 </context>
 <context>
