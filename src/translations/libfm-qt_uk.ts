@@ -978,57 +978,57 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="163"/>
         <source>By File Name</source>
-        <translation>По назві файлу</translation>
+        <translation>За назвою файлу</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="164"/>
         <source>By Modification Time</source>
-        <translation>По даті зміни</translation>
+        <translation>За датою зміни</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="167"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>За часом видалення</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="170"/>
         <source>By File Size</source>
-        <translation>По розміру файлу</translation>
+        <translation>За розміром файлу</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="171"/>
         <source>By File Type</source>
-        <translation>По типу файлу</translation>
+        <translation>За типом файлу</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Owner</source>
-        <translation>По власнику файлу</translation>
+        <translation>За власником файлу</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="173"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>За групою файлу</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="179"/>
         <source>Ascending</source>
-        <translation>В порядку зростання</translation>
+        <translation>За зростанням</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="184"/>
         <source>Descending</source>
-        <translation>В порядку спадання</translation>
+        <translation>За спаданням</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="201"/>
         <source>Folder First</source>
-        <translation>Теки спочатку</translation>
+        <translation>Спочатку теки</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="209"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Приховані в кінці</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="217"/>
@@ -1096,7 +1096,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="396"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалено</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="399"/>
@@ -1106,7 +1106,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="402"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Група</translation>
     </message>
 </context>
 <context>
@@ -1114,12 +1114,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Автопідбір ширини стовпців</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Видимі стовпці</translation>
     </message>
 </context>
 <context>
