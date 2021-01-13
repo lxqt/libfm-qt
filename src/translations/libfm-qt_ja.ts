@@ -309,17 +309,17 @@
     <message>
         <location filename="../file-props.ui" line="671"/>
         <source>SetUID</source>
-        <translation>UID を設定</translation>
+        <translation>UID の設定</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="678"/>
         <source>SetGID</source>
-        <translation>GID を設定</translation>
+        <translation>GID の設定</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="714"/>
         <source>Advanced Mode</source>
-        <translation>高度なモード</translation>
+        <translation>詳細モード</translation>
     </message>
 </context>
 <context>
