@@ -304,17 +304,17 @@
     <message>
         <location filename="../file-props.ui" line="664"/>
         <source>Sticky</source>
-        <translation>До уваги</translation>
+        <translation>Sticky</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="671"/>
         <source>SetUID</source>
-        <translation>ВстUID</translation>
+        <translation>ВстUID (SetUID)</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="678"/>
         <source>SetGID</source>
-        <translation>ВстGID</translation>
+        <translation>ВстGID (SetUID)</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="714"/>
@@ -397,17 +397,17 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation>Скопіювати тут</translation>
+        <translation>Копіювати сюди</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation>Перемістити тут</translation>
+        <translation>Перемістити сюди</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation>Створити посилання тут</translation>
+        <translation>Створити посилання сюди</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="41"/>
@@ -503,42 +503,42 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="164"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>Подання детального переліку</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Розміри піктограм</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмір великих піктограм:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмір маленьких піктограм:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмір ескізів:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>Показувати ескізи</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Показувати підказки для файлів</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Параметри</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
@@ -549,28 +549,29 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Виберіть файл</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="582"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 вже існує.
+Бажаєте замінити його?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="905"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Шляху «%1» не існує</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="919"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>«%1» не є текою</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="925"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>«%1» не є файлом</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1077"/>
@@ -582,12 +583,12 @@ Do you want to replace it?</source>
         <location filename="../filedialog.cpp" line="1080"/>
         <location filename="../filedialog.cpp" line="1193"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Зберегти</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1087"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Усі файли (*)</translation>
     </message>
 </context>
 <context>
@@ -595,12 +596,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="139"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Відкрити Файл</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="140"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Зберегти Файл</translation>
     </message>
 </context>
 <context>
@@ -608,7 +609,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -687,12 +688,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="253"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Довіряти вибраним виконуваним файлам</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Довіряти цьому виконуваному файлу</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="342"/>
@@ -855,41 +856,41 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="336"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% використано</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="337"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Вільно %1 з %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="382"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>немає файлу</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="384"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation>один файл</translation>
     </message>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="386"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln файл</numerusform>
+            <numerusform>%Ln файли</numerusform>
+            <numerusform>%Ln файлів</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="420"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Вибрати піктограму</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="422"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Зображення (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="518"/>
@@ -925,12 +926,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="471"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо скопіювати теку у себе!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="522"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо створити символічне посилання на іншій файловій системі</translation>
     </message>
 </context>
 <context>
@@ -1220,7 +1221,7 @@ Do you want to delete them instead?</source>
         <location filename="../placesview.cpp" line="516"/>
         <location filename="../placesview.cpp" line="573"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Приховати</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="533"/>
@@ -1261,7 +1262,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="599"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати всі записи</translation>
     </message>
 </context>
 <context>
@@ -1300,7 +1301,7 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Списки</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
@@ -1313,7 +1314,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо відновити файл «%s»: початковий шлях невідомий</translation>
     </message>
 </context>
 <context>
@@ -1356,7 +1357,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Запам&apos;ятати пароль для &amp;цього сеансу</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1423,32 +1424,32 @@ Modified: %2</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="560"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Помилка піктограми користувача</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Шлях не змонтовано.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="289"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Неправильний файл стільниці: «%1»</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="325"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Немає вибраної програми для запуску «%1»</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="366"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо встановити робочий каталог у «%1»: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Ідентифікатор: </translation>
     </message>
 </context>
 <context>
@@ -1628,17 +1629,17 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Враховувати регістр</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Шукати в підтеках</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Враховувати &amp;регістр</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
