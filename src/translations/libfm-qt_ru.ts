@@ -949,7 +949,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="54"/>
         <source>Select &amp;All</source>
-        <translation>Выбрать &amp;всё</translation>
+        <translation>Выделить &amp;всё</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
