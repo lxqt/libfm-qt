@@ -124,7 +124,8 @@ PlacesModel::PlacesModel(QObject* parent):
                 }
                 else {
                     PlacesModelItem* item = new PlacesModelMountItem(mount);
-                    devicesRoot->appendRow(item);
+                    QStandardItem* eject_btn = new QStandardItem(ejectIcon_, QString());
+                    devicesRoot->appendRow(QList<QStandardItem*>() << item << eject_btn);
                 }
             }
             g_object_unref(mount);
