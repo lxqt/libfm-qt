@@ -556,8 +556,8 @@ What do you want to do with it?</source>
         <location filename="../filedialog.cpp" line="582"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation>%1 は既にあります。
-これを置き換えますか？</translation>
+        <translation>%1 が既に存在しています。
+置き換えますか？</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="905"/>

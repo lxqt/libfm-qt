@@ -429,7 +429,7 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>Цей файл &apos;%1&apos; знаходиться на стільниці.
+        <translation>Цей файл «%1» розміщено на стільниці.
 Що ви хочете зробити з ним?</translation>
     </message>
     <message>
