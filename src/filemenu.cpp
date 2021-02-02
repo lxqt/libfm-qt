@@ -112,6 +112,27 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
             g_list_free(apps);
         }
     }
+    else {
+        // add a menu-item for opening a mixed selection of files with their default apps
+        auto a = menu->addAction(tr("Default Applications"));
+        connect(a, &QAction::triggered, this, [this] {
+            if(files_.size() > 20) {
+                QMessageBox::StandardButton r = QMessageBox::question(
+                                                parentWidget() ? parentWidget()->window()
+                                                               : nullptr,
+                                                tr("Many files"),
+                                                tr("Do you want to open these %1 files?",
+                                                   nullptr,
+                                                   files_.size()).arg(files_.size()),
+                                                QMessageBox::Yes | QMessageBox::No,
+                                                QMessageBox::No);
+                if(r == QMessageBox::No) {
+                    return;
+                }
+            }
+            fileLauncher_->launchFiles(nullptr, files_);
+        });
+    }
     menu->addSeparator();
     openWithAction_ = new QAction(tr("Other Applications"), this);
     connect(openWithAction_, &QAction::triggered, this, &FileMenu::onOpenWithTriggered);
