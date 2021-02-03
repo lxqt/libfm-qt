@@ -91,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>アイテムを並べ替えるにはドラッグアンドドロップします</translation>
+        <translation>アイテムを並べ替えるにはドラッグ＆ドロップします</translation>
     </message>
 </context>
 <context>
@@ -1225,12 +1225,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="533"/>
         <source>Move Bookmark Up</source>
-        <translation>ブックマークを上に移動</translation>
+        <translation>ブックマークを上へ移動</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="538"/>
         <source>Move Bookmark Down</source>
-        <translation>ブックマークを下に移動</translation>
+        <translation>ブックマークを下へ移動</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="542"/>
