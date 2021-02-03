@@ -63,6 +63,14 @@ const QString &FolderModelItem::displayMtime() const {
     return dispMtime_;
 }
 
+const QString &FolderModelItem::displayCrtime() const {
+    if(dispCrtime_.isEmpty()) {
+        auto crtime = QDateTime::fromMSecsSinceEpoch(info->crtime() * 1000);
+        dispCrtime_ = crtime.toString(Qt::SystemLocaleShortDate);
+    }
+    return dispCrtime_;
+}
+
 const QString &FolderModelItem::displayDtime() const {
     if(dispDtime_.isEmpty() && info->dtime() > 0) {
         auto mtime = QDateTime::fromMSecsSinceEpoch(info->dtime() * 1000);

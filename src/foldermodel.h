@@ -52,6 +52,7 @@ public:
         ColumnFileType,
         ColumnFileSize,
         ColumnFileMTime,
+        ColumnFileCrTime,
         ColumnFileDTime,
         ColumnFileOwner,
         ColumnFileGroup,
