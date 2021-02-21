@@ -658,7 +658,7 @@ Vil du bytte den ut?</translation>
         <location filename="../filemenu.cpp" line="159"/>
         <location filename="../filemenu.cpp" line="407"/>
         <source>&amp;Move to Trash</source>
-        <translation>&amp;Flytt til søppeldunken</translation>
+        <translation>&amp;Flytt til papirkurven</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="163"/>
@@ -717,8 +717,8 @@ Vil du bytte den ut?</translation>
         <location filename="../fileoperation.cpp" line="313"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>Noen filer kan ikke bli flyttet til søppeldunken fordi det underliggende filsystemet ikke støtter denne operasjonen.
-Vil du slette dem i stedet?</translation>
+        <translation>Noen filer kan ikke bli flyttet til papirkurven fordi det underliggende filsystemet ikke støtter denne operasjonen.
+Vil du slette dem istedenfor?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="399"/>
@@ -734,7 +734,7 @@ Vil du slette dem i stedet?</translation>
     <message>
         <location filename="../fileoperation.cpp" line="418"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation>Vil du flytte de valgte filene til søppeldunken?</translation>
+        <translation>Vil du flytte de valgte filene til papirkurven?</translation>
     </message>
 </context>
 <context>
@@ -762,12 +762,12 @@ Vil du slette dem i stedet?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation>Søppeldunkfiler</translation>
+        <translation>Legg i papirkurv</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>Flytter følgende filer til søppeldunken:</translation>
+        <translation>Flytter følgende filer til papirkurven:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
@@ -802,12 +802,12 @@ Vil du slette dem i stedet?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation>Gjenopprett filer fra søppeldunken</translation>
+        <translation>Gjenopprett filer fra papirkurven</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Gjenoppretter følgende filer fra søppeldunken:</translation>
+        <translation>Gjenoppretter følgende filer fra papirkurven:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
@@ -1196,7 +1196,7 @@ Vil du slette dem i stedet?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="227"/>
         <source>Trash</source>
-        <translation>Søppeldunk</translation>
+        <translation>Papirkurv</translation>
     </message>
 </context>
 <context>
@@ -1214,7 +1214,7 @@ Vil du slette dem i stedet?</translation>
     <message>
         <location filename="../placesview.cpp" line="496"/>
         <source>Empty Trash</source>
-        <translation>Tøm søppeldunk</translation>
+        <translation>Tøm papirkurv</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="516"/>
