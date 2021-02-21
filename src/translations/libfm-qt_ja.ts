@@ -37,7 +37,7 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;コマンドラインには、次の特別なコードを使用することができます:&lt;/b&gt;
+        <translation>&lt;b&gt;コマンドラインには、次の特別なコードを使用できます:&lt;/b&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: 単一のファイル名を表す&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: 複数のファイル名を表す&lt;/li&gt;
@@ -335,7 +335,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>ファイル &quot;%1&quot; を開くアプリケーションを選択します</translation>
+        <translation>&quot;%1&quot; ファイルを開くアプリケーションを選択して下さい</translation>
     </message>
 </context>
 <context>
@@ -1361,7 +1361,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation>パスワードを恒久的に記憶させる(&amp;F)</translation>
+        <translation>パスワードを永久に記憶する(&amp;F)</translation>
     </message>
 </context>
 <context>
