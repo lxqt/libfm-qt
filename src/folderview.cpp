@@ -1376,9 +1376,6 @@ void FolderView::selectFiles(const Fm::FileInfoList& files, bool add) {
     if(!model_ || files.empty()) {
         return;
     }
-    if(!add) {
-        selectionModel()->clear();
-    }
     QModelIndex index, firstIndex;
     int count = model_->rowCount();
     Fm::FileInfoList list = files;
@@ -1396,9 +1393,14 @@ void FolderView::selectFiles(const Fm::FileInfoList& files, bool add) {
         for(auto it = list.cbegin(); it != list.cend(); ++it) {
             auto& item = *it;
             if(item == info) {
-                selectionModel()->select(index, flags);
-                if (!firstIndex.isValid()) {
-                    firstIndex = index;
+                if(model_->showHidden() || !info->isHidden()) {
+                    if (!firstIndex.isValid()) {
+                        firstIndex = index;
+                        if(!add) {
+                            selectionModel()->clear();
+                        }
+                    }
+                    selectionModel()->select(index, flags);
                 }
                 list.erase(it);
                 break;
