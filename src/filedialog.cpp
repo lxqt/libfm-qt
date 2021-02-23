@@ -924,9 +924,9 @@ void FileDialog::onFileInfoJobFinished() {
                     break;
                 }
             }
-            else if(file->isDir() || file->isShortcut()) {
+            else if(file->isDir() || (file->isShortcut() && !file->isDesktopEntry())) {
                 // we're selecting files, but the selected file path refers to a dir or shortcut (such as computer:///)
-                error = tr("\"%1\" is not a file").arg(QString::fromUtf8(path.displayName().get()));;
+                error = tr("\"%1\" is not a file").arg(QString::fromUtf8(path.displayName().get()));
                 break;
             }
         }
