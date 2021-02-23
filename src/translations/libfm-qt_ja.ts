@@ -183,7 +183,7 @@
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation>一般</translation>
+        <translation>全般</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
@@ -748,7 +748,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>次のファイルを対象のフォルダーへ移動しています:</translation>
+        <translation>次のファイルを送り先フォルダーへ移動しています:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -758,7 +758,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>次のファイルを対象のフォルダーへコピーしています:</translation>
+        <translation>次のファイルを送り先フォルダーへコピーしています:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
