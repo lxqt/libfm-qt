@@ -93,6 +93,9 @@ public:
         return ctime_;
     }
 
+    quint64 crtime() const {
+        return crtime_;
+    }
 
     quint64 atime() const {
         return atime_;
@@ -234,6 +237,7 @@ private:
     quint64 mtime_;
     quint64 atime_;
     quint64 ctime_;
+    quint64 crtime_;
     quint64 dtime_;
 
     uint64_t blksize_;

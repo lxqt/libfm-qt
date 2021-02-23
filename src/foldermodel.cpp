@@ -295,6 +295,7 @@ std::shared_ptr<const Fm::FileInfo> FolderModel::fileInfoFromIndex(const QModelI
 QString FolderModel::makeTooltip(FolderModelItem* item) const {
     // name (bold)
     QString tip = QStringLiteral("<p><b>") + (showFullNames_ ? QString::fromStdString(item->name()) : item->displayName()).toHtmlEscaped() + QStringLiteral("</b></p>");
+
     // parent dir
     auto info = item->info;
     auto parent_path = info->path().parent();
@@ -302,23 +303,29 @@ QString FolderModel::makeTooltip(FolderModelItem* item) const {
     if(parent_str) {
         tip += QStringLiteral("<p><i>") + tr("Location:") + QStringLiteral("</i> ") + QString::fromUtf8(parent_str.get()).toHtmlEscaped() + QStringLiteral("</p>");
     }
+
     // file type
     tip += QStringLiteral("<i>") + tr("File type:") + QStringLiteral("</i> ") + QString::fromUtf8(info->mimeType()->desc());
+
     // file size
     const QString dSize = item->displaySize();
     if(!dSize.isEmpty()) { // it's empty for directories
         tip += QStringLiteral("<br><i>") + tr("File size:") + QStringLiteral("</i> ") + dSize;
     }
+
     // times
     auto atime = QDateTime::fromMSecsSinceEpoch(info->atime() * 1000);
     tip += QStringLiteral("<br><i>") + tr("Last modified:") + QStringLiteral("</i> ") + item->displayMtime()
-           + QStringLiteral("<br><i>") + tr("Last accessed:") + QStringLiteral("</i> ") + atime.toString(Qt::SystemLocaleShortDate);
+           + QStringLiteral("<br><i>") + tr("Last accessed:") + QStringLiteral("</i> ") + atime.toString(Qt::SystemLocaleShortDate)
+           + QStringLiteral("<br><i>") + tr("Created:") + QStringLiteral("</i> ") + item->displayCrtime();
+
     // owner
     const QString owner = item->ownerName();
     if(!owner.isEmpty()) { // can be empty
         tip += QStringLiteral("<br><i>") + tr("Owner:") + QStringLiteral("</i> ") + owner
                + QStringLiteral("<br><i>") + tr("Group:") + QStringLiteral("</i> ") + item->ownerGroup();
     }
+
     return tip;
 }
 
@@ -342,6 +349,8 @@ QVariant FolderModel::data(const QModelIndex& index, int role/* = Qt::DisplayRol
             return QString::fromUtf8(info->mimeType()->desc());
         case ColumnFileMTime:
             return item->displayMtime();
+        case ColumnFileCrTime:
+            return item->displayCrtime();
         case ColumnFileDTime:
             return item->displayDtime();
         case ColumnFileSize:
@@ -391,6 +400,9 @@ QVariant FolderModel::headerData(int section, Qt::Orientation orientation, int r
                 break;
             case ColumnFileMTime:
                 title = tr("Modified");
+                break;
+            case ColumnFileCrTime:
+                title = tr("Created");
                 break;
             case ColumnFileDTime:
                 title = tr("Deleted");

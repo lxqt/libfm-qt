@@ -305,6 +305,8 @@ void FilePropsDialog::initGeneralPage() {
         ui->lastModified->setText(mtime.toString(Qt::SystemLocaleShortDate));
         auto atime = QDateTime::fromMSecsSinceEpoch(fileInfo->atime() * 1000);
         ui->lastAccessed->setText(atime.toString(Qt::SystemLocaleShortDate));
+        auto crtime = QDateTime::fromMSecsSinceEpoch(fileInfo->crtime() * 1000);
+        ui->created->setText(crtime.toString(Qt::SystemLocaleShortDate));
     }
     else {
         ui->fileName->setText(tr("Multiple Files"));

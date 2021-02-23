@@ -262,6 +262,7 @@ _file_is_symlink:
     mtime_ = g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_TIME_MODIFIED);
     atime_ = g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_TIME_ACCESS);
     ctime_ = g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_TIME_CHANGED);
+    crtime_ = g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_TIME_CREATED);
     if(auto dt = g_file_info_get_deletion_date(inf.get())){
         dtime_ = g_date_time_to_unix(dt);
     }
