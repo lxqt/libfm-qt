@@ -14,7 +14,7 @@ namespace Fm {
 QThreadPool* ThumbnailJob::threadPool_ = nullptr;
 
 bool ThumbnailJob::localFilesOnly_ = true;
-int ThumbnailJob::maxThumbnailFileSize_ = 0;
+int ThumbnailJob::maxThumbnailFileSize_ = 4096; // in KB
 
 ThumbnailJob::ThumbnailJob(FileInfoList files, int size):
     files_{std::move(files)},
@@ -39,7 +39,7 @@ void ThumbnailJob::exec() {
 }
 
 QImage ThumbnailJob::readImageFromStream(GInputStream* stream, size_t len) {
-    // FIXME: should we set a limit here? Otherwise if len is too large, we can run out of memory.
+    // The size limit has been set in generateThumbnail().
     std::unique_ptr<unsigned char[]> buffer{new unsigned char[len]}; // allocate enough buffer
     unsigned char* pbuffer = buffer.get();
     size_t totalReadSize = 0;
@@ -199,6 +199,9 @@ bool ThumbnailJob::readJpegExif(GInputStream *stream, QImage& thumbnail, QMatrix
 
 QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& file, const FilePath& origPath, const char* uri, const QString& thumbnailFilename) {
     QImage result;
+    if (file->size() > static_cast<uint64_t>(maxThumbnailFileSize_) * 1024) {
+        return result;
+    }
     auto mime_type = file->mimeType();
     if(isSupportedImageType(mime_type)) {
         GFileInputStreamPtr ins{g_file_read(origPath.gfile().get(), cancellable_.get(), nullptr), false};
@@ -288,7 +291,7 @@ void ThumbnailJob::setLocalFilesOnly(bool value) {
 }
 
 void ThumbnailJob::setMaxThumbnailFileSize(int size) {
-    maxThumbnailFileSize_ = size;
+    maxThumbnailFileSize_ = qMax(size, 0);
     if(fm_config) {
         fm_config->thumbnail_max = maxThumbnailFileSize_;
     }
