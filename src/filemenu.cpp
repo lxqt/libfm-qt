@@ -56,6 +56,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
     openAction_ = nullptr;
     openWithMenuAction_ = nullptr;
     openWithAction_ = nullptr;
+    createAction_ = nullptr;
     separator1_ = nullptr;
     cutAction_ = nullptr;
     copyAction_ = nullptr;
@@ -140,12 +141,13 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
 
     separator1_ = addSeparator();
 
-    createAction_ = new QAction(tr("Create &New"), this);
-    Fm::FilePath dirPath = files_.size() == 1 && info_->isDir() ? path : cwd_;
-    createAction_->setMenu(new CreateNewMenu(parent, dirPath, this));
-    addAction(createAction_);
-
-    separator2_ = addSeparator();
+    if(!allTrash_) {
+        createAction_ = new QAction(tr("Create &New"), this);
+        Fm::FilePath dirPath = files_.size() == 1 && info_->isDir() ? path : cwd_;
+        createAction_->setMenu(new CreateNewMenu(parent, dirPath, this));
+        addAction(createAction_);
+        separator2_ = addSeparator();
+    }
 
     if(allTrash_) { // all selected files are in trash:///
         bool can_restore = true;
@@ -210,7 +212,9 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
         if(!(sameType_ && info_->isDir()
              && (files_.size() > 1 ? isWritableDir : info_->isWritable()))) {
             pasteAction_->setEnabled(false);
-            createAction_->setEnabled(false);
+            if(createAction_) {
+                createAction_->setEnabled(false);
+            }
         }
     }
 
@@ -229,7 +233,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
 
     // archiver integration
     // FIXME: we need to modify upstream libfm to include some Qt-based archiver programs.
-    if(!allVirtual_) {
+    if(!allVirtual_ && !allTrash_) {
         auto archiver = Archiver::defaultArchiver();
         if(archiver) {
             if(sameType_ && archiver->isMimeTypeSupported(mime_type->name())) {
