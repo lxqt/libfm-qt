@@ -57,16 +57,26 @@ QString FolderModelItem::ownerGroup() const {
 
 const QString &FolderModelItem::displayMtime() const {
     if(dispMtime_.isEmpty()) {
-        auto mtime = QDateTime::fromMSecsSinceEpoch(info->mtime() * 1000);
-        dispMtime_ = mtime.toString(Qt::SystemLocaleShortDate);
+        if(info->mtime() == 0) {
+            dispMtime_ = QObject::tr("N/A");
+        }
+        else {
+            auto mtime = QDateTime::fromMSecsSinceEpoch(info->mtime() * 1000);
+            dispMtime_ = mtime.toString(Qt::SystemLocaleShortDate);
+        }
     }
     return dispMtime_;
 }
 
 const QString &FolderModelItem::displayCrtime() const {
     if(dispCrtime_.isEmpty()) {
-        auto crtime = QDateTime::fromMSecsSinceEpoch(info->crtime() * 1000);
-        dispCrtime_ = crtime.toString(Qt::SystemLocaleShortDate);
+        if(info->crtime() == 0) {
+            dispCrtime_ = QObject::tr("N/A");
+        }
+        else {
+            auto crtime = QDateTime::fromMSecsSinceEpoch(info->crtime() * 1000);
+            dispCrtime_ = crtime.toString(Qt::SystemLocaleShortDate);
+        }
     }
     return dispCrtime_;
 }
