@@ -58,7 +58,7 @@ private:
 
     QImage loadForFile(const std::shared_ptr<const FileInfo>& file);
 
-    bool readJpegExif(GInputStream* stream, QImage& thumbnail, QMatrix& matrix);
+    bool readJpegExif(GInputStream* stream, QImage& thumbnail, QTransform& matrix);
 
 private:
     FileInfoList files_;
