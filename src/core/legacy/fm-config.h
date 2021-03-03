@@ -47,6 +47,7 @@ typedef struct _FmConfig            FmConfig;
 #define     FM_CONFIG_DEFAULT_SHOW_THUMBNAIL    TRUE
 #define     FM_CONFIG_DEFAULT_THUMBNAIL_LOCAL   TRUE
 #define     FM_CONFIG_DEFAULT_THUMBNAIL_MAX     2048
+#define     FM_CONFIG_DEFAULT_EXTERNAL_THUMBNAIL_MAX -1
 
 #define     FM_CONFIG_DEFAULT_FORCE_S_NOTIFY    TRUE
 #define     FM_CONFIG_DEFAULT_BACKUP_HIDDEN     TRUE
@@ -80,7 +81,8 @@ typedef struct _FmConfig            FmConfig;
  * @small_icon_size: size of small icons
  * @pane_icon_size: size of side pane icons
  * @thumbnail_size: size of thumbnail icons
- * @thumbnail_max: show thumbnails only for files not bigger than this, in KB or Kpix
+ * @thumbnail_max: internally create thumbnails only for images not bigger than this, in KB or Kpix
+ * @external_thumbnail_max: allow external thumbnail creation only for files not bigger than this, in KB or Kpix
  * @auto_selection_delay: (since 1.2.0) delay for autoselection in single-click mode, in ms
  * @drop_default_action: (since 1.2.0) default action on drop (see #FmDndDestDropAction)
  * @single_click: single click to open file
@@ -133,6 +135,7 @@ struct _FmConfig
     gint pane_icon_size;
     gint thumbnail_size;
     gint thumbnail_max;
+    gint external_thumbnail_max;
     gint auto_selection_delay;
     gint drop_default_action;
 

@@ -14,7 +14,8 @@ namespace Fm {
 QThreadPool* ThumbnailJob::threadPool_ = nullptr;
 
 bool ThumbnailJob::localFilesOnly_ = true;
-int ThumbnailJob::maxThumbnailFileSize_ = 4096; // in KB
+int ThumbnailJob::maxThumbnailFileSize_ = 4096; // in KiB
+int ThumbnailJob::maxExternalThumbnailFileSize_ = -1;
 
 ThumbnailJob::ThumbnailJob(FileInfoList files, int size):
     files_{std::move(files)},
@@ -199,14 +200,15 @@ bool ThumbnailJob::readJpegExif(GInputStream *stream, QImage& thumbnail, QMatrix
 
 QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& file, const FilePath& origPath, const char* uri, const QString& thumbnailFilename) {
     QImage result;
-    if (file->size() > static_cast<uint64_t>(maxThumbnailFileSize_) * 1024) {
-        return result;
-    }
     auto mime_type = file->mimeType();
     if(isSupportedImageType(mime_type)) {
+        if (file->size() > static_cast<uint64_t>(maxThumbnailFileSize_) * 1024) {
+            return result;
+        }
         GFileInputStreamPtr ins{g_file_read(origPath.gfile().get(), cancellable_.get(), nullptr), false};
-        if(!ins)
-            return QImage();
+        if(!ins) {
+            return result;
+        }
         bool fromExif = false;
         QMatrix matrix;
         if(strcmp(mime_type->name(), "image/jpeg") == 0) { // if this is a jpeg file
@@ -245,6 +247,10 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
         }
     }
     else { // the image format is not supported, try to find an external thumbnailer
+        if (maxExternalThumbnailFileSize_ >= 0
+            && file->size() > static_cast<uint64_t>(maxExternalThumbnailFileSize_) * 1024) {
+            return result;
+        }
         // try all available external thumbnailers for it until sucess
         int target_size = size_ > 128 ? 256 : 128;
         file->mimeType()->forEachThumbnailer([&](const std::shared_ptr<const Thumbnailer>& thumbnailer) {
@@ -294,6 +300,13 @@ void ThumbnailJob::setMaxThumbnailFileSize(int size) {
     maxThumbnailFileSize_ = qMax(size, 0);
     if(fm_config) {
         fm_config->thumbnail_max = maxThumbnailFileSize_;
+    }
+}
+
+void ThumbnailJob::setMaxExternalThumbnailFileSize(int size) {
+    maxExternalThumbnailFileSize_ = size;
+    if(fm_config) {
+        fm_config->external_thumbnail_max = maxExternalThumbnailFileSize_;
     }
 }
 
