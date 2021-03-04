@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Creato:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="298"/>
@@ -627,19 +627,19 @@ Sostituirlo?</translation>
     <message>
         <location filename="../filemenu.cpp" line="117"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Applicazioni predefinite</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="123"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Molti file</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="124"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Aprire questo %1 file?</numerusform>
+            <numerusform>Aprire questi %1 file?</numerusform>
         </translation>
     </message>
     <message>
@@ -1011,7 +1011,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="165"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Per data di creazione</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="168"/>
@@ -1094,7 +1094,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Creato:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="325"/>
@@ -1129,7 +1129,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="405"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Creato</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="408"/>

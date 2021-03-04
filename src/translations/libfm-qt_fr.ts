@@ -37,12 +37,12 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;Ces codes spéciaux peuvent être utilisés dans la ligne de commande&#x202f;:&lt;/b&gt;
+        <translation>&lt;b&gt;Ces codes spéciaux peuvent être utilisés dans la ligne de commande :&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;&#x202f;: représente un seul nom de fichier,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;&#x202f;: représente plusieurs noms de fichiers,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;&#x202f;: représente l’URI d&apos;un seul fichier,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;&#x202f;: représente plusieurs URI.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt; : représente un seul nom de fichier,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt; : représente plusieurs noms de fichiers,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt; : représente l’URI d&apos;un seul fichier,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt; : représente plusieurs URI.&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
@@ -145,7 +145,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation>Destination&#xa0;:</translation>
+        <translation>Destination :</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Créé :</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="298"/>
@@ -632,7 +632,7 @@ Voulez-vous le remplacer ?</translation>
     <message>
         <location filename="../filemenu.cpp" line="117"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Applications par défaut</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="123"/>
@@ -1011,7 +1011,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="165"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Par temps de création</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="168"/>
@@ -1094,7 +1094,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Créé :</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="325"/>
@@ -1129,7 +1129,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="405"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Créé</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="408"/>
@@ -1310,17 +1310,17 @@ Voulez-vous les supprimer à la place ?</translation>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation>Type&#x202f;: %1
-Taille&#x202f;: %2
-Modification&#x202f;: %3</translation>
+        <translation>Type : %1
+Taille : %2
+Modification : %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation>Type&#x202f;: %1
-Modification&#x202f;: %2</translation>
+        <translation>Type : %1
+Modification : %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="96"/>
@@ -1351,7 +1351,7 @@ Modification&#x202f;: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Impossible de sortir le fichier «&#xa0;%s&#xa0;» de la corbeille&#x202f;: le chemin d&apos;origine est inconnu</translation>
+        <translation>Impossible de sortir le fichier « %s » de la corbeille : le chemin d&apos;origine est inconnu</translation>
     </message>
 </context>
 <context>
@@ -1481,7 +1481,7 @@ Modification&#x202f;: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="408"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>Impossible de définir le répertoire de travail à «&#xa0;%1&#xa0;»&#x202f;: «&#xa0;%2&#xa0;»</translation>
+        <translation>Impossible de définir le répertoire de travail à « %1 » : « %2 »</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
@@ -1499,7 +1499,7 @@ Modification&#x202f;: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier avec le même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant&#xa0;?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier avec le même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant ?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
@@ -1509,7 +1509,7 @@ Modification&#x202f;: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>Nom du &amp;fichier&#xa0;:</translation>
+        <translation>Nom du &amp;fichier :</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
@@ -1676,7 +1676,7 @@ Modification&#x202f;: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished">Sensi&amp;ble à la casse</translation>
+        <translation type="unfinished">Sensible à la casse</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>

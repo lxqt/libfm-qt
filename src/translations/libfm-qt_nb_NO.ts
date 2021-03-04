@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sti:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opprettet:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="298"/>
@@ -513,37 +513,37 @@ Hva vil du gjøre med det?</translation>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikonstørrelser</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Stor ikonstørrelse:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Liten ikonstørrelse:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Størrelse på miniatyrbilder:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis miniatyrbilder</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis filverktøylinje</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Innstillinger</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="544"/>
@@ -614,7 +614,7 @@ Vil du bytte den ut?</translation>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -632,19 +632,19 @@ Vil du bytte den ut?</translation>
     <message>
         <location filename="../filemenu.cpp" line="117"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Forvalgte programmer</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="123"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Mange filer</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="124"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ønsker du å åpne denne filen?</numerusform>
+            <numerusform>Ønsker du å åpne disse %1 filene?</numerusform>
         </translation>
     </message>
     <message>
@@ -1011,7 +1011,7 @@ Vil du slette dem istedenfor?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="165"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Etter opprettelse</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="168"/>
@@ -1056,7 +1056,7 @@ Vil du slette dem istedenfor?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="210"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Skjult sist</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="218"/>
@@ -1094,7 +1094,7 @@ Vil du slette dem istedenfor?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opprettet:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="325"/>
@@ -1129,7 +1129,7 @@ Vil du slette dem istedenfor?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="405"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Opprettet</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="408"/>
@@ -1338,7 +1338,7 @@ Sist endret: %2</translation>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Lister</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
@@ -1394,7 +1394,7 @@ Sist endret: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Husk passordet for &amp;denne økten</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1666,7 +1666,7 @@ Sist endret: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Forskjell på små og store bokstaver</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
@@ -1676,7 +1676,7 @@ Sist endret: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Forskjell på små og &amp;store bokstaver</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
