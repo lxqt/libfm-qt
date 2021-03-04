@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>作成日時:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="298"/>
@@ -555,7 +555,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="544"/>
         <source>Please select a file</source>
-        <translation>ファイルを 1 つ選択してください</translation>
+        <translation>ファイルを 1 つ選択して下さい</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="586"/>
@@ -628,18 +628,18 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="117"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>既定のアプリケーション</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="123"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>多数のファイル</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="124"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>これらの %1 個のファイルを開きますか？</numerusform>
         </translation>
     </message>
     <message>
@@ -884,7 +884,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="339"/>
         <source>%1 Free of %2</source>
-        <translation>空き容量 %1&#x3000;全体 %2</translation>
+        <translation>空き容量 %1　全体 %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="384"/>
@@ -934,7 +934,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>You should add at least one directory to search.</source>
-        <translation>検索するディレクトリを追加してください。</translation>
+        <translation>検索するディレクトリを追加して下さい。</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="135"/>
@@ -1005,17 +1005,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="164"/>
         <source>By Modification Time</source>
-        <translation>更新時刻</translation>
+        <translation>更新日時</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="165"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>作成日時</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="168"/>
         <source>By Deletion Time</source>
-        <translation>削除日時順</translation>
+        <translation>削除日時</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="171"/>
@@ -1083,7 +1083,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="318"/>
         <source>Last modified:</source>
-        <translation>最終更新日時:</translation>
+        <translation>最終更新日時→→:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
@@ -1093,7 +1093,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>作成日時→→→→:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="325"/>
@@ -1128,7 +1128,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="405"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>作成日時</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="408"/>
@@ -1420,7 +1420,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="164"/>
         <source>Please enter a new name:</source>
-        <translation>新しい名前を入力してください:</translation>
+        <translation>新しい名前を入力して下さい:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="223"/>
@@ -1430,7 +1430,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="228"/>
         <source>Please enter a new file name:</source>
-        <translation>新規ファイルの名前を入力してください:</translation>
+        <translation>新規ファイルの名前を入力して下さい:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="229"/>
@@ -1440,7 +1440,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="233"/>
         <source>Please enter a new folder name:</source>
-        <translation>新規フォルダーの名前を入力してください:</translation>
+        <translation>新規フォルダーの名前を入力して下さい:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="234"/>
@@ -1450,7 +1450,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="239"/>
         <source>Enter a name for the new %1:</source>
-        <translation>新しい %1 の名前を入力してください:</translation>
+        <translation>新しい %1 の名前を入力して下さい:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="224"/>
@@ -1680,7 +1680,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="370"/>
         <source>Last Modified Time:</source>
-        <translation>更新日時:</translation>
+        <translation>最終更新日時:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="378"/>
