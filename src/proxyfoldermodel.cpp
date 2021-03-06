@@ -194,8 +194,14 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
             for(;;) {
                 leftEnd = leftText.indexOf(QLatin1Char('.'), leftStart);
                 rightEnd = rightText.indexOf(QLatin1Char('.'), rightStart);
-                comp = collator_.compare(leftText.mid(leftStart, leftEnd - leftStart),
-                                         rightText.mid(rightStart, rightEnd - rightStart));
+                QStringRef lefPart = leftText.midRef(leftStart, leftEnd - leftStart);
+                QStringRef rightPart = rightText.midRef(rightStart, rightEnd - rightStart);
+                comp = collator_.compare(lefPart, rightPart);
+                if(comp == 0) {
+                    // This is a workaround for QCollator's behavior that, for example,
+                    // considers "A0" and "A00" equal when the numeric mode is enabled.
+                    comp = lefPart.size() - rightPart.size();
+                }
                 if(comp != 0 || leftEnd == -1 || rightEnd == -1) {
                     break;
                 }
