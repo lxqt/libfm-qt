@@ -1616,7 +1616,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>&amp;Use regular expression</source>
-        <translation>正規表現を使う(&amp;U)</translation>
+        <translation>正規表現を使用する(&amp;U)</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="260"/>

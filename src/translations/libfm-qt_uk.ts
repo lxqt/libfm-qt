@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Створено:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="298"/>
@@ -632,20 +632,20 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="117"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Типові програми</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="123"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Багато файлів</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="124"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Хочете відкрити цей %1 файл?</numerusform>
+            <numerusform>Хочете відкрити ці %1 файли?</numerusform>
+            <numerusform>Хочете відкрити ці %1 файлів?</numerusform>
         </translation>
     </message>
     <message>
@@ -1013,7 +1013,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="165"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>За часом створення</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="168"/>
@@ -1096,7 +1096,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Створено:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="325"/>
@@ -1131,7 +1131,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="405"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Створено</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="408"/>
