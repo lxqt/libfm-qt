@@ -1338,7 +1338,7 @@ Modification : %2</translation>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished">Listes</translation>
+        <translation type="unfinished">Lister</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
