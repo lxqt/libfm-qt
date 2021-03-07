@@ -263,22 +263,18 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         }
 
         // draw some emblems for the item if needed
+        QRect iconRect = style->subElementRect(QStyle::SE_ItemViewItemDecoration, &opt, widget);
+        iconRect.setSize(option.decorationSize / 2);
         if(isSymlink) {
-            QPoint iconPos(opt.rect.x(), opt.rect.y() + (opt.rect.height() - option.decorationSize.height()) / 2);
-            QRect iconRect(iconPos, option.decorationSize / 2);
             symlinkIcon_.paint(painter, iconRect, Qt::AlignCenter, iconMode);
         }
         if(untrusted) {
-            QPoint iconPos(opt.rect.x(), opt.rect.y() + opt.rect.height() / 2);
-            QRect iconRect(iconPos, option.decorationSize / 2);
-            untrustedIcon_.paint(painter, iconRect, Qt::AlignCenter, iconMode);
+            untrustedIcon_.paint(painter, iconRect.translated(0, option.decorationSize.height() / 2), Qt::AlignCenter, iconMode);
         }
         if(!emblems.empty()) {
             // FIXME: we only support one emblem now
-            QPoint iconPos(opt.rect.x() + option.decorationSize.width() / 2, opt.rect.y() + opt.rect.height() / 2);
-            QRect iconRect(iconPos, option.decorationSize / 2);
             QIcon emblem = emblems.front()->qicon();
-            emblem.paint(painter, iconRect, Qt::AlignCenter, iconMode);
+            emblem.paint(painter, iconRect.translated(option.decorationSize.width() / 2, option.decorationSize.height() / 2), Qt::AlignCenter, iconMode);
         }
     }
 }
