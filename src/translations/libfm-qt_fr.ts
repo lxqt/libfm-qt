@@ -1676,7 +1676,7 @@ Modification : %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished">Sensible à la casse</translation>
+        <translation type="unfinished">Sensi&amp;ble à la casse</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>

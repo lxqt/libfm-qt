@@ -1350,7 +1350,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>ファイル &apos;%s&apos; を削除できません: 元のパスが不明です</translation>
+        <translation>ファイル &apos;%s&apos; をゴミ箱から戻せません: 元のパスが不明です</translation>
     </message>
 </context>
 <context>
@@ -1363,12 +1363,12 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation>匿名で接続(&amp;A)</translation>
+        <translation>匿名で接続する(&amp;A)</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>ユーザーとして接続(&amp;S):</translation>
+        <translation>ユーザーとして接続する(&amp;S):</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
