@@ -36,20 +36,25 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
     QMenu(parent),
     view_(view) {
 
+    createAction_ = nullptr;
+    pasteAction_ = nullptr;
+    separator1_ = nullptr;
+    separator2_ = nullptr;
+
     ProxyFolderModel* model = view_->model();
 
-    createAction_ = new QAction(tr("Create &New"), this);
-    addAction(createAction_);
+    bool insideTrash(view_->path() && view_->path().hasUriScheme("trash"));
+    if(!insideTrash) {
+        createAction_ = new QAction(tr("Create &New"), this);
+        addAction(createAction_);
+        createAction_->setMenu(new CreateNewMenu(view_, view_->path(), this));
+        separator1_ = addSeparator();
 
-    createAction_->setMenu(new CreateNewMenu(view_, view_->path(), this));
-
-    separator1_ = addSeparator();
-
-    pasteAction_ = new QAction(QIcon::fromTheme(QStringLiteral("edit-paste")), tr("&Paste"), this);
-    addAction(pasteAction_);
-    connect(pasteAction_, &QAction::triggered, this, &FolderMenu::onPasteActionTriggered);
-
-    separator2_ = addSeparator();
+        pasteAction_ = new QAction(QIcon::fromTheme(QStringLiteral("edit-paste")), tr("&Paste"), this);
+        addAction(pasteAction_);
+        connect(pasteAction_, &QAction::triggered, this, &FolderMenu::onPasteActionTriggered);
+        separator2_ = addSeparator();
+    }
 
     selectAllAction_ = new QAction(tr("Select &All"), this);
     addAction(selectAllAction_);
@@ -89,8 +94,12 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
         }
 
         // disable actons that can't be used
-        pasteAction_->setEnabled(folderInfo->isWritable());
-        createAction_->setEnabled(folderInfo->isWritable());
+        if(pasteAction_) {
+            pasteAction_->setEnabled(folderInfo->isWritable());
+        }
+        if(createAction_) {
+            createAction_->setEnabled(folderInfo->isWritable());
+        }
     }
 
     separator4_ = addSeparator();
