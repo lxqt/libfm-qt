@@ -136,7 +136,7 @@ bool ThumbnailJob::isThumbnailOutdated(const std::shared_ptr<const FileInfo>& fi
     return (thumb_mtime.isEmpty() || thumb_mtime.toULongLong() != file->mtime());
 }
 
-bool ThumbnailJob::readJpegExif(GInputStream *stream, QImage& thumbnail, QMatrix& matrix) {
+bool ThumbnailJob::readJpegExif(GInputStream *stream, QImage& thumbnail, QTransform& matrix) {
     /* try to extract thumbnails embedded in jpeg files */
     ExifLoader* exif_loader = exif_loader_new();
     while(!isCancelled()) {
@@ -208,7 +208,7 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
         if(!ins)
             return QImage();
         bool fromExif = false;
-        QMatrix matrix;
+        QTransform matrix;
         if(strcmp(mime_type->name(), "image/jpeg") == 0) { // if this is a jpeg file
             // try to get the thumbnail embedded in EXIF data
             if(readJpegExif(G_INPUT_STREAM(ins.get()), result, matrix)) {
