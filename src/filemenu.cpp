@@ -162,6 +162,10 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
             unTrashAction_ = new QAction(tr("&Restore"), this);
             connect(unTrashAction_, &QAction::triggered, this, &FileMenu::onUnTrashTriggered);
             addAction(unTrashAction_);
+
+            deleteAction_ = new QAction(QIcon::fromTheme(QStringLiteral("edit-delete")), tr("&Delete"), this);
+            connect(deleteAction_, &QAction::triggered, this, &FileMenu::onDeleteTriggered);
+            addAction(deleteAction_);
         }
     }
     else { // ordinary files
@@ -384,7 +388,7 @@ void FileMenu::onCutTriggered() {
 
 void FileMenu::onDeleteTriggered() {
     auto paths = files_.paths();
-    if(useTrash_) {
+    if(useTrash_ && !info_->path().hasUriScheme("trash")) {
         FileOperation::trashFiles(paths, confirmTrash_, parentWidget());
     }
     else {
@@ -424,7 +428,7 @@ void FileMenu::onRenameTriggered() {
 void FileMenu::setUseTrash(bool trash) {
     if(useTrash_ != trash) {
         useTrash_ = trash;
-        if(deleteAction_) {
+        if(deleteAction_ && !info_->path().hasUriScheme("trash")) {
             deleteAction_->setText(useTrash_ ? tr("&Move to Trash") : tr("&Delete"));
             deleteAction_->setIcon(useTrash_ ? QIcon::fromTheme(QStringLiteral("user-trash")) : QIcon::fromTheme(QStringLiteral("edit-delete")));
         }
