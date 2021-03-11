@@ -314,9 +314,10 @@ QString FolderModel::makeTooltip(FolderModelItem* item) const {
     }
 
     // times
-    auto atime = QDateTime::fromMSecsSinceEpoch(info->atime() * 1000);
     tip += QStringLiteral("<br><i>") + tr("Last modified:") + QStringLiteral("</i> ") + item->displayMtime()
-           + QStringLiteral("<br><i>") + tr("Last accessed:") + QStringLiteral("</i> ") + atime.toString(Qt::SystemLocaleShortDate)
+           + QStringLiteral("<br><i>") + tr("Last accessed:") + QStringLiteral("</i> ")
+                                       + (info->atime() == 0 ? tr("N/A")
+                                                             : QDateTime::fromMSecsSinceEpoch(info->atime() * 1000).toString(Qt::SystemLocaleShortDate))
            + QStringLiteral("<br><i>") + tr("Created:") + QStringLiteral("</i> ") + item->displayCrtime();
 
     // owner
