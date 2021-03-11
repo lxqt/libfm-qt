@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="281"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Oluşturuldu:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="298"/>
@@ -632,18 +632,19 @@ Değiştirmek istiyor musunuz?</translation>
     <message>
         <location filename="../filemenu.cpp" line="117"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Varsayılan Uygulamalar</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="123"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Birçok dosya</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="124"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Bu %1 dosyasını açmak istiyor musunuz?</numerusform>
+            <numerusform>Bu %1 dosyalarını açmak istiyor musunuz?</numerusform>
         </translation>
     </message>
     <message>
@@ -1009,7 +1010,7 @@ Onun yerine silmek ister misiniz?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="165"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Oluşturma Zamanına Göre</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="168"/>
@@ -1092,7 +1093,7 @@ Onun yerine silmek ister misiniz?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Oluşturuldu:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="325"/>
@@ -1127,7 +1128,7 @@ Onun yerine silmek ister misiniz?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="405"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Oluşturuldu</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="408"/>
