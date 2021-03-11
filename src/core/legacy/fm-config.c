@@ -56,6 +56,7 @@ void fm_config_init() {
     self->show_thumbnail = FM_CONFIG_DEFAULT_SHOW_THUMBNAIL;
     self->thumbnail_local = FM_CONFIG_DEFAULT_THUMBNAIL_LOCAL;
     self->thumbnail_max = FM_CONFIG_DEFAULT_THUMBNAIL_MAX;
+    self->external_thumbnail_max = FM_CONFIG_DEFAULT_EXTERNAL_THUMBNAIL_MAX;
     /* show_internal_volumes defaulted to FALSE */
     /* si_unit defaulted to FALSE */
     /* terminal and archiver defaulted to NULL */

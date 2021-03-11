@@ -35,6 +35,12 @@ public:
 
     static void setMaxThumbnailFileSize(int size);
 
+    static int maxExternalThumbnailFileSize() {
+        return maxExternalThumbnailFileSize_;
+    }
+
+    static void setMaxExternalThumbnailFileSize(int size);
+
     const std::vector<QImage>& results() const {
         return results_;
     }
@@ -71,6 +77,7 @@ private:
 
     static bool localFilesOnly_;
     static int maxThumbnailFileSize_;
+    static int maxExternalThumbnailFileSize_;
 };
 
 } // namespace Fm
