@@ -1571,7 +1571,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation>次の種類のファイルのみを検索する:</translation>
+        <translation>次の種類のファイルのみを検索します:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
@@ -1596,7 +1596,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="180"/>
         <source>Documents</source>
-        <translation>文書</translation>
+        <translation>文書ファイル</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="187"/>
@@ -1670,7 +1670,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation>サブディレクトリを検索する</translation>
+        <translation>サブディレクトリ内を検索する</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="226"/>
