@@ -643,8 +643,8 @@ Voulez-vous le remplacer ?</translation>
         <location filename="../filemenu.cpp" line="124"/>
         <source>Do you want to open these %1 files?</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>Voulez vous ouvrir ce %1 fichier ?</numerusform>
+            <numerusform>Voulez vous ouvrir ces %1 fichiers ?</numerusform>
         </translation>
     </message>
     <message>
@@ -1056,7 +1056,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="210"/>
         <source>Hidden Last</source>
-        <translation type="unfinished">Cachés en dernier</translation>
+        <translation>Cachés en dernier</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="218"/>
