@@ -178,6 +178,11 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
                 return leftInfo->crtime() < rightInfo->crtime();
             }
             break;
+        case FolderModel::ColumnFileDTime:
+            if(leftInfo->dtime() != rightInfo->dtime()) { // quint64
+                return leftInfo->dtime() < rightInfo->dtime();
+            }
+            break;
         case FolderModel::ColumnFileSize:
             if(leftInfo->size() != rightInfo->size()) { // quint64
                 return leftInfo->size() < rightInfo->size();
