@@ -231,98 +231,98 @@
         <translation>Последен достъп:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="281"/>
+        <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="298"/>
+        <location filename="../file-props.ui" line="310"/>
         <source>Contains:</source>
         <translation>Съдържа:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="353"/>
+        <location filename="../file-props.ui" line="371"/>
         <source>Device Usage:</source>
         <translation>Използване на диска:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="363"/>
+        <location filename="../file-props.ui" line="381"/>
         <source>Permissions</source>
         <translation>Разрешения</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="378"/>
+        <location filename="../file-props.ui" line="396"/>
         <source>Ownership</source>
         <translation>Притежание</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="402"/>
-        <location filename="../file-props.ui" line="467"/>
-        <location filename="../file-props.ui" line="581"/>
+        <location filename="../file-props.ui" line="420"/>
+        <location filename="../file-props.ui" line="485"/>
+        <location filename="../file-props.ui" line="599"/>
         <source>Group:</source>
         <translation>Група:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="415"/>
-        <location filename="../file-props.ui" line="450"/>
-        <location filename="../file-props.ui" line="529"/>
+        <location filename="../file-props.ui" line="433"/>
+        <location filename="../file-props.ui" line="468"/>
+        <location filename="../file-props.ui" line="547"/>
         <source>Owner:</source>
         <translation>Собственик:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="431"/>
+        <location filename="../file-props.ui" line="449"/>
         <source>Access Control</source>
         <translation>Контрол на достъпа</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="484"/>
-        <location filename="../file-props.ui" line="633"/>
+        <location filename="../file-props.ui" line="502"/>
+        <location filename="../file-props.ui" line="651"/>
         <source>Other:</source>
         <translation>Други:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="501"/>
+        <location filename="../file-props.ui" line="519"/>
         <source>Make the file executable</source>
         <translation>Направи файла изпълним</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="542"/>
-        <location filename="../file-props.ui" line="594"/>
-        <location filename="../file-props.ui" line="646"/>
+        <location filename="../file-props.ui" line="560"/>
+        <location filename="../file-props.ui" line="612"/>
+        <location filename="../file-props.ui" line="664"/>
         <source>Read</source>
         <translation>Четене</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="555"/>
-        <location filename="../file-props.ui" line="607"/>
-        <location filename="../file-props.ui" line="659"/>
+        <location filename="../file-props.ui" line="573"/>
+        <location filename="../file-props.ui" line="625"/>
+        <location filename="../file-props.ui" line="677"/>
         <source>Write</source>
         <translation>Писане</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="568"/>
-        <location filename="../file-props.ui" line="620"/>
-        <location filename="../file-props.ui" line="672"/>
+        <location filename="../file-props.ui" line="586"/>
+        <location filename="../file-props.ui" line="638"/>
+        <location filename="../file-props.ui" line="690"/>
         <source>Execute</source>
         <translation>Изпълнение</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="681"/>
+        <location filename="../file-props.ui" line="699"/>
         <source>Sticky</source>
         <translation>Sticky бит</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="688"/>
+        <location filename="../file-props.ui" line="706"/>
         <source>SetUID</source>
         <translation>SetUID</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="695"/>
+        <location filename="../file-props.ui" line="713"/>
         <source>SetGID</source>
         <translation>SetGID</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="731"/>
+        <location filename="../file-props.ui" line="749"/>
         <source>Advanced Mode</source>
         <translation>Разширени</translation>
     </message>
@@ -620,27 +620,27 @@ Do you want to replace it?</source>
 <context>
     <name>Fm::FileMenu</name>
     <message>
-        <location filename="../filemenu.cpp" line="84"/>
+        <location filename="../filemenu.cpp" line="85"/>
         <source>Open</source>
         <translation>Отваряне</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="88"/>
+        <location filename="../filemenu.cpp" line="89"/>
         <source>Open With...</source>
         <translation>Отваряне с...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="117"/>
+        <location filename="../filemenu.cpp" line="118"/>
         <source>Default Applications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="123"/>
+        <location filename="../filemenu.cpp" line="124"/>
         <source>Many files</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../filemenu.cpp" line="124"/>
+        <location filename="../filemenu.cpp" line="125"/>
         <source>Do you want to open these %1 files?</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -648,83 +648,84 @@ Do you want to replace it?</source>
         </translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="137"/>
+        <location filename="../filemenu.cpp" line="138"/>
         <source>Other Applications</source>
         <translation>Други приложения</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="143"/>
+        <location filename="../filemenu.cpp" line="145"/>
         <source>Create &amp;New</source>
         <translation>Създаване &amp;Нови</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="162"/>
+        <location filename="../filemenu.cpp" line="164"/>
         <source>&amp;Restore</source>
         <translation>&amp;Възстановяване</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="168"/>
+        <location filename="../filemenu.cpp" line="174"/>
         <source>Cut</source>
         <translation>Изрязване</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="172"/>
+        <location filename="../filemenu.cpp" line="178"/>
         <source>Copy</source>
         <translation>Копиране</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="176"/>
+        <location filename="../filemenu.cpp" line="182"/>
         <source>Paste</source>
         <translation>Поставяне</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="180"/>
-        <location filename="../filemenu.cpp" line="428"/>
+        <location filename="../filemenu.cpp" line="186"/>
+        <location filename="../filemenu.cpp" line="436"/>
         <source>&amp;Move to Trash</source>
         <translation>&amp;Преместване в кошчето</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="184"/>
+        <location filename="../filemenu.cpp" line="190"/>
         <source>Rename</source>
         <translation>Преименуване</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="239"/>
+        <location filename="../filemenu.cpp" line="247"/>
         <source>Extract to...</source>
         <translation>Разархивиране в...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="247"/>
+        <location filename="../filemenu.cpp" line="255"/>
         <source>Extract Here</source>
         <translation>Разархивиране тук</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="254"/>
+        <location filename="../filemenu.cpp" line="262"/>
         <source>Compress</source>
         <translation>Компресиране</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="263"/>
+        <location filename="../filemenu.cpp" line="271"/>
         <source>Properties</source>
         <translation>Свойства</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="274"/>
+        <location filename="../filemenu.cpp" line="282"/>
         <source>Trust selected executables</source>
         <translation>Доверяване на избраните изпълними файлове</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="275"/>
+        <location filename="../filemenu.cpp" line="283"/>
         <source>Trust this executable</source>
         <translation>Доверяване на този изпълним файл</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="363"/>
+        <location filename="../filemenu.cpp" line="371"/>
         <source>Output</source>
         <translation>Изход</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="428"/>
+        <location filename="../filemenu.cpp" line="168"/>
+        <location filename="../filemenu.cpp" line="436"/>
         <source>&amp;Delete</source>
         <translation>&amp;Изтриване</translation>
     </message>
@@ -872,32 +873,39 @@ Do you want to delete them instead?</source>
         <translation>Файлове от различен тип</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="312"/>
+        <location filename="../filepropsdialog.cpp" line="310"/>
+        <location filename="../filepropsdialog.cpp" line="317"/>
+        <location filename="../filepropsdialog.cpp" line="324"/>
+        <source>N/A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filepropsdialog.cpp" line="328"/>
         <source>Multiple Files</source>
         <translation>Множество файлове</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="338"/>
+        <location filename="../filepropsdialog.cpp" line="354"/>
         <source>%p% used</source>
         <translation>%p% използвано</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="339"/>
+        <location filename="../filepropsdialog.cpp" line="355"/>
         <source>%1 Free of %2</source>
         <translation>%1 свободни от %2</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="384"/>
+        <location filename="../filepropsdialog.cpp" line="400"/>
         <source>no file</source>
         <translation>няма файл</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="386"/>
+        <location filename="../filepropsdialog.cpp" line="402"/>
         <source>one file</source>
         <translation>един файл</translation>
     </message>
     <message numerus="yes">
-        <location filename="../filepropsdialog.cpp" line="388"/>
+        <location filename="../filepropsdialog.cpp" line="404"/>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln файла</numerusform>
@@ -905,22 +913,22 @@ Do you want to delete them instead?</source>
         </translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="422"/>
+        <location filename="../filepropsdialog.cpp" line="438"/>
         <source>Select an icon</source>
         <translation>Избиране на икона</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="424"/>
+        <location filename="../filepropsdialog.cpp" line="440"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
         <translation>Изображения (*.png *.xpm *.svg *.svgz)</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="524"/>
+        <location filename="../filepropsdialog.cpp" line="540"/>
         <source>Apply changes</source>
         <translation>Прилагане на промените</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="525"/>
+        <location filename="../filepropsdialog.cpp" line="541"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
         <translation>Искате ли рекурсивно да приложите тези промени към всички файлове и поддиректории?</translation>
     </message>
@@ -959,107 +967,107 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FolderMenu</name>
     <message>
-        <location filename="../foldermenu.cpp" line="41"/>
+        <location filename="../foldermenu.cpp" line="48"/>
         <source>Create &amp;New</source>
         <translation>Създаване &amp;Нови</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="48"/>
+        <location filename="../foldermenu.cpp" line="53"/>
         <source>&amp;Paste</source>
         <translation>&amp;Поставяне</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="54"/>
+        <location filename="../foldermenu.cpp" line="59"/>
         <source>Select &amp;All</source>
         <translation>Избиране на &amp;Всичко</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="58"/>
+        <location filename="../foldermenu.cpp" line="63"/>
         <source>Invert Selection</source>
         <translation>Инвертиране на селекцията</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="64"/>
+        <location filename="../foldermenu.cpp" line="69"/>
         <source>Sorting</source>
         <translation>Сортиране</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="69"/>
+        <location filename="../foldermenu.cpp" line="74"/>
         <source>Show Hidden</source>
         <translation>Показване на скритите файлове</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="98"/>
+        <location filename="../foldermenu.cpp" line="107"/>
         <source>Folder Pr&amp;operties</source>
         <translation>&amp;Свойства на папката</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="141"/>
+        <location filename="../foldermenu.cpp" line="150"/>
         <source>Output</source>
         <translation>Извеждане</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="163"/>
+        <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Name</source>
         <translation>По име на файл</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="164"/>
+        <location filename="../foldermenu.cpp" line="173"/>
         <source>By Modification Time</source>
         <translation>По време на промяна</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="165"/>
+        <location filename="../foldermenu.cpp" line="174"/>
         <source>By Creation Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="168"/>
+        <location filename="../foldermenu.cpp" line="177"/>
         <source>By Deletion Time</source>
         <translation>По време на изтриване</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="171"/>
+        <location filename="../foldermenu.cpp" line="180"/>
         <source>By File Size</source>
         <translation>По размер на файла</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="172"/>
+        <location filename="../foldermenu.cpp" line="181"/>
         <source>By File Type</source>
         <translation>По тип на файла</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="173"/>
+        <location filename="../foldermenu.cpp" line="182"/>
         <source>By File Owner</source>
         <translation>По собственик на файла</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="174"/>
+        <location filename="../foldermenu.cpp" line="183"/>
         <source>By File Group</source>
         <translation>По група на файла</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="180"/>
+        <location filename="../foldermenu.cpp" line="189"/>
         <source>Ascending</source>
         <translation>Възходящо</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="185"/>
+        <location filename="../foldermenu.cpp" line="194"/>
         <source>Descending</source>
         <translation>Низходящо</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="202"/>
+        <location filename="../foldermenu.cpp" line="211"/>
         <source>Folder First</source>
         <translation>Първо папките</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="210"/>
+        <location filename="../foldermenu.cpp" line="219"/>
         <source>Hidden Last</source>
         <translation>Скритите накрая</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="218"/>
+        <location filename="../foldermenu.cpp" line="227"/>
         <source>Case Sensitive</source>
         <translation>Зачитане на регистъра</translation>
     </message>
@@ -1082,67 +1090,72 @@ Do you want to delete them instead?</source>
         <translation>Размер на файла:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="318"/>
+        <location filename="../foldermodel.cpp" line="317"/>
         <source>Last modified:</source>
         <translation>Последно модифициран:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="319"/>
+        <location filename="../foldermodel.cpp" line="318"/>
         <source>Last accessed:</source>
         <translation>Последен достъп:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="320"/>
+        <location filename="../foldermodel.cpp" line="319"/>
+        <source>N/A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="325"/>
+        <location filename="../foldermodel.cpp" line="326"/>
         <source>Owner:</source>
         <translation>Собственик:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="326"/>
+        <location filename="../foldermodel.cpp" line="327"/>
         <source>Group:</source>
         <translation>Група:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="393"/>
+        <location filename="../foldermodel.cpp" line="394"/>
         <source>Name</source>
         <translation>Име</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="396"/>
+        <location filename="../foldermodel.cpp" line="397"/>
         <source>Type</source>
         <translation>Тип</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="399"/>
+        <location filename="../foldermodel.cpp" line="400"/>
         <source>Size</source>
         <translation>Размер</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="402"/>
+        <location filename="../foldermodel.cpp" line="403"/>
         <source>Modified</source>
         <translation>Променен</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="405"/>
+        <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="408"/>
+        <location filename="../foldermodel.cpp" line="409"/>
         <source>Deleted</source>
         <translation>Изтрит</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="411"/>
+        <location filename="../foldermodel.cpp" line="412"/>
         <source>Owner</source>
         <translation>Собственик</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="414"/>
+        <location filename="../foldermodel.cpp" line="415"/>
         <source>Group</source>
         <translation>Група</translation>
     </message>
@@ -1416,7 +1429,7 @@ Modified: %2</source>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="104"/>
-        <location filename="../filepropsdialog.cpp" line="549"/>
+        <location filename="../filepropsdialog.cpp" line="565"/>
         <location filename="../mountoperation.cpp" line="207"/>
         <location filename="../utilities.cpp" line="147"/>
         <location filename="../utilities.cpp" line="283"/>
@@ -1459,7 +1472,7 @@ Modified: %2</source>
         <translation>Въведете име на %1:</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="566"/>
+        <location filename="../filepropsdialog.cpp" line="582"/>
         <source>Custom Icon Error</source>
         <translation>Грешка с потребителска икона</translation>
     </message>
@@ -1487,6 +1500,12 @@ Modified: %2</source>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
         <translation>Идентификатор: </translation>
+    </message>
+    <message>
+        <location filename="../foldermodelitem.cpp" line="61"/>
+        <location filename="../foldermodelitem.cpp" line="74"/>
+        <source>N/A</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
