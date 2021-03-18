@@ -37,12 +37,12 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;Ces codes spéciaux peuvent être utilisés dans la ligne de commande :&lt;/b&gt;
+        <translation>&lt;b&gt;Ces codes spéciaux peuvent être utilisés dans la ligne de commande&#x202f;:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt; : représente un seul nom de fichier,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt; : représente plusieurs noms de fichiers,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt; : représente l’URI d&apos;un seul fichier,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt; : représente plusieurs URI.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;&#x202f;: représente un seul nom de fichier,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;&#x202f;: représente plusieurs noms de fichiers,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;&#x202f;: représente l’URI d&apos;un seul fichier,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;&#x202f;: représente plusieurs URI.&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
@@ -145,7 +145,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation>Destination :</translation>
+        <translation>Destination&#xa0;:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
@@ -231,98 +231,98 @@
         <translation>Date de dernier accès :</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="281"/>
+        <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
         <translation>Créé :</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="298"/>
+        <location filename="../file-props.ui" line="310"/>
         <source>Contains:</source>
         <translation>Contient :</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="353"/>
+        <location filename="../file-props.ui" line="371"/>
         <source>Device Usage:</source>
         <translation>Utilisation périphérique :</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="363"/>
+        <location filename="../file-props.ui" line="381"/>
         <source>Permissions</source>
         <translation>Droits d&apos;accès</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="378"/>
+        <location filename="../file-props.ui" line="396"/>
         <source>Ownership</source>
         <translation>Propriété</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="402"/>
-        <location filename="../file-props.ui" line="467"/>
-        <location filename="../file-props.ui" line="581"/>
+        <location filename="../file-props.ui" line="420"/>
+        <location filename="../file-props.ui" line="485"/>
+        <location filename="../file-props.ui" line="599"/>
         <source>Group:</source>
         <translation>Groupe :</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="415"/>
-        <location filename="../file-props.ui" line="450"/>
-        <location filename="../file-props.ui" line="529"/>
+        <location filename="../file-props.ui" line="433"/>
+        <location filename="../file-props.ui" line="468"/>
+        <location filename="../file-props.ui" line="547"/>
         <source>Owner:</source>
         <translation>Propriétaire :</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="431"/>
+        <location filename="../file-props.ui" line="449"/>
         <source>Access Control</source>
         <translation>Contrôle d’accès</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="484"/>
-        <location filename="../file-props.ui" line="633"/>
+        <location filename="../file-props.ui" line="502"/>
+        <location filename="../file-props.ui" line="651"/>
         <source>Other:</source>
         <translation>Autre :</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="501"/>
+        <location filename="../file-props.ui" line="519"/>
         <source>Make the file executable</source>
         <translation>Rendre le fichier exécutable</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="542"/>
-        <location filename="../file-props.ui" line="594"/>
-        <location filename="../file-props.ui" line="646"/>
+        <location filename="../file-props.ui" line="560"/>
+        <location filename="../file-props.ui" line="612"/>
+        <location filename="../file-props.ui" line="664"/>
         <source>Read</source>
         <translation>Lecture</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="555"/>
-        <location filename="../file-props.ui" line="607"/>
-        <location filename="../file-props.ui" line="659"/>
+        <location filename="../file-props.ui" line="573"/>
+        <location filename="../file-props.ui" line="625"/>
+        <location filename="../file-props.ui" line="677"/>
         <source>Write</source>
         <translation>Écriture</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="568"/>
-        <location filename="../file-props.ui" line="620"/>
-        <location filename="../file-props.ui" line="672"/>
+        <location filename="../file-props.ui" line="586"/>
+        <location filename="../file-props.ui" line="638"/>
+        <location filename="../file-props.ui" line="690"/>
         <source>Execute</source>
         <translation>Exécution</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="681"/>
+        <location filename="../file-props.ui" line="699"/>
         <source>Sticky</source>
         <translation>Permanent</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="688"/>
+        <location filename="../file-props.ui" line="706"/>
         <source>SetUID</source>
         <translation>Définir l&apos;UID</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="695"/>
+        <location filename="../file-props.ui" line="713"/>
         <source>SetGID</source>
         <translation>Définir le GID</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="731"/>
+        <location filename="../file-props.ui" line="749"/>
         <source>Advanced Mode</source>
         <translation>Mode avancé</translation>
     </message>
@@ -620,27 +620,27 @@ Voulez-vous le remplacer ?</translation>
 <context>
     <name>Fm::FileMenu</name>
     <message>
-        <location filename="../filemenu.cpp" line="84"/>
+        <location filename="../filemenu.cpp" line="85"/>
         <source>Open</source>
         <translation>Ouvrir</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="88"/>
+        <location filename="../filemenu.cpp" line="89"/>
         <source>Open With...</source>
         <translation>Ouvrir avec…</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="117"/>
+        <location filename="../filemenu.cpp" line="118"/>
         <source>Default Applications</source>
         <translation>Applications par défaut</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="123"/>
+        <location filename="../filemenu.cpp" line="124"/>
         <source>Many files</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../filemenu.cpp" line="124"/>
+        <location filename="../filemenu.cpp" line="125"/>
         <source>Do you want to open these %1 files?</source>
         <translation type="unfinished">
             <numerusform>Voulez vous ouvrir ce %1 fichier ?</numerusform>
@@ -648,83 +648,84 @@ Voulez-vous le remplacer ?</translation>
         </translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="137"/>
+        <location filename="../filemenu.cpp" line="138"/>
         <source>Other Applications</source>
         <translation>Autres applications</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="143"/>
+        <location filename="../filemenu.cpp" line="145"/>
         <source>Create &amp;New</source>
         <translation>Créer un &amp;nouveau</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="162"/>
+        <location filename="../filemenu.cpp" line="164"/>
         <source>&amp;Restore</source>
         <translation>&amp;Restaurer</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="168"/>
+        <location filename="../filemenu.cpp" line="174"/>
         <source>Cut</source>
         <translation>Couper</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="172"/>
+        <location filename="../filemenu.cpp" line="178"/>
         <source>Copy</source>
         <translation>Copier</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="176"/>
+        <location filename="../filemenu.cpp" line="182"/>
         <source>Paste</source>
         <translation>Coller</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="180"/>
-        <location filename="../filemenu.cpp" line="428"/>
+        <location filename="../filemenu.cpp" line="186"/>
+        <location filename="../filemenu.cpp" line="436"/>
         <source>&amp;Move to Trash</source>
         <translation>&amp;Mettre à la corbeille</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="184"/>
+        <location filename="../filemenu.cpp" line="190"/>
         <source>Rename</source>
         <translation>Renommer</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="239"/>
+        <location filename="../filemenu.cpp" line="247"/>
         <source>Extract to...</source>
         <translation>Extraire vers…</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="247"/>
+        <location filename="../filemenu.cpp" line="255"/>
         <source>Extract Here</source>
         <translation>Extraire ici</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="254"/>
+        <location filename="../filemenu.cpp" line="262"/>
         <source>Compress</source>
         <translation>Compresser</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="263"/>
+        <location filename="../filemenu.cpp" line="271"/>
         <source>Properties</source>
         <translation>Propriétés</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="274"/>
+        <location filename="../filemenu.cpp" line="282"/>
         <source>Trust selected executables</source>
         <translation>Faire confiance aux exécutables sélectionnés</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="275"/>
+        <location filename="../filemenu.cpp" line="283"/>
         <source>Trust this executable</source>
         <translation>Faites confiance à cet exécutable</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="363"/>
+        <location filename="../filemenu.cpp" line="371"/>
         <source>Output</source>
         <translation>Sortie</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="428"/>
+        <location filename="../filemenu.cpp" line="168"/>
+        <location filename="../filemenu.cpp" line="436"/>
         <source>&amp;Delete</source>
         <translation>&amp;Supprimer</translation>
     </message>
@@ -872,32 +873,39 @@ Voulez-vous les supprimer à la place ?</translation>
         <translation>Fichiers de différents types</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="312"/>
+        <location filename="../filepropsdialog.cpp" line="310"/>
+        <location filename="../filepropsdialog.cpp" line="317"/>
+        <location filename="../filepropsdialog.cpp" line="324"/>
+        <source>N/A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filepropsdialog.cpp" line="328"/>
         <source>Multiple Files</source>
         <translation>Fichiers multiples</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="338"/>
+        <location filename="../filepropsdialog.cpp" line="354"/>
         <source>%p% used</source>
         <translation>%p% utilisé</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="339"/>
+        <location filename="../filepropsdialog.cpp" line="355"/>
         <source>%1 Free of %2</source>
         <translation>%1 Libre sur %2</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="384"/>
+        <location filename="../filepropsdialog.cpp" line="400"/>
         <source>no file</source>
         <translation>aucun fichier</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="386"/>
+        <location filename="../filepropsdialog.cpp" line="402"/>
         <source>one file</source>
         <translation>un fichier</translation>
     </message>
     <message numerus="yes">
-        <location filename="../filepropsdialog.cpp" line="388"/>
+        <location filename="../filepropsdialog.cpp" line="404"/>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln fichier</numerusform>
@@ -905,22 +913,22 @@ Voulez-vous les supprimer à la place ?</translation>
         </translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="422"/>
+        <location filename="../filepropsdialog.cpp" line="438"/>
         <source>Select an icon</source>
         <translation>Sélectionner une icône</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="424"/>
+        <location filename="../filepropsdialog.cpp" line="440"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
         <translation>Images (*.png *.xpm *.svg *.svgz)</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="524"/>
+        <location filename="../filepropsdialog.cpp" line="540"/>
         <source>Apply changes</source>
         <translation>Appliquer les modifications</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="525"/>
+        <location filename="../filepropsdialog.cpp" line="541"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
         <translation>Voulez-vous appliquer ces changements récursivement à tous les fichiers et sous-dossiers ?</translation>
     </message>
@@ -959,107 +967,107 @@ Voulez-vous les supprimer à la place ?</translation>
 <context>
     <name>Fm::FolderMenu</name>
     <message>
-        <location filename="../foldermenu.cpp" line="41"/>
+        <location filename="../foldermenu.cpp" line="48"/>
         <source>Create &amp;New</source>
         <translation>Créer un &amp;nouveau</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="48"/>
+        <location filename="../foldermenu.cpp" line="53"/>
         <source>&amp;Paste</source>
         <translation>&amp;Coller</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="54"/>
+        <location filename="../foldermenu.cpp" line="59"/>
         <source>Select &amp;All</source>
         <translation>Tout sélect&amp;ionner</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="58"/>
+        <location filename="../foldermenu.cpp" line="63"/>
         <source>Invert Selection</source>
         <translation>Inverser la sélection</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="64"/>
+        <location filename="../foldermenu.cpp" line="69"/>
         <source>Sorting</source>
         <translation>Tri en cours</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="69"/>
+        <location filename="../foldermenu.cpp" line="74"/>
         <source>Show Hidden</source>
         <translation>Afficher les éléments cachés</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="98"/>
+        <location filename="../foldermenu.cpp" line="107"/>
         <source>Folder Pr&amp;operties</source>
         <translation>Pr&amp;opriétés du dossier</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="141"/>
+        <location filename="../foldermenu.cpp" line="150"/>
         <source>Output</source>
         <translation>Sortie</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="163"/>
+        <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Name</source>
         <translation>Par nom de fichier</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="164"/>
+        <location filename="../foldermenu.cpp" line="173"/>
         <source>By Modification Time</source>
         <translation>Par date de modification</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="165"/>
+        <location filename="../foldermenu.cpp" line="174"/>
         <source>By Creation Time</source>
         <translation>Par temps de création</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="168"/>
+        <location filename="../foldermenu.cpp" line="177"/>
         <source>By Deletion Time</source>
         <translation>Par date de suppression</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="171"/>
+        <location filename="../foldermenu.cpp" line="180"/>
         <source>By File Size</source>
         <translation>Par taille de fichier</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="172"/>
+        <location filename="../foldermenu.cpp" line="181"/>
         <source>By File Type</source>
         <translation>Par type de fichier</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="173"/>
+        <location filename="../foldermenu.cpp" line="182"/>
         <source>By File Owner</source>
         <translation>Par propriétaire de fichier</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="174"/>
+        <location filename="../foldermenu.cpp" line="183"/>
         <source>By File Group</source>
         <translation>Par groupe de fichiers</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="180"/>
+        <location filename="../foldermenu.cpp" line="189"/>
         <source>Ascending</source>
         <translation>Ascendant</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="185"/>
+        <location filename="../foldermenu.cpp" line="194"/>
         <source>Descending</source>
         <translation>Descendant</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="202"/>
+        <location filename="../foldermenu.cpp" line="211"/>
         <source>Folder First</source>
         <translation>Dossier en premier</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="210"/>
+        <location filename="../foldermenu.cpp" line="219"/>
         <source>Hidden Last</source>
         <translation>Cachés en dernier</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="218"/>
+        <location filename="../foldermenu.cpp" line="227"/>
         <source>Case Sensitive</source>
         <translation>Sensible à la casse</translation>
     </message>
@@ -1082,67 +1090,72 @@ Voulez-vous les supprimer à la place ?</translation>
         <translation>Taille du fichier :</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="318"/>
+        <location filename="../foldermodel.cpp" line="317"/>
         <source>Last modified:</source>
         <translation>Dernière modification :</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="319"/>
+        <location filename="../foldermodel.cpp" line="318"/>
         <source>Last accessed:</source>
         <translation>Dernier accès :</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="320"/>
+        <location filename="../foldermodel.cpp" line="319"/>
+        <source>N/A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
         <translation>Créé :</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="325"/>
+        <location filename="../foldermodel.cpp" line="326"/>
         <source>Owner:</source>
         <translation>Propriétaire :</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="326"/>
+        <location filename="../foldermodel.cpp" line="327"/>
         <source>Group:</source>
         <translation>Groupe :</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="393"/>
+        <location filename="../foldermodel.cpp" line="394"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="396"/>
+        <location filename="../foldermodel.cpp" line="397"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="399"/>
+        <location filename="../foldermodel.cpp" line="400"/>
         <source>Size</source>
         <translation>Taille</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="402"/>
+        <location filename="../foldermodel.cpp" line="403"/>
         <source>Modified</source>
         <translation>Modifié</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="405"/>
+        <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
         <translation>Créé</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="408"/>
+        <location filename="../foldermodel.cpp" line="409"/>
         <source>Deleted</source>
         <translation>Supprimé</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="411"/>
+        <location filename="../foldermodel.cpp" line="412"/>
         <source>Owner</source>
         <translation>Propriétaire</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="414"/>
+        <location filename="../foldermodel.cpp" line="415"/>
         <source>Group</source>
         <translation>Groupe</translation>
     </message>
@@ -1310,17 +1323,17 @@ Voulez-vous les supprimer à la place ?</translation>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation>Type : %1
-Taille : %2
-Modification : %3</translation>
+        <translation>Type&#x202f;: %1
+Taille&#x202f;: %2
+Modification&#x202f;: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation>Type : %1
-Modification : %2</translation>
+        <translation>Type&#x202f;: %1
+Modification&#x202f;: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="96"/>
@@ -1351,7 +1364,7 @@ Modification : %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Impossible de sortir le fichier « %s » de la corbeille : le chemin d&apos;origine est inconnu</translation>
+        <translation>Impossible de sortir le fichier «&#xa0;%s&#xa0;» de la corbeille&#x202f;: le chemin d&apos;origine est inconnu</translation>
     </message>
 </context>
 <context>
@@ -1406,7 +1419,7 @@ Modification : %2</translation>
     <name>QObject</name>
     <message>
         <location filename="../filelauncher.cpp" line="104"/>
-        <location filename="../filepropsdialog.cpp" line="549"/>
+        <location filename="../filepropsdialog.cpp" line="565"/>
         <location filename="../mountoperation.cpp" line="207"/>
         <location filename="../utilities.cpp" line="147"/>
         <location filename="../utilities.cpp" line="283"/>
@@ -1459,7 +1472,7 @@ Modification : %2</translation>
         <translation>Créer un fichier</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="566"/>
+        <location filename="../filepropsdialog.cpp" line="582"/>
         <source>Custom Icon Error</source>
         <translation>Erreur avec l&apos;icône personnelle</translation>
     </message>
@@ -1481,12 +1494,18 @@ Modification : %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="408"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>Impossible de définir le répertoire de travail à « %1 » : « %2 »</translation>
+        <translation>Impossible de définir le répertoire de travail à «&#xa0;%1&#xa0;»&#x202f;: «&#xa0;%2&#xa0;»</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
         <translation>Identifiant : </translation>
+    </message>
+    <message>
+        <location filename="../foldermodelitem.cpp" line="61"/>
+        <location filename="../foldermodelitem.cpp" line="74"/>
+        <source>N/A</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1499,7 +1518,7 @@ Modification : %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier avec le même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant ?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier avec le même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant&#xa0;?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
@@ -1509,7 +1528,7 @@ Modification : %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>Nom du &amp;fichier :</translation>
+        <translation>Nom du &amp;fichier&#xa0;:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
