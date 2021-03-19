@@ -83,12 +83,14 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
         FileInfoList files;
         files.push_back(folderInfo);
         auto custom_actions = FileActionItem::get_actions_for_files(files);
+        bool firstAction = true;
         for(auto& item: custom_actions) {
             if(item && !(item->get_target() & FILE_ACTION_TARGET_CONTEXT)) {
                 continue;  // this item is not for context menu
             }
-            if(item == custom_actions.front() && item && !item->is_action()) {
+            if(firstAction) {
                 addSeparator(); // before all custom actions
+                firstAction = false;
             }
             addCustomActionItem(this, item);
         }

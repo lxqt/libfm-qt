@@ -225,12 +225,14 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
     // DES-EMA custom actions integration
     // FIXME: port these parts to Fm API
     auto custom_actions = FileActionItem::get_actions_for_files(files_);
+    bool firstAction = true;
     for(auto& item: custom_actions) {
         if(item && !(item->get_target() & FILE_ACTION_TARGET_CONTEXT)) {
             continue;  // this item is not for context menu
         }
-        if(item == custom_actions.front() && !item->is_action()) {
+        if(firstAction) {
             addSeparator(); // before all custom actions
+            firstAction = false;
         }
         addCustomActionItem(this, item);
     }
