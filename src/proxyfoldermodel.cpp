@@ -21,6 +21,7 @@
 #include "proxyfoldermodel.h"
 #include "foldermodel.h"
 #include <QCollator>
+#include <QApplication>
 
 namespace Fm {
 
@@ -280,6 +281,10 @@ void ProxyFolderModel::setShowThumbnails(bool show) {
 }
 
 void ProxyFolderModel::setThumbnailSize(int size) {
+    // since we set the device pixel ratio of the thumbnail image when
+    // storing it as the decoration data, we need a bigger size here
+    size  = qRound(size * qApp->devicePixelRatio());
+
     if(size != thumbnailSize_) {
         FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());
         if(showThumbnails_ && srcModel) {
@@ -309,6 +314,7 @@ QVariant ProxyFolderModel::data(const QModelIndex& index, int role) const {
             QModelIndex srcIndex = mapToSource(index);
             QImage image = srcModel->thumbnailFromIndex(srcIndex, thumbnailSize_);
             if(!image.isNull()) { // if we got a thumbnail of the desired size, use it
+                image.setDevicePixelRatio(qApp->devicePixelRatio());
                 return QVariant(image);
             }
         }
