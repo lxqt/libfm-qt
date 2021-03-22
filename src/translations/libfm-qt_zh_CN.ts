@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>创建：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -632,18 +632,18 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="118"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>默认应用</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="124"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>很多文件</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="125"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>您是否要打开这些％1文件？</numerusform>
         </translation>
     </message>
     <message>
@@ -876,7 +876,7 @@ Do you want to delete them instead?</source>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1017,7 +1017,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="174"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>按创建时间</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="177"/>
@@ -1100,12 +1100,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>创建：</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
@@ -1140,7 +1140,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>已创建</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
@@ -1503,7 +1503,7 @@ Modified: %2</source>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
 </context>
 <context>
