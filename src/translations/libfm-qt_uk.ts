@@ -441,8 +441,8 @@ What do you want to do with it?</source>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>Цей текстовий файл &apos;%1&apos; здається є виконувальним скриптом.
-Що Ви бажаєте зробити з ним?</translation>
+        <translation>Схоже, що цей текстовий файл «%1» є виконувальним скриптом.
+Що бажаєте зробити з ним?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
@@ -742,8 +742,8 @@ Do you want to replace it?</source>
         <location filename="../fileoperation.cpp" line="318"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>Деякі файли неможливо перемістити до смітника, оскільки ця система не підтримує цю операцію.
-Ви бажаєте вилучити їх у цьому випадку?</translation>
+        <translation>Деякі файли неможливо перемістити до смітника, оскільки ця файлова система не підтримує цієї операції.
+Бажаєте видалити їх у цьому випадку?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="404"/>
@@ -754,12 +754,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected files?</source>
-        <translation>Ви бажаєте вилучити вибрані файли?</translation>
+        <translation>Бажаєте видалити вибрані файли?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation>Ви бажаєете перемістити вибрані файли до смітника?</translation>
+        <translation>Бажаєте перемістити вибрані файли до смітника?</translation>
     </message>
 </context>
 <context>
@@ -792,7 +792,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>Переміщення наступних файлів до смітника:</translation>
+        <translation>Переміщення таких файлів до смітника:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
@@ -832,7 +832,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Відновлення наступних файлів з смітника:</translation>
+        <translation>Відновлення таких файлів зі смітника:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
@@ -878,7 +878,7 @@ Do you want to delete them instead?</source>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Недоступно</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1104,7 +1104,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Недоступно</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
@@ -1507,7 +1507,7 @@ Modified: %2</source>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Недоступно</translation>
     </message>
 </context>
 <context>
@@ -1593,7 +1593,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation>Пошук файлів тільки наступних типів:</translation>
+        <translation>Пошук файлів лише таких типів:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
