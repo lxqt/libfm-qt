@@ -877,7 +877,7 @@ Do you want to delete them instead?</source>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Μ/Δ</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1102,7 +1102,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Μ/Δ</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
@@ -1505,7 +1505,7 @@ Modified: %2</source>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Μ/Δ</translation>
     </message>
 </context>
 <context>
