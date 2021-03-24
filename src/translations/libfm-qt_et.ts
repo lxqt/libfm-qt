@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="he">
+<TS version="2.1" language="et">
 <context>
     <name>AppChooserDialog</name>
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>בחירת יישום</translation>
+        <translation>Vali rakendus</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation>יישומים מותקנים</translation>
+        <translation>Paigaldatud rakendused</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation>פקודה בהתאמה אישית</translation>
+        <translation>Kohandatud käsk</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation>שורת פקודה להפעלה:</translation>
+        <translation>Käivitatav käsk:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation>שם יישום:</translation>
+        <translation>Rakenduse nimi:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -37,28 +37,28 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;ניתן להשתמש בקודים המיוחדים האלה בשורת הפקודה:&lt;/b&gt;
+        <translation>&lt;b&gt;Neid asendusi või pruukida käsureal:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: מייצג שם של קובץ אחד&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: מייצג שמות של מספר קבצים&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: מייצג כתובת מדויקת של הקובץ&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: מייצג מספר כתובות&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: märgib ühte failinime&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: märgib mitut failinime&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: märgib ühe faili URI&apos;t&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: märgib ühte mitut URI&apos;t&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>להשאיר את חלון המסוף פתוח לאחר הפעלת פקודה</translation>
+        <translation>Jäta peale käsu töö lõppu terminaliaken avatuks</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation>הפעלה במדמה מסוף</translation>
+        <translation>Käivita terminaliemulaatoris</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>הגדרת היישום הנבחר כפעולת בררת המחדל לסוג קובץ זה</translation>
+        <translation>Määra valitud rakendus selle failitüüpi jaoks vaikimisi rakenduseks</translation>
     </message>
 </context>
 <context>
@@ -66,32 +66,32 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation>עריכת סימניות</translation>
+        <translation>Muuda järjehoidjaid</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
         <source>Name</source>
-        <translation>שם</translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="47"/>
         <source>Location</source>
-        <translation>מיקום</translation>
+        <translation>Asukoht</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation>הוספת &amp;פריט</translation>
+        <translation>&amp;Lisa kirje</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation>ה&amp;סרת פריט</translation>
+        <translation>&amp;Kustuta kirje</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>ניתן להשתמש בגרירה והשלכה כדי לסדר את הפריטים מחדש</translation>
+        <translation>Järjekorra muutmiseks lohista kirjeid</translation>
     </message>
 </context>
 <context>
@@ -99,27 +99,27 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation>הפעלת קובץ</translation>
+        <translation>Käivita fail</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="39"/>
         <source>&amp;Open</source>
-        <translation>&amp;פתיחה</translation>
+        <translation>&amp;Ava</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="52"/>
         <source>E&amp;xecute</source>
-        <translation>הפ&amp;עלה</translation>
+        <translation>&amp;Käivita</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation>הפעלה ב&amp;מסוף</translation>
+        <translation>Käivita &amp;terminalis</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
         <source>Cancel</source>
-        <translation>ביטול</translation>
+        <translation>Katkesta</translation>
     </message>
 </context>
 <context>
@@ -127,17 +127,17 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation>פתחה:</translation>
+        <translation>Asukoht:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation>שם קובץ:</translation>
+        <translation>Faili nimi:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation>סוג קובץ:</translation>
+        <translation>Faili tüüp:</translation>
     </message>
 </context>
 <context>
@@ -145,32 +145,32 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation>יעד:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation>עיבוד:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation>בהכנה…</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress</source>
-        <translation>תהליך</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
         <source>Time remaining:</source>
-        <translation>הזמן שנותר:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation>קבצים שעברו עיבוד:</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -178,153 +178,153 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation>מאפייני קובץ</translation>
+        <translation>Faili omadused</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation>כללי</translation>
+        <translation>Põhiteave</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation>מיקום:</translation>
+        <translation>Asukoht:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>File type:</source>
-        <translation>סוג קובץ:</translation>
+        <translation>Faili tüüp:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
         <source>MIME type:</source>
-        <translation>סוג MIME:</translation>
+        <translation>MIME tüüp:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="152"/>
         <source>File size:</source>
-        <translation>גודל קובץ:</translation>
+        <translation>Faili suuris:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="175"/>
         <source>On-disk size:</source>
-        <translation>גודל בכונן:</translation>
+        <translation>Suurus andmekandjal:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="198"/>
         <source>Last modified:</source>
-        <translation>שינוי אחרון:</translation>
+        <translation>Viimati muudetud:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="221"/>
         <source>Link target:</source>
-        <translation>יעד קישור:</translation>
+        <translation>Viidatav fail:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="247"/>
         <source>Open With:</source>
-        <translation>פתיחה עם:</translation>
+        <translation>Ava rakendusega:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation>גישה אחרונה:</translation>
+        <translation>Viimati kasutatud:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation>יצירה:</translation>
+        <translation>Loodud:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
         <source>Contains:</source>
-        <translation>תכולה:</translation>
+        <translation>Sisaldab:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="371"/>
         <source>Device Usage:</source>
-        <translation>ניצול מהמכשיר:</translation>
+        <translation>Kasutatud andmemaht:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="381"/>
         <source>Permissions</source>
-        <translation>הרשאות</translation>
+        <translation>Õigused</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="396"/>
         <source>Ownership</source>
-        <translation>בעלות</translation>
+        <translation>Omandus</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="420"/>
         <location filename="../file-props.ui" line="485"/>
         <location filename="../file-props.ui" line="599"/>
         <source>Group:</source>
-        <translation>קבוצה:</translation>
+        <translation>Grupp:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="433"/>
         <location filename="../file-props.ui" line="468"/>
         <location filename="../file-props.ui" line="547"/>
         <source>Owner:</source>
-        <translation>בעלים:</translation>
+        <translation>Omanik:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="449"/>
         <source>Access Control</source>
-        <translation>בקרת גישה</translation>
+        <translation>Kasutamisõigused</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="502"/>
         <location filename="../file-props.ui" line="651"/>
         <source>Other:</source>
-        <translation>אחר:</translation>
+        <translation>Teised:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="519"/>
         <source>Make the file executable</source>
-        <translation>להפוך את הקובץ למורשה הרצה</translation>
+        <translation>Muuda fail käivitatavaks</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="560"/>
         <location filename="../file-props.ui" line="612"/>
         <location filename="../file-props.ui" line="664"/>
         <source>Read</source>
-        <translation>קריאה</translation>
+        <translation>Ainult vaatamise õigus</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="573"/>
         <location filename="../file-props.ui" line="625"/>
         <location filename="../file-props.ui" line="677"/>
         <source>Write</source>
-        <translation>כתיבה</translation>
+        <translation>Ainult muutmise õigus</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="586"/>
         <location filename="../file-props.ui" line="638"/>
         <location filename="../file-props.ui" line="690"/>
         <source>Execute</source>
-        <translation>הרצה</translation>
+        <translation>Käivitatav</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="699"/>
         <source>Sticky</source>
-        <translation>דביק</translation>
+        <translation>Kleepuv</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="706"/>
         <source>SetUID</source>
-        <translation></translation>
+        <translation>Määra UID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="713"/>
         <source>SetGID</source>
-        <translation></translation>
+        <translation>Määra GID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>Advanced Mode</source>
-        <translation>מצב מתקדם</translation>
+        <translation>Muud õigused</translation>
     </message>
 </context>
 <context>
@@ -332,7 +332,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation>התאמה אישית</translation>
+        <translation>Kohanda</translation>
     </message>
 </context>
 <context>
@@ -340,7 +340,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>נא לבחור יישום לפתיחת קבצי &quot;%1&quot;</translation>
+        <translation>Vali rakendus „%1“ failide avamiseks</translation>
     </message>
 </context>
 <context>
@@ -348,12 +348,12 @@
     <message>
         <location filename="../createnewmenu.cpp" line="62"/>
         <source>Folder</source>
-        <translation>תיקייה</translation>
+        <translation>Kaust</translation>
     </message>
     <message>
         <location filename="../createnewmenu.cpp" line="66"/>
         <source>Blank File</source>
-        <translation>קובץ ריק</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -361,7 +361,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>התיקייה &quot;%1&quot; שצויינה אינה תקנית</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -369,14 +369,14 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation>בטעינה…</translation>
+        <translation>Laadin...</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation>&lt;אין תת תיקיות&gt;</translation>
+        <translation>&lt;Alamkaustu pole&gt;</translation>
     </message>
 </context>
 <context>
@@ -384,17 +384,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="213"/>
         <source>Open in New T&amp;ab</source>
-        <translation>פתיחה ב&amp;לשונית חדשה</translation>
+        <translation>Ava uuel &amp;kaardil</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="217"/>
         <source>Open in New Win&amp;dow</source>
-        <translation>פתיחה ב&amp;חלון חדש</translation>
+        <translation>Ava uues &amp;aknas</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="222"/>
         <source>Open in Termina&amp;l</source>
-        <translation>פתיחה במ&amp;סוף</translation>
+        <translation>Ava &amp;terminalis</translation>
     </message>
 </context>
 <context>
@@ -402,22 +402,22 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation>להעתיק לכאן</translation>
+        <translation>Kopeeri siia</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation>להעביר לכאן</translation>
+        <translation>Tõsta siia</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation>יצירת קישור סמלי כאן</translation>
+        <translation>Tee siia sümbolviide</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="41"/>
         <source>Cancel</source>
-        <translation>ביטול</translation>
+        <translation>Katkesta</translation>
     </message>
 </context>
 <context>
@@ -425,7 +425,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="84"/>
         <source>New bookmark</source>
-        <translation>סימנייה חדשה</translation>
+        <translation>Uus järjehoidja</translation>
     </message>
 </context>
 <context>
@@ -434,20 +434,18 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>נראה כי הקובץ ‚%1’ הוא למעשה רשומת שולחן עבודה.
-מה ברצונך לעשות אתו?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>נראה כי קובץ הטקסט ‚%1’ הוא למעשה סקריפט שניתן להריץ.
-מה ברצונך לעשות אתו?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>ניתן להריץ את הקובץ ‚%1’. להריץ אותו?</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -455,145 +453,144 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="109"/>
         <source>Go Back</source>
-        <translation>חזרה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="110"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation>Alt+שמאלה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="116"/>
         <source>Go Forward</source>
-        <translation>קדימה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="117"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation>Alt+ימינה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="124"/>
         <source>Reload</source>
-        <translation>רענון</translation>
+        <translation>Laadi uuesti</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="125"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Create Folder</source>
-        <translation>יצירת תיקייה</translation>
+        <translation>Loo kaust</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="152"/>
         <source>Icon View</source>
-        <translation>תצוגת סמלים</translation>
+        <translation>Ikoonivaade</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="156"/>
         <source>Thumbnail View</source>
-        <translation>תצוגת תמונות ממוזערות</translation>
+        <translation>Pisipildivaade</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="160"/>
         <source>Compact View</source>
-        <translation>תצוגה חסכונית</translation>
+        <translation>Kompaktne vaade</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="164"/>
         <source>Detailed List View</source>
-        <translation>תצוגת פירוט</translation>
+        <translation>Detailne loendivaade</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation>גדלי סמלים</translation>
+        <translation>Ikoonide suurused</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation>גודל הסמלים הגדולים:</translation>
+        <translation>Suurte ikoonide mõõdud:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation>גודל הסמלים הקטנים:</translation>
+        <translation>Väikeste ikoonide mõõdud:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation>גודל התמונות הממוזערות:</translation>
+        <translation>Pisipiltide mõõdud:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation>הצגת תמונות ממוזערות</translation>
+        <translation>Näita pisipilte</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation>הצגת עצות צצות לקבצים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation>אפשרויות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="544"/>
         <location filename="../filedialog.cpp" line="939"/>
         <source>Error</source>
-        <translation>שגיאה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="544"/>
         <source>Please select a file</source>
-        <translation>נא לבחור בקובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="586"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation>%1 כבר קיים.
-להחליף אותו?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="909"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation>הנתיב „%1” לא קיים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="923"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation>„%1” אינה תיקייה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="929"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation>„%1” אינו קובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1081"/>
         <location filename="../filedialog.cpp" line="1189"/>
         <source>&amp;Open</source>
-        <translation>&amp;פתיחה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1084"/>
         <location filename="../filedialog.cpp" line="1197"/>
         <source>&amp;Save</source>
-        <translation>&amp;שמירה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1091"/>
         <source>All Files (*)</source>
-        <translation>כל הקבצים (*)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -601,12 +598,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="140"/>
         <source>Open File</source>
-        <translation>פתיחת קובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="141"/>
         <source>Save File</source>
-        <translation>שמירת קובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -614,7 +611,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation> פיקסלים</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -622,114 +619,111 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="85"/>
         <source>Open</source>
-        <translation>פתיחה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="89"/>
         <source>Open With...</source>
-        <translation>פתיחה עם…</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="118"/>
         <source>Default Applications</source>
-        <translation>יישומי בררת מחדל</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="124"/>
         <source>Many files</source>
-        <translation>מגוון קבצים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="125"/>
         <source>Do you want to open these %1 files?</source>
-        <translation>
-            <numerusform>לפתוח את הקובץ הזה בגודל %1?</numerusform>
-            <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
-            <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
-            <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
+        <translation type="unfinished">
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="138"/>
         <source>Other Applications</source>
-        <translation>יישומים אחרים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="145"/>
         <source>Create &amp;New</source>
-        <translation>יצירת &amp;חדש</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="164"/>
         <source>&amp;Restore</source>
-        <translation>&amp;שחזור</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="174"/>
         <source>Cut</source>
-        <translation>גזירה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="178"/>
         <source>Copy</source>
-        <translation>העתקה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="182"/>
         <source>Paste</source>
-        <translation>הדבקה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="186"/>
         <location filename="../filemenu.cpp" line="436"/>
         <source>&amp;Move to Trash</source>
-        <translation>העברה ל&amp;אשפה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="190"/>
         <source>Rename</source>
-        <translation>שינוי שם</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Extract to...</source>
-        <translation>חילוץ אל…</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="255"/>
         <source>Extract Here</source>
-        <translation>חילוץ לכאן</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="262"/>
         <source>Compress</source>
-        <translation>דחיסה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="271"/>
         <source>Properties</source>
-        <translation>מאפיינים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="282"/>
         <source>Trust selected executables</source>
-        <translation>מתן אמון בקובצי הפעלה נבחרים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="283"/>
         <source>Trust this executable</source>
-        <translation>מתן אמון בקובץ הפעלה זה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="371"/>
         <source>Output</source>
-        <translation>פלט</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="168"/>
         <location filename="../filemenu.cpp" line="436"/>
         <source>&amp;Delete</source>
-        <translation>מחי&amp;קה</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -737,30 +731,29 @@ Do you want to replace it?</source>
     <message>
         <location filename="../fileoperation.cpp" line="317"/>
         <source>Error</source>
-        <translation>שגיאה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="318"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>העברתם של חלק מהקבצים לאשפה אינה אפשרית כיוון שמערכת ההפעלה שתחתיהם אינה תומכת בפעולה זו.
-למחוק אותם במקום?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="404"/>
         <location filename="../fileoperation.cpp" line="422"/>
         <source>Confirm</source>
-        <translation>אישור</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected files?</source>
-        <translation>למחוק את הקבצים הנבחרים?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation>להעביר את הקבצים הנבחרים לסל האשפה?</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -768,78 +761,78 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move files</source>
-        <translation>העברת קבצים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>הקבצים הבאים מועברים לתיקיית היעד:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation>העתקת קבצים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>הקבצים הבאים מועתקים לתיקיית היעד:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation>השלכת קבצים לאשפה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>הקבצים הבאים מועברים לסל האשפה:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation>מחיקת קבצים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation>הקבצים הבאים נמחקים:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation>יצירת קישורים סמליים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>נוצרים קישורים סמליים לקבצים הבאים:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation>שינוי מאפיינים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>המאפיינים של הקבצים הבאים משתנים:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation>שחזור קבצים מהאשפה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>הקבצים הבאים משוחזרים מסל האשפה:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
         <location filename="../fileoperationdialog.cpp" line="152"/>
         <source>Error</source>
-        <translation>שגיאה</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -847,94 +840,91 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="162"/>
         <source>View folder content</source>
-        <translation>צפייה בתוכן התיקייה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="163"/>
         <source>View and modify folder content</source>
-        <translation>צפייה ועריכה של תוכן התיקייה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="167"/>
         <source>Read</source>
-        <translation>קריאה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="168"/>
         <source>Read and write</source>
-        <translation>קריאה וכתיבה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="170"/>
         <source>Forbidden</source>
-        <translation>אין הרשאה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="287"/>
         <source>Files of different types</source>
-        <translation>קבצים מסוגים שונים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="310"/>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation>לא זמין</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
         <source>Multiple Files</source>
-        <translation>מגוון קבצים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="354"/>
         <source>%p% used</source>
-        <translation>%p% מנוצלים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="355"/>
         <source>%1 Free of %2</source>
-        <translation>%1 פנויים מתוך %2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="400"/>
         <source>no file</source>
-        <translation>אין קובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="402"/>
         <source>one file</source>
-        <translation>קובץ אחד</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="404"/>
         <source>%Ln files</source>
-        <translation>
-            <numerusform>קובץ %Ln</numerusform>
-            <numerusform>%Ln קבצים</numerusform>
-            <numerusform>%Ln קבצים</numerusform>
-            <numerusform>%Ln קבצים</numerusform>
+        <translation type="unfinished">
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="438"/>
         <source>Select an icon</source>
-        <translation>נא לבחור סמל</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="440"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation>תמונות ‎(*.png *.xpm *.svg *.svgz )</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="540"/>
         <source>Apply changes</source>
-        <translation>החלת השינויים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="541"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>להחיל את השינויים האלה רקורסיבית על כל הקבצים ותת־התיקיות?</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -942,17 +932,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>Error</source>
-        <translation>שגיאה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>You should add at least one directory to search.</source>
-        <translation>עליך להוסיף לפחות תיקייה אחת לחיפוש.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="135"/>
         <source>Select a folder</source>
-        <translation>נא לבחור תיקייה</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -960,12 +950,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="477"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation>לא ניתן להעתיק תיקייה לתוך עצמה!</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="528"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation>לא ניתן ליצור קישור על מערכת קישור בלתי טבעית</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -973,107 +963,107 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="48"/>
         <source>Create &amp;New</source>
-        <translation>יצירת &amp;חדשה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="53"/>
         <source>&amp;Paste</source>
-        <translation>ה&amp;דבקה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="59"/>
         <source>Select &amp;All</source>
-        <translation>בחירת ה&amp;כול</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
         <source>Invert Selection</source>
-        <translation>היפוך הבחירה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
         <source>Sorting</source>
-        <translation>סידור</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="74"/>
         <source>Show Hidden</source>
-        <translation>הצגת מוסתרים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="107"/>
         <source>Folder Pr&amp;operties</source>
-        <translation>מאפייני &amp;תיקייה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="150"/>
         <source>Output</source>
-        <translation>פלט</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Name</source>
-        <translation>לפי שם קובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="173"/>
         <source>By Modification Time</source>
-        <translation>לפי מועד שינוי</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="174"/>
         <source>By Creation Time</source>
-        <translation>לפי מועד היצירה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="177"/>
         <source>By Deletion Time</source>
-        <translation>לפי מועד מחיקה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="180"/>
         <source>By File Size</source>
-        <translation>לפי גודל קובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="181"/>
         <source>By File Type</source>
-        <translation>לפי סוג קובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="182"/>
         <source>By File Owner</source>
-        <translation>לפי בעלות על קובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="183"/>
         <source>By File Group</source>
-        <translation>לפי קבוצת הקובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="189"/>
         <source>Ascending</source>
-        <translation>עולה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="194"/>
         <source>Descending</source>
-        <translation>יורד</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="211"/>
         <source>Folder First</source>
-        <translation>תיקיות בהתחלה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="219"/>
         <source>Hidden Last</source>
-        <translation>הוסתר לאחרונה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="227"/>
         <source>Case Sensitive</source>
-        <translation>תלוי רישיות</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1081,87 +1071,87 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="304"/>
         <source>Location:</source>
-        <translation>מיקום:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="308"/>
         <source>File type:</source>
-        <translation>סוג קובץ:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="313"/>
         <source>File size:</source>
-        <translation>גודל קובץ:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="317"/>
         <source>Last modified:</source>
-        <translation>שינוי אחרון:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="318"/>
         <source>Last accessed:</source>
-        <translation>גישה אחרונה:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation>לא זמין</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation>יצירה:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
         <source>Owner:</source>
-        <translation>בעלות:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="327"/>
         <source>Group:</source>
-        <translation>קבוצה:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="394"/>
         <source>Name</source>
-        <translation>שם</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="397"/>
         <source>Type</source>
-        <translation>סוג</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="400"/>
         <source>Size</source>
-        <translation>גודל</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="403"/>
         <source>Modified</source>
-        <translation>מועד שינוי</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation>יצירה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
         <source>Deleted</source>
-        <translation>נמחקה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="412"/>
         <source>Owner</source>
-        <translation>בעלות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="415"/>
         <source>Group</source>
-        <translation>קבוצה</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1169,12 +1159,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation>שינוי גודל עמודות אוטומטית</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation>עמודות גלויות</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1182,12 +1172,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation>מודגש</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation>נטוי</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1195,7 +1185,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../mountoperationpassworddialog.cpp" line="40"/>
         <source>&amp;Connect</source>
-        <translation>הת&amp;חברות</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1203,12 +1193,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../pathbar.cpp" line="130"/>
         <source>&amp;Edit Path</source>
-        <translation>ע&amp;ריכת נתיב</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="133"/>
         <source>&amp;Copy Path</source>
-        <translation>ה&amp;עתקת נתיב</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1216,42 +1206,42 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesmodel.cpp" line="47"/>
         <source>Places</source>
-        <translation>מקומות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="55"/>
         <source>Desktop</source>
-        <translation>שולחן עבודה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="61"/>
         <source>Computer</source>
-        <translation>מחשב</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="69"/>
         <source>Applications</source>
-        <translation>יישומים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="78"/>
         <source>Network</source>
-        <translation>רשת</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="82"/>
         <source>Devices</source>
-        <translation>התקנים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="137"/>
         <source>Bookmarks</source>
-        <translation>סימניות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="228"/>
         <source>Trash</source>
-        <translation>אשפה</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1259,64 +1249,64 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="481"/>
         <source>Open in New Tab</source>
-        <translation>פתיחה בלשונית חדשה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="484"/>
         <source>Open in New Window</source>
-        <translation>פתיחה בחלון חדש</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="496"/>
         <source>Empty Trash</source>
-        <translation>פינוי האשפה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="516"/>
         <location filename="../placesview.cpp" line="573"/>
         <source>Hide</source>
-        <translation>הסתרה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="533"/>
         <source>Move Bookmark Up</source>
-        <translation>העברת הסימנייה למעלה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="538"/>
         <source>Move Bookmark Down</source>
-        <translation>העברת הסימנייה למטה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="542"/>
         <source>Rename Bookmark</source>
-        <translation>שינוי שם לסימנייה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="545"/>
         <source>Remove Bookmark</source>
-        <translation>הסרת סימנייה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="554"/>
         <location filename="../placesview.cpp" line="587"/>
         <source>Unmount</source>
-        <translation>ניתוק עיגון</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="558"/>
         <source>Mount</source>
-        <translation>עיגון</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="564"/>
         <source>Eject</source>
-        <translation>שליפה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="599"/>
         <source>Show All Entries</source>
-        <translation>הצגת כל הרשומות</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1327,27 +1317,24 @@ Do you want to delete them instead?</source>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation>סוג: %1
-גודל: %2
-שינוי: %3</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation>סוג: %1
-שינוי: %2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="96"/>
         <source>&amp;Overwrite</source>
-        <translation>&amp;שכתוב</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="98"/>
         <source>&amp;Rename</source>
-        <translation>שי&amp;נוי שם</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1355,12 +1342,12 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation>רשימות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Directory Tree</source>
-        <translation>עץ תיקיות</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1368,7 +1355,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>לא ניתן להוציא את &quot;%s%&quot; מהאשפה: הנתיב המקורי לא ידוע</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1376,47 +1363,47 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation>עיגון</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation>התחברות &amp;אלמונית</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>התחברות בתור מ&amp;שתמש:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
         <source>&amp;Username:</source>
-        <translation>שם &amp;משתמש:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="102"/>
         <source>&amp;Password:</source>
-        <translation>&amp;ססמה:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
-        <translation>שם מת&amp;חם:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation>לש&amp;כוח את הססמה מיידית</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation>שמירת הסיסמה עבור הסשן &amp;הזה בזיכרון</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation>ל&amp;זכור לתמיד</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1424,12 +1411,12 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="163"/>
         <source>Rename File</source>
-        <translation>שינוי שם קובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="164"/>
         <source>Please enter a new name:</source>
-        <translation>נא להקליד שם חדש:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="104"/>
@@ -1438,78 +1425,78 @@ Modified: %2</source>
         <location filename="../utilities.cpp" line="147"/>
         <location filename="../utilities.cpp" line="283"/>
         <source>Error</source>
-        <translation>שגיאה</translation>
+        <translation>Viga</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="223"/>
         <source>Create Folder</source>
-        <translation>יצירת תיקייה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="224"/>
         <source>Create File</source>
-        <translation>יצירת קובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="228"/>
         <source>Please enter a new file name:</source>
-        <translation>נא להקליד שם חדש לקובץ:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="229"/>
         <source>New text file</source>
-        <translation>קובץ טקסט חדש</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="233"/>
         <source>Please enter a new folder name:</source>
-        <translation>נא להקליד שם חדש לתיקייה:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="234"/>
         <source>New folder</source>
-        <translation>תיקייה חדשה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="239"/>
         <source>Enter a name for the new %1:</source>
-        <translation>נא להקליד שם עבור %1 החדש:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="582"/>
         <source>Custom Icon Error</source>
-        <translation>שגיאת סמל בהתאמה אישית</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation>הנתיב אינו מעוגן.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="331"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>קובץ רשומת שולחן עבודה שגוי: ‚%1’</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="367"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>לא מוגדר יישום בררת מחדל להפעלת ‚%1’</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="408"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>לא ניתן להגדיר את תיקייה העבודה אל ‚%1’:‏ %2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation>מזהה: </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation>לא זמין</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1517,27 +1504,27 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation>אישור להחלפת הקבצים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;כבר קיים קובץ בשם הזה במיקום הזה.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;להחליף את הקובץ הקיים?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation>עם הקובץ להלן?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>שם &amp;קובץ:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation>יש להחיל אפשרות זו לכל הקבצים הקיימים</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1545,176 +1532,176 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation>חיפוש קבצים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation>שם/מיקום</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation>תבניות שמות קבצים:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="41"/>
         <source>*</source>
-        <translation>*</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation>שימוש בביטויים רגולריים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="68"/>
         <source>Places to Search:</source>
-        <translation>מיקומים לחיפוש:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="81"/>
         <source>&amp;Add</source>
-        <translation>הו&amp;ספה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="93"/>
         <source>&amp;Remove</source>
-        <translation>הס&amp;רה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="129"/>
         <source>Search for hidden files</source>
-        <translation>חיפוש אחר קבצים מוסתרים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="140"/>
         <source>File Type</source>
-        <translation>סוג קובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation>לחפש קבצים מהסוגים הבאים בלבד:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
         <source>Text files</source>
-        <translation>קובצי טקסט</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="159"/>
         <source>Image files</source>
-        <translation>קובצי תמונות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="166"/>
         <source>Audio files</source>
-        <translation>קובצי שמע</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="173"/>
         <source>Video files</source>
-        <translation>קובצי וידאו</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="180"/>
         <source>Documents</source>
-        <translation>מסמכים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="187"/>
         <source>Folders</source>
-        <translation>תיקיות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="211"/>
         <source>Content</source>
-        <translation>תוכן</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="217"/>
         <source>File contains:</source>
-        <translation>הקובץ מכיל:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>&amp;Use regular expression</source>
-        <translation>שימוש ב&amp;ביטויים רגולריים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="260"/>
         <source>Properties</source>
-        <translation>מאפיינים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="266"/>
         <source>File Size:</source>
-        <translation>גודל קובץ:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="295"/>
         <source>Larger than:</source>
-        <translation>גדול מ־:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="309"/>
         <location filename="../filesearch.ui" line="339"/>
         <source>Bytes</source>
-        <translation>בתים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="314"/>
         <location filename="../filesearch.ui" line="344"/>
         <source>KiB</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="319"/>
         <location filename="../filesearch.ui" line="349"/>
         <source>MiB</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="324"/>
         <location filename="../filesearch.ui" line="354"/>
         <source>GiB</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="274"/>
         <source>Smaller than:</source>
-        <translation>קטן מ־:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation>תלוי רישיות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation>חיפוש בתת־תיקיות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation>&amp;ללא תלות ברישיות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
         <source>Last Modified Time:</source>
-        <translation>מועד השינוי האחרון:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="378"/>
         <source>Earlier than:</source>
-        <translation>לפני:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Later than:</source>
-        <translation>אחרי:</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
