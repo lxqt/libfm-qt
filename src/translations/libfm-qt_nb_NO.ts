@@ -518,12 +518,12 @@ Hva vil du gjøre med det?</translation>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished">Stor ikonstørrelse:</translation>
+        <translation>Størrelse på store ikoner:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished">Liten ikonstørrelse:</translation>
+        <translation>Størrelse på små ikoner:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
@@ -877,7 +877,7 @@ Vil du slette dem istedenfor?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1102,7 +1102,7 @@ Vil du slette dem istedenfor?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
@@ -1505,7 +1505,7 @@ Sist endret: %2</translation>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen</translation>
     </message>
 </context>
 <context>
