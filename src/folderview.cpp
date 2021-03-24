@@ -885,7 +885,11 @@ void FolderView::setCustomColumnWidths(const QList<int> &widths) {
 
 void FolderView::setHiddenColumns(const QList<int> &columns) {
     hiddenColumns_.clear();
+#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
+    hiddenColumns_ = QSet<int>(columns.begin(), columns.end());
+#else
     hiddenColumns_ = columns.toSet();
+#endif
     if(mode == DetailedListMode) {
         if(FolderViewTreeView* treeView = static_cast<FolderViewTreeView*>(view)) {
             treeView->setHiddenColumns(hiddenColumns_);
@@ -1602,13 +1606,15 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                                                         : view->verticalScrollBar());
                 if(sbar != nullptr) {
                     QWheelEvent *we = static_cast<QWheelEvent*>(event);
-#if (QT_VERSION >= QT_VERSION_CHECK(5,12,0))
-                    QWheelEvent e(we->posF(),
-                                  we->globalPosF(),
-                                  we->pixelDelta(),
 #if (QT_VERSION < QT_VERSION_CHECK(5,14,0))
+                    QWheelEvent e(we->posF(),
+                                  we->globalPosition(),
+                                  we->pixelDelta(),
                                   QPoint (0, we->angleDelta().y() / QApplication::wheelScrollLines()),
 #else
+                    QWheelEvent e(we->position(),
+                                  we->globalPosition(),
+                                  we->pixelDelta(),
                                   // the problem with horizontal wheel scrolling from inside view is fixed in Qt 5.14
                                   mode == CompactMode
                                     ? QPoint (we->angleDelta().y() / QApplication::wheelScrollLines(), 0)
@@ -1619,14 +1625,6 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                                   we->phase(),
                                   false,
                                   we->source());
-#else
-                    QWheelEvent e(we->posF(),
-                                  we->globalPosF(),
-                                  we->angleDelta().y() / QApplication::wheelScrollLines(),
-                                  we->buttons(),
-                                  Qt::NoModifier,
-                                  Qt::Vertical);
-#endif
                     QApplication::sendEvent(sbar, &e);
                     return true;
                 }
