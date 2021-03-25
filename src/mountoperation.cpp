@@ -146,6 +146,15 @@ void MountOperation::onEjectVolumeFinished(GVolume* volume, GAsyncResult* res, Q
     delete pThis;
 }
 
+void MountOperation::onEjectFileFinished(GFile* file, GAsyncResult* res, QPointer<MountOperation>* pThis) {
+    if(*pThis) {
+        GError* error = nullptr;
+        g_file_eject_mountable_with_operation_finish(file, res, &error);
+        (*pThis)->handleFinish(error);
+    }
+    delete pThis;
+}
+
 void MountOperation::onMountFileFinished(GFile* file, GAsyncResult* res, QPointer< MountOperation >* pThis) {
     if(*pThis) {
         GError* error = nullptr;
@@ -177,6 +186,15 @@ void MountOperation::onUnmountMountFinished(GMount* mount, GAsyncResult* res, QP
     if(*pThis) {
         GError* error = nullptr;
         g_mount_unmount_with_operation_finish(mount, res, &error);
+        (*pThis)->handleFinish(error);
+    }
+    delete pThis;
+}
+
+void MountOperation::onUnmountFileFinished(GFile* file, GAsyncResult* res, QPointer<MountOperation>* pThis) {
+    if(*pThis) {
+        GError* error = nullptr;
+        g_file_unmount_mountable_with_operation_finish(file, res, &error);
         (*pThis)->handleFinish(error);
     }
     delete pThis;

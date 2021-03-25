@@ -41,6 +41,7 @@ FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent)
     QStyledItemDelegate(parent ? parent : view),
     symlinkIcon_(QIcon::fromTheme(QStringLiteral("emblem-symbolic-link"))),
     untrustedIcon_(QIcon::fromTheme(QStringLiteral("emblem-important"))),
+    mountedIcon_(QIcon::fromTheme(QStringLiteral("emblem-mounted"))),
     addIcon_(QIcon::fromTheme(QStringLiteral("list-add"))),
     removeIcon_(QIcon::fromTheme(QStringLiteral("list-remove"))),
     fileInfoRole_(Fm::FolderModel::FileInfoRole),
@@ -174,6 +175,11 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
             untrustedIcon_.paint(painter, iconRect.translated(0, option.decorationSize.height() / 2), Qt::AlignCenter, iconMode);
         }
 
+        if(file && file->canUnmount()) {
+            // emblem for mounted mountable files
+            mountedIcon_.paint(painter, iconRect.translated(option.decorationSize.width() / 2, 0), Qt::AlignCenter, iconMode);
+        }
+
         // draw other emblems if there's any
         if(!emblems.empty()) {
             // FIXME: we only support one emblem now
@@ -270,6 +276,9 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         }
         if(untrusted) {
             untrustedIcon_.paint(painter, iconRect.translated(0, option.decorationSize.height() / 2), Qt::AlignCenter, iconMode);
+        }
+        if(file && file->canUnmount()) {
+            mountedIcon_.paint(painter, iconRect.translated(option.decorationSize.width() / 2, 0), Qt::AlignCenter, iconMode);
         }
         if(!emblems.empty()) {
             // FIXME: we only support one emblem now

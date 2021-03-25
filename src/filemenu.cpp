@@ -25,6 +25,7 @@
 #include "fileoperation.h"
 #include "filelauncher.h"
 #include "appchooserdialog.h"
+#include "mountoperation.h"
 
 #include "customactions/fileaction.h"
 #include "customaction_p.h"
@@ -237,9 +238,55 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
         addCustomActionItem(this, item);
     }
 
+
+    // mount, unmount and eject, e.g., in computer:///
+    if(files_.size() == 1) {
+        QAction* mountSeparator = nullptr;
+        if(info_ ->canMount()) {
+            mountSeparator = addSeparator();
+            QAction* action = new QAction(tr("Mount"), this);
+            connect(action, &QAction::triggered, this, [this] {
+                if(info_->canMount()) {
+                    MountOperation* op = new MountOperation(true, parentWidget());
+                    op->mountMountable(info_->path());
+                    op->wait();
+                }
+            });
+            addAction(action);
+        }
+        if(info_ ->canUnmount()) {
+            if(!mountSeparator) {
+                mountSeparator = addSeparator();
+            }
+            QAction* action = new QAction(tr("Unmount"), this);
+            connect(action, &QAction::triggered, this, [this] {
+                if(info_->canUnmount()) {
+                    MountOperation* op = new MountOperation(true, parentWidget());
+                    op->unmount(info_->path());
+                    op->wait();
+                }
+            });
+            addAction(action);
+        }
+        if(info_ ->canEject()) {
+            if(!mountSeparator) {
+                addSeparator();
+            }
+            QAction* action = new QAction(tr("Eject"), this);
+            connect(action, &QAction::triggered, this, [this] {
+                if(info_->canEject()) {
+                    MountOperation* op = new MountOperation(true, parentWidget());
+                    op->eject(info_->path());
+                    op->wait();
+                }
+            });
+            addAction(action);
+        }
+    }
+
     // archiver integration
-    // FIXME: we need to modify upstream libfm to include some Qt-based archiver programs.
-    if(!allVirtual_ && !allTrash_) {
+    if(!allVirtual_ && !allTrash_
+       && !(sameFilesystem_ && path.hasUriScheme("computer"))) {
         auto archiver = Archiver::defaultArchiver();
         if(archiver) {
             if(sameType_ && archiver->isMimeTypeSupported(mime_type->name())) {
