@@ -150,27 +150,27 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation type="unfinished"></translation>
+        <translation>Töötlen:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation type="unfinished"></translation>
+        <translation>Valmistun...</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Edenemine</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
         <source>Time remaining:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lõpuni jäänud:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Töödeldud faile:</translation>
     </message>
 </context>
 <context>
@@ -353,7 +353,7 @@
     <message>
         <location filename="../createnewmenu.cpp" line="66"/>
         <source>Blank File</source>
-        <translation type="unfinished"></translation>
+        <translation>Tühi fail</translation>
     </message>
 </context>
 <context>
@@ -361,7 +361,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjeldatud kaust „%1“ ei ole korrektne</translation>
     </message>
 </context>
 <context>
@@ -434,18 +434,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>See „%1“ fail tundub olema töölauafail.
+Mida sa soovid sellega teha?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>See „%1“ fail tundub olema käivitatav skript.
+Mida sa soovid sellega teha?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation type="unfinished"></translation>
+        <translation>See „%1“ fail käivitatav. Kas sa soovid ta tööle panna?</translation>
     </message>
 </context>
 <context>
@@ -453,24 +455,24 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="109"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Liigu tagasi</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="110"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Left</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="116"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Liigu edasi</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="117"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Right</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="124"/>
@@ -541,56 +543,57 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Eelistused</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="544"/>
         <location filename="../filedialog.cpp" line="939"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Viga</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="544"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Palun vali fail</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="586"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 on juba olemas.
+Kas sa soovid seda asenda?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="909"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>„%1“ asukohta pole olemas</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="923"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>„%1“ pole kaust</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="929"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>„%1“ pole fail</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1081"/>
         <location filename="../filedialog.cpp" line="1189"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ava</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1084"/>
         <location filename="../filedialog.cpp" line="1197"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Salvesta</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1091"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kõik failid (*)</translation>
     </message>
 </context>
 <context>
@@ -598,12 +601,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="140"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Ava fail</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="141"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Salvesta fail</translation>
     </message>
 </context>
 <context>
@@ -611,7 +614,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -619,100 +622,101 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="85"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Ava</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="89"/>
         <source>Open With...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ava rakendusega...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="118"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaikimisi rakendused</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="124"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Palju faile</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="125"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Kas sa soovid avada selle %1 faili?</numerusform>
+            <numerusform>Kas sa soovid avada need %1 faili?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="138"/>
         <source>Other Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Muud rakendused</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="145"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation>Loo &amp;uus</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="164"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Taasta</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="174"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Lõika</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="178"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopeeri</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="182"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>Aseta</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="186"/>
         <location filename="../filemenu.cpp" line="436"/>
         <source>&amp;Move to Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Viska prügikasti</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="190"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Muuda nime</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Extract to...</source>
-        <translation type="unfinished"></translation>
+        <translation>Paki arhiiv lahti asukohta...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="255"/>
         <source>Extract Here</source>
-        <translation type="unfinished"></translation>
+        <translation>Paki arhiiv lahti siia</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="262"/>
         <source>Compress</source>
-        <translation type="unfinished"></translation>
+        <translation>Paki kokku</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="271"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Omadused</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="282"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Usalda valitud käivitatavaid faile</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="283"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Usalda seda käivitatavat faili</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="371"/>
@@ -723,7 +727,7 @@ Do you want to replace it?</source>
         <location filename="../filemenu.cpp" line="168"/>
         <location filename="../filemenu.cpp" line="436"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kustuta</translation>
     </message>
 </context>
 <context>
@@ -731,29 +735,30 @@ Do you want to replace it?</source>
     <message>
         <location filename="../fileoperation.cpp" line="317"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Viga</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="318"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuna kasutatav failisüsteem seda võimalust ei toeta, siis osasid faile ei saa visata prügikasti.
+Kas sa sooviksid neid siis kustutada?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="404"/>
         <location filename="../fileoperation.cpp" line="422"/>
         <source>Confirm</source>
-        <translation type="unfinished"></translation>
+        <translation>Kinnita</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected files?</source>
-        <translation type="unfinished"></translation>
+        <translation>Kas sa soovid valitud faile kustutada?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected files to trash can?</source>
-        <translation type="unfinished"></translation>
+        <translation>Kas sa soovid valitud failid visata prügikasti?</translation>
     </message>
 </context>
 <context>
@@ -832,7 +837,7 @@ Do you want to delete them instead?</source>
         <location filename="../fileoperationdialog.cpp" line="146"/>
         <location filename="../fileoperationdialog.cpp" line="152"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Viga</translation>
     </message>
 </context>
 <context>
@@ -840,32 +845,32 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="162"/>
         <source>View folder content</source>
-        <translation type="unfinished"></translation>
+        <translation>Kausta sisu vaatamise õigus</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="163"/>
         <source>View and modify folder content</source>
-        <translation type="unfinished"></translation>
+        <translation>Kausta sisu vaatamise ja muutmise õigus</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="167"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>Ainult vaatamise õigus</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="168"/>
         <source>Read and write</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaatamise ja kirjutamise õigus</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="170"/>
         <source>Forbidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Õigused puuduvad</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="287"/>
         <source>Files of different types</source>
-        <translation type="unfinished"></translation>
+        <translation>Eri tüüpi failid</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="310"/>
@@ -877,12 +882,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
         <source>Multiple Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Mitmed failid</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="354"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% kasutatud</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="355"/>
@@ -902,19 +907,20 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="404"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln fail</numerusform>
+            <numerusform>%Ln faili</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="438"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Vali ikoon</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="440"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Pildifailid (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="540"/>
