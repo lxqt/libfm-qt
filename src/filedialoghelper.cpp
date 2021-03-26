@@ -421,7 +421,11 @@ void FileDialogHelper::saveSettings() {
         QSet<QString> hiddenPlacesSet = settings.value(QStringLiteral("HiddenPlaces")).toStringList().toSet();
 #endif
         if (hiddenPlaces != hiddenPlacesSet) {
+#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
+            QStringList sl(hiddenPlaces.begin(), hiddenPlaces.end());
+#else
             QStringList sl = hiddenPlaces.values();
+#endif
             settings.setValue(QStringLiteral("HiddenPlaces"), sl);
         }
     }
