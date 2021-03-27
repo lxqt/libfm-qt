@@ -91,9 +91,10 @@ public:
     }
 
     void eject(const Fm::FilePath& path) {
-        GMount* mnt = g_file_find_enclosing_mount(path.gfile().get(), nullptr, nullptr);
-        prepareUnmount(mnt);
-        g_object_unref(mnt);
+        if(GMount* mnt = g_file_find_enclosing_mount(path.gfile().get(), nullptr, nullptr)) {
+            prepareUnmount(mnt);
+            g_object_unref(mnt);
+        }
         g_file_eject_mountable_with_operation(path.gfile().get(), G_MOUNT_UNMOUNT_NONE, op, cancellable_, (GAsyncReadyCallback)onEjectFileFinished, new QPointer<MountOperation>(this));
     }
 
