@@ -130,7 +130,12 @@ public:
     void setCustomColumnWidths(const QList<int> &widths);
 
     QList<int> getHiddenColumns() const {
-        return hiddenColumns_.toList();
+#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
+        QList<int> il(hiddenColumns_.begin(), hiddenColumns_.end());
+        return il;
+#else
+        return hiddenColumns_.values();
+#endif
     }
     void setHiddenColumns(const QList<int> &columns);
 

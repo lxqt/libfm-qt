@@ -314,25 +314,31 @@ void FileDialogHelper::loadSettings() {
     dlg_->setSplitterPos(settings.value(QStringLiteral("SplitterPos"), 200).toInt());
     settings.endGroup();
 
-   settings.beginGroup (QStringLiteral("View"));
-   dlg_->setViewMode(viewModeFromString(settings.value(QStringLiteral("Mode"), QStringLiteral("Detailed")).toString()));
-   dlg_->sort(sortColumnFromString(settings.value(QStringLiteral("SortColumn")).toString()), sortOrderFromString(settings.value(QStringLiteral("SortOrder")).toString()));
-   dlg_->setSortFolderFirst(settings.value(QStringLiteral("SortFolderFirst"), true).toBool());
-   dlg_->setSortHiddenLast(settings.value(QStringLiteral("SortHiddenLast"), false).toBool());
-   dlg_->setSortCaseSensitive(settings.value(QStringLiteral("SortCaseSensitive"), false).toBool());
-   dlg_->setShowHidden(settings.value(QStringLiteral("ShowHidden"), false).toBool());
+    settings.beginGroup (QStringLiteral("View"));
+    dlg_->setViewMode(viewModeFromString(settings.value(QStringLiteral("Mode"), QStringLiteral("Detailed")).toString()));
+    dlg_->sort(sortColumnFromString(settings.value(QStringLiteral("SortColumn")).toString()), sortOrderFromString(settings.value(QStringLiteral("SortOrder")).toString()));
+    dlg_->setSortFolderFirst(settings.value(QStringLiteral("SortFolderFirst"), true).toBool());
+    dlg_->setSortHiddenLast(settings.value(QStringLiteral("SortHiddenLast"), false).toBool());
+    dlg_->setSortCaseSensitive(settings.value(QStringLiteral("SortCaseSensitive"), false).toBool());
+    dlg_->setShowHidden(settings.value(QStringLiteral("ShowHidden"), false).toBool());
 
-   dlg_->setShowThumbnails(settings.value(QStringLiteral("ShowThumbnails"), true).toBool());
-   dlg_->setNoItemTooltip(settings.value(QStringLiteral("NoItemTooltip"), false).toBool());
+    dlg_->setShowThumbnails(settings.value(QStringLiteral("ShowThumbnails"), true).toBool());
+    dlg_->setNoItemTooltip(settings.value(QStringLiteral("NoItemTooltip"), false).toBool());
 
-   dlg_->setBigIconSize(settings.value(QStringLiteral("BigIconSize"), 48).toInt());
-   dlg_->setSmallIconSize(settings.value(QStringLiteral("SmallIconSize"), 24).toInt());
-   dlg_->setThumbnailIconSize(settings.value(QStringLiteral("ThumbnailIconSize"), 128).toInt());
-   settings.endGroup();
+    dlg_->setBigIconSize(settings.value(QStringLiteral("BigIconSize"), 48).toInt());
+    dlg_->setSmallIconSize(settings.value(QStringLiteral("SmallIconSize"), 24).toInt());
+    dlg_->setThumbnailIconSize(settings.value(QStringLiteral("ThumbnailIconSize"), 128).toInt());
+    settings.endGroup();
 
-   settings.beginGroup(QStringLiteral("Places"));
-   dlg_->setHiddenPlaces(settings.value(QStringLiteral("HiddenPlaces")).toStringList().toSet());
-   settings.endGroup();
+    settings.beginGroup(QStringLiteral("Places"));
+#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
+    QStringList hiddenPlacesList = settings.value(QStringLiteral("HiddenPlaces")).toStringList();
+    QSet<QString> hiddenPlacesSet = QSet<QString>(hiddenPlacesList.begin(), hiddenPlacesList.end());
+#else
+    QSet<QString> hiddenPlacesSet = settings.value(QStringLiteral("HiddenPlaces")).toStringList().toSet();
+#endif
+    dlg_->setHiddenPlaces(hiddenPlacesSet);
+    settings.endGroup();
 }
 
 // This also prevents redundant writings whenever a file dialog is closed without a change in its settings.
@@ -407,9 +413,21 @@ void FileDialogHelper::saveSettings() {
     if(hiddenPlaces.isEmpty()) { // don't save "@Invalid()"
         settings.remove(QStringLiteral("HiddenPlaces"));
     }
-    else if(hiddenPlaces != settings.value(QStringLiteral("HiddenPlaces")).toStringList().toSet()) {
-        QStringList sl = hiddenPlaces.toList();
-        settings.setValue(QStringLiteral("HiddenPlaces"), sl);
+    else {
+#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
+        QStringList hiddenPlacesList = settings.value(QStringLiteral("HiddenPlaces")).toStringList();
+        QSet<QString> hiddenPlacesSet = QSet<QString>(hiddenPlacesList.begin(), hiddenPlacesList.end());
+#else
+        QSet<QString> hiddenPlacesSet = settings.value(QStringLiteral("HiddenPlaces")).toStringList().toSet();
+#endif
+        if (hiddenPlaces != hiddenPlacesSet) {
+#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
+            QStringList sl(hiddenPlaces.begin(), hiddenPlaces.end());
+#else
+            QStringList sl = hiddenPlaces.values();
+#endif
+            settings.setValue(QStringLiteral("HiddenPlaces"), sl);
+        }
     }
     settings.endGroup();
 }
