@@ -80,9 +80,10 @@ public:
     }
 
     void eject(GVolume* volume) {
-        GMount* mnt = g_volume_get_mount(volume);
-        prepareUnmount(mnt);
-        g_object_unref(mnt);
+        if(GMount* mnt = g_volume_get_mount(volume)) {
+            prepareUnmount(mnt);
+            g_object_unref(mnt);
+        }
         g_volume_eject_with_operation(volume, G_MOUNT_UNMOUNT_NONE, op, cancellable_, (GAsyncReadyCallback)onEjectVolumeFinished, new QPointer<MountOperation>(this));
     }
 
