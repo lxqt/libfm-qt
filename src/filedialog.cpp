@@ -51,7 +51,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     connect(ui->sidePane, &SidePane::hiddenPlaceSet, this, &FileDialog::onSettingHiddenPlace);
 
     // folder view
-    proxyModel_ = new ProxyFolderModel(this);
+    proxyModel_ = new ProxyFolderModel();
     proxyModel_->sort(FolderModel::ColumnFileName, Qt::AscendingOrder);
     proxyModel_->setThumbnailSize(64);
     proxyModel_->setShowThumbnails(true);
@@ -247,6 +247,12 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
 
 FileDialog::~FileDialog() {
     freeFolder();
+    if(proxyModel_) {
+        delete proxyModel_;
+    }
+    if(folderModel_) {
+        folderModel_->unref();
+    }
 }
 
 bool FileDialog::eventFilter(QObject* watched, QEvent* event) {
