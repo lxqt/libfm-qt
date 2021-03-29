@@ -247,9 +247,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
 
 FileDialog::~FileDialog() {
     freeFolder();
-    if(proxyModel_) {
-        delete proxyModel_;
-    }
+    delete proxyModel_;
     if(folderModel_) {
         folderModel_->unref();
     }
