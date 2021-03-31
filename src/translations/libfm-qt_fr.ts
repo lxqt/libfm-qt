@@ -513,7 +513,7 @@ Qu voulez-voulez vous en faire ?</translation>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation>Tailles d&apos;icone</translation>
+        <translation>Tailles d&apos;icône</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
@@ -1019,7 +1019,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="174"/>
         <source>By Creation Time</source>
-        <translation>Par temps de création</translation>
+        <translation>Par date de création</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="177"/>
@@ -1518,7 +1518,7 @@ Modification : %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier avec le même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant ?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier du même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant ?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>

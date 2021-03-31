@@ -145,7 +145,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sihtkaust:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
@@ -766,52 +766,52 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move files</source>
-        <translation type="unfinished"></translation>
+        <translation>Tõsta faile</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tõstan nimetatud failid sihtkausta:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopeeri faile</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopeerin nimetatud failid sihtkausta:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Viska failid prügikasti</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tõstan nimetatud failid prügikasti:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Kustuta faile</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kustutan nimetatud failid:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation type="unfinished"></translation>
+        <translation>Tee sümbolviide</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Teen nimetatud failidele sümbolviidet:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
@@ -826,12 +826,12 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Taasta kustutatud failid</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation type="unfinished"></translation>
+        <translation>Taastan nimetatud failid prügikastist:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
@@ -897,12 +897,12 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="400"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>fail puudub</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="402"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation>üks fail</translation>
     </message>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="404"/>
@@ -938,17 +938,17 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Viga</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>You should add at least one directory to search.</source>
-        <translation type="unfinished"></translation>
+        <translation>Otsimiseks lisa vähemalt üks kaust.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="135"/>
         <source>Select a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Vali kaust</translation>
     </message>
 </context>
 <context>
@@ -956,7 +956,7 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="477"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>Kausta ei saa iseendasse kopeerida!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="528"/>
@@ -969,107 +969,107 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="48"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation>Loo &amp;uus</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="53"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Aseta</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="59"/>
         <source>Select &amp;All</source>
-        <translation type="unfinished"></translation>
+        <translation>Vali &amp;kõik</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
         <source>Invert Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Pööra valikut</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
         <source>Sorting</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortimine</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="74"/>
         <source>Show Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Näita peidetud faile</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="107"/>
         <source>Folder Pr&amp;operties</source>
-        <translation type="unfinished"></translation>
+        <translation>Kausta &amp;omadused</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="150"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Väljund</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="172"/>
         <source>By File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="173"/>
         <source>By Modification Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Muutmine</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="174"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Loomine</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="177"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Kustutamine</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="180"/>
         <source>By File Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Suurus</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="181"/>
         <source>By File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüüp</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="182"/>
         <source>By File Owner</source>
-        <translation type="unfinished"></translation>
+        <translation>Omanik</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="183"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupp</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="189"/>
         <source>Ascending</source>
-        <translation type="unfinished"></translation>
+        <translation>A-Z</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="194"/>
         <source>Descending</source>
-        <translation type="unfinished"></translation>
+        <translation>Z-A</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="211"/>
         <source>Folder First</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaustad esimesena</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="219"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Peidetud viimasena</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="227"/>
         <source>Case Sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Tõstutundlik</translation>
     </message>
 </context>
 <context>
@@ -1077,27 +1077,27 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="304"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Asukoht:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="308"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Faili tüüp:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="313"/>
         <source>File size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Faili suurus:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="317"/>
         <source>Last modified:</source>
-        <translation type="unfinished"></translation>
+        <translation>Viimati muudetud:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="318"/>
         <source>Last accessed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Viimati vaatatud:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
@@ -1107,57 +1107,57 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Loodud:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
         <source>Owner:</source>
-        <translation type="unfinished"></translation>
+        <translation>Omanik:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="327"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupp:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="394"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="397"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüüp</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="400"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Suurus</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="403"/>
         <source>Modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Muudetud</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Loodud</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Kustutatud</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="412"/>
         <source>Owner</source>
-        <translation type="unfinished"></translation>
+        <translation>Omanik</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="415"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupp</translation>
     </message>
 </context>
 <context>
@@ -1191,7 +1191,7 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../mountoperationpassworddialog.cpp" line="40"/>
         <source>&amp;Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Ü&amp;henda</translation>
     </message>
 </context>
 <context>
@@ -1199,12 +1199,12 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../pathbar.cpp" line="130"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Muuda asukohta</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="133"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kopeeri asukoht</translation>
     </message>
 </context>
 <context>
@@ -1212,42 +1212,42 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="47"/>
         <source>Places</source>
-        <translation type="unfinished"></translation>
+        <translation>Asukohad</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="55"/>
         <source>Desktop</source>
-        <translation type="unfinished"></translation>
+        <translation>Töölaud</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="61"/>
         <source>Computer</source>
-        <translation type="unfinished"></translation>
+        <translation>Arvuti</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="69"/>
         <source>Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Rakendused</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="78"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Võrk</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="82"/>
         <source>Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Seadmed</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="137"/>
         <source>Bookmarks</source>
-        <translation type="unfinished"></translation>
+        <translation>Järjehoidjad</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="228"/>
         <source>Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Prügikast</translation>
     </message>
 </context>
 <context>
@@ -1255,64 +1255,64 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../placesview.cpp" line="481"/>
         <source>Open in New Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Ava uuel kaardil</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="484"/>
         <source>Open in New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Ava uues aknas</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="496"/>
         <source>Empty Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Tühjenda prügikast</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="516"/>
         <location filename="../placesview.cpp" line="573"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Peida</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="533"/>
         <source>Move Bookmark Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Liiguta järjehoidja üles</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="538"/>
         <source>Move Bookmark Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Liiguta järjehoidja alla</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="542"/>
         <source>Rename Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Muuda järjehoidja nime</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="545"/>
         <source>Remove Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Kustuta järjehoidja</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="554"/>
         <location filename="../placesview.cpp" line="587"/>
         <source>Unmount</source>
-        <translation type="unfinished"></translation>
+        <translation>Haagi lahti</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="558"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Haagi</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="564"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Väljasta</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="599"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Näita kõiki kirjeid</translation>
     </message>
 </context>
 <context>
@@ -1348,12 +1348,12 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Loendid</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Directory Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaustade puu</translation>
     </message>
 </context>
 <context>
@@ -1361,7 +1361,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuna algne asukoht pole teada, siis „%s“ faili taastamine pole võimalik</translation>
     </message>
 </context>
 <context>
@@ -1369,47 +1369,47 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Haagi</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation type="unfinished"></translation>
+        <translation>Ühenda &amp;anonüümselt</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ühenda &amp;kasutajana:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
         <source>&amp;Username:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kasutajanimi:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="102"/>
         <source>&amp;Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Salasõna:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Domeen:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation type="unfinished"></translation>
+        <translation>Unusta salasõna &amp;koheselt</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäta salasõna meelde selle &amp;sessiooni lõpuni</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäta salasõna meelde &amp;igavesti</translation>
     </message>
 </context>
 <context>
@@ -1417,12 +1417,12 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="163"/>
         <source>Rename File</source>
-        <translation type="unfinished"></translation>
+        <translation>Muuda faili nime</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="164"/>
         <source>Please enter a new name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Palun sisesta uus nimi:</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="104"/>
@@ -1436,37 +1436,37 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="223"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Loo uus kaust</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="224"/>
         <source>Create File</source>
-        <translation type="unfinished"></translation>
+        <translation>Loo uus fail</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="228"/>
         <source>Please enter a new file name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Palun sisesta uue faili nimi:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="229"/>
         <source>New text file</source>
-        <translation type="unfinished"></translation>
+        <translation>Uus tekstifail</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="233"/>
         <source>Please enter a new folder name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Palun sisesta uue kausta nimi:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="234"/>
         <source>New folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Uus kaust</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="239"/>
         <source>Enter a name for the new %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sisesta nimi uue %1 jaoks:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="582"/>
@@ -1476,7 +1476,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Asukoht on haakimata.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="331"/>
