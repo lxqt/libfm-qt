@@ -892,7 +892,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="355"/>
         <source>%1 Free of %2</source>
-        <translation>空き容量 %1&#x3000;全体 %2</translation>
+        <translation>空き容量 %1　全体 %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="400"/>
@@ -924,12 +924,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="540"/>
         <source>Apply changes</source>
-        <translation>変更を適用</translation>
+        <translation>変更の適用</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="541"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>変更をすべてのファイルとサブフォルダーにも再帰的に適用しますか？</translation>
+        <translation>これらの変更を全てのファイルとサブフォルダーに再帰的に適用しますか？</translation>
     </message>
 </context>
 <context>
@@ -942,7 +942,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>You should add at least one directory to search.</source>
-        <translation>検索するディレクトリを追加して下さい。</translation>
+        <translation>検索するディレクトリを少なくとも 1 個追加して下さい。</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="135"/>
