@@ -538,7 +538,7 @@ Mida sa soovid sellega teha?</translation>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Näita failide teabemulle</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
@@ -721,7 +721,7 @@ Kas sa soovid seda asenda?</translation>
     <message>
         <location filename="../filemenu.cpp" line="371"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Väljund</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="168"/>
@@ -816,12 +816,12 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Muuda omadusi</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Muudan järgnevate failide omadusi:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
@@ -877,7 +877,7 @@ Kas sa sooviksid neid siis kustutada?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Puudub</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -892,7 +892,7 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="355"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaba andmeruum %1/%2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="400"/>
@@ -925,12 +925,12 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="540"/>
         <source>Apply changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Rakenda muudatused</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="541"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation type="unfinished"></translation>
+        <translation>Kas sa soovid neid muudatusi rakendada rekursiivselt kõikidele failidele ja alamkaustadele?</translation>
     </message>
 </context>
 <context>
@@ -961,7 +961,7 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="528"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Sellisesse failisüsteemi ei saa viidet teha</translation>
     </message>
 </context>
 <context>
@@ -1102,7 +1102,7 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Puudub</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
@@ -1165,12 +1165,12 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Muuda veergude laiust automaatselt</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Nähtavad veerud</translation>
     </message>
 </context>
 <context>
@@ -1178,12 +1178,12 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message>
         <location filename="../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>Paks kiri</translation>
     </message>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaldkiri</translation>
     </message>
 </context>
 <context>
@@ -1323,24 +1323,27 @@ Kas sa sooviksid neid siis kustutada?</translation>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüüp: %1
+Suurus: %2
+Muudetud: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüüp: %1
+Muudetud: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="96"/>
         <source>&amp;Overwrite</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kirjuta üle</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="98"/>
         <source>&amp;Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Muuda nime</translation>
     </message>
 </context>
 <context>
@@ -1471,7 +1474,7 @@ Modified: %2</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="582"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Kohandatud ikooni seadistamise viga</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
@@ -1481,28 +1484,28 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="331"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Vigane töölauakirje fail: „%1“</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="367"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Puudub vaikimisi rakendus „%1“ käivitamiseks</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="408"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>„%1“ ei õnnestu määrata töökataloogiks: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Tunnus: </translation>
     </message>
     <message>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Puudub</translation>
     </message>
 </context>
 <context>
@@ -1510,27 +1513,27 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation type="unfinished"></translation>
+        <translation>Kinnita failide ülekirjutamine</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Selles asukohas juba on niisuguse nimega fail olemas.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Kas sa soovid seda üle kirjutada?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation type="unfinished"></translation>
+        <translation>järgneva failiga?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Faili nimi:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation type="unfinished"></translation>
+        <translation>Rakenda seda tingimust kõikidele olemasolevatele failidele</translation>
     </message>
 </context>
 <context>
@@ -1538,176 +1541,176 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Otsi faile</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Nimi/asukoht</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Failinime muster:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="41"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation>*</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Kasuta regulaaravaldist</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="68"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Asukohad, kust otsime:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="81"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Lisa</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="93"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Eemalda</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="129"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>Otsi peidetud faile</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="140"/>
         <source>File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Faili tüüp</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>Otsi vaid järgnevat tüüpi faile:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstifailid</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="159"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Pildifailid</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="166"/>
         <source>Audio files</source>
-        <translation type="unfinished"></translation>
+        <translation>Helifailid</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="173"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>Videofailid</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="180"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokumendid</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="187"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaustad</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="211"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Sisu</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="217"/>
         <source>File contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fail sisaldab:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kasuta regulaaravaldist</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="260"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Omadused</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="266"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Faili suurus:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="295"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Suurem kui:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="309"/>
         <location filename="../filesearch.ui" line="339"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>baiti</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="314"/>
         <location filename="../filesearch.ui" line="344"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation>kilobaiti</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="319"/>
         <location filename="../filesearch.ui" line="349"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>megabaiti</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="324"/>
         <location filename="../filesearch.ui" line="354"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>gigabaiti</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="274"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Väiksem kui:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Tõstutundlik</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Otsi alamkaustadest</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Tõstu&amp;tundlik</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Viimase muutmise aeg:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="378"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Varem kui:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiljem kui:</translation>
     </message>
 </context>
 </TS>
