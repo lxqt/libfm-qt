@@ -1,3 +1,35 @@
+libfm-qt-0.17.0 / 2021-04-15
+============================
+  * Fixed compilation with Qt >=5.15.3.
+  * Add Alacritty to terminals list.
+  * Fixed template renaming before creating.
+  * Fixed the localization of LXQt file dialog.
+  * Used Qt5.15's Qt::SplitBehavior.
+  * Enabled the Group entry of Properties dialog when file belongs to user.
+  * Fixed a rare crash on emptying Trash.
+  * Used Qt5 signal/slot syntax.
+  * Added the missing eject button in a special case.
+  * Fixed the xarchiver command to create archives.
+  * Launch multiple files associated with the same app together.
+  * Added an open-with menu-item to open mixed selections with default apps.
+  * Don't try to auto-select hidden files when they aren't shown.
+  * Added support for creation time.
+  * File dialog: Allow opening of desktop files that are shortcuts.
+  * Fixed the size limit for thumbnail creation.
+  * Workaround for a bug in QCollator when sorting files.
+  * Added a Delete action to trash file context menu.
+  * Removed redundant context menu items inside Trash.
+  * Silenced the compilation warning about QMatrix.
+  * Don't show Unix start time for unsupported times.
+  * Set a separate file size limit for external thumbnails.
+  * Fixed the emblem positions in compact and detailed views.
+  * Guarantee a separator before all custom actions (in context menus).
+  * Fixed the sorting by deletion time.
+  * Fixed blurred thumbnails with scale factors > 1.
+  * Added a missing nullity check in mountoperation.
+  * Updated the mimetypes lists of some archivers.
+  * Fixed a memory leak in LXQt file dialog.
+
 libfm-qt-0.16.0 / 2020-11-01
 ============================
   * Clear selection before selecting an item in side-pane.
