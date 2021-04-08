@@ -877,7 +877,7 @@ Do you want to delete them instead?</source>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">N/A</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1532,7 +1532,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation>すべての既存ファイルにこの処理を適用する</translation>
+        <translation>この処理を全ての既存ファイルに適用する</translation>
     </message>
 </context>
 <context>

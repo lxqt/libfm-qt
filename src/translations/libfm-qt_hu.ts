@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Létrehozva:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -632,18 +632,19 @@ Le szeretné cserélni?</translation>
     <message>
         <location filename="../filemenu.cpp" line="118"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Alapértelmezett alkalmazások</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="124"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Több fájl</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="125"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Meg szeretné nyitni ezt a %s fájlt?</numerusform>
+            <numerusform>Meg szeretné nyitni ezeket a %s fájlokat?</numerusform>
         </translation>
     </message>
     <message>
@@ -1017,7 +1018,7 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="174"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Létrehozás ideje szerint</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="177"/>
@@ -1105,7 +1106,7 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Létrehozva:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
@@ -1140,7 +1141,7 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Létrehozva</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
