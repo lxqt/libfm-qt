@@ -1424,7 +1424,7 @@ Veranderd: %2</translation>
         <location filename="../utilities.cpp" line="147"/>
         <location filename="../utilities.cpp" line="283"/>
         <source>Error</source>
-        <translation>Fout</translation>
+        <translation>Foutmelding</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="163"/>
