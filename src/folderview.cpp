@@ -1608,7 +1608,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                     QWheelEvent *we = static_cast<QWheelEvent*>(event);
 #if (QT_VERSION < QT_VERSION_CHECK(5,14,0))
                     QWheelEvent e(we->posF(),
-                                  we->globalPosition(),
+                                  we->globalPosF(),
                                   we->pixelDelta(),
                                   QPoint (0, we->angleDelta().y() / QApplication::wheelScrollLines()),
 #else
