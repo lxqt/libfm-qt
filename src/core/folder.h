@@ -134,6 +134,8 @@ private:
 
 private Q_SLOTS:
 
+    void reallyReload();
+
     void processPendingChanges();
 
     void onDirListFinished();
