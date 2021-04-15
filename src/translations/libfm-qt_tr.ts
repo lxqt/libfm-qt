@@ -644,6 +644,7 @@ Değiştirmek istiyor musunuz?</translation>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>Bu %1 dosyasını açmak istiyor musunuz?</numerusform>
+            <numerusform>%1 dosyalarını açmak istiyor musunuz?</numerusform>
         </translation>
     </message>
     <message>
@@ -876,7 +877,7 @@ Onun yerine silmek ister misiniz?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Yok</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -908,6 +909,7 @@ Onun yerine silmek ister misiniz?</translation>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln dosyası</numerusform>
+            <numerusform>%Ln dosyaları</numerusform>
         </translation>
     </message>
     <message>
@@ -1100,7 +1102,7 @@ Onun yerine silmek ister misiniz?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Yok</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
@@ -1503,7 +1505,7 @@ Değiştirild: %2</translation>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Yok</translation>
     </message>
 </context>
 <context>
