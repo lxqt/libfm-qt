@@ -1,3 +1,7 @@
+libfm-qt-0.17.1 / 2021-04-16
+============================
+  * Fixed compilation with Qt5.12 and  Qt5.13.
+
 libfm-qt-0.17.0 / 2021-04-15
 ============================
   * Fixed compilation with Qt >=5.15.3.
