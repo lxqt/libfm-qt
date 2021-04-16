@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvořeno:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -627,20 +627,20 @@ Chcete ho nahradit?</translation>
     <message>
         <location filename="../filemenu.cpp" line="118"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Výchozí programy</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="124"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Mnoho souborů</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="125"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Chcete otevřít tento %1 soubor?</numerusform>
+            <numerusform>Chcete otevřít tyto %1 soubory?</numerusform>
+            <numerusform>Chcete otevřít těchto %1 souborů?</numerusform>
         </translation>
     </message>
     <message>
@@ -878,7 +878,7 @@ Chcete je namísto toho přímo odstranit?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Nedostupné</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1021,7 +1021,7 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="174"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Podle času vytvoření</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="177"/>
@@ -1104,12 +1104,12 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Nedostupné</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvořeno:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
@@ -1144,7 +1144,7 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvořeno</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
@@ -1507,7 +1507,7 @@ Změněno: %2</translation>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Nedostupné</translation>
     </message>
 </context>
 <context>

@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstellt:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -314,12 +314,12 @@
     <message>
         <location filename="../file-props.ui" line="706"/>
         <source>SetUID</source>
-        <translation>SetUID</translation>
+        <translation>&quot;SetUID&quot;</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="713"/>
         <source>SetGID</source>
-        <translation>SetGID</translation>
+        <translation>&quot;SetGID&quot;</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
@@ -434,7 +434,7 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>Diese Datei &apos;%1&apos; scheint ein Arbeitsflächeneintrag zu sein.
+        <translation>Diese Datei &apos;%1&apos; scheint eine .desktop-Datei zu sein.
 Was möchten Sie damit tun?</translation>
     </message>
     <message>
@@ -513,32 +513,32 @@ Was möchten Sie damit tun?</translation>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation>Icongrößen</translation>
+        <translation>Symbolgrößen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation>Größe großer Icons:</translation>
+        <translation>Größe großer Symbole:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation>Größe kleiner Icons:</translation>
+        <translation>Größe kleiner Symbole:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation>Größe des Thumbnails:</translation>
+        <translation>Größe des Bildchens:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation>Thumbnails anzeigen</translation>
+        <translation>Bildchen anzeigen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation>Tooltips anzeigen</translation>
+        <translation>Kurzinfo anzeigen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
@@ -627,19 +627,19 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../filemenu.cpp" line="118"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard-Anwendung</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="124"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Viele Dateien</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="125"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Willst du diese %1 Datei öffnen?</numerusform>
+            <numerusform>Willst du diese %2 Dateien öffnen?</numerusform>
         </translation>
     </message>
     <message>
@@ -877,7 +877,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>n.v.</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1019,7 +1019,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="174"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach Erstell-Zeit</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="177"/>
@@ -1102,12 +1102,12 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>n.v.</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstellt:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
@@ -1142,7 +1142,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstellt</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
@@ -1505,7 +1505,7 @@ Geändert: %2</translation>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>n.v.</translation>
     </message>
 </context>
 <context>
