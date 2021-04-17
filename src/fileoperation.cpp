@@ -402,7 +402,7 @@ FileOperation* FileOperation::deleteFiles(Fm::FilePathList srcFiles, bool prompt
     if(prompt) {
         int result = QMessageBox::warning(parent ? parent->window() : nullptr,
                                           tr("Confirm"),
-                                          tr("Do you want to delete the selected files?"),
+                                          tr("Do you want to delete the selected file(s)?", nullptr, srcFiles.size()),
                                           QMessageBox::Yes | QMessageBox::No,
                                           QMessageBox::No);
         if(result != QMessageBox::Yes) {
@@ -420,7 +420,7 @@ FileOperation* FileOperation::trashFiles(Fm::FilePathList srcFiles, bool prompt,
     if(prompt) {
         int result = QMessageBox::warning(parent ? parent->window() : nullptr,
                                           tr("Confirm"),
-                                          tr("Do you want to move the selected files to trash can?"),
+                                          tr("Do you want to move the selected file(s) to trash can?", nullptr, srcFiles.size()),
                                           QMessageBox::Yes | QMessageBox::No,
                                           QMessageBox::No);
         if(result != QMessageBox::Yes) {
