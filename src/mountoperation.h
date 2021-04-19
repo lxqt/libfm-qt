@@ -74,6 +74,10 @@ public:
         g_object_unref(mount);
     }
 
+    void unmount(const Fm::FilePath& path) {
+        g_file_unmount_mountable_with_operation(path.gfile().get(), G_MOUNT_UNMOUNT_NONE, op, cancellable_, (GAsyncReadyCallback)onUnmountFileFinished, new QPointer<MountOperation>(this));
+    }
+
     void eject(GMount* mount) {
         prepareUnmount(mount);
         g_mount_eject_with_operation(mount, G_MOUNT_UNMOUNT_NONE, op, cancellable_, (GAsyncReadyCallback)onEjectMountFinished, new QPointer<MountOperation>(this));
@@ -85,6 +89,14 @@ public:
             g_object_unref(mnt);
         }
         g_volume_eject_with_operation(volume, G_MOUNT_UNMOUNT_NONE, op, cancellable_, (GAsyncReadyCallback)onEjectVolumeFinished, new QPointer<MountOperation>(this));
+    }
+
+    void eject(const Fm::FilePath& path) {
+        if(GMount* mnt = g_file_find_enclosing_mount(path.gfile().get(), nullptr, nullptr)) {
+            prepareUnmount(mnt);
+            g_object_unref(mnt);
+        }
+        g_file_eject_mountable_with_operation(path.gfile().get(), G_MOUNT_UNMOUNT_NONE, op, cancellable_, (GAsyncReadyCallback)onEjectFileFinished, new QPointer<MountOperation>(this));
     }
 
     QWidget* parent() const {
@@ -142,8 +154,10 @@ private:
     static void onMountMountableFinished(GFile* file, GAsyncResult* res, QPointer<MountOperation>* pThis);
     static void onMountVolumeFinished(GVolume* volume, GAsyncResult* res, QPointer<MountOperation>* pThis);
     static void onUnmountMountFinished(GMount* mount, GAsyncResult* res, QPointer<MountOperation>* pThis);
+    static void onUnmountFileFinished(GFile* file, GAsyncResult* res, QPointer<MountOperation>* pThis);
     static void onEjectMountFinished(GMount* mount, GAsyncResult* res, QPointer<MountOperation>* pThis);
     static void onEjectVolumeFinished(GVolume* volume, GAsyncResult* res, QPointer<MountOperation>* pThis);
+    static void onEjectFileFinished(GFile* file, GAsyncResult* res, QPointer<MountOperation>* pThis);
 
     void handleFinish(GError* error);
 

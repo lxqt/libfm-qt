@@ -13,6 +13,9 @@ const char defaultGFileInfoQueryAttribs[] = "standard::*,"
                                             "trash::deletion-date,"
                                             "id::filesystem,"
                                             "metadata::emblems,"
+                                            "mountable::can-mount,"
+                                            "mountable::can-unmount,"
+                                            "mountable::can-eject,"
                                             METADATA_TRUST;
 
 FileInfo::FileInfo() {
@@ -131,6 +134,21 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
 
     isShortcut_ = (type == G_FILE_TYPE_SHORTCUT);
     isMountable_ = (type == G_FILE_TYPE_MOUNTABLE);
+
+    canMount_ = canUnmount_ = canEject_ = false;
+    if(isMountable_) {
+        if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT)) {
+            canMount_ = g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT);
+        }
+
+        if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT)) {
+            canUnmount_ = g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT);
+        }
+
+        if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_MOUNTABLE_CAN_EJECT)) {
+            canEject_ = g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_MOUNTABLE_CAN_EJECT);
+        }
+    }
 
     /* special handling for symlinks */
     if(g_file_info_get_is_symlink(inf.get())) {

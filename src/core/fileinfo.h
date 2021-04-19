@@ -175,6 +175,19 @@ public:
         return dirPath_ ? dirPath_.isNative() : path().isNative();
     }
 
+    bool canMount() const {
+        return canMount_;
+    }
+
+    bool canUnmount() const {
+        return canUnmount_;
+    }
+
+    bool canEject() const {
+        return canEject_;
+    }
+
+
     mode_t mode() const {
         return mode_;
     }
@@ -260,6 +273,9 @@ private:
     bool isIconChangeable_ : 1; /* TRUE if icon can be changed */
     bool isHiddenChangeable_ : 1; /* TRUE if hidden can be changed */
     bool isReadOnly_ : 1; /* TRUE if host FS is R/O */
+    bool canMount_ : 1;  /* TRUE if can be mounted */
+    bool canUnmount_ : 1; /* TRUE if can be unmounted */
+    bool canEject_ : 1; /* TRUE if can be ejected */
 };
 
 

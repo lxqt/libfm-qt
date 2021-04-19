@@ -115,6 +115,7 @@ private:
 private:
     QIcon symlinkIcon_;
     QIcon untrustedIcon_;
+    QIcon mountedIcon_;
     QIcon addIcon_;
     QIcon removeIcon_;
     QSize iconSize_;
