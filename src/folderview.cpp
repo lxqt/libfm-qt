@@ -282,6 +282,19 @@ QModelIndex FolderViewListView::moveCursor(CursorAction cursorAction, Qt::Keyboa
     return QListView::moveCursor(cursorAction, modifiers);
 }
 
+void FolderViewListView::currentChanged(const QModelIndex &current, const QModelIndex &previous) {
+    QListView::currentChanged(current, previous);
+    if(viewMode() == QListView::ListMode && current.isValid()) {
+        // QListView has a bug that may reset the horizontal scrollbar
+        // in the list mode when the current item changes. This is a workaround.
+        QTimer::singleShot(0, this, [this] {
+            if(currentIndex().isValid()) {
+                scrollTo(currentIndex());
+            }
+        });
+    }
+}
+
 void FolderViewListView::activation(const QModelIndex& index) {
     if(activationAllowed_) {
         Q_EMIT activatedFiltered(index);
