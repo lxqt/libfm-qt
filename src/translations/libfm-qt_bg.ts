@@ -546,52 +546,52 @@ What do you want to do with it?</source>
         <translation>Опции</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="544"/>
-        <location filename="../filedialog.cpp" line="939"/>
+        <location filename="../filedialog.cpp" line="548"/>
+        <location filename="../filedialog.cpp" line="943"/>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="544"/>
+        <location filename="../filedialog.cpp" line="548"/>
         <source>Please select a file</source>
         <translation>Моля изберете файл</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="586"/>
+        <location filename="../filedialog.cpp" line="590"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 вече съществува.
 Искате ли да го заместите?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="909"/>
+        <location filename="../filedialog.cpp" line="913"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>Път &quot;%1&quot; не съществува</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="923"/>
+        <location filename="../filedialog.cpp" line="927"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&quot;%1&quot; не е директория</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="929"/>
+        <location filename="../filedialog.cpp" line="933"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&quot;%1&quot; не е файл</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1081"/>
-        <location filename="../filedialog.cpp" line="1189"/>
+        <location filename="../filedialog.cpp" line="1085"/>
+        <location filename="../filedialog.cpp" line="1193"/>
         <source>&amp;Open</source>
         <translation>&amp;Отваряне</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1084"/>
-        <location filename="../filedialog.cpp" line="1197"/>
+        <location filename="../filedialog.cpp" line="1088"/>
+        <location filename="../filedialog.cpp" line="1201"/>
         <source>&amp;Save</source>
         <translation>&amp;Запазване</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1091"/>
+        <location filename="../filedialog.cpp" line="1095"/>
         <source>All Files (*)</source>
         <translation>Всички файлове (*)</translation>
     </message>
@@ -620,27 +620,27 @@ Do you want to replace it?</source>
 <context>
     <name>Fm::FileMenu</name>
     <message>
-        <location filename="../filemenu.cpp" line="85"/>
+        <location filename="../filemenu.cpp" line="86"/>
         <source>Open</source>
         <translation>Отваряне</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="89"/>
+        <location filename="../filemenu.cpp" line="90"/>
         <source>Open With...</source>
         <translation>Отваряне с...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="118"/>
+        <location filename="../filemenu.cpp" line="119"/>
         <source>Default Applications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="124"/>
+        <location filename="../filemenu.cpp" line="125"/>
         <source>Many files</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../filemenu.cpp" line="125"/>
+        <location filename="../filemenu.cpp" line="126"/>
         <source>Do you want to open these %1 files?</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -648,84 +648,99 @@ Do you want to replace it?</source>
         </translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="138"/>
+        <location filename="../filemenu.cpp" line="139"/>
         <source>Other Applications</source>
         <translation>Други приложения</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="145"/>
+        <location filename="../filemenu.cpp" line="146"/>
         <source>Create &amp;New</source>
         <translation>Създаване &amp;Нови</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="164"/>
+        <location filename="../filemenu.cpp" line="165"/>
         <source>&amp;Restore</source>
         <translation>&amp;Възстановяване</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="174"/>
+        <location filename="../filemenu.cpp" line="175"/>
         <source>Cut</source>
         <translation>Изрязване</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="178"/>
+        <location filename="../filemenu.cpp" line="179"/>
         <source>Copy</source>
         <translation>Копиране</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="182"/>
+        <location filename="../filemenu.cpp" line="183"/>
         <source>Paste</source>
         <translation>Поставяне</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="186"/>
-        <location filename="../filemenu.cpp" line="436"/>
+        <location filename="../filemenu.cpp" line="187"/>
+        <location filename="../filemenu.cpp" line="485"/>
         <source>&amp;Move to Trash</source>
         <translation>&amp;Преместване в кошчето</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="190"/>
+        <location filename="../filemenu.cpp" line="191"/>
         <source>Rename</source>
         <translation>Преименуване</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
+        <source>Mount</source>
+        <translation type="unfinished">Монтиране</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="261"/>
+        <source>Unmount</source>
+        <translation type="unfinished">Демонтиране</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="275"/>
+        <source>Eject</source>
+        <translation type="unfinished">Изваждане</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="296"/>
         <source>Extract to...</source>
         <translation>Разархивиране в...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="255"/>
+        <location filename="../filemenu.cpp" line="304"/>
         <source>Extract Here</source>
         <translation>Разархивиране тук</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="262"/>
+        <location filename="../filemenu.cpp" line="311"/>
         <source>Compress</source>
         <translation>Компресиране</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="271"/>
+        <location filename="../filemenu.cpp" line="320"/>
         <source>Properties</source>
         <translation>Свойства</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="282"/>
+        <location filename="../filemenu.cpp" line="331"/>
         <source>Trust selected executables</source>
         <translation>Доверяване на избраните изпълними файлове</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="283"/>
+        <location filename="../filemenu.cpp" line="332"/>
         <source>Trust this executable</source>
         <translation>Доверяване на този изпълним файл</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="371"/>
+        <location filename="../filemenu.cpp" line="420"/>
         <source>Output</source>
         <translation>Изход</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="168"/>
-        <location filename="../filemenu.cpp" line="436"/>
+        <location filename="../filemenu.cpp" line="169"/>
+        <location filename="../filemenu.cpp" line="485"/>
         <source>&amp;Delete</source>
         <translation>&amp;Изтриване</translation>
     </message>
@@ -750,15 +765,21 @@ Do you want to delete them instead?</source>
         <source>Confirm</source>
         <translation>Потвърждаване</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
-        <source>Do you want to delete the selected files?</source>
-        <translation>Искате ли да изтриете избраните файлове?</translation>
+        <source>Do you want to delete the selected file(s)?</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
-        <source>Do you want to move the selected files to trash can?</source>
-        <translation>Искате ли да преместите избраните файлове в кошчето?</translation>
+        <source>Do you want to move the selected file(s) to trash can?</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -997,77 +1018,77 @@ Do you want to delete them instead?</source>
         <translation>Показване на скритите файлове</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="107"/>
+        <location filename="../foldermenu.cpp" line="109"/>
         <source>Folder Pr&amp;operties</source>
         <translation>&amp;Свойства на папката</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="150"/>
+        <location filename="../foldermenu.cpp" line="152"/>
         <source>Output</source>
         <translation>Извеждане</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="172"/>
+        <location filename="../foldermenu.cpp" line="174"/>
         <source>By File Name</source>
         <translation>По име на файл</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="173"/>
+        <location filename="../foldermenu.cpp" line="175"/>
         <source>By Modification Time</source>
         <translation>По време на промяна</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="174"/>
+        <location filename="../foldermenu.cpp" line="176"/>
         <source>By Creation Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="177"/>
+        <location filename="../foldermenu.cpp" line="179"/>
         <source>By Deletion Time</source>
         <translation>По време на изтриване</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="180"/>
+        <location filename="../foldermenu.cpp" line="182"/>
         <source>By File Size</source>
         <translation>По размер на файла</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="181"/>
+        <location filename="../foldermenu.cpp" line="183"/>
         <source>By File Type</source>
         <translation>По тип на файла</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="182"/>
+        <location filename="../foldermenu.cpp" line="184"/>
         <source>By File Owner</source>
         <translation>По собственик на файла</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="183"/>
+        <location filename="../foldermenu.cpp" line="185"/>
         <source>By File Group</source>
         <translation>По група на файла</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="189"/>
+        <location filename="../foldermenu.cpp" line="191"/>
         <source>Ascending</source>
         <translation>Възходящо</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="194"/>
+        <location filename="../foldermenu.cpp" line="196"/>
         <source>Descending</source>
         <translation>Низходящо</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="211"/>
+        <location filename="../foldermenu.cpp" line="213"/>
         <source>Folder First</source>
         <translation>Първо папките</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="219"/>
+        <location filename="../foldermenu.cpp" line="221"/>
         <source>Hidden Last</source>
         <translation>Скритите накрая</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="227"/>
+        <location filename="../foldermenu.cpp" line="229"/>
         <source>Case Sensitive</source>
         <translation>Зачитане на регистъра</translation>
     </message>
@@ -1430,7 +1451,7 @@ Modified: %2</source>
     <message>
         <location filename="../filelauncher.cpp" line="104"/>
         <location filename="../filepropsdialog.cpp" line="565"/>
-        <location filename="../mountoperation.cpp" line="207"/>
+        <location filename="../mountoperation.cpp" line="225"/>
         <location filename="../utilities.cpp" line="147"/>
         <location filename="../utilities.cpp" line="283"/>
         <source>Error</source>

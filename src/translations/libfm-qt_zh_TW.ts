@@ -546,52 +546,52 @@ What do you want to do with it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="544"/>
-        <location filename="../filedialog.cpp" line="939"/>
+        <location filename="../filedialog.cpp" line="548"/>
+        <location filename="../filedialog.cpp" line="943"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="544"/>
+        <location filename="../filedialog.cpp" line="548"/>
         <source>Please select a file</source>
         <translation>請選擇一個檔案</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="586"/>
+        <location filename="../filedialog.cpp" line="590"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 已經存在。
 你想要取代它嗎?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="909"/>
+        <location filename="../filedialog.cpp" line="913"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>路徑 &quot;%1&quot; 不存在</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="923"/>
+        <location filename="../filedialog.cpp" line="927"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&quot;%1&quot; 不是一個目錄</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="929"/>
+        <location filename="../filedialog.cpp" line="933"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&quot;%1&quot; 不是一個檔案</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1081"/>
-        <location filename="../filedialog.cpp" line="1189"/>
+        <location filename="../filedialog.cpp" line="1085"/>
+        <location filename="../filedialog.cpp" line="1193"/>
         <source>&amp;Open</source>
         <translation>開啟(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1084"/>
-        <location filename="../filedialog.cpp" line="1197"/>
+        <location filename="../filedialog.cpp" line="1088"/>
+        <location filename="../filedialog.cpp" line="1201"/>
         <source>&amp;Save</source>
         <translation>儲存 (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1091"/>
+        <location filename="../filedialog.cpp" line="1095"/>
         <source>All Files (*)</source>
         <translation>所有檔案 (*)</translation>
     </message>
@@ -620,111 +620,126 @@ Do you want to replace it?</source>
 <context>
     <name>Fm::FileMenu</name>
     <message>
-        <location filename="../filemenu.cpp" line="85"/>
+        <location filename="../filemenu.cpp" line="86"/>
         <source>Open</source>
         <translation>開啟</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="89"/>
+        <location filename="../filemenu.cpp" line="90"/>
         <source>Open With...</source>
         <translation>用其他程式開啟...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="118"/>
+        <location filename="../filemenu.cpp" line="119"/>
         <source>Default Applications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="124"/>
+        <location filename="../filemenu.cpp" line="125"/>
         <source>Many files</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../filemenu.cpp" line="125"/>
+        <location filename="../filemenu.cpp" line="126"/>
         <source>Do you want to open these %1 files?</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="138"/>
+        <location filename="../filemenu.cpp" line="139"/>
         <source>Other Applications</source>
         <translation>其他應用程式</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="145"/>
+        <location filename="../filemenu.cpp" line="146"/>
         <source>Create &amp;New</source>
         <translation>新建(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="164"/>
+        <location filename="../filemenu.cpp" line="165"/>
         <source>&amp;Restore</source>
         <translation>恢復(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="174"/>
+        <location filename="../filemenu.cpp" line="175"/>
         <source>Cut</source>
         <translation>剪下</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="178"/>
+        <location filename="../filemenu.cpp" line="179"/>
         <source>Copy</source>
         <translation>複製</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="182"/>
+        <location filename="../filemenu.cpp" line="183"/>
         <source>Paste</source>
         <translation>貼上</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="186"/>
-        <location filename="../filemenu.cpp" line="436"/>
+        <location filename="../filemenu.cpp" line="187"/>
+        <location filename="../filemenu.cpp" line="485"/>
         <source>&amp;Move to Trash</source>
         <translation>移動到垃圾桶(&amp;M)</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="282"/>
+        <location filename="../filemenu.cpp" line="247"/>
+        <source>Mount</source>
+        <translation type="unfinished">掛載</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="261"/>
+        <source>Unmount</source>
+        <translation type="unfinished">卸載</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="275"/>
+        <source>Eject</source>
+        <translation type="unfinished">退出</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="331"/>
         <source>Trust selected executables</source>
         <translation>信任已選擇的執行檔</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="283"/>
+        <location filename="../filemenu.cpp" line="332"/>
         <source>Trust this executable</source>
         <translation>信任此執行檔</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="371"/>
+        <location filename="../filemenu.cpp" line="420"/>
         <source>Output</source>
         <translation>輸出</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="168"/>
-        <location filename="../filemenu.cpp" line="436"/>
+        <location filename="../filemenu.cpp" line="169"/>
+        <location filename="../filemenu.cpp" line="485"/>
         <source>&amp;Delete</source>
         <translation>刪除(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="190"/>
+        <location filename="../filemenu.cpp" line="191"/>
         <source>Rename</source>
         <translation>重新命名</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="247"/>
+        <location filename="../filemenu.cpp" line="296"/>
         <source>Extract to...</source>
         <translation>解壓縮到...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="255"/>
+        <location filename="../filemenu.cpp" line="304"/>
         <source>Extract Here</source>
         <translation>在此解壓縮</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="262"/>
+        <location filename="../filemenu.cpp" line="311"/>
         <source>Compress</source>
         <translation>壓縮</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="271"/>
+        <location filename="../filemenu.cpp" line="320"/>
         <source>Properties</source>
         <translation>屬性</translation>
     </message>
@@ -749,15 +764,19 @@ Do you want to delete them instead?</source>
         <source>Confirm</source>
         <translation>確認</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
-        <source>Do you want to delete the selected files?</source>
-        <translation>你確定要刪除選取的檔案嗎?</translation>
+        <source>Do you want to delete the selected file(s)?</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
-        <source>Do you want to move the selected files to trash can?</source>
-        <translation>你確定要把選取的檔案移到垃圾桶嗎?</translation>
+        <source>Do you want to move the selected file(s) to trash can?</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -995,77 +1014,77 @@ Do you want to delete them instead?</source>
         <translation>顯示隱藏檔</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="107"/>
+        <location filename="../foldermenu.cpp" line="109"/>
         <source>Folder Pr&amp;operties</source>
         <translation>資料夾屬性(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="150"/>
+        <location filename="../foldermenu.cpp" line="152"/>
         <source>Output</source>
         <translation>輸出</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="172"/>
+        <location filename="../foldermenu.cpp" line="174"/>
         <source>By File Name</source>
         <translation>依照檔名</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="173"/>
+        <location filename="../foldermenu.cpp" line="175"/>
         <source>By Modification Time</source>
         <translation>依照修改時間</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="174"/>
+        <location filename="../foldermenu.cpp" line="176"/>
         <source>By Creation Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="177"/>
+        <location filename="../foldermenu.cpp" line="179"/>
         <source>By Deletion Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="180"/>
+        <location filename="../foldermenu.cpp" line="182"/>
         <source>By File Size</source>
         <translation>依照檔案大小</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="181"/>
+        <location filename="../foldermenu.cpp" line="183"/>
         <source>By File Type</source>
         <translation>依照檔案型態</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="182"/>
+        <location filename="../foldermenu.cpp" line="184"/>
         <source>By File Owner</source>
         <translation>依照檔案所有者</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="183"/>
+        <location filename="../foldermenu.cpp" line="185"/>
         <source>By File Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="189"/>
+        <location filename="../foldermenu.cpp" line="191"/>
         <source>Ascending</source>
         <translation>升冪排列</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="194"/>
+        <location filename="../foldermenu.cpp" line="196"/>
         <source>Descending</source>
         <translation>降冪排列</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="211"/>
+        <location filename="../foldermenu.cpp" line="213"/>
         <source>Folder First</source>
         <translation>資料夾優先</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="219"/>
+        <location filename="../foldermenu.cpp" line="221"/>
         <source>Hidden Last</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="227"/>
+        <location filename="../foldermenu.cpp" line="229"/>
         <source>Case Sensitive</source>
         <translation>區分大小寫</translation>
     </message>
@@ -1418,7 +1437,7 @@ Modified: %2</source>
     <message>
         <location filename="../filelauncher.cpp" line="104"/>
         <location filename="../filepropsdialog.cpp" line="565"/>
-        <location filename="../mountoperation.cpp" line="207"/>
+        <location filename="../mountoperation.cpp" line="225"/>
         <location filename="../utilities.cpp" line="147"/>
         <location filename="../utilities.cpp" line="283"/>
         <source>Error</source>

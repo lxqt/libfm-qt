@@ -546,52 +546,52 @@ What do you want to do with it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="544"/>
-        <location filename="../filedialog.cpp" line="939"/>
+        <location filename="../filedialog.cpp" line="548"/>
+        <location filename="../filedialog.cpp" line="943"/>
         <source>Error</source>
         <translation>خطأ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="544"/>
+        <location filename="../filedialog.cpp" line="548"/>
         <source>Please select a file</source>
         <translation>رجاءً اختر ملفا</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="586"/>
+        <location filename="../filedialog.cpp" line="590"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>‏⁨%1⁩ موجود بالفعل.
 أتريد استبداله؟</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="909"/>
+        <location filename="../filedialog.cpp" line="913"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>المسار ”%1“ غير موجود</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="923"/>
+        <location filename="../filedialog.cpp" line="927"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>‏”⁨%1⁩“ ليس دليلا</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="929"/>
+        <location filename="../filedialog.cpp" line="933"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>‏”⁨%1⁩“ ليس ملفا</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1081"/>
-        <location filename="../filedialog.cpp" line="1189"/>
+        <location filename="../filedialog.cpp" line="1085"/>
+        <location filename="../filedialog.cpp" line="1193"/>
         <source>&amp;Open</source>
         <translation>ا&amp;فتح</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1084"/>
-        <location filename="../filedialog.cpp" line="1197"/>
+        <location filename="../filedialog.cpp" line="1088"/>
+        <location filename="../filedialog.cpp" line="1201"/>
         <source>&amp;Save</source>
         <translation>ا&amp;حفظ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1091"/>
+        <location filename="../filedialog.cpp" line="1095"/>
         <source>All Files (*)</source>
         <translation>كل الملفات (*)</translation>
     </message>
@@ -620,22 +620,22 @@ Do you want to replace it?</source>
 <context>
     <name>Fm::FileMenu</name>
     <message>
-        <location filename="../filemenu.cpp" line="85"/>
+        <location filename="../filemenu.cpp" line="86"/>
         <source>Open</source>
         <translation>افتح</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="118"/>
+        <location filename="../filemenu.cpp" line="119"/>
         <source>Default Applications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="124"/>
+        <location filename="../filemenu.cpp" line="125"/>
         <source>Many files</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../filemenu.cpp" line="125"/>
+        <location filename="../filemenu.cpp" line="126"/>
         <source>Do you want to open these %1 files?</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -647,89 +647,104 @@ Do you want to replace it?</source>
         </translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="174"/>
+        <location filename="../filemenu.cpp" line="175"/>
         <source>Cut</source>
         <translation>قصّ</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="178"/>
+        <location filename="../filemenu.cpp" line="179"/>
         <source>Copy</source>
         <translation>انسخ</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="182"/>
+        <location filename="../filemenu.cpp" line="183"/>
         <source>Paste</source>
         <translation>ألصِق</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="186"/>
-        <location filename="../filemenu.cpp" line="436"/>
+        <location filename="../filemenu.cpp" line="187"/>
+        <location filename="../filemenu.cpp" line="485"/>
         <source>&amp;Move to Trash</source>
         <translation>ا&amp;نقل إلى المهملات</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="282"/>
+        <location filename="../filemenu.cpp" line="247"/>
+        <source>Mount</source>
+        <translation type="unfinished">ضُمّ</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="261"/>
+        <source>Unmount</source>
+        <translation type="unfinished">ألغِ الضمّ</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="275"/>
+        <source>Eject</source>
+        <translation type="unfinished">أخرِج</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="331"/>
         <source>Trust selected executables</source>
         <translation>الوثوق بالملفات التنفيذية المحددة</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="283"/>
+        <location filename="../filemenu.cpp" line="332"/>
         <source>Trust this executable</source>
         <translation>الوثوق بهذا الملف التنفيذي المحدد</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="371"/>
+        <location filename="../filemenu.cpp" line="420"/>
         <source>Output</source>
         <translation>الخرج</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="168"/>
-        <location filename="../filemenu.cpp" line="436"/>
+        <location filename="../filemenu.cpp" line="169"/>
+        <location filename="../filemenu.cpp" line="485"/>
         <source>&amp;Delete</source>
         <translation>ا&amp;حذف</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="190"/>
+        <location filename="../filemenu.cpp" line="191"/>
         <source>Rename</source>
         <translation>غيّر الاسم</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="89"/>
+        <location filename="../filemenu.cpp" line="90"/>
         <source>Open With...</source>
         <translation>افتح في…</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="138"/>
+        <location filename="../filemenu.cpp" line="139"/>
         <source>Other Applications</source>
         <translation>تطبيق آخر</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="145"/>
+        <location filename="../filemenu.cpp" line="146"/>
         <source>Create &amp;New</source>
         <translation>أنشِئ &amp;جديدا</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="164"/>
+        <location filename="../filemenu.cpp" line="165"/>
         <source>&amp;Restore</source>
         <translation>ا&amp;ستعد</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="247"/>
+        <location filename="../filemenu.cpp" line="296"/>
         <source>Extract to...</source>
         <translation>استخرج إلى…</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="255"/>
+        <location filename="../filemenu.cpp" line="304"/>
         <source>Extract Here</source>
         <translation>استخرج هنا</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="262"/>
+        <location filename="../filemenu.cpp" line="311"/>
         <source>Compress</source>
         <translation>اضغط</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="271"/>
+        <location filename="../filemenu.cpp" line="320"/>
         <source>Properties</source>
         <translation>خصائص</translation>
     </message>
@@ -754,15 +769,29 @@ Do you want to delete them instead?</source>
         <source>Confirm</source>
         <translation>تأكيد</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
-        <source>Do you want to delete the selected files?</source>
-        <translation>أتريد حذف الملفات المحددة؟</translation>
+        <source>Do you want to delete the selected file(s)?</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
-        <source>Do you want to move the selected files to trash can?</source>
-        <translation>أتريد نقل الملفات المحددة إلى سلة المهملات؟</translation>
+        <source>Do you want to move the selected file(s) to trash can?</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -1005,77 +1034,77 @@ Do you want to delete them instead?</source>
         <translation>اعرض المخفي</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="107"/>
+        <location filename="../foldermenu.cpp" line="109"/>
         <source>Folder Pr&amp;operties</source>
         <translation>&amp;خصائص المجلد</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="150"/>
+        <location filename="../foldermenu.cpp" line="152"/>
         <source>Output</source>
         <translation>الخرج</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="172"/>
+        <location filename="../foldermenu.cpp" line="174"/>
         <source>By File Name</source>
         <translation>باسم الملف</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="173"/>
+        <location filename="../foldermenu.cpp" line="175"/>
         <source>By Modification Time</source>
         <translation>بوقت التعديل</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="174"/>
+        <location filename="../foldermenu.cpp" line="176"/>
         <source>By Creation Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="177"/>
+        <location filename="../foldermenu.cpp" line="179"/>
         <source>By Deletion Time</source>
         <translation>بوقت الحذف</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="180"/>
+        <location filename="../foldermenu.cpp" line="182"/>
         <source>By File Size</source>
         <translation>بحجم الملف</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="181"/>
+        <location filename="../foldermenu.cpp" line="183"/>
         <source>By File Type</source>
         <translation>بنوع الملف</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="182"/>
+        <location filename="../foldermenu.cpp" line="184"/>
         <source>By File Owner</source>
         <translation>بمالك الملف</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="183"/>
+        <location filename="../foldermenu.cpp" line="185"/>
         <source>By File Group</source>
         <translation>بمجموعة الملف</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="189"/>
+        <location filename="../foldermenu.cpp" line="191"/>
         <source>Ascending</source>
         <translation>تصاعديا</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="194"/>
+        <location filename="../foldermenu.cpp" line="196"/>
         <source>Descending</source>
         <translation>تنازليا</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="211"/>
+        <location filename="../foldermenu.cpp" line="213"/>
         <source>Folder First</source>
         <translation>المجلدات أولا</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="219"/>
+        <location filename="../foldermenu.cpp" line="221"/>
         <source>Hidden Last</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="227"/>
+        <location filename="../foldermenu.cpp" line="229"/>
         <source>Case Sensitive</source>
         <translation>حساس للحالة</translation>
     </message>
@@ -1428,7 +1457,7 @@ Modified: %2</source>
     <message>
         <location filename="../filelauncher.cpp" line="104"/>
         <location filename="../filepropsdialog.cpp" line="565"/>
-        <location filename="../mountoperation.cpp" line="207"/>
+        <location filename="../mountoperation.cpp" line="225"/>
         <location filename="../utilities.cpp" line="147"/>
         <location filename="../utilities.cpp" line="283"/>
         <source>Error</source>

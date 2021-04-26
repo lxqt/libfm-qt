@@ -546,52 +546,52 @@ Wat wilt u ermee doen?</translation>
         <translation>Opties</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="544"/>
-        <location filename="../filedialog.cpp" line="939"/>
+        <location filename="../filedialog.cpp" line="548"/>
+        <location filename="../filedialog.cpp" line="943"/>
         <source>Error</source>
         <translation>Foutmelding</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="544"/>
+        <location filename="../filedialog.cpp" line="548"/>
         <source>Please select a file</source>
         <translation>Kies een bestand</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="586"/>
+        <location filename="../filedialog.cpp" line="590"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 bestaat al.
 Wilt u het vervangen?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="909"/>
+        <location filename="../filedialog.cpp" line="913"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>De locatie &apos;%1&apos; bestaat niet</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="923"/>
+        <location filename="../filedialog.cpp" line="927"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&apos;%1&apos; is geen map</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="929"/>
+        <location filename="../filedialog.cpp" line="933"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&apos;%1&apos; is geen bestand</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1081"/>
-        <location filename="../filedialog.cpp" line="1189"/>
+        <location filename="../filedialog.cpp" line="1085"/>
+        <location filename="../filedialog.cpp" line="1193"/>
         <source>&amp;Open</source>
         <translation>O&amp;penen</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1084"/>
-        <location filename="../filedialog.cpp" line="1197"/>
+        <location filename="../filedialog.cpp" line="1088"/>
+        <location filename="../filedialog.cpp" line="1201"/>
         <source>&amp;Save</source>
         <translation>Op&amp;slaan</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1091"/>
+        <location filename="../filedialog.cpp" line="1095"/>
         <source>All Files (*)</source>
         <translation>Alle bestanden (*)</translation>
     </message>
@@ -620,22 +620,22 @@ Wilt u het vervangen?</translation>
 <context>
     <name>Fm::FileMenu</name>
     <message>
-        <location filename="../filemenu.cpp" line="85"/>
+        <location filename="../filemenu.cpp" line="86"/>
         <source>Open</source>
         <translation>Openen</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="118"/>
+        <location filename="../filemenu.cpp" line="119"/>
         <source>Default Applications</source>
         <translation>Standaardprogramma&apos;s</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="124"/>
+        <location filename="../filemenu.cpp" line="125"/>
         <source>Many files</source>
         <translation>Veel bestanden</translation>
     </message>
     <message numerus="yes">
-        <location filename="../filemenu.cpp" line="125"/>
+        <location filename="../filemenu.cpp" line="126"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>Wilt u %1 bestand openen?</numerusform>
@@ -643,89 +643,104 @@ Wilt u het vervangen?</translation>
         </translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="145"/>
+        <location filename="../filemenu.cpp" line="146"/>
         <source>Create &amp;New</source>
         <translation>&amp;Nieuw</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="164"/>
+        <location filename="../filemenu.cpp" line="165"/>
         <source>&amp;Restore</source>
         <translation>Te&amp;rugzetten</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="174"/>
+        <location filename="../filemenu.cpp" line="175"/>
         <source>Cut</source>
         <translation>Knippen</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="178"/>
+        <location filename="../filemenu.cpp" line="179"/>
         <source>Copy</source>
         <translation>Kopiëren</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="182"/>
+        <location filename="../filemenu.cpp" line="183"/>
         <source>Paste</source>
         <translation>Plakken</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="186"/>
-        <location filename="../filemenu.cpp" line="436"/>
+        <location filename="../filemenu.cpp" line="187"/>
+        <location filename="../filemenu.cpp" line="485"/>
         <source>&amp;Move to Trash</source>
         <translation>Verplaatsen naar &amp;prullenbak</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="282"/>
+        <location filename="../filemenu.cpp" line="247"/>
+        <source>Mount</source>
+        <translation type="unfinished">Aankoppelen</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="261"/>
+        <source>Unmount</source>
+        <translation type="unfinished">Ontkoppelen</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="275"/>
+        <source>Eject</source>
+        <translation type="unfinished">Uitwerpen</translation>
+    </message>
+    <message>
+        <location filename="../filemenu.cpp" line="331"/>
         <source>Trust selected executables</source>
         <translation>Geselecteerde uitvoerbare bestanden vertrouwen</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="283"/>
+        <location filename="../filemenu.cpp" line="332"/>
         <source>Trust this executable</source>
         <translation>Uitvoerbaar bestand vertrouwen</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="371"/>
+        <location filename="../filemenu.cpp" line="420"/>
         <source>Output</source>
         <translation>Uitvoer</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="168"/>
-        <location filename="../filemenu.cpp" line="436"/>
+        <location filename="../filemenu.cpp" line="169"/>
+        <location filename="../filemenu.cpp" line="485"/>
         <source>&amp;Delete</source>
         <translation>&amp;Wissen</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="190"/>
+        <location filename="../filemenu.cpp" line="191"/>
         <source>Rename</source>
         <translation>Naam wijzigen</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="89"/>
+        <location filename="../filemenu.cpp" line="90"/>
         <source>Open With...</source>
         <translation>Openen met…</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="138"/>
+        <location filename="../filemenu.cpp" line="139"/>
         <source>Other Applications</source>
         <translation>Andere programma&apos;s</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="247"/>
+        <location filename="../filemenu.cpp" line="296"/>
         <source>Extract to...</source>
         <translation>Uitpakken naar…</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="255"/>
+        <location filename="../filemenu.cpp" line="304"/>
         <source>Extract Here</source>
         <translation>Hier uitpakken</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="262"/>
+        <location filename="../filemenu.cpp" line="311"/>
         <source>Compress</source>
         <translation>Inpakken</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="271"/>
+        <location filename="../filemenu.cpp" line="320"/>
         <source>Properties</source>
         <translation>Eigenschappen</translation>
     </message>
@@ -750,15 +765,21 @@ Wilt u ze in plaats daarvan blijvend verwijderen?</translation>
         <source>Confirm</source>
         <translation>Bevestigen</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
-        <source>Do you want to delete the selected files?</source>
-        <translation>Wilt u de geselecteerde bestanden verwijderen?</translation>
+        <source>Do you want to delete the selected file(s)?</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
-        <source>Do you want to move the selected files to trash can?</source>
-        <translation>Wilt u de geselecteerde bestanden verplaatsen naar de prullenbak?</translation>
+        <source>Do you want to move the selected file(s) to trash can?</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -997,77 +1018,77 @@ Wilt u ze in plaats daarvan blijvend verwijderen?</translation>
         <translation>Verborgen bestanden/mappen tonen</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="107"/>
+        <location filename="../foldermenu.cpp" line="109"/>
         <source>Folder Pr&amp;operties</source>
         <translation>Map&amp;eigenschappen</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="150"/>
+        <location filename="../foldermenu.cpp" line="152"/>
         <source>Output</source>
         <translation>Uitvoer</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="172"/>
+        <location filename="../foldermenu.cpp" line="174"/>
         <source>By File Name</source>
         <translation>Op bestandnaam</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="173"/>
+        <location filename="../foldermenu.cpp" line="175"/>
         <source>By Modification Time</source>
         <translation>Op wijzigingstijdstip</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="174"/>
+        <location filename="../foldermenu.cpp" line="176"/>
         <source>By Creation Time</source>
         <translation>Op aanmaaktijdstip</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="177"/>
+        <location filename="../foldermenu.cpp" line="179"/>
         <source>By Deletion Time</source>
         <translation>Op verwijdertijdstip</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="180"/>
+        <location filename="../foldermenu.cpp" line="182"/>
         <source>By File Size</source>
         <translation>Op bestandsgrootte</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="181"/>
+        <location filename="../foldermenu.cpp" line="183"/>
         <source>By File Type</source>
         <translation>Op bestandstype</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="182"/>
+        <location filename="../foldermenu.cpp" line="184"/>
         <source>By File Owner</source>
         <translation>Op eigenaar</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="183"/>
+        <location filename="../foldermenu.cpp" line="185"/>
         <source>By File Group</source>
         <translation>Op bestandsgroep</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="189"/>
+        <location filename="../foldermenu.cpp" line="191"/>
         <source>Ascending</source>
         <translation>Oplopend</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="194"/>
+        <location filename="../foldermenu.cpp" line="196"/>
         <source>Descending</source>
         <translation>Aflopend</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="211"/>
+        <location filename="../foldermenu.cpp" line="213"/>
         <source>Folder First</source>
         <translation>Mappen bovenaan</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="219"/>
+        <location filename="../foldermenu.cpp" line="221"/>
         <source>Hidden Last</source>
         <translation>Verborgen onderaan</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="227"/>
+        <location filename="../foldermenu.cpp" line="229"/>
         <source>Case Sensitive</source>
         <translation>Hoofdlettergevoelig</translation>
     </message>
@@ -1420,7 +1441,7 @@ Gewijzigd: %2</translation>
     <message>
         <location filename="../filelauncher.cpp" line="104"/>
         <location filename="../filepropsdialog.cpp" line="565"/>
-        <location filename="../mountoperation.cpp" line="207"/>
+        <location filename="../mountoperation.cpp" line="225"/>
         <location filename="../utilities.cpp" line="147"/>
         <location filename="../utilities.cpp" line="283"/>
         <source>Error</source>
