@@ -114,7 +114,6 @@ void FileDialogHelper::selectNameFilter(const QString& filter) {
     dlg_->selectNameFilter(filter);
 }
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
 QString FileDialogHelper::selectedMimeTypeFilter() const {
     return dlg_->selectedMimeTypeFilter();
 }
@@ -122,7 +121,6 @@ QString FileDialogHelper::selectedMimeTypeFilter() const {
 void FileDialogHelper::selectMimeTypeFilter(const QString& filter) {
     dlg_->selectMimeTypeFilter(filter);
 }
-#endif
 
 QString FileDialogHelper::selectedNameFilter() const {
     return dlg_->selectedNameFilter();
@@ -170,7 +168,6 @@ void FileDialogHelper::applyOptions() {
     }
 
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
     auto filter = opt->initiallySelectedMimeTypeFilter();
     if(!filter.isEmpty()) {
         selectMimeTypeFilter(filter);
@@ -181,12 +178,6 @@ void FileDialogHelper::applyOptions() {
             selectNameFilter(opt->initiallySelectedNameFilter());
         }
     }
-#else
-    auto filter = opt->initiallySelectedNameFilter();
-    if(!filter.isEmpty()) {
-        selectNameFilter(filter);
-    }
-#endif
 
     const auto selectedFiles = opt->initiallySelectedFiles();
     for(const auto& selectedFile: selectedFiles) {
@@ -331,12 +322,8 @@ void FileDialogHelper::loadSettings() {
     settings.endGroup();
 
     settings.beginGroup(QStringLiteral("Places"));
-#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
     QStringList hiddenPlacesList = settings.value(QStringLiteral("HiddenPlaces")).toStringList();
     QSet<QString> hiddenPlacesSet = QSet<QString>(hiddenPlacesList.begin(), hiddenPlacesList.end());
-#else
-    QSet<QString> hiddenPlacesSet = settings.value(QStringLiteral("HiddenPlaces")).toStringList().toSet();
-#endif
     dlg_->setHiddenPlaces(hiddenPlacesSet);
     settings.endGroup();
 }
@@ -414,18 +401,10 @@ void FileDialogHelper::saveSettings() {
         settings.remove(QStringLiteral("HiddenPlaces"));
     }
     else {
-#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
         QStringList hiddenPlacesList = settings.value(QStringLiteral("HiddenPlaces")).toStringList();
         QSet<QString> hiddenPlacesSet = QSet<QString>(hiddenPlacesList.begin(), hiddenPlacesList.end());
-#else
-        QSet<QString> hiddenPlacesSet = settings.value(QStringLiteral("HiddenPlaces")).toStringList().toSet();
-#endif
         if (hiddenPlaces != hiddenPlacesSet) {
-#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
             QStringList sl(hiddenPlaces.begin(), hiddenPlaces.end());
-#else
-            QStringList sl = hiddenPlaces.values();
-#endif
             settings.setValue(QStringLiteral("HiddenPlaces"), sl);
         }
     }

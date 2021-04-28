@@ -30,10 +30,8 @@ public:
     QList<QUrl> selectedFiles() const override;
     void setFilter() override;
     void selectNameFilter(const QString &filter) override;
-#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
     QString selectedMimeTypeFilter() const override;
     void selectMimeTypeFilter(const QString &filter) override;
-#endif
     QString selectedNameFilter() const override;
 
     bool isSupportedUrl(const QUrl &url) const override;
