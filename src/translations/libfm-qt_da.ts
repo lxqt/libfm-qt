@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Oprettet:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -632,19 +632,19 @@ Vil du erstatte den?</translation>
     <message>
         <location filename="../filemenu.cpp" line="119"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Standardprogrammer</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="125"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Mange filer</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="126"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Vil du åbne denne ene fil?</numerusform>
+            <numerusform>Vil du åbne disse %1 filer?</numerusform>
         </translation>
     </message>
     <message>
@@ -691,17 +691,17 @@ Vil du erstatte den?</translation>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished">Monter</translation>
+        <translation>Monter</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">Afmonter</translation>
+        <translation>Afmonter</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">Skub ud</translation>
+        <translation>Skub ud</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="296"/>
@@ -768,17 +768,17 @@ Vil du slette dem istedet?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Vil du slette den valgte fil?</numerusform>
+            <numerusform>Vil du slette de valgte filer?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Vil du flytte den valgte fil til papirkurven?</numerusform>
+            <numerusform>Vil du flytte de valger filer til papirkurven?</numerusform>
         </translation>
     </message>
 </context>

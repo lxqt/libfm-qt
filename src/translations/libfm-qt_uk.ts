@@ -692,17 +692,17 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Змонтувати</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">Відмонтувати</translation>
+        <translation>Демонтувати</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">Витягнути</translation>
+        <translation>Витягнути</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="296"/>
@@ -769,19 +769,19 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Хочете видалити вибраний файл?</numerusform>
+            <numerusform>Хочете видалити вибрані файли?</numerusform>
+            <numerusform>Хочете видалити вибрані файли?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Перемістити вибраний файл у кошик для сміття?</numerusform>
+            <numerusform>Перемістити вибрані файли у кошик для сміття?</numerusform>
+            <numerusform>Перемістити вибрані файли у кошик для сміття?</numerusform>
         </translation>
     </message>
 </context>

@@ -676,17 +676,17 @@ Wilt u het vervangen?</translation>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished">Aankoppelen</translation>
+        <translation>Aankoppelen</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">Ontkoppelen</translation>
+        <translation>Ontkoppelen</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">Uitwerpen</translation>
+        <translation>Uitwerpen</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="331"/>
@@ -768,17 +768,17 @@ Wilt u ze in plaats daarvan blijvend verwijderen?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Weet u zeker dat u het geselecteerde bestand wilt verwijderen?</numerusform>
+            <numerusform>Weet u zeker dat u de geselecteerde bestanden wilt verwijderen?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Weet u zeker dat u het geselecteerde bestand wilt verplaatsen naar de prullenbak?</numerusform>
+            <numerusform>Weet u zeker dat u de geselecteerde bestanden wilt verplaatsen naar de prullenbak?</numerusform>
         </translation>
     </message>
 </context>

@@ -666,17 +666,17 @@ Sostituirlo?</translation>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished">Monta</translation>
+        <translation>Monta</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">Smonta</translation>
+        <translation>Smonta</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">Espelli</translation>
+        <translation>Espelli</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="331"/>
@@ -768,17 +768,17 @@ Vuoi invece eliminarli?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Vuoi eliminare il file selezionato?</numerusform>
+            <numerusform>Vuoi eliminare i file selezionati?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Vuoi spostare il file selezionato nel cestino?</numerusform>
+            <numerusform>Vuoi spostare i file selezionati nel cestino?</numerusform>
         </translation>
     </message>
 </context>
