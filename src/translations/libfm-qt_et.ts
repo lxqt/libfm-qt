@@ -691,17 +691,17 @@ Kas sa soovid seda asenda?</translation>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished">Haagi</translation>
+        <translation>Haagi</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">Haagi lahti</translation>
+        <translation>Haagi lahti</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">Väljasta</translation>
+        <translation>Väljasta</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="296"/>
@@ -768,17 +768,17 @@ Kas sa sooviksid neid siis kustutada?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Kas sa soovid valitud faili kustutada?</numerusform>
+            <numerusform>Kas sa soovid valitud failid kustutada?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Kas sa soovid valitud faili visata prügikasti?</numerusform>
+            <numerusform>Kas sa soovid valitud failid visata prügikasti?</numerusform>
         </translation>
     </message>
 </context>
