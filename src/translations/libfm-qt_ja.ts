@@ -666,17 +666,17 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished">マウント</translation>
+        <translation>マウント</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">アンマウント</translation>
+        <translation>アンマウント</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">取出し</translation>
+        <translation>取り出し</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="331"/>
@@ -768,15 +768,15 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>選択したファイルを削除しますか？</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>選択したファイルをゴミ箱へ移動しますか？</numerusform>
         </translation>
     </message>
 </context>
@@ -911,7 +911,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="355"/>
         <source>%1 Free of %2</source>
-        <translation>空き容量 %1&#x3000;全体 %2</translation>
+        <translation>空き容量 %1　全体 %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="400"/>
@@ -1325,7 +1325,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="564"/>
         <source>Eject</source>
-        <translation>取出し</translation>
+        <translation>取り出し</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="599"/>
