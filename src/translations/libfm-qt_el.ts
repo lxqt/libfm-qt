@@ -691,17 +691,17 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished">Προσάρτηση</translation>
+        <translation>Προσάρτηση</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">Αποπροσάρτηση</translation>
+        <translation>Αποπροσάρτηση</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">Εξαγωγή</translation>
+        <translation>Εξαγωγή</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="296"/>
@@ -768,17 +768,17 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Επιθυμείτε την διαγραφή του επιλεγμένου αρχείου;</numerusform>
+            <numerusform>Επιθυμείτε την διαγραφή των επιλεγμένων αρχείων;</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Επιθυμείτε την μετακίνηση του επιλεγμένου αρχείου στον κάδο απορριμμάτων;</numerusform>
+            <numerusform>Επιθυμείτε την μετακίνηση των επιλεγμένων αρχείων στον κάδο απορριμμάτων;</numerusform>
         </translation>
     </message>
 </context>
