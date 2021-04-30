@@ -5,11 +5,7 @@
 #include "core/filepath.h"
 
 #include <QFileDialog>
-#if (QT_VERSION >= QT_VERSION_CHECK(5,12,0))
 #include <QRegularExpression>
-#else
-#include <QRegExp>
-#endif
 #include <vector>
 #include <memory>
 #include "folderview.h"
@@ -196,11 +192,7 @@ private:
         void update();
 
         FileDialog* dlg_;
-#if (QT_VERSION >= QT_VERSION_CHECK(5,12,0))
         std::vector<QRegularExpression> patterns_;
-#else
-        std::vector<QRegExp> patterns_;
-#endif
     };
 
     bool isLabelExplicitlySet(QFileDialog::DialogLabel label) const {

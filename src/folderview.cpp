@@ -885,11 +885,7 @@ void FolderView::setCustomColumnWidths(const QList<int> &widths) {
 
 void FolderView::setHiddenColumns(const QList<int> &columns) {
     hiddenColumns_.clear();
-#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
     hiddenColumns_ = QSet<int>(columns.begin(), columns.end());
-#else
-    hiddenColumns_ = columns.toSet();
-#endif
     if(mode == DetailedListMode) {
         if(FolderViewTreeView* treeView = static_cast<FolderViewTreeView*>(view)) {
             treeView->setHiddenColumns(hiddenColumns_);
@@ -1606,12 +1602,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                                                         : view->verticalScrollBar());
                 if(sbar != nullptr) {
                     QWheelEvent *we = static_cast<QWheelEvent*>(event);
-#if (QT_VERSION < QT_VERSION_CHECK(5,14,0))
-                    QWheelEvent e(we->posF(),
-                                  we->globalPosF(),
-                                  we->pixelDelta(),
-                                  QPoint (0, we->angleDelta().y() / QApplication::wheelScrollLines()),
-#else
+
                     QWheelEvent e(we->position(),
                                   we->globalPosition(),
                                   we->pixelDelta(),
@@ -1619,7 +1610,6 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                                   mode == CompactMode
                                     ? QPoint (we->angleDelta().y() / QApplication::wheelScrollLines(), 0)
                                     : QPoint (0, we->angleDelta().y() / QApplication::wheelScrollLines()),
-#endif
                                   we->buttons(),
                                   Qt::NoModifier,
                                   we->phase(),
@@ -1637,15 +1627,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
             // We do it by forwarding the scroll event in the viewport to the horizontal scrollbar.
             // FIXME: if someday Qt supports this, we have to disable the workaround.
             else if(mode == CompactMode) {
-#if (QT_VERSION < QT_VERSION_CHECK(5,14,0))
-                QScrollBar* scroll = view->horizontalScrollBar();
-                if(scroll) {
-                    QApplication::sendEvent(scroll, event);
-                    return true;
-                }
-#else
                 return false; // the problem with horizontal wheel scrolling from inside view is fixed in Qt 5.14
-#endif
             }
             // Smooth Scrolling
             // Some tricks are adapted from <https://github.com/zhou13/qsmoothscrollarea>.
@@ -1707,7 +1689,6 @@ void FolderView::scrollSmoothly() {
         }
     }
     if(totalDelta != 0) {
-#if (QT_VERSION >= QT_VERSION_CHECK(5,12,0))
         QWheelEvent e(QPointF(),
                       QPointF(),
                       QPoint(),
@@ -1716,14 +1697,7 @@ void FolderView::scrollSmoothly() {
                       Qt::NoModifier,
                       Qt::NoScrollPhase,
                       false);
-#else
-        QWheelEvent e(QPointF(),
-                      QPointF(),
-                      totalDelta,
-                      Qt::NoButton,
-                      Qt::NoModifier,
-                      Qt::Vertical);
-#endif
+
         QApplication::sendEvent(view->verticalScrollBar(), &e);
     }
 
