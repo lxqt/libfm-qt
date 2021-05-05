@@ -1010,6 +1010,7 @@ void FolderView::setViewMode(ViewMode _mode) {
         FolderViewTreeView* treeView = new FolderViewTreeView(this);
         treeView->setCustomColumnWidths(customColumnWidths_);
         treeView->setHiddenColumns(hiddenColumns_);
+        treeView->setAlternatingRowColors(true);
         connect(treeView, &FolderViewTreeView::activatedFiltered, this, &FolderView::onItemActivated);
         // update the list of custom widhts when the user changes it
         connect(treeView, &FolderViewTreeView::columnResizedByUser, [this](int visualIndex, int newWidth) {
