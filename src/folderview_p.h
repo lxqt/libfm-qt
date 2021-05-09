@@ -70,6 +70,7 @@ Q_SIGNALS:
 
 protected:
   QModelIndex moveCursor(CursorAction cursorAction, Qt::KeyboardModifiers modifiers) override;
+  void currentChanged(const QModelIndex &current, const QModelIndex &previous) override;
 
 public Q_SLOTS:
   void selectAll() override;
