@@ -677,17 +677,17 @@ Chcete ho nahradit?</translation>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished">Připojit</translation>
+        <translation>Připojit</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">Odpojit</translation>
+        <translation>Odpojit</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">Vysunout</translation>
+        <translation>Vysunout</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="331"/>
@@ -769,19 +769,19 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Chcete smazat vybraný soubor?</numerusform>
+            <numerusform>Chcete smazat vybrané soubory?</numerusform>
+            <numerusform>Chcete smazat vybrané soubory?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Chcete vybraný soubor přesunout do koše?</numerusform>
+            <numerusform>Chcete vybrané soubory přesunout do koše?</numerusform>
+            <numerusform>Chcete vybrané soubory přesunout do koše?</numerusform>
         </translation>
     </message>
 </context>
