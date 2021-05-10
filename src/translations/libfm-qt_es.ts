@@ -16,12 +16,12 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation>Comando personalizado</translation>
+        <translation>Orden personalizada</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation>Línea de comandos a ejecutar:</translation>
+        <translation>Línea de órdenes que ejecutar:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
@@ -37,18 +37,18 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;Estos códigos especiales pueden ser usados en la línea de comandos:&lt;/b&gt;
+        <translation>&lt;b&gt;Estos códigos especiales pueden utilizarse en la línea de órdenes:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Representa un solo nombre de archivo&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Representa múltiples nombres de archivos&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Representa un solo URI del archivo&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Representa múltiples URI&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: representa un solo nombre de archivo&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: representa múltiples nombres de archivos&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: representa un solo URI del archivo&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: representa múltiples URI&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>Mantener la terminal abierta tras la ejecución del comando</translation>
+        <translation>Mantener la terminal abierta tras la ejecución de la orden</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruta:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Creación:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -632,19 +632,19 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="119"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicaciones predeterminadas</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="125"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Muchos archivos</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="126"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>¿Quiere abrir este archivo?</numerusform>
+            <numerusform>¿Quiere abrir estos %1 archivos?</numerusform>
         </translation>
     </message>
     <message>
@@ -686,22 +686,22 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="191"/>
         <source>Rename</source>
-        <translation>Renombrar</translation>
+        <translation>Cambiar nombre</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished">Montar</translation>
+        <translation>Montar</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">Desmontar</translation>
+        <translation>Desmontar</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">Expulsar</translation>
+        <translation>Expulsar</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="296"/>
@@ -768,17 +768,17 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>¿Quiere eliminar el archivo seleccionado?</numerusform>
+            <numerusform>¿Quiere eliminar los archivos seleccionados?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>¿Quiere enviar el archivo seleccionado a la papelera?</numerusform>
+            <numerusform>¿Quiere enviar los archivos seleccionados a la papelera?</numerusform>
         </translation>
     </message>
 </context>
@@ -898,17 +898,17 @@ Do you want to delete them instead?</source>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/D</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
         <source>Multiple Files</source>
-        <translation>Múltiples archivos</translation>
+        <translation>Varios archivos</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="354"/>
         <source>%p% used</source>
-        <translation>%p% usado</translation>
+        <translation>%p % usado</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="355"/>
@@ -1040,7 +1040,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="176"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Por hora de creación</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="179"/>
@@ -1123,12 +1123,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/D</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Creación:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
@@ -1158,12 +1158,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="403"/>
         <source>Modified</source>
-        <translation>Modificado</translation>
+        <translation>Modificación</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Creación</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
@@ -1307,7 +1307,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="542"/>
         <source>Rename Bookmark</source>
-        <translation>Renombrar el marcador</translation>
+        <translation>Cambiar nombre del marcador</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="545"/>
@@ -1346,7 +1346,7 @@ Size: %2
 Modified: %3</source>
         <translation>Tipo: %1
 Tamaño: %2
-Modificado: %3</translation>
+Modificación: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
@@ -1354,7 +1354,7 @@ Modificado: %3</translation>
         <source>Type: %1
 Modified: %2</source>
         <translation>Tipo: %1
-Modificado: %2</translation>
+Modificación: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="96"/>
@@ -1364,7 +1364,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="98"/>
         <source>&amp;Rename</source>
-        <translation>&amp;Renombrar</translation>
+        <translation>Cambia&amp;r nombre</translation>
     </message>
 </context>
 <context>
@@ -1385,7 +1385,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>No se puede restaurar el archivo «%s» desde la papelera: la ruta original es desconocida</translation>
+        <translation>No se puede restaurar el archivo «%s» desde la papelera: se desconoce la ruta original</translation>
     </message>
 </context>
 <context>
@@ -1450,12 +1450,12 @@ Modificado: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="163"/>
         <source>Rename File</source>
-        <translation>Renombrar archivo</translation>
+        <translation>Cambiar nombre de archivo</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="164"/>
         <source>Please enter a new name:</source>
-        <translation>Introduzca un nuevo nombre:</translation>
+        <translation>Introduzca un nombre nuevo:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="223"/>
@@ -1465,22 +1465,22 @@ Modificado: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="228"/>
         <source>Please enter a new file name:</source>
-        <translation>Introduzca un nuevo nombre de archivo:</translation>
+        <translation>Introduzca un nombre de archivo nuevo:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="229"/>
         <source>New text file</source>
-        <translation>Nuevo archivo de texto</translation>
+        <translation>Archivo de texto nuevo</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="233"/>
         <source>Please enter a new folder name:</source>
-        <translation>Introduzca el nuevo nombre de la carpeta:</translation>
+        <translation>Introduzca el nombre nuevo de la carpeta:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="234"/>
         <source>New folder</source>
-        <translation>Nueva carpeta</translation>
+        <translation>Carpeta nueva</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="239"/>
@@ -1510,7 +1510,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="367"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>No hay ninguna aplicación por defecto configurada para lanzar «%1»</translation>
+        <translation>No hay ninguna aplicación predeterminada configurada para iniciar «%1»</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="408"/>
@@ -1526,7 +1526,7 @@ Modificado: %2</translation>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/D</translation>
     </message>
 </context>
 <context>
