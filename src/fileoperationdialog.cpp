@@ -104,7 +104,10 @@ int FileOperationDialog::ask(QString /*question*/, char* const* /*options*/) {
 
 FileOperationJob::FileExistsAction FileOperationDialog::askRename(const FileInfo &src, const FileInfo &dest, FilePath &newDest) {
     FileOperationJob::FileExistsAction ret;
-    if(defaultOption == -1) { // default action is not set, ask the user
+    // ask user if default action is not set or a self-overwriting might happen
+    if(defaultOption == -1
+       || (defaultOption == RenameDialog::ActionOverwrite
+           && src.path() == dest.path())) {
         RenameDialog dlg(src, dest, this);
         dlg.exec();
         switch(dlg.action()) {

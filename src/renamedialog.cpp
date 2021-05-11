@@ -99,6 +99,15 @@ RenameDialog::RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* p
     connect(renameButton_, &QPushButton::clicked, this, &RenameDialog::onRenameClicked);
     renameButton_->setEnabled(false); // disabled by default
 
+    // do not allow self-overwriting; tell user to choose another name instead
+    if(path == src.path()) {
+        button->setEnabled(false);
+        ui->srcLabel->setVisible(false);
+        ui->srcIcon->setVisible(false);
+        ui->srcInfo->setVisible(false);
+        ui->label->setText(tr("<p><b>The file cannot overwrite itself.</b></p><p>Please select another name.</p>"));
+    }
+
     button = ui->buttonBox->button(QDialogButtonBox::Ignore);
     connect(button, &QPushButton::clicked, this, &RenameDialog::onIgnoreClicked);
 }
@@ -136,7 +145,11 @@ void RenameDialog::onFileNameChanged(QString newName) {
     renameButton_->setEnabled(hasNewName);
     renameButton_->setDefault(hasNewName);
 
-    // change default button to rename rather than overwrire
+    if(!ui->srcInfo->isVisible()) {
+        return; // this was a self-overwriting prompt
+    }
+
+    // change default button to rename rather than overwrite
     // if the user typed a new filename
     QPushButton* overwriteButton = static_cast<QPushButton*>(ui->buttonBox->button(QDialogButtonBox::Ok));
     overwriteButton->setEnabled(!hasNewName);
