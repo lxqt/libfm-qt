@@ -12,6 +12,7 @@ const char defaultGFileInfoQueryAttribs[] = "standard::*,"
                                             "access::*,"
                                             "trash::deletion-date,"
                                             "id::filesystem,"
+                                            "id::file,"
                                             "metadata::emblems,"
                                             "mountable::can-mount,"
                                             "mountable::can-unmount,"
@@ -276,6 +277,9 @@ _file_is_symlink:
 
     tmp = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_ID_FILESYSTEM);
     filesystemId_ = g_intern_string(tmp);
+
+    tmp = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_ID_FILE);
+    fileId_ = g_intern_string(tmp);
 
     mtime_ = g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_TIME_MODIFIED);
     atime_ = g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_TIME_ACCESS);

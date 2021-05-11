@@ -81,6 +81,10 @@ public:
         return filesystemId_;
     }
 
+    const char* fileId() const {
+        return fileId_;
+    }
+
     const std::shared_ptr<const IconInfo>& icon() const {
         return icon_;
     }
@@ -244,6 +248,7 @@ private:
 
     mode_t mode_;
     const char* filesystemId_;
+    const char* fileId_;
     uid_t uid_;
     gid_t gid_;
     uint64_t size_;

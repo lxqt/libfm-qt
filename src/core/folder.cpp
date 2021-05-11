@@ -62,9 +62,13 @@ Folder::Folder(const FilePath& path): Folder() {
 }
 
 Folder::~Folder() {
+    const char* folderId = nullptr;
     if(dirMonitor_) {
         g_signal_handlers_disconnect_by_data(dirMonitor_.get(), this);
         dirMonitor_.reset();
+        if(dirInfo_) {
+            folderId = dirInfo_->fileId();
+        }
     }
 
     if(dirlist_job) {
@@ -87,6 +91,20 @@ Folder::~Folder() {
     auto it = cache_.find(dirPath_);
     if(it != cache_.end()) {
         cache_.erase(it);
+    }
+
+   // Fully recreate file monitors of folders that have the same target
+   // by reloading them. See reload() for why this workaround is needed.
+    if(folderId != nullptr) {
+        it = cache_.begin();
+        while(it != cache_.end()) {
+            auto folder = it->second.lock();
+            if(folder && folder->hasFileMonitor() && folder->isValid()
+               && folder->info()->fileId() == folderId) {
+                QTimer::singleShot(0, folder.get(), &Folder::reallyReload);
+            }
+            ++it;
+        }
     }
 }
 
@@ -644,6 +662,26 @@ void free_dirlist_job(FmFolder* folder) {
 
 
 void Folder::reload() {
+    if(dirlist_job) {
+        dirlist_job->cancel();
+    }
+    // NOTE: Because of a bug in GLib, if GFileMonitor is unreffed here, the monitors
+    // of other folders that have the same target will stop emitting signals (also,
+    // see https://gitlab.gnome.org/GNOME/glib/-/issues/746). As a workaround, we can
+    // either find and reload those folders here or unref the old monitor only after
+    // the new one is created. The second method is more frugal.
+    GFileMonitor* fm = nullptr;
+    if(dirMonitor_) {
+        g_signal_handlers_disconnect_by_data(dirMonitor_.get(), this);
+        fm = dirMonitor_.release();
+    }
+    reallyReload();
+    if(fm) {
+        g_object_unref(fm);
+    }
+}
+
+void Folder::reallyReload() {
     // cancel in-progress jobs if there are any
     if(dirlist_job) {
         dirlist_job->cancel();
