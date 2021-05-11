@@ -508,7 +508,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="164"/>
         <source>Detailed List View</source>
-        <translation>Подання детального переліку</translation>
+        <translation>Подання детальним переліком</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
@@ -1203,7 +1203,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation>Жирний</translation>
+        <translation>Грубий</translation>
     </message>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>

@@ -898,7 +898,7 @@ Vil du slette dem istedet?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>—</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1040,7 +1040,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="176"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Efter oprettelsestidspunkt</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="179"/>
@@ -1123,12 +1123,12 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>—</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Oprettet:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
@@ -1163,7 +1163,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Oprettet</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
@@ -1526,7 +1526,7 @@ Senset ændret: %2</translation>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>—</translation>
     </message>
 </context>
 <context>

@@ -666,17 +666,17 @@ Deseja substituir?</translation>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished">Montar</translation>
+        <translation>Montar</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">Desmontar</translation>
+        <translation>Desmontar</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">Ejetar</translation>
+        <translation>Ejetar</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="331"/>
@@ -768,17 +768,17 @@ Deseja, em alternativa, apagar os ficheiros?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Deseja eliminar o ficheiro selecionado?</numerusform>
+            <numerusform>Deseja eliminar os ficheiros selecionados?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Deseja mover o ficheiro selecionado para o caixote do lixo?</numerusform>
+            <numerusform>Deseja mover os ficheiros selecionados para o caixote do lixo?</numerusform>
         </translation>
     </message>
 </context>
