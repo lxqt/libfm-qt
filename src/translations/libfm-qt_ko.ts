@@ -146,7 +146,7 @@
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
         <translatorcomment>적절한 용어로 번역이 필요</translatorcomment>
-        <translation type="unfinished">대상 위치:</translation>
+        <translation>대상위치:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
@@ -236,7 +236,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>생성됨:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -313,17 +313,17 @@
     <message>
         <location filename="../file-props.ui" line="699"/>
         <source>Sticky</source>
-        <translation type="unfinished">스티키</translation>
+        <translation>스티커</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="706"/>
         <source>SetUID</source>
-        <translation type="unfinished">UID 설정</translation>
+        <translation>SetUID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="713"/>
         <source>SetGID</source>
-        <translation type="unfinished">GID 설정</translation>
+        <translation>SetGID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
@@ -344,7 +344,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>“%1” 파일의 열 애플리케이션을 선택하세요.</translation>
+        <translation>“%1” 파일을 열 응용 프로그램 선택</translation>
     </message>
 </context>
 <context>
@@ -517,37 +517,37 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>아이콘 크기</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>큰 아이콘 크기:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>작은 아이콘 크기:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>썸네일 크기:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>썸네일 표시</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>파일 툴팁 표시</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>옵션</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="548"/>
@@ -558,7 +558,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="548"/>
         <source>Please select a file</source>
-        <translation>파일을 선택하세요.</translation>
+        <translation>파일을 선택하십시오</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="590"/>
@@ -570,17 +570,17 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog.cpp" line="913"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation>경로 “%1&quot;는 존재하지 않습니다.</translation>
+        <translation>“%1&quot; 경로가 존재하지 않습니다</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="927"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation>“%1”는 디렉토리가 아닙니다.</translation>
+        <translation>“%1”이(가) 디렉토리가 아닙니다</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="933"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation>“%1”는 파일이 아닙니다.</translation>
+        <translation>“%1”은(는) 파일이 아닙니다</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1085"/>
@@ -618,7 +618,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> 픽셀</translation>
     </message>
 </context>
 <context>
@@ -636,18 +636,18 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="119"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>기본 응용프로그램</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="125"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>많은 파일</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="126"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 파일을 여시겠습니까?</numerusform>
         </translation>
     </message>
     <message>
@@ -694,17 +694,17 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished">마운트</translation>
+        <translation>마운트</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">마운트 해제</translation>
+        <translation>마운트 해제</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">꺼내기</translation>
+        <translation>꺼내기</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="296"/>
@@ -772,15 +772,15 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>선택한 파일을 삭제하시겠습니까?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>선택한 파일을 휴지통으로 이동하시겠습니까?</numerusform>
         </translation>
     </message>
 </context>
@@ -900,7 +900,7 @@ Do you want to delete them instead?</source>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>해당 없음</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1041,7 +1041,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="176"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>작성 시간별</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="179"/>
@@ -1086,7 +1086,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="221"/>
         <source>Hidden Last</source>
-        <translation type="unfinished">마지막 숨기기</translation>
+        <translation>숨겨진 파일을 맨뒤로</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="229"/>
@@ -1124,12 +1124,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>해당 없음</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>생성됨:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
@@ -1164,7 +1164,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>생성됨</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
@@ -1386,7 +1386,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>파일 “%s”를 휴지통에서 복원할 수 없습니다: 원래 위치가 존재하지 않습니다.</translation>
+        <translation>“%s” 파일을 휴지통에서 복원할 수 없음: 알 수 없는 원본 경로</translation>
     </message>
 </context>
 <context>
@@ -1425,7 +1425,7 @@ Modified: %2</source>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
         <translatorcomment>정확한 번역이 맞는지 확신이 없음.</translatorcomment>
-        <translation type="unfinished">비밀번호 바로 잊기(&amp;I)</translation>
+        <translation>비밀번호 기억 안함(&amp;I)</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
@@ -1517,7 +1517,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="408"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished">&apos;%1&apos;로 작업 경로를 설정할 수 없습니다:%2</translation>
+        <translation>&apos;%1&apos;(으)로 작업 디렉터리를 설정할 수 없습니다: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
@@ -1528,7 +1528,7 @@ Modified: %2</source>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>해당 없음</translation>
     </message>
 </context>
 <context>
@@ -1708,7 +1708,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>대/소문자 구분</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
@@ -1718,7 +1718,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>대/소문자 구분(&amp;V)</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>

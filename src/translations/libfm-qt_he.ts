@@ -645,6 +645,8 @@ Do you want to replace it?</source>
         <translation>
             <numerusform>לפתוח את הקובץ הזה בגודל %1?</numerusform>
             <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
+            <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
+            <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
         </translation>
     </message>
     <message>
@@ -691,17 +693,17 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished">עיגון</translation>
+        <translation>עיגון</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">ניתוק עיגון</translation>
+        <translation>ניתוק</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">שליפה</translation>
+        <translation>שליפה</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="296"/>
@@ -768,17 +770,21 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>למחוק את הקובץ הנבחר?</numerusform>
+            <numerusform>למחוק את הקבצים הנבחרים?</numerusform>
+            <numerusform>למחוק את הקבצים הנבחרים?</numerusform>
+            <numerusform>למחוק את הקבצים הנבחרים?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>להעביר את הפריט הנבחר לפח האשפה?</numerusform>
+            <numerusform>להעביר את הפריטים הנבחרים לפח האשפה?</numerusform>
+            <numerusform>להעביר את הפריטים הנבחרים לפח האשפה?</numerusform>
+            <numerusform>להעביר את הפריטים הנבחרים לפח האשפה?</numerusform>
         </translation>
     </message>
 </context>
@@ -930,6 +936,8 @@ Do you want to delete them instead?</source>
         <source>%Ln files</source>
         <translation>
             <numerusform>קובץ %Ln</numerusform>
+            <numerusform>%Ln קבצים</numerusform>
+            <numerusform>%Ln קבצים</numerusform>
             <numerusform>%Ln קבצים</numerusform>
         </translation>
     </message>
