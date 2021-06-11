@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sukurta:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -632,7 +632,7 @@ Ar norite jį pakeisti?</translation>
     <message>
         <location filename="../filemenu.cpp" line="119"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Numatytosios programos</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="125"/>
