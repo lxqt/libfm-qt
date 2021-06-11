@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Utworzono:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -513,37 +513,37 @@ Co chcesz zrobić z tym plikiem?</translation>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiary ikon</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar dużych ikon:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar małych ikon:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar miniaturek:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż miniatury</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż podpowiedzi plików</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Opcje</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="548"/>
@@ -614,7 +614,7 @@ Czy chcesz go zamienić?</translation>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -627,20 +627,20 @@ Czy chcesz go zamienić?</translation>
     <message>
         <location filename="../filemenu.cpp" line="119"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Domyślne aplikacje</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="125"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiele plików</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="126"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Czy chcesz otworzyć plik %1?</numerusform>
+            <numerusform>Czy chcesz otworzyć pliki %1?</numerusform>
+            <numerusform>Czy chcesz otworzyć pliki %1?</numerusform>
         </translation>
     </message>
     <message>
@@ -677,17 +677,17 @@ Czy chcesz go zamienić?</translation>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Montuj</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">Odmontuj</translation>
+        <translation>Odmontuj</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">Wysuń</translation>
+        <translation>Wysuń</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="331"/>
@@ -769,19 +769,19 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Czy chcesz usunąć zaznaczony plik?</numerusform>
+            <numerusform>Czy chcesz usunąć zaznaczone pliki?</numerusform>
+            <numerusform>Czy chcesz usunąć zaznaczone pliki?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Czy chcesz przenieść zaznaczony plik do kosza?</numerusform>
+            <numerusform>Czy chcesz przenieść zaznaczone pliki do kosza?</numerusform>
+            <numerusform>Czy chcesz przenieść zaznaczone pliki do kosza?</numerusform>
         </translation>
     </message>
 </context>
@@ -901,7 +901,7 @@ Czy zamiast tego usunąć te pliki?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1044,7 +1044,7 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="176"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Według daty utworzenia</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="179"/>
@@ -1127,12 +1127,12 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Utworzono:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
@@ -1167,7 +1167,7 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Utworzono</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
@@ -1530,7 +1530,7 @@ Zmodyfikowany: %2</translation>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
 </context>
 <context>
@@ -1710,7 +1710,7 @@ Zmodyfikowany: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Wielkość liter ma znaczenie</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
@@ -1720,7 +1720,7 @@ Zmodyfikowany: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Wielkość liter ma znaczenie</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
