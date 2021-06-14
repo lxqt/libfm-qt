@@ -314,12 +314,12 @@
     <message>
         <location filename="../file-props.ui" line="706"/>
         <source>SetUID</source>
-        <translation type="unfinished"></translation>
+        <translation>SetUID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="713"/>
         <source>SetGID</source>
-        <translation type="unfinished"></translation>
+        <translation>SetGID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
@@ -601,12 +601,12 @@ Chcete ho nahradiť?</translation>
     <message>
         <location filename="../filedialoghelper.cpp" line="140"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Otvoriť súbor</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="141"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť súbor</translation>
     </message>
 </context>
 <context>
@@ -614,7 +614,7 @@ Chcete ho nahradiť?</translation>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -622,126 +622,128 @@ Chcete ho nahradiť?</translation>
     <message>
         <location filename="../filemenu.cpp" line="86"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Otvoriť</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="90"/>
         <source>Open With...</source>
-        <translation type="unfinished"></translation>
+        <translation>Otvoriť pomocou...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="119"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Predvolené aplikácie</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="125"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Viacero súborov</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="126"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Chcete otvoriť tento %1 súbor?</numerusform>
+            <numerusform>Chcete otvoriť tieto %1 súbory?</numerusform>
+            <numerusform>Chcete otvoriť týchto %1 súborov?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="139"/>
         <source>Other Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Ostatné aplikácie</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="146"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvoriť &amp;Nový</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="165"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>O&amp;bnoviť</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="175"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Vystrihnúť</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="179"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovať</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="183"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>Prilepiť</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="187"/>
         <location filename="../filemenu.cpp" line="485"/>
         <source>&amp;Move to Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Presunúť do &amp;koša</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="191"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Premenovať</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Pripojiť</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished"></translation>
+        <translation>Odpojiť</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Vysunúť</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="296"/>
         <source>Extract to...</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozbaliť do...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="304"/>
         <source>Extract Here</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozbaliť sem</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="311"/>
         <source>Compress</source>
-        <translation type="unfinished"></translation>
+        <translation>Komprimovať</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="320"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastnosti</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="331"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Dôverovať označeným spúšťateľným súborom</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="332"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Dôverovať tomuto spúšťateľnému súboru</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="420"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Výstup</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="169"/>
         <location filename="../filemenu.cpp" line="485"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zmazať</translation>
     </message>
 </context>
 <context>
@@ -749,32 +751,37 @@ Chcete ho nahradiť?</translation>
     <message>
         <location filename="../fileoperation.cpp" line="317"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="318"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation type="unfinished"></translation>
+        <translation>Niektoré súbory nie je možné presunúť do koša - ich súborový systém túto operáciu nepodporuje.
+Prajete si ich vymazať natrvalo?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="404"/>
         <location filename="../fileoperation.cpp" line="422"/>
         <source>Confirm</source>
-        <translation type="unfinished"></translation>
+        <translation>Potvrdiť</translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Prajete si zmazať vybraný súbor?</numerusform>
+            <numerusform>Prajete si zmazať vybrané súbory?</numerusform>
+            <numerusform>Prajete si zmazať vybrané súbory?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Prajete si vybraný súbor presunúť do koša?</numerusform>
+            <numerusform>Prajete si vybrané súbory presunúť do koša?</numerusform>
+            <numerusform>Prajete si vybrané súbory presunúť do koša?</numerusform>
         </translation>
     </message>
 </context>
@@ -783,78 +790,78 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move files</source>
-        <translation type="unfinished"></translation>
+        <translation>Premiestniť súbory</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Premiestňujem nasledovné súbory do priečinka:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovať súbory</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírujem nasledovné súbory do priečinka:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbory v koši</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation type="unfinished"></translation>
+        <translation>Presúvam nasledovné súbory do koša:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazať natrvalo</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mažem nasledovné súbory:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvoriť symbolické odkazy</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytváram symbolické odkazy pre súbory:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmeniť atribúty</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mením atribúty nasledovných súborov:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnoviť súbory z koša</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovujem nasledovné súbory z koša:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="146"/>
         <location filename="../fileoperationdialog.cpp" line="152"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba</translation>
     </message>
 </context>
 <context>
@@ -862,91 +869,93 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="162"/>
         <source>View folder content</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť obsah priečinka</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="163"/>
         <source>View and modify folder content</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť a zmeniť obsah priečinka</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="167"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>Čítanie</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="168"/>
         <source>Read and write</source>
-        <translation type="unfinished"></translation>
+        <translation>Čítanie a zápis</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="170"/>
         <source>Forbidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Odmietnuť prístup</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="287"/>
         <source>Files of different types</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbory rôznych typov</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="310"/>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Nedostupné</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
         <source>Multiple Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Viacero súborov</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="354"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p%</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="355"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>voľné miesto %1 z %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="400"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>žiadny súbor</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="402"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation>jeden súbor</translation>
     </message>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="404"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln súbor</numerusform>
+            <numerusform>%Ln súbory</numerusform>
+            <numerusform>%Ln súborov</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="438"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrať ikonu</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="440"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrázky (*.png *.xpm *.svg *svgz)</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="540"/>
         <source>Apply changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Uplatniť zmeny</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="541"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation type="unfinished"></translation>
+        <translation>Prajete si uplatniť zmeny aj na všetky obsiahnuté súbory a podpriečinky?</translation>
     </message>
 </context>
 <context>
@@ -954,17 +963,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>You should add at least one directory to search.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridajte aspoň jeden priečinok v ktorom si prajete hľadať.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="135"/>
         <source>Select a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrať priečinok</translation>
     </message>
 </context>
 <context>
@@ -972,12 +981,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="477"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>Priečinok nie je možné kopírovať do seba!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="528"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Na tomto súborovom systéme nie je možné vytvoriť symbolický odkaz</translation>
     </message>
 </context>
 <context>
@@ -985,107 +994,107 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="48"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvoriť &amp;nový</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="53"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Prilepiť</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="59"/>
         <source>Select &amp;All</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybr&amp;ať všetko</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
         <source>Invert Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Prevrátiť výber</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
         <source>Sorting</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoradiť</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="74"/>
         <source>Show Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť skryté</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="109"/>
         <source>Folder Pr&amp;operties</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastn&amp;osti priečinka</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="152"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Výstup</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="174"/>
         <source>By File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Podľa názvu</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="175"/>
         <source>By Modification Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Podľa času zmeny</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="176"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Podľa času vytvorenia</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="179"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Podľa času zmazania</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="182"/>
         <source>By File Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Podľa veľkosti</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="183"/>
         <source>By File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Podľa typu</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="184"/>
         <source>By File Owner</source>
-        <translation type="unfinished"></translation>
+        <translation>Podľa majiteľa</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="185"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Podľa skupiny</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="191"/>
         <source>Ascending</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzostupne</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="196"/>
         <source>Descending</source>
-        <translation type="unfinished"></translation>
+        <translation>Zostupne</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="213"/>
         <source>Folder First</source>
-        <translation type="unfinished"></translation>
+        <translation>Priečinky na začiatku</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="221"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Skryté na konci</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="229"/>
         <source>Case Sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozlišovať veľkosť písmen</translation>
     </message>
 </context>
 <context>
@@ -1093,87 +1102,87 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="304"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Umiestnenie:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="308"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ súboru:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="313"/>
         <source>File size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Veľkosť súboru:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="317"/>
         <source>Last modified:</source>
-        <translation type="unfinished"></translation>
+        <translation>Naposledy upravený:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="318"/>
         <source>Last accessed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Naposledy otvorený:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Nedostupné</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvorený:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
         <source>Owner:</source>
-        <translation type="unfinished"></translation>
+        <translation>Majiteľ:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="327"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Skupina:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="394"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Názov</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="397"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="400"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Veľkosť</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="403"/>
         <source>Modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravený</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvorený</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazaný</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="412"/>
         <source>Owner</source>
-        <translation type="unfinished"></translation>
+        <translation>Majiteľ</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="415"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Skupina</translation>
     </message>
 </context>
 <context>
@@ -1181,12 +1190,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="373"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatická šírka stĺpca</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="390"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Viditeľné stĺpce</translation>
     </message>
 </context>
 <context>
@@ -1194,12 +1203,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>Tučné</translation>
     </message>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Šikmé</translation>
     </message>
 </context>
 <context>
@@ -1207,7 +1216,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../mountoperationpassworddialog.cpp" line="40"/>
         <source>&amp;Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pripojiť</translation>
     </message>
 </context>
 <context>
@@ -1215,12 +1224,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../pathbar.cpp" line="130"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Upraviť umi&amp;estnenie</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="133"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kopírovať umiestnenie</translation>
     </message>
 </context>
 <context>
@@ -1228,42 +1237,42 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesmodel.cpp" line="47"/>
         <source>Places</source>
-        <translation type="unfinished"></translation>
+        <translation>Miesta</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="55"/>
         <source>Desktop</source>
-        <translation type="unfinished"></translation>
+        <translation>Pracovná plocha</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="61"/>
         <source>Computer</source>
-        <translation type="unfinished"></translation>
+        <translation>Počítač</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="69"/>
         <source>Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplikácie</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="78"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Sieť</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="82"/>
         <source>Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Zariadenia</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="137"/>
         <source>Bookmarks</source>
-        <translation type="unfinished"></translation>
+        <translation>Záložky</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="228"/>
         <source>Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Kôš</translation>
     </message>
 </context>
 <context>
@@ -1271,64 +1280,64 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="481"/>
         <source>Open in New Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Otvoriť na novej karte</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="484"/>
         <source>Open in New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Otvoriť v novom okne</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="496"/>
         <source>Empty Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyprázdniť kôš</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="516"/>
         <location filename="../placesview.cpp" line="573"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Skryť</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="533"/>
         <source>Move Bookmark Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Presunúť záložku vyššie</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="538"/>
         <source>Move Bookmark Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Presunúť záložku nižšie</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="542"/>
         <source>Rename Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Premenovať záložku</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="545"/>
         <source>Remove Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť záložku</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="554"/>
         <location filename="../placesview.cpp" line="587"/>
         <source>Unmount</source>
-        <translation type="unfinished"></translation>
+        <translation>Odpojiť</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="558"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Pripojiť</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="564"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Vysunúť</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="599"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť všetky položky</translation>
     </message>
 </context>
 <context>
@@ -1339,24 +1348,27 @@ Do you want to delete them instead?</source>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ: %1
+Veľkosť: %2
+Zmenené: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ: %1
+Zmenené: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="96"/>
         <source>&amp;Overwrite</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Prepísať</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="98"/>
         <source>&amp;Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>P&amp;remenovať</translation>
     </message>
 </context>
 <context>
@@ -1364,12 +1376,12 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoznamy</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Directory Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Strom priečinkov</translation>
     </message>
 </context>
 <context>
@@ -1377,7 +1389,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Nemôžem vrátiť súbor &apos;%s&apos;: nepoznám pôvodné umiestnenie</translation>
     </message>
 </context>
 <context>
@@ -1385,47 +1397,47 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Pripojiť</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation type="unfinished"></translation>
+        <translation>Pripojiť &amp;anonymne</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pripojiť ako po&amp;užívateľ:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
         <source>&amp;Username:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Používateľ:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="102"/>
         <source>&amp;Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Heslo:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Doména:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ihneď zabudnúť heslo</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Pamätať si heslo pre &amp;toto okno</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapamätať si heslo &amp;navždy</translation>
     </message>
 </context>
 <context>
@@ -1433,12 +1445,12 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="163"/>
         <source>Rename File</source>
-        <translation type="unfinished"></translation>
+        <translation>Premenovať súbor</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="164"/>
         <source>Please enter a new name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prosím zadajte nový názov:</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="104"/>
@@ -1447,78 +1459,78 @@ Modified: %2</source>
         <location filename="../utilities.cpp" line="147"/>
         <location filename="../utilities.cpp" line="283"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="223"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvoriť priečinok</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="224"/>
         <source>Create File</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvoriť súbor</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="228"/>
         <source>Please enter a new file name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prosím zadajte názov nového súboru:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="229"/>
         <source>New text file</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový textovžý súbor</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="233"/>
         <source>Please enter a new folder name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prosím zadajte názov nového priečinka:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="234"/>
         <source>New folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový priečinok</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="239"/>
         <source>Enter a name for the new %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadajte názov pre nový %1:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="582"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Problém s vlastnou ikonou</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Umiestnenie nie je pripojené.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="331"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Neplatný súbor spúšťača: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="367"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%1&apos; nemá nastavenú predvolenú aplikáciu</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="408"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nemôžem nastaviť aktívny priečinok na &apos;%1&apos;: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="123"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Identifikátor: </translation>
     </message>
     <message>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Nedostupné</translation>
     </message>
 </context>
 <context>
@@ -1526,27 +1538,27 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation type="unfinished"></translation>
+        <translation>Potvrďte nahradenie súborov</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Na tomto mieste sa nachádza súbor s rovnakým názvom&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Prajete si ho nahradiť?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation type="unfinished"></translation>
+        <translation>týmto súborom?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Názov &amp;súboru:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplikovať na všetky súbory</translation>
     </message>
 </context>
 <context>
@@ -1554,176 +1566,176 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Hľadať súbory</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Názov/Umiestnenie</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Názov súboru obsahuje:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="41"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation>*</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Použiť regulárne výrazy</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="68"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hľadať v:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="81"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Prid&amp;ať</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="93"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Odst&amp;rániť</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="129"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>Hľadať skryté súbory</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="140"/>
         <source>File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ súboru</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hľadať tieto typy súborov:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>Textové súbory</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="159"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrázky</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="166"/>
         <source>Audio files</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvuky</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="173"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>Video súbory</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="180"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokumenty</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="187"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Priečinky</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="211"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Obsah</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="217"/>
         <source>File contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor obsahuje:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Po&amp;užiť regulárne výrazy</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="260"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastnosti</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="266"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Veľkosť:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="295"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Väčšie ako:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="309"/>
         <location filename="../filesearch.ui" line="339"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Bajtov</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="314"/>
         <location filename="../filesearch.ui" line="344"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="319"/>
         <location filename="../filesearch.ui" line="349"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>MiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="324"/>
         <location filename="../filesearch.ui" line="354"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>GiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="274"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Menšie ako:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozlišovať veľkosť písmen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Hľadať v podpriečinkoch</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Rozlišovať veľkosť písmen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Čas poslednej zmeny:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="378"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Skôr ako:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Neskôr ako:</translation>
     </message>
 </context>
 </TS>
