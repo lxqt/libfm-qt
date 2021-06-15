@@ -185,6 +185,8 @@ Q_SIGNALS:
     void columnResizedByUser();
     void columnHiddenByUser();
 
+    void inlineRenamed(const QString& oldName, const QString& newName);
+
 private:
 
     QAbstractItemView* view;

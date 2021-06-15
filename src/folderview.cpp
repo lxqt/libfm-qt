@@ -988,7 +988,9 @@ void FolderView::onClosingEditor(QWidget* editor, QAbstractItemDelegate::EndEdit
             if (window() == this) { // supposedly desktop, in case it uses this
                 parent = nullptr;
             }
-            changeFileName(info->path(), newName, parent);
+            if(changeFileName(info->path(), newName, parent)) {
+                Q_EMIT inlineRenamed(oldName, newName);
+            }
         }
     }
 }
