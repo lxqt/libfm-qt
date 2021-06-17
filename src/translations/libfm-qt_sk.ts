@@ -869,12 +869,12 @@ Prajete si ich vymazať natrvalo?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="162"/>
         <source>View folder content</source>
-        <translation>Zobraziť obsah priečinka</translation>
+        <translation>Zobrazenie obsahu priečinka</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="163"/>
         <source>View and modify folder content</source>
-        <translation>Zobraziť a zmeniť obsah priečinka</translation>
+        <translation>Zobrazenie a zmena obsahu priečinka</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="167"/>
