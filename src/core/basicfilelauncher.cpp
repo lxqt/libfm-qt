@@ -218,7 +218,9 @@ bool BasicFileLauncher::launchWithApp(GAppInfo* app, const FilePathList& paths, 
     }
     uris = g_list_reverse(uris);
     GErrorPtr err;
-    bool ret = bool(g_app_info_launch_uris(app, uris, ctx, &err));
+    // don't call g_app_info_launch_uris(app, uris, ctx, &err) because
+    // it uses the hard-coded terminal list of GLib -> gdesktopappinfo.c
+    bool ret = bool(fm_app_info_launch_uris(app, uris, ctx, &err));
     g_list_free_full(uris, g_free);
     if(!ret) {
         // FIXME: show error for all files
@@ -300,21 +302,7 @@ bool BasicFileLauncher::launchDesktopEntry(const char *desktopEntryName, const F
        it cannot be launched in fact */
 
     if(app) {
-        // don't call launchWithApp() because it calls g_app_info_launch_uris(),
-        // which uses the hard-coded terminal list of GLib -> gdesktopappinfo.c
-        GList* uris = nullptr;
-        for(auto& path : paths) {
-            auto uri = path.uri();
-            uris = g_list_prepend(uris, uri.release());
-        }
-        uris = g_list_reverse(uris);
-        GErrorPtr err;
-        ret = bool(fm_app_info_launch_uris(app, uris, ctx, &err));
-        g_list_free_full(uris, g_free);
-        if(!ret) {
-            // FIXME: show error for all files
-            showError(ctx, err, paths.empty() ? FilePath{} : paths[0]);
-        }
+        ret = launchWithApp(app, paths, ctx);
         g_object_unref(app);
     }
     else {
