@@ -642,9 +642,9 @@ Voulez-vous le remplacer ?</translation>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="126"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform>Voulez vous ouvrir ce %1 fichier ?</numerusform>
-            <numerusform>Voulez vous ouvrir ces %1 fichiers ?</numerusform>
+        <translation>
+            <numerusform>Voulez-vous ouvrir ce %1 fichier ?</numerusform>
+            <numerusform>Voulez-vous ouvrir ces %1 fichiers ?</numerusform>
         </translation>
     </message>
     <message>
@@ -1372,7 +1372,7 @@ Modification : %2</translation>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished">Lister</translation>
+        <translation>Liste</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
