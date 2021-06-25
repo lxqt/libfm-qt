@@ -48,7 +48,7 @@ enum {
     ACCESS_FORBID
 };
 
-FilePropsDialog::FilePropsDialog(Fm::FileInfoList files, QWidget* parent, Qt::WindowFlags f):
+FilePropsDialog::FilePropsDialog(Fm::FileInfoList files, QWidget* parent, Qt::WindowFlags f, bool parentDeviceUsage):
     QDialog(parent, f),
     fileInfos_{std::move(files)},
     fileInfo{fileInfos_.front()},
@@ -66,7 +66,7 @@ FilePropsDialog::FilePropsDialog(Fm::FileInfoList files, QWidget* parent, Qt::Wi
 
     totalSizeJob = new Fm::TotalSizeJob(fileInfos_.paths(), Fm::TotalSizeJob::DEFAULT);
 
-    initGeneralPage();
+    initGeneralPage(parentDeviceUsage);
     initPermissionsPage();
 
     if(!singleFile || !hasDir) { // not a single dir
@@ -251,7 +251,7 @@ void FilePropsDialog::initPermissionsPage() {
     ui->executable->setCheckState(execCheckState);
 }
 
-void FilePropsDialog::initGeneralPage() {
+void FilePropsDialog::initGeneralPage(bool parentDeviceUsage) {
     // update UI
     if(singleType) { // all files are of the same mime-type
         std::shared_ptr<const Fm::IconInfo> icon;
@@ -343,18 +343,20 @@ void FilePropsDialog::initGeneralPage() {
     // disk usage
     bool canShowDeviceUsage = false;
     if(fileInfo->dirPath()) { // skip directories like "search:///"
-        auto folder = Fm::Folder::fromPath(fileInfo->dirPath());
-        if(!folder->isLoaded() && fileInfo->isDir()) { // an empty space is right clicked
-            folder = Fm::Folder::fromPath(fileInfo->path());
+        auto folder = Fm::Folder::findByPath(fileInfo->dirPath());
+        if((!parentDeviceUsage || folder == nullptr) && fileInfo->isDir()) { // an empty space is right clicked
+            folder = Fm::Folder::findByPath(fileInfo->path());
         }
-        guint64 free, total;
-        if(folder->getFilesystemInfo(&total, &free)) {
-            canShowDeviceUsage = true;
-            ui->progressBar->setValue(qRound(static_cast<qreal>((total - free) * 100) / static_cast<qreal>(total)));
-            ui->progressBar->setFormat(tr("%p% used"));
-            ui->spaceLabel->setText(tr("%1 Free of %2")
-                                    .arg(formatFileSize(free, false),
-                                         formatFileSize(total, false)));
+        if(folder != nullptr) {
+            guint64 free, total;
+            if(folder->getFilesystemInfo(&total, &free)) {
+                canShowDeviceUsage = true;
+                ui->progressBar->setValue(qRound(static_cast<qreal>((total - free) * 100) / static_cast<qreal>(total)));
+                ui->progressBar->setFormat(tr("%p% used"));
+                ui->spaceLabel->setText(tr("%1 Free of %2")
+                                        .arg(formatFileSize(free, false),
+                                             formatFileSize(total, false)));
+            }
         }
     }
     if(!canShowDeviceUsage) {

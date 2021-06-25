@@ -38,7 +38,7 @@ class LIBFM_QT_API FilePropsDialog : public QDialog {
     Q_OBJECT
 
 public:
-    explicit FilePropsDialog(Fm::FileInfoList files, QWidget* parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
+    explicit FilePropsDialog(Fm::FileInfoList files, QWidget* parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags(), bool parentDeviceUsage = true);
     ~FilePropsDialog() override;
 
     void accept() override;
@@ -46,7 +46,11 @@ public:
     static FilePropsDialog* showForFile(std::shared_ptr<const Fm::FileInfo> file, QWidget* parent = nullptr) {
         Fm::FileInfoList files;
         files.push_back(std::move(file));
-        FilePropsDialog* dlg = showForFiles(files, parent);
+        // NOTE: showForFile() is usually called to show the properties of the current folder,
+        // whose device usage may be different from that of its parent folder (as with "/tmp").
+        // But that will be checked later, in FilePropsDialog::initGeneralPage().
+        FilePropsDialog* dlg = new FilePropsDialog(std::move(files), parent, Qt::WindowFlags(), false);
+        dlg->show();
         return dlg;
     }
 
@@ -57,7 +61,7 @@ public:
     }
 
 private:
-    void initGeneralPage();
+    void initGeneralPage(bool parentDeviceUsage);
     void initApplications();
     void initPermissionsPage();
     void initOwner();
