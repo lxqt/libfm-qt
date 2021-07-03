@@ -433,7 +433,7 @@ void FileInfo::setTrustable(bool trust) const {
     if(!isExecutableType()) {
         return; // METADATA_TRUST is only for executables
     }
-    GObjectPtr<GFileInfo> info {g_file_info_new()}; // used to set only this attribute
+    GFileInfoPtr info{g_file_info_new(), false}; // used to set only this attribute
     if(trust) {
         g_file_info_set_attribute_string(info.get(), METADATA_TRUST, "true");
         g_file_info_set_attribute_string(inf_.get(), METADATA_TRUST, "true");
