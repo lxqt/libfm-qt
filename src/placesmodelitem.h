@@ -86,6 +86,8 @@ private:
 class LIBFM_QT_API PlacesModelVolumeItem : public PlacesModelItem {
 public:
     PlacesModelVolumeItem(GVolume* volume);
+    ~PlacesModelVolumeItem() override;
+
     bool isMounted();
     bool canEject() {
         return g_volume_can_eject(volume_);
@@ -104,6 +106,8 @@ private:
 class LIBFM_QT_API PlacesModelMountItem : public PlacesModelItem {
 public:
     PlacesModelMountItem(GMount* mount);
+    ~PlacesModelMountItem() override;
+
     int type() const override {
         return Mount;
     }

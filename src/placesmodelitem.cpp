@@ -98,6 +98,10 @@ PlacesModelVolumeItem::PlacesModelVolumeItem(GVolume* volume):
     setEditable(false);
 }
 
+PlacesModelVolumeItem::~PlacesModelVolumeItem() {
+    g_object_unref(volume_);
+}
+
 void PlacesModelVolumeItem::update() {
     // set title
     char* volumeName = g_volume_get_name(volume_);
@@ -149,9 +153,13 @@ bool PlacesModelVolumeItem::isMounted() {
 
 PlacesModelMountItem::PlacesModelMountItem(GMount* mount):
     PlacesModelItem(),
-    mount_(reinterpret_cast<GMount*>(mount)) {
+    mount_(reinterpret_cast<GMount*>(g_object_ref(mount))) {
     update();
     setEditable(false);
+}
+
+PlacesModelMountItem::~PlacesModelMountItem() {
+    g_object_unref(mount_);
 }
 
 void PlacesModelMountItem::update() {
