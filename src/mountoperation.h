@@ -26,6 +26,7 @@
 #include <QDialog>
 #include <gio/gio.h>
 #include <QPointer>
+#include "mountoperationpassworddialog_p.h"
 
 #include "core/filepath.h"
 
@@ -57,6 +58,10 @@ public:
     void mountMountable(const Fm::FilePath& mountable);
 
     void mount(GVolume* volume) {
+        if(!volume_) {
+            // see MountOperation::onAskPassword() for the reason
+            volume_ = reinterpret_cast<GVolume*>(g_object_ref(volume));
+        }
         g_volume_mount(volume, G_MOUNT_MOUNT_NONE, op, cancellable_, (GAsyncReadyCallback)onMountVolumeFinished, new QPointer<MountOperation>(this));
     }
 
@@ -112,7 +117,7 @@ public:
     }
 
     GMountOperation* mountOperation() {
-        return op;
+        return tmpOp_ ? tmpOp_ : op;
     }
 
     void cancel() {
@@ -169,6 +174,11 @@ private:
     bool interactive_;
     QEventLoop* eventLoop;
     bool autoDestroy_;
+
+    // only for a workaround; see MountOperation::onAskPassword()
+    GVolume* volume_;
+    GMountOperation* tmpOp_;
+    QPointer<MountOperationPasswordDialog> dlg_;
 };
 
 }
