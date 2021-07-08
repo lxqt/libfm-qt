@@ -898,7 +898,7 @@ Voulez-vous les supprimer à la place ?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished">N/A</translation>
+        <translation>N/A</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
