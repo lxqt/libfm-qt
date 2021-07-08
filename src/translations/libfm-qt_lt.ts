@@ -637,15 +637,15 @@ Ar norite jį pakeisti?</translation>
     <message>
         <location filename="../filemenu.cpp" line="125"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Daug failų</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="126"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ar norite atverti šį %1 failą?</numerusform>
+            <numerusform>Ar norite atverti šiuos %1 failus?</numerusform>
+            <numerusform>Ar norite atverti šiuos %1 failų?</numerusform>
         </translation>
     </message>
     <message>
@@ -692,17 +692,17 @@ Ar norite jį pakeisti?</translation>
     <message>
         <location filename="../filemenu.cpp" line="247"/>
         <source>Mount</source>
-        <translation type="unfinished">Prijungti</translation>
+        <translation>Prijungti</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="261"/>
         <source>Unmount</source>
-        <translation type="unfinished">Atjungti</translation>
+        <translation>Atjungti</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Eject</source>
-        <translation type="unfinished">Išstumti</translation>
+        <translation>Išstumti</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="296"/>
@@ -769,19 +769,19 @@ Ar norite vietoj to, juos ištrinti?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ar norite ištrinti pažymėtą failą?</numerusform>
+            <numerusform>Ar norite ištrinti pažymėtus failus?</numerusform>
+            <numerusform>Ar norite ištrinti pažymėtus failus?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ar norite perkelti pažymėtą failą į šiukšlinę?</numerusform>
+            <numerusform>Ar norite perkelti pažymėtus failus į šiukšlinę?</numerusform>
+            <numerusform>Ar norite perkelti pažymėtus failus į šiukšlinę?</numerusform>
         </translation>
     </message>
 </context>
@@ -901,7 +901,7 @@ Ar norite vietoj to, juos ištrinti?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>–</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1044,7 +1044,7 @@ Ar norite vietoj to, juos ištrinti?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="176"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagal sukūrimo laiką</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="179"/>
@@ -1127,12 +1127,12 @@ Ar norite vietoj to, juos ištrinti?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>–</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sukurtas:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
@@ -1167,7 +1167,7 @@ Ar norite vietoj to, juos ištrinti?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Sukurtas</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
@@ -1530,7 +1530,7 @@ Pakeista: %2</translation>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>–</translation>
     </message>
 </context>
 <context>
