@@ -24,6 +24,7 @@
 #include "filepropsdialog.h"
 #include "folderview.h"
 #include "utilities.h"
+#include "fileoperation.h"
 #include <cstring> // for memset
 #include <QDebug>
 #include "customaction_p.h"
@@ -44,7 +45,21 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
     ProxyFolderModel* model = view_->model();
 
     bool insideTrash(view_->path() && view_->path().hasUriScheme("trash"));
-    if(!insideTrash) {
+    if(insideTrash) {
+        if(auto folder = view_->folder()) {
+            if(!folder->isEmpty()) {
+                auto trashAction = new QAction(tr("Empty Trash"), this);
+                addAction(trashAction);
+                connect(trashAction, &QAction::triggered, []() {
+                    Fm::FilePathList files;
+                    files.push_back(Fm::FilePath::fromUri("trash:///"));
+                    Fm::FileOperation::deleteFiles(std::move(files), true);
+                });
+                addSeparator();
+            }
+        }
+    }
+    else {
         createAction_ = new QAction(tr("Create &New"), this);
         addAction(createAction_);
         createAction_->setMenu(new CreateNewMenu(view_, view_->path(), this));
