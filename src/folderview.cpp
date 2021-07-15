@@ -1545,7 +1545,19 @@ void FolderView::childDropEvent(QDropEvent* e) {
     if(e->keyboardModifiers() == Qt::NoModifier) {
         // if no key modifiers are used, popup a menu
         // to ask the user for the action he/she wants to perform.
-        Qt::DropAction action = DndActionMenu::askUser(e->possibleActions(), QCursor::pos());
+        Qt::DropActions actions = Qt::IgnoreAction;
+        std::shared_ptr<const Fm::FileInfo> info = nullptr;
+        if(model_) {
+            QModelIndex index = view->indexAt(e->pos());
+            info = model_->fileInfoFromIndex(index);
+        }
+        if(!info || !info->isDir()) {
+            info = folderInfo();
+        }
+        if(info && info->isWritableDirectory() && info->isWritable()) {
+            actions = e->possibleActions();
+        }
+        Qt::DropAction action = DndActionMenu::askUser(actions, QCursor::pos());
         e->setDropAction(action);
     }
 }
