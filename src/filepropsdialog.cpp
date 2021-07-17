@@ -343,18 +343,40 @@ void FilePropsDialog::initGeneralPage() {
     // disk usage
     bool canShowDeviceUsage = false;
     if(fileInfo->dirPath()) { // skip directories like "search:///"
-        auto folder = Fm::Folder::fromPath(fileInfo->dirPath());
-        if(!folder->isLoaded() && fileInfo->isDir()) { // an empty space is right clicked
-            folder = Fm::Folder::fromPath(fileInfo->path());
+        auto folder = Fm::Folder::findByPath(fileInfo->dirPath());
+
+        // find out whether an empty space inside a folder is right clicked
+        if(singleFile && fileInfo->isDir()) {
+            if(folder == nullptr) {
+                // the parent is not open; we are inside the folder
+                folder = Fm::Folder::findByPath(fileInfo->path());
+            }
+            else {
+                // the parent is open but if its file info of the current path
+                // is different from "fileInfo", we are inside the folder
+                auto path = fileInfo->path();
+                auto files =  folder->files();
+                for(auto& file: files) {
+                    if(file->path() == path) {
+                        if(file != fileInfo) {
+                            folder = Fm::Folder::findByPath(fileInfo->path());
+                        }
+                        break;
+                    }
+                }
+            }
         }
-        guint64 free, total;
-        if(folder->getFilesystemInfo(&total, &free)) {
-            canShowDeviceUsage = true;
-            ui->progressBar->setValue(qRound(static_cast<qreal>((total - free) * 100) / static_cast<qreal>(total)));
-            ui->progressBar->setFormat(tr("%p% used"));
-            ui->spaceLabel->setText(tr("%1 Free of %2")
-                                    .arg(formatFileSize(free, false),
-                                         formatFileSize(total, false)));
+
+        if(folder != nullptr) {
+            guint64 free, total;
+            if(folder->getFilesystemInfo(&total, &free)) {
+                canShowDeviceUsage = true;
+                ui->progressBar->setValue(qRound(static_cast<qreal>((total - free) * 100) / static_cast<qreal>(total)));
+                ui->progressBar->setFormat(tr("%p% used"));
+                ui->spaceLabel->setText(tr("%1 Free of %2")
+                                        .arg(formatFileSize(free, false),
+                                             formatFileSize(total, false)));
+            }
         }
     }
     if(!canShowDeviceUsage) {
