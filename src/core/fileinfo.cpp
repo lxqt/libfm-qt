@@ -448,6 +448,43 @@ void FileInfo::setTrustable(bool trust) const {
                                     nullptr, nullptr);
 }
 
+void FileInfo::setEmblem(const QString& emblmeName, bool setGFileEmblem) const {
+    QByteArray str;
+    if(!emblmeName.isEmpty()) {
+        str = emblmeName.toLocal8Bit();
+        char* stringv[] = {str.data(), nullptr};
+        g_file_info_set_attribute_stringv(inf_.get(), "metadata::emblems", stringv);
+    }
+    else {
+        g_file_info_set_attribute(inf_.get(), "metadata::emblems", G_FILE_ATTRIBUTE_TYPE_INVALID, nullptr);
+    }
+    // update current emblems
+    emblems_.clear();
+    if(g_file_info_get_attribute_type(inf_.get(), "metadata::emblems") == G_FILE_ATTRIBUTE_TYPE_STRINGV) {
+        auto emblem_names = g_file_info_get_attribute_stringv(inf_.get(), "metadata::emblems");
+        if(emblem_names) {
+            auto n_emblems = g_strv_length(emblem_names);
+            for(int i = n_emblems - 1; i >= 0; --i) {
+                emblems_.emplace_front(Fm::IconInfo::fromName(emblem_names[i]));
+            }
+        }
+    }
+
+    if(setGFileEmblem) { // really give the emblem to GFile
+        GFileInfoPtr info{g_file_info_new(), false};
+        if(!str.isEmpty()) {
+            char* stringv[] = {str.data(), nullptr};
+            g_file_info_set_attribute_stringv(info.get(), "metadata::emblems", stringv);
+        }
+        else {
+            g_file_info_set_attribute(info.get(), "metadata::emblems", G_FILE_ATTRIBUTE_TYPE_INVALID, nullptr);
+        }
+        g_file_set_attributes_from_info(path().gfile().get(),
+                                        info.get(),
+                                        G_FILE_QUERY_INFO_NONE,
+                                        nullptr, nullptr);
+    }
+}
 
 bool FileInfoList::isSameType() const {
     if(!empty()) {

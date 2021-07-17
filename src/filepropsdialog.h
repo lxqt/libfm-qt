@@ -66,6 +66,8 @@ private Q_SLOTS:
     void onDeepCountJobFinished();
     void onFileSizeTimerTimeout();
     void onIconButtonclicked();
+    void onEmblemButtonclicked();
+    void onClearEmblemButtonclicked();
 
 private:
     Ui::FilePropsDialog* ui;

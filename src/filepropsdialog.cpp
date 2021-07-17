@@ -329,6 +329,36 @@ void FilePropsDialog::initGeneralPage() {
         ui->fileName->setEnabled(false);
     }
 
+    // (common) emblem
+    connect(ui->emblemButton, &QAbstractButton::clicked, this, &FilePropsDialog::onEmblemButtonclicked);
+    connect(ui->clearEmblemButton, &QAbstractButton::clicked, this, &FilePropsDialog::onClearEmblemButtonclicked);
+    auto emblems = fileInfo->emblems();
+    if(!emblems.empty()) {
+        auto emblemIcon = emblems.front()->qicon();
+        if(!emblemIcon.isNull()) {
+            bool hasCommonEmblem(true);
+            if(!singleFile) {
+                auto emblemName = emblemIcon.name();
+                for(auto& fi: fileInfos_) {
+                    emblems = fi->emblems();
+                    if(!emblems.empty()) {
+                        auto icn = emblems.front()->qicon();
+                        if(!icn.isNull()) {
+                            if(icn.name() == emblemName) {
+                                continue;
+                            }
+                        }
+                    }
+                    hasCommonEmblem = false;
+                    break;
+                }
+            }
+            if(hasCommonEmblem) {
+                ui->emblemButton->setIcon(emblemIcon);
+            }
+        }
+    }
+
     initApplications(); // init applications combo box
 
     // calculate total file sizes
@@ -474,6 +504,61 @@ void FilePropsDialog::onIconButtonclicked() {
     }
 }
 
+void FilePropsDialog::onEmblemButtonclicked() {
+    QString iconDir;
+    QString iconThemeName = QIcon::themeName();
+    QStringList icons = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
+                                                  QStringLiteral("icons"),
+                                                  QStandardPaths::LocateDirectory);
+    for (QStringList::ConstIterator it = icons.constBegin(); it != icons.constEnd(); ++it) {
+        QString iconThemeFolder = *it + QLatin1String("/") + iconThemeName;
+        if (QDir(iconThemeFolder).exists() && QFileInfo(iconThemeFolder).permission(QFileDevice::ReadUser)) {
+            // give priority to the "emblems" folder
+            const QString emblems = iconThemeFolder + QLatin1String("/emblems");
+            if (QDir(emblems).exists() && QFileInfo(emblems).permission(QFileDevice::ReadUser)) {
+                iconDir = emblems;
+            }
+            else {
+                iconDir = iconThemeFolder;
+            }
+            break;
+        }
+    }
+    if(iconDir.isEmpty()) {
+        iconDir = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
+                                         QStringLiteral("icons"),
+                                         QStandardPaths::LocateDirectory);
+        if(iconDir.isEmpty()) {
+            return;
+        }
+    }
+    const QString iconPath = QFileDialog::getOpenFileName(this, tr("Select an icon"),
+                                                          iconDir,
+                                                          tr("Images (*.png *.xpm *.svg *.svgz )"));
+    if(!iconPath.isEmpty()) {
+        QStringList parts = iconPath.split(QStringLiteral("/"), Qt::SkipEmptyParts);
+        if(!parts.isEmpty()) {
+            QString iconName = parts.at(parts.count() - 1);
+            int ln = iconName.lastIndexOf(QLatin1String("."));
+            if(ln > -1) {
+                iconName.remove(ln, iconName.length() - ln);
+                auto emblemIcon = QIcon::fromTheme(iconName);
+                ui->emblemButton->setIcon(emblemIcon);
+                // to show that the emblem should be set
+                ui->emblemButton->setText(QString());
+                ui->emblemButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+            }
+        }
+    }
+}
+
+void FilePropsDialog::onClearEmblemButtonclicked() {
+    ui->emblemButton->setText(QStringLiteral("..."));
+    // to show that the emblem should be removed
+    ui->emblemButton->setIcon(QIcon());
+    ui->emblemButton->setToolButtonStyle(Qt::ToolButtonTextOnly);
+}
+
 void FilePropsDialog::accept() {
 
     // applications
@@ -605,13 +690,57 @@ void FilePropsDialog::accept() {
                 g_key_file_free(kf);
             }
         }
+        // FIXME: Reloading folders is an ugly solution but,
+        // for now, there is no other way of updating the icon.
         if(reloadNeeded) {
-            // since there can be only one parent dir, only one reload is needed
-            auto parent = fileInfo->path().parent();
-            if(parent.isValid()) {
-                auto folder = Fm::Folder::fromPath(parent);
-                if(folder->isLoaded()) {
+            auto folder = Fm::Folder::findByPath(fileInfo->path());
+            if(folder != nullptr) {
+                folder->reload();
+            }
+            if(fileInfo->dirPath()) {
+                folder = Fm::Folder::findByPath(fileInfo->dirPath());
+                if(folder != nullptr) {
                     folder->reload();
+                }
+            }
+        }
+    }
+
+    // Emblem icon
+    QString iconNamne;
+    if(ui->emblemButton->toolButtonStyle() == Qt::ToolButtonTextBesideIcon
+       && !ui->emblemButton->icon().isNull()) { // emblem is set
+        iconNamne = ui->emblemButton->icon().name();
+    }
+    if(ui->emblemButton->toolButtonStyle() == Qt::ToolButtonTextOnly // emblem is removed
+       || !iconNamne.isEmpty()) { // emblem is set
+
+        // NOTE: If a folder and its parent are both open (e.g., in different tabs),
+        // we sould set the emblem for two file infos corresponding to the current path;
+        // otherwise, the emblem state will not be updated everywhere without reloading.
+
+        for(auto& fi: fileInfos_) {
+            fi->setEmblem(iconNamne);
+            if(fi->isDir()) {
+                auto folder = Fm::Folder::findByPath(fi->path());
+                if(folder != nullptr && folder->isValid() // the folder itself is open
+                   && folder->info() != fi) {
+                    folder->info()->setEmblem(iconNamne, false);
+                }
+            }
+        }
+        if(singleFile && fileInfo->dirPath() && fileInfo->isDir()) {
+            auto parent = Fm::Folder::findByPath(fileInfo->dirPath());
+            if(parent != nullptr) { // the parent folder is open
+                auto path = fileInfo->path();
+                auto files =  parent->files();
+                for(auto& file: files) {
+                    if(file->path() == path) {
+                        if(file != fileInfo) { // an empty space inside the folder was right clicked
+                            file->setEmblem(iconNamne, false);
+                        }
+                        break;
+                    }
                 }
             }
         }
