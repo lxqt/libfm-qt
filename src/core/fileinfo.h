@@ -230,6 +230,8 @@ public:
         return emblems_;
     }
 
+    void setEmblem(const QString& emblmeName, bool setGFileEmblem = true) const;
+
     bool isTrustable() const;
 
     void setTrustable(bool trust) const;
@@ -263,7 +265,7 @@ private:
 
     std::shared_ptr<const MimeType> mimeType_;
     std::shared_ptr<const IconInfo> icon_;
-    std::forward_list<std::shared_ptr<const IconInfo>> emblems_;
+    mutable std::forward_list<std::shared_ptr<const IconInfo>> emblems_;
 
     std::string target_; /* target of shortcut or mountable. */
 
