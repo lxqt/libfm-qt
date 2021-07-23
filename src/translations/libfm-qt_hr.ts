@@ -242,88 +242,103 @@ za ovu vrstu datoteka</translation>
         <translation>Sadrži:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="371"/>
+        <location filename="../file-props.ui" line="330"/>
+        <source>Emblem:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../file-props.ui" line="342"/>
+        <source>Choose emblem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../file-props.ui" line="361"/>
+        <source>Clear emblem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../file-props.ui" line="414"/>
         <source>Device Usage:</source>
         <translation>Upotreba uređaja:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="381"/>
+        <location filename="../file-props.ui" line="424"/>
         <source>Permissions</source>
         <translation>Dozvole</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="396"/>
+        <location filename="../file-props.ui" line="439"/>
         <source>Ownership</source>
         <translation>Vlasništvo</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="420"/>
-        <location filename="../file-props.ui" line="485"/>
-        <location filename="../file-props.ui" line="599"/>
+        <location filename="../file-props.ui" line="463"/>
+        <location filename="../file-props.ui" line="528"/>
+        <location filename="../file-props.ui" line="642"/>
         <source>Group:</source>
         <translation>Grupa:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="433"/>
-        <location filename="../file-props.ui" line="468"/>
-        <location filename="../file-props.ui" line="547"/>
+        <location filename="../file-props.ui" line="476"/>
+        <location filename="../file-props.ui" line="511"/>
+        <location filename="../file-props.ui" line="590"/>
         <source>Owner:</source>
         <translation>Vlasnik:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="449"/>
+        <location filename="../file-props.ui" line="492"/>
         <source>Access Control</source>
         <translation>Kotrola pristupa</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="502"/>
-        <location filename="../file-props.ui" line="651"/>
+        <location filename="../file-props.ui" line="545"/>
+        <location filename="../file-props.ui" line="694"/>
         <source>Other:</source>
         <translation>Drugo:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="519"/>
+        <location filename="../file-props.ui" line="562"/>
         <source>Make the file executable</source>
         <translation>Postavi datoteku kao izvršavajuću</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="560"/>
-        <location filename="../file-props.ui" line="612"/>
-        <location filename="../file-props.ui" line="664"/>
+        <location filename="../file-props.ui" line="603"/>
+        <location filename="../file-props.ui" line="655"/>
+        <location filename="../file-props.ui" line="707"/>
         <source>Read</source>
         <translation>Čitanje</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="573"/>
-        <location filename="../file-props.ui" line="625"/>
-        <location filename="../file-props.ui" line="677"/>
+        <location filename="../file-props.ui" line="616"/>
+        <location filename="../file-props.ui" line="668"/>
+        <location filename="../file-props.ui" line="720"/>
         <source>Write</source>
         <translation>Pisanje</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="586"/>
-        <location filename="../file-props.ui" line="638"/>
-        <location filename="../file-props.ui" line="690"/>
+        <location filename="../file-props.ui" line="629"/>
+        <location filename="../file-props.ui" line="681"/>
+        <location filename="../file-props.ui" line="733"/>
         <source>Execute</source>
         <translation>Izvršavanje</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="699"/>
+        <location filename="../file-props.ui" line="742"/>
         <source>Sticky</source>
         <translation>Sticky bit</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="706"/>
+        <location filename="../file-props.ui" line="749"/>
         <source>SetUID</source>
         <translation>SetUID bit</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="713"/>
+        <location filename="../file-props.ui" line="756"/>
         <source>SetGID</source>
         <translation>SetGID bit</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="749"/>
+        <location filename="../file-props.ui" line="792"/>
         <source>Advanced Mode</source>
         <translation>Napredni modus</translation>
     </message>
@@ -416,9 +431,14 @@ za ovu vrstu datoteka</translation>
         <translation>Stvori poveznicu ovdje</translation>
     </message>
     <message>
-        <location filename="../dndactionmenu.cpp" line="41"/>
+        <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cancel</source>
         <translation>Odustani</translation>
+    </message>
+    <message>
+        <location filename="../dndactionmenu.cpp" line="42"/>
+        <source>Cannot drop here</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -547,52 +567,52 @@ What do you want to do with it?</source>
         <translation>Opcije</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="548"/>
-        <location filename="../filedialog.cpp" line="943"/>
+        <location filename="../filedialog.cpp" line="540"/>
+        <location filename="../filedialog.cpp" line="935"/>
         <source>Error</source>
         <translation>Greška</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="548"/>
+        <location filename="../filedialog.cpp" line="540"/>
         <source>Please select a file</source>
         <translation>Odaberi jednu datoteku</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="590"/>
+        <location filename="../filedialog.cpp" line="582"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 već postoji.
 Želiš li je zamijeniti?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="913"/>
+        <location filename="../filedialog.cpp" line="905"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>Staza „%1” ne postoji</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="927"/>
+        <location filename="../filedialog.cpp" line="919"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>„%1” nije mapa</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="933"/>
+        <location filename="../filedialog.cpp" line="925"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>„%1” nije datoteka</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1085"/>
-        <location filename="../filedialog.cpp" line="1193"/>
+        <location filename="../filedialog.cpp" line="1077"/>
+        <location filename="../filedialog.cpp" line="1185"/>
         <source>&amp;Open</source>
         <translation>&amp;Otvori</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1088"/>
-        <location filename="../filedialog.cpp" line="1201"/>
+        <location filename="../filedialog.cpp" line="1080"/>
+        <location filename="../filedialog.cpp" line="1193"/>
         <source>&amp;Save</source>
         <translation>&amp;Spremi</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1095"/>
+        <location filename="../filedialog.cpp" line="1087"/>
         <source>All Files (*)</source>
         <translation>Sve datoteke (*)</translation>
     </message>
@@ -600,12 +620,12 @@ Do you want to replace it?</source>
 <context>
     <name>Fm::FileDialogHelper</name>
     <message>
-        <location filename="../filedialoghelper.cpp" line="140"/>
+        <location filename="../filedialoghelper.cpp" line="138"/>
         <source>Open File</source>
         <translation>Otvori datoteku</translation>
     </message>
     <message>
-        <location filename="../filedialoghelper.cpp" line="141"/>
+        <location filename="../filedialoghelper.cpp" line="139"/>
         <source>Save File</source>
         <translation>Spremi datoteku</translation>
     </message>
@@ -631,17 +651,12 @@ Do you want to replace it?</source>
         <translation>Otvori s programom …</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="119"/>
-        <source>Default Applications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../filemenu.cpp" line="125"/>
+        <location filename="../filemenu.cpp" line="353"/>
         <source>Many files</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../filemenu.cpp" line="126"/>
+        <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -650,99 +665,99 @@ Do you want to replace it?</source>
         </translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="139"/>
+        <location filename="../filemenu.cpp" line="118"/>
         <source>Other Applications</source>
         <translation>Drugi programi</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="146"/>
+        <location filename="../filemenu.cpp" line="125"/>
         <source>Create &amp;New</source>
         <translation>Stvori &amp;novu</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="165"/>
+        <location filename="../filemenu.cpp" line="144"/>
         <source>&amp;Restore</source>
         <translation>&amp;Obnovi</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="175"/>
+        <location filename="../filemenu.cpp" line="154"/>
         <source>Cut</source>
         <translation>Izreži</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="179"/>
+        <location filename="../filemenu.cpp" line="158"/>
         <source>Copy</source>
         <translation>Kopiraj</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="183"/>
+        <location filename="../filemenu.cpp" line="162"/>
         <source>Paste</source>
         <translation>Zalijepi</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="187"/>
-        <location filename="../filemenu.cpp" line="485"/>
+        <location filename="../filemenu.cpp" line="166"/>
+        <location filename="../filemenu.cpp" line="478"/>
         <source>&amp;Move to Trash</source>
         <translation>Pre&amp;mjesti u smeće</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="191"/>
+        <location filename="../filemenu.cpp" line="170"/>
         <source>Rename</source>
         <translation>Preimenuj</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="247"/>
+        <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
         <translation type="unfinished">Pokreni</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="261"/>
+        <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
         <translation type="unfinished">Zaustavi</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="275"/>
+        <location filename="../filemenu.cpp" line="254"/>
         <source>Eject</source>
         <translation type="unfinished">Izbaci</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="296"/>
+        <location filename="../filemenu.cpp" line="275"/>
         <source>Extract to...</source>
         <translation>Otpakiraj u …</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="304"/>
+        <location filename="../filemenu.cpp" line="283"/>
         <source>Extract Here</source>
         <translation>Otpakiraj ovdje</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="311"/>
+        <location filename="../filemenu.cpp" line="290"/>
         <source>Compress</source>
         <translation>Komprimiraj</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="320"/>
+        <location filename="../filemenu.cpp" line="299"/>
         <source>Properties</source>
         <translation>Svojstva</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="331"/>
+        <location filename="../filemenu.cpp" line="310"/>
         <source>Trust selected executables</source>
         <translation>Vjeruj odabranim izvršnim datotekama</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="332"/>
+        <location filename="../filemenu.cpp" line="311"/>
         <source>Trust this executable</source>
         <translation>Vjeruj ovoj izvršnoj datoteci</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="420"/>
+        <location filename="../filemenu.cpp" line="413"/>
         <source>Output</source>
         <translation>Rezultat</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="169"/>
-        <location filename="../filemenu.cpp" line="485"/>
+        <location filename="../filemenu.cpp" line="148"/>
+        <location filename="../filemenu.cpp" line="478"/>
         <source>&amp;Delete</source>
         <translation>&amp;Ukloni</translation>
     </message>
@@ -859,8 +874,8 @@ Do you want to delete them instead?</source>
         <translation>Obnavljanje sljedećih datoteka iz smeća:</translation>
     </message>
     <message>
-        <location filename="../fileoperationdialog.cpp" line="146"/>
-        <location filename="../fileoperationdialog.cpp" line="152"/>
+        <location filename="../fileoperationdialog.cpp" line="149"/>
+        <location filename="../fileoperationdialog.cpp" line="155"/>
         <source>Error</source>
         <translation>Greška</translation>
     </message>
@@ -910,27 +925,27 @@ Do you want to delete them instead?</source>
         <translation>Višestruke datoteke</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="354"/>
+        <location filename="../filepropsdialog.cpp" line="405"/>
         <source>%p% used</source>
         <translation>%p% korišteno</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="355"/>
+        <location filename="../filepropsdialog.cpp" line="406"/>
         <source>%1 Free of %2</source>
         <translation>%1 slobodno od %2</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="400"/>
+        <location filename="../filepropsdialog.cpp" line="452"/>
         <source>no file</source>
         <translation>nema datoteke</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="402"/>
+        <location filename="../filepropsdialog.cpp" line="454"/>
         <source>one file</source>
         <translation>jedna datoteka</translation>
     </message>
     <message numerus="yes">
-        <location filename="../filepropsdialog.cpp" line="404"/>
+        <location filename="../filepropsdialog.cpp" line="456"/>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln datoteka</numerusform>
@@ -939,22 +954,24 @@ Do you want to delete them instead?</source>
         </translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="438"/>
+        <location filename="../filepropsdialog.cpp" line="490"/>
+        <location filename="../filepropsdialog.cpp" line="535"/>
         <source>Select an icon</source>
         <translation>Odaberi ikonu</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="440"/>
+        <location filename="../filepropsdialog.cpp" line="492"/>
+        <location filename="../filepropsdialog.cpp" line="537"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
         <translation>Slike (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="540"/>
+        <location filename="../filepropsdialog.cpp" line="643"/>
         <source>Apply changes</source>
         <translation>Primijeni promjene</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="541"/>
+        <location filename="../filepropsdialog.cpp" line="644"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
         <translation>Želiš li rekurzivno primijeniti ove promjene na sve datoteke i podmape?</translation>
     </message>
@@ -993,107 +1010,112 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FolderMenu</name>
     <message>
-        <location filename="../foldermenu.cpp" line="48"/>
+        <location filename="../foldermenu.cpp" line="51"/>
+        <source>Empty Trash</source>
+        <translation type="unfinished">Isprazni smeće</translation>
+    </message>
+    <message>
+        <location filename="../foldermenu.cpp" line="63"/>
         <source>Create &amp;New</source>
         <translation>Stvori &amp;novu</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="53"/>
+        <location filename="../foldermenu.cpp" line="68"/>
         <source>&amp;Paste</source>
         <translation>&amp;Zalijepi</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="59"/>
+        <location filename="../foldermenu.cpp" line="74"/>
         <source>Select &amp;All</source>
         <translation>Odaberi &amp;sve</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="63"/>
+        <location filename="../foldermenu.cpp" line="78"/>
         <source>Invert Selection</source>
         <translation>Preokreni odabir</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="69"/>
+        <location filename="../foldermenu.cpp" line="84"/>
         <source>Sorting</source>
         <translation>Razvrstavanje</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="74"/>
+        <location filename="../foldermenu.cpp" line="89"/>
         <source>Show Hidden</source>
         <translation>Prikaži skrivene</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="109"/>
+        <location filename="../foldermenu.cpp" line="124"/>
         <source>Folder Pr&amp;operties</source>
         <translation>Sv&amp;ojstva mape</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="152"/>
+        <location filename="../foldermenu.cpp" line="167"/>
         <source>Output</source>
         <translation>Rezultat</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="174"/>
+        <location filename="../foldermenu.cpp" line="189"/>
         <source>By File Name</source>
         <translation>Prema imenu datoteka</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="175"/>
+        <location filename="../foldermenu.cpp" line="190"/>
         <source>By Modification Time</source>
         <translation>Prema vremenu promjena</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="176"/>
+        <location filename="../foldermenu.cpp" line="191"/>
         <source>By Creation Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="179"/>
+        <location filename="../foldermenu.cpp" line="194"/>
         <source>By Deletion Time</source>
         <translation>Prema vremenu uklanjanja</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="182"/>
+        <location filename="../foldermenu.cpp" line="197"/>
         <source>By File Size</source>
         <translation>Prema veličini datoteka</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="183"/>
+        <location filename="../foldermenu.cpp" line="198"/>
         <source>By File Type</source>
         <translation>Prema vrsti datoteka</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="184"/>
+        <location filename="../foldermenu.cpp" line="199"/>
         <source>By File Owner</source>
         <translation>Prema vlasniku datoteka</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="185"/>
+        <location filename="../foldermenu.cpp" line="200"/>
         <source>By File Group</source>
         <translation>Prema grupama datoteka</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="191"/>
+        <location filename="../foldermenu.cpp" line="206"/>
         <source>Ascending</source>
         <translation>Uzlazno</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="196"/>
+        <location filename="../foldermenu.cpp" line="211"/>
         <source>Descending</source>
         <translation>Silazno</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="213"/>
+        <location filename="../foldermenu.cpp" line="228"/>
         <source>Folder First</source>
         <translation>Najprije mape</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="221"/>
+        <location filename="../foldermenu.cpp" line="236"/>
         <source>Hidden Last</source>
         <translation>Skrivene na kraj</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="229"/>
+        <location filename="../foldermenu.cpp" line="244"/>
         <source>Case Sensitive</source>
         <translation>Razlikovanje velikih/malih slova</translation>
     </message>
@@ -1189,12 +1211,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="373"/>
+        <location filename="../folderview.cpp" line="386"/>
         <source>Auto-resize columns</source>
         <translation>AUtomatski promijeni veličinu stupaca</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="390"/>
+        <location filename="../folderview.cpp" line="403"/>
         <source>Visible Columns</source>
         <translation>Vidljivi stupci</translation>
     </message>
@@ -1371,6 +1393,11 @@ Promijenjeno: %2</translation>
         <source>&amp;Rename</source>
         <translation>Pre&amp;imenuj</translation>
     </message>
+    <message>
+        <location filename="../renamedialog.cpp" line="108"/>
+        <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Fm::SidePane</name>
@@ -1455,8 +1482,8 @@ Promijenjeno: %2</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="104"/>
-        <location filename="../filepropsdialog.cpp" line="565"/>
-        <location filename="../mountoperation.cpp" line="225"/>
+        <location filename="../filepropsdialog.cpp" line="668"/>
+        <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="147"/>
         <location filename="../utilities.cpp" line="283"/>
         <source>Error</source>
@@ -1498,7 +1525,7 @@ Promijenjeno: %2</translation>
         <translation>Upiši ime za novu %1:</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="582"/>
+        <location filename="../filepropsdialog.cpp" line="685"/>
         <source>Custom Icon Error</source>
         <translation>Greška prilagođene ikone</translation>
     </message>
@@ -1508,22 +1535,22 @@ Promijenjeno: %2</translation>
         <translation>Staza nije pokrenuta.</translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="331"/>
+        <location filename="../core/basicfilelauncher.cpp" line="319"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
         <translation>Neispravna .desktop datoteka: „%1”</translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="367"/>
+        <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
         <translation>Za pokretanje „%1” nije određen standardni program</translation>
     </message>
     <message>
-        <location filename="../core/basicfilelauncher.cpp" line="408"/>
+        <location filename="../core/basicfilelauncher.cpp" line="396"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
         <translation>Nije moguće postaviti radnu mapu „%1”: %2</translation>
     </message>
     <message>
-        <location filename="../placesmodelitem.cpp" line="123"/>
+        <location filename="../placesmodelitem.cpp" line="127"/>
         <source>Identifier: </source>
         <translation>Identifikator: </translation>
     </message>
