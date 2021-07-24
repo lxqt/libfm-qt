@@ -102,13 +102,29 @@ void FolderViewListView::mousePressEvent(QMouseEvent* event) {
     // use the selection corner only with the extended and multiple selection modes
     // and change the mode to multiple temporarily if it is extended
     QAbstractItemView::SelectionMode sm = selectionMode();
-    if(sm == QAbstractItemView::ExtendedSelection
-       && cursorOnSelectionCorner_ && event->button() == Qt::LeftButton) {
+    bool cornerSelection(cursorOnSelectionCorner_ && event->button() == Qt::LeftButton);
+    if(sm == QAbstractItemView::ExtendedSelection && cornerSelection) {
         setSelectionMode(QAbstractItemView::MultiSelection);
     }
     QListView::mousePressEvent(event);
     if (sm == QAbstractItemView::ExtendedSelection) {
-        setSelectionMode(sm); // restore the selection mode
+        if(cornerSelection) {
+            setSelectionMode(sm); // restore the selection mode
+        }
+        else {
+            // NOTE: Qt sometimes does not respect the current item sorting with a Shift selection.
+            // That seems like a problem in QListView. As a workaround, the selection is sorted here.
+            if(QApplication::keyboardModifiers() & Qt::ShiftModifier) {
+                auto selModel = selectionModel();
+                auto sel = selModel->selection();
+                if(!sel.isEmpty()) {
+                    std::sort(sel.begin(), sel.end(), [](QItemSelectionRange a, QItemSelectionRange b) {
+                        return a.top() < b.top();
+                    });
+                    selModel->select(sel, QItemSelectionModel::SelectCurrent);
+                }
+            }
+        }
     }
     static_cast<FolderView*>(parent())->childMousePressEvent(event);
 }
