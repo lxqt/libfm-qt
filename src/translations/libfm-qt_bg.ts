@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Създаден:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -243,17 +243,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Емблема:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Изберете Емблема</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Изчистете емблема</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -437,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Не може да бъде поставен тук</translation>
     </message>
 </context>
 <context>
@@ -652,14 +652,14 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Много файлове</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Желаете ли да отворите този %1 файл?</numerusform>
+            <numerusform>Желаете ли да отворите тези %1 файлове?</numerusform>
         </translation>
     </message>
     <message>
@@ -706,17 +706,17 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
-        <translation type="unfinished">Монтиране</translation>
+        <translation>Монтиране</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation type="unfinished">Демонтиране</translation>
+        <translation>Демонтиране</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Eject</source>
-        <translation type="unfinished">Изваждане</translation>
+        <translation>Изваждане</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
@@ -783,17 +783,17 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Желаете ли да изтриете избраният файл?</numerusform>
+            <numerusform>Желаете ли да изтриете избраните файлове?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Желаете ли да преместите избраният файл в кошчето?</numerusform>
+            <numerusform>Желаете ли да преместите избраните файлове в кошчето?</numerusform>
         </translation>
     </message>
 </context>
@@ -913,7 +913,7 @@ Do you want to delete them instead?</source>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Празно(Не е налично)</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1007,7 +1007,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Изпразване на кошчето</translation>
+        <translation>Изпразване на кошчето</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
@@ -1062,7 +1062,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="191"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>По Дата на създаване</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="194"/>
@@ -1145,12 +1145,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Празно(Не е налично)</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Създаден:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
@@ -1185,7 +1185,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Създаден</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
@@ -1391,7 +1391,7 @@ Modified: %2</source>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation> &lt;p&gt;&lt;b&gt;Файлът не може да се пренапише.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Моля изберете друго име.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1553,7 +1553,7 @@ Modified: %2</source>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Празно(Не е налично)</translation>
     </message>
 </context>
 <context>
