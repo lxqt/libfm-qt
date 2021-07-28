@@ -243,17 +243,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emblema:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Scegli emblema</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulisci emblema</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -437,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile spostare qui</translation>
     </message>
 </context>
 <context>
@@ -1007,7 +1007,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Svuota cestino</translation>
+        <translation>Svuota cestino</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
@@ -1391,7 +1391,7 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Il file non può sovrascrivere se stesso.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Per favore scegliere un nome diverso&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
