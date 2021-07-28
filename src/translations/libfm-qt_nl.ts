@@ -243,17 +243,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Embleem:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies een embleem</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Embleem verwijderen</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -437,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Hier kan niks worden geplaatst</translation>
     </message>
 </context>
 <context>
@@ -1007,7 +1007,7 @@ Wilt u ze in plaats daarvan blijvend verwijderen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Prullenbak legen</translation>
+        <translation>Prullenbak legen</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
@@ -1391,7 +1391,7 @@ Gewijzigd: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Het bestand kan niet zichzelf overschrijven.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Geef een andere naam op.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
