@@ -243,17 +243,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>סמל:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>בחירת סמל</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>הסרת סמל</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -437,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>לא ניתן לגרור לכאן</translation>
     </message>
 </context>
 <context>
@@ -660,6 +660,8 @@ Do you want to replace it?</source>
         <translation>
             <numerusform>לפתוח את הקובץ הזה בגודל %1?</numerusform>
             <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
+            <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
+            <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
         </translation>
     </message>
     <message>
@@ -786,6 +788,8 @@ Do you want to delete them instead?</source>
         <translation>
             <numerusform>למחוק את הקובץ הנבחר?</numerusform>
             <numerusform>למחוק את הקבצים הנבחרים?</numerusform>
+            <numerusform>למחוק את הקבצים הנבחרים?</numerusform>
+            <numerusform>למחוק את הקבצים הנבחרים?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -793,6 +797,8 @@ Do you want to delete them instead?</source>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
             <numerusform>להעביר את הפריט הנבחר לפח האשפה?</numerusform>
+            <numerusform>להעביר את הפריטים הנבחרים לפח האשפה?</numerusform>
+            <numerusform>להעביר את הפריטים הנבחרים לפח האשפה?</numerusform>
             <numerusform>להעביר את הפריטים הנבחרים לפח האשפה?</numerusform>
         </translation>
     </message>
@@ -946,6 +952,8 @@ Do you want to delete them instead?</source>
         <translation>
             <numerusform>קובץ %Ln</numerusform>
             <numerusform>%Ln קבצים</numerusform>
+            <numerusform>%Ln קבצים</numerusform>
+            <numerusform>%Ln קבצים</numerusform>
         </translation>
     </message>
     <message>
@@ -1007,7 +1015,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">פינוי האשפה</translation>
+        <translation>פינוי האשפה</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
@@ -1391,7 +1399,7 @@ Modified: %2</source>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;לקובץ אין אפשרות לשכתב את עצמו.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;נא לבחור שם אחר.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>

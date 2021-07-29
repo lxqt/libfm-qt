@@ -243,17 +243,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Embléma:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Embléma kiválasztása</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Embléma törlése</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -705,7 +705,7 @@ Le szeretné cserélni?</translation>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Csatolás</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
@@ -782,15 +782,17 @@ Szeretné véglegesen törölni őket?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Szeretné törölni a kiválasztott fájlt?</numerusform>
+            <numerusform>Szeretné törölni a kiválasztott fájlokat?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlt?</numerusform>
+            <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlokat?</numerusform>
         </translation>
     </message>
 </context>
@@ -941,6 +943,7 @@ Szeretné véglegesen törölni őket?</translation>
         <location filename="../filepropsdialog.cpp" line="456"/>
         <source>%Ln files</source>
         <translation>
+            <numerusform>%Ln fájl</numerusform>
             <numerusform>%Ln fájl</numerusform>
         </translation>
     </message>
@@ -1387,7 +1390,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;A fájl nem írhatja felül önmagát.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Válasszon másik nevet.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>

@@ -243,17 +243,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emblema:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkti emblemą</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvalyti emblemą</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -437,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Negalima tempti čia</translation>
     </message>
 </context>
 <context>
@@ -1011,7 +1011,7 @@ Ar norite vietoj to, juos ištrinti?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Išvalyti šiukšlinę</translation>
+        <translation>Išvalyti šiukšlinę</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
@@ -1395,7 +1395,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Failas negali perrašyti pats save.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Pasirinkite kitokį pavadinimą.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
