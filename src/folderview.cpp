@@ -1256,6 +1256,11 @@ FolderView::ViewMode FolderView::viewMode() const {
 
 void FolderView::setAutoSelectionDelay(int delay) {
     autoSelectionDelay_ = delay;
+    if(autoSelectionDelay_ <= 0 && autoSelectionTimer_) {
+        autoSelectionTimer_->stop();
+        delete autoSelectionTimer_;
+        autoSelectionTimer_ = nullptr;
+    }
 }
 
 QAbstractItemView* FolderView::childView() const {
@@ -1596,6 +1601,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
     if(view && watched == view->viewport()) {
         switch(event->type()) {
         case QEvent::HoverMove:
+        case QEvent::HoverEnter:
             // activate items on single click
             if(style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick)) {
                 QHoverEvent* hoverEvent = static_cast<QHoverEvent*>(event);
@@ -1765,6 +1771,13 @@ void FolderView::onAutoSelectionTimeout() {
         return;
     }
 
+    // If the cursor moves immediately after a (context) menu is shown, "QEvent::HoverMove"
+    // might be sent, which will result in calling this function. That is a Qt issue. As a
+    // workaround, we do not proceed when there is an active popup widget.
+    if(QApplication::activePopupWidget()) {
+        return;
+    }
+
     // don't do anything if the cursor is on selection corner icon
     if(mode != DetailedListMode) {
         FolderViewListView* listView = static_cast<FolderViewListView*>(view);
@@ -1773,9 +1786,13 @@ void FolderView::onAutoSelectionTimeout() {
         }
     }
 
-    Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
     QPoint pos = view->viewport()->mapFromGlobal(QCursor::pos()); // convert to viewport coordinates
     QModelIndex index = view->indexAt(pos); // find out the hovered item
+    if(!index.isValid()) {
+        return;
+    }
+
+    Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
     QItemSelectionModel::SelectionFlags flags = (mode == DetailedListMode ? QItemSelectionModel::Rows : QItemSelectionModel::NoUpdate);
     QItemSelectionModel* selModel = view->selectionModel();
 
