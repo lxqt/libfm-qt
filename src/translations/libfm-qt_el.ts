@@ -243,17 +243,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Έμβλημα:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή του εμβλήματος</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Καθαρισμός του εμβλήματος</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -437,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Αδύνατη η εναπόθεση εδώ</translation>
     </message>
 </context>
 <context>
@@ -1007,7 +1007,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Άδειασμα των απορριμμάτων</translation>
+        <translation>Άδειασμα των απορριμμάτων</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
@@ -1391,7 +1391,7 @@ Modified: %2</source>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Το αρχείο δεν μπορεί να αντικαταστήσει τον εαυτότου.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Παρακαλώ επιλέξτε ένα άλλο όνομα.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>

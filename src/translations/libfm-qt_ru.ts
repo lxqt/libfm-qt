@@ -243,17 +243,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Эмблема:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Выберите эмблему</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистить эмблему</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -437,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно перенести сюда</translation>
     </message>
 </context>
 <context>
@@ -707,7 +707,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
-        <translation type="unfinished">Подключить</translation>
+        <translation>Смонтировать</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
@@ -717,7 +717,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Eject</source>
-        <translation type="unfinished">Извлечь</translation>
+        <translation>Извлечь</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
@@ -784,19 +784,19 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Вы хотите удалить выбранный файл?</numerusform>
+            <numerusform>Вы хотите удалить выбранные файлы?</numerusform>
+            <numerusform>Вы хотите удалить выбранные файлы?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Хотите переместить выделенный файл в корзину?</numerusform>
+            <numerusform>Хотите переместить выделенные файлы в корзину?</numerusform>
+            <numerusform>Хотите переместить выделенные файлы в корзину?</numerusform>
         </translation>
     </message>
 </context>
@@ -1011,7 +1011,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Очистить корзину</translation>
+        <translation>Очистить корзину</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
@@ -1395,7 +1395,7 @@ Modified: %2</source>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Файл не может перезаписать себя.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Выберите другое имя.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
