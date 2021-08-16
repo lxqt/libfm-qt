@@ -243,12 +243,12 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emblema:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Emblema elegido</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
@@ -437,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>No se puede soltar aquí</translation>
     </message>
 </context>
 <context>
@@ -923,7 +923,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="405"/>
         <source>%p% used</source>
-        <translation>%p&#xa0;% usado</translation>
+        <translation>%p % usado</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="406"/>
@@ -1391,7 +1391,7 @@ Modificación: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;El archivo no puede sobrescribirse a sí mismo.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Por favor, elija otro nombre.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
