@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="hu">
+<TS version="2.1" language="lv">
 <context>
     <name>AppChooserDialog</name>
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>Alkalmazás kiválasztása</translation>
+        <translation>Izvēlieties lietotni</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation>Telepített alkalmazások</translation>
+        <translation>Uzstādītās/instalētās lietotnes</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation>Egyéni parancs</translation>
+        <translation>Pielāgojama komanda</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation>Végrehajtandó parancs:</translation>
+        <translation>Izpildāmā komandrinda:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation>Alkalmazás neve:</translation>
+        <translation>Lietotnes nosaukums:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -37,28 +37,28 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;A parancssorban használható speciális karakterek:&lt;/b&gt;
+        <translation>&lt;b&gt;Šos spec. kodus var izmantot komandrindā:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Egy fájt képvisel&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Több fájlt képvisel&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: A fájl URI-ját képviseli&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Több URI-t képvisel&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Norāda viena faila nosaukumu&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Norāda vairāku failus nosaukumus&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Norāda vienu faila URI&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Norāda vairāku failu URI&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>Végrehajtás után a terminál nyitva marad</translation>
+        <translation>Pēc komandas izpildes termināla logu neaizvērt</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation>Végrehajtás külső terminálban</translation>
+        <translation>Izpildīt termināla emulatorā</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>A kiválasztott alkalmazás hozzárendelése a fájltípushoz</translation>
+        <translation>Iestatīt izvēlēto lietotni kā noklusējuma šī tipa failiem</translation>
     </message>
 </context>
 <context>
@@ -66,32 +66,32 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation>Könyvjelzők szerkesztése</translation>
+        <translation>Rediģēt grāmatzīmes</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
         <source>Name</source>
-        <translation>Név</translation>
+        <translation>Nosaukums</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="47"/>
         <source>Location</source>
-        <translation>Hely</translation>
+        <translation>Vieta/novietojums</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation>&amp;Hozzáadás</translation>
+        <translation>&amp;Pielikt/pievienot elementu</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation>&amp;Törlés</translation>
+        <translation>&amp;Noņemt elementu</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Húzással rendezhetőek az elemek</translation>
+        <translation>Izmantot pārvilkšanu (ar peli) lai pārkārtotu elementus</translation>
     </message>
 </context>
 <context>
@@ -99,27 +99,27 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation>Fájl futtatása</translation>
+        <translation>Palaist/izpildīt failu</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="39"/>
         <source>&amp;Open</source>
-        <translation>&amp;Megnyitás</translation>
+        <translation>&amp;Atvērt</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="52"/>
         <source>E&amp;xecute</source>
-        <translation>&amp;Futtatás</translation>
+        <translation>Palaist/i&amp;zpildīt</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation>Futtatás &amp;terminálban</translation>
+        <translation>Izpildīt &amp;terminālī</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
         <source>Cancel</source>
-        <translation>Mégse</translation>
+        <translation>Atcelt</translation>
     </message>
 </context>
 <context>
@@ -127,17 +127,17 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation>Útvonal:</translation>
+        <translation>Ceļš:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation>Fájlnév:</translation>
+        <translation>Faila nosaukums:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation>Fájltípus:</translation>
+        <translation>Faila tips:</translation>
     </message>
 </context>
 <context>
@@ -145,32 +145,32 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation>Cél:</translation>
+        <translation>Galamērķis:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation>Feldolgozás:</translation>
+        <translation>Apstrādē:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation>Előkészítés...</translation>
+        <translation>Sagatavo...</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress</source>
-        <translation>Folyamat</translation>
+        <translation>Progress</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
         <source>Time remaining:</source>
-        <translation>Hátralévő idő:</translation>
+        <translation>Atlikušais laiks:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation>Fájlok feldolgozva:</translation>
+        <translation>Apstrādāti faili:</translation>
     </message>
 </context>
 <context>
@@ -178,168 +178,168 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation>Fájl tulajdonságai</translation>
+        <translation>Faila rekvizīti/īpašības</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation>Általános</translation>
+        <translation>Vispārīgie</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation>Hely:</translation>
+        <translation>Vieta:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>File type:</source>
-        <translation>Fájltípus:</translation>
+        <translation>Faila tips:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
         <source>MIME type:</source>
-        <translation>MIME típus:</translation>
+        <translation>MIME tips:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="152"/>
         <source>File size:</source>
-        <translation>Fájlméret:</translation>
+        <translation>Faila izmērs:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="175"/>
         <source>On-disk size:</source>
-        <translation>Méret a lemezen:</translation>
+        <translation>Izmērs uz diska:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="198"/>
         <source>Last modified:</source>
-        <translation>Legutóbb módosítva:</translation>
+        <translation>Pēdējā izmaiņa:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="221"/>
         <source>Link target:</source>
-        <translation>Link cél:</translation>
+        <translation>Saites mērķis:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="247"/>
         <source>Open With:</source>
-        <translation>Megnyitás ezzel:</translation>
+        <translation>Atvērt ar:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation>Utolsó hozzáférés:</translation>
+        <translation>Pēdējā piekļuve:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation>Létrehozva:</translation>
+        <translation>Izveidots:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
         <source>Contains:</source>
-        <translation>Tartalmaz:</translation>
+        <translation>Satur:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation>Embléma:</translation>
+        <translation>Emblēma:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation>Embléma kiválasztása</translation>
+        <translation>Izvēlieties emblēmu</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation>Embléma törlése</translation>
+        <translation>Noņemt emblēmu</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
         <source>Device Usage:</source>
-        <translation>Lemezhasználat:</translation>
+        <translation>Diska brīvā vieta:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="424"/>
         <source>Permissions</source>
-        <translation>Engedélyek</translation>
+        <translation>Atļaujas (permisijas)</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="439"/>
         <source>Ownership</source>
-        <translation>Tulajdonos</translation>
+        <translation>Īpašniecība</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="463"/>
         <location filename="../file-props.ui" line="528"/>
         <location filename="../file-props.ui" line="642"/>
         <source>Group:</source>
-        <translation>Csoport:</translation>
+        <translation>Grupa:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="476"/>
         <location filename="../file-props.ui" line="511"/>
         <location filename="../file-props.ui" line="590"/>
         <source>Owner:</source>
-        <translation>Tulajdonos:</translation>
+        <translation>Īpašnieks:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="492"/>
         <source>Access Control</source>
-        <translation>Hozzáférés</translation>
+        <translation>Pieejas kontrole</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="545"/>
         <location filename="../file-props.ui" line="694"/>
         <source>Other:</source>
-        <translation>Mások:</translation>
+        <translation>Pārējie:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="562"/>
         <source>Make the file executable</source>
-        <translation>Fájl futtathatóvá tétele</translation>
+        <translation>Padarīt failu izpildāmu/palaižamu</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="603"/>
         <location filename="../file-props.ui" line="655"/>
         <location filename="../file-props.ui" line="707"/>
         <source>Read</source>
-        <translation>Olvasás</translation>
+        <translation>Lasīt</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="616"/>
         <location filename="../file-props.ui" line="668"/>
         <location filename="../file-props.ui" line="720"/>
         <source>Write</source>
-        <translation>Írás</translation>
+        <translation>Rakstīt</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="629"/>
         <location filename="../file-props.ui" line="681"/>
         <location filename="../file-props.ui" line="733"/>
         <source>Execute</source>
-        <translation>Végrehajtás</translation>
+        <translation>Izpildīt</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="742"/>
         <source>Sticky</source>
-        <translation></translation>
+        <translation>Lipīgs</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>SetUID</source>
-        <translation>UID beállítás</translation>
+        <translation>Iestatīt UID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
         <source>SetGID</source>
-        <translation>GID beállítás</translation>
+        <translation>Iestatīt GID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="792"/>
         <source>Advanced Mode</source>
-        <translation>Haladó mód</translation>
+        <translation>Izvērstais režīms</translation>
     </message>
 </context>
 <context>
@@ -347,7 +347,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation>Egyéni</translation>
+        <translation>Iestatīt/pielāgot/konfigurēt</translation>
     </message>
 </context>
 <context>
@@ -355,7 +355,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Alkalmazás kiválasztása a(z) &quot;%1&quot; fájl megnyitásához</translation>
+        <translation>Izvēlieties lietotni/programmu ar kuru atvērt &quot;%1&quot; failus</translation>
     </message>
 </context>
 <context>
@@ -363,12 +363,12 @@
     <message>
         <location filename="../createnewmenu.cpp" line="62"/>
         <source>Folder</source>
-        <translation>Mappa</translation>
+        <translation>Mapi</translation>
     </message>
     <message>
         <location filename="../createnewmenu.cpp" line="66"/>
         <source>Blank File</source>
-        <translation>Üres fájl</translation>
+        <translation>Tukšs fails</translation>
     </message>
 </context>
 <context>
@@ -376,7 +376,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>A megadott &apos;%1&apos; mappa érvénytelen</translation>
+        <translation>Norādītā mape &apos;%1&apos; nav derīga</translation>
     </message>
 </context>
 <context>
@@ -384,14 +384,14 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation>Betöltés...</translation>
+        <translation>Notiek ielāde...</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation>&lt;Nincs almappa&gt;</translation>
+        <translation>&lt;Nav apakšmapju&gt;</translation>
     </message>
 </context>
 <context>
@@ -399,17 +399,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="213"/>
         <source>Open in New T&amp;ab</source>
-        <translation>Megnyi&amp;tás új lapon</translation>
+        <translation>Atvērt jaunā &amp;cilnī</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="217"/>
         <source>Open in New Win&amp;dow</source>
-        <translation>Me&amp;gnyitás új ablakban</translation>
+        <translation>Atvērt jaunā &amp;logā</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="222"/>
         <source>Open in Termina&amp;l</source>
-        <translation>Megnyitás terminá&amp;lban</translation>
+        <translation>Atvērt &amp;terminālī</translation>
     </message>
 </context>
 <context>
@@ -417,27 +417,27 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation>Másolás ide</translation>
+        <translation>Kopēt uz šejieni</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation>Áthelyezés ide</translation>
+        <translation>Pārcelt uz šejieni</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation>Szimbolikus link létrehozása</translation>
+        <translation>Izveidot saiti (simlinku) uz šejieni</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cancel</source>
-        <translation>Mégse</translation>
+        <translation>Atcelt</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation>Nem dobható ide</translation>
+        <translation>Nav iespējams uz šejieni pārnest</translation>
     </message>
 </context>
 <context>
@@ -445,7 +445,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="84"/>
         <source>New bookmark</source>
-        <translation>Új könyvjelző</translation>
+        <translation>Jauna grāmatzīme</translation>
     </message>
 </context>
 <context>
@@ -454,20 +454,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>A &apos;%1&apos; állomány egy asztalbeállító fájlnak tűnik.
-Mit szeretne tenni vele?</translation>
+        <translation>Šķiet, ka fails &apos;%1 &apos; ir darbvirsmas desktop-fails.
+Ko ar to darīsim?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>&apos;%1&apos; : Ez a fájl futtatható szkriptnek tűnik.
-Mit szeretne tenni vele?</translation>
+        <translation>Šķiet, ka teksta fails &apos;%1 &apos; ir izpildāms skripts.
+Ko ar to darīsim?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>&apos;%1&apos; : Ez a fájl futtatható. Szeretné futtatni?</translation>
+        <translation>Fails &apos;%1 &apos; ir izpildāms/palaižams. Vai vēlaties to palaist?</translation>
     </message>
 </context>
 <context>
@@ -475,29 +475,29 @@ Mit szeretne tenni vele?</translation>
     <message>
         <location filename="../filedialog.cpp" line="109"/>
         <source>Go Back</source>
-        <translation>Vissza</translation>
+        <translation>Atpakaļ</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="110"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation>Alt+Bal</translation>
+        <translation>Alt+Pa kreisi</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="116"/>
         <source>Go Forward</source>
-        <translation>Előre</translation>
+        <translation>Uz priekšu</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="117"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation>Alt+Jobb</translation>
+        <translation>Alt+Pa labi</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="124"/>
         <source>Reload</source>
-        <translation>Újratöltés</translation>
+        <translation>Pārlādēt</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="125"/>
@@ -508,112 +508,112 @@ Mit szeretne tenni vele?</translation>
     <message>
         <location filename="../filedialog.cpp" line="142"/>
         <source>Create Folder</source>
-        <translation>Mappa létrehozása</translation>
+        <translation>Izveidot mapi</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="152"/>
         <source>Icon View</source>
-        <translation>Ikonnézet</translation>
+        <translation>Ikonu skats</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="156"/>
         <source>Thumbnail View</source>
-        <translation>Bélyegkép nézet</translation>
+        <translation>Sīktēlu skats</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="160"/>
         <source>Compact View</source>
-        <translation>Kompakt nézet</translation>
+        <translation>Kompaktskats</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="164"/>
         <source>Detailed List View</source>
-        <translation>Lista nézet</translation>
+        <translation>Detalizēts skats</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation>Ikonméretek</translation>
+        <translation>Ikonu izmērs</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation>Nagy ikonok mérete:</translation>
+        <translation>Lielo ikonu izmērs:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation>Kis ikonok mérete:</translation>
+        <translation>Mazo ikonu izmērs:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation>Bélyegképek mérete:</translation>
+        <translation>Sīktēlu izmērs:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation>Bélyegképek megjelenítése</translation>
+        <translation>Rādīt sīktēlus</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation>Fájl-elemleírások megjelenítése</translation>
+        <translation>Rādīt faila padomus</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation>Beállítások</translation>
+        <translation>Opcijas/parametri</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
         <location filename="../filedialog.cpp" line="935"/>
         <source>Error</source>
-        <translation>Hiba</translation>
+        <translation>Ķibele</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
         <source>Please select a file</source>
-        <translation>Válasszon egy fájlt</translation>
+        <translation>Izvēlieties failu</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="582"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation>%1 már létezik.
-Le szeretné cserélni?</translation>
+        <translation>%1 jau pastāv.
+Vai vēlaties to aizstāt (pārrakstīt)?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="905"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation>&quot;%1&quot; útvonal nem létezik</translation>
+        <translation>Ceļš &quot;%1&quot; nepastāv</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="919"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation>&quot;%1&quot; nem egy könyvtár</translation>
+        <translation>&quot;%1&quot; nav mape</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="925"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation>&quot;%1&quot; nem egy fájl</translation>
+        <translation>&quot;%1&quot; nav fails</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1077"/>
         <location filename="../filedialog.cpp" line="1185"/>
         <source>&amp;Open</source>
-        <translation>&amp;Megnyitás</translation>
+        <translation>&amp;Atvērt</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1080"/>
         <location filename="../filedialog.cpp" line="1193"/>
         <source>&amp;Save</source>
-        <translation>M&amp;entés</translation>
+        <translation>&amp;Saglabāt</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1087"/>
         <source>All Files (*)</source>
-        <translation>Minden fájl (*)</translation>
+        <translation>Visus failus (*)</translation>
     </message>
 </context>
 <context>
@@ -621,12 +621,12 @@ Le szeretné cserélni?</translation>
     <message>
         <location filename="../filedialoghelper.cpp" line="138"/>
         <source>Open File</source>
-        <translation>Fájl megnyitása</translation>
+        <translation>Atvērt failu</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="139"/>
         <source>Save File</source>
-        <translation>Fájl mentése</translation>
+        <translation>Saglabāt failu</translation>
     </message>
 </context>
 <context>
@@ -634,7 +634,7 @@ Le szeretné cserélni?</translation>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation> px</translation>
+        <translation> piks.</translation>
     </message>
 </context>
 <context>
@@ -642,121 +642,123 @@ Le szeretné cserélni?</translation>
     <message>
         <location filename="../filemenu.cpp" line="86"/>
         <source>Open</source>
-        <translation>Megnyitás</translation>
+        <translation>Atvērt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="90"/>
         <source>Open With...</source>
-        <translation>Megnyitás ezzel...</translation>
+        <translation>Atvērt ar...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Many files</source>
-        <translation>Több fájl</translation>
+        <translation>Vairākus failus</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
-            <numerusform>Meg szeretné nyitni ezt a %s fájlt?</numerusform>
+            <numerusform>Vēlaties atvērt %1 failu?</numerusform>
+            <numerusform>Vēlaties atvērt %1 failus?</numerusform>
+            <numerusform>Vēlaties atvērt %1 failus?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="118"/>
         <source>Other Applications</source>
-        <translation>Más alkalmazások</translation>
+        <translation>Citas lietotnes</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="125"/>
         <source>Create &amp;New</source>
-        <translation>Ú&amp;j létrehozása</translation>
+        <translation>Izveidot jau&amp;nu</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="144"/>
         <source>&amp;Restore</source>
-        <translation>&amp;Visszaállítás</translation>
+        <translation>At&amp;gūt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="154"/>
         <source>Cut</source>
-        <translation>Kivágás</translation>
+        <translation>Izgriezt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="158"/>
         <source>Copy</source>
-        <translation>Másolás</translation>
+        <translation>Kopēt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="162"/>
         <source>Paste</source>
-        <translation>Beillesztés</translation>
+        <translation>Ielikt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="166"/>
         <location filename="../filemenu.cpp" line="478"/>
         <source>&amp;Move to Trash</source>
-        <translation>Á&amp;thelyezés kukába</translation>
+        <translation>Pārvietot/pārcelt uz &amp;miskasti</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="170"/>
         <source>Rename</source>
-        <translation>Átnevezés</translation>
+        <translation>Pārdēvēt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
-        <translation>Csatolás</translation>
+        <translation>Piemontēt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation type="unfinished">Lecsatolás</translation>
+        <translation>Nomontēt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Eject</source>
-        <translation type="unfinished">Kiadás</translation>
+        <translation>Izstumt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Extract to...</source>
-        <translation>Kibontás...</translation>
+        <translation>Ekstraģēt uz...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="283"/>
         <source>Extract Here</source>
-        <translation>Kibontás ide</translation>
+        <translation>Ekstraģēt šeit</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="290"/>
         <source>Compress</source>
-        <translation>Tömörítés</translation>
+        <translation>Kompresēt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="299"/>
         <source>Properties</source>
-        <translation>Tulajdonságok</translation>
+        <translation>Parametri/rekvizīti/īpašības</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="310"/>
         <source>Trust selected executables</source>
-        <translation>Bízzon meg a kiválasztott futtatható állományokban</translation>
+        <translation>Uzticēties izvēlētajiem izpildāmajiem failiem</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="311"/>
         <source>Trust this executable</source>
-        <translation>Bízzon meg ebben a futtatható állományban</translation>
+        <translation>Uzticēties šim izpildāmajam failam</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="413"/>
         <source>Output</source>
-        <translation>Kimenet</translation>
+        <translation>Izvads</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="148"/>
         <location filename="../filemenu.cpp" line="478"/>
         <source>&amp;Delete</source>
-        <translation>&amp;Törlés</translation>
+        <translation>&amp;Dzēst</translation>
     </message>
 </context>
 <context>
@@ -764,35 +766,37 @@ Le szeretné cserélni?</translation>
     <message>
         <location filename="../fileoperation.cpp" line="317"/>
         <source>Error</source>
-        <translation>Hiba</translation>
+        <translation>Ķibele</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="318"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>Egyes fájlok nem helyezhetők át a kukába, mert a fájlrendszerük nem támogatja ezt a műveletet.
-Szeretné véglegesen törölni őket?</translation>
+        <translation>Dažus failus nevar pārvietot uz miskasti, jo izmantotās failu sistēmas neatbalsta šo darbību.
+Vēlaties tos dzēst?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="404"/>
         <location filename="../fileoperation.cpp" line="422"/>
         <source>Confirm</source>
-        <translation>Jóváhagyás</translation>
+        <translation>Apstiprināt</translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
-            <numerusform>Szeretné törölni a kiválasztott fájlt?</numerusform>
-            <numerusform>Szeretné törölni a kiválasztott fájlokat?</numerusform>
+            <numerusform>Dzēst atlasītos failus?</numerusform>
+            <numerusform>Dzēst atlasīto failu?</numerusform>
+            <numerusform>Dzēst atlasītos failus?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
-            <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlt?</numerusform>
-            <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlokat?</numerusform>
+            <numerusform>Pārvietot izvēlētos failus uz miskasti?</numerusform>
+            <numerusform>Pārvietot izvēlēto failu uz miskasti?</numerusform>
+            <numerusform>Pārvietot izvēlētos failus uz miskasti?</numerusform>
         </translation>
     </message>
 </context>
@@ -801,78 +805,78 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move files</source>
-        <translation>Fájlok áthelyezése</translation>
+        <translation>Failu pārvietošana</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>A következő fájlok áthelyezése ide:</translation>
+        <translation>Pārvietoju uz mērķa mapi failus:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation>Fájlok másolása</translation>
+        <translation>Failu kopēšana</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>A következő fájlok másolása ide:</translation>
+        <translation>Kopēju uz mērķa mapi failus:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation type="unfinished">Szemétfájlok</translation>
+        <translation>Failu pārvietošana uz miskasti</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>A következő fájlok áthelyezése kukába:</translation>
+        <translation>Pārvietoju uz miskasti failus:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation>Fájlok törlése</translation>
+        <translation>Failu dzēšana</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation>A következő fájlok törlése:</translation>
+        <translation>Dzēšu failus:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation>Szimbolikus link létrehozása</translation>
+        <translation>Saišu (simlinku) izveide</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>Szimbolikus link létrehozása a következő fájlokra:</translation>
+        <translation>Izveidoju saites (simlinkus) failiem:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation>Attribútumok változtatása</translation>
+        <translation>Atribūtu maiņa</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>A következő fájlok attribútumainak változtatása:</translation>
+        <translation>Mainu atribūtus failiem:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation>Kukába helyezett fájlok visszaállítása</translation>
+        <translation>Miskastes failu atgriešana</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>A következő fájlok visszaállítása a kukából:</translation>
+        <translation>Atgriežu miskastē esošos failus:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="149"/>
         <location filename="../fileoperationdialog.cpp" line="155"/>
         <source>Error</source>
-        <translation>Hiba</translation>
+        <translation>Ķibele</translation>
     </message>
 </context>
 <context>
@@ -880,94 +884,95 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="162"/>
         <source>View folder content</source>
-        <translation>Mappa tartalmának megtekintése</translation>
+        <translation>Mapes satura skatīšana</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="163"/>
         <source>View and modify folder content</source>
-        <translation>Mappa tartalmának megtekintése és módosítása</translation>
+        <translation>Skatīt un rediģēt mapes saturu</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="167"/>
         <source>Read</source>
-        <translation>Olvasás</translation>
+        <translation>Lasīt</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="168"/>
         <source>Read and write</source>
-        <translation>Olvasás és írás</translation>
+        <translation>Lasīt&amp;Rakstīt</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="170"/>
         <source>Forbidden</source>
-        <translation>Tiltott</translation>
+        <translation>Aizliegts</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="287"/>
         <source>Files of different types</source>
-        <translation>Különféle fájltípusok</translation>
+        <translation>Dažādu tipu faili</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="310"/>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation>Nincs információ</translation>
+        <translation>– – –</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
         <source>Multiple Files</source>
-        <translation>Többszörös fájlok</translation>
+        <translation>Vairākus failus</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="405"/>
         <source>%p% used</source>
-        <translation>%p% használt</translation>
+        <translation>%p% izmantots</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="406"/>
         <source>%1 Free of %2</source>
-        <translation>%1 szabad ebből: %2</translation>
+        <translation>Brīvi %1 no %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="452"/>
         <source>no file</source>
-        <translation>nincs fájl</translation>
+        <translation>nav failu</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="454"/>
         <source>one file</source>
-        <translation>egy fájl</translation>
+        <translation>1 fails</translation>
     </message>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="456"/>
         <source>%Ln files</source>
         <translation>
-            <numerusform>%Ln fájl</numerusform>
-            <numerusform>%Ln fájl</numerusform>
+            <numerusform>%Ln failus</numerusform>
+            <numerusform>%Ln failu</numerusform>
+            <numerusform>%Ln failus</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="490"/>
         <location filename="../filepropsdialog.cpp" line="535"/>
         <source>Select an icon</source>
-        <translation>Ikon kiválasztása</translation>
+        <translation>Izvēlieties ikonu</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="492"/>
         <location filename="../filepropsdialog.cpp" line="537"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation>Képek (*.png *.xpm *.svg *.svgz )</translation>
+        <translation>Bildes (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="643"/>
         <source>Apply changes</source>
-        <translation>Változtatások alkalmazása</translation>
+        <translation>Pielietot izmaiņas</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="644"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>Minden tartalmazott mappára és fájlra alkalmazza a változtatásokat?</translation>
+        <translation>Vai vēlaties rekursīvi piemērot šīs izmaiņas visiem failiem un apakšmapēm?</translation>
     </message>
 </context>
 <context>
@@ -975,17 +980,17 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>Error</source>
-        <translation>Hiba</translation>
+        <translation>Ķibele</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>You should add at least one directory to search.</source>
-        <translation>Kereséshez legalább egy mappát meg kell adni.</translation>
+        <translation>Lai meklētu, nepieciešams pievienot vismaz vienu mapi.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="135"/>
         <source>Select a folder</source>
-        <translation>Mappa kiválasztása</translation>
+        <translation>Izvēlieties mapi</translation>
     </message>
 </context>
 <context>
@@ -993,12 +998,12 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="477"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation>Könyvtár nem másolható önmagába!</translation>
+        <translation>Nevar mapi iekopēt sevī!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="528"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation>Nem lehet linket létrehozni nem helyi fájlrendszeren</translation>
+        <translation>Nevar izveidot saiti svešā failu sistēmā</translation>
     </message>
 </context>
 <context>
@@ -1006,112 +1011,112 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Kuka ürítése</translation>
+        <translation>Iztukšot (izdzēst) miskasti</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
         <source>Create &amp;New</source>
-        <translation>&amp;Új létrehozása</translation>
+        <translation>Iz&amp;veidot</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="68"/>
         <source>&amp;Paste</source>
-        <translation>&amp;Beillesztés</translation>
+        <translation>&amp;Ielikt</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="74"/>
         <source>Select &amp;All</source>
-        <translation>Összes &amp;kijelölése</translation>
+        <translation>Atzīmēt/atlasīt visus</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="78"/>
         <source>Invert Selection</source>
-        <translation>Kijelölés megfordítása</translation>
+        <translation>Atlasītā inversija</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="84"/>
         <source>Sorting</source>
-        <translation>Rendezés</translation>
+        <translation>Šķirotava</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="89"/>
         <source>Show Hidden</source>
-        <translation>Rejtettek megjelenítése</translation>
+        <translation>Rādīt slēptos</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="124"/>
         <source>Folder Pr&amp;operties</source>
-        <translation>Mappatulajd&amp;onságok</translation>
+        <translation>Mapes par&amp;ametri</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="167"/>
         <source>Output</source>
-        <translation>Kimenet</translation>
+        <translation>Izvads</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="189"/>
         <source>By File Name</source>
-        <translation>Név szerint</translation>
+        <translation>Pēc nosaukuma</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="190"/>
         <source>By Modification Time</source>
-        <translation>Módosítási idő szerint</translation>
+        <translation>Pēc izmaiņu laika</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="191"/>
         <source>By Creation Time</source>
-        <translation>Létrehozás ideje szerint</translation>
+        <translation>Pēc izveides laika</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="194"/>
         <source>By Deletion Time</source>
-        <translation>Törlési idő szerint</translation>
+        <translation>Pēc dzēšanas laika</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="197"/>
         <source>By File Size</source>
-        <translation>Méret szerint</translation>
+        <translation>Pēc izmēra</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="198"/>
         <source>By File Type</source>
-        <translation>Típus szerint</translation>
+        <translation>Pēc faila tipa</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="199"/>
         <source>By File Owner</source>
-        <translation>Tulajdonos szerint</translation>
+        <translation>Pēc faila īpašnieka</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="200"/>
         <source>By File Group</source>
-        <translation>Csoport szerint</translation>
+        <translation>Pēc faila grupas</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="206"/>
         <source>Ascending</source>
-        <translation>Növekvő</translation>
+        <translation>Augošā</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="211"/>
         <source>Descending</source>
-        <translation>Csökkenő</translation>
+        <translation>Dilstošā</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="228"/>
         <source>Folder First</source>
-        <translation>Mappák előre</translation>
+        <translation>Mapes sākumā</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="236"/>
         <source>Hidden Last</source>
-        <translation>Rejtettek hátra</translation>
+        <translation>Slēptie beigās</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="244"/>
         <source>Case Sensitive</source>
-        <translation>Nagybetűérzékeny</translation>
+        <translation>Reģistrjūtīgi</translation>
     </message>
 </context>
 <context>
@@ -1119,87 +1124,87 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="304"/>
         <source>Location:</source>
-        <translation>Hely:</translation>
+        <translation>Vieta:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="308"/>
         <source>File type:</source>
-        <translation>Fájltípus:</translation>
+        <translation>Faila tips:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="313"/>
         <source>File size:</source>
-        <translation>Fájlméret:</translation>
+        <translation>Faila izmērs:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="317"/>
         <source>Last modified:</source>
-        <translation>Legutóbb módosítva:</translation>
+        <translation>Pēdējā izmaiņa:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="318"/>
         <source>Last accessed:</source>
-        <translation>Utolsó hozzáférés:</translation>
+        <translation>Pēdējā piekļuve:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>– – –</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation>Létrehozva:</translation>
+        <translation>Izveidots:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
         <source>Owner:</source>
-        <translation>Tulajdonos:</translation>
+        <translation>Īpašnieks:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="327"/>
         <source>Group:</source>
-        <translation>Csoport:</translation>
+        <translation>Grupa:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="394"/>
         <source>Name</source>
-        <translation>Név</translation>
+        <translation>Nosaukums</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="397"/>
         <source>Type</source>
-        <translation>Típus</translation>
+        <translation>Tips</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="400"/>
         <source>Size</source>
-        <translation>Méret</translation>
+        <translation>Izmērs</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="403"/>
         <source>Modified</source>
-        <translation>Módosítva</translation>
+        <translation>Mainīts</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation>Létrehozva</translation>
+        <translation>Izveidots</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
         <source>Deleted</source>
-        <translation>Törölve</translation>
+        <translation>Dzēsts</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="412"/>
         <source>Owner</source>
-        <translation>Tulajdonos</translation>
+        <translation>Īpašnieks</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="415"/>
         <source>Group</source>
-        <translation>Csoport</translation>
+        <translation>Grupa</translation>
     </message>
 </context>
 <context>
@@ -1207,12 +1212,12 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../folderview.cpp" line="386"/>
         <source>Auto-resize columns</source>
-        <translation>Oszlopok automatikus átméretezése</translation>
+        <translation>Automātisks kolonu/stabiņu platums</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="403"/>
         <source>Visible Columns</source>
-        <translation>Látható oszlopok</translation>
+        <translation>Redzamās kolonas/stabiņi</translation>
     </message>
 </context>
 <context>
@@ -1220,12 +1225,12 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation>Félkövér</translation>
+        <translation>Treknrakstā</translation>
     </message>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation>Dőlt</translation>
+        <translation>Kursīvā</translation>
     </message>
 </context>
 <context>
@@ -1233,7 +1238,7 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../mountoperationpassworddialog.cpp" line="40"/>
         <source>&amp;Connect</source>
-        <translation>&amp;Csatlakoztatás</translation>
+        <translation>&amp;Savienot</translation>
     </message>
 </context>
 <context>
@@ -1241,12 +1246,12 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../pathbar.cpp" line="130"/>
         <source>&amp;Edit Path</source>
-        <translation>Útvonal sz&amp;erkesztése</translation>
+        <translation>R&amp;ediģēt ceļu</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="133"/>
         <source>&amp;Copy Path</source>
-        <translation>Útvonal &amp;másolása</translation>
+        <translation>Kopēt &amp;ceļu</translation>
     </message>
 </context>
 <context>
@@ -1254,42 +1259,42 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="47"/>
         <source>Places</source>
-        <translation>Helyek</translation>
+        <translation>Vietas</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="55"/>
         <source>Desktop</source>
-        <translation>Asztal</translation>
+        <translation>Darbvirsma</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="61"/>
         <source>Computer</source>
-        <translation>Számítógép</translation>
+        <translation>Dators</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="69"/>
         <source>Applications</source>
-        <translation>Alkalmazások</translation>
+        <translation>Lietotnes</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="78"/>
         <source>Network</source>
-        <translation>Hálózat</translation>
+        <translation>Tīkls</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="82"/>
         <source>Devices</source>
-        <translation>Eszközök</translation>
+        <translation>Ierīces</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="137"/>
         <source>Bookmarks</source>
-        <translation>Könyvjelzők</translation>
+        <translation>Grāmatzīmes</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="228"/>
         <source>Trash</source>
-        <translation>Kuka</translation>
+        <translation>Miskaste</translation>
     </message>
 </context>
 <context>
@@ -1297,64 +1302,64 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../placesview.cpp" line="481"/>
         <source>Open in New Tab</source>
-        <translation>Megnyitás új lapon</translation>
+        <translation>Atvērt jaunā cilnī</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="484"/>
         <source>Open in New Window</source>
-        <translation>Megnyitás új ablakban</translation>
+        <translation>Atvērt jaunā logā</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="496"/>
         <source>Empty Trash</source>
-        <translation>Kuka ürítése</translation>
+        <translation>Iztukšot (izdzēst) miskasti</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="516"/>
         <location filename="../placesview.cpp" line="573"/>
         <source>Hide</source>
-        <translation>Elrejtés</translation>
+        <translation>Slēpt</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="533"/>
         <source>Move Bookmark Up</source>
-        <translation>Könyvjelző mozgatása fel</translation>
+        <translation>Pārbīdīt grāmatzīmi augšup</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="538"/>
         <source>Move Bookmark Down</source>
-        <translation>Könyvjelző mozgatása le</translation>
+        <translation>Pārbīdīt grāmatzīmi lejup</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="542"/>
         <source>Rename Bookmark</source>
-        <translation>Könyvjelző átnevezése</translation>
+        <translation>Pārdēvēt grāmatzīmi</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="545"/>
         <source>Remove Bookmark</source>
-        <translation>Könyvjelző törlése</translation>
+        <translation>Dzēst/izņemt grāmatzīmi</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="554"/>
         <location filename="../placesview.cpp" line="587"/>
         <source>Unmount</source>
-        <translation>Lecsatolás</translation>
+        <translation>Nomontēt</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="558"/>
         <source>Mount</source>
-        <translation>Csatolás</translation>
+        <translation>Piemontēt</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="564"/>
         <source>Eject</source>
-        <translation>Kiadás</translation>
+        <translation>Izstumt</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="599"/>
         <source>Show All Entries</source>
-        <translation>Minden bejegyzés megjelenítése</translation>
+        <translation>Rādīt visus elementus</translation>
     </message>
 </context>
 <context>
@@ -1365,32 +1370,33 @@ Szeretné véglegesen törölni őket?</translation>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation>Típus: %1
-Méret: %2
-Módosítva: %3</translation>
+        <translation>Tips: %1
+Izmērs: %2
+Izmaiņa: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation>Típus: %1
-Módosítva: %2</translation>
+        <translation>Tips: %1
+Izmaiņa: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="96"/>
         <source>&amp;Overwrite</source>
-        <translation>&amp;Felülírás</translation>
+        <translation>&amp;Pārrakstīt (pa virsu)</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="98"/>
         <source>&amp;Rename</source>
-        <translation>Á&amp;tnevezés</translation>
+        <translation>Pā&amp;rdēvēt</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;A fájl nem írhatja felül önmagát.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Válasszon másik nevet.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;fails nevar sevi pārrakstīt.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;
+Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1398,12 +1404,12 @@ Módosítva: %2</translation>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation>Listák</translation>
+        <translation>Saraksti</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Directory Tree</source>
-        <translation>Könyvtárfa</translation>
+        <translation>Mapju koks</translation>
     </message>
 </context>
 <context>
@@ -1411,7 +1417,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Nem lehet visszaállítani a(z) &apos;%s&apos; fájlt: az eredeti útvonal ismeretlen</translation>
+        <translation>Nevar atmiskatot failu &apos;%s&apos;: jo sākotnējais ceļš nav zināms</translation>
     </message>
 </context>
 <context>
@@ -1419,47 +1425,47 @@ Módosítva: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation>Csatlakozás</translation>
+        <translation>Piemontēt</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation>Csatlakozás &amp;névtelenül</translation>
+        <translation>Pieslēgties &amp;anonīmi</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>&amp;Csatlakozás felhasználóként:</translation>
+        <translation>Pieslēgties kā lietotājs:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
         <source>&amp;Username:</source>
-        <translation>&amp;Név:</translation>
+        <translation>&amp;Lietotājvārds:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="102"/>
         <source>&amp;Password:</source>
-        <translation>&amp;Jelszó:</translation>
+        <translation>&amp;Parole:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
-        <translation>&amp;Hálózati cím:</translation>
+        <translation>&amp;Domēns:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation>&amp;Azonnal elfelejti a jelszót</translation>
+        <translation>Tūdaļ pat aizmirst paroli</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation>Jelszó &amp;megjegyzése ebben a munkamenetben</translation>
+        <translation>Atcerēties šīs sesijas paroli</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation>Jelszó me&amp;gjegyzése örökre</translation>
+        <translation>Atcerēties neierobežoti</translation>
     </message>
 </context>
 <context>
@@ -1467,12 +1473,12 @@ Módosítva: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="163"/>
         <source>Rename File</source>
-        <translation>Fájl átnevezése</translation>
+        <translation>Pārdēvēt failu</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="164"/>
         <source>Please enter a new name:</source>
-        <translation>Adja meg az új nevet:</translation>
+        <translation>Ievadiet jaunu nosaukumu:</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="104"/>
@@ -1481,78 +1487,78 @@ Módosítva: %2</translation>
         <location filename="../utilities.cpp" line="147"/>
         <location filename="../utilities.cpp" line="283"/>
         <source>Error</source>
-        <translation>Hiba</translation>
+        <translation>Ķibele, ka tevi jupis!</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="223"/>
         <source>Create Folder</source>
-        <translation>Mappa létrehozása</translation>
+        <translation>Izveidot mapi</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="224"/>
         <source>Create File</source>
-        <translation>Fájl létrehozása</translation>
+        <translation>Izveidot failu</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="228"/>
         <source>Please enter a new file name:</source>
-        <translation>Új fájlnév:</translation>
+        <translation>Ierakstiet jaunā faila nosaukumu:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="229"/>
         <source>New text file</source>
-        <translation>Új szövegfájl</translation>
+        <translation>Jauns teksta fails</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="233"/>
         <source>Please enter a new folder name:</source>
-        <translation>Új mappanév:</translation>
+        <translation>Ievadiet jaunās mapes nosaukumu:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="234"/>
         <source>New folder</source>
-        <translation>Új mappa</translation>
+        <translation>Jauna mape</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="239"/>
         <source>Enter a name for the new %1:</source>
-        <translation>Adja meg a(z) új %1 nevét:</translation>
+        <translation>Ierakstiet jaunā faila nosaukumu (%1):</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="685"/>
         <source>Custom Icon Error</source>
-        <translation>Egyéni ikon hiba</translation>
+        <translation>Pielāgotās ikonas ķibele</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation>Az útvonal nincs csatolva.</translation>
+        <translation>Ceļš nav piemontēts.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="319"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>Érvénytelen indítófájl: &apos;%1&apos;</translation>
+        <translation>Nederīgs darbvirsmas desktop-fails: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>Nincs beállítva alapértelmezett alkalmazás a(z) &apos;%1&apos; megnyitásához</translation>
+        <translation>Lai palaistu &apos;%1&apos;, nav iestatīta noklusējuma lietotne</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>A munkakönyvtár nem állítható be a következőre: &apos;%1&apos;: %2</translation>
+        <translation>Nevar iestatīt kā darba mapi &apos;%1&apos;: % 2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
         <source>Identifier: </source>
-        <translation>Azonosító: </translation>
+        <translation>Identifikators (ierīces): </translation>
     </message>
     <message>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation>Nincs információ</translation>
+        <translation>–––</translation>
     </message>
 </context>
 <context>
@@ -1560,27 +1566,27 @@ Módosítva: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation>Felülírás megerősítése</translation>
+        <translation>Apstiprināt, lai aizstātu failus</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Itt már van ilyen nevű fájl.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Felül szeretné írni a meglévőt?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Šajā mapē jau ir fails ar identisku nosaukumu.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Vai vēlaties aizstāt esošo failu?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation type="unfinished">ezzel a fájllal?</translation>
+        <translation>ar šo failu?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>&amp;Fájlnév:</translation>
+        <translation>&amp;Faila nosaukums:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation>Alkalmazás az összes fájlra</translation>
+        <translation>Piemērot šo opciju visiem esošajiem failiem</translation>
     </message>
 </context>
 <context>
@@ -1588,17 +1594,17 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation>Fájlkeresés</translation>
+        <translation>Meklēt failus</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation>Név/hely</translation>
+        <translation>Nosaukums/vieta</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation>Fájlnév minta:</translation>
+        <translation>Faila nosaukuma šabloni:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="41"/>
@@ -1608,103 +1614,103 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation>Reguláris kifejezés használata</translation>
+        <translation>Izmantojiet regulārās izteiksmes</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="68"/>
         <source>Places to Search:</source>
-        <translation>Keresési helyek:</translation>
+        <translation>Vietas, kurās meklēt:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="81"/>
         <source>&amp;Add</source>
-        <translation>Hozzá&amp;adás</translation>
+        <translation>&amp;Pielikt/pievienot</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="93"/>
         <source>&amp;Remove</source>
-        <translation>Tö&amp;rlés</translation>
+        <translation>&amp;Noņemt/dzēst</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="129"/>
         <source>Search for hidden files</source>
-        <translation>Rejtett fájlok keresése</translation>
+        <translation>Meklēt slēptos failus</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="140"/>
         <source>File Type</source>
-        <translation>Fájltípus</translation>
+        <translation>Faila tips</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation>Csak ilyen típusú fájlokat keressen:</translation>
+        <translation>Meklēt vienīgi šādu tipu failus:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
         <source>Text files</source>
-        <translation>Szöveg</translation>
+        <translation>Teksta faili</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="159"/>
         <source>Image files</source>
-        <translation>Kép</translation>
+        <translation>Bilžu faili</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="166"/>
         <source>Audio files</source>
-        <translation>Hang</translation>
+        <translation>Audio faili</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="173"/>
         <source>Video files</source>
-        <translation>Videó</translation>
+        <translation>Video faili</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="180"/>
         <source>Documents</source>
-        <translation>Dokumentum</translation>
+        <translation>Dokumenti</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="187"/>
         <source>Folders</source>
-        <translation>Mappa</translation>
+        <translation>Mapes</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="211"/>
         <source>Content</source>
-        <translation>Tartalom</translation>
+        <translation>Saturs</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="217"/>
         <source>File contains:</source>
-        <translation>Fájl tartalmazza:</translation>
+        <translation>Fails satur:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>&amp;Use regular expression</source>
-        <translation>Reg&amp;uláris kifejelezés használata</translation>
+        <translation>Lietot regulāro izpausmi (regular expression)</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="260"/>
         <source>Properties</source>
-        <translation>Tulajdonságok</translation>
+        <translation>Parametri</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="266"/>
         <source>File Size:</source>
-        <translation>Fájlméret:</translation>
+        <translation>Faila izmērs:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="295"/>
         <source>Larger than:</source>
-        <translation>Nagyobb mint:</translation>
+        <translation>Lielāks kā:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="309"/>
         <location filename="../filesearch.ui" line="339"/>
         <source>Bytes</source>
-        <translation>Bájt</translation>
+        <translation>Baiti</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="314"/>
@@ -1727,37 +1733,37 @@ Módosítva: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="274"/>
         <source>Smaller than:</source>
-        <translation>Kisebb mint:</translation>
+        <translation>Mazāks kā:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation>Nagybetűérzékeny</translation>
+        <translation>Reģstrjūtīgs</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation>Keresés az alkönyvtárakban</translation>
+        <translation>Meklēt apakšmapēs</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation>&amp;Nagybetűérzékeny</translation>
+        <translation>Reģistr&amp;jūtīgs</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
         <source>Last Modified Time:</source>
-        <translation>Utolsó módosítás ideje:</translation>
+        <translation>Pēdējās izmaiņas laiks:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="378"/>
         <source>Earlier than:</source>
-        <translation>Korábbi ennél:</translation>
+        <translation>Pirms:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Later than:</source>
-        <translation>Későbbi ennél:</translation>
+        <translation>Pēc:</translation>
     </message>
 </context>
 </TS>

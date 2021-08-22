@@ -253,7 +253,7 @@
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Quitar el emblema</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -1007,7 +1007,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Vaciar la papelera</translation>
+        <translation>Vaciar la papelera</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
