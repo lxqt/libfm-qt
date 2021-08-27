@@ -234,7 +234,7 @@ za ovu vrstu datoteka</translation>
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stvoreno:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -244,17 +244,17 @@ za ovu vrstu datoteka</translation>
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Amblem:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Odaberi amblem</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukloni amblem</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -438,7 +438,7 @@ za ovu vrstu datoteka</translation>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Ovdje se ne može ispustiti</translation>
     </message>
 </context>
 <context>
@@ -653,15 +653,15 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Mnoge datoteke</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Želiš li otvoriti ovu %1 datoteku?</numerusform>
+            <numerusform>Želiš li otvoriti ove %1 datoteke?</numerusform>
+            <numerusform>Želiš li otvoriti ove %1 datoteke?</numerusform>
         </translation>
     </message>
     <message>
@@ -718,7 +718,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Eject</source>
-        <translation type="unfinished">Izbaci</translation>
+        <translation>Izbaci</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
@@ -785,19 +785,19 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Želiš li izbrisati odabranu datoteku?</numerusform>
+            <numerusform>Želiš li izbrisati odabrane datoteke?</numerusform>
+            <numerusform>Želiš li izbrisati odabrane datoteke?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Želiš li premjestiti odabranu datoteku u smeće?</numerusform>
+            <numerusform>Želiš li premjestiti odabrane datoteke u smeće?</numerusform>
+            <numerusform>Želiš li premjestiti odabrane datoteke u smeće?</numerusform>
         </translation>
     </message>
 </context>
@@ -836,12 +836,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation>Ukloni datoteke</translation>
+        <translation>Izbriši datoteke</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation>Uklanjanje sljedećih datoteka:</translation>
+        <translation>Brisanje sljedećih datoteka:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
@@ -917,17 +917,17 @@ Do you want to delete them instead?</source>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>--</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
         <source>Multiple Files</source>
-        <translation>Višestruke datoteke</translation>
+        <translation>Više datoteka</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="405"/>
         <source>%p% used</source>
-        <translation>%p% korišteno</translation>
+        <translation>%p % korišteno</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="406"/>
@@ -937,7 +937,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="452"/>
         <source>no file</source>
-        <translation>nema datoteke</translation>
+        <translation>nijedna datoteka</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="454"/>
@@ -1012,7 +1012,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Isprazni smeće</translation>
+        <translation>Isprazni smeće</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
@@ -1067,12 +1067,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="191"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Prema vremenu stvaranja</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="194"/>
         <source>By Deletion Time</source>
-        <translation>Prema vremenu uklanjanja</translation>
+        <translation>Prema vremenu brisanja</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="197"/>
@@ -1150,12 +1150,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>–-</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stvoreno:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
@@ -1190,7 +1190,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Stvoreno</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
@@ -1213,7 +1213,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="386"/>
         <source>Auto-resize columns</source>
-        <translation>AUtomatski promijeni veličinu stupaca</translation>
+        <translation>Prilagodi širinu stupaca automatski</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="403"/>
@@ -1396,7 +1396,7 @@ Promijenjeno: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Datoteka ne može prepisati samu sebe.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Odaberi jedno drugo ime.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1502,7 +1502,7 @@ Promijenjeno: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="228"/>
         <source>Please enter a new file name:</source>
-        <translation>Upiši novo ime datoteke:</translation>
+        <translation>Upiši ime nove datoteke:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="229"/>
@@ -1512,7 +1512,7 @@ Promijenjeno: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="233"/>
         <source>Please enter a new folder name:</source>
-        <translation>Upiši novo ime mape:</translation>
+        <translation>Upiši ime nove mape:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="234"/>
@@ -1558,7 +1558,7 @@ Promijenjeno: %2</translation>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>--</translation>
     </message>
 </context>
 <context>
@@ -1566,7 +1566,7 @@ Promijenjeno: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation>Potvrdi zamjenjivanje datoteka</translation>
+        <translation>Potvrdi za zamjenjivanje datoteka</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
@@ -1639,12 +1639,12 @@ Promijenjeno: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="140"/>
         <source>File Type</source>
-        <translation>Vrsta datoteke</translation>
+        <translation>Vrsta datoteka</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="146"/>
         <source>Only search for files of following types:</source>
-        <translation>Traži samo datoteke sljedeće vrste:</translation>
+        <translation>Traži samo datoteke sljedećih vrsta:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="152"/>
@@ -1659,7 +1659,7 @@ Promijenjeno: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="166"/>
         <source>Audio files</source>
-        <translation>Zvučne datoteke</translation>
+        <translation>Audio datoteke</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="173"/>
