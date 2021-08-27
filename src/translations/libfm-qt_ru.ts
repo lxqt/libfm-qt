@@ -712,7 +712,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation type="unfinished">Отключить</translation>
+        <translation>Размонтировать</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
