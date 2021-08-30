@@ -706,12 +706,12 @@ Vil du bytte den ut?</translation>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
-        <translation type="unfinished">Last inn</translation>
+        <translation type="unfinished">Monter</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation type="unfinished">Løs ut</translation>
+        <translation type="unfinished">Avmonter</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
