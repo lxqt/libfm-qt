@@ -708,12 +708,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
-        <translation type="unfinished">Pokreni</translation>
+        <translation>Pokreni</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation type="unfinished">Zaustavi</translation>
+        <translation>Izbaci</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
@@ -1345,7 +1345,7 @@ Do you want to delete them instead?</source>
         <location filename="../placesview.cpp" line="554"/>
         <location filename="../placesview.cpp" line="587"/>
         <source>Unmount</source>
-        <translation>Zaustavi</translation>
+        <translation>Izbaci</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="558"/>
