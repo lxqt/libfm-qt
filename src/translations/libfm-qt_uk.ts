@@ -1212,7 +1212,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="386"/>
         <source>Auto-resize columns</source>
-        <translation>Автоширина стовпців</translation>
+        <translation>Автозміна ширини стовпців</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="403"/>
