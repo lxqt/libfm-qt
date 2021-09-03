@@ -1652,14 +1652,16 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                                                         : view->verticalScrollBar());
                 if(sbar != nullptr) {
                     QWheelEvent *we = static_cast<QWheelEvent*>(event);
-
+                    QPoint angleDelta = we->angleDelta();
+                    Qt::Orientation orient = (qAbs(angleDelta.x()) > qAbs(angleDelta.y()) ? Qt::Horizontal : Qt::Vertical);
+                    int delta = (orient == Qt::Horizontal ? angleDelta.x() : angleDelta.y());
                     QWheelEvent e(we->position(),
                                   we->globalPosition(),
                                   we->pixelDelta(),
                                   // the problem with horizontal wheel scrolling from inside view is fixed in Qt 5.14
                                   mode == CompactMode
-                                    ? QPoint (we->angleDelta().y() / QApplication::wheelScrollLines(), 0)
-                                    : QPoint (0, we->angleDelta().y() / QApplication::wheelScrollLines()),
+                                    ? QPoint (delta / QApplication::wheelScrollLines(), 0)
+                                    : QPoint (0, delta / QApplication::wheelScrollLines()),
                                   we->buttons(),
                                   Qt::NoModifier,
                                   we->phase(),
@@ -1685,13 +1687,18 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                     && event->spontaneous()
                     && static_cast<QWheelEvent*>(event)->source() == Qt::MouseEventNotSynthesized
                     && !(QApplication::keyboardModifiers() & Qt::AltModifier)) {
-                if(QScrollBar* vbar = view->verticalScrollBar()) {
-                    // keep track of the wheel event for smooth scrolling
-                    int delta = static_cast<QWheelEvent*>(event)->angleDelta().y();
+                QScrollBar *sbar = view->verticalScrollBar();
+                if(!sbar || !sbar->isVisible()) {
+                    sbar = view->horizontalScrollBar(); // as in lximage-qt's thumbnail dock
+                }
+                if(sbar && sbar->isVisible()) {
+                    QPoint angleDelta = static_cast<QWheelEvent*>(event)->angleDelta();
+                    Qt::Orientation orient = (qAbs(angleDelta.x()) > qAbs(angleDelta.y()) ? Qt::Horizontal : Qt::Vertical);
+                    int delta = (orient == Qt::Horizontal ? angleDelta.x() : angleDelta.y());
                     if(QApplication::keyboardModifiers() & Qt::ShiftModifier) {
                         delta /= QApplication::wheelScrollLines(); // row-by-row scrolling
                     }
-                    if((delta > 0 && vbar->value() == vbar->minimum()) || (delta < 0 && vbar->value() == vbar->maximum())) {
+                    if((delta > 0 && sbar->value() == sbar->minimum()) || (delta < 0 && sbar->value() == sbar->maximum())) {
                         break; // the scrollbar can't move
                     }
 
@@ -1718,7 +1725,13 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
 }
 
 void FolderView::scrollSmoothly() {
-    if(!view->verticalScrollBar()) {
+    QScrollBar *sbar = view->verticalScrollBar();
+    if(!sbar || !sbar->isVisible()) {
+        sbar = view->horizontalScrollBar();
+    }
+    if(!sbar || !sbar->isVisible()) {
+        queuedScrollSteps_.clear();
+        smoothScrollTimer_->stop();
         return;
     }
 
@@ -1748,16 +1761,21 @@ void FolderView::scrollSmoothly() {
                       Qt::NoScrollPhase,
                       false);
 
-        QApplication::sendEvent(view->verticalScrollBar(), &e);
-    }
+        QApplication::sendEvent(sbar, &e);
 
-    // update rubberband selection with smooth scrolling
-    if (QApplication::mouseButtons() & Qt::LeftButton) {
-        const QPoint globalPos = QCursor::pos();
-        QPoint pos = view->viewport()->mapFromGlobal(globalPos);
-        QMouseEvent ev(QEvent::MouseMove, pos, view->viewport()->mapTo(view->viewport()->topLevelWidget(), pos), globalPos,
-                       Qt::LeftButton, Qt::LeftButton, QApplication::keyboardModifiers());
-        QApplication::sendEvent(view->viewport(), &ev);
+        // update rubberband selection with smooth scrolling
+        if (QApplication::mouseButtons() & Qt::LeftButton) {
+            const QPoint globalPos = QCursor::pos();
+            QPoint pos = view->viewport()->mapFromGlobal(globalPos);
+            QMouseEvent ev(QEvent::MouseMove,
+                           pos,
+                           view->viewport()->mapTo(view->viewport()->topLevelWidget(), pos),
+                           globalPos,
+                           Qt::LeftButton,
+                           Qt::LeftButton,
+                           QApplication::keyboardModifiers());
+            QApplication::sendEvent(view->viewport(), &ev);
+        }
     }
 
     if(queuedScrollSteps_.empty()) {
