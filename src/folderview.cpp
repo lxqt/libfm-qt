@@ -1695,7 +1695,8 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                     QPoint angleDelta = static_cast<QWheelEvent*>(event)->angleDelta();
                     Qt::Orientation orient = (qAbs(angleDelta.x()) > qAbs(angleDelta.y()) ? Qt::Horizontal : Qt::Vertical);
                     int delta = (orient == Qt::Horizontal ? angleDelta.x() : angleDelta.y());
-                    if(QApplication::keyboardModifiers() & Qt::ShiftModifier) {
+                    if((QApplication::keyboardModifiers() & Qt::ShiftModifier)
+                       || iconSize(mode).height() >= 96) {
                         delta /= QApplication::wheelScrollLines(); // row-by-row scrolling
                     }
                     if((delta > 0 && sbar->value() == sbar->minimum()) || (delta < 0 && sbar->value() == sbar->maximum())) {
