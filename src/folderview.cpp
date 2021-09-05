@@ -1703,6 +1703,15 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                         break; // the scrollbar can't move
                     }
 
+                    // NOTE: Some touchpad devices may trigger wheel events with angle deltas
+                    // less than "scrollAnimFrames", resulting in jumpy movements. Therefore,
+                    // we wait until the total delta value is enough.
+                    static int totalDelta = 0;
+                    totalDelta += delta;
+                    if(abs(totalDelta) < scrollAnimFrames) {
+                        return true;
+                    }
+
                     if(!smoothScrollTimer_) {
                         smoothScrollTimer_ = new QTimer();
                         connect(smoothScrollTimer_, &QTimer::timeout, this, &FolderView::scrollSmoothly);
@@ -1710,10 +1719,11 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
 
                     // set the data for smooth scrolling
                     scrollData data;
-                    data.delta = delta;
+                    data.delta = totalDelta;
                     data.leftFrames = scrollAnimFrames;
                     queuedScrollSteps_.append(data);
                     smoothScrollTimer_->start(1000 / SCROLL_FRAMES_PER_SEC);
+                    totalDelta = 0;
                     return true;
                 }
             }
