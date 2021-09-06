@@ -75,8 +75,18 @@ QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
         return QImage();
     }
 
-    QLatin1String subdir = size_ > 128 ? QLatin1String("large") : QLatin1String("normal");
-    thumbnailDir += subdir;
+    if(size_ > 512) {
+        thumbnailDir += QLatin1String("xx-large"); // 1024x1024
+    }
+    else if(size_ > 256) {
+        thumbnailDir += QLatin1String("x-large");  //  512x512
+    }
+    else if(size_ > 128) {
+        thumbnailDir += QLatin1String("large");    //  256x256
+    }
+    else {
+        thumbnailDir += QLatin1String("normal");   //  128x128
+    }
 
     // generate base name of the thumbnail  => {md5 of uri}.png
     auto origPath = file->path();
@@ -106,19 +116,24 @@ QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
     // qDebug() << "thumbnail:" << file->getName().c_str() << thumbnailFilename;
 
     // try to load the thumbnail file if it exists
+    bool needToGenerate = false;
     QImage thumbnail{thumbnailFilename};
     if(thumbnail.isNull() || isThumbnailOutdated(file, thumbnail)) {
-        // the existing thumbnail cannot be loaded, generate a new one
-
-        // create the thumbnail dir as needd (FIXME: Qt file I/O is slow)
+        // the existing thumbnail cannot be loaded
+        needToGenerate = true;
+    }
+    else if(thumbnail.width() < size_ && thumbnail.height() < size_) {
+        // the existing thumbnail is too small
+        needToGenerate = true;
+    }
+    if (needToGenerate) {
+        // create the thumbnail dir as needed (FIXME: Qt file I/O is slow)
         QDir().mkpath(thumbnailDir);
 
         thumbnail = generateThumbnail(file, origPath, uri.get(), thumbnailFilename);
     }
-    // resize to the size we need
-    if(thumbnail.width() > size_ || thumbnail.height() > size_) {
-        thumbnail = thumbnail.scaled(size_, size_, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-    }
+    thumbnail = thumbnail.scaled(size_, size_, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
     return thumbnail;
 }
 
@@ -199,6 +214,17 @@ bool ThumbnailJob::readJpegExif(GInputStream *stream, QImage& thumbnail, QTransf
 }
 
 QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& file, const FilePath& origPath, const char* uri, const QString& thumbnailFilename) {
+    int target_size = 128;
+    if(size_ > 512) {
+        target_size = 1024;
+    }
+    else if(size_ > 256) {
+        target_size = 512;
+    }
+    else if(size_ > 128) {
+        target_size = 256;
+    }
+
     QImage result;
     auto mime_type = file->mimeType();
     if(isSupportedImageType(mime_type)) {
@@ -214,7 +240,10 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
         if(strcmp(mime_type->name(), "image/jpeg") == 0) { // if this is a jpeg file
             // try to get the thumbnail embedded in EXIF data
             if(readJpegExif(G_INPUT_STREAM(ins.get()), result, matrix)) {
-                fromExif = true;
+                // only use Exif thumbnail if it's larger than needed
+                if (result.width() >= size_ || result.height() >= size_) {
+                    fromExif = true;
+                }
             }
         }
         if(!fromExif) {  // not able to generate a thumbnail from the EXIF data
@@ -225,9 +254,6 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
         g_input_stream_close(G_INPUT_STREAM(ins.get()), nullptr, nullptr);
 
         if(!result.isNull()) { // the image is successfully loaded
-            // scale the image as needed
-            int target_size = size_ > 128 ? 256 : 128;
-
             // only scale the original image if it's too large
             if(result.width() > target_size || result.height() > target_size) {
                 result = result.scaled(target_size, target_size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
@@ -251,8 +277,8 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
             && file->size() > static_cast<uint64_t>(maxExternalThumbnailFileSize_) * 1024) {
             return result;
         }
-        // try all available external thumbnailers for it until sucess
-        int target_size = size_ > 128 ? 256 : 128;
+        // try all available external thumbnailers for it until success
+
         file->mimeType()->forEachThumbnailer([&](const std::shared_ptr<const Thumbnailer>& thumbnailer) {
             if(thumbnailer->run(uri, thumbnailFilename.toLocal8Bit().constData(), target_size)) {
                 result = QImage(thumbnailFilename);
