@@ -21,9 +21,8 @@
 
 namespace Fm {
 
-
 FileDialog::FileDialog(QWidget* parent, FilePath path) :
-    QDialog(parent),
+    QDialog(Fm::parentWindow(parent, this)),
     ui{new Ui::FileDialog()},
     folderModel_{nullptr},
     proxyModel_{nullptr},
@@ -246,6 +245,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
 }
 
 FileDialog::~FileDialog() {
+    removeFloatingWindow(this);
     freeFolder();
     delete proxyModel_;
     if(folderModel_) {

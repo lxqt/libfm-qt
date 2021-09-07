@@ -37,6 +37,32 @@
 
 namespace Fm {
 
+QList<QWidget*> floatingWindows_;
+
+const QList<QWidget*>& floatingWindows() {
+    return floatingWindows_;
+}
+
+void closeFloatingWindows() {
+    while (floatingWindows_.size() > 0) {
+        auto w = floatingWindows_.takeFirst();
+        delete w;
+    }
+}
+
+void removeFloatingWindow(QWidget* w) {
+    floatingWindows_.removeAll(w);
+}
+
+QWidget* parentWindow(QWidget* parent, QWidget* w) {
+    if (parent->testAttribute(Qt::WA_X11NetWmWindowTypeDesktop)) {
+        floatingWindows_ << w;
+        return nullptr;
+    }
+
+    return parent;
+}
+
 Fm::FilePathList pathListFromUriList(const char* uriList) {
     Fm::FilePathList pathList;
     char** uris = g_strsplit_set(uriList, "\r\n", -1);

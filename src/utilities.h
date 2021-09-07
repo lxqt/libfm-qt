@@ -34,8 +34,14 @@
 #include "core/templates.h"
 
 class QDialog;
+class QWidget;
 
 namespace Fm {
+
+LIBFM_QT_API const QList<QWidget*>& floatingWindows();
+LIBFM_QT_API void closeFloatingWindows();
+LIBFM_QT_API void removeFloatingWindow(QWidget* w);
+LIBFM_QT_API QWidget* parentWindow(QWidget* parent, QWidget* w);
 
 LIBFM_QT_API Fm::FilePathList pathListFromUriList(const char* uriList);
 
