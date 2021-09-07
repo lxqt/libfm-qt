@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation>Pad:</translation>
+        <translation>Locatie:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -1242,12 +1242,12 @@ Wilt u ze in plaats daarvan blijvend verwijderen?</translation>
     <message>
         <location filename="../pathbar.cpp" line="130"/>
         <source>&amp;Edit Path</source>
-        <translation>Pad &amp;bewerken</translation>
+        <translation>Locatie b&amp;ewerken</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="133"/>
         <source>&amp;Copy Path</source>
-        <translation>Pad &amp;kopiëren</translation>
+        <translation>Locatie &amp;kopiëren</translation>
     </message>
 </context>
 <context>
@@ -1412,7 +1412,7 @@ Gewijzigd: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Kan bestand &apos;%s&apos; niet uit de prullenbak halen: oorspronkelijk pad onbekend</translation>
+        <translation>Kan bestand ‘%s’ niet uit de prullenbak halen: oorspronkelijke locatie onbekend</translation>
     </message>
 </context>
 <context>
@@ -1527,7 +1527,7 @@ Gewijzigd: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation>Het pad is niet aangekoppeld.</translation>
+        <translation>De locatie is niet aangekoppeld.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="319"/>
