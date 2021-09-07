@@ -1130,6 +1130,8 @@ void FolderView::setViewMode(ViewMode _mode) {
     if(view) {
         // we have to install the event filter on the viewport instead of the view itself.
         view->viewport()->installEventFilter(this);
+        view->verticalScrollBar()->installEventFilter(this);    // needed to prevent scrolling during rename
+        view->horizontalScrollBar()->installEventFilter(this);
         // we want the QEvent::HoverMove event for single click + auto-selection support
         view->viewport()->setAttribute(Qt::WA_Hover, true);
         view->setContextMenuPolicy(Qt::NoContextMenu); // defer the context menu handling to parent widgets
@@ -1584,6 +1586,24 @@ void FolderView::childDropEvent(QDropEvent* e) {
 }
 
 bool FolderView::eventFilter(QObject* watched, QEvent* event) {
+    // don't let the view scroll during an inline renaming
+    if (event->type() == QEvent::Wheel && view) {
+        if (watched == view->viewport() || watched == view->verticalScrollBar() || watched == view->horizontalScrollBar()) {
+            FolderItemDelegate* delegate = nullptr;
+            if(mode == DetailedListMode) {
+                FolderViewTreeView* treeView = static_cast<FolderViewTreeView*>(view);
+                delegate = static_cast<FolderItemDelegate*>(treeView->itemDelegateForColumn(FolderModel::ColumnFileName));
+            }
+            else {
+                FolderViewListView* listView = static_cast<FolderViewListView*>(view);
+                delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
+            }
+            if (delegate && delegate->hasEditor()) {
+                return true;
+            }
+        }
+    }
+
     // NOTE: Instead of simply filtering the drag and drop events of the child view in
     // the event filter, we overrided each event handler virtual methods in
     // both QListView and QTreeView and added some childXXXEvent() callbacks.
@@ -1629,21 +1649,6 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
             }
             break;
         case QEvent::Wheel:
-            // don't let the view scroll during an inline renaming
-            if (view) {
-                FolderItemDelegate* delegate = nullptr;
-                if(mode == DetailedListMode) {
-                    FolderViewTreeView* treeView = static_cast<FolderViewTreeView*>(view);
-                    delegate = static_cast<FolderItemDelegate*>(treeView->itemDelegateForColumn(FolderModel::ColumnFileName));
-                }
-                else {
-                    FolderViewListView* listView = static_cast<FolderViewListView*>(view);
-                    delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
-                }
-                if (delegate && delegate->hasEditor()) {
-                    return true;
-                }
-            }
             // row-by-row scrolling when Shift is pressed
             if((QApplication::keyboardModifiers() & Qt::ShiftModifier)
                 && (mode == CompactMode || mode == DetailedListMode)) // other modes have smooth scroling
