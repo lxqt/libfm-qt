@@ -75,7 +75,9 @@ QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
         return QImage();
     }
 
-    QLatin1String subdir = size_ > 128 ? QLatin1String("large") : QLatin1String("normal");
+    QLatin1String subdir = size_ > 256 ? QLatin1String("x-large")
+                                       : size_ > 128 ? QLatin1String("large")
+                                                     : QLatin1String("normal");
     thumbnailDir += subdir;
 
     // generate base name of the thumbnail  => {md5 of uri}.png
@@ -226,7 +228,7 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
 
         if(!result.isNull()) { // the image is successfully loaded
             // scale the image as needed
-            int target_size = size_ > 128 ? 256 : 128;
+            int target_size = size_ > 256 ? 512 : size_ > 128 ? 256 : 128;
 
             // only scale the original image if it's too large
             if(result.width() > target_size || result.height() > target_size) {
@@ -252,7 +254,7 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
             return result;
         }
         // try all available external thumbnailers for it until sucess
-        int target_size = size_ > 128 ? 256 : 128;
+        int target_size = size_ > 256 ? 512 : size_ > 128 ? 256 : 128;
         file->mimeType()->forEachThumbnailer([&](const std::shared_ptr<const Thumbnailer>& thumbnailer) {
             if(thumbnailer->run(uri, thumbnailFilename.toLocal8Bit().constData(), target_size)) {
                 result = QImage(thumbnailFilename);
