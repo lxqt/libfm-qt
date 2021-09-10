@@ -1628,7 +1628,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                 setCursor(Qt::ArrowCursor);
             }
             break;
-        case QEvent::Wheel:
+        case QEvent::Wheel: {
             // don't let the view scroll during an inline renaming
             if (view) {
                 FolderItemDelegate* delegate = nullptr;
@@ -1644,24 +1644,48 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                     return true;
                 }
             }
-            // row-by-row scrolling when Shift is pressed
-            if((QApplication::keyboardModifiers() & Qt::ShiftModifier)
-                && (mode == CompactMode || mode == DetailedListMode)) // other modes have smooth scroling
+
+            // first get the angle delta and customize it according to our needs
+            QPoint angleDelta = static_cast<QWheelEvent*>(event)->angleDelta();
+            Qt::Orientation orient = (qAbs(angleDelta.x()) > qAbs(angleDelta.y()) ? Qt::Horizontal : Qt::Vertical);
+            int delta = (orient == Qt::Horizontal ? angleDelta.x() : angleDelta.y());
+            bool customAngleDelta = false;
+            if(QApplication::wheelScrollLines() > 1) {
+                // row-by-row scrolling when (1) Shift is pressed, or (2) the angle delta is
+                // less than that of an ordinary mouse wheel, or (3) the view has large icons
+                if((QApplication::keyboardModifiers() & Qt::ShiftModifier)
+                   || qAbs(delta) < 120
+                   || iconSize(mode).height() >= 96) {
+                    if(qAbs(delta) >= QApplication::wheelScrollLines()) {
+                        delta = delta / QApplication::wheelScrollLines();
+                        customAngleDelta = true;
+                        // still slower scrolling with very large icons
+                        if(iconSize(mode).height() >= 256 && qAbs(delta) >= 2) {
+                            delta /= 2;
+                        }
+                    }
+                }
+                else if(iconSize(mode).height() >= 64
+                        && QApplication::wheelScrollLines() > 2
+                        && qAbs(delta * 2) >= QApplication::wheelScrollLines()) {
+                    // 2 rows per mouse turn for average icon sizes
+                    delta = delta * 2 / QApplication::wheelScrollLines();
+                    customAngleDelta = true;
+                }
+            }
+
+            if(customAngleDelta
+               && (mode == CompactMode || mode == DetailedListMode)) // other modes have smooth scroling
             {
                 QScrollBar *sbar = (mode == CompactMode ? view->horizontalScrollBar()
                                                         : view->verticalScrollBar());
                 if(sbar != nullptr) {
                     QWheelEvent *we = static_cast<QWheelEvent*>(event);
-                    QPoint angleDelta = we->angleDelta();
-                    Qt::Orientation orient = (qAbs(angleDelta.x()) > qAbs(angleDelta.y()) ? Qt::Horizontal : Qt::Vertical);
-                    int delta = (orient == Qt::Horizontal ? angleDelta.x() : angleDelta.y());
                     QWheelEvent e(we->position(),
                                   we->globalPosition(),
                                   we->pixelDelta(),
                                   // the problem with horizontal wheel scrolling from inside view is fixed in Qt 5.14
-                                  mode == CompactMode
-                                    ? QPoint (delta / QApplication::wheelScrollLines(), 0)
-                                    : QPoint (0, delta / QApplication::wheelScrollLines()),
+                                  mode == CompactMode ? QPoint (delta, 0) : QPoint (0, delta),
                                   we->buttons(),
                                   Qt::NoModifier,
                                   we->phase(),
@@ -1692,13 +1716,6 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                     sbar = view->horizontalScrollBar(); // as in lximage-qt's thumbnail dock
                 }
                 if(sbar && sbar->isVisible()) {
-                    QPoint angleDelta = static_cast<QWheelEvent*>(event)->angleDelta();
-                    Qt::Orientation orient = (qAbs(angleDelta.x()) > qAbs(angleDelta.y()) ? Qt::Horizontal : Qt::Vertical);
-                    int delta = (orient == Qt::Horizontal ? angleDelta.x() : angleDelta.y());
-                    if((QApplication::keyboardModifiers() & Qt::ShiftModifier)
-                       || iconSize(mode).height() >= 96) {
-                        delta /= QApplication::wheelScrollLines(); // row-by-row scrolling
-                    }
                     if((delta > 0 && sbar->value() == sbar->minimum()) || (delta < 0 && sbar->value() == sbar->maximum())) {
                         break; // the scrollbar can't move
                     }
@@ -1722,12 +1739,15 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                     data.delta = _delta;
                     data.leftFrames = scrollAnimFrames;
                     queuedScrollSteps_.append(data);
-                    smoothScrollTimer_->start(1000 / SCROLL_FRAMES_PER_SEC);
+                    if(!smoothScrollTimer_->isActive()) {
+                        smoothScrollTimer_->start(1000 / SCROLL_FRAMES_PER_SEC);
+                    }
                     _delta = 0;
                     return true;
                 }
             }
             break;
+        }
         default:
             break;
         }
@@ -1751,6 +1771,9 @@ void FolderView::scrollSmoothly() {
     while(it != queuedScrollSteps_.end()) {
         int delta = qRound((qreal)it->delta / (qreal)scrollAnimFrames);
         int remainingDelta = it->delta - (scrollAnimFrames - it->leftFrames) * delta;
+        if((delta >= 0 && remainingDelta < 0) || (delta < 0 && remainingDelta >= 0)) {
+            remainingDelta = 0;
+        }
         if(qAbs(delta) >= qAbs(remainingDelta)) {
             // this is the last frame or, due to rounding, there can be no more frame
             totalDelta += remainingDelta;
