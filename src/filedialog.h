@@ -160,6 +160,9 @@ public:
     int thumbnailIconSize() const;
     void setThumbnailIconSize(int size);
 
+    QList<int> getHiddenColumns() const;
+    void setHiddenColumns(const QList<int> &columns);
+
 protected:
     bool eventFilter(QObject* watched, QEvent* event) override;
 

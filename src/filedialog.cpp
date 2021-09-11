@@ -435,6 +435,14 @@ void FileDialog::setThumbnailIconSize(int size) {
     }
 }
 
+QList<int> FileDialog::getHiddenColumns() const {
+    return ui->folderView->getHiddenColumns();
+}
+
+void FileDialog::setHiddenColumns(const QList<int> &columns) {
+    ui->folderView->setHiddenColumns(columns);
+}
+
 // This should always be used instead of getting text directly from the entry.
 QStringList FileDialog::parseNames() const {
     // parse the file names from the text entry
