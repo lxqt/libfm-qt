@@ -70,6 +70,11 @@ FolderViewListView::FolderViewListView(QWidget* parent):
     setEditTriggers(QAbstractItemView::NoEditTriggers);
     setMouseTracking(true); // needed with selection corner icon
 
+    // for smooth scrolling
+    setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+    setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+
+
     viewport()->setAcceptDrops(true);
     /* If the list view is already visible, setMovement() will lay out items again with delay
        (see Qt, QListView::setMovement(), d->doDelayedItemsLayout()) and thus drop events will
@@ -341,6 +346,9 @@ FolderViewTreeView::FolderViewTreeView(QWidget* parent):
 
     header()->setSectionResizeMode(QHeaderView::Interactive);
     header()->setStretchLastSection(true);
+
+    // for smooth scrolling
+    setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
 
     // get the new width if the section is resized by user
     connect(header(), &QHeaderView::sectionResized, [this](int logicalIndex, int/* oldSize*/, int newSize) {
@@ -1629,93 +1637,68 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
             }
             break;
         case QEvent::Wheel: {
+            if(!view) {
+                break;
+            }
+
+            bool horizontalListView(false);
+
             // don't let the view scroll during an inline renaming
-            if (view) {
-                FolderItemDelegate* delegate = nullptr;
-                if(mode == DetailedListMode) {
-                    FolderViewTreeView* treeView = static_cast<FolderViewTreeView*>(view);
-                    delegate = static_cast<FolderItemDelegate*>(treeView->itemDelegateForColumn(FolderModel::ColumnFileName));
-                }
-                else {
-                    FolderViewListView* listView = static_cast<FolderViewListView*>(view);
-                    delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
-                }
-                if (delegate && delegate->hasEditor()) {
-                    return true;
-                }
+            FolderItemDelegate* delegate = nullptr;
+            if(mode == DetailedListMode) {
+                FolderViewTreeView* treeView = static_cast<FolderViewTreeView*>(view);
+                delegate = static_cast<FolderItemDelegate*>(treeView->itemDelegateForColumn(FolderModel::ColumnFileName));
+            }
+            else {
+                FolderViewListView* listView = static_cast<FolderViewListView*>(view);
+                horizontalListView = (listView->flow() == QListView::TopToBottom);
+                delegate = static_cast<FolderItemDelegate*>(listView->itemDelegateForColumn(FolderModel::ColumnFileName));
+            }
+            if(delegate && delegate->hasEditor()) {
+                return true;
             }
 
-            // first get the angle delta and customize it according to our needs
-            QPoint angleDelta = static_cast<QWheelEvent*>(event)->angleDelta();
-            Qt::Orientation orient = (qAbs(angleDelta.x()) > qAbs(angleDelta.y()) ? Qt::Horizontal : Qt::Vertical);
-            int delta = (orient == Qt::Horizontal ? angleDelta.x() : angleDelta.y());
-            bool customAngleDelta = false;
-            if(QApplication::wheelScrollLines() > 1) {
-                // row-by-row scrolling when (1) Shift is pressed, or (2) the angle delta is
-                // less than that of an ordinary mouse wheel, or (3) the view has large icons
-                if((QApplication::keyboardModifiers() & Qt::ShiftModifier)
-                   || qAbs(delta) < 120
-                   || iconSize(mode).height() >= 96) {
-                    if(qAbs(delta) >= QApplication::wheelScrollLines()) {
-                        delta = delta / QApplication::wheelScrollLines();
-                        customAngleDelta = true;
-                        // still slower scrolling with very large icons
-                        if(iconSize(mode).height() >= 256 && qAbs(delta) >= 2) {
-                            delta /= 2;
-                        }
-                    }
-                }
-                else if(iconSize(mode).height() >= 64
-                        && QApplication::wheelScrollLines() > 2
-                        && qAbs(delta * 2) >= QApplication::wheelScrollLines()) {
-                    // 2 rows per mouse turn for average icon sizes
-                    delta = delta * 2 / QApplication::wheelScrollLines();
-                    customAngleDelta = true;
-                }
-            }
-
-            if(customAngleDelta
-               && (mode == CompactMode || mode == DetailedListMode)) // other modes have smooth scroling
-            {
-                QScrollBar *sbar = (mode == CompactMode ? view->horizontalScrollBar()
-                                                        : view->verticalScrollBar());
-                if(sbar != nullptr) {
-                    QWheelEvent *we = static_cast<QWheelEvent*>(event);
-                    QWheelEvent e(we->position(),
-                                  we->globalPosition(),
-                                  we->pixelDelta(),
-                                  // the problem with horizontal wheel scrolling from inside view is fixed in Qt 5.14
-                                  mode == CompactMode ? QPoint (delta, 0) : QPoint (0, delta),
-                                  we->buttons(),
-                                  Qt::NoModifier,
-                                  we->phase(),
-                                  false,
-                                  we->source());
-                    QApplication::sendEvent(sbar, &e);
-                    return true;
-                }
-            }
-            // This is to fix #85: Scrolling doesn't work in compact view
-            // Actually, I think it's the bug of Qt, not ours.
-            // When in compact mode, only the horizontal scroll bar is used and the vertical one is hidden.
-            // So, when a user scroll his mouse wheel, it's reasonable to scroll the horizontal scollbar.
-            // Qt does not implement such a simple feature, unfortunately.
-            // We do it by forwarding the scroll event in the viewport to the horizontal scrollbar.
-            // FIXME: if someday Qt supports this, we have to disable the workaround.
-            else if(mode == CompactMode) {
-                return false; // the problem with horizontal wheel scrolling from inside view is fixed in Qt 5.14
-            }
             // Smooth Scrolling
             // Some tricks are adapted from <https://github.com/zhou13/qsmoothscrollarea>.
-            else if(mode != DetailedListMode
-                    && event->spontaneous()
-                    && static_cast<QWheelEvent*>(event)->source() == Qt::MouseEventNotSynthesized
-                    && !(QApplication::keyboardModifiers() & Qt::AltModifier)) {
-                QScrollBar *sbar = view->verticalScrollBar();
-                if(!sbar || !sbar->isVisible()) {
-                    sbar = view->horizontalScrollBar(); // as in lximage-qt's thumbnail dock
-                }
+            QWheelEvent* we = static_cast<QWheelEvent*>(event);
+            QPoint angleDelta = we->angleDelta();
+            bool horizontal(qAbs(angleDelta.x()) > qAbs(angleDelta.y()));
+            if(event->spontaneous()
+               && we->source() == Qt::MouseEventNotSynthesized
+               // To have a simpler code, we enable horizontal smooth scrolling with mouse wheel
+               // only in horizontal list views.
+               && (horizontalListView || !horizontal)) {
+                QScrollBar* sbar = horizontalListView ? view->horizontalScrollBar()
+                                                      : view->verticalScrollBar();
                 if(sbar && sbar->isVisible()) {
+                    // first get the angle delta and customize it according to our needs
+                    int delta = horizontal ? angleDelta.x() : angleDelta.y();
+                    if(QApplication::wheelScrollLines() > 1) {
+                        /* Scroll with minimum speed when
+                            (1) The mode is compact (because columns can be wide), or
+                            (2) Shift is pressed, or
+                            (3) The angle delta is less than that of an ordinary mouse wheel, or
+                            (4) The view has large icons. */
+                        if(mode == CompactMode
+                           || (we->modifiers() & Qt::ShiftModifier)
+                           || qAbs(delta) < 120
+                           || iconSize(mode).height() >= 96) {
+                            if(qAbs(delta) >= QApplication::wheelScrollLines()) {
+                                delta = delta / QApplication::wheelScrollLines();
+                                // still slower scrolling with very large icons
+                                if(iconSize(mode).height() >= 256 && qAbs(delta) >= 2) {
+                                    delta /= 2;
+                                }
+                            }
+                        }
+                        else if(iconSize(mode).height() >= 64
+                                && QApplication::wheelScrollLines() > 2
+                                && qAbs(delta * 2) >= QApplication::wheelScrollLines()) {
+                            // 2 rows per mouse turn for average icon sizes
+                            delta = delta * 2 / QApplication::wheelScrollLines();
+                        }
+                    }
+
                     if((delta > 0 && sbar->value() == sbar->minimum()) || (delta < 0 && sbar->value() == sbar->maximum())) {
                         break; // the scrollbar can't move
                     }
@@ -1756,9 +1739,18 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
 }
 
 void FolderView::scrollSmoothly() {
-    QScrollBar *sbar = view->verticalScrollBar();
-    if(!sbar || !sbar->isVisible()) {
-        sbar = view->horizontalScrollBar();
+    QScrollBar* sbar = nullptr;
+    if(mode == DetailedListMode) {
+        sbar = view->verticalScrollBar();
+    }
+    else {
+        FolderViewListView* listView = static_cast<FolderViewListView*>(view);
+        if(listView->flow() == QListView::TopToBottom) {
+            sbar = view->horizontalScrollBar();
+        }
+        else {
+            sbar = view->verticalScrollBar();
+        }
     }
     if(!sbar || !sbar->isVisible()) {
         queuedScrollSteps_.clear();
@@ -1797,8 +1789,9 @@ void FolderView::scrollSmoothly() {
 
         QApplication::sendEvent(sbar, &e);
 
-        // update rubberband selection with smooth scrolling
-        if (QApplication::mouseButtons() & Qt::LeftButton) {
+        // update rubberband selection with smooth scrolling in icon view
+        if ((mode == IconMode || mode == ThumbnailMode)
+            && (QApplication::mouseButtons() & Qt::LeftButton)) {
             const QPoint globalPos = QCursor::pos();
             QPoint pos = view->viewport()->mapFromGlobal(globalPos);
             QMouseEvent ev(QEvent::MouseMove,
