@@ -1637,10 +1637,6 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
             }
             break;
         case QEvent::Wheel: {
-            if(!view) {
-                break;
-            }
-
             bool horizontalListView(false);
 
             // don't let the view scroll during an inline renaming
