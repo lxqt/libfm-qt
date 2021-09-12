@@ -319,6 +319,13 @@ void FileDialogHelper::loadSettings() {
     dlg_->setBigIconSize(settings.value(QStringLiteral("BigIconSize"), 48).toInt());
     dlg_->setSmallIconSize(settings.value(QStringLiteral("SmallIconSize"), 24).toInt());
     dlg_->setThumbnailIconSize(settings.value(QStringLiteral("ThumbnailIconSize"), 128).toInt());
+
+    const QList<QVariant> hiddenColumns = settings.value(QStringLiteral("HiddenColumns")).toList();
+    QList<int> l;
+    for(auto width : hiddenColumns) {
+        l << width.toInt();
+    }
+    dlg_->setHiddenColumns(l);
     settings.endGroup();
 
     settings.beginGroup(QStringLiteral("Places"));
@@ -392,6 +399,16 @@ void FileDialogHelper::saveSettings() {
     size = dlg_->thumbnailIconSize();
     if(settings.value(QStringLiteral("ThumbnailIconSize")).toInt() != size) {
         settings.setValue(QStringLiteral("ThumbnailIconSize"), size);
+    }
+
+    const QList<int> columns = dlg_->getHiddenColumns();
+    QList<QVariant> hiddenColumns;
+    for(auto column : columns) {
+        hiddenColumns << QVariant(column);
+    }
+    std::sort(hiddenColumns.begin(), hiddenColumns.end());
+    if(settings.value(QStringLiteral("HiddenColumns")).toList() != hiddenColumns) {
+        settings.setValue(QStringLiteral("HiddenColumns"), hiddenColumns);
     }
     settings.endGroup();
 
