@@ -1491,8 +1491,8 @@ void FolderView::invertSelection() {
         const QItemSelection _all{model_->index(0, 0), model_->index(model_->rowCount() - 1, 0)};
         const QItemSelection _old{selModel->selection()};
 
-        selModel->select(_all, QItemSelectionModel::Select);
-        selModel->select(_old, QItemSelectionModel::Deselect);
+        selModel->select(_all, flags | QItemSelectionModel::Select);
+        selModel->select(_old, flags | QItemSelectionModel::Deselect);
     }
 }
 
