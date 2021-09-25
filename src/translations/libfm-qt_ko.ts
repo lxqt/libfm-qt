@@ -246,17 +246,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>엠블럼:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>상징 선택</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>상징 지우기</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -441,7 +441,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>여기에 놓을 수 없음</translation>
     </message>
 </context>
 <context>
@@ -1008,7 +1008,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">빈 휴지통</translation>
+        <translation>빈 휴지통</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
@@ -1392,7 +1392,7 @@ Modified: %2</source>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;파일을 덮어쓸 수 없습니다.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;다른 이름을 선택하십시오.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
