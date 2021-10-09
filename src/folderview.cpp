@@ -1925,7 +1925,7 @@ void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm::FileInf
                 menu = fileMenu;
             }
         }
-        else if (folderInfo()) {
+        if (!menu && folderInfo()) {
             Fm::FolderMenu* folderMenu = new Fm::FolderMenu(this);
             prepareFolderMenu(folderMenu);
             menu = folderMenu;
