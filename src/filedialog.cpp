@@ -98,11 +98,6 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     ui->fileTypeCombo->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     ui->fileTypeCombo->setCurrentIndex(0);
 
-    QShortcut* shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_H), this);
-    connect(shortcut, &QShortcut::activated, [this]() {
-        proxyModel_->setShowHidden(!proxyModel_->showHidden());
-    });
-
     // setup toolbar buttons
     auto toolbar = new QToolBar(this);
     // back button
@@ -200,6 +195,18 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
 
     menu->addSeparator();
 
+    // showing hidden files
+    auto showHiddenAction = menu->addAction(tr("Show Hidden"));
+    showHiddenAction->setCheckable(true);
+    connect(showHiddenAction, &QAction::triggered, [this](bool checked) {
+        proxyModel_->setShowHidden(checked);
+    });
+    // also add a separate shortcut for it
+    QShortcut* shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_H), this);
+    connect(shortcut, &QShortcut::activated, [this]() {
+        proxyModel_->setShowHidden(!proxyModel_->showHidden());
+    });
+
     // thumbnail and tooltip actions
     auto thumbnailsAction = menu->addAction(tr("Show Thumbnails"));
     thumbnailsAction->setCheckable(true);
@@ -211,8 +218,11 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     connect(tooltipsAction, &QAction::triggered, [this](bool checked) {
         setNoItemTooltip(!checked);
     });
-    connect(menu, &QMenu::aboutToShow, [this, thumbnailsAction, tooltipsAction]() {
-        thumbnailsAction->setChecked(proxyModel_ ? proxyModel_->showThumbnails() : true);
+
+    // set the check states when the menu is about to appear
+    connect(menu, &QMenu::aboutToShow, [this, showHiddenAction, thumbnailsAction, tooltipsAction]() {
+        showHiddenAction->setChecked(proxyModel_->showHidden());
+        thumbnailsAction->setChecked(proxyModel_->showThumbnails());
         tooltipsAction->setChecked(!noItemTooltip_);
     });
 
