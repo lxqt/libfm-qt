@@ -315,6 +315,7 @@ void FileDialogHelper::loadSettings() {
 
     dlg_->setShowThumbnails(settings.value(QStringLiteral("ShowThumbnails"), true).toBool());
     dlg_->setNoItemTooltip(settings.value(QStringLiteral("NoItemTooltip"), false).toBool());
+    dlg_->setScrollPerPixel(settings.value(QStringLiteral("ScrollPerPixel"), true).toBool());
 
     dlg_->setBigIconSize(settings.value(QStringLiteral("BigIconSize"), 48).toInt());
     dlg_->setSmallIconSize(settings.value(QStringLiteral("SmallIconSize"), 24).toInt());
@@ -386,6 +387,10 @@ void FileDialogHelper::saveSettings() {
     bool noItemTooltip = dlg_->noItemTooltip();
     if(settings.value(QStringLiteral("NoItemTooltip")).toBool() != noItemTooltip) {
         settings.setValue(QStringLiteral("NoItemTooltip"), noItemTooltip);
+    }
+    bool scrollPerPixel = dlg_->scrollPerPixel();
+    if(settings.value(QStringLiteral("ScrollPerPixel")).toBool() != scrollPerPixel) {
+        settings.setValue(QStringLiteral("ScrollPerPixel"), scrollPerPixel);
     }
 
     int size = dlg_->bigIconSize();

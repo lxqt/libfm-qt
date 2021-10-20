@@ -34,7 +34,8 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     acceptMode_{QFileDialog::AcceptOpen},
     confirmOverwrite_{true},
     modelFilter_{this},
-    noItemTooltip_{false} {
+    noItemTooltip_{false},
+    scrollPerPixel_{true} {
 
     ui->setupUi(this);
 
@@ -219,11 +220,21 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         setNoItemTooltip(!checked);
     });
 
+    // per-pixel action
+    auto perPixelAction = menu->addAction(tr("Smooth Scrolling"));
+    perPixelAction->setCheckable(true);
+    connect(perPixelAction, &QAction::triggered, [this](bool checked) {
+        setScrollPerPixel(checked);
+    });
+
     // set the check states when the menu is about to appear
-    connect(menu, &QMenu::aboutToShow, [this, showHiddenAction, thumbnailsAction, tooltipsAction]() {
+    connect(menu, &QMenu::aboutToShow, [this, showHiddenAction, thumbnailsAction, tooltipsAction, perPixelAction]() {
         showHiddenAction->setChecked(proxyModel_->showHidden());
         thumbnailsAction->setChecked(proxyModel_->showThumbnails());
         tooltipsAction->setChecked(!noItemTooltip_);
+        perPixelAction->setVisible(viewMode_ == FolderView::DetailedListMode
+                                   || viewMode_ == FolderView::CompactMode);
+        perPixelAction->setChecked(scrollPerPixel_);
     });
 
     // Options menu button
@@ -412,6 +423,11 @@ void FileDialog::setNoItemTooltip(bool noItemTooltip) {
     else {
         ui->folderView->childView()->viewport()->removeEventFilter(this);
     }
+}
+
+void FileDialog::setScrollPerPixel(bool perPixel) {
+    scrollPerPixel_ = perPixel;
+    ui->folderView->setScrollPerPixel(scrollPerPixel_);
 }
 
 int FileDialog::bigIconSize() const {

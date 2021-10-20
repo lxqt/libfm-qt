@@ -70,8 +70,7 @@ FolderViewListView::FolderViewListView(QWidget* parent):
     setEditTriggers(QAbstractItemView::NoEditTriggers);
     setMouseTracking(true); // needed with selection corner icon
 
-    // for smooth scrolling
-    setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+    // for smooth scrolling (it is Qt's default)
     setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
 
 
@@ -346,9 +345,6 @@ FolderViewTreeView::FolderViewTreeView(QWidget* parent):
 
     header()->setSectionResizeMode(QHeaderView::Interactive);
     header()->setStretchLastSection(true);
-
-    // for smooth scrolling
-    setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
 
     // get the new width if the section is resized by user
     connect(header(), &QHeaderView::sectionResized, [this](int logicalIndex, int/* oldSize*/, int newSize) {
@@ -876,6 +872,7 @@ FolderView::FolderView(FolderView::ViewMode _mode, QWidget *parent):
     selChangedTimer_(nullptr),
     itemDelegateMargins_(QSize(3, 3)),
     shadowHidden_(false),
+    scrollPerPixel_(true),
     ctrlRightClick_(false),
     smoothScrollTimer_(nullptr) {
 
@@ -926,6 +923,26 @@ void FolderView::setHiddenColumns(const QList<int> &columns) {
     if(mode == DetailedListMode) {
         if(FolderViewTreeView* treeView = static_cast<FolderViewTreeView*>(view)) {
             treeView->setHiddenColumns(hiddenColumns_);
+        }
+    }
+}
+
+void FolderView::setScrollPerPixel(bool perPixel) {
+    if(scrollPerPixel_ == perPixel) {
+        return;
+    }
+    scrollPerPixel_ = perPixel;
+    // icon and thumbnail modes scroll per pixel by default
+    if(mode == DetailedListMode) {
+        if(FolderViewTreeView* treeView = static_cast<FolderViewTreeView*>(view)) {
+            treeView->setVerticalScrollMode(scrollPerPixel_ ? QAbstractItemView::ScrollPerPixel
+                                                            : QAbstractItemView::ScrollPerItem);
+        }
+    }
+    else if(mode == CompactMode) {
+        if(FolderViewListView* listView = static_cast<FolderViewListView*>(view)) {
+            listView->setHorizontalScrollMode(scrollPerPixel_ ? QAbstractItemView::ScrollPerPixel
+                                                              : QAbstractItemView::ScrollPerItem);
         }
     }
 }
@@ -1023,8 +1040,9 @@ void FolderView::setViewMode(ViewMode _mode) {
     if(_mode == mode) { // if it's the same more, ignore
         return;
     }
-    // smooth scrolling is only for icon and thumbnail modes
-    if(smoothScrollTimer_ && (_mode == DetailedListMode || _mode == CompactMode)) {
+    // disabling of smooth scrolling is only for list and compact modes
+    if(!scrollPerPixel_ && smoothScrollTimer_ != nullptr
+       && (_mode == DetailedListMode || _mode == CompactMode)) {
         disconnect(smoothScrollTimer_, &QTimer::timeout, this, &FolderView::scrollSmoothly);
         smoothScrollTimer_->stop();
         delete smoothScrollTimer_;
@@ -1047,6 +1065,9 @@ void FolderView::setViewMode(ViewMode _mode) {
     FolderItemDelegate* delegate = nullptr;
     if(mode == DetailedListMode) {
         FolderViewTreeView* treeView = new FolderViewTreeView(this);
+        if(scrollPerPixel_) {
+            treeView->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+        }
         treeView->setCustomColumnWidths(customColumnWidths_);
         treeView->setHiddenColumns(hiddenColumns_);
         treeView->setAlternatingRowColors(true);
@@ -1100,6 +1121,9 @@ void FolderView::setViewMode(ViewMode _mode) {
         }
         else {
             listView = new FolderViewListView(this);
+            if(scrollPerPixel_ && mode == CompactMode) {
+                listView->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+            }
             connect(listView, &FolderViewListView::activatedFiltered, this, &FolderView::onItemActivated);
             view = listView;
         }
@@ -1661,6 +1685,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
             bool horizontal(qAbs(angleDelta.x()) > qAbs(angleDelta.y()));
             if(event->spontaneous()
                && we->source() == Qt::MouseEventNotSynthesized
+               && (scrollPerPixel_ || (mode != DetailedListMode && mode != CompactMode))
                // To have a simpler code, we enable horizontal smooth scrolling with mouse wheel
                // only in horizontal list views.
                && (horizontalListView || !horizontal)) {
