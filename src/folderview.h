@@ -135,6 +135,11 @@ public:
     }
     void setHiddenColumns(const QList<int> &columns);
 
+    bool scrollPerPixel() const {
+        return scrollPerPixel_;
+    }
+    void setScrollPerPixel(bool perPixel);
+
 protected:
     bool event(QEvent* event) override;
     void contextMenuEvent(QContextMenuEvent* event) override;
@@ -201,6 +206,7 @@ private:
     // the cell margins in the icon and thumbnail modes
     QSize itemDelegateMargins_;
     bool shadowHidden_;
+    bool scrollPerPixel_;
     bool ctrlRightClick_; // show folder context menu with Ctrl + right click
 
     // smooth scrolling:

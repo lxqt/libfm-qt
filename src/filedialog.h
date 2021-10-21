@@ -151,6 +151,11 @@ public:
     }
     void setNoItemTooltip(bool noItemTooltip);
 
+    bool scrollPerPixel() const {
+        return scrollPerPixel_;
+    }
+    void setScrollPerPixel(bool perPixel);
+
     int bigIconSize() const;
     void setBigIconSize(int size);
 
@@ -253,6 +258,7 @@ private:
     QMetaObject::Connection lambdaConnection_; // needed for disconnecting Fm::Folder signal from lambda:
     QSet<QString> hiddenPlaces_;
     bool noItemTooltip_;
+    bool scrollPerPixel_;
 };
 
 
