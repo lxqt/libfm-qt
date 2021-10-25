@@ -243,17 +243,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation>Logo:</translation>
+        <translation>Emblem:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation>Wähle Logo</translation>
+        <translation>Emblem auswählen</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation>Lösche Logo</translation>
+        <translation>Emblem löschen</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -329,12 +329,12 @@
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>SetUID</source>
-        <translation>&quot;SetUID&quot;</translation>
+        <translation>SetUID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
         <source>SetGID</source>
-        <translation>&quot;SetGID&quot;</translation>
+        <translation>SetGID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="792"/>
@@ -437,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation>Kann hier nicht droppen</translation>
+        <translation>Kann hier nicht abgelegt werden</translation>
     </message>
 </context>
 <context>
@@ -538,32 +538,32 @@ Was möchten Sie damit tun?</translation>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation>Größe großer Symbole:</translation>
+        <translation>Größe der großen Symbole:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation>Größe kleiner Symbole:</translation>
+        <translation>Größe der kleinen Symbole:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation>Größe des Bildchens:</translation>
+        <translation>Größe der Vorschaubilder:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation>Bildchen anzeigen</translation>
+        <translation>Vorschaubilder anzeigen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation>Kurzinfo anzeigen</translation>
+        <translation>Datei-Kurzinfos anzeigen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation>Einstellungen</translation>
+        <translation>Optionen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
@@ -653,8 +653,8 @@ Möchten Sie sie ersetzen?</translation>
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
-            <numerusform>Willst du diese %1 Datei öffnen?</numerusform>
-            <numerusform>Willst du diese %2 Dateien öffnen?</numerusform>
+            <numerusform>Möchten Sie diese %1 Datei öffnen?</numerusform>
+            <numerusform>Möchten Sie diese %1 Dateien öffnen?</numerusform>
         </translation>
     </message>
     <message>
@@ -784,16 +784,16 @@ Möchtest Sie sie stattdessen löschen?</translation>
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
-            <numerusform>Ausgewählte Datei löschen?</numerusform>
-            <numerusform>Ausgewählte Dateien löschen?</numerusform>
+            <numerusform>Möchten Sie die ausgewählte Datei löschen?</numerusform>
+            <numerusform>Möchten Sie die ausgewählten Dateien löschen?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
-            <numerusform>Ausgewählte Datei in Abfall werfen?</numerusform>
-            <numerusform>Ausgewählte Dateien in Abfall werfen?</numerusform>
+            <numerusform>Möchten Sie die ausgewählte Datei in den Papierkorb verschieben?</numerusform>
+            <numerusform>Möchten Sie die ausgewählten Dateien in den Papierkorb verschieben?</numerusform>
         </translation>
     </message>
 </context>
@@ -807,7 +807,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>Verschiebe die folgenden Dateien in den Zielordner:</translation>
+        <translation>Folgende Dateien werden in den Zielordner verschoben:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -817,7 +817,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>Kopiere die folgenden Dateien in den Zielordner:</translation>
+        <translation>Folgende Dateien werden in den Zielordner kopiert:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
@@ -827,7 +827,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>Verschiebe die folgenden Dateien in den Papierkorb:</translation>
+        <translation>Folgende Dateien werden in den Papierkorb verschoben:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
@@ -837,7 +837,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation>Lösche die folgenden Dateien:</translation>
+        <translation>Folgende Dateien werden gelöscht:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
@@ -847,7 +847,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>Erstelle symbolische Verknüpfungen für die folgenden Dateien:</translation>
+        <translation>Für die folgenden Dateien werden symbolische Verknüpfungen erstellt:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
@@ -857,7 +857,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>Ändere die Eigenschaften der folgenden Dateien:</translation>
+        <translation>Bei folgenden Dateien werden die Attribute geändert:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
@@ -867,7 +867,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Stelle folgende Dateien aus dem Papierkorb wieder her:</translation>
+        <translation>Folgende Dateien werden aus dem Papierkorb wiederhergestellt:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="149"/>
@@ -1062,7 +1062,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="191"/>
         <source>By Creation Time</source>
-        <translation>Nach Erstell-Zeit</translation>
+        <translation>Nach Erstellungszeit</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="194"/>
@@ -1082,7 +1082,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="199"/>
         <source>By File Owner</source>
-        <translation>Nach Dateibesitzer</translation>
+        <translation>Nach Dateieigentümer</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="200"/>
@@ -1112,7 +1112,7 @@ Möchtest Sie sie stattdessen löschen?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="244"/>
         <source>Case Sensitive</source>
-        <translation>Groß-/ Kleinschreibung beachten</translation>
+        <translation>Groß-/Kleinschreibung beachten</translation>
     </message>
 </context>
 <context>
@@ -1412,7 +1412,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Datei &apos;1%&apos; ist aus dem Papierkorb nicht wieder herstellbar: ursprünglicher Pfad nicht bekannt</translation>
+        <translation>Datei &apos;1%&apos; ist aus dem Papierkorb nicht wiederherstellbar: ursprünglicher Pfad nicht bekannt</translation>
     </message>
 </context>
 <context>
