@@ -1,3 +1,35 @@
+libfm-qt-1.0.0 / 2021-11-04
+============================
+ * Added mount, unmount and eject actions to file context menu where possible.
+ * Distinguish between singular and plural translations of deletion prompt.
+ * Enable Qt's alternating row colors for detailed list view.
+ * Workaround for Qt bug that causes scroll jump in compact mode.
+ * Workaround for a bug in GFileMonitor regarding symlinks.
+ * Prevent self-overwriting in file prompt dialog.
+ * Removed "Open With..." → "Default Applications" item from file menu.
+ * Workaround for launching apps in terminal.
+ * Added a signal for inline renaming.
+ * Fixed a small memory leak in FileInfo.
+ * Fixed a memory leak in side-pane's volume items.
+ * Added "Empty Trash" action to Trash's folder menu.
+ * Fixed device usage of file properties dialog in rare cases.
+ * Support adding/removing of emblems with File Properties dialog.
+ * Avoided a freeze on mounting encrypted volumes.
+ * Don't show impossible drop actions as far as possible.
+ * Ensure correct selection order with Shift+mouse in icon view.
+ * Fixed cursor shape and auto-selection in special cases.
+ * Fixed Cyrillic case-insensitive regex search.
+ * Consider horizontal icon views, especially with smooth scrolling.
+ * Fixed smooth scrolling with some touchpad devices.
+ * Smooth scrolling in compact and detailed list modes.
+ * Support x-large thumbnails.
+ * Remember hidden columns of LXQt file dialog.
+ * Don't show "Select All" and "Invert Selection" if they're impossible.
+ * Show folder context menu with Menu key and no selection.
+ * Added an item to file dialog for showing hidden files.
+ * Added option for disabling smooth scrolling to LXQt file dialog.
+ * Updated Aqriver's extraction mime types.
+
 libfm-qt-0.17.1 / 2021-04-16
 ============================
   * Fixed compilation with Qt5.12 and  Qt5.13.
