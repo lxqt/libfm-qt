@@ -1121,11 +1121,11 @@ void FolderView::setViewMode(ViewMode _mode) {
         }
         else {
             listView = new FolderViewListView(this);
-            if(scrollPerPixel_ && mode == CompactMode) {
-                listView->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
-            }
             connect(listView, &FolderViewListView::activatedFiltered, this, &FolderView::onItemActivated);
             view = listView;
+        }
+        if(scrollPerPixel_ && mode == CompactMode) {
+            listView->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
         }
         setFocusProxy(listView);
 
