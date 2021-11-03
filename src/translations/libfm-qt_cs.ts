@@ -119,7 +119,7 @@
     <message>
         <location filename="../exec-file.ui" line="85"/>
         <source>Cancel</source>
-        <translation>Zrušit</translation>
+        <translation>Storno</translation>
     </message>
 </context>
 <context>
@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation>Cesta:</translation>
+        <translation>Popis umístění:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -432,7 +432,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cancel</source>
-        <translation>Zrušit</translation>
+        <translation>Storno</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
@@ -785,9 +785,9 @@ Chcete je namísto toho přímo odstranit?</translation>
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
-            <numerusform>Chcete smazat vybraný soubor?</numerusform>
-            <numerusform>Chcete smazat vybrané soubory?</numerusform>
-            <numerusform>Chcete smazat vybrané soubory?</numerusform>
+            <numerusform>Chcete vybraný soubor smazat?</numerusform>
+            <numerusform>Chcete vybrané soubory smazat?</numerusform>
+            <numerusform>Chcete vybrané soubory smazat?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -1747,7 +1747,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation>&amp;Rozlišovat velikost písmen</translation>
+        <translation>Rozlišovat &amp;velikost písmen</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
