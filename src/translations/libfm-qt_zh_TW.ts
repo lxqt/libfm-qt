@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>路徑:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>建立於:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -243,17 +243,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>標記:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>選擇標記</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>清除標記</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -437,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>不能放到這裡</translation>
     </message>
 </context>
 <context>
@@ -533,37 +533,37 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>圖示大小</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>大圖示的大小:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>小圖示的大小:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>縮圖的大小:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>顯示縮圖</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>顯示檔案提示</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>選項</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
@@ -634,7 +634,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -652,13 +652,13 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>許多檔案</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>請問您要開啟這 %1 個檔案嗎？</numerusform>
         </translation>
     </message>
     <message>
@@ -700,7 +700,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
-        <translation type="unfinished">掛載</translation>
+        <translation>掛載</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
@@ -710,7 +710,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Eject</source>
-        <translation type="unfinished">退出</translation>
+        <translation>退出</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="310"/>
@@ -782,15 +782,15 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>請問要刪除所選的檔案嗎？</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>請問要把所選的檔案丟到垃圾桶嗎？</numerusform>
         </translation>
     </message>
 </context>
@@ -910,7 +910,7 @@ Do you want to delete them instead?</source>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -940,8 +940,8 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="456"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln 個檔案</numerusform>
         </translation>
     </message>
     <message>
@@ -990,7 +990,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="477"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>不能將一個資料夾複製到他自己！</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="528"/>
@@ -1003,7 +1003,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">清空垃圾桶</translation>
+        <translation>清空垃圾桶</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
@@ -1058,12 +1058,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="191"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>建立時間</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="194"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>刪除時間</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="197"/>
@@ -1083,7 +1083,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="200"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>依照檔案群組</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="206"/>
@@ -1103,7 +1103,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="236"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>隱藏檔在後</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="244"/>
@@ -1121,42 +1121,42 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="308"/>
         <source>File type:</source>
-        <translation type="unfinished">檔案類型:</translation>
+        <translation>檔案類型:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="313"/>
         <source>File size:</source>
-        <translation type="unfinished">檔案大小:</translation>
+        <translation>檔案大小:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="317"/>
         <source>Last modified:</source>
-        <translation type="unfinished">最後修改日期:</translation>
+        <translation>最後修改時間:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="318"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">最後存取日期:</translation>
+        <translation>最後存取時間:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>建立時間:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
         <source>Owner:</source>
-        <translation type="unfinished">擁有者:</translation>
+        <translation>擁有者:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="327"/>
         <source>Group:</source>
-        <translation type="unfinished">群組:</translation>
+        <translation>群組:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="394"/>
@@ -1181,12 +1181,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>建立時間</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>刪除時間</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="412"/>
@@ -1204,12 +1204,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="386"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>自動調整欄位大小</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="403"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>顯示的欄位</translation>
     </message>
 </context>
 <context>
@@ -1387,7 +1387,7 @@ Modified: %2</source>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;無法用檔案覆蓋檔案自身。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;請選擇別的檔名。&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1395,7 +1395,7 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>清單</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
@@ -1549,7 +1549,7 @@ Modified: %2</source>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
 </context>
 <context>
@@ -1729,17 +1729,17 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>區分大小寫</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>在子資料夾中搜尋</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>區分大小寫(&amp;V)</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
