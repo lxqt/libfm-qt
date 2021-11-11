@@ -41,13 +41,28 @@ FileLauncher::~FileLauncher() {
 bool FileLauncher::launchFiles(QWidget* parent, const FileInfoList &file_infos) {
     GObjectPtr<FmAppLaunchContext> context{fm_app_launch_context_new_for_widget(parent), false};
     bool ret = BasicFileLauncher::launchFiles(file_infos, G_APP_LAUNCH_CONTEXT(context.get()));
+    launchedFiles(file_infos);
     return ret;
 }
 
 bool FileLauncher::launchPaths(QWidget* parent, const FilePathList& paths) {
     GObjectPtr<FmAppLaunchContext> context{fm_app_launch_context_new_for_widget(parent), false};
     bool ret = BasicFileLauncher::launchPaths(paths, G_APP_LAUNCH_CONTEXT(context.get()));
+    launchedPaths(paths);
     return ret;
+}
+
+bool FileLauncher::launchWithApp(QWidget* parent, GAppInfo* app, const FilePathList& paths) {
+    GObjectPtr<FmAppLaunchContext> context{fm_app_launch_context_new_for_widget(parent), false};
+    bool ret = BasicFileLauncher::launchWithApp(app, paths, G_APP_LAUNCH_CONTEXT(context.get()));
+    launchedPaths(paths);
+    return ret;
+}
+
+void FileLauncher::launchedFiles(const FileInfoList& /*files*/) const {
+}
+
+void FileLauncher::launchedPaths(const FilePathList& /*paths*/) const {
 }
 
 int FileLauncher::ask(const char* /*msg*/, char* const* /*btn_labels*/, int /*default_btn*/) {

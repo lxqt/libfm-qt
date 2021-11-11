@@ -387,14 +387,17 @@ void FileMenu::onOpenWithTriggered() {
 }
 
 void FileMenu::openFilesWithApp(GAppInfo* app) {
-    GList* uris = nullptr;
+    Fm::FilePathList paths;
     for(auto& file: files_) {
-        auto uri = file->path().uri();
-        uris = g_list_prepend(uris, uri.release());
+        paths.emplace_back(file->path());
     }
-    uris = g_list_reverse(uris); // respect the original order
-    fm_app_info_launch_uris(app, uris, nullptr, nullptr);
-    g_list_free_full(uris, g_free);
+    if(fileLauncher_) {
+        fileLauncher_->launchWithApp(nullptr, app, paths);
+    }
+    else {
+        Fm::FileLauncher launcher;
+        launcher.launchWithApp(nullptr, app, paths);
+    }
 }
 
 void FileMenu::onApplicationTriggered() {
