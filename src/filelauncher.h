@@ -37,6 +37,8 @@ public:
 
     bool launchPaths(QWidget* parent, const FilePathList &paths);
 
+    bool launchWithApp(QWidget* parent, GAppInfo* app, const FilePathList& paths);
+
 protected:
 
     GAppInfoPtr chooseApp(const FileInfoList& fileInfos, const char* mimeType, GErrorPtr& err) override;
@@ -48,6 +50,9 @@ protected:
     ExecAction askExecFile(const FileInfoPtr& file) override;
 
     int ask(const char* msg, char* const* btn_labels, int default_btn) override;
+
+    virtual void launchedFiles(const FileInfoList& files) const;
+    virtual void launchedPaths(const FilePathList& paths) const;
 };
 
 }
