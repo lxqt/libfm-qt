@@ -1391,7 +1391,7 @@ Modified: %2</source>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation> &lt;p&gt;&lt;b&gt;Файлът не може да се пренапише.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Моля изберете друго име.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;Файлът не може да се презапише.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Моля изберете друго име.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
