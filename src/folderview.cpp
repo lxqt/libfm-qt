@@ -639,7 +639,7 @@ void FolderViewTreeView::layoutColumns() {
     int numCols = headerView->count();
     if(numCols > 0) {
         int desiredWidth = 0;
-        int* widths = new int[numCols]; // array to store the widths every column needs
+        QList<int> widths; // to store the widths that the columns need
         QStyleOptionHeader opt;
         opt.initFrom(headerView);
         opt.fontMetrics = QFontMetrics(font());
@@ -657,13 +657,13 @@ void FolderViewTreeView::layoutColumns() {
                 }
             }
         }
-        int column;
-        for(column = 0; column < numCols; ++column) {
+        for(int column = 0; column < numCols; ++column) {
             int columnId = headerView->logicalIndex(column);
 
             if(!isTrash && columnId == dTimeColumn) {
                 // hide the deletion time column if this isn't trash
                 headerView->setSectionHidden(columnId, true);
+                widths.append(headerView->minimumSectionSize());
                 continue;
             }
 
@@ -675,28 +675,31 @@ void FolderViewTreeView::layoutColumns() {
                     wasHidden = true;
                 }
                 else {
+                    widths.append(headerView->minimumSectionSize());
                     continue;
                 }
             }
             else if(hiddenColumns_.contains(columnId)
                     && columnId != filenameColumn) { // never hide the name column
                 headerView->setSectionHidden(columnId, true);
+                widths.append(headerView->minimumSectionSize());
                 continue;
             }
 
+            int w;
             if(customColumnWidths_.size() > column) {
                 // see FolderView::setCustomColumnWidths for the meaning of custom width <= 0
                 if(customColumnWidths_.at(column) > 0) {
-                    widths[column] = qMax(customColumnWidths_.at(column), headerView->minimumSectionSize());
+                    w = qMax(customColumnWidths_.at(column), headerView->minimumSectionSize());
                 }
                 else {
                     if(wasHidden) {
                         // WARNING: When a section is shown in the interactive mode, Qt gives
                         // a huge width to it. As a workaround, the width is set to the minimum here.
-                        customColumnWidths_[column] = widths[column] = headerView->minimumSectionSize();
+                        customColumnWidths_[column] = w = headerView->minimumSectionSize();
                     }
                     else {
-                        customColumnWidths_[column] = widths[column] = headerView->sectionSize(columnId);
+                        customColumnWidths_[column] = w = headerView->sectionSize(columnId);
                     }
                     Q_EMIT columnResizedByUser(column, customColumnWidths_.at(column));
                 }
@@ -710,19 +713,20 @@ void FolderViewTreeView::layoutColumns() {
                     }
                 }
                 opt.section = columnId;
-                widths[column] = qMax(sizeHintForColumn(columnId),
-                                    style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(),
-                                                                headerView).width());
+                w = qMax(sizeHintForColumn(columnId),
+                         style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(),
+                                                   headerView).width());
             }
+            widths.append(w);
             // compute the total width needed
-            desiredWidth += widths[column];
+            desiredWidth += w;
         }
 
         if(customColumnWidths_.size() <= filenameColumn) { // practically means no custom width
             // if the total witdh we want exceeds the available space
             if(desiredWidth > availWidth) {
                 // Compute the width available for the filename column
-                int filenameAvailWidth = availWidth - desiredWidth + widths[filenameColumn];
+                int filenameAvailWidth = availWidth - desiredWidth + widths.at(filenameColumn);
 
                 // Compute the minimum acceptable width for the filename column
                 int filenameMinWidth = qMin(200, sizeHintForColumn(filenameColumn));
@@ -744,9 +748,8 @@ void FolderViewTreeView::layoutColumns() {
 
         // really do the resizing for every column
         for(int column = 0; column < numCols; ++column) {
-            headerView->resizeSection(headerView->logicalIndex(column), widths[column]);
+            headerView->resizeSection(headerView->logicalIndex(column), widths.at(column));
         }
-        delete []widths;
     }
     doingLayout_ = false;
 
