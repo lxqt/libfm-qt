@@ -74,7 +74,7 @@ public:
 
         if(gobj_ != nullptr)
             g_object_unref(gobj_);
-        gobj_ = gobj ? reinterpret_cast<T*>(g_object_ref(gobj_)) : nullptr;
+        gobj_ = gobj ? reinterpret_cast<T*>(g_object_ref(gobj)) : nullptr;
         return *this;
     }
 
