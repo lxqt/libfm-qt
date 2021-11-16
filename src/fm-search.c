@@ -1,9 +1,9 @@
 /*
  * fm-search-uri.c
- * 
+ *
  * Copyright 2015 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
  * Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
- * 
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -232,12 +232,13 @@ void fm_search_set_min_mtime(FmSearch* search, const char* mtime)
 GFile* fm_search_to_gfile(FmSearch* search)
 {
     GFile* search_path = NULL;
-    GString* search_str = g_string_sized_new(1024);
-    /* build the search:// URI to perform the search */
-    g_string_append(search_str, "search://");
 
     if(search->search_path_list) /* we need to have at least one dir path */
     {
+        GString* search_str = g_string_sized_new(1024);
+        /* build the search:// URI to perform the search */
+        g_string_append(search_str, "search://");
+
         char *escaped;
         /* add paths */
         GList* l;
