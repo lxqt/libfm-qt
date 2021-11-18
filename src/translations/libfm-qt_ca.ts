@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Camí:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Creat:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -243,17 +243,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emblema:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Trieu un emblema</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Neteja l&apos;emblema</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -437,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>No es pot deixar anar aquí</translation>
     </message>
 </context>
 <context>
@@ -533,37 +533,37 @@ Què voleu fer amb ell?</translation>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Mides de les icones</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mida de les icones grans:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="181"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mida de les icones petites:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="188"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mida de les miniatures:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="204"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra les miniatures</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra la informació emergent fitxers</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Opcions</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="540"/>
@@ -634,7 +634,7 @@ Voleu substituir-ho?</translation>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -652,14 +652,14 @@ Voleu substituir-ho?</translation>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Molts fitxers</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>Voleu obrir aquest %1 fitxer?</numerusform>
+            <numerusform>Voleu obrir aquests fitxers?</numerusform>
         </translation>
     </message>
     <message>
@@ -706,17 +706,17 @@ Voleu substituir-ho?</translation>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
-        <translation type="unfinished">Munta</translation>
+        <translation>Munta</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation type="unfinished">Desmunta</translation>
+        <translation>Desmunta</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Eject</source>
-        <translation type="unfinished">Expulsa</translation>
+        <translation>Expulsa</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
@@ -783,17 +783,17 @@ En lloc seu, voleu suprimir-los?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Voleu suprimir el fitxer seleccionat?</numerusform>
+            <numerusform>Voleu suprimir els fitxers seleccionats?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Voleu moure el fitxer seleccionat a la paperera?</numerusform>
+            <numerusform>Voleu moure el fitxers seleccionats a la paperera?</numerusform>
         </translation>
     </message>
 </context>
@@ -913,7 +913,7 @@ En lloc seu, voleu suprimir-los?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">N/D</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -943,9 +943,9 @@ En lloc seu, voleu suprimir-los?</translation>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="456"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln fitxer</numerusform>
+            <numerusform>%Ln fitxers</numerusform>
         </translation>
     </message>
     <message>
@@ -994,7 +994,7 @@ En lloc seu, voleu suprimir-los?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="477"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>No es pot copiar un directori sobre si mateix!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="528"/>
@@ -1007,7 +1007,7 @@ En lloc seu, voleu suprimir-los?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Buida la paperera</translation>
+        <translation>Buida la paperera</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
@@ -1062,12 +1062,12 @@ En lloc seu, voleu suprimir-los?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="191"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Per temps de creació</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="194"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Per temps d&apos;eliminació</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="197"/>
@@ -1087,7 +1087,7 @@ En lloc seu, voleu suprimir-los?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="200"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Per grup de fitxer</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="206"/>
@@ -1107,7 +1107,7 @@ En lloc seu, voleu suprimir-los?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="236"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Ocults al final</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="244"/>
@@ -1120,47 +1120,47 @@ En lloc seu, voleu suprimir-los?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="304"/>
         <source>Location:</source>
-        <translation type="unfinished">Ubicació:</translation>
+        <translation>Ubicació:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="308"/>
         <source>File type:</source>
-        <translation type="unfinished">Tipus de fitxer:</translation>
+        <translation>Tipus de fitxer:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="313"/>
         <source>File size:</source>
-        <translation type="unfinished">Mida del fitxer:</translation>
+        <translation>Mida del fitxer:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="317"/>
         <source>Last modified:</source>
-        <translation type="unfinished">Última modificació:</translation>
+        <translation>Última modificació:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="318"/>
         <source>Last accessed:</source>
-        <translation type="unfinished">Últim accés:</translation>
+        <translation>Darrer accés:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/D</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Creat:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
         <source>Owner:</source>
-        <translation type="unfinished">Propietari:</translation>
+        <translation>Propietari:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="327"/>
         <source>Group:</source>
-        <translation type="unfinished">Grup:</translation>
+        <translation>Grup:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="394"/>
@@ -1185,12 +1185,12 @@ En lloc seu, voleu suprimir-los?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Creat</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrat</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="412"/>
@@ -1208,12 +1208,12 @@ En lloc seu, voleu suprimir-los?</translation>
     <message>
         <location filename="../folderview.cpp" line="386"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Redimensiona les columnes automàticament</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="403"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Columnes visibles</translation>
     </message>
 </context>
 <context>
@@ -1391,7 +1391,7 @@ Modificat: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;El fitxer no es pot sobreescriure.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Seleccioneu un altre nom.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1399,7 +1399,7 @@ Modificat: %2</translation>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Llistes</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
@@ -1456,7 +1456,7 @@ Modificat: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Recorda la contrasenya &amp;d&apos;aquesta sessió</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1554,7 +1554,7 @@ Modificat: %2</translation>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/D</translation>
     </message>
 </context>
 <context>
@@ -1734,17 +1734,17 @@ Modificat: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Distingeix  majúscula / minúscula</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca en subdirectoris</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Distingeix majúscula / minúscula</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
