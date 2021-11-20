@@ -32,12 +32,7 @@ as usual.
 
 ### Binary packages
 
-Official binary packages are available in Arch Linux, Debian (as of Debian
-stretch) and openSUSE (Leap 42.1 and Tumbleweed).   
-The library is still missing in Fedora which is providing version 0.10.0 of
-PCManFM-Qt only so far. This version was still including the code outsourced
-into libfm-qt later so libfm-qt will have to be provided by Fedora, too,
-as soon as the distribution upgrades to PCManFM-Qt ≥ 0.10.1.   
+Official binary packages are provided by all major Linux and BSD distributions. Just use your package manager to search for string `libfm-qt`
 
 ## Development
 
