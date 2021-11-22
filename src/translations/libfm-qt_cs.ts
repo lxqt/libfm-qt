@@ -16,7 +16,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation>Uživatelem určený příkaz</translation>
+        <translation>Uživatelsky určený příkaz</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
@@ -319,12 +319,12 @@
         <location filename="../file-props.ui" line="681"/>
         <location filename="../file-props.ui" line="733"/>
         <source>Execute</source>
-        <translation>Spuštění</translation>
+        <translation>Spouštění</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="742"/>
         <source>Sticky</source>
-        <translation>Mazat/přejmenovávat pouze vlastník (sticky)</translation>
+        <translation>Mazat/přejmen. pouze vlastník (sticky)</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
@@ -454,14 +454,14 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>Zdá se, že soubor „%1“ je spouštěč.
+        <translation>Zdá se, že tento soubor „%1“ je spouštěč.
 Co s ním chcete dělat?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>Zdá se, že textový soubor „%1“ je spustitelný skript.
+        <translation>Zdá se, že tento textový soubor „%1“ je spustitelný skript.
 Co s ním chcete dělat?</translation>
     </message>
     <message>
@@ -558,7 +558,7 @@ Co s ním chcete dělat?</translation>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation>Ukázat nástrojové rady k souborům</translation>
+        <translation>Ukázat informační bubliny k souborům</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
@@ -904,7 +904,7 @@ Chcete je namísto toho přímo odstranit?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="170"/>
         <source>Forbidden</source>
-        <translation>Odepřen</translation>
+        <translation>Odepřeno</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="287"/>
@@ -1613,7 +1613,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="55"/>
         <source>Use regular expression</source>
-        <translation>Použít regulární výrazy</translation>
+        <translation>Použít regulární výraz</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="68"/>
@@ -1688,7 +1688,7 @@ Změněno: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>&amp;Use regular expression</source>
-        <translation>Po&amp;užít regulární výrazy</translation>
+        <translation>Po&amp;užít regulární výraz</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="260"/>
