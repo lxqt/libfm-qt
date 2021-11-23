@@ -1683,10 +1683,11 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
 
             // Smooth Scrolling
             // Some tricks are adapted from <https://github.com/zhou13/qsmoothscrollarea>.
+            int wsl = QApplication::wheelScrollLines();
             QWheelEvent* we = static_cast<QWheelEvent*>(event);
             QPoint angleDelta = we->angleDelta();
             bool horizontal(qAbs(angleDelta.x()) > qAbs(angleDelta.y()));
-            if(event->spontaneous()
+            if(wsl > 0 && event->spontaneous()
                && we->source() == Qt::MouseEventNotSynthesized
                && (scrollPerPixel_ || (mode != DetailedListMode && mode != CompactMode))
                // To have a simpler code, we enable horizontal smooth scrolling with mouse wheel
@@ -1697,7 +1698,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                 if(sbar && sbar->isVisible()) {
                     // first get the angle delta and customize it according to our needs
                     int delta = horizontal ? angleDelta.x() : angleDelta.y();
-                    if(QApplication::wheelScrollLines() > 1) {
+                    if(wsl > 1) {
                         /* Scroll with minimum speed when
                             (1) The mode is compact (because columns can be wide), or
                             (2) Shift is pressed, or
@@ -1707,8 +1708,8 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                            || (we->modifiers() & Qt::ShiftModifier)
                            || qAbs(delta) < 120
                            || iconSize(mode).height() >= 96) {
-                            if(qAbs(delta) >= QApplication::wheelScrollLines()) {
-                                delta = delta / QApplication::wheelScrollLines();
+                            if(qAbs(delta) >= wsl) {
+                                delta = delta / wsl;
                                 // still slower scrolling with very large icons
                                 if(iconSize(mode).height() >= 256 && qAbs(delta) >= 2) {
                                     delta /= 2;
@@ -1716,10 +1717,10 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                             }
                         }
                         else if(iconSize(mode).height() >= 64
-                                && QApplication::wheelScrollLines() > 2
-                                && qAbs(delta * 2) >= QApplication::wheelScrollLines()) {
+                                && wsl > 2
+                                && qAbs(delta * 2) >= wsl) {
                             // 2 rows per mouse turn for average icon sizes
-                            delta = delta * 2 / QApplication::wheelScrollLines();
+                            delta = delta * 2 / wsl;
                         }
                     }
 
