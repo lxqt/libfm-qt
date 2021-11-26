@@ -912,7 +912,7 @@ Szeretné véglegesen törölni őket?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation>Nincs információ</translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1144,7 +1144,7 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
