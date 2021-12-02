@@ -1444,9 +1444,9 @@ QModelIndex FolderView::indexFromFolderPath(const Fm::FilePath& folderPath) cons
     return QModelIndex();
 }
 
-void FolderView::selectFiles(const Fm::FileInfoList& files, bool add) {
+bool FolderView::selectFiles(const Fm::FileInfoList& files, bool add) {
     if(!model_ || files.empty()) {
-        return;
+        return false;
     }
     QModelIndex index, firstIndex;
     int count = model_->rowCount();
@@ -1484,7 +1484,9 @@ void FolderView::selectFiles(const Fm::FileInfoList& files, bool add) {
         if (singleFile) { // give focus to the single file
             selectionModel()->setCurrentIndex(firstIndex, QItemSelectionModel::Current);
         }
+        return true;
     }
+    return false;
 }
 
 Fm::FileInfoList FolderView::selectedFiles() const {
