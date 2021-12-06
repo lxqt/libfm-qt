@@ -1701,7 +1701,7 @@ Modified: %2</source>
         <location filename="../filesearch.ui" line="309"/>
         <location filename="../filesearch.ui" line="339"/>
         <source>Bytes</source>
-        <translation>字节</translation>
+        <translation>Bytes</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="314"/>
