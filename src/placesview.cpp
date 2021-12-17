@@ -532,19 +532,23 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
             // create context menu for bookmark item
             if(item->index().row() > 0) {
                 action = new PlacesModel::ItemAction(item->index(), tr("Move Bookmark Up"), menu);
+                action->setIcon(QIcon::fromTheme(QStringLiteral("go-up")));
                 connect(action, &QAction::triggered, this, &PlacesView::onMoveBookmarkUp);
                 menu->addAction(action);
             }
             QModelIndex indx = proxyModel_->mapFromSource(model_->bookmarksRoot->index());
             if(indx.isValid() && item->index().row() < indx.model()->rowCount(indx) - 1) {
                 action = new PlacesModel::ItemAction(item->index(), tr("Move Bookmark Down"), menu);
+                action->setIcon(QIcon::fromTheme(QStringLiteral("go-down")));
                 connect(action, &QAction::triggered, this, &PlacesView::onMoveBookmarkDown);
                 menu->addAction(action);
             }
             action = new PlacesModel::ItemAction(item->index(), tr("Rename Bookmark"), menu);
+            action->setIcon(QIcon::fromTheme(QStringLiteral("edit-rename")));
             connect(action, &QAction::triggered, this, &PlacesView::onRenameBookmark);
             menu->addAction(action);
             action = new PlacesModel::ItemAction(item->index(), tr("Remove Bookmark"), menu);
+            action->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
             connect(action, &QAction::triggered, this, &PlacesView::onDeleteBookmark);
             menu->addAction(action);
             break;
