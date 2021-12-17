@@ -357,9 +357,10 @@ void PlacesView::onMoveBookmarkDown() {
     PlacesModelBookmarkItem* item = static_cast<PlacesModelBookmarkItem*>(model_->itemFromIndex(action->index()));
 
     int row = item->row();
-    if(row < model_->rowCount()) {
+    QModelIndex indx = proxyModel_->mapFromSource(model_->bookmarksRoot->index());
+    if(indx.isValid() && row < indx.model()->rowCount(indx) - 1) {
         auto bookmarkItem = item->bookmark();
-        Fm::Bookmarks::globalInstance()->reorder(bookmarkItem, row + 1);
+        Fm::Bookmarks::globalInstance()->reorder(bookmarkItem, row + 2); // see Bookmarks::reorder()
     }
 }
 
@@ -534,7 +535,8 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
                 connect(action, &QAction::triggered, this, &PlacesView::onMoveBookmarkUp);
                 menu->addAction(action);
             }
-            if(item->index().row() < model_->rowCount()) {
+            QModelIndex indx = proxyModel_->mapFromSource(model_->bookmarksRoot->index());
+            if(indx.isValid() && item->index().row() < indx.model()->rowCount(indx) - 1) {
                 action = new PlacesModel::ItemAction(item->index(), tr("Move Bookmark Down"), menu);
                 connect(action, &QAction::triggered, this, &PlacesView::onMoveBookmarkDown);
                 menu->addAction(action);
