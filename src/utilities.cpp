@@ -199,7 +199,7 @@ void setDefaultAppForType(const Fm::GAppInfoPtr app, std::shared_ptr<const Fm::M
     // first find the DE's mimeapps list file
     QByteArray mimeappsList = "mimeapps.list";
     QList<QByteArray> desktopsList = qgetenv("XDG_CURRENT_DESKTOP").toLower().split(':');
-    if(!desktopsList.isEmpty()) {
+    if(!desktopsList.isEmpty() && !desktopsList.at(0).isEmpty()) {
         mimeappsList = desktopsList.at(0) + "-" + mimeappsList;
     }
     QString configDir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
