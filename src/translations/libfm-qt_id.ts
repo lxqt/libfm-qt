@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dibuat:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -243,17 +243,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lambang:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih lambang</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Hapus lambang</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -324,17 +324,17 @@
     <message>
         <location filename="../file-props.ui" line="742"/>
         <source>Sticky</source>
-        <translation>Sticky</translation>
+        <translation>Lengket</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>SetUID</source>
-        <translation>SetUID</translation>
+        <translation>Set UID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
         <source>SetGID</source>
-        <translation>SetGID</translation>
+        <translation>Set GID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="792"/>
@@ -363,7 +363,7 @@
     <message>
         <location filename="../createnewmenu.cpp" line="62"/>
         <source>Folder</source>
-        <translation>Folder</translation>
+        <translation>Direktori</translation>
     </message>
     <message>
         <location filename="../createnewmenu.cpp" line="66"/>
@@ -437,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidak bisa ditaruh di sini</translation>
     </message>
 </context>
 <context>
@@ -558,7 +558,7 @@ Apa yang ingin Anda lakukan dengannya?</translation>
     <message>
         <location filename="../filedialog.cpp" line="209"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished">Tampilkan Tooltip Berkas</translation>
+        <translation>Tampilkan Tooltip Berkas</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="220"/>
@@ -652,13 +652,13 @@ Apakah Anda ingin menggantinya?</translation>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Banyak berkas</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Aapakah Anda ingin membuka %1 berkas ini?</numerusform>
         </translation>
     </message>
     <message>
@@ -705,17 +705,17 @@ Apakah Anda ingin menggantinya?</translation>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaitkan</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation type="unfinished">Lepat Kait</translation>
+        <translation>Lepaskan</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Eject</source>
-        <translation type="unfinished">Keluarkan</translation>
+        <translation>Keluarkan</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
@@ -782,15 +782,15 @@ Apakah Anda ingin menghapusnya saja?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Apakah Anda ingin menghapus berkas terpilih?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Apakah Anda ingin memindahkan file yang dipilih ke tempat sampah?</numerusform>
         </translation>
     </message>
 </context>
@@ -910,7 +910,7 @@ Apakah Anda ingin menghapusnya saja?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>T/A</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1003,7 +1003,7 @@ Apakah Anda ingin menghapusnya saja?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="51"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Kosongkan Tempat Sampah</translation>
+        <translation>Kosongkan Tempat Sampah</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="63"/>
@@ -1058,7 +1058,7 @@ Apakah Anda ingin menghapusnya saja?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="191"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Menurut Waktu Pembuatan</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="194"/>
@@ -1103,7 +1103,7 @@ Apakah Anda ingin menghapusnya saja?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="236"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Tersembunyi Diakhir</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="244"/>
@@ -1141,12 +1141,12 @@ Apakah Anda ingin menghapusnya saja?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>T/A</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dibuat:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
@@ -1181,7 +1181,7 @@ Apakah Anda ingin menghapusnya saja?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Dibuat</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
@@ -1387,7 +1387,7 @@ Dimodifikasi: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Berkas tidak dapat menimpa dirinya sendiri.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Silakan pilih nama lain.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1395,7 +1395,7 @@ Dimodifikasi: %2</translation>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Daftar</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
@@ -1451,7 +1451,7 @@ Dimodifikasi: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingat sandi untuk sesi &amp;ini</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1549,7 +1549,7 @@ Dimodifikasi: %2</translation>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>T/A</translation>
     </message>
 </context>
 <context>
@@ -1729,7 +1729,7 @@ Dimodifikasi: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="48"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Peka kapital</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="122"/>
@@ -1739,7 +1739,7 @@ Dimodifikasi: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="226"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Peka kapit&amp;al</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="370"/>
