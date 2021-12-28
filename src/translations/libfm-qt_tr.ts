@@ -473,145 +473,155 @@ Ne yapmak istersiniz?</translation>
 <context>
     <name>Fm::FileDialog</name>
     <message>
-        <location filename="../filedialog.cpp" line="109"/>
+        <location filename="../filedialog.cpp" line="105"/>
         <source>Go Back</source>
         <translation>Geri</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="110"/>
+        <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
         <translation>Alt+Sol Ok</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="116"/>
+        <location filename="../filedialog.cpp" line="112"/>
         <source>Go Forward</source>
         <translation>İleri</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="117"/>
+        <location filename="../filedialog.cpp" line="113"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
         <translation>Alt+Sağ Ok</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="124"/>
+        <location filename="../filedialog.cpp" line="120"/>
         <source>Reload</source>
         <translation>Yeniden Yükle</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="125"/>
+        <location filename="../filedialog.cpp" line="121"/>
         <source>F5</source>
         <comment>Reload</comment>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="142"/>
+        <location filename="../filedialog.cpp" line="138"/>
         <source>Create Folder</source>
         <translation>Dizin Oluştur</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="152"/>
+        <location filename="../filedialog.cpp" line="148"/>
         <source>Icon View</source>
         <translation>Simge Görünümü</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="156"/>
+        <location filename="../filedialog.cpp" line="152"/>
         <source>Thumbnail View</source>
         <translation>Önizleme</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="160"/>
+        <location filename="../filedialog.cpp" line="156"/>
         <source>Compact View</source>
         <translation>Sıkışık Görünüm</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="164"/>
+        <location filename="../filedialog.cpp" line="160"/>
         <source>Detailed List View</source>
         <translation>Detaylı Liste Görünümü</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="172"/>
+        <location filename="../filedialog.cpp" line="168"/>
         <source>Icon Sizes</source>
         <translation>Simge Boyutu</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="174"/>
+        <location filename="../filedialog.cpp" line="170"/>
         <source>Size of big icons:</source>
         <translation>Büyük simge boyutu:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="181"/>
+        <location filename="../filedialog.cpp" line="177"/>
         <source>Size of small icons:</source>
         <translation>Küçük simge boyutu:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="188"/>
+        <location filename="../filedialog.cpp" line="184"/>
         <source>Size of thumbnails:</source>
         <translation>Önizleme boyutu:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="204"/>
+        <location filename="../filedialog.cpp" line="200"/>
+        <source>Show Hidden</source>
+        <translation type="unfinished">Gizli Dosyaları Göster</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="212"/>
         <source>Show Thumbnails</source>
         <translation>Önizlemeleri Göster</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="209"/>
+        <location filename="../filedialog.cpp" line="217"/>
         <source>Show File Tooltips</source>
         <translation>Dosya İpuçlarını Göster</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="220"/>
+        <location filename="../filedialog.cpp" line="224"/>
+        <source>Smooth Scrolling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="241"/>
         <source>Options</source>
         <translation>Seçenekler</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="540"/>
-        <location filename="../filedialog.cpp" line="935"/>
+        <location filename="../filedialog.cpp" line="574"/>
+        <location filename="../filedialog.cpp" line="969"/>
         <source>Error</source>
         <translation>Hata</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="540"/>
+        <location filename="../filedialog.cpp" line="574"/>
         <source>Please select a file</source>
         <translation>Lütfen bir dosya seçin</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="582"/>
+        <location filename="../filedialog.cpp" line="616"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 halihazırda var.
 Değiştirmek istiyor musunuz?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="905"/>
+        <location filename="../filedialog.cpp" line="939"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>&quot;%1&quot; yolu mevcut değil</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="919"/>
+        <location filename="../filedialog.cpp" line="953"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&quot;%1&quot; bir dizin değil</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="925"/>
+        <location filename="../filedialog.cpp" line="959"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&quot;%1&quot; bir dosya değil</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1077"/>
-        <location filename="../filedialog.cpp" line="1185"/>
+        <location filename="../filedialog.cpp" line="1111"/>
+        <location filename="../filedialog.cpp" line="1219"/>
         <source>&amp;Open</source>
         <translation>&amp;Aç</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1080"/>
-        <location filename="../filedialog.cpp" line="1193"/>
+        <location filename="../filedialog.cpp" line="1114"/>
+        <location filename="../filedialog.cpp" line="1227"/>
         <source>&amp;Save</source>
         <translation>&amp;Kaydet</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1087"/>
+        <location filename="../filedialog.cpp" line="1121"/>
         <source>All Files (*)</source>
         <translation>Tüm Dosyalar (*)</translation>
     </message>
@@ -659,7 +669,6 @@ Değiştirmek istiyor musunuz?</translation>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>Bu %1 dosyasını açmak istiyor musunuz?</numerusform>
-            <numerusform>%1 dosyalarını açmak istiyor musunuz?</numerusform>
         </translation>
     </message>
     <message>
@@ -694,7 +703,7 @@ Değiştirmek istiyor musunuz?</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="166"/>
-        <location filename="../filemenu.cpp" line="478"/>
+        <location filename="../filemenu.cpp" line="481"/>
         <source>&amp;Move to Trash</source>
         <translation>&amp;Çöp Kutusuna Taşı</translation>
     </message>
@@ -749,13 +758,13 @@ Değiştirmek istiyor musunuz?</translation>
         <translation>Bu çalıştırılabilen dosyaya güven</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="413"/>
+        <location filename="../filemenu.cpp" line="416"/>
         <source>Output</source>
         <translation>Çıktı</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="148"/>
-        <location filename="../filemenu.cpp" line="478"/>
+        <location filename="../filemenu.cpp" line="481"/>
         <source>&amp;Delete</source>
         <translation>&amp;Sil</translation>
     </message>
@@ -785,7 +794,6 @@ Onun yerine silmek ister misiniz?</translation>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
             <numerusform>Seçilen dosyayı silmek istiyor musunuz?</numerusform>
-            <numerusform>Seçilen dosyaları silmek istiyor musunuz?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -793,7 +801,6 @@ Onun yerine silmek ister misiniz?</translation>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
             <numerusform>Seçilen dosyayı çöp kutusuna taşımak istiyor musunuz?</numerusform>
-            <numerusform>Seçilen dosyaları çöp kutusuna taşımak istiyor musunuz?</numerusform>
         </translation>
     </message>
 </context>
@@ -945,7 +952,6 @@ Onun yerine silmek ister misiniz?</translation>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln dosyası</numerusform>
-            <numerusform>%Ln dosyaları</numerusform>
         </translation>
     </message>
     <message>
@@ -1020,97 +1026,97 @@ Onun yerine silmek ister misiniz?</translation>
         <translation>&amp;Yapıştır</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="74"/>
+        <location filename="../foldermenu.cpp" line="81"/>
         <source>Select &amp;All</source>
         <translation>Tümünü &amp;Seç</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="78"/>
+        <location filename="../foldermenu.cpp" line="85"/>
         <source>Invert Selection</source>
         <translation>Seçimi Tersine Çevir</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="84"/>
+        <location filename="../foldermenu.cpp" line="92"/>
         <source>Sorting</source>
         <translation>Sıralama</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="89"/>
+        <location filename="../foldermenu.cpp" line="97"/>
         <source>Show Hidden</source>
         <translation>Gizli Dosyaları Göster</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="124"/>
+        <location filename="../foldermenu.cpp" line="132"/>
         <source>Folder Pr&amp;operties</source>
         <translation>Dizin Ö&amp;zellikleri</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="167"/>
+        <location filename="../foldermenu.cpp" line="175"/>
         <source>Output</source>
         <translation>Çıktı</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="189"/>
+        <location filename="../foldermenu.cpp" line="197"/>
         <source>By File Name</source>
         <translation>Dosya Adına Göre</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="190"/>
+        <location filename="../foldermenu.cpp" line="198"/>
         <source>By Modification Time</source>
         <translation>Değiştirme Tarihine Göre</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="191"/>
+        <location filename="../foldermenu.cpp" line="199"/>
         <source>By Creation Time</source>
         <translation>Oluşturma Zamanına Göre</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="194"/>
+        <location filename="../foldermenu.cpp" line="202"/>
         <source>By Deletion Time</source>
         <translation>Silinme Zamanına Göre</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="197"/>
+        <location filename="../foldermenu.cpp" line="205"/>
         <source>By File Size</source>
         <translation>Dosya Boyutuna Göre</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="198"/>
+        <location filename="../foldermenu.cpp" line="206"/>
         <source>By File Type</source>
         <translation>Dosya Türüne Göre</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="199"/>
+        <location filename="../foldermenu.cpp" line="207"/>
         <source>By File Owner</source>
         <translation>Sahibine Göre</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="200"/>
+        <location filename="../foldermenu.cpp" line="208"/>
         <source>By File Group</source>
         <translation>Dosya Grubuna Göre</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="206"/>
+        <location filename="../foldermenu.cpp" line="214"/>
         <source>Ascending</source>
         <translation>Artan</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="211"/>
+        <location filename="../foldermenu.cpp" line="219"/>
         <source>Descending</source>
         <translation>Azalan</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="228"/>
+        <location filename="../foldermenu.cpp" line="236"/>
         <source>Folder First</source>
         <translation>Önce Dizin</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="236"/>
+        <location filename="../foldermenu.cpp" line="244"/>
         <source>Hidden Last</source>
         <translation>Gizli Son</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="244"/>
+        <location filename="../foldermenu.cpp" line="252"/>
         <source>Case Sensitive</source>
         <translation>Büyük Küçük Harf Duyarlı</translation>
     </message>
@@ -1206,12 +1212,12 @@ Onun yerine silmek ister misiniz?</translation>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="386"/>
+        <location filename="../folderview.cpp" line="406"/>
         <source>Auto-resize columns</source>
         <translation>Sütunları otomatik ölçeklendir</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="403"/>
+        <location filename="../folderview.cpp" line="423"/>
         <source>Visible Columns</source>
         <translation>Görünür Sütunlar</translation>
     </message>
@@ -1296,64 +1302,64 @@ Onun yerine silmek ister misiniz?</translation>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="481"/>
+        <location filename="../placesview.cpp" line="482"/>
         <source>Open in New Tab</source>
         <translation>Yeni Sekmede Aç</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="484"/>
+        <location filename="../placesview.cpp" line="485"/>
         <source>Open in New Window</source>
         <translation>Yeni Pencerede Aç</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="496"/>
+        <location filename="../placesview.cpp" line="497"/>
         <source>Empty Trash</source>
         <translation>Çöp Kutusunu Boşalt</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="516"/>
-        <location filename="../placesview.cpp" line="573"/>
+        <location filename="../placesview.cpp" line="517"/>
+        <location filename="../placesview.cpp" line="579"/>
         <source>Hide</source>
         <translation>Gizle</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="533"/>
+        <location filename="../placesview.cpp" line="534"/>
         <source>Move Bookmark Up</source>
         <translation>Yer İmini Yukarı Taşı</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="538"/>
+        <location filename="../placesview.cpp" line="541"/>
         <source>Move Bookmark Down</source>
         <translation>Yer İmini Aşağı Taşı</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="542"/>
+        <location filename="../placesview.cpp" line="546"/>
         <source>Rename Bookmark</source>
         <translation>Yer İmini Yeniden Adlandır</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="545"/>
+        <location filename="../placesview.cpp" line="550"/>
         <source>Remove Bookmark</source>
         <translation>Yer İmini Sil</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="554"/>
-        <location filename="../placesview.cpp" line="587"/>
+        <location filename="../placesview.cpp" line="560"/>
+        <location filename="../placesview.cpp" line="593"/>
         <source>Unmount</source>
         <translation>Ayır</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="558"/>
+        <location filename="../placesview.cpp" line="564"/>
         <source>Mount</source>
         <translation>Bağla</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="564"/>
+        <location filename="../placesview.cpp" line="570"/>
         <source>Eject</source>
         <translation>Çıkart</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="599"/>
+        <location filename="../placesview.cpp" line="605"/>
         <source>Show All Entries</source>
         <translation>Tüm Girdileri Göster</translation>
     </message>
@@ -1476,7 +1482,7 @@ Değiştirild: %2</translation>
         <translation>Lütfen yeni bir isim girin:</translation>
     </message>
     <message>
-        <location filename="../filelauncher.cpp" line="104"/>
+        <location filename="../filelauncher.cpp" line="119"/>
         <location filename="../filepropsdialog.cpp" line="668"/>
         <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="147"/>

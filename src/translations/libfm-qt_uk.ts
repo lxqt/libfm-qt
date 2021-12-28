@@ -473,145 +473,155 @@ What do you want to do with it?</source>
 <context>
     <name>Fm::FileDialog</name>
     <message>
-        <location filename="../filedialog.cpp" line="109"/>
+        <location filename="../filedialog.cpp" line="105"/>
         <source>Go Back</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="110"/>
+        <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
         <translation>Alt+Вліво</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="116"/>
+        <location filename="../filedialog.cpp" line="112"/>
         <source>Go Forward</source>
         <translation>Вперед</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="117"/>
+        <location filename="../filedialog.cpp" line="113"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
         <translation>Alt+Вправо</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="124"/>
+        <location filename="../filedialog.cpp" line="120"/>
         <source>Reload</source>
         <translation>Оновити</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="125"/>
+        <location filename="../filedialog.cpp" line="121"/>
         <source>F5</source>
         <comment>Reload</comment>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="142"/>
+        <location filename="../filedialog.cpp" line="138"/>
         <source>Create Folder</source>
         <translation>Створити теку</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="152"/>
+        <location filename="../filedialog.cpp" line="148"/>
         <source>Icon View</source>
         <translation>Подання піктограмами</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="156"/>
+        <location filename="../filedialog.cpp" line="152"/>
         <source>Thumbnail View</source>
         <translation>Подання ескізами</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="160"/>
+        <location filename="../filedialog.cpp" line="156"/>
         <source>Compact View</source>
         <translation>Компактний вигляд</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="164"/>
+        <location filename="../filedialog.cpp" line="160"/>
         <source>Detailed List View</source>
         <translation>Подання детальним переліком</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="172"/>
+        <location filename="../filedialog.cpp" line="168"/>
         <source>Icon Sizes</source>
         <translation>Розміри піктограм</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="174"/>
+        <location filename="../filedialog.cpp" line="170"/>
         <source>Size of big icons:</source>
         <translation>Розмір великих піктограм:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="181"/>
+        <location filename="../filedialog.cpp" line="177"/>
         <source>Size of small icons:</source>
         <translation>Розмір маленьких піктограм:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="188"/>
+        <location filename="../filedialog.cpp" line="184"/>
         <source>Size of thumbnails:</source>
         <translation>Розмір ескізів:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="204"/>
+        <location filename="../filedialog.cpp" line="200"/>
+        <source>Show Hidden</source>
+        <translation type="unfinished">Показати приховане</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="212"/>
         <source>Show Thumbnails</source>
         <translation>Показувати ескізи</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="209"/>
+        <location filename="../filedialog.cpp" line="217"/>
         <source>Show File Tooltips</source>
         <translation>Показувати підказки для файлів</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="220"/>
+        <location filename="../filedialog.cpp" line="224"/>
+        <source>Smooth Scrolling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="241"/>
         <source>Options</source>
         <translation>Параметри</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="540"/>
-        <location filename="../filedialog.cpp" line="935"/>
+        <location filename="../filedialog.cpp" line="574"/>
+        <location filename="../filedialog.cpp" line="969"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="540"/>
+        <location filename="../filedialog.cpp" line="574"/>
         <source>Please select a file</source>
         <translation>Виберіть файл</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="582"/>
+        <location filename="../filedialog.cpp" line="616"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 вже існує.
 Бажаєте замінити його?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="905"/>
+        <location filename="../filedialog.cpp" line="939"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>Шляху «%1» не існує</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="919"/>
+        <location filename="../filedialog.cpp" line="953"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>«%1» не є текою</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="925"/>
+        <location filename="../filedialog.cpp" line="959"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>«%1» не є файлом</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1077"/>
-        <location filename="../filedialog.cpp" line="1185"/>
+        <location filename="../filedialog.cpp" line="1111"/>
+        <location filename="../filedialog.cpp" line="1219"/>
         <source>&amp;Open</source>
         <translation>&amp;Відкрити</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1080"/>
-        <location filename="../filedialog.cpp" line="1193"/>
+        <location filename="../filedialog.cpp" line="1114"/>
+        <location filename="../filedialog.cpp" line="1227"/>
         <source>&amp;Save</source>
         <translation>&amp;Зберегти</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1087"/>
+        <location filename="../filedialog.cpp" line="1121"/>
         <source>All Files (*)</source>
         <translation>Усі файли (*)</translation>
     </message>
@@ -695,7 +705,7 @@ Do you want to replace it?</source>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="166"/>
-        <location filename="../filemenu.cpp" line="478"/>
+        <location filename="../filemenu.cpp" line="481"/>
         <source>&amp;Move to Trash</source>
         <translation>&amp;Перемістити у смітник</translation>
     </message>
@@ -750,13 +760,13 @@ Do you want to replace it?</source>
         <translation>Довіряти цьому виконуваному файлу</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="413"/>
+        <location filename="../filemenu.cpp" line="416"/>
         <source>Output</source>
         <translation>Вивід</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="148"/>
-        <location filename="../filemenu.cpp" line="478"/>
+        <location filename="../filemenu.cpp" line="481"/>
         <source>&amp;Delete</source>
         <translation>Ви&amp;лучити</translation>
     </message>
@@ -1024,97 +1034,97 @@ Do you want to delete them instead?</source>
         <translation>&amp;Вставити</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="74"/>
+        <location filename="../foldermenu.cpp" line="81"/>
         <source>Select &amp;All</source>
         <translation>Вибрати в&amp;се</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="78"/>
+        <location filename="../foldermenu.cpp" line="85"/>
         <source>Invert Selection</source>
         <translation>Обернути вибране</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="84"/>
+        <location filename="../foldermenu.cpp" line="92"/>
         <source>Sorting</source>
         <translation>Сортування</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="89"/>
+        <location filename="../foldermenu.cpp" line="97"/>
         <source>Show Hidden</source>
         <translation>Показати приховане</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="124"/>
+        <location filename="../foldermenu.cpp" line="132"/>
         <source>Folder Pr&amp;operties</source>
         <translation>Властив&amp;ості теки</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="167"/>
+        <location filename="../foldermenu.cpp" line="175"/>
         <source>Output</source>
         <translation>Вивід</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="189"/>
+        <location filename="../foldermenu.cpp" line="197"/>
         <source>By File Name</source>
         <translation>За назвою файлу</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="190"/>
+        <location filename="../foldermenu.cpp" line="198"/>
         <source>By Modification Time</source>
         <translation>За датою зміни</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="191"/>
+        <location filename="../foldermenu.cpp" line="199"/>
         <source>By Creation Time</source>
         <translation>За часом створення</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="194"/>
+        <location filename="../foldermenu.cpp" line="202"/>
         <source>By Deletion Time</source>
         <translation>За часом видалення</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="197"/>
+        <location filename="../foldermenu.cpp" line="205"/>
         <source>By File Size</source>
         <translation>За розміром файлу</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="198"/>
+        <location filename="../foldermenu.cpp" line="206"/>
         <source>By File Type</source>
         <translation>За типом файлу</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="199"/>
+        <location filename="../foldermenu.cpp" line="207"/>
         <source>By File Owner</source>
         <translation>За власником файлу</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="200"/>
+        <location filename="../foldermenu.cpp" line="208"/>
         <source>By File Group</source>
         <translation>За групою файлу</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="206"/>
+        <location filename="../foldermenu.cpp" line="214"/>
         <source>Ascending</source>
         <translation>За зростанням</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="211"/>
+        <location filename="../foldermenu.cpp" line="219"/>
         <source>Descending</source>
         <translation>За спаданням</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="228"/>
+        <location filename="../foldermenu.cpp" line="236"/>
         <source>Folder First</source>
         <translation>Спочатку теки</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="236"/>
+        <location filename="../foldermenu.cpp" line="244"/>
         <source>Hidden Last</source>
         <translation>Приховані в кінці</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="244"/>
+        <location filename="../foldermenu.cpp" line="252"/>
         <source>Case Sensitive</source>
         <translation>Чутливі до регістру</translation>
     </message>
@@ -1210,12 +1220,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="386"/>
+        <location filename="../folderview.cpp" line="406"/>
         <source>Auto-resize columns</source>
         <translation>Автозміна ширини стовпців</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="403"/>
+        <location filename="../folderview.cpp" line="423"/>
         <source>Visible Columns</source>
         <translation>Видимі стовпці</translation>
     </message>
@@ -1300,64 +1310,64 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="481"/>
+        <location filename="../placesview.cpp" line="482"/>
         <source>Open in New Tab</source>
         <translation>Відкрити в новій вкладці</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="484"/>
+        <location filename="../placesview.cpp" line="485"/>
         <source>Open in New Window</source>
         <translation>Відкрити в новому вікні</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="496"/>
+        <location filename="../placesview.cpp" line="497"/>
         <source>Empty Trash</source>
         <translation>Спорожнити смітник</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="516"/>
-        <location filename="../placesview.cpp" line="573"/>
+        <location filename="../placesview.cpp" line="517"/>
+        <location filename="../placesview.cpp" line="579"/>
         <source>Hide</source>
         <translation>Приховати</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="533"/>
+        <location filename="../placesview.cpp" line="534"/>
         <source>Move Bookmark Up</source>
         <translation>Перенести закладку вгору</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="538"/>
+        <location filename="../placesview.cpp" line="541"/>
         <source>Move Bookmark Down</source>
         <translation>Перенести закладку вниз</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="542"/>
+        <location filename="../placesview.cpp" line="546"/>
         <source>Rename Bookmark</source>
         <translation>Перейменувати закладку</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="545"/>
+        <location filename="../placesview.cpp" line="550"/>
         <source>Remove Bookmark</source>
         <translation>Вилучити закладку</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="554"/>
-        <location filename="../placesview.cpp" line="587"/>
+        <location filename="../placesview.cpp" line="560"/>
+        <location filename="../placesview.cpp" line="593"/>
         <source>Unmount</source>
         <translation>Відмонтувати</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="558"/>
+        <location filename="../placesview.cpp" line="564"/>
         <source>Mount</source>
         <translation>Змонтувати</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="564"/>
+        <location filename="../placesview.cpp" line="570"/>
         <source>Eject</source>
         <translation>Витягнути</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="599"/>
+        <location filename="../placesview.cpp" line="605"/>
         <source>Show All Entries</source>
         <translation>Показати всі записи</translation>
     </message>
@@ -1480,7 +1490,7 @@ Modified: %2</source>
         <translation>Будь ласка, введіть нову назву:</translation>
     </message>
     <message>
-        <location filename="../filelauncher.cpp" line="104"/>
+        <location filename="../filelauncher.cpp" line="119"/>
         <location filename="../filepropsdialog.cpp" line="668"/>
         <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="147"/>

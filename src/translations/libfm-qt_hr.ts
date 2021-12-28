@@ -474,145 +474,155 @@ What do you want to do with it?</source>
 <context>
     <name>Fm::FileDialog</name>
     <message>
-        <location filename="../filedialog.cpp" line="109"/>
+        <location filename="../filedialog.cpp" line="105"/>
         <source>Go Back</source>
         <translation>Idi natrag</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="110"/>
+        <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
         <translation>Alt+Lijevo</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="116"/>
+        <location filename="../filedialog.cpp" line="112"/>
         <source>Go Forward</source>
         <translation>Idi naprijed</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="117"/>
+        <location filename="../filedialog.cpp" line="113"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
         <translation>Alt+Desno</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="124"/>
+        <location filename="../filedialog.cpp" line="120"/>
         <source>Reload</source>
         <translation>Učitaj ponovo</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="125"/>
+        <location filename="../filedialog.cpp" line="121"/>
         <source>F5</source>
         <comment>Reload</comment>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="142"/>
+        <location filename="../filedialog.cpp" line="138"/>
         <source>Create Folder</source>
         <translation>Stvori mapu</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="152"/>
+        <location filename="../filedialog.cpp" line="148"/>
         <source>Icon View</source>
         <translation>Prikaz ikona</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="156"/>
+        <location filename="../filedialog.cpp" line="152"/>
         <source>Thumbnail View</source>
         <translation>Prikaz sličica</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="160"/>
+        <location filename="../filedialog.cpp" line="156"/>
         <source>Compact View</source>
         <translation>Kompaktni prikaz</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="164"/>
+        <location filename="../filedialog.cpp" line="160"/>
         <source>Detailed List View</source>
         <translation>Prikaz detaljnog popisa</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="172"/>
+        <location filename="../filedialog.cpp" line="168"/>
         <source>Icon Sizes</source>
         <translation>Veličine ikona</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="174"/>
+        <location filename="../filedialog.cpp" line="170"/>
         <source>Size of big icons:</source>
         <translation>Veličina velikih ikona:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="181"/>
+        <location filename="../filedialog.cpp" line="177"/>
         <source>Size of small icons:</source>
         <translation>Veličina malih ikona:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="188"/>
+        <location filename="../filedialog.cpp" line="184"/>
         <source>Size of thumbnails:</source>
         <translation>Veličina minijatura:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="204"/>
+        <location filename="../filedialog.cpp" line="200"/>
+        <source>Show Hidden</source>
+        <translation type="unfinished">Prikaži skrivene</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="212"/>
         <source>Show Thumbnails</source>
         <translation>Prikaži minijature</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="209"/>
+        <location filename="../filedialog.cpp" line="217"/>
         <source>Show File Tooltips</source>
         <translation>Prikaži savjete za datoteke</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="220"/>
+        <location filename="../filedialog.cpp" line="224"/>
+        <source>Smooth Scrolling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="241"/>
         <source>Options</source>
         <translation>Opcije</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="540"/>
-        <location filename="../filedialog.cpp" line="935"/>
+        <location filename="../filedialog.cpp" line="574"/>
+        <location filename="../filedialog.cpp" line="969"/>
         <source>Error</source>
         <translation>Greška</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="540"/>
+        <location filename="../filedialog.cpp" line="574"/>
         <source>Please select a file</source>
         <translation>Odaberi jednu datoteku</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="582"/>
+        <location filename="../filedialog.cpp" line="616"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 već postoji.
 Želiš li je zamijeniti?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="905"/>
+        <location filename="../filedialog.cpp" line="939"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>Staza „%1” ne postoji</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="919"/>
+        <location filename="../filedialog.cpp" line="953"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>„%1” nije mapa</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="925"/>
+        <location filename="../filedialog.cpp" line="959"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>„%1” nije datoteka</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1077"/>
-        <location filename="../filedialog.cpp" line="1185"/>
+        <location filename="../filedialog.cpp" line="1111"/>
+        <location filename="../filedialog.cpp" line="1219"/>
         <source>&amp;Open</source>
         <translation>&amp;Otvori</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1080"/>
-        <location filename="../filedialog.cpp" line="1193"/>
+        <location filename="../filedialog.cpp" line="1114"/>
+        <location filename="../filedialog.cpp" line="1227"/>
         <source>&amp;Save</source>
         <translation>&amp;Spremi</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1087"/>
+        <location filename="../filedialog.cpp" line="1121"/>
         <source>All Files (*)</source>
         <translation>Sve datoteke (*)</translation>
     </message>
@@ -696,7 +706,7 @@ Do you want to replace it?</source>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="166"/>
-        <location filename="../filemenu.cpp" line="478"/>
+        <location filename="../filemenu.cpp" line="481"/>
         <source>&amp;Move to Trash</source>
         <translation>Pre&amp;mjesti u smeće</translation>
     </message>
@@ -751,13 +761,13 @@ Do you want to replace it?</source>
         <translation>Vjeruj ovoj izvršnoj datoteci</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="413"/>
+        <location filename="../filemenu.cpp" line="416"/>
         <source>Output</source>
         <translation>Rezultat</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="148"/>
-        <location filename="../filemenu.cpp" line="478"/>
+        <location filename="../filemenu.cpp" line="481"/>
         <source>&amp;Delete</source>
         <translation>&amp;Ukloni</translation>
     </message>
@@ -927,7 +937,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="405"/>
         <source>%p% used</source>
-        <translation>%p % korišteno</translation>
+        <translation>%p&#xa0;% korišteno</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="406"/>
@@ -1025,97 +1035,97 @@ Do you want to delete them instead?</source>
         <translation>&amp;Zalijepi</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="74"/>
+        <location filename="../foldermenu.cpp" line="81"/>
         <source>Select &amp;All</source>
         <translation>Odaberi &amp;sve</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="78"/>
+        <location filename="../foldermenu.cpp" line="85"/>
         <source>Invert Selection</source>
         <translation>Preokreni odabir</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="84"/>
+        <location filename="../foldermenu.cpp" line="92"/>
         <source>Sorting</source>
         <translation>Razvrstavanje</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="89"/>
+        <location filename="../foldermenu.cpp" line="97"/>
         <source>Show Hidden</source>
         <translation>Prikaži skrivene</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="124"/>
+        <location filename="../foldermenu.cpp" line="132"/>
         <source>Folder Pr&amp;operties</source>
         <translation>Sv&amp;ojstva mape</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="167"/>
+        <location filename="../foldermenu.cpp" line="175"/>
         <source>Output</source>
         <translation>Rezultat</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="189"/>
+        <location filename="../foldermenu.cpp" line="197"/>
         <source>By File Name</source>
         <translation>Prema imenu datoteka</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="190"/>
+        <location filename="../foldermenu.cpp" line="198"/>
         <source>By Modification Time</source>
         <translation>Prema vremenu promjena</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="191"/>
+        <location filename="../foldermenu.cpp" line="199"/>
         <source>By Creation Time</source>
         <translation>Prema vremenu stvaranja</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="194"/>
+        <location filename="../foldermenu.cpp" line="202"/>
         <source>By Deletion Time</source>
         <translation>Prema vremenu brisanja</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="197"/>
+        <location filename="../foldermenu.cpp" line="205"/>
         <source>By File Size</source>
         <translation>Prema veličini datoteka</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="198"/>
+        <location filename="../foldermenu.cpp" line="206"/>
         <source>By File Type</source>
         <translation>Prema vrsti datoteka</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="199"/>
+        <location filename="../foldermenu.cpp" line="207"/>
         <source>By File Owner</source>
         <translation>Prema vlasniku datoteka</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="200"/>
+        <location filename="../foldermenu.cpp" line="208"/>
         <source>By File Group</source>
         <translation>Prema grupama datoteka</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="206"/>
+        <location filename="../foldermenu.cpp" line="214"/>
         <source>Ascending</source>
         <translation>Uzlazno</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="211"/>
+        <location filename="../foldermenu.cpp" line="219"/>
         <source>Descending</source>
         <translation>Silazno</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="228"/>
+        <location filename="../foldermenu.cpp" line="236"/>
         <source>Folder First</source>
         <translation>Najprije mape</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="236"/>
+        <location filename="../foldermenu.cpp" line="244"/>
         <source>Hidden Last</source>
         <translation>Skrivene na kraj</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="244"/>
+        <location filename="../foldermenu.cpp" line="252"/>
         <source>Case Sensitive</source>
         <translation>Razlikovanje velikih/malih slova</translation>
     </message>
@@ -1211,12 +1221,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="386"/>
+        <location filename="../folderview.cpp" line="406"/>
         <source>Auto-resize columns</source>
         <translation>Prilagodi širinu stupaca automatski</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="403"/>
+        <location filename="../folderview.cpp" line="423"/>
         <source>Visible Columns</source>
         <translation>Vidljivi stupci</translation>
     </message>
@@ -1301,64 +1311,64 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="481"/>
+        <location filename="../placesview.cpp" line="482"/>
         <source>Open in New Tab</source>
         <translation>Otvori u novoj kartici</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="484"/>
+        <location filename="../placesview.cpp" line="485"/>
         <source>Open in New Window</source>
         <translation>Otvori u novom prozoru</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="496"/>
+        <location filename="../placesview.cpp" line="497"/>
         <source>Empty Trash</source>
         <translation>Isprazni smeće</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="516"/>
-        <location filename="../placesview.cpp" line="573"/>
+        <location filename="../placesview.cpp" line="517"/>
+        <location filename="../placesview.cpp" line="579"/>
         <source>Hide</source>
         <translation>Sakrij</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="533"/>
+        <location filename="../placesview.cpp" line="534"/>
         <source>Move Bookmark Up</source>
         <translation>Premjesti knjižnu oznaku prema gore</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="538"/>
+        <location filename="../placesview.cpp" line="541"/>
         <source>Move Bookmark Down</source>
         <translation>Premjesti knjižnu oznaku prema dolje</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="542"/>
+        <location filename="../placesview.cpp" line="546"/>
         <source>Rename Bookmark</source>
         <translation>Preimenuj knjižnu oznaku</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="545"/>
+        <location filename="../placesview.cpp" line="550"/>
         <source>Remove Bookmark</source>
         <translation>Ukloni knjižnu oznaku</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="554"/>
-        <location filename="../placesview.cpp" line="587"/>
+        <location filename="../placesview.cpp" line="560"/>
+        <location filename="../placesview.cpp" line="593"/>
         <source>Unmount</source>
         <translation>Izbaci</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="558"/>
+        <location filename="../placesview.cpp" line="564"/>
         <source>Mount</source>
         <translation>Pokreni</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="564"/>
+        <location filename="../placesview.cpp" line="570"/>
         <source>Eject</source>
         <translation>Izbaci</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="599"/>
+        <location filename="../placesview.cpp" line="605"/>
         <source>Show All Entries</source>
         <translation>Prikaži sve unose</translation>
     </message>
@@ -1481,7 +1491,7 @@ Promijenjeno: %2</translation>
         <translation>Upiši novo ime:</translation>
     </message>
     <message>
-        <location filename="../filelauncher.cpp" line="104"/>
+        <location filename="../filelauncher.cpp" line="119"/>
         <location filename="../filepropsdialog.cpp" line="668"/>
         <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="147"/>

@@ -477,145 +477,155 @@ What do you want to do with it?</source>
 <context>
     <name>Fm::FileDialog</name>
     <message>
-        <location filename="../filedialog.cpp" line="109"/>
+        <location filename="../filedialog.cpp" line="105"/>
         <source>Go Back</source>
         <translation>뒤로</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="110"/>
+        <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="116"/>
+        <location filename="../filedialog.cpp" line="112"/>
         <source>Go Forward</source>
         <translation>앞으로</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="117"/>
+        <location filename="../filedialog.cpp" line="113"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="124"/>
+        <location filename="../filedialog.cpp" line="120"/>
         <source>Reload</source>
         <translation>새로고침</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="125"/>
+        <location filename="../filedialog.cpp" line="121"/>
         <source>F5</source>
         <comment>Reload</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="142"/>
+        <location filename="../filedialog.cpp" line="138"/>
         <source>Create Folder</source>
         <translation>새 폴더</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="152"/>
+        <location filename="../filedialog.cpp" line="148"/>
         <source>Icon View</source>
         <translation>아이콘</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="156"/>
+        <location filename="../filedialog.cpp" line="152"/>
         <source>Thumbnail View</source>
         <translation>썸네일</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="160"/>
+        <location filename="../filedialog.cpp" line="156"/>
         <source>Compact View</source>
         <translation>간단히</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="164"/>
+        <location filename="../filedialog.cpp" line="160"/>
         <source>Detailed List View</source>
         <translation>자세히</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="172"/>
+        <location filename="../filedialog.cpp" line="168"/>
         <source>Icon Sizes</source>
         <translation>아이콘 크기</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="174"/>
+        <location filename="../filedialog.cpp" line="170"/>
         <source>Size of big icons:</source>
         <translation>큰 아이콘 크기:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="181"/>
+        <location filename="../filedialog.cpp" line="177"/>
         <source>Size of small icons:</source>
         <translation>작은 아이콘 크기:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="188"/>
+        <location filename="../filedialog.cpp" line="184"/>
         <source>Size of thumbnails:</source>
         <translation>썸네일 크기:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="204"/>
+        <location filename="../filedialog.cpp" line="200"/>
+        <source>Show Hidden</source>
+        <translation type="unfinished">숨긴 파일 보기</translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="212"/>
         <source>Show Thumbnails</source>
         <translation>썸네일 표시</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="209"/>
+        <location filename="../filedialog.cpp" line="217"/>
         <source>Show File Tooltips</source>
         <translation>파일 툴팁 표시</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="220"/>
+        <location filename="../filedialog.cpp" line="224"/>
+        <source>Smooth Scrolling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filedialog.cpp" line="241"/>
         <source>Options</source>
         <translation>옵션</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="540"/>
-        <location filename="../filedialog.cpp" line="935"/>
+        <location filename="../filedialog.cpp" line="574"/>
+        <location filename="../filedialog.cpp" line="969"/>
         <source>Error</source>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="540"/>
+        <location filename="../filedialog.cpp" line="574"/>
         <source>Please select a file</source>
         <translation>파일을 선택하십시오</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="582"/>
+        <location filename="../filedialog.cpp" line="616"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 는 이미 존재합니다.
 덮어쓸까요?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="905"/>
+        <location filename="../filedialog.cpp" line="939"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>“%1&quot; 경로가 존재하지 않습니다</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="919"/>
+        <location filename="../filedialog.cpp" line="953"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>“%1”이(가) 디렉토리가 아닙니다</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="925"/>
+        <location filename="../filedialog.cpp" line="959"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>“%1”은(는) 파일이 아닙니다</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1077"/>
-        <location filename="../filedialog.cpp" line="1185"/>
+        <location filename="../filedialog.cpp" line="1111"/>
+        <location filename="../filedialog.cpp" line="1219"/>
         <source>&amp;Open</source>
         <translation>열기(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1080"/>
-        <location filename="../filedialog.cpp" line="1193"/>
+        <location filename="../filedialog.cpp" line="1114"/>
+        <location filename="../filedialog.cpp" line="1227"/>
         <source>&amp;Save</source>
         <translation>저장(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1087"/>
+        <location filename="../filedialog.cpp" line="1121"/>
         <source>All Files (*)</source>
         <translation>모든 파일 (*)</translation>
     </message>
@@ -697,7 +707,7 @@ Do you want to replace it?</source>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="166"/>
-        <location filename="../filemenu.cpp" line="478"/>
+        <location filename="../filemenu.cpp" line="481"/>
         <source>&amp;Move to Trash</source>
         <translation>휴지통으로 이동(&amp;M)</translation>
     </message>
@@ -752,13 +762,13 @@ Do you want to replace it?</source>
         <translation>이 실행 파일을 신뢰</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="413"/>
+        <location filename="../filemenu.cpp" line="416"/>
         <source>Output</source>
         <translation>출력</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="148"/>
-        <location filename="../filemenu.cpp" line="478"/>
+        <location filename="../filemenu.cpp" line="481"/>
         <source>&amp;Delete</source>
         <translation>삭제(&amp;D)</translation>
     </message>
@@ -1021,97 +1031,97 @@ Do you want to delete them instead?</source>
         <translation>붙여넣기(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="74"/>
+        <location filename="../foldermenu.cpp" line="81"/>
         <source>Select &amp;All</source>
         <translation>모두 선택(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="78"/>
+        <location filename="../foldermenu.cpp" line="85"/>
         <source>Invert Selection</source>
         <translation>선택 역전</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="84"/>
+        <location filename="../foldermenu.cpp" line="92"/>
         <source>Sorting</source>
         <translation>정렬</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="89"/>
+        <location filename="../foldermenu.cpp" line="97"/>
         <source>Show Hidden</source>
         <translation>숨긴 파일 보기</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="124"/>
+        <location filename="../foldermenu.cpp" line="132"/>
         <source>Folder Pr&amp;operties</source>
         <translation>폴더 속성(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="167"/>
+        <location filename="../foldermenu.cpp" line="175"/>
         <source>Output</source>
         <translation>출력</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="189"/>
+        <location filename="../foldermenu.cpp" line="197"/>
         <source>By File Name</source>
         <translation>파일 이름 순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="190"/>
+        <location filename="../foldermenu.cpp" line="198"/>
         <source>By Modification Time</source>
         <translation>수정 시간 순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="191"/>
+        <location filename="../foldermenu.cpp" line="199"/>
         <source>By Creation Time</source>
         <translation>작성 시간별</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="194"/>
+        <location filename="../foldermenu.cpp" line="202"/>
         <source>By Deletion Time</source>
         <translation>삭제 시간 순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="197"/>
+        <location filename="../foldermenu.cpp" line="205"/>
         <source>By File Size</source>
         <translation>파일 크기 순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="198"/>
+        <location filename="../foldermenu.cpp" line="206"/>
         <source>By File Type</source>
         <translation>파일 형식 순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="199"/>
+        <location filename="../foldermenu.cpp" line="207"/>
         <source>By File Owner</source>
         <translation>파일 소유자 순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="200"/>
+        <location filename="../foldermenu.cpp" line="208"/>
         <source>By File Group</source>
         <translation>파일 그룹 순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="206"/>
+        <location filename="../foldermenu.cpp" line="214"/>
         <source>Ascending</source>
         <translation>오름차순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="211"/>
+        <location filename="../foldermenu.cpp" line="219"/>
         <source>Descending</source>
         <translation>내림차순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="228"/>
+        <location filename="../foldermenu.cpp" line="236"/>
         <source>Folder First</source>
         <translation>첫 번째 폴더</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="236"/>
+        <location filename="../foldermenu.cpp" line="244"/>
         <source>Hidden Last</source>
         <translation>숨겨진 파일을 맨뒤로</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="244"/>
+        <location filename="../foldermenu.cpp" line="252"/>
         <source>Case Sensitive</source>
         <translation>대/소문자 구분</translation>
     </message>
@@ -1207,12 +1217,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="386"/>
+        <location filename="../folderview.cpp" line="406"/>
         <source>Auto-resize columns</source>
         <translation>자동으로 열 크기 조정</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="403"/>
+        <location filename="../folderview.cpp" line="423"/>
         <source>Visible Columns</source>
         <translation>열 표시</translation>
     </message>
@@ -1297,64 +1307,64 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="481"/>
+        <location filename="../placesview.cpp" line="482"/>
         <source>Open in New Tab</source>
         <translation>새 탭으로 열기</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="484"/>
+        <location filename="../placesview.cpp" line="485"/>
         <source>Open in New Window</source>
         <translation>새 창으로 열기</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="496"/>
+        <location filename="../placesview.cpp" line="497"/>
         <source>Empty Trash</source>
         <translation>빈 휴지통</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="516"/>
-        <location filename="../placesview.cpp" line="573"/>
+        <location filename="../placesview.cpp" line="517"/>
+        <location filename="../placesview.cpp" line="579"/>
         <source>Hide</source>
         <translation>숨기기</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="533"/>
+        <location filename="../placesview.cpp" line="534"/>
         <source>Move Bookmark Up</source>
         <translation>북마크 위로 옮기기</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="538"/>
+        <location filename="../placesview.cpp" line="541"/>
         <source>Move Bookmark Down</source>
         <translation>북마크 아래로 옮기기</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="542"/>
+        <location filename="../placesview.cpp" line="546"/>
         <source>Rename Bookmark</source>
         <translation>북마크 이름 바꾸기</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="545"/>
+        <location filename="../placesview.cpp" line="550"/>
         <source>Remove Bookmark</source>
         <translation>북마크 삭제</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="554"/>
-        <location filename="../placesview.cpp" line="587"/>
+        <location filename="../placesview.cpp" line="560"/>
+        <location filename="../placesview.cpp" line="593"/>
         <source>Unmount</source>
         <translation>마운트 해제</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="558"/>
+        <location filename="../placesview.cpp" line="564"/>
         <source>Mount</source>
         <translation>마운트</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="564"/>
+        <location filename="../placesview.cpp" line="570"/>
         <source>Eject</source>
         <translation>꺼내기</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="599"/>
+        <location filename="../placesview.cpp" line="605"/>
         <source>Show All Entries</source>
         <translation>모든 항목 보기</translation>
     </message>
@@ -1478,7 +1488,7 @@ Modified: %2</source>
         <translation>새 이름 입력:</translation>
     </message>
     <message>
-        <location filename="../filelauncher.cpp" line="104"/>
+        <location filename="../filelauncher.cpp" line="119"/>
         <location filename="../filepropsdialog.cpp" line="668"/>
         <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="147"/>
