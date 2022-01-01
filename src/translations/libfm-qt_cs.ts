@@ -553,7 +553,7 @@ Co s ním chcete dělat?</translation>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Zobrazit skryté</translation>
+        <translation>Zobrazit skryté</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -568,7 +568,7 @@ Co s ním chcete dělat?</translation>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Hladké posouvání</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>
