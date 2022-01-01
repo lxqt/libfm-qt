@@ -553,7 +553,7 @@ Mida sa soovid sellega teha?</translation>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Näita peidetud faile</translation>
+        <translation>Näita peidetud faile</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -568,7 +568,7 @@ Mida sa soovid sellega teha?</translation>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Sujuv kerimine</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>

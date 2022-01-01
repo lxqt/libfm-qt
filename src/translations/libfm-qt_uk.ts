@@ -553,7 +553,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Показати приховане</translation>
+        <translation>Показати сховані</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -568,7 +568,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Плавне прокручування</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>

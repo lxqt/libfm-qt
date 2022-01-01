@@ -553,7 +553,7 @@ Wat wilt u ermee doen?</translation>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Verborgen bestanden/mappen tonen</translation>
+        <translation>Verborgen bestanden/mappen tonen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -568,7 +568,7 @@ Wat wilt u ermee doen?</translation>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Vloeiend schuiven</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>
