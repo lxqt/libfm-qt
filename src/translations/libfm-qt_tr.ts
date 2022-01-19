@@ -553,7 +553,7 @@ Ne yapmak istersiniz?</translation>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Gizli Dosyaları Göster</translation>
+        <translation>Gizli Dosyaları Göster</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -568,7 +568,7 @@ Ne yapmak istersiniz?</translation>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Yumuşak Kaydırma</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>
