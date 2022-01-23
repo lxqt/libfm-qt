@@ -162,6 +162,11 @@ extern "C" char* expand_terminal(char* cmd, gboolean keep_open, GError** error) 
     else
         opts = open_arg.get();
 
+    if(!opts) {
+        /* do not add (null) to the command */
+        opts = "";
+    }
+
     char* ret = nullptr;
     if(custom_args)
         ret = g_strdup_printf("%s %s %s %s", program, custom_args.get(),
