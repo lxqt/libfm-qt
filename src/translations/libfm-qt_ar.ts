@@ -127,7 +127,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>المسار:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -533,12 +533,12 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="168"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>حجم الأيقونات</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="170"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>حجم الأيقونات الكبيرة:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="177"/>
