@@ -553,7 +553,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Показване на скритите файлове</translation>
+        <translation>Показване на скритите</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
