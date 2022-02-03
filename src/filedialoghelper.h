@@ -36,6 +36,9 @@ public:
 
     bool isSupportedUrl(const QUrl &url) const override;
 
+protected:
+    inline Fm::FileDialog & dialog() { return *dlg_; }
+
 private:
     void applyOptions();
     void loadSettings();
