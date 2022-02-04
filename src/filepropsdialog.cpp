@@ -658,14 +658,16 @@ void FilePropsDialog::accept() {
         if(QString::fromStdString(fileInfo->name()) != new_name) {
             auto path = fileInfo->path();
             auto parent_path = path.parent();
-            auto dest = parent_path.child(new_name.toLocal8Bit().constData());
-            Fm::GErrorPtr err;
-            if(!g_file_move(path.gfile().get(), dest.gfile().get(),
-                            GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
-                                           G_FILE_COPY_NO_FALLBACK_FOR_MOVE |
-                                           G_FILE_COPY_NOFOLLOW_SYMLINKS),
-                            nullptr, nullptr, nullptr, &err)) {
-                QMessageBox::critical(this, QObject::tr("Error"), err.message());
+            if(parent_path) {
+                auto dest = parent_path.child(new_name.toLocal8Bit().constData());
+                Fm::GErrorPtr err;
+                if(!g_file_move(path.gfile().get(), dest.gfile().get(),
+                                GFileCopyFlags(G_FILE_COPY_ALL_METADATA |
+                                               G_FILE_COPY_NO_FALLBACK_FOR_MOVE |
+                                               G_FILE_COPY_NOFOLLOW_SYMLINKS),
+                                nullptr, nullptr, nullptr, &err)) {
+                    QMessageBox::critical(this, QObject::tr("Error"), err.message());
+                }
             }
         }
     }

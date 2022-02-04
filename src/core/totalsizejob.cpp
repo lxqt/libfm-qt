@@ -103,7 +103,13 @@ _retry_enum_children:
                     inf = GFileInfoPtr{g_file_enumerator_next_file(enu.get(), cancellable().get(), &err), false};
                     if(inf) {
                         FilePath child = path.child(g_file_info_get_name(inf.get()));
-                        exec(std::move(child), std::move(inf));
+                        if(!child && g_file_info_get_file_type(inf.get()) == G_FILE_TYPE_DIRECTORY) {
+                            // we won't be able to enumerate its children
+                            ++fileCount_;
+                        }
+                        else {
+                            exec(std::move(child), std::move(inf));
+                        }
                     }
                     else {
                         if(err) { /* error! */

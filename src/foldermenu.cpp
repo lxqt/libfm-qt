@@ -44,7 +44,13 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
 
     ProxyFolderModel* model = view_->model();
 
-    bool insideTrash(view_->path() && view_->path().hasUriScheme("trash"));
+    bool insideTrash = false;
+    bool insideSearch = false;
+    if(view_->path())
+    {
+        insideTrash = view_->path().hasUriScheme("trash");
+        insideSearch = view_->path().hasUriScheme("search");
+    }
     if(insideTrash) {
         if(auto folder = view_->folder()) {
             if(!folder->isEmpty()) {
@@ -59,7 +65,7 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
             }
         }
     }
-    else {
+    else if (!insideSearch) {
         createAction_ = new QAction(tr("Create &New"), this);
         addAction(createAction_);
         createAction_->setMenu(new CreateNewMenu(view_, view_->path(), this));
