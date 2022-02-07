@@ -306,9 +306,12 @@ static GFileInfo *_fm_vfs_search_enumerator_next_file(GFileEnumerator *enumerato
                 {
                     const char * name = g_file_info_get_name(file_info);
                     GFile * file = g_file_get_child(iter->folder_path, name);
-                    /* go into directory and iterate it now */
-                    fm_search_job_match_folder(enu, file, cancellable, &err);
-                    g_object_unref(file);
+                    if(file)
+                    {
+                        /* go into directory and iterate it now */
+                        fm_search_job_match_folder(enu, file, cancellable, &err);
+                        g_object_unref(file);
+                    }
                 }
             }
 
@@ -806,33 +809,36 @@ static gboolean fm_search_job_match_content(FmVfsSearchEnumerator* priv,
         if(g_file_info_get_file_type(info) == G_FILE_TYPE_REGULAR && g_file_info_get_size(info) > 0)
         {
             GFile* file = g_file_get_child(parent, g_file_info_get_name(info));
-            /* NOTE: I disabled mmap-based search since this could cause
-             * unexpected crashes sometimes if the mapped files are
-             * removed or changed during the search. */
-            GFileInputStream * stream = g_file_read(file, cancellable, error);
-            g_object_unref(file);
-
-            if(stream)
+            if(file)
             {
-                if(priv->content_pattern && !priv->content_case_insensitive)
-                {
-                    /* stream based search optimized for case sensitive
-                     * exact match. */
-                    ret = fm_search_job_match_content_exact(priv, info,
-                                                        G_INPUT_STREAM(stream),
-                                                        cancellable, error);
-                }
-                else
-                {
-                    /* grep-like regexp search and case insensitive search
-                     * are line-based. */
-                    ret = fm_search_job_match_content_line_based(priv, info,
-                                                        G_INPUT_STREAM(stream),
-                                                        cancellable, error);
-                }
+                /* NOTE: I disabled mmap-based search since this could cause
+                * unexpected crashes sometimes if the mapped files are
+                * removed or changed during the search. */
+                GFileInputStream * stream = g_file_read(file, cancellable, error);
+                g_object_unref(file);
 
-                g_input_stream_close(G_INPUT_STREAM(stream), cancellable, NULL);
-                g_object_unref(stream);
+                if(stream)
+                {
+                    if(priv->content_pattern && !priv->content_case_insensitive)
+                    {
+                        /* stream based search optimized for case sensitive
+                        * exact match. */
+                        ret = fm_search_job_match_content_exact(priv, info,
+                                                            G_INPUT_STREAM(stream),
+                                                            cancellable, error);
+                    }
+                    else
+                    {
+                        /* grep-like regexp search and case insensitive search
+                        * are line-based. */
+                        ret = fm_search_job_match_content_line_based(priv, info,
+                                                            G_INPUT_STREAM(stream),
+                                                            cancellable, error);
+                    }
+
+                    g_input_stream_close(G_INPUT_STREAM(stream), cancellable, NULL);
+                    g_object_unref(stream);
+                }
             }
         }
     }

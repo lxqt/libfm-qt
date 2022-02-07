@@ -69,7 +69,9 @@ void FileTransferJob::setDestDirPath(const FilePath& destDirPath) {
         else {
             destPath = destDirPath.child(srcPath.baseName().get());
         }
-        destPaths_.emplace_back(std::move(destPath));
+        if(destPath) {
+            destPaths_.emplace_back(std::move(destPath));
+        }
     }
 }
 

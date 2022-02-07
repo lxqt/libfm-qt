@@ -257,6 +257,9 @@ _retry:
     }
 
     auto dest = parentDir.child(new_name.toLocal8Bit().data());
+    if(!dest) {
+        return; // e.g., with search:///
+    }
     Fm::GErrorPtr err;
     switch(type) {
     case CreateNewTextFile: {
