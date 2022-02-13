@@ -1077,7 +1077,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="202"/>
         <source>By Deletion Time</source>
-        <translation>Per tempo di eliminazione</translation>
+        <translation>Per data di eliminazione</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="205"/>
