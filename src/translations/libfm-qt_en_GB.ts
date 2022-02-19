@@ -121,7 +121,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Path:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -227,7 +227,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Created:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -237,17 +237,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emblem:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Choose emblem</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Clear emblem</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -431,7 +431,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Cannot drop here</translation>
     </message>
 </context>
 <context>
@@ -525,27 +525,27 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="168"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon Sizes</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="170"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Size of big icons:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="177"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Size of small icons:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="184"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Size of thumbnails:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Show Hidden</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>

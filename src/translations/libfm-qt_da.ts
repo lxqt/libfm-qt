@@ -243,7 +243,7 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation>Emblem:</translation>
+        <translation>Symbol:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
