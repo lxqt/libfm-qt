@@ -248,12 +248,12 @@
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation>Изберете Емблема</translation>
+        <translation>Избиране на емблема</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation>Изчистете емблема</translation>
+        <translation>Изчистване на емблема</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -668,8 +668,8 @@ Do you want to replace it?</source>
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
-            <numerusform>Желаете ли да отворите този %1 файл?</numerusform>
-            <numerusform>Желаете ли да отворите тези %1 файлове?</numerusform>
+            <numerusform>Искате ли да отворите този %1 файл?</numerusform>
+            <numerusform>Искате ли да отворите тези %1 файлове?</numerusform>
         </translation>
     </message>
     <message>
