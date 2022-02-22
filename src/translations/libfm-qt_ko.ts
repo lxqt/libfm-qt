@@ -6,17 +6,17 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>애플리케이션 선택</translation>
+        <translation>응용 프로그램 선택</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation>설치된 애플리케이션</translation>
+        <translation>설치된 응용 프로그램</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation>사용자 정의 명령</translation>
+        <translation>사용자 지정 명령</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation>애플리케이션 이름:</translation>
+        <translation>응용 프로그램 이름:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -39,16 +39,16 @@
 &lt;/ul&gt;</source>
         <translation>&lt;b&gt;다음과 같은 특수문자가 명령줄에 사용될 수 있습니다.:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;：한 개의 파일 이름 표시&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;：여러 파일 이름 표시&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;：한 개의 파일 URI 표시&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;：여러 URI 표시&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;：한 개의 파일 이름을 나타냅니다&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;：여러 파일 이름을 나타냅니다&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;：한 개의 파일 URI를 나타냅니다&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;：여러 URI를 나타냅니다&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>명령이 실행된 후에도 창을 열어두기</translation>
+        <translation>명령 실행 후 열린 터미널 창 유지</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>선택된 애플리케이션을 이 파일 형식의 기본 애플리케이션으로 설정</translation>
+        <translation>선택한 응용 프로그램을 이 파일 형식의 기본 작업으로 설정</translation>
     </message>
 </context>
 <context>
@@ -236,7 +236,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation>생성됨:</translation>
+        <translation>생성일자:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -328,7 +328,7 @@
     <message>
         <location filename="../file-props.ui" line="742"/>
         <source>Sticky</source>
-        <translation>스티커</translation>
+        <translation>스티키</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
@@ -426,7 +426,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation>여기에 이동</translation>
+        <translation>여기로 이동</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
@@ -522,7 +522,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="152"/>
         <source>Thumbnail View</source>
-        <translation>썸네일</translation>
+        <translation>마중그림</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="156"/>
@@ -552,7 +552,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="184"/>
         <source>Size of thumbnails:</source>
-        <translation>썸네일 크기:</translation>
+        <translation>마중그림 크기:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
@@ -562,7 +562,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
         <source>Show Thumbnails</source>
-        <translation>썸네일 표시</translation>
+        <translation>마중그림 표시</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="217"/>
@@ -648,7 +648,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation> 픽셀</translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -666,19 +666,19 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Many files</source>
-        <translation>많은 파일</translation>
+        <translation>대부분의 파일</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
-            <numerusform>%1 파일을 여시겠습니까?</numerusform>
+            <numerusform>%1개 파일을 여시겠습니까?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="118"/>
         <source>Other Applications</source>
-        <translation>다른 애플리케이션</translation>
+        <translation>다른 응용 프로그램</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="125"/>
@@ -739,7 +739,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="283"/>
         <source>Extract Here</source>
-        <translation>여기에 압축 풀기</translation>
+        <translation>여기에 압축풀기</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="290"/>
@@ -1078,7 +1078,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="202"/>
         <source>By Deletion Time</source>
-        <translation>삭제 시간 순</translation>
+        <translation>삭제 시간별</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="205"/>
@@ -1118,7 +1118,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="244"/>
         <source>Hidden Last</source>
-        <translation>숨겨진 파일을 맨뒤로</translation>
+        <translation>마지막에 숨김 파일 표시</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="252"/>
@@ -1281,7 +1281,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesmodel.cpp" line="69"/>
         <source>Applications</source>
-        <translation>애플리케이션</translation>
+        <translation>응용 프로그램</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="78"/>
@@ -1467,12 +1467,12 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation>이 세션에서 비밀번호를 저장(&amp;T)</translation>
+        <translation>세션의 비밀번호 기억(&amp;T)</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation>영구적으로 비밀번호 저장(&amp;F)</translation>
+        <translation>영원히 기억(&amp;F)</translation>
     </message>
 </context>
 <context>
@@ -1549,7 +1549,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>&apos;%1&apos;를 실행할 기본 애플리케이션이 설정되어 있지 않습니다</translation>
+        <translation>&apos;%1&apos;을(를) 시작하도록 지정된 기본 응용 프로그램이 없습니다</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
