@@ -150,7 +150,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation>Επεξεργασία:</translation>
+        <translation>Σε επεξεργασία:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>

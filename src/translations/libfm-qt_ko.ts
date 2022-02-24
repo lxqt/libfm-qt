@@ -328,7 +328,7 @@
     <message>
         <location filename="../file-props.ui" line="742"/>
         <source>Sticky</source>
-        <translation>스티키</translation>
+        <translation>고정 비트</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
@@ -672,7 +672,7 @@ Do you want to replace it?</source>
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
-            <numerusform>%1개 파일을 여시겠습니까?</numerusform>
+            <numerusform>이 %1개 파일을 여시겠습니까?</numerusform>
         </translation>
     </message>
     <message>
@@ -1073,7 +1073,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="199"/>
         <source>By Creation Time</source>
-        <translation>작성 시간별</translation>
+        <translation>생성시간</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="202"/>
@@ -1118,7 +1118,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="244"/>
         <source>Hidden Last</source>
-        <translation>마지막에 숨김 파일 표시</translation>
+        <translation>숨긴 파일을 뒤로</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="252"/>
@@ -1462,7 +1462,7 @@ Modified: %2</source>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
         <translatorcomment>정확한 번역이 맞는지 확신이 없음.</translatorcomment>
-        <translation>비밀번호 기억 안함(&amp;I)</translation>
+        <translation>비밀번호 기억 안 함(&amp;I)</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
