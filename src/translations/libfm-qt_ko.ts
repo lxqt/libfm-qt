@@ -6,7 +6,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>응용 프로그램 선택</translation>
+        <translation>응용프로그램 선택하기</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation>응용 프로그램 이름:</translation>
+        <translation>응용프로그램 이름:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -557,7 +557,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation>숨김 표시</translation>
+        <translation>숨김 항목 표시</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -1048,7 +1048,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="97"/>
         <source>Show Hidden</source>
-        <translation>숨긴 파일 보기</translation>
+        <translation>숨긴 파일 표시</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="132"/>
@@ -1063,42 +1063,42 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="197"/>
         <source>By File Name</source>
-        <translation>파일 이름 순</translation>
+        <translation>파일 이름순</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="198"/>
         <source>By Modification Time</source>
-        <translation>수정 시간 순</translation>
+        <translation>수정 시간순</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="199"/>
         <source>By Creation Time</source>
-        <translation>생성시간</translation>
+        <translation>생성 시간순</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="202"/>
         <source>By Deletion Time</source>
-        <translation>삭제 시간별</translation>
+        <translation>삭제 시간순</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="205"/>
         <source>By File Size</source>
-        <translation>파일 크기 순</translation>
+        <translation>파일 크기순</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="206"/>
         <source>By File Type</source>
-        <translation>파일 형식 순</translation>
+        <translation>파일 형식순</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="207"/>
         <source>By File Owner</source>
-        <translation>파일 소유자 순</translation>
+        <translation>파일 소유자순</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="208"/>
         <source>By File Group</source>
-        <translation>파일 그룹 순</translation>
+        <translation>파일 그룹순</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="214"/>
@@ -1366,7 +1366,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="605"/>
         <source>Show All Entries</source>
-        <translation>모든 항목 보기</translation>
+        <translation>모든 항목 표시</translation>
     </message>
 </context>
 <context>
