@@ -1,5 +1,4 @@
 #include "iconinfo.h"
-#include "iconinfo_p.h"
 #include <cstring>
 
 namespace Fm {
@@ -68,12 +67,7 @@ void IconInfo::updateQIcons() {
 
 QIcon IconInfo::qicon() const {
     if(Q_UNLIKELY(qicon_.isNull() && gicon_)) {
-        if(!G_IS_FILE_ICON(gicon_.get())) {
-            qicon_ = QIcon(new IconEngine{shared_from_this()});
-        }
-        else {
-            qicon_ = getFirst(internalQicons_);
-        }
+        qicon_ = internalQicon();
     }
     return qicon_;
 }
