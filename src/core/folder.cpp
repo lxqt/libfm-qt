@@ -422,7 +422,7 @@ void Folder::eventFileDeleted(const FilePath& path) {
     bool deleted = true;
     // qDebug() << "delete " << path.baseName().get();
     // G_LOCK(lists);
-    /* WARNING: If the file is in the addition queue, we shouldn not remove it from that queue
+    /* WARNING: If the file is in the addition queue, we should not remove it from that queue
        and ignore its deletion because it may have been added by the directory list job, in
        which case, ignoring an addition-deletion sequence would result in a nonexistent file. */
     if(std::find(paths_to_del.cbegin(), paths_to_del.cend(), path) == paths_to_del.cend()) {
