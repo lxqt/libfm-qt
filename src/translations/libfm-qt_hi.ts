@@ -11,22 +11,22 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>स्थापित ऐपलिकेशन्स</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation type="unfinished"></translation>
+        <translation>कस्टम कमांड</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation type="unfinished"></translation>
+        <translation>निष्पादित करने के लिए कमांड लाइन :</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation type="unfinished"></translation>
+        <translation>ऐप्लिकेशन का नाम :</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -37,22 +37,28 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;इन विशेष कोडों का उपयोग कमांड लाइन में किया जा सकता है :&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt; : एकल फ़ाइल नाम का प्रतिनिधित्व करता है&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt; : एकाधिक फ़ाइल नामों का प्रतिनिधित्व करता है&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt; : फ़ाइल के एकल URI का प्रतिनिधित्व करता है&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt; : एकाधिक URIs का प्रतिनिधित्व करता है&lt;/li&gt;
+&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation type="unfinished"></translation>
+        <translation>कमांड के निष्पादन के बाद टर्मिनल विंडो को खुला रखें</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>टर्मिनल एमुलेटर में निष्पादित करें</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation type="unfinished"></translation>
+        <translation>चयनित एप्लिकेशन को इस फ़ाइल प्रकार की डिफ़ॉल्ट क्रिया के रूप में सेट करें</translation>
     </message>
 </context>
 <context>
@@ -60,7 +66,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation type="unfinished"></translation>
+        <translation>बुकमार्क संपादित करें</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
@@ -75,7 +81,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation type="unfinished"></translation>
+        <translation>वस्तुओं को &amp;जोड़ें</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
