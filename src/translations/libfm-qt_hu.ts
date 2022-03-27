@@ -553,7 +553,7 @@ Mit szeretne tenni vele?</translation>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Rejtettek megjelenítése</translation>
+        <translation>Rejtettek megjelenítése</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -568,7 +568,7 @@ Mit szeretne tenni vele?</translation>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Sima görgetés</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>
@@ -669,6 +669,7 @@ Le szeretné cserélni?</translation>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>Meg szeretné nyitni ezt a %s fájlt?</numerusform>
+            <numerusform>Meg szeretné nyitni ezeket a %s fájlokat?</numerusform>
         </translation>
     </message>
     <message>
@@ -720,12 +721,12 @@ Le szeretné cserélni?</translation>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation type="unfinished">Lecsatolás</translation>
+        <translation>Leválasztás</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Eject</source>
-        <translation type="unfinished">Kiadás</translation>
+        <translation>Kiadás</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
@@ -794,6 +795,7 @@ Szeretné véglegesen törölni őket?</translation>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
             <numerusform>Szeretné törölni a kiválasztott fájlt?</numerusform>
+            <numerusform>Szeretné törölni a kiválasztott fájlokat?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -801,6 +803,7 @@ Szeretné véglegesen törölni őket?</translation>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
             <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlt?</numerusform>
+            <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlokat?</numerusform>
         </translation>
     </message>
 </context>
@@ -829,7 +832,7 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation type="unfinished">Szemétfájlok</translation>
+        <translation>Kuka fájljai</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
@@ -951,6 +954,7 @@ Szeretné véglegesen törölni őket?</translation>
         <location filename="../filepropsdialog.cpp" line="456"/>
         <source>%Ln files</source>
         <translation>
+            <numerusform>%Ln fájl</numerusform>
             <numerusform>%Ln fájl</numerusform>
         </translation>
     </message>
@@ -1577,7 +1581,7 @@ Módosítva: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation type="unfinished">ezzel a fájllal?</translation>
+        <translation>a következő fájllal?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
