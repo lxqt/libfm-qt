@@ -1006,12 +1006,12 @@ Prajete si ich vymazať natrvalo?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="477"/>
+        <location filename="../core/filetransferjob.cpp" line="479"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Priečinok nie je možné kopírovať do seba!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="528"/>
+        <location filename="../core/filetransferjob.cpp" line="530"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Na tomto súborovom systéme nie je možné vytvoriť symbolický odkaz</translation>
     </message>
@@ -1019,112 +1019,112 @@ Prajete si ich vymazať natrvalo?</translation>
 <context>
     <name>Fm::FolderMenu</name>
     <message>
-        <location filename="../foldermenu.cpp" line="51"/>
+        <location filename="../foldermenu.cpp" line="57"/>
         <source>Empty Trash</source>
         <translation>Vyprázdniť kôš</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="63"/>
+        <location filename="../foldermenu.cpp" line="69"/>
         <source>Create &amp;New</source>
         <translation>Vytvoriť &amp;nový</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="68"/>
+        <location filename="../foldermenu.cpp" line="74"/>
         <source>&amp;Paste</source>
         <translation>&amp;Prilepiť</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="81"/>
+        <location filename="../foldermenu.cpp" line="87"/>
         <source>Select &amp;All</source>
         <translation>Vybr&amp;ať všetko</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="85"/>
+        <location filename="../foldermenu.cpp" line="91"/>
         <source>Invert Selection</source>
         <translation>Prevrátiť výber</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="92"/>
+        <location filename="../foldermenu.cpp" line="98"/>
         <source>Sorting</source>
         <translation>Zoradiť</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="97"/>
+        <location filename="../foldermenu.cpp" line="103"/>
         <source>Show Hidden</source>
         <translation>Zobraziť skryté</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="132"/>
+        <location filename="../foldermenu.cpp" line="138"/>
         <source>Folder Pr&amp;operties</source>
         <translation>Vlastn&amp;osti priečinka</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="175"/>
+        <location filename="../foldermenu.cpp" line="181"/>
         <source>Output</source>
         <translation>Výstup</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="197"/>
+        <location filename="../foldermenu.cpp" line="203"/>
         <source>By File Name</source>
         <translation>Podľa názvu</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="198"/>
+        <location filename="../foldermenu.cpp" line="204"/>
         <source>By Modification Time</source>
         <translation>Podľa času zmeny</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="199"/>
+        <location filename="../foldermenu.cpp" line="205"/>
         <source>By Creation Time</source>
         <translation>Podľa času vytvorenia</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="202"/>
+        <location filename="../foldermenu.cpp" line="208"/>
         <source>By Deletion Time</source>
         <translation>Podľa času zmazania</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="205"/>
+        <location filename="../foldermenu.cpp" line="211"/>
         <source>By File Size</source>
         <translation>Podľa veľkosti</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="206"/>
+        <location filename="../foldermenu.cpp" line="212"/>
         <source>By File Type</source>
         <translation>Podľa typu</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="207"/>
+        <location filename="../foldermenu.cpp" line="213"/>
         <source>By File Owner</source>
         <translation>Podľa majiteľa</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="208"/>
+        <location filename="../foldermenu.cpp" line="214"/>
         <source>By File Group</source>
         <translation>Podľa skupiny</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="214"/>
+        <location filename="../foldermenu.cpp" line="220"/>
         <source>Ascending</source>
         <translation>Vzostupne</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="219"/>
+        <location filename="../foldermenu.cpp" line="225"/>
         <source>Descending</source>
         <translation>Zostupne</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="236"/>
+        <location filename="../foldermenu.cpp" line="242"/>
         <source>Folder First</source>
         <translation>Priečinky na začiatku</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="244"/>
+        <location filename="../foldermenu.cpp" line="250"/>
         <source>Hidden Last</source>
         <translation>Skryté na konci</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="252"/>
+        <location filename="../foldermenu.cpp" line="258"/>
         <source>Case Sensitive</source>
         <translation>Rozlišovať veľkosť písmen</translation>
     </message>
@@ -1491,10 +1491,10 @@ Zmenené: %2</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="119"/>
-        <location filename="../filepropsdialog.cpp" line="668"/>
+        <location filename="../filepropsdialog.cpp" line="669"/>
         <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="147"/>
-        <location filename="../utilities.cpp" line="283"/>
+        <location filename="../utilities.cpp" line="286"/>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
@@ -1534,7 +1534,7 @@ Zmenené: %2</translation>
         <translation>Zadajte názov pre nový %1:</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="685"/>
+        <location filename="../filepropsdialog.cpp" line="687"/>
         <source>Custom Icon Error</source>
         <translation>Problém s vlastnou ikonou</translation>
     </message>

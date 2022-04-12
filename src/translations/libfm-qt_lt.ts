@@ -1006,12 +1006,12 @@ Ar norite vietoj to, juos ištrinti?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="477"/>
+        <location filename="../core/filetransferjob.cpp" line="479"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Negalima kopijuoti katalogą į jį patį!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="528"/>
+        <location filename="../core/filetransferjob.cpp" line="530"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Nepavyksta sukurti nuorodą ne savoje failų sistemoje</translation>
     </message>
@@ -1019,112 +1019,112 @@ Ar norite vietoj to, juos ištrinti?</translation>
 <context>
     <name>Fm::FolderMenu</name>
     <message>
-        <location filename="../foldermenu.cpp" line="51"/>
+        <location filename="../foldermenu.cpp" line="57"/>
         <source>Empty Trash</source>
         <translation>Išvalyti šiukšlinę</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="63"/>
+        <location filename="../foldermenu.cpp" line="69"/>
         <source>Create &amp;New</source>
         <translation>Sukurti &amp;naują</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="68"/>
+        <location filename="../foldermenu.cpp" line="74"/>
         <source>&amp;Paste</source>
         <translation>Į&amp;dėti</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="81"/>
+        <location filename="../foldermenu.cpp" line="87"/>
         <source>Select &amp;All</source>
         <translation>&amp;Pažymėti viską</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="85"/>
+        <location filename="../foldermenu.cpp" line="91"/>
         <source>Invert Selection</source>
         <translation>Invertuoti žymėjimą</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="92"/>
+        <location filename="../foldermenu.cpp" line="98"/>
         <source>Sorting</source>
         <translation>Rikiavimas</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="97"/>
+        <location filename="../foldermenu.cpp" line="103"/>
         <source>Show Hidden</source>
         <translation>Rodyti paslėptus</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="132"/>
+        <location filename="../foldermenu.cpp" line="138"/>
         <source>Folder Pr&amp;operties</source>
         <translation>Aplanko &amp;savybės</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="175"/>
+        <location filename="../foldermenu.cpp" line="181"/>
         <source>Output</source>
         <translation>Išvestis</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="197"/>
+        <location filename="../foldermenu.cpp" line="203"/>
         <source>By File Name</source>
         <translation>Pagal failo pavadinimą</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="198"/>
+        <location filename="../foldermenu.cpp" line="204"/>
         <source>By Modification Time</source>
         <translation>Pagal pakeitimo laiką</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="199"/>
+        <location filename="../foldermenu.cpp" line="205"/>
         <source>By Creation Time</source>
         <translation>Pagal sukūrimo laiką</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="202"/>
+        <location filename="../foldermenu.cpp" line="208"/>
         <source>By Deletion Time</source>
         <translation>Pagal ištrynimo laiką</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="205"/>
+        <location filename="../foldermenu.cpp" line="211"/>
         <source>By File Size</source>
         <translation>Pagal failo dydį</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="206"/>
+        <location filename="../foldermenu.cpp" line="212"/>
         <source>By File Type</source>
         <translation>Pagal failo tipą</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="207"/>
+        <location filename="../foldermenu.cpp" line="213"/>
         <source>By File Owner</source>
         <translation>Pagal failo savininką</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="208"/>
+        <location filename="../foldermenu.cpp" line="214"/>
         <source>By File Group</source>
         <translation>Pagal failo grupę</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="214"/>
+        <location filename="../foldermenu.cpp" line="220"/>
         <source>Ascending</source>
         <translation>Didėjančiai</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="219"/>
+        <location filename="../foldermenu.cpp" line="225"/>
         <source>Descending</source>
         <translation>Mažėjančiai</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="236"/>
+        <location filename="../foldermenu.cpp" line="242"/>
         <source>Folder First</source>
         <translation>Pirmiausia aplankai</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="244"/>
+        <location filename="../foldermenu.cpp" line="250"/>
         <source>Hidden Last</source>
         <translation>Paslėptus rodyti paskiausiai</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="252"/>
+        <location filename="../foldermenu.cpp" line="258"/>
         <source>Case Sensitive</source>
         <translation>Skirti raidžių dydį</translation>
     </message>
@@ -1491,10 +1491,10 @@ Pakeista: %2</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="119"/>
-        <location filename="../filepropsdialog.cpp" line="668"/>
+        <location filename="../filepropsdialog.cpp" line="669"/>
         <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="147"/>
-        <location filename="../utilities.cpp" line="283"/>
+        <location filename="../utilities.cpp" line="286"/>
         <source>Error</source>
         <translation>Klaida</translation>
     </message>
@@ -1534,7 +1534,7 @@ Pakeista: %2</translation>
         <translation>Įrašykite pavadinimą naujam %1:</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="685"/>
+        <location filename="../filepropsdialog.cpp" line="687"/>
         <source>Custom Icon Error</source>
         <translation>Tinkintos piktogramos klaida</translation>
     </message>

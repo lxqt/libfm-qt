@@ -1002,12 +1002,12 @@ Desexa eliminalos no seu canto?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="477"/>
+        <location filename="../core/filetransferjob.cpp" line="479"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Non é posíbel copiar un directorio sobre si mesmo!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="528"/>
+        <location filename="../core/filetransferjob.cpp" line="530"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Non é posíbel crear ligazóns en sistemas de ficheiros non nativos</translation>
     </message>
@@ -1015,112 +1015,112 @@ Desexa eliminalos no seu canto?</translation>
 <context>
     <name>Fm::FolderMenu</name>
     <message>
-        <location filename="../foldermenu.cpp" line="51"/>
+        <location filename="../foldermenu.cpp" line="57"/>
         <source>Empty Trash</source>
         <translation type="unfinished">Baleirar o lixo</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="63"/>
+        <location filename="../foldermenu.cpp" line="69"/>
         <source>Create &amp;New</source>
         <translation>Crear &amp;novo</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="68"/>
+        <location filename="../foldermenu.cpp" line="74"/>
         <source>&amp;Paste</source>
         <translation>&amp;Pegar</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="81"/>
+        <location filename="../foldermenu.cpp" line="87"/>
         <source>Select &amp;All</source>
         <translation>Seleccionar &amp;todo</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="85"/>
+        <location filename="../foldermenu.cpp" line="91"/>
         <source>Invert Selection</source>
         <translation>Inverter a selección</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="92"/>
+        <location filename="../foldermenu.cpp" line="98"/>
         <source>Sorting</source>
         <translation>Ordenación</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="97"/>
+        <location filename="../foldermenu.cpp" line="103"/>
         <source>Show Hidden</source>
         <translation>Amosar agochados</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="132"/>
+        <location filename="../foldermenu.cpp" line="138"/>
         <source>Folder Pr&amp;operties</source>
         <translation>Pr&amp;opiedades do cartafol</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="175"/>
+        <location filename="../foldermenu.cpp" line="181"/>
         <source>Output</source>
         <translation>Saída</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="197"/>
+        <location filename="../foldermenu.cpp" line="203"/>
         <source>By File Name</source>
         <translation>Polo nome do ficheiro</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="198"/>
+        <location filename="../foldermenu.cpp" line="204"/>
         <source>By Modification Time</source>
         <translation>Pola data de modificación</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="199"/>
+        <location filename="../foldermenu.cpp" line="205"/>
         <source>By Creation Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="202"/>
+        <location filename="../foldermenu.cpp" line="208"/>
         <source>By Deletion Time</source>
         <translation>Polo momento da eliminación</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="205"/>
+        <location filename="../foldermenu.cpp" line="211"/>
         <source>By File Size</source>
         <translation>Polo tamaño do ficheiro</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="206"/>
+        <location filename="../foldermenu.cpp" line="212"/>
         <source>By File Type</source>
         <translation>Polo tipo do ficheiro</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="207"/>
+        <location filename="../foldermenu.cpp" line="213"/>
         <source>By File Owner</source>
         <translation>Polo propietario do ficheiro</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="208"/>
+        <location filename="../foldermenu.cpp" line="214"/>
         <source>By File Group</source>
         <translation>Por grupo de ficheiros</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="214"/>
+        <location filename="../foldermenu.cpp" line="220"/>
         <source>Ascending</source>
         <translation>Ascendente</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="219"/>
+        <location filename="../foldermenu.cpp" line="225"/>
         <source>Descending</source>
         <translation>Descendente</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="236"/>
+        <location filename="../foldermenu.cpp" line="242"/>
         <source>Folder First</source>
         <translation>Primeiro os cartafoles</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="244"/>
+        <location filename="../foldermenu.cpp" line="250"/>
         <source>Hidden Last</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="252"/>
+        <location filename="../foldermenu.cpp" line="258"/>
         <source>Case Sensitive</source>
         <translation>Distinguindo maiúsculas de minúsculas</translation>
     </message>
@@ -1477,10 +1477,10 @@ Modificado: %2</translation>
     <name>QObject</name>
     <message>
         <location filename="../filelauncher.cpp" line="119"/>
-        <location filename="../filepropsdialog.cpp" line="668"/>
+        <location filename="../filepropsdialog.cpp" line="669"/>
         <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="147"/>
-        <location filename="../utilities.cpp" line="283"/>
+        <location filename="../utilities.cpp" line="286"/>
         <source>Error</source>
         <translation>Erro</translation>
     </message>
@@ -1530,7 +1530,7 @@ Modificado: %2</translation>
         <translation>Crear un ficheiro</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="685"/>
+        <location filename="../filepropsdialog.cpp" line="687"/>
         <source>Custom Icon Error</source>
         <translation>Erro da icona personalizada</translation>
     </message>
