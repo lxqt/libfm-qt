@@ -1003,12 +1003,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="477"/>
+        <location filename="../core/filetransferjob.cpp" line="479"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>자신의 위치로 디렉토리를 복사할 수 없습니다!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="528"/>
+        <location filename="../core/filetransferjob.cpp" line="530"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Non-native 파일 시스템으로 링크를 만들 수 없습니다</translation>
     </message>
@@ -1016,112 +1016,112 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FolderMenu</name>
     <message>
-        <location filename="../foldermenu.cpp" line="51"/>
+        <location filename="../foldermenu.cpp" line="57"/>
         <source>Empty Trash</source>
         <translation>빈 휴지통</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="63"/>
+        <location filename="../foldermenu.cpp" line="69"/>
         <source>Create &amp;New</source>
         <translation>새로 만들기(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="68"/>
+        <location filename="../foldermenu.cpp" line="74"/>
         <source>&amp;Paste</source>
         <translation>붙여넣기(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="81"/>
+        <location filename="../foldermenu.cpp" line="87"/>
         <source>Select &amp;All</source>
         <translation>모두 선택(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="85"/>
+        <location filename="../foldermenu.cpp" line="91"/>
         <source>Invert Selection</source>
         <translation>선택 역전</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="92"/>
+        <location filename="../foldermenu.cpp" line="98"/>
         <source>Sorting</source>
         <translation>정렬</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="97"/>
+        <location filename="../foldermenu.cpp" line="103"/>
         <source>Show Hidden</source>
         <translation>숨긴 파일 표시</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="132"/>
+        <location filename="../foldermenu.cpp" line="138"/>
         <source>Folder Pr&amp;operties</source>
         <translation>폴더 속성(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="175"/>
+        <location filename="../foldermenu.cpp" line="181"/>
         <source>Output</source>
         <translation>출력</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="197"/>
+        <location filename="../foldermenu.cpp" line="203"/>
         <source>By File Name</source>
         <translation>파일 이름순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="198"/>
+        <location filename="../foldermenu.cpp" line="204"/>
         <source>By Modification Time</source>
         <translation>수정 시간순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="199"/>
+        <location filename="../foldermenu.cpp" line="205"/>
         <source>By Creation Time</source>
         <translation>생성 시간순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="202"/>
+        <location filename="../foldermenu.cpp" line="208"/>
         <source>By Deletion Time</source>
         <translation>삭제 시간순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="205"/>
+        <location filename="../foldermenu.cpp" line="211"/>
         <source>By File Size</source>
         <translation>파일 크기순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="206"/>
+        <location filename="../foldermenu.cpp" line="212"/>
         <source>By File Type</source>
         <translation>파일 형식순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="207"/>
+        <location filename="../foldermenu.cpp" line="213"/>
         <source>By File Owner</source>
         <translation>파일 소유자순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="208"/>
+        <location filename="../foldermenu.cpp" line="214"/>
         <source>By File Group</source>
         <translation>파일 그룹순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="214"/>
+        <location filename="../foldermenu.cpp" line="220"/>
         <source>Ascending</source>
         <translation>오름차순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="219"/>
+        <location filename="../foldermenu.cpp" line="225"/>
         <source>Descending</source>
         <translation>내림차순</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="236"/>
+        <location filename="../foldermenu.cpp" line="242"/>
         <source>Folder First</source>
         <translation>첫 번째 폴더</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="244"/>
+        <location filename="../foldermenu.cpp" line="250"/>
         <source>Hidden Last</source>
         <translation>숨긴 파일을 뒤로</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="252"/>
+        <location filename="../foldermenu.cpp" line="258"/>
         <source>Case Sensitive</source>
         <translation>대/소문자 구분</translation>
     </message>
@@ -1489,10 +1489,10 @@ Modified: %2</source>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="119"/>
-        <location filename="../filepropsdialog.cpp" line="668"/>
+        <location filename="../filepropsdialog.cpp" line="669"/>
         <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="147"/>
-        <location filename="../utilities.cpp" line="283"/>
+        <location filename="../utilities.cpp" line="286"/>
         <source>Error</source>
         <translation>오류</translation>
     </message>
@@ -1532,7 +1532,7 @@ Modified: %2</source>
         <translation>새로운 %1에 대해 이름을 입력하세요:</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="685"/>
+        <location filename="../filepropsdialog.cpp" line="687"/>
         <source>Custom Icon Error</source>
         <translation>사용자 정의 아이콘 오류</translation>
     </message>
