@@ -553,7 +553,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">הצגת מוסתרים</translation>
+        <translation>הצגת מוסתרים</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -568,7 +568,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>גלילה חלקה</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>
@@ -669,6 +669,8 @@ Do you want to replace it?</source>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>לפתוח את הקובץ הזה בגודל %1?</numerusform>
+            <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
+            <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
             <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
         </translation>
     </message>
@@ -796,6 +798,8 @@ Do you want to delete them instead?</source>
         <translation>
             <numerusform>למחוק את הקובץ הנבחר?</numerusform>
             <numerusform>למחוק את הקבצים הנבחרים?</numerusform>
+            <numerusform>למחוק את הקבצים הנבחרים?</numerusform>
+            <numerusform>למחוק את הקבצים הנבחרים?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -803,6 +807,8 @@ Do you want to delete them instead?</source>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
             <numerusform>להעביר את הפריט הנבחר לפח האשפה?</numerusform>
+            <numerusform>להעביר את הפריטים הנבחרים לפח האשפה?</numerusform>
+            <numerusform>להעביר את הפריטים הנבחרים לפח האשפה?</numerusform>
             <numerusform>להעביר את הפריטים הנבחרים לפח האשפה?</numerusform>
         </translation>
     </message>
@@ -955,6 +961,8 @@ Do you want to delete them instead?</source>
         <source>%Ln files</source>
         <translation>
             <numerusform>קובץ %Ln</numerusform>
+            <numerusform>%Ln קבצים</numerusform>
+            <numerusform>%Ln קבצים</numerusform>
             <numerusform>%Ln קבצים</numerusform>
         </translation>
     </message>
