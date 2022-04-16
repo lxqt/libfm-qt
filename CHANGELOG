@@ -1,3 +1,19 @@
+libfm-qt-1.1.0 / 2022-04-15
+============================
+ * Prepared libfm-qt for implementing "Recent Files".
+ * Silenced Valgrind about an uninitialized value.
+ * Corrected a typo that could have caused crash.
+ * Prevented memory leak in `fm_search_to_gfile()`.
+ * Made `selectFiles()` return bool in FolderView.
+ * Fixed "Move Bookmark Down" in bookmark context menu.
+ * Added some icons to bookmark context menu.
+ * Fixed file association with empty `XDG_CURRENT_DESKTOP`.
+ * Do not add (null) to terminal command (with terminal emulators like Kitty, that don't have a special option for execution).
+ * Added protected API to get the internal dialog of `FileDialog`.
+ * Fixed the file count in the properties dialog of the search folder and removed critical GLib errors in special cases of searching.
+ * Fixed MIME types cbz, cbr and rar in `archivers.list`.
+ * A small cleanup for `Fm::Folder`.
+
 libfm-qt-1.0.0 / 2021-11-04
 ============================
  * Added mount, unmount and eject actions to file context menu where possible.
