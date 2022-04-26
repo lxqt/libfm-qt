@@ -1690,7 +1690,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
             bool horizontal(qAbs(angleDelta.x()) > qAbs(angleDelta.y()));
             if(event->spontaneous()
                && we->source() == Qt::MouseEventNotSynthesized
-               && (scrollPerPixel_ || (mode != DetailedListMode && mode != CompactMode))
+               && scrollPerPixel_
                // To have a simpler code, we enable horizontal smooth scrolling with mouse wheel
                // only in horizontal list views.
                && (horizontalListView || !horizontal)) {
