@@ -553,7 +553,7 @@ Co chcesz zrobić z tym plikiem?</translation>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Wyświetlanie ukrytych plików</translation>
+        <translation>Wyświetl ukryte pliki</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -568,7 +568,7 @@ Co chcesz zrobić z tym plikiem?</translation>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Płynne przewijanie</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>
@@ -1021,7 +1021,7 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="57"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Opróżnij kosz</translation>
+        <translation>Opróżnij kosz</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
