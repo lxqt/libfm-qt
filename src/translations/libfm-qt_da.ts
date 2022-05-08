@@ -568,7 +568,7 @@ Hvad vil du foretage med det?</translation>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Jævn scrolling</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>

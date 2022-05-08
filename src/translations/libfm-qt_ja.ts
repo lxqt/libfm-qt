@@ -554,7 +554,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">隠しファイルの表示</translation>
+        <translation>隠しファイルの表示</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -569,7 +569,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>スムーズなスクロール</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>
@@ -936,7 +936,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="406"/>
         <source>%1 Free of %2</source>
-        <translation>空き容量 %1&#x3000;全体 %2</translation>
+        <translation>空き容量 %1　全体 %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="452"/>
