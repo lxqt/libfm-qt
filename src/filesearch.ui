@@ -36,8 +36,11 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QLineEdit" name="namePatterns">
-            <property name="text">
+           <widget class="QComboBox" name="namePatterns">
+            <property name="editable">
+             <bool>true</bool>
+            </property>
+            <property name="currentText">
              <string>*</string>
             </property>
            </widget>
@@ -218,7 +221,11 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_8">
           <item>
-           <widget class="QLineEdit" name="contentPattern"/>
+           <widget class="QComboBox" name="contentPattern">
+            <property name="editable">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QCheckBox" name="contentCaseSensitive">

@@ -59,6 +59,12 @@ public:
     bool searchhHidden() const;
     void setSearchhHidden(bool hidden);
 
+    QString namePattern() const;
+    QString contentPattern() const;
+
+    void addNamePatterns(const QStringList& patterns);
+    void addContentPatterns(const QStringList& patterns);
+
 private Q_SLOTS:
     void onAddPath();
     void onRemovePath();
