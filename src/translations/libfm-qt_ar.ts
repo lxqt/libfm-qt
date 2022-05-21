@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>صنع:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -243,17 +243,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>شعار:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>اختر الشعار</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>مسح الشعار</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -437,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>لا يمكن أن توضع هنا</translation>
     </message>
 </context>
 <context>
@@ -543,37 +543,37 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="177"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>حجم الرموز الصغيرة:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="184"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>حجم الصور المصغرة:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">اعرض المخفي</translation>
+        <translation>أظهر المخفي</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>اعرض الصور المصغرة</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="217"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>إظهار تلميحات المِلَفّ</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>التمرير السلس</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>الخيارات</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="574"/>
@@ -644,7 +644,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> بكسل</translation>
     </message>
 </context>
 <context>
@@ -657,7 +657,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>العديد من الملفات</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="354"/>
