@@ -532,7 +532,7 @@ void Folder::onDirListFinished() {
     const auto& infos = job->files();
 
     // with "search://", there is no update for infos and all of them should be added
-    if(strcmp(dirPath_.uriScheme().get(), "search") == 0) {
+    if(dirPath_.hasUriScheme("search")) {
         files_to_add = infos;
         for(auto& file: files_to_add) {
             files_[file->path().baseName().get()] = file;
