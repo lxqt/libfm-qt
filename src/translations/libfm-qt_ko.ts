@@ -6,7 +6,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>응용프로그램 선택하기</translation>
+        <translation>응용프로그램 고르기</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>선택한 응용 프로그램을 이 파일 형식의 기본 작업으로 설정</translation>
+        <translation>선택한 응용프로그램을 이 파일 유형의 기본 작업으로 설정하기</translation>
     </message>
 </context>
 <context>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation>북마크 편집</translation>
+        <translation>바로찾기 편집하기</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
@@ -81,17 +81,17 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation>항목 추가(&amp;A)</translation>
+        <translation>항목 추가하기(&amp;A)</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation>항목 삭제(&amp;R)</translation>
+        <translation>항목 제거하기(&amp;R)</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>항목을 재정렬 하기 위해 드래그 앤 드롭 사용</translation>
+        <translation>항목을 재정렬 하기 위해 드래그 앤 드롭 사용하기</translation>
     </message>
 </context>
 <context>
@@ -251,12 +251,12 @@
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation>상징 선택</translation>
+        <translation>엠블럼 고르기</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation>상징 지우기</translation>
+        <translation>엠블럼 비우기</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -359,7 +359,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>“%1” 파일을 열 응용 프로그램 선택</translation>
+        <translation>“%1” 파일을 열기 위한 응용프로그램 선택하기</translation>
     </message>
 </context>
 <context>
@@ -380,7 +380,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>선택한 디렉토리인 “%1”은 유효하지 않습니다</translation>
+        <translation>지정한 “%1” 디렉터리가 잘못되었습니다</translation>
     </message>
 </context>
 <context>
@@ -421,7 +421,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation>여기에 복사</translation>
+        <translation>여기로 복사하기</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
@@ -449,7 +449,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="84"/>
         <source>New bookmark</source>
-        <translation>새 북마크</translation>
+        <translation>새 바로찾기</translation>
     </message>
 </context>
 <context>
@@ -557,17 +557,17 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation>숨김 항목 표시</translation>
+        <translation>숨김 항목 표시하기</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
         <source>Show Thumbnails</source>
-        <translation>마중그림 표시</translation>
+        <translation>마중그림 표시하기</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="217"/>
         <source>Show File Tooltips</source>
-        <translation>파일 툴팁 표시</translation>
+        <translation>파일 도구 설명 표시하기</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
@@ -605,7 +605,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog.cpp" line="953"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation>“%1”이(가) 디렉토리가 아닙니다</translation>
+        <translation>“%1”은(는) 디렉터리가 아닙니다</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="959"/>
@@ -622,7 +622,7 @@ Do you want to replace it?</source>
         <location filename="../filedialog.cpp" line="1114"/>
         <location filename="../filedialog.cpp" line="1227"/>
         <source>&amp;Save</source>
-        <translation>저장(&amp;S)</translation>
+        <translation>저장하기(&amp;S)</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1121"/>
@@ -640,7 +640,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="139"/>
         <source>Save File</source>
-        <translation>파일 저장</translation>
+        <translation>파일 저장하기</translation>
     </message>
 </context>
 <context>
@@ -698,7 +698,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="158"/>
         <source>Copy</source>
-        <translation>복사</translation>
+        <translation>복사하기</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="162"/>
@@ -770,7 +770,7 @@ Do you want to replace it?</source>
         <location filename="../filemenu.cpp" line="148"/>
         <location filename="../filemenu.cpp" line="481"/>
         <source>&amp;Delete</source>
-        <translation>삭제(&amp;D)</translation>
+        <translation>삭제하기(&amp;D)</translation>
     </message>
 </context>
 <context>
@@ -824,12 +824,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation>파일 복사</translation>
+        <translation>파일 복사하기</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>다음 파일을 대상 폴더로 복사 중:</translation>
+        <translation>다음 파일을 대상 폴더로 복사하는 중:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
@@ -844,12 +844,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation>파일 삭제</translation>
+        <translation>파일 삭제하기</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation>다음 파일을 삭제 중:</translation>
+        <translation>다음 파일 삭제하는 중:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
@@ -992,7 +992,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="128"/>
         <source>You should add at least one directory to search.</source>
-        <translation>검색을 위해 최소 한 개 이상의 디렉토리를 추가해야 합니다.</translation>
+        <translation>검색을 위해 최소 한 개 이상의 디렉터리를 추가해야 합니다.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="135"/>
@@ -1005,7 +1005,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="479"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation>자신의 위치로 디렉토리를 복사할 수 없습니다!</translation>
+        <translation>자신의 위치로 디렉터리를 복사할 수 없습니다!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="530"/>
@@ -1048,7 +1048,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="103"/>
         <source>Show Hidden</source>
-        <translation>숨긴 파일 표시</translation>
+        <translation>숨김 파일 표시하기</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="138"/>
@@ -1253,12 +1253,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../pathbar.cpp" line="130"/>
         <source>&amp;Edit Path</source>
-        <translation>경로 수정(&amp;E)</translation>
+        <translation>경로 편집하기(&amp;E)</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="133"/>
         <source>&amp;Copy Path</source>
-        <translation>경로 복사(&amp;C)</translation>
+        <translation>경로 복사하기(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -1271,7 +1271,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesmodel.cpp" line="55"/>
         <source>Desktop</source>
-        <translation>바탕 화면</translation>
+        <translation>바탕화면</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="61"/>
@@ -1296,7 +1296,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesmodel.cpp" line="137"/>
         <source>Bookmarks</source>
-        <translation>북마크</translation>
+        <translation>바로찾기</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="228"/>
@@ -1330,22 +1330,22 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="534"/>
         <source>Move Bookmark Up</source>
-        <translation>북마크 위로 옮기기</translation>
+        <translation>바로찾기 위로 옮기기</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="541"/>
         <source>Move Bookmark Down</source>
-        <translation>북마크 아래로 옮기기</translation>
+        <translation>바로찾기 아래로 옮기기</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="546"/>
         <source>Rename Bookmark</source>
-        <translation>북마크 이름 바꾸기</translation>
+        <translation>바로찾기 이름 바꾸기</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="550"/>
         <source>Remove Bookmark</source>
-        <translation>북마크 삭제</translation>
+        <translation>바로찾기 제거하기</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="560"/>
@@ -1366,7 +1366,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="605"/>
         <source>Show All Entries</source>
-        <translation>모든 항목 표시</translation>
+        <translation>모든 항목 표시하기</translation>
     </message>
 </context>
 <context>
@@ -1415,7 +1415,7 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Directory Tree</source>
-        <translation>디렉토리 트리</translation>
+        <translation>디렉터리 트리</translation>
     </message>
 </context>
 <context>
@@ -1549,7 +1549,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>&apos;%1&apos;을(를) 시작하도록 지정된 기본 응용 프로그램이 없습니다</translation>
+        <translation>&apos;%1&apos;을(를) 시작하도록 설정된 기본 응용 프로그램이 없습니다</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
@@ -1631,12 +1631,12 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="81"/>
         <source>&amp;Add</source>
-        <translation>추가(&amp;A)</translation>
+        <translation>추가하기(&amp;A)</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="93"/>
         <source>&amp;Remove</source>
-        <translation>삭제(&amp;R)</translation>
+        <translation>제거하기(&amp;R)</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="129"/>
@@ -1750,7 +1750,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="122"/>
         <source>Search in subdirectories</source>
-        <translation>하위 디렉토리 검색</translation>
+        <translation>하위 디렉터리 검색</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="226"/>
