@@ -86,12 +86,12 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation type="unfinished"></translation>
+        <translation>वस्तु &amp;निकालें</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation type="unfinished"></translation>
+        <translation>आइटम को पुन: व्यवस्थित करने के लिए ड्रैग एंड ड्रॉप का उपयोग करें</translation>
     </message>
 </context>
 <context>
@@ -99,22 +99,22 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation type="unfinished"></translation>
+        <translation>फ़ाइल निष्पादित करें</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="39"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;खोलें</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="52"/>
         <source>E&amp;xecute</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;निष्पादित करें</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;टर्मिनल में निष्पादित करें</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
