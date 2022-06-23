@@ -241,7 +241,12 @@ bool FileActionCondition::match_base_name(const FileInfoList& files, const char*
     for(auto& fi: files) {
         const char* name = fi->name().c_str();
         if(match_case) {
-            if(g_pattern_match_string(pattern, name)) {
+#if GLIB_CHECK_VERSION(2, 70, 0)
+            if(g_pattern_spec_match_string(pattern, name))
+#else
+            if(g_pattern_match_string(pattern, name))
+#endif
+            {
                 // at least 1 file has the base_name
                 if(negated) {
                     return false;
@@ -256,7 +261,12 @@ bool FileActionCondition::match_base_name(const FileInfoList& files, const char*
         }
         else {
             CStrPtr case_fold{g_utf8_casefold(name, -1)};
-            if(g_pattern_match_string(pattern, case_fold.get())) {
+#if GLIB_CHECK_VERSION(2, 70, 0)
+            if(g_pattern_spec_match_string(pattern, case_fold.get()))
+#else
+            if(g_pattern_match_string(pattern, case_fold.get()))
+#endif
+            {
                 // at least 1 file has the base_name
                 if(negated) {
                     return false;
@@ -383,7 +393,12 @@ bool FileActionCondition::match_folder(const FileInfoList& files, const char* fo
         // Since the pattern ends with "/*", if the directory path is equal to "folder",
         // it should end with "/" to be found as a match. Adding "/" is always harmless.
         auto path_str = string(dirname.get()) + "/";
-        if(g_pattern_match_string(pattern, path_str.c_str())) { // at least 1 file is in the folder
+#if GLIB_CHECK_VERSION(2, 70, 0)
+        if(g_pattern_spec_match_string(pattern, path_str.c_str()))
+#else
+        if(g_pattern_match_string(pattern, path_str.c_str()))
+#endif
+        { // at least 1 file is in the folder
             if(negated) {
                 return false;
             }
