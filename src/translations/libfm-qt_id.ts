@@ -553,7 +553,7 @@ Apa yang ingin Anda lakukan dengannya?</translation>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Tampilkan Tersembunyi</translation>
+        <translation>Tampilkan Tersembunyi</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -568,7 +568,7 @@ Apa yang ingin Anda lakukan dengannya?</translation>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengguliran Halus</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>
