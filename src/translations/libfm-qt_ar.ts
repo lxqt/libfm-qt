@@ -662,13 +662,13 @@ Do you want to replace it?</source>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>0</numerusform>
+            <numerusform>1</numerusform>
+            <numerusform>2</numerusform>
+            <numerusform>بعض</numerusform>
+            <numerusform>كثير</numerusform>
+            <numerusform>أخرى</numerusform>
         </translation>
     </message>
     <message>
@@ -700,12 +700,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation type="unfinished">ألغِ الضمّ</translation>
+        <translation>ألغِ الضمّ</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Eject</source>
-        <translation type="unfinished">أخرِج</translation>
+        <translation>أخرِج</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="310"/>
@@ -1033,7 +1033,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="57"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">أفرِغ المهملات</translation>
+        <translation>أفرِغ المهملات</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
