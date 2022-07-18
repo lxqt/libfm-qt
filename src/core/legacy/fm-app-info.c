@@ -72,7 +72,7 @@ static void append_uri_to_cmd(GFile* gf, GString* cmd)
     char* uri = NULL;
     if(!g_file_has_uri_scheme(gf, "file"))
     {
-        /* When gvfs-fuse is in use, try to convert all URIs that are not file:// to 
+        /* When gvfs-fuse is in use, try to convert all URIs that are not file:// to
          * their corresponding FUSE-mounted local paths.  GDesktopAppInfo internally does this, too.
          * With this, non-gtk+ applications can correctly open files in gvfs-mounted remote filesystems.
          */
@@ -81,6 +81,21 @@ static void append_uri_to_cmd(GFile* gf, GString* cmd)
         {
             uri = g_filename_to_uri(path, NULL, NULL);
             g_free(path);
+        }
+        else if(g_file_has_uri_scheme(gf, "trash"))
+        {
+            /* try to get the real path for trash:// */
+            GFileInfo *inf;
+            inf = g_file_query_info(gf, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI,
+                                    G_FILE_QUERY_INFO_NONE, NULL, NULL);
+            if(inf)
+            {
+                const char *orig_uri;
+                orig_uri = g_file_info_get_attribute_string(inf, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+                if(orig_uri)
+                    uri = g_strdup(orig_uri);
+                g_object_unref(inf);
+            }
         }
     }
     if(!uri)
