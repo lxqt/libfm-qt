@@ -32,6 +32,7 @@
 namespace Fm {
 
 FileLauncher::FileLauncher() {
+    resetExecActions();
 }
 
 FileLauncher::~FileLauncher() {
@@ -39,6 +40,8 @@ FileLauncher::~FileLauncher() {
 
 
 bool FileLauncher::launchFiles(QWidget* parent, const FileInfoList &file_infos) {
+    resetExecActions();
+    multiple_ = file_infos.size() > 1;
     GObjectPtr<FmAppLaunchContext> context{fm_app_launch_context_new_for_widget(parent), false};
     bool ret = BasicFileLauncher::launchFiles(file_infos, G_APP_LAUNCH_CONTEXT(context.get()));
     launchedFiles(file_infos);
@@ -46,6 +49,8 @@ bool FileLauncher::launchFiles(QWidget* parent, const FileInfoList &file_infos) 
 }
 
 bool FileLauncher::launchPaths(QWidget* parent, const FilePathList& paths) {
+    resetExecActions();
+    multiple_ = paths.size() > 1;
     GObjectPtr<FmAppLaunchContext> context{fm_app_launch_context_new_for_widget(parent), false};
     bool ret = BasicFileLauncher::launchPaths(paths, G_APP_LAUNCH_CONTEXT(context.get()));
     launchedPaths(paths);
@@ -121,11 +126,46 @@ bool FileLauncher::showError(GAppLaunchContext* /*ctx*/, const GErrorPtr &err, c
     return false;
 }
 
+void FileLauncher::resetExecActions() {
+    multiple_ = false;
+    dekstopEntryAction_ = BasicFileLauncher::ExecAction::NONE;
+    scriptAction_ = BasicFileLauncher::ExecAction::NONE;
+    execAction_ = BasicFileLauncher::ExecAction::NONE;
+}
+
 BasicFileLauncher::ExecAction FileLauncher::askExecFile(const FileInfoPtr &file) {
-    auto res = BasicFileLauncher::ExecAction::CANCEL;
+    if(multiple_) {
+        if(file->isDesktopEntry()) {
+            if(dekstopEntryAction_ != BasicFileLauncher::ExecAction::NONE) {
+                return dekstopEntryAction_;
+            }
+        }
+        else if(file->isText()) {
+            if(scriptAction_ != BasicFileLauncher::ExecAction::NONE) {
+                return scriptAction_;
+            }
+        }
+        else if(execAction_ != BasicFileLauncher::ExecAction::NONE) {
+            return execAction_;
+        }
+    }
+
     ExecFileDialog dlg(*file);
-    if(execModelessDialog(&dlg) == QDialog::Accepted) {
-        res = dlg.result();
+    if(multiple_) {
+        dlg.allowRemembering();
+    }
+    execModelessDialog(&dlg);
+    auto res = dlg.result();
+    if(dlg.isRemembered()) {
+        if(file->isDesktopEntry()) {
+            dekstopEntryAction_ = res;
+        }
+        else if(file->isText()) {
+            scriptAction_ = res;
+        }
+        else {
+            execAction_ = res;
+        }
     }
     return res;
 }

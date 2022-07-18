@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>487</width>
-    <height>58</height>
+    <height>87</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -86,6 +86,17 @@
        </property>
        <property name="icon">
         <iconset theme="dialog-cancel"/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="remLayout">
+     <item>
+      <widget class="QCheckBox" name="remBox">
+       <property name="text">
+        <string>Remember for next files of this kind</string>
        </property>
       </widget>
      </item>

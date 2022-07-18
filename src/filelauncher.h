@@ -53,6 +53,15 @@ protected:
 
     virtual void launchedFiles(const FileInfoList& files) const;
     virtual void launchedPaths(const FilePathList& paths) const;
+
+private:
+    void resetExecActions();
+
+private:
+    bool multiple_;
+    BasicFileLauncher::ExecAction dekstopEntryAction_;
+    BasicFileLauncher::ExecAction scriptAction_;
+    BasicFileLauncher::ExecAction execAction_;
 };
 
 }
