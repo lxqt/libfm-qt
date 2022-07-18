@@ -399,7 +399,7 @@ FileOperation *FileOperation::symlinkFiles(FilePathList srcFiles, FilePathList d
 
 //static
 FileOperation* FileOperation::deleteFiles(Fm::FilePathList srcFiles, bool prompt, QWidget* parent) {
-    if(prompt) {
+    if(prompt && !srcFiles.empty()) {
         int result = QMessageBox::warning(parent ? parent->window() : nullptr,
                                           tr("Confirm"),
                                           tr("Do you want to delete the selected file(s)?", nullptr, srcFiles.size()),
@@ -417,7 +417,7 @@ FileOperation* FileOperation::deleteFiles(Fm::FilePathList srcFiles, bool prompt
 
 //static
 FileOperation* FileOperation::trashFiles(Fm::FilePathList srcFiles, bool prompt, QWidget* parent) {
-    if(prompt) {
+    if(prompt && !srcFiles.empty()) {
         int result = QMessageBox::warning(parent ? parent->window() : nullptr,
                                           tr("Confirm"),
                                           tr("Do you want to move the selected file(s) to trash can?", nullptr, srcFiles.size()),
