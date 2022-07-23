@@ -797,25 +797,25 @@ Do you want to delete them instead?</source>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>0</numerusform>
+            <numerusform>1</numerusform>
+            <numerusform>2</numerusform>
+            <numerusform>بعض</numerusform>
+            <numerusform>كثير</numerusform>
+            <numerusform>اخرى</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>0</numerusform>
+            <numerusform>1</numerusform>
+            <numerusform>2</numerusform>
+            <numerusform>بعض</numerusform>
+            <numerusform>كثير</numerusform>
+            <numerusform>اخرى</numerusform>
         </translation>
     </message>
 </context>
