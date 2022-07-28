@@ -561,8 +561,15 @@ bool FileTransferJob::createSymlink(const FilePath &srcPath, const GFileInfoPtr 
         retry = false;
         if(flags & G_FILE_COPY_OVERWRITE) {  // overwrite existing file
             // creating symlink cannot overwrite existing files directly, so we delete the existing file first.
-            g_file_delete(destPath.gfile().get(), cancellable().get(), nullptr);
+            err.reset();
+            if(!g_file_delete(destPath.gfile().get(), cancellable().get(), &err)) {
+                if(err) {
+                    emitError(err, ErrorSeverity::MODERATE);
+                }
+                break;
+            }
         }
+        err.reset();
         if(!g_file_make_symbolic_link(destPath.gfile().get(), src.get(), cancellable().get(), &err)) {
             retry = handleError(err, srcPath, srcInfo, destPath, flags);
         }
