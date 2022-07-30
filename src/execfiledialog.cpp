@@ -54,10 +54,20 @@ ExecFileDialog::ExecFileDialog(const FileInfo &fileInfo, QWidget* parent, Qt::Wi
         ui->open->hide();
     }
     ui->msg->setText(msg);
+    ui->remBox->hide();
 }
 
 ExecFileDialog::~ExecFileDialog() {
     delete ui;
+}
+
+void ExecFileDialog::allowRemembering() {
+    ui->remLayout->setContentsMargins(0, 10, 0, 0);
+    ui->remBox->show();
+}
+
+bool ExecFileDialog::isRemembered() {
+    return ui->remBox->isChecked();
 }
 
 void ExecFileDialog::accept() {

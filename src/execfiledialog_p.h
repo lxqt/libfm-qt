@@ -43,6 +43,9 @@ public:
     return result_;
   }
 
+  void allowRemembering();
+  bool isRemembered();
+
 protected:
   void accept() override;
   void reject() override;
