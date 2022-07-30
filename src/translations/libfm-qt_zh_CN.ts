@@ -121,6 +121,11 @@
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
+    <message>
+        <location filename="../exec-file.ui" line="99"/>
+        <source>Remember for next files of this kind</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FileDialog</name>
@@ -980,17 +985,17 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FileSearchDialog</name>
     <message>
-        <location filename="../filesearchdialog.cpp" line="128"/>
+        <location filename="../filesearchdialog.cpp" line="152"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../filesearchdialog.cpp" line="128"/>
+        <location filename="../filesearchdialog.cpp" line="152"/>
         <source>You should add at least one directory to search.</source>
         <translation>您至少需要新增一个要搜索的目录。</translation>
     </message>
     <message>
-        <location filename="../filesearchdialog.cpp" line="135"/>
+        <location filename="../filesearchdialog.cpp" line="159"/>
         <source>Select a folder</source>
         <translation>选择一个文件夹</translation>
     </message>
@@ -1482,7 +1487,7 @@ Modified: %2</source>
         <translation>请输入新名称:</translation>
     </message>
     <message>
-        <location filename="../filelauncher.cpp" line="119"/>
+        <location filename="../filelauncher.cpp" line="124"/>
         <location filename="../filepropsdialog.cpp" line="669"/>
         <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="147"/>
@@ -1608,161 +1613,161 @@ Modified: %2</source>
         <translation>文件名模式:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="41"/>
+        <location filename="../filesearch.ui" line="44"/>
         <source>*</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="55"/>
+        <location filename="../filesearch.ui" line="58"/>
         <source>Use regular expression</source>
         <translation>使用正则表达式</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="68"/>
+        <location filename="../filesearch.ui" line="71"/>
         <source>Places to Search:</source>
         <translation>搜索位置:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="81"/>
+        <location filename="../filesearch.ui" line="84"/>
         <source>&amp;Add</source>
         <translation>新增(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="93"/>
+        <location filename="../filesearch.ui" line="96"/>
         <source>&amp;Remove</source>
         <translation>移除(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="129"/>
+        <location filename="../filesearch.ui" line="132"/>
         <source>Search for hidden files</source>
         <translation>搜索隐藏文件</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="140"/>
+        <location filename="../filesearch.ui" line="143"/>
         <source>File Type</source>
         <translation>文件类型</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="146"/>
+        <location filename="../filesearch.ui" line="149"/>
         <source>Only search for files of following types:</source>
         <translation>仅搜索下列类型的文件:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="152"/>
+        <location filename="../filesearch.ui" line="155"/>
         <source>Text files</source>
         <translation>文本文件</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="159"/>
+        <location filename="../filesearch.ui" line="162"/>
         <source>Image files</source>
         <translation>图像文件</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="166"/>
+        <location filename="../filesearch.ui" line="169"/>
         <source>Audio files</source>
         <translation>音频文件</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="173"/>
+        <location filename="../filesearch.ui" line="176"/>
         <source>Video files</source>
         <translation>视频文件</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="180"/>
+        <location filename="../filesearch.ui" line="183"/>
         <source>Documents</source>
         <translation>文档</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="187"/>
+        <location filename="../filesearch.ui" line="190"/>
         <source>Folders</source>
         <translation>文件夹</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="211"/>
+        <location filename="../filesearch.ui" line="214"/>
         <source>Content</source>
         <translation>内容</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="217"/>
+        <location filename="../filesearch.ui" line="220"/>
         <source>File contains:</source>
         <translation>文件包括:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="233"/>
+        <location filename="../filesearch.ui" line="240"/>
         <source>&amp;Use regular expression</source>
         <translation>使用正则表达式(&amp;U)</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="260"/>
+        <location filename="../filesearch.ui" line="267"/>
         <source>Properties</source>
         <translation>属性</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="266"/>
+        <location filename="../filesearch.ui" line="273"/>
         <source>File Size:</source>
         <translation>文件大小:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="295"/>
+        <location filename="../filesearch.ui" line="302"/>
         <source>Larger than:</source>
         <translation>大于:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="309"/>
-        <location filename="../filesearch.ui" line="339"/>
+        <location filename="../filesearch.ui" line="316"/>
+        <location filename="../filesearch.ui" line="346"/>
         <source>Bytes</source>
         <translation>Bytes</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="314"/>
-        <location filename="../filesearch.ui" line="344"/>
+        <location filename="../filesearch.ui" line="321"/>
+        <location filename="../filesearch.ui" line="351"/>
         <source>KiB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="319"/>
-        <location filename="../filesearch.ui" line="349"/>
+        <location filename="../filesearch.ui" line="326"/>
+        <location filename="../filesearch.ui" line="356"/>
         <source>MiB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="324"/>
-        <location filename="../filesearch.ui" line="354"/>
+        <location filename="../filesearch.ui" line="331"/>
+        <location filename="../filesearch.ui" line="361"/>
         <source>GiB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="274"/>
+        <location filename="../filesearch.ui" line="281"/>
         <source>Smaller than:</source>
         <translation>小于:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="48"/>
+        <location filename="../filesearch.ui" line="51"/>
         <source>Case sensitive</source>
         <translation>区分大小写</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="122"/>
+        <location filename="../filesearch.ui" line="125"/>
         <source>Search in subdirectories</source>
         <translation>在子文件夹中搜索</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="226"/>
+        <location filename="../filesearch.ui" line="233"/>
         <source>Case sensiti&amp;ve</source>
         <translation>区分大小写(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="370"/>
+        <location filename="../filesearch.ui" line="377"/>
         <source>Last Modified Time:</source>
         <translation>修改时间:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="378"/>
+        <location filename="../filesearch.ui" line="385"/>
         <source>Earlier than:</source>
         <translation>早于:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="385"/>
+        <location filename="../filesearch.ui" line="392"/>
         <source>Later than:</source>
         <translation>晚于:</translation>
     </message>
