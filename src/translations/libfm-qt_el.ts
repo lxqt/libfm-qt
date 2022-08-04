@@ -124,7 +124,7 @@
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Απομνημόνευση για τα επόμενα αρχεία του ιδίου τύπου</translation>
     </message>
 </context>
 <context>
