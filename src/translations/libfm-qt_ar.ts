@@ -37,12 +37,12 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;يمكن استخدام هذه العلامات الخاصّة في سطر الأوامر:&lt;/b&gt;
+        <translation>&lt;b&gt;هذه العلامات الخاصّة يمكن استخدامها في سطر الأوامر:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: يشير إلى اسم ملف واحد&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: يشير إلى أسماء عدّة ملفات&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: يشير إلى مسار واحد للملف&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: يشير إلى عدّة مسارات&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: يمثل اسم ملف واحد&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: يمثل أسماء عدّة ملفات&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: يمثل مسار واحد للملف&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: يمثل عدّة مسارات&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
@@ -53,12 +53,12 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation>نفّذ في محاكي طرفية</translation>
+        <translation>نفّذ في محاكي الطرفية</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>اضبط التطبيق المنتقى ليكون الإجراء المبدئي لنوع الملفات هذا</translation>
+        <translation>اضبط التطبيق المنتقى ليكون الإجراء المبدئي لهذا النوع من الملفات</translation>
     </message>
 </context>
 <context>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation>حرّر العلامات</translation>
+        <translation>حرّر العلامات المرجعية</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
@@ -81,12 +81,12 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation>أ&amp;ضِف عنصرا</translation>
+        <translation>&amp;اضف عنصرا</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation>أ&amp;زِل العنصر</translation>
+        <translation>&amp;أزِل العنصر</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
@@ -104,7 +104,7 @@
     <message>
         <location filename="../exec-file.ui" line="39"/>
         <source>&amp;Open</source>
-        <translation>ا&amp;فتح</translation>
+        <translation>&amp;افتح</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="52"/>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation>نفّذ في ال&amp;طرفية</translation>
+        <translation>نفّذ في &amp;الطرفية</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>تذكر للملفات التالية من هذا النوع</translation>
     </message>
 </context>
 <context>
@@ -132,7 +132,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation>المسار:</translation>
+        <translation>مسار:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -253,12 +253,12 @@
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation>اختر الشعار</translation>
+        <translation>اختر شعار</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation>مسح الشعار</translation>
+        <translation>احذف الشعار</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -268,7 +268,7 @@
     <message>
         <location filename="../file-props.ui" line="424"/>
         <source>Permissions</source>
-        <translation>التصاريح</translation>
+        <translation>رخصات</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="439"/>
@@ -352,7 +352,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation>خصّص</translation>
+        <translation>عدّل</translation>
     </message>
 </context>
 <context>
@@ -538,17 +538,17 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="168"/>
         <source>Icon Sizes</source>
-        <translation>حجم الأيقونات</translation>
+        <translation>حجم الايقونة</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="170"/>
         <source>Size of big icons:</source>
-        <translation>حجم الأيقونات الكبيرة:</translation>
+        <translation>حجم الايقونة الكبيرة</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="177"/>
         <source>Size of small icons:</source>
-        <translation>حجم الرموز الصغيرة:</translation>
+        <translation>حجم الايقونة الصغيرة</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="184"/>
@@ -563,12 +563,12 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
         <source>Show Thumbnails</source>
-        <translation>اعرض الصور المصغرة</translation>
+        <translation>إظهار الصور المصغرة</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="217"/>
         <source>Show File Tooltips</source>
-        <translation>إظهار تلميحات المِلَفّ</translation>
+        <translation>إظهار تلميحات الملف</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
@@ -578,7 +578,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="241"/>
         <source>Options</source>
-        <translation>الخيارات</translation>
+        <translation>خيارات</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="574"/>
@@ -700,7 +700,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
-        <translation type="unfinished">ضُمّ</translation>
+        <translation>ضُمّ</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
@@ -940,7 +940,7 @@ Do you want to delete them instead?</source>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>لايوجد</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1093,7 +1093,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="205"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>حسب وقت ألإنشاء</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="208"/>
@@ -1138,7 +1138,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="250"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>الأخير المخفي</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="258"/>
@@ -1176,12 +1176,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>لا يوجد</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished">صنع:</translation>
+        <translation>أنشئ:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
@@ -1216,7 +1216,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>أنشئ</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
@@ -1422,7 +1422,7 @@ Modified: %2</source>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt; &lt;b&gt; لا يمكن للملف الكتابة فوق نفسه. &lt;/b&gt; &lt;/p&gt; &lt;p&gt; الرجاء تحديد اسم آخر. &lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1430,7 +1430,7 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>القوائم</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
@@ -1486,7 +1486,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>تذكر كلمة المرور لهذه الجلسة</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
@@ -1584,7 +1584,7 @@ Modified: %2</source>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>لا يوجد</translation>
     </message>
 </context>
 <context>
@@ -1764,7 +1764,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="51"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>حساس للشكل</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="125"/>
@@ -1774,7 +1774,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>حساس للشكل</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="377"/>
