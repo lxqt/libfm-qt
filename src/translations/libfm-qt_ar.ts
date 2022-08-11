@@ -543,12 +543,12 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="170"/>
         <source>Size of big icons:</source>
-        <translation>حجم الايقونة الكبيرة</translation>
+        <translation>حجم الايقونة الكبيرة:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="177"/>
         <source>Size of small icons:</source>
-        <translation>حجم الايقونة الصغيرة</translation>
+        <translation>حجم الأيقونات الصغيرة:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="184"/>
@@ -668,12 +668,12 @@ Do you want to replace it?</source>
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
-            <numerusform>0</numerusform>
-            <numerusform>1</numerusform>
-            <numerusform>2</numerusform>
-            <numerusform>بعض</numerusform>
-            <numerusform>كثير</numerusform>
-            <numerusform>أخرى</numerusform>
+            <numerusform>؟</numerusform>
+            <numerusform>هل تريد فتح هذا الملف؟</numerusform>
+            <numerusform>هل تريد فتح هذين الملفين؟</numerusform>
+            <numerusform>هل تريد فتح هذه الـ٪ 1 ملفات؟</numerusform>
+            <numerusform>هل تريد فتح هذه الـ٪ 1 ملفات؟</numerusform>
+            <numerusform>هل تريد فتح هذه الـ٪ 1 ملفات؟</numerusform>
         </translation>
     </message>
     <message>
@@ -803,24 +803,24 @@ Do you want to delete them instead?</source>
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
-            <numerusform>0</numerusform>
-            <numerusform>1</numerusform>
-            <numerusform>2</numerusform>
-            <numerusform>بعض</numerusform>
-            <numerusform>كثير</numerusform>
-            <numerusform>اخرى</numerusform>
+            <numerusform>؟</numerusform>
+            <numerusform>هل تريد حذف الملف المحدد؟</numerusform>
+            <numerusform>هل تريد حذف الملفات المحددة؟</numerusform>
+            <numerusform>هل تريد حذف الملفات المحددة؟</numerusform>
+            <numerusform>هل تريد حذف الملفات المحددة؟</numerusform>
+            <numerusform>هل تريد حذف الملفات المحددة؟</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
-            <numerusform>0</numerusform>
-            <numerusform>1</numerusform>
-            <numerusform>2</numerusform>
-            <numerusform>بعض</numerusform>
-            <numerusform>كثير</numerusform>
-            <numerusform>اخرى</numerusform>
+            <numerusform>؟</numerusform>
+            <numerusform>هل تريد نقل الملف المحدد إلى سلة المهملات؟</numerusform>
+            <numerusform>هل تريد نقل الملفات المحددة إلى سلة المهملات؟</numerusform>
+            <numerusform>هل تريد نقل الملفات المحددة إلى سلة المهملات؟</numerusform>
+            <numerusform>هل تريد نقل الملفات المحددة إلى سلة المهملات؟</numerusform>
+            <numerusform>هل تريد نقل الملفات المحددة إلى سلة المهملات؟</numerusform>
         </translation>
     </message>
 </context>
