@@ -144,7 +144,6 @@ private:
   // for rubberband
   QPoint mousePressPoint_;
   QRect rubberBandRect_;
-  QItemSelectionModel::SelectionFlag ctrlDragSelectionFlag_;
 };
 
 
