@@ -668,12 +668,12 @@ Do you want to replace it?</source>
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
-            <numerusform>؟</numerusform>
-            <numerusform>هل تريد فتح هذا الملف؟</numerusform>
-            <numerusform>هل تريد فتح هذين الملفين؟</numerusform>
-            <numerusform>هل تريد فتح هذه الـ٪ 1 ملفات؟</numerusform>
-            <numerusform>هل تريد فتح هذه الـ٪ 1 ملفات؟</numerusform>
-            <numerusform>هل تريد فتح هذه الـ٪ 1 ملفات؟</numerusform>
+            <numerusform>%1؟</numerusform>
+            <numerusform>هل تريد فتح هذا الملف%1؟</numerusform>
+            <numerusform>هل تريد فتح هذين الملفين%1؟</numerusform>
+            <numerusform>هل تريد فتح هذه الـ%1 ملفات؟</numerusform>
+            <numerusform>هل تريد فتح هذه الـ%1 ملفات؟</numerusform>
+            <numerusform>هل تريد فتح هذه الـ%1 ملفات؟</numerusform>
         </translation>
     </message>
     <message>
