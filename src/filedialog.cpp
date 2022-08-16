@@ -139,6 +139,12 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     connect(newFolderAction, &QAction::triggered, this, &FileDialog::onNewFolder);
     toolbar->addSeparator();
 
+    // a shortcut for deselecting all items
+    QShortcut* shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_D), this);
+    connect(shortcut, &QShortcut::activated, [this]() {
+        ui->folderView->selectionModel()->clearSelection();
+    });
+
     // Options menu
     QMenu* menu = new QMenu(toolbar);
 
@@ -203,7 +209,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         proxyModel_->setShowHidden(checked);
     });
     // also add a separate shortcut for it
-    QShortcut* shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_H), this);
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_H), this);
     connect(shortcut, &QShortcut::activated, [this]() {
         proxyModel_->setShowHidden(!proxyModel_->showHidden());
     });
