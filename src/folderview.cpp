@@ -807,7 +807,10 @@ void FolderViewTreeView::queueLayoutColumns() {
 
 void FolderViewTreeView::mouseReleaseEvent(QMouseEvent* event) {
     bool activationWasAllowed = activationAllowed_;
-    if((!style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this)) || (event->button() != Qt::LeftButton)) {
+    if(!style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this)
+       || event->button() != Qt::LeftButton
+       // also, prevent activation if rubberband selection is greater than dragging distance
+       || rubberBandRect_.width() + rubberBandRect_.height() > QApplication::startDragDistance()) {
         activationAllowed_ = false;
     }
 
