@@ -806,7 +806,6 @@ void FileDialog::onCurrentRowChanged(const QModelIndex &current, const QModelInd
 void FileDialog::onSelectionChanged(const QItemSelection& /*selected*/, const QItemSelection& /*deselected*/) {
     auto selFiles = ui->folderView->selectedFiles();
     if(selFiles.empty()) {
-        ui->fileName->clear();
         updateAcceptButtonState();
         updateSaveButtonText(false);
         return;
@@ -848,8 +847,9 @@ void FileDialog::onSelectionChanged(const QItemSelection& /*selected*/, const QI
         }
     }
     // put the selection list in the text entry
-    ui->fileName->setText(fileNames);
-
+    if(!fileNames.isEmpty()) {
+        ui->fileName->setText(fileNames);
+    }
     updateSaveButtonText(hasDir);
     updateAcceptButtonState();
 }
