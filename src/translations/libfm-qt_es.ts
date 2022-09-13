@@ -124,7 +124,7 @@
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Recordar para los archivos de este tipo</translation>
     </message>
 </context>
 <context>
@@ -253,12 +253,12 @@
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation>Emblema elegido</translation>
+        <translation>Elegir un emblema</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation>Quitar el emblema</translation>
+        <translation>Borrar el emblema</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -334,12 +334,12 @@
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>SetUID</source>
-        <translation>SetUID</translation>
+        <translation>Asignar UID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
         <source>SetGID</source>
-        <translation>SetGID</translation>
+        <translation>Asignar GID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="792"/>
@@ -558,7 +558,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Mostrar ocultos</translation>
+        <translation>Mostrar elementos ocultos</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -573,7 +573,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Desplazamiento suave</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>
@@ -938,7 +938,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="405"/>
         <source>%p% used</source>
-        <translation>%p&#xa0;% usado</translation>
+        <translation>%p % usado</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="406"/>
@@ -1406,7 +1406,7 @@ Modificación: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;El archivo no puede sobrescribirse a sí mismo.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Por favor, elija otro nombre.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;El archivo no puede sobrescribirse a sí mismo.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Seleccione otro nombre.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
