@@ -124,7 +124,7 @@
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Recorda-ho per a aquest tipus de fitxers</translation>
     </message>
 </context>
 <context>
@@ -558,7 +558,7 @@ Què voleu fer amb ell?</translation>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Mostra els ocults</translation>
+        <translation>Mostra els ocults</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -573,7 +573,7 @@ Què voleu fer amb ell?</translation>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Desplaçament suau</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>
@@ -672,9 +672,9 @@ Voleu substituir-ho?</translation>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="354"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform>Voleu obrir aquest %1 fitxer?</numerusform>
-            <numerusform>Voleu obrir aquests fitxers?</numerusform>
+        <translation>
+            <numerusform>Voleu obrir aquest fitxer?</numerusform>
+            <numerusform>Voleu obrir aquests %1 fitxers?</numerusform>
         </translation>
     </message>
     <message>
@@ -928,7 +928,7 @@ En lloc seu, voleu suprimir-los?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished">N/D</translation>
+        <translation>N/D</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
