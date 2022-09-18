@@ -591,9 +591,9 @@ bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction /*action*/,
                     PlacesModelItem* placesItem = static_cast<PlacesModelItem*>(item);
                     auto destPath = placesItem->path();
                     if(destPath) {
-                        Qt::DropAction action = DndActionMenu::askUser(Qt::CopyAction | Qt::MoveAction | Qt::LinkAction, QCursor::pos());
                         auto paths = pathListFromQUrls(data->urls());
                         if(!paths.empty()) {
+                            Qt::DropAction action = DndActionMenu::askUser(Qt::CopyAction | Qt::MoveAction | Qt::LinkAction, QCursor::pos());
                             switch(action) {
                             case Qt::CopyAction:
                                 FileOperation::copyFiles(paths, destPath);
