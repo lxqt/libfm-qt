@@ -90,9 +90,9 @@ QVariant DirTreeModel::data(const QModelIndex& index, int role) const {
 bool DirTreeModel::dropMimeData(const QMimeData* data, Qt::DropAction /*action*/, int /*row*/, int /*column*/, const QModelIndex& parent) {
     if(auto destPath = filePath(parent)) {
         if(data->hasUrls()) { // files uris are dropped
-            Qt::DropAction action = DndActionMenu::askUser(Qt::CopyAction | Qt::MoveAction | Qt::LinkAction, QCursor::pos());
             auto paths = pathListFromQUrls(data->urls());
             if(!paths.empty()) {
+                Qt::DropAction action = DndActionMenu::askUser(Qt::CopyAction | Qt::MoveAction | Qt::LinkAction, QCursor::pos());
                 switch(action) {
                 case Qt::CopyAction:
                     FileOperation::copyFiles(paths, destPath);
