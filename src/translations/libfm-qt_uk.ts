@@ -518,12 +518,12 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="148"/>
         <source>Icon View</source>
-        <translation>Подання піктограмами</translation>
+        <translation>У вигляді піктограм</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="152"/>
         <source>Thumbnail View</source>
-        <translation>Подання ескізами</translation>
+        <translation>У вигляді ескізів</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="156"/>

@@ -558,7 +558,7 @@ Was möchten Sie damit tun?</translation>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Versteckte anzeigen</translation>
+        <translation>Verstecktes anzeigen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
