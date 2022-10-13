@@ -49,6 +49,10 @@ XdndWorkaround::XdndWorkaround() {
     qApp->installNativeEventFilter(this);
 
     lastDrag_ = nullptr;
+    xinput2Enabled_ = false;
+    xinputOpCode_ = 0;
+    xinputEventBase_ = 0;
+    xinputErrorBase_ = 0;
 
     // initialize xinput2 since newer versions of Qt5 uses it.
     static char xi_name[] = "XInputExtension";
@@ -58,16 +62,19 @@ XdndWorkaround::XdndWorkaround() {
     xcb_query_extension_reply_t* reply = xcb_query_extension_reply(conn, cookie, &err);
     if(err == nullptr) {
         xinput2Enabled_ = true;
-        xinputOpCode_ = reply->major_opcode;
-        xinputEventBase_ = reply->first_event;
-        xinputErrorBase_ = reply->first_error;
+        if(reply != nullptr) {
+            xinputOpCode_ = reply->major_opcode;
+            xinputEventBase_ = reply->first_event;
+            xinputErrorBase_ = reply->first_error;
+        }
         // qDebug() << "xinput: " << m_xi2Enabled << m_xiOpCode << m_xiEventBase;
     }
     else {
-        xinput2Enabled_ = false;
         free(err);
     }
-    free(reply);
+    if(reply != nullptr) {
+        free(reply);
+    }
 }
 
 XdndWorkaround::~XdndWorkaround() {
@@ -107,11 +114,13 @@ QByteArray XdndWorkaround::atomName(xcb_atom_t atom) {
     xcb_connection_t* conn = QX11Info::connection();
     xcb_get_atom_name_cookie_t cookie = xcb_get_atom_name(conn, atom);
     xcb_get_atom_name_reply_t* reply = xcb_get_atom_name_reply(conn, cookie, nullptr);
-    int len = xcb_get_atom_name_name_length(reply);
-    if(len > 0) {
-        name.append(xcb_get_atom_name_name(reply), len);
+    if(reply != nullptr) {
+        int len = xcb_get_atom_name_name_length(reply);
+        if(len > 0) {
+            name.append(xcb_get_atom_name_name(reply), len);
+        }
+        free(reply);
     }
-    free(reply);
     return name;
 }
 
