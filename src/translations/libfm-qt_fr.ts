@@ -39,10 +39,10 @@
 &lt;/ul&gt;</source>
         <translation>&lt;b&gt;Ces codes spéciaux peuvent être utilisés dans la ligne de commande :&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt; : représente un seul nom de fichier,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt; : représente plusieurs noms de fichiers,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt; : représente l’URI d&apos;un seul fichier,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt; : représente plusieurs URI.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;  : Représente un seul nom de fichier,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;  : Représente plusieurs noms de fichiers,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;  : Représente un seul URI du fichier,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;  : Représente plusieurs URI.&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
@@ -91,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Utiliser le glisser-déposer pour trier à nouveau les éléments</translation>
+        <translation>Utiliser le glisser-déposer pour réorganiser les éléments</translation>
     </message>
 </context>
 <context>
@@ -165,7 +165,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress</source>
-        <translation>En Progression</translation>
+        <translation>Progression</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
@@ -263,7 +263,7 @@
     <message>
         <location filename="../file-props.ui" line="414"/>
         <source>Device Usage:</source>
-        <translation>Utilisation périphérique :</translation>
+        <translation>Utilisation du dispositif :</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="424"/>
@@ -360,7 +360,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="263"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Sélection d&apos;une application pour ouvrir les fichiers de type &quot;%1&quot;</translation>
+        <translation>Sélectionner une application pour ouvrir les fichiers de type &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -414,7 +414,7 @@
     <message>
         <location filename="../dirtreeview.cpp" line="222"/>
         <source>Open in Termina&amp;l</source>
-        <translation>Ouvrir dans un &amp;terminal</translation>
+        <translation>Ouvrir dans le &amp;terminal</translation>
     </message>
 </context>
 <context>
@@ -467,7 +467,7 @@ Que voulez-vous faire avec ?</translation>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
         <translation>Le fichier texte &apos;%1&apos; semble être un script exécutable.
-Qu voulez-voulez vous en faire ?</translation>
+Que voulez-voulez vous en faire ?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
@@ -486,7 +486,7 @@ Qu voulez-voulez vous en faire ?</translation>
         <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation>Alt+flèche gauche</translation>
+        <translation>Alt+Gauche</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="112"/>
@@ -528,12 +528,12 @@ Qu voulez-voulez vous en faire ?</translation>
     <message>
         <location filename="../filedialog.cpp" line="156"/>
         <source>Compact View</source>
-        <translation>Vue compacte de la liste</translation>
+        <translation>Vue compacte</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="160"/>
         <source>Detailed List View</source>
-        <translation>Vue détaillée de la liste</translation>
+        <translation>Vue en liste détaillée</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="168"/>
@@ -667,7 +667,7 @@ Voulez-vous le remplacer ?</translation>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Many files</source>
-        <translation type="unfinished">Beaucoup de fichiers</translation>
+        <translation>Plusieurs fichiers</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="354"/>
@@ -822,7 +822,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>Déplacer les fichiers suivants dans le dossier de destination :</translation>
+        <translation>Déplacement des fichiers suivants dans le dossier de destination :</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -842,7 +842,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>Déplacer les fichiers suivants dans la corbeille :</translation>
+        <translation>Déplacement des fichiers suivants vers la corbeille :</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
@@ -882,7 +882,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Restauration à partir de la corbeille des fichiers suivants :</translation>
+        <translation>Restauration des fichiers suivants depuis la corbeille :</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="149"/>
@@ -1009,12 +1009,12 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="479"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation>Impossible de copier un répertoire sur lui-même !</translation>
+        <translation>Impossible de copier un répertoire dans lui-même !</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="530"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation>Ne peut pas créer un lien vers un système de fichiers non natif</translation>
+        <translation>Ne peut pas créer un lien dans un système de fichiers non natif</translation>
     </message>
 </context>
 <context>
@@ -1022,7 +1022,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="57"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Vider la corbeille</translation>
+        <translation>Vider la corbeille</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
@@ -1223,7 +1223,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../folderview.cpp" line="406"/>
         <source>Auto-resize columns</source>
-        <translation>Colones auto-ajustables</translation>
+        <translation>Redimensionnement automatique des colonnes</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="423"/>
@@ -1300,7 +1300,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="82"/>
         <source>Devices</source>
-        <translation>Appareils</translation>
+        <translation>Dispositifs</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="137"/>
@@ -1537,7 +1537,7 @@ Modification : %2</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="687"/>
         <source>Custom Icon Error</source>
-        <translation>Erreur avec l&apos;icône personnelle</translation>
+        <translation>Erreur avec l&apos;icône personnalisée</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
@@ -1726,19 +1726,19 @@ Modification : %2</translation>
         <location filename="../filesearch.ui" line="321"/>
         <location filename="../filesearch.ui" line="351"/>
         <source>KiB</source>
-        <translation>Ko</translation>
+        <translation>Kio</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="326"/>
         <location filename="../filesearch.ui" line="356"/>
         <source>MiB</source>
-        <translation>Mo</translation>
+        <translation>Mio</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="331"/>
         <location filename="../filesearch.ui" line="361"/>
         <source>GiB</source>
-        <translation>Go</translation>
+        <translation>Gio</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="281"/>
@@ -1768,7 +1768,7 @@ Modification : %2</translation>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Earlier than:</source>
-        <translation>Plus récent que :</translation>
+        <translation>Avant :</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="392"/>
