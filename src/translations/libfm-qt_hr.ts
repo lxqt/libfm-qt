@@ -125,7 +125,7 @@ za ovu vrstu datoteka</translation>
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapamti za sljedeće datoteke ove vrste</translation>
     </message>
 </context>
 <context>
@@ -559,7 +559,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Prikaži skrivene</translation>
+        <translation>Prikaži skrivene</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
@@ -574,7 +574,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Neisprekidano klizanje</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="241"/>
@@ -942,7 +942,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="405"/>
         <source>%p% used</source>
-        <translation>%p&#xa0;% korišteno</translation>
+        <translation>%p % korišteno</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="406"/>
