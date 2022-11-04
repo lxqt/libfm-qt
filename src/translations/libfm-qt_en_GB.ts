@@ -508,116 +508,116 @@ What do you want to do with it?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="148"/>
+        <location filename="../filedialog.cpp" line="154"/>
         <source>Icon View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="152"/>
+        <location filename="../filedialog.cpp" line="158"/>
         <source>Thumbnail View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="156"/>
+        <location filename="../filedialog.cpp" line="162"/>
         <source>Compact View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="160"/>
+        <location filename="../filedialog.cpp" line="166"/>
         <source>Detailed List View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="168"/>
+        <location filename="../filedialog.cpp" line="174"/>
         <source>Icon Sizes</source>
         <translation>Icon Sizes</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="170"/>
+        <location filename="../filedialog.cpp" line="176"/>
         <source>Size of big icons:</source>
         <translation>Size of big icons:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="177"/>
+        <location filename="../filedialog.cpp" line="183"/>
         <source>Size of small icons:</source>
         <translation>Size of small icons:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="184"/>
+        <location filename="../filedialog.cpp" line="190"/>
         <source>Size of thumbnails:</source>
         <translation>Size of thumbnails:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="200"/>
+        <location filename="../filedialog.cpp" line="206"/>
         <source>Show Hidden</source>
         <translation>Show Hidden</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="212"/>
+        <location filename="../filedialog.cpp" line="218"/>
         <source>Show Thumbnails</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="217"/>
+        <location filename="../filedialog.cpp" line="223"/>
         <source>Show File Tooltips</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="224"/>
+        <location filename="../filedialog.cpp" line="230"/>
         <source>Smooth Scrolling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="241"/>
+        <location filename="../filedialog.cpp" line="247"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="574"/>
-        <location filename="../filedialog.cpp" line="969"/>
+        <location filename="../filedialog.cpp" line="580"/>
+        <location filename="../filedialog.cpp" line="975"/>
         <source>Error</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="574"/>
+        <location filename="../filedialog.cpp" line="580"/>
         <source>Please select a file</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="616"/>
+        <location filename="../filedialog.cpp" line="622"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="939"/>
+        <location filename="../filedialog.cpp" line="945"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="953"/>
+        <location filename="../filedialog.cpp" line="959"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="959"/>
+        <location filename="../filedialog.cpp" line="965"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1111"/>
-        <location filename="../filedialog.cpp" line="1219"/>
+        <location filename="../filedialog.cpp" line="1117"/>
+        <location filename="../filedialog.cpp" line="1225"/>
         <source>&amp;Open</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1114"/>
-        <location filename="../filedialog.cpp" line="1227"/>
+        <location filename="../filedialog.cpp" line="1120"/>
+        <location filename="../filedialog.cpp" line="1233"/>
         <source>&amp;Save</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1121"/>
+        <location filename="../filedialog.cpp" line="1127"/>
         <source>All Files (*)</source>
         <translation></translation>
     </message>
@@ -1212,12 +1212,12 @@ Do you want to delete them instead?</translation>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="406"/>
+        <location filename="../folderview.cpp" line="405"/>
         <source>Auto-resize columns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="423"/>
+        <location filename="../folderview.cpp" line="422"/>
         <source>Visible Columns</source>
         <translation type="unfinished"></translation>
     </message>

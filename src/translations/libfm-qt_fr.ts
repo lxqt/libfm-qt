@@ -37,12 +37,12 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;Ces codes spéciaux peuvent être utilisés dans la ligne de commande :&lt;/b&gt;
+        <translation>&lt;b&gt;Ces codes spéciaux peuvent être utilisés dans la ligne de commande&#x202f;:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;  : Représente un seul nom de fichier,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;  : Représente plusieurs noms de fichiers,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;  : Représente un seul URI du fichier,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;  : Représente plusieurs URI.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;&#x202f;&#xa0;: Représente un seul nom de fichier,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;&#xa0;&#x202f;: Représente plusieurs noms de fichiers,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;&#xa0;&#x202f;: Représente un seul URI du fichier,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;&#x202f;&#xa0;: Représente plusieurs URI.&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
@@ -150,7 +150,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation>Destination :</translation>
+        <translation>Destination&#xa0;:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
@@ -248,7 +248,7 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished">Emblème :</translation>
+        <translation type="unfinished">Emblème&#xa0;:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
@@ -516,117 +516,117 @@ Que voulez-voulez vous en faire ?</translation>
         <translation>Créer un dossier</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="148"/>
+        <location filename="../filedialog.cpp" line="154"/>
         <source>Icon View</source>
         <translation>Vue par icônes</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="152"/>
+        <location filename="../filedialog.cpp" line="158"/>
         <source>Thumbnail View</source>
         <translation>Vue par miniatures</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="156"/>
+        <location filename="../filedialog.cpp" line="162"/>
         <source>Compact View</source>
         <translation>Vue compacte</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="160"/>
+        <location filename="../filedialog.cpp" line="166"/>
         <source>Detailed List View</source>
         <translation>Vue en liste détaillée</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="168"/>
+        <location filename="../filedialog.cpp" line="174"/>
         <source>Icon Sizes</source>
         <translation>Tailles d&apos;icône</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="170"/>
+        <location filename="../filedialog.cpp" line="176"/>
         <source>Size of big icons:</source>
         <translation>Taille des grandes icônes :</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="177"/>
+        <location filename="../filedialog.cpp" line="183"/>
         <source>Size of small icons:</source>
         <translation>Taille des petites icônes :</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="184"/>
+        <location filename="../filedialog.cpp" line="190"/>
         <source>Size of thumbnails:</source>
         <translation>Taille des aperçus :</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="200"/>
+        <location filename="../filedialog.cpp" line="206"/>
         <source>Show Hidden</source>
         <translation type="unfinished">Afficher les éléments cachés</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="212"/>
+        <location filename="../filedialog.cpp" line="218"/>
         <source>Show Thumbnails</source>
         <translation>Montrer les aperçus</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="217"/>
+        <location filename="../filedialog.cpp" line="223"/>
         <source>Show File Tooltips</source>
         <translation>Montrer les infobulles de fichiers</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="224"/>
+        <location filename="../filedialog.cpp" line="230"/>
         <source>Smooth Scrolling</source>
         <translation>Défilement fluide</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="241"/>
+        <location filename="../filedialog.cpp" line="247"/>
         <source>Options</source>
         <translation>Options</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="574"/>
-        <location filename="../filedialog.cpp" line="969"/>
+        <location filename="../filedialog.cpp" line="580"/>
+        <location filename="../filedialog.cpp" line="975"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="574"/>
+        <location filename="../filedialog.cpp" line="580"/>
         <source>Please select a file</source>
         <translation>Veuillez sélectionner un fichier</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="616"/>
+        <location filename="../filedialog.cpp" line="622"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 existe déjà.
 Voulez-vous le remplacer ?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="939"/>
+        <location filename="../filedialog.cpp" line="945"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>Le chemin &quot;%1&quot; n&apos;existe pas</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="953"/>
+        <location filename="../filedialog.cpp" line="959"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&quot;%1&quot; n&apos;est pas un répertoire</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="959"/>
+        <location filename="../filedialog.cpp" line="965"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&quot;%1&quot; n&apos;est pas un fichier</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1111"/>
-        <location filename="../filedialog.cpp" line="1219"/>
+        <location filename="../filedialog.cpp" line="1117"/>
+        <location filename="../filedialog.cpp" line="1225"/>
         <source>&amp;Open</source>
         <translation>&amp;Ouvrir</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1114"/>
-        <location filename="../filedialog.cpp" line="1227"/>
+        <location filename="../filedialog.cpp" line="1120"/>
+        <location filename="../filedialog.cpp" line="1233"/>
         <source>&amp;Save</source>
         <translation>&amp;Enregistrer</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1121"/>
+        <location filename="../filedialog.cpp" line="1127"/>
         <source>All Files (*)</source>
         <translation>Tous les fichiers (*)</translation>
     </message>
@@ -799,16 +799,16 @@ Voulez-vous les supprimer à la place ?</translation>
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
-            <numerusform>Voulez-vous supprimer le fichier sélectionné ?</numerusform>
-            <numerusform>Voulez-vous supprimer les fichiers sélectionnés ?</numerusform>
+            <numerusform>Voulez-vous supprimer le fichier sélectionné&#xa0;?</numerusform>
+            <numerusform>Voulez-vous supprimer les fichiers sélectionnés&#xa0;?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
-            <numerusform>Voulez-vous déplacer le fichier sélectionné vers la corbeille ?</numerusform>
-            <numerusform>Voulez-vous déplacer les fichiers sélectionnés vers la corbeille ?</numerusform>
+            <numerusform>Voulez-vous déplacer le fichier sélectionné vers la corbeille&#xa0;?</numerusform>
+            <numerusform>Voulez-vous déplacer les fichiers sélectionnés vers la corbeille&#xa0;?</numerusform>
         </translation>
     </message>
 </context>
@@ -882,7 +882,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Restauration des fichiers suivants depuis la corbeille :</translation>
+        <translation>Restauration des fichiers suivants depuis la corbeille&#xa0;:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="149"/>
@@ -1221,12 +1221,12 @@ Voulez-vous les supprimer à la place ?</translation>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="406"/>
+        <location filename="../folderview.cpp" line="405"/>
         <source>Auto-resize columns</source>
         <translation>Redimensionnement automatique des colonnes</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="423"/>
+        <location filename="../folderview.cpp" line="422"/>
         <source>Visible Columns</source>
         <translation>Colonnes visibles</translation>
     </message>
@@ -1381,17 +1381,17 @@ Voulez-vous les supprimer à la place ?</translation>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation>Type : %1
-Taille : %2
-Modification : %3</translation>
+        <translation>Type&#x202f;: %1
+Taille&#x202f;: %2
+Modification&#x202f;: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation>Type : %1
-Modification : %2</translation>
+        <translation>Type&#x202f;: %1
+Modification&#x202f;: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="96"/>
@@ -1427,7 +1427,7 @@ Modification : %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Impossible de sortir le fichier « %s » de la corbeille : le chemin d&apos;origine est inconnu</translation>
+        <translation>Impossible de sortir le fichier «&#xa0;%s&#xa0;» de la corbeille&#x202f;: le chemin d&apos;origine est inconnu</translation>
     </message>
 </context>
 <context>
@@ -1557,7 +1557,7 @@ Modification : %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>Impossible de définir le répertoire de travail à « %1 » : « %2 »</translation>
+        <translation>Impossible de définir le répertoire de travail à «&#xa0;%1&#xa0;»&#x202f;: «&#xa0;%2&#xa0;»</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
@@ -1581,7 +1581,7 @@ Modification : %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier du même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant ?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier du même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant&#xa0;?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
@@ -1591,7 +1591,7 @@ Modification : %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>Nom du &amp;fichier :</translation>
+        <translation>Nom du &amp;fichier&#xa0;:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
