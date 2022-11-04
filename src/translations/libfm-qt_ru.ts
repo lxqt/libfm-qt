@@ -516,117 +516,117 @@ What do you want to do with it?</source>
         <translation>Создать папку</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="148"/>
+        <location filename="../filedialog.cpp" line="154"/>
         <source>Icon View</source>
         <translation>В виде значков</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="152"/>
+        <location filename="../filedialog.cpp" line="158"/>
         <source>Thumbnail View</source>
         <translation>В виде эскизов</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="156"/>
+        <location filename="../filedialog.cpp" line="162"/>
         <source>Compact View</source>
         <translation>Компактно</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="160"/>
+        <location filename="../filedialog.cpp" line="166"/>
         <source>Detailed List View</source>
         <translation>В виде подробного списка</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="168"/>
+        <location filename="../filedialog.cpp" line="174"/>
         <source>Icon Sizes</source>
         <translation>Размер значков</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="170"/>
+        <location filename="../filedialog.cpp" line="176"/>
         <source>Size of big icons:</source>
         <translation>Размер больших значков:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="177"/>
+        <location filename="../filedialog.cpp" line="183"/>
         <source>Size of small icons:</source>
         <translation>Размер маленьких значков:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="184"/>
+        <location filename="../filedialog.cpp" line="190"/>
         <source>Size of thumbnails:</source>
         <translation>Размер миниатюр:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="200"/>
+        <location filename="../filedialog.cpp" line="206"/>
         <source>Show Hidden</source>
         <translation>Показать скрытые</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="212"/>
+        <location filename="../filedialog.cpp" line="218"/>
         <source>Show Thumbnails</source>
         <translation>Показывать миниатюры</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="217"/>
+        <location filename="../filedialog.cpp" line="223"/>
         <source>Show File Tooltips</source>
         <translation>Показывать подсказки для файлов</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="224"/>
+        <location filename="../filedialog.cpp" line="230"/>
         <source>Smooth Scrolling</source>
         <translation>Плавная прокрутка</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="241"/>
+        <location filename="../filedialog.cpp" line="247"/>
         <source>Options</source>
         <translation>Параметры</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="574"/>
-        <location filename="../filedialog.cpp" line="969"/>
+        <location filename="../filedialog.cpp" line="580"/>
+        <location filename="../filedialog.cpp" line="975"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="574"/>
+        <location filename="../filedialog.cpp" line="580"/>
         <source>Please select a file</source>
         <translation>Выберите файл</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="616"/>
+        <location filename="../filedialog.cpp" line="622"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 уже существует.
 Вы хотите заменить его?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="939"/>
+        <location filename="../filedialog.cpp" line="945"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>Путь «%1» не существует</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="953"/>
+        <location filename="../filedialog.cpp" line="959"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>«%1» не является каталогом</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="959"/>
+        <location filename="../filedialog.cpp" line="965"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>«%1» не является файлом</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1111"/>
-        <location filename="../filedialog.cpp" line="1219"/>
+        <location filename="../filedialog.cpp" line="1117"/>
+        <location filename="../filedialog.cpp" line="1225"/>
         <source>&amp;Open</source>
         <translation>&amp;Открыть</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1114"/>
-        <location filename="../filedialog.cpp" line="1227"/>
+        <location filename="../filedialog.cpp" line="1120"/>
+        <location filename="../filedialog.cpp" line="1233"/>
         <source>&amp;Save</source>
         <translation>&amp;Сохранить</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1121"/>
+        <location filename="../filedialog.cpp" line="1127"/>
         <source>All Files (*)</source>
         <translation>Все файлы (*)</translation>
     </message>
@@ -1225,12 +1225,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="406"/>
+        <location filename="../folderview.cpp" line="405"/>
         <source>Auto-resize columns</source>
         <translation>Автоподбор ширины столбцов</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="423"/>
+        <location filename="../folderview.cpp" line="422"/>
         <source>Visible Columns</source>
         <translation>Видимые столбцы</translation>
     </message>
