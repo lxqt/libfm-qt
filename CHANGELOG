@@ -1,3 +1,17 @@
+libfm-qt-1.2.0 / 2022-11-05
+============================
+ * Support adding of pattern lists to entries of search dialog (such lists are used by `pcmanfm-qt` for having a search history).
+ * Fixed crash with empty URI scheme of folder path.
+ * Silenced compilation warnings about deprecated GLib functions.
+ * Don't show a deletion prompt without a selection.
+ * Fixed infinite loop if a symlink that is created by DND overwrites a non-empty directory.
+ * Allow remembering the result of execution prompt for multiple files.
+ * Added `Ctrl+D` to LXQt file dialog for deselecting all items.
+ * Allow selection by dragging mouse cursor inside non-name columns in the detailed list mode.
+ * Corrected the position of drop menu under Wayland.
+ * Fixed crash with DND into side-pane under Wayland.
+ * Added nullity checks to `XdndWorkaround`.
+
 libfm-qt-1.1.0 / 2022-04-15
 ============================
  * Prepared libfm-qt for implementing "Recent Files".
