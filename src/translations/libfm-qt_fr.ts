@@ -248,17 +248,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished">Emblème&#xa0;:</translation>
+        <translation>Emblème&#xa0;:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished">Choisir l&apos;emblème</translation>
+        <translation>Choisir l&apos;emblème</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished">Effacer l&apos;emblème</translation>
+        <translation>Effacer l&apos;emblème</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -558,7 +558,7 @@ Que voulez-voulez vous en faire ?</translation>
     <message>
         <location filename="../filedialog.cpp" line="206"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Afficher les éléments cachés</translation>
+        <translation>Afficher les fichiers cachés</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="218"/>
@@ -667,7 +667,7 @@ Voulez-vous le remplacer ?</translation>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Many files</source>
-        <translation>Plusieurs fichiers</translation>
+        <translation>Nombreux fichiers</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="354"/>
@@ -1160,7 +1160,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>N/A</source>
-        <translation type="unfinished">N/A</translation>
+        <translation>N/A</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
@@ -1568,7 +1568,7 @@ Modification&#x202f;: %2</translation>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished">N/A</translation>
+        <translation>N/A</translation>
     </message>
 </context>
 <context>

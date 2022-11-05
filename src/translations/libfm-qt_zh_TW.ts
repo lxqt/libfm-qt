@@ -124,7 +124,7 @@
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>記住並套用於以後其他同類型檔案</translation>
     </message>
 </context>
 <context>
@@ -558,7 +558,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="206"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">顯示隱藏檔</translation>
+        <translation>顯示隱藏檔</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="218"/>
@@ -720,7 +720,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation type="unfinished">卸載</translation>
+        <translation>卸載</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
@@ -969,7 +969,7 @@ Do you want to delete them instead?</source>
         <location filename="../filepropsdialog.cpp" line="492"/>
         <location filename="../filepropsdialog.cpp" line="537"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation>影像檔 (*.png *.xpm *.svg *.svgz )</translation>
+        <translation>圖片 (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="643"/>
