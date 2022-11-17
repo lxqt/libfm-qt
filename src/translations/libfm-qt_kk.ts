@@ -21,12 +21,12 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation type="unfinished"></translation>
+        <translation>Орындалатын командалық жол:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Қолданба атауы:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -37,17 +37,23 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Бұл арнайы кодтар командалық жолда пайдаланылуы мүмкін:&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Бір файл атауын білдіреді&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Бірнеше файл атауларын білдіреді&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Бір файл URI-ін білдіреді&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Бірнеше URI-ді білдіреді&lt;/li&gt;
+&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation type="unfinished"></translation>
+        <translation>Команда орындалғаннан кейін терминал терезесін ашық ұстау</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>Терминал эмуляторында жөнелту</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
@@ -60,27 +66,27 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation type="unfinished"></translation>
+        <translation>Бетбелгілерді түзету</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Атауы</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="47"/>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Орналасуы</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="67"/>
         <source>&amp;Add Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Нәрсені қ&amp;осу</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Нәрсені өші&amp;ру</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
@@ -93,27 +99,27 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлды орындау</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="39"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ашу</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="52"/>
         <source>E&amp;xecute</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Орындау</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Терминалда орындау</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Бас тарту</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="99"/>
@@ -126,17 +132,17 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Орны:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл атауы:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл түрі:</translation>
     </message>
 </context>
 <context>
@@ -144,17 +150,17 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation type="unfinished"></translation>
+        <translation>Мақсаты:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation type="unfinished"></translation>
+        <translation>Өңдеу:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation type="unfinished"></translation>
+        <translation>Дайындау...</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
@@ -991,7 +997,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="159"/>
         <source>Select a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Буманы таңдау</translation>
     </message>
 </context>
 <context>
@@ -1012,7 +1018,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="57"/>
         <source>Empty Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Қоқыс шелегін тазарту</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
