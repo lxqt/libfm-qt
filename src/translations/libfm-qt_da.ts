@@ -124,7 +124,7 @@
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Husk til næste filer af denne art</translation>
     </message>
 </context>
 <context>
@@ -558,7 +558,7 @@ Hvad vil du foretage med det?</translation>
     <message>
         <location filename="../filedialog.cpp" line="206"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Vis skjulte</translation>
+        <translation>Vis skjulte</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="218"/>
@@ -1022,7 +1022,7 @@ Vil du slette dem istedet?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="57"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Tøm papirkurven</translation>
+        <translation>Tøm papirkurven</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
