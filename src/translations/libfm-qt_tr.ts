@@ -674,6 +674,7 @@ Değiştirmek istiyor musunuz?</translation>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>Bu %1 dosyasını açmak istiyor musunuz?</numerusform>
+            <numerusform>Bu %1 dosyalarını açmak istiyor musunuz?</numerusform>
         </translation>
     </message>
     <message>
@@ -799,6 +800,7 @@ Onun yerine silmek ister misiniz?</translation>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
             <numerusform>Seçilen dosyayı silmek istiyor musunuz?</numerusform>
+            <numerusform>Seçilen dosyaları silmek istiyor musunuz?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -806,6 +808,7 @@ Onun yerine silmek ister misiniz?</translation>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
             <numerusform>Seçilen dosyayı çöp kutusuna taşımak istiyor musunuz?</numerusform>
+            <numerusform>Seçilen dosyaları çöp kutusuna taşımak istiyor musunuz?</numerusform>
         </translation>
     </message>
 </context>
@@ -957,6 +960,7 @@ Onun yerine silmek ister misiniz?</translation>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln dosyası</numerusform>
+            <numerusform>%Ln dosyalar</numerusform>
         </translation>
     </message>
     <message>

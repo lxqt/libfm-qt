@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation type="unfinished"></translation>
+        <translation>Таңдалған қолданбаны осы файл түрінің әдепкі әрекеті ретінде орнату</translation>
     </message>
 </context>
 <context>
@@ -902,29 +902,29 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="167"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>Оқу</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="168"/>
         <source>Read and write</source>
-        <translation type="unfinished"></translation>
+        <translation>Оқу және жазу</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="170"/>
         <source>Forbidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Тыйым салынған</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="287"/>
         <source>Files of different types</source>
-        <translation type="unfinished"></translation>
+        <translation>Әр түрлі түрдегі файлдар</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="310"/>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>---</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1161,32 +1161,32 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Жасалған:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="326"/>
         <source>Owner:</source>
-        <translation type="unfinished"></translation>
+        <translation>Иесі:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="327"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Топ:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="394"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Аты</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="397"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Түрі</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="400"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Өлшемі</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="403"/>
