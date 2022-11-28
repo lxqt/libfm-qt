@@ -1950,7 +1950,7 @@ void FolderView::onFileClicked(int type, const std::shared_ptr<const Fm::FileInf
             }
         }
         if (!menu && folderInfo()) {
-            Fm::FolderMenu* folderMenu = new Fm::FolderMenu(this);
+            Fm::FolderMenu* folderMenu = new Fm::FolderMenu(this, this);
             prepareFolderMenu(folderMenu);
             menu = folderMenu;
         }

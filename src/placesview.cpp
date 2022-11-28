@@ -468,10 +468,11 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
             index = index.sibling(index.row(), 0);
         }
 
-        // Do not take the ownership of the menu since
-        // it will be deleted with deleteLater() upon hidden.
-        // This is possibly related to #145 - https://github.com/lxqt/pcmanfm-qt/issues/145
-        QMenu* menu = new QMenu();
+        // The ownership of the menu is taken because that may be needed for
+        // correct positioning under Wayland, especially when the window is
+        // inactive (it is safe under X11), but the menu will be deleted by
+        // deleteLater() when it is going to hide.
+        QMenu* menu = new QMenu(this);
         QAction* action = nullptr;
         PlacesModelItem* item = static_cast<PlacesModelItem*>(model_->itemFromIndex(proxyModel_->mapToSource(index)));
 
