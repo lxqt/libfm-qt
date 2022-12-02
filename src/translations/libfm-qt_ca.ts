@@ -334,12 +334,12 @@
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>SetUID</source>
-        <translation>SetUID</translation>
+        <translation>Estableix l&apos;UID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
         <source>SetGID</source>
-        <translation>SetGID</translation>
+        <translation>Estableix el GID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="792"/>
@@ -1749,7 +1749,7 @@ Modificat: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="51"/>
         <source>Case sensitive</source>
-        <translation>Distingeix  majúscula / minúscula</translation>
+        <translation>Distingeix majúscula/minúscula</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="125"/>
