@@ -253,6 +253,11 @@ void AppChooserDialog::accept() {
 }
 
 void AppChooserDialog::onSelectionChanged() {
+    if(ui->tabWidget->currentIndex() != 0) {
+        // the selection may be reset by menu-cache,
+        // while the app menu view is not shown
+        return;
+    }
     bool isAppSelected = ui->appMenuView->isAppSelected();
     ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(isAppSelected);
 }
