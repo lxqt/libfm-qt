@@ -401,7 +401,7 @@ void FolderViewTreeView::setHiddenColumns(const QSet<int> &columns) {
 }
 
 void FolderViewTreeView::headerContextMenu(const QPoint &p) {
-    QMenu menu;
+    QMenu menu(header()); // a parent is needed under Wayland for correct positioning
     QAction *action = menu.addAction (tr("Auto-resize columns"));
     action->setCheckable(true);
     action->setChecked(customColumnWidths_.isEmpty());
@@ -720,8 +720,11 @@ void FolderViewTreeView::layoutColumns() {
                 // Compute the width available for the filename column
                 int filenameAvailWidth = availWidth - desiredWidth + widths.at(filenameColumn);
 
-                // Compute the minimum acceptable width for the filename column
-                int filenameMinWidth = qMin(200, sizeHintForColumn(filenameColumn));
+                // Compute the minimum acceptable width for the filename column,
+                // showing whole texts whose lengths are less than 50 times the space width.
+                int filenameMinWidth = qMin(iconSize().width()
+                                            + 50 * opt.fontMetrics.horizontalAdvance(QLatin1Char(' ')),
+                                            sizeHintForColumn(filenameColumn));
 
                 if(filenameAvailWidth > filenameMinWidth) {
                     // Shrink the filename column to the available width
