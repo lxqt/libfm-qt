@@ -720,10 +720,10 @@ void FolderViewTreeView::layoutColumns() {
                 // Compute the width available for the filename column
                 int filenameAvailWidth = availWidth - desiredWidth + widths.at(filenameColumn);
 
-                // Compute the minimum acceptable width for the filename column,
-                // showing whole texts whose lengths are less than 50 times the space width.
+                // Compute the minimum acceptable width for the filename column, showing
+                // whole texts whose lengths are less than 30 times the average font width.
                 int filenameMinWidth = qMin(iconSize().width()
-                                            + 50 * opt.fontMetrics.horizontalAdvance(QLatin1Char(' ')),
+                                            + 30 * opt.fontMetrics.averageCharWidth(),
                                             sizeHintForColumn(filenameColumn));
 
                 if(filenameAvailWidth > filenameMinWidth) {
