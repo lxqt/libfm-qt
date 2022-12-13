@@ -46,9 +46,9 @@ DndActionMenu::~DndActionMenu() {
 
 }
 
-Qt::DropAction DndActionMenu::askUser(Qt::DropActions possibleActions, QPoint pos) {
+Qt::DropAction DndActionMenu::askUser(Qt::DropActions possibleActions, QPoint pos, QWidget* parent) {
     Qt::DropAction result = Qt::IgnoreAction;
-    DndActionMenu menu{possibleActions};
+    DndActionMenu menu{possibleActions, parent};
     QAction* action = menu.exec(pos);
     if(nullptr != action) {
         if(action == menu.copyAction) {

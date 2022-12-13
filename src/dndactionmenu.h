@@ -33,7 +33,7 @@ public:
     explicit DndActionMenu(Qt::DropActions possibleActions, QWidget* parent = nullptr);
     ~DndActionMenu() override;
 
-    static Qt::DropAction askUser(Qt::DropActions possibleActions, QPoint pos);
+    static Qt::DropAction askUser(Qt::DropActions possibleActions, QPoint pos, QWidget* parent = nullptr);
 
 private:
     QAction* copyAction;
