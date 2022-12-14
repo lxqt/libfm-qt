@@ -50,6 +50,7 @@
 #include "xdndworkaround.h" // for XDS support
 #include "folderview_p.h"
 #include "utilities.h"
+#include "fileoperation.h"
 
 #include <algorithm>
 
@@ -1598,25 +1599,62 @@ void FolderView::childDropEvent(QDropEvent* e) {
     }
 
     if(e->keyboardModifiers() == Qt::NoModifier) {
-        // if no key modifiers are used, popup a menu
+        // If no key modifiers are used, pop up a menu
         // to ask the user for the action he/she wants to perform.
-        Qt::DropActions actions = Qt::IgnoreAction;
+
+        // WARNING: We perform the required file operations here, without calling
+        // FolderModel::dropMimeData(). The reason is that Wayland frees the mime data
+        // of the drop event once a popup menu is shown, creating a dangling pointer,
+        // which would cause a crash if FolderModel::dropMimeData() was called.
+
+        Fm::FilePath destPath;
         std::shared_ptr<const Fm::FileInfo> info = nullptr;
         if(model_) {
             QModelIndex index = view->indexAt(e->pos());
             info = model_->fileInfoFromIndex(index);
         }
-        if(!info || !info->isDir()) {
+        if(info && info->isDir()) {
+            destPath = info->path(); // drop on a subdirectory
+        }
+        else {
             info = folderInfo();
+            destPath = path(); // drop on blank area of the folder
         }
-        if(info && info->isWritableDirectory() && info->isWritable()) {
-            actions = e->possibleActions();
+
+        Fm::FilePathList srcPaths;
+        // try to get paths from the original data
+        if(e->mimeData()->hasFormat(QStringLiteral("libfm/files"))) {
+            QByteArray _data = e->mimeData()->data(QStringLiteral("libfm/files"));
+            srcPaths = pathListFromUriList(_data.data());
         }
-        Qt::DropAction action = DndActionMenu::askUser(actions,
-                                                       view->viewport()->mapToGlobal(e->pos()),
-                                                       // a parent is needed under Wayland for correct positioning
-                                                       view->viewport());
-        e->setDropAction(action);
+        if(srcPaths.empty() && e->mimeData()->hasUrls()) {
+            srcPaths = Fm::pathListFromQUrls(e->mimeData()->urls());
+        }
+
+        if(!srcPaths.empty()) {
+            Qt::DropActions actions = Qt::IgnoreAction;
+            if(info && info->isWritableDirectory() && info->isWritable()) {
+                actions = e->possibleActions();
+            }
+            Qt::DropAction action = DndActionMenu::askUser(actions,
+                                                           view->viewport()->mapToGlobal(e->pos()),
+                                                           // a parent is needed under Wayland for correct positioning
+                                                           view->viewport());
+            switch(action) {
+            case Qt::CopyAction:
+                FileOperation::copyFiles(srcPaths, destPath);
+                break;
+            case Qt::MoveAction:
+                FileOperation::moveFiles(srcPaths, destPath);
+                break;
+            case Qt::LinkAction:
+                FileOperation::symlinkFiles(srcPaths, destPath);
+                break;
+            default:
+                break;
+            }
+            e->accept(); // prevent further event propagation
+        }
     }
 }
 
