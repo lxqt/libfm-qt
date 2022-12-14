@@ -1597,9 +1597,13 @@ void FolderView::childDropEvent(QDropEvent* e) {
         return;
     }
 
-    if(e->keyboardModifiers() == Qt::NoModifier) {
-        // if no key modifiers are used, popup a menu
-        // to ask the user for the action he/she wants to perform.
+    // If no key modifiers are used, pop up a menu
+    // to ask the user for the action he/she wants to perform.
+    if(e->keyboardModifiers() == Qt::NoModifier
+       // WARNING: When the drag source is outside the app, showing a popup menu makes Wayland free
+       // the mime data of the drop event and so, a crash will happen in FolderModel::dropMimeData().
+       // As a workaround, we just accept the proposed action in this case.
+       && !(e->source() == nullptr && QGuiApplication::platformName() == QStringLiteral("wayland"))) {
         Qt::DropActions actions = Qt::IgnoreAction;
         std::shared_ptr<const Fm::FileInfo> info = nullptr;
         if(model_) {
