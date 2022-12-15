@@ -588,7 +588,8 @@ bool FolderModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
         srcPaths = Fm::pathListFromQUrls(data->urls());
     }
 
-    // FIXME: should we put this in dropEvent handler of FolderView instead?
+    // NOTE: If the DND is done with no key modifier, the current method will not be called.
+    // Instead, the dropEvent handler of FolderView will do the job after asking the user.
     if(!srcPaths.empty()) {
         //qDebug("drop action: %d", action);
         switch(action) {
