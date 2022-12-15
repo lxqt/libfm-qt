@@ -29,6 +29,7 @@
 #include "filemenu.h"
 #include "foldermenu.h"
 #include "filelauncher.h"
+#include "fileoperation.h"
 #include "utilities.h"
 #include <QTimer>
 #include <QDate>
@@ -49,8 +50,6 @@
 #include <xcb/xcb.h> // for XDS support
 #include "xdndworkaround.h" // for XDS support
 #include "folderview_p.h"
-#include "utilities.h"
-#include "fileoperation.h"
 
 #include <algorithm>
 
@@ -1602,10 +1601,8 @@ void FolderView::childDropEvent(QDropEvent* e) {
         // If no key modifiers are used, pop up a menu
         // to ask the user for the action he/she wants to perform.
 
-        // WARNING: We perform the required file operations here, without calling
-        // FolderModel::dropMimeData(). The reason is that Wayland frees the mime data
-        // of the drop event once a popup menu is shown, creating a dangling pointer,
-        // which would cause a crash if FolderModel::dropMimeData() was called.
+        // NOTE: Under Wayland, serious problems will happen if the DND menu is shown
+        // while the DND is in progress. Also, the menu needs a parent for correct positioning.
 
         Fm::FilePath destPath;
         std::shared_ptr<const Fm::FileInfo> info = nullptr;
@@ -1636,23 +1633,24 @@ void FolderView::childDropEvent(QDropEvent* e) {
             if(info && info->isWritableDirectory() && info->isWritable()) {
                 actions = e->possibleActions();
             }
-            Qt::DropAction action = DndActionMenu::askUser(actions,
-                                                           view->viewport()->mapToGlobal(e->pos()),
-                                                           // a parent is needed under Wayland for correct positioning
-                                                           view->viewport());
-            switch(action) {
-            case Qt::CopyAction:
-                FileOperation::copyFiles(srcPaths, destPath);
-                break;
-            case Qt::MoveAction:
-                FileOperation::moveFiles(srcPaths, destPath);
-                break;
-            case Qt::LinkAction:
-                FileOperation::symlinkFiles(srcPaths, destPath);
-                break;
-            default:
-                break;
-            }
+            auto curPos = view->viewport()->mapToGlobal(e->pos());
+            QTimer::singleShot(0, view, [this, curPos, actions, srcPaths, destPath] {
+                // a parent is needed under Wayland for correct positioning
+                Qt::DropAction action = DndActionMenu::askUser(actions, curPos, view);
+                switch(action) {
+                case Qt::CopyAction:
+                    FileOperation::copyFiles(srcPaths, destPath);
+                    break;
+                case Qt::MoveAction:
+                    FileOperation::moveFiles(srcPaths, destPath);
+                    break;
+                case Qt::LinkAction:
+                    FileOperation::symlinkFiles(srcPaths, destPath);
+                    break;
+                default:
+                    break;
+                }
+            });
             e->accept(); // prevent further event propagation
         }
     }

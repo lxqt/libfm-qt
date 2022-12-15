@@ -24,9 +24,13 @@
 #include <QGuiApplication>
 #include <QMouseEvent>
 #include <QTimer>
+#include <QMimeData>
 #include "dirtreemodel.h"
 #include "dirtreemodelitem.h"
 #include "filemenu.h"
+#include "fileoperation.h"
+#include "dndactionmenu.h"
+#include "utilities.h"
 
 namespace Fm {
 
@@ -336,6 +340,46 @@ void DirTreeView::onSelectionChanged(const QItemSelection& selected, const QItem
         }
         Q_EMIT chdirRequested(type, currentPath_);
     }
+}
+
+void DirTreeView::dropEvent(QDropEvent* event) {
+    // NOTE: Under Wayland, serious problems will happen if the DND menu is shown
+    // while the DND is in progress. Also, the menu needs a parent for correct positioning.
+    QModelIndex index = indexAt(event->pos());
+    if(index.isValid()) {
+        DirTreeModel* _model = static_cast<DirTreeModel*>(model());
+        auto destPath = _model->filePath(index);
+        if(!destPath) { // maybe a placeholder
+            destPath = _model->filePath(index.parent());
+        }
+        if(destPath) {
+            if(event->mimeData()->hasUrls()) { // files uris are dropped
+                auto srcPaths = pathListFromQUrls(event->mimeData()->urls());
+                if(!srcPaths.empty()) {
+                    auto curPos = viewport()->mapToGlobal(event->pos());
+                    QTimer::singleShot(0, this, [this, curPos, srcPaths, destPath] {
+                        Qt::DropAction action = DndActionMenu::askUser(Qt::CopyAction | Qt::MoveAction | Qt::LinkAction, curPos, viewport());
+                        switch(action) {
+                        case Qt::CopyAction:
+                            FileOperation::copyFiles(srcPaths, destPath);
+                            break;
+                        case Qt::MoveAction:
+                            FileOperation::moveFiles(srcPaths, destPath);
+                            break;
+                        case Qt::LinkAction:
+                            FileOperation::symlinkFiles(srcPaths, destPath);
+                            break;
+                        default:
+                            break;
+                        }
+                    });
+                    event->accept(); // prevent further event propagation
+                }
+            }
+        }
+    }
+
+    QTreeView::dropEvent(event);
 }
 
 

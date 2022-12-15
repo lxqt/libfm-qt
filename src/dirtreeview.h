@@ -54,6 +54,7 @@ public:
 protected:
     void mousePressEvent(QMouseEvent* event) override;
     void rowsAboutToBeRemoved(const QModelIndex& parent, int start, int end) override;
+    void dropEvent(QDropEvent* event) override;
 
 private:
     void cancelPendingChdir();

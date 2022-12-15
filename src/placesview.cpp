@@ -23,12 +23,15 @@
 #include "placesmodelitem.h"
 #include "mountoperation.h"
 #include "fileoperation.h"
+#include "dndactionmenu.h"
+#include "utilities.h"
 #include <QMenu>
 #include <QContextMenuEvent>
 #include <QHeaderView>
 #include <QDebug>
 #include <QGuiApplication>
 #include <QTimer>
+#include <QMimeData>
 #include "folderitemdelegate.h"
 
 namespace Fm {
@@ -326,6 +329,58 @@ void PlacesView::dragMoveEvent(QDragMoveEvent* event) {
 }
 
 void PlacesView::dropEvent(QDropEvent* event) {
+    // NOTE: Under Wayland, serious problems will happen if the DND menu is shown
+    // while the DND is in progress. Also, the menu needs a parent for correct positioning.
+    if(!event->mimeData()->hasFormat(QStringLiteral("application/x-bookmark-row")) // droppped data is not a bookmark row
+       && event->mimeData()->hasUrls()) { // file uris are dropped
+        QModelIndex index = indexAt(event->pos());
+        if(index.isValid()
+           && index.column() == 0 // the real item is at column 0
+           && index.parent().isValid()) { // should be a child item
+            PlacesModelItem* item = static_cast<PlacesModelItem*>(model_->itemFromIndex(proxyModel_->mapToSource(index)));
+            if(item
+               && item->type() != PlacesModelItem::Mount
+               && (item->type() != PlacesModelItem::Volume
+                   || static_cast<PlacesModelVolumeItem*>(item)->isMounted())) {
+                auto destPath = item->path();
+                if(destPath
+                   && strcmp(destPath.toString().get(), "menu://applications/") != 0
+                   && strcmp(destPath.toString().get(), "network:///") != 0
+                   && strcmp(destPath.toString().get(), "computer:///") != 0 ) {
+                    auto srcPaths = pathListFromQUrls(event->mimeData()->urls());
+                    if(!srcPaths.empty()) {
+                        auto curPos = viewport()->mapToGlobal(event->pos());
+                        QTimer::singleShot(0, this, [this, curPos, srcPaths, destPath] {
+                            if(strcmp(destPath.toString().get(), "trash:///") == 0) {
+                                Qt::DropAction action = DndActionMenu::askUser(Qt::MoveAction, curPos, viewport());
+                                if (action == Qt::MoveAction) {
+                                    FileOperation::trashFiles(srcPaths, false);
+                                }
+                            }
+                            else {
+                                Qt::DropAction action = DndActionMenu::askUser(Qt::CopyAction | Qt::MoveAction | Qt::LinkAction, curPos, viewport());
+                                switch(action) {
+                                case Qt::CopyAction:
+                                    FileOperation::copyFiles(srcPaths, destPath);
+                                    break;
+                                case Qt::MoveAction:
+                                    FileOperation::moveFiles(srcPaths, destPath);
+                                    break;
+                                case Qt::LinkAction:
+                                    FileOperation::symlinkFiles(srcPaths, destPath);
+                                    break;
+                                default:
+                                    break;
+                                }
+                            }
+                        });
+                        event->accept(); // prevent further event propagation
+                    }
+                }
+            }
+        }
+    }
+
     QTreeView::dropEvent(event);
 }
 
@@ -468,13 +523,17 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
             index = index.sibling(index.row(), 0);
         }
 
+        PlacesModelItem* item = static_cast<PlacesModelItem*>(model_->itemFromIndex(proxyModel_->mapToSource(index)));
+        if(item == nullptr) {
+            return;
+        }
+
         // The ownership of the menu is taken because that may be needed for
         // correct positioning under Wayland, especially when the window is
         // inactive (it is safe under X11), but the menu will be deleted by
         // deleteLater() when it is going to hide.
         QMenu* menu = new QMenu(this);
         QAction* action = nullptr;
-        PlacesModelItem* item = static_cast<PlacesModelItem*>(model_->itemFromIndex(proxyModel_->mapToSource(index)));
 
         if(index.parent().isValid()
            && item->type() != PlacesModelItem::Mount
