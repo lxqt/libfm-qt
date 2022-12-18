@@ -19,7 +19,6 @@
 
 #include "dirtreemodel.h"
 #include "dirtreemodelitem.h"
-#include "dndactionmenu.h"
 #include "fileoperation.h"
 #include "utilities.h"
 #include <QDebug>
@@ -87,12 +86,11 @@ QVariant DirTreeModel::data(const QModelIndex& index, int role) const {
     return QVariant();
 }
 
-bool DirTreeModel::dropMimeData(const QMimeData* data, Qt::DropAction /*action*/, int /*row*/, int /*column*/, const QModelIndex& parent) {
+bool DirTreeModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int /*row*/, int /*column*/, const QModelIndex& parent) {
     if(auto destPath = filePath(parent)) {
         if(data->hasUrls()) { // files uris are dropped
             auto paths = pathListFromQUrls(data->urls());
             if(!paths.empty()) {
-                Qt::DropAction action = DndActionMenu::askUser(Qt::CopyAction | Qt::MoveAction | Qt::LinkAction, QCursor::pos());
                 switch(action) {
                 case Qt::CopyAction:
                     FileOperation::copyFiles(paths, destPath);

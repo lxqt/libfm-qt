@@ -27,7 +27,6 @@
 #include <QStandardPaths>
 #include "utilities.h"
 #include "placesmodelitem.h"
-#include "dndactionmenu.h"
 #include "fileoperation.h"
 
 namespace Fm {
@@ -537,7 +536,7 @@ std::shared_ptr<PlacesModel> PlacesModel::globalInstance() {
 }
 
 
-bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction /*action*/, int row, int column, const QModelIndex& parent) {
+bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) {
     QStandardItem* item = itemFromIndex(parent);
     if(data->hasFormat(QStringLiteral("application/x-bookmark-row"))) { // the data being dopped is a bookmark row
         // decode it and do bookmark reordering
@@ -581,7 +580,6 @@ bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction /*action*/,
                 if (item == trashItem_) {
                     auto paths = pathListFromQUrls(data->urls());
                     if(!paths.empty()) {
-                        Qt::DropAction action = DndActionMenu::askUser(Qt::MoveAction, QCursor::pos());
                         if (action == Qt::MoveAction) {
                             FileOperation::trashFiles(paths, false);
                         }
@@ -593,7 +591,6 @@ bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction /*action*/,
                     if(destPath) {
                         auto paths = pathListFromQUrls(data->urls());
                         if(!paths.empty()) {
-                            Qt::DropAction action = DndActionMenu::askUser(Qt::CopyAction | Qt::MoveAction | Qt::LinkAction, QCursor::pos());
                             switch(action) {
                             case Qt::CopyAction:
                                 FileOperation::copyFiles(paths, destPath);
