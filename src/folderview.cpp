@@ -1635,8 +1635,25 @@ void FolderView::childDropEvent(QDropEvent* e) {
             }
             auto curPos = view->viewport()->mapToGlobal(e->pos());
             QTimer::singleShot(0, view, [this, curPos, actions, srcPaths, destPath] {
-                // a parent is needed under Wayland for correct positioning
-                Qt::DropAction action = DndActionMenu::askUser(actions, curPos, view);
+                Qt::DropAction action;
+                // Wayland does not see the modifier if it is pressed after dragging.
+                // Therefore, it should be checked now, when the DND is finished.
+                switch(QApplication::keyboardModifiers()) {
+                case Qt::ControlModifier:
+                    action = Qt::CopyAction;
+                    break;
+                case Qt::ShiftModifier:
+                    action = Qt::MoveAction;
+                    break;
+                case Qt::ControlModifier | Qt::ShiftModifier:
+                    action = Qt::LinkAction;
+                    break;
+                default:
+                    // a parent is needed under Wayland for correct positioning
+                    action = DndActionMenu::askUser(actions, curPos, view);
+                    break;
+                }
+
                 switch(action) {
                 case Qt::CopyAction:
                     FileOperation::copyFiles(srcPaths, destPath);
