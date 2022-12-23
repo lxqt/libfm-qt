@@ -70,6 +70,9 @@ Fm::FilePathList pathListFromQUrls(QList<QUrl> urls) {
 void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget* parent) {
     QClipboard* clipboard = QApplication::clipboard();
     const QMimeData* data = clipboard->mimeData();
+    if(data == nullptr) {
+        return; // possible under Wayland
+    }
     Fm::FilePathList paths;
     bool isCut = false;
 
