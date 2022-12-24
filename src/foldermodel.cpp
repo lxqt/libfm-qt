@@ -187,6 +187,9 @@ void FolderModel::updateCutFilesSet() {
     bool cutPathFound = false;
     const QClipboard* clipboard = QApplication::clipboard();
     const QMimeData* data = clipboard->mimeData();
+    if(data == nullptr) {
+        return; // possible under Wayland
+    }
 
     // Gnome, LXDE, XFCE (see utilities.cpp -> pasteFilesFromClipboard)
     if(data->hasFormat(QStringLiteral("x-special/gnome-copied-files"))) {
