@@ -85,6 +85,7 @@ FolderViewListView::~FolderViewListView() {
 }
 
 void FolderViewListView::startDrag(Qt::DropActions supportedActions) {
+    mouseLeftPressed_ = false; // see FolderViewListView::mouseMoveEvent
     if(movement() != Static) {
         QListView::startDrag(supportedActions);
     }
