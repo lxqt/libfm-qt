@@ -192,6 +192,8 @@ Q_SIGNALS:
 
     void inlineRenamed(const QString& oldName, const QString& newName);
 
+    void dropIsDecided(bool accepted);
+
 private:
 
     QAbstractItemView* view;

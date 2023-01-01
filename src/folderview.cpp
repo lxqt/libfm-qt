@@ -1655,6 +1655,8 @@ void FolderView::childDropEvent(QDropEvent* e) {
                     break;
                 }
 
+                Q_EMIT dropIsDecided(action != Qt::IgnoreAction);
+
                 switch(action) {
                 case Qt::CopyAction:
                     FileOperation::copyFiles(srcPaths, destPath);
@@ -1670,8 +1672,13 @@ void FolderView::childDropEvent(QDropEvent* e) {
                 }
             });
             e->accept(); // prevent further event propagation
+            return;
         }
     }
+
+    QTimer::singleShot(0, view, [this] {
+        Q_EMIT dropIsDecided(true); // after finishing drop
+    });
 }
 
 bool FolderView::eventFilter(QObject* watched, QEvent* event) {
