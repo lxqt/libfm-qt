@@ -1,3 +1,16 @@
+libfm-qt-1.2.1 / 2023-01-02
+============================
+ * Specified the parents of context menus for use on Wayland.
+ * Fixed launching XWayland apps under Wayland.
+ * appchooserdialog: do not disable the OK button when Custom Command page is shown.
+ * Increased the minimum width of name column in detailed list view.
+ * Fixed the DND menu position under Wayland.
+ * Fixed crash with DND from outside app under Wayland.
+ * Fixed unresponsive DND menu under Wayland.
+ * Workaround for DND keyboard modifiers under Wayland.
+ * Check mime data of clipboard for nullity (for Wayland).
+ * Fixed drawing of selection rectangle under Wayland.
+
 libfm-qt-1.2.0 / 2022-11-05
 ============================
  * Support adding of pattern lists to entries of search dialog (such lists are used by `pcmanfm-qt` for having a search history).
