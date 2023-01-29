@@ -933,6 +933,14 @@ void FolderView::setScrollPerPixel(bool perPixel) {
         return;
     }
     scrollPerPixel_ = perPixel;
+    if(!scrollPerPixel_ && smoothScrollTimer_ != nullptr) {
+        disconnect(smoothScrollTimer_, &QTimer::timeout, this, &FolderView::scrollSmoothly);
+        smoothScrollTimer_->stop();
+        delete smoothScrollTimer_;
+        smoothScrollTimer_ = nullptr;
+        queuedScrollSteps_.clear(); // also forget the remaining steps
+    }
+
     // icon and thumbnail modes scroll per pixel by default
     if(mode == DetailedListMode) {
         if(FolderViewTreeView* treeView = static_cast<FolderViewTreeView*>(view)) {
@@ -1040,15 +1048,6 @@ void FolderView::onClosingEditor(QWidget* editor, QAbstractItemDelegate::EndEdit
 void FolderView::setViewMode(ViewMode _mode) {
     if(_mode == mode) { // if it's the same more, ignore
         return;
-    }
-    // disabling of smooth scrolling is only for list and compact modes
-    if(!scrollPerPixel_ && smoothScrollTimer_ != nullptr
-       && (_mode == DetailedListMode || _mode == CompactMode)) {
-        disconnect(smoothScrollTimer_, &QTimer::timeout, this, &FolderView::scrollSmoothly);
-        smoothScrollTimer_->stop();
-        delete smoothScrollTimer_;
-        smoothScrollTimer_ = nullptr;
-        queuedScrollSteps_.clear(); // also forget the remaining steps
     }
     // FIXME: retain old selection
 
@@ -1744,15 +1743,13 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                 return true;
             }
 
-            // Smooth Scrolling
-            // Some tricks are adapted from <https://github.com/zhou13/qsmoothscrollarea>.
+            // Control scrolling with mouse wheel
             QWheelEvent* we = static_cast<QWheelEvent*>(event);
             QPoint angleDelta = we->angleDelta();
             bool horizontal(qAbs(angleDelta.x()) > qAbs(angleDelta.y()));
             if(event->spontaneous()
                && we->source() == Qt::MouseEventNotSynthesized
-               && (scrollPerPixel_ || (mode != DetailedListMode && mode != CompactMode))
-               // To have a simpler code, we enable horizontal smooth scrolling with mouse wheel
+               // To have a simpler code, we control horizontal scrolling with mouse wheel
                // only in horizontal list views.
                && (horizontalListView || !horizontal)) {
                 QScrollBar* sbar = horizontalListView ? view->horizontalScrollBar()
@@ -1760,6 +1757,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                 if(sbar && sbar->isVisible()) {
                     // first get the angle delta and customize it according to our needs
                     int delta = horizontal ? angleDelta.x() : angleDelta.y();
+                    int origDelta = delta;
                     if(QApplication::wheelScrollLines() > 1) {
                         /* Scroll with minimum speed when
                             (1) The mode is compact (because columns can be wide), or
@@ -1790,30 +1788,48 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                         break; // the scrollbar can't move
                     }
 
-                    // NOTE: Some touchpad devices may trigger wheel events with angle deltas
-                    // less than "scrollAnimFrames", resulting in jumpy movements. Therefore,
-                    // we wait until the total delta value is enough.
-                    static int _delta = 0;
-                    _delta += delta;
-                    if(abs(_delta) < scrollAnimFrames) {
+                    if(!scrollPerPixel_) {
+                        if(origDelta == delta) { // nothing has changed
+                            break;
+                        }
+                        QWheelEvent e(we->position(),
+                                      we->globalPosition(),
+                                      we->pixelDelta(),
+                                      QPoint (0, delta),
+                                      we->buttons(),
+                                      Qt::NoModifier,
+                                      we->phase(),
+                                      false,
+                                      we->source());
+                        QApplication::sendEvent(sbar, &e);
                         return true;
                     }
+                    else {
+                        // NOTE: Some touchpad devices may trigger wheel events with angle deltas
+                        // less than "scrollAnimFrames", resulting in jumpy movements. Therefore,
+                        // we wait until the total delta value is enough.
+                        static int _delta = 0;
+                        _delta += delta;
+                        if(abs(_delta) < scrollAnimFrames) {
+                            return true;
+                        }
 
-                    if(!smoothScrollTimer_) {
-                        smoothScrollTimer_ = new QTimer();
-                        connect(smoothScrollTimer_, &QTimer::timeout, this, &FolderView::scrollSmoothly);
-                    }
+                        if(!smoothScrollTimer_) {
+                            smoothScrollTimer_ = new QTimer();
+                            connect(smoothScrollTimer_, &QTimer::timeout, this, &FolderView::scrollSmoothly);
+                        }
 
-                    // set the data for smooth scrolling
-                    scrollData data;
-                    data.delta = _delta;
-                    data.leftFrames = scrollAnimFrames;
-                    queuedScrollSteps_.append(data);
-                    if(!smoothScrollTimer_->isActive()) {
-                        smoothScrollTimer_->start(1000 / SCROLL_FRAMES_PER_SEC);
+                        // set the data for smooth scrolling
+                        scrollData data;
+                        data.delta = _delta;
+                        data.leftFrames = scrollAnimFrames;
+                        queuedScrollSteps_.append(data);
+                        if(!smoothScrollTimer_->isActive()) {
+                            smoothScrollTimer_->start(1000 / SCROLL_FRAMES_PER_SEC);
+                        }
+                        _delta = 0;
+                        return true;
                     }
-                    _delta = 0;
-                    return true;
                 }
             }
             break;
