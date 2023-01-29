@@ -231,13 +231,11 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         drawText(painter, opt, textRect);
         painter->restore();
     }
-    else {  // horizontal layout (list view)
+    else { // horizontal layout (list view)
 
         // Let the style engine do the painting but take care of shadowed and cut icons.
         // NOTE: The shadowing can also be done directly.
         // WARNING: QStyledItemDelegate shouldn't be used for painting because it resets the icon.
-        // FIXME: For better text alignment, here we could have increased the icon width
-        // when it's smaller than the requested size.
 
         QIcon::Mode iconMode = shadowIcon ? QIcon::Disabled : iconModeFromState(opt.state);
 
@@ -261,6 +259,7 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
 
         const QWidget* widget = opt.widget;
         QStyle* style = widget ? widget->style() : QApplication::style();
+        opt.decorationSize = option.decorationSize; // for a better text alignment
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, widget);
 
         if(isCut && !opt.icon.isNull()) {
@@ -516,20 +515,23 @@ void FolderItemDelegate::updateEditorGeometry(QWidget* editor, const QStyleOptio
     if (option.decorationPosition == QStyleOptionViewItem::Top
         || option.decorationPosition == QStyleOptionViewItem::Bottom) {
         // give all of the available space to the editor
-        QStyleOptionViewItem opt = option;
-        initStyleOption(&opt, index);
-        opt.decorationAlignment = Qt::AlignHCenter|Qt::AlignTop;
-        opt.displayAlignment = Qt::AlignTop|Qt::AlignHCenter;
-        QRect textRect(opt.rect.x(),
-                       opt.rect.y() + margins_.height() + option.decorationSize.height(),
+        QRect textRect(option.rect.x(),
+                       option.rect.y() + margins_.height() + option.decorationSize.height(),
                        itemSize_.width(),
                        itemSize_.height() - margins_.height() - option.decorationSize.height());
         int frame = editor->style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &option, editor);
         editor->setGeometry(textRect.adjusted(-frame, -frame, frame, frame));
     }
     else {
-        // use the default editor geometry in compact view
-        QStyledItemDelegate::updateEditorGeometry(editor, option, index);
+        QStyleOptionViewItem opt = option;
+        initStyleOption(&opt, index);
+        opt.decorationSize = option.decorationSize;
+        opt.decorationAlignment = Qt::AlignVCenter|Qt::AlignLeft;
+        opt.displayAlignment = Qt::AlignVCenter|Qt::AlignLeft;
+        opt.showDecorationSelected = editor->style()->styleHint(QStyle::SH_ItemView_ShowDecorationSelected, nullptr, editor);
+        const QWidget* widget = option.widget;
+        QStyle* style = widget ? widget->style() : QApplication::style();
+        editor->setGeometry(style->subElementRect(QStyle::SE_ItemViewItemText, &opt, widget));
     }
 }
 
