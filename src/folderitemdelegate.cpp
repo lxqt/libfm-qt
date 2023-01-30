@@ -49,7 +49,7 @@ FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent)
     margins_(QSize(3, 3)),
     shadowHidden_(false),
     hasEditor_(false) {
-    connect(this,  &QAbstractItemDelegate::closeEditor, [=]{hasEditor_ = false;});
+    connect(this,  &QAbstractItemDelegate::closeEditor, [this]{hasEditor_ = false;});
 }
 
 FolderItemDelegate::~FolderItemDelegate() {
@@ -506,6 +506,13 @@ bool FolderItemDelegate::eventFilter(QObject* object, QEvent* event) {
             Q_EMIT QAbstractItemDelegate::commitData(editor);
             Q_EMIT QAbstractItemDelegate::closeEditor(editor, QAbstractItemDelegate::NoHint);
             return true;
+        }
+        // allow inserting text tab with the line-edit too
+        else if (k == Qt::Key_Tab) {
+            if(auto lineEdit = qobject_cast<QLineEdit*>(editor)) {
+                lineEdit->insert(QString(QChar::Tabulation));
+                return true;
+            }
         }
     }
     return QStyledItemDelegate::eventFilter(object, event);
