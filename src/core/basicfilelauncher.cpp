@@ -421,6 +421,9 @@ bool BasicFileLauncher::launchExecutable(const FileInfoPtr &fileInfo, GAppLaunch
             break;
         }
     }
+    else { // launch it if it has executable file type but is not really executable
+        return launchWithDefaultApp(fileInfo, ctx);
+    }
     return false;
 }
 

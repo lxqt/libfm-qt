@@ -305,7 +305,10 @@ FileMenu::~FileMenu() {
 }
 
 void FileMenu::addTrustAction() {
-    if(info_->isExecutableType()) {
+    if(info_->isExecutableType()
+       // check if it is really executable and not just an executable file type
+       && (info_->isDesktopEntry()
+           || g_file_test(info_->path().localPath().get(), G_FILE_TEST_IS_EXECUTABLE))) {
         QAction* trustAction = new QAction(files_.size() > 1
                                              ? tr("Trust selected executables")
                                              : tr("Trust this executable"),
