@@ -238,8 +238,6 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         showHiddenAction->setChecked(proxyModel_->showHidden());
         thumbnailsAction->setChecked(proxyModel_->showThumbnails());
         tooltipsAction->setChecked(!noItemTooltip_);
-        perPixelAction->setVisible(viewMode_ == FolderView::DetailedListMode
-                                   || viewMode_ == FolderView::CompactMode);
         perPixelAction->setChecked(scrollPerPixel_);
     });
 
