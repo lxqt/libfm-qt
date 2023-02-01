@@ -86,7 +86,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="77"/>
         <source>&amp;Remove Item</source>
-        <translation>Ögeyi &amp;Sil</translation>
+        <translation>Ögeyi &amp;Kaldır</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
@@ -1349,7 +1349,7 @@ Onun yerine silmek ister misiniz?</translation>
     <message>
         <location filename="../placesview.cpp" line="550"/>
         <source>Remove Bookmark</source>
-        <translation>Yer İmini Sil</translation>
+        <translation>Yer İmini Kaldır</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="560"/>
@@ -1639,7 +1639,7 @@ Değiştirild: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="96"/>
         <source>&amp;Remove</source>
-        <translation>&amp;Sil</translation>
+        <translation>&amp;Kaldır</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="132"/>
