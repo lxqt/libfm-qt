@@ -527,7 +527,10 @@ QString FileDialog::suffix(bool checkDefaultSuffix) const {
                 QString suffix = nameFilter.simplified().split(QLatin1Char(' '), Qt::SkipEmptyParts).at(0);
                 left = suffix.indexOf(QLatin1Char('.')); // it can be like ".tar.xz"
                 if(left != -1 && suffix.size() - left > 1) {
-                    return suffix.right(suffix.size() - left - 1);
+                    suffix = suffix.right(suffix.size() - left - 1);
+                    if(suffix.indexOf(QRegularExpression(QStringLiteral("\\W"))) == -1) {
+                        return suffix;
+                    }
                 }
             }
         }
@@ -1333,9 +1336,8 @@ void FileDialog::FileDialogFilter::update() {
     // parse the "*.ext1 *.ext2 *.ext3 ..." list into QRegularExpression objects
     const auto globs = nameFilter.simplified().split(QLatin1Char(' '));
     for(const auto& glob: globs) {
-        patterns_.emplace_back(QRegularExpression(QStringLiteral("\\A(?:")
-                                                    + QRegularExpression::wildcardToRegularExpression(glob)
-                                                    + QStringLiteral(")\\z"), QRegularExpression::CaseInsensitiveOption));
+        patterns_.emplace_back(QRegularExpression(QRegularExpression::wildcardToRegularExpression(glob),
+                                                  QRegularExpression::CaseInsensitiveOption));
     }
 }
 
