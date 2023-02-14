@@ -501,11 +501,23 @@ void FolderItemDelegate::setEditorData(QWidget* editor, const QModelIndex& index
 bool FolderItemDelegate::eventFilter(QObject* object, QEvent* event) {
     QWidget *editor = qobject_cast<QWidget*>(object);
     if (editor && event->type() == QEvent::KeyPress) {
-        int k = static_cast<QKeyEvent *>(event)->key();
+        auto ke = static_cast<QKeyEvent*>(event);
+        int k = ke->key();
         if (k == Qt::Key_Return || k == Qt::Key_Enter) {
             Q_EMIT QAbstractItemDelegate::commitData(editor);
             Q_EMIT QAbstractItemDelegate::closeEditor(editor, QAbstractItemDelegate::NoHint);
             return true;
+        }
+        // go to first/last position with Home/End key in the text-edit
+        else if (k == Qt::Key_Home || k == Qt::Key_End) {
+            if(auto textEdit = qobject_cast<QTextEdit*>(editor)) {
+                auto txtCur = textEdit->textCursor();
+                txtCur.movePosition(k == Qt::Key_Home ? QTextCursor::Start : QTextCursor::End,
+                                    ke->modifiers() == Qt::ShiftModifier ? QTextCursor::KeepAnchor
+                                                                         : QTextCursor::MoveAnchor);
+                textEdit->setTextCursor(txtCur);
+                return true;
+            }
         }
         // allow inserting text tab with the line-edit too
         else if (k == Qt::Key_Tab) {
