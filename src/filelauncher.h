@@ -59,7 +59,7 @@ private:
 
 private:
     bool multiple_;
-    BasicFileLauncher::ExecAction dekstopEntryAction_;
+    BasicFileLauncher::ExecAction desktopEntryAction_;
     BasicFileLauncher::ExecAction scriptAction_;
     BasicFileLauncher::ExecAction execAction_;
 };

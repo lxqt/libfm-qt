@@ -270,7 +270,7 @@ void ProxyFolderModel::setShowThumbnails(bool show) {
                 connect(srcModel, &FolderModel::thumbnailLoaded, this, &ProxyFolderModel::onThumbnailLoaded);
             }
             else { // turn off thumbnails
-                // free cached old thumbnails in souce model
+                // free cached old thumbnails in source model
                 srcModel->releaseThumbnails(thumbnailSize_);
                 disconnect(srcModel, &FolderModel::thumbnailLoaded, this, &ProxyFolderModel::onThumbnailLoaded);
             }

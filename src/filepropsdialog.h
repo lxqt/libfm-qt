@@ -77,7 +77,7 @@ private:
     bool singleFile; // only one file is selected?
     bool hasDir; // is there any dir in the files?
     bool allNative; // all files are on native UNIX filesystems (not virtual or remote)
-    QIcon customIcon; // custom (folder) icon (wiil be checked for its nullity)
+    QIcon customIcon; // custom (folder) icon (will be checked for its nullity)
 
     std::shared_ptr<const Fm::MimeType> mimeType; // mime type of the files
 

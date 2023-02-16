@@ -516,7 +516,7 @@ QString FileDialog::suffix(bool checkDefaultSuffix) const {
     if(checkDefaultSuffix && !defaultSuffix_.isEmpty()) {
         return defaultSuffix_;
     }
-    // in the save mode, still try to make a suffix out of the currrent name filter
+    // in the save mode, still try to make a suffix out of the current name filter
     if(acceptMode_ != QFileDialog::AcceptOpen) {
         auto left = currentNameFilter_.lastIndexOf(QLatin1Char('('));
         if(left != -1) {

@@ -331,7 +331,7 @@ void PlacesView::dragMoveEvent(QDragMoveEvent* event) {
 void PlacesView::dropEvent(QDropEvent* event) {
     // NOTE: Under Wayland, serious problems will happen if the DND menu is shown
     // while the DND is in progress. Also, the menu needs a parent for correct positioning.
-    if(!event->mimeData()->hasFormat(QStringLiteral("application/x-bookmark-row")) // droppped data is not a bookmark row
+    if(!event->mimeData()->hasFormat(QStringLiteral("application/x-bookmark-row")) // dropped data is not a bookmark row
        && event->mimeData()->hasUrls()) { // file uris are dropped
         QModelIndex index = indexAt(event->pos());
         if(index.isValid()

@@ -92,7 +92,7 @@ public:
         return type_;
     }
 
-    // convinient static functions
+    // convenient static functions
     static FileOperation* copyFiles(Fm::FilePathList srcFiles, Fm::FilePath dest, QWidget* parent = nullptr);
 
     static FileOperation* copyFiles(Fm::FilePathList srcFiles, Fm::FilePathList destFiles, QWidget* parent = nullptr);

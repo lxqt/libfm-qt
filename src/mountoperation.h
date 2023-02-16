@@ -38,7 +38,7 @@ namespace Fm {
 // Need to find a better API design which make things fully async and cancellable.
 
 // FIXME: parent_ does not work. All dialogs shown by the mount operation has no parent window assigned.
-// FIXME: Need to reconsider the propery way of API design. Blocking sync calls are handy, but
+// FIXME: Need to reconsider the proper way of API design. Blocking sync calls are handy, but
 // indeed causes some problems. :-(
 
 class LIBFM_QT_API MountOperation: public QObject {

@@ -553,7 +553,7 @@ static void parse_search_uri(FmVfsSearchEnumerator* priv, const char* uri_str)
                     priv->mime_types = g_strsplit(value, ";", -1);
 
                     /* For mime_type patterns such as image/* and audio/*,
-                     * we move the trailing '*' to begining of the string
+                     * we move the trailing '*' to beginning of the string
                      * as a measure of optimization. Later we can detect if it's a
                      * pattern or a full type name by checking the first char. */
                     if(priv->mime_types)
@@ -859,7 +859,7 @@ static gboolean fm_search_job_match_file_type(FmVfsSearchEnumerator* priv, GFile
         {
             const char* mime_type = *pmime_type;
             /* For mime_type patterns such as image/* and audio/*,
-             * we move the trailing '*' to begining of the string
+             * we move the trailing '*' to beginning of the string
              * as a measure of optimization. We can know it's a
              * pattern not a full type name by checking the first char. */
             if(mime_type[0] == '*')

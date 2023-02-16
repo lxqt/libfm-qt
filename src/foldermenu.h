@@ -101,7 +101,7 @@ protected Q_SLOTS:
     void onFolderFirstActionTriggered(bool checked);
     void onHiddenLastActionTriggered(bool checked);
     void onPropertiesActionTriggered();
-    void onCustomActionTrigerred();
+    void onCustomActionTriggered();
 
 private:
     void createSortMenu();

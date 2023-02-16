@@ -284,7 +284,7 @@ libfm-qt-0.13.0 / 2018-05-21
   * Delete the unused old FmTemplate wrapper.
   * Create the template items in the "Create New" menu with the new C++ file template APIs.
   * Port template support to C++ (Fm::Templates class).
-  * Add convinient functions in Fm::FileOperation to set dest paths for file transfer jobs.
+  * Add convenient functions in Fm::FileOperation to set dest paths for file transfer jobs.
   * Made job async again
   * Fixed launching of desktop files
   * Cleanup
@@ -301,7 +301,7 @@ libfm-qt-0.13.0 / 2018-05-21
   * Elided labels for file operation dialog
   * fix namespace, fixes lxqt/libfm-qt/issues/174
   * Misc link fixes
-  * Fixes some pathes after repo move
+  * Fixes some paths after repo move
   * Fix a cause of crash in `AppChooserComboBox`
   * build: Bump version
   * Drop Fm::IconTheme
@@ -421,7 +421,7 @@ libfm-qt-0.12.0 / 2017-10-21
   * folderview: Don't allow D&D by Back or Forward
   * More fixes (#87)
   * Added a missing change signal (#86)
-  * Fix single items when seaching (#85)
+  * Fix single items when searching (#85)
   * Check for nullity of IconInfo (#84)
   * Address compiler warnings
   * Remove addRoots() return type
@@ -513,7 +513,7 @@ libfm-qt-0.12.0 / 2017-10-21
   * Implement VolumeManager class which is a QObject wrapper of gio GVolumeMonitor.
   * Add some getters for Volume and Mount classes.
   * Properly associate external thumbnailers with mimetypes they support and fix thumbnail generation from thumbnailers.
-  * Start porting thumbnail loaders to the new C++ APIs. Add new Fm::ThumbnailJob used to load thumbnails for a given file list. Add commonDirPath paramter to Fm::FileInfoJob to reduce memory usage.
+  * Start porting thumbnail loaders to the new C++ APIs. Add new Fm::ThumbnailJob used to load thumbnails for a given file list. Add commonDirPath parameter to Fm::FileInfoJob to reduce memory usage.
   * Add the missing test case for folder view.
   * Start porting Fm::FolderModel and Fm::FolderView to the new libfm core c++ API.
   * Work in progress.
@@ -742,8 +742,8 @@ libfm-qt-0.11.0 / 2016-02-27
   * Add more null checks.
   * Portuguese update
   * Add very basic "remaining time" display to the progress dialog. Fix lxde/lxqt#463 - Progress dialog of pcmanfm-qt does not show remaining time.
-  * Fix lxde/pcmanfm-qt#120 - Foucs "Rename" button when file name changed.
-  * Remove unnecessary '\n' charactor from the translated strings.
+  * Fix lxde/pcmanfm-qt#120 - Focus "Rename" button when file name changed.
+  * Remove unnecessary '\n' character from the translated strings.
   * Fix translations (the newly added string comes from the translation of libfm).
   * Improve trash can handling: provide an option to delete the files if moving to trashcan fails.
   * Fix broken filenames of translation files.
@@ -788,7 +788,7 @@ libfm-qt-0.11.0 / 2016-02-27
   * Improve handling of fallback icons. This closes bug #57.
   * Translations are lost accidentally in a previous commit. Restore them all.
   * Fix a crash in Fm::PlacesModel when gvfs is not available. This closes bug #35 - Ctrl+W closes all windows.
-  * Do not detect filename extension and select the whole filename by default while renaming directories. This closes bug #71 - Don't try to detect extensions on directories. * API changed: Fm::renameFile() now accepect FmFileInfo as its first parameter.
+  * Do not detect filename extension and select the whole filename by default while renaming directories. This closes bug #71 - Don't try to detect extensions on directories. * API changed: Fm::renameFile() now accept FmFileInfo as its first parameter.
   * Fix bug #80 - make execute in context menu doesn't do change permissions.
   * Revert "fixed selection issue #45" This patch breaks copying files by DND in icon view mode and moving desktop icons.
   * Use qss instead of QPalette to set the background color of ColorButton. This fixed bug #192 of lxde-qt.
@@ -821,7 +821,7 @@ libfm-qt-0.11.0 / 2016-02-27
   * Implement Fm::AppChooserDialog and Fm::AppMenuView classes. * Add <Open with...>/<Other Applications> menu item to Fm::FileMenu. * Add custom app to Fm::AppChooserComboBox.
   * Add Fm::AppChooserComboBox and use it in Fm::FilePropsDialog.
   * Redesign Fm::FileLauncher APIs to make it more usable. * Add Fm::FileMenu::setFileLauncher() and Fm::FolderView::setFileLauncher() APIs. * Move PCManFM::View::onFileClick() and other popup menu handling to Fm::FolderView.
-  * Improve Fm::FileLaucher to make it easy to derive subclasses. * Implement a special dialog for opening executable files (Fix bug #13 - it does not launch executables)
+  * Improve Fm::FileLauncher to make it easy to derive subclasses. * Implement a special dialog for opening executable files (Fix bug #13 - it does not launch executables)
   * Fix bug #28 - Tash can icon does not refresh when the trash can changes its empty/full status
   * Load autocompletion list for Fm::PathEdit only when the widget has the keyboard focus to avoid unnecessary I/O.
   * Add proper popup menu items for selected folders and fix #20 and #19. * Some code refactors, adding openFolders() and openFolderInTerminal() to Application class.
@@ -843,7 +843,7 @@ libfm-qt-0.11.0 / 2016-02-27
   * Move some code from Fm::DirTreeModel to Fm::DirTreeModelItem.
   * Partially implement Fm::DirTreeView and Fm::DirTreeModel. (not finished yet)
   * Fix an invalid pointer
-  * Implment different modes for Fm::SidePane, matching libfm-qtk design. * Add basic skeleton for dir tree view/model.
+  * Implement different modes for Fm::SidePane, matching libfm-qtk design. * Add basic skeleton for dir tree view/model.
   * Fix the cosmetic defect introduced by the eject buttons in the places view.
   * Add eject buttons to mounted volumes in the places side pane.
   * Add a wrapper class Fm::Path for FmPath C struct.
@@ -866,7 +866,7 @@ libfm-qt-0.11.0 / 2016-02-27
   * Reduce memory usage: Paint the folder items with our own code instead of using a dirty hacks duplicating pixmaps.
   * Reduce of size of QPixmapCache in the hope of decreasing memory usage.
   * Add fallback icons for places item "applications" and "network".
-  * Add class Fm::CachedFolderModel, a convinient way to share Fm::FolderModel objects and reduce memory usage.
+  * Add class Fm::CachedFolderModel, a convenient way to share Fm::FolderModel objects and reduce memory usage.
   * Resize the columns of detailed list view when items are inserted or removed.
   * Optimize column widths in detailed list mode when the view is resized.
   * Only show thumbnails for the first column in detailed list mode.
@@ -909,7 +909,7 @@ libfm-qt-0.11.0 / 2016-02-27
   * Finish chown and chmod supports.
   * Try to add file opermission settings UI.
   * Implement very basic drag and drop support.
-  * Supress the incorrect default dnd handling of QListView.
+  * Suppress the incorrect default dnd handling of QListView.
   * Try to implement Dnd.
   * Finish desktop preferences.
   * Improve desktop preferences and apply settings (partially done).

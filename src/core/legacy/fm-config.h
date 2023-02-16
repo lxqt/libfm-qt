@@ -114,7 +114,7 @@ typedef struct _FmConfig            FmConfig;
  * @defer_content_test: (since 1.2.0) defer test for content type on folder loading
  * @quick_exec: (since 1.2.0) don't ask user for action on executable launch
  * @modules_blacklist: (since 1.2.0) list of modules (mask in form "type:name") to never load
- * @modules_whitelist: (since 1.2.0) list of excemptions from @modules_blacklist
+ * @modules_whitelist: (since 1.2.0) list of exemptions from @modules_blacklist
  * @list_view_size_units: (since 1.2.0) file size units in list view: h, k, M, G
  * @format_cmd: (since 1.2.0) command to format the volume (device will be added)
  * @smart_desktop_autodrop: (since 1.2.0) enable "smart shortcut" auto-action for ~/Desktop

@@ -40,7 +40,7 @@ bool FileActionObject::is_plural_exec(const char* exec) {
     if(!exec) {
         return false;
     }
-    // the first relevent code encountered in Exec parameter
+    // the first relevant code encountered in Exec parameter
     // determines whether the command accepts singular or plural forms
     for(int i = 0; exec[i]; ++i) {
         char ch = exec[i];
@@ -67,7 +67,7 @@ bool FileActionObject::is_plural_exec(const char* exec) {
             case 'x':
                 return false;	// singular
             default:
-                // irrelevent code, skip
+                // irrelevant code, skip
                 break;
             }
         }

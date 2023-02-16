@@ -184,7 +184,7 @@ FmXmlFile *fm_xml_file_new(FmXmlFile *sibling)
  *
  * Sets @handler for @file to be called on parse when @tag is found
  * in XML data. This function will fail if some handler for @tag was
- * aready set, in this case @error will be set appropriately.
+ * already set, in this case @error will be set appropriately.
  *
  * Returns: id for the @tag.
  *
@@ -833,7 +833,7 @@ GList *fm_xml_file_finish_parse(FmXmlFile *file, GError **error)
         {
             g_set_error_literal(error, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                                 _("Document ended unexpectedly"));
-            /* FIXME: analize content of file->data to be more verbose */
+            /* FIXME: analyze content of file->data to be more verbose */
             return NULL;
         }
     }
@@ -1129,7 +1129,7 @@ gboolean fm_xml_file_item_destroy(FmXmlFileItem *item)
  * Inserts @new_item before @item that is already in XML structure. If
  * @new_item is already in the XML structure then it will be moved to
  * the new place instead.
- * Behavior after moving between defferent containers is undefined.
+ * Behavior after moving between different containers is undefined.
  *
  * Returns: %TRUE in case of success.
  *
