@@ -54,7 +54,7 @@ AppMenuView::AppMenuView(QWidget* parent):
     }
     setModel(model_);
     connect(selectionModel(), &QItemSelectionModel::selectionChanged, this, &AppMenuView::selectionChanged);
-    selectionModel()->select(model_->index(0, 0), QItemSelectionModel::SelectCurrent);
+    setCurrentIndex(model_->index(0, 0));
 }
 
 AppMenuView::~AppMenuView() {
@@ -99,13 +99,30 @@ void AppMenuView::addMenuItems(QStandardItem* parentItem, MenuCacheDir* dir) {
 }
 
 void AppMenuView::onMenuCacheReload(MenuCache* mc) {
+    auto expanded = getExpanded();
+    QByteArray selectedId;
+    bool isDir = false;
+    QModelIndexList selected = selectedIndexes();
+    if(!selected.isEmpty()) {
+        if(AppMenuViewItem* item = static_cast<AppMenuViewItem*>(model_->itemFromIndex(selected.first()))) {
+            selectedId = QByteArray(menu_cache_item_get_id(item->item()));
+            isDir = item->isDir();
+        }
+    }
+
     MenuCacheDir* dir = menu_cache_dup_root_dir(mc);
     model_->clear();
-    /* FIXME: preserve original selection */
     if(dir) {
         addMenuItems(nullptr, dir);
         menu_cache_item_unref(MENU_CACHE_ITEM(dir));
-        selectionModel()->select(model_->index(0, 0), QItemSelectionModel::SelectCurrent);
+
+        // try to restore the expansion state and selection
+        restoreExpanded(expanded);
+        QModelIndex indx = indexForId(selectedId, isDir);
+        if(!indx.isValid()) {
+            indx = model_->index(0, 0);
+        }
+        setCurrentIndex(indx);
     }
 }
 
@@ -157,6 +174,67 @@ FilePath AppMenuView::selectedAppDesktopPath() const {
         g_free(mpath);
     }
     return path;
+}
+
+QModelIndex AppMenuView::indexForId(const QByteArray& id, bool isDir, const QModelIndex& index) const {
+    if(id.isEmpty()) {
+        return QModelIndex();
+    }
+    auto child = model_->index(0, 0, index);
+    while(child.isValid()) {
+        if(isDir == model_->hasChildren(child)) {
+            if(AppMenuViewItem* item = static_cast<AppMenuViewItem*>(model_->itemFromIndex(child))) {
+                if(id == QByteArray(menu_cache_item_get_id(item->item()))) {
+                    return child;
+                }
+            }
+        }
+        auto indx = indexForId(id, isDir, child);
+        if(indx.isValid()) {
+            return indx;
+        }
+        child = child.siblingAtRow(child.row() + 1);
+    }
+    return QModelIndex();
+}
+
+QSet<QByteArray> AppMenuView::getExpanded(const QModelIndex& index) const {
+    QSet<QByteArray> expanded;
+    auto child = model_->index(0, 0, index);
+    while(child.isValid()) {
+        if(isExpanded(child)) {
+            if(AppMenuViewItem* item = static_cast<AppMenuViewItem*>(model_->itemFromIndex(child))) {
+                expanded.insert(QByteArray(menu_cache_item_get_id(item->item())));
+            }
+            expanded.unite(getExpanded(child)); // only for children of expanded items
+        }
+        child = child.siblingAtRow(child.row() + 1);
+    }
+    return expanded;
+}
+
+void AppMenuView::restoreExpanded(const QSet<QByteArray>& expanded, const QModelIndex& index) {
+    if(expanded.isEmpty()) {
+        return;
+    }
+    auto l = expanded;
+    auto child = model_->index(0, 0, index);
+    while(child.isValid()) {
+        if(model_->hasChildren(child)) {
+            if(AppMenuViewItem* item = static_cast<AppMenuViewItem*>(model_->itemFromIndex(child))) {
+                auto b = QByteArray(menu_cache_item_get_id(item->item()));
+                if(l.contains(b)) {
+                    setExpanded(child, true);
+                    l.remove(b);
+                    if(l.isEmpty()) {
+                        return;
+                    }
+                    restoreExpanded(l, child); // only for children of expanded items
+                }
+            }
+        }
+        child = child.siblingAtRow(child.row() + 1);
+    }
 }
 
 } // namespace Fm
