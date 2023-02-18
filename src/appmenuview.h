@@ -62,6 +62,10 @@ private:
 
     AppMenuViewItem* selectedItem() const;
 
+    QModelIndex indexForId(const QByteArray& id, bool isDir, const QModelIndex& index = QModelIndex()) const;
+    QSet<QByteArray> getExpanded(const QModelIndex& index = QModelIndex()) const;
+    void restoreExpanded(const QSet<QByteArray>& expanded, const QModelIndex& index = QModelIndex());
+
 private:
     // gboolean fm_app_menu_view_is_item_app(, GtkTreeIter* it);
     QStandardItemModel* model_;
