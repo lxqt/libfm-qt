@@ -282,21 +282,35 @@ bool FileDialog::eventFilter(QObject* watched, QEvent* event) {
     if (watched == ui->folderView->childView()->viewport() && event->type() == QEvent::ToolTip) {
         return true;
     }
-    // Here we make Tab key switch the focus from the main view to the name entry
-    // and BackTab do the reverse because QWidget::setTabOrder() cannot do that.
     if(event->type() == QEvent::KeyPress) {
         if(QKeyEvent *ke = static_cast<QKeyEvent*>(event)) {
             if(watched == ui->folderView->childView() && ui->folderView->childView()->hasFocus()
-               && ke->key() == Qt::Key_Tab && ke->modifiers() == Qt::NoModifier) {
-                ui->fileName->setFocus();
-                // as in Qt -> QLineEdit::focusInEvent()
-                if(!ui->fileName->hasSelectedText()) {
-                    ui->fileName->selectAll();
+               && ke->modifiers() == Qt::NoModifier) {
+                if(ke->key() == Qt::Key_Tab) {
+                    // Here we make Tab key switch the focus from the main view to the name entry
+                    // and BackTab do the reverse because QWidget::setTabOrder() cannot do that.
+                    ui->fileName->setFocus();
+                    // as in Qt -> QLineEdit::focusInEvent()
+                    if(!ui->fileName->hasSelectedText()) {
+                        ui->fileName->selectAll();
+                    }
+                    return true;
                 }
-                return true;
+                else if(ke->key() == Qt::Key_Return || ke->key() == Qt::Key_Enter) {
+                    // Do not accept the dialog by pressing Enter/Return on the current item.
+                    // This prevents double acceptance and its side effects.
+                    QItemSelectionModel* selModel = ui->folderView->selectionModel();
+                    QModelIndex cur = selModel->currentIndex();
+                    if(cur.isValid() && selModel->isSelected(cur)) {
+                        if(auto file = proxyModel_->fileInfoFromIndex(cur)) {
+                            onFileClicked(FolderView::ActivatedClick, file); // activate the item
+                            return true;
+                        }
+                    }
+                }
             }
-            if(watched == ui->fileName && ui->fileName->hasFocus()
-               && ke->key() == Qt::Key_Backtab) {
+            else if(watched == ui->fileName && ui->fileName->hasFocus()
+                    && ke->key() == Qt::Key_Backtab) {
                 ui->folderView->childView()->setFocus();
                 return true;
             }
