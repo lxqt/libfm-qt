@@ -148,6 +148,14 @@ bool PathEdit::event(QEvent* e) {
             return true;
         }
     }
+    else if(e->type() == QEvent::ShortcutOverride && completer_->popup()->isVisible()) {
+        // If the popup is visible, ensure that it will be closed by pressing "Escape".
+        QKeyEvent* keyEvent = static_cast<QKeyEvent*>(e);
+        if(keyEvent->key() == Qt::Key_Escape && keyEvent->modifiers() == Qt::NoModifier) {
+            e->accept();
+            return true;
+        }
+    }
     return QLineEdit::event(e);
 }
 
