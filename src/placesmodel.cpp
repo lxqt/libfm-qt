@@ -61,9 +61,9 @@ PlacesModel::PlacesModel(QObject* parent):
     placesRoot->appendRow(computerItem);
 
     { // Applications
-        const char* applicaion_icon_names[] = {"system-software-install", "applications-accessories", "application-x-executable"};
+        const char* application_icon_names[] = {"system-software-install", "applications-accessories", "application-x-executable"};
         // NOTE: g_themed_icon_new_from_names() accepts char**, but actually const char** is OK.
-        Fm::GIconPtr gicon{g_themed_icon_new_from_names((char**)applicaion_icon_names, G_N_ELEMENTS(applicaion_icon_names)), false};
+        Fm::GIconPtr gicon{g_themed_icon_new_from_names((char**)application_icon_names, G_N_ELEMENTS(application_icon_names)), false};
         auto fmicon = Fm::IconInfo::fromGIcon(std::move(gicon));
         applicationsItem = new PlacesModelItem(fmicon, tr("Applications"), Fm::FilePath::fromUri("menu:///applications/"));
         placesRoot->appendRow(applicationsItem);
@@ -493,7 +493,7 @@ void PlacesModel::onBookmarksChanged() {
 
 Qt::ItemFlags PlacesModel::flags(const QModelIndex& index) const {
     if(!index.isValid()) {
-       // alow dropping on empty space (but also see PlacesModel::canDropMimeData)
+       // allow dropping on empty space (but also see PlacesModel::canDropMimeData)
        return Qt::ItemIsDropEnabled;
     }
     if(index.column() == 1) { // make 2nd column of every row selectable.

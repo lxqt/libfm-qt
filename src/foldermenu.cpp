@@ -164,11 +164,11 @@ void FolderMenu::addCustomActionItem(QMenu* menu, std::shared_ptr<const FileActi
         }
     }
     else if(item->is_action()) {
-        connect(action, &QAction::triggered, this, &FolderMenu::onCustomActionTrigerred);
+        connect(action, &QAction::triggered, this, &FolderMenu::onCustomActionTriggered);
     }
 }
 
-void FolderMenu::onCustomActionTrigerred() {
+void FolderMenu::onCustomActionTriggered() {
     CustomAction* action = static_cast<CustomAction*>(sender());
     auto& item = action->item();
     auto folderInfo = view_->folderInfo();

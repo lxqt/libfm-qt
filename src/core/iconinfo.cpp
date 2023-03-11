@@ -133,7 +133,7 @@ QIcon IconInfo::internalQicon() const {
     return ret_icon;
 }
 
-// compatibility function for leagcy libfm
+// compatibility function for legacy libfm
 // FIXME: deprecate this later.
 extern "C" GIcon* _fm_icon_from_name(const char* name) {
     GIcon* gicon = nullptr;

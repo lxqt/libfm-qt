@@ -8,7 +8,7 @@
  * This API represents access to folder-specific configuration settings.
  * Each setting is a key/value pair. To use it the descriptor should be
  * opened first, then required operations performed, then closed. Each
- * opened descriptor holds a lock on the cache so it is not adviced to
+ * opened descriptor holds a lock on the cache so it is not advised to
  * keep it somewhere.
  */
 
@@ -267,8 +267,8 @@ void FolderConfig::init(const char* globalConfigFile) {
     if(!g_key_file_load_from_file(fc_cache, globalConfigFile_.get(), G_KEY_FILE_NONE, nullptr)) {
         // fail to load the config file.
         // fallback to the legacy libfm config file for backward compatibility
-        CStrPtr legacyConfigFlie{g_build_filename(g_get_user_config_dir(), "libfm/dir-settings.conf", nullptr)};
-        g_key_file_load_from_file(fc_cache, legacyConfigFlie.get(), G_KEY_FILE_NONE, nullptr);
+        CStrPtr legacyConfigFile{g_build_filename(g_get_user_config_dir(), "libfm/dir-settings.conf", nullptr)};
+        g_key_file_load_from_file(fc_cache, legacyConfigFile.get(), G_KEY_FILE_NONE, nullptr);
     }
 }
 

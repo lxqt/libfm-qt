@@ -186,7 +186,7 @@ void PathBar::onButtonToggled(bool checked) {
         currentPath_ = pathForButton(btn);
         Q_EMIT chdir(currentPath_);
 
-        // since scrolling to the toggled buton will happen correctly only when the
+        // since scrolling to the toggled button will happen correctly only when the
         // layout is updated and because the update is disabled on creating buttons
         // in setPath(), the update status can be used as a sign to know when to wait
         if(updatesEnabled()) {

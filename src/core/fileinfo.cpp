@@ -258,7 +258,7 @@ _file_is_symlink:
     }
 
 #if 0
-    /* set "locked" icon on unaccesible folder */
+    /* set "locked" icon on unaccessible folder */
     else if(!accessible && type == G_FILE_TYPE_DIRECTORY) {
         icon = g_object_ref(icon_locked_folder);
     }

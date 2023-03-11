@@ -166,7 +166,7 @@ protected Q_SLOTS:
     void onTrustToggled(bool checked);
     void onFilePropertiesTriggered();
     void onApplicationTriggered();
-    void onCustomActionTrigerred();
+    void onCustomActionTriggered();
     void onCompress();
     void onExtract();
     void onExtractHere();

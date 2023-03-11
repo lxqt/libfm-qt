@@ -344,7 +344,7 @@ void FileMenu::addCustomActionItem(QMenu* menu, std::shared_ptr<const FileAction
         }
     }
     else if(item->is_action()) {
-        connect(action, &QAction::triggered, this, &FileMenu::onCustomActionTrigerred);
+        connect(action, &QAction::triggered, this, &FileMenu::onCustomActionTriggered);
     }
 }
 
@@ -408,7 +408,7 @@ void FileMenu::onApplicationTriggered() {
     openFilesWithApp(action->appInfo().get());
 }
 
-void FileMenu::onCustomActionTrigerred() {
+void FileMenu::onCustomActionTriggered() {
     CustomAction* action = static_cast<CustomAction*>(sender());
     auto& item = action->item();
     /* g_debug("item: %s is activated, id:%s", fm_file_action_item_get_name(item),

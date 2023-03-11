@@ -139,7 +139,7 @@ void FilePropsDialog::initPermissionsPage() {
             ownerPerm = DIFFERENT_PERMS;    // not all files have the same permission for owner
         }
         if(groupPerm != DIFFERENT_PERMS && groupPerm != (fi_mode & (S_IRGRP | S_IWGRP | S_IXGRP))) {
-            groupPerm = DIFFERENT_PERMS;    // not all files have the same permission for grop
+            groupPerm = DIFFERENT_PERMS;    // not all files have the same permission for group
         }
         if(otherPerm != DIFFERENT_PERMS && otherPerm != (fi_mode & (S_IROTH | S_IWOTH | S_IXOTH))) {
             otherPerm = DIFFERENT_PERMS;    // not all files have the same permission for other
@@ -675,13 +675,13 @@ void FilePropsDialog::accept() {
     // Custom (folder) icon
     if(!customIcon.isNull()) {
         bool reloadNeeded(false);
-        QString iconNamne = customIcon.name();
+        QString iconName = customIcon.name();
         for(auto& fi: fileInfos_) {
             std::shared_ptr<const Fm::IconInfo> icon = fi->icon();
-            if (!fi->icon() || fi->icon()->qicon().name() != iconNamne) {
+            if (!fi->icon() || fi->icon()->qicon().name() != iconName) {
                 auto dot_dir = CStrPtr{g_build_filename(fi->path().localPath().get(), ".directory", nullptr)};
                 GKeyFile* kf = g_key_file_new();
-                g_key_file_set_string(kf, "Desktop Entry", "Icon", iconNamne.toLocal8Bit().constData());
+                g_key_file_set_string(kf, "Desktop Entry", "Icon", iconName.toLocal8Bit().constData());
                 Fm::GErrorPtr err;
                 if (!g_key_file_save_to_file(kf, dot_dir.get(), &err)) {
                     QMessageBox::critical(this, QObject::tr("Custom Icon Error"), err.message());
@@ -709,25 +709,25 @@ void FilePropsDialog::accept() {
     }
 
     // Emblem icon
-    QString iconNamne;
+    QString iconName;
     if(ui->emblemButton->toolButtonStyle() == Qt::ToolButtonTextBesideIcon
        && !ui->emblemButton->icon().isNull()) { // emblem is set
-        iconNamne = ui->emblemButton->icon().name();
+        iconName = ui->emblemButton->icon().name();
     }
     if(ui->emblemButton->toolButtonStyle() == Qt::ToolButtonTextOnly // emblem is removed
-       || !iconNamne.isEmpty()) { // emblem is set
+       || !iconName.isEmpty()) { // emblem is set
 
         // NOTE: If a folder and its parent are both open (e.g., in different tabs),
-        // we sould set the emblem for two file infos corresponding to the current path;
+        // we should set the emblem for two file infos corresponding to the current path;
         // otherwise, the emblem state will not be updated everywhere without reloading.
 
         for(auto& fi: fileInfos_) {
-            fi->setEmblem(iconNamne);
+            fi->setEmblem(iconName);
             if(fi->isDir()) {
                 auto folder = Fm::Folder::findByPath(fi->path());
                 if(folder != nullptr && folder->isValid() // the folder itself is open
                    && folder->info() != fi) {
-                    folder->info()->setEmblem(iconNamne, false);
+                    folder->info()->setEmblem(iconName, false);
                 }
             }
         }
@@ -739,7 +739,7 @@ void FilePropsDialog::accept() {
                 for(auto& file: files) {
                     if(file->path() == path) {
                         if(file != fileInfo) { // an empty space inside the folder was right clicked
-                            file->setEmblem(iconNamne, false);
+                            file->setEmblem(iconName, false);
                         }
                         break;
                     }

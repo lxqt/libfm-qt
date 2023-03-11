@@ -217,7 +217,7 @@ QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
 
 // NOTE:
 // QListView has a problem which I consider a bug or a design flaw.
-// When you set movement property to Static, theoratically the icons
+// When you set movement property to Static, theoretically the icons
 // should not be movable. However, if you turned on icon mode,
 // the icons becomes freely movable despite the value of movement is Static.
 // To overcome this bug, we override all drag handling methods, and
@@ -617,7 +617,7 @@ void FolderViewTreeView::dropEvent(QDropEvent* e) {
 
 // the default list mode of QListView handles column widths
 // very badly (worse than gtk+) and it's not very flexible.
-// so, let's handle column widths outselves.
+// so, let's handle column widths ourselves.
 void FolderViewTreeView::layoutColumns() {
     // qDebug("layoutColumns");
     if(!model()) {
@@ -716,7 +716,7 @@ void FolderViewTreeView::layoutColumns() {
         }
 
         if(customColumnWidths_.size() <= filenameColumn) { // practically means no custom width
-            // if the total witdh we want exceeds the available space
+            // if the total width we want exceeds the available space
             if(desiredWidth > availWidth) {
                 // Compute the width available for the filename column
                 int filenameAvailWidth = availWidth - desiredWidth + widths.at(filenameColumn);

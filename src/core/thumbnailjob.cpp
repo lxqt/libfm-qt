@@ -253,7 +253,7 @@ QImage ThumbnailJob::generateThumbnail(const std::shared_ptr<const FileInfo>& fi
             && file->size() > static_cast<uint64_t>(maxExternalThumbnailFileSize_) * 1024) {
             return result;
         }
-        // try all available external thumbnailers for it until sucess
+        // try all available external thumbnailers for it until success
         int target_size = size_ > 256 ? 512 : size_ > 128 ? 256 : 128;
         file->mimeType()->forEachThumbnailer([&](const std::shared_ptr<const Thumbnailer>& thumbnailer) {
             if(thumbnailer->run(uri, thumbnailFilename.toLocal8Bit().constData(), target_size)) {

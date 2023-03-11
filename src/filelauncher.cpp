@@ -128,7 +128,7 @@ bool FileLauncher::showError(GAppLaunchContext* /*ctx*/, const GErrorPtr &err, c
 
 void FileLauncher::resetExecActions() {
     multiple_ = false;
-    dekstopEntryAction_ = BasicFileLauncher::ExecAction::NONE;
+    desktopEntryAction_ = BasicFileLauncher::ExecAction::NONE;
     scriptAction_ = BasicFileLauncher::ExecAction::NONE;
     execAction_ = BasicFileLauncher::ExecAction::NONE;
 }
@@ -136,8 +136,8 @@ void FileLauncher::resetExecActions() {
 BasicFileLauncher::ExecAction FileLauncher::askExecFile(const FileInfoPtr &file) {
     if(multiple_) {
         if(file->isDesktopEntry()) {
-            if(dekstopEntryAction_ != BasicFileLauncher::ExecAction::NONE) {
-                return dekstopEntryAction_;
+            if(desktopEntryAction_ != BasicFileLauncher::ExecAction::NONE) {
+                return desktopEntryAction_;
             }
         }
         else if(file->isText()) {
@@ -158,7 +158,7 @@ BasicFileLauncher::ExecAction FileLauncher::askExecFile(const FileInfoPtr &file)
     auto res = dlg.result();
     if(dlg.isRemembered()) {
         if(file->isDesktopEntry()) {
-            dekstopEntryAction_ = res;
+            desktopEntryAction_ = res;
         }
         else if(file->isText()) {
             scriptAction_ = res;
