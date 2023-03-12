@@ -681,6 +681,8 @@ void FilePropsDialog::accept() {
             if (!fi->icon() || fi->icon()->qicon().name() != iconName) {
                 auto dot_dir = CStrPtr{g_build_filename(fi->path().localPath().get(), ".directory", nullptr)};
                 GKeyFile* kf = g_key_file_new();
+                // g_key_file_set_string(kf, "Desktop Entry", "Name", ...);
+                g_key_file_set_string(kf, "Desktop Entry", "Type", "Directory");
                 g_key_file_set_string(kf, "Desktop Entry", "Icon", iconName.toLocal8Bit().constData());
                 Fm::GErrorPtr err;
                 if (!g_key_file_save_to_file(kf, dot_dir.get(), &err)) {
