@@ -51,9 +51,22 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
 
     size_ = g_file_info_get_size(inf.get());
 
+    type = g_file_info_get_file_type(inf.get());
+
     tmp = g_file_info_get_content_type(inf.get());
     if(tmp) {
-        mimeType_ = MimeType::fromName(tmp);
+        if(size_ == 0 && type == G_FILE_TYPE_REGULAR) {
+            /* Treat zero-sized files based on their extensions,
+               and only if not possible, use GLib's type. */
+            mimeType_ = MimeType::guessFromFileName(name_.c_str());
+            if(mimeType_->isUnknownType()) {
+                mimeType_ = MimeType::fromName(tmp);
+            }
+            icon_ = mimeType_->icon();
+        }
+        else {
+            mimeType_ = MimeType::fromName(tmp);
+        }
     }
 
     mode_ = g_file_info_get_attribute_uint32(inf.get(), G_FILE_ATTRIBUTE_UNIX_MODE);
@@ -66,7 +79,6 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
         gid_ = g_file_info_get_attribute_uint32(inf.get(), G_FILE_ATTRIBUTE_UNIX_GID);
     }
 
-    type = g_file_info_get_file_type(inf.get());
     if(0 == mode_) { /* if UNIX file mode is not available, compose a fake one. */
         switch(type) {
         case G_FILE_TYPE_REGULAR:
