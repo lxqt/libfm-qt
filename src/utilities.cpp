@@ -229,7 +229,7 @@ void createFileOrFolder(CreateFileType type, FilePath parentDir, const TemplateI
     switch(type) {
     case CreateNewTextFile:
         prompt = QObject::tr("Please enter a new file name:");
-        defaultNewName = QObject::tr("New text file");
+        defaultNewName = QObject::tr("New file");
         break;
 
     case CreateNewFolder:
