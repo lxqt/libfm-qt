@@ -358,7 +358,7 @@
 <context>
     <name>Fm::AppChooserDialog</name>
     <message>
-        <location filename="../appchooserdialog.cpp" line="263"/>
+        <location filename="../appchooserdialog.cpp" line="268"/>
         <source>Select an application to open &quot;%1&quot; files</source>
         <translation>Izvēlieties lietotni/programmu ar kuru atvērt &quot;%1&quot; failus</translation>
     </message>
@@ -402,17 +402,17 @@
 <context>
     <name>Fm::DirTreeView</name>
     <message>
-        <location filename="../dirtreeview.cpp" line="213"/>
+        <location filename="../dirtreeview.cpp" line="217"/>
         <source>Open in New T&amp;ab</source>
         <translation>Atvērt jaunā &amp;cilnī</translation>
     </message>
     <message>
-        <location filename="../dirtreeview.cpp" line="217"/>
+        <location filename="../dirtreeview.cpp" line="221"/>
         <source>Open in New Win&amp;dow</source>
         <translation>Atvērt jaunā &amp;logā</translation>
     </message>
     <message>
-        <location filename="../dirtreeview.cpp" line="222"/>
+        <location filename="../dirtreeview.cpp" line="226"/>
         <source>Open in Termina&amp;l</source>
         <translation>Atvērt &amp;terminālī</translation>
     </message>
@@ -576,57 +576,57 @@ Ko ar to darīsim?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="247"/>
+        <location filename="../filedialog.cpp" line="245"/>
         <source>Options</source>
         <translation>Opcijas/parametri</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="580"/>
-        <location filename="../filedialog.cpp" line="975"/>
+        <location filename="../filedialog.cpp" line="595"/>
+        <location filename="../filedialog.cpp" line="990"/>
         <source>Error</source>
         <translation>Ķibele</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="580"/>
+        <location filename="../filedialog.cpp" line="595"/>
         <source>Please select a file</source>
         <translation>Izvēlieties failu</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="622"/>
+        <location filename="../filedialog.cpp" line="637"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 jau pastāv.
 Vai vēlaties to aizstāt (pārrakstīt)?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="945"/>
+        <location filename="../filedialog.cpp" line="960"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>Ceļš &quot;%1&quot; nepastāv</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="959"/>
+        <location filename="../filedialog.cpp" line="974"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&quot;%1&quot; nav mape</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="965"/>
+        <location filename="../filedialog.cpp" line="980"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&quot;%1&quot; nav fails</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1117"/>
-        <location filename="../filedialog.cpp" line="1225"/>
+        <location filename="../filedialog.cpp" line="1132"/>
+        <location filename="../filedialog.cpp" line="1240"/>
         <source>&amp;Open</source>
         <translation>&amp;Atvērt</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1120"/>
-        <location filename="../filedialog.cpp" line="1233"/>
+        <location filename="../filedialog.cpp" line="1135"/>
+        <location filename="../filedialog.cpp" line="1248"/>
         <source>&amp;Save</source>
         <translation>&amp;Saglabāt</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1127"/>
+        <location filename="../filedialog.cpp" line="1142"/>
         <source>All Files (*)</source>
         <translation>Visus failus (*)</translation>
     </message>
@@ -665,12 +665,12 @@ Vai vēlaties to aizstāt (pārrakstīt)?</translation>
         <translation>Atvērt ar...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="353"/>
+        <location filename="../filemenu.cpp" line="356"/>
         <source>Many files</source>
         <translation>Vairākus failus</translation>
     </message>
     <message numerus="yes">
-        <location filename="../filemenu.cpp" line="354"/>
+        <location filename="../filemenu.cpp" line="357"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>Vēlaties atvērt %1 failu?</numerusform>
@@ -710,7 +710,7 @@ Vai vēlaties to aizstāt (pārrakstīt)?</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="166"/>
-        <location filename="../filemenu.cpp" line="481"/>
+        <location filename="../filemenu.cpp" line="484"/>
         <source>&amp;Move to Trash</source>
         <translation>Pārvietot/pārcelt uz &amp;miskasti</translation>
     </message>
@@ -755,23 +755,23 @@ Vai vēlaties to aizstāt (pārrakstīt)?</translation>
         <translation>Parametri/rekvizīti/īpašības</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="310"/>
+        <location filename="../filemenu.cpp" line="313"/>
         <source>Trust selected executables</source>
         <translation>Uzticēties izvēlētajiem izpildāmajiem failiem</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="311"/>
+        <location filename="../filemenu.cpp" line="314"/>
         <source>Trust this executable</source>
         <translation>Uzticēties šim izpildāmajam failam</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="416"/>
+        <location filename="../filemenu.cpp" line="419"/>
         <source>Output</source>
         <translation>Izvads</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="148"/>
-        <location filename="../filemenu.cpp" line="481"/>
+        <location filename="../filemenu.cpp" line="484"/>
         <source>&amp;Delete</source>
         <translation>&amp;Dzēst</translation>
     </message>
@@ -1137,87 +1137,87 @@ Vēlaties tos dzēst?</translation>
 <context>
     <name>Fm::FolderModel</name>
     <message>
-        <location filename="../foldermodel.cpp" line="304"/>
+        <location filename="../foldermodel.cpp" line="307"/>
         <source>Location:</source>
         <translation>Vieta:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="308"/>
+        <location filename="../foldermodel.cpp" line="311"/>
         <source>File type:</source>
         <translation>Faila tips:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="313"/>
+        <location filename="../foldermodel.cpp" line="316"/>
         <source>File size:</source>
         <translation>Faila izmērs:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="317"/>
+        <location filename="../foldermodel.cpp" line="320"/>
         <source>Last modified:</source>
         <translation>Pēdējā izmaiņa:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="318"/>
+        <location filename="../foldermodel.cpp" line="321"/>
         <source>Last accessed:</source>
         <translation>Pēdējā piekļuve:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="319"/>
+        <location filename="../foldermodel.cpp" line="322"/>
         <source>N/A</source>
         <translation>– – –</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="321"/>
+        <location filename="../foldermodel.cpp" line="324"/>
         <source>Created:</source>
         <translation>Izveidots:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="326"/>
+        <location filename="../foldermodel.cpp" line="329"/>
         <source>Owner:</source>
         <translation>Īpašnieks:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="327"/>
+        <location filename="../foldermodel.cpp" line="330"/>
         <source>Group:</source>
         <translation>Grupa:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="394"/>
+        <location filename="../foldermodel.cpp" line="397"/>
         <source>Name</source>
         <translation>Nosaukums</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="397"/>
+        <location filename="../foldermodel.cpp" line="400"/>
         <source>Type</source>
         <translation>Tips</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="400"/>
+        <location filename="../foldermodel.cpp" line="403"/>
         <source>Size</source>
         <translation>Izmērs</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="403"/>
+        <location filename="../foldermodel.cpp" line="406"/>
         <source>Modified</source>
         <translation>Mainīts</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="406"/>
+        <location filename="../foldermodel.cpp" line="409"/>
         <source>Created</source>
         <translation>Izveidots</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="409"/>
+        <location filename="../foldermodel.cpp" line="412"/>
         <source>Deleted</source>
         <translation>Dzēsts</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="412"/>
+        <location filename="../foldermodel.cpp" line="415"/>
         <source>Owner</source>
         <translation>Īpašnieks</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="415"/>
+        <location filename="../foldermodel.cpp" line="418"/>
         <source>Group</source>
         <translation>Grupa</translation>
     </message>
@@ -1225,12 +1225,12 @@ Vēlaties tos dzēst?</translation>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="405"/>
+        <location filename="../folderview.cpp" line="406"/>
         <source>Auto-resize columns</source>
         <translation>Automātisks kolonu/stabiņu platums</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="422"/>
+        <location filename="../folderview.cpp" line="423"/>
         <source>Visible Columns</source>
         <translation>Redzamās kolonas/stabiņi</translation>
     </message>
@@ -1272,42 +1272,42 @@ Vēlaties tos dzēst?</translation>
 <context>
     <name>Fm::PlacesModel</name>
     <message>
-        <location filename="../placesmodel.cpp" line="47"/>
+        <location filename="../placesmodel.cpp" line="46"/>
         <source>Places</source>
         <translation>Vietas</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="55"/>
+        <location filename="../placesmodel.cpp" line="54"/>
         <source>Desktop</source>
         <translation>Darbvirsma</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="61"/>
+        <location filename="../placesmodel.cpp" line="60"/>
         <source>Computer</source>
         <translation>Dators</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="69"/>
+        <location filename="../placesmodel.cpp" line="68"/>
         <source>Applications</source>
         <translation>Lietotnes</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="78"/>
+        <location filename="../placesmodel.cpp" line="77"/>
         <source>Network</source>
         <translation>Tīkls</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="82"/>
+        <location filename="../placesmodel.cpp" line="81"/>
         <source>Devices</source>
         <translation>Ierīces</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="137"/>
+        <location filename="../placesmodel.cpp" line="136"/>
         <source>Bookmarks</source>
         <translation>Grāmatzīmes</translation>
     </message>
     <message>
-        <location filename="../placesmodel.cpp" line="228"/>
+        <location filename="../placesmodel.cpp" line="227"/>
         <source>Trash</source>
         <translation>Miskaste</translation>
     </message>
@@ -1315,64 +1315,64 @@ Vēlaties tos dzēst?</translation>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="482"/>
+        <location filename="../placesview.cpp" line="542"/>
         <source>Open in New Tab</source>
         <translation>Atvērt jaunā cilnī</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="485"/>
+        <location filename="../placesview.cpp" line="545"/>
         <source>Open in New Window</source>
         <translation>Atvērt jaunā logā</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="497"/>
+        <location filename="../placesview.cpp" line="557"/>
         <source>Empty Trash</source>
         <translation>Iztukšot (izdzēst) miskasti</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="517"/>
-        <location filename="../placesview.cpp" line="579"/>
+        <location filename="../placesview.cpp" line="577"/>
+        <location filename="../placesview.cpp" line="639"/>
         <source>Hide</source>
         <translation>Slēpt</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="534"/>
+        <location filename="../placesview.cpp" line="594"/>
         <source>Move Bookmark Up</source>
         <translation>Pārbīdīt grāmatzīmi augšup</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="541"/>
+        <location filename="../placesview.cpp" line="601"/>
         <source>Move Bookmark Down</source>
         <translation>Pārbīdīt grāmatzīmi lejup</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="546"/>
+        <location filename="../placesview.cpp" line="606"/>
         <source>Rename Bookmark</source>
         <translation>Pārdēvēt grāmatzīmi</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="550"/>
+        <location filename="../placesview.cpp" line="610"/>
         <source>Remove Bookmark</source>
         <translation>Dzēst/izņemt grāmatzīmi</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="560"/>
-        <location filename="../placesview.cpp" line="593"/>
+        <location filename="../placesview.cpp" line="620"/>
+        <location filename="../placesview.cpp" line="653"/>
         <source>Unmount</source>
         <translation>Nomontēt</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="564"/>
+        <location filename="../placesview.cpp" line="624"/>
         <source>Mount</source>
         <translation>Piemontēt</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="570"/>
+        <location filename="../placesview.cpp" line="630"/>
         <source>Eject</source>
         <translation>Izstumt</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="605"/>
+        <location filename="../placesview.cpp" line="665"/>
         <source>Show All Entries</source>
         <translation>Rādīt visus elementus</translation>
     </message>
@@ -1486,12 +1486,12 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utilities.cpp" line="163"/>
+        <location filename="../utilities.cpp" line="166"/>
         <source>Rename File</source>
         <translation>Pārdēvēt failu</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="164"/>
+        <location filename="../utilities.cpp" line="167"/>
         <source>Please enter a new name:</source>
         <translation>Ievadiet jaunu nosaukumu:</translation>
     </message>
@@ -1499,43 +1499,43 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
         <location filename="../filelauncher.cpp" line="124"/>
         <location filename="../filepropsdialog.cpp" line="669"/>
         <location filename="../mountoperation.cpp" line="297"/>
-        <location filename="../utilities.cpp" line="147"/>
-        <location filename="../utilities.cpp" line="286"/>
+        <location filename="../utilities.cpp" line="150"/>
+        <location filename="../utilities.cpp" line="289"/>
         <source>Error</source>
         <translation>Ķibele, ka tevi jupis!</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="223"/>
+        <location filename="../utilities.cpp" line="226"/>
         <source>Create Folder</source>
         <translation>Izveidot mapi</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="224"/>
+        <location filename="../utilities.cpp" line="227"/>
         <source>Create File</source>
         <translation>Izveidot failu</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="228"/>
+        <location filename="../utilities.cpp" line="231"/>
         <source>Please enter a new file name:</source>
         <translation>Ierakstiet jaunā faila nosaukumu:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="229"/>
-        <source>New text file</source>
-        <translation>Jauns teksta fails</translation>
+        <location filename="../utilities.cpp" line="232"/>
+        <source>New file</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="233"/>
+        <location filename="../utilities.cpp" line="236"/>
         <source>Please enter a new folder name:</source>
         <translation>Ievadiet jaunās mapes nosaukumu:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="234"/>
+        <location filename="../utilities.cpp" line="237"/>
         <source>New folder</source>
         <translation>Jauna mape</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="239"/>
+        <location filename="../utilities.cpp" line="242"/>
         <source>Enter a name for the new %1:</source>
         <translation>Ierakstiet jaunā faila nosaukumu (%1):</translation>
     </message>
