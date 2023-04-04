@@ -1528,7 +1528,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="232"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>ملف جديد</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="236"/>
