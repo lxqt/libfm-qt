@@ -1,3 +1,18 @@
+libfm-qt-1.3.0 / 2023-04-15
+============================
+ * Fixed the thumbnail/icon rectangle in list views.
+ * Allowed typing of text tab with inline renaming.
+ * Open non-executable files that have executable file type (like non-executable scripts with root executable flag).
+ * Allowed disabling of smooth scrolling in all view modes.
+ * File dialog: Add extension on saving only if it makes sense.
+ * Go to name start/end with Home/End keys during inline renaming.
+ * Keep selection and tree expansion in app chooser dialog when menu-cached reloads the apps tree.
+ * Fixed pressing of ENTER in the file dialog, especially in the file-saving dialog.
+ * Ensure `Escape` closes the popup of path-edit completer.
+ * Treat zero-sized files based on their extensions.
+ * Use "New file" as the default name for new files (especially after after GLib 2.75.1).
+ * Ensure toolbar background is shown behind path-bar.
+
 libfm-qt-1.2.1 / 2023-01-02
 ============================
  * Specified the parents of context menus for use on Wayland.
