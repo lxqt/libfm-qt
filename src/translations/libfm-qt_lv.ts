@@ -1259,12 +1259,12 @@ Vēlaties tos dzēst?</translation>
 <context>
     <name>Fm::PathBar</name>
     <message>
-        <location filename="../pathbar.cpp" line="130"/>
+        <location filename="../pathbar.cpp" line="134"/>
         <source>&amp;Edit Path</source>
         <translation>R&amp;ediģēt ceļu</translation>
     </message>
     <message>
-        <location filename="../pathbar.cpp" line="133"/>
+        <location filename="../pathbar.cpp" line="137"/>
         <source>&amp;Copy Path</source>
         <translation>Kopēt &amp;ceļu</translation>
     </message>

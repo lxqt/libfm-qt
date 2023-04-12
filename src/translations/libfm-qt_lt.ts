@@ -1259,12 +1259,12 @@ Ar norite vietoj to, juos ištrinti?</translation>
 <context>
     <name>Fm::PathBar</name>
     <message>
-        <location filename="../pathbar.cpp" line="130"/>
+        <location filename="../pathbar.cpp" line="134"/>
         <source>&amp;Edit Path</source>
         <translation>&amp;Taisyti kelią</translation>
     </message>
     <message>
-        <location filename="../pathbar.cpp" line="133"/>
+        <location filename="../pathbar.cpp" line="137"/>
         <source>&amp;Copy Path</source>
         <translation>&amp;Kopijuoti kelią</translation>
     </message>

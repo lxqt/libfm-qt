@@ -1256,12 +1256,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::PathBar</name>
     <message>
-        <location filename="../pathbar.cpp" line="130"/>
+        <location filename="../pathbar.cpp" line="134"/>
         <source>&amp;Edit Path</source>
         <translation>경로 편집하기(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../pathbar.cpp" line="133"/>
+        <location filename="../pathbar.cpp" line="137"/>
         <source>&amp;Copy Path</source>
         <translation>경로 복사하기(&amp;C)</translation>
     </message>
