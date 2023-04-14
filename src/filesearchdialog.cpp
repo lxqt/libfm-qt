@@ -48,6 +48,11 @@ FileSearchDialog::FileSearchDialog(QStringList paths, QWidget* parent, Qt::Windo
     ui->namePatterns->completer()->setCaseSensitivity(Qt::CaseSensitive);
     ui->contentPattern->completer()->setCaseSensitivity(Qt::CaseSensitive);
 
+    // if the minimum width is not set here, it will be set by the item model,
+    // which can contain long texts and make the window very wide
+    ui->namePatterns->setMinimumWidth(150);
+    ui->contentPattern->setMinimumWidth(150);
+
     ui->namePatterns->setFocus();
 }
 
