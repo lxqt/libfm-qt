@@ -1521,7 +1521,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="232"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>Naujas failas</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="236"/>
