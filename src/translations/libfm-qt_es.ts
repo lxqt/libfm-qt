@@ -938,7 +938,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="405"/>
         <source>%p% used</source>
-        <translation>%p&#xa0;% usado</translation>
+        <translation>%p % usado</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="406"/>
@@ -1512,7 +1512,7 @@ Modificación: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="232"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivo nuevo</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="236"/>
