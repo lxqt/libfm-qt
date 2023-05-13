@@ -28,6 +28,7 @@ set(LIBFM_QT_SOVERSION "13")
 
 set(GLIB_MINIMUM_VERSION "2.50.0")
 set(LIBMENUCACHE_MINIMUM_VERSION "1.1.0")
+set(LXQTMENUDATA_MINIMUM_VERSION "1.3.0")
 set(LXQTBT_MINIMUM_VERSION "0.13.0")
 set(QT_MINIMUM_VERSION "5.15.0")
 
@@ -38,6 +39,7 @@ find_package(Qt5X11Extras "${QT_MINIMUM_VERSION}" REQUIRED)
 find_package(lxqt-build-tools "${LXQTBT_MINIMUM_VERSION}" REQUIRED)
 find_package(GLIB "${GLIB_MINIMUM_VERSION}" REQUIRED COMPONENTS gio gio-unix gobject gthread)
 find_package(MenuCache "${LIBMENUCACHE_MINIMUM_VERSION}" REQUIRED)
+find_package(lxqt-menu-data "${LXQTMENUDATA_MINIMUM_VERSION}" REQUIRED)
 find_package(Exif REQUIRED)
 find_package(XCB REQUIRED)
 

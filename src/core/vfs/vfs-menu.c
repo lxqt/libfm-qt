@@ -242,10 +242,10 @@ static FmXmlFileItem *_prepare_contents(FmMenuMenuTree *data, GCancellable *canc
     FmXmlFileItem *apps;
     gboolean ok;
 
-    /* do it in compatibility with lxpanel */
+    /* do it in compatibility with lxqt-panel */
     xdg_menu_prefix = g_getenv("XDG_MENU_PREFIX");
-    contents = g_strdup_printf("%sapplications.menu",
-                               xdg_menu_prefix ? xdg_menu_prefix : "lxde-");
+    contents = xdg_menu_prefix ? g_strdup_printf("%sapplications.menu", xdg_menu_prefix)
+                               : g_strdup("lxqt-applications-fm.menu");
     data->file_path = g_build_filename(g_get_user_config_dir(), "menus",
                                        contents, NULL);
     *gf = g_file_new_for_path(data->file_path);
@@ -1091,9 +1091,9 @@ static MenuCache *_get_menu_cache(GError **error)
         environment_tested = TRUE;
     }
 #if MENU_CACHE_CHECK_VERSION(0, 5, 0)
-    mc = menu_cache_lookup_sync(requires_prefix ? "lxde-applications.menu+hidden" : "applications.menu+hidden");
+    mc = menu_cache_lookup_sync(requires_prefix ? "lxqt-applications-fm.menu+hidden" : "applications.menu+hidden");
 #else
-    mc = menu_cache_lookup_sync(requires_prefix ? "lxde-applications.menu" : "applications.menu");
+    mc = menu_cache_lookup_sync(requires_prefix ? "lxqt-applications-fm.menu" : "applications.menu");
 #endif
     /* FIXME: may be it is reasonable to set XDG_MENU_PREFIX ? */
 
