@@ -298,7 +298,7 @@
         <location filename="../file-props.ui" line="545"/>
         <location filename="../file-props.ui" line="694"/>
         <source>Other:</source>
-        <translation>Остальные:</translation>
+        <translation>Прочие:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="562"/>
@@ -1046,7 +1046,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="91"/>
         <source>Invert Selection</source>
-        <translation>Инвертировать выделение</translation>
+        <translation>Обратить выделение</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="98"/>
@@ -1261,7 +1261,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../pathbar.cpp" line="134"/>
         <source>&amp;Edit Path</source>
-        <translation>&amp;Редактировать путь</translation>
+        <translation>&amp;Изменить путь</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="137"/>
