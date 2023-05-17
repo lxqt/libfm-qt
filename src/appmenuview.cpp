@@ -37,10 +37,10 @@ AppMenuView::AppMenuView(QWidget* parent):
 
     // initialize model
     // TODO: share one model among all app menu view widgets
-    // ensure that we're using lxmenu-data (FIXME: should we do this?)
+    // ensure that we're using the fm menu of lxqt-menu-data
     QByteArray oldenv = qgetenv("XDG_MENU_PREFIX");
-    qputenv("XDG_MENU_PREFIX", "lxde-");
-    menu_cache = menu_cache_lookup("applications.menu");
+    qputenv("XDG_MENU_PREFIX", "lxqt-");
+    menu_cache = menu_cache_lookup("applications-fm.menu");
     // if(!oldenv.isEmpty())
     qputenv("XDG_MENU_PREFIX", oldenv); // restore the original value if needed
 
