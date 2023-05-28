@@ -48,7 +48,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation type="unfinished">Pidä pääteikkuna auki komennon suoritettua</translation>
+        <translation>Pidä pääteikkuna auki komennon suorittua</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
@@ -109,22 +109,22 @@
     <message>
         <location filename="../exec-file.ui" line="52"/>
         <source>E&amp;xecute</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Suorita</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Suorita &amp;päätteessä</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Peruuta</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Muista tämän tyyppisille tiedostoille</translation>
     </message>
 </context>
 <context>
@@ -132,17 +132,17 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Polku:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostonimi:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostotyyppi:</translation>
     </message>
 </context>
 <context>
@@ -150,32 +150,32 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kohde:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prosessoidaan:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation type="unfinished"></translation>
+        <translation>Valmistellaan...</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilanne</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
         <source>Time remaining:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aikaa jäljellä:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostoja prosessoitu:</translation>
     </message>
 </context>
 <context>
@@ -183,168 +183,168 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedoston ominaisuudet</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Perustiedot</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sijainti:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostotyyppi:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
         <source>MIME type:</source>
-        <translation type="unfinished"></translation>
+        <translation>MIME-tyyppi:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="152"/>
         <source>File size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Koko:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="175"/>
         <source>On-disk size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Koko levyllä:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="198"/>
         <source>Last modified:</source>
-        <translation type="unfinished"></translation>
+        <translation>Viimeksi muutettu:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="221"/>
         <source>Link target:</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkin kohde:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="247"/>
         <source>Open With:</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa sovelluksessa:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Viimeksi käytetty:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Luotu:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
         <source>Contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sisältää:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tunnuskuva:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse tunnuskuva</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista tunnuskuva</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
         <source>Device Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Koko levyllä:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="424"/>
         <source>Permissions</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttöoikeudet</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="439"/>
         <source>Ownership</source>
-        <translation type="unfinished"></translation>
+        <translation>Omistajuus</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="463"/>
         <location filename="../file-props.ui" line="528"/>
         <location filename="../file-props.ui" line="642"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ryhmä:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="476"/>
         <location filename="../file-props.ui" line="511"/>
         <location filename="../file-props.ui" line="590"/>
         <source>Owner:</source>
-        <translation type="unfinished"></translation>
+        <translation>Omistaja:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="492"/>
         <source>Access Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttöluvat</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="545"/>
         <location filename="../file-props.ui" line="694"/>
         <source>Other:</source>
-        <translation type="unfinished"></translation>
+        <translation>Muut:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="562"/>
         <source>Make the file executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedoston voi suorittaa</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="603"/>
         <location filename="../file-props.ui" line="655"/>
         <location filename="../file-props.ui" line="707"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>Luku</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="616"/>
         <location filename="../file-props.ui" line="668"/>
         <location filename="../file-props.ui" line="720"/>
         <source>Write</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjoitus</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="629"/>
         <location filename="../file-props.ui" line="681"/>
         <location filename="../file-props.ui" line="733"/>
         <source>Execute</source>
-        <translation type="unfinished"></translation>
+        <translation>Suoritus</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="742"/>
         <source>Sticky</source>
-        <translation type="unfinished"></translation>
+        <translation>Lukittu omistajalle</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>SetUID</source>
-        <translation type="unfinished"></translation>
+        <translation>Aseta UID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
         <source>SetGID</source>
-        <translation type="unfinished"></translation>
+        <translation>Aseta GID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="792"/>
         <source>Advanced Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisäasetukset</translation>
     </message>
 </context>
 <context>
@@ -352,7 +352,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation type="unfinished"></translation>
+        <translation>Muokkaa</translation>
     </message>
 </context>
 <context>
@@ -360,7 +360,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="268"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse sovellus avaamaan &quot;%1&quot;-tiedostoja</translation>
     </message>
 </context>
 <context>
@@ -368,12 +368,12 @@
     <message>
         <location filename="../createnewmenu.cpp" line="62"/>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Kansio</translation>
     </message>
     <message>
         <location filename="../createnewmenu.cpp" line="66"/>
         <source>Blank File</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyhjä tiedosto</translation>
     </message>
 </context>
 <context>
@@ -381,7 +381,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>Määritetty kansio &apos;%1&apos; ei kelpaa</translation>
     </message>
 </context>
 <context>
@@ -389,14 +389,14 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ladataan...</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Ei alikansioita&gt;</translation>
     </message>
 </context>
 <context>
@@ -404,17 +404,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="217"/>
         <source>Open in New T&amp;ab</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Avaa uuteen välilehteen</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="221"/>
         <source>Open in New Win&amp;dow</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa uuteen &amp;ikkunaan</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="226"/>
         <source>Open in Termina&amp;l</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa &amp;pääte tähän</translation>
     </message>
 </context>
 <context>
@@ -422,27 +422,27 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopioi tähän</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation type="unfinished"></translation>
+        <translation>Siirrä tähän</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation type="unfinished"></translation>
+        <translation>Luo symbolinen linkki tähän</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Peruuta</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei voi pudottaa tänne</translation>
     </message>
 </context>
 <context>
@@ -450,7 +450,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="84"/>
         <source>New bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Uusi kirjanmerkki</translation>
     </message>
 </context>
 <context>
@@ -459,18 +459,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedosto &apos;%1&apos; näyttää olevan työpöytätietue.
+Mitä tehdä sen kanssa?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedosto &apos;%1&apos; näyttää olevan suoritettava komentosarja.
+Mitä tehdä sen kanssa?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedosto &apos;%1&apos; on ohjelma. Haluatko suorittaa sen?</translation>
     </message>
 </context>
 <context>
@@ -478,154 +480,155 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="105"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Palaa takaisin</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Vasen nuoli</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="112"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Siirry eteenpäin</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="113"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Oikea nuoli</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="120"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Päivitä</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="121"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="138"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Luo kansio</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="154"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuvakenäkymä</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="158"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>Pienoiskuvanäkymä</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="162"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiivis näkymä</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="166"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>Yksityiskohtainen näkymä</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuvakekoot</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="176"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Suuren kuvakkeen koko:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="183"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pienen kuvakkeen koko:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="190"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pienoiskuvan koko:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="206"/>
         <source>Show Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä piilotetut</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="218"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä pienoiskuvat</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="223"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä tiedostojen työkaluvihjeet</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="230"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Tasainen vieritys</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="245"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Asetukset</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="595"/>
         <location filename="../filedialog.cpp" line="990"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Virhe</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="595"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse tiedosto</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="637"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 on jo olemassa.
+Korvataanko se?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="960"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Polkua &quot;%1&quot; ei löydy</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="974"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; ei ole hakemisto</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="980"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; ei ole tiedosto</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1132"/>
         <location filename="../filedialog.cpp" line="1240"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Avaa</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1135"/>
         <location filename="../filedialog.cpp" line="1248"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tallenna</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1142"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaikki tiedostot (*)</translation>
     </message>
 </context>
 <context>
@@ -633,12 +636,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="138"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa tiedosto</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="139"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Tallenna tiedosto</translation>
     </message>
 </context>
 <context>
@@ -646,7 +649,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -654,121 +657,122 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="86"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="90"/>
         <source>Open With...</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa sovelluksessa...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="356"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Useita tiedostoja</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="357"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Haluatko avata tämän %1 tiedoston?</numerusform>
+            <numerusform>Haluatko avata nämä %1 tiedostoa?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="118"/>
         <source>Other Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Muut sovellukset</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="125"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Luo uusi</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="144"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>P&amp;alauta</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="154"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Leikkaa</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="158"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopioi</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="162"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>Liitä</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="166"/>
         <location filename="../filemenu.cpp" line="484"/>
         <source>&amp;Move to Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Siirrä &amp;roskakoriin</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="170"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Uudelleennimeä</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Liitä asema</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation type="unfinished"></translation>
+        <translation>Irrota asema</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista asema tai levy</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Extract to...</source>
-        <translation type="unfinished"></translation>
+        <translation>Pura kohteeseen...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="283"/>
         <source>Extract Here</source>
-        <translation type="unfinished"></translation>
+        <translation>Pura tähän</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="290"/>
         <source>Compress</source>
-        <translation type="unfinished"></translation>
+        <translation>Pakkaa</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="299"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Ominaisuudet</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="313"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Luota valittuja suoritettavia</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="314"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Luota tätä suoritettavaa</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="419"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuloste</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="148"/>
         <location filename="../filemenu.cpp" line="484"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Poista</translation>
     </message>
 </context>
 <context>
@@ -776,32 +780,35 @@ Do you want to replace it?</source>
     <message>
         <location filename="../fileoperation.cpp" line="317"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Virhe</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="318"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation type="unfinished"></translation>
+        <translation>Joitain tiedostoja ei voida siirtää roskakoriin, koska käytettävät tiedostojärjestelmät eivät tue tätä toimenpidettä.
+Poistetaanko tiedostot?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="404"/>
         <location filename="../fileoperation.cpp" line="422"/>
         <source>Confirm</source>
-        <translation type="unfinished"></translation>
+        <translation>Kyllä</translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Haluatko poistaa valitun tiedoston?</numerusform>
+            <numerusform>Haluatko poistaa valitut tiedostot?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Siirretäänkö valittu tiedosto roskakoriin?</numerusform>
+            <numerusform>Siirretäänkö valitut tiedostot roskakoriin?</numerusform>
         </translation>
     </message>
 </context>
@@ -810,78 +817,78 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move files</source>
-        <translation type="unfinished"></translation>
+        <translation>Siirrä tiedostot</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Siirretään seuraavat tiedostot kohdekansioon:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopioi tiedostot</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopioidaan seuraavat tiedostot kohdekansioon:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Siirrä roskakoriin</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation type="unfinished"></translation>
+        <translation>Siirretään seuraavat tiedostot roskakoriin:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista tiedostot</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistetaan seuraavat tiedostot:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation type="unfinished"></translation>
+        <translation>Luo symbolisiä linkkejä</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Luodaan symbolisiä linkkejä seuraaville tiedostoille:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Muuta määritteitä</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Muutetaan seuraavien tiedostojen määritteitä:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Palauta tiedostot roskakorista</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation type="unfinished"></translation>
+        <translation>Palautetaan seuraavia tiedostoja roskakorista:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="149"/>
         <location filename="../fileoperationdialog.cpp" line="155"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Virhe</translation>
     </message>
 </context>
 <context>
@@ -889,54 +896,54 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="162"/>
         <source>View folder content</source>
-        <translation type="unfinished"></translation>
+        <translation>Selaa kansion sisältöä</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="163"/>
         <source>View and modify folder content</source>
-        <translation type="unfinished"></translation>
+        <translation>Selaa ja muokkaa kansion sisältöä</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="167"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>Luku</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="168"/>
         <source>Read and write</source>
-        <translation type="unfinished"></translation>
+        <translation>Luku ja kirjoitus</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="170"/>
         <source>Forbidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei oikeuksia</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="287"/>
         <source>Files of different types</source>
-        <translation type="unfinished"></translation>
+        <translation>Erityyppisiä tiedostoja</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="310"/>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
         <source>Multiple Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Useita tiedostoja</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="405"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% käytössä</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="406"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 vapaana sijainnissa %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="452"/>
@@ -946,36 +953,37 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="454"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation>yksi tiedosto</translation>
     </message>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="456"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln tiedosto</numerusform>
+            <numerusform>%Ln tiedostoa</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="490"/>
         <location filename="../filepropsdialog.cpp" line="535"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse kuvake</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="492"/>
         <location filename="../filepropsdialog.cpp" line="537"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuvat (*.png *.xpm *.svg *.svgz)</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="643"/>
         <source>Apply changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Toteuta muutokset</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="644"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation type="unfinished"></translation>
+        <translation>Hyväksytäänkö nämä muutokset rekursiivisesti kaikkiin tiedostoihin ja alihakemistoihin?</translation>
     </message>
 </context>
 <context>
@@ -983,17 +991,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="152"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Virhe</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="152"/>
         <source>You should add at least one directory to search.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisää ainakin yksi hakemisto, josta etsiä.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="159"/>
         <source>Select a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse kansio</translation>
     </message>
 </context>
 <context>
@@ -1001,12 +1009,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="479"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hakemistoa ei voi kopioida itseensä!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="530"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Epänatiivinen kohdetiedostojärjestelmä ei tue linkkien luomista</translation>
     </message>
 </context>
 <context>
@@ -1014,37 +1022,37 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="57"/>
         <source>Empty Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyhjennä roskakori</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Luo uusi</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="74"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>L&amp;iitä</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="87"/>
         <source>Select &amp;All</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Valitse kaikki</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="91"/>
         <source>Invert Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Käännä valinta</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="98"/>
         <source>Sorting</source>
-        <translation type="unfinished"></translation>
+        <translation>Lajittele</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="103"/>
         <source>Show Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä piilotetut</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="138"/>
@@ -1486,7 +1494,7 @@ Modified: %2</source>
         <location filename="../utilities.cpp" line="150"/>
         <location filename="../utilities.cpp" line="289"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Virhe</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="226"/>
