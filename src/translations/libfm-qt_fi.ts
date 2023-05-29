@@ -948,7 +948,7 @@ Poistetaanko tiedostot?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="452"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>ei tiedostoja</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="454"/>
@@ -1057,77 +1057,77 @@ Poistetaanko tiedostot?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="138"/>
         <source>Folder Pr&amp;operties</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kansion ominaisuudet</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="181"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuloste</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="203"/>
         <source>By File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostonimen mukaan</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="204"/>
         <source>By Modification Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Muokkausajan mukaan</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="205"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Luomisajan mukaan</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="208"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistoajan mukaan</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="211"/>
         <source>By File Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostokoon mukaan</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="212"/>
         <source>By File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostotyypin mukaan</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="213"/>
         <source>By File Owner</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedoston omistajan mukaan</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="214"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostoryhmän mukaan</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="220"/>
         <source>Ascending</source>
-        <translation type="unfinished"></translation>
+        <translation>A-Ö</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="225"/>
         <source>Descending</source>
-        <translation type="unfinished"></translation>
+        <translation>Ö-A</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="242"/>
         <source>Folder First</source>
-        <translation type="unfinished"></translation>
+        <translation>Kansiot ensin</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="250"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Piilotetut viimeisenä</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="258"/>
         <source>Case Sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjainkokoerotus</translation>
     </message>
 </context>
 <context>
@@ -1135,87 +1135,87 @@ Poistetaanko tiedostot?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="307"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sijainti:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="311"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostotyyppi:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="316"/>
         <source>File size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostokoko:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Last modified:</source>
-        <translation type="unfinished"></translation>
+        <translation>Muokattu viimeksi:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>Last accessed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Viimeksi käytetty:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="322"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="324"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Luotu:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="329"/>
         <source>Owner:</source>
-        <translation type="unfinished"></translation>
+        <translation>Omistaja:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="330"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ryhmä:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="397"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="400"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyyppi</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="403"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Koko</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="406"/>
         <source>Modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Muokattu</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="409"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Luotu</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="412"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistettu</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="415"/>
         <source>Owner</source>
-        <translation type="unfinished"></translation>
+        <translation>Omistaja</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="418"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Ryhmä</translation>
     </message>
 </context>
 <context>
@@ -1223,12 +1223,12 @@ Poistetaanko tiedostot?</translation>
     <message>
         <location filename="../folderview.cpp" line="406"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaattiset sarakeleveydet</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="423"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Näkyvät sarakkeet</translation>
     </message>
 </context>
 <context>
@@ -1236,12 +1236,12 @@ Poistetaanko tiedostot?</translation>
     <message>
         <location filename="../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>Lihavoitu</translation>
     </message>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Kursivoitu</translation>
     </message>
 </context>
 <context>
@@ -1249,7 +1249,7 @@ Poistetaanko tiedostot?</translation>
     <message>
         <location filename="../mountoperationpassworddialog.cpp" line="40"/>
         <source>&amp;Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Yhdistä</translation>
     </message>
 </context>
 <context>
@@ -1257,12 +1257,12 @@ Poistetaanko tiedostot?</translation>
     <message>
         <location filename="../pathbar.cpp" line="134"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Muokkaa polkua</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="137"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kopioi polku</translation>
     </message>
 </context>
 <context>
