@@ -1270,42 +1270,42 @@ Poistetaanko tiedostot?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="46"/>
         <source>Places</source>
-        <translation type="unfinished"></translation>
+        <translation>Sijainnit</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="54"/>
         <source>Desktop</source>
-        <translation type="unfinished"></translation>
+        <translation>Työpöytä</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="60"/>
         <source>Computer</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietokone</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="68"/>
         <source>Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Sovellukset</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="77"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Verkko</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="81"/>
         <source>Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Laitteet</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="136"/>
         <source>Bookmarks</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjanmerkit</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="227"/>
         <source>Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Roskakori</translation>
     </message>
 </context>
 <context>
@@ -1313,64 +1313,64 @@ Poistetaanko tiedostot?</translation>
     <message>
         <location filename="../placesview.cpp" line="542"/>
         <source>Open in New Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa uuteen välilehteen</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="545"/>
         <source>Open in New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa uuteen ikkunaan</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="557"/>
         <source>Empty Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyhjennä roskakori</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="577"/>
         <location filename="../placesview.cpp" line="639"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Piilota</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="594"/>
         <source>Move Bookmark Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Siirrä kirjanmerkkiä ylös</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="601"/>
         <source>Move Bookmark Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Siirrä kirjanmerkkiä alas</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="606"/>
         <source>Rename Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Nimeä kirjanmerkki uudelleen</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="610"/>
         <source>Remove Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista kirjanmerkki</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="620"/>
         <location filename="../placesview.cpp" line="653"/>
         <source>Unmount</source>
-        <translation type="unfinished"></translation>
+        <translation>Irrota</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="624"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Liitä</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="630"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista asema tai levy</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="665"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä kaikki kohteet</translation>
     </message>
 </context>
 <context>
@@ -1381,29 +1381,32 @@ Poistetaanko tiedostot?</translation>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyyppi: %1
+Koko: %2
+Muokattu: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyyppi: %1
+Muokattu: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="96"/>
         <source>&amp;Overwrite</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Korvaa</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="98"/>
         <source>&amp;Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nimeä uudelleen</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Tiedostoa ei voi korvata itsellään.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Valitse toinen nimi.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1411,12 +1414,12 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Luettelot</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Directory Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Hakemistopuu</translation>
     </message>
 </context>
 <context>
@@ -1424,7 +1427,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Kohdetta &apos;%s&apos; ei voi palauttaa roskakorista: alkuperäistä polkua ei tiedetä</translation>
     </message>
 </context>
 <context>
@@ -1432,47 +1435,47 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Liitä</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation type="unfinished"></translation>
+        <translation>Yhdistä &amp;anonyymisti</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yhdistä k&amp;äyttäjänä:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
         <source>&amp;Username:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Käyttäjätunnus:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="102"/>
         <source>&amp;Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Salasana:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;luenimi:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Unohda salasana heti</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Muista salasana istunnon ajan</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="147"/>
         <source>Remember &amp;forever</source>
-        <translation type="unfinished"></translation>
+        <translation>Muista a&amp;ina</translation>
     </message>
 </context>
 <context>
@@ -1480,12 +1483,12 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="166"/>
         <source>Rename File</source>
-        <translation type="unfinished"></translation>
+        <translation>Nimeä tiedosto uudelleen</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="167"/>
         <source>Please enter a new name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uusi nimi:</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="124"/>
@@ -1499,73 +1502,73 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="226"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Luo kansio</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="227"/>
         <source>Create File</source>
-        <translation type="unfinished"></translation>
+        <translation>Luo tiedosto</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="231"/>
         <source>Please enter a new file name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uusi nimi:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="232"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>Uusi tiedosto</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="236"/>
         <source>Please enter a new folder name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uusi nimi:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="237"/>
         <source>New folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Uusi kansio</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="242"/>
         <source>Enter a name for the new %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nimi mallille %1:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="687"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Virhe oman kuvakkeen kanssa</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Polkua ei ole liitetty.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="319"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Virheellinen työpöytätietue: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Oletussovellusta ei ole määritetty tyypille &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Työhakemistoksi ei voi asettaa ”%s”: %s</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Tunniste: </translation>
     </message>
     <message>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
 </context>
 <context>
@@ -1573,27 +1576,27 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation type="unfinished"></translation>
+        <translation>Vahvista tiedostojen korvaus</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sijainnissa on jo tiedosto samalla nimellä.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Korvataanko tiedosto?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation type="unfinished"></translation>
+        <translation>seuraavalla tiedostolla?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostonimi:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation type="unfinished"></translation>
+        <translation>Tee sama kaikille</translation>
     </message>
 </context>
 <context>
@@ -1601,176 +1604,176 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi tiedostoja</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Nimi/sijainti</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostonimikuviot:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="44"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation>*</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="58"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Käytä säännöllistä lauseketta</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="71"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsittävät sijainnit:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="84"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Lisää</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="96"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Poista</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="132"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi piilotiedostot</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="143"/>
         <source>File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostotyyppi</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="149"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi vain tämän tyyppisiä:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="155"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstitiedostot</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="162"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuvatiedostot</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="169"/>
         <source>Audio files</source>
-        <translation type="unfinished"></translation>
+        <translation>Äänitiedostot</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="176"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>Videotiedostot</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="183"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Asiakirjat</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="190"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Kansiot</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="214"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Sisältö</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="220"/>
         <source>File contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedosto sisältää:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="240"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Käytä säännöllistä lauseketta</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="267"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Ominaisuudet</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="273"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostokoko:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="302"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Suurempi kuin:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="316"/>
         <location filename="../filesearch.ui" line="346"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>tavua</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="321"/>
         <location filename="../filesearch.ui" line="351"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="326"/>
         <location filename="../filesearch.ui" line="356"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>MiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="331"/>
         <location filename="../filesearch.ui" line="361"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>GiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="281"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pienempi kuin:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="51"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjainkokoerotus</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="125"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi alihakemistoista</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>K&amp;irjainkokoerotus</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="377"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Viimeksi muokattu:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aiemmin kuin:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="392"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Myöhemmin kuin:</translation>
     </message>
 </context>
 </TS>
