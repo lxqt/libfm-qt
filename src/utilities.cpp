@@ -29,6 +29,10 @@
 #include <QStandardPaths>
 #include "fileoperation.h"
 #include <QEventLoop>
+#include <QDialogButtonBox>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QLineEdit>
 
 #include <pwd.h>
 #include <grp.h>
@@ -246,17 +250,41 @@ void createFileOrFolder(CreateFileType type, FilePath parentDir, const TemplateI
     }
 
 _retry:
+    QString new_name;
     // ask the user to input a file name
-    bool ok;
-    QString new_name = QInputDialog::getText(parent ? parent->window() : nullptr,
-                       dialogTitle,
-                       prompt,
-                       QLineEdit::Normal,
-                       defaultNewName,
-                       &ok);
+    {
+        QDialog dlg(parent ? parent->window() : nullptr);
+        dlg.setWindowTitle(dialogTitle);
+        // label
+        QLabel *label = new QLabel(prompt);
+        // text entry
+        QLineEdit *le = new QLineEdit(defaultNewName);
+        int length = defaultNewName.lastIndexOf(QStringLiteral("."));
+        if(length > -1) {
+            le->setSelection(0, length);
+        }
+        else {
+            le->selectAll();
+        }
+        // buttons
+        QDialogButtonBox *btns = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+        QObject::connect(btns, &QDialogButtonBox::accepted, &dlg, &QDialog::accept);
+        QObject::connect(btns, &QDialogButtonBox::rejected, &dlg, &QDialog::reject);
+        // layout
+        QVBoxLayout *layout = new QVBoxLayout;
+        layout->addWidget(label);
+        layout->addWidget(le);
+        layout->addWidget(btns);
+        dlg.setLayout(layout);
+        dlg.setMaximumHeight(dlg.minimumHeight()); // no vertical resizing
 
-    if(!ok) {
-        return;
+        switch (dlg.exec()) {
+        case QDialog::Accepted:
+            new_name = le->text();
+            break;
+        default:
+            return;
+        }
     }
 
     auto dest = parentDir.child(new_name.toLocal8Bit().data());
