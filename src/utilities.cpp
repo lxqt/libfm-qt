@@ -228,16 +228,19 @@ void createFileOrFolder(CreateFileType type, FilePath parentDir, const TemplateI
 
     switch(type) {
     case CreateNewTextFile:
+        parent->setWindowIcon(QIcon::fromTheme(QStringLiteral("document-new")));
         prompt = QObject::tr("Please enter a new file name:");
         defaultNewName = QObject::tr("New file");
         break;
 
     case CreateNewFolder:
+        parent->setWindowIcon(QIcon::fromTheme(QStringLiteral("folder-new")));
         prompt = QObject::tr("Please enter a new folder name:");
         defaultNewName = QObject::tr("New folder");
         break;
 
     case CreateWithTemplate: {
+        parent->setWindowIcon(QIcon());
         auto mime = templ->mimeType();
         prompt = QObject::tr("Enter a name for the new %1:").arg(QString::fromUtf8(mime->desc()));
         defaultNewName = QString::fromStdString(templ->name());
