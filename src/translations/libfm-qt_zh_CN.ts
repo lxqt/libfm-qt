@@ -1513,7 +1513,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="232"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>新文件</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="236"/>
