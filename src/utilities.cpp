@@ -276,7 +276,7 @@ _retry:
         layout->addWidget(le);
         layout->addWidget(btns);
         dlg.setLayout(layout);
-        dlg.setMaximumHeight(dlg.minimumHeight()); // no vertical resizing
+        dlg.setMaximumHeight(dlg.minimumSizeHint().height()); // no vertical resizing
 
         switch (dlg.exec()) {
         case QDialog::Accepted:
