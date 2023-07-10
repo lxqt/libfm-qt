@@ -674,7 +674,7 @@ Do you want to replace it?</source>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>Искате ли да отворите този %1 файл?</numerusform>
-            <numerusform>Искате ли да отворите тези %1 файлове?</numerusform>
+            <numerusform>Искате ли да отворите тези %1 файла?</numerusform>
         </translation>
     </message>
     <message>
