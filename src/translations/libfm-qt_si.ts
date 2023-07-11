@@ -16,12 +16,12 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation type="unfinished"></translation>
+        <translation>තෝරාගත් විධාන</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation type="unfinished"></translation>
+        <translation>ධාවනය කළ යුතු විධාන පෙළ:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
@@ -37,7 +37,13 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;විධාන පෙළ තුල මෙම විශේෂ කේත භාවිතා කළ හැක:&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: එක් ගොනුවක් නිරූපණය කරයි&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: ගොනු සියල්ල නිරූපණය කරයි&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: එක් ගොනුවක URI නිරූපණය කරයි&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: ගොනු සියල්ලේ URI නිරූපණය කරයි&lt;/li&gt;
+&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
@@ -47,7 +53,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>ටර්මිනල් එමියුලේටරය තුළ ධාවනය කරන්න</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
@@ -60,7 +66,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation>බුක්මර්ක් වෙනස් කරන්න</translation>
+        <translation>බුක්මාර්ක් වෙනස් කරන්න</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
@@ -103,17 +109,17 @@
     <message>
         <location filename="../exec-file.ui" line="52"/>
         <source>E&amp;xecute</source>
-        <translation type="unfinished"></translation>
+        <translation>ධාවනය (&amp;X)</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>ටර්මිනලය තුළ ධාවනය (&amp;T)</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
         <source>Cancel</source>
-        <translation>අවලංගු කරන්න</translation>
+        <translation>අවලංගු</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="99"/>
@@ -323,7 +329,7 @@
     <message>
         <location filename="../file-props.ui" line="742"/>
         <source>Sticky</source>
-        <translation type="unfinished"></translation>
+        <translation>ස්ටිකි</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
@@ -338,7 +344,7 @@
     <message>
         <location filename="../file-props.ui" line="792"/>
         <source>Advanced Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>උසස් සැකසුම්</translation>
     </message>
 </context>
 <context>
@@ -408,7 +414,7 @@
     <message>
         <location filename="../dirtreeview.cpp" line="226"/>
         <source>Open in Termina&amp;l</source>
-        <translation type="unfinished"></translation>
+        <translation>ටර්මිනලය තුළ විවෘත කරන්න (&amp;L)</translation>
     </message>
 </context>
 <context>
@@ -426,7 +432,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation>මෙතනට symlink එකක් සාදන්න</translation>
+        <translation>මෙතනට සිම්ලින්ක් එකක් සාදන්න</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
@@ -444,7 +450,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="84"/>
         <source>New bookmark</source>
-        <translation>නව බුක්මර්ක්</translation>
+        <translation>නව බුක්මාර්ක්</translation>
     </message>
 </context>
 <context>
@@ -567,7 +573,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="230"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>සුමට චලනය</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="245"/>
@@ -666,9 +672,9 @@ Do you want to replace it?</source>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="357"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>මෙම %1 ගොනුව විවෘත කිරීමට අවශ්‍ය ද?</numerusform>
+            <numerusform>මෙම ගොනු %1 විවෘත කිරීමට අවශ්‍ය ද?</numerusform>
         </translation>
     </message>
     <message>
@@ -780,7 +786,8 @@ Do you want to replace it?</source>
         <location filename="../fileoperation.cpp" line="318"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation type="unfinished"></translation>
+        <translation>පවතින ගොනු පද්ධතිය සහයෝඟ නොකිරීම හේතුවෙන් සමහර ගොනු කුණු කූඩයට දැමිය නොහැක.
+ඒවා මකා දැමීමට කැමති ද?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="404"/>
@@ -850,12 +857,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation type="unfinished"></translation>
+        <translation>සිම්ලින්ක් නිර්මාණය</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>පහත ගොනු සඳහා සිම්ලින්ක් නිර්මාණය කරයි:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
@@ -1007,7 +1014,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="530"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>native නොවන ගොනු පද්ධතියක සබැඳි නිර්මාණය කළ නොහැක</translation>
     </message>
 </context>
 <context>
@@ -1293,7 +1300,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesmodel.cpp" line="136"/>
         <source>Bookmarks</source>
-        <translation>බුක්මර්ක්</translation>
+        <translation>බුක්මාර්ක්</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="227"/>
@@ -1327,22 +1334,22 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="594"/>
         <source>Move Bookmark Up</source>
-        <translation>බුක්මර්ක් ඉහළට ගෙන යන්න</translation>
+        <translation>බුක්මාර්ක් ඉහළට ගෙන යන්න</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="601"/>
         <source>Move Bookmark Down</source>
-        <translation>බුක්මර්ක් පහළට ගෙන යන්න</translation>
+        <translation>බුක්මාර්ක් පහළට ගෙන යන්න</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="606"/>
         <source>Rename Bookmark</source>
-        <translation>බුක්මර්ක් හි නම වෙනස් කරන්න</translation>
+        <translation>බුක්මාර්ක් හි නම වෙනස් කරන්න</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="610"/>
         <source>Remove Bookmark</source>
-        <translation>බුක්මර්ක් ඉවත් කරන්න</translation>
+        <translation>බුක්මාර්ක් ඉවත් කරන්න</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="620"/>
@@ -1525,7 +1532,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="242"/>
         <source>Enter a name for the new %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 සඳහා අලුත් නාමයක් ලබා දෙන්න:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="687"/>
