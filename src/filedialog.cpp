@@ -542,7 +542,7 @@ QString FileDialog::suffix(bool checkDefaultSuffix) const {
                 left = suffix.indexOf(QLatin1Char('.')); // it can be like ".tar.xz"
                 if(left != -1 && suffix.size() - left > 1) {
                     suffix = suffix.right(suffix.size() - left - 1);
-                    if(suffix.indexOf(QRegularExpression(QStringLiteral("\\W"))) == -1) {
+                    if(suffix.indexOf(QRegularExpression(QStringLiteral("[^\\w\\.]"))) == -1) {
                         return suffix;
                     }
                 }
