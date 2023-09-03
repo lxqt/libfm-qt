@@ -25,9 +25,11 @@ public:
     explicit BasicFileLauncher();
     virtual ~BasicFileLauncher();
 
-    bool launchFiles(const FileInfoList &fileInfos, GAppLaunchContext* ctx = nullptr);
+    bool launchFiles(const FileInfoList &fileInfos, GAppLaunchContext* ctx = nullptr) {
+        return internalLaunchFiles(fileInfos, ctx, 0);
+    }
 
-    bool launchPaths(FilePathList paths, GAppLaunchContext* ctx = nullptr);
+    bool launchPaths(FilePathList paths, GAppLaunchContext* ctx = nullptr, size_t splitIdx = 0);
 
     bool launchDesktopEntry(const FileInfoPtr &fileInfo, const FilePathList& paths = FilePathList{}, GAppLaunchContext* ctx = nullptr);
 
@@ -51,7 +53,7 @@ protected:
 
     virtual GAppInfoPtr chooseApp(const FileInfoList& fileInfos, const char* mimeType, GErrorPtr& err);
 
-    virtual bool openFolder(GAppLaunchContext* ctx, const FileInfoList& folderInfos, GErrorPtr& err);
+    virtual bool openFolder(GAppLaunchContext* ctx, const FileInfoList& folderInfos, size_t splitIndex, GErrorPtr& err);
 
     virtual bool showError(GAppLaunchContext* ctx, const GErrorPtr& err, const FilePath& path = FilePath{}, const FileInfoPtr& info = FileInfoPtr{});
 
@@ -62,6 +64,8 @@ protected:
 private:
 
     FilePath handleShortcut(const FileInfoPtr &fileInfo, GAppLaunchContext* ctx = nullptr);
+
+    bool internalLaunchFiles(const FileInfoList &fileInfos, GAppLaunchContext* ctx, size_t splitIndex);
 
 private:
     bool quickExec_; // Don't ask options on launch executable file

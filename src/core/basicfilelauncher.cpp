@@ -23,7 +23,7 @@ BasicFileLauncher::BasicFileLauncher():
 BasicFileLauncher::~BasicFileLauncher() {
 }
 
-bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchContext* ctx) {
+bool BasicFileLauncher::internalLaunchFiles(const FileInfoList& fileInfos, GAppLaunchContext* ctx, size_t splitIndex) {
     FileInfoList mimeTypeInfos;
     FileInfoList folderInfos;
     FilePathList pathsToLaunch;
@@ -79,7 +79,7 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
     // open folders
     if(!folderInfos.empty()) {
         GErrorPtr err;
-        openFolder(ctx, folderInfos, err);
+        openFolder(ctx, folderInfos, splitIndex, err);
     }
 
     // Open files of different mime-types with their default apps,
@@ -146,7 +146,7 @@ bool BasicFileLauncher::launchFiles(const FileInfoList& fileInfos, GAppLaunchCon
     return true;
 }
 
-bool BasicFileLauncher::launchPaths(FilePathList paths, GAppLaunchContext* ctx) {
+bool BasicFileLauncher::launchPaths(FilePathList paths,  GAppLaunchContext* ctx, size_t splitIndex) {
     // FIXME: blocking with an event loop is not a good design :-(
     QEventLoop eventLoop;
     auto job = new FileInfoJob{paths};
@@ -177,7 +177,7 @@ bool BasicFileLauncher::launchPaths(FilePathList paths, GAppLaunchContext* ctx) 
     eventLoop.exec();
 
     // launch the file info
-    launchFiles(job->files(), ctx);
+    internalLaunchFiles(job->files(), ctx, splitIndex);
 
     delete job;
     return false;
@@ -187,7 +187,7 @@ GAppInfoPtr BasicFileLauncher::chooseApp(const FileInfoList& /* fileInfos */, co
     return GAppInfoPtr{};
 }
 
-bool BasicFileLauncher::openFolder(GAppLaunchContext* ctx, const FileInfoList& folderInfos, GErrorPtr& err) {
+bool BasicFileLauncher::openFolder(GAppLaunchContext* ctx, const FileInfoList& folderInfos, size_t /* splitIndex */, GErrorPtr& err) {
     auto app = chooseApp(folderInfos, "inode/directory", err);
     if(app) {
         launchWithApp(app.get(), folderInfos.paths(), ctx);

@@ -35,7 +35,7 @@ public:
 
     bool launchFiles(QWidget* parent, const FileInfoList& file_infos);
 
-    bool launchPaths(QWidget* parent, const FilePathList &paths);
+    bool launchPaths(QWidget* parent, const FilePathList &paths, size_t splitIndex = 0);
 
     bool launchWithApp(QWidget* parent, GAppInfo* app, const FilePathList& paths);
 
@@ -43,7 +43,7 @@ protected:
 
     GAppInfoPtr chooseApp(const FileInfoList& fileInfos, const char* mimeType, GErrorPtr& err) override;
 
-    bool openFolder(GAppLaunchContext* ctx, const FileInfoList& folderInfos, GErrorPtr& err) override;
+    bool openFolder(GAppLaunchContext* ctx, const FileInfoList& folderInfos, size_t splitIndex, GErrorPtr& err) override;
 
     bool showError(GAppLaunchContext* ctx, const GErrorPtr &err, const FilePath& path = FilePath{}, const FileInfoPtr& info = FileInfoPtr{}) override;
 

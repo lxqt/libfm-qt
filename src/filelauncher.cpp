@@ -48,11 +48,11 @@ bool FileLauncher::launchFiles(QWidget* parent, const FileInfoList &file_infos) 
     return ret;
 }
 
-bool FileLauncher::launchPaths(QWidget* parent, const FilePathList& paths) {
+bool FileLauncher::launchPaths(QWidget* parent, const FilePathList& paths, size_t splitIndex) {
     resetExecActions();
     multiple_ = paths.size() > 1;
     GObjectPtr<FmAppLaunchContext> context{fm_app_launch_context_new_for_widget(parent), false};
-    bool ret = BasicFileLauncher::launchPaths(paths, G_APP_LAUNCH_CONTEXT(context.get()));
+    bool ret = BasicFileLauncher::launchPaths(paths, G_APP_LAUNCH_CONTEXT(context.get()), splitIndex);
     launchedPaths(paths);
     return ret;
 }
@@ -92,8 +92,8 @@ GAppInfoPtr FileLauncher::chooseApp(const FileInfoList& /*fileInfos*/, const cha
     return app;
 }
 
-bool FileLauncher::openFolder(GAppLaunchContext *ctx, const FileInfoList &folderInfos, GErrorPtr &err) {
-    return BasicFileLauncher::openFolder(ctx, folderInfos, err);
+bool FileLauncher::openFolder(GAppLaunchContext *ctx, const FileInfoList &folderInfos, size_t splitIndex, GErrorPtr &err) {
+    return BasicFileLauncher::openFolder(ctx, folderInfos, splitIndex, err);
 }
 
 bool FileLauncher::showError(GAppLaunchContext* /*ctx*/, const GErrorPtr &err, const FilePath &path, const FileInfoPtr &info) {
