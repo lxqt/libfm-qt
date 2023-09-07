@@ -332,6 +332,15 @@ void PathBar::closeEditor() {
     if(tempPathEdit_ == nullptr) {
         return;
     }
+
+    // WARNING: The d-tor of QWidget deletes its layout and sets it to null while the widget is
+    // still valid and before its children are destroyed. On the other hand, if the pathbar is
+    // deleted while the path-edit has focus, before it is destroyed, the path-edit will lose
+    // focus and call the current function. Therefore, the following nullity check is necessary.
+    if(layout() == nullptr) {
+        return;
+    }
+
     // If a menu has popped up synchronously (with QMenu::exec), the path buttons may be drawn
     // but the path-edit may not disappear until the menu is closed. So, we hide it here.
     // However, since hiding the path-edit makes it lose focus and emit editingFinished(),
