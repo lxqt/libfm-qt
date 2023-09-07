@@ -87,3 +87,7 @@ open_arg=-e
 open_arg=-e
 noclose_arg=--hold -e
 desktop_id=Alacritty.desktop
+
+[foot]
+noclose_arg=--hold
+desktop_id=org.codeberg.dnkl.foot.desktop
