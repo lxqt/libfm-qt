@@ -25,7 +25,7 @@
 #include <QImage>
 #include <QString>
 #include <QIcon>
-#include <QVector>
+#include <QList>
 
 #include "core/folder.h"
 
@@ -86,7 +86,7 @@ public:
     mutable QString dispCrtime_;
     mutable QString dispDtime_;
     mutable QString dispSize_;
-    QVector<Thumbnail> thumbnails;
+    QList<Thumbnail> thumbnails;
     bool isCut;
 };
 

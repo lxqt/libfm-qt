@@ -333,7 +333,7 @@ void PlacesView::dropEvent(QDropEvent* event) {
     // while the DND is in progress. Also, the menu needs a parent for correct positioning.
     if(!event->mimeData()->hasFormat(QStringLiteral("application/x-bookmark-row")) // dropped data is not a bookmark row
        && event->mimeData()->hasUrls()) { // file uris are dropped
-        QModelIndex index = indexAt(event->pos());
+        QModelIndex index = indexAt(event->position().toPoint());
         if(index.isValid()
            && index.column() == 0 // the real item is at column 0
            && index.parent().isValid()) { // should be a child item
@@ -349,7 +349,7 @@ void PlacesView::dropEvent(QDropEvent* event) {
                    && strcmp(destPath.toString().get(), "computer:///") != 0 ) {
                     auto srcPaths = pathListFromQUrls(event->mimeData()->urls());
                     if(!srcPaths.empty()) {
-                        auto curPos = viewport()->mapToGlobal(event->pos());
+                        auto curPos = viewport()->mapToGlobal(event->position().toPoint());
                         QTimer::singleShot(0, this, [this, curPos, srcPaths, destPath] {
                             if(strcmp(destPath.toString().get(), "trash:///") == 0) {
                                 Qt::DropAction action = DndActionMenu::askUser(Qt::MoveAction, curPos, viewport());
@@ -385,9 +385,13 @@ void PlacesView::dropEvent(QDropEvent* event) {
 }
 
 void PlacesView::onEmptyTrash() {
-    Fm::FilePathList files;
-    files.push_back(Fm::FilePath::fromUri("trash:///"));
-    Fm::FileOperation::deleteFiles(std::move(files), true);
+    // The main event loop might be blocked by a question message box and
+    // cause a crash with Qt6 if the current slot does not return first.
+    QTimer::singleShot(0, this, [] {
+        Fm::FilePathList files;
+        files.push_back(Fm::FilePath::fromUri("trash:///"));
+        Fm::FileOperation::deleteFiles(std::move(files), true);
+    });
 }
 
 void PlacesView::onMoveBookmarkUp() {
@@ -479,7 +483,10 @@ void PlacesView::onMountVolume() {
     PlacesModelVolumeItem* item = static_cast<PlacesModelVolumeItem*>(model_->itemFromIndex(action->index()));
     MountOperation* op = new MountOperation(true, this);
     op->mount(item->volume());
-    op->wait();
+    // A crash will happen with Qt6 if the current slot does not return first.
+    QTimer::singleShot(0, op, [op] {
+        op->wait();
+    });
 }
 
 void PlacesView::onUnmountVolume() {
@@ -490,7 +497,9 @@ void PlacesView::onUnmountVolume() {
     PlacesModelVolumeItem* item = static_cast<PlacesModelVolumeItem*>(model_->itemFromIndex(action->index()));
     MountOperation* op = new MountOperation(true, this);
     op->unmount(item->volume());
-    op->wait();
+    QTimer::singleShot(0, op, [op] {
+        op->wait();
+    });
 }
 
 void PlacesView::onUnmountMount() {
@@ -502,7 +511,9 @@ void PlacesView::onUnmountMount() {
     GMount* mount = item->mount();
     MountOperation* op = new MountOperation(true, this);
     op->unmount(mount);
-    op->wait();
+    QTimer::singleShot(0, op, [op] {
+        op->wait();
+    });
 }
 
 void PlacesView::onEjectVolume() {
@@ -513,7 +524,9 @@ void PlacesView::onEjectVolume() {
     PlacesModelVolumeItem* item = static_cast<PlacesModelVolumeItem*>(model_->itemFromIndex(action->index()));
     MountOperation* op = new MountOperation(true, this);
     op->eject(item->volume());
-    op->wait();
+    QTimer::singleShot(0, op, [op] {
+        op->wait();
+    });
 }
 
 void PlacesView::contextMenuEvent(QContextMenuEvent* event) {

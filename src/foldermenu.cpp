@@ -29,6 +29,7 @@
 #include <QDebug>
 #include "customaction_p.h"
 #include "customactions/fileaction.h"
+#include <QActionGroup>
 #include <QMessageBox>
 
 namespace Fm {

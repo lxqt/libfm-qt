@@ -52,8 +52,7 @@ MountOperationPasswordDialog::MountOperationPasswordDialog(MountOperation* op, G
         else {
             ui->asUser->setChecked(true);
         }
-        connect(ui->usernameGroup, QOverload<QAbstractButton *, bool>::of(&QButtonGroup::buttonToggled),
-                this, [this](QAbstractButton *btn, bool checked){
+        connect(ui->usernameGroup, &QButtonGroup::buttonToggled, this, [this](QAbstractButton *btn, bool checked) {
             if(checked) {
                 QSettings settings(QSettings::UserScope, QStringLiteral("lxqt"), QStringLiteral("mountdialog"));
                 settings.setValue(QStringLiteral("Anonymous"), btn == ui->Anonymous);
@@ -91,8 +90,7 @@ MountOperationPasswordDialog::MountOperationPasswordDialog(MountOperation* op, G
             ui->sessionPassword->setChecked(true);
             break;
         }
-        connect(ui->passwordGroup, QOverload<QAbstractButton *, bool>::of(&QButtonGroup::buttonToggled),
-                this, [this](QAbstractButton *btn, bool checked){
+        connect(ui->passwordGroup, &QButtonGroup::buttonToggled, this, [this](QAbstractButton *btn, bool checked) {
             if(checked) {
                 int remember = (btn == ui->forgetPassword ? -1 : btn == ui->storePassword ? 1 : 0);
                 QSettings settings(QSettings::UserScope, QStringLiteral("lxqt"), QStringLiteral("mountdialog"));

@@ -57,10 +57,6 @@ public:
     return QListView::rectForIndex(index);
   }
 
-  inline QStyleOptionViewItem getViewOptions() {
-    return viewOptions();
-  }
-
   inline bool cursorOnSelectionCorner() const {
       return cursorOnSelectionCorner_;
   }
@@ -71,6 +67,7 @@ Q_SIGNALS:
 protected:
   QModelIndex moveCursor(CursorAction cursorAction, Qt::KeyboardModifiers modifiers) override;
   void currentChanged(const QModelIndex &current, const QModelIndex &previous) override;
+  QItemSelectionModel::SelectionFlags selectionCommand(const QModelIndex& index, const QEvent* event = nullptr) const override;
 
 public Q_SLOTS:
   void selectAll() override;
@@ -107,7 +104,7 @@ public:
 
   void rowsInserted(const QModelIndex& parent,int start, int end) override;
   void rowsAboutToBeRemoved(const QModelIndex& parent,int start, int end) override;
-  void dataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int>& roles = QVector<int>{}) override;
+  void dataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QList<int>& roles = QList<int>{}) override;
   void reset() override;
 
   void resizeEvent(QResizeEvent* event) override;

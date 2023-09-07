@@ -46,7 +46,6 @@
 #include <QTextEdit>
 #include <QWidgetAction> // for detailed list header context menu
 #include <QLabel> // for detailed list header context menu
-#include <QX11Info> // for XDS support
 #include <xcb/xcb.h> // for XDS support
 #include "xdndworkaround.h" // for XDS support
 #include "folderview_p.h"
@@ -94,43 +93,47 @@ void FolderViewListView::startDrag(Qt::DropActions supportedActions) {
     }
 }
 
+QItemSelectionModel::SelectionFlags FolderViewListView::selectionCommand(const QModelIndex& index, const QEvent* event) const {
+    // select/deselect the item by pressing its selection corner with the left mouse button
+    if(cursorOnSelectionCorner_
+       && event != nullptr
+       && event->type() == QEvent::MouseButtonPress
+       && event->isSinglePointEvent()) {
+        auto e = static_cast<const QSinglePointEvent*>(event);
+        if(e->button() == Qt::LeftButton && !(e->modifiers() & Qt::ShiftModifier)) {
+            return QItemSelectionModel::Toggle;
+        }
+    }
+    return QListView::selectionCommand(index, event);
+}
+
 void FolderViewListView::mousePressEvent(QMouseEvent* event) {
     if(event->buttons() == Qt::LeftButton) { // see FolderViewListView::mouseMoveEvent
         mouseLeftPressed_ = true;
-        if(indexAt(event->pos()).isValid()) {
-            globalItemPressPoint_ = event->globalPos();
+        if(indexAt(event->position().toPoint()).isValid()) {
+            globalItemPressPoint_ = event->globalPosition().toPoint();
         }
         else {
             globalItemPressPoint_ = QPoint();
         }
     }
-    // use the selection corner only with the extended and multiple selection modes
-    // and change the mode to multiple temporarily if it is extended
-    QAbstractItemView::SelectionMode sm = selectionMode();
-    bool cornerSelection(cursorOnSelectionCorner_ && event->button() == Qt::LeftButton);
-    if(sm == QAbstractItemView::ExtendedSelection && cornerSelection) {
-        setSelectionMode(QAbstractItemView::MultiSelection);
-    }
+
     QListView::mousePressEvent(event);
-    if (sm == QAbstractItemView::ExtendedSelection) {
-        if(cornerSelection) {
-            setSelectionMode(sm); // restore the selection mode
-        }
-        else {
-            // NOTE: Qt sometimes does not respect the current item sorting with a Shift selection.
-            // That seems like a problem in QListView. As a workaround, the selection is sorted here.
-            if(QApplication::keyboardModifiers() & Qt::ShiftModifier) {
-                auto selModel = selectionModel();
-                auto sel = selModel->selection();
-                if(!sel.isEmpty()) {
-                    std::sort(sel.begin(), sel.end(), [](QItemSelectionRange a, QItemSelectionRange b) {
-                        return a.top() < b.top();
-                    });
-                    selModel->select(sel, QItemSelectionModel::SelectCurrent);
-                }
-            }
+
+    if(selectionMode() == QAbstractItemView::ExtendedSelection
+       && (event->modifiers() & Qt::ShiftModifier)) {
+        // NOTE: Qt sometimes does not respect the current item sorting with a Shift selection.
+        // That seems like a problem in QListView. As a workaround, the selection is sorted here.
+        auto selModel = selectionModel();
+        auto sel = selModel->selection();
+        if(!sel.isEmpty()) {
+            std::sort(sel.begin(), sel.end(), [](QItemSelectionRange a, QItemSelectionRange b) {
+                return a.top() < b.top();
+            });
+            selModel->select(sel, QItemSelectionModel::SelectCurrent);
         }
     }
+
     static_cast<FolderView*>(parent())->childMousePressEvent(event);
 }
 
@@ -145,12 +148,12 @@ void FolderViewListView::mouseMoveEvent(QMouseEvent* event) {
                 && (!mouseLeftPressed_
                     // don't start drag if the cursor isn't moved since pressing left mouse button on an item
                     // (because the user may want to scroll the view with mouse wheel before dragging)
-                    || (globalItemPressPoint_ - event->globalPos()).manhattanLength() <= QApplication::startDragDistance())))) {
+                    || (globalItemPressPoint_ - event->globalPosition().toPoint()).manhattanLength() <= QApplication::startDragDistance())))) {
         bool cursorOnSelectionCorner = cursorOnSelectionCorner_;
         QListView::mouseMoveEvent(event);
         // update the index if the cursor enters/leaves the selection corner icon
         if(cursorOnSelectionCorner != cursorOnSelectionCorner_ && event->buttons() == Qt::NoButton) {
-            update(indexAt(event->pos()));
+            update(indexAt(event->position().toPoint()));
         }
     }
 }
@@ -496,13 +499,13 @@ void FolderViewTreeView::paintEvent(QPaintEvent * event) {
 
 void FolderViewTreeView::mousePressEvent(QMouseEvent* event) {
     if(event->buttons() == Qt::LeftButton) { // see FolderViewTreeView::mouseMoveEvent
-        globalItemPressPoint_ = event->globalPos();
+        globalItemPressPoint_ = event->globalPosition().toPoint();
     }
     if(selectionMode() == QAbstractItemView::ExtendedSelection) {
         // remember mouse press position and determine whether selections should be kept
         // or removed later, when the cursor moves
         QAbstractItemView::mousePressEvent(event);
-        mousePressPoint_ = event->pos() + QPoint(horizontalOffset(), verticalOffset());
+        mousePressPoint_ = event->position().toPoint() + QPoint(horizontalOffset(), verticalOffset());
     }
     else {
         QTreeView::mousePressEvent(event);
@@ -525,7 +528,7 @@ void FolderViewTreeView::mouseMoveEvent(QMouseEvent* event) {
             QAbstractItemView::mouseMoveEvent(event);
 
             // set rubberband rectangle
-            QRect rect(mousePressPoint_, event->pos() + QPoint(horizontalOffset(), verticalOffset()));
+            QRect rect(mousePressPoint_, event->position().toPoint() + QPoint(horizontalOffset(), verticalOffset()));
             rect = rect.normalized();
             QRect r = rect.united(rubberBandRect_);
             viewport()->update(r.adjusted(-horizontalOffset(), -verticalOffset(),
@@ -553,7 +556,7 @@ void FolderViewTreeView::mouseMoveEvent(QMouseEvent* event) {
             // don't start drag if the cursor isn't moved since pressing left mouse button on an item
             // because the user may want to scroll the view with mouse wheel before dragging
             if(!(event->buttons() == Qt::LeftButton
-                 && (globalItemPressPoint_ - event->globalPos()).manhattanLength() <= QApplication::startDragDistance())) {
+                 && (globalItemPressPoint_ - event->globalPosition().toPoint()).manhattanLength() <= QApplication::startDragDistance())) {
                 QTreeView::mouseMoveEvent(event);
             }
         }
@@ -780,7 +783,7 @@ void FolderViewTreeView::rowsAboutToBeRemoved(const QModelIndex& parent, int sta
     queueLayoutColumns();
 }
 
-void FolderViewTreeView::dataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int>& roles /*= QVector<int>{}*/) {
+void FolderViewTreeView::dataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QList<int>& roles /*= QList<int>{}*/) {
     QTreeView::dataChanged(topLeft, bottomRight, roles);
     // FIXME: this will be very inefficient
     // queueLayoutColumns();
@@ -883,7 +886,7 @@ FolderView::FolderView(FolderView::ViewMode _mode, QWidget *parent):
     iconSize_[DetailedListMode - FirstViewMode] = QSize(24, 24);
 
     QVBoxLayout* layout = new QVBoxLayout();
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     setLayout(layout);
 
     setViewMode(_mode);
@@ -1540,7 +1543,7 @@ void FolderView::childDragLeaveEvent(QDragLeaveEvent* e) {
 void FolderView::childDragMoveEvent(QDragMoveEvent* e) {
     // Since it isn't possible to drop on a file (see "FolderModel::dropMimeData()"),
     // we enable the drop indicator only when the cursor is on a folder.
-    QModelIndex index = view->indexAt(e->pos());
+    QModelIndex index = view->indexAt(e->position().toPoint());
     if(index.isValid() && index.model()) {
         QVariant data = index.model()->data(index, FolderModel::FileInfoRole);
         auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
@@ -1558,7 +1561,7 @@ void FolderView::childDropEvent(QDropEvent* e) {
     // NOTE: in theory, it's not possible to implement XDS with pure Qt.
     // We achieved this with some dirty XCB/XDND workarounds.
     // Please refer to XdndWorkaround::clientMessage() in xdndworkaround.cpp for details.
-    if(QX11Info::isPlatformX11() && e->mimeData()->hasFormat(QStringLiteral("XdndDirectSave0"))) {
+    if(QGuiApplication::platformName() == QStringLiteral("xcb") && e->mimeData()->hasFormat(QStringLiteral("XdndDirectSave0"))) {
         e->setDropAction(Qt::CopyAction);
         const QWidget* targetWidget = childView()->viewport();
         // these are dynamic QObject property set by our XDND workarounds in xdndworkaround.cpp.
@@ -1575,7 +1578,7 @@ void FolderView::childDropEvent(QDropEvent* e) {
             // 2. construct the fill URI for the file, and update the source window property.
             Fm::FilePath filePath;
             if(model_) {
-                QModelIndex index = view->indexAt(e->pos());
+                QModelIndex index = view->indexAt(e->position().toPoint());
                 auto info = model_->fileInfoFromIndex(index);
                 if(info && info->isDir()) {
                     filePath = info->path().child(basename.constData());
@@ -1597,7 +1600,7 @@ void FolderView::childDropEvent(QDropEvent* e) {
         return;
     }
 
-    if(e->keyboardModifiers() == Qt::NoModifier) {
+    if(e->modifiers() == Qt::NoModifier) {
         // If no key modifiers are used, pop up a menu
         // to ask the user for the action he/she wants to perform.
 
@@ -1607,7 +1610,7 @@ void FolderView::childDropEvent(QDropEvent* e) {
         Fm::FilePath destPath;
         std::shared_ptr<const Fm::FileInfo> info = nullptr;
         if(model_) {
-            QModelIndex index = view->indexAt(e->pos());
+            QModelIndex index = view->indexAt(e->position().toPoint());
             info = model_->fileInfoFromIndex(index);
         }
         if(info && info->isDir()) {
@@ -1633,7 +1636,7 @@ void FolderView::childDropEvent(QDropEvent* e) {
             if(info && info->isWritableDirectory() && info->isWritable()) {
                 actions = e->possibleActions();
             }
-            auto curPos = view->viewport()->mapToGlobal(e->pos());
+            auto curPos = view->viewport()->mapToGlobal(e->position().toPoint());
             QTimer::singleShot(0, view, [this, curPos, actions, srcPaths, destPath] {
                 Qt::DropAction action;
                 // Wayland does not see the modifier if it is pressed after dragging.
@@ -1702,7 +1705,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
             // activate items on single click
             if(style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick)) {
                 QHoverEvent* hoverEvent = static_cast<QHoverEvent*>(event);
-                QModelIndex index = view->indexAt(hoverEvent->pos()); // find out the hovered item
+                QModelIndex index = view->indexAt(hoverEvent->position().toPoint()); // find out the hovered item
                 if(index.isValid()) { // change the cursor to a hand when hovering on an item
                     setCursor(Qt::PointingHandCursor);
                 }

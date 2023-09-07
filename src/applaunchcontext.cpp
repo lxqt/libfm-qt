@@ -19,7 +19,7 @@
 
 
 #include "applaunchcontext.h"
-#include <QX11Info>
+#include <QApplication>
 #include <X11/Xlib.h>
 
 typedef struct _FmAppLaunchContext {
@@ -29,11 +29,11 @@ typedef struct _FmAppLaunchContext {
 G_DEFINE_TYPE(FmAppLaunchContext, fm_app_launch_context, G_TYPE_APP_LAUNCH_CONTEXT)
 
 static char* fm_app_launch_context_get_display(GAppLaunchContext * /*context*/, GAppInfo * /*info*/, GList * /*files*/) {
-  if(QX11Info::isPlatformX11()) {
-    Display* dpy = QX11Info::display();
+  if(auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>()) {
+    Display* dpy = x11NativeInterfce->display();
     if(dpy) {
-        char* xstr = DisplayString(dpy);
-        return g_strdup(xstr);
+      char* xstr = DisplayString(dpy);
+      return g_strdup(xstr);
     }
   }
   return nullptr;

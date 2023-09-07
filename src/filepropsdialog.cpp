@@ -304,21 +304,21 @@ void FilePropsDialog::initGeneralPage() {
         // times
         if(fileInfo->mtime() > 0) {
             auto mtime = QDateTime::fromMSecsSinceEpoch(fileInfo->mtime() * 1000);
-            ui->lastModified->setText(mtime.toString(Qt::SystemLocaleShortDate));
+            ui->lastModified->setText(locale().toString(mtime, QLocale::ShortFormat));
         }
         else {
             ui->lastModified->setText(tr("N/A"));
         }
         if(fileInfo->atime() > 0) {
             auto atime = QDateTime::fromMSecsSinceEpoch(fileInfo->atime() * 1000);
-            ui->lastAccessed->setText(atime.toString(Qt::SystemLocaleShortDate));
+            ui->lastAccessed->setText(locale().toString(atime, QLocale::ShortFormat));
         }
         else {
             ui->lastAccessed->setText(tr("N/A"));
         }
         if(fileInfo->crtime() > 0) {
             auto crtime = QDateTime::fromMSecsSinceEpoch(fileInfo->crtime() * 1000);
-            ui->created->setText(crtime.toString(Qt::SystemLocaleShortDate));
+            ui->created->setText(locale().toString(crtime, QLocale::ShortFormat));
         }
         else {
             ui->created->setText(tr("N/A"));

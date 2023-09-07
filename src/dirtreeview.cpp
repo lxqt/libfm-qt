@@ -345,7 +345,7 @@ void DirTreeView::onSelectionChanged(const QItemSelection& selected, const QItem
 void DirTreeView::dropEvent(QDropEvent* event) {
     // NOTE: Under Wayland, serious problems will happen if the DND menu is shown
     // while the DND is in progress. Also, the menu needs a parent for correct positioning.
-    QModelIndex index = indexAt(event->pos());
+    QModelIndex index = indexAt(event->position().toPoint());
     if(index.isValid()) {
         DirTreeModel* _model = static_cast<DirTreeModel*>(model());
         auto destPath = _model->filePath(index);
@@ -356,7 +356,7 @@ void DirTreeView::dropEvent(QDropEvent* event) {
             if(event->mimeData()->hasUrls()) { // files uris are dropped
                 auto srcPaths = pathListFromQUrls(event->mimeData()->urls());
                 if(!srcPaths.empty()) {
-                    auto curPos = viewport()->mapToGlobal(event->pos());
+                    auto curPos = viewport()->mapToGlobal(event->position().toPoint());
                     QTimer::singleShot(0, this, [this, curPos, srcPaths, destPath] {
                         Qt::DropAction action = DndActionMenu::askUser(Qt::CopyAction | Qt::MoveAction | Qt::LinkAction, curPos, viewport());
                         switch(action) {
