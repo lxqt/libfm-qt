@@ -19,12 +19,21 @@ static void child_setup(gpointer user_data) {
 }
 
 bool launchTerminal(const char* programName, const FilePath& workingDir, Fm::GErrorPtr& error) {
-    /* read system terminals file */
+    /* read user and system terminals files */
     GKeyFile* kf = g_key_file_new();
-    if(!g_key_file_load_from_file(kf, LIBFM_QT_DATA_DIR "/terminals.list", G_KEY_FILE_NONE, &error)) {
-        g_key_file_free(kf);
-        return false;
+    bool found = g_key_file_load_from_data_dirs(kf, "libfm-qt/terminals.list", nullptr, G_KEY_FILE_NONE, &error);
+    if(found) {
+        found = g_key_file_has_group(kf, programName);
     }
+    if(!found) {
+        g_key_file_free(kf);
+        kf = g_key_file_new();
+        if(!g_key_file_load_from_file(kf, LIBFM_QT_DATA_DIR "/terminals.list", G_KEY_FILE_NONE, &error)) {
+            g_key_file_free(kf);
+            return false;
+        }
+    }
+
     auto launch = g_key_file_get_string(kf, programName, "launch", nullptr);
     auto desktop_id = g_key_file_get_string(kf, programName, "desktop_id", nullptr);
 
@@ -112,13 +121,28 @@ bool launchTerminal(const char* programName, const FilePath& workingDir, Fm::GEr
 
 std::vector<CStrPtr> allKnownTerminals() {
     std::vector<CStrPtr> terminals;
+    std::vector<std::string> dataTerminals;
     GKeyFile* kf = g_key_file_new();
-    if(g_key_file_load_from_file(kf, LIBFM_QT_DATA_DIR "/terminals.list", G_KEY_FILE_NONE, nullptr)) {
+    if(g_key_file_load_from_data_dirs(kf, "libfm-qt/terminals.list", nullptr, G_KEY_FILE_NONE, nullptr)) {
         gsize n;
         auto programs = g_key_file_get_groups(kf, &n);
         terminals.reserve(n);
         for(auto name = programs; *name; ++name) {
             terminals.emplace_back(*name);
+            dataTerminals.emplace_back(*name);
+        }
+        g_free(programs);
+    }
+    g_key_file_free(kf);
+    kf = g_key_file_new();
+    if(g_key_file_load_from_file(kf, LIBFM_QT_DATA_DIR "/terminals.list", G_KEY_FILE_NONE, nullptr)) {
+        gsize n;
+        auto programs = g_key_file_get_groups(kf, &n);
+        terminals.reserve(terminals.capacity() + n);
+        for(auto name = programs; *name; ++name) {
+            if(std::find(dataTerminals.cbegin(), dataTerminals.cend(), *name) == dataTerminals.cend()) {
+                terminals.emplace_back(*name);
+            }
         }
         g_free(programs);
     }
@@ -133,15 +157,24 @@ extern "C" char* expand_terminal(char* cmd, gboolean keep_open, GError** error) 
     CStrPtr noclose_arg;
     CStrPtr custom_args;
 
-    /* read system terminals file */
+    /* read user and system terminals files */
+    bool found = false;
     GKeyFile* kf = g_key_file_new();
-    if(g_key_file_load_from_file(kf, LIBFM_QT_DATA_DIR "/terminals.list", G_KEY_FILE_NONE, error)) {
-        if(g_key_file_has_group(kf, defaultTerminalName.c_str())) {
-            program = defaultTerminalName.c_str();
-            open_arg = CStrPtr{g_key_file_get_string(kf, program, "open_arg", nullptr)};
-            noclose_arg = CStrPtr{g_key_file_get_string(kf, program, "noclose_arg", nullptr)};
-            custom_args = CStrPtr{g_key_file_get_string(kf, program, "custom_args", nullptr)};
+    if(g_key_file_load_from_data_dirs(kf, "libfm-qt/terminals.list", nullptr, G_KEY_FILE_NONE, error)) {
+        found = g_key_file_has_group(kf, defaultTerminalName.c_str());
+    }
+    if(!found) {
+        g_key_file_free(kf);
+        kf = g_key_file_new();
+        if(g_key_file_load_from_file(kf, LIBFM_QT_DATA_DIR "/terminals.list", G_KEY_FILE_NONE, error)) {
+            found = g_key_file_has_group(kf, defaultTerminalName.c_str());
         }
+    }
+    if(found) {
+        program = defaultTerminalName.c_str();
+        open_arg = CStrPtr{g_key_file_get_string(kf, program, "open_arg", nullptr)};
+        noclose_arg = CStrPtr{g_key_file_get_string(kf, program, "noclose_arg", nullptr)};
+        custom_args = CStrPtr{g_key_file_get_string(kf, program, "custom_args", nullptr)};
     }
     g_key_file_free(kf);
 
