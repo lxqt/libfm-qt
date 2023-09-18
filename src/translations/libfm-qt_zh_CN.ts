@@ -104,7 +104,7 @@
     <message>
         <location filename="../exec-file.ui" line="39"/>
         <source>&amp;Open</source>
-        <translation>打开(&amp;O)</translation>
+        <translation>&amp;打开</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="52"/>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation>记住并应用于其他相同类型的文件</translation>
+        <translation>记住此类型的下一个文件</translation>
     </message>
 </context>
 <context>
