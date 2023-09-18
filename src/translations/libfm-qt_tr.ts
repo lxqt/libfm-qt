@@ -674,7 +674,6 @@ Değiştirmek istiyor musunuz?</translation>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>Bu %1 dosyasını açmak istiyor musunuz?</numerusform>
-            <numerusform>Bu %1 dosyalarını açmak istiyor musunuz?</numerusform>
         </translation>
     </message>
     <message>
@@ -800,7 +799,6 @@ Onun yerine silmek ister misiniz?</translation>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
             <numerusform>Seçilen dosyayı silmek istiyor musunuz?</numerusform>
-            <numerusform>Seçilen dosyaları silmek istiyor musunuz?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -808,7 +806,6 @@ Onun yerine silmek ister misiniz?</translation>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
             <numerusform>Seçilen dosyayı çöp kutusuna taşımak istiyor musunuz?</numerusform>
-            <numerusform>Seçilen dosyaları çöp kutusuna taşımak istiyor musunuz?</numerusform>
         </translation>
     </message>
 </context>
@@ -960,7 +957,6 @@ Onun yerine silmek ister misiniz?</translation>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln dosyası</numerusform>
-            <numerusform>%Ln dosyaları</numerusform>
         </translation>
     </message>
     <message>
@@ -989,17 +985,17 @@ Onun yerine silmek ister misiniz?</translation>
 <context>
     <name>Fm::FileSearchDialog</name>
     <message>
-        <location filename="../filesearchdialog.cpp" line="152"/>
+        <location filename="../filesearchdialog.cpp" line="157"/>
         <source>Error</source>
         <translation>Hata</translation>
     </message>
     <message>
-        <location filename="../filesearchdialog.cpp" line="152"/>
+        <location filename="../filesearchdialog.cpp" line="157"/>
         <source>You should add at least one directory to search.</source>
         <translation>Arama yapmak için en az bir dizin eklemelisiniz.</translation>
     </message>
     <message>
-        <location filename="../filesearchdialog.cpp" line="159"/>
+        <location filename="../filesearchdialog.cpp" line="164"/>
         <source>Select a folder</source>
         <translation>Bir dizin seç</translation>
     </message>
@@ -1247,7 +1243,7 @@ Onun yerine silmek ister misiniz?</translation>
 <context>
     <name>Fm::MountOperationPasswordDialog</name>
     <message>
-        <location filename="../mountoperationpassworddialog.cpp" line="40"/>
+        <location filename="../mountoperationpassworddialog.cpp" line="42"/>
         <source>&amp;Connect</source>
         <translation>&amp;Bağlan</translation>
     </message>
@@ -1469,11 +1465,16 @@ Değiştirild: %2</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
+        <source>Session length is determined by password manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mount-operation-password.ui" line="140"/>
         <source>Remember password for &amp;this session</source>
         <translation>Bu o&amp;turum için parolayı hatırla</translation>
     </message>
     <message>
-        <location filename="../mount-operation-password.ui" line="147"/>
+        <location filename="../mount-operation-password.ui" line="150"/>
         <source>Remember &amp;forever</source>
         <translation>Her &amp;zaman hatırla</translation>
     </message>
@@ -1481,12 +1482,12 @@ Değiştirild: %2</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utilities.cpp" line="166"/>
+        <location filename="../utilities.cpp" line="170"/>
         <source>Rename File</source>
         <translation>Dosyayı Yeniden Adlandır</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="167"/>
+        <location filename="../utilities.cpp" line="171"/>
         <source>Please enter a new name:</source>
         <translation>Lütfen yeni bir isim girin:</translation>
     </message>
@@ -1494,43 +1495,43 @@ Değiştirild: %2</translation>
         <location filename="../filelauncher.cpp" line="124"/>
         <location filename="../filepropsdialog.cpp" line="669"/>
         <location filename="../mountoperation.cpp" line="297"/>
-        <location filename="../utilities.cpp" line="150"/>
-        <location filename="../utilities.cpp" line="289"/>
+        <location filename="../utilities.cpp" line="154"/>
+        <location filename="../utilities.cpp" line="317"/>
         <source>Error</source>
         <translation>Hata</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="226"/>
+        <location filename="../utilities.cpp" line="230"/>
         <source>Create Folder</source>
         <translation>Dizin Oluştur</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="227"/>
+        <location filename="../utilities.cpp" line="231"/>
         <source>Create File</source>
         <translation>Dosya Oluştur</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="231"/>
+        <location filename="../utilities.cpp" line="235"/>
         <source>Please enter a new file name:</source>
         <translation>Lütfen yeni bir dosya adı girin:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="232"/>
+        <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
         <translation>Yeni dosya</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="236"/>
+        <location filename="../utilities.cpp" line="240"/>
         <source>Please enter a new folder name:</source>
         <translation>Lütfen yeni bir dizin adı girin:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="237"/>
+        <location filename="../utilities.cpp" line="241"/>
         <source>New folder</source>
         <translation>Yeni dizin</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="242"/>
+        <location filename="../utilities.cpp" line="246"/>
         <source>Enter a name for the new %1:</source>
         <translation>Yeni %1 için bir isim girin:</translation>
     </message>

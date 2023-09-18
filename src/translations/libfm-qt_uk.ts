@@ -993,17 +993,17 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FileSearchDialog</name>
     <message>
-        <location filename="../filesearchdialog.cpp" line="152"/>
+        <location filename="../filesearchdialog.cpp" line="157"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location filename="../filesearchdialog.cpp" line="152"/>
+        <location filename="../filesearchdialog.cpp" line="157"/>
         <source>You should add at least one directory to search.</source>
         <translation>Ви повинні додати хоча б одну теку для пошуку.</translation>
     </message>
     <message>
-        <location filename="../filesearchdialog.cpp" line="159"/>
+        <location filename="../filesearchdialog.cpp" line="164"/>
         <source>Select a folder</source>
         <translation>Вибір теки</translation>
     </message>
@@ -1251,7 +1251,7 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::MountOperationPasswordDialog</name>
     <message>
-        <location filename="../mountoperationpassworddialog.cpp" line="40"/>
+        <location filename="../mountoperationpassworddialog.cpp" line="42"/>
         <source>&amp;Connect</source>
         <translation>&amp;З&apos;єднання</translation>
     </message>
@@ -1473,11 +1473,16 @@ Modified: %2</source>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
+        <source>Session length is determined by password manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mount-operation-password.ui" line="140"/>
         <source>Remember password for &amp;this session</source>
         <translation>Запам&apos;ятати пароль для &amp;цього сеансу</translation>
     </message>
     <message>
-        <location filename="../mount-operation-password.ui" line="147"/>
+        <location filename="../mount-operation-password.ui" line="150"/>
         <source>Remember &amp;forever</source>
         <translation>Запам&apos;ятати назав&amp;жди</translation>
     </message>
@@ -1485,12 +1490,12 @@ Modified: %2</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utilities.cpp" line="166"/>
+        <location filename="../utilities.cpp" line="170"/>
         <source>Rename File</source>
         <translation>Перейменувати файл</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="167"/>
+        <location filename="../utilities.cpp" line="171"/>
         <source>Please enter a new name:</source>
         <translation>Будь ласка, введіть нову назву:</translation>
     </message>
@@ -1498,43 +1503,43 @@ Modified: %2</source>
         <location filename="../filelauncher.cpp" line="124"/>
         <location filename="../filepropsdialog.cpp" line="669"/>
         <location filename="../mountoperation.cpp" line="297"/>
-        <location filename="../utilities.cpp" line="150"/>
-        <location filename="../utilities.cpp" line="289"/>
+        <location filename="../utilities.cpp" line="154"/>
+        <location filename="../utilities.cpp" line="317"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="226"/>
+        <location filename="../utilities.cpp" line="230"/>
         <source>Create Folder</source>
         <translation>Створити теку</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="227"/>
+        <location filename="../utilities.cpp" line="231"/>
         <source>Create File</source>
         <translation>Створити файл</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="231"/>
+        <location filename="../utilities.cpp" line="235"/>
         <source>Please enter a new file name:</source>
         <translation>Будь ласка, введіть назву нового файлу:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="232"/>
+        <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
         <translation>Новий файл</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="236"/>
+        <location filename="../utilities.cpp" line="240"/>
         <source>Please enter a new folder name:</source>
         <translation>Будь ласка, введіть нову назву теки:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="237"/>
+        <location filename="../utilities.cpp" line="241"/>
         <source>New folder</source>
         <translation>Нова тека</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="242"/>
+        <location filename="../utilities.cpp" line="246"/>
         <source>Enter a name for the new %1:</source>
         <translation>Введіть назву для нової %1:</translation>
     </message>

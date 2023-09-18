@@ -993,17 +993,17 @@ Vēlaties tos dzēst?</translation>
 <context>
     <name>Fm::FileSearchDialog</name>
     <message>
-        <location filename="../filesearchdialog.cpp" line="152"/>
+        <location filename="../filesearchdialog.cpp" line="157"/>
         <source>Error</source>
         <translation>Ķibele</translation>
     </message>
     <message>
-        <location filename="../filesearchdialog.cpp" line="152"/>
+        <location filename="../filesearchdialog.cpp" line="157"/>
         <source>You should add at least one directory to search.</source>
         <translation>Lai meklētu, nepieciešams pievienot vismaz vienu mapi.</translation>
     </message>
     <message>
-        <location filename="../filesearchdialog.cpp" line="159"/>
+        <location filename="../filesearchdialog.cpp" line="164"/>
         <source>Select a folder</source>
         <translation>Izvēlieties mapi</translation>
     </message>
@@ -1251,7 +1251,7 @@ Vēlaties tos dzēst?</translation>
 <context>
     <name>Fm::MountOperationPasswordDialog</name>
     <message>
-        <location filename="../mountoperationpassworddialog.cpp" line="40"/>
+        <location filename="../mountoperationpassworddialog.cpp" line="42"/>
         <source>&amp;Connect</source>
         <translation>&amp;Savienot</translation>
     </message>
@@ -1474,11 +1474,16 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
+        <source>Session length is determined by password manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mount-operation-password.ui" line="140"/>
         <source>Remember password for &amp;this session</source>
         <translation>Atcerēties šīs sesijas paroli</translation>
     </message>
     <message>
-        <location filename="../mount-operation-password.ui" line="147"/>
+        <location filename="../mount-operation-password.ui" line="150"/>
         <source>Remember &amp;forever</source>
         <translation>Atcerēties neierobežoti</translation>
     </message>
@@ -1486,12 +1491,12 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utilities.cpp" line="166"/>
+        <location filename="../utilities.cpp" line="170"/>
         <source>Rename File</source>
         <translation>Pārdēvēt failu</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="167"/>
+        <location filename="../utilities.cpp" line="171"/>
         <source>Please enter a new name:</source>
         <translation>Ievadiet jaunu nosaukumu:</translation>
     </message>
@@ -1499,43 +1504,43 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
         <location filename="../filelauncher.cpp" line="124"/>
         <location filename="../filepropsdialog.cpp" line="669"/>
         <location filename="../mountoperation.cpp" line="297"/>
-        <location filename="../utilities.cpp" line="150"/>
-        <location filename="../utilities.cpp" line="289"/>
+        <location filename="../utilities.cpp" line="154"/>
+        <location filename="../utilities.cpp" line="317"/>
         <source>Error</source>
         <translation>Ķibele, ka tevi jupis!</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="226"/>
+        <location filename="../utilities.cpp" line="230"/>
         <source>Create Folder</source>
         <translation>Izveidot mapi</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="227"/>
+        <location filename="../utilities.cpp" line="231"/>
         <source>Create File</source>
         <translation>Izveidot failu</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="231"/>
+        <location filename="../utilities.cpp" line="235"/>
         <source>Please enter a new file name:</source>
         <translation>Ierakstiet jaunā faila nosaukumu:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="232"/>
+        <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="236"/>
+        <location filename="../utilities.cpp" line="240"/>
         <source>Please enter a new folder name:</source>
         <translation>Ievadiet jaunās mapes nosaukumu:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="237"/>
+        <location filename="../utilities.cpp" line="241"/>
         <source>New folder</source>
         <translation>Jauna mape</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="242"/>
+        <location filename="../utilities.cpp" line="246"/>
         <source>Enter a name for the new %1:</source>
         <translation>Ierakstiet jaunā faila nosaukumu (%1):</translation>
     </message>

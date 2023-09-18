@@ -989,17 +989,17 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FileSearchDialog</name>
     <message>
-        <location filename="../filesearchdialog.cpp" line="152"/>
+        <location filename="../filesearchdialog.cpp" line="157"/>
         <source>Error</source>
         <translation>දෝෂ</translation>
     </message>
     <message>
-        <location filename="../filesearchdialog.cpp" line="152"/>
+        <location filename="../filesearchdialog.cpp" line="157"/>
         <source>You should add at least one directory to search.</source>
         <translation>අවම වශයෙන් සෙවීම සඳහා එක් ඩිරෙක්ටොරියක් එක් කරන්න.</translation>
     </message>
     <message>
-        <location filename="../filesearchdialog.cpp" line="159"/>
+        <location filename="../filesearchdialog.cpp" line="164"/>
         <source>Select a folder</source>
         <translation>ෆෝල්ඩරයක් තෝරන්න</translation>
     </message>
@@ -1247,7 +1247,7 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::MountOperationPasswordDialog</name>
     <message>
-        <location filename="../mountoperationpassworddialog.cpp" line="40"/>
+        <location filename="../mountoperationpassworddialog.cpp" line="42"/>
         <source>&amp;Connect</source>
         <translation>සම්බන්ධ කරන්න (&amp;C)</translation>
     </message>
@@ -1469,11 +1469,16 @@ Modified: %2</source>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
+        <source>Session length is determined by password manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mount-operation-password.ui" line="140"/>
         <source>Remember password for &amp;this session</source>
         <translation>මෙම සැසිය සඳහා මුරපදය මතක තබා ගන්න (&amp;T)</translation>
     </message>
     <message>
-        <location filename="../mount-operation-password.ui" line="147"/>
+        <location filename="../mount-operation-password.ui" line="150"/>
         <source>Remember &amp;forever</source>
         <translation>මුරපදය සදහටම මතක තබා ගන්න (&amp;F)</translation>
     </message>
@@ -1481,12 +1486,12 @@ Modified: %2</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utilities.cpp" line="166"/>
+        <location filename="../utilities.cpp" line="170"/>
         <source>Rename File</source>
         <translation>නම වෙනස් කරන්න</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="167"/>
+        <location filename="../utilities.cpp" line="171"/>
         <source>Please enter a new name:</source>
         <translation>කරුණාකර අලුත් නමක් ලබා දෙන්න:</translation>
     </message>
@@ -1494,43 +1499,43 @@ Modified: %2</source>
         <location filename="../filelauncher.cpp" line="124"/>
         <location filename="../filepropsdialog.cpp" line="669"/>
         <location filename="../mountoperation.cpp" line="297"/>
-        <location filename="../utilities.cpp" line="150"/>
-        <location filename="../utilities.cpp" line="289"/>
+        <location filename="../utilities.cpp" line="154"/>
+        <location filename="../utilities.cpp" line="317"/>
         <source>Error</source>
         <translation>දෝෂ</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="226"/>
+        <location filename="../utilities.cpp" line="230"/>
         <source>Create Folder</source>
         <translation>ෆෝල්ඩරය නිර්මාණය</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="227"/>
+        <location filename="../utilities.cpp" line="231"/>
         <source>Create File</source>
         <translation>ගොනු නිර්මාණය</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="231"/>
+        <location filename="../utilities.cpp" line="235"/>
         <source>Please enter a new file name:</source>
         <translation>කරුණාකර අලුත් ගොනු නාමයක් ලබා දෙන්න:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="232"/>
+        <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
         <translation>අලුත් ගොනුව</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="236"/>
+        <location filename="../utilities.cpp" line="240"/>
         <source>Please enter a new folder name:</source>
         <translation>කරුණාකර අලුත් ෆොල්ඩර නාමයක් ලබා දෙන්න:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="237"/>
+        <location filename="../utilities.cpp" line="241"/>
         <source>New folder</source>
         <translation>අලුත් ෆොල්ඩරය</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="242"/>
+        <location filename="../utilities.cpp" line="246"/>
         <source>Enter a name for the new %1:</source>
         <translation>%1 සඳහා අලුත් නාමයක් ලබා දෙන්න:</translation>
     </message>

@@ -990,17 +990,17 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FileSearchDialog</name>
     <message>
-        <location filename="../filesearchdialog.cpp" line="152"/>
+        <location filename="../filesearchdialog.cpp" line="157"/>
         <source>Error</source>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../filesearchdialog.cpp" line="152"/>
+        <location filename="../filesearchdialog.cpp" line="157"/>
         <source>You should add at least one directory to search.</source>
         <translation>검색을 위해 최소 한 개 이상의 디렉터리를 추가해야 합니다.</translation>
     </message>
     <message>
-        <location filename="../filesearchdialog.cpp" line="159"/>
+        <location filename="../filesearchdialog.cpp" line="164"/>
         <source>Select a folder</source>
         <translation>폴더 선택</translation>
     </message>
@@ -1248,7 +1248,7 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::MountOperationPasswordDialog</name>
     <message>
-        <location filename="../mountoperationpassworddialog.cpp" line="40"/>
+        <location filename="../mountoperationpassworddialog.cpp" line="42"/>
         <source>&amp;Connect</source>
         <translation>연결(&amp;C)</translation>
     </message>
@@ -1471,11 +1471,16 @@ Modified: %2</source>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
+        <source>Session length is determined by password manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mount-operation-password.ui" line="140"/>
         <source>Remember password for &amp;this session</source>
         <translation>세션의 비밀번호 기억(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../mount-operation-password.ui" line="147"/>
+        <location filename="../mount-operation-password.ui" line="150"/>
         <source>Remember &amp;forever</source>
         <translation>영원히 기억(&amp;F)</translation>
     </message>
@@ -1483,12 +1488,12 @@ Modified: %2</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utilities.cpp" line="166"/>
+        <location filename="../utilities.cpp" line="170"/>
         <source>Rename File</source>
         <translation>파일 이름 바꾸기</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="167"/>
+        <location filename="../utilities.cpp" line="171"/>
         <source>Please enter a new name:</source>
         <translation>새 이름 입력:</translation>
     </message>
@@ -1496,43 +1501,43 @@ Modified: %2</source>
         <location filename="../filelauncher.cpp" line="124"/>
         <location filename="../filepropsdialog.cpp" line="669"/>
         <location filename="../mountoperation.cpp" line="297"/>
-        <location filename="../utilities.cpp" line="150"/>
-        <location filename="../utilities.cpp" line="289"/>
+        <location filename="../utilities.cpp" line="154"/>
+        <location filename="../utilities.cpp" line="317"/>
         <source>Error</source>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="226"/>
+        <location filename="../utilities.cpp" line="230"/>
         <source>Create Folder</source>
         <translation>폴더 만들기</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="227"/>
+        <location filename="../utilities.cpp" line="231"/>
         <source>Create File</source>
         <translation>새 파일</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="231"/>
+        <location filename="../utilities.cpp" line="235"/>
         <source>Please enter a new file name:</source>
         <translation>새로운 파일 이름 입력하세요:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="232"/>
+        <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
         <translation>새 파일</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="236"/>
+        <location filename="../utilities.cpp" line="240"/>
         <source>Please enter a new folder name:</source>
         <translation>새로운 폴더 이름 입력하세요:</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="237"/>
+        <location filename="../utilities.cpp" line="241"/>
         <source>New folder</source>
         <translation>새 폴더</translation>
     </message>
     <message>
-        <location filename="../utilities.cpp" line="242"/>
+        <location filename="../utilities.cpp" line="246"/>
         <source>Enter a name for the new %1:</source>
         <translation>새로운 %1에 대해 이름을 입력하세요:</translation>
     </message>
