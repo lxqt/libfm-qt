@@ -941,7 +941,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="406"/>
         <source>%1 Free of %2</source>
-        <translation>空き容量 %1&#x3000;全体 %2</translation>
+        <translation>空き容量 %1　全体 %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="452"/>
@@ -1467,7 +1467,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>セッションの長さはパスワードマネージャーによって決定されます</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
