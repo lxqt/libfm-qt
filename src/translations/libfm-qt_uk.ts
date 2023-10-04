@@ -1474,7 +1474,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Тривалість сеансу визначається менеджером паролів</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
