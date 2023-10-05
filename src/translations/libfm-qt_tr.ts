@@ -1466,7 +1466,7 @@ Değiştirild: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Oturum uzunluğu şifre yöneticisi tarafından belirlenmiş</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
