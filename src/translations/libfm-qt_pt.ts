@@ -1470,7 +1470,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>A duração da sessão é determinada pelo gestor de palavras-passe</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>

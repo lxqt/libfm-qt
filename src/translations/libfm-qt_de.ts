@@ -543,7 +543,7 @@ Was möchten Sie damit tun?</translation>
     <message>
         <location filename="../filedialog.cpp" line="176"/>
         <source>Size of big icons:</source>
-        <translation>Größe der großen Symbole:</translation>
+        <translation>Größe großer Symbole:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="183"/>
@@ -558,7 +558,7 @@ Was möchten Sie damit tun?</translation>
     <message>
         <location filename="../filedialog.cpp" line="206"/>
         <source>Show Hidden</source>
-        <translation>Verstecktes anzeigen</translation>
+        <translation>Versteckte anzeigen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="218"/>
@@ -568,7 +568,7 @@ Was möchten Sie damit tun?</translation>
     <message>
         <location filename="../filedialog.cpp" line="223"/>
         <source>Show File Tooltips</source>
-        <translation>Datei-Kurzinfos anzeigen</translation>
+        <translation>Datei-Tooltips anzeigen</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="230"/>
@@ -1470,7 +1470,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Sitzungsdauer wird über den Passwortmanager bestimmt</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
@@ -1517,7 +1517,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>Neue Datei</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="240"/>
