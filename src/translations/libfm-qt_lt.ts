@@ -360,7 +360,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="268"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Pasirinkite programą, kad atvertumėte failus &quot;%1&quot;</translation>
+        <translation>Pasirinkite programą, kad atvertumėte „%1“ failus</translation>
     </message>
 </context>
 <context>
@@ -381,7 +381,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>Nurodytas katalogas &quot;%1&quot; yra neteisingas</translation>
+        <translation>Nurodytas katalogas „%1“ yra neteisingas</translation>
     </message>
 </context>
 <context>
@@ -459,14 +459,14 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>Atrodo, kad šis failas &quot;%1&quot; yra darbalaukio įrašas.
+        <translation>Atrodo, kad šis failas „%1“ yra darbalaukio įrašas.
 Ką norėtumėte su juo daryti?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>Atrodo, kad šis tekstinis failas &quot;%1&quot; yra vykdomasis scenarijus.
+        <translation>Atrodo, kad šis tekstinis failas „%1“ yra vykdomasis scenarijus.
 Ką norėtumėte su juo daryti?</translation>
     </message>
     <message>
@@ -601,17 +601,17 @@ Ar norite jį pakeisti?</translation>
     <message>
         <location filename="../filedialog.cpp" line="960"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation>Kelio &quot;%1&quot; nėra</translation>
+        <translation>Kelio „%1“ nėra</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="974"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation>&quot;%1&quot; nėra katalogas</translation>
+        <translation>„%1“ nėra katalogas</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="980"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation>&quot;%1&quot; nėra failas</translation>
+        <translation>„%1“ nėra failas</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1132"/>
@@ -1431,7 +1431,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Nepavyksta iškelti failą &quot;%s&quot; iš šiukšlinės: pradinis kelias nėra žinomas</translation>
+        <translation>Nepavyksta iškelti failo „%s“ iš šiukšlinės: pradinis kelias nėra žinomas</translation>
     </message>
 </context>
 <context>
@@ -1474,7 +1474,7 @@ Pakeista: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Seanso trukmę nustato slaptažodžių tvarkytuvė</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
@@ -1556,17 +1556,17 @@ Pakeista: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="319"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>Neteisingas darbalaukio įrašo failas: &quot;%1&quot;</translation>
+        <translation>Neteisingas darbalaukio įrašo failas: „%1“</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>Nėra nustatyta numatytoji programa, skirta paleisti &quot;%1&quot;</translation>
+        <translation>Nėra nustatyta numatytoji programa, skirta paleisti „%1“</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>Nepavyksta nustatyti darbinį katalogą į &quot;%1&quot;: %2</translation>
+        <translation>Nepavyksta nustatyti darbinį katalogą į „%1“: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
