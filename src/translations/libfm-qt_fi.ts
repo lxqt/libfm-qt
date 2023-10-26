@@ -1470,7 +1470,7 @@ Muokattu: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Salasanahallinta määrittelee istunnon pituuden</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
