@@ -1492,7 +1492,7 @@ Modificado: %2</translation>
         <location filename="../utilities.cpp" line="154"/>
         <location filename="../utilities.cpp" line="317"/>
         <source>Error</source>
-        <translation type="unfinished">Erro</translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="170"/>

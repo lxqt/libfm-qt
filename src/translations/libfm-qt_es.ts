@@ -16,12 +16,12 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation>Orden personalizada</translation>
+        <translation>Comando personalizado</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation>Línea de órdenes que ejecutar:</translation>
+        <translation>Línea de comandos para ejecutar:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
@@ -48,7 +48,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>Mantener la terminal abierta tras la ejecución de la orden</translation>
+        <translation>Mantener la ventana de la terminal abierta tras la ejecución del comando</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
@@ -91,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Arrastre y suelte para reordenar los elementos</translation>
+        <translation>Use Arrastrar y soltar para reordenar los elementos</translation>
     </message>
 </context>
 <context>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../exec-file.ui" line="62"/>
         <source>Execute in &amp;Terminal</source>
-        <translation>Ejecutar en una &amp;terminal</translation>
+        <translation>Ejecutar en una &amp;Terminal</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="85"/>
@@ -238,7 +238,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation>Creación:</translation>
+        <translation>Creado:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -558,7 +558,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="206"/>
         <source>Show Hidden</source>
-        <translation>Mostrar elementos ocultos</translation>
+        <translation>Mostrar ocultos</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="218"/>
@@ -938,7 +938,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="405"/>
         <source>%p% used</source>
-        <translation>%p&#xa0;% usado</translation>
+        <translation>%p % usado</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="406"/>
@@ -1022,12 +1022,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="57"/>
         <source>Empty Trash</source>
-        <translation>Vaciar la papelera</translation>
+        <translation>Vaciar Papelera</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="69"/>
         <source>Create &amp;New</source>
-        <translation>Crear &amp;nuevo</translation>
+        <translation>Crear &amp;Nuevo</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="74"/>
@@ -1047,7 +1047,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="98"/>
         <source>Sorting</source>
-        <translation>Ordenar</translation>
+        <translation>Ordenando</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="103"/>
@@ -1082,7 +1082,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="208"/>
         <source>By Deletion Time</source>
-        <translation>Por momento de eliminación</translation>
+        <translation>Por tiempo de eliminación</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="211"/>
@@ -1165,7 +1165,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="324"/>
         <source>Created:</source>
-        <translation>Creación:</translation>
+        <translation>Creado:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="329"/>
@@ -1470,7 +1470,7 @@ Modificación: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>La duración de la sesión la determina el administrador de contraseñas</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
@@ -1497,12 +1497,12 @@ Modificación: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="170"/>
         <source>Rename File</source>
-        <translation>Cambiar nombre de archivo</translation>
+        <translation>Renombrar archivo</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="171"/>
         <source>Please enter a new name:</source>
-        <translation>Introduzca un nombre nuevo:</translation>
+        <translation>Por favor, introduzca un nombre nuevo:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="230"/>
@@ -1512,7 +1512,7 @@ Modificación: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="235"/>
         <source>Please enter a new file name:</source>
-        <translation>Introduzca un nombre de archivo nuevo:</translation>
+        <translation>Por favor, introduzca un nombre de archivo nuevo:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="236"/>
@@ -1527,7 +1527,7 @@ Modificación: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="241"/>
         <source>New folder</source>
-        <translation>Carpeta nueva</translation>
+        <translation>Nueva carpeta</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="246"/>
@@ -1557,7 +1557,7 @@ Modificación: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>No hay ninguna aplicación predeterminada configurada para iniciar «%1»</translation>
+        <translation>No hay ninguna aplicación predeterminada configurada para iniciar &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
