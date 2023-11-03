@@ -124,7 +124,7 @@
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Lembra para os próximos ficheiros deste tipo</translation>
     </message>
 </context>
 <context>
@@ -238,7 +238,7 @@
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Creada:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
@@ -248,12 +248,12 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emblema:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Escolle o emblema</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
@@ -442,7 +442,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Non se pode soltar aquí</translation>
     </message>
 </context>
 <context>
@@ -553,7 +553,7 @@ Que quere facer con el?</translation>
     <message>
         <location filename="../filedialog.cpp" line="190"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño das miniaturas:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="206"/>
