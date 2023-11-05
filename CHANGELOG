@@ -1,3 +1,14 @@
+libfm-qt-1.4.0 / 2023-11-05
+============================
+ * Use lxqt-menu-data instead of lxmenu-data.
+ * Don't select extensions on creating new template files.
+ * Prevent invisible "Create New" dialog under Wayland.
+ * Also add suffixes containing dot on saving with LXQt file dialog.
+ * Remember password and anonymity settings of mount dialog.
+ * Fixed a crash on deleting path-bar.
+ * Added `foot` to `terminals.list`.
+ * Get terminals list also from data directories.
+
 libfm-qt-1.3.0 / 2023-04-15
 ============================
  * Fixed the thumbnail/icon rectangle in list views.
