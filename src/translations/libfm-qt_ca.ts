@@ -1471,7 +1471,7 @@ Modificat: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>La durada de la sessió la determina el gestor de contrasenyes</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
@@ -1523,7 +1523,7 @@ Modificat: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou fitxer</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="240"/>

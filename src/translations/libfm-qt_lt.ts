@@ -472,7 +472,7 @@ Ką norėtumėte su juo daryti?</translation>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>Šis failas &quot;%1&quot; yra vykdomasis. Ar norite jį vykdyti?</translation>
+        <translation>Šis failas „%1“ yra vykdomasis. Ar norite jį vykdyti?</translation>
     </message>
 </context>
 <context>
