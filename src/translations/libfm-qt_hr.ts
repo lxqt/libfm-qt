@@ -942,7 +942,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="405"/>
         <source>%p% used</source>
-        <translation>%p&#xa0;% korišteno</translation>
+        <translation>%p % korišteno</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="406"/>
@@ -1475,7 +1475,7 @@ Promijenjeno: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Trajanje sesije određuje upravitelj lozinki</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
