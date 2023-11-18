@@ -1474,7 +1474,7 @@ Zmenené: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Dĺžka relácie je určená správcom hesiel</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
