@@ -47,6 +47,8 @@ LIBFM_QT_API void pasteFilesFromClipboard(const Fm::FilePath& destPath, QWidget*
 
 LIBFM_QT_API void copyFilesToClipboard(const Fm::FilePathList& files);
 
+LIBFM_QT_API void copyFilePathToClipboard(const Fm::FilePath& file);
+
 LIBFM_QT_API void cutFilesToClipboard(const Fm::FilePathList& files);
 
 LIBFM_QT_API bool changeFileName(const Fm::FilePath& path, const QString& newName, QWidget* parent, bool showMessage = true);

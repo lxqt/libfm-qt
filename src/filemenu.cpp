@@ -61,6 +61,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
     separator1_ = nullptr;
     cutAction_ = nullptr;
     copyAction_ = nullptr;
+    copyLocationAction_ = nullptr;
     pasteAction_ = nullptr;
     deleteAction_ = nullptr;
     unTrashAction_ = nullptr;
@@ -159,6 +160,10 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
         connect(copyAction_, &QAction::triggered, this, &FileMenu::onCopyTriggered);
         addAction(copyAction_);
 
+        copyLocationAction_ = new QAction(QIcon::fromTheme(QStringLiteral("edit-copy-path")), tr("Copy Location"), this);
+        connect(copyLocationAction_, &QAction::triggered, this, &FileMenu::onCopyLocationTriggered);
+        addAction(copyLocationAction_);
+
         pasteAction_ = new QAction(QIcon::fromTheme(QStringLiteral("edit-paste")), tr("Paste"), this);
         connect(pasteAction_, &QAction::triggered, this, &FileMenu::onPasteTriggered);
         addAction(pasteAction_);
@@ -190,6 +195,10 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
             }
         }
         copyAction_->setEnabled(hasAccessible);
+
+        //If only one item selected, offer to copy its path
+        copyLocationAction_->setEnabled(hasAccessible && files_.size() == 1);
+
         cutAction_->setEnabled(hasDeletable);
         deleteAction_->setEnabled(hasDeletable);
         renameAction_->setEnabled(hasRenamable);
@@ -432,6 +441,10 @@ void FileMenu::onFilePropertiesTriggered() {
 
 void FileMenu::onCopyTriggered() {
     Fm::copyFilesToClipboard(files_.paths());
+}
+
+void FileMenu::onCopyLocationTriggered() {
+    Fm::copyFilePathToClipboard(files_.at(0)->path());
 }
 
 void FileMenu::onCutTriggered() {
