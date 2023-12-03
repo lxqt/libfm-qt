@@ -132,7 +132,7 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation>Ruta:</translation>
+        <translation>Ubicación:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
@@ -253,12 +253,12 @@
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation>Elegir un emblema</translation>
+        <translation>Elige emblema</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation>Borrar el emblema</translation>
+        <translation>Borrar emblema</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -334,7 +334,7 @@
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>SetUID</source>
-        <translation>Asignar UID</translation>
+        <translation>Definir UID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
@@ -673,8 +673,8 @@ Do you want to replace it?</source>
         <location filename="../filemenu.cpp" line="357"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
-            <numerusform>¿Quiere abrir este archivo?</numerusform>
-            <numerusform>¿Quiere abrir estos %1 archivos?</numerusform>
+            <numerusform>¿Quiere abrir el archivo %1?</numerusform>
+            <numerusform>¿Quiere abrir los archivos %1?</numerusform>
         </translation>
     </message>
     <message>
@@ -1406,7 +1406,7 @@ Modificación: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;El archivo no puede sobrescribirse a sí mismo.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Seleccione otro nombre.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;El archivo no puede sobreescribirse a si mismo.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Por favor seleccione otro nombre.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1517,7 +1517,7 @@ Modificación: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
-        <translation>Archivo nuevo</translation>
+        <translation>Nuevo archivo</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="240"/>
@@ -1542,7 +1542,7 @@ Modificación: %2</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="687"/>
         <source>Custom Icon Error</source>
-        <translation>Icono de error personalizado</translation>
+        <translation>Error de icono personalizado</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
@@ -1557,7 +1557,7 @@ Modificación: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>No hay ninguna aplicación predeterminada configurada para iniciar &apos;%1&apos;</translation>
+        <translation>No hay aplicación predeterminada para iniciar &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
