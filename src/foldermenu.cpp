@@ -84,7 +84,7 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
         separator3_ = nullptr;
     }
     else {
-        selectAllAction_ = new QAction(tr("Select &All"), this);
+        selectAllAction_ = new QAction(QIcon::fromTheme(QStringLiteral("edit-select-all")), tr("Select &All"), this);
         addAction(selectAllAction_);
         connect(selectAllAction_, &QAction::triggered, this, &FolderMenu::onSelectAllActionTriggered);
 
