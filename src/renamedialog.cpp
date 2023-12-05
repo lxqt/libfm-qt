@@ -90,6 +90,7 @@ RenameDialog::RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* p
     ui->fileName->setText(QString::fromUtf8(basename.get()));
     oldName_ = QString::fromUtf8(basename.get());
     connect(ui->fileName, &QLineEdit::textChanged, this, &RenameDialog::onFileNameChanged);
+    ui->fileName->setFocus(); // needed with Qt >= 6.6.1
 
     // add "Rename" button
     QAbstractButton* button = ui->buttonBox->button(QDialogButtonBox::Ok);
