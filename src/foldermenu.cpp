@@ -217,12 +217,12 @@ void FolderMenu::createSortMenu() {
 
     QActionGroup* group = new QActionGroup(this);
     group->setExclusive(true);
-    actionAscending_ = new QAction(tr("Ascending"), this);
+    actionAscending_ = new QAction(QIcon::fromTheme(QStringLiteral("view-sort-ascending")), tr("Ascending"), this);
     actionAscending_->setCheckable(true);
     sortMenu_->addAction(actionAscending_);
     group->addAction(actionAscending_);
 
-    actionDescending_ = new QAction(tr("Descending"), this);
+    actionDescending_ = new QAction(QIcon::fromTheme(QStringLiteral("view-sort-descending")), tr("Descending"), this);
     actionDescending_->setCheckable(true);
     sortMenu_->addAction(actionDescending_);
     group->addAction(actionDescending_);
