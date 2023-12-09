@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>432</width>
-    <height>387</height>
+    <height>447</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,16 +56,6 @@
        <item row="1" column="0" colspan="2">
         <widget class="QLineEdit" name="cmdLine"/>
        </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Application name:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="appName"/>
-       </item>
        <item row="2" column="0" colspan="2">
         <widget class="QLabel" name="label_5">
          <property name="text">
@@ -82,6 +72,23 @@
          </property>
         </widget>
        </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Application name:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="appName"/>
+       </item>
+       <item row="4" column="0" colspan="2">
+        <widget class="QCheckBox" name="useTerminal">
+         <property name="text">
+          <string>Execute in terminal emulator</string>
+         </property>
+        </widget>
+       </item>
        <item row="5" column="0" colspan="2">
         <widget class="QCheckBox" name="keepTermOpen">
          <property name="enabled">
@@ -89,13 +96,6 @@
          </property>
          <property name="text">
           <string>Keep terminal window open after command execution</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" colspan="2">
-        <widget class="QCheckBox" name="useTerminal">
-         <property name="text">
-          <string>Execute in terminal emulator</string>
          </property>
         </widget>
        </item>

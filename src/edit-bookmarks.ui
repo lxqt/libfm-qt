@@ -14,6 +14,13 @@
    <string>Edit Bookmarks</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Use drag and drop to reorder the items</string>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="0">
     <widget class="QTreeWidget" name="treeWidget">
      <property name="acceptDrops">
@@ -95,13 +102,6 @@
       </spacer>
      </item>
     </layout>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Use drag and drop to reorder the items</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
