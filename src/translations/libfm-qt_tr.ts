@@ -11,7 +11,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation>Yüklenmiş Uygulamalar</translation>
+        <translation>Yüklü Uygulamalar</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>

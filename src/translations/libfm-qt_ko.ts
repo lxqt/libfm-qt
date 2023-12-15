@@ -1472,7 +1472,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>세션 길이는 비밀번호 관리자가 결정합니다</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
