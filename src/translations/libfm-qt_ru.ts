@@ -360,7 +360,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="268"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Выберите приложение, чтобы открыть &quot;%1&quot; файлов</translation>
+        <translation>Выбор приложения для открытия  файлов типа «%1»</translation>
     </message>
 </context>
 <context>
@@ -649,7 +649,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation> пикс</translation>
+        <translation> пкс</translation>
     </message>
 </context>
 <context>
@@ -712,7 +712,7 @@ Do you want to replace it?</source>
         <location filename="../filemenu.cpp" line="166"/>
         <location filename="../filemenu.cpp" line="484"/>
         <source>&amp;Move to Trash</source>
-        <translation>&amp;Переместить в корзину</translation>
+        <translation>&amp;Убрать в корзину</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="170"/>
@@ -727,7 +727,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation>Размонтировать</translation>
+        <translation>Отмонтировать</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
@@ -809,9 +809,9 @@ Do you want to delete them instead?</source>
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
-            <numerusform>Хотите переместить выделенный файл в корзину?</numerusform>
-            <numerusform>Хотите переместить выделенные файлы в корзину?</numerusform>
-            <numerusform>Хотите переместить выделенные файлы в корзину?</numerusform>
+            <numerusform>Хотите убрать выделенный файл в корзину?</numerusform>
+            <numerusform>Хотите убрать выделенные файлы в корзину?</numerusform>
+            <numerusform>Хотите убрать выделенные файлы в корзину?</numerusform>
         </translation>
     </message>
 </context>
@@ -1111,12 +1111,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="220"/>
         <source>Ascending</source>
-        <translation>Возрастающая</translation>
+        <translation>По возрастанию</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="225"/>
         <source>Descending</source>
-        <translation>Убывающая</translation>
+        <translation>По убыванию</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="242"/>
@@ -1479,7 +1479,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
         <source>Remember password for &amp;this session</source>
-        <translation>Запоминать пароли для &amp;текущей сессии</translation>
+        <translation>Запоминать пароли для &amp;текущего сеанса</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="150"/>
