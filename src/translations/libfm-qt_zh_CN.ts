@@ -1466,7 +1466,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>会话长度由密码管理器决定</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
