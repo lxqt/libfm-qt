@@ -558,7 +558,7 @@ Que quere facer con el?</translation>
     <message>
         <location filename="../filedialog.cpp" line="206"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Amosar agochados</translation>
+        <translation>Mostrar oculto</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="218"/>
@@ -798,17 +798,17 @@ Desexa eliminalos no seu canto?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Queres eliminar o ficheiro seleccionado?</numerusform>
+            <numerusform>Queres eliminar os ficheiros seleccionados?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Queres mover o ficheiro seleccionado á papeleira?</numerusform>
+            <numerusform>Queres mover os ficheiros seleccionados á papeleira?</numerusform>
         </translation>
     </message>
 </context>
@@ -1406,7 +1406,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;O ficheiro non pode sobrescribirse por si mesmo.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Seleccione outro nome.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>

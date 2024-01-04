@@ -916,7 +916,7 @@ Fayiro ezo zo nzigyeewobugyi?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="170"/>
         <source>Forbidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Tewali kikkirizibwa</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="287"/>
@@ -1694,7 +1694,7 @@ Amakyusa: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="214"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Ebisangibwa mu fayiro</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="220"/>
