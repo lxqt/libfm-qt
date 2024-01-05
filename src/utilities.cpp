@@ -270,6 +270,7 @@ _retry:
         QDialogButtonBox *btns = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
         QObject::connect(btns, &QDialogButtonBox::accepted, &dlg, &QDialog::accept);
         QObject::connect(btns, &QDialogButtonBox::rejected, &dlg, &QDialog::reject);
+
         // layout
         QVBoxLayout *layout = new QVBoxLayout;
         layout->addWidget(label);
@@ -285,6 +286,10 @@ _retry:
         default:
             return;
         }
+    }
+
+    if(new_name.contains(QString::fromUtf8("/"))) {
+        goto _retry;
     }
 
     auto dest = parentDir.child(new_name.toLocal8Bit().data());
