@@ -25,6 +25,7 @@
 #include "../libfmqtglobals.h"
 #include "iconinfo.h"
 #include <gio/gio.h>
+#include <private/qicon_p.h>
 
 namespace Fm {
 
@@ -80,38 +81,19 @@ QString IconEngine::key() const {
 void IconEngine::paint(QPainter* painter, const QRect& rect, QIcon::Mode mode, QIcon::State state) {
     auto info = info_.lock();
     if(info) {
-        info->internalQicon().paint(painter, rect, Qt::AlignCenter, mode, state);
+        info->internalQicon().data_ptr()->engine->paint(painter, rect, mode, state);
     }
 }
 
 QPixmap IconEngine::pixmap(const QSize& size, QIcon::Mode mode, QIcon::State state) {
     auto info = info_.lock();
-    return info ? info->internalQicon().pixmap(size, mode, state) : QPixmap{};
+    return info ? info->internalQicon().data_ptr()->engine->pixmap(size, mode, state) : QPixmap{};
 }
 
 void IconEngine::virtual_hook(int id, void* data) {
     auto info = info_.lock();
-    switch(id) {
-    case QIconEngine::AvailableSizesHook: {
-        auto* args = reinterpret_cast<QIconEngine::AvailableSizesArgument*>(data);
-        args->sizes = info ? info->internalQicon().availableSizes(args->mode, args->state) : QList<QSize>{};
-        break;
-    }
-    case QIconEngine::IconNameHook: {
-        QString* result = reinterpret_cast<QString*>(data);
-        *result = info ? info->internalQicon().name() : QString{};
-        break;
-    }
-    case QIconEngine::IsNullHook: {
-        bool* result = reinterpret_cast<bool*>(data);
-        *result = info ? info->internalQicon().isNull() : true;
-        break;
-    }
-    case QIconEngine::ScaledPixmapHook: {
-        auto* arg = reinterpret_cast<QIconEngine::ScaledPixmapArgument*>(data);
-        arg->pixmap = info ? info->internalQicon().pixmap(arg->size, arg->mode, arg->state) : QPixmap{};
-        break;
-    }
+    if (info) {
+        info->internalQicon().data_ptr()->engine->virtual_hook(id, data);
     }
 }
 
