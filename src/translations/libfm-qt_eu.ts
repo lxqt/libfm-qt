@@ -103,7 +103,7 @@
     <message>
         <location filename="../exec-file.ui" line="52"/>
         <source>E&amp;xecute</source>
-        <translation type="unfinished"></translation>
+        <translation>E&amp;xekutatu</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="62"/>
@@ -426,7 +426,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortu esteka sinbolikoa hemen</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
@@ -1493,7 +1493,7 @@ Modified: %2</source>
         <location filename="../utilities.cpp" line="154"/>
         <location filename="../utilities.cpp" line="317"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Errorea</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="230"/>
@@ -1558,13 +1558,13 @@ Modified: %2</source>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Identifikatzailea: </translation>
     </message>
     <message>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
 </context>
 <context>
@@ -1572,7 +1572,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation type="unfinished"></translation>
+        <translation>Berretsi fitxategiak ordezkatzeko</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
@@ -1582,7 +1582,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation type="unfinished"></translation>
+        <translation>honako fitxategi honekin?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
@@ -1592,7 +1592,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation type="unfinished"></translation>
+        <translation>Aukera hau dauden artxibo guztiei aplikatu</translation>
     </message>
 </context>
 <context>
@@ -1600,32 +1600,32 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilatu fitxategiak</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Izena/Kokalekua</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Artxibo-izenen patroiak:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="44"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation>*</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="58"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Adierazpen erregularra erabili</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="71"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilatzeko lekuak:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="84"/>
@@ -1640,57 +1640,57 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="132"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilatu ezkutuko fitxategiak</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="143"/>
         <source>File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxategi Mota</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="149"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilatu mota hauetako fitxategiak soilik:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="155"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>Testu fitxategiak</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="162"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Irudi fitxategiak</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="169"/>
         <source>Audio files</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio fitxategiak</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="176"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>Bideo fitxategiak</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="183"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokumentuak</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="190"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Karpetak</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="214"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Edukia</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="220"/>
         <source>File contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxategiak honako hauek ditu:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="240"/>
@@ -1700,56 +1700,56 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="267"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Propietateak</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="273"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxategiaren tamaina:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="302"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>baino handiagoa:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="316"/>
         <location filename="../filesearch.ui" line="346"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Bytes</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="321"/>
         <location filename="../filesearch.ui" line="351"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="326"/>
         <location filename="../filesearch.ui" line="356"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>MiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="331"/>
         <location filename="../filesearch.ui" line="361"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>GiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="281"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>baino txikiagoa:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="51"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Maiuskulak eta minuskulak bereizten dira</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="125"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Azpidirektorioetan bilatu</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
@@ -1759,17 +1759,17 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="377"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Azken aldaketaren ordua:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>baino lehenago:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="392"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Geroago:</translation>
     </message>
 </context>
 </TS>

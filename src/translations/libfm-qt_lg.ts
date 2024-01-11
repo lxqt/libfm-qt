@@ -1249,7 +1249,7 @@ Fayiro ezo zo nzigyeewobugyi?</translation>
     <message>
         <location filename="../mountoperationpassworddialog.cpp" line="42"/>
         <source>&amp;Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kwatagana</translation>
     </message>
 </context>
 <context>
@@ -1440,12 +1440,12 @@ Amakyusa: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation type="unfinished"></translation>
+        <translation>Kwatagana nga a&amp;teyanjudde</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kwataganisa &amp;linnya lya mukozesa lino:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
@@ -1460,7 +1460,7 @@ Amakyusa: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Domeyini:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
@@ -1470,7 +1470,7 @@ Amakyusa: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Puloguramu eteekateeka busumuluzo y&apos;etegeka obuwanvu bw&apos;olukebera</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
@@ -1704,7 +1704,7 @@ Amakyusa: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="240"/>
         <source>&amp;Use regular expression</source>
-        <translation>&amp;Kozesa emboozi enoonyi zinnewaayo</translation>
+        <translation>&amp;Kozesa emboozi enoonya zinnewaayo</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="267"/>
