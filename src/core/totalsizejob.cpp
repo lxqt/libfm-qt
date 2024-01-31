@@ -54,7 +54,7 @@ _retry_query_info:
     ++fileCount_;
     /* SF bug #892: dir file size is not relevant in the summary */
     if(type != G_FILE_TYPE_DIRECTORY) {
-        totalSize_ += g_file_info_get_size(inf.get());
+        totalSize_ += g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_STANDARD_SIZE);
     }
     totalOndiskSize_ += g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE);
 

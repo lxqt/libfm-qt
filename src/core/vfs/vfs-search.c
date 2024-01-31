@@ -272,7 +272,7 @@ static GFileInfo *_fm_vfs_search_enumerator_next_file(GFileEnumerator *enumerato
                                     /* SF bug #969: very possibly we get multiple instances of the
                                        same file if we follow symlink to a directory
                                        FIXME: make it optional? */
-                                    !g_file_info_get_is_symlink(file_info) &&
+                                    !g_file_info_get_attribute_boolean(file_info, G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK) &&
                                     g_file_info_get_file_type(file_info) == G_FILE_TYPE_DIRECTORY);
             /* check if directory itself matches criteria */
             if(fm_search_job_match_file(enu, file_info, iter->folder_path,
@@ -302,7 +302,7 @@ static GFileInfo *_fm_vfs_search_enumerator_next_file(GFileEnumerator *enumerato
             /* recurse upon each directory */
             if(err == NULL && is_recursive)
             {
-                if(enu->show_hidden || !g_file_info_get_is_hidden(file_info))
+                if(enu->show_hidden || !g_file_info_get_attribute_boolean(file_info, G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN))
                 {
                     const char * name = g_file_info_get_name(file_info);
                     GFile * file = g_file_get_child(iter->folder_path, name);
@@ -806,7 +806,7 @@ static gboolean fm_search_job_match_content(FmVfsSearchEnumerator* priv,
     if(priv->content_pattern || priv->content_regex)
     {
         ret = FALSE;
-        if(g_file_info_get_file_type(info) == G_FILE_TYPE_REGULAR && g_file_info_get_size(info) > 0)
+        if(g_file_info_get_file_type(info) == G_FILE_TYPE_REGULAR && g_file_info_get_attribute_uint64(info, G_FILE_ATTRIBUTE_STANDARD_SIZE) > 0)
         {
             GFile* file = g_file_get_child(parent, g_file_info_get_name(info));
             if(file)
@@ -852,7 +852,7 @@ static gboolean fm_search_job_match_file_type(FmVfsSearchEnumerator* priv, GFile
     gboolean ret;
     if(priv->mime_types)
     {
-        const char* file_type = g_file_info_get_content_type(info);
+        const char* file_type = g_file_info_get_attribute_string(info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
         char** pmime_type;
         ret = FALSE;
         for(pmime_type = priv->mime_types; *pmime_type; ++pmime_type)
@@ -884,7 +884,7 @@ static gboolean fm_search_job_match_file_type(FmVfsSearchEnumerator* priv, GFile
 
 static gboolean fm_search_job_match_size(FmVfsSearchEnumerator* priv, GFileInfo* info)
 {
-    guint64 size = g_file_info_get_size(info);
+    guint64 size = g_file_info_get_attribute_uint64(info, G_FILE_ATTRIBUTE_STANDARD_SIZE);
     gboolean ret = TRUE;
     if(priv->min_size > 0 && size < priv->min_size)
         ret = FALSE;
@@ -917,7 +917,7 @@ static gboolean fm_search_job_match_file(FmVfsSearchEnumerator * priv,
 {
     //g_print("matching file %s\n", g_file_info_get_name(info));
 
-    if(!priv->show_hidden && g_file_info_get_is_hidden(info))
+    if(!priv->show_hidden && g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN))
         return FALSE;
 
     if(!fm_search_job_match_filename(priv, info))
