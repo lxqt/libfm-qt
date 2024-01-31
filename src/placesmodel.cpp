@@ -165,7 +165,7 @@ PlacesModel::~PlacesModel() {
         g_object_unref(trashMonitor_);
     }
 
-    for(GMount* const mount : qAsConst(shadowedMounts_)) {
+    for(GMount* const mount : std::as_const(shadowedMounts_)) {
         g_object_unref(mount);
     }
 }

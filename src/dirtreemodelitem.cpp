@@ -54,12 +54,12 @@ DirTreeModelItem::~DirTreeModelItem() {
     freeFolder();
     // delete child items if needed
     if(!children_.empty()) {
-        for(DirTreeModelItem* const item : qAsConst(children_)) {
+        for(DirTreeModelItem* const item : std::as_const(children_)) {
             delete item;
         }
     }
     if(!hiddenChildren_.empty()) {
-        for(DirTreeModelItem* const item : qAsConst(hiddenChildren_)) {
+        for(DirTreeModelItem* const item : std::as_const(hiddenChildren_)) {
             delete item;
         }
     }
@@ -123,7 +123,7 @@ void DirTreeModelItem::unloadFolder() {
         // delete all visible child items
         model_->beginRemoveRows(index(), 0, children_.size() - 1);
         if(!children_.empty()) {
-            for(DirTreeModelItem* const item : qAsConst(children_)) {
+            for(DirTreeModelItem* const item : std::as_const(children_)) {
                 delete item;
             }
             children_.clear();
@@ -132,7 +132,7 @@ void DirTreeModelItem::unloadFolder() {
 
         // remove hidden children
         if(!hiddenChildren_.empty()) {
-            for(DirTreeModelItem* const item : qAsConst(hiddenChildren_)) {
+            for(DirTreeModelItem* const item : std::as_const(hiddenChildren_)) {
                 delete item;
             }
             hiddenChildren_.clear();
@@ -224,7 +224,7 @@ void DirTreeModelItem::insertFiles(Fm::FileInfoList files) {
 // FIXME: insert one item at a time is slow. Insert multiple items at once and then sort is faster.
 int DirTreeModelItem::insertItem(DirTreeModelItem* newItem) {
     if(!newItem->fileInfo_ || !newItem->fileInfo_->isDir()) {
-        // don't insert placeholders or non-directory files 
+        // don't insert placeholders or non-directory files
         return -1;
     }
     if(model_->showHidden() || !newItem->fileInfo_ || !newItem->fileInfo_->isHidden()) {
@@ -302,7 +302,7 @@ void DirTreeModelItem::onFolderFilesRemoved(Fm::FileInfoList& files) {
             model->beginRemoveRows(index(), pos, pos);
             children_.erase(children_.cbegin() + pos);
             model->endRemoveRows();
-            
+
         }
     }
 
@@ -342,7 +342,7 @@ DirTreeModelItem* DirTreeModelItem::childFromName(const char* utf8_name, int* po
 DirTreeModelItem* DirTreeModelItem::childFromPath(Fm::FilePath path, bool recursive) const {
     Q_ASSERT(path != nullptr);
 
-    for(DirTreeModelItem* const item : qAsConst(children_)) {
+    for(DirTreeModelItem* const item : std::as_const(children_)) {
         // if(item->fileInfo_)
         //  qDebug() << "child: " << QString::fromUtf8(fm_file_info_get_disp_name(item->fileInfo_));
         if(item->fileInfo_ && item->fileInfo_->path() == path) {

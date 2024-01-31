@@ -133,7 +133,7 @@ bool ProxyFolderModel::filterAcceptsRow(int source_row, const QModelIndex& sourc
         }
     }
     // apply additional filters if there're any
-    for(ProxyFolderModelFilter* const filter : qAsConst(filters_)) {
+    for(ProxyFolderModelFilter* const filter : std::as_const(filters_)) {
         if(FolderModel* srcModel = static_cast<FolderModel*>(sourceModel())){
             auto fileInfo = srcModel->fileInfoFromIndex(srcModel->index(source_row, 0, source_parent));
             if(!filter->filterAcceptsRow(this, fileInfo)) {

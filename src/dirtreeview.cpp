@@ -312,7 +312,7 @@ void DirTreeView::rowsRemoved(const QModelIndex& parent, int start, int end) {
 
 void DirTreeView::doQueuedDeletions() {
     if(!queuedForDeletion_.empty()) {
-        for(DirTreeModelItem* const item : qAsConst(queuedForDeletion_)) {
+        for(DirTreeModelItem* const item : std::as_const(queuedForDeletion_)) {
             delete item;
         }
         queuedForDeletion_.clear();
