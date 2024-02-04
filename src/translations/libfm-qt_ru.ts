@@ -360,7 +360,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="268"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Выбор приложения для открытия  файлов типа «%1»</translation>
+        <translation>Выбор приложения для открытия файлов типа «%1»</translation>
     </message>
 </context>
 <context>
@@ -381,7 +381,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>Указанный каталог &apos;%1&apos; некорректен</translation>
+        <translation type="unfinished">Указанный каталог &apos;%1&apos; некорректен</translation>
     </message>
 </context>
 <context>
@@ -459,7 +459,7 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>Файл «%1» является .desktop-файлом.
+        <translation type="unfinished">Файл «%1» является .desktop-файлом.
 Что вы хотите с ним сделать?</translation>
     </message>
     <message>
@@ -523,7 +523,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="158"/>
         <source>Thumbnail View</source>
-        <translation>В виде эскизов</translation>
+        <translation>В виде миниатюр</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="162"/>
@@ -538,7 +538,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Icon Sizes</source>
-        <translation>Размер значков</translation>
+        <translation>Размер Значков</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="176"/>
@@ -800,9 +800,9 @@ Do you want to delete them instead?</source>
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
-            <numerusform>Вы хотите удалить выбранный файл?</numerusform>
-            <numerusform>Вы хотите удалить выбранные файлы?</numerusform>
-            <numerusform>Вы хотите удалить выбранные файлы?</numerusform>
+            <numerusform>Хотите удалить выделенный файл?</numerusform>
+            <numerusform>Хотите удалить выделенные файлы?</numerusform>
+            <numerusform>Хотите удалить выделенные файлы?</numerusform>
         </translation>
     </message>
     <message numerus="yes">

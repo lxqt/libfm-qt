@@ -37,7 +37,13 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Kode berezi hauek komando lerroan erabil daitezke:&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: fitxategi-izen bakarra adierazten du&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: hainbat fitxategi-izen adierazten ditu&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: fitxategiaren URI bakarra adierazten du&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: URI anitz adierazten ditu&lt;/li&gt;
+&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
@@ -323,7 +329,7 @@
     <message>
         <location filename="../file-props.ui" line="742"/>
         <source>Sticky</source>
-        <translation type="unfinished">Itsaskor</translation>
+        <translation>Itsaskor</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
@@ -431,7 +437,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kantzelatu</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
@@ -552,7 +558,7 @@ Zer egin nahi duzu horrekin?</translation>
     <message>
         <location filename="../filedialog.cpp" line="206"/>
         <source>Show Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Erakutsi Ezkutuak</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="218"/>
@@ -684,7 +690,7 @@ Ordezkatu nahi duzu?</translation>
     <message>
         <location filename="../filemenu.cpp" line="144"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>Be&amp;rreskuratu</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="154"/>
@@ -816,7 +822,7 @@ Horren ordez, ezabatu nahi dituzu?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxategi hauek helmugako karpetara eramaten:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -826,7 +832,7 @@ Horren ordez, ezabatu nahi dituzu?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxategi hauek helmuga karpetan kopiatzen:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
@@ -851,12 +857,12 @@ Horren ordez, ezabatu nahi dituzu?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortu esteka sinbolikoak</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxategi hauetarako esteka sinbolikoak sortzen:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
@@ -1046,7 +1052,7 @@ Horren ordez, ezabatu nahi dituzu?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="103"/>
         <source>Show Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Erakutsi Ezkutuak</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="138"/>
@@ -1061,52 +1067,52 @@ Horren ordez, ezabatu nahi dituzu?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="203"/>
         <source>By File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxategiaren Izenaren Arabera</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="204"/>
         <source>By Modification Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Aldaketa Denboraren Arabera</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="205"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkuntza Denboraren Arabera</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="208"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Ezabatzen Denboraren Arabera</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="211"/>
         <source>By File Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Artxiboaren Tamainaren Arabera</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="212"/>
         <source>By File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Artxibo Motaren Arabera</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="213"/>
         <source>By File Owner</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxategiaren Jabearen Arabera</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="214"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxategi Taldearen Arabera</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="220"/>
         <source>Ascending</source>
-        <translation type="unfinished"></translation>
+        <translation>Igokorra</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="225"/>
         <source>Descending</source>
-        <translation type="unfinished"></translation>
+        <translation>Jaitsiera</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="242"/>
@@ -1116,7 +1122,7 @@ Horren ordez, ezabatu nahi dituzu?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="250"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Ezkutuko Azkena</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="258"/>
@@ -1235,7 +1241,7 @@ Horren ordez, ezabatu nahi dituzu?</translation>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Etzana</translation>
     </message>
 </context>
 <context>
@@ -1264,42 +1270,42 @@ Horren ordez, ezabatu nahi dituzu?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="46"/>
         <source>Places</source>
-        <translation type="unfinished"></translation>
+        <translation>Lekuak</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="54"/>
         <source>Desktop</source>
-        <translation type="unfinished"></translation>
+        <translation>Mahaigaina</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="60"/>
         <source>Computer</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordenagailua</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="68"/>
         <source>Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplikazioak</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="77"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Sarea</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="81"/>
         <source>Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Gailuak</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="136"/>
         <source>Bookmarks</source>
-        <translation type="unfinished"></translation>
+        <translation>Laster-markak</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="227"/>
         <source>Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaborrontzia</translation>
     </message>
 </context>
 <context>
@@ -1307,64 +1313,64 @@ Horren ordez, ezabatu nahi dituzu?</translation>
     <message>
         <location filename="../placesview.cpp" line="542"/>
         <source>Open in New Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Ireki fitxa berrian</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="545"/>
         <source>Open in New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Ireki leiho berrian</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="557"/>
         <source>Empty Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Hustu zakarrontzia</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="577"/>
         <location filename="../placesview.cpp" line="639"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Ezkutatu</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="594"/>
         <source>Move Bookmark Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Eraman laster-marka gora</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="601"/>
         <source>Move Bookmark Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Eraman laster-marka behera</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="606"/>
         <source>Rename Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Aldatu laster-markaren izena</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="610"/>
         <source>Remove Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Kendu laster-marka</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="620"/>
         <location filename="../placesview.cpp" line="653"/>
         <source>Unmount</source>
-        <translation type="unfinished"></translation>
+        <translation>Desmuntatu</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="624"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Montatu</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="630"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>kanporatu</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="665"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Erakutsi sarrera guztiak</translation>
     </message>
 </context>
 <context>
@@ -1375,14 +1381,17 @@ Horren ordez, ezabatu nahi dituzu?</translation>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Mota: %1
+Tamaina: %2
+Aldatua: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Mota: %1
+Aldatua: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="96"/>
@@ -1397,7 +1406,7 @@ Modified: %2</source>
     <message>
         <location filename="../renamedialog.cpp" line="108"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Fitxategiak ezin du bere burua gainidatzi.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Hautatu beste izen bat, mesedez.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1405,7 +1414,7 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Zerrendak</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
@@ -1418,7 +1427,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Ezin da &apos;%s&apos; fitxategia kendu: jatorrizko bidea ez da ezagutzen</translation>
     </message>
 </context>
 <context>
@@ -1426,7 +1435,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Montatu</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
@@ -1461,7 +1470,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Saioaren iraupena pasahitz-kudeatzaileak zehazten du</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
@@ -1479,12 +1488,12 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="170"/>
         <source>Rename File</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxategiaren izena aldatu</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="171"/>
         <source>Please enter a new name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mesedez, sartu izen berri bat:</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="124"/>
@@ -1498,62 +1507,62 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="230"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortu Karpeta</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="231"/>
         <source>Create File</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortu Fitxategia</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="235"/>
         <source>Please enter a new file name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mesedez, sartu fitxategi-izen berri bat:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxategi berria</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="240"/>
         <source>Please enter a new folder name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mesedez, sartu karpeta-izen berri bat:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="241"/>
         <source>New folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Karpeta berria</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="246"/>
         <source>Enter a name for the new %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sartu izena %1 berriarentzat:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="687"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikono pertsonalizatuaren errorea</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bidea ez dago muntatuta.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="319"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Mahaigaineko sarrera fitxategi baliogabea: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ez dago aplikazio lehenetsirik &apos;%1&apos; abiarazteko</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ezin da &apos;%1&apos; lan-direktorioa ezarri: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
@@ -1577,7 +1586,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Kokapen honetan dagoeneko badago izen bereko fitxategi bat.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Lehendik dagoen fitxategia ordeztu nahi duzu?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
@@ -1587,7 +1596,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fitxategi izena:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
