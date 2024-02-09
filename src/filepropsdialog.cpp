@@ -284,12 +284,12 @@ void FilePropsDialog::initGeneralPage() {
         }
     } // end if(singleType)
     else { // not singleType, multiple files are selected at the same time
-        ui->fileType->setText(tr("Files of different types"));
+        ui->fileType->setText(tr("<Multiple Values>"));
+        ui->mimeType->setText(tr("<Multiple Values>"));
         ui->target->hide();
         ui->targetLabel->hide();
     }
 
-    // FIXME: check if all files has the same parent dir, mtime, or atime
     if(singleFile) { // only one file is selected
         auto parent_path = fileInfo->path().parent();
         auto parent_str = parent_path ? parent_path.displayName(): nullptr;
@@ -325,8 +325,74 @@ void FilePropsDialog::initGeneralPage() {
         }
     }
     else {
-        ui->fileName->setText(tr("Multiple Files"));
+        ui->fileName->setText(tr("<Multiple Values>"));
         ui->fileName->setEnabled(false);
+
+        bool sameParentDir = false;
+        bool sameMtime = false;
+        bool sameAtime = false;
+        bool sameCrtime = false;
+        auto firstParentDir = fileInfos_[0]->path().parent();
+        auto firstMtime = fileInfos_[0]->mtime();
+        auto firstAtime = fileInfos_[0]->atime();
+        auto firstCrtime = fileInfos_[0]->crtime();
+
+        for(size_t i = 1; i < fileInfos_.size(); i += 1) {
+            sameParentDir = (fileInfos_[i]->path().parent() == firstParentDir);
+            sameMtime = (fileInfos_[i]->mtime() == firstMtime);
+            sameAtime = (fileInfos_[i]->atime() == firstAtime);
+            sameCrtime = (fileInfos_[i]->crtime() == firstCrtime);
+        }
+
+        if(sameParentDir && firstParentDir) {
+            ui->location->setText(QString::fromUtf8(firstParentDir.displayName().get()));
+        }
+        else if (sameParentDir && !firstParentDir)
+        {
+            ui->location->clear();
+        }
+        else {
+            ui->location->setText(tr("<Multiple Values>"));
+        }
+
+        if (sameMtime && firstMtime > 0)
+        {
+            auto mtime = QDateTime::fromMSecsSinceEpoch(firstMtime * 1000);
+            ui->lastModified->setText(mtime.toString(Qt::SystemLocaleShortDate));
+        }
+        else if (sameMtime && firstMtime == 0)
+        {
+            ui->lastModified->setText(tr("N/A"));
+        }
+        else {
+            ui->lastModified->setText(tr("<Multiple Values>"));
+        }
+
+        if (sameAtime && firstAtime > 0)
+        {
+            auto atime = QDateTime::fromMSecsSinceEpoch(firstAtime * 1000);
+            ui->lastAccessed->setText(atime.toString(Qt::SystemLocaleShortDate));
+        }
+        else if (sameAtime && firstAtime == 0)
+        {
+            ui->lastAccessed->setText(tr("N/A"));
+        }
+        else {
+            ui->lastAccessed->setText(tr("<Multiple Values>"));
+        }
+
+        if (sameCrtime && firstCrtime > 0)
+        {
+            auto crtime = QDateTime::fromMSecsSinceEpoch(firstCrtime * 1000);
+            ui->created->setText(crtime.toString(Qt::SystemLocaleShortDate));
+        }
+        else if (sameCrtime && firstCrtime == 0)
+        {
+            ui->created->setText(tr("N/A"));
+        }
+        else {
+            ui->created->setText(tr("<Multiple Values>"));
+        }
     }
 
     // (common) emblem
