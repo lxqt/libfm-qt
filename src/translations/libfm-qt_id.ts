@@ -21,7 +21,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation>Baris perintah untuk dieksekusi:</translation>
+        <translation>Perintah untuk dieksekusi:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingatlah untuk file-file berikutnya seperti ini</translation>
     </message>
 </context>
 <context>
@@ -1466,7 +1466,7 @@ Dimodifikasi: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Durasi sesi ditentukan oleh pengelola kata sandi</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
@@ -1518,7 +1518,7 @@ Dimodifikasi: %2</translation>
     <message>
         <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>File baru</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="240"/>

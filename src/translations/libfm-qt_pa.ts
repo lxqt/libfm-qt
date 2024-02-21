@@ -42,7 +42,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation type="unfinished"></translation>
+        <translation>ਕਮਾਂਡ ਚਲਾਉਣ ਦੇ ਬਾਅਦ ਟਰਮੀਨਲ ਵਿੰਡੋ ਨੂੰ ਖੁੱਲ੍ਹਾ ਰੱਕੋ</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
@@ -52,7 +52,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation type="unfinished"></translation>
+        <translation>ਚੁਣੀ ਐਪਲੀਕੇਸ਼ਨ ਨੂੰ ਇਸ ਫਾਇਲ ਕਿਸਮ ਦੀ ਡਿਫਾਲਟ ਕਾਰਵਾਈ ਵਜੋਂ ਸੈੱਟ ਕਰੋ</translation>
     </message>
 </context>
 <context>
@@ -85,7 +85,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation type="unfinished"></translation>
+        <translation>ਚੀਜ਼ਾਂ ਦਾ ਕ੍ਰਮ ਬਦਲਣ ਲਈ ਡਰੈਗ ਕਰਕੇ ਡਰੌਪ ਕਰੋ</translation>
     </message>
 </context>
 <context>
@@ -118,7 +118,7 @@
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>ਇਸ ਕਿਸਮ ਦੀਆਂ ਅਗਲੀਆਂ ਫਾਇਲਾਂ ਲਈ ਯਾਦ ਰੱਖੋ</translation>
     </message>
 </context>
 <context>
@@ -149,7 +149,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation type="unfinished"></translation>
+        <translation>ਕਾਰਵਾਈ:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
@@ -227,7 +227,7 @@
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation type="unfinished"></translation>
+        <translation>ਆਖਰੀ ਵਾਰ ਪਹੁੰਚ:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="287"/>
@@ -328,12 +328,12 @@
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>SetUID</source>
-        <translation type="unfinished"></translation>
+        <translation>SetUID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
         <source>SetGID</source>
-        <translation type="unfinished"></translation>
+        <translation>SetGID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="792"/>
@@ -375,7 +375,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>ਦਿੱਤੀ ਗਈ ਡਾਇਰੈਕਟਰੀ &apos;%1&apos; ਵਾਜਬ ਨਹੀਂ ਹੈ</translation>
     </message>
 </context>
 <context>
@@ -390,7 +390,7 @@
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;ਕੋਈ ਅਧੀਨ ਫੋਲਡਰ ਨਹੀਂ&gt;</translation>
     </message>
 </context>
 <context>
@@ -426,7 +426,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation type="unfinished"></translation>
+        <translation>ਇੱਥੇ ਸਿਮ-ਲਿੰਕ ਬਣਾਓ</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
@@ -436,7 +436,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>ਇੱਥੇ ਡਰਾਪ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ</translation>
     </message>
 </context>
 <context>
@@ -453,13 +453,15 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>ਇਹ ਫਾਇਲ &apos;%1&apos; ਡੈਸਕਟਾਪ ਐੰਟਰੀ ਜਾਪਦੀ ਹੈ।
+ਇਸ ਨਾਲ ਤੁਸੀਂ ਕੀ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>ਇਹ ਲਿਖਤ ਫਾਇਲ &apos;%1&apos; ਚੱਲਣਯੋਗ ਸਕ੍ਰਿਪਟ ਜਾਪਦੀ ਹੈ।
+ਇਸ ਨਾਲ ਤੁਸੀਂ ਕੀ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
@@ -478,7 +480,7 @@ What do you want to do with it?</source>
         <location filename="../filedialog.cpp" line="106"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+ਖੱਬਾ</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="112"/>
@@ -489,7 +491,7 @@ What do you want to do with it?</source>
         <location filename="../filedialog.cpp" line="113"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+ਸੱਜਾ</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="120"/>
@@ -500,7 +502,7 @@ What do you want to do with it?</source>
         <location filename="../filedialog.cpp" line="121"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="138"/>
@@ -560,7 +562,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="223"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>ਫਾਇਲ ਟੂਲ-ਟਿੱਪ ਵੇਖਾਓ</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="230"/>
@@ -593,7 +595,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog.cpp" line="960"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>ਪਾਥ &quot;%1&quot; ਮੌਜੂਦ ਨਹੀਂ ਹੈ</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="974"/>
@@ -664,8 +666,9 @@ Do you want to replace it?</source>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="357"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>ਕੀ ਤੁਸੀਂ ਇਹ %1 ਫਾਇਲਾਂ ਨੂੰ ਖੋਲ੍ਹਣਾ ਚਾਹੁੰਦੇ ਹੋ?</numerusform>
+            <numerusform>ਕੀ ਤੁਸੀਂ ਇਹ %1 ਫਾਇਲਾਂ ਨੂੰ ਖੋਲ੍ਹਣਾ ਚਾਹੁੰਦੇ ਹੋ?</numerusform>
         </translation>
     </message>
     <message>
@@ -747,7 +750,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="313"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>ਚੁਣੇ ਚੱਲਣਯੋਗ ਉੱਤੇ ਭਰੋਸਾ ਕਰੋ</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="314"/>
@@ -777,7 +780,8 @@ Do you want to replace it?</source>
         <location filename="../fileoperation.cpp" line="318"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation type="unfinished"></translation>
+        <translation>ਅੰਦਰੁੂਨੀ ਫਾਇਲ ਸਿਸਟਮ ਵਲੋਂ ਕਾਰਵਾਈ ਲਈ ਸਹਾਇਕ ਨਾ ਹੋਣ ਕਰਕੇ ਕੁਝ ਫਾਇਲਾਂ ਨੂੰ ਰੱਦੀ ਵਿੱਚ ਨਹੀਂ ਭੇਜਿਆ ਜਾ ਸਕਦਾ ਹੈ।
+ਕੀ ਤੁਸੀਂ ਉਹਨੂੰ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="404"/>
@@ -812,7 +816,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>ਅੱਗੇ ਦਿੱਤੀਆਂ ਫਾਇਲਾਂ ਨੂੰ ਟਿਕਾਣਾ ਫੋਲਡਰ ਵਿੱਚ ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -822,7 +826,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>ਅੱਗੇ ਦਿੱਤੀਆਂ ਫਾਇਲਾਂ ਨੂੰ ਟਿਕਾਣਾ ਫੋਲਡਰ ਵਿੱਚ ਕਾਪੀ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
@@ -847,7 +851,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation type="unfinished"></translation>
+        <translation>ਸਿਮ-ਲਿੰਕ ਬਣਾਓ</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
@@ -857,12 +861,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>ਗੁਣ ਬਦਲੋ</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>ਅੱਗੇ ਦਿੱਤੀਆਂ ਫਾਇਲਾਂ ਦੇ ਗੁਣ ਬਦਲੇ ਜਾ ਰਹੇ ਹਨ:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
@@ -906,7 +910,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="170"/>
         <source>Forbidden</source>
-        <translation type="unfinished"></translation>
+        <translation>ਲੁਕਵੇਂ</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="287"/>
@@ -918,7 +922,7 @@ Do you want to delete them instead?</source>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>ਲਾਗੂ ਨਹੀਂ</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -928,7 +932,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="405"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% ਵਰਤੇ</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="406"/>
@@ -973,7 +977,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="644"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation type="unfinished"></translation>
+        <translation>ਕੀ ਤੁਸੀਂ ਇਹ ਤਬਦੀਲੀਆਂ ਨੂੰ ਸਭ ਫਾਇਲਾਂ ਅਤੇ ਅਧੀਨ-ਫੋਲਡਰਾਂ ਉੱਤੇ ਲਗਾਤਾਰ ਲਾਗੂ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?</translation>
     </message>
 </context>
 <context>
@@ -1150,7 +1154,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="322"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>ਲਾਗੂ ਨਹੀਂ</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="324"/>
@@ -1213,12 +1217,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="406"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>ਕਾਲਮਾਂ ਦਾ ਆਪੇ ਆਕਾਰ ਬਦਲੋ</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="423"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>ਦਿੱਖ ਕਾਲਮ</translation>
     </message>
 </context>
 <context>
@@ -1324,12 +1328,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="594"/>
         <source>Move Bookmark Up</source>
-        <translation type="unfinished"></translation>
+        <translation>ਬੁੱਕਮਾਰਕ ਉੱਤੇ ਭੇਜੋ</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="601"/>
         <source>Move Bookmark Down</source>
-        <translation type="unfinished"></translation>
+        <translation>ਬੁੱਕਮਾਰਕ ਹੇਠਾਂ ਭੇਜੋ</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="606"/>
@@ -1360,7 +1364,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="665"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>ਸਭ ਐਂਟਰੀਆਂ ਵੇਖਾਓ</translation>
     </message>
 </context>
 <context>
@@ -1430,7 +1434,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation type="unfinished"></translation>
+        <translation>ਅਣਪਛਾਤੇ ਵਜੋਂ ਕਨੈਕਟ ਕਰੋ(&amp;a)</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
@@ -1532,7 +1536,7 @@ Modified: %2</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="687"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>ਕਸਟਮ ਆਈਕਾਨ ਗਲਤੀ</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
@@ -1542,7 +1546,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="319"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>ਗਲਤ ਡੈਸਕਟਾਪ ਐਂਟਰੀ ਫਾਇਲ: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
@@ -1581,7 +1585,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation type="unfinished"></translation>
+        <translation>ਅੱਗੇ ਦਿੱਤੀ ਫਾਇਲ ਨਾਲ?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
@@ -1619,7 +1623,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="58"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>ਨਿਯਮਤ ਸਮੀਕਰਨ ਵਰਤੋ</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="71"/>
@@ -1694,7 +1698,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="240"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>ਨਿਯਮਤ ਸਮੀਕਰਨ ਵਰਤੋ(&amp;U)</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="267"/>

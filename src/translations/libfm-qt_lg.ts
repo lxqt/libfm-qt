@@ -766,7 +766,7 @@ Oyagala okuzza ebirala mu kifo kya yo?</translation>
     <message>
         <location filename="../filemenu.cpp" line="419"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Ebivaamu</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="148"/>
@@ -1062,7 +1062,7 @@ Fayiro ezo zo nzigyeewobugyi?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="181"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Ebivaamu</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="203"/>
@@ -1370,7 +1370,7 @@ Fayiro ezo zo nzigyeewobugyi?</translation>
     <message>
         <location filename="../placesview.cpp" line="665"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Laga ebirimu byonna</translation>
     </message>
 </context>
 <context>
@@ -1567,7 +1567,7 @@ Amakyusa: %2</translation>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Obumanye: </translation>
     </message>
     <message>
         <location filename="../foldermodelitem.cpp" line="61"/>
