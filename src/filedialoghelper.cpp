@@ -406,12 +406,12 @@ void FileDialogHelper::saveSettings() {
         settings.setValue(QStringLiteral("ThumbnailIconSize"), size);
     }
 
-    const QList<int> columns = dlg_->getHiddenColumns();
+    QList<int> columns = dlg_->getHiddenColumns();
+    std::sort(columns.begin(), columns.end());
     QList<QVariant> hiddenColumns;
-    for(auto column : columns) {
-        hiddenColumns << QVariant(column);
+    for(int i = 0; i < columns.size(); ++i) {
+        hiddenColumns << QVariant(columns.at(i));
     }
-    std::sort(hiddenColumns.begin(), hiddenColumns.end());
     if(settings.value(QStringLiteral("HiddenColumns")).toList() != hiddenColumns) {
         settings.setValue(QStringLiteral("HiddenColumns"), hiddenColumns);
     }

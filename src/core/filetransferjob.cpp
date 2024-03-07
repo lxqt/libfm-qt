@@ -114,7 +114,7 @@ bool FileTransferJob::copyRegularFile(const FilePath& srcPath, const GFileInfoPt
         err.reset();
 
         // reset progress of the current file (only for copy)
-        auto size = g_file_info_get_size(srcInfo.get());
+        auto size = g_file_info_get_attribute_uint64(srcInfo.get(), G_FILE_ATTRIBUTE_STANDARD_SIZE);
         setCurrentFileProgress(size, 0);
 
         // do the file operation
@@ -448,7 +448,7 @@ bool FileTransferJob::moveFile(const FilePath &srcPath, const GFileInfoPtr &srcI
         // increase current progress
         // FIXME: it's not appropriate to calculate the progress of move operations using file size
         // since the time required to move a file is not related to it's file size.
-        auto size = g_file_info_get_size(srcInfo.get());
+        auto size = g_file_info_get_attribute_uint64(srcInfo.get(), G_FILE_ATTRIBUTE_STANDARD_SIZE);
         addFinishedAmount(size, 1);
     }
     else {
@@ -462,7 +462,7 @@ bool FileTransferJob::moveFile(const FilePath &srcPath, const GFileInfoPtr &srcI
 bool FileTransferJob::copyFile(const FilePath& srcPath, const GFileInfoPtr& srcInfo, const FilePath& destDirPath, const char* destFileName, bool skip) {
     setCurrentFile(srcPath);
 
-    auto size = g_file_info_get_size(srcInfo.get());
+    auto size = g_file_info_get_attribute_uint64(srcInfo.get(), G_FILE_ATTRIBUTE_STANDARD_SIZE);
     bool success = false;
     setCurrentFileProgress(size, 0);
 

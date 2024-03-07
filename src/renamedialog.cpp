@@ -53,7 +53,7 @@ RenameDialog::RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* p
     QString infoStr;
     // FIXME: deprecate fm_config
     auto disp_size = Fm::formatFileSize(src.size(), fm_config->si_unit);
-    auto srcMtime = QDateTime::fromMSecsSinceEpoch(src.mtime() * 1000).toString(Qt::SystemLocaleShortDate);
+    auto srcMtime = locale().toString(QDateTime::fromMSecsSinceEpoch(src.mtime() * 1000), QLocale::ShortFormat);
     if(!disp_size.isEmpty()) {
         infoStr = QString(tr("Type: %1\nSize: %2\nModified: %3"))
                   .arg(src.description(),
@@ -72,7 +72,7 @@ RenameDialog::RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* p
     ui->destIcon->setPixmap(pixmap);
 
     disp_size = Fm::formatFileSize(dest.size(), fm_config->si_unit);
-    auto destMtime = QDateTime::fromMSecsSinceEpoch(dest.mtime() * 1000).toString(Qt::SystemLocaleShortDate);
+    auto destMtime = locale().toString(QDateTime::fromMSecsSinceEpoch(dest.mtime() * 1000), QLocale::ShortFormat);
     if(!disp_size.isEmpty()) {
         infoStr = QString(tr("Type: %1\nSize: %2\nModified: %3"))
                   .arg(dest.description(),
@@ -90,6 +90,7 @@ RenameDialog::RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* p
     ui->fileName->setText(QString::fromUtf8(basename.get()));
     oldName_ = QString::fromUtf8(basename.get());
     connect(ui->fileName, &QLineEdit::textChanged, this, &RenameDialog::onFileNameChanged);
+    ui->fileName->setFocus(); // needed with Qt >= 6.6.1
 
     // add "Rename" button
     QAbstractButton* button = ui->buttonBox->button(QDialogButtonBox::Ok);

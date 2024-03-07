@@ -133,7 +133,7 @@ bool ProxyFolderModel::filterAcceptsRow(int source_row, const QModelIndex& sourc
         }
     }
     // apply additional filters if there're any
-    for(ProxyFolderModelFilter* const filter : qAsConst(filters_)) {
+    for(ProxyFolderModelFilter* const filter : std::as_const(filters_)) {
         if(FolderModel* srcModel = static_cast<FolderModel*>(sourceModel())){
             auto fileInfo = srcModel->fileInfoFromIndex(srcModel->index(source_row, 0, source_parent));
             if(!filter->filterAcceptsRow(this, fileInfo)) {
@@ -200,8 +200,11 @@ bool ProxyFolderModel::lessThan(const QModelIndex& left, const QModelIndex& righ
             for(;;) {
                 leftEnd = leftText.indexOf(QLatin1Char('.'), leftStart);
                 rightEnd = rightText.indexOf(QLatin1Char('.'), rightStart);
-                QStringRef lefPart = leftText.midRef(leftStart, leftEnd - leftStart);
-                QStringRef rightPart = rightText.midRef(rightStart, rightEnd - rightStart);
+
+                QString lefPart = leftEnd == -1 ? leftText.sliced(leftStart, leftText.size() - leftStart)
+                                                : leftText.sliced(leftStart, leftEnd - leftStart);
+                QString rightPart = rightEnd == -1 ? rightText.sliced(rightStart, rightText.size() - rightStart)
+                                                   : rightText.sliced(rightStart, rightEnd - rightStart);
                 comp = collator_.compare(lefPart, rightPart);
                 if(comp == 0) {
                     // This is a workaround for QCollator's behavior that, for example,

@@ -20,6 +20,6 @@
 #ifndef _LIBFM_QT_GLOBALS_
 #define _LIBFM_QT_GLOBALS_
 
-#include "fm-qt_export.h"
+#include "fm-qt6_export.h"
 
 #endif

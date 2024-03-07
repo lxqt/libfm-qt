@@ -76,7 +76,7 @@ bool DeleteJob::deleteFile(const FilePath& path, GFileInfoPtr inf) {
         }
     }
 
-    addFinishedAmount(g_file_info_get_size(inf.get()), 1);
+    addFinishedAmount(g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_STANDARD_SIZE), 1);
 
     return !hasError;
 }

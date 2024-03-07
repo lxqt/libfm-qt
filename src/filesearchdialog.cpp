@@ -34,7 +34,7 @@ FileSearchDialog::FileSearchDialog(QStringList paths, QWidget* parent, Qt::Windo
     ui->setupUi(this);
     ui->minSize->setMaximum(std::numeric_limits<int>().max());
     ui->maxSize->setMaximum(std::numeric_limits<int>().max());
-    for(const QString& path : qAsConst(paths)) {
+    for(const QString& path : std::as_const(paths)) {
         ui->listView->addItem(path);
     }
 

@@ -48,7 +48,7 @@ public:
     explicit MountOperation(bool interactive = true, QWidget* parent = nullptr);
     ~MountOperation() override;
 
-    FM_QT_DEPRECATED
+    FM_QT6_DEPRECATED
     void mount(const Fm::FilePath& path) {
         mountEnclosingVolume(path);
     }

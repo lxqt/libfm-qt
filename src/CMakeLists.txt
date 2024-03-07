@@ -109,7 +109,7 @@ set(libfm_UIS
     filedialog.ui
 )
 
-set(LIBFM_QT_DATA_DIR "${CMAKE_INSTALL_FULL_DATADIR}/libfm-qt")
+set(LIBFM_QT_DATA_DIR "${CMAKE_INSTALL_FULL_DATADIR}/libfm-qt6")
 set(LIBFM_QT_INTREE_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/include")
 
 # add translation for libfm-qt
@@ -132,8 +132,7 @@ install(EXPORT
 )
 
 target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
-    Qt5::Widgets
-    Qt5::X11Extras
+    Qt6::Widgets
     ${GLIB_LIBRARIES}
     ${GLIB_GIO_LIBRARIES}
     ${GLIB_GOBJECT_LIBRARIES}
@@ -150,7 +149,7 @@ set_target_properties(${LIBFM_QT_LIBRARY_NAME} PROPERTIES
 )
 
 target_include_directories(${LIBFM_QT_LIBRARY_NAME}
-    PRIVATE "${Qt5Gui_PRIVATE_INCLUDE_DIRS}"
+    PRIVATE "${Qt6Gui_PRIVATE_INCLUDE_DIRS}"
         core/legacy
     PUBLIC
         "${GLIB_INCLUDE_DIRS}"
@@ -171,13 +170,13 @@ target_compile_definitions(${LIBFM_QT_LIBRARY_NAME}
 
 install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}_export.h"
-    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt"
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt6"
     COMPONENT Devel
 )
 
 # install include header files (FIXME: can we make this cleaner? should dir name be versioned?)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
-    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt"
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/libfm-qt6"
     COMPONENT Devel
     FILES_MATCHING PATTERN "*.h"
 )
@@ -188,11 +187,11 @@ generate_export_header(${LIBFM_QT_LIBRARY_NAME}
 
 # InTree build
 file(COPY ${CMAKE_CURRENT_BINARY_DIR}/${LIBFM_QT_LIBRARY_NAME}_export.h
-    DESTINATION "${LIBFM_QT_INTREE_INCLUDE_DIR}/libfm-qt"
+    DESTINATION "${LIBFM_QT_INTREE_INCLUDE_DIR}/libfm-qt6"
 )
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/
-    DESTINATION "${LIBFM_QT_INTREE_INCLUDE_DIR}/libfm-qt"
+    DESTINATION "${LIBFM_QT_INTREE_INCLUDE_DIR}/libfm-qt6"
     FILES_MATCHING PATTERN "*.h"
 )
 
@@ -225,7 +224,7 @@ export(TARGETS ${LIBFM_QT_LIBRARY_NAME}
 )
 
 # install a pkgconfig file for libfm-qt
-set(REQUIRED_QT "Qt5Widgets >= ${QT_MINIMUM_VERSION} Qt5X11Extras >= ${QT_MINIMUM_VERSION}")
+set(REQUIRED_QT "Qt6Widgets >= ${QT_MINIMUM_VERSION}")
 configure_file(libfm-qt.pc.in lib${LIBFM_QT_LIBRARY_NAME}.pc @ONLY)
 # FreeBSD loves to install files to different locations
 # https://www.freebsd.org/doc/handbook/dirstructure.html
@@ -248,8 +247,8 @@ set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
 
 
 set(TEST_LIBRARIES
-    Qt5::Core
-    Qt5::Widgets
+    Qt6::Core
+    Qt6::Widgets
     ${FM_LIBRARIES}
     ${LIBFM_QT_LIBRARY_NAME}
 )

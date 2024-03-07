@@ -60,7 +60,7 @@ class XdndWorkaround : public QAbstractNativeEventFilter {
 public:
     explicit XdndWorkaround();
     ~XdndWorkaround() override;
-    bool nativeEventFilter(const QByteArray& eventType, void* message, long* result) override;
+    bool nativeEventFilter(const QByteArray& eventType, void* message, qintptr* result) override;
     static QByteArray atomName(xcb_atom_t atom);
     static xcb_atom_t internAtom(const char* name, int len = -1);
     static QByteArray windowProperty(xcb_window_t window, xcb_atom_t propAtom, xcb_atom_t typeAtom, int len);

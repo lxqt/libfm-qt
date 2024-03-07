@@ -49,11 +49,11 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
 
     dispName_ = QString::fromUtf8(g_file_info_get_display_name(inf.get()));
 
-    size_ = g_file_info_get_size(inf.get());
+    size_ = g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_STANDARD_SIZE);
 
     type = g_file_info_get_file_type(inf.get());
 
-    tmp = g_file_info_get_content_type(inf.get());
+    tmp = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
     if(tmp) {
         if(size_ == 0 && type == G_FILE_TYPE_REGULAR) {
             /* Treat zero-sized files based on their extensions,
@@ -165,7 +165,7 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
     }
 
     /* special handling for symlinks */
-    if(g_file_info_get_is_symlink(inf.get())) {
+    if(g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK)) {
         mode_ &= ~S_IFMT; /* reset type */
         mode_ |= S_IFLNK; /* set type to symlink */
         goto _file_is_symlink;
@@ -215,7 +215,7 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
         break;
     case G_FILE_TYPE_SYMBOLIC_LINK:
 _file_is_symlink:
-        uri = g_file_info_get_symlink_target(inf.get());
+        uri = g_file_info_get_attribute_byte_string(inf.get(), G_FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET);
         if(uri) {
             if(g_str_has_prefix(uri, "file:///")) {
                 auto filename = CStrPtr{g_filename_from_uri(uri, nullptr, nullptr)};
@@ -304,10 +304,10 @@ _file_is_symlink:
     else {
         dtime_ = 0;
     }
-    isHidden_ = g_file_info_get_is_hidden(inf.get());
+    isHidden_ = g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN);
     // g_file_info_get_is_backup() does not cover ".bak" and ".old".
     // NOTE: Here, dispName_ is not modified for desktop entries yet.
-    isBackup_ = g_file_info_get_is_backup(inf.get())
+    isBackup_ = g_file_info_get_attribute_boolean (inf.get(), G_FILE_ATTRIBUTE_STANDARD_IS_BACKUP)
                 || dispName_.endsWith(QLatin1String(".bak"))
                 || dispName_.endsWith(QLatin1String(".old"));
     isNameChangeable_ = true; /* GVFS tends to ignore this attribute */

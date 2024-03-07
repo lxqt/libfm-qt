@@ -165,7 +165,7 @@ PlacesModel::~PlacesModel() {
         g_object_unref(trashMonitor_);
     }
 
-    for(GMount* const mount : qAsConst(shadowedMounts_)) {
+    for(GMount* const mount : std::as_const(shadowedMounts_)) {
         g_object_unref(mount);
     }
 }
@@ -541,7 +541,7 @@ bool PlacesModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int
     if(data->hasFormat(QStringLiteral("application/x-bookmark-row"))) { // the data being dopped is a bookmark row
         // decode it and do bookmark reordering
         QByteArray buf = data->data(QStringLiteral("application/x-bookmark-row"));
-        QDataStream stream(&buf, QIODevice::ReadOnly);
+        QDataStream stream(&buf, QIODeviceBase::ReadOnly);
         int oldPos = -1;
         char* pathStr = nullptr;
         stream >> oldPos >> pathStr;
@@ -667,7 +667,7 @@ QMimeData* PlacesModel::mimeData(const QModelIndexList& indexes) const {
             PlacesModelBookmarkItem* bookmarkItem = static_cast<PlacesModelBookmarkItem*>(item);
             QMimeData* mime = new QMimeData();
             QByteArray data;
-            QDataStream stream(&data, QIODevice::WriteOnly);
+            QDataStream stream(&data, QIODeviceBase::WriteOnly);
             // There is no safe and cross-process way to store a reference of a row.
             // Let's store the pos, name, and path of the bookmark item instead.
             auto pathStr = bookmarkItem->path().toString();
