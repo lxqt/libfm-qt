@@ -43,8 +43,8 @@ XdndWorkaround::XdndWorkaround() {
     if(qApp->platformName() != QStringLiteral("xcb")) {
         return;
     }
-    auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>();
-    if(!x11NativeInterfce) {
+    auto x11NativeInterface = qApp->nativeInterface<QNativeInterface::QX11Application>();
+    if(!x11NativeInterface) {
         return;
     }
 
@@ -59,7 +59,7 @@ XdndWorkaround::XdndWorkaround() {
 
     // initialize xinput2 since newer versions of Qt5 uses it.
     static char xi_name[] = "XInputExtension";
-    xcb_connection_t* conn = x11NativeInterfce->connection();
+    xcb_connection_t* conn = x11NativeInterface->connection();
     xcb_query_extension_cookie_t cookie = xcb_query_extension(conn, strlen(xi_name), xi_name);
     xcb_generic_error_t* err = nullptr;
     xcb_query_extension_reply_t* reply = xcb_query_extension_reply(conn, cookie, &err);
@@ -114,9 +114,9 @@ bool XdndWorkaround::nativeEventFilter(const QByteArray& eventType, void* messag
 // static
 QByteArray XdndWorkaround::atomName(xcb_atom_t atom) {
     QByteArray name;
-    auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>();
-    if(x11NativeInterfce) {
-        xcb_connection_t* conn = x11NativeInterfce->connection();
+    auto x11NativeInterface = qApp->nativeInterface<QNativeInterface::QX11Application>();
+    if(x11NativeInterface) {
+        xcb_connection_t* conn = x11NativeInterface->connection();
         xcb_get_atom_name_cookie_t cookie = xcb_get_atom_name(conn, atom);
         xcb_get_atom_name_reply_t* reply = xcb_get_atom_name_reply(conn, cookie, nullptr);
         if(reply != nullptr) {
@@ -133,12 +133,12 @@ QByteArray XdndWorkaround::atomName(xcb_atom_t atom) {
 // static
 xcb_atom_t XdndWorkaround::internAtom(const char* name, int len) {
     xcb_atom_t atom = 0;
-    auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>();
-    if(x11NativeInterfce) {
+    auto x11NativeInterface = qApp->nativeInterface<QNativeInterface::QX11Application>();
+    if(x11NativeInterface) {
         if(len == -1) {
             len = strlen(name);
         }
-        xcb_connection_t* conn = x11NativeInterfce->connection();
+        xcb_connection_t* conn = x11NativeInterface->connection();
         xcb_intern_atom_cookie_t cookie = xcb_intern_atom(conn, false, len, name);
         xcb_generic_error_t* err = nullptr;
         xcb_intern_atom_reply_t* reply = xcb_intern_atom_reply(conn, cookie, &err);
@@ -156,9 +156,9 @@ xcb_atom_t XdndWorkaround::internAtom(const char* name, int len) {
 // static
 QByteArray XdndWorkaround::windowProperty(xcb_window_t window, xcb_atom_t propAtom, xcb_atom_t typeAtom, int len) {
     QByteArray data;
-    auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>();
-    if(x11NativeInterfce) {
-        xcb_connection_t* conn = x11NativeInterfce->connection();
+    auto x11NativeInterface = qApp->nativeInterface<QNativeInterface::QX11Application>();
+    if(x11NativeInterface) {
+        xcb_connection_t* conn = x11NativeInterface->connection();
         xcb_get_property_cookie_t cookie = xcb_get_property(conn, false, window, propAtom, typeAtom, 0, len);
         xcb_generic_error_t* err = nullptr;
         xcb_get_property_reply_t* reply = xcb_get_property_reply(conn, cookie, &err);
@@ -177,9 +177,9 @@ QByteArray XdndWorkaround::windowProperty(xcb_window_t window, xcb_atom_t propAt
 
 // static
 void XdndWorkaround::setWindowProperty(xcb_window_t window, xcb_atom_t propAtom, xcb_atom_t typeAtom, void* data, int len, int format) {
-    auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>();
-    if(x11NativeInterfce) {
-        xcb_connection_t* conn = x11NativeInterfce->connection();
+    auto x11NativeInterface = qApp->nativeInterface<QNativeInterface::QX11Application>();
+    if(x11NativeInterface) {
+        xcb_connection_t* conn = x11NativeInterface->connection();
         xcb_change_property(conn, XCB_PROP_MODE_REPLACE, window, propAtom, typeAtom, format, len, data);
     }
 }
@@ -233,11 +233,11 @@ bool XdndWorkaround::selectionNotify(xcb_selection_notify_event_t* event) {
 
 
 bool XdndWorkaround::selectionRequest(xcb_selection_request_event_t* event) {
-    auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>();
-    if(!x11NativeInterfce) {
+    auto x11NativeInterface = qApp->nativeInterface<QNativeInterface::QX11Application>();
+    if(!x11NativeInterface) {
         return false;
     }
-    xcb_connection_t* conn = x11NativeInterfce->connection();
+    xcb_connection_t* conn = x11NativeInterface->connection();
     if(event->property == XCB_ATOM_PRIMARY || event->property == XCB_ATOM_SECONDARY) {
         return false;    // we only touch selection requests related to XDnd
     }
