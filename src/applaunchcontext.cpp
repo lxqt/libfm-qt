@@ -29,8 +29,8 @@ typedef struct _FmAppLaunchContext {
 G_DEFINE_TYPE(FmAppLaunchContext, fm_app_launch_context, G_TYPE_APP_LAUNCH_CONTEXT)
 
 static char* fm_app_launch_context_get_display(GAppLaunchContext * /*context*/, GAppInfo * /*info*/, GList * /*files*/) {
-  if(auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>()) {
-    Display* dpy = x11NativeInterfce->display();
+  if(auto x11NativeInterface = qApp->nativeInterface<QNativeInterface::QX11Application>()) {
+    Display* dpy = x11NativeInterface->display();
     if(dpy) {
       char* xstr = DisplayString(dpy);
       return g_strdup(xstr);
