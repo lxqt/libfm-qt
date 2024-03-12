@@ -91,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Przeciągnij i upuść aby zmienić kolejność</translation>
+        <translation>Przeciągnij i upuść, aby zmienić kolejność</translation>
     </message>
 </context>
 <context>
@@ -203,7 +203,7 @@
     <message>
         <location filename="../file-props.ui" line="129"/>
         <source>MIME type:</source>
-        <translation>Typ mime:</translation>
+        <translation>Typ MIME:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="152"/>
@@ -396,7 +396,7 @@
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation>&lt;Brak katalogów&gt;</translation>
+        <translation>&lt;Brak podkatalogów&gt;</translation>
     </message>
 </context>
 <context>
@@ -787,7 +787,7 @@ Czy chcesz go zamienić?</translation>
         <location filename="../fileoperation.cpp" line="318"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>Niektóre pliki nie mogą zostać przeniesione do kosza ponieważ system plików nie obsługuje takiej operacji.
+        <translation>Niektóre pliki nie mogą zostać przeniesione do kosza, ponieważ system plików nie obsługuje takiej operacji.
 Czy zamiast tego usunąć te pliki?</translation>
     </message>
     <message>
@@ -931,7 +931,7 @@ Czy zamiast tego usunąć te pliki?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation>N/A</translation>
+        <translation>Niedostępne</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1101,7 +1101,7 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="213"/>
         <source>By File Owner</source>
-        <translation>Wedłuh właściciela pliku</translation>
+        <translation>Według właściciela pliku</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="214"/>
@@ -1164,7 +1164,7 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="322"/>
         <source>N/A</source>
-        <translation>N/A</translation>
+        <translation>Niedostępne</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="324"/>
@@ -1561,7 +1561,7 @@ Zmodyfikowany: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>Nie ustawiono domyślnej aplikacji do uruchomienia &apos;%1&apos;</translation>
+        <translation>Nie ustawiono domyślnego programu do uruchomienia &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
@@ -1577,7 +1577,7 @@ Zmodyfikowany: %2</translation>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation>N/A</translation>
+        <translation>Niedostępne</translation>
     </message>
 </context>
 <context>
@@ -1585,7 +1585,7 @@ Zmodyfikowany: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation>Potwierdź aby nadpisać pliki</translation>
+        <translation>Potwierdź, aby nadpisać pliki</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
@@ -1772,7 +1772,7 @@ Zmodyfikowany: %2</translation>
     <message>
         <location filename="../filesearch.ui" line="377"/>
         <source>Last Modified Time:</source>
-        <translation>CZas ostatniej modyfikacji:</translation>
+        <translation>Czas ostatniej modyfikacji:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
