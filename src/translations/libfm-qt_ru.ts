@@ -381,7 +381,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished">Указанный каталог &apos;%1&apos; некорректен</translation>
+        <translation>Указанный каталог «%1» не является верным</translation>
     </message>
 </context>
 <context>
@@ -459,7 +459,7 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished">Файл «%1» является .desktop-файлом.
+        <translation>Этот файл «%1» похож на объект рабочего стола.
 Что вы хотите с ним сделать?</translation>
     </message>
     <message>
