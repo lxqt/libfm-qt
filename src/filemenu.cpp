@@ -251,7 +251,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
             if(!mountSeparator) {
                 addSeparator();
             }
-            QAction* action = new QAction(tr("Eject"), this);
+            QAction* action = new QAction(QIcon::fromTheme(QStringLiteral("media-eject")), tr("Eject"), this);
             connect(action, &QAction::triggered, this, [this] {
                 if(info_->canEject()) {
                     MountOperation* op = new MountOperation(true, parentWidget());
