@@ -1371,6 +1371,16 @@ void FolderView::emitClickedAt(ClickType type, const QPoint& pos) {
     QModelIndex index = view->indexAt(pos);
     if(index.isValid()
        && (!ctrlRightClick_ || QApplication::keyboardModifiers() != Qt::ControlModifier)) {
+        if(mode == DetailedListMode && type == ContextMenuClick) {
+            // WARNING: Qt has a bug which reports a wrong cursor position in QContextMenuEvent
+            // with the detailed list mode when the context menu is invoked by the Menu key.
+            // Since the bug has nasty effects for us, we include a safe workaround here.
+            if(QItemSelectionModel* selModel = selectionModel()) {
+                if(selModel->isSelected(selModel->currentIndex())) {
+                    index = selModel->currentIndex();
+                }
+            }
+        }
         QVariant data = index.data(FolderModel::FileInfoRole);
         auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
         Q_EMIT clicked(type, info);
