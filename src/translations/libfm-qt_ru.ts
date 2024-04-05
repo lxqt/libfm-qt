@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>Использовать выбранное приложение как действие по умолчанию для файлов этого типа</translation>
+        <translation>Использовать выбранное приложение по умолчанию для файлов этого типа</translation>
     </message>
 </context>
 <context>
@@ -381,7 +381,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished">Указанный каталог &apos;%1&apos; некорректен</translation>
+        <translation>Указанный каталог «%1» не является верным</translation>
     </message>
 </context>
 <context>
@@ -459,7 +459,7 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished">Файл «%1» является .desktop-файлом.
+        <translation>Этот файл «%1» похож на объект рабочего стола.
 Что вы хотите с ним сделать?</translation>
     </message>
     <message>
@@ -538,7 +538,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="174"/>
         <source>Icon Sizes</source>
-        <translation>Размер Значков</translation>
+        <translation>Размер значков</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="176"/>
@@ -649,7 +649,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation> пкс</translation>
+        <translation> пикс</translation>
     </message>
 </context>
 <context>
@@ -1076,7 +1076,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="204"/>
         <source>By Modification Time</source>
-        <translation>По времени изменения</translation>
+        <translation>По дате изменения</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="205"/>
@@ -1086,7 +1086,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="208"/>
         <source>By Deletion Time</source>
-        <translation>По времени удаления</translation>
+        <translation>По дате удаления</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="211"/>
