@@ -1,3 +1,11 @@
+libfm-qt-2.0.0 / 2024-04-17
+============================
+ * Ported to Qt6.
+ * Added lxqt-menu-data dependency to `README.md`.
+ * Updated mime types of lxqt-archiver and arqiver.
+ * Added 4 menu icons.
+ * Workaround for Qt bug in a context menu invoked by Menu key.
+
 libfm-qt-1.4.0 / 2023-11-05
 ============================
  * Use lxqt-menu-data instead of lxmenu-data.
