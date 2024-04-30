@@ -83,7 +83,12 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
                 name += QLatin1Char('.');
                 name += defaultSuffix_;
             }
-            selectFilePath(directoryPath_.child(name.toLocal8Bit().constData()));
+            if(name.contains(QLatin1Char('/'))) {
+                selectFilePath(Fm::FilePath::fromPathStr(name.toLocal8Bit().constData()));
+            }
+            else {
+                selectFilePath(directoryPath_.child(name.toLocal8Bit().constData()));
+            }
         }
         updateAcceptButtonState();
         updateSaveButtonText(false);
@@ -611,23 +616,57 @@ void FileDialog::accept() {
                 _suffix = suffix();
                 suffixFound = true;
             }
+            Fm::FilePath firstPath;
+            bool exists = false;
+            bool isDir = false;
             // don't consider the suffix yet because a directory with the same name may exist
-            auto childPath = directoryPath_.child(firstName.toLocal8Bit().constData());
-            auto info = folderModel_->fileInfoFromPath(childPath);
-            if(info && info->isDir()) {
+            if(firstName.contains(QLatin1Char('/'))) {
+                // "FilePath relativePath()" also covers absolute path names
+                // because "g_file_resolve_relative_path()" does
+                firstPath = directoryPath_.relativePath(firstName.toLocal8Bit().constData());
+                auto str = QString::fromUtf8(firstPath.toString().get());
+                if(QFileInfo::exists(str)) {
+                    exists = true;
+                    isDir = QFileInfo(str).isDir();
+                }
+            }
+            else {
+                firstPath = directoryPath_.child(firstName.toLocal8Bit().constData());
+                auto info = folderModel_->fileInfoFromPath(firstPath);
+                if(info != nullptr) {
+                    exists = true;
+                    isDir = info->isDir();
+                }
+            }
+            if(isDir) {
                 // if the typed name belongs to a (nonselected) directory, chdir into it
-                setDirectoryPath(childPath);
+                setDirectoryPath(firstPath);
                 return;
             }
             if(!_suffix.isEmpty()) {
+                exists = false;
                 firstName += QLatin1Char('.');
                 firstName += _suffix;
-                childPath = directoryPath_.child(firstName.toLocal8Bit().constData());
-                info = folderModel_->fileInfoFromPath(childPath);
+                if(firstName.contains(QLatin1Char('/'))) {
+                    firstPath = directoryPath_.relativePath(firstName.toLocal8Bit().constData());
+                    auto str = QString::fromUtf8(firstPath.toString().get());
+                    if(QFileInfo::exists(str)) {
+                        exists = true;
+                        isDir = QFileInfo(str).isDir();
+                    }
+                }
+                else {
+                    firstPath = directoryPath_.child(firstName.toLocal8Bit().constData());
+                    auto info = folderModel_->fileInfoFromPath(firstPath);
+                    if(info != nullptr) {
+                        exists = true;
+                        isDir = info->isDir();
+                    }
+                }
             }
-            if(info) {
-                if(info->isDir()) {
-                    setDirectoryPath(childPath);
+            if(exists) {
+                if(isDir) {
+                    setDirectoryPath(firstPath);
                     return;
                 }
                 // overwrite prompt (as in QFileDialog::accept)
@@ -658,7 +697,13 @@ void FileDialog::accept() {
                     name += _suffix;
                 }
             }
-            auto fullPath = directoryPath_.child(name.toLocal8Bit().constData());
+            Fm::FilePath fullPath;
+            if(name.contains(QLatin1Char('/'))) {
+                fullPath = directoryPath_.relativePath(name.toLocal8Bit().constData());
+            }
+            else {
+                fullPath = directoryPath_.child(name.toLocal8Bit().constData());
+            }
             auto localPath = fullPath.localPath();
             /* add the local path if it exists; otherwise, add the uri */
             if(localPath) {
@@ -754,8 +799,18 @@ void FileDialog::setDirectoryPath(FilePath directory, FilePath selectedPath, boo
         }
     }
     else {
-        updateAcceptButtonState();
-        updateSaveButtonText(false);
+        if(folder_ == nullptr || folder_->isLoaded()) {
+            updateAcceptButtonState();
+            updateSaveButtonText(false);
+        }
+        else {
+            lambdaConnection_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, this, [this, selectedPath]() {
+                QTimer::singleShot(0, this, [this]() {
+                    updateAcceptButtonState();
+                    updateSaveButtonText(false);
+                });
+            });
+        }
     }
 }
 
@@ -947,49 +1002,65 @@ void FileDialog::onFileInfoJobFinished() {
         selectedFiles_.clear();
         reject();
     }
+    else if(fileMode_ == QFileDialog::AnyFile) {
+        doAccept(); // non-existent files are allowed
+    }
     else {
         QString error;
         // check if the files exist and their types are correct
+        // FIXME: currently, if a path is not found, FmFileInfoJob does not return its file info object.
+        // This may not be a bad API design. We may return nullptr for the failed file info query instead.
+        size_t fileIdx = 0;
+        int selIdx = 0;
         auto paths = job->paths();
         auto files = job->files();
         for(size_t i = 0; i < paths.size(); ++i) {
             const auto& path = paths[i];
-            if(i >= files.size() || files[i]->path() != path) {
+            if(fileIdx >= files.size() || files[fileIdx]->path() != path) {
                 // the file path is not found and does not have file info
-                if(fileMode_ != QFileDialog::AnyFile) {
-                    // if we do not allow non-existent file, this is an error.
+                if(error.isEmpty()) {
                     error = tr("Path \"%1\" does not exist").arg(QString::fromUtf8(path.displayName().get()));
-                    break;
                 }
-                ++i; // skip the file
-                continue;
+                if(selIdx < selectedFiles_.size()) {
+                    selectedFiles_.removeAt(selIdx);
+                }
+                continue; // skip the file
             }
 
-            // FIXME: currently, if a path is not found, FmFileInfoJob does not return its file info object.
-            // This is bad API design. We may return nullptr for the failed file info query instead.
-            const auto& file = files[i];
+            const auto& file = files[fileIdx];
             // check if the file type is correct
             if(fileMode_ == QFileDialog::Directory) {
                 if(!file->isDir()) {
-                    // we're selecting dirs, but the selected file path does not point to a dir
-                    error = tr("\"%1\" is not a directory").arg(QString::fromUtf8(path.displayName().get()));
-                    break;
+                    if(error.isEmpty()) {
+                        // we're selecting dirs, but the selected file path does not point to a dir
+                        error = tr("\"%1\" is not a directory").arg(QString::fromUtf8(path.displayName().get()));
+                    }
+                    if(selIdx < selectedFiles_.size()) {
+                        selectedFiles_.removeAt(selIdx);
+                    }
                 }
             }
             else if(file->isDir() || (file->isShortcut() && !file->isDesktopEntry())) {
-                // we're selecting files, but the selected file path refers to a dir or shortcut (such as computer:///)
-                error = tr("\"%1\" is not a file").arg(QString::fromUtf8(path.displayName().get()));
-                break;
+                if(error.isEmpty()) {
+                    // we're selecting files, but the selected file path refers to a dir or shortcut (such as computer:///)
+                    error = tr("\"%1\" is not a file").arg(QString::fromUtf8(path.displayName().get()));
+                }
+                if(selIdx < selectedFiles_.size()) {
+                    selectedFiles_.removeAt(selIdx);
+                }
             }
+            else {
+                ++selIdx;
+            }
+
+            ++fileIdx;
         }
 
-        if(error.isEmpty()) {
-            // no error!
-            doAccept();
-        }
-        else {
+        if(!error.isEmpty()) {
             QMessageBox::critical(this, tr("Error"), error);
-            selectedFiles_.clear();
+        }
+        if(!selectedFiles_.isEmpty()) { // at least one file is accepted
+            doAccept();
         }
     }
     ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
@@ -1227,9 +1298,18 @@ void FileDialog::updateSaveButtonText(bool saveOnFolder) {
         if(!saveOnFolder) {
             QStringList parsedNames = parseNames();
             if(!parsedNames.isEmpty()) {
-                auto info = proxyModel_->fileInfoFromPath(directoryPath_.child(parsedNames.at(0).toLocal8Bit().constData()));
-                if(info && info->isDir()) {
-                    saveOnFolder = true;
+                if(parsedNames.at(0).contains(QLatin1Char('/'))) {
+                    auto path = directoryPath_.relativePath(parsedNames.at(0).toLocal8Bit().constData());
+                    auto str = QString::fromUtf8(path.toString().get());
+                    if(QFileInfo::exists(str) && QFileInfo(str).isDir()) {
+                        saveOnFolder = true;
+                    }
+                }
+                else {
+                    auto info = proxyModel_->fileInfoFromPath(directoryPath_.child(parsedNames.at(0).toLocal8Bit().constData()));
+                    if(info && info->isDir()) {
+                        saveOnFolder = true;
+                    }
                 }
             }
         }
@@ -1253,19 +1333,30 @@ void FileDialog::updateAcceptButtonState() {
     if(fileMode_ != QFileDialog::Directory) {
         if(acceptMode_ == QFileDialog::AcceptOpen)
         {
-            if(firstSelectedDir()) {
-                // enable "open" button if a dir is selected
+            if(firstSelectedDir()
+               || (fileMode_ == QFileDialog::AnyFile && !ui->fileName->text().isEmpty())) {
+                // enable "open" button if a dir is selected or any file can be opened
                 enable = true;
             }
             else {
-              // enable "open" button when there is a file whose name is listed
-              QStringList parsedNames = parseNames();
-              for(auto& name: parsedNames) {
-                  if(proxyModel_->indexFromPath(directoryPath_.child(name.toLocal8Bit().constData())).isValid()) {
-                    enable = true;
-                    break;
-                  }
-              }
+                // enable "open" button when there is a file whose name is listed
+                QStringList parsedNames = parseNames();
+                for(auto& name: parsedNames) {
+                    if(name.contains(QLatin1Char('/'))) {
+                        auto path = directoryPath_.relativePath(name.toLocal8Bit().constData());
+                        auto str = QString::fromUtf8(path.toString().get());
+                        if(QFileInfo::exists(str)) {
+                            enable = true;
+                            break;
+                        }
+                    }
+                    else {
+                        if(proxyModel_->indexFromPath(directoryPath_.child(name.toLocal8Bit().constData())).isValid()) {
+                            enable = true;
+                            break;
+                        }
+                    }
+                }
             }
         }
         else if(acceptMode_ == QFileDialog::AcceptSave) {
@@ -1288,11 +1379,21 @@ void FileDialog::updateAcceptButtonState() {
         }
         else {
             for(auto& name: parsedNames) {
-                auto info = proxyModel_->fileInfoFromPath(directoryPath_.child(name.toLocal8Bit().constData()));
-                if(info && info->isDir()) {
-                    // the name of a dir is listed
-                    enable = true;
-                    break;
+                if(name.contains(QLatin1Char('/'))) {
+                    auto path = directoryPath_.relativePath(name.toLocal8Bit().constData());
+                    auto str = QString::fromUtf8(path.toString().get());
+                    if(QFileInfo::exists(str) && QFileInfo(str).isDir()) {
+                        enable = true;
+                        break;
+                    }
+                }
+                else {
+                    auto info = proxyModel_->fileInfoFromPath(directoryPath_.child(name.toLocal8Bit().constData()));
+                    if(info && info->isDir()) {
+                        // the name of a dir is listed
+                        enable = true;
+                        break;
+                    }
                 }
             }
         }
