@@ -1013,7 +1013,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="479"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation>Невозможно скопировать каталог внутрь себя самого!</translation>
+        <translation>Нельзя скопировать каталог внутрь себя самого!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="530"/>
