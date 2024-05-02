@@ -1131,7 +1131,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="307"/>
         <source>Location:</source>
-        <translation type="unfinished">位置:</translation>
+        <translation>位置:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="311"/>
@@ -1466,12 +1466,12 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>會議長度由密碼管理員來決定</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>記得＆this session 的密碼</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="150"/>
@@ -1513,7 +1513,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>新檔案</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="240"/>
