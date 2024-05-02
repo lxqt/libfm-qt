@@ -478,155 +478,155 @@ Mitä tehdä sen kanssa?</translation>
 <context>
     <name>Fm::FileDialog</name>
     <message>
-        <location filename="../filedialog.cpp" line="105"/>
+        <location filename="../filedialog.cpp" line="106"/>
         <source>Go Back</source>
         <translation>Palaa takaisin</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="106"/>
+        <location filename="../filedialog.cpp" line="107"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
         <translation>Alt+Vasen nuoli</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="112"/>
+        <location filename="../filedialog.cpp" line="113"/>
         <source>Go Forward</source>
         <translation>Siirry eteenpäin</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="113"/>
+        <location filename="../filedialog.cpp" line="114"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
         <translation>Alt+Oikea nuoli</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="120"/>
+        <location filename="../filedialog.cpp" line="121"/>
         <source>Reload</source>
         <translation>Päivitä</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="121"/>
+        <location filename="../filedialog.cpp" line="122"/>
         <source>F5</source>
         <comment>Reload</comment>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="138"/>
+        <location filename="../filedialog.cpp" line="139"/>
         <source>Create Folder</source>
         <translation>Luo kansio</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="154"/>
+        <location filename="../filedialog.cpp" line="155"/>
         <source>Icon View</source>
         <translation>Kuvakenäkymä</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="158"/>
+        <location filename="../filedialog.cpp" line="159"/>
         <source>Thumbnail View</source>
         <translation>Pienoiskuvanäkymä</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="162"/>
+        <location filename="../filedialog.cpp" line="163"/>
         <source>Compact View</source>
         <translation>Tiivis näkymä</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="166"/>
+        <location filename="../filedialog.cpp" line="167"/>
         <source>Detailed List View</source>
         <translation>Yksityiskohtainen näkymä</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="174"/>
+        <location filename="../filedialog.cpp" line="175"/>
         <source>Icon Sizes</source>
         <translation>Kuvakekoot</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="176"/>
+        <location filename="../filedialog.cpp" line="177"/>
         <source>Size of big icons:</source>
         <translation>Suuren kuvakkeen koko:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="183"/>
+        <location filename="../filedialog.cpp" line="184"/>
         <source>Size of small icons:</source>
         <translation>Pienen kuvakkeen koko:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="190"/>
+        <location filename="../filedialog.cpp" line="191"/>
         <source>Size of thumbnails:</source>
         <translation>Pienoiskuvan koko:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="206"/>
+        <location filename="../filedialog.cpp" line="207"/>
         <source>Show Hidden</source>
         <translation>Näytä piilotetut</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="218"/>
+        <location filename="../filedialog.cpp" line="219"/>
         <source>Show Thumbnails</source>
         <translation>Näytä pienoiskuvat</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="223"/>
+        <location filename="../filedialog.cpp" line="224"/>
         <source>Show File Tooltips</source>
         <translation>Näytä tiedostojen työkaluvihjeet</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="230"/>
+        <location filename="../filedialog.cpp" line="231"/>
         <source>Smooth Scrolling</source>
         <translation>Tasainen vieritys</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="245"/>
+        <location filename="../filedialog.cpp" line="246"/>
         <source>Options</source>
         <translation>Asetukset</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="595"/>
-        <location filename="../filedialog.cpp" line="990"/>
+        <location filename="../filedialog.cpp" line="596"/>
+        <location filename="../filedialog.cpp" line="991"/>
         <source>Error</source>
         <translation>Virhe</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="595"/>
+        <location filename="../filedialog.cpp" line="596"/>
         <source>Please select a file</source>
         <translation>Valitse tiedosto</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="637"/>
+        <location filename="../filedialog.cpp" line="638"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 on jo olemassa.
 Korvataanko se?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="960"/>
+        <location filename="../filedialog.cpp" line="961"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>Polkua &quot;%1&quot; ei löydy</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="974"/>
+        <location filename="../filedialog.cpp" line="975"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&quot;%1&quot; ei ole hakemisto</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="980"/>
+        <location filename="../filedialog.cpp" line="981"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&quot;%1&quot; ei ole tiedosto</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1132"/>
-        <location filename="../filedialog.cpp" line="1240"/>
+        <location filename="../filedialog.cpp" line="1129"/>
+        <location filename="../filedialog.cpp" line="1237"/>
         <source>&amp;Open</source>
         <translation>&amp;Avaa</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1135"/>
-        <location filename="../filedialog.cpp" line="1248"/>
+        <location filename="../filedialog.cpp" line="1132"/>
+        <location filename="../filedialog.cpp" line="1245"/>
         <source>&amp;Save</source>
         <translation>&amp;Tallenna</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1142"/>
+        <location filename="../filedialog.cpp" line="1139"/>
         <source>All Files (*)</source>
         <translation>Kaikki tiedostot (*)</translation>
     </message>
@@ -1020,112 +1020,112 @@ Poistetaanko tiedostot?</translation>
 <context>
     <name>Fm::FolderMenu</name>
     <message>
-        <location filename="../foldermenu.cpp" line="57"/>
+        <location filename="../foldermenu.cpp" line="58"/>
         <source>Empty Trash</source>
         <translation>Tyhjennä roskakori</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="69"/>
+        <location filename="../foldermenu.cpp" line="70"/>
         <source>Create &amp;New</source>
         <translation>&amp;Luo uusi</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="74"/>
+        <location filename="../foldermenu.cpp" line="75"/>
         <source>&amp;Paste</source>
         <translation>L&amp;iitä</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="87"/>
+        <location filename="../foldermenu.cpp" line="88"/>
         <source>Select &amp;All</source>
         <translation>&amp;Valitse kaikki</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="91"/>
+        <location filename="../foldermenu.cpp" line="92"/>
         <source>Invert Selection</source>
         <translation>Käännä valinta</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="98"/>
+        <location filename="../foldermenu.cpp" line="99"/>
         <source>Sorting</source>
         <translation>Lajittele</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="103"/>
+        <location filename="../foldermenu.cpp" line="104"/>
         <source>Show Hidden</source>
         <translation>Näytä piilotetut</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="138"/>
+        <location filename="../foldermenu.cpp" line="139"/>
         <source>Folder Pr&amp;operties</source>
         <translation>&amp;Kansion ominaisuudet</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="181"/>
+        <location filename="../foldermenu.cpp" line="182"/>
         <source>Output</source>
         <translation>Tuloste</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="203"/>
+        <location filename="../foldermenu.cpp" line="204"/>
         <source>By File Name</source>
         <translation>Tiedostonimen mukaan</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="204"/>
+        <location filename="../foldermenu.cpp" line="205"/>
         <source>By Modification Time</source>
         <translation>Muokkausajan mukaan</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="205"/>
+        <location filename="../foldermenu.cpp" line="206"/>
         <source>By Creation Time</source>
         <translation>Luomisajan mukaan</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="208"/>
+        <location filename="../foldermenu.cpp" line="209"/>
         <source>By Deletion Time</source>
         <translation>Poistoajan mukaan</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="211"/>
+        <location filename="../foldermenu.cpp" line="212"/>
         <source>By File Size</source>
         <translation>Tiedostokoon mukaan</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="212"/>
+        <location filename="../foldermenu.cpp" line="213"/>
         <source>By File Type</source>
         <translation>Tiedostotyypin mukaan</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="213"/>
+        <location filename="../foldermenu.cpp" line="214"/>
         <source>By File Owner</source>
         <translation>Tiedoston omistajan mukaan</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="214"/>
+        <location filename="../foldermenu.cpp" line="215"/>
         <source>By File Group</source>
         <translation>Tiedostoryhmän mukaan</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="220"/>
+        <location filename="../foldermenu.cpp" line="221"/>
         <source>Ascending</source>
         <translation>A-Ö</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="225"/>
+        <location filename="../foldermenu.cpp" line="226"/>
         <source>Descending</source>
         <translation>Ö-A</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="242"/>
+        <location filename="../foldermenu.cpp" line="243"/>
         <source>Folder First</source>
         <translation>Kansiot ensin</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="250"/>
+        <location filename="../foldermenu.cpp" line="251"/>
         <source>Hidden Last</source>
         <translation>Piilotetut viimeisenä</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="258"/>
+        <location filename="../foldermenu.cpp" line="259"/>
         <source>Case Sensitive</source>
         <translation>Kirjainkokoerotus</translation>
     </message>
@@ -1133,87 +1133,87 @@ Poistetaanko tiedostot?</translation>
 <context>
     <name>Fm::FolderModel</name>
     <message>
-        <location filename="../foldermodel.cpp" line="307"/>
+        <location filename="../foldermodel.cpp" line="306"/>
         <source>Location:</source>
         <translation>Sijainti:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="311"/>
+        <location filename="../foldermodel.cpp" line="310"/>
         <source>File type:</source>
         <translation>Tiedostotyyppi:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="316"/>
+        <location filename="../foldermodel.cpp" line="315"/>
         <source>File size:</source>
         <translation>Tiedostokoko:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="320"/>
+        <location filename="../foldermodel.cpp" line="319"/>
         <source>Last modified:</source>
         <translation>Muokattu viimeksi:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="321"/>
+        <location filename="../foldermodel.cpp" line="320"/>
         <source>Last accessed:</source>
         <translation>Viimeksi käytetty:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="322"/>
+        <location filename="../foldermodel.cpp" line="321"/>
         <source>N/A</source>
         <translation>-</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="324"/>
+        <location filename="../foldermodel.cpp" line="323"/>
         <source>Created:</source>
         <translation>Luotu:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="329"/>
+        <location filename="../foldermodel.cpp" line="328"/>
         <source>Owner:</source>
         <translation>Omistaja:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="330"/>
+        <location filename="../foldermodel.cpp" line="329"/>
         <source>Group:</source>
         <translation>Ryhmä:</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="397"/>
+        <location filename="../foldermodel.cpp" line="396"/>
         <source>Name</source>
         <translation>Nimi</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="400"/>
+        <location filename="../foldermodel.cpp" line="399"/>
         <source>Type</source>
         <translation>Tyyppi</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="403"/>
+        <location filename="../foldermodel.cpp" line="402"/>
         <source>Size</source>
         <translation>Koko</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="406"/>
+        <location filename="../foldermodel.cpp" line="405"/>
         <source>Modified</source>
         <translation>Muokattu</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="409"/>
+        <location filename="../foldermodel.cpp" line="408"/>
         <source>Created</source>
         <translation>Luotu</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="412"/>
+        <location filename="../foldermodel.cpp" line="411"/>
         <source>Deleted</source>
         <translation>Poistettu</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="415"/>
+        <location filename="../foldermodel.cpp" line="414"/>
         <source>Owner</source>
         <translation>Omistaja</translation>
     </message>
     <message>
-        <location filename="../foldermodel.cpp" line="418"/>
+        <location filename="../foldermodel.cpp" line="417"/>
         <source>Group</source>
         <translation>Ryhmä</translation>
     </message>
@@ -1221,12 +1221,12 @@ Poistetaanko tiedostot?</translation>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="406"/>
+        <location filename="../folderview.cpp" line="409"/>
         <source>Auto-resize columns</source>
         <translation>Automaattiset sarakeleveydet</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="423"/>
+        <location filename="../folderview.cpp" line="426"/>
         <source>Visible Columns</source>
         <translation>Näkyvät sarakkeet</translation>
     </message>
@@ -1255,12 +1255,12 @@ Poistetaanko tiedostot?</translation>
 <context>
     <name>Fm::PathBar</name>
     <message>
-        <location filename="../pathbar.cpp" line="134"/>
+        <location filename="../pathbar.cpp" line="122"/>
         <source>&amp;Edit Path</source>
         <translation>&amp;Muokkaa polkua</translation>
     </message>
     <message>
-        <location filename="../pathbar.cpp" line="137"/>
+        <location filename="../pathbar.cpp" line="125"/>
         <source>&amp;Copy Path</source>
         <translation>&amp;Kopioi polku</translation>
     </message>
@@ -1311,64 +1311,64 @@ Poistetaanko tiedostot?</translation>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="542"/>
+        <location filename="../placesview.cpp" line="555"/>
         <source>Open in New Tab</source>
         <translation>Avaa uuteen välilehteen</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="545"/>
+        <location filename="../placesview.cpp" line="558"/>
         <source>Open in New Window</source>
         <translation>Avaa uuteen ikkunaan</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="557"/>
+        <location filename="../placesview.cpp" line="570"/>
         <source>Empty Trash</source>
         <translation>Tyhjennä roskakori</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="577"/>
-        <location filename="../placesview.cpp" line="639"/>
+        <location filename="../placesview.cpp" line="590"/>
+        <location filename="../placesview.cpp" line="652"/>
         <source>Hide</source>
         <translation>Piilota</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="594"/>
+        <location filename="../placesview.cpp" line="607"/>
         <source>Move Bookmark Up</source>
         <translation>Siirrä kirjanmerkkiä ylös</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="601"/>
+        <location filename="../placesview.cpp" line="614"/>
         <source>Move Bookmark Down</source>
         <translation>Siirrä kirjanmerkkiä alas</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="606"/>
+        <location filename="../placesview.cpp" line="619"/>
         <source>Rename Bookmark</source>
         <translation>Nimeä kirjanmerkki uudelleen</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="610"/>
+        <location filename="../placesview.cpp" line="623"/>
         <source>Remove Bookmark</source>
         <translation>Poista kirjanmerkki</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="620"/>
-        <location filename="../placesview.cpp" line="653"/>
+        <location filename="../placesview.cpp" line="633"/>
+        <location filename="../placesview.cpp" line="666"/>
         <source>Unmount</source>
         <translation>Irrota</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="624"/>
+        <location filename="../placesview.cpp" line="637"/>
         <source>Mount</source>
         <translation>Liitä</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="630"/>
+        <location filename="../placesview.cpp" line="643"/>
         <source>Eject</source>
         <translation>Poista asema tai levy</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="665"/>
+        <location filename="../placesview.cpp" line="678"/>
         <source>Show All Entries</source>
         <translation>Näytä kaikki kohteet</translation>
     </message>
@@ -1394,17 +1394,17 @@ Modified: %2</source>
 Muokattu: %2</translation>
     </message>
     <message>
-        <location filename="../renamedialog.cpp" line="96"/>
+        <location filename="../renamedialog.cpp" line="97"/>
         <source>&amp;Overwrite</source>
         <translation>&amp;Korvaa</translation>
     </message>
     <message>
-        <location filename="../renamedialog.cpp" line="98"/>
+        <location filename="../renamedialog.cpp" line="99"/>
         <source>&amp;Rename</source>
         <translation>&amp;Nimeä uudelleen</translation>
     </message>
     <message>
-        <location filename="../renamedialog.cpp" line="108"/>
+        <location filename="../renamedialog.cpp" line="109"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;Tiedostoa ei voi korvata itsellään.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Valitse toinen nimi.&lt;/p&gt;</translation>
     </message>
@@ -1500,7 +1500,7 @@ Muokattu: %2</translation>
         <location filename="../filepropsdialog.cpp" line="669"/>
         <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="154"/>
-        <location filename="../utilities.cpp" line="317"/>
+        <location filename="../utilities.cpp" line="318"/>
         <source>Error</source>
         <translation>Virhe</translation>
     </message>
