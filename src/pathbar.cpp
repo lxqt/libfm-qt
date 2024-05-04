@@ -73,7 +73,7 @@ PathBar::PathBar(QWidget* parent):
     topLayout->addWidget(scrollToEnd_);
 
     // container widget of the path buttons
-    buttonsWidget_ = new QWidget(this);
+    buttonsWidget_ = new QWidget;
     buttonsWidget_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 
     buttonsLayout_ = new QHBoxLayout(buttonsWidget_);
