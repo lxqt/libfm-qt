@@ -1,3 +1,7 @@
+libfm-qt-2.0.1 / 2024-05-04
+============================
+ * Removed a redundant child-parent relation in pathbar to prevent a rare crash with Qt ≥ 6.7.
+
 libfm-qt-2.0.0 / 2024-04-17
 ============================
  * Ported to Qt6.
