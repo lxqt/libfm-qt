@@ -66,7 +66,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation>Редктиране на отметки</translation>
+        <translation>Редактиране на отметки</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
@@ -91,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="102"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Използвайте селектиране и преместване с мишката за да пренаредите елементите</translation>
+        <translation>Използвайте селектиране и преместване с мишката, за да пренаредите елементите</translation>
     </message>
 </context>
 <context>
@@ -253,7 +253,7 @@
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation>Избиране на емблема</translation>
+        <translation>Изберете емблема</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
@@ -523,7 +523,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="159"/>
         <source>Thumbnail View</source>
-        <translation>Изглед миниатури</translation>
+        <translation>Изглед миниатюри</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="163"/>
@@ -685,7 +685,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="125"/>
         <source>Create &amp;New</source>
-        <translation>Създаване &amp;Нови</translation>
+        <translation>Създаване на</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="144"/>
@@ -1027,7 +1027,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="70"/>
         <source>Create &amp;New</source>
-        <translation>Създаване &amp;Нови</translation>
+        <translation>Създаване на</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="75"/>
@@ -1037,7 +1037,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="88"/>
         <source>Select &amp;All</source>
-        <translation>Избиране на &amp;Всичко</translation>
+        <translation>Избиране на &amp;всичко</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="92"/>
@@ -1077,7 +1077,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="206"/>
         <source>By Creation Time</source>
-        <translation>По Дата на създаване</translation>
+        <translation>По дата на създаване</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="209"/>
@@ -1223,7 +1223,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="409"/>
         <source>Auto-resize columns</source>
-        <translation>Автоматиччно оразмеряване на колоните</translation>
+        <translation>Автоматично оразмеряване на колоните</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="426"/>
