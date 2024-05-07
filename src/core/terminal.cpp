@@ -21,7 +21,7 @@ static void child_setup(gpointer user_data) {
 bool launchTerminal(const char* programName, const FilePath& workingDir, Fm::GErrorPtr& error) {
     /* read user and system terminals files */
     GKeyFile* kf = g_key_file_new();
-    bool found = g_key_file_load_from_data_dirs(kf, "libfm-qt/terminals.list", nullptr, G_KEY_FILE_NONE, &error);
+    bool found = g_key_file_load_from_data_dirs(kf, "libfm-qt/terminals.list", nullptr, G_KEY_FILE_NONE, nullptr);
     if(found) {
         found = g_key_file_has_group(kf, programName);
     }
@@ -160,7 +160,7 @@ extern "C" char* expand_terminal(char* cmd, gboolean keep_open, GError** error) 
     /* read user and system terminals files */
     bool found = false;
     GKeyFile* kf = g_key_file_new();
-    if(g_key_file_load_from_data_dirs(kf, "libfm-qt/terminals.list", nullptr, G_KEY_FILE_NONE, error)) {
+    if(g_key_file_load_from_data_dirs(kf, "libfm-qt/terminals.list", nullptr, G_KEY_FILE_NONE, nullptr)) {
         found = g_key_file_has_group(kf, defaultTerminalName.c_str());
     }
     if(!found) {
