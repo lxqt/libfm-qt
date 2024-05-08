@@ -1,3 +1,7 @@
+libfm-qt-2.0.2 / 2024-05-08
+============================
+ * Fixed a regression in running executable files in terminal.
+
 libfm-qt-2.0.1 / 2024-05-04
 ============================
  * Removed a redundant child-parent relation in pathbar to prevent a rare crash with Qt ≥ 6.7.
