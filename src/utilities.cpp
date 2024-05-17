@@ -260,7 +260,7 @@ _retry:
         // text entry
         QLineEdit *le = new QLineEdit(defaultNewName);
         int length = defaultNewName.lastIndexOf(QStringLiteral("."));
-        if(length > -1) {
+        if(length > 0 && length < defaultNewName.size() - 1) {
             le->setSelection(0, length);
         }
         else {
