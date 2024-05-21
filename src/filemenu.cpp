@@ -115,7 +115,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
         }
     }
     menu->addSeparator();
-    openWithAction_ = new QAction(tr("Other Applications"), this);
+    openWithAction_ = new QAction(QIcon::fromTheme(QStringLiteral("applications-other")), tr("Other Applications"), this);
     connect(openWithAction_, &QAction::triggered, this, &FileMenu::onOpenWithTriggered);
     menu->addAction(openWithAction_);
 
@@ -167,7 +167,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
         connect(deleteAction_, &QAction::triggered, this, &FileMenu::onDeleteTriggered);
         addAction(deleteAction_);
 
-        renameAction_ = new QAction(tr("Rename"), this);
+        renameAction_ = new QAction(QIcon::fromTheme(QStringLiteral("edit-rename")), tr("Rename"), this);
         connect(renameAction_, &QAction::triggered, this, &FileMenu::onRenameTriggered);
         addAction(renameAction_);
 

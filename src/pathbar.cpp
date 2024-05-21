@@ -119,10 +119,10 @@ void PathBar::contextMenuEvent(QContextMenuEvent* event) {
     QMenu* menu = new QMenu(this);
     connect(menu, &QMenu::aboutToHide, menu, &QMenu::deleteLater);
 
-    QAction* action = menu->addAction(tr("&Edit Path"));
+    QAction* action = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-rename")), tr("&Edit Path"));
     connect(action, &QAction::triggered, this, &PathBar::openEditor);
 
-    action = menu->addAction(tr("&Copy Path"));
+    action = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-copy")), tr("&Copy Path"));
     connect(action, &QAction::triggered, this, &PathBar::copyPath);
 
     menu->popup(mapToGlobal(event->pos()));

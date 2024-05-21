@@ -553,9 +553,11 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
            && (item->type() != PlacesModelItem::Volume
                || static_cast<PlacesModelVolumeItem*>(item)->isMounted())) {
             action = new PlacesModel::ItemAction(item->index(), tr("Open in New Tab"), menu);
+            action->setIcon(QIcon::fromTheme(QStringLiteral("tab-new")));
             connect(action, &QAction::triggered, this, &PlacesView::onOpenNewTab);
             menu->addAction(action);
             action = new PlacesModel::ItemAction(item->index(), tr("Open in New Window"), menu);
+            action->setIcon(QIcon::fromTheme(QStringLiteral("window-new")));
             connect(action, &QAction::triggered, this, &PlacesView::onOpenNewWindow);
             menu->addAction(action);
         }
