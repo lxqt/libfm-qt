@@ -764,6 +764,10 @@ void FilePropsDialog::initOwner() {
         if(userId != 0) { // on local filesystems, only root can do chown.
             ui->owner->setEnabled(false);
             ui->ownerGroup->setEnabled(userId == uid);
+            ui->ownerPerm->setEnabled(userId == uid);
+            ui->groupPerm->setEnabled(userId == uid);
+            ui->otherPerm->setEnabled(userId == uid);
+            ui->executable->setEnabled(userId == uid);
         }
     }
 }
