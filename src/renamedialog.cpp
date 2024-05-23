@@ -88,6 +88,13 @@ RenameDialog::RenameDialog(const FileInfo &src, const FileInfo &dest, QWidget* p
 
     auto basename = path.baseName();
     ui->fileName->setText(QString::fromUtf8(basename.get()));
+    int length = ui->fileName->text().lastIndexOf(QStringLiteral("."));
+    if(length > 0 && length < ui->fileName->text().size() - 1) {
+        ui->fileName->setSelection(0, length);
+    }
+    else {
+        ui->fileName->selectAll();
+    }
     oldName_ = QString::fromUtf8(basename.get());
     connect(ui->fileName, &QLineEdit::textChanged, this, &RenameDialog::onFileNameChanged);
     ui->fileName->setFocus(); // needed with Qt >= 6.6.1
