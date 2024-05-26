@@ -23,6 +23,7 @@
 #include <QComboBox>
 #include <QVBoxLayout>
 #include <QHeaderView>
+#include <QTimer>
 #include "placesview.h"
 #include "dirtreeview.h"
 #include "dirtreemodel.h"
@@ -53,14 +54,18 @@ SidePane::~SidePane() {
 }
 
 bool SidePane::event(QEvent* event) {
-    // when the SidePane's style changes, we should set the text color of
-    // PlacesView to its window text color again because the latter may have changed
-    if(event->type() == QEvent::StyleChange && mode_ == ModePlaces) {
-        if(PlacesView* placesView = static_cast<PlacesView*>(view_)) {
-            QPalette p = placesView->palette();
-            p.setColor(QPalette::Text, p.color(QPalette::WindowText));
-            placesView->setPalette(p);
-        }
+    // When the SidePane's style changes, we should set the text color of
+    // PlacesView to its window text color again because the latter may have changed.
+    // However, with Qt6, we need to delay the color setting.
+    if((event->type() == QEvent::StyleChange || event->type() == QEvent::PaletteChange)
+       && mode_ == ModePlaces) {
+        QTimer::singleShot(0, this, [this]() {
+            if(PlacesView* placesView = static_cast<PlacesView*>(view_)) {
+                QPalette p = placesView->palette();
+                p.setColor(QPalette::Text, p.color(QPalette::WindowText));
+                placesView->setPalette(p);
+            }
+        });
     }
     return QWidget::event(event);
 }
