@@ -355,7 +355,7 @@ void FolderMenu::onHiddenLastActionTriggered(bool checked) {
 void FolderMenu::onPropertiesActionTriggered() {
     auto folderInfo = view_->folderInfo();
     if(folderInfo) {
-        FilePropsDialog::showForFile(folderInfo);
+        FilePropsDialog::showForFile(folderInfo, view_->window());
     }
 }
 

@@ -427,7 +427,7 @@ void FileMenu::onTrustToggled(bool checked) {
 }
 
 void FileMenu::onFilePropertiesTriggered() {
-    FilePropsDialog::showForFiles(files_);
+    FilePropsDialog::showForFiles(files_, parentWidget() ? parentWidget()->window() : nullptr);
 }
 
 void FileMenu::onCopyTriggered() {
