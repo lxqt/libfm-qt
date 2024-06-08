@@ -373,7 +373,7 @@ void FileMenu::onOpenTriggered() {
 }
 
 void FileMenu::onOpenWithTriggered() {
-    AppChooserDialog dlg(nullptr);
+    AppChooserDialog dlg(nullptr, parentWidget() ? parentWidget()->window() : nullptr);
     if(sameType_) {
         dlg.setMimeType(info_->mimeType());
     }
