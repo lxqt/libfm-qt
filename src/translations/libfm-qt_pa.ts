@@ -47,7 +47,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>ਟਰਮੀਨਲ ਇਮੁਲੇਟਰ ਵਿੱਚ ਚਲਾਓ</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
