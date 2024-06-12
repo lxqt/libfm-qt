@@ -928,7 +928,7 @@ Vil du slette dem i stedet?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished">i/t</translation>
+        <translation>I/T</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -1160,7 +1160,7 @@ Vil du slette dem i stedet?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>N/A</source>
-        <translation type="unfinished">i/t</translation>
+        <translation>I/T</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="323"/>
@@ -1573,7 +1573,7 @@ Modified: %2</source>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation>i/t</translation>
+        <translation>I/T</translation>
     </message>
 </context>
 <context>
@@ -1704,7 +1704,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="240"/>
         <source>&amp;Use regular expression</source>
-        <translation>Bruger &amp;regulære udtryk</translation>
+        <translation>Brug &amp;regulære udtryk</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="267"/>
