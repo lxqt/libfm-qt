@@ -37,9 +37,16 @@ void FileTransferJob::setDestDirPath(const FilePath& destDirPath) {
     destPaths_.reserve(srcPaths_.size());
     for(const auto& srcPath: srcPaths_) {
         FilePath destPath;
-        if(mode_ == Mode::LINK && !srcPath.isNative()) {
+        if(!srcPath.isNative()) {
             // special handling for URLs
             auto fullBasename = srcPath.baseName();
+            if(g_strcmp0(fullBasename.get(), "/") == 0) { // happens when URI ends with slash
+                auto fullParseName = srcPath.displayName();
+                char* parseName = fullParseName.get();
+                parseName[strlen(parseName)-1] = 0;
+                auto path = FilePath::fromDisplayName(parseName);
+                fullBasename = path.baseName();
+            }
             char* basename = fullBasename.get();
             char* dname = nullptr;
             // if we drop URI query onto native filesystem, omit query part
@@ -601,8 +608,15 @@ bool FileTransferJob::createShortcut(const FilePath &srcPath, const GFileInfoPtr
 
     CStrPtr srcPathDispName;
     auto name = g_file_info_get_display_name(srcInfo.get());
-    if(!name) {
-        srcPathDispName = srcPath.displayName();
+    if(!name || g_strcmp0(name, "/") == 0) {
+        srcPathDispName = srcPath.baseName();
+        if(g_strcmp0(srcPathDispName.get(), "/") == 0) { // happens when URI ends with slash
+            auto fullParseName = srcPath.displayName();
+            char* parseName = fullParseName.get();
+            parseName[strlen(parseName)-1] = 0;
+            auto path = FilePath::fromDisplayName(parseName);
+            srcPathDispName = path.baseName();
+        }
         name = srcPathDispName.get();
     }
 
