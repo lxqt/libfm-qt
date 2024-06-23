@@ -1420,7 +1420,7 @@ bool FileDialog::FileDialogFilter::filterAcceptsRow(const ProxyFolderModel* /*mo
     }
 
     bool nameMatched = false;
-    auto& name = info->displayName();
+    auto& name = (!info->name().empty() ? QString::fromStdString(info->name()) : info->displayName());
     for(const auto& pattern: patterns_) {
         if(name.indexOf(pattern) == 0) {
             nameMatched = true;
