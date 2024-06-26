@@ -112,7 +112,7 @@ Q_SIGNALS:
     void hiddenPlaceSet(const QString& str, bool hide);
 
 protected:
-    bool event(QEvent* event) override;
+    bool eventFilter(QObject* watched, QEvent* event) override;
 
 protected Q_SLOTS:
     void onComboCurrentIndexChanged(int current);

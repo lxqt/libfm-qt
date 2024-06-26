@@ -53,21 +53,24 @@ SidePane::~SidePane() {
     // qDebug("delete SidePane");
 }
 
-bool SidePane::event(QEvent* event) {
-    // When the SidePane's style changes, we should set the text color of
-    // PlacesView to its window text color again because the latter may have changed.
-    // However, with Qt6, we need to delay the color setting.
-    if((event->type() == QEvent::StyleChange || event->type() == QEvent::PaletteChange)
+bool SidePane::eventFilter(QObject* watched, QEvent* event) {
+    // When the palette or style changes, we should set the text color of PlacesView
+    // to its window text color again because the latter may have changed.
+    if(view_ != nullptr && watched == view_
+       && (event->type() == QEvent::PaletteChange || event->type() == QEvent::StyleChange)
        && mode_ == ModePlaces) {
         QTimer::singleShot(0, this, [this]() {
             if(PlacesView* placesView = static_cast<PlacesView*>(view_)) {
                 QPalette p = placesView->palette();
-                p.setColor(QPalette::Text, p.color(QPalette::WindowText));
-                placesView->setPalette(p);
+                if(p.color(QPalette::Text) != p.color(QPalette::WindowText)) {
+                    p.setColor(QPalette::Active, QPalette::Text, p.color(QPalette::Active, QPalette::WindowText));
+                    p.setColor(QPalette::Inactive, QPalette::Text, p.color(QPalette::Inactive, QPalette::WindowText));
+                    placesView->setPalette(p);
+                }
             }
         });
     }
-    return QWidget::event(event);
+    return QWidget::eventFilter(watched, event);
 }
 
 void SidePane::onComboCurrentIndexChanged(int current) {
@@ -188,7 +191,8 @@ void SidePane::setMode(Mode mode) {
         placesView->setFrameShape(QFrame::NoFrame);
         QPalette p = placesView->palette();
         p.setColor(QPalette::Base, QColor(Qt::transparent));
-        p.setColor(QPalette::Text, p.color(QPalette::WindowText));
+        p.setColor(QPalette::Active, QPalette::Text, p.color(QPalette::Active, QPalette::WindowText));
+        p.setColor(QPalette::Inactive, QPalette::Text, p.color(QPalette::Inactive, QPalette::WindowText));
         placesView->setPalette(p);
         placesView->viewport()->setAutoFillBackground(false);
 
@@ -198,6 +202,7 @@ void SidePane::setMode(Mode mode) {
         placesView->setCurrentPath(currentPath_);
         connect(placesView, &PlacesView::chdirRequested, this, &SidePane::chdirRequested);
         connect(placesView, &PlacesView::hiddenItemSet, this, &SidePane::hiddenPlaceSet);
+        view_->installEventFilter(this); // for setting text color after palette change
         break;
     }
     case ModeDirTree: {
