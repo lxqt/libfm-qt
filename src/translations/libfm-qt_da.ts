@@ -213,7 +213,7 @@
     <message>
         <location filename="../file-props.ui" line="175"/>
         <source>On-disk size:</source>
-        <translation type="unfinished">Filstørrelse på disk:</translation>
+        <translation>Filstørrelse på disk:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="198"/>
@@ -248,17 +248,17 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished">Emblem:</translation>
+        <translation>Emblem:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished">Vælg emblem</translation>
+        <translation>Vælg emblem</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished">Fjern emblem</translation>
+        <translation>Fjern emblem</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
@@ -334,12 +334,12 @@
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>SetUID</source>
-        <translation type="unfinished">SetUID</translation>
+        <translation>Indstil bruger-ID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
         <source>SetGID</source>
-        <translation type="unfinished">SetGID</translation>
+        <translation>Indstil brugergruppe-ID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="792"/>
@@ -472,7 +472,7 @@ Hvad vil du foretage med det?</translation>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation type="unfinished">Filen &quot;%1&quot; er kørbar. Vil du køre den?</translation>
+        <translation>Denne fil &apos;%1&apos; er kørbar. Vil du køre den ?</translation>
     </message>
 </context>
 <context>
@@ -649,7 +649,7 @@ Vil du erstatte den?</translation>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"> px</translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -1014,7 +1014,7 @@ Vil du slette dem i stedet?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="530"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished">Kan ikke oprette et link på filsystem som ikke er indbygget</translation>
+        <translation>Kan ikke oprette en lænke på ikke understøttede filsystemer</translation>
     </message>
 </context>
 <context>
@@ -1280,7 +1280,7 @@ Vil du slette dem i stedet?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="60"/>
         <source>Computer</source>
-        <translation type="unfinished">Computer</translation>
+        <translation>Computer</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="68"/>
@@ -1470,7 +1470,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished">Sessionslængden er bestemt af kodeordshåndteringen</translation>
+        <translation>Sessionslængden er bestemt af kodeordshåndteringen</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
@@ -1552,7 +1552,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="319"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished">Ugyldig skrivebordspost-fil: &apos;%1&apos;</translation>
+        <translation>Ugyldig programobjektfil: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
