@@ -44,6 +44,7 @@ PlacesModel::PlacesModel(QObject* parent):
     setColumnCount(2);
 
     placesRoot = new QStandardItem(tr("Places"));
+    placesRoot->setData(true, PlacesModel::IsHeaderRole);
     placesRoot->setSelectable(false);
     placesRoot->setColumnCount(2);
     appendRow(placesRoot);
@@ -79,6 +80,7 @@ PlacesModel::PlacesModel(QObject* parent):
     }
 
     devicesRoot = new QStandardItem(tr("Devices"));
+    devicesRoot->setData(true, PlacesModel::IsHeaderRole);
     devicesRoot->setSelectable(false);
     devicesRoot->setColumnCount(2);
     appendRow(devicesRoot);
@@ -134,6 +136,7 @@ PlacesModel::PlacesModel(QObject* parent):
 
     // bookmarks
     bookmarksRoot = new QStandardItem(tr("Bookmarks"));
+    bookmarksRoot->setData(true, PlacesModel::IsHeaderRole);
     bookmarksRoot->setSelectable(false);
     bookmarksRoot->setColumnCount(2);
     appendRow(bookmarksRoot);

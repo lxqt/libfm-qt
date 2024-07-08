@@ -143,6 +143,7 @@ PlacesView::PlacesView(QWidget* parent):
     FolderItemDelegate* delegate = new FolderItemDelegate(this, this);
     delegate->setFileInfoRole(PlacesModel::FileInfoRole);
     delegate->setIconInfoRole(PlacesModel::FmIconRole);
+    delegate->setIsHeaderRole(PlacesModel::IsHeaderRole);
     setItemDelegateForColumn(0, delegate);
 
     model_ = PlacesModel::globalInstance();

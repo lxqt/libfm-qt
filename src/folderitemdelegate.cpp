@@ -46,6 +46,9 @@ FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent)
     removeIcon_(QIcon::fromTheme(QStringLiteral("list-remove"))),
     fileInfoRole_(Fm::FolderModel::FileInfoRole),
     iconInfoRole_(-1),
+    isHeaderRole_(-1),
+    headerMarginTop_(5),
+    headerMarginBottom_(4),
     margins_(QSize(3, 3)),
     shadowHidden_(false),
     hasEditor_(false) {
@@ -91,7 +94,17 @@ QSize FolderItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QMo
     opt.decorationSize = option.decorationSize; // requested by the view
     const QWidget* widget = option.widget;
     QStyle* style = widget ? widget->style() : QApplication::style();
-    return style->sizeFromContents(QStyle::CT_ItemViewItem, &opt, QSize(), widget);
+    auto size = style->sizeFromContents(QStyle::CT_ItemViewItem, &opt, QSize(), widget);
+    if (index.data(isHeaderRole_).toBool()) {
+        if (index.row() == 0) {
+            // the top one only has a bottom margin
+            size.setHeight(size.height() + headerMarginBottom_);
+        } else {
+            // the rest have both top and bottom margins
+            size.setHeight(size.height() + headerMarginBottom_ + headerMarginTop_);
+        }
+    }
+    return size;
 }
 
 QIcon::Mode FolderItemDelegate::iconModeFromState(const QStyle::State state) {
@@ -260,6 +273,9 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         const QWidget* widget = opt.widget;
         QStyle* style = widget ? widget->style() : QApplication::style();
         opt.decorationSize = option.decorationSize; // for a better text alignment
+        if (index.data(isHeaderRole_).toBool() && index.row() != 0) {
+            opt.rect.adjust(0, headerMarginTop_, 0, 0);
+        }
         style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, widget);
 
         if(isCut && !opt.icon.isNull()) {

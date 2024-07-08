@@ -46,7 +46,8 @@ public:
 
     enum {
         FileInfoRole = Qt::UserRole,
-        FmIconRole
+        FmIconRole,
+        IsHeaderRole
     };
 
     // QAction used for popup menus

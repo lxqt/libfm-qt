@@ -66,6 +66,14 @@ public:
         iconInfoRole_ = role;
     }
 
+    int isHeaderRole() {
+        return isHeaderRole_;
+    }
+
+    void setIsHeaderRole(int role) {
+        isHeaderRole_ = role;
+    }
+
     // only support vertical layout (icon view mode: text below icon)
     void setShadowColor(const QColor& shadowColor) {
       shadowColor_ = shadowColor;
@@ -122,6 +130,9 @@ private:
     QSize itemSize_;
     int fileInfoRole_;
     int iconInfoRole_;
+    int isHeaderRole_;
+    int headerMarginTop_;
+    int headerMarginBottom_;
     QColor shadowColor_;
     QSize margins_;
     bool shadowHidden_;
