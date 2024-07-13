@@ -127,6 +127,18 @@ void copyFilesToClipboard(const Fm::FilePathList& files) {
     clipboard->setMimeData(data);
 }
 
+void copyFilePathToClipboard(const FilePath &file) {
+    QClipboard* clipboard = QApplication::clipboard();
+    QMimeData* data = new QMimeData();
+
+    QString path = QString::fromUtf8(file.localPath().get());
+    if(path.isEmpty())
+        path = QString::fromUtf8(file.uri().get());
+
+    data->setText(path);
+    clipboard->setMimeData(data);
+}
+
 void cutFilesToClipboard(const Fm::FilePathList& files) {
     QClipboard* clipboard = QApplication::clipboard();
     QMimeData* data = new QMimeData();
