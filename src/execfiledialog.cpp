@@ -55,6 +55,7 @@ ExecFileDialog::ExecFileDialog(const FileInfo &fileInfo, QWidget* parent, Qt::Wi
     }
     ui->msg->setText(msg);
     ui->remBox->hide();
+    resize(sizeHint().expandedTo(QSize(400, 0))); // make sure that the label is shown completely (a Qt bug?)
 }
 
 ExecFileDialog::~ExecFileDialog() {
@@ -64,6 +65,7 @@ ExecFileDialog::~ExecFileDialog() {
 void ExecFileDialog::allowRemembering() {
     ui->remLayout->setContentsMargins(0, 10, 0, 0);
     ui->remBox->show();
+    resize(sizeHint().expandedTo(QSize(400, 0)));
 }
 
 bool ExecFileDialog::isRemembered() {
