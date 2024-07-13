@@ -390,15 +390,14 @@ bool FileInfo::isExecutableType() const {
          they are native and have read permission */
         if(isNative() && (mode_ & (S_IRUSR|S_IRGRP|S_IROTH))) {
             if(isShortcut() && !target_.empty()) {
-                /* handle shortcuts from desktop to menu entries:
-                   first check for entries in /usr/share/applications and such
-                   which may be considered as a safe desktop entry path
-                   then check if that is a shortcut to a native file
-                   otherwise it is a link to a file under menu:// */
-                if (!g_str_has_prefix(target_.c_str(), "/usr/share/")) {
-                    auto target = FilePath::fromPathStr(target_.c_str());
-                    bool is_native = target.isNative();
-                    if (is_native) {
+                /* first check if this is a shortcut to a native file
+                   (otherwise it is a link to a file under menu://),
+                   then check for entries in /usr/share/applications and such
+                   which may be considered as a safe desktop entry path */
+                auto target = FilePath::fromPathStr(target_.c_str());
+                if(target.isNative()) {
+                    auto usrShare = FilePath::fromPathStr("/usr/share/");
+                    if(!usrShare.isPrefixOf(target)) {
                         return true;
                     }
                 }
