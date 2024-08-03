@@ -73,6 +73,8 @@ FilePropsDialog::FilePropsDialog(Fm::FileInfoList files, QWidget* parent, Qt::Wi
         ui->contentsLabel->hide();
         ui->fileNumber->hide();
     }
+
+    resize(size().expandedTo(sizeHint())); // make sure that the labels are shown completely (a Qt bug?)
 }
 
 FilePropsDialog::~FilePropsDialog() {
