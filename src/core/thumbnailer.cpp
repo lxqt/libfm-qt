@@ -46,6 +46,9 @@ CStrPtr Thumbnailer::commandForUri(const char* uri, const char* output_file, gui
                         g_free(quoted);
                         g_free(src_path);
                     }
+                    else {
+                        return nullptr;
+                    }
                     break;
                 }
                 case 'u':
@@ -71,7 +74,10 @@ CStrPtr Thumbnailer::commandForUri(const char* uri, const char* output_file, gui
 
 bool Thumbnailer::run(const char* uri, const char* output_file, int size) const {
     auto cmd = commandForUri(uri, output_file, size);
-    qDebug() << cmd.get();
+    if(cmd == nullptr) {
+        return false;
+    }
+    //qDebug() << cmd.get();
     int status;
     bool ret = g_spawn_command_line_sync(cmd.get(), nullptr, nullptr, &status, nullptr);
     return ret && status == 0;
