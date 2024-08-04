@@ -268,7 +268,7 @@ static gboolean do_launch(GAppInfo* appinfo, const char* full_desktop_path,
     GPid pid;
 
     cmd = expand_exec_macros(appinfo, full_desktop_path, kf, inp, &gfiles);
-    g_print("%s\n", cmd);
+    //g_print("%s\n", cmd);
     if (cmd == NULL || cmd[0] == '\0')
     {
         g_free(cmd);

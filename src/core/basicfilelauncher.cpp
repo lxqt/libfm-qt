@@ -330,7 +330,7 @@ FilePath BasicFileLauncher::handleShortcut(const FileInfoPtr& fileInfo, GAppLaun
     // if we know the target is a dir, we are not going to open it using other apps
     // for example: `network:///smb-root' is a shortcut targeting `smb:///' and it's also a dir
     if(fileInfo->isDir()) {
-        qDebug("shortcut is dir: %s", target.c_str());
+        //qDebug("shortcut is dir: %s", target.c_str());
         return FilePath::fromPathStr(target.c_str());
     }
 
