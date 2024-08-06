@@ -381,7 +381,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>La cartele specificade &apos;%1&apos; no je valide</translation>
     </message>
 </context>
 <context>
@@ -389,14 +389,14 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Daûr a cjariâ...</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;nissune sotcartele&gt;</translation>
     </message>
 </context>
 <context>
@@ -404,17 +404,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="217"/>
         <source>Open in New T&amp;ab</source>
-        <translation type="unfinished"></translation>
+        <translation>Vierç intune gnove &amp;schede</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="221"/>
         <source>Open in New Win&amp;dow</source>
-        <translation type="unfinished"></translation>
+        <translation>Vierç intun gnûf &amp;barcon</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="226"/>
         <source>Open in Termina&amp;l</source>
-        <translation type="unfinished"></translation>
+        <translation>Vierç intun &amp;terminâl</translation>
     </message>
 </context>
 <context>
@@ -422,27 +422,27 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation type="unfinished"></translation>
+        <translation>Copie achì</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation type="unfinished"></translation>
+        <translation>Sposte achì</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation type="unfinished"></translation>
+        <translation>Cree colegament achì</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Anule</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Impussibil spostâ achì</translation>
     </message>
 </context>
 <context>
@@ -450,7 +450,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="84"/>
         <source>New bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Gnûf segnelibri</translation>
     </message>
 </context>
 <context>
@@ -459,18 +459,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Il file &apos;%1&apos; al somee un inviadôr di program (desktop entry).
+Cemût desideristu doprâlu?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Il file di test &apos;%1&apos; al somee un script eseguibil.
+Cemût desideristu doprâlu?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Il file &apos;%1&apos; al è eseguibil. Desideristu eseguîlu?</translation>
     </message>
 </context>
 <context>
@@ -478,154 +480,155 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="106"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Indaûr</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="107"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Çampe</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="113"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Indevant</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="114"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Diestre</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="121"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Torne cjame</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="122"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="139"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Cjarie cartele</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="155"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>Viodude iconis</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="159"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>Viodude miniaturis</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="163"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>Viodude fisse</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="167"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>Viodude detaiade</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="175"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensions iconis</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="177"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimension des iconis grandis:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="184"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimension des iconis piçulis:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="191"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimension des anteprimis:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="207"/>
         <source>Show Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostre platâts</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="219"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostre miniaturis</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostre sugjeriments sui files</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="231"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Scoriment slis</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="246"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Opzions</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="596"/>
         <location filename="../filedialog.cpp" line="991"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Erôr</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="596"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Par plasê selezione un file</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="638"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 al esist bielzà.
+Desideristu sostituîlu?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="961"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Il percors &quot;%1&quot; nol esist</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="975"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; no je une cartele</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="981"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; nol è un file</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1129"/>
         <location filename="../filedialog.cpp" line="1237"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vierç</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1132"/>
         <location filename="../filedialog.cpp" line="1245"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Salve</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1139"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ducj i files (*)</translation>
     </message>
 </context>
 <context>
@@ -633,12 +636,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="138"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Vierç file</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="139"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Salve file</translation>
     </message>
 </context>
 <context>
@@ -646,7 +649,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -654,121 +657,122 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="86"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Vierç</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="90"/>
         <source>Open With...</source>
-        <translation type="unfinished"></translation>
+        <translation>Vierç cun...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="356"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Tancj files</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="357"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Desideristu vierzi chest file?</numerusform>
+            <numerusform>Desideristu vierzi chescj %1 files?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="118"/>
         <source>Other Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Altris aplicazions</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="125"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation>Cree &amp;gnûf</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="144"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ripristine</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="154"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Taie</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="158"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Copie</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="162"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>Tache</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="166"/>
         <location filename="../filemenu.cpp" line="484"/>
         <source>&amp;Move to Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bute te Scovacere</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="170"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambie non</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Monte</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation type="unfinished"></translation>
+        <translation>Dismonte</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Pare fûr</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Extract to...</source>
-        <translation type="unfinished"></translation>
+        <translation>Tire fûr in...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="283"/>
         <source>Extract Here</source>
-        <translation type="unfinished"></translation>
+        <translation>Tire fûr achì</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="290"/>
         <source>Compress</source>
-        <translation type="unfinished"></translation>
+        <translation>Comprim</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="299"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Proprietâts</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="313"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Fiditi dai eseguibii selezionâts</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="314"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Fiditi di chest eseguibil</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="419"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Risultât</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="148"/>
         <location filename="../filemenu.cpp" line="484"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Elimine</translation>
     </message>
 </context>
 <context>
@@ -776,19 +780,20 @@ Do you want to replace it?</source>
     <message>
         <location filename="../fileoperation.cpp" line="317"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Erôr</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="318"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation type="unfinished"></translation>
+        <translation>No si rive a spostâ te scovacere cualchi file, parcè che il filesystem che al sta sot nol supuarte cheste operazion.
+Come azion alternative, desideristu eliminâju?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="404"/>
         <location filename="../fileoperation.cpp" line="422"/>
         <source>Confirm</source>
-        <translation type="unfinished"></translation>
+        <translation>Conferme</translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
