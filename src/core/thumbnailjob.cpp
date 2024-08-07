@@ -88,7 +88,14 @@ QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
         // if the file is changed to a symlink with the same time stamp
         auto target = file->target();
         if(!target.empty()) {
-            uri = FilePath::fromLocalPath(target.c_str()).uri();
+            if(auto dirPath = file->dirPath()) {
+                // "FilePath relativePath()" also covers absolute path names
+                // because "g_file_resolve_relative_path()" does
+                uri = dirPath.relativePath(target.c_str()).uri();
+            }
+            else {
+                uri = FilePath::fromLocalPath(target.c_str()).uri();
+            }
         }
     }
     if(!uri) {
