@@ -71,7 +71,7 @@ QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
     thumbnailDir += QLatin1String("/thumbnails/");
 
     // don't make thumbnails for files inside the thumbnail directory
-    if(FilePath::fromLocalPath(thumbnailDir.toLocal8Bit().constData()).isParentOf(file->dirPath())) {
+    if(file->dirPath() && FilePath::fromLocalPath(thumbnailDir.toLocal8Bit().constData()).isParentOf(file->dirPath())) {
         return QImage();
     }
 
@@ -88,10 +88,10 @@ QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
         // if the file is changed to a symlink with the same time stamp
         auto target = file->target();
         if(!target.empty()) {
-            if(auto dirPath = file->dirPath()) {
-                // "FilePath relativePath()" also covers absolute path names
+            if(file->dirPath()) {
+                // "FilePath::relativePath()" also covers absolute path names
                 // because "g_file_resolve_relative_path()" does
-                uri = dirPath.relativePath(target.c_str()).uri();
+                uri = file->dirPath().relativePath(target.c_str()).uri();
             }
             else {
                 uri = FilePath::fromLocalPath(target.c_str()).uri();
