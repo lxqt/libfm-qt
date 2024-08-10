@@ -13,12 +13,17 @@ public:
     explicit FileSystemInfoJob(const FilePath& path):
         path_{path},
         isAvailable_{false},
+        isRemote_{false},
         size_{0},
         freeSize_{0} {
     }
 
     bool isAvailable() const {
         return isAvailable_;
+    }
+
+    bool isRemote() const {
+        return isRemote_;
     }
 
     uint64_t size() const {
@@ -36,6 +41,7 @@ protected:
 private:
     FilePath path_;
     bool isAvailable_;
+    bool isRemote_;
     uint64_t size_;
     uint64_t freeSize_;
 };

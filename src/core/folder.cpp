@@ -51,6 +51,7 @@ Folder::Folder():
     fs_total_size{0},
     fs_free_size{0},
     has_fs_info{false},
+    fs_remote{false},
     defer_content_test{false} {
 
     connect(volumeManager_.get(), &VolumeManager::mountAdded, this, &Folder::onMountAdded);
@@ -812,14 +813,21 @@ bool Folder::getFilesystemInfo(uint64_t* total_size, uint64_t* free_size) const 
 }
 
 
+bool Folder::getFilesystemRemote() const {
+    return fs_remote;
+}
+
+
 void Folder::onFileSystemInfoFinished() {
     FileSystemInfoJob* job = static_cast<FileSystemInfoJob*>(sender());
     if(job->isCancelled() || job != fsInfoJob_) { // this is a cancelled job, ignore!
         fsInfoJob_ = nullptr;
         has_fs_info = false;
+        fs_remote = false;
         return;
     }
     has_fs_info = job->isAvailable();
+    fs_remote = job->isRemote();
     fs_total_size = job->size();
     fs_free_size = job->freeSize();
     filesystem_info_pending = true;

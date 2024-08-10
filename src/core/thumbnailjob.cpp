@@ -17,9 +17,10 @@ bool ThumbnailJob::localFilesOnly_ = true;
 int ThumbnailJob::maxThumbnailFileSize_ = 4096; // in KiB
 int ThumbnailJob::maxExternalThumbnailFileSize_ = -1;
 
-ThumbnailJob::ThumbnailJob(FileInfoList files, int size):
+ThumbnailJob::ThumbnailJob(FileInfoList files, int size, bool isRemote):
     files_{std::move(files)},
     size_{size},
+    isRemote_{isRemote},
     md5Calc_{g_checksum_new(G_CHECKSUM_MD5)} {
 }
 
@@ -63,6 +64,10 @@ QImage ThumbnailJob::readImageFromStream(GInputStream* stream, size_t len) {
 
 QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
     if(!file->canThumbnail()) {
+        return QImage();
+    }
+
+    if(localFilesOnly_ && isRemote_) {
         return QImage();
     }
 

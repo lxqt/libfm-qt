@@ -64,6 +64,8 @@ public:
 
     bool getFilesystemInfo(uint64_t* total_size, uint64_t* free_size) const;
 
+    bool getFilesystemRemote() const;
+
     void reload();
 
     bool isIncremental() const;
@@ -184,6 +186,7 @@ private:
     GCancellablePtr fs_size_cancellable;
 
     bool has_fs_info : 1;
+    bool fs_remote : 1;
     bool defer_content_test : 1;
 
     static std::unordered_map<FilePath, std::weak_ptr<Folder>, FilePathHash> cache_;
