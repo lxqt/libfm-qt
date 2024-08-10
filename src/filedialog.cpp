@@ -621,7 +621,7 @@ void FileDialog::accept() {
             bool isDir = false;
             // don't consider the suffix yet because a directory with the same name may exist
             if(firstName.contains(QLatin1Char('/'))) {
-                // "FilePath relativePath()" also covers absolute path names
+                // "FilePath::relativePath()" also covers absolute path names
                 // because "g_file_resolve_relative_path()" does
                 firstPath = directoryPath_.relativePath(firstName.toLocal8Bit().constData());
                 auto str = QString::fromUtf8(firstPath.toString().get());
