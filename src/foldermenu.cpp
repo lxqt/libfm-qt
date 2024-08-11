@@ -78,10 +78,11 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
         separator2_ = addSeparator();
     }
 
+    invertSelectionAction_ = nullptr; // kept only for backward compatibility
     auto selMode = view_->childView()->selectionMode();
     if(selMode == QAbstractItemView::SingleSelection || selMode == QAbstractItemView::NoSelection) {
         selectAllAction_ = nullptr;
-        invertSelectionAction_ = nullptr;
+        //invertSelectionAction_ = nullptr;
         separator3_ = nullptr;
     }
     else {
@@ -89,9 +90,9 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
         addAction(selectAllAction_);
         connect(selectAllAction_, &QAction::triggered, this, &FolderMenu::onSelectAllActionTriggered);
 
-        invertSelectionAction_ = new QAction(tr("Invert Selection"), this);
+        /*invertSelectionAction_ = new QAction(tr("Invert Selection"), this);
         addAction(invertSelectionAction_);
-        connect(invertSelectionAction_, &QAction::triggered, this, &FolderMenu::onInvertSelectionActionTriggered);
+        connect(invertSelectionAction_, &QAction::triggered, this, &FolderMenu::onInvertSelectionActionTriggered);*/
 
         separator3_ = addSeparator();
     }
