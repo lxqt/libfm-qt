@@ -164,6 +164,9 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
         }
     }
 
+    isReadOnly_ = false; /* default is R/W */
+    isRemote_ = false; /* default is local */
+
     /* special handling for symlinks */
     if(g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK)) {
         mode_ &= ~S_IFMT; /* reset type */
@@ -204,13 +207,15 @@ void FileInfo::setFromGFileInfo(const GObjectPtr<GFileInfo>& inf, const FilePath
         if(!mimeType_) {
             mimeType_ = MimeType::inodeDirectory();
         }
-        isReadOnly_ = false; /* default is R/W */
         if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_FILESYSTEM_READONLY)) {
             isReadOnly_ = g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_FILESYSTEM_READONLY);
         }
-        /* directories should be writable to be deleted by user */
         if(isReadOnly_ || !isWritable_) {
+            /* directories should be writable to be deleted by user */
             isDeletable_ = false;
+        }
+        if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_FILESYSTEM_REMOTE)) {
+            isRemote_ = g_file_info_get_attribute_boolean(inf.get(), G_FILE_ATTRIBUTE_FILESYSTEM_REMOTE);
         }
         break;
     case G_FILE_TYPE_SYMBOLIC_LINK:
