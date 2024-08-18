@@ -229,6 +229,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
                     MountOperation* op = new MountOperation(true, parentWidget());
                     op->mountMountable(info_->path());
                     op->wait();
+                    delete op;
                 }
             });
             addAction(action);
@@ -243,6 +244,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
                     MountOperation* op = new MountOperation(true, parentWidget());
                     op->unmount(info_->path());
                     op->wait();
+                    delete op;
                 }
             });
             addAction(action);
@@ -257,6 +259,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
                     MountOperation* op = new MountOperation(true, parentWidget());
                     op->eject(info_->path());
                     op->wait();
+                    delete op;
                 }
             });
             addAction(action);

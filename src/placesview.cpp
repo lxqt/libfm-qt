@@ -278,11 +278,13 @@ void PlacesView::onEjectButtonClicked(PlacesModelItem* item) {
         else { // otherwise, do unmount instead
             op->unmount(volumeItem->volume());
         }
+        delete op;
     }
     else if(item->type() == PlacesModelItem::Mount) {
         PlacesModelMountItem* mountItem = static_cast<PlacesModelMountItem*>(item);
         MountOperation* op = new MountOperation(true, this);
         op->unmount(mountItem->mount());
+        delete op;
     }
     qDebug("PlacesView::onEjectButtonClicked");
 }
@@ -487,6 +489,7 @@ void PlacesView::onMountVolume() {
     QTimer::singleShot(0, op, [op] {
         op->wait();
     });
+    delete op;
 }
 
 void PlacesView::onUnmountVolume() {
@@ -500,6 +503,7 @@ void PlacesView::onUnmountVolume() {
     QTimer::singleShot(0, op, [op] {
         op->wait();
     });
+    delete op;
 }
 
 void PlacesView::onUnmountMount() {
@@ -514,6 +518,7 @@ void PlacesView::onUnmountMount() {
     QTimer::singleShot(0, op, [op] {
         op->wait();
     });
+    delete op;
 }
 
 void PlacesView::onEjectVolume() {

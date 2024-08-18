@@ -114,8 +114,10 @@ bool FileLauncher::showError(GAppLaunchContext* /*ctx*/, const GErrorPtr &err, c
             }
             if(op->wait()) {
                 // if the mount operation succeeds, we can ignore the error and continue
+                delete op;
                 return true;
             }
+            delete op;
         }
         else if(err->code == G_IO_ERROR_FAILED_HANDLED) {
             return true;    /* don't show error message */
