@@ -13,7 +13,7 @@ class LIBFM_QT_API ThumbnailJob: public Job {
     Q_OBJECT
 public:
 
-    explicit ThumbnailJob(FileInfoList files, int size);
+    explicit ThumbnailJob(FileInfoList files, int size, bool isRemote = false);
 
     ~ThumbnailJob() override;
 
@@ -69,6 +69,7 @@ private:
 private:
     FileInfoList files_;
     int size_;
+    bool isRemote_;
     std::vector<QImage> results_;
     GCancellablePtr cancellable_;
     GChecksum* md5Calc_;

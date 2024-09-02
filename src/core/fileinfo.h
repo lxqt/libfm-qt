@@ -120,6 +120,10 @@ public:
         return (!isReadOnly_ && isDir());
     }
 
+    bool isRemoteDirectory() const {
+        return (isRemote_ && isDir());
+    }
+
     bool isAccessible() const {
         return isAccessible_;
     }
@@ -280,6 +284,7 @@ private:
     bool isIconChangeable_ : 1; /* TRUE if icon can be changed */
     bool isHiddenChangeable_ : 1; /* TRUE if hidden can be changed */
     bool isReadOnly_ : 1; /* TRUE if host FS is R/O */
+    bool isRemote_ : 1; /* TRUE if host FS is remote */
     bool canMount_ : 1;  /* TRUE if can be mounted */
     bool canUnmount_ : 1; /* TRUE if can be unmounted */
     bool canEject_ : 1; /* TRUE if can be ejected */

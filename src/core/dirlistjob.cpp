@@ -51,6 +51,29 @@ _retry:
         return;
     }
     else {
+        // First set the attributes "filesystem::readonly" and "filesystem::remote",
+        // which will be queried by FileInfo and are useful only for the parent dir.
+        if(GFileInfoPtr fs_info{
+            g_file_query_filesystem_info(dir_gfile.get(),
+                                         G_FILE_ATTRIBUTE_FILESYSTEM_READONLY","
+                                         G_FILE_ATTRIBUTE_FILESYSTEM_REMOTE,
+                                         cancellable().get(), nullptr),
+            false
+        }) {
+            if(g_file_info_has_attribute(fs_info.get(), G_FILE_ATTRIBUTE_FILESYSTEM_READONLY)) {
+                g_file_info_set_attribute_boolean(dir_inf.get(),
+                                                  G_FILE_ATTRIBUTE_FILESYSTEM_READONLY,
+                                                  g_file_info_get_attribute_boolean(fs_info.get(),
+                                                                                    G_FILE_ATTRIBUTE_FILESYSTEM_READONLY));
+            }
+            if(g_file_info_has_attribute(fs_info.get(), G_FILE_ATTRIBUTE_FILESYSTEM_REMOTE)) {
+                g_file_info_set_attribute_boolean(dir_inf.get(),
+                                                  G_FILE_ATTRIBUTE_FILESYSTEM_REMOTE,
+                                                  g_file_info_get_attribute_boolean(fs_info.get(),
+                                                                                    G_FILE_ATTRIBUTE_FILESYSTEM_REMOTE));
+            }
+        }
+
         std::lock_guard<std::mutex> lock{mutex_};
         dir_fi = std::make_shared<FileInfo>(dir_inf, dir_path);
     }
