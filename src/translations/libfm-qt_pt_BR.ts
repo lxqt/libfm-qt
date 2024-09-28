@@ -124,7 +124,7 @@
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation>Lembrar os próximos arquivos desse tipo</translation>
+        <translation>Lembrar para os próximos arquivos deste tipo</translation>
     </message>
 </context>
 <context>
@@ -1470,7 +1470,7 @@ Modificado: %2</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>A duração da sessão é determinada pelo gerenciador de senha</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>

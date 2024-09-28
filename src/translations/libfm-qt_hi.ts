@@ -11,7 +11,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation>स्थापित ऐपलिकेशन्स</translation>
+        <translation>इंस्टॉल किए गए एप्लिकेशन</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
@@ -119,12 +119,12 @@
     <message>
         <location filename="../exec-file.ui" line="85"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>रद्द करना</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>इस प्रकार की अगली फ़ाइलों के लिए याद रखें</translation>
     </message>
 </context>
 <context>
@@ -132,17 +132,17 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>पथ:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>फ़ाइल का नाम:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation>फ़ाइल प्रकार:</translation>
     </message>
 </context>
 <context>
@@ -150,32 +150,32 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation type="unfinished"></translation>
+        <translation>गंतव्य:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रसंस्करण:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation type="unfinished"></translation>
+        <translation>तैयारी...</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रगति</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
         <source>Time remaining:</source>
-        <translation type="unfinished"></translation>
+        <translation>शेष समय:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>फ़ाइलें संसाधित:</translation>
     </message>
 </context>
 <context>
@@ -183,22 +183,22 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>फ़ाइल गुण</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>सामान्य</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>जगह:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation>फ़ाइल प्रकार:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
@@ -233,7 +233,7 @@
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation type="unfinished"></translation>
+        <translation>अंतिम बार एक्सेस किया गया:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="287"/>
@@ -582,7 +582,7 @@ What do you want to do with it?</source>
         <location filename="../filedialog.cpp" line="596"/>
         <location filename="../filedialog.cpp" line="991"/>
         <source>Error</source>
-        <translation type="unfinished">त्रुटि</translation>
+        <translation>गलती</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="596"/>
@@ -614,7 +614,7 @@ Do you want to replace it?</source>
         <location filename="../filedialog.cpp" line="1129"/>
         <location filename="../filedialog.cpp" line="1237"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">&amp;खोलें</translation>
+        <translation>&amp;खुला</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1132"/>
@@ -777,7 +777,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../fileoperation.cpp" line="317"/>
         <source>Error</source>
-        <translation type="unfinished">त्रुटि</translation>
+        <translation>गलती</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="318"/>
@@ -884,7 +884,7 @@ Do you want to delete them instead?</source>
         <location filename="../fileoperationdialog.cpp" line="149"/>
         <location filename="../fileoperationdialog.cpp" line="155"/>
         <source>Error</source>
-        <translation type="unfinished">त्रुटि</translation>
+        <translation>गलती</translation>
     </message>
 </context>
 <context>
@@ -987,7 +987,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="157"/>
         <source>Error</source>
-        <translation type="unfinished">त्रुटि</translation>
+        <translation>गलती</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="157"/>
@@ -1176,7 +1176,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="396"/>
         <source>Name</source>
-        <translation type="unfinished">नाम</translation>
+        <translation>नाम</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="399"/>
