@@ -553,7 +553,7 @@ Co chcesz zrobić z tym plikiem?</translation>
     <message>
         <location filename="../filedialog.cpp" line="191"/>
         <source>Size of thumbnails:</source>
-        <translation>Rozmiar miniaturek:</translation>
+        <translation>Rozmiar miniatur:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="207"/>

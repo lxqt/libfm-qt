@@ -572,7 +572,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Show File Tooltips</source>
-        <translation>파일 도구 설명 표시하기</translation>
+        <translation>파일 툴팁 표시하기</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="231"/>
