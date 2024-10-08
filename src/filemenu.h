@@ -88,6 +88,10 @@ public:
         return copyAction_;
     }
 
+    QAction* copyPathAction() {
+        return copyLocationAction_;
+    }
+
     QAction* pasteAction() {
         return pasteAction_;
     }
@@ -173,6 +177,7 @@ protected Q_SLOTS:
 
     void onCutTriggered();
     void onCopyTriggered();
+    void onCopyLocationTriggered();
     void onPasteTriggered();
     void onRenameTriggered();
     void onDeleteTriggered();
@@ -199,6 +204,7 @@ private:
     QAction* separator2_;
     QAction* cutAction_;
     QAction* copyAction_;
+    QAction* copyLocationAction_;
     QAction* pasteAction_;
     QAction* deleteAction_;
     QAction* unTrashAction_;
