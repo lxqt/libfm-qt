@@ -39,7 +39,6 @@ namespace Fm {
 
 class LIBFM_QT_API IconInfo: public std::enable_shared_from_this<IconInfo> {
 public:
-    friend class IconEngine;
 
     explicit IconInfo() {}
 
