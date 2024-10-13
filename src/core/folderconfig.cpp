@@ -25,7 +25,7 @@ CStrPtr FolderConfig::globalConfigFile_;
 // FIXME: sharing the same keyfile object everywhere is problematic
 // FIXME: this is MT-unsafe
 static GKeyFile* fc_cache = nullptr;
-static bool fc_cache_changed = FALSE;
+static bool fc_cache_changed = false;
 
 FolderConfig::FolderConfig():
     keyFile_{nullptr},
@@ -48,7 +48,7 @@ bool FolderConfig::open(const Fm::FilePath& path) {
         return false;
     }
 
-    changed_ = FALSE;
+    changed_ = false;
     if(path.isNative()) {
         /* clear .directory file first */
         auto sub_path = path.child(".directory");
@@ -80,7 +80,7 @@ bool FolderConfig::open(const Fm::FilePath& path) {
 
 
 bool FolderConfig::close(GErrorPtr& err) {
-    bool ret = TRUE;
+    bool ret = true;
     if(!isOpened()) {
         return false;
     }
@@ -92,7 +92,7 @@ bool FolderConfig::close(GErrorPtr& err) {
 
             out = g_key_file_to_data(keyFile_, &len, &err);
             if(!out || !g_file_set_contents(configFilePath_.get(), out, len, &err)) {
-                ret = FALSE;
+                ret = false;
             }
             g_free(out);
         }
@@ -102,7 +102,7 @@ bool FolderConfig::close(GErrorPtr& err) {
     else {
         group_.reset();
         if(changed_) {
-            fc_cache_changed = TRUE;
+            fc_cache_changed = true;
         }
     }
     keyFile_ = nullptr;
@@ -139,18 +139,18 @@ bool FolderConfig::getUint64(const char* key, uint64_t *val) {
 #endif
     if(error) {
         g_error_free(error);
-        return FALSE;
+        return false;
     }
 #if !GLIB_CHECK_VERSION(2, 26, 0)
     ret = g_ascii_strtoull(s, &end, 10);
     if(*s == '\0' || *end != '\0') {
         g_free(s);
-        return FALSE;
+        return false;
     }
     g_free(s);
 #endif
     *val = ret;
-    return TRUE;
+    return true;
 }
 
 bool FolderConfig::getDouble(const char* key,
@@ -159,10 +159,10 @@ bool FolderConfig::getDouble(const char* key,
     double ret = g_key_file_get_double(keyFile_, group_.get(), key, &error);
     if(error) {
         g_error_free(error);
-        return FALSE;
+        return false;
     }
     *val = ret;
-    return TRUE;
+    return true;
 }
 
 bool FolderConfig::getBoolean(const char* key, bool* val) {
@@ -185,12 +185,20 @@ char** FolderConfig::getStringList(const char* key, gsize* length) {
 
 
 void FolderConfig::setInteger(const char* key, int val) {
-    changed_ = TRUE;
+    int oldVal;
+    if(getInteger(key, &oldVal) && oldVal == val) {
+        return;
+    }
+    changed_ = true;
     g_key_file_set_integer(keyFile_, group_.get(), key, val);
 }
 
 void FolderConfig::setUint64(const char* key, uint64_t val) {
-    changed_ = TRUE;
+    uint64_t oldVal;
+    if(getUint64(key, &oldVal) && oldVal == val) {
+        return;
+    }
+    changed_ = true;
 #if GLIB_CHECK_VERSION(2, 26, 0)
     g_key_file_set_uint64(keyFile_, group_.get(), key, val);
 #else
@@ -201,33 +209,45 @@ void FolderConfig::setUint64(const char* key, uint64_t val) {
 }
 
 void FolderConfig::setDouble(const char* key, double val) {
-    changed_ = TRUE;
+    double oldVal;
+    if(getDouble(key, &oldVal) && oldVal == val) {
+        return;
+    }
+    changed_ = true;
     g_key_file_set_double(keyFile_, group_.get(), key, val);
 }
 
 void FolderConfig::setBoolean(const char* key, bool val) {
-    changed_ = TRUE;
+    bool oldVal;
+    if(getBoolean(key, &oldVal) && oldVal == val) {
+        return;
+    }
+    changed_ = true;
     g_key_file_set_boolean(keyFile_, group_.get(), key, val);
 }
 
 void FolderConfig::setString(const char* key, const char* string) {
-    changed_ = TRUE;
-    g_key_file_set_string(keyFile_, group_.get(), key, string);
+    char* str = getString(key);
+    if(g_strcmp0(string, str) != 0) {
+        changed_ = true;
+        g_key_file_set_string(keyFile_, group_.get(), key, string);
+    }
+    g_free(str);
 }
 
 void FolderConfig::setStringList(const char* key,
                                       const gchar* const list[], gsize length) {
-    changed_ = TRUE;
+    changed_ = true;
     g_key_file_set_string_list(keyFile_, group_.get(), key, list, length);
 }
 
 void FolderConfig::removeKey(const char* key) {
-    changed_ = TRUE;
+    changed_ = true;
     g_key_file_remove_key(keyFile_, group_.get(), key, nullptr);
 }
 
 void FolderConfig::purge() {
-    changed_ = TRUE;
+    changed_ = true;
     g_key_file_remove_group(keyFile_, group_.get(), nullptr);
 }
 
@@ -244,7 +264,7 @@ void FolderConfig::saveCache(void) {
         GErrorPtr err;
         /* do safe replace now, the file is important enough to be lost */
         if(g_file_replace_contents(gfile.get(), out, len, nullptr, true, G_FILE_CREATE_PRIVATE, nullptr, nullptr, &err)) {
-            fc_cache_changed = FALSE;
+            fc_cache_changed = false;
         }
         else {
             g_warning("cannot save %s: %s", globalConfigFile_.get(), err->message);
