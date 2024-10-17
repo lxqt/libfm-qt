@@ -103,9 +103,17 @@ bool IconEngine::isNull() {
     return info ? info->internalQicon().isNull() : true;
 }
 
-QPixmap IconEngine::scaledPixmap(const QSize &size, QIcon::Mode mode, QIcon::State state, qreal /*scale*/) {
+QPixmap IconEngine::scaledPixmap(const QSize &size, QIcon::Mode mode, QIcon::State state, qreal scale) {
     auto info = info_.lock();
-    return info ? info->internalQicon().pixmap(size, mode, state) : QPixmap{};
+    return info ?
+           // According to Qt doc, "size" is device-independent since Qt 6.8,
+           // while it was device-dependent prior to Qt 6.8.
+#if (QT_VERSION < QT_VERSION_CHECK(6,8,0))
+           info->internalQicon().pixmap((size.toSizeF() / scale).toSize(), scale, mode, state)
+#else
+           info->internalQicon().pixmap(size, scale, mode, state)
+#endif
+           : QPixmap{};
 }
 
 QList<QSize> IconEngine::availableSizes(QIcon::Mode mode, QIcon::State state) {
