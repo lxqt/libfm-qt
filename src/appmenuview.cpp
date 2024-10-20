@@ -67,6 +67,11 @@ AppMenuView::~AppMenuView() {
     }
 }
 
+// To avoid incompatible cast to GDestroyNotify:
+static inline void menu_cache_item_unref0(MenuCacheItem* item) {
+    menu_cache_item_unref(item);
+}
+
 void AppMenuView::addMenuItems(QStandardItem* parentItem, MenuCacheDir* dir) {
     GSList* l;
     GSList* list;
@@ -95,7 +100,7 @@ void AppMenuView::addMenuItems(QStandardItem* parentItem, MenuCacheDir* dir) {
         }
         }
     }
-    g_slist_free_full(list, (GDestroyNotify)menu_cache_item_unref);
+    g_slist_free_full(list, (GDestroyNotify)menu_cache_item_unref0);
 }
 
 void AppMenuView::onMenuCacheReload(MenuCache* mc) {
