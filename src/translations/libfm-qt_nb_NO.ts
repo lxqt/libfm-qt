@@ -573,7 +573,7 @@ Hva vil du gjøre med det?</translation>
     <message>
         <location filename="../filedialog.cpp" line="231"/>
         <source>Smooth Scrolling</source>
-        <translation>Myk rulling</translation>
+        <translation>Jevn rulling</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="246"/>
@@ -857,12 +857,12 @@ Vil du slette dem istedenfor?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation>Skap symbolsk lenke</translation>
+        <translation>Opprett symbolske lenker</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>Skaper symbolske lenker for følgende filer:</translation>
+        <translation>Oppretter symbolske lenker for følgende filer:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
