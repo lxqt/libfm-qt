@@ -571,7 +571,7 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
                 if(strcmp(path_str.get(), "trash:///") == 0) {
                     action = new PlacesModel::ItemAction(item->index(), tr("Empty Trash"), menu);
                     auto icn = item->icon();
-                    if(icn && icn->qicon().name() == QLatin1String("user-trash")) { // surely an empty trash
+                    if(icn && icn->qicon().name() == QLatin1StringView("user-trash")) { // surely an empty trash
                         action->setEnabled(false);
                     }
                     else {

@@ -39,6 +39,8 @@
 #define DIFFERENT_GIDS    ((gid)-1)
 #define DIFFERENT_PERMS   ((mode_t)-1)
 
+using namespace Qt::Literals::StringLiterals;
+
 namespace Fm {
 
 enum {
@@ -159,7 +161,7 @@ void FilePropsDialog::initPermissionsPage() {
     // Let's make it clear for the users
     // init combo boxes for file permissions here
     QStringList comboItems;
-    comboItems.append(QStringLiteral("---")); // no change
+    comboItems.append(u"---"_s); // no change
     if(singleType && hasDir) { // all files are dirs
         comboItems.append(tr("View folder content"));
         comboItems.append(tr("View and modify folder content"));
@@ -439,12 +441,12 @@ void FilePropsDialog::onFileSizeTimerTimeout() {
         // they use unsigned long instead of int.
         // We cannot use Qt here to handle plural forms. So sad. :-(
         QString str = Fm::formatFileSize(totalSizeJob->totalSize(), fm_config->si_unit) %
-                      QStringLiteral(" (%1 B)").arg(totalSizeJob->totalSize());
+                      u" (%1 B)"_s.arg(totalSizeJob->totalSize());
         // tr(" (%n) byte(s)", "", deepCountJob->total_size);
         ui->fileSize->setText(str);
 
         str = Fm::formatFileSize(totalSizeJob->totalOnDiskSize(), fm_config->si_unit) %
-              QStringLiteral(" (%1 B)").arg(totalSizeJob->totalOnDiskSize());
+              u" (%1 B)"_s.arg(totalSizeJob->totalOnDiskSize());
         // tr(" (%n) byte(s)", "", deepCountJob->total_ondisk_size);
         ui->onDiskSize->setText(str);
 
@@ -465,13 +467,13 @@ void FilePropsDialog::onIconButtonclicked() {
     QString iconDir;
     QString iconThemeName = QIcon::themeName();
     QStringList icons = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
-                                                  QStringLiteral("icons"),
+                                                  u"icons"_s,
                                                   QStandardPaths::LocateDirectory);
     for (QStringList::ConstIterator it = icons.constBegin(); it != icons.constEnd(); ++it) {
-        QString iconThemeFolder = *it + QLatin1String("/") + iconThemeName;
+        QString iconThemeFolder = *it + "/"_L1 + iconThemeName;
         if (QDir(iconThemeFolder).exists() && QFileInfo(iconThemeFolder).permission(QFileDevice::ReadUser)) {
             // give priority to the "places" folder
-            const QString places = iconThemeFolder + QLatin1String("/places");
+            const QString places = iconThemeFolder + "/places"_L1;
             if (QDir(places).exists() && QFileInfo(places).permission(QFileDevice::ReadUser)) {
                 iconDir = places;
             }
@@ -483,7 +485,7 @@ void FilePropsDialog::onIconButtonclicked() {
     }
     if(iconDir.isEmpty()) {
         iconDir = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                         QStringLiteral("icons"),
+                                         u"icons"_s,
                                          QStandardPaths::LocateDirectory);
         if(iconDir.isEmpty()) {
             return;
@@ -493,10 +495,10 @@ void FilePropsDialog::onIconButtonclicked() {
                                                           iconDir,
                                                           tr("Images (*.png *.xpm *.svg *.svgz )"));
     if(!iconPath.isEmpty()) {
-        QStringList parts = iconPath.split(QStringLiteral("/"), Qt::SkipEmptyParts);
+        QStringList parts = iconPath.split(u"/"_s, Qt::SkipEmptyParts);
         if(!parts.isEmpty()) {
             QString iconName = parts.at(parts.count() - 1);
-            int ln = iconName.lastIndexOf(QLatin1String("."));
+            int ln = iconName.lastIndexOf("."_L1);
             if(ln > -1) {
                 iconName.remove(ln, iconName.length() - ln);
                 customIcon = QIcon::fromTheme(iconName);
@@ -510,13 +512,13 @@ void FilePropsDialog::onEmblemButtonclicked() {
     QString iconDir;
     QString iconThemeName = QIcon::themeName();
     QStringList icons = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
-                                                  QStringLiteral("icons"),
+                                                  u"icons"_s,
                                                   QStandardPaths::LocateDirectory);
     for (QStringList::ConstIterator it = icons.constBegin(); it != icons.constEnd(); ++it) {
-        QString iconThemeFolder = *it + QLatin1String("/") + iconThemeName;
+        QString iconThemeFolder = *it + "/"_L1 + iconThemeName;
         if (QDir(iconThemeFolder).exists() && QFileInfo(iconThemeFolder).permission(QFileDevice::ReadUser)) {
             // give priority to the "emblems" folder
-            const QString emblems = iconThemeFolder + QLatin1String("/emblems");
+            const QString emblems = iconThemeFolder + "/emblems"_L1;
             if (QDir(emblems).exists() && QFileInfo(emblems).permission(QFileDevice::ReadUser)) {
                 iconDir = emblems;
             }
@@ -528,7 +530,7 @@ void FilePropsDialog::onEmblemButtonclicked() {
     }
     if(iconDir.isEmpty()) {
         iconDir = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                         QStringLiteral("icons"),
+                                         u"icons"_s,
                                          QStandardPaths::LocateDirectory);
         if(iconDir.isEmpty()) {
             return;
@@ -538,10 +540,10 @@ void FilePropsDialog::onEmblemButtonclicked() {
                                                           iconDir,
                                                           tr("Images (*.png *.xpm *.svg *.svgz )"));
     if(!iconPath.isEmpty()) {
-        QStringList parts = iconPath.split(QStringLiteral("/"), Qt::SkipEmptyParts);
+        QStringList parts = iconPath.split(u"/"_s, Qt::SkipEmptyParts);
         if(!parts.isEmpty()) {
             QString iconName = parts.at(parts.count() - 1);
-            int ln = iconName.lastIndexOf(QLatin1String("."));
+            int ln = iconName.lastIndexOf("."_L1);
             if(ln > -1) {
                 iconName.remove(ln, iconName.length() - ln);
                 auto emblemIcon = QIcon::fromTheme(iconName);
@@ -555,7 +557,7 @@ void FilePropsDialog::onEmblemButtonclicked() {
 }
 
 void FilePropsDialog::onClearEmblemButtonclicked() {
-    ui->emblemButton->setText(QStringLiteral("..."));
+    ui->emblemButton->setText(u"..."_s);
     // to show that the emblem should be removed
     ui->emblemButton->setIcon(QIcon());
     ui->emblemButton->setToolButtonStyle(Qt::ToolButtonTextOnly);

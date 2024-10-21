@@ -61,7 +61,7 @@ LibFmQtData::LibFmQtData(): refCount(1) {
     // turn on glib debug message
     // g_setenv("G_MESSAGES_DEBUG", "all", true);
     Fm::Thumbnailer::loadAll();
-    (void)translator.load(QLatin1String("libfm-qt_") + QLocale::system().name(), QLatin1String(LIBFM_QT_DATA_DIR) + QLatin1String("/translations"));
+    (void)translator.load(QStringLiteral("libfm-qt_") + QLocale::system().name(), QStringLiteral(LIBFM_QT_DATA_DIR) + QStringLiteral("/translations"));
 
     // FIXME: we keep the FmConfig data structure here to keep compatibility with legacy libfm API.
     fm_config_init();

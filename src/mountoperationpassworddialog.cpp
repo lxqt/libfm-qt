@@ -42,11 +42,11 @@ MountOperationPasswordDialog::MountOperationPasswordDialog(MountOperation* op, G
     ui->buttonBox->buttons().constFirst()->setText(tr("&Connect"));
     connect(ui->Anonymous, &QAbstractButton::toggled, this, &MountOperationPasswordDialog::onAnonymousToggled);
 
-    QSettings settings(QSettings::UserScope, QStringLiteral("lxqt"), QStringLiteral("mountdialog"));
+    QSettings settings(QSettings::UserScope, QLatin1StringView("lxqt"), QLatin1StringView("mountdialog"));
 
     if(canAnonymous) {
         // select ananymous by default if applicable.
-        if(settings.value(QStringLiteral("Anonymous"), true).toBool()) {
+        if(settings.value(QLatin1StringView("Anonymous"), true).toBool()) {
             ui->Anonymous->setChecked(true);
         }
         else {
@@ -54,8 +54,8 @@ MountOperationPasswordDialog::MountOperationPasswordDialog(MountOperation* op, G
         }
         connect(ui->usernameGroup, &QButtonGroup::buttonToggled, this, [this](QAbstractButton *btn, bool checked) {
             if(checked) {
-                QSettings settings(QSettings::UserScope, QStringLiteral("lxqt"), QStringLiteral("mountdialog"));
-                settings.setValue(QStringLiteral("Anonymous"), btn == ui->Anonymous);
+                QSettings settings(QSettings::UserScope, QLatin1StringView("lxqt"), QLatin1StringView("mountdialog"));
+                settings.setValue(QLatin1StringView("Anonymous"), btn == ui->Anonymous);
             }
         });
     }
@@ -79,7 +79,7 @@ MountOperationPasswordDialog::MountOperationPasswordDialog(MountOperation* op, G
         ui->domainLabel->hide();
     }
     if(canSavePassword) {
-        switch(settings.value(QStringLiteral("RememberPassword"), 0).toInt()) {
+        switch(settings.value(QLatin1StringView("RememberPassword"), 0).toInt()) {
         case -1:
             ui->forgetPassword->setChecked(true);
             break;
@@ -93,8 +93,8 @@ MountOperationPasswordDialog::MountOperationPasswordDialog(MountOperation* op, G
         connect(ui->passwordGroup, &QButtonGroup::buttonToggled, this, [this](QAbstractButton *btn, bool checked) {
             if(checked) {
                 int remember = (btn == ui->forgetPassword ? -1 : btn == ui->storePassword ? 1 : 0);
-                QSettings settings(QSettings::UserScope, QStringLiteral("lxqt"), QStringLiteral("mountdialog"));
-                settings.setValue(QStringLiteral("RememberPassword"), remember);
+                QSettings settings(QSettings::UserScope, QLatin1StringView("lxqt"), QLatin1StringView("mountdialog"));
+                settings.setValue(QLatin1StringView("RememberPassword"), remember);
             }
         });
     }

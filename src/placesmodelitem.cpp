@@ -125,16 +125,16 @@ void PlacesModelVolumeItem::update() {
         setPath(Fm::FilePath{});
         if(CStrPtr identifier{g_volume_get_identifier(volume_, G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE)}) {
             toolTip = QObject::tr("Identifier: ");
-            toolTip += QLatin1String(identifier.get());
+            toolTip += QLatin1StringView(identifier.get());
         }
         if(CStrPtr uuid{g_volume_get_uuid(volume_)}) {
             if(toolTip.isEmpty()) {
-                toolTip = QLatin1String("UUID: ");
+                toolTip = QLatin1StringView("UUID: ");
             }
             else {
-                toolTip += QLatin1String("\nUUID: ");
+                toolTip += QLatin1StringView("\nUUID: ");
             }
-            toolTip += QLatin1String(uuid.get());
+            toolTip += QLatin1StringView(uuid.get());
         }
     }
 

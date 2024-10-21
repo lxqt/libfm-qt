@@ -73,16 +73,16 @@ QImage ThumbnailJob::loadForFile(const std::shared_ptr<const FileInfo> &file) {
 
     // thumbnails are stored in $XDG_CACHE_HOME/thumbnails/large|normal|failed
     QString thumbnailDir{QString::fromUtf8(g_get_user_cache_dir())};
-    thumbnailDir += QLatin1String("/thumbnails/");
+    thumbnailDir += QLatin1StringView("/thumbnails/");
 
     // don't make thumbnails for files inside the thumbnail directory
     if(file->dirPath() && FilePath::fromLocalPath(thumbnailDir.toLocal8Bit().constData()).isParentOf(file->dirPath())) {
         return QImage();
     }
 
-    QLatin1String subdir = size_ > 256 ? QLatin1String("x-large")
-                                       : size_ > 128 ? QLatin1String("large")
-                                                     : QLatin1String("normal");
+    QLatin1StringView subdir = size_ > 256 ? QLatin1StringView("x-large")
+                                           : size_ > 128 ? QLatin1StringView("large")
+                                                         : QLatin1StringView("normal");
     thumbnailDir += subdir;
 
     // generate base name of the thumbnail  => {md5 of uri}.png

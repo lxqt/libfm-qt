@@ -12,6 +12,8 @@
 
 #include <memory>
 
+using namespace Qt::Literals::StringLiterals;
+
 namespace Fm {
 
 inline static const QString viewModeToString(Fm::FolderView::ViewMode value);
@@ -191,16 +193,16 @@ static const QString viewModeToString(Fm::FolderView::ViewMode value) {
     switch(value) {
     case Fm::FolderView::DetailedListMode:
     default:
-        ret = QLatin1String("Detailed");
+        ret = "Detailed"_L1;
         break;
     case Fm::FolderView::CompactMode:
-        ret = QLatin1String("Compact");
+        ret = "Compact"_L1;
         break;
     case Fm::FolderView::IconMode:
-        ret = QLatin1String("Icon");
+        ret = "Icon"_L1;
         break;
     case Fm::FolderView::ThumbnailMode:
-        ret = QLatin1String("Thumbnail");
+        ret = "Thumbnail"_L1;
         break;
     }
     return ret;
@@ -208,16 +210,16 @@ static const QString viewModeToString(Fm::FolderView::ViewMode value) {
 
 Fm::FolderView::ViewMode viewModeFromString(const QString& str) {
     Fm::FolderView::ViewMode ret;
-    if(str == QLatin1String("Detailed")) {
+    if(str == "Detailed"_L1) {
         ret = Fm::FolderView::DetailedListMode;
     }
-    else if(str == QLatin1String("Compact")) {
+    else if(str == "Compact"_L1) {
         ret = Fm::FolderView::CompactMode;
     }
-    else if(str == QLatin1String("Icon")) {
+    else if(str == "Icon"_L1) {
         ret = Fm::FolderView::IconMode;
     }
-    else if(str == QLatin1String("Thumbnail")) {
+    else if(str == "Thumbnail"_L1) {
         ret = Fm::FolderView::ThumbnailMode;
     }
     else {
@@ -228,28 +230,28 @@ Fm::FolderView::ViewMode viewModeFromString(const QString& str) {
 
 static Fm::FolderModel::ColumnId sortColumnFromString(const QString str) {
     Fm::FolderModel::ColumnId ret;
-    if(str == QLatin1String("name")) {
+    if(str == "name"_L1) {
         ret = Fm::FolderModel::ColumnFileName;
     }
-    else if(str == QLatin1String("type")) {
+    else if(str == "type"_L1) {
         ret = Fm::FolderModel::ColumnFileType;
     }
-    else if(str == QLatin1String("size")) {
+    else if(str == "size"_L1) {
         ret = Fm::FolderModel::ColumnFileSize;
     }
-    else if(str == QLatin1String("mtime")) {
+    else if(str == "mtime"_L1) {
         ret = Fm::FolderModel::ColumnFileMTime;
     }
-    else if(str == QLatin1String("crtime")) {
+    else if(str == "crtime"_L1) {
         ret = Fm::FolderModel::ColumnFileCrTime;
     }
-    else if(str == QLatin1String("dtime")) {
+    else if(str == "dtime"_L1) {
         ret = Fm::FolderModel::ColumnFileDTime;
     }
-    else if(str == QLatin1String("owner")) {
+    else if(str == "owner"_L1) {
         ret = Fm::FolderModel::ColumnFileOwner;
     }
-    else if(str == QLatin1String("group")) {
+    else if(str == "group"_L1) {
         ret = Fm::FolderModel::ColumnFileGroup;
     }
     else {
@@ -263,65 +265,65 @@ static const QString sortColumnToString(Fm::FolderModel::ColumnId value) {
     switch(value) {
     case Fm::FolderModel::ColumnFileName:
     default:
-        ret = QLatin1String("name");
+        ret = "name"_L1;
         break;
     case Fm::FolderModel::ColumnFileType:
-        ret = QLatin1String("type");
+        ret = "type"_L1;
         break;
     case Fm::FolderModel::ColumnFileSize:
-        ret = QLatin1String("size");
+        ret = "size"_L1;
         break;
     case Fm::FolderModel::ColumnFileMTime:
-        ret = QLatin1String("mtime");
+        ret = "mtime"_L1;
         break;
     case Fm::FolderModel::ColumnFileCrTime:
-        ret = QLatin1String("crtime");
+        ret = "crtime"_L1;
         break;
     case Fm::FolderModel::ColumnFileDTime:
-        ret = QLatin1String("dtime");
+        ret = "dtime"_L1;
         break;
     case Fm::FolderModel::ColumnFileOwner:
-        ret = QLatin1String("owner");
+        ret = "owner"_L1;
         break;
     case Fm::FolderModel::ColumnFileGroup:
-        ret = QLatin1String("group");
+        ret = "group"_L1;
         break;
     }
     return ret;
 }
 
 static const QString sortOrderToString(Qt::SortOrder order) {
-    return (order == Qt::DescendingOrder ? QLatin1String("descending") : QLatin1String("ascending"));
+    return (order == Qt::DescendingOrder ? "descending"_L1 : "ascending"_L1);
 }
 
 static Qt::SortOrder sortOrderFromString(const QString str) {
-    return (str == QLatin1String("descending") ? Qt::DescendingOrder : Qt::AscendingOrder);
+    return (str == "descending"_L1 ? Qt::DescendingOrder : Qt::AscendingOrder);
 }
 
 void FileDialogHelper::loadSettings() {
-    QSettings settings(QSettings::UserScope, QStringLiteral("lxqt"), QStringLiteral("filedialog"));
-    settings.beginGroup (QStringLiteral("Sizes"));
-    dlg_->resize(settings.value(QStringLiteral("WindowSize"), QSize(700, 500)).toSize());
-    dlg_->setSplitterPos(settings.value(QStringLiteral("SplitterPos"), 200).toInt());
+    QSettings settings(QSettings::UserScope, "lxqt"_L1, "filedialog"_L1);
+    settings.beginGroup ("Sizes"_L1);
+    dlg_->resize(settings.value("WindowSize"_L1, QSize(700, 500)).toSize());
+    dlg_->setSplitterPos(settings.value("SplitterPos"_L1, 200).toInt());
     settings.endGroup();
 
-    settings.beginGroup (QStringLiteral("View"));
-    dlg_->setViewMode(viewModeFromString(settings.value(QStringLiteral("Mode"), QStringLiteral("Detailed")).toString()));
-    dlg_->sort(sortColumnFromString(settings.value(QStringLiteral("SortColumn")).toString()), sortOrderFromString(settings.value(QStringLiteral("SortOrder")).toString()));
-    dlg_->setSortFolderFirst(settings.value(QStringLiteral("SortFolderFirst"), true).toBool());
-    dlg_->setSortHiddenLast(settings.value(QStringLiteral("SortHiddenLast"), false).toBool());
-    dlg_->setSortCaseSensitive(settings.value(QStringLiteral("SortCaseSensitive"), false).toBool());
-    dlg_->setShowHidden(settings.value(QStringLiteral("ShowHidden"), false).toBool());
+    settings.beginGroup ("View"_L1);
+    dlg_->setViewMode(viewModeFromString(settings.value("Mode"_L1, "Detailed"_L1).toString()));
+    dlg_->sort(sortColumnFromString(settings.value("SortColumn"_L1).toString()), sortOrderFromString(settings.value("SortOrder"_L1).toString()));
+    dlg_->setSortFolderFirst(settings.value("SortFolderFirst"_L1, true).toBool());
+    dlg_->setSortHiddenLast(settings.value("SortHiddenLast"_L1, false).toBool());
+    dlg_->setSortCaseSensitive(settings.value("SortCaseSensitive"_L1, false).toBool());
+    dlg_->setShowHidden(settings.value("ShowHidden"_L1, false).toBool());
 
-    dlg_->setShowThumbnails(settings.value(QStringLiteral("ShowThumbnails"), true).toBool());
-    dlg_->setNoItemTooltip(settings.value(QStringLiteral("NoItemTooltip"), false).toBool());
-    dlg_->setScrollPerPixel(settings.value(QStringLiteral("ScrollPerPixel"), true).toBool());
+    dlg_->setShowThumbnails(settings.value("ShowThumbnails"_L1, true).toBool());
+    dlg_->setNoItemTooltip(settings.value("NoItemTooltip"_L1, false).toBool());
+    dlg_->setScrollPerPixel(settings.value("ScrollPerPixel"_L1, true).toBool());
 
-    dlg_->setBigIconSize(settings.value(QStringLiteral("BigIconSize"), 48).toInt());
-    dlg_->setSmallIconSize(settings.value(QStringLiteral("SmallIconSize"), 24).toInt());
-    dlg_->setThumbnailIconSize(settings.value(QStringLiteral("ThumbnailIconSize"), 128).toInt());
+    dlg_->setBigIconSize(settings.value("BigIconSize"_L1, 48).toInt());
+    dlg_->setSmallIconSize(settings.value("SmallIconSize"_L1, 24).toInt());
+    dlg_->setThumbnailIconSize(settings.value("ThumbnailIconSize"_L1, 128).toInt());
 
-    const QList<QVariant> hiddenColumns = settings.value(QStringLiteral("HiddenColumns")).toList();
+    const QList<QVariant> hiddenColumns = settings.value("HiddenColumns"_L1).toList();
     QList<int> l;
     for(auto width : hiddenColumns) {
         l << width.toInt();
@@ -329,8 +331,8 @@ void FileDialogHelper::loadSettings() {
     dlg_->setHiddenColumns(l);
     settings.endGroup();
 
-    settings.beginGroup(QStringLiteral("Places"));
-    QStringList hiddenPlacesList = settings.value(QStringLiteral("HiddenPlaces")).toStringList();
+    settings.beginGroup("Places"_L1);
+    QStringList hiddenPlacesList = settings.value("HiddenPlaces"_L1).toStringList();
     QSet<QString> hiddenPlacesSet = QSet<QString>(hiddenPlacesList.begin(), hiddenPlacesList.end());
     dlg_->setHiddenPlaces(hiddenPlacesSet);
     settings.endGroup();
@@ -338,72 +340,72 @@ void FileDialogHelper::loadSettings() {
 
 // This also prevents redundant writings whenever a file dialog is closed without a change in its settings.
 void FileDialogHelper::saveSettings() {
-    QSettings settings(QSettings::UserScope, QStringLiteral("lxqt"), QStringLiteral("filedialog"));
-    settings.beginGroup (QStringLiteral("Sizes"));
+    QSettings settings(QSettings::UserScope, "lxqt"_L1, "filedialog"_L1);
+    settings.beginGroup ("Sizes"_L1);
     QSize windowSize = dlg_->size();
-    if(settings.value(QStringLiteral("WindowSize")) != windowSize) { // no redundant write
-        settings.setValue(QStringLiteral("WindowSize"), windowSize);
+    if(settings.value("WindowSize"_L1) != windowSize) { // no redundant write
+        settings.setValue("WindowSize"_L1, windowSize);
     }
     int splitterPos = dlg_->splitterPos();
-    if(settings.value(QStringLiteral("SplitterPos")) != splitterPos) {
-        settings.setValue(QStringLiteral("SplitterPos"), splitterPos);
+    if(settings.value("SplitterPos"_L1) != splitterPos) {
+        settings.setValue("SplitterPos"_L1, splitterPos);
     }
     settings.endGroup();
 
-    settings.beginGroup (QStringLiteral("View"));
+    settings.beginGroup ("View"_L1);
     QString mode = viewModeToString(dlg_->viewMode());
-    if(settings.value(QStringLiteral("Mode")) != mode) {
-        settings.setValue(QStringLiteral("Mode"), mode);
+    if(settings.value("Mode"_L1) != mode) {
+        settings.setValue("Mode"_L1, mode);
     }
     QString sortColumn = sortColumnToString(static_cast<Fm::FolderModel::ColumnId>(dlg_->sortColumn()));
-    if(settings.value(QStringLiteral("SortColumn")) != sortColumn) {
-        settings.setValue(QStringLiteral("SortColumn"), sortColumn);
+    if(settings.value("SortColumn"_L1) != sortColumn) {
+        settings.setValue("SortColumn"_L1, sortColumn);
     }
     QString sortOrder = sortOrderToString(dlg_->sortOrder());
-    if(settings.value(QStringLiteral("SortOrder")) != sortOrder) {
-        settings.setValue(QStringLiteral("SortOrder"), sortOrder);
+    if(settings.value("SortOrder"_L1) != sortOrder) {
+        settings.setValue("SortOrder"_L1, sortOrder);
     }
     bool sortFolderFirst = dlg_->sortFolderFirst();
-    if(settings.value(QStringLiteral("SortFolderFirst")).toBool() != sortFolderFirst) {
-        settings.setValue(QStringLiteral("SortFolderFirst"), sortFolderFirst);
+    if(settings.value("SortFolderFirst"_L1).toBool() != sortFolderFirst) {
+        settings.setValue("SortFolderFirst"_L1, sortFolderFirst);
     }
     bool sortHiddenLast = dlg_->sortHiddenLast();
-    if(settings.value(QStringLiteral("SortHiddenLast")).toBool() != sortHiddenLast) {
-        settings.setValue(QStringLiteral("SortHiddenLast"), sortHiddenLast);
+    if(settings.value("SortHiddenLast"_L1).toBool() != sortHiddenLast) {
+        settings.setValue("SortHiddenLast"_L1, sortHiddenLast);
     }
     bool sortCaseSensitive = dlg_->sortCaseSensitive();
-    if(settings.value(QStringLiteral("SortCaseSensitive")).toBool() != sortCaseSensitive) {
-        settings.setValue(QStringLiteral("SortCaseSensitive"), sortCaseSensitive);
+    if(settings.value("SortCaseSensitive"_L1).toBool() != sortCaseSensitive) {
+        settings.setValue("SortCaseSensitive"_L1, sortCaseSensitive);
     }
     bool showHidden = dlg_->showHidden();
-    if(settings.value(QStringLiteral("ShowHidden")).toBool() != showHidden) {
-        settings.setValue(QStringLiteral("ShowHidden"), showHidden);
+    if(settings.value("ShowHidden"_L1).toBool() != showHidden) {
+        settings.setValue("ShowHidden"_L1, showHidden);
     }
 
     bool showThumbnails = dlg_->showThumbnails();
-    if(settings.value(QStringLiteral("ShowThumbnails")).toBool() != showThumbnails) {
-        settings.setValue(QStringLiteral("ShowThumbnails"), showThumbnails);
+    if(settings.value("ShowThumbnails"_L1).toBool() != showThumbnails) {
+        settings.setValue("ShowThumbnails"_L1, showThumbnails);
     }
     bool noItemTooltip = dlg_->noItemTooltip();
-    if(settings.value(QStringLiteral("NoItemTooltip")).toBool() != noItemTooltip) {
-        settings.setValue(QStringLiteral("NoItemTooltip"), noItemTooltip);
+    if(settings.value("NoItemTooltip"_L1).toBool() != noItemTooltip) {
+        settings.setValue("NoItemTooltip"_L1, noItemTooltip);
     }
     bool scrollPerPixel = dlg_->scrollPerPixel();
-    if(settings.value(QStringLiteral("ScrollPerPixel")).toBool() != scrollPerPixel) {
-        settings.setValue(QStringLiteral("ScrollPerPixel"), scrollPerPixel);
+    if(settings.value("ScrollPerPixel"_L1).toBool() != scrollPerPixel) {
+        settings.setValue("ScrollPerPixel"_L1, scrollPerPixel);
     }
 
     int size = dlg_->bigIconSize();
-    if(settings.value(QStringLiteral("BigIconSize")).toInt() != size) {
-        settings.setValue(QStringLiteral("BigIconSize"), size);
+    if(settings.value("BigIconSize"_L1).toInt() != size) {
+        settings.setValue("BigIconSize"_L1, size);
     }
     size = dlg_->smallIconSize();
-    if(settings.value(QStringLiteral("SmallIconSize")).toInt() != size) {
-        settings.setValue(QStringLiteral("SmallIconSize"), size);
+    if(settings.value("SmallIconSize"_L1).toInt() != size) {
+        settings.setValue("SmallIconSize"_L1, size);
     }
     size = dlg_->thumbnailIconSize();
-    if(settings.value(QStringLiteral("ThumbnailIconSize")).toInt() != size) {
-        settings.setValue(QStringLiteral("ThumbnailIconSize"), size);
+    if(settings.value("ThumbnailIconSize"_L1).toInt() != size) {
+        settings.setValue("ThumbnailIconSize"_L1, size);
     }
 
     QList<int> columns = dlg_->getHiddenColumns();
@@ -412,22 +414,22 @@ void FileDialogHelper::saveSettings() {
     for(int i = 0; i < columns.size(); ++i) {
         hiddenColumns << QVariant(columns.at(i));
     }
-    if(settings.value(QStringLiteral("HiddenColumns")).toList() != hiddenColumns) {
-        settings.setValue(QStringLiteral("HiddenColumns"), hiddenColumns);
+    if(settings.value("HiddenColumns"_L1).toList() != hiddenColumns) {
+        settings.setValue("HiddenColumns"_L1, hiddenColumns);
     }
     settings.endGroup();
 
-    settings.beginGroup(QStringLiteral("Places"));
+    settings.beginGroup("Places"_L1);
     QSet<QString> hiddenPlaces = dlg_->getHiddenPlaces();
     if(hiddenPlaces.isEmpty()) { // don't save "@Invalid()"
-        settings.remove(QStringLiteral("HiddenPlaces"));
+        settings.remove("HiddenPlaces"_L1);
     }
     else {
-        QStringList hiddenPlacesList = settings.value(QStringLiteral("HiddenPlaces")).toStringList();
+        QStringList hiddenPlacesList = settings.value("HiddenPlaces"_L1).toStringList();
         QSet<QString> hiddenPlacesSet = QSet<QString>(hiddenPlacesList.begin(), hiddenPlacesList.end());
         if (hiddenPlaces != hiddenPlacesSet) {
             QStringList sl(hiddenPlaces.begin(), hiddenPlaces.end());
-            settings.setValue(QStringLiteral("HiddenPlaces"), sl);
+            settings.setValue("HiddenPlaces"_L1, sl);
         }
     }
     settings.endGroup();
