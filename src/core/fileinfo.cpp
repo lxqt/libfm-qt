@@ -313,8 +313,8 @@ _file_is_symlink:
     // g_file_info_get_is_backup() does not cover ".bak" and ".old".
     // NOTE: Here, dispName_ is not modified for desktop entries yet.
     isBackup_ = g_file_info_get_attribute_boolean (inf.get(), G_FILE_ATTRIBUTE_STANDARD_IS_BACKUP)
-                || dispName_.endsWith(QLatin1String(".bak"))
-                || dispName_.endsWith(QLatin1String(".old"));
+                || dispName_.endsWith(QLatin1StringView(".bak"))
+                || dispName_.endsWith(QLatin1StringView(".old"));
     isNameChangeable_ = true; /* GVFS tends to ignore this attribute */
     isIconChangeable_ = isHiddenChangeable_ = false;
     if(g_file_info_has_attribute(inf.get(), G_FILE_ATTRIBUTE_ACCESS_CAN_RENAME)) {

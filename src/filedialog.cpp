@@ -20,6 +20,8 @@
 #include <QTimer>
 #include <QDebug>
 
+using namespace Qt::Literals::StringLiterals;
+
 namespace Fm {
 
 
@@ -108,14 +110,14 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     // setup toolbar buttons
     auto toolbar = new QToolBar(this);
     // back button
-    backAction_ = toolbar->addAction(QIcon::fromTheme(QStringLiteral("go-previous")), tr("Go Back"));
+    backAction_ = toolbar->addAction(QIcon::fromTheme(u"go-previous"_s), tr("Go Back"));
     backAction_->setShortcut(QKeySequence(tr("Alt+Left", "Go Back")));
     connect(backAction_, &QAction::triggered, [this]() {
         history_.backward();
         setDirectoryPath(history_.currentPath(), FilePath(), false);
     });
     // forward button
-    forwardAction_ = toolbar->addAction(QIcon::fromTheme(QStringLiteral("go-next")), tr("Go Forward"));
+    forwardAction_ = toolbar->addAction(QIcon::fromTheme(u"go-next"_s), tr("Go Forward"));
     forwardAction_->setShortcut(QKeySequence(tr("Alt+Right", "Go Forward")));
     connect(forwardAction_, &QAction::triggered, [this]() {
         history_.forward();
@@ -123,7 +125,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     });
     toolbar->addSeparator();
     // reload button
-    auto reloadAction = toolbar->addAction(QIcon::fromTheme(QStringLiteral("view-refresh")), tr("Reload"));
+    auto reloadAction = toolbar->addAction(QIcon::fromTheme(u"view-refresh"_s), tr("Reload"));
     reloadAction->setShortcut(QKeySequence(tr("F5", "Reload")));
     connect(reloadAction, &QAction::triggered, [this]() {
         if(folder_ && folder_->isLoaded()) {
@@ -141,7 +143,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
         }
     });
     // new folder button
-    auto newFolderAction = toolbar->addAction(QIcon::fromTheme(QStringLiteral("folder-new")), tr("Create Folder"));
+    auto newFolderAction = toolbar->addAction(QIcon::fromTheme(u"folder-new"_s), tr("Create Folder"));
     connect(newFolderAction, &QAction::triggered, this, &FileDialog::onNewFolder);
     toolbar->addSeparator();
 
@@ -157,19 +159,19 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     // view actions
     auto viewModeGroup = new QActionGroup(this);
     // use generic icons for view actions only if theme icons don't exist
-    iconViewAction_ = menu->addAction(QIcon::fromTheme(QLatin1String("view-list-icons"), style()->standardIcon(QStyle::SP_FileDialogContentsView)), tr("Icon View"));
+    iconViewAction_ = menu->addAction(QIcon::fromTheme(u"view-list-icons"_s, style()->standardIcon(QStyle::SP_FileDialogContentsView)), tr("Icon View"));
     iconViewAction_->setCheckable(true);
     connect(iconViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(iconViewAction_);
-    thumbnailViewAction_ = menu->addAction(QIcon::fromTheme(QLatin1String("view-preview"), style()->standardIcon(QStyle::SP_FileDialogInfoView)), tr("Thumbnail View"));
+    thumbnailViewAction_ = menu->addAction(QIcon::fromTheme(u"view-preview"_s, style()->standardIcon(QStyle::SP_FileDialogInfoView)), tr("Thumbnail View"));
     thumbnailViewAction_->setCheckable(true);
     connect(thumbnailViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(thumbnailViewAction_);
-    compactViewAction_ = menu->addAction(QIcon::fromTheme(QLatin1String("view-list-text"), style()->standardIcon(QStyle::SP_FileDialogListView)), tr("Compact View"));
+    compactViewAction_ = menu->addAction(QIcon::fromTheme(u"view-list-text"_s, style()->standardIcon(QStyle::SP_FileDialogListView)), tr("Compact View"));
     compactViewAction_->setCheckable(true);
     connect(compactViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(compactViewAction_);
-    detailedViewAction_ = menu->addAction(QIcon::fromTheme(QLatin1String("view-list-details"), style()->standardIcon(QStyle::SP_FileDialogDetailedView)), tr("Detailed List View"));
+    detailedViewAction_ = menu->addAction(QIcon::fromTheme(u"view-list-details"_s, style()->standardIcon(QStyle::SP_FileDialogDetailedView)), tr("Detailed List View"));
     detailedViewAction_->setCheckable(true);
     connect(detailedViewAction_, &QAction::toggled, this, &FileDialog::onViewModeToggled);
     viewModeGroup->addAction(detailedViewAction_);
@@ -248,7 +250,7 @@ FileDialog::FileDialog(QWidget* parent, FilePath path) :
     });
 
     // Options menu button
-    auto optionsAction = toolbar->addAction(QIcon::fromTheme(QStringLiteral("preferences-system"), QIcon::fromTheme(QStringLiteral("document-properties"))), tr("Options"));
+    auto optionsAction = toolbar->addAction(QIcon::fromTheme(u"preferences-system"_s, QIcon::fromTheme(u"document-properties"_s)), tr("Options"));
     optionsAction->setMenu(menu);
     // change the popup mode to instant (Qt sets it to MenuButtonPopup)
     if(QToolButton* optionsBtn = static_cast<QToolButton*>(toolbar->widgetForAction(optionsAction))) {
@@ -508,12 +510,12 @@ QStringList FileDialog::parseNames() const {
            && (firstQuote == 0 || fileNames.at(firstQuote - 1) != QLatin1Char('\\'))
            && fileNames.at(lastQuote - 1) != QLatin1Char('\\')) {
            // split the names
-            QRegularExpression sep{QStringLiteral("\"\\s+\"")};  // separated with " "
+            QRegularExpression sep{u"\"\\s+\""_s};  // separated with " "
             parsedNames = fileNames.mid(firstQuote + 1, lastQuote - firstQuote - 1).split(sep);
-            parsedNames.replaceInStrings(QLatin1String("\\\""), QLatin1String("\""));
+            parsedNames.replaceInStrings(u"\\\""_s, u"\""_s);
         }
         else {
-            parsedNames << fileNames.replace(QLatin1String("\\\""), QLatin1String("\""));
+            parsedNames << fileNames.replace("\\\""_L1, "\""_L1);
         }
     }
     return parsedNames;
@@ -548,7 +550,7 @@ QString FileDialog::suffix(bool checkDefaultSuffix) const {
                 left = suffix.indexOf(QLatin1Char('.')); // it can be like ".tar.xz"
                 if(left != -1 && suffix.size() - left > 1) {
                     suffix = suffix.right(suffix.size() - left - 1);
-                    if(suffix.indexOf(QRegularExpression(QStringLiteral("[^\\w\\.]"))) == -1) {
+                    if(suffix.indexOf(QRegularExpression(u"[^\\w\\.]"_s)) == -1) {
                         return suffix;
                     }
                 }
@@ -907,13 +909,13 @@ void FileDialog::onSelectionChanged(const QItemSelection& /*selected*/, const QI
             // escape inside quotes with \ to distinguish between them
             // and the quotes used for separating file names from each other
             QString name(QString::fromUtf8(baseName.get()));
-            fileNames += name.replace(QLatin1String("\""), QLatin1String("\\\""));
+            fileNames += name.replace("\""_L1, "\\\""_L1);
             fileNames += QLatin1Char('\"');
         }
         else {
             // support single selection only
             QString name(QString::fromUtf8(baseName.get()));
-            fileNames = name.replace(QLatin1String("\""), QLatin1String("\\\""));
+            fileNames = name.replace("\""_L1, "\\\""_L1);
             break;
         }
     }
@@ -1225,10 +1227,10 @@ void FileDialog::setMimeTypeFilters(const QStringList& filters) {
         auto mimeType = db.mimeTypeForName(filter);
         auto nameFilter = mimeType.comment();
         if(!mimeType.suffixes().empty()) {
-            nameFilter += QLatin1String(" (");
+            nameFilter += " ("_L1;
             const auto suffixes = mimeType.suffixes();
             for(const auto& suffix: suffixes) {
-                nameFilter += QLatin1String("*.");
+                nameFilter += "*."_L1;
                 nameFilter += suffix;
                 nameFilter += QLatin1Char(' ');
             }

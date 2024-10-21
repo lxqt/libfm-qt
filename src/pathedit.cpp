@@ -48,7 +48,7 @@ void PathEditJob::runJob() {
                 if(type == G_FILE_TYPE_DIRECTORY) {
                     const char* name = g_file_info_get_display_name(inf);
                     // FIXME: encoding conversion here?
-                    subDirs.append(QString::fromUtf8(name) + QLatin1String("/"));
+                    subDirs.append(QString::fromUtf8(name) + QLatin1StringView("/"));
                 }
                 g_object_unref(inf);
             }
@@ -192,7 +192,7 @@ void PathEdit::selectNextCompletionRow(bool downward) {
 
 void PathEdit::onTextEdited(const QString& text) {
     // just replace start tilde with home path if text is changed by user
-    if(text == QLatin1String("~") || text.startsWith(QLatin1String("~/"))) {
+    if(text == QLatin1StringView("~") || text.startsWith(QLatin1StringView("~/"))) {
         QString txt(text);
         txt.replace(0, 1, QDir::homePath());
         lastTypedText_ = txt;
@@ -203,7 +203,7 @@ void PathEdit::onTextEdited(const QString& text) {
 }
 
 void PathEdit::onTextChanged(const QString& text) {
-    if(text == QLatin1String("~") || text.startsWith(QLatin1String("~/"))) {
+    if(text == QLatin1StringView("~") || text.startsWith(QLatin1StringView("~/"))) {
         // do nothing with a start tilde because neither Fm::FilePath nor autocompletion
         // understands it; instead, wait until textChanged() is emitted again without it
         // WARNING: replacing tilde may not be safe here
