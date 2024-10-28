@@ -256,7 +256,10 @@ _file_is_symlink:
             if(g_key_file_load_from_file(kf, dot_dir.get(), G_KEY_FILE_NONE, nullptr)) {
                 CStrPtr icon_name{g_key_file_get_string(kf, "Desktop Entry", "Icon", nullptr)};
                 if(icon_name) {
-                    auto dot_icon = IconInfo::fromName(icon_name.get());
+                    // also allow relative icon paths
+                    auto dot_icon = IconInfo::fromName(g_strstr_len(icon_name.get(), -1, G_DIR_SEPARATOR_S)
+                                    ? path().relativePath(icon_name.get()).toString().get()
+                                    : icon_name.get());
                     if(dot_icon && dot_icon->isValid()) {
                         icon_ = dot_icon;
                     }
