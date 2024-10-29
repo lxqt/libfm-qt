@@ -1,3 +1,28 @@
+libfm-qt-2.1.0 / 2024-11-05
+============================
+ * Add 6 menu icons.
+ * Updated mime_types of lxqt-archiver in `archivers.list`.
+ * Allow paths in name entry of file dialog.
+ * Select name without extension in overwrite prompts.
+ * Disable access control of root files in properties dialog.
+ * Workaround for side-pane text color with Qt6's style change.
+ * Give parent to File Properties dialog from context menu.
+ * Check real file name for filtering in file dialog.
+ * Fixed creating of web shortcuts by drag-and-drop.
+ * Fixed a vulnerability about trusted locations.
+ * Prevent truncated labels in prompt for executing.
+ * Prevent truncated labels in file properties dialog.
+ * Removed debug messages for external thumbnails.
+ * Removed debug messages on launching.
+ * Fixed external thumbnails of relative symlinks.
+ * Added a nullity check to `ThumbnailJob`.
+ * Removed "Invert Selection" from folder context menu.
+ * Detect remote and read-only file systems.
+ * Enhanced the detection of changes in folder config.
+ * Fixed the scaled pixmap of `Fm::IconEngine`.
+ * Silenced a compilation warning about `GDestroyNotify`.
+ * Allow relative paths for folder icons.
+
 libfm-qt-2.0.2 / 2024-05-08
 ============================
  * Fixed a regression in running executable files in terminal.
