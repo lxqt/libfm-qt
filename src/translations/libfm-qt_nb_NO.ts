@@ -518,7 +518,7 @@ Hva vil du gjøre med det?</translation>
     <message>
         <location filename="../filedialog.cpp" line="155"/>
         <source>Icon View</source>
-        <translation>Symbolvisning</translation>
+        <translation>Ikonvisning</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="159"/>
@@ -967,7 +967,7 @@ Vil du slette dem istedenfor?</translation>
         <location filename="../filepropsdialog.cpp" line="490"/>
         <location filename="../filepropsdialog.cpp" line="535"/>
         <source>Select an icon</source>
-        <translation>Velg et symbol</translation>
+        <translation>Velg et ikon</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="492"/>
@@ -1542,7 +1542,7 @@ Sist endret: %2</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="687"/>
         <source>Custom Icon Error</source>
-        <translation>Feil med selvvalgt symbol</translation>
+        <translation>Feil med tilpasset ikon</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
