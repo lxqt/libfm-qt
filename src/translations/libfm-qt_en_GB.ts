@@ -118,7 +118,7 @@
     <message>
         <location filename="../exec-file.ui" line="99"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Remember for next files of this type</translation>
     </message>
 </context>
 <context>
@@ -555,22 +555,22 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="219"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>Show Thumbnails</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Show File Tooltips</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="231"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Smooth Scrolling</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="246"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Options</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="596"/>
@@ -640,7 +640,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -658,14 +658,14 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="356"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Many files</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="357"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Do you want to open this %1 file?</numerusform>
+            <numerusform>Do you want to open these %1 files?</numerusform>
         </translation>
     </message>
     <message>
@@ -712,17 +712,17 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Mount</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="240"/>
         <source>Unmount</source>
-        <translation type="unfinished"></translation>
+        <translation>Unmount</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="254"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Eject</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
@@ -789,17 +789,17 @@ Do you want to delete them instead?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Do you want to delete the selected file?</numerusform>
+            <numerusform>Do you want to delete the selected files?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Do you want to move the selected file to the recycle bin?</numerusform>
+            <numerusform>Do you want to move the selected files to the recycle bin?</numerusform>
         </translation>
     </message>
 </context>
@@ -919,7 +919,7 @@ Do you want to delete them instead?</translation>
         <location filename="../filepropsdialog.cpp" line="317"/>
         <location filename="../filepropsdialog.cpp" line="324"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="328"/>
@@ -949,9 +949,9 @@ Do you want to delete them instead?</translation>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="456"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln file</numerusform>
+            <numerusform>%Ln files</numerusform>
         </translation>
     </message>
     <message>
@@ -1000,7 +1000,7 @@ Do you want to delete them instead?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="479"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>Cannot copy a directory into itself!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="530"/>
@@ -1013,7 +1013,7 @@ Do you want to delete them instead?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
         <source>Empty Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Empty Trash</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="70"/>
@@ -1068,12 +1068,12 @@ Do you want to delete them instead?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="206"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>By Creation Time</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="209"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>By Deletion Time</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="212"/>
@@ -1093,7 +1093,7 @@ Do you want to delete them instead?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="215"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>By File Group</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="221"/>
@@ -1113,7 +1113,7 @@ Do you want to delete them instead?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="251"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Hidden Last</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="259"/>
@@ -1126,47 +1126,47 @@ Do you want to delete them instead?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="306"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Location:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="310"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation>File type:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="315"/>
         <source>File size:</source>
-        <translation type="unfinished"></translation>
+        <translation>File size:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>Last modified:</source>
-        <translation type="unfinished"></translation>
+        <translation>Last modified:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Last accessed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Last accessed:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="323"/>
         <source>Created:</source>
-        <translation type="unfinished">Created:</translation>
+        <translation>Created:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="328"/>
         <source>Owner:</source>
-        <translation type="unfinished"></translation>
+        <translation>Owner:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="329"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Group:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="396"/>
@@ -1191,12 +1191,12 @@ Do you want to delete them instead?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="408"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Created</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="411"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Deleted</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="414"/>
@@ -1214,12 +1214,12 @@ Do you want to delete them instead?</translation>
     <message>
         <location filename="../folderview.cpp" line="409"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-resize columns</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="426"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Visible Columns</translation>
     </message>
 </context>
 <context>
@@ -1394,7 +1394,7 @@ Modified: %2</source>
     <message>
         <location filename="../renamedialog.cpp" line="109"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1402,7 +1402,7 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="45"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Lists</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
@@ -1458,12 +1458,12 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Session length is determined by password manager</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Remember password for &amp;this session</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="150"/>
@@ -1510,7 +1510,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>New file</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="240"/>
@@ -1561,7 +1561,7 @@ Modified: %2</source>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
 </context>
 <context>
@@ -1741,17 +1741,17 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="51"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Case sensitive</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="125"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Search in subdirectories</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Case sensitive</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="377"/>
