@@ -96,27 +96,27 @@
         <translation>ਫਾਇਲ ਨੂੰ ਚਲਾਓ</translation>
     </message>
     <message>
-        <location filename="../exec-file.ui" line="39"/>
+        <location filename="../exec-file.ui" line="42"/>
         <source>&amp;Open</source>
         <translation>ਖੋਲ੍ਹੋ(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../exec-file.ui" line="52"/>
+        <location filename="../exec-file.ui" line="55"/>
         <source>E&amp;xecute</source>
         <translation>ਚਲਾਓ(&amp;x)</translation>
     </message>
     <message>
-        <location filename="../exec-file.ui" line="62"/>
+        <location filename="../exec-file.ui" line="65"/>
         <source>Execute in &amp;Terminal</source>
         <translation>ਟਰਮੀਨਲ ਵਿੱਚ ਚਲਾਓ(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../exec-file.ui" line="85"/>
+        <location filename="../exec-file.ui" line="88"/>
         <source>Cancel</source>
         <translation>ਰੱਦ ਕਰੋ</translation>
     </message>
     <message>
-        <location filename="../exec-file.ui" line="99"/>
+        <location filename="../exec-file.ui" line="102"/>
         <source>Remember for next files of this kind</source>
         <translation>ਇਸ ਕਿਸਮ ਦੀਆਂ ਅਗਲੀਆਂ ਫਾਇਲਾਂ ਲਈ ਯਾਦ ਰੱਖੋ</translation>
     </message>
@@ -472,155 +472,155 @@ What do you want to do with it?</source>
 <context>
     <name>Fm::FileDialog</name>
     <message>
-        <location filename="../filedialog.cpp" line="106"/>
+        <location filename="../filedialog.cpp" line="111"/>
         <source>Go Back</source>
         <translation>ਪਿੱਛੇ ਜਾਓ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="107"/>
+        <location filename="../filedialog.cpp" line="112"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
         <translation>Alt+ਖੱਬਾ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="113"/>
+        <location filename="../filedialog.cpp" line="118"/>
         <source>Go Forward</source>
         <translation>ਅੱਗੇ ਜਾਓ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="114"/>
+        <location filename="../filedialog.cpp" line="119"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
         <translation>Alt+ਸੱਜਾ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="121"/>
+        <location filename="../filedialog.cpp" line="126"/>
         <source>Reload</source>
         <translation>ਮੁੜ-ਲੋਡ ਕਰੋ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="122"/>
+        <location filename="../filedialog.cpp" line="127"/>
         <source>F5</source>
         <comment>Reload</comment>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="139"/>
+        <location filename="../filedialog.cpp" line="144"/>
         <source>Create Folder</source>
         <translation>ਫੋਲਡਰ ਬਣਾਓ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="155"/>
+        <location filename="../filedialog.cpp" line="160"/>
         <source>Icon View</source>
         <translation>ਆਈਕਾਨ ਝਲਕ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="159"/>
+        <location filename="../filedialog.cpp" line="164"/>
         <source>Thumbnail View</source>
         <translation>ਥੰਮਨੇਲ ਝਲਕ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="163"/>
+        <location filename="../filedialog.cpp" line="168"/>
         <source>Compact View</source>
         <translation>ਸੰਖੇਪ ਝਲਕ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="167"/>
+        <location filename="../filedialog.cpp" line="172"/>
         <source>Detailed List View</source>
         <translation>ਵੇਰਵੇ ਸਮੇਤ ਸੂਚੀ ਝਲਕ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="175"/>
+        <location filename="../filedialog.cpp" line="180"/>
         <source>Icon Sizes</source>
         <translation>ਆਈਕਾਨਾਂ ਦਾ ਆਕਾਰ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="177"/>
+        <location filename="../filedialog.cpp" line="182"/>
         <source>Size of big icons:</source>
         <translation>ਵੱਡੇ ਆਈਕਾਨਾਂ ਦਾ ਆਕਾਰ:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="184"/>
+        <location filename="../filedialog.cpp" line="189"/>
         <source>Size of small icons:</source>
         <translation>ਛੋਟੇ ਆਈਕਾਨਾਂ ਦਾ ਆਕਾਰ:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="191"/>
+        <location filename="../filedialog.cpp" line="196"/>
         <source>Size of thumbnails:</source>
         <translation>ਥੰਮਨੇਲਾਂ ਦਾ ਆਕਾਰ:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="207"/>
+        <location filename="../filedialog.cpp" line="212"/>
         <source>Show Hidden</source>
         <translation>ਲੁਕਵੇਂ ਵੇਖਾਓ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="219"/>
+        <location filename="../filedialog.cpp" line="224"/>
         <source>Show Thumbnails</source>
         <translation>ਥੰਮਨੇਲ ਵੇਖਾਓ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="224"/>
+        <location filename="../filedialog.cpp" line="229"/>
         <source>Show File Tooltips</source>
         <translation>ਫਾਇਲ ਟੂਲ-ਟਿੱਪ ਵੇਖਾਓ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="231"/>
+        <location filename="../filedialog.cpp" line="236"/>
         <source>Smooth Scrolling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="246"/>
+        <location filename="../filedialog.cpp" line="251"/>
         <source>Options</source>
         <translation>ਚੋਣਾਂ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="596"/>
-        <location filename="../filedialog.cpp" line="991"/>
+        <location filename="../filedialog.cpp" line="601"/>
+        <location filename="../filedialog.cpp" line="1060"/>
         <source>Error</source>
         <translation>ਗਲਤੀ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="596"/>
+        <location filename="../filedialog.cpp" line="601"/>
         <source>Please select a file</source>
         <translation>ਫਾਇਲ ਚੁਣੋ ਜੀ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="638"/>
+        <location filename="../filedialog.cpp" line="677"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ
 ਕੀ ਤੁਸੀ ਇਸ ਨੂੰ ਬਦਲਣਾ ਚਾਹੁੰਦੇ ਹੋ?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="961"/>
+        <location filename="../filedialog.cpp" line="1022"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>ਪਾਥ &quot;%1&quot; ਮੌਜੂਦ ਨਹੀਂ ਹੈ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="975"/>
+        <location filename="../filedialog.cpp" line="1036"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&quot;%1&quot; ਡਾਇਰੈਕਟਰੀ ਨਹੀਂ ਹੈ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="981"/>
+        <location filename="../filedialog.cpp" line="1046"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&quot;%1&quot; ਫਾਇਲ ਨਹੀਂ ਹੈ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1129"/>
-        <location filename="../filedialog.cpp" line="1237"/>
+        <location filename="../filedialog.cpp" line="1200"/>
+        <location filename="../filedialog.cpp" line="1317"/>
         <source>&amp;Open</source>
         <translation>ਖੋਲ੍ਹੋ(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1132"/>
-        <location filename="../filedialog.cpp" line="1245"/>
+        <location filename="../filedialog.cpp" line="1203"/>
+        <location filename="../filedialog.cpp" line="1325"/>
         <source>&amp;Save</source>
         <translation>ਸੰਭਾਲੋ(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1139"/>
+        <location filename="../filedialog.cpp" line="1210"/>
         <source>All Files (*)</source>
         <translation>ਸਾਰੀਆਂ ਫਾਇਲਾਂ (*)</translation>
     </message>
@@ -888,69 +888,69 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FilePropsDialog</name>
     <message>
-        <location filename="../filepropsdialog.cpp" line="162"/>
+        <location filename="../filepropsdialog.cpp" line="164"/>
         <source>View folder content</source>
         <translation>ਫੋਲਡਰ ਸਮੱਗਰੀ ਵੇਖੋ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="163"/>
+        <location filename="../filepropsdialog.cpp" line="165"/>
         <source>View and modify folder content</source>
         <translation>ਫੋਲਡਰ ਸਮੱਗਰੀ ਵੇਖੋ ਅਤੇ ਸੋਧੋ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="167"/>
+        <location filename="../filepropsdialog.cpp" line="169"/>
         <source>Read</source>
         <translation>ਪੜ੍ਹਨ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="168"/>
+        <location filename="../filepropsdialog.cpp" line="170"/>
         <source>Read and write</source>
         <translation>ਪੜ੍ਹਨ ਅਤੇ ਲਿਖਣ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="170"/>
+        <location filename="../filepropsdialog.cpp" line="172"/>
         <source>Forbidden</source>
         <translation>ਲੁਕਵੇਂ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="287"/>
+        <location filename="../filepropsdialog.cpp" line="289"/>
         <source>Files of different types</source>
         <translation>ਵੱਖ-ਵੱਖ ਕਿਸਮ ਦੀਆਂ ਫਾਇਲਾਂ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="310"/>
-        <location filename="../filepropsdialog.cpp" line="317"/>
-        <location filename="../filepropsdialog.cpp" line="324"/>
+        <location filename="../filepropsdialog.cpp" line="312"/>
+        <location filename="../filepropsdialog.cpp" line="319"/>
+        <location filename="../filepropsdialog.cpp" line="326"/>
         <source>N/A</source>
         <translation>ਲਾਗੂ ਨਹੀਂ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="328"/>
+        <location filename="../filepropsdialog.cpp" line="330"/>
         <source>Multiple Files</source>
         <translation>ਕਈ ਫਾਇਲਾਂ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="405"/>
+        <location filename="../filepropsdialog.cpp" line="407"/>
         <source>%p% used</source>
         <translation>%p% ਵਰਤੇ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="406"/>
+        <location filename="../filepropsdialog.cpp" line="408"/>
         <source>%1 Free of %2</source>
         <translation>%2 ਵਿੱਚੋਂ %1 ਖਾਲੀ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="452"/>
+        <location filename="../filepropsdialog.cpp" line="454"/>
         <source>no file</source>
         <translation>ਕੋਈ ਫਾਇਲ ਨਹੀਂ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="454"/>
+        <location filename="../filepropsdialog.cpp" line="456"/>
         <source>one file</source>
         <translation>ਕੋਈ ਫਾਇਲ ਨਹੀਂ</translation>
     </message>
     <message numerus="yes">
-        <location filename="../filepropsdialog.cpp" line="456"/>
+        <location filename="../filepropsdialog.cpp" line="458"/>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln ਫਾਇਲਾਂ</numerusform>
@@ -958,24 +958,24 @@ Do you want to delete them instead?</source>
         </translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="490"/>
-        <location filename="../filepropsdialog.cpp" line="535"/>
+        <location filename="../filepropsdialog.cpp" line="492"/>
+        <location filename="../filepropsdialog.cpp" line="537"/>
         <source>Select an icon</source>
         <translation>ਆਈਕਾਨ ਚੁਣੋ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="492"/>
-        <location filename="../filepropsdialog.cpp" line="537"/>
+        <location filename="../filepropsdialog.cpp" line="494"/>
+        <location filename="../filepropsdialog.cpp" line="539"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
         <translation>ਚਿੱਤਰ (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="643"/>
+        <location filename="../filepropsdialog.cpp" line="645"/>
         <source>Apply changes</source>
         <translation>ਤਬਦੀਲੀਆਂ ਲਾਗੂ ਕਰੋ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="644"/>
+        <location filename="../filepropsdialog.cpp" line="646"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
         <translation>ਕੀ ਤੁਸੀਂ ਇਹ ਤਬਦੀਲੀਆਂ ਨੂੰ ਸਭ ਫਾਇਲਾਂ ਅਤੇ ਅਧੀਨ-ਫੋਲਡਰਾਂ ਉੱਤੇ ਲਗਾਤਾਰ ਲਾਗੂ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?</translation>
     </message>
@@ -1001,12 +1001,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="479"/>
+        <location filename="../core/filetransferjob.cpp" line="486"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>ਡਾਇਰੈਕਟਰੀ ਨੂੰ ਖੁਦ ਵਿੱਚ ਕਾਪੀ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="530"/>
+        <location filename="../core/filetransferjob.cpp" line="537"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1029,97 +1029,92 @@ Do you want to delete them instead?</source>
         <translation>ਚੇਪੋ(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="88"/>
+        <location filename="../foldermenu.cpp" line="89"/>
         <source>Select &amp;All</source>
         <translation>ਸਭ ਚੁਣੋ(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="92"/>
-        <source>Invert Selection</source>
-        <translation>ਉਲਟ ਚੁਣੋ</translation>
-    </message>
-    <message>
-        <location filename="../foldermenu.cpp" line="99"/>
+        <location filename="../foldermenu.cpp" line="100"/>
         <source>Sorting</source>
         <translation>ਲੜੀਬੱਧ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="104"/>
+        <location filename="../foldermenu.cpp" line="105"/>
         <source>Show Hidden</source>
         <translation>ਲੁਕਵੇਂ ਵੇਖਾਓ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="139"/>
+        <location filename="../foldermenu.cpp" line="140"/>
         <source>Folder Pr&amp;operties</source>
         <translation>ਫੋਲਡਰ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ(&amp;o)</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="182"/>
+        <location filename="../foldermenu.cpp" line="183"/>
         <source>Output</source>
         <translation>ਆਉਟਪੁੱਟ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="204"/>
+        <location filename="../foldermenu.cpp" line="205"/>
         <source>By File Name</source>
         <translation>ਫਾਇਲ ਨਾਂ ਰਾਹੀਂ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="205"/>
+        <location filename="../foldermenu.cpp" line="206"/>
         <source>By Modification Time</source>
         <translation>ਸੋਧਣ ਕਰਨ ਦੇ ਸਮੇਂ ਰਾਹੀਂ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="206"/>
+        <location filename="../foldermenu.cpp" line="207"/>
         <source>By Creation Time</source>
         <translation>ਬਣਾਉਣ ਦੇ ਸਮੇਂ ਰਾਹੀਂ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="209"/>
+        <location filename="../foldermenu.cpp" line="210"/>
         <source>By Deletion Time</source>
         <translation>ਹਟਾਉਣ ਦੇ ਸਮੇਂ ਰਾਹੀਂ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="212"/>
+        <location filename="../foldermenu.cpp" line="213"/>
         <source>By File Size</source>
         <translation>ਫਾਇਲ ਆਕਾਰ ਰਾਹੀਂ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="213"/>
+        <location filename="../foldermenu.cpp" line="214"/>
         <source>By File Type</source>
         <translation>ਫਾਇਲ ਦੀ ਕਿਸਮ ਰਾਹੀਂ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="214"/>
+        <location filename="../foldermenu.cpp" line="215"/>
         <source>By File Owner</source>
         <translation>ਫਾਇਲ ਦੇ ਮਾਲਕ ਰਾਹੀਂ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="215"/>
+        <location filename="../foldermenu.cpp" line="216"/>
         <source>By File Group</source>
         <translation>ਫਾਇਲ ਦੇ ਗਰੁੱਪ ਰਾਹੀਂ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="221"/>
+        <location filename="../foldermenu.cpp" line="222"/>
         <source>Ascending</source>
         <translation>ਵੱਧਦਾ ਕ੍ਰਮ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="226"/>
+        <location filename="../foldermenu.cpp" line="227"/>
         <source>Descending</source>
         <translation>ਘੱਟਦਾ ਕ੍ਰਮ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="243"/>
+        <location filename="../foldermenu.cpp" line="244"/>
         <source>Folder First</source>
         <translation>ਫੋਲਡਰ ਪਹਿਲਾਂ</translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="251"/>
+        <location filename="../foldermenu.cpp" line="252"/>
         <source>Hidden Last</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../foldermenu.cpp" line="259"/>
+        <location filename="../foldermenu.cpp" line="260"/>
         <source>Case Sensitive</source>
         <translation>ਅੱਖਰ ਆਕਾਰ ਲਈ ਸੰਵੇਦਨਸ਼ੀਲ</translation>
     </message>
@@ -1310,59 +1305,59 @@ Do you want to delete them instead?</source>
         <translation>ਨਵੀਂ ਟੈਬ ਵਿੱਚ ਖੋਲ੍ਹੋ</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="558"/>
+        <location filename="../placesview.cpp" line="559"/>
         <source>Open in New Window</source>
         <translation>ਨਵੀਂ ਵਿੰਡੋ ਵਿੱਚ ਖੋਲ੍ਹੋ</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="570"/>
+        <location filename="../placesview.cpp" line="572"/>
         <source>Empty Trash</source>
         <translation>ਰੱਦੀ ਖਾਲੀ ਕਰੋ</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="590"/>
-        <location filename="../placesview.cpp" line="652"/>
+        <location filename="../placesview.cpp" line="592"/>
+        <location filename="../placesview.cpp" line="654"/>
         <source>Hide</source>
         <translation>ਓਹਲੇ</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="607"/>
+        <location filename="../placesview.cpp" line="609"/>
         <source>Move Bookmark Up</source>
         <translation>ਬੁੱਕਮਾਰਕ ਉੱਤੇ ਭੇਜੋ</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="614"/>
+        <location filename="../placesview.cpp" line="616"/>
         <source>Move Bookmark Down</source>
         <translation>ਬੁੱਕਮਾਰਕ ਹੇਠਾਂ ਭੇਜੋ</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="619"/>
+        <location filename="../placesview.cpp" line="621"/>
         <source>Rename Bookmark</source>
         <translation>ਬੁੱਕਮਾਰਕ ਦਾ ਨਾਂ ਬਦਲੋ</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="623"/>
+        <location filename="../placesview.cpp" line="625"/>
         <source>Remove Bookmark</source>
         <translation>ਬੁੱਕਮਾਰਕ ਨੂੰ ਹਟਾਓ</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="633"/>
-        <location filename="../placesview.cpp" line="666"/>
+        <location filename="../placesview.cpp" line="635"/>
+        <location filename="../placesview.cpp" line="668"/>
         <source>Unmount</source>
         <translation>ਅਣ-ਮਾਊਂਟ</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="637"/>
+        <location filename="../placesview.cpp" line="639"/>
         <source>Mount</source>
         <translation>ਮਾਊਂਟ</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="643"/>
+        <location filename="../placesview.cpp" line="645"/>
         <source>Eject</source>
         <translation>ਬਾਹਰ</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="678"/>
+        <location filename="../placesview.cpp" line="680"/>
         <source>Show All Entries</source>
         <translation>ਸਭ ਐਂਟਰੀਆਂ ਵੇਖਾਓ</translation>
     </message>
@@ -1388,17 +1383,17 @@ Modified: %2</source>
 ਸੋਧ: %2</translation>
     </message>
     <message>
-        <location filename="../renamedialog.cpp" line="97"/>
+        <location filename="../renamedialog.cpp" line="104"/>
         <source>&amp;Overwrite</source>
         <translation>ਉੱਤੇ ਲਿਖੋ(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../renamedialog.cpp" line="99"/>
+        <location filename="../renamedialog.cpp" line="106"/>
         <source>&amp;Rename</source>
         <translation>ਨਾਂ ਬਦਲੋ(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../renamedialog.cpp" line="109"/>
+        <location filename="../renamedialog.cpp" line="116"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1406,12 +1401,12 @@ Modified: %2</source>
 <context>
     <name>Fm::SidePane</name>
     <message>
-        <location filename="../sidepane.cpp" line="45"/>
+        <location filename="../sidepane.cpp" line="46"/>
         <source>Lists</source>
         <translation>ਸੂਚੀਆਂ</translation>
     </message>
     <message>
-        <location filename="../sidepane.cpp" line="46"/>
+        <location filename="../sidepane.cpp" line="47"/>
         <source>Directory Tree</source>
         <translation>ਡਾਇਕਟਰੀ ਲੜੀ</translation>
     </message>
@@ -1491,7 +1486,7 @@ Modified: %2</source>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="124"/>
-        <location filename="../filepropsdialog.cpp" line="669"/>
+        <location filename="../filepropsdialog.cpp" line="671"/>
         <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="154"/>
         <location filename="../utilities.cpp" line="318"/>
@@ -1534,7 +1529,7 @@ Modified: %2</source>
         <translation>ਨਵੇਂ %1 ਲਈ ਨਾਂ ਦਿਓ:</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="687"/>
+        <location filename="../filepropsdialog.cpp" line="689"/>
         <source>Custom Icon Error</source>
         <translation>ਕਸਟਮ ਆਈਕਾਨ ਗਲਤੀ</translation>
     </message>
