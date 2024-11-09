@@ -292,7 +292,7 @@ void PathBar::setPath(Fm::FilePath path) {
             name = pathStr.toStdString();
         }
         // double ampersands to distinguish them from mnemonics
-        displayName.replace(QLatin1Char('&'), QLatin1String("&&"));
+        displayName.replace(QLatin1Char('&'), QLatin1StringView("&&"));
         auto btn = new PathButton(name, displayName, isRoot, buttonsWidget_);
         btn->show();
         connect(btn, &QAbstractButton::toggled, this, &PathBar::onButtonToggled);

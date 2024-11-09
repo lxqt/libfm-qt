@@ -71,7 +71,7 @@ QString FileSearchDialog::contentPattern() const {
 void FileSearchDialog::addNamePatterns(const QStringList& patterns) {
     ui->namePatterns->addItems(patterns);
     ui->namePatterns->setCurrentIndex(-1);
-    ui->namePatterns->setCurrentText(QLatin1String("*"));
+    ui->namePatterns->setCurrentText(QStringLiteral("*"));
 }
 
 void FileSearchDialog::addContentPatterns(const QStringList& patterns) {
