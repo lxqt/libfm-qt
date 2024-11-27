@@ -593,7 +593,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="601"/>
         <source>Please select a file</source>
-        <translation>파일을 선택하십시오</translation>
+        <translation>파일을 선택해 주세요</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="677"/>
@@ -1402,7 +1402,7 @@ Modified: %2</source>
     <message>
         <location filename="../renamedialog.cpp" line="116"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;파일을 덮어쓸 수 없습니다.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;다른 이름을 선택하십시오.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;파일을 덮어쓸 수 없습니다.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;다른 이름을 선택해 주세요.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
