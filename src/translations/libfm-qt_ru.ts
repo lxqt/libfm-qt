@@ -114,7 +114,7 @@
     <message>
         <location filename="../exec-file.ui" line="65"/>
         <source>Execute in &amp;Terminal</source>
-        <translation>Выполнить в &amp;терминале</translation>
+        <translation>Выполнить в &amp;Терминале</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="88"/>
@@ -223,7 +223,7 @@
     <message>
         <location filename="../file-props.ui" line="221"/>
         <source>Link target:</source>
-        <translation>Цель ссылки:</translation>
+        <translation>Объект ссылки:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="247"/>
@@ -800,18 +800,18 @@ Do you want to delete them instead?</source>
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
-            <numerusform>Хотите удалить выделенный файл?</numerusform>
-            <numerusform>Хотите удалить выделенные файлы?</numerusform>
-            <numerusform>Хотите удалить выделенные файлы?</numerusform>
+            <numerusform>Вы хотите удалить выбранный файл?</numerusform>
+            <numerusform>Вы хотите удалить выбранные файлы?</numerusform>
+            <numerusform>Вы хотите удалить выбранные файлы?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
-            <numerusform>Хотите убрать выделенный файл в корзину?</numerusform>
-            <numerusform>Хотите убрать выделенные файлы в корзину?</numerusform>
-            <numerusform>Хотите убрать выделенные файлы в корзину?</numerusform>
+            <numerusform>Вы хотите переместить выбранный файл в корзину?</numerusform>
+            <numerusform>Вы хотите переместить выбранные файлы в корзину?</numerusform>
+            <numerusform>Вы хотите переместить выбранные файлы в корзину?</numerusform>
         </translation>
     </message>
 </context>
@@ -1469,7 +1469,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation>Длительность сеанса определяется менеджером паролей</translation>
+        <translation>Продолжительность сеанса определяется менеджером паролей</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
