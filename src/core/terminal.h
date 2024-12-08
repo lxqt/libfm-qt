@@ -11,6 +11,8 @@ namespace Fm {
 
 LIBFM_QT_API bool launchTerminal(const char* programName, const FilePath& workingDir, GErrorPtr& error);
 
+LIBFM_QT_API std::vector<CStrPtr> internalTerminals();
+
 LIBFM_QT_API std::vector<CStrPtr> allKnownTerminals();
 
 LIBFM_QT_API const std::string defaultTerminal();
