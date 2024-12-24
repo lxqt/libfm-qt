@@ -30,21 +30,8 @@
 #include <glib/gi18n-lib.h>
 #include <menu-cache.h>
 
-/* support for libmenu-cache 0.4.x */
-#ifndef MENU_CACHE_CHECK_VERSION
-# ifdef HAVE_MENU_CACHE_DIR_LIST_CHILDREN
-#  define MENU_CACHE_CHECK_VERSION(_a,_b,_c) (_a == 0 && _b < 5) /* < 0.5.0 */
-# else
-#  define MENU_CACHE_CHECK_VERSION(_a,_b,_c) 0 /* not even 0.4.0 */
-# endif
-#endif
-
 /* libmenu-cache is multithreaded since 0.4.x */
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
 # define RUN_WITH_MENU_CACHE(__func,__data) __func(__data)
-#else
-# define RUN_WITH_MENU_CACHE(__func,__data) fm_run_in_default_main_context(__func,__data)
-#endif
 
 /* beforehand declarations */
 GFile *_fm_vfs_menu_new_for_uri(const char *uri);
@@ -339,7 +326,6 @@ static gboolean _save_new_menu_file(GFile *gf, FmXmlFile *file,
     return result;
 }
 
-#if MENU_CACHE_CHECK_VERSION(0, 5, 0)
 /* changes .menu XML file */
 static gboolean _remove_directory(const char *path, GCancellable *cancellable,
                                   GError **error)
@@ -514,7 +500,6 @@ static gboolean _add_directory(const char *path, GCancellable *cancellable,
     g_list_free(xml);
     return ok;
 }
-#endif
 
 /* changes .menu XML file */
 static gboolean _add_application(const char *path, GCancellable *cancellable,
@@ -870,12 +855,8 @@ static GFileInfo *_g_file_info_from_menu_cache_item(MenuCacheItem *item,
     if(menu_cache_item_get_type(item) == MENU_CACHE_TYPE_DIR)
     {
         g_file_info_set_file_type(fileinfo, G_FILE_TYPE_DIRECTORY);
-#if MENU_CACHE_CHECK_VERSION(0, 5, 0)
         g_file_info_set_is_hidden(fileinfo,
                                   !menu_cache_dir_is_visible(MENU_CACHE_DIR(item)));
-#else
-        g_file_info_set_is_hidden(fileinfo, FALSE);
-#endif
     }
     else /* MENU_CACHE_TYPE_APP */
     {
@@ -955,7 +936,6 @@ static gboolean _fm_vfs_menu_enumerator_next_file_real(gpointer data)
         child = child->next;
         break;
     }
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
     while(enu->child != child) /* free skipped/used elements */
     {
         GSList *ch = enu->child;
@@ -963,9 +943,6 @@ static gboolean _fm_vfs_menu_enumerator_next_file_real(gpointer data)
         menu_cache_item_unref(ch->data);
         g_slist_free_1(ch);
     }
-#else
-    enu->child = child;
-#endif
 
 done:
     return FALSE;
@@ -994,9 +971,7 @@ static gboolean _fm_vfs_menu_enumerator_close(GFileEnumerator *enumerator,
     {
         menu_cache_unref(enu->mc);
         enu->mc = NULL;
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
         g_slist_free_full(enu->child, (GDestroyNotify)menu_cache_item_unref);
-#endif
         enu->child = NULL;
     }
     return TRUE;
@@ -1024,53 +999,12 @@ static MenuCacheItem *_vfile_path_to_menu_cache_item(MenuCache* mc, const char *
     char *unescaped, *tmp = NULL;
 
     unescaped = g_uri_unescape_string(path, NULL);
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
     dir = MENU_CACHE_ITEM(menu_cache_dup_root_dir(mc));
-#else
-    dir = MENU_CACHE_ITEM(menu_cache_get_root_dir(mc));
-#endif
     if(dir)
     {
-#if !MENU_CACHE_CHECK_VERSION(0, 5, 0)
-        char *id;
-#if !MENU_CACHE_CHECK_VERSION(0, 4, 0)
-        GSList *child;
-#endif
-#endif
         tmp = g_strconcat("/", menu_cache_item_get_id(dir), "/", unescaped, NULL);
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
         menu_cache_item_unref(dir);
         dir = menu_cache_item_from_path(mc, tmp);
-#else
-        /* access not dir is a bit tricky */
-        id = strrchr(tmp, '/');
-        *id++ = '\0';
-        dir = MENU_CACHE_ITEM(menu_cache_get_dir_from_path(mc, tmp));
-        child = menu_cache_dir_get_children(MENU_CACHE_DIR(dir));
-        dir = NULL;
-        while (child)
-        {
-            if (g_strcmp0(id, menu_cache_item_get_id(child->data)) == 0)
-            {
-                dir = child->data;
-                break;
-            }
-            child = child->next;
-        }
-#endif
-#if !MENU_CACHE_CHECK_VERSION(0, 5, 0)
-        /* The menu-cache is buggy and returns parent for invalid path
-           instead of failure so we check what we got here.
-           Unfortunately we cannot detect if requested name is the same
-           as its parent and menu-cache returned the parent. */
-        id = strrchr(unescaped, '/');
-        if(id)
-            id++;
-        else
-            id = unescaped;
-        if(dir != NULL && strcmp(id, menu_cache_item_get_id(dir)) != 0)
-            dir = NULL;
-#endif
     }
     g_free(unescaped);
     g_free(tmp);
@@ -1090,11 +1024,7 @@ static MenuCache *_get_menu_cache(GError **error)
         requires_prefix = (g_getenv("XDG_MENU_PREFIX") == NULL);
         environment_tested = TRUE;
     }
-#if MENU_CACHE_CHECK_VERSION(0, 5, 0)
     mc = menu_cache_lookup_sync(requires_prefix ? "lxqt-applications-fm.menu+hidden" : "applications.menu+hidden");
-#else
-    mc = menu_cache_lookup_sync(requires_prefix ? "lxqt-applications-fm.menu" : "applications.menu");
-#endif
     /* FIXME: may be it is reasonable to set XDG_MENU_PREFIX ? */
 
     if(mc == NULL) /* initialization failed */
@@ -1130,19 +1060,11 @@ static gboolean _fm_vfs_menu_enumerator_new_real(gpointer data)
     if(init->path_str)
         dir = _vfile_path_to_menu_cache_item(mc, init->path_str);
     else
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
         dir = MENU_CACHE_ITEM(menu_cache_dup_root_dir(mc));
-#else
-        dir = MENU_CACHE_ITEM(menu_cache_get_root_dir(mc));
-#endif
     if(dir)
     {
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
         enumerator->child = menu_cache_dir_list_children(MENU_CACHE_DIR(dir));
         menu_cache_item_unref(dir);
-#else
-        enumerator->child = menu_cache_dir_get_children(MENU_CACHE_DIR(dir));
-#endif
     }
     /* FIXME: do something with attributes and flags */
 
@@ -1357,17 +1279,12 @@ static gboolean _fm_vfs_menu_get_child_for_display_name_real(gpointer data)
             is_invalid = TRUE;
     }
     else
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
         dir = MENU_CACHE_ITEM(menu_cache_dup_root_dir(mc));
-#else
-        dir = MENU_CACHE_ITEM(menu_cache_get_root_dir(mc));
-#endif
     if(is_invalid)
         g_set_error_literal(init->error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND,
                             _("Invalid menu directory"));
     else if(dir)
     {
-#if MENU_CACHE_CHECK_VERSION(0, 5, 0)
         MenuCacheItem *item = menu_cache_find_child_by_name(MENU_CACHE_DIR(dir),
                                                             init->display_name);
         g_debug("searched for child '%s' found '%s'", init->display_name,
@@ -1381,35 +1298,13 @@ static gboolean _fm_vfs_menu_get_child_for_display_name_real(gpointer data)
                                                 menu_cache_item_get_id(item));
             menu_cache_item_unref(item);
         }
-#else /* < 0.5.0 */
-        GSList *l;
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
-        GSList *children = menu_cache_dir_list_children(MENU_CACHE_DIR(dir));
-#else
-        GSList *children = menu_cache_dir_get_children(MENU_CACHE_DIR(dir));
-#endif
-        for (l = children; l; l = l->next)
-            if (g_strcmp0(init->display_name, menu_cache_item_get_name(l->data)) == 0)
-                break;
-        if (l == NULL) /* not found */
-            init->result = _fm_vfs_menu_resolve_relative_path(init->file,
-                                                              init->display_name);
-        else
-            init->result = _fm_vfs_menu_resolve_relative_path(init->file,
-                                                menu_cache_item_get_id(l->data));
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
-        g_slist_free_full(children, (GDestroyNotify)menu_cache_item_unref);
-#endif
-#endif /* < 0.5.0 */
     }
     else /* menu_cache_get_root_dir failed */
         g_set_error_literal(init->error, G_IO_ERROR, G_IO_ERROR_FAILED,
                             _("Menu cache error"));
 
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
     if(dir)
         menu_cache_item_unref(dir);
-#endif
     menu_cache_unref(mc);
 
 _mc_failed:
@@ -1470,11 +1365,7 @@ static gboolean _fm_vfs_menu_query_info_real(gpointer data)
             is_invalid = TRUE;
     }
     else
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
         dir = MENU_CACHE_ITEM(menu_cache_dup_root_dir(mc));
-#else
-        dir = MENU_CACHE_ITEM(menu_cache_get_root_dir(mc));
-#endif
     if(is_invalid)
         g_set_error(init->error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND,
                     _("Invalid menu directory '%s'"), init->path_str);
@@ -1492,10 +1383,8 @@ static gboolean _fm_vfs_menu_query_info_real(gpointer data)
         g_set_error_literal(init->error, G_IO_ERROR, G_IO_ERROR_FAILED,
                             _("Menu cache error"));
 
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
     if(dir)
         menu_cache_item_unref(dir);
-#endif
     menu_cache_unref(mc);
 
 _mc_failed:
@@ -1676,10 +1565,8 @@ static gboolean _fm_vfs_menu_set_display_name_real(gpointer data)
         g_key_file_free(kf);
     }
 
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
     if(dir)
         menu_cache_item_unref(dir);
-#endif
     menu_cache_unref(mc);
 
 _mc_failed:
@@ -1777,7 +1664,6 @@ static gboolean _fm_vfs_menu_set_attributes_from_info_real(gpointer data)
         /* for hidden on directory: use _add_directory() or _remove_directory() */
         if (set_hidden >= 0 && menu_cache_item_get_type(item) == MENU_CACHE_TYPE_DIR)
         {
-#if MENU_CACHE_CHECK_VERSION(0, 5, 0)
             char *unescaped = g_uri_unescape_string(init->path_str, NULL);
             if (set_hidden > 0)
                 no_error = _remove_directory(unescaped, init->cancellable, init->error);
@@ -1785,11 +1671,6 @@ static gboolean _fm_vfs_menu_set_attributes_from_info_real(gpointer data)
                 no_error = _add_directory(unescaped, init->cancellable, init->error);
             g_free(unescaped);
             ok = no_error;
-#else
-            g_set_error_literal(init->error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
-                                _("Change hidden status isn't supported for menu directory"));
-            no_error = FALSE;
-#endif
             if (display_name == NULL && icon == NULL) /* nothing else to update */
                 goto _done;
             set_hidden = -1; /* don't set NoDisplay for a directory */
@@ -1867,10 +1748,8 @@ static gboolean _fm_vfs_menu_set_attributes_from_info_real(gpointer data)
     }
 
 _done:
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
     if(item)
         menu_cache_item_unref(item);
-#endif
     menu_cache_unref(mc);
 
 _mc_failed:
@@ -2029,10 +1908,8 @@ static gboolean _fm_vfs_menu_read_fn_real(gpointer data)
         }
     }
 
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
     if(item)
         menu_cache_item_unref(item);
-#endif
     menu_cache_unref(mc);
 
 _mc_failed:
@@ -2262,9 +2139,6 @@ static gboolean _fm_vfs_menu_create_real(gpointer data)
     if(init->path_str)
     {
         MenuCacheItem *item;
-#if !MENU_CACHE_CHECK_VERSION(0, 5, 0)
-        GSList *list, *l;
-#endif
 
         mc = _get_menu_cache(init->error);
         if(mc == NULL)
@@ -2282,21 +2156,9 @@ static gboolean _fm_vfs_menu_create_real(gpointer data)
             id++;
         else
             id = unescaped;
-#if MENU_CACHE_CHECK_VERSION(0, 5, 0)
         item = menu_cache_find_item_by_id(mc, id);
         if (item)
             menu_cache_item_unref(item); /* use item simply as marker */
-#else
-        list = menu_cache_list_all_apps(mc);
-        for (l = list; l; l = l->next)
-            if (strcmp(menu_cache_item_get_id(l->data), id) == 0)
-                break;
-        if (l)
-            item = l->data;
-        else
-            item = NULL;
-        g_slist_free_full(list, (GDestroyNotify)menu_cache_item_unref);
-#endif
         if(item == NULL)
             is_invalid = FALSE;
         /* g_debug("create id %s, category %s", id, category); */
@@ -2371,19 +2233,7 @@ static gboolean _fm_vfs_menu_replace_real(gpointer data)
         /* if not found then check item by id to exclude conflicts */
         else
         {
-#if MENU_CACHE_CHECK_VERSION(0, 5, 0)
             item2 = menu_cache_find_item_by_id(mc, id);
-#else
-            GSList *list = menu_cache_list_all_apps(mc), *l;
-            for (l = list; l; l = l->next)
-                if (strcmp(menu_cache_item_get_id(l->data), id) == 0)
-                    break;
-            if (l)
-                item2 = menu_cache_item_ref(l->data);
-            else
-                item2 = NULL;
-            g_slist_free_full(list, (GDestroyNotify)menu_cache_item_unref);
-#endif
             if(item2 == NULL)
                 is_invalid = FALSE;
             else /* item was found in another category */
@@ -2491,7 +2341,6 @@ static gboolean _fm_vfs_menu_delete_file(GFile *file,
     kf = _g_key_file_from_item(file, cancellable, &err);
     if (kf == NULL)
     {
-#if MENU_CACHE_CHECK_VERSION(0, 5, 0)
         /* it might be just a directory */
         if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_IS_DIRECTORY)
         {
@@ -2502,7 +2351,6 @@ static gboolean _fm_vfs_menu_delete_file(GFile *file,
             return ok;
         }
         /* else it just failed */
-#endif
         g_propagate_error(error, err);
         return FALSE;
     }
@@ -2524,13 +2372,6 @@ static gboolean _fm_vfs_menu_make_directory(GFile *file,
                                             GCancellable *cancellable,
                                             GError **error)
 {
-#if !MENU_CACHE_CHECK_VERSION(0, 5, 0)
-    /* creating a directory with libmenu-cache < 0.5.0 will lead to invisible
-       directory; inexperienced user will be confused; therefore we disable
-       such operation in such conditions */
-    ERROR_UNSUPPORTED(error);
-    return FALSE;
-#else
     FmMenuVFile *item = FM_MENU_VFILE(file);
     char *unescaped;
     gboolean ok;
@@ -2547,7 +2388,6 @@ static gboolean _fm_vfs_menu_make_directory(GFile *file,
     ok = _add_directory(unescaped, cancellable, error);
     g_free(unescaped);
     return ok;
-#endif
 }
 
 static gboolean _fm_vfs_menu_make_symbolic_link(GFile *file,
@@ -2632,9 +2472,7 @@ static gboolean _fm_vfs_menu_move_real(gpointer data)
     {
         g_set_error(init->error, G_IO_ERROR, G_IO_ERROR_EXISTS,
                     _("Menu path '%s' already exists"), dst_path);
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
         menu_cache_item_unref(item2);
-#endif
         goto _failed;
     }
     /* do actual move */
@@ -2647,10 +2485,8 @@ static gboolean _fm_vfs_menu_move_real(gpointer data)
     }
 
 _failed:
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
     if(item)
         menu_cache_item_unref(item);
-#endif
     if(mc)
         menu_cache_unref(mc);
     g_free(src_path);
@@ -2701,14 +2537,8 @@ struct _FmMenuVFileMonitor
 
     FmMenuVFile *file;
     MenuCache *cache;
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
     MenuCacheItem *item;
     MenuCacheNotifyId notifier;
-#else
-    GSList *items;
-    gboolean stopped;
-    gpointer notifier;
-#endif
 };
 
 struct _FmMenuVFileMonitorClass
@@ -2728,12 +2558,8 @@ static void fm_vfs_menu_file_monitor_finalize(GObject *object)
             menu_cache_remove_reload_notify(mon->cache, mon->notifier);
         menu_cache_unref(mon->cache);
     }
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
     if(mon->item)
         menu_cache_item_unref(mon->item);
-#else
-    g_slist_free_full(mon->items, (GDestroyNotify)menu_cache_item_unref);
-#endif
     g_object_unref(mon->file);
 
     G_OBJECT_CLASS(fm_vfs_menu_file_monitor_parent_class)->finalize(object);
@@ -2743,13 +2569,9 @@ static gboolean fm_vfs_menu_file_monitor_cancel(GFileMonitor *monitor)
 {
     FmMenuVFileMonitor *mon = FM_MENU_VFILE_MONITOR(monitor);
 
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
     if(mon->item)
         menu_cache_item_unref(mon->item); /* rest will be done in finalizer */
     mon->item = NULL;
-#else
-    mon->stopped = TRUE;
-#endif
     return TRUE;
 }
 
@@ -2772,11 +2594,7 @@ static FmMenuVFileMonitor *_fm_menu_vfile_monitor_new(void)
     return (FmMenuVFileMonitor*)g_object_new(FM_TYPE_MENU_VFILE_MONITOR, NULL);
 }
 
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
 static void _reload_notify_handler(MenuCache* cache, gpointer user_data)
-#else
-static void _reload_notify_handler(gpointer cache, gpointer user_data)
-#endif
 {
     FmMenuVFileMonitor *mon = FM_MENU_VFILE_MONITOR(user_data);
     GSList *items, *new_items, *ol, *nl;
@@ -2785,7 +2603,6 @@ static void _reload_notify_handler(gpointer cache, gpointer user_data)
     const char *de_name;
     guint32 de_flag;
 
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
     if(mon->item == NULL) /* menu folder was destroyed or monitor cancelled */
         return;
     dir = mon->item;
@@ -2808,28 +2625,6 @@ static void _reload_notify_handler(gpointer cache, gpointer user_data)
     items = menu_cache_dir_list_children(MENU_CACHE_DIR(dir));
     menu_cache_item_unref(dir);
     new_items = menu_cache_dir_list_children(MENU_CACHE_DIR(mon->item));
-#else
-    if(mon->stopped) /* menu folder was destroyed or monitor cancelled */
-        return;
-    if(mon->file->path)
-        dir = _vfile_path_to_menu_cache_item(cache, mon->file->path);
-    else
-        dir = MENU_CACHE_ITEM(menu_cache_get_root_dir(cache));
-    if(dir == NULL) /* folder was destroyed - emit event and exit */
-    {
-        mon->stopped = TRUE;
-        g_file_monitor_emit_event(G_FILE_MONITOR(mon), G_FILE(mon->file), NULL,
-                                  G_FILE_MONITOR_EVENT_DELETED);
-        return;
-    }
-    /* emit change on the folder in any case */
-    g_file_monitor_emit_event(G_FILE_MONITOR(mon), G_FILE(mon->file), NULL,
-                              G_FILE_MONITOR_EVENT_CHANGED);
-    items = mon->items;
-    mon->items = g_slist_copy_deep(menu_cache_dir_get_children(MENU_CACHE_DIR(dir)),
-                                   (GCopyFunc)menu_cache_item_ref, NULL);
-    new_items = g_slist_copy_deep(mon->items, (GCopyFunc)menu_cache_item_ref, NULL);
-#endif
     for (ol = items; ol; ) /* remove all separatorts first */
     {
         nl = ol->next;
@@ -2918,9 +2713,6 @@ static gboolean _fm_vfs_menu_monitor_dir_real(gpointer data)
 {
     FmVfsMenuMainThreadData *init = data;
     FmMenuVFileMonitor *mon;
-#if !MENU_CACHE_CHECK_VERSION(0, 4, 0)
-    MenuCacheItem *dir;
-#endif
 
     init->result = NULL;
     if(g_cancellable_set_error_if_cancelled(init->cancellable, init->error))
@@ -2934,30 +2726,17 @@ static gboolean _fm_vfs_menu_monitor_dir_real(gpointer data)
     if(mon->cache == NULL)
         goto _fail;
     /* check if requested path exists within cache */
-#if MENU_CACHE_CHECK_VERSION(0, 4, 0)
     if(mon->file->path)
         mon->item = _vfile_path_to_menu_cache_item(mon->cache, mon->file->path);
     else
         mon->item = MENU_CACHE_ITEM(menu_cache_dup_root_dir(mon->cache));
     if(mon->item == NULL || menu_cache_item_get_type(mon->item) != MENU_CACHE_TYPE_DIR)
-#else
-    if(mon->file->path)
-        dir = _vfile_path_to_menu_cache_item(mon->cache, mon->file->path);
-    else
-        dir = MENU_CACHE_ITEM(menu_cache_get_root_dir(mon->cache));
-    if(dir == NULL)
-#endif
     {
         g_set_error(init->error, G_IO_ERROR, G_IO_ERROR_FAILED,
                     _("FmMenuVFileMonitor: folder '%s' not found in menu cache"),
                     mon->file->path);
         goto _fail;
     }
-#if !MENU_CACHE_CHECK_VERSION(0, 4, 0)
-    /* for old libmenu-cache we have no choice but copy all the data right now */
-    mon->items = g_slist_copy_deep(menu_cache_dir_get_children(MENU_CACHE_DIR(dir)),
-                                   (GCopyFunc)menu_cache_item_ref, NULL);
-#endif
     if(g_cancellable_set_error_if_cancelled(init->cancellable, init->error))
         goto _fail;
     /* current directory contents belong to mon->item now */
