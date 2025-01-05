@@ -98,6 +98,9 @@
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
          </property>
+         <property name="cursor">
+          <set>Qt::IBeamCursor</set>
+         </property>
         </widget>
        </item>
        <item row="3" column="0">
@@ -120,6 +123,9 @@
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+         <property name="cursor">
+          <set>Qt::IBeamCursor</set>
          </property>
         </widget>
        </item>
@@ -144,6 +150,9 @@
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
          </property>
+         <property name="cursor">
+          <set>Qt::IBeamCursor</set>
+         </property>
         </widget>
        </item>
        <item row="6" column="0">
@@ -166,6 +175,9 @@
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+         <property name="cursor">
+          <set>Qt::IBeamCursor</set>
          </property>
         </widget>
        </item>
@@ -190,6 +202,9 @@
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
          </property>
+         <property name="cursor">
+          <set>Qt::IBeamCursor</set>
+         </property>
         </widget>
        </item>
        <item row="8" column="0">
@@ -212,6 +227,9 @@
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+         <property name="cursor">
+          <set>Qt::IBeamCursor</set>
          </property>
         </widget>
        </item>
@@ -238,6 +256,9 @@
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+         <property name="cursor">
+          <set>Qt::IBeamCursor</set>
          </property>
         </widget>
        </item>
@@ -279,6 +300,9 @@
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
          </property>
+         <property name="cursor">
+          <set>Qt::IBeamCursor</set>
+         </property>
         </widget>
        </item>
        <item row="10" column="0">
@@ -301,6 +325,9 @@
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+         <property name="cursor">
+          <set>Qt::IBeamCursor</set>
          </property>
         </widget>
        </item>
