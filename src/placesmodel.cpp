@@ -351,14 +351,16 @@ void PlacesModel::onMountAdded(GVolumeMonitor* /*monitor*/, GMount* mount, Place
     GVolume* vol = g_mount_get_volume(mount);
     if(vol) { // mount-added is also emitted when a volume is newly mounted.
         PlacesModelVolumeItem* item = pThis->itemFromVolume(vol);
-        if(item && !item->path()) {
-            // update the mounted volume and show a button for eject.
-            Fm::FilePath path{g_mount_get_root(mount), false};
-            item->setPath(path);
+        if(item) {
+            if(!item->path()) {
+                // update the mounted volume
+                Fm::FilePath path{g_mount_get_root(mount), false};
+                item->setPath(path);
+            }
             // update the mount indicator (eject button)
-            QStandardItem* ejectBtn = item->parent()->child(item->row(), 1);
-            Q_ASSERT(ejectBtn);
-            ejectBtn->setIcon(pThis->ejectIcon_);
+            if(QStandardItem* ejectBtn = item->parent()->child(item->row(), 1)) {
+                ejectBtn->setIcon(pThis->ejectIcon_);
+            }
         }
         g_object_unref(vol);
     }
