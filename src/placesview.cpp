@@ -238,7 +238,15 @@ void PlacesView::activateRow(int type, const QModelIndex& index) {
                     QTimer::singleShot(0, op, [this, op, type, index] () {
                         if(op->wait()) {
                             if(PlacesModelItem* item = static_cast<PlacesModelItem*>(model_->itemFromIndex(proxyModel_->mapToSource(index)))) {
-                                if(auto path = item->path()) {
+                                auto path = item->path();
+                                if(!path && item->type() == PlacesModelItem::Volume) {
+                                    // If the signal "mount-added" is not emitted at this moment,
+                                    // the path is not set yet. Try to update the item.
+                                    auto volumeItem = static_cast<PlacesModelVolumeItem*>(item);
+                                    volumeItem->update();
+                                    path = volumeItem->path();
+                                }
+                                if(path) {
                                     Q_EMIT chdirRequested(type, path);
                                 }
                             }
