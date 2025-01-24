@@ -377,16 +377,16 @@
           <string>Last Modified Time:</string>
          </property>
          <layout class="QFormLayout" name="formLayout_2">
-          <item row="1" column="0">
+          <item row="0" column="0">
            <layout class="QGridLayout" name="gridLayout">
-            <item row="2" column="0">
+            <item row="0" column="0">
              <widget class="QCheckBox" name="earlierThan">
               <property name="text">
                <string>Earlier than:</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="1">
+            <item row="0" column="1">
              <widget class="QDateEdit" name="maxTime">
               <property name="enabled">
                <bool>false</bool>
@@ -396,14 +396,14 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="0">
+            <item row="1" column="0">
              <widget class="QCheckBox" name="laterThan">
               <property name="text">
                <string>Later than:</string>
               </property>
              </widget>
             </item>
-            <item row="3" column="1">
+            <item row="1" column="1">
              <widget class="QDateEdit" name="minTime">
               <property name="enabled">
                <bool>false</bool>
