@@ -69,16 +69,6 @@
      <item row="0" column="1">
       <widget class="QLineEdit" name="fileName"/>
      </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="fileTypeLabel">
-       <property name="text">
-        <string>File type:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QComboBox" name="fileTypeCombo"/>
-     </item>
      <item row="0" column="2" rowspan="2">
       <widget class="QDialogButtonBox" name="buttonBox">
        <property name="orientation">
@@ -88,6 +78,16 @@
         <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="fileTypeLabel">
+       <property name="text">
+        <string>File type:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="fileTypeCombo"/>
      </item>
     </layout>
    </item>

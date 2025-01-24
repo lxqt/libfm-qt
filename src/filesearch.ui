@@ -275,17 +275,10 @@
          <layout class="QFormLayout" name="formLayout">
           <item row="0" column="0">
            <layout class="QGridLayout" name="gridLayout_2">
-            <item row="1" column="0">
-             <widget class="QCheckBox" name="smallerThan">
+            <item row="0" column="0">
+             <widget class="QCheckBox" name="largerThan">
               <property name="text">
-               <string>Smaller than:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QSpinBox" name="maxSize">
-              <property name="enabled">
-               <bool>false</bool>
+               <string>Larger than:</string>
               </property>
              </widget>
             </item>
@@ -293,13 +286,6 @@
              <widget class="QSpinBox" name="minSize">
               <property name="enabled">
                <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QCheckBox" name="largerThan">
-              <property name="text">
-               <string>Larger than:</string>
               </property>
              </widget>
             </item>
@@ -331,6 +317,20 @@
                 <string>GiB</string>
                </property>
               </item>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QCheckBox" name="smallerThan">
+              <property name="text">
+               <string>Smaller than:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QSpinBox" name="maxSize">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
              </widget>
             </item>
             <item row="1" column="3">
@@ -377,24 +377,17 @@
           <string>Last Modified Time:</string>
          </property>
          <layout class="QFormLayout" name="formLayout_2">
-          <item row="1" column="0">
+          <item row="0" column="0">
            <layout class="QGridLayout" name="gridLayout">
-            <item row="2" column="0">
+            <item row="0" column="0">
              <widget class="QCheckBox" name="earlierThan">
               <property name="text">
                <string>Earlier than:</string>
               </property>
              </widget>
             </item>
-            <item row="3" column="0">
-             <widget class="QCheckBox" name="laterThan">
-              <property name="text">
-               <string>Later than:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QDateEdit" name="minTime">
+            <item row="0" column="1">
+             <widget class="QDateEdit" name="maxTime">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -403,8 +396,15 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="1">
-             <widget class="QDateEdit" name="maxTime">
+            <item row="1" column="0">
+             <widget class="QCheckBox" name="laterThan">
+              <property name="text">
+               <string>Later than:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QDateEdit" name="minTime">
               <property name="enabled">
                <bool>false</bool>
               </property>

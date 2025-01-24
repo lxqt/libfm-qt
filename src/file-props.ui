@@ -100,6 +100,32 @@
          </property>
         </widget>
        </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="targetLabel">
+         <property name="text">
+          <string>Link target:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="target">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label_4">
          <property name="text">
@@ -143,6 +169,23 @@
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="openWithLabel">
+         <property name="text">
+          <string>Open With:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="Fm::AppChooserComboBox" name="openWith">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
         </widget>
        </item>
@@ -212,49 +255,6 @@
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="targetLabel">
-         <property name="text">
-          <string>Link target:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLabel" name="target">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-         <property name="textInteractionFlags">
-          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="openWithLabel">
-         <property name="text">
-          <string>Open With:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="Fm::AppChooserComboBox" name="openWith">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
          </property>
         </widget>
        </item>
@@ -391,6 +391,13 @@
          <property name="verticalSpacing">
           <number>5</number>
          </property>
+         <item row="0" column="0" rowspan="2" alignment="Qt::AlignVCenter">
+          <widget class="QLabel" name="deviceLabel">
+           <property name="text">
+            <string>Device Usage:</string>
+           </property>
+          </widget>
+         </item>
          <item row="0" column="1">
           <widget class="QProgressBar" name="progressBar">
            <property name="value">
@@ -405,13 +412,6 @@
            </property>
            <property name="wordWrap">
             <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0" rowspan="2" alignment="Qt::AlignVCenter">
-          <widget class="QLabel" name="deviceLabel">
-           <property name="text">
-            <string>Device Usage:</string>
            </property>
           </widget>
          </item>
@@ -445,13 +445,23 @@
           <property name="verticalSpacing">
            <number>6</number>
           </property>
-          <item row="1" column="1">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Owner:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
            <widget class="QLineEdit" name="owner"/>
           </item>
-          <item row="2" column="1">
-           <widget class="QLineEdit" name="ownerGroup"/>
-          </item>
-          <item row="2" column="0">
+          <item row="1" column="0">
            <widget class="QLabel" name="label_9">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -464,18 +474,8 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_8">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>Owner:</string>
-            </property>
-           </widget>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="ownerGroup"/>
           </item>
          </layout>
         </widget>
@@ -736,6 +736,13 @@
                 </item>
                </layout>
               </item>
+              <item row="0" column="1" rowspan="3">
+               <widget class="Line" name="line">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
               <item row="0" column="2">
                <widget class="QCheckBox" name="checkBox_10">
                 <property name="text">
@@ -754,13 +761,6 @@
                <widget class="QCheckBox" name="checkBox_12">
                 <property name="text">
                  <string>SetGID</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1" rowspan="3">
-               <widget class="Line" name="line">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
                 </property>
                </widget>
               </item>
