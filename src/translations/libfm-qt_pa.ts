@@ -158,8 +158,8 @@
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
-        <source>Progress</source>
-        <translation>ਤਰੱਕੀ</translation>
+        <source>Progress:</source>
+        <translation>ਤਰੱਕੀ:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
