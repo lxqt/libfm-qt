@@ -164,8 +164,8 @@
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
-        <source>Progress</source>
-        <translation>Folyamat</translation>
+        <source>Progress:</source>
+        <translation>Folyamat:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>

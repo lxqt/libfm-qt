@@ -164,7 +164,7 @@
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
-        <source>Progress</source>
+        <source>Progress:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
