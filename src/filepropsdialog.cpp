@@ -30,6 +30,7 @@
 #include <QFileDialog>
 #include <sys/types.h>
 #include <ctime>
+#include <algorithm>
 #include "core/totalsizejob.h"
 #include "core/folder.h"
 
@@ -405,7 +406,7 @@ void FilePropsDialog::initGeneralPage() {
             guint64 free, total;
             if(folder->getFilesystemInfo(&total, &free)) {
                 canShowDeviceUsage = true;
-                ui->progressBar->setValue(qRound(static_cast<qreal>((total - free) * 100) / static_cast<qreal>(total)));
+                ui->progressBar->setValue(std::round(static_cast<qreal>((total - free) * 100) / static_cast<qreal>(total)));
                 ui->progressBar->setFormat(tr("%p% used"));
                 ui->spaceLabel->setText(tr("%1 Free of %2")
                                         .arg(formatFileSize(free, false),

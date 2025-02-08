@@ -186,8 +186,8 @@ QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
            && (selectionMode() == QAbstractItemView::ExtendedSelection
                || selectionMode() == QAbstractItemView::MultiSelection)) {
             int s = _iconSize.width() / 3;
-            int icnLeft = qMax(visRect.left(), iconLeft - s);
-            int icnTop = qMax(visRect.top(), iconTop - s);
+            int icnLeft = std::max(visRect.left(), iconLeft - s);
+            int icnTop = std::max(visRect.top(), iconTop - s);
             if(point.x() >= icnLeft &&  point.x() <= icnLeft + s
                && point.y() >= icnTop &&  point.y() <= icnTop + s) {
                 cursorOnSelectionCorner_ = true;
@@ -571,12 +571,12 @@ void FolderViewTreeView::setSelection(const QRect &rect, QItemSelectionModel::Se
                                             -horizontalOffset(), -verticalOffset());
         bool rtl(layoutDirection() == Qt::RightToLeft);
         if (rtl) {
-            r.setRight(qMin(viewport()->contentsRect().right(), r.right()));
+            r.setRight(std::min(viewport()->contentsRect().right(), r.right()));
         }
         else {
-            r.setLeft(qMax(viewport()->contentsRect().left(), r.left()));
+            r.setLeft(std::max(viewport()->contentsRect().left(), r.left()));
         }
-        r.setTop(qMax(-verticalOffset(), r.top()));
+        r.setTop(std::max(-verticalOffset(), r.top()));
         QModelIndex top = indexAt(rtl ? r.topRight() : r.topLeft());
         QItemSelection selection;
         if(top.isValid()) {
@@ -686,7 +686,7 @@ void FolderViewTreeView::layoutColumns() {
             if(customColumnWidths_.size() > column) {
                 // see FolderView::setCustomColumnWidths for the meaning of custom width <= 0
                 if(customColumnWidths_.at(column) > 0) {
-                    w = qMax(customColumnWidths_.at(column), headerView->minimumSectionSize());
+                    w = std::max(customColumnWidths_.at(column), headerView->minimumSectionSize());
                 }
                 else {
                     if(wasHidden) {
@@ -709,7 +709,7 @@ void FolderViewTreeView::layoutColumns() {
                     }
                 }
                 opt.section = columnId;
-                w = qMax(sizeHintForColumn(columnId),
+                w = std::max(sizeHintForColumn(columnId),
                          style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(),
                                                    headerView).width());
             }
@@ -726,7 +726,7 @@ void FolderViewTreeView::layoutColumns() {
 
                 // Compute the minimum acceptable width for the filename column, showing
                 // whole texts whose lengths are less than 30 times the average font width.
-                int filenameMinWidth = qMin(iconSize().width()
+                int filenameMinWidth = std::min(iconSize().width()
                                             + 30 * opt.fontMetrics.averageCharWidth(),
                                             sizeHintForColumn(filenameColumn));
 
@@ -1218,7 +1218,7 @@ void FolderView::updateGridSize() {
         // 13 chars x 3 lines should be enough to show the full filenames for most files.
         int textWidth = fm.averageCharWidth() * 13;
         int textHeight = fm.lineSpacing() * 3;
-        grid.setWidth(qMax(icon.width(), textWidth) + 4); // a margin of 2 px for selection rects
+        grid.setWidth(std::max(icon.width(), textWidth) + 4); // a margin of 2 px for selection rects
         grid.setHeight(icon.height() + textHeight + 4); // a margin of 2 px for selection rects
         // grow to include margins
         grid += 2*itemDelegateMargins_;
@@ -1877,7 +1877,7 @@ void FolderView::scrollSmoothly() {
     int totalDelta = 0;
     QList<scrollData>::iterator it = queuedScrollSteps_.begin();
     while(it != queuedScrollSteps_.end()) {
-        int delta = qRound((qreal)it->delta / (qreal)scrollAnimFrames);
+        int delta = std::round((qreal)it->delta / (qreal)scrollAnimFrames);
         int remainingDelta = it->delta - (scrollAnimFrames - it->leftFrames) * delta;
         if((delta >= 0 && remainingDelta < 0) || (delta < 0 && remainingDelta >= 0)) {
             remainingDelta = 0;
