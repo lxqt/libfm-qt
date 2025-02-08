@@ -32,6 +32,7 @@
 #include <QDebug>
 #include "pathedit.h"
 
+#include <algorithm>
 
 namespace Fm {
 
@@ -173,8 +174,8 @@ void PathBar::setScrollButtonVisibility() {
         scrollToStart_->setEnabled(value != sb->minimum());
         scrollToEnd_->setEnabled(value != sb->maximum());
         // align scroll buttons horizontally
-        scrollToStart_->setMaximumHeight(qMax(buttonsWidget_->height(), scrollToStart_->minimumSizeHint().height()));
-        scrollToEnd_->setMaximumHeight(qMax(buttonsWidget_->height(), scrollToEnd_->minimumSizeHint().height()));
+        scrollToStart_->setMaximumHeight(std::max(buttonsWidget_->height(), scrollToStart_->minimumSizeHint().height()));
+        scrollToEnd_->setMaximumHeight(std::max(buttonsWidget_->height(), scrollToEnd_->minimumSizeHint().height()));
     }
 }
 

@@ -23,6 +23,8 @@
 #include <QCollator>
 #include <QApplication>
 
+#include <algorithm>
+
 namespace Fm {
 
 ProxyFolderModel::ProxyFolderModel(QObject* parent):
@@ -286,7 +288,7 @@ void ProxyFolderModel::setShowThumbnails(bool show) {
 void ProxyFolderModel::setThumbnailSize(int size) {
     // since we set the device pixel ratio of the thumbnail image when
     // storing it as the decoration data, we need a bigger size here
-    size  = qRound(size * qApp->devicePixelRatio());
+    size  = std::round(size * qApp->devicePixelRatio());
 
     if(size != thumbnailSize_) {
         FolderModel* srcModel = static_cast<FolderModel*>(sourceModel());

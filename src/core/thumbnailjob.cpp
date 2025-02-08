@@ -7,6 +7,8 @@
 #include <QDir>
 #include "thumbnailer.h"
 
+#include <algorithm>
+
 #include "core/legacy/fm-config.h"
 
 namespace Fm {
@@ -311,7 +313,7 @@ void ThumbnailJob::setLocalFilesOnly(bool value) {
 }
 
 void ThumbnailJob::setMaxThumbnailFileSize(int size) {
-    maxThumbnailFileSize_ = qMax(size, 0);
+    maxThumbnailFileSize_ = std::max(size, 0);
     if(fm_config) {
         fm_config->thumbnail_max = maxThumbnailFileSize_;
     }

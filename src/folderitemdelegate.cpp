@@ -35,6 +35,8 @@
 #include <QStandardPaths>
 #include <QDebug>
 
+#include <algorithm>
+
 namespace Fm {
 
 FolderItemDelegate::FolderItemDelegate(QAbstractItemView* view, QObject* parent):
@@ -198,8 +200,8 @@ void FolderItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
            && option.decorationSize.width() >= 48 && (opt.state & QStyle::State_MouseOver)) {
             int s = option.decorationSize.width() / 3;
             bool cursorOnSelectionCorner = false;
-            iconPos = QPoint(qMax(opt.rect.x(), iconPos.x() - s),
-                             qMax(opt.rect.y(), iconPos.y() - s));
+            iconPos = QPoint(std::max(opt.rect.x(), iconPos.x() - s),
+                             std::max(opt.rect.y(), iconPos.y() - s));
             QPoint curPos = iv->viewport()->mapFromGlobal(QCursor::pos());
             if(curPos.x() >= iconPos.x() && curPos.x() <= iconPos.x() + s
                && curPos.y() >= iconPos.y() && curPos.y() <= iconPos.y() + s) {
@@ -326,12 +328,12 @@ void FolderItemDelegate::drawText(QPainter* painter, QStyleOptionViewItem& opt, 
             break;
         }
         height += line.height();
-        width = qMax(width, line.naturalTextWidth());
+        width = std::max(width, line.naturalTextWidth());
         ++ visibleLines;
     }
     layout.endLayout();
 
-    width = qMax(width, static_cast<qreal>(opt.fontMetrics.horizontalAdvance(elidedText)));
+    width = std::max(width, static_cast<qreal>(opt.fontMetrics.horizontalAdvance(elidedText)));
 
     // draw background for selected item
     QRectF boundRect = layout.boundingRect();

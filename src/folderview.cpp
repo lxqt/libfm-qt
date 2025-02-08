@@ -186,8 +186,8 @@ QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
            && (selectionMode() == QAbstractItemView::ExtendedSelection
                || selectionMode() == QAbstractItemView::MultiSelection)) {
             int s = _iconSize.width() / 3;
-            int icnLeft = qMax(visRect.left(), iconLeft - s);
-            int icnTop = qMax(visRect.top(), iconTop - s);
+            int icnLeft = std::max(visRect.left(), iconLeft - s);
+            int icnTop = std::max(visRect.top(), iconTop - s);
             if(point.x() >= icnLeft &&  point.x() <= icnLeft + s
                && point.y() >= icnTop &&  point.y() <= icnTop + s) {
                 cursorOnSelectionCorner_ = true;
@@ -571,12 +571,12 @@ void FolderViewTreeView::setSelection(const QRect &rect, QItemSelectionModel::Se
                                             -horizontalOffset(), -verticalOffset());
         bool rtl(layoutDirection() == Qt::RightToLeft);
         if (rtl) {
-            r.setRight(qMin(viewport()->contentsRect().right(), r.right()));
+            r.setRight(std::min(viewport()->contentsRect().right(), r.right()));
         }
         else {
-            r.setLeft(qMax(viewport()->contentsRect().left(), r.left()));
+            r.setLeft(std::max(viewport()->contentsRect().left(), r.left()));
         }
-        r.setTop(qMax(-verticalOffset(), r.top()));
+        r.setTop(std::max(-verticalOffset(), r.top()));
         QModelIndex top = indexAt(rtl ? r.topRight() : r.topLeft());
         QItemSelection selection;
         if(top.isValid()) {
@@ -686,7 +686,7 @@ void FolderViewTreeView::layoutColumns() {
             if(customColumnWidths_.size() > column) {
                 // see FolderView::setCustomColumnWidths for the meaning of custom width <= 0
                 if(customColumnWidths_.at(column) > 0) {
-                    w = qMax(customColumnWidths_.at(column), headerView->minimumSectionSize());
+                    w = std::max(customColumnWidths_.at(column), headerView->minimumSectionSize());
                 }
                 else {
                     if(wasHidden) {
@@ -709,9 +709,9 @@ void FolderViewTreeView::layoutColumns() {
                     }
                 }
                 opt.section = columnId;
-                w = qMax(sizeHintForColumn(columnId),
-                         style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(),
-                                                   headerView).width());
+                w = std::max(sizeHintForColumn(columnId),
+                             style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(),
+                                                       headerView).width());
             }
             widths.append(w);
             // compute the total width needed
@@ -726,9 +726,9 @@ void FolderViewTreeView::layoutColumns() {
 
                 // Compute the minimum acceptable width for the filename column, showing
                 // whole texts whose lengths are less than 30 times the average font width.
-                int filenameMinWidth = qMin(iconSize().width()
-                                            + 30 * opt.fontMetrics.averageCharWidth(),
-                                            sizeHintForColumn(filenameColumn));
+                int filenameMinWidth = std::min(iconSize().width()
+                                                + 30 * opt.fontMetrics.averageCharWidth(),
+                                                sizeHintForColumn(filenameColumn));
 
                 if(filenameAvailWidth > filenameMinWidth) {
                     // Shrink the filename column to the available width
@@ -1218,7 +1218,7 @@ void FolderView::updateGridSize() {
         // 13 chars x 3 lines should be enough to show the full filenames for most files.
         int textWidth = fm.averageCharWidth() * 13;
         int textHeight = fm.lineSpacing() * 3;
-        grid.setWidth(qMax(icon.width(), textWidth) + 4); // a margin of 2 px for selection rects
+        grid.setWidth(std::max(icon.width(), textWidth) + 4); // a margin of 2 px for selection rects
         grid.setHeight(icon.height() + textHeight + 4); // a margin of 2 px for selection rects
         // grow to include margins
         grid += 2*itemDelegateMargins_;
@@ -1759,7 +1759,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
             // Control scrolling with mouse wheel
             QWheelEvent* we = static_cast<QWheelEvent*>(event);
             QPoint angleDelta = we->angleDelta();
-            bool horizontal(qAbs(angleDelta.x()) > qAbs(angleDelta.y()));
+            bool horizontal(std::abs(angleDelta.x()) > std::abs(angleDelta.y()));
             if(event->spontaneous()
                && we->source() == Qt::MouseEventNotSynthesized
                // To have a simpler code, we control horizontal scrolling with mouse wheel
@@ -1779,19 +1779,19 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                             (4) The view has large icons. */
                         if(mode == CompactMode
                            || (we->modifiers() & Qt::ShiftModifier)
-                           || qAbs(delta) < 120
+                           || std::abs(delta) < 120
                            || iconSize(mode).height() >= 96) {
-                            if(qAbs(delta) >= QApplication::wheelScrollLines()) {
+                            if(std::abs(delta) >= QApplication::wheelScrollLines()) {
                                 delta = delta / QApplication::wheelScrollLines();
                                 // still slower scrolling with very large icons
-                                if(iconSize(mode).height() >= 256 && qAbs(delta) >= 2) {
+                                if(iconSize(mode).height() >= 256 && std::abs(delta) >= 2) {
                                     delta /= 2;
                                 }
                             }
                         }
                         else if(iconSize(mode).height() >= 64
                                 && QApplication::wheelScrollLines() > 2
-                                && qAbs(delta * 2) >= QApplication::wheelScrollLines()) {
+                                && std::abs(delta * 2) >= QApplication::wheelScrollLines()) {
                             // 2 rows per mouse turn for average icon sizes
                             delta = delta * 2 / QApplication::wheelScrollLines();
                         }
@@ -1877,12 +1877,12 @@ void FolderView::scrollSmoothly() {
     int totalDelta = 0;
     QList<scrollData>::iterator it = queuedScrollSteps_.begin();
     while(it != queuedScrollSteps_.end()) {
-        int delta = qRound((qreal)it->delta / (qreal)scrollAnimFrames);
+        int delta = std::round((qreal)it->delta / (qreal)scrollAnimFrames);
         int remainingDelta = it->delta - (scrollAnimFrames - it->leftFrames) * delta;
         if((delta >= 0 && remainingDelta < 0) || (delta < 0 && remainingDelta >= 0)) {
             remainingDelta = 0;
         }
-        if(qAbs(delta) >= qAbs(remainingDelta)) {
+        if(std::abs(delta) >= std::abs(remainingDelta)) {
             // this is the last frame or, due to rounding, there can be no more frame
             totalDelta += remainingDelta;
             it = queuedScrollSteps_.erase(it);

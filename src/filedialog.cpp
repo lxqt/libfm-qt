@@ -20,6 +20,8 @@
 #include <QTimer>
 #include <QDebug>
 
+#include <algorithm>
+
 using namespace Qt::Literals::StringLiterals;
 
 namespace Fm {
@@ -333,7 +335,7 @@ int FileDialog::splitterPos() const {
 
 void FileDialog::setSplitterPos(int pos) {
     QList<int> sizes;
-    sizes.append(qMax(pos, 0));
+    sizes.append(std::max(pos, 0));
     sizes.append(320);
     ui->splitter->setSizes(sizes);
 }
