@@ -1759,7 +1759,7 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
             // Control scrolling with mouse wheel
             QWheelEvent* we = static_cast<QWheelEvent*>(event);
             QPoint angleDelta = we->angleDelta();
-            bool horizontal(qAbs(angleDelta.x()) > qAbs(angleDelta.y()));
+            bool horizontal(std::abs(angleDelta.x()) > std::abs(angleDelta.y()));
             if(event->spontaneous()
                && we->source() == Qt::MouseEventNotSynthesized
                // To have a simpler code, we control horizontal scrolling with mouse wheel
@@ -1779,19 +1779,19 @@ bool FolderView::eventFilter(QObject* watched, QEvent* event) {
                             (4) The view has large icons. */
                         if(mode == CompactMode
                            || (we->modifiers() & Qt::ShiftModifier)
-                           || qAbs(delta) < 120
+                           || std::abs(delta) < 120
                            || iconSize(mode).height() >= 96) {
-                            if(qAbs(delta) >= QApplication::wheelScrollLines()) {
+                            if(std::abs(delta) >= QApplication::wheelScrollLines()) {
                                 delta = delta / QApplication::wheelScrollLines();
                                 // still slower scrolling with very large icons
-                                if(iconSize(mode).height() >= 256 && qAbs(delta) >= 2) {
+                                if(iconSize(mode).height() >= 256 && std::abs(delta) >= 2) {
                                     delta /= 2;
                                 }
                             }
                         }
                         else if(iconSize(mode).height() >= 64
                                 && QApplication::wheelScrollLines() > 2
-                                && qAbs(delta * 2) >= QApplication::wheelScrollLines()) {
+                                && std::abs(delta * 2) >= QApplication::wheelScrollLines()) {
                             // 2 rows per mouse turn for average icon sizes
                             delta = delta * 2 / QApplication::wheelScrollLines();
                         }
@@ -1882,7 +1882,7 @@ void FolderView::scrollSmoothly() {
         if((delta >= 0 && remainingDelta < 0) || (delta < 0 && remainingDelta >= 0)) {
             remainingDelta = 0;
         }
-        if(qAbs(delta) >= qAbs(remainingDelta)) {
+        if(std::abs(delta) >= std::abs(remainingDelta)) {
             // this is the last frame or, due to rounding, there can be no more frame
             totalDelta += remainingDelta;
             it = queuedScrollSteps_.erase(it);
