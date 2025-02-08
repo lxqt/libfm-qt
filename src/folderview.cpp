@@ -710,8 +710,8 @@ void FolderViewTreeView::layoutColumns() {
                 }
                 opt.section = columnId;
                 w = std::max(sizeHintForColumn(columnId),
-                         style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(),
-                                                   headerView).width());
+                             style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(),
+                                                       headerView).width());
             }
             widths.append(w);
             // compute the total width needed
@@ -727,8 +727,8 @@ void FolderViewTreeView::layoutColumns() {
                 // Compute the minimum acceptable width for the filename column, showing
                 // whole texts whose lengths are less than 30 times the average font width.
                 int filenameMinWidth = std::min(iconSize().width()
-                                            + 30 * opt.fontMetrics.averageCharWidth(),
-                                            sizeHintForColumn(filenameColumn));
+                                                + 30 * opt.fontMetrics.averageCharWidth(),
+                                                sizeHintForColumn(filenameColumn));
 
                 if(filenameAvailWidth > filenameMinWidth) {
                     // Shrink the filename column to the available width
