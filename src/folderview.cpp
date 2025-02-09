@@ -50,6 +50,7 @@
 #include "xdndworkaround.h" // for XDS support
 #include "folderview_p.h"
 
+#include <cmath>
 #include <algorithm>
 
 #define SCROLL_FRAMES_PER_SEC 50
