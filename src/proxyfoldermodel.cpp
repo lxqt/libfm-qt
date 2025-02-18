@@ -23,7 +23,7 @@
 #include <QCollator>
 #include <QApplication>
 
-#include <algorithm>
+#include <cmath>
 
 namespace Fm {
 

@@ -30,7 +30,7 @@
 #include <QFileDialog>
 #include <sys/types.h>
 #include <ctime>
-#include <algorithm>
+#include <cmath>
 #include "core/totalsizejob.h"
 #include "core/folder.h"
 
