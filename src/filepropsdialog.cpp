@@ -31,7 +31,6 @@
 #include <sys/types.h>
 #include <ctime>
 #include <cmath>
-#include <algorithm>
 #include "core/totalsizejob.h"
 #include "core/folder.h"
 

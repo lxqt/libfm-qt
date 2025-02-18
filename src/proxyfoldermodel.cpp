@@ -24,7 +24,6 @@
 #include <QApplication>
 
 #include <cmath>
-#include <algorithm>
 
 namespace Fm {
 
