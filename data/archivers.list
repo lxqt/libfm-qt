@@ -1,29 +1,36 @@
-[lxqt-archiver]
-create=lxqt-archiver --add %U
-extract=lxqt-archiver --extract %U
-extract_to=lxqt-archiver --extract-to %d %U
-mime_types=application/x-7z-compressed;application/x-7z-compressed-tar;application/x-ace;application/x-alz;application/x-ar;application/x-arj;application/x-bzip2-compressed-tar;application/x-bzip1;application/x-bzip1-compressed-tar;application/x-cabinet;application/x-cbr;application/x-cbz;application/vnd.efi.iso;application/x-compress;application/x-compressed-tar;application/x-cpio;application/x-deb;application/vnd.debian.binary-package;application/x-ear;application/x-ms-dos-executable;application/x-gtar;application/gzip;application/x-gzpostscript;application/x-java-archive;application/x-lha;application/x-lhz;application/x-lrzip;application/x-lrzip-compressed-tar;application/x-lzip;application/x-lzip-compressed-tar;application/x-lzma;application/x-lzma-compressed-tar;application/x-lzop;application/x-lzop-compressed-tar;application/x-ms-wim;application/x-rar;application/x-rar-compressed;application/vnd.rar;application/vnd.efi.img;application/x-rpm;application/x-rzip;application/x-tar;application/x-tarz;application/x-stuffit;application/x-war;application/x-xz;application/x-xz-compressed-tar;application/zstd;application/x-zstd-compressed-tar;application/x-zip;application/x-zip-compressed;application/x-zoo;application/zip;application/x-archive;application/vnd.ms-cab-compressed;
-supports_uris=true
+[ark]
+create=ark --add --dialog --changetofirstpath %F
+extract=ark --batch --dialog %F
+extract_to=ark --batch --destination %d %F
+mime_types=application/maclha;application/x-tar;application/x-compressed-tar;application/x-bzip-compressed-tar;application/x-tarz;application/x-xz-compressed-tar;application/x-lzma-compressed-tar;application/x-deb;application/x-cd-image;application/x-bcpio;application/x-cpio;application/x-cpio-compressed;application/x-sv4cpio;application/x-sv4crc;application/x-rpm;application/x-source-rpm;application/vnd.ms-cab-compressed;application/x-servicepack;application/vnd.rar;application/x-7z-compressed;application/x-java-archive;application/zip;application/x-compress;application/x-gzip;application/x-bzip;application/x-bzip2;application/x-lha;application/x-lzma;application/x-xz;application/lha;application/x-zstd-compressed-tar;application/zstd;
 
 [arqiver]
+supports_uris=true
 create=arqiver --sa %U
 extract=arqiver --sx %U
 extract_to=arqiver --ax %U
 mime_types=application/x-xz-compressed-tar;application/x-xz;application/x-xzpdf;application/x-lzma-compressed-tar;application/x-zstd-compressed-tar;application/zstd;application/x-bzip-compressed-tar;application/x-bzip1-compressed-tar;application/x-bzip2-compressed-tar;application/x-bzip;application/x-bzip1;application/x-bzip2;application/x-bzpdf;application/x-tar;application/x-compressed-tar;application/zip;application/gzip;image/svg+xml-compressed;application/x-gzpdf;application/x-7z-compressed;application/vnd.debian.binary-package;application/x-archive;application/x-cpio;application/x-rpm;application/x-source-rpm;application/x-cd-image;application/vnd.efi.iso;application/x-raw-disk-image;application/vnd.efi.img;application/x-xar;application/x-java-archive;application/x-ms-dos-executable;application/vnd.microsoft.portable-executable;application/x-msdownload;application/x-msi;application/vnd.ms-cab-compressed;application/x-ace;application/vnd.android.package-archive;application/vnd.rar;application/vnd.appimage;application/x-virtualbox-vbox-extpack;
+
+[engrampa]
 supports_uris=true
+create=engrampa --add %U
+extract=engrampa --extract %U
+extract_to=engrampa --extract-to %d %U
+mime_types=application/x-7z-compressed;application/x-7z-compressed-tar;application/x-ace;application/x-alz;application/x-arj;application/x-brotli;application/x-brotli-compressed-tar;application/x-bzip;application/x-bzip-compressed-tar;application/x-bzip1;application/x-bzip1-compressed-tar;application/x-cabinet;application/vnd.comicbook-rar;application/vnd.comicbook+zip;application/x-cd-image;application/x-compress;application/x-compressed-tar;application/x-cpio;application/vnd.debian.binary-package;application/x-ear;application/x-ms-dos-executable;application/x-gtar;application/x-gzip;application/x-gzpostscript;application/x-java-archive;application/x-lha;application/x-lzh-compressed;application/x-lrzip;application/x-lrzip-compressed-tar;application/x-lzip;application/x-lzip-compressed-tar;application/x-lzma;application/x-lzma-compressed-tar;application/x-lzop;application/x-lzop-compressed-tar;application/x-ms-wim;application/vnd.rar;application/x-rpm;application/x-source-rpm;application/x-rzip;application/x-tar;application/x-tarz;application/x-stuffit;application/x-war;application/x-xz;application/x-xz-compressed-tar;application/x-zip;application/x-zip-compressed;application/x-zoo;application/zstd;application/x-zstd-compressed-tar;application/zip;application/x-archive;application/vnd.ms-cab-compressed;
 
 [file-roller]
+supports_uris=true
 create=file-roller --add %U
 extract=file-roller --extract %U
 extract_to=file-roller --extract-to %d %U
 mime_types=application/bzip2;application/gzip;application/vnd.android.package-archive;application/vnd.ms-cab-compressed;application/vnd.debian.binary-package;application/x-7z-compressed;application/x-7z-compressed-tar;application/x-ace;application/x-alz;application/x-ar;application/x-archive;application/x-arj;application/x-brotli;application/x-bzip-brotli-tar;application/x-bzip;application/x-bzip-compressed-tar;application/x-bzip1;application/x-bzip1-compressed-tar;application/x-cabinet;application/x-cd-image;application/x-compress;application/x-compressed-tar;application/x-cpio;application/x-chrome-extension;application/x-deb;application/x-ear;application/x-ms-dos-executable;application/x-gtar;application/x-gzip;application/x-gzpostscript;application/x-java-archive;application/x-lha;application/x-lhz;application/x-lrzip;application/x-lrzip-compressed-tar;application/x-lz4;application/x-lzip;application/x-lzip-compressed-tar;application/x-lzma;application/x-lzma-compressed-tar;application/x-lzop;application/x-lz4-compressed-tar;application/x-ms-wim;application/vnd.rar;application/x-rpm;application/x-source-rpm;application/x-rzip;application/x-rzip-compressed-tar;application/x-tar;application/x-tarz;application/x-tzo;application/x-stuffit;application/x-war;application/x-xar;application/x-xz;application/x-xz-compressed-tar;application/x-zip;application/x-zip-compressed;application/x-zstd-compressed-tar;application/x-zoo;application/zip;application/zstd;
-supports_uris=true
 
-[xarchiver]
-create=xarchiver --compress %F
-extract=xarchiver --extract %F
-extract_to=xarchiver --extract-to %d %F
-mime_types=application/x-archive;application/x-arj;application/arj;application/x-bzip;application/x-bzip-compressed-tar;application/x-cpio;application/x-cpio-compressed;application/epub+zip;application/gzip;application/x-gzip;application/vnd.rar;application/x-tar;application/x-zip;application/x-zip-compressed;application/zip;multipart/x-zip;application/x-7z-compressed;application/x-compressed-tar;application/x-bzip2;application/x-bzip2-compressed-tar;application/x-lzma-compressed-tar;application/x-lzma;application/x-deb;application/deb;application/vnd.android.package-archive;application/vnd.comicbook+zip;application/vnd.debian.binary-package;application/vnd.openofficeorg.extension;application/x-xz;application/x-xz-compressed-tar;application/x-rpm;application/x-source-rpm;application/x-lzop;application/x-lzop-compressed-tar;application/x-tzo;application/x-war;application/x-compress;application/x-tarz;application/x-java-archive;application/x-lha;application/x-lhz;application/x-lrzip;application/x-lrzip-compressed-tar;application/x-lz4;application/x-lz4-compressed-tar;application/x-lzip;application/x-lzip-compressed-tar;application/x-xpinstall;application/zstd;application/x-zstd-compressed-tar;
+[lxqt-archiver]
+supports_uris=true
+create=lxqt-archiver --add %U
+extract=lxqt-archiver --extract %U
+extract_to=lxqt-archiver --extract-to %d %U
+mime_types=application/x-7z-compressed;application/x-7z-compressed-tar;application/x-ace;application/x-alz;application/x-ar;application/x-arj;application/x-bzip2-compressed-tar;application/x-bzip1;application/x-bzip1-compressed-tar;application/x-cabinet;application/x-cbr;application/x-cbz;application/vnd.efi.iso;application/x-compress;application/x-compressed-tar;application/x-cpio;application/x-deb;application/vnd.debian.binary-package;application/x-ear;application/x-ms-dos-executable;application/x-gtar;application/gzip;application/x-gzpostscript;application/x-java-archive;application/x-lha;application/x-lhz;application/x-lrzip;application/x-lrzip-compressed-tar;application/x-lzip;application/x-lzip-compressed-tar;application/x-lzma;application/x-lzma-compressed-tar;application/x-lzop;application/x-lzop-compressed-tar;application/x-ms-wim;application/x-rar;application/x-rar-compressed;application/vnd.rar;application/vnd.efi.img;application/x-rpm;application/x-rzip;application/x-tar;application/x-tarz;application/x-stuffit;application/x-war;application/x-xz;application/x-xz-compressed-tar;application/zstd;application/x-zstd-compressed-tar;application/x-zip;application/x-zip-compressed;application/x-zoo;application/zip;application/x-archive;application/vnd.ms-cab-compressed;
 
 [squeeze]
 create=squeeze --new %F
@@ -31,19 +38,8 @@ extract=squeeze --extract %F
 extract_to=squeeze --extract-to %d %F
 mime_types=application/x-bzip-compressed-tar;application/x-bzip2-compressed-tar;application/x-compressed-tar;application/x-tar;application/x-tarz;application/x-tzo;application/x-zip;application/x-zip-compressed;application/zip;application/vnd.rar;application/x-gzip;application/x-bzip;application/x-lzop;application/x-compress;
 
-[engrampa]
-create=engrampa --add %U
-extract=engrampa --extract %U
-extract_to=engrampa --extract-to %d %U
-mime_types=application/x-7z-compressed;application/x-7z-compressed-tar;application/x-ace;application/x-alz;application/x-arj;application/x-brotli;application/x-brotli-compressed-tar;application/x-bzip;application/x-bzip-compressed-tar;application/x-bzip1;application/x-bzip1-compressed-tar;application/x-cabinet;application/vnd.comicbook-rar;application/vnd.comicbook+zip;application/x-cd-image;application/x-compress;application/x-compressed-tar;application/x-cpio;application/vnd.debian.binary-package;application/x-ear;application/x-ms-dos-executable;application/x-gtar;application/x-gzip;application/x-gzpostscript;application/x-java-archive;application/x-lha;application/x-lzh-compressed;application/x-lrzip;application/x-lrzip-compressed-tar;application/x-lzip;application/x-lzip-compressed-tar;application/x-lzma;application/x-lzma-compressed-tar;application/x-lzop;application/x-lzop-compressed-tar;application/x-ms-wim;application/vnd.rar;application/x-rpm;application/x-source-rpm;application/x-rzip;application/x-tar;application/x-tarz;application/x-stuffit;application/x-war;application/x-xz;application/x-xz-compressed-tar;application/x-zip;application/x-zip-compressed;application/x-zoo;application/zstd;application/x-zstd-compressed-tar;application/zip;application/x-archive;application/vnd.ms-cab-compressed;
-supports_uris=true
-
-# The KDE archiver Ark
-# Here we use %F instead of %U since KDE programs do not know the URI provided by gvfs.
-# GIO will pass FUSE-based file paths to the KDE programs, which should still work.
-[ark]
-create=ark --add --dialog %F
-extract=ark --batch --dialog %F
-extract_to=ark --batch --destination %d %F
-mime_types=application/x-tar;application/x-compressed-tar;application/x-bzip-compressed-tar;application/x-tarz;application/x-xz-compressed-tar;application/x-lzma-compressed-tar;application/x-deb;application/x-cd-image;application/x-bcpio;application/x-cpio;application/x-cpio-compressed;application/x-sv4cpio;application/x-sv4crc;application/x-rpm;application/x-source-rpm;application/vnd.ms-cab-compressed;application/x-servicepack;application/vnd.rar;application/x-7z-compressed;application/x-java-archive;application/zip;application/x-compress;application/x-gzip;application/x-bzip;application/x-bzip2;application/x-lzma;application/x-xz;application/lha;application/x-lha;application/maclha;
-supports_uris=true
+[xarchiver]
+create=xarchiver --compress %F
+extract=xarchiver --extract %F
+extract_to=xarchiver --extract-to %d %F
+mime_types=application/x-archive;application/x-arj;application/arj;application/x-bzip;application/x-bzip-compressed-tar;application/x-cpio;application/x-cpio-compressed;application/epub+zip;application/gzip;application/x-gzip;application/vnd.rar;application/x-tar;application/x-zip;application/x-zip-compressed;application/zip;multipart/x-zip;application/x-7z-compressed;application/x-compressed-tar;application/x-bzip2;application/x-bzip2-compressed-tar;application/x-lzma-compressed-tar;application/x-lzma;application/x-deb;application/deb;application/vnd.android.package-archive;application/vnd.comicbook+zip;application/vnd.debian.binary-package;application/vnd.openofficeorg.extension;application/x-xz;application/x-xz-compressed-tar;application/x-rpm;application/x-source-rpm;application/x-lzop;application/x-lzop-compressed-tar;application/x-tzo;application/x-war;application/x-compress;application/x-tarz;application/x-java-archive;application/x-lha;application/x-lhz;application/x-lrzip;application/x-lrzip-compressed-tar;application/x-lz4;application/x-lz4-compressed-tar;application/x-lzip;application/x-lzip-compressed-tar;application/x-xpinstall;application/zstd;application/x-zstd-compressed-tar;
