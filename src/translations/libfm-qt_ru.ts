@@ -66,7 +66,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation>Изменить закладки</translation>
+        <translation>Редактировать закладки</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="42"/>
