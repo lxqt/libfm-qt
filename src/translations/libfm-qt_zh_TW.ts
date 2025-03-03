@@ -21,7 +21,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation>要執行的命令列:</translation>
+        <translation>指令列執行：</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
@@ -396,7 +396,7 @@
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation>&lt;沒有子資料夾&gt;</translation>
+        <translation>&lt;沒有下層資料夾&gt;</translation>
     </message>
 </context>
 <context>
@@ -819,7 +819,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>正在移動下列檔案到目的資料夾:</translation>
+        <translation>正在移動下列檔案至目的資料夾：</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -829,7 +829,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>正在複製下列檔案到目的資料夾:</translation>
+        <translation>正在複製下列檔案至目的資料夾：</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
@@ -864,12 +864,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation>改變屬性</translation>
+        <translation>變更屬性</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>正在更改下列檔案的屬性:</translation>
+        <translation>正在變更下列檔案的屬性：</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
@@ -979,7 +979,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="646"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>你是否想將這些變更套用到所有子資料夾和其內的檔案?</translation>
+        <translation>是否要將這些變更套用到所有下層資料夾及其檔案？</translation>
     </message>
 </context>
 <context>
@@ -997,7 +997,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="164"/>
         <source>Select a folder</source>
-        <translation>選擇一個資料夾</translation>
+        <translation>選擇資料夾</translation>
     </message>
 </context>
 <context>
@@ -1005,7 +1005,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="486"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation>不能將一個資料夾複製到他自己！</translation>
+        <translation>不可將資料夾複製到它自己！</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="537"/>
@@ -1418,7 +1418,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>無法將檔案從垃圾桶復原 &apos;%s&apos;: 原來路徑未知</translation>
+        <translation>無法將檔案從垃圾桶復原 &apos;%s&apos;：原始路徑不明</translation>
     </message>
 </context>
 <context>
@@ -1513,12 +1513,12 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="240"/>
         <source>Please enter a new folder name:</source>
-        <translation>請輸入一個新資料夾名稱:</translation>
+        <translation>請輸入新建資料夾名稱：</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="241"/>
         <source>New folder</source>
-        <translation>新資料夾</translation>
+        <translation>新建資料夾</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="246"/>
@@ -1749,7 +1749,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="125"/>
         <source>Search in subdirectories</source>
-        <translation>在子資料夾中搜尋</translation>
+        <translation>在下層目錄中搜尋</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>

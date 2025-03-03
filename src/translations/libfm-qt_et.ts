@@ -137,7 +137,7 @@
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation>Faili nimi:</translation>
+        <translation>Failinimi:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
@@ -1591,7 +1591,7 @@ Muudetud: %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>&amp;Faili nimi:</translation>
+        <translation>&amp;Failinimi:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
