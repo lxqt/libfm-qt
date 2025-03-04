@@ -1488,7 +1488,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="170"/>
         <source>Rename File</source>
-        <translation>重新命名</translation>
+        <translation>重新命名檔案</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="171"/>
