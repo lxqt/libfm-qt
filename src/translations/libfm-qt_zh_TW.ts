@@ -26,7 +26,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>Application name:</source>
-        <translation>應用程式名稱:</translation>
+        <translation>應用程式名稱：</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="72"/>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../exec-file.ui" line="102"/>
         <source>Remember for next files of this kind</source>
-        <translation>記住並套用於以後其他同類型檔案</translation>
+        <translation>記住並套用於往後同類型檔案</translation>
     </message>
 </context>
 <context>
@@ -132,17 +132,17 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation>路徑:</translation>
+        <translation>路徑：</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation>檔案名稱:</translation>
+        <translation>檔案名稱：</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="75"/>
         <source>File type:</source>
-        <translation>檔案類型:</translation>
+        <translation>檔案類型：</translation>
     </message>
 </context>
 <context>
@@ -150,32 +150,32 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="32"/>
         <source>Destination:</source>
-        <translation>目的地:</translation>
+        <translation>目的地：</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="55"/>
         <source>Processing:</source>
-        <translation>正在處理:</translation>
+        <translation>正在處理：</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="68"/>
         <source>Preparing...</source>
-        <translation>準備中...</translation>
+        <translation>準備中…</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="75"/>
         <source>Progress:</source>
-        <translation>進度:</translation>
+        <translation>進度：</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="95"/>
         <source>Time remaining:</source>
-        <translation>剩餘時間:</translation>
+        <translation>剩餘時間：</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="125"/>
         <source>Files processed:</source>
-        <translation>已處理的檔案:</translation>
+        <translation>已經處理的檔案：</translation>
     </message>
 </context>
 <context>
@@ -188,82 +188,82 @@
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation>一般</translation>
+        <translation>通則</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation>位置:</translation>
+        <translation>位置：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>File type:</source>
-        <translation>檔案類型:</translation>
+        <translation>檔案類型：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="129"/>
         <source>MIME type:</source>
-        <translation>Mime 類型:</translation>
+        <translation>MIME 類型：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="152"/>
         <source>File size:</source>
-        <translation>檔案大小:</translation>
+        <translation>檔案大小：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="175"/>
         <source>On-disk size:</source>
-        <translation>磁碟上大小:</translation>
+        <translation>磁碟佔用大小：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="198"/>
         <source>Last modified:</source>
-        <translation>最後修改:</translation>
+        <translation>最後修改：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="221"/>
         <source>Link target:</source>
-        <translation>連結目標:</translation>
+        <translation>連結目標：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="247"/>
         <source>Open With:</source>
-        <translation>開啟:</translation>
+        <translation>開啟使用：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation>最後存取:</translation>
+        <translation>最後存取：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation>建立於:</translation>
+        <translation>已經建立：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
         <source>Contains:</source>
-        <translation>包含:</translation>
+        <translation>包含：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation>標記:</translation>
+        <translation>徽記：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation>選擇標記</translation>
+        <translation>選擇徽記</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation>清除標記</translation>
+        <translation>清除徽記</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="414"/>
         <source>Device Usage:</source>
-        <translation>裝置使用率:</translation>
+        <translation>裝置使用：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="424"/>
@@ -273,21 +273,21 @@
     <message>
         <location filename="../file-props.ui" line="439"/>
         <source>Ownership</source>
-        <translation>所有權</translation>
+        <translation>擁有權</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="463"/>
         <location filename="../file-props.ui" line="528"/>
         <location filename="../file-props.ui" line="642"/>
         <source>Group:</source>
-        <translation>群組:</translation>
+        <translation>群組：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="476"/>
         <location filename="../file-props.ui" line="511"/>
         <location filename="../file-props.ui" line="590"/>
         <source>Owner:</source>
-        <translation>擁有者:</translation>
+        <translation>擁有者：</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="492"/>
@@ -329,7 +329,7 @@
     <message>
         <location filename="../file-props.ui" line="742"/>
         <source>Sticky</source>
-        <translation></translation>
+        <translation>固定</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
@@ -389,7 +389,7 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation>載入中...</translation>
+        <translation>載入中…</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
@@ -404,17 +404,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="217"/>
         <source>Open in New T&amp;ab</source>
-        <translation>在新分頁開啟 (&amp;A)</translation>
+        <translation>在新分頁開啟(&amp;A)</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="221"/>
         <source>Open in New Win&amp;dow</source>
-        <translation>在新視窗開啟 (&amp;D)</translation>
+        <translation>在新視窗開啟(&amp;D)</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="226"/>
         <source>Open in Termina&amp;l</source>
-        <translation>在終端機內開啟 (&amp;I)</translation>
+        <translation>在終端機開啟(&amp;I)</translation>
     </message>
 </context>
 <context>
@@ -422,17 +422,17 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation>複製到這裡</translation>
+        <translation>複製至此</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation>移動到這裡</translation>
+        <translation>移動至此</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation>建立符號連結到這裡</translation>
+        <translation>建立符號連結至此</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
@@ -442,7 +442,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation>不能放到這裡</translation>
+        <translation>不能拖放至此</translation>
     </message>
 </context>
 <context>
@@ -450,7 +450,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="84"/>
         <source>New bookmark</source>
-        <translation>新書籤</translation>
+        <translation>新建書籤</translation>
     </message>
 </context>
 <context>
@@ -459,20 +459,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>檔案 &apos;%1&apos; 看起來是桌面捷徑檔。
-你想要對它進行什麼操作?</translation>
+        <translation>此檔案 &apos;%1&apos; 似乎是桌面捷徑檔案。
+確定要對它進行什麼操作？</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>這個文字檔 &apos;%1&apos; 似乎是可執行的 script。
-想要進行什麼操作？</translation>
+        <translation>此文字檔 &apos;%1&apos; 似乎是可執行的 script。
+確定要進行什麼操作？</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>這個檔案 &apos;%1&apos; 是可執行檔，是否想要執行？</translation>
+        <translation>此檔案 &apos;%1&apos; 是可執行檔，確定要執行？</translation>
     </message>
 </context>
 <context>
@@ -480,29 +480,29 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="111"/>
         <source>Go Back</source>
-        <translation>上一頁</translation>
+        <translation>返回</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="112"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation>Alt+Left</translation>
+        <translation>Alt+←</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="118"/>
         <source>Go Forward</source>
-        <translation>下一頁</translation>
+        <translation>前進</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="119"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation>Alt+Right</translation>
+        <translation>Alt+→</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="126"/>
         <source>Reload</source>
-        <translation>重新整理</translation>
+        <translation>重新載入</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="127"/>
@@ -543,22 +543,22 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="182"/>
         <source>Size of big icons:</source>
-        <translation>大圖示的大小:</translation>
+        <translation>大型圖示大小：</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="189"/>
         <source>Size of small icons:</source>
-        <translation>小圖示的大小:</translation>
+        <translation>小型圖示大小：</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="196"/>
         <source>Size of thumbnails:</source>
-        <translation>縮圖的大小:</translation>
+        <translation>縮圖大小：</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="212"/>
         <source>Show Hidden</source>
-        <translation>顯示隱藏檔</translation>
+        <translation>顯示隱藏</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="224"/>
@@ -596,7 +596,7 @@ What do you want to do with it?</source>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 已經存在。
-你想要取代它嗎?</translation>
+確定要取代它嗎?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1022"/>
@@ -623,12 +623,12 @@ Do you want to replace it?</source>
         <location filename="../filedialog.cpp" line="1203"/>
         <location filename="../filedialog.cpp" line="1325"/>
         <source>&amp;Save</source>
-        <translation>儲存 (&amp;S)</translation>
+        <translation>儲存(&amp;S)</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1210"/>
         <source>All Files (*)</source>
-        <translation>所有檔案 (*)</translation>
+        <translation>全部檔案 (*)</translation>
     </message>
 </context>
 <context>
@@ -673,7 +673,7 @@ Do you want to replace it?</source>
         <location filename="../filemenu.cpp" line="357"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
-            <numerusform>請問您要開啟這 %1 個檔案嗎？</numerusform>
+            <numerusform>確定要開啟這些 %1 個檔案嗎？</numerusform>
         </translation>
     </message>
     <message>
@@ -689,7 +689,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="144"/>
         <source>&amp;Restore</source>
-        <translation>恢復(&amp;R)</translation>
+        <translation>還原(&amp;R)</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="154"/>
@@ -710,7 +710,7 @@ Do you want to replace it?</source>
         <location filename="../filemenu.cpp" line="166"/>
         <location filename="../filemenu.cpp" line="484"/>
         <source>&amp;Move to Trash</source>
-        <translation>移動到垃圾桶(&amp;M)</translation>
+        <translation>移至垃圾桶(&amp;M)</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="226"/>
@@ -730,7 +730,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="313"/>
         <source>Trust selected executables</source>
-        <translation>信任已選擇的執行檔</translation>
+        <translation>信任所選取的執行檔</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="314"/>
@@ -756,12 +756,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="275"/>
         <source>Extract to...</source>
-        <translation>解壓縮到...</translation>
+        <translation>解壓縮至…</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="283"/>
         <source>Extract Here</source>
-        <translation>在此解壓縮</translation>
+        <translation>解壓縮至此</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="290"/>
@@ -798,14 +798,14 @@ Do you want to delete them instead?</source>
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
-            <numerusform>請問要刪除所選的檔案嗎？</numerusform>
+            <numerusform>確定要刪除選取的檔案嗎？</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
-            <numerusform>請問要把所選的檔案丟到垃圾桶嗎？</numerusform>
+            <numerusform>確定要將選取的檔案移至垃圾桶嗎？</numerusform>
         </translation>
     </message>
 </context>
@@ -834,12 +834,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation>將檔案丟到垃圾桶</translation>
+        <translation>檔案丟至垃圾桶</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>正在將下列檔案移動到垃圾桶:</translation>
+        <translation>正在將下列檔案移動到垃圾桶：</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
@@ -849,7 +849,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation>正在刪除下列檔案:</translation>
+        <translation>正在刪除下列檔案：</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
@@ -859,7 +859,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>正在建立下列檔案的符號連結:</translation>
+        <translation>正在建立下列檔案的符號連結：</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
@@ -874,12 +874,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation>恢復被刪除的檔案</translation>
+        <translation>還原被刪除的檔案</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>正在從垃圾桶恢復下列被刪除的檔案：</translation>
+        <translation>正在從垃圾桶還原下列被刪除的檔案：</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="149"/>
@@ -940,7 +940,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="408"/>
         <source>%1 Free of %2</source>
-        <translation>%2中%1未使用</translation>
+        <translation>%2 中之 %1 未用</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="454"/>
@@ -979,7 +979,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="646"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>是否要將這些變更套用到所有下層資料夾及其檔案？</translation>
+        <translation>是否要將這些變更套用到全部下層資料夾及其檔案？</translation>
     </message>
 </context>
 <context>
@@ -992,7 +992,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="157"/>
         <source>You should add at least one directory to search.</source>
-        <translation>你至少需要新增一個要搜尋的目錄。</translation>
+        <translation>需要新增至少一個目錄來進行搜尋。</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="164"/>
@@ -1033,17 +1033,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="89"/>
         <source>Select &amp;All</source>
-        <translation>全選(&amp;A)</translation>
+        <translation>選擇全部(&amp;A)</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="100"/>
         <source>Sorting</source>
-        <translation>排序</translation>
+        <translation>排序中</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="105"/>
         <source>Show Hidden</source>
-        <translation>顯示隱藏檔</translation>
+        <translation>顯示隱藏</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="140"/>
@@ -1058,7 +1058,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="205"/>
         <source>By File Name</source>
-        <translation>依照檔名</translation>
+        <translation>依照檔案名稱</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="206"/>
@@ -1068,12 +1068,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="207"/>
         <source>By Creation Time</source>
-        <translation>建立時間</translation>
+        <translation>依照建立時間</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="210"/>
         <source>By Deletion Time</source>
-        <translation>刪除時間</translation>
+        <translation>依照刪除時間</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="213"/>
@@ -1083,12 +1083,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="214"/>
         <source>By File Type</source>
-        <translation>依照檔案型態</translation>
+        <translation>依照檔案類型</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="215"/>
         <source>By File Owner</source>
-        <translation>依照檔案所有者</translation>
+        <translation>依照檔案擁有者</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="216"/>
@@ -1126,27 +1126,27 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="306"/>
         <source>Location:</source>
-        <translation>位置:</translation>
+        <translation>位置：</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="310"/>
         <source>File type:</source>
-        <translation>檔案類型:</translation>
+        <translation>檔案類型：</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="315"/>
         <source>File size:</source>
-        <translation>檔案大小:</translation>
+        <translation>檔案大小：</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>Last modified:</source>
-        <translation>最後修改時間:</translation>
+        <translation>最後修改時間：</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Last accessed:</source>
-        <translation>最後存取時間:</translation>
+        <translation>最後存取時間：</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
@@ -1156,17 +1156,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="323"/>
         <source>Created:</source>
-        <translation>建立時間:</translation>
+        <translation>建立時間：</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="328"/>
         <source>Owner:</source>
-        <translation>擁有者:</translation>
+        <translation>擁有者：</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="329"/>
         <source>Group:</source>
-        <translation>群組:</translation>
+        <translation>群組：</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="396"/>
@@ -1201,7 +1201,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="414"/>
         <source>Owner</source>
-        <translation>所有者</translation>
+        <translation>擁有者</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="417"/>
@@ -1214,12 +1214,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="409"/>
         <source>Auto-resize columns</source>
-        <translation>自動調整欄位大小</translation>
+        <translation>自動欄位大小</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="426"/>
         <source>Visible Columns</source>
-        <translation>顯示的欄位</translation>
+        <translation>可見的欄位</translation>
     </message>
 </context>
 <context>
@@ -1248,12 +1248,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../pathbar.cpp" line="122"/>
         <source>&amp;Edit Path</source>
-        <translation>編輯路徑 (&amp;E)</translation>
+        <translation>編輯路徑(&amp;E)</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="125"/>
         <source>&amp;Copy Path</source>
-        <translation>複製路徑 (&amp;C)</translation>
+        <translation>複製路徑(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -1372,17 +1372,17 @@ Do you want to delete them instead?</source>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation>類型: %1
-大小: %2
-最後修改: %3</translation>
+        <translation>類型： %1
+大小： %2
+修改： %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation>類型: %1
-最後修改: %2</translation>
+        <translation>類型： %1
+修改： %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="104"/>
@@ -1397,7 +1397,7 @@ Modified: %2</source>
     <message>
         <location filename="../renamedialog.cpp" line="116"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;無法用檔案覆蓋檔案自身。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;請選擇別的檔名。&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;此檔案無法覆寫自身。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;請選擇其他名稱。&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1418,7 +1418,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>無法將檔案從垃圾桶復原 &apos;%s&apos;：原始路徑不明</translation>
+        <translation>無法將檔案 &apos;%s&apos; 從垃圾桶還原：原始路徑不明</translation>
     </message>
 </context>
 <context>
@@ -1436,37 +1436,37 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>以使用者帳號連線(&amp;S):</translation>
+        <translation>以使用者連線(&amp;S)：</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="79"/>
         <source>&amp;Username:</source>
-        <translation>使用者名稱(&amp;U):</translation>
+        <translation>使用者名稱(&amp;U)：</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="102"/>
         <source>&amp;Password:</source>
-        <translation>密碼(&amp;P):</translation>
+        <translation>密碼(&amp;P)：</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="112"/>
         <source>&amp;Domain:</source>
-        <translation>域名(&amp;D):</translation>
+        <translation>域名(&amp;D)：</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation>立刻忘記密碼(&amp;I)</translation>
+        <translation>立即忘記密碼(&amp;I)</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation>會議長度由密碼管理員來決定</translation>
+        <translation>工作階段長度由密碼管理器來決定</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
         <source>Remember password for &amp;this session</source>
-        <translation>記得＆this session 的密碼</translation>
+        <translation>記住此工作階段的密碼(&amp;T)</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="150"/>
@@ -1488,12 +1488,12 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="170"/>
         <source>Rename File</source>
-        <translation>重新命名</translation>
+        <translation>重新命名檔案</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="171"/>
         <source>Please enter a new name:</source>
-        <translation>請輸入一個新名稱:</translation>
+        <translation>請輸入新的名稱：</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="230"/>
@@ -1503,12 +1503,12 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="235"/>
         <source>Please enter a new file name:</source>
-        <translation>請輸入一個新檔名:</translation>
+        <translation>請輸入新的檔案名稱：</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
-        <translation>新檔案</translation>
+        <translation>新建檔案</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="240"/>
@@ -1523,7 +1523,7 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="246"/>
         <source>Enter a name for the new %1:</source>
-        <translation>幫新的 %1 輸入一個名稱:</translation>
+        <translation>輸入名稱用於新的 %1 ：</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="231"/>
@@ -1543,7 +1543,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="319"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>無效的桌面捷徑檔: &apos;%1&apos;</translation>
+        <translation>無效的桌面捷徑檔案： &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
@@ -1553,12 +1553,12 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>無法將目前工作目錄設定為 &apos;%1&apos;: %2</translation>
+        <translation>無法設定工作目錄至 &apos;%1&apos;: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
         <source>Identifier: </source>
-        <translation>識別符號: </translation>
+        <translation>識別符號： </translation>
     </message>
     <message>
         <location filename="../foldermodelitem.cpp" line="61"/>
@@ -1577,22 +1577,22 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;這個位置已經有一個同名的檔案&lt;/span&gt;&lt;/p&gt;&lt;p&gt;你要取代現有的檔案嗎?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;在此位置已有相同名稱的檔案&lt;/span&gt;&lt;/p&gt;&lt;p&gt;確定要取代現有的檔案嗎？&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="63"/>
         <source>with the following file?</source>
-        <translation>用下列檔案?</translation>
+        <translation>並用下列檔案？</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>檔名(&amp;F):</translation>
+        <translation>檔案名稱(&amp;F)：</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation>套用這個選項到所有已存在的檔案</translation>
+        <translation>套用這個選項至全部已經存在的檔案</translation>
     </message>
 </context>
 <context>
@@ -1610,7 +1610,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation>檔案名稱樣式:</translation>
+        <translation>檔案名稱型式：</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="44"/>
@@ -1625,52 +1625,52 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="71"/>
         <source>Places to Search:</source>
-        <translation>要搜尋的地方:</translation>
+        <translation>要搜尋的地方：</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="84"/>
         <source>&amp;Add</source>
-        <translation>新增 (&amp;A)</translation>
+        <translation>增加(&amp;A)</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="96"/>
         <source>&amp;Remove</source>
-        <translation>移除 (&amp;R)</translation>
+        <translation>移除(&amp;R)</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="132"/>
         <source>Search for hidden files</source>
-        <translation>搜尋隱藏檔</translation>
+        <translation>搜尋隱藏檔案</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="143"/>
         <source>File Type</source>
-        <translation>檔案型態</translation>
+        <translation>檔案類型</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="149"/>
         <source>Only search for files of following types:</source>
-        <translation>只搜尋下列型態的檔案:</translation>
+        <translation>僅搜尋下列類型的檔案：</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="155"/>
         <source>Text files</source>
-        <translation>文字檔</translation>
+        <translation>文字檔案</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="162"/>
         <source>Image files</source>
-        <translation>圖片檔</translation>
+        <translation>影像圖片檔案</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="169"/>
         <source>Audio files</source>
-        <translation>聲音檔</translation>
+        <translation>聲音檔案</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="176"/>
         <source>Video files</source>
-        <translation>影片檔</translation>
+        <translation>影片檔案</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="183"/>
@@ -1690,12 +1690,12 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="220"/>
         <source>File contains:</source>
-        <translation>檔案包含:</translation>
+        <translation>檔案包含：</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="240"/>
         <source>&amp;Use regular expression</source>
-        <translation>使用正規表示式 (&amp;U)</translation>
+        <translation>使用正規表示式(&amp;U)</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="267"/>
@@ -1705,18 +1705,18 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="273"/>
         <source>File Size:</source>
-        <translation>檔案大小:</translation>
+        <translation>檔案大小：</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="302"/>
         <source>Larger than:</source>
-        <translation>大於:</translation>
+        <translation>大於：</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="316"/>
         <location filename="../filesearch.ui" line="346"/>
         <source>Bytes</source>
-        <translation>位元組</translation>
+        <translation>Bytes</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="321"/>
@@ -1739,7 +1739,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="281"/>
         <source>Smaller than:</source>
-        <translation>小於:</translation>
+        <translation>小於：</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="51"/>
@@ -1759,17 +1759,17 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="377"/>
         <source>Last Modified Time:</source>
-        <translation>最後修改時間:</translation>
+        <translation>最後修改時間：</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Earlier than:</source>
-        <translation>早於:</translation>
+        <translation>早於：</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="392"/>
         <source>Later than:</source>
-        <translation>晚於:</translation>
+        <translation>晚於：</translation>
     </message>
 </context>
 </TS>
