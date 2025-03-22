@@ -114,6 +114,58 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
             g_list_free(apps);
         }
     }
+    else if (!allVirtual_) { // multiple mimetypes
+        QList<AppInfoAction*> commonActions;
+        QStringList typeNames;
+        for(const auto& file : std::as_const(files_)) {
+            if(auto mType = file->mimeType()) {
+                auto typeName = QString::fromUtf8(mType->name());
+                if(typeNames.contains(typeName)) {
+                    continue; // skip repeated mimetypes
+                }
+                QStringList appNames;
+                GList* apps = g_app_info_get_all_for_type(mType->name());
+                GList* l;
+                for(l = apps; l; l = l->next) {
+                    Fm::GAppInfoPtr app{G_APP_INFO(l->data), false};
+                    gchar* program_path = g_find_program_in_path(g_app_info_get_executable(app.get()));
+                    if(!program_path) {
+                        continue;
+                    }
+                    g_free(program_path);
+                    if(typeNames.isEmpty()) { // this is the first mimetype
+                        AppInfoAction* action = new AppInfoAction(std::move(app), menu);
+                        commonActions << action;
+                    }
+                    else {
+                        appNames << QString::fromUtf8(g_app_info_get_name(app.get()));
+                    }
+                }
+                g_list_free(apps);
+                if(!typeNames.isEmpty()) {
+                    QList<AppInfoAction*>::iterator it = commonActions.begin();
+                    while(it != commonActions.end()) {
+                        auto a = *it;
+                        if(!appNames.contains(a->text())) {
+                            it = commonActions.erase(it);
+                            delete a;
+                        }
+                        else {
+                            ++it;
+                        }
+                    }
+                }
+                if(commonActions.isEmpty()) {
+                    break; // no common app is found
+                }
+                typeNames << typeName;
+            }
+        }
+        for(const auto& a : std::as_const(commonActions)) {
+            connect(a, &QAction::triggered, this, &FileMenu::onApplicationTriggered);
+            menu->addAction(a);
+        }
+    }
     menu->addSeparator();
     openWithAction_ = new QAction(QIcon::fromTheme(QStringLiteral("applications-other")), tr("Other Applications"), this);
     connect(openWithAction_, &QAction::triggered, this, &FileMenu::onOpenWithTriggered);
