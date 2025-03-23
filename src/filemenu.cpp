@@ -71,8 +71,8 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
     auto mime_type = info_->mimeType();
     Fm::FilePath path = info_->path();
 
-    // check if the files are of the same type
-    sameType_ = files_.isSameType();
+    // will be checked later if the files are of the same type
+    sameType_ = true;
     // check if the files are on the same filesystem
     sameFilesystem_ = files_.isSameFilesystem();
     // check if the files are all virtual
@@ -93,56 +93,43 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
     QMenu* menu = new QMenu(this);
     openWithMenuAction_->setMenu(menu);
 
-    if(sameType_) { /* add specific menu items for this mime type */
-        if(mime_type && !allVirtual_) { /* the file has a valid mime-type and its not virtual */
-            GList* apps = g_app_info_get_all_for_type(mime_type->name());
-            GList* l;
-            for(l = apps; l; l = l->next) {
-                Fm::GAppInfoPtr app{G_APP_INFO(l->data), false};
-                // check if the command really exists
-                gchar* program_path = g_find_program_in_path(g_app_info_get_executable(app.get()));
-                if(!program_path) {
-                    continue;
-                }
-                g_free(program_path);
-
-                // create a QAction for the application.
-                AppInfoAction* action = new AppInfoAction(std::move(app), menu);
-                connect(action, &QAction::triggered, this, &FileMenu::onApplicationTriggered);
-                menu->addAction(action);
-            }
-            g_list_free(apps);
-        }
-    }
-    else if (!allVirtual_) { // multiple mimetypes
+    // Add submenu items for all apps that can open the selected files.
+    if(!allVirtual_) {
         QList<AppInfoAction*> commonActions;
-        QStringList typeNames;
+        std::vector<std::shared_ptr<const MimeType>> mTypes;
         for(const auto& file : std::as_const(files_)) {
-            if(auto mType = file->mimeType()) {
-                auto typeName = QString::fromUtf8(mType->name());
-                if(typeNames.contains(typeName)) {
-                    continue; // skip repeated mimetypes
+            if(auto mType = file->mimeType()) { // the file has a valid mime type and is not virtual
+                if(std::find(mTypes.cbegin(), mTypes.cend(), mType) != mTypes.cend()) {
+                    continue; // skip repeated mime types
                 }
                 QStringList appNames;
                 GList* apps = g_app_info_get_all_for_type(mType->name());
                 GList* l;
                 for(l = apps; l; l = l->next) {
                     Fm::GAppInfoPtr app{G_APP_INFO(l->data), false};
+                    // check if the command really exists
                     gchar* program_path = g_find_program_in_path(g_app_info_get_executable(app.get()));
                     if(!program_path) {
                         continue;
                     }
                     g_free(program_path);
-                    if(typeNames.isEmpty()) { // this is the first mimetype
+
+                    if(mTypes.empty()) {
+                        // This is the first or perhaps only mime type;
+                        // create a QAction for the application.
                         AppInfoAction* action = new AppInfoAction(std::move(app), menu);
                         commonActions << action;
                     }
                     else {
+                        // Store the app names associated with this mime type
+                        // to find the common apps below.
                         appNames << QString::fromUtf8(g_app_info_get_name(app.get()));
                     }
                 }
                 g_list_free(apps);
-                if(!typeNames.isEmpty()) {
+                if(!mTypes.empty()) {
+                    // Remove and delete the actions whose corresponding apps
+                    // are not associated with the mime types that are checked so far.
                     QList<AppInfoAction*>::iterator it = commonActions.begin();
                     while(it != commonActions.end()) {
                         auto a = *it;
@@ -156,15 +143,17 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
                     }
                 }
                 if(commonActions.isEmpty()) {
-                    break; // no common app is found
+                    break; // no common app exists
                 }
-                typeNames << typeName;
+                mTypes.push_back(mType);
             }
         }
+        // Add submenu items for the selected mime types.
         for(const auto& a : std::as_const(commonActions)) {
             connect(a, &QAction::triggered, this, &FileMenu::onApplicationTriggered);
             menu->addAction(a);
         }
+        sameType_ = (mTypes.size() <= 1);
     }
     menu->addSeparator();
     openWithAction_ = new QAction(QIcon::fromTheme(QStringLiteral("applications-other")), tr("Other Applications"), this);
