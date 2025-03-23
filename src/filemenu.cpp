@@ -71,7 +71,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
     auto mime_type = info_->mimeType();
     Fm::FilePath path = info_->path();
 
-    // will be checked later if the files are of the same type
+    // this will be corrected later if the files are not of the same type
     sameType_ = true;
     // check if the files are on the same filesystem
     sameFilesystem_ = files_.isSameFilesystem();
@@ -97,11 +97,18 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
     if(!allVirtual_) {
         QList<AppInfoAction*> commonActions;
         std::vector<std::shared_ptr<const MimeType>> mTypes;
+        bool invalidType = false;
         for(const auto& file : std::as_const(files_)) {
             if(auto mType = file->mimeType()) { // the file has a valid mime type and is not virtual
+                if(invalidType) {
+                    // An invalid mime type was found before.
+                    sameType_ = false;
+                    break;
+                }
                 if(std::find(mTypes.cbegin(), mTypes.cend(), mType) != mTypes.cend()) {
                     continue; // skip repeated mime types
                 }
+
                 QStringList appNames;
                 GList* apps = g_app_info_get_all_for_type(mType->name());
                 GList* l;
@@ -141,11 +148,23 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
                             ++it;
                         }
                     }
-                }
-                if(commonActions.isEmpty()) {
-                    break; // no common app exists
+                    if(commonActions.isEmpty()) {
+                        // The files do not have the same mime type,
+                        // and no app is associated with all of them.
+                        sameType_ = false;
+                        break;
+                    }
                 }
                 mTypes.push_back(mType);
+            }
+            else {
+                invalidType = true;
+                if(!mTypes.empty()) { // the previous mime types were valid
+                    qDeleteAll(commonActions);
+                    commonActions.clear();
+                    sameType_ = false;
+                    break;
+                }
             }
         }
         // Add submenu items for the selected mime types.
@@ -153,7 +172,10 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
             connect(a, &QAction::triggered, this, &FileMenu::onApplicationTriggered);
             menu->addAction(a);
         }
-        sameType_ = (mTypes.size() <= 1);
+        // See if all files are of the same type.
+        if(sameType_) {
+            sameType_ = (mTypes.size() <= 1);
+        }
     }
     menu->addSeparator();
     openWithAction_ = new QAction(QIcon::fromTheme(QStringLiteral("applications-other")), tr("Other Applications"), this);
