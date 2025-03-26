@@ -24,12 +24,12 @@
         <translation>Γραμμή εντολών προς εκτέλεση:</translation>
     </message>
     <message>
-        <location filename="../app-chooser-dialog.ui" line="62"/>
+        <location filename="../app-chooser-dialog.ui" line="78"/>
         <source>Application name:</source>
         <translation>Όνομα της εφαρμογής:</translation>
     </message>
     <message>
-        <location filename="../app-chooser-dialog.ui" line="72"/>
+        <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>&lt;b&gt;These special codes can be used in the command line:&lt;/b&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Represents a single file name&lt;/li&gt;
@@ -46,12 +46,12 @@
 &lt;/ul&gt;</translation>
     </message>
     <message>
-        <location filename="../app-chooser-dialog.ui" line="91"/>
+        <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Keep terminal window open after command execution</source>
         <translation>Διατήρηση του παραθύρου του τερματικού ανοιχτό μετά την εκτέλεση της εντολής</translation>
     </message>
     <message>
-        <location filename="../app-chooser-dialog.ui" line="98"/>
+        <location filename="../app-chooser-dialog.ui" line="88"/>
         <source>Execute in terminal emulator</source>
         <translation>Εκτέλεση στον προσομοιωτή τερματικού</translation>
     </message>
@@ -69,27 +69,27 @@
         <translation>Επεξεργασία σελιδοδεικτών</translation>
     </message>
     <message>
-        <location filename="../edit-bookmarks.ui" line="42"/>
+        <location filename="../edit-bookmarks.ui" line="49"/>
         <source>Name</source>
         <translation>Όνομα</translation>
     </message>
     <message>
-        <location filename="../edit-bookmarks.ui" line="47"/>
+        <location filename="../edit-bookmarks.ui" line="54"/>
         <source>Location</source>
         <translation>Τοποθεσία</translation>
     </message>
     <message>
-        <location filename="../edit-bookmarks.ui" line="67"/>
+        <location filename="../edit-bookmarks.ui" line="64"/>
         <source>&amp;Add Item</source>
         <translation>&amp;Προσθήκη αντικειμένου</translation>
     </message>
     <message>
-        <location filename="../edit-bookmarks.ui" line="77"/>
+        <location filename="../edit-bookmarks.ui" line="74"/>
         <source>&amp;Remove Item</source>
         <translation>&amp;Αφαίρεση αντικειμένου</translation>
     </message>
     <message>
-        <location filename="../edit-bookmarks.ui" line="102"/>
+        <location filename="../edit-bookmarks.ui" line="20"/>
         <source>Use drag and drop to reorder the items</source>
         <translation>Χρησιμοποιήστε τη μεταφορά και απόθεση για αναδιάταξη των αντικειμένων</translation>
     </message>
@@ -140,7 +140,7 @@
         <translation>Όνομα αρχείου:</translation>
     </message>
     <message>
-        <location filename="../filedialog.ui" line="75"/>
+        <location filename="../filedialog.ui" line="85"/>
         <source>File type:</source>
         <translation>Τύπος αρχείου:</translation>
     </message>
@@ -148,32 +148,32 @@
 <context>
     <name>FileOperationDialog</name>
     <message>
-        <location filename="../file-operation-dialog.ui" line="32"/>
+        <location filename="../file-operation-dialog.ui" line="42"/>
         <source>Destination:</source>
         <translation>Προορισμός:</translation>
     </message>
     <message>
-        <location filename="../file-operation-dialog.ui" line="55"/>
+        <location filename="../file-operation-dialog.ui" line="65"/>
         <source>Processing:</source>
         <translation>Σε επεξεργασία:</translation>
     </message>
     <message>
-        <location filename="../file-operation-dialog.ui" line="68"/>
+        <location filename="../file-operation-dialog.ui" line="78"/>
         <source>Preparing...</source>
         <translation>Προετοιμασία...</translation>
     </message>
     <message>
-        <location filename="../file-operation-dialog.ui" line="75"/>
+        <location filename="../file-operation-dialog.ui" line="85"/>
         <source>Progress:</source>
         <translation>Πρόοδος:</translation>
     </message>
     <message>
-        <location filename="../file-operation-dialog.ui" line="95"/>
+        <location filename="../file-operation-dialog.ui" line="119"/>
         <source>Time remaining:</source>
         <translation>Υπολειπόμενος χρόνος:</translation>
     </message>
     <message>
-        <location filename="../file-operation-dialog.ui" line="125"/>
+        <location filename="../file-operation-dialog.ui" line="99"/>
         <source>Files processed:</source>
         <translation>Επεξεργασμένα αρχεία:</translation>
     </message>
@@ -196,37 +196,37 @@
         <translation>Τοποθεσία:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="106"/>
+        <location filename="../file-props.ui" line="132"/>
         <source>File type:</source>
         <translation>Τύπος αρχείου:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="129"/>
+        <location filename="../file-props.ui" line="155"/>
         <source>MIME type:</source>
         <translation>Τύπος Mime:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="152"/>
+        <location filename="../file-props.ui" line="195"/>
         <source>File size:</source>
         <translation>Μέγεθος αρχείου:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="175"/>
+        <location filename="../file-props.ui" line="218"/>
         <source>On-disk size:</source>
         <translation>Μέγεθος στον δίσκο:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="198"/>
+        <location filename="../file-props.ui" line="241"/>
         <source>Last modified:</source>
         <translation>Τελευταία τροποποίηση:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="221"/>
+        <location filename="../file-props.ui" line="106"/>
         <source>Link target:</source>
         <translation>Προορισμός συνδέσμου:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="247"/>
+        <location filename="../file-props.ui" line="178"/>
         <source>Open With:</source>
         <translation>Άνοιγμα με:</translation>
     </message>
@@ -261,7 +261,7 @@
         <translation>Καθαρισμός του εμβλήματος</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="414"/>
+        <location filename="../file-props.ui" line="397"/>
         <source>Device Usage:</source>
         <translation>Χρήση συσκευής:</translation>
     </message>
@@ -276,14 +276,14 @@
         <translation>Ιδιοκτησία</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="463"/>
+        <location filename="../file-props.ui" line="473"/>
         <location filename="../file-props.ui" line="528"/>
         <location filename="../file-props.ui" line="642"/>
         <source>Group:</source>
         <translation>Ομάδα:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="476"/>
+        <location filename="../file-props.ui" line="457"/>
         <location filename="../file-props.ui" line="511"/>
         <location filename="../file-props.ui" line="590"/>
         <source>Owner:</source>
@@ -327,17 +327,17 @@
         <translation>Εκτέλεση</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="742"/>
+        <location filename="../file-props.ui" line="749"/>
         <source>Sticky</source>
         <translation>Κολλημένο</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="749"/>
+        <location filename="../file-props.ui" line="756"/>
         <source>SetUID</source>
         <translation>Καθορισμός του UID</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="756"/>
+        <location filename="../file-props.ui" line="763"/>
         <source>SetGID</source>
         <translation>Καθορισμός του GID</translation>
     </message>
@@ -478,155 +478,155 @@ What do you want to do with it?</source>
 <context>
     <name>Fm::FileDialog</name>
     <message>
-        <location filename="../filedialog.cpp" line="111"/>
+        <location filename="../filedialog.cpp" line="115"/>
         <source>Go Back</source>
         <translation>Μετάβαση πίσω</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="112"/>
+        <location filename="../filedialog.cpp" line="116"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
         <translation>Alt+Αριστερά</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="118"/>
+        <location filename="../filedialog.cpp" line="122"/>
         <source>Go Forward</source>
         <translation>Μετάβαση εμπρός</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="119"/>
+        <location filename="../filedialog.cpp" line="123"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
         <translation>Alt+Δεξιά</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="126"/>
+        <location filename="../filedialog.cpp" line="130"/>
         <source>Reload</source>
         <translation>Επαναφόρτωση</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="127"/>
+        <location filename="../filedialog.cpp" line="131"/>
         <source>F5</source>
         <comment>Reload</comment>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="144"/>
+        <location filename="../filedialog.cpp" line="148"/>
         <source>Create Folder</source>
         <translation>Δημιουργία φακέλου</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="160"/>
+        <location filename="../filedialog.cpp" line="164"/>
         <source>Icon View</source>
         <translation>Προβολή εικονιδίων</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="164"/>
+        <location filename="../filedialog.cpp" line="168"/>
         <source>Thumbnail View</source>
         <translation>Προβολή εικόνων επισκόπησης</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="168"/>
+        <location filename="../filedialog.cpp" line="172"/>
         <source>Compact View</source>
         <translation>Συμπαγής προβολή</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="172"/>
+        <location filename="../filedialog.cpp" line="176"/>
         <source>Detailed List View</source>
         <translation>Προβολή αναλυτικού κατάστιχου</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="180"/>
+        <location filename="../filedialog.cpp" line="184"/>
         <source>Icon Sizes</source>
         <translation>Μεγέθη εικονιδίου</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="182"/>
+        <location filename="../filedialog.cpp" line="186"/>
         <source>Size of big icons:</source>
         <translation>Το μέγεθος των μεγάλων εικονιδίων:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="189"/>
+        <location filename="../filedialog.cpp" line="193"/>
         <source>Size of small icons:</source>
         <translation>Το μέγεθος των μικρών εικονιδίων:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="196"/>
+        <location filename="../filedialog.cpp" line="200"/>
         <source>Size of thumbnails:</source>
         <translation>Το μέγεθος των εικόνων επισκόπησης:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="212"/>
+        <location filename="../filedialog.cpp" line="216"/>
         <source>Show Hidden</source>
         <translation>Εμφάνιση των κρυφών</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="224"/>
+        <location filename="../filedialog.cpp" line="228"/>
         <source>Show Thumbnails</source>
         <translation>Εμφάνιση εικόνων επισκόπησης</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="229"/>
+        <location filename="../filedialog.cpp" line="233"/>
         <source>Show File Tooltips</source>
         <translation>Εμφάνιση υποδείξεων αρχείου</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="236"/>
+        <location filename="../filedialog.cpp" line="240"/>
         <source>Smooth Scrolling</source>
         <translation>Ομαλή κύλιση</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="251"/>
+        <location filename="../filedialog.cpp" line="255"/>
         <source>Options</source>
         <translation>Επιλογές</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="601"/>
-        <location filename="../filedialog.cpp" line="1060"/>
+        <location filename="../filedialog.cpp" line="605"/>
+        <location filename="../filedialog.cpp" line="1064"/>
         <source>Error</source>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="601"/>
+        <location filename="../filedialog.cpp" line="605"/>
         <source>Please select a file</source>
         <translation>Παρακαλώ επιλέξτε ένα αρχείο</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="677"/>
+        <location filename="../filedialog.cpp" line="681"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>Το αρχείο %1 υπάρχει ήδη.
 Θέλετε να το αντικαταστήσετε;</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1022"/>
+        <location filename="../filedialog.cpp" line="1026"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>Η διαδρομή «%1» δεν υπάρχει</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1036"/>
+        <location filename="../filedialog.cpp" line="1040"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>Το «%1» δεν είναι κατάλογος</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1046"/>
+        <location filename="../filedialog.cpp" line="1050"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>Το «%1» δεν είναι αρχείο</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1200"/>
-        <location filename="../filedialog.cpp" line="1317"/>
+        <location filename="../filedialog.cpp" line="1204"/>
+        <location filename="../filedialog.cpp" line="1321"/>
         <source>&amp;Open</source>
         <translation>Ά&amp;νοιγμα</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1203"/>
-        <location filename="../filedialog.cpp" line="1325"/>
+        <location filename="../filedialog.cpp" line="1207"/>
+        <location filename="../filedialog.cpp" line="1329"/>
         <source>&amp;Save</source>
         <translation>Απο&amp;θήκευση</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1210"/>
+        <location filename="../filedialog.cpp" line="1214"/>
         <source>All Files (*)</source>
         <translation>Όλα τα αρχεία (*)</translation>
     </message>
@@ -634,12 +634,12 @@ Do you want to replace it?</source>
 <context>
     <name>Fm::FileDialogHelper</name>
     <message>
-        <location filename="../filedialoghelper.cpp" line="138"/>
+        <location filename="../filedialoghelper.cpp" line="140"/>
         <source>Open File</source>
         <translation>Άνοιγμα αρχείου</translation>
     </message>
     <message>
-        <location filename="../filedialoghelper.cpp" line="139"/>
+        <location filename="../filedialoghelper.cpp" line="141"/>
         <source>Save File</source>
         <translation>Αποθήκευση αρχείου</translation>
     </message>
@@ -665,12 +665,12 @@ Do you want to replace it?</source>
         <translation>Άνοιγμα με...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="356"/>
+        <location filename="../filemenu.cpp" line="419"/>
         <source>Many files</source>
         <translation>Πολλά αρχεία</translation>
     </message>
     <message numerus="yes">
-        <location filename="../filemenu.cpp" line="357"/>
+        <location filename="../filemenu.cpp" line="420"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>Επιθυμείτε το άνοιγμα %1 αρχείου;</numerusform>
@@ -678,99 +678,99 @@ Do you want to replace it?</source>
         </translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="118"/>
+        <location filename="../filemenu.cpp" line="181"/>
         <source>Other Applications</source>
         <translation>Άλλες εφαρμογές</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="125"/>
+        <location filename="../filemenu.cpp" line="188"/>
         <source>Create &amp;New</source>
         <translation>Δημιουργία &amp;νέου</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="144"/>
+        <location filename="../filemenu.cpp" line="207"/>
         <source>&amp;Restore</source>
         <translation>&amp;Επαναφορά</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="154"/>
+        <location filename="../filemenu.cpp" line="217"/>
         <source>Cut</source>
         <translation>Αποκοπή</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="158"/>
+        <location filename="../filemenu.cpp" line="221"/>
         <source>Copy</source>
         <translation>Αντιγραφή</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="162"/>
+        <location filename="../filemenu.cpp" line="225"/>
         <source>Paste</source>
         <translation>Επικόλληση</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="166"/>
-        <location filename="../filemenu.cpp" line="484"/>
+        <location filename="../filemenu.cpp" line="229"/>
+        <location filename="../filemenu.cpp" line="547"/>
         <source>&amp;Move to Trash</source>
         <translation>&amp;Μετακίνηση στα απορρίμματα</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="170"/>
+        <location filename="../filemenu.cpp" line="233"/>
         <source>Rename</source>
         <translation>Μετονομασία</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="226"/>
+        <location filename="../filemenu.cpp" line="289"/>
         <source>Mount</source>
         <translation>Προσάρτηση</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="240"/>
+        <location filename="../filemenu.cpp" line="303"/>
         <source>Unmount</source>
         <translation>Αποπροσάρτηση</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="254"/>
+        <location filename="../filemenu.cpp" line="317"/>
         <source>Eject</source>
         <translation>Εξαγωγή</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="275"/>
+        <location filename="../filemenu.cpp" line="338"/>
         <source>Extract to...</source>
         <translation>Εξαγωγή σε...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="283"/>
+        <location filename="../filemenu.cpp" line="346"/>
         <source>Extract Here</source>
         <translation>Εξαγωγή εδώ</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="290"/>
+        <location filename="../filemenu.cpp" line="353"/>
         <source>Compress</source>
         <translation>Συμπίεση</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="299"/>
+        <location filename="../filemenu.cpp" line="362"/>
         <source>Properties</source>
         <translation>Ιδιότητες</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="313"/>
+        <location filename="../filemenu.cpp" line="376"/>
         <source>Trust selected executables</source>
         <translation>Τα επιλεγμένα εκτελέσιμα είναι έμπιστα</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="314"/>
+        <location filename="../filemenu.cpp" line="377"/>
         <source>Trust this executable</source>
         <translation>Το εκτελέσιμο είναι έμπιστο</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="419"/>
+        <location filename="../filemenu.cpp" line="482"/>
         <source>Output</source>
         <translation>Έξοδος</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="148"/>
-        <location filename="../filemenu.cpp" line="484"/>
+        <location filename="../filemenu.cpp" line="211"/>
+        <location filename="../filemenu.cpp" line="547"/>
         <source>&amp;Delete</source>
         <translation>&amp;Διαγραφή</translation>
     </message>
@@ -816,7 +816,7 @@ Do you want to delete them instead?</source>
     <name>Fm::FileOperationDialog</name>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
-        <source>Move files</source>
+        <source>Move Files</source>
         <translation>Μετακίνηση των αρχείων</translation>
     </message>
     <message>
@@ -894,69 +894,69 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FilePropsDialog</name>
     <message>
-        <location filename="../filepropsdialog.cpp" line="164"/>
+        <location filename="../filepropsdialog.cpp" line="167"/>
         <source>View folder content</source>
         <translation>Προβολή των περιεχομένων του φακέλου</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="165"/>
+        <location filename="../filepropsdialog.cpp" line="168"/>
         <source>View and modify folder content</source>
         <translation>Προβολή και τροποποίηση των περιεχομένων του φακέλου</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="169"/>
+        <location filename="../filepropsdialog.cpp" line="172"/>
         <source>Read</source>
         <translation>Ανάγνωση</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="170"/>
+        <location filename="../filepropsdialog.cpp" line="173"/>
         <source>Read and write</source>
         <translation>Ανάγνωση και εγγραφή</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="172"/>
+        <location filename="../filepropsdialog.cpp" line="175"/>
         <source>Forbidden</source>
         <translation>Απαγορευμένο</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="289"/>
+        <location filename="../filepropsdialog.cpp" line="292"/>
         <source>Files of different types</source>
         <translation>Αρχεία διαφορετικού τύπου</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="312"/>
-        <location filename="../filepropsdialog.cpp" line="319"/>
-        <location filename="../filepropsdialog.cpp" line="326"/>
+        <location filename="../filepropsdialog.cpp" line="315"/>
+        <location filename="../filepropsdialog.cpp" line="322"/>
+        <location filename="../filepropsdialog.cpp" line="329"/>
         <source>N/A</source>
         <translation>Μ/Δ</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="330"/>
+        <location filename="../filepropsdialog.cpp" line="333"/>
         <source>Multiple Files</source>
         <translation>Πολλαπλά αρχεία</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="407"/>
+        <location filename="../filepropsdialog.cpp" line="410"/>
         <source>%p% used</source>
         <translation>%p% σε χρήση</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="408"/>
+        <location filename="../filepropsdialog.cpp" line="411"/>
         <source>%1 Free of %2</source>
         <translation>%1 Ελεύθερα από %2</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="454"/>
+        <location filename="../filepropsdialog.cpp" line="457"/>
         <source>no file</source>
         <translation>κανένα αρχείο</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="456"/>
+        <location filename="../filepropsdialog.cpp" line="459"/>
         <source>one file</source>
         <translation>ένα αρχείο</translation>
     </message>
     <message numerus="yes">
-        <location filename="../filepropsdialog.cpp" line="458"/>
+        <location filename="../filepropsdialog.cpp" line="461"/>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln αρχείο</numerusform>
@@ -964,24 +964,24 @@ Do you want to delete them instead?</source>
         </translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="492"/>
-        <location filename="../filepropsdialog.cpp" line="537"/>
+        <location filename="../filepropsdialog.cpp" line="495"/>
+        <location filename="../filepropsdialog.cpp" line="540"/>
         <source>Select an icon</source>
         <translation>Επιλογή εικονιδίου</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="494"/>
-        <location filename="../filepropsdialog.cpp" line="539"/>
+        <location filename="../filepropsdialog.cpp" line="497"/>
+        <location filename="../filepropsdialog.cpp" line="542"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
         <translation>Εικόνες (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="645"/>
+        <location filename="../filepropsdialog.cpp" line="648"/>
         <source>Apply changes</source>
         <translation>Εφαρμογή των αλλαγών</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="646"/>
+        <location filename="../filepropsdialog.cpp" line="649"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
         <translation>Θέλετε να εφαρμόσετε αναδρομικά αυτές τις αλλαγές σε όλα τα αρχεία και υποφακέλους;</translation>
     </message>
@@ -1216,12 +1216,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="409"/>
+        <location filename="../folderview.cpp" line="410"/>
         <source>Auto-resize columns</source>
         <translation>Αυτόματη προσαρμογή μεγέθους στηλών</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="426"/>
+        <location filename="../folderview.cpp" line="427"/>
         <source>Visible Columns</source>
         <translation>Ορατές στήλες</translation>
     </message>
@@ -1250,12 +1250,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::PathBar</name>
     <message>
-        <location filename="../pathbar.cpp" line="122"/>
+        <location filename="../pathbar.cpp" line="123"/>
         <source>&amp;Edit Path</source>
         <translation>&amp;Επεξεργασία της διαδρομής</translation>
     </message>
     <message>
-        <location filename="../pathbar.cpp" line="125"/>
+        <location filename="../pathbar.cpp" line="126"/>
         <source>&amp;Copy Path</source>
         <translation>&amp;Αντιγραφή της διαδρομής</translation>
     </message>
@@ -1306,64 +1306,64 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="555"/>
+        <location filename="../placesview.cpp" line="563"/>
         <source>Open in New Tab</source>
         <translation>Άνοιγμα σε νέα καρτέλα</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="559"/>
+        <location filename="../placesview.cpp" line="567"/>
         <source>Open in New Window</source>
         <translation>Άνοιγμα σε νέο παράθυρο</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="572"/>
+        <location filename="../placesview.cpp" line="580"/>
         <source>Empty Trash</source>
         <translation>Άδειασμα των απορριμμάτων</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="592"/>
-        <location filename="../placesview.cpp" line="654"/>
+        <location filename="../placesview.cpp" line="600"/>
+        <location filename="../placesview.cpp" line="662"/>
         <source>Hide</source>
         <translation>Απόκρυψη</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="609"/>
+        <location filename="../placesview.cpp" line="617"/>
         <source>Move Bookmark Up</source>
         <translation>Μετακίνηση του σελιδοδείκτη προς τα πάνω</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="616"/>
+        <location filename="../placesview.cpp" line="624"/>
         <source>Move Bookmark Down</source>
         <translation>Μετακίνηση του σελιδοδείκτη προς τα κάτω</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="621"/>
+        <location filename="../placesview.cpp" line="629"/>
         <source>Rename Bookmark</source>
         <translation>Μετονομασία σελιδοδείκτη</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="625"/>
+        <location filename="../placesview.cpp" line="633"/>
         <source>Remove Bookmark</source>
         <translation>Αφαίρεση σελιδοδείκτη</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="635"/>
-        <location filename="../placesview.cpp" line="668"/>
+        <location filename="../placesview.cpp" line="643"/>
+        <location filename="../placesview.cpp" line="676"/>
         <source>Unmount</source>
         <translation>Αποπροσάρτηση</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="639"/>
+        <location filename="../placesview.cpp" line="647"/>
         <source>Mount</source>
         <translation>Προσάρτηση</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="645"/>
+        <location filename="../placesview.cpp" line="653"/>
         <source>Eject</source>
         <translation>Εξαγωγή</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="680"/>
+        <location filename="../placesview.cpp" line="688"/>
         <source>Show All Entries</source>
         <translation>Εμφάνιση όλων των καταχωρήσεων</translation>
     </message>
@@ -1443,17 +1443,17 @@ Modified: %2</source>
         <translation>Σύνδεση ως &amp;χρήστης:</translation>
     </message>
     <message>
-        <location filename="../mount-operation-password.ui" line="79"/>
+        <location filename="../mount-operation-password.ui" line="76"/>
         <source>&amp;Username:</source>
         <translation>Όνομα χ&amp;ρήστη:</translation>
     </message>
     <message>
-        <location filename="../mount-operation-password.ui" line="102"/>
+        <location filename="../mount-operation-password.ui" line="108"/>
         <source>&amp;Password:</source>
         <translation>&amp;Κωδικός πρόσβασης:</translation>
     </message>
     <message>
-        <location filename="../mount-operation-password.ui" line="112"/>
+        <location filename="../mount-operation-password.ui" line="89"/>
         <source>&amp;Domain:</source>
         <translation>&amp;Τομέας:</translation>
     </message>
@@ -1492,7 +1492,7 @@ Modified: %2</source>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="124"/>
-        <location filename="../filepropsdialog.cpp" line="671"/>
+        <location filename="../filepropsdialog.cpp" line="674"/>
         <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="154"/>
         <location filename="../utilities.cpp" line="318"/>
@@ -1535,7 +1535,7 @@ Modified: %2</source>
         <translation>Εισαγάγετε ένα όνομα για το νέο %1:</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="689"/>
+        <location filename="../filepropsdialog.cpp" line="692"/>
         <source>Custom Icon Error</source>
         <translation>Σφάλμα προσαρμοσμένου εικονιδίου</translation>
     </message>
@@ -1584,7 +1584,7 @@ Modified: %2</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Υπάρχει ήδη ένα αρχείο με το ίδιο όνομα στην συγκεκριμένη τοποθεσία.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Θέλετε να αντικαταστήσετε το υπάρχον αρχείο;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../rename-dialog.ui" line="63"/>
+        <location filename="../rename-dialog.ui" line="76"/>
         <source>with the following file?</source>
         <translation>με το παρακάτω αρχείο;</translation>
     </message>
@@ -1712,36 +1712,36 @@ Modified: %2</source>
         <translation>Μέγεθος αρχείου:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="302"/>
+        <location filename="../filesearch.ui" line="281"/>
         <source>Larger than:</source>
         <translation>Μεγαλύτερο από:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="316"/>
+        <location filename="../filesearch.ui" line="302"/>
         <location filename="../filesearch.ui" line="346"/>
         <source>Bytes</source>
         <translation>Byte</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="321"/>
+        <location filename="../filesearch.ui" line="307"/>
         <location filename="../filesearch.ui" line="351"/>
         <source>KiB</source>
         <translation>KiB</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="326"/>
+        <location filename="../filesearch.ui" line="312"/>
         <location filename="../filesearch.ui" line="356"/>
         <source>MiB</source>
         <translation>MiB</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="331"/>
+        <location filename="../filesearch.ui" line="317"/>
         <location filename="../filesearch.ui" line="361"/>
         <source>GiB</source>
         <translation>GiB</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="281"/>
+        <location filename="../filesearch.ui" line="325"/>
         <source>Smaller than:</source>
         <translation>Μικρότερο από:</translation>
     </message>
@@ -1771,7 +1771,7 @@ Modified: %2</source>
         <translation>Προγενέστερα από:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="392"/>
+        <location filename="../filesearch.ui" line="402"/>
         <source>Later than:</source>
         <translation>Αργότερα από:</translation>
     </message>
