@@ -99,7 +99,7 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation>Выполнить файл</translation>
+        <translation>Исполняемый файл</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="42"/>
