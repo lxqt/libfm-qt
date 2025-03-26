@@ -43,7 +43,7 @@ FileOperationDialog::FileOperationDialog(FileOperation* _operation):
     QString message;
     switch(_operation->type()) {
     case FileOperation::Move:
-        title = tr("Move files");
+        title = tr("Move Files");
         message = tr("Moving the following files to destination folder:");
         break;
     case FileOperation::Copy:

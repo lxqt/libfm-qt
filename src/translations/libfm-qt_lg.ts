@@ -816,7 +816,7 @@ Fayiro ezo zo nzigyeewobugyi?</translation>
     <name>Fm::FileOperationDialog</name>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
-        <source>Move files</source>
+        <source>Move Files</source>
         <translation>Simbuliza fayiro</translation>
     </message>
     <message>

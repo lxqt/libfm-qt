@@ -24,12 +24,12 @@
         <translation>ධාවනය කළ යුතු විධාන පෙළ:</translation>
     </message>
     <message>
-        <location filename="../app-chooser-dialog.ui" line="62"/>
+        <location filename="../app-chooser-dialog.ui" line="78"/>
         <source>Application name:</source>
         <translation>මෘදුකාංග නම:</translation>
     </message>
     <message>
-        <location filename="../app-chooser-dialog.ui" line="72"/>
+        <location filename="../app-chooser-dialog.ui" line="62"/>
         <source>&lt;b&gt;These special codes can be used in the command line:&lt;/b&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Represents a single file name&lt;/li&gt;
@@ -46,12 +46,12 @@
 &lt;/ul&gt;</translation>
     </message>
     <message>
-        <location filename="../app-chooser-dialog.ui" line="91"/>
+        <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Keep terminal window open after command execution</source>
         <translation>විධාන ධාවනයෙන් පසුව විධාන කවුලුව විවෘතව තබන්න</translation>
     </message>
     <message>
-        <location filename="../app-chooser-dialog.ui" line="98"/>
+        <location filename="../app-chooser-dialog.ui" line="88"/>
         <source>Execute in terminal emulator</source>
         <translation>ටර්මිනල් එමියුලේටරය තුළ ධාවනය කරන්න</translation>
     </message>
@@ -69,27 +69,27 @@
         <translation>බුක්මාර්ක් වෙනස් කරන්න</translation>
     </message>
     <message>
-        <location filename="../edit-bookmarks.ui" line="42"/>
+        <location filename="../edit-bookmarks.ui" line="49"/>
         <source>Name</source>
         <translation>නම</translation>
     </message>
     <message>
-        <location filename="../edit-bookmarks.ui" line="47"/>
+        <location filename="../edit-bookmarks.ui" line="54"/>
         <source>Location</source>
         <translation>ස්ථානය</translation>
     </message>
     <message>
-        <location filename="../edit-bookmarks.ui" line="67"/>
+        <location filename="../edit-bookmarks.ui" line="64"/>
         <source>&amp;Add Item</source>
         <translation>අයිතමයක් එකතු කරන්න (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../edit-bookmarks.ui" line="77"/>
+        <location filename="../edit-bookmarks.ui" line="74"/>
         <source>&amp;Remove Item</source>
         <translation>අයිතමයක් ඉවත් කරන්න (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../edit-bookmarks.ui" line="102"/>
+        <location filename="../edit-bookmarks.ui" line="20"/>
         <source>Use drag and drop to reorder the items</source>
         <translation>ඇදගෙන ගොස් පිලිවෙළ වෙනස් කරන්න</translation>
     </message>
@@ -140,7 +140,7 @@
         <translation>ගොනු නාමය:</translation>
     </message>
     <message>
-        <location filename="../filedialog.ui" line="75"/>
+        <location filename="../filedialog.ui" line="85"/>
         <source>File type:</source>
         <translation>ගොනු වර්ගය:</translation>
     </message>
@@ -148,32 +148,32 @@
 <context>
     <name>FileOperationDialog</name>
     <message>
-        <location filename="../file-operation-dialog.ui" line="32"/>
+        <location filename="../file-operation-dialog.ui" line="42"/>
         <source>Destination:</source>
         <translation>ගමනාන්තය:</translation>
     </message>
     <message>
-        <location filename="../file-operation-dialog.ui" line="55"/>
+        <location filename="../file-operation-dialog.ui" line="65"/>
         <source>Processing:</source>
         <translation>සකසමින්:</translation>
     </message>
     <message>
-        <location filename="../file-operation-dialog.ui" line="68"/>
+        <location filename="../file-operation-dialog.ui" line="78"/>
         <source>Preparing...</source>
         <translation>සූදානම් කරමින්...</translation>
     </message>
     <message>
-        <location filename="../file-operation-dialog.ui" line="75"/>
+        <location filename="../file-operation-dialog.ui" line="85"/>
         <source>Progress:</source>
         <translation>ප්‍රගතිය:</translation>
     </message>
     <message>
-        <location filename="../file-operation-dialog.ui" line="95"/>
+        <location filename="../file-operation-dialog.ui" line="119"/>
         <source>Time remaining:</source>
         <translation>ඉතිරි කාලය:</translation>
     </message>
     <message>
-        <location filename="../file-operation-dialog.ui" line="125"/>
+        <location filename="../file-operation-dialog.ui" line="99"/>
         <source>Files processed:</source>
         <translation>සැකසූ ගොනු:</translation>
     </message>
@@ -196,37 +196,37 @@
         <translation>ස්ථානය:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="106"/>
+        <location filename="../file-props.ui" line="132"/>
         <source>File type:</source>
         <translation>ගොනු වර්ගය:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="129"/>
+        <location filename="../file-props.ui" line="155"/>
         <source>MIME type:</source>
         <translation>MIME වර්ගය:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="152"/>
+        <location filename="../file-props.ui" line="195"/>
         <source>File size:</source>
         <translation>ගොනු විශාලත්වය:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="175"/>
+        <location filename="../file-props.ui" line="218"/>
         <source>On-disk size:</source>
         <translation>තැටියෙහි ප්‍රමාණය:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="198"/>
+        <location filename="../file-props.ui" line="241"/>
         <source>Last modified:</source>
         <translation>අවසන් වරට වෙනස් කළේ:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="221"/>
+        <location filename="../file-props.ui" line="106"/>
         <source>Link target:</source>
         <translation>සබැඳි ගමනාන්තය:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="247"/>
+        <location filename="../file-props.ui" line="178"/>
         <source>Open With:</source>
         <translation>සමඟ විවෘත කරන්න:</translation>
     </message>
@@ -261,7 +261,7 @@
         <translation>ලාංඡනය ඉවත් කරන්න</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="414"/>
+        <location filename="../file-props.ui" line="397"/>
         <source>Device Usage:</source>
         <translation>දෘඩාංග භාවිතය:</translation>
     </message>
@@ -276,14 +276,14 @@
         <translation>අයිතිය</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="463"/>
+        <location filename="../file-props.ui" line="473"/>
         <location filename="../file-props.ui" line="528"/>
         <location filename="../file-props.ui" line="642"/>
         <source>Group:</source>
         <translation>කණ්ඩායම:</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="476"/>
+        <location filename="../file-props.ui" line="457"/>
         <location filename="../file-props.ui" line="511"/>
         <location filename="../file-props.ui" line="590"/>
         <source>Owner:</source>
@@ -327,17 +327,17 @@
         <translation>ධාවන</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="742"/>
+        <location filename="../file-props.ui" line="749"/>
         <source>Sticky</source>
         <translation>ස්ටිකි</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="749"/>
+        <location filename="../file-props.ui" line="756"/>
         <source>SetUID</source>
         <translation>UID සකසන්න</translation>
     </message>
     <message>
-        <location filename="../file-props.ui" line="756"/>
+        <location filename="../file-props.ui" line="763"/>
         <source>SetGID</source>
         <translation>GID සකසන්න</translation>
     </message>
@@ -478,155 +478,155 @@ What do you want to do with it?</source>
 <context>
     <name>Fm::FileDialog</name>
     <message>
-        <location filename="../filedialog.cpp" line="111"/>
+        <location filename="../filedialog.cpp" line="115"/>
         <source>Go Back</source>
         <translation>ආපසු</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="112"/>
+        <location filename="../filedialog.cpp" line="116"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
         <translation>Alt+Left</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="118"/>
+        <location filename="../filedialog.cpp" line="122"/>
         <source>Go Forward</source>
         <translation>ඉදිරියට</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="119"/>
+        <location filename="../filedialog.cpp" line="123"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
         <translation>Alt+Right</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="126"/>
+        <location filename="../filedialog.cpp" line="130"/>
         <source>Reload</source>
         <translation>නැවත පූරණය කරන්න</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="127"/>
+        <location filename="../filedialog.cpp" line="131"/>
         <source>F5</source>
         <comment>Reload</comment>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="144"/>
+        <location filename="../filedialog.cpp" line="148"/>
         <source>Create Folder</source>
         <translation>ෆෝල්ඩරය නිර්මාණය</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="160"/>
+        <location filename="../filedialog.cpp" line="164"/>
         <source>Icon View</source>
         <translation>අයිකන පෙනුම</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="164"/>
+        <location filename="../filedialog.cpp" line="168"/>
         <source>Thumbnail View</source>
         <translation>තබ්නෙයිල් පෙනුම</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="168"/>
+        <location filename="../filedialog.cpp" line="172"/>
         <source>Compact View</source>
         <translation>සංයුක්ත පෙනුම</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="172"/>
+        <location filename="../filedialog.cpp" line="176"/>
         <source>Detailed List View</source>
         <translation>විස්තරාත්මක ලැයිස්තු පෙනුම</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="180"/>
+        <location filename="../filedialog.cpp" line="184"/>
         <source>Icon Sizes</source>
         <translation>අයිකන ප්‍රමාණ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="182"/>
+        <location filename="../filedialog.cpp" line="186"/>
         <source>Size of big icons:</source>
         <translation>විශාල අයිකනයේ ප්‍රමාණය:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="189"/>
+        <location filename="../filedialog.cpp" line="193"/>
         <source>Size of small icons:</source>
         <translation>කුඩා අයිකනයේ ප්‍රමාණය:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="196"/>
+        <location filename="../filedialog.cpp" line="200"/>
         <source>Size of thumbnails:</source>
         <translation>තබ්නෙයිල් ප්‍රමාණය:</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="212"/>
+        <location filename="../filedialog.cpp" line="216"/>
         <source>Show Hidden</source>
         <translation>සැඟවුණු ගොනු පෙන්වන්න</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="224"/>
+        <location filename="../filedialog.cpp" line="228"/>
         <source>Show Thumbnails</source>
         <translation>තබ්නෙයිල් පෙන්වන්න</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="229"/>
+        <location filename="../filedialog.cpp" line="233"/>
         <source>Show File Tooltips</source>
         <translation>ගොනු ඉඟිය පෙන්වන්න</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="236"/>
+        <location filename="../filedialog.cpp" line="240"/>
         <source>Smooth Scrolling</source>
         <translation>සුමට චලනය</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="251"/>
+        <location filename="../filedialog.cpp" line="255"/>
         <source>Options</source>
         <translation>විකල්ප</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="601"/>
-        <location filename="../filedialog.cpp" line="1060"/>
+        <location filename="../filedialog.cpp" line="605"/>
+        <location filename="../filedialog.cpp" line="1064"/>
         <source>Error</source>
         <translation>දෝෂ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="601"/>
+        <location filename="../filedialog.cpp" line="605"/>
         <source>Please select a file</source>
         <translation>කරුණාකර ගොනුවක් තෝරන්න</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="677"/>
+        <location filename="../filedialog.cpp" line="681"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 දැනටමත් පවතී.
 ප්‍රතිස්ථාපනය කරන්න ද?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1022"/>
+        <location filename="../filedialog.cpp" line="1026"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>&quot;%1&quot; නොපවතී</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1036"/>
+        <location filename="../filedialog.cpp" line="1040"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&quot;%1&quot; ඩිරෙක්ටරියක් නොවේ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1046"/>
+        <location filename="../filedialog.cpp" line="1050"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&quot;%1&quot; ගොනුවක් නොවේ</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1200"/>
-        <location filename="../filedialog.cpp" line="1317"/>
+        <location filename="../filedialog.cpp" line="1204"/>
+        <location filename="../filedialog.cpp" line="1321"/>
         <source>&amp;Open</source>
         <translation>විවෘත (&amp;O)</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1203"/>
-        <location filename="../filedialog.cpp" line="1325"/>
+        <location filename="../filedialog.cpp" line="1207"/>
+        <location filename="../filedialog.cpp" line="1329"/>
         <source>&amp;Save</source>
         <translation>සුරකින්න (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1210"/>
+        <location filename="../filedialog.cpp" line="1214"/>
         <source>All Files (*)</source>
         <translation>සියලු ගොනු (*)</translation>
     </message>
@@ -634,12 +634,12 @@ Do you want to replace it?</source>
 <context>
     <name>Fm::FileDialogHelper</name>
     <message>
-        <location filename="../filedialoghelper.cpp" line="138"/>
+        <location filename="../filedialoghelper.cpp" line="140"/>
         <source>Open File</source>
         <translation>ගොනුව විවෘත කරන්න</translation>
     </message>
     <message>
-        <location filename="../filedialoghelper.cpp" line="139"/>
+        <location filename="../filedialoghelper.cpp" line="141"/>
         <source>Save File</source>
         <translation>ගොනුව සුරකින්න</translation>
     </message>
@@ -665,12 +665,12 @@ Do you want to replace it?</source>
         <translation>මෘදුකාංගය සමඟ විවෘත කරන්න...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="356"/>
+        <location filename="../filemenu.cpp" line="419"/>
         <source>Many files</source>
         <translation>ගොනු විශාල සංඛ්‍යාවක්</translation>
     </message>
     <message numerus="yes">
-        <location filename="../filemenu.cpp" line="357"/>
+        <location filename="../filemenu.cpp" line="420"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>මෙම %1 ගොනුව විවෘත කිරීමට අවශ්‍ය ද?</numerusform>
@@ -678,99 +678,99 @@ Do you want to replace it?</source>
         </translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="118"/>
+        <location filename="../filemenu.cpp" line="181"/>
         <source>Other Applications</source>
         <translation>වෙනත් මෘදුකාංග</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="125"/>
+        <location filename="../filemenu.cpp" line="188"/>
         <source>Create &amp;New</source>
         <translation>අලුතින් නිර්මාණය කරන්න (&amp;N)</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="144"/>
+        <location filename="../filemenu.cpp" line="207"/>
         <source>&amp;Restore</source>
         <translation>නැවත පිහිටුවන්න (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="154"/>
+        <location filename="../filemenu.cpp" line="217"/>
         <source>Cut</source>
         <translation>කට් කරන්න</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="158"/>
+        <location filename="../filemenu.cpp" line="221"/>
         <source>Copy</source>
         <translation>කොපි කරන්න</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="162"/>
+        <location filename="../filemenu.cpp" line="225"/>
         <source>Paste</source>
         <translation>පේස්ට් කරන්න</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="166"/>
-        <location filename="../filemenu.cpp" line="484"/>
+        <location filename="../filemenu.cpp" line="229"/>
+        <location filename="../filemenu.cpp" line="547"/>
         <source>&amp;Move to Trash</source>
         <translation>කුණු කූඩයට දමන්න (&amp;M)</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="170"/>
+        <location filename="../filemenu.cpp" line="233"/>
         <source>Rename</source>
         <translation>නම වෙනස් කරන්න</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="226"/>
+        <location filename="../filemenu.cpp" line="289"/>
         <source>Mount</source>
         <translation>මවුන්ට් කරන්න</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="240"/>
+        <location filename="../filemenu.cpp" line="303"/>
         <source>Unmount</source>
         <translation>අන්මවුන්ට් කරන්න</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="254"/>
+        <location filename="../filemenu.cpp" line="317"/>
         <source>Eject</source>
         <translation>ඉවත් කරන්න</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="275"/>
+        <location filename="../filemenu.cpp" line="338"/>
         <source>Extract to...</source>
         <translation>වෙත දිගහරින්න...</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="283"/>
+        <location filename="../filemenu.cpp" line="346"/>
         <source>Extract Here</source>
         <translation>මෙතන දිගහරින්න</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="290"/>
+        <location filename="../filemenu.cpp" line="353"/>
         <source>Compress</source>
         <translation>සම්පීඩනය කරන්න</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="299"/>
+        <location filename="../filemenu.cpp" line="362"/>
         <source>Properties</source>
         <translation>ලක්ෂණ</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="313"/>
+        <location filename="../filemenu.cpp" line="376"/>
         <source>Trust selected executables</source>
         <translation>තෝරාගත් ධාවක විශ්වාස කරන්න</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="314"/>
+        <location filename="../filemenu.cpp" line="377"/>
         <source>Trust this executable</source>
         <translation>මෙම ධාවකය විශ්වාස කරන්න</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="419"/>
+        <location filename="../filemenu.cpp" line="482"/>
         <source>Output</source>
         <translation>ප්‍රතිදාන</translation>
     </message>
     <message>
-        <location filename="../filemenu.cpp" line="148"/>
-        <location filename="../filemenu.cpp" line="484"/>
+        <location filename="../filemenu.cpp" line="211"/>
+        <location filename="../filemenu.cpp" line="547"/>
         <source>&amp;Delete</source>
         <translation>මකා දමන්න (&amp;D)</translation>
     </message>
@@ -816,7 +816,7 @@ Do you want to delete them instead?</source>
     <name>Fm::FileOperationDialog</name>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
-        <source>Move files</source>
+        <source>Move Files</source>
         <translation>ගොනු ගෙන යයි</translation>
     </message>
     <message>
@@ -894,69 +894,69 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FilePropsDialog</name>
     <message>
-        <location filename="../filepropsdialog.cpp" line="164"/>
+        <location filename="../filepropsdialog.cpp" line="167"/>
         <source>View folder content</source>
         <translation>ෆෝල්ඩර අන්තර්ගතය පෙන්වන්න</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="165"/>
+        <location filename="../filepropsdialog.cpp" line="168"/>
         <source>View and modify folder content</source>
         <translation>ෆෝල්ඩර අන්තර්ගතය බලන්න සහ වෙනස් කරන්න</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="169"/>
+        <location filename="../filepropsdialog.cpp" line="172"/>
         <source>Read</source>
         <translation>කියවීම්</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="170"/>
+        <location filename="../filepropsdialog.cpp" line="173"/>
         <source>Read and write</source>
         <translation>කියවීම් සහ ලිවීම්</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="172"/>
+        <location filename="../filepropsdialog.cpp" line="175"/>
         <source>Forbidden</source>
         <translation>තහනම්</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="289"/>
+        <location filename="../filepropsdialog.cpp" line="292"/>
         <source>Files of different types</source>
         <translation>විවිධ වර්ගයේ ගොනු</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="312"/>
-        <location filename="../filepropsdialog.cpp" line="319"/>
-        <location filename="../filepropsdialog.cpp" line="326"/>
+        <location filename="../filepropsdialog.cpp" line="315"/>
+        <location filename="../filepropsdialog.cpp" line="322"/>
+        <location filename="../filepropsdialog.cpp" line="329"/>
         <source>N/A</source>
         <translation>N/A</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="330"/>
+        <location filename="../filepropsdialog.cpp" line="333"/>
         <source>Multiple Files</source>
         <translation>ගොනු බොහොමයක්</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="407"/>
+        <location filename="../filepropsdialog.cpp" line="410"/>
         <source>%p% used</source>
         <translation>%p% භාවිතයි</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="408"/>
+        <location filename="../filepropsdialog.cpp" line="411"/>
         <source>%1 Free of %2</source>
         <translation>සමස්ත %2 තුලින්, %1 නිදහස් ය</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="454"/>
+        <location filename="../filepropsdialog.cpp" line="457"/>
         <source>no file</source>
         <translation>ගොනු නැත</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="456"/>
+        <location filename="../filepropsdialog.cpp" line="459"/>
         <source>one file</source>
         <translation>එක් ගොනුවක්</translation>
     </message>
     <message numerus="yes">
-        <location filename="../filepropsdialog.cpp" line="458"/>
+        <location filename="../filepropsdialog.cpp" line="461"/>
         <source>%Ln files</source>
         <translation>
             <numerusform>ගොනු %Lnක්</numerusform>
@@ -964,24 +964,24 @@ Do you want to delete them instead?</source>
         </translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="492"/>
-        <location filename="../filepropsdialog.cpp" line="537"/>
+        <location filename="../filepropsdialog.cpp" line="495"/>
+        <location filename="../filepropsdialog.cpp" line="540"/>
         <source>Select an icon</source>
         <translation>අයිකනයක් තෝරන්න</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="494"/>
-        <location filename="../filepropsdialog.cpp" line="539"/>
+        <location filename="../filepropsdialog.cpp" line="497"/>
+        <location filename="../filepropsdialog.cpp" line="542"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
         <translation>රූප (*.png *.xpm *.svg *.svgz)</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="645"/>
+        <location filename="../filepropsdialog.cpp" line="648"/>
         <source>Apply changes</source>
         <translation>වෙනස්කම් යොදන්න</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="646"/>
+        <location filename="../filepropsdialog.cpp" line="649"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
         <translation>සියලුම ගොනු සහ උප ෆෝල්ඩර සඳහා මෙම වෙනස්කම් පුනරාවර්තනය කරන්න ද?</translation>
     </message>
@@ -1216,12 +1216,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="409"/>
+        <location filename="../folderview.cpp" line="410"/>
         <source>Auto-resize columns</source>
         <translation>ස්වයංක්‍රීයව තීරු ප්‍රමාණය වෙනස් කරන්න</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="426"/>
+        <location filename="../folderview.cpp" line="427"/>
         <source>Visible Columns</source>
         <translation>පෙන්වන තීරු</translation>
     </message>
@@ -1250,12 +1250,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::PathBar</name>
     <message>
-        <location filename="../pathbar.cpp" line="122"/>
+        <location filename="../pathbar.cpp" line="123"/>
         <source>&amp;Edit Path</source>
         <translation>මාර්ගය සංස්කරණය (&amp;E)</translation>
     </message>
     <message>
-        <location filename="../pathbar.cpp" line="125"/>
+        <location filename="../pathbar.cpp" line="126"/>
         <source>&amp;Copy Path</source>
         <translation>මාර්ගය කොපි කරන්න (&amp;C)</translation>
     </message>
@@ -1306,64 +1306,64 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="555"/>
+        <location filename="../placesview.cpp" line="563"/>
         <source>Open in New Tab</source>
         <translation>නව ටැබ් එකකින් විවෘත කරන්න</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="559"/>
+        <location filename="../placesview.cpp" line="567"/>
         <source>Open in New Window</source>
         <translation>නව කවුළුවකින් විවෘත කරන්න</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="572"/>
+        <location filename="../placesview.cpp" line="580"/>
         <source>Empty Trash</source>
         <translation>කුණු කූඩය හිස් කරන්න</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="592"/>
-        <location filename="../placesview.cpp" line="654"/>
+        <location filename="../placesview.cpp" line="600"/>
+        <location filename="../placesview.cpp" line="662"/>
         <source>Hide</source>
         <translation>සඟවන්න</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="609"/>
+        <location filename="../placesview.cpp" line="617"/>
         <source>Move Bookmark Up</source>
         <translation>බුක්මාර්ක් ඉහළට ගෙන යන්න</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="616"/>
+        <location filename="../placesview.cpp" line="624"/>
         <source>Move Bookmark Down</source>
         <translation>බුක්මාර්ක් පහළට ගෙන යන්න</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="621"/>
+        <location filename="../placesview.cpp" line="629"/>
         <source>Rename Bookmark</source>
         <translation>බුක්මාර්ක් හි නම වෙනස් කරන්න</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="625"/>
+        <location filename="../placesview.cpp" line="633"/>
         <source>Remove Bookmark</source>
         <translation>බුක්මාර්ක් ඉවත් කරන්න</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="635"/>
-        <location filename="../placesview.cpp" line="668"/>
+        <location filename="../placesview.cpp" line="643"/>
+        <location filename="../placesview.cpp" line="676"/>
         <source>Unmount</source>
         <translation>අන්මවුන්ට් කරන්න</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="639"/>
+        <location filename="../placesview.cpp" line="647"/>
         <source>Mount</source>
         <translation>මවුන්ට් කරන්න</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="645"/>
+        <location filename="../placesview.cpp" line="653"/>
         <source>Eject</source>
         <translation>ඉවත් කරන්න</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="680"/>
+        <location filename="../placesview.cpp" line="688"/>
         <source>Show All Entries</source>
         <translation>අඩංගු සියල්ල පෙන්වන්න</translation>
     </message>
@@ -1443,17 +1443,17 @@ Modified: %2</source>
         <translation>පරිශීලකයෙකු ලෙස සම්බන්ධ වන්න (&amp;S):</translation>
     </message>
     <message>
-        <location filename="../mount-operation-password.ui" line="79"/>
+        <location filename="../mount-operation-password.ui" line="76"/>
         <source>&amp;Username:</source>
         <translation>පරිශීල නාමය (&amp;U):</translation>
     </message>
     <message>
-        <location filename="../mount-operation-password.ui" line="102"/>
+        <location filename="../mount-operation-password.ui" line="108"/>
         <source>&amp;Password:</source>
         <translation>මුරපදය (&amp;P):</translation>
     </message>
     <message>
-        <location filename="../mount-operation-password.ui" line="112"/>
+        <location filename="../mount-operation-password.ui" line="89"/>
         <source>&amp;Domain:</source>
         <translation>වසම් නාමය (&amp;D):</translation>
     </message>
@@ -1492,7 +1492,7 @@ Modified: %2</source>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="124"/>
-        <location filename="../filepropsdialog.cpp" line="671"/>
+        <location filename="../filepropsdialog.cpp" line="674"/>
         <location filename="../mountoperation.cpp" line="297"/>
         <location filename="../utilities.cpp" line="154"/>
         <location filename="../utilities.cpp" line="318"/>
@@ -1535,7 +1535,7 @@ Modified: %2</source>
         <translation>%1 සඳහා අලුත් නාමයක් ලබා දෙන්න:</translation>
     </message>
     <message>
-        <location filename="../filepropsdialog.cpp" line="689"/>
+        <location filename="../filepropsdialog.cpp" line="692"/>
         <source>Custom Icon Error</source>
         <translation>අභිරුචි අයිකන දෝෂ</translation>
     </message>
@@ -1584,7 +1584,7 @@ Modified: %2</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;මෙම ස්ථානයේ එකම නම සහිත ගොනුවක් දැනටමත් පවතී.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;පවතින ගොනුව&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../rename-dialog.ui" line="63"/>
+        <location filename="../rename-dialog.ui" line="76"/>
         <source>with the following file?</source>
         <translation>පහත ගොනුව සමඟ ප්‍රතිස්ථාපනය කිරීමට අවශ්‍යද?</translation>
     </message>
@@ -1712,36 +1712,36 @@ Modified: %2</source>
         <translation>ගොනු විශාලත්වය:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="302"/>
+        <location filename="../filesearch.ui" line="281"/>
         <source>Larger than:</source>
         <translation>මීට වඩා ලොකු:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="316"/>
+        <location filename="../filesearch.ui" line="302"/>
         <location filename="../filesearch.ui" line="346"/>
         <source>Bytes</source>
         <translation>බයිට</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="321"/>
+        <location filename="../filesearch.ui" line="307"/>
         <location filename="../filesearch.ui" line="351"/>
         <source>KiB</source>
         <translation>KiB</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="326"/>
+        <location filename="../filesearch.ui" line="312"/>
         <location filename="../filesearch.ui" line="356"/>
         <source>MiB</source>
         <translation>MiB</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="331"/>
+        <location filename="../filesearch.ui" line="317"/>
         <location filename="../filesearch.ui" line="361"/>
         <source>GiB</source>
         <translation>GiB</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="281"/>
+        <location filename="../filesearch.ui" line="325"/>
         <source>Smaller than:</source>
         <translation>මීට වඩා පොඩි:</translation>
     </message>
@@ -1771,7 +1771,7 @@ Modified: %2</source>
         <translation>මීට පෙර:</translation>
     </message>
     <message>
-        <location filename="../filesearch.ui" line="392"/>
+        <location filename="../filesearch.ui" line="402"/>
         <source>Later than:</source>
         <translation>මීට පසු:</translation>
     </message>
