@@ -1,3 +1,15 @@
+libfm-qt-2.2.0 / 2025-04-17
+============================
+ * Modernized string literals.
+ * Enabled custom options for local terminals list.
+ * List common apps in "Open With" menu with multiple MIME types.
+ * Removed menu-cache version checks from `vfs-menu.c`.
+ * Try better to change directory on mounting by clicking in side-pane.
+ * Reorder XML ui files to correct tab orders.
+ * Replaced qMin,qMax,qBound,qRound and qAbs with standard functions.
+ * Support zstandard for Ark.
+ * Capitalized "Move Files".
+
 libfm-qt-2.1.0 / 2024-11-05
 ============================
  * Add 6 menu icons.
