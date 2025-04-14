@@ -207,6 +207,24 @@ void MountOperation::onEjectVolumeFinished(GVolume* volume, GAsyncResult* res, Q
     delete pThis;
 }
 
+void MountOperation::onStopDriveFinished(GDrive* drive, GAsyncResult* res, QPointer<MountOperation>* pThis) {
+    if(*pThis) {
+        GError* error = nullptr;
+        g_drive_stop_finish(drive, res, &error);
+        (*pThis)->handleFinish(error);
+    }
+    delete pThis;
+}
+
+void MountOperation::onEjectDriveFinished(GDrive* drive, GAsyncResult* res, QPointer<MountOperation>* pThis) {
+    if(*pThis) {
+        GError* error = nullptr;
+        g_drive_eject_with_operation_finish(drive, res, &error);
+        (*pThis)->handleFinish(error);
+    }
+    delete pThis;
+}
+
 void MountOperation::onEjectFileFinished(GFile* file, GAsyncResult* res, QPointer<MountOperation>* pThis) {
     if(*pThis) {
         GError* error = nullptr;
