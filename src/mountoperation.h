@@ -93,6 +93,20 @@ public:
             prepareUnmount(mnt);
             g_object_unref(mnt);
         }
+        // first check if the drive can be stopped or ejected.
+        if(GDrive* drv = g_volume_get_drive(volume)) {
+            if(g_drive_can_stop(drv)) {
+                g_drive_stop(drv, G_MOUNT_UNMOUNT_NONE, op, cancellable_, (GAsyncReadyCallback)onStopDriveFinished, new QPointer<MountOperation>(this));
+                g_object_unref(drv);
+                return;
+            }
+            else if(g_drive_can_eject(drv)) {
+                g_drive_eject_with_operation(drv, G_MOUNT_UNMOUNT_NONE, op, cancellable_, (GAsyncReadyCallback)onEjectDriveFinished, new QPointer<MountOperation>(this));
+                g_object_unref(drv);
+                return;
+            }
+            g_object_unref(drv);
+        }
         g_volume_eject_with_operation(volume, G_MOUNT_UNMOUNT_NONE, op, cancellable_, (GAsyncReadyCallback)onEjectVolumeFinished, new QPointer<MountOperation>(this));
     }
 
@@ -163,6 +177,8 @@ private:
     static void onEjectMountFinished(GMount* mount, GAsyncResult* res, QPointer<MountOperation>* pThis);
     static void onEjectVolumeFinished(GVolume* volume, GAsyncResult* res, QPointer<MountOperation>* pThis);
     static void onEjectFileFinished(GFile* file, GAsyncResult* res, QPointer<MountOperation>* pThis);
+    static void onStopDriveFinished(GDrive* drive, GAsyncResult* res, QPointer<MountOperation>* pThis);
+    static void onEjectDriveFinished(GDrive* drive, GAsyncResult* res, QPointer<MountOperation>* pThis);
 
     void handleFinish(GError* error);
 

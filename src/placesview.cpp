@@ -654,6 +654,11 @@ void PlacesView::contextMenuEvent(QContextMenuEvent* event) {
                 connect(action, &QAction::triggered, this, &PlacesView::onEjectVolume);
                 menu->addAction(action);
             }
+            else if(volumeItem->canSafelyRemove()) {
+                action = new PlacesModel::ItemAction(item->index(), tr("Safely Remove"), menu);
+                connect(action, &QAction::triggered, this, &PlacesView::onEjectVolume);
+                menu->addAction(action);
+            }
             // add a "Hide" action to the end
             CStrPtr uuid{g_volume_get_uuid(static_cast<PlacesModelVolumeItem*>(item)->volume())};
             if(uuid) {

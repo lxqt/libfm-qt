@@ -92,6 +92,7 @@ public:
     bool canEject() {
         return g_volume_can_eject(volume_);
     }
+    bool canSafelyRemove();
     int type() const override {
         return Volume;
     }
