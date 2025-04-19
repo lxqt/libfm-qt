@@ -150,6 +150,16 @@ bool PlacesModelVolumeItem::isMounted() {
     return mount != nullptr ? true : false;
 }
 
+bool PlacesModelVolumeItem::canSafelyRemove() {
+    if(GDrive* drv = g_volume_get_drive(volume_)) {
+        if(g_drive_can_stop(drv)) {
+            g_object_unref(drv);
+            return true;
+        }
+        g_object_unref(drv);
+    }
+    return false;
+}
 
 PlacesModelMountItem::PlacesModelMountItem(GMount* mount):
     PlacesModelItem(),
