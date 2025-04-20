@@ -1324,7 +1324,7 @@ Do you want to delete them instead?</source>
     </message>
     <message>
         <location filename="../placesview.cpp" line="600"/>
-        <location filename="../placesview.cpp" line="662"/>
+        <location filename="../placesview.cpp" line="667"/>
         <source>Hide</source>
         <translation></translation>
     </message>
@@ -1350,7 +1350,7 @@ Do you want to delete them instead?</source>
     </message>
     <message>
         <location filename="../placesview.cpp" line="643"/>
-        <location filename="../placesview.cpp" line="676"/>
+        <location filename="../placesview.cpp" line="681"/>
         <source>Unmount</source>
         <translation></translation>
     </message>
@@ -1365,7 +1365,12 @@ Do you want to delete them instead?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="688"/>
+        <location filename="../placesview.cpp" line="658"/>
+        <source>Safely Remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../placesview.cpp" line="693"/>
         <source>Show All Entries</source>
         <translation></translation>
     </message>
@@ -1492,7 +1497,7 @@ Modified: %2</source>
     <message>
         <location filename="../filelauncher.cpp" line="124"/>
         <location filename="../filepropsdialog.cpp" line="674"/>
-        <location filename="../mountoperation.cpp" line="297"/>
+        <location filename="../mountoperation.cpp" line="315"/>
         <location filename="../utilities.cpp" line="154"/>
         <location filename="../utilities.cpp" line="318"/>
         <source>Error</source>
