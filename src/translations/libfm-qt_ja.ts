@@ -941,7 +941,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="411"/>
         <source>%1 Free of %2</source>
-        <translation>空き容量 %1&#x3000;全体 %2</translation>
+        <translation>空き容量 %1　全体 %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="457"/>
@@ -1362,7 +1362,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="658"/>
         <source>Safely Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>安全に取り外す</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="693"/>
