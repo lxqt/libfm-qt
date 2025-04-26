@@ -1369,7 +1369,7 @@ Czy zamiast tego usunąć te pliki?</translation>
     <message>
         <location filename="../placesview.cpp" line="658"/>
         <source>Safely Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń bezpiecznie</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="693"/>
