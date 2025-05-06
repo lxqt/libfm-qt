@@ -92,16 +92,16 @@ void DirTreeModelItem::loadFolder() {
         /* g_debug("fm_dir_tree_model_load_row()"); */
         /* associate the data with loaded handler */
 
-        onFolderFinishLoadingConn_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, model_, [=]() {
+        onFolderFinishLoadingConn_ = QObject::connect(folder_.get(), &Fm::Folder::finishLoading, model_, [this]() {
             onFolderFinishLoading();
         });
-        onFolderFilesAddedConn_ = QObject::connect(folder_.get(), &Fm::Folder::filesAdded, model_, [=](Fm::FileInfoList files) {
+        onFolderFilesAddedConn_ = QObject::connect(folder_.get(), &Fm::Folder::filesAdded, model_, [this](Fm::FileInfoList files) {
             onFolderFilesAdded(files);
         });
-        onFolderFilesRemovedConn_ = QObject::connect(folder_.get(), &Fm::Folder::filesRemoved, model_, [=](Fm::FileInfoList files) {
+        onFolderFilesRemovedConn_ = QObject::connect(folder_.get(), &Fm::Folder::filesRemoved, model_, [this](Fm::FileInfoList files) {
             onFolderFilesRemoved(files);
         });
-        onFolderFilesChangedConn_ = QObject::connect(folder_.get(), &Fm::Folder::filesChanged, model_, [=](std::vector<Fm::FileInfoPair>& changes) {
+        onFolderFilesChangedConn_ = QObject::connect(folder_.get(), &Fm::Folder::filesChanged, model_, [this](std::vector<Fm::FileInfoPair>& changes) {
             onFolderFilesChanged(changes);
         });
 
