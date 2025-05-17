@@ -396,9 +396,7 @@ void PlacesView::onEmptyTrash() {
     // The main event loop might be blocked by a question message box and
     // cause a crash with Qt6 if the current slot does not return first.
     QTimer::singleShot(0, this, [] {
-        Fm::FilePathList files;
-        files.push_back(Fm::FilePath::fromUri("trash:///"));
-        Fm::FileOperation::deleteFiles(std::move(files), true);
+        Fm::FileOperation::emptyTrashFiles(true);
     });
 }
 

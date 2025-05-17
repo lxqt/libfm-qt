@@ -58,9 +58,7 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
                 auto trashAction = new QAction(tr("Empty Trash"), this);
                 addAction(trashAction);
                 connect(trashAction, &QAction::triggered, []() {
-                    Fm::FilePathList files;
-                    files.push_back(Fm::FilePath::fromUri("trash:///"));
-                    Fm::FileOperation::deleteFiles(std::move(files), true);
+                    Fm::FileOperation::emptyTrashFiles(true);
                 });
                 addSeparator();
             }

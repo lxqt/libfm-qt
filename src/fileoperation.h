@@ -117,9 +117,11 @@ public:
         return symlinkFiles(FilePathList{std::move(srcFile)}, FilePathList{std::move(destFile)}, parent);
     }
 
-    static FileOperation* deleteFiles(Fm::FilePathList srcFiles, bool promp = true, QWidget* parent = nullptr);
+    static FileOperation* deleteFiles(Fm::FilePathList srcFiles, bool prompt = true, QWidget* parent = nullptr);
 
-    static FileOperation* trashFiles(Fm::FilePathList srcFiles, bool promp = true, QWidget* parent = nullptr);
+    static FileOperation* emptyTrashFiles(bool prompt = true, QWidget* parent = nullptr);
+
+    static FileOperation* trashFiles(Fm::FilePathList srcFiles, bool prompt = true, QWidget* parent = nullptr);
 
     static FileOperation* unTrashFiles(Fm::FilePathList srcFiles, QWidget* parent = nullptr);
 
