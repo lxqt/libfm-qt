@@ -447,7 +447,13 @@ bool FileTransferJob::moveFile(const FilePath &srcPath, const GFileInfoPtr &srcI
     auto src_fs = g_file_info_get_attribute_string(srcInfo.get(), "id::filesystem");
     auto dest_fs = g_file_info_get_attribute_string(destDirInfo.get(), "id::filesystem");
     bool ret;
-    if(src_fs && dest_fs && (strcmp(src_fs, dest_fs) == 0 || g_str_has_prefix(src_fs, "trash"))) {
+    if(src_fs && dest_fs
+       && (g_str_has_prefix(src_fs, "trash")
+           || (strcmp(src_fs, dest_fs) == 0
+               // NOTE: GLib does not allow moving a directory over another one with the
+               // same name. As a workaround, also do copy & delete in this case.
+               && !(g_file_info_get_file_type(srcInfo.get()) == G_FILE_TYPE_DIRECTORY
+                    && g_strcmp0(srcPath.baseName().get(), destFileName) == 0)))) {
         // src and dest are on the same filesystem
         auto destPath = destDirPath.child(destFileName);
         ret = moveFileSameFs(srcPath, srcInfo, destPath);
