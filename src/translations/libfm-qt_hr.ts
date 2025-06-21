@@ -942,7 +942,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="410"/>
         <source>%p% used</source>
-        <translation>%p&#xa0;% korišteno</translation>
+        <translation>%p % korišteno</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="411"/>
@@ -1370,7 +1370,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="658"/>
         <source>Safely Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Sigurno ukloni</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="693"/>
