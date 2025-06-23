@@ -806,8 +806,9 @@ Vill du ta bort dem istället?</translation>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Vill du flytta den markerade filen till papperskorgen?</numerusform>
+            <numerusform>Vill du flytta de markerade filerna till papperskorgen?</numerusform>
         </translation>
     </message>
 </context>
@@ -816,78 +817,78 @@ Vill du ta bort dem istället?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Flyttar filer</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Flyttar följande filer till målmappen:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopierar filer</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopierar följande filer till målmappen:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg i papperskorgen</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation type="unfinished"></translation>
+        <translation>Flytta följande filer till papperskorgen:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort filer</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tar bort följande filer:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation type="unfinished"></translation>
+        <translation>Etablera symbolisk länkar</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Upprättar symboliska länkar för följande filer:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ändra egenskaper</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ändrar egenskaper för följande filer:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ filer från papperskorgen</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställer följande filer från papperskorgen:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="149"/>
         <location filename="../fileoperationdialog.cpp" line="155"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fel</translation>
     </message>
 </context>
 <context>
@@ -895,93 +896,94 @@ Vill du ta bort dem istället?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="167"/>
         <source>View folder content</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa mappens innehåll</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="168"/>
         <source>View and modify folder content</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa och redigera mappens innehåll</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="172"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>Läs</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="173"/>
         <source>Read and write</source>
-        <translation type="unfinished"></translation>
+        <translation>Läs och skriv</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="175"/>
         <source>Forbidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Otillåten</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="292"/>
         <source>Files of different types</source>
-        <translation type="unfinished"></translation>
+        <translation>Filer av olika typer</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="315"/>
         <location filename="../filepropsdialog.cpp" line="322"/>
         <location filename="../filepropsdialog.cpp" line="329"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>Multiple Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Flera filer</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="410"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% utnyttjad</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="411"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ledigt utrymme av %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="457"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>Inga filer</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="459"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation>En fil</translation>
     </message>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="461"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln fil</numerusform>
+            <numerusform>%Ln filer</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="495"/>
         <location filename="../filepropsdialog.cpp" line="540"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj ikon</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="497"/>
         <location filename="../filepropsdialog.cpp" line="542"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilder (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="648"/>
         <source>Apply changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillämpar ändringar</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="649"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vill du tillämpa dessa ändringar på alla filer och undermappar?</translation>
     </message>
 </context>
 <context>
@@ -989,17 +991,17 @@ Vill du ta bort dem istället?</translation>
     <message>
         <location filename="../filesearchdialog.cpp" line="157"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fel</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="157"/>
         <source>You should add at least one directory to search.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till minst en mapp i sökningen.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="164"/>
         <source>Select a folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj en mapp</translation>
     </message>
 </context>
 <context>
@@ -1007,12 +1009,12 @@ Vill du ta bort dem istället?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="486"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>Mappen kan inte kopieras till sig själv!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="537"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Det går inte att skapa en länk i främmande filsystem</translation>
     </message>
 </context>
 <context>
@@ -1020,107 +1022,107 @@ Vill du ta bort dem istället?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
         <source>Empty Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Töm papperskorgen</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="70"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation>Skapa &amp;ny</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="75"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Klistra in</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="89"/>
         <source>Select &amp;All</source>
-        <translation type="unfinished"></translation>
+        <translation>Markera &amp;allt</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="100"/>
         <source>Sorting</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortera</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="105"/>
         <source>Show Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa dolda filer</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="140"/>
         <source>Folder Pr&amp;operties</source>
-        <translation type="unfinished"></translation>
+        <translation>Mappens &amp;egenskaper</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="183"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Utdata</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="205"/>
         <source>By File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Efter filnamn</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="206"/>
         <source>By Modification Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Efter redigeringsdatum</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="207"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Efter uppkomst-tid</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="210"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Efter borttagningstid</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="213"/>
         <source>By File Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Efter filstorlek</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="214"/>
         <source>By File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Efter filtyp</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="215"/>
         <source>By File Owner</source>
-        <translation type="unfinished"></translation>
+        <translation>Efter ägare</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="216"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Efter filgrupp</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="222"/>
         <source>Ascending</source>
-        <translation type="unfinished"></translation>
+        <translation>Stigande</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="227"/>
         <source>Descending</source>
-        <translation type="unfinished"></translation>
+        <translation>Avtagande</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="244"/>
         <source>Folder First</source>
-        <translation type="unfinished"></translation>
+        <translation>Mappar först</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="252"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Dolda objekt sist</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="260"/>
         <source>Case Sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Skilj mellan stora/små bokstäver</translation>
     </message>
 </context>
 <context>
@@ -1128,87 +1130,87 @@ Vill du ta bort dem istället?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="306"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Plats:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="310"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtyp:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="315"/>
         <source>File size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Filstorlek:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>Last modified:</source>
-        <translation type="unfinished"></translation>
+        <translation>Senast ändrad:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Last accessed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Senast använd:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="323"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Skapad:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="328"/>
         <source>Owner:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ägare:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="329"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupp:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="396"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="399"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="402"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Storlek</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="405"/>
         <source>Modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Senast ändrad</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="408"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Skapad</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="411"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Borttagen</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="414"/>
         <source>Owner</source>
-        <translation type="unfinished"></translation>
+        <translation>Ägare</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="417"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupp</translation>
     </message>
 </context>
 <context>
@@ -1216,12 +1218,12 @@ Vill du ta bort dem istället?</translation>
     <message>
         <location filename="../folderview.cpp" line="410"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisk storleksändring av kolumner</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="427"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Synliga kolumner</translation>
     </message>
 </context>
 <context>
@@ -1229,12 +1231,12 @@ Vill du ta bort dem istället?</translation>
     <message>
         <location filename="../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>Fet</translation>
     </message>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Kursiv</translation>
     </message>
 </context>
 <context>
@@ -1242,7 +1244,7 @@ Vill du ta bort dem istället?</translation>
     <message>
         <location filename="../mountoperationpassworddialog.cpp" line="42"/>
         <source>&amp;Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Anslut</translation>
     </message>
 </context>
 <context>
@@ -1250,12 +1252,12 @@ Vill du ta bort dem istället?</translation>
     <message>
         <location filename="../pathbar.cpp" line="123"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Redigera sökväg</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="126"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kopiera sökväg</translation>
     </message>
 </context>
 <context>
@@ -1263,42 +1265,42 @@ Vill du ta bort dem istället?</translation>
     <message>
         <location filename="../placesmodel.cpp" line="46"/>
         <source>Places</source>
-        <translation type="unfinished"></translation>
+        <translation>Platser</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="54"/>
         <source>Desktop</source>
-        <translation type="unfinished"></translation>
+        <translation>Skrivbord</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="60"/>
         <source>Computer</source>
-        <translation type="unfinished"></translation>
+        <translation>Dator</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="68"/>
         <source>Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Program</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="77"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Nätverk</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="81"/>
         <source>Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Enheter</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="136"/>
         <source>Bookmarks</source>
-        <translation type="unfinished"></translation>
+        <translation>Bokmärken</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="227"/>
         <source>Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Papperskorg</translation>
     </message>
 </context>
 <context>
@@ -1306,69 +1308,69 @@ Vill du ta bort dem istället?</translation>
     <message>
         <location filename="../placesview.cpp" line="563"/>
         <source>Open in New Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna i ny flik</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="567"/>
         <source>Open in New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna i nytt fönster</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="580"/>
         <source>Empty Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Töm papperskorgen</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="600"/>
         <location filename="../placesview.cpp" line="667"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Dölj</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="617"/>
         <source>Move Bookmark Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Flytta upp bokmärke</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="624"/>
         <source>Move Bookmark Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Flytta ner bokmärke</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="629"/>
         <source>Rename Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Byt namn på bokmärke</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="633"/>
         <source>Remove Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort bokmärke</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="643"/>
         <location filename="../placesview.cpp" line="681"/>
         <source>Unmount</source>
-        <translation type="unfinished"></translation>
+        <translation>Avmontera</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="647"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Montera</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="653"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Mata ut</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="658"/>
         <source>Safely Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Säker borttagning</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="693"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa allt</translation>
     </message>
 </context>
 <context>
@@ -1379,29 +1381,32 @@ Vill du ta bort dem istället?</translation>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ: %1
+Storlek: %2
+Senast ändrad: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ: %1
+Senast ändrad: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="104"/>
         <source>&amp;Overwrite</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Skriv över</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="106"/>
         <source>&amp;Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ändra namn</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="116"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Filen kan inte skriva över sig själv.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Välj ett annat namn.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1409,12 +1414,12 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Platser</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="47"/>
         <source>Directory Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Träd</translation>
     </message>
 </context>
 <context>
@@ -1422,7 +1427,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte återställa filen &apos;%s&apos;: ursprunglig sökväg är okänd</translation>
     </message>
 </context>
 <context>
@@ -1430,52 +1435,52 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Montera</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation type="unfinished"></translation>
+        <translation>Anslut &amp;anonymt</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation type="unfinished"></translation>
+        <translation>Anslut som &amp;användare:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="76"/>
         <source>&amp;Username:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Användarnamn:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="108"/>
         <source>&amp;Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Lösenord:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="89"/>
         <source>&amp;Domain:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Domän:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation type="unfinished"></translation>
+        <translation>Glöm lösenordet &amp;direkt</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Sessionens varaktighet styrs från lösenordshanteraren</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Kom ihåg lösenordet för &amp;denna sessionen</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="150"/>
         <source>Remember &amp;forever</source>
-        <translation type="unfinished"></translation>
+        <translation>Kom &amp;ihåg lösenordet för alltid</translation>
     </message>
 </context>
 <context>
@@ -1483,12 +1488,12 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="170"/>
         <source>Rename File</source>
-        <translation type="unfinished"></translation>
+        <translation>Byt namn på fil</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="171"/>
         <source>Please enter a new name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange ett nytt namn:</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="124"/>
@@ -1497,78 +1502,78 @@ Modified: %2</source>
         <location filename="../utilities.cpp" line="154"/>
         <location filename="../utilities.cpp" line="318"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fel</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="230"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Skapa ny mapp</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="231"/>
         <source>Create File</source>
-        <translation type="unfinished"></translation>
+        <translation>Skapa ny fil</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="235"/>
         <source>Please enter a new file name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange ett nytt filnamn:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny fil</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="240"/>
         <source>Please enter a new folder name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange ett nytt namn på mappen:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="241"/>
         <source>New folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny mapp</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="246"/>
         <source>Enter a name for the new %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange ett namn för %1:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="692"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fel med anpassad ikon</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mappen är inte monterad.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="319"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogiltig skrivbordsfil: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Det saknas standardprogram för att öppna &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Det gick inte att ange arbetskatalogen till %1: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Identifierare: </translation>
     </message>
     <message>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>N/A</translation>
     </message>
 </context>
 <context>
@@ -1576,27 +1581,27 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation type="unfinished"></translation>
+        <translation>Bekräfta för att ersätta filer</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Det finns redan en fil med samma namn på den här platsen.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Vill du ersätta den existerande filen?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
         <source>with the following file?</source>
-        <translation type="unfinished"></translation>
+        <translation>med följande fil?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Filnamn:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd detta alternativ på alla befintliga filer</translation>
     </message>
 </context>
 <context>
@@ -1604,176 +1609,176 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök bland filer</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Namn/Plats</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mönster för filnamn:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="44"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation>*</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="58"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd reguljära uttryck</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="71"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Platser att söka på:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="84"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Lägg till</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="96"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ta bort</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="132"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök bland dolda filer</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="143"/>
         <source>File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtyp</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="149"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök endast efter följande filtyper:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="155"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>Textfiler</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="162"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildfiler</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="169"/>
         <source>Audio files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ljudfiler</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="176"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>Videofiler</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="183"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokument</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="190"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Mappar</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="214"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Innehåll</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="220"/>
         <source>File contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Filen innehåller:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="240"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Använd reguljära uttryck</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="267"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Egenskaper</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="273"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Filstorlek:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="281"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Större än:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="302"/>
         <location filename="../filesearch.ui" line="346"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Bytes</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="307"/>
         <location filename="../filesearch.ui" line="351"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="312"/>
         <location filename="../filesearch.ui" line="356"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>MiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="317"/>
         <location filename="../filesearch.ui" line="361"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>GiB</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="325"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mindre än:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="51"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Skilj mellan stora/små bokstäver</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="125"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök i undermappar</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Skilj mellan stora/små bokstäver</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="377"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Senast ändrad:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Före:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="402"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Efter:</translation>
     </message>
 </context>
 </TS>
