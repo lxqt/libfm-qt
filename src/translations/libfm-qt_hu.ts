@@ -329,7 +329,7 @@
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>Sticky</source>
-        <translation></translation>
+        <translation>Ragadós</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
@@ -673,6 +673,7 @@ Le szeretné cserélni?</translation>
         <location filename="../filemenu.cpp" line="420"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
+            <numerusform>Meg szeretné nyitni ezt a fájlt?</numerusform>
             <numerusform>Meg szeretné nyitni ezt a %s fájlt?</numerusform>
         </translation>
     </message>
@@ -799,6 +800,7 @@ Szeretné véglegesen törölni őket?</translation>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
             <numerusform>Szeretné törölni a kiválasztott fájlt?</numerusform>
+            <numerusform>Szeretné törölni a kiválasztott fájlokat?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -806,6 +808,7 @@ Szeretné véglegesen törölni őket?</translation>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
             <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlt?</numerusform>
+            <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlokat?</numerusform>
         </translation>
     </message>
 </context>
@@ -957,6 +960,7 @@ Szeretné véglegesen törölni őket?</translation>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln fájl</numerusform>
+            <numerusform>%Ln fájl</numerusform>
         </translation>
     </message>
     <message>
@@ -1018,7 +1022,7 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Kuka ürítése</translation>
+        <translation>Kuka ürítése</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="70"/>
@@ -1361,7 +1365,7 @@ Szeretné véglegesen törölni őket?</translation>
     <message>
         <location filename="../placesview.cpp" line="658"/>
         <source>Safely Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Biztonságos eltávolítás</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="693"/>
