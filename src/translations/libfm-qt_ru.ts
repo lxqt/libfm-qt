@@ -1369,7 +1369,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="658"/>
         <source>Safely Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Безопасно извлечь</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="693"/>
