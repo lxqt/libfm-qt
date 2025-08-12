@@ -1427,7 +1427,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Datei &apos;1%&apos; ist aus dem Papierkorb nicht wiederherstellbar: ursprünglicher Pfad nicht bekannt</translation>
+        <translation>Datei &apos;%s&apos; ist aus dem Papierkorb nicht wiederherstellbar: ursprünglicher Pfad nicht bekannt</translation>
     </message>
 </context>
 <context>
@@ -1552,7 +1552,7 @@ Geändert: %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="319"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>Ungültige Arbeitsflächeneintragsdatei: &apos;1%&apos;</translation>
+        <translation>Ungültige Arbeitsflächeneintragsdatei: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
