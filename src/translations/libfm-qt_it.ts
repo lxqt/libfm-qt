@@ -381,7 +381,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>La cartella specificata %1 non è valida</translation>
+        <translation>La cartella specificata &apos;%1&apos; non è valida</translation>
     </message>
 </context>
 <context>
@@ -668,7 +668,7 @@ Sostituirlo?</translation>
         <location filename="../filemenu.cpp" line="420"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
-            <numerusform>Aprire questo %1 file?</numerusform>
+            <numerusform>Aprire questo file?</numerusform>
             <numerusform>Aprire questi %1 file?</numerusform>
         </translation>
     </message>
@@ -943,7 +943,7 @@ Vuoi invece eliminarli?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="411"/>
         <source>%1 Free of %2</source>
-        <translation>%1 Liberi di %2</translation>
+        <translation>%1 liberi di %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="457"/>
@@ -1427,7 +1427,7 @@ Ultima modifica: %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Impossibile ripristinare il file &apos;%1&apos;: percorso originale sconosciuto</translation>
+        <translation>Impossibile ripristinare il file &apos;%s&apos;: percorso originale sconosciuto</translation>
     </message>
 </context>
 <context>
