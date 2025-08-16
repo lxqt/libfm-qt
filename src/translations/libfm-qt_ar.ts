@@ -955,7 +955,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="411"/>
         <source>%1 Free of %2</source>
-        <translation>%1% متاح من %2</translation>
+        <translation>1% متاح من %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="457"/>
@@ -1578,7 +1578,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>تعذر ضبط دليل العمل ليكون ”%1“: ‏”%2“</translation>
+        <translation>تعذر ضبط دليل العمل ليكون &apos;%1&apos;: ‏2%</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
