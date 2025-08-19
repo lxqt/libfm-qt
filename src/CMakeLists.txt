@@ -132,14 +132,17 @@ install(EXPORT
 )
 
 target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
-    Qt6::Widgets
-    ${GLIB_LIBRARIES}
-    ${GLIB_GIO_LIBRARIES}
-    ${GLIB_GOBJECT_LIBRARIES}
-    ${GLIB_GTHREAD_LIBRARIES}
-    ${MENUCACHE_LIBRARIES}
-    ${XCB_LIBRARIES}
-    ${EXIF_LIBRARIES}
+    PRIVATE
+        Qt6::GuiPrivate
+    PUBLIC
+        Qt6::Widgets
+        ${GLIB_LIBRARIES}
+        ${GLIB_GIO_LIBRARIES}
+        ${GLIB_GOBJECT_LIBRARIES}
+        ${GLIB_GTHREAD_LIBRARIES}
+        ${MENUCACHE_LIBRARIES}
+        ${XCB_LIBRARIES}
+        ${EXIF_LIBRARIES}
 )
 
 # set libtool soname
