@@ -534,7 +534,7 @@ void FileMenu::onRenameTriggered() {
         }
     }
     for(auto& info: files_) {
-        if(!Fm::renameFile(info, nullptr)) {
+        if(!Fm::renameFile(info, parentWidget())) {
             break;
         }
     }
