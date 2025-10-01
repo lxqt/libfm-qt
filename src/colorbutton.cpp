@@ -32,7 +32,7 @@ ColorButton::~ColorButton() {
 }
 
 void ColorButton::onClicked() {
-    QColorDialog dlg(color_);
+    QColorDialog dlg(color_, this);
     if(dlg.exec() == QDialog::Accepted) {
         setColor(dlg.selectedColor());
     }
