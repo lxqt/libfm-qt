@@ -118,6 +118,7 @@ void MountOperation::onAskPassword(GMountOperation* /*_op*/, gchar* message, gch
         // The mount is NOT done by g_volume_mount();
         // it is safe to show the password dialog (see below).
         MountOperationPasswordDialog dlg(pThis, flags);
+        dlg.setWindowModality(Qt::WindowModal);
         dlg.setMessage(QString::fromUtf8(message));
         dlg.setDefaultUser(QString::fromUtf8(default_user));
         dlg.setDefaultDomain(QString::fromUtf8(default_domain));
@@ -172,6 +173,7 @@ void MountOperation::onAskPassword(GMountOperation* /*_op*/, gchar* message, gch
 void MountOperation::onAskQuestion(GMountOperation* /*_op*/, gchar* message, GStrv choices, MountOperation* pThis) {
     qDebug("ask question");
     MountOperationQuestionDialog dialog(pThis, message, choices);
+    dialog.setWindowModality(Qt::WindowModal);
     dialog.exec();
 }
 

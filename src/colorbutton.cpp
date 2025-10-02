@@ -33,6 +33,7 @@ ColorButton::~ColorButton() {
 
 void ColorButton::onClicked() {
     QColorDialog dlg(color_, this);
+    dlg.setWindowModality(Qt::WindowModal);
     if(dlg.exec() == QDialog::Accepted) {
         setColor(dlg.selectedColor());
     }

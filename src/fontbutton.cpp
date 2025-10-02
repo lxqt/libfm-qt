@@ -33,6 +33,7 @@ FontButton::~FontButton() {
 
 void FontButton::onClicked() {
     QFontDialog dlg(font_, this);
+    dlg.setWindowModality(Qt::WindowModal);
     if(dlg.exec() == QDialog::Accepted) {
         setFont(dlg.selectedFont());
     }

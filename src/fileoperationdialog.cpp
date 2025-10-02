@@ -109,6 +109,7 @@ FileOperationJob::FileExistsAction FileOperationDialog::askRename(const FileInfo
        || (defaultOption == RenameDialog::ActionOverwrite
            && src.path() == dest.path())) {
         RenameDialog dlg(src, dest, this);
+        dlg.setWindowModality(Qt::WindowModal);
         dlg.exec();
         switch(dlg.action()) {
         case RenameDialog::ActionOverwrite:
