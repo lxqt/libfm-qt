@@ -31,7 +31,7 @@ void TrashJob::exec() {
             if(fm_config->no_usb_trash) {
                 GMountPtr mnt{g_file_find_enclosing_mount(gf.get(), nullptr, nullptr), false};
                 if(mnt) {
-                    ret = g_mount_can_unmount(mnt.get()); /* TRUE if it's removable media */
+                    ret = g_mount_can_eject(mnt.get()); /* TRUE if it's removable media */
                     if(ret) {
                         unsupportedFiles_.push_back(path);
                         break;  // don't trash the file
