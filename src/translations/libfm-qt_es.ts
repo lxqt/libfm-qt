@@ -1007,12 +1007,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="486"/>
+        <location filename="../core/filetransferjob.cpp" line="492"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>¡No se puede copiar un directorio sobre sí mismo!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="537"/>
+        <location filename="../core/filetransferjob.cpp" line="543"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>No se pueden crear enlaces en sistemas de archivos no nativos</translation>
     </message>

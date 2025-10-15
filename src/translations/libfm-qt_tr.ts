@@ -674,7 +674,6 @@ Değiştirmek istiyor musunuz?</translation>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>Bu dosyayı açmak istiyor musunuz?</numerusform>
-            <numerusform>%1 adet dosyayı açmak istiyor musunuz?</numerusform>
         </translation>
     </message>
     <message>
@@ -800,7 +799,6 @@ Onun yerine silmek ister misiniz?</translation>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
             <numerusform>Seçilen dosyayı silmek istiyor musunuz?</numerusform>
-            <numerusform>Seçilen dosyaları silmek istiyor musunuz?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -808,7 +806,6 @@ Onun yerine silmek ister misiniz?</translation>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
             <numerusform>Seçilen dosyayı çöp kutusuna taşımak istiyor musunuz?</numerusform>
-            <numerusform>Seçilen dosyaları çöp kutusuna taşımak istiyor musunuz?</numerusform>
         </translation>
     </message>
 </context>
@@ -960,7 +957,6 @@ Onun yerine silmek ister misiniz?</translation>
         <source>%Ln files</source>
         <translation>
             <numerusform>1 dosya</numerusform>
-            <numerusform>%Ln dosya</numerusform>
         </translation>
     </message>
     <message>
@@ -1007,12 +1003,12 @@ Onun yerine silmek ister misiniz?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="486"/>
+        <location filename="../core/filetransferjob.cpp" line="492"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Bir dizin kendi kendine kopyalanamaz!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="537"/>
+        <location filename="../core/filetransferjob.cpp" line="543"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Yerel olmayan dosya sisteminde bağlantı oluşturulamıyor</translation>
     </message>

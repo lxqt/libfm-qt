@@ -1007,12 +1007,12 @@ Deseja, em alternativa, apagar os ficheiros?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="486"/>
+        <location filename="../core/filetransferjob.cpp" line="492"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Não pode copiar um diretório para si próprio!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="537"/>
+        <location filename="../core/filetransferjob.cpp" line="543"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Não é possível criar uma ligação em sistemas não nativos</translation>
     </message>

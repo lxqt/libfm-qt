@@ -1023,12 +1023,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="486"/>
+        <location filename="../core/filetransferjob.cpp" line="492"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>لا يمكنك نسخ الدليل في نفسه!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="537"/>
+        <location filename="../core/filetransferjob.cpp" line="543"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>لا يمكن إنشاء رابط في نظام ملفات غير أصيل</translation>
     </message>

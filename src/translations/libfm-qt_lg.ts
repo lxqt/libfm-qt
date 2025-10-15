@@ -1007,12 +1007,12 @@ Fayiro ezo zo nzigyeewobugyi?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="486"/>
+        <location filename="../core/filetransferjob.cpp" line="492"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Koppi y&apos;etterekero tesobola okugenda mu tterekero eryo!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="537"/>
+        <location filename="../core/filetransferjob.cpp" line="543"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Sisobola okukolera nyunzi mu kifo ekitegekedwa mu nkola etakwatagana ne sisitemu eno</translation>
     </message>

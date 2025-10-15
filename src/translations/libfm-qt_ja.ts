@@ -941,7 +941,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="411"/>
         <source>%1 Free of %2</source>
-        <translation>空き容量 %1　全体 %2</translation>
+        <translation>空き容量 %1&#x3000;全体 %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="457"/>
@@ -1004,12 +1004,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="486"/>
+        <location filename="../core/filetransferjob.cpp" line="492"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>ディレクトリをそれ自体の中にコピーできません！</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="537"/>
+        <location filename="../core/filetransferjob.cpp" line="543"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>ネイティブではないファイルシステムにはリンクを作成できません</translation>
     </message>
