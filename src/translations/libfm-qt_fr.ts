@@ -37,12 +37,12 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;Ces codes spéciaux peuvent être utilisés dans la ligne de commande :&lt;/b&gt;
+        <translation>&lt;b&gt;Ces codes spéciaux peuvent être utilisés dans la ligne de commande&#x202f;:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;  : Représente un seul nom de fichier,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;  : Représente plusieurs noms de fichiers,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;  : Représente un seul URI du fichier,&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;  : Représente plusieurs URI.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;&#x202f;&#xa0;: Représente un seul nom de fichier,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;&#xa0;&#x202f;: Représente plusieurs noms de fichiers,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;&#xa0;&#x202f;: Représente un seul URI du fichier,&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;&#x202f;&#xa0;: Représente plusieurs URI.&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
@@ -150,7 +150,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="42"/>
         <source>Destination:</source>
-        <translation>Destination :</translation>
+        <translation>Destination&#xa0;:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="65"/>
@@ -248,7 +248,7 @@
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation>Emblème :</translation>
+        <translation>Emblème&#xa0;:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
@@ -799,16 +799,16 @@ Voulez-vous les supprimer à la place ?</translation>
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
-            <numerusform>Voulez-vous supprimer le fichier sélectionné ?</numerusform>
-            <numerusform>Voulez-vous supprimer les fichiers sélectionnés ?</numerusform>
+            <numerusform>Voulez-vous supprimer le fichier sélectionné&#xa0;?</numerusform>
+            <numerusform>Voulez-vous supprimer les fichiers sélectionnés&#xa0;?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
-            <numerusform>Voulez-vous déplacer le fichier sélectionné vers la corbeille ?</numerusform>
-            <numerusform>Voulez-vous déplacer les fichiers sélectionnés vers la corbeille ?</numerusform>
+            <numerusform>Voulez-vous déplacer le fichier sélectionné vers la corbeille&#xa0;?</numerusform>
+            <numerusform>Voulez-vous déplacer les fichiers sélectionnés vers la corbeille&#xa0;?</numerusform>
         </translation>
     </message>
 </context>
@@ -882,7 +882,7 @@ Voulez-vous les supprimer à la place ?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Restauration des fichiers suivants depuis la corbeille :</translation>
+        <translation>Restauration des fichiers suivants depuis la corbeille&#xa0;:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="149"/>
@@ -1007,12 +1007,12 @@ Voulez-vous les supprimer à la place ?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="486"/>
+        <location filename="../core/filetransferjob.cpp" line="492"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Impossible de copier un répertoire dans lui-même !</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="537"/>
+        <location filename="../core/filetransferjob.cpp" line="543"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Ne peut pas créer un lien dans un système de fichiers non natif</translation>
     </message>
@@ -1381,17 +1381,17 @@ Voulez-vous les supprimer à la place ?</translation>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation>Type : %1
-Taille : %2
-Modification : %3</translation>
+        <translation>Type&#x202f;: %1
+Taille&#x202f;: %2
+Modification&#x202f;: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation>Type : %1
-Modification : %2</translation>
+        <translation>Type&#x202f;: %1
+Modification&#x202f;: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="104"/>
@@ -1427,7 +1427,7 @@ Modification : %2</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Impossible de sortir le fichier &apos;%s&apos; de la corbeille : le chemin d&apos;origine est inconnu</translation>
+        <translation>Impossible de sortir le fichier &apos;%s&apos; de la corbeille&#x202f;: le chemin d&apos;origine est inconnu</translation>
     </message>
 </context>
 <context>
@@ -1562,7 +1562,7 @@ Modification : %2</translation>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>Impossible de définir le répertoire de travail à « %1 » : « %2 »</translation>
+        <translation>Impossible de définir le répertoire de travail à «&#xa0;%1&#xa0;»&#x202f;: «&#xa0;%2&#xa0;»</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
@@ -1586,7 +1586,7 @@ Modification : %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier du même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant ?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Il existe déjà un fichier du même nom à cet emplacement.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Voulez-vous remplacer le fichier existant&#xa0;?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
@@ -1596,7 +1596,7 @@ Modification : %2</translation>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>Nom du &amp;fichier :</translation>
+        <translation>Nom du &amp;fichier&#xa0;:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>

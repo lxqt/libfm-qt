@@ -942,7 +942,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="410"/>
         <source>%p% used</source>
-        <translation>%p % korišteno</translation>
+        <translation>%p&#xa0;% korišteno</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="411"/>
@@ -1012,12 +1012,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="486"/>
+        <location filename="../core/filetransferjob.cpp" line="492"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Nije moguće kopirati mapu u samu sebe!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="537"/>
+        <location filename="../core/filetransferjob.cpp" line="543"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Nije moguće stvoriti poveznicu na ne-izvorni datotečni sustav</translation>
     </message>

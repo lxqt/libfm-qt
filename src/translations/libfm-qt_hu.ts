@@ -674,7 +674,6 @@ Le szeretné cserélni?</translation>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>Meg szeretné nyitni ezt a fájlt?</numerusform>
-            <numerusform>Meg szeretné nyitni ezt a %s fájlt?</numerusform>
         </translation>
     </message>
     <message>
@@ -800,7 +799,6 @@ Szeretné véglegesen törölni őket?</translation>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
             <numerusform>Szeretné törölni a kiválasztott fájlt?</numerusform>
-            <numerusform>Szeretné törölni a kiválasztott fájlokat?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -808,7 +806,6 @@ Szeretné véglegesen törölni őket?</translation>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
             <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlt?</numerusform>
-            <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlokat?</numerusform>
         </translation>
     </message>
 </context>
@@ -960,7 +957,6 @@ Szeretné véglegesen törölni őket?</translation>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln fájl</numerusform>
-            <numerusform>%Ln fájl</numerusform>
         </translation>
     </message>
     <message>
@@ -1007,12 +1003,12 @@ Szeretné véglegesen törölni őket?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="486"/>
+        <location filename="../core/filetransferjob.cpp" line="492"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Könyvtár nem másolható önmagába!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="537"/>
+        <location filename="../core/filetransferjob.cpp" line="543"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Nem lehet linket létrehozni nem helyi fájlrendszeren</translation>
     </message>

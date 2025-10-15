@@ -1007,12 +1007,12 @@ Wilt u ze in plaats daarvan permanent verwijderen?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="486"/>
+        <location filename="../core/filetransferjob.cpp" line="492"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Kan map niet naar zichzelf kopiëren!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="537"/>
+        <location filename="../core/filetransferjob.cpp" line="543"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Kan geen koppeling aanmaken op een niet-eigen bestandssysteem</translation>
     </message>
