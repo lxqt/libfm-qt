@@ -1365,7 +1365,7 @@ En lloc seu, voleu suprimir-los?</translation>
     <message>
         <location filename="../placesview.cpp" line="658"/>
         <source>Safely Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Suprimeix amb seguretat</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="693"/>
