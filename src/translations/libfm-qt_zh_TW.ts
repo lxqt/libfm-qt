@@ -568,7 +568,7 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="233"/>
         <source>Show File Tooltips</source>
-        <translation>顯示檔案提示</translation>
+        <translation>顯示檔案工具提示</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="240"/>
