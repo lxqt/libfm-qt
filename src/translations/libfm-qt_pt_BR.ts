@@ -1365,7 +1365,7 @@ Deseja apagar permanentemente esses arquivos?</translation>
     <message>
         <location filename="../placesview.cpp" line="658"/>
         <source>Safely Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Remover com segurança</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="693"/>
