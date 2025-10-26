@@ -1,3 +1,12 @@
+libfm-qt-2.3.0 / 2025-11-05
+============================
+ * Added "Safely Remove" to side-pane context menu when possible.
+ * Workaround for GLib's problem with moving directory over directory.
+ * Used `--extract-here` for "Extract Here" with lxqt-archiver.
+ * Updated mime types of lxqt-archiver and arqiver.
+ * Fixed building with Qt 6.10.
+ * Added parent window to some dialogs.
+
 libfm-qt-2.2.0 / 2025-04-17
 ============================
  * Modernized string literals.
