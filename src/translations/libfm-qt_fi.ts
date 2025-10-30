@@ -1365,7 +1365,7 @@ Poistetaanko tiedostot?</translation>
     <message>
         <location filename="../placesview.cpp" line="658"/>
         <source>Safely Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista turvallisesti</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="693"/>
@@ -1542,7 +1542,7 @@ Muokattu: %2</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="692"/>
         <source>Custom Icon Error</source>
-        <translation>Virhe oman kuvakkeen kanssa</translation>
+        <translation>Virhe kustomoidun kuvakkeen kanssa</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
