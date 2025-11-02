@@ -218,7 +218,7 @@
     <message>
         <location filename="../file-props.ui" line="241"/>
         <source>Last modified:</source>
-        <translation type="unfinished"></translation>
+        <translation>पिछला संपादन:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
