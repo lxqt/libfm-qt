@@ -675,8 +675,6 @@ Do you want to replace it?</source>
         <translation>
             <numerusform>לפתוח את הקובץ הזה בגודל %1?</numerusform>
             <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
-            <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
-            <numerusform>לפתוח את הקבצים האלה בגודל %1?</numerusform>
         </translation>
     </message>
     <message>
@@ -803,8 +801,6 @@ Do you want to delete them instead?</source>
         <translation>
             <numerusform>למחוק את הקובץ הנבחר?</numerusform>
             <numerusform>למחוק את הקבצים הנבחרים?</numerusform>
-            <numerusform>למחוק את הקבצים הנבחרים?</numerusform>
-            <numerusform>למחוק את הקבצים הנבחרים?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -812,8 +808,6 @@ Do you want to delete them instead?</source>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
             <numerusform>להעביר את הפריט הנבחר לפח האשפה?</numerusform>
-            <numerusform>להעביר את הפריטים הנבחרים לפח האשפה?</numerusform>
-            <numerusform>להעביר את הפריטים הנבחרים לפח האשפה?</numerusform>
             <numerusform>להעביר את הפריטים הנבחרים לפח האשפה?</numerusform>
         </translation>
     </message>
@@ -967,8 +961,6 @@ Do you want to delete them instead?</source>
         <translation>
             <numerusform>קובץ %Ln</numerusform>
             <numerusform>שני קבצים</numerusform>
-            <numerusform>%Ln קבצים</numerusform>
-            <numerusform>%Ln קבצים</numerusform>
         </translation>
     </message>
     <message>

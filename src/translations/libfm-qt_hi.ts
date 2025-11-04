@@ -1141,7 +1141,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>Last modified:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">पिछला संपादन:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
