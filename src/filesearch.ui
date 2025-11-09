@@ -454,128 +454,48 @@
    <signal>accepted()</signal>
    <receiver>SearchDialog</receiver>
    <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
    <receiver>SearchDialog</receiver>
    <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>largerThan</sender>
    <signal>toggled(bool)</signal>
    <receiver>minSizeUnit</receiver>
    <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>93</x>
-     <y>84</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>403</x>
-     <y>88</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>smallerThan</sender>
    <signal>toggled(bool)</signal>
    <receiver>maxSize</receiver>
    <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>96</x>
-     <y>119</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>241</x>
-     <y>123</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>largerThan</sender>
    <signal>toggled(bool)</signal>
    <receiver>minSize</receiver>
    <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>93</x>
-     <y>84</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>241</x>
-     <y>88</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>smallerThan</sender>
    <signal>toggled(bool)</signal>
    <receiver>maxSizeUnit</receiver>
    <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>96</x>
-     <y>119</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>403</x>
-     <y>123</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>laterThan</sender>
    <signal>toggled(bool)</signal>
    <receiver>minTime</receiver>
    <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>88</x>
-     <y>223</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>319</x>
-     <y>226</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>earlierThan</sender>
    <signal>toggled(bool)</signal>
    <receiver>maxTime</receiver>
    <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>93</x>
-     <y>190</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>319</x>
-     <y>193</y>
-    </hint>
-   </hints>
   </connection>
  </connections>
 </ui>

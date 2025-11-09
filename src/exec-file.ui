@@ -114,64 +114,24 @@
    <signal>clicked()</signal>
    <receiver>ExecFileDialog</receiver>
    <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>341</x>
-     <y>39</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>196</x>
-     <y>28</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>exec</sender>
    <signal>clicked()</signal>
    <receiver>ExecFileDialog</receiver>
    <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>56</x>
-     <y>39</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>196</x>
-     <y>28</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>execTerm</sender>
    <signal>clicked()</signal>
    <receiver>ExecFileDialog</receiver>
    <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>201</x>
-     <y>39</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>196</x>
-     <y>28</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>open</sender>
    <signal>clicked()</signal>
    <receiver>ExecFileDialog</receiver>
    <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>346</x>
-     <y>39</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>250</x>
-     <y>28</y>
-    </hint>
-   </hints>
   </connection>
  </connections>
 </ui>

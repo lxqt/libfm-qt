@@ -136,48 +136,18 @@
    <signal>accepted()</signal>
    <receiver>AppChooserDialog</receiver>
    <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>227</x>
-     <y>359</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
    <receiver>AppChooserDialog</receiver>
    <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>295</x>
-     <y>365</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>useTerminal</sender>
    <signal>toggled(bool)</signal>
    <receiver>keepTermOpen</receiver>
    <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>72</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>79</x>
-     <y>282</y>
-    </hint>
-   </hints>
   </connection>
  </connections>
 </ui>
