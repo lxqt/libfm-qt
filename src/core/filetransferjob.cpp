@@ -453,7 +453,8 @@ bool FileTransferJob::moveFile(const FilePath &srcPath, const GFileInfoPtr &srcI
                // NOTE: GLib does not allow moving a directory over another one with the
                // same name. As a workaround, also do copy & delete in this case.
                && !(g_file_info_get_file_type(srcInfo.get()) == G_FILE_TYPE_DIRECTORY
-                    && g_strcmp0(srcPath.baseName().get(), destFileName) == 0)))) {
+                    && g_strcmp0(srcPath.baseName().get(), destFileName) == 0
+                    && g_file_query_exists(destDirPath.child(destFileName).gfile().get(), nullptr))))) {
         // src and dest are on the same filesystem
         auto destPath = destDirPath.child(destFileName);
         ret = moveFileSameFs(srcPath, srcInfo, destPath);
