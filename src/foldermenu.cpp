@@ -54,16 +54,15 @@ FolderMenu::FolderMenu(FolderView* view, QWidget* parent):
     }
     if(insideTrash) {
         if(auto folder = view_->folder()) {
-            if(!folder->isEmpty()) {
-                auto trashAction = new QAction(tr("Empty Trash"), this);
-                addAction(trashAction);
-                connect(trashAction, &QAction::triggered, []() {
-                    Fm::FilePathList files;
-                    files.push_back(Fm::FilePath::fromUri("trash:///"));
-                    Fm::FileOperation::deleteFiles(std::move(files), true);
-                });
-                addSeparator();
-            }
+            auto trashAction = new QAction(tr("Empty Trash"), this);
+            trashAction->setEnabled(!folder->isEmpty());
+            addAction(trashAction);
+            connect(trashAction, &QAction::triggered, []() {
+                Fm::FilePathList files;
+                files.push_back(Fm::FilePath::fromUri("trash:///"));
+                Fm::FileOperation::deleteFiles(std::move(files), true);
+            });
+            addSeparator();
         }
     }
     else if (!insideSearch) {
