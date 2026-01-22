@@ -91,7 +91,7 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="20"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation type="unfinished"></translation>
+        <translation>Элементтер ретін өзгерту үшін сүйреп апаруды қолданыңыз</translation>
     </message>
 </context>
 <context>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../exec-file.ui" line="102"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Мұндай түрдегі келесі файлдар үшін есте сақтау</translation>
     </message>
 </context>
 <context>
@@ -165,17 +165,17 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="85"/>
         <source>Progress:</source>
-        <translation type="unfinished"></translation>
+        <translation>Барысы:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="119"/>
         <source>Time remaining:</source>
-        <translation type="unfinished"></translation>
+        <translation>Қалған уақыт:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="99"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Өңделген файлдар:</translation>
     </message>
 </context>
 <context>
@@ -183,168 +183,168 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл қасиеттері</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Жалпы</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Орналасуы:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="132"/>
         <source>File type:</source>
-        <translation type="unfinished">Файл түрі:</translation>
+        <translation>Файл түрі:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="155"/>
         <source>MIME type:</source>
-        <translation type="unfinished"></translation>
+        <translation>MIME түрі:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="195"/>
         <source>File size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл өлшемі:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="218"/>
         <source>On-disk size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Дискідегі өлшемі:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="241"/>
         <source>Last modified:</source>
-        <translation type="unfinished"></translation>
+        <translation>Соңғы рет өзгертілген:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>Link target:</source>
-        <translation type="unfinished"></translation>
+        <translation>Сілтеме нысанасы:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="178"/>
         <source>Open With:</source>
-        <translation type="unfinished"></translation>
+        <translation>Келесі көмегімен ашу:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Соңғы рет қол жеткізілген:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished">Жасалған:</translation>
+        <translation>Жасалды:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
         <source>Contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Құрамында бар:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Эмблема:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Эмблеманы таңдау</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Эмблеманы тазалау</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="397"/>
         <source>Device Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Құрылғыны қолдану:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="424"/>
         <source>Permissions</source>
-        <translation type="unfinished"></translation>
+        <translation>Рұқсаттар</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="439"/>
         <source>Ownership</source>
-        <translation type="unfinished"></translation>
+        <translation>Иелік</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="473"/>
         <location filename="../file-props.ui" line="528"/>
         <location filename="../file-props.ui" line="642"/>
         <source>Group:</source>
-        <translation type="unfinished">Топ:</translation>
+        <translation>Топ:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="457"/>
         <location filename="../file-props.ui" line="511"/>
         <location filename="../file-props.ui" line="590"/>
         <source>Owner:</source>
-        <translation type="unfinished">Иесі:</translation>
+        <translation>Иесі:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="492"/>
         <source>Access Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Қол жеткізуді басқару</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="545"/>
         <location filename="../file-props.ui" line="694"/>
         <source>Other:</source>
-        <translation type="unfinished"></translation>
+        <translation>Басқа:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="562"/>
         <source>Make the file executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлды орындалатын қылу</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="603"/>
         <location filename="../file-props.ui" line="655"/>
         <location filename="../file-props.ui" line="707"/>
         <source>Read</source>
-        <translation type="unfinished">Оқу</translation>
+        <translation>Оқу</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="616"/>
         <location filename="../file-props.ui" line="668"/>
         <location filename="../file-props.ui" line="720"/>
         <source>Write</source>
-        <translation type="unfinished"></translation>
+        <translation>Жазу</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="629"/>
         <location filename="../file-props.ui" line="681"/>
         <location filename="../file-props.ui" line="733"/>
         <source>Execute</source>
-        <translation type="unfinished"></translation>
+        <translation>Орындау</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>Sticky</source>
-        <translation type="unfinished"></translation>
+        <translation>Жабысқақ</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
         <source>SetUID</source>
-        <translation type="unfinished"></translation>
+        <translation>SetUID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="763"/>
         <source>SetGID</source>
-        <translation type="unfinished"></translation>
+        <translation>SetGID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="792"/>
         <source>Advanced Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Кеңейтілген режим</translation>
     </message>
 </context>
 <context>
@@ -352,7 +352,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation type="unfinished"></translation>
+        <translation>Баптау</translation>
     </message>
 </context>
 <context>
@@ -360,7 +360,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="268"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; файлдарын ашу үшін қолданбаны таңдаңыз</translation>
     </message>
 </context>
 <context>
@@ -368,12 +368,12 @@
     <message>
         <location filename="../createnewmenu.cpp" line="62"/>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Бума</translation>
     </message>
     <message>
         <location filename="../createnewmenu.cpp" line="66"/>
         <source>Blank File</source>
-        <translation type="unfinished"></translation>
+        <translation>Бос файл</translation>
     </message>
 </context>
 <context>
@@ -381,7 +381,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>Көрсетілген &apos;%1&apos; бумасы жарамсыз</translation>
     </message>
 </context>
 <context>
@@ -389,14 +389,14 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Жүктелуде...</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Ішкі бумалар жоқ&gt;</translation>
     </message>
 </context>
 <context>
@@ -404,17 +404,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="217"/>
         <source>Open in New T&amp;ab</source>
-        <translation type="unfinished"></translation>
+        <translation>Жаңа бе&amp;тте ашу</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="221"/>
         <source>Open in New Win&amp;dow</source>
-        <translation type="unfinished"></translation>
+        <translation>Жаңа тере&amp;зеде ашу</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="226"/>
         <source>Open in Termina&amp;l</source>
-        <translation type="unfinished"></translation>
+        <translation>Термина&amp;лда ашу</translation>
     </message>
 </context>
 <context>
@@ -422,27 +422,27 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation type="unfinished"></translation>
+        <translation>Осында көшіру</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation type="unfinished"></translation>
+        <translation>Осында жылжыту</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation type="unfinished"></translation>
+        <translation>Осында символдық сілтеме жасау</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cancel</source>
-        <translation type="unfinished">Бас тарту</translation>
+        <translation>Бас тарту</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Осында тастау мүмкін емес</translation>
     </message>
 </context>
 <context>
@@ -450,7 +450,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="84"/>
         <source>New bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Жаңа бетбелгі</translation>
     </message>
 </context>
 <context>
@@ -459,18 +459,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Бұл &apos;%1&apos; файлы жұмыс үстелінің жазбасы сияқты.
+Онымен не істегіңіз келеді?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Бұл &apos;%1&apos; мәтіндік файлы орындалатын скрипт сияқты.
+Онымен не істегіңіз келеді?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Бұл &apos;%1&apos; файлы орындалатын файл. Оны орындауды қалайсыз ба?</translation>
     </message>
 </context>
 <context>
@@ -478,154 +480,155 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="115"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Артқа қайту</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="116"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Сол жақ</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="122"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Алға өту</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="123"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Оң жақ</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="130"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Қайта жүктеу</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="131"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="148"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Буманы жасау</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="164"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>Таңбашалар көрінісі</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="168"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>Нобайлар көрінісі</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>Ықшам көрініс</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="176"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>Толық тізім көрінісі</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="184"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Таңбашалар өлшемдері</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="186"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Үлкен таңбашалар өлшемі:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="193"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Кіші таңбашалар өлшемі:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Нобайлар өлшемі:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="216"/>
         <source>Show Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Жасырынды көрсету</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="228"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>Нобайларды көрсету</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="233"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлдардың қалқымалы нұсқауларын көрсету</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="240"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Бірқалыпты айналдыру</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="255"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Опциялар</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="605"/>
         <location filename="../filedialog.cpp" line="1064"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Қате</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="605"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлды таңдаңыз</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="681"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 бұрыннан бар.
+Оны алмастырғыңыз келе ме?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1026"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; жолы табылмады</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1040"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; бума емес</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1050"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; файл емес</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1204"/>
         <location filename="../filedialog.cpp" line="1321"/>
         <source>&amp;Open</source>
-        <translation type="unfinished">&amp;Ашу</translation>
+        <translation>&amp;Ашу</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1207"/>
         <location filename="../filedialog.cpp" line="1329"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Сақтау</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1214"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Барлық файлдар (*)</translation>
     </message>
 </context>
 <context>
@@ -633,12 +636,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="140"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлды ашу</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="141"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлды сақтау</translation>
     </message>
 </context>
 <context>
@@ -646,7 +649,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> пиксель</translation>
     </message>
 </context>
 <context>
@@ -654,122 +657,122 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="86"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Ашу</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="90"/>
         <source>Open With...</source>
-        <translation type="unfinished"></translation>
+        <translation>Көмегімен ашу...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="419"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Көптеген файлдар</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="420"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Бұл %1 файлды ашуды шынымен қалайсыз ба?</numerusform>
+            <numerusform>Бұл %1 файлды ашуды шынымен қалайсыз ба?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="181"/>
         <source>Other Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Басқа қолданбалар</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="188"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation>Жаңасын &amp;жасау</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="207"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>Қ&amp;алпына келтіру</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="217"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Қиып алу</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="221"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Көшіру</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="225"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>Кірістіру</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="229"/>
         <location filename="../filemenu.cpp" line="547"/>
         <source>&amp;Move to Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Қ&amp;оқыс шелегіне апару</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="233"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Атын өзгерту</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="289"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Тіркеу</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="303"/>
         <source>Unmount</source>
-        <translation type="unfinished"></translation>
+        <translation>Тіркеуден шығару</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="317"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Шығару</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="338"/>
         <source>Extract to...</source>
-        <translation type="unfinished"></translation>
+        <translation>Мына жерге тарқату...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="346"/>
         <source>Extract Here</source>
-        <translation type="unfinished"></translation>
+        <translation>Осында тарқату</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Compress</source>
-        <translation type="unfinished"></translation>
+        <translation>Сығу</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="362"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Қасиеттері</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="376"/>
         <source>Trust selected executables</source>
-        <translation type="unfinished"></translation>
+        <translation>Таңдалған орындалатын файлдарға сену</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="377"/>
         <source>Trust this executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Бұл орындалатын файлға сену</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="482"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Шығыс</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="211"/>
         <location filename="../filemenu.cpp" line="547"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Ө&amp;шіру</translation>
     </message>
 </context>
 <context>
@@ -777,34 +780,35 @@ Do you want to replace it?</source>
     <message>
         <location filename="../fileoperation.cpp" line="317"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Қате</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="318"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation type="unfinished"></translation>
+        <translation>Кейбір файлдарды себетке жылжыту мүмкін емес, себебі негізгі файлдық жүйелер бұл әрекетті қолдамайды.
+Оның орнына оларды жоюды қалайсыз ба?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="404"/>
         <location filename="../fileoperation.cpp" line="422"/>
         <source>Confirm</source>
-        <translation type="unfinished"></translation>
+        <translation>Растау</translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Таңдалған файлды өшіруді шынымен қалайсыз ба?</numerusform>
+            <numerusform>Таңдалған файлдарды өшіруді шынымен қалайсыз ба?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Таңдалған файлды қоқыс шелегіне тастауды шынымен қалайсыз ба?</numerusform>
+            <numerusform>Таңдалған файлдарды қоқыс шелегіне тастауды шынымен қалайсыз ба?</numerusform>
         </translation>
     </message>
 </context>
@@ -813,78 +817,78 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлдарды жылжыту</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Келесі файлдарды мақсатты бумаға жылжыту:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлдарды көшіру</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Келесі файлдарды мақсатты бумаға көшіру:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлдарды себетке тастау</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation type="unfinished"></translation>
+        <translation>Келесі файлдарды себетке жылжыту:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлдарды өшіру</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Келесі файлдарды өшіру:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation type="unfinished"></translation>
+        <translation>Символдық сілтемелерді жасау</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Келесі файлдар үшін символдық сілтемелерді жасау:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Атрибуттарды өзгерту</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Келесі файлдардың атрибуттарын өзгерту:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Себеттегі файлдарды қалпына келтіру</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation type="unfinished"></translation>
+        <translation>Келесі файлдарды себеттен қалпына келтіру:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="149"/>
         <location filename="../fileoperationdialog.cpp" line="155"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Қате</translation>
     </message>
 </context>
 <context>
@@ -892,12 +896,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="167"/>
         <source>View folder content</source>
-        <translation type="unfinished"></translation>
+        <translation>Бума мазмұнын көру</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="168"/>
         <source>View and modify folder content</source>
-        <translation type="unfinished"></translation>
+        <translation>Бума мазмұнын көру және өзгерту</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="172"/>
@@ -929,57 +933,57 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>Multiple Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Бірнеше файл</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="410"/>
         <source>%p% used</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% пайдаланылды</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="411"/>
         <source>%1 Free of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 бос, %2 ішінен</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="457"/>
         <source>no file</source>
-        <translation type="unfinished"></translation>
+        <translation>файл жоқ</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="459"/>
         <source>one file</source>
-        <translation type="unfinished"></translation>
+        <translation>бір файл</translation>
     </message>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="461"/>
         <source>%Ln files</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln файл</numerusform>
+            <numerusform>%Ln файл</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="495"/>
         <location filename="../filepropsdialog.cpp" line="540"/>
         <source>Select an icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Таңбашаны таңдау</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="497"/>
         <location filename="../filepropsdialog.cpp" line="542"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation type="unfinished"></translation>
+        <translation>Суреттер (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="648"/>
         <source>Apply changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Өзгерістерді іске асыру</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="649"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation type="unfinished"></translation>
+        <translation>Осы өзгерістерді барлық файлдар мен ішкі бумаларға рекурсивті түрде іске асыруды қалайсыз ба?</translation>
     </message>
 </context>
 <context>
@@ -987,12 +991,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="157"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Қате</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="157"/>
         <source>You should add at least one directory to search.</source>
-        <translation type="unfinished"></translation>
+        <translation>Іздеу үшін кемінде бір буманы қосуыңыз керек.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="164"/>
@@ -1005,12 +1009,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="492"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation type="unfinished"></translation>
+        <translation>Буманы оның өзіне көшіру мүмкін емес!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="543"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Жүйеге тән емес файлдық жүйеде сілтеме жасау мүмкін емес</translation>
     </message>
 </context>
 <context>
@@ -1023,102 +1027,102 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="70"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation>Жаңасын &amp;жасау</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="75"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Кірістіру</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="89"/>
         <source>Select &amp;All</source>
-        <translation type="unfinished"></translation>
+        <translation>Барлығын &amp;таңдау</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="100"/>
         <source>Sorting</source>
-        <translation type="unfinished"></translation>
+        <translation>Сұрыптау</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="105"/>
         <source>Show Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Жасырынды көрсету</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="140"/>
         <source>Folder Pr&amp;operties</source>
-        <translation type="unfinished"></translation>
+        <translation>Бума қ&amp;асиеттері</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="183"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Шығыс</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="205"/>
         <source>By File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл аты бойынша</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="206"/>
         <source>By Modification Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Өзгерту уақыты бойынша</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="207"/>
         <source>By Creation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Жасау уақыты бойынша</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="210"/>
         <source>By Deletion Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Өшіру уақыты бойынша</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="213"/>
         <source>By File Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл өлшемі бойынша</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="214"/>
         <source>By File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл түрі бойынша</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="215"/>
         <source>By File Owner</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл иесі бойынша</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="216"/>
         <source>By File Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл тобы бойынша</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="222"/>
         <source>Ascending</source>
-        <translation type="unfinished"></translation>
+        <translation>Өсу ретімен</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="227"/>
         <source>Descending</source>
-        <translation type="unfinished"></translation>
+        <translation>Кему ретімен</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="244"/>
         <source>Folder First</source>
-        <translation type="unfinished"></translation>
+        <translation>Бума бірінші</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="252"/>
         <source>Hidden Last</source>
-        <translation type="unfinished"></translation>
+        <translation>Жасырын соңында</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="260"/>
         <source>Case Sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Регистрді ескеру</translation>
     </message>
 </context>
 <context>
@@ -1126,32 +1130,32 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="306"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Орналасуы:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="310"/>
         <source>File type:</source>
-        <translation type="unfinished">Файл түрі:</translation>
+        <translation>Файл түрі:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="315"/>
         <source>File size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл өлшемі:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>Last modified:</source>
-        <translation type="unfinished"></translation>
+        <translation>Соңғы өзгертілген:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Last accessed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Соңғы қол жеткізілген:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>N/A</source>
-        <translation type="unfinished">---</translation>
+        <translation>Қ/Ж</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="323"/>
@@ -1186,27 +1190,27 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="405"/>
         <source>Modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Өзгертілген</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="408"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Жасалған</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="411"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Өшірілген</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="414"/>
         <source>Owner</source>
-        <translation type="unfinished"></translation>
+        <translation>Иесі</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="417"/>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Топ</translation>
     </message>
 </context>
 <context>
@@ -1214,12 +1218,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="410"/>
         <source>Auto-resize columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Бағандар өлшемін авто-өзгерту</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="427"/>
         <source>Visible Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Көрінетін бағандар</translation>
     </message>
 </context>
 <context>
@@ -1227,12 +1231,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>Жуан</translation>
     </message>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Курсив</translation>
     </message>
 </context>
 <context>
@@ -1240,7 +1244,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../mountoperationpassworddialog.cpp" line="42"/>
         <source>&amp;Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Қ&amp;осылу</translation>
     </message>
 </context>
 <context>
@@ -1248,12 +1252,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../pathbar.cpp" line="123"/>
         <source>&amp;Edit Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Жолды түз&amp;ету</translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="126"/>
         <source>&amp;Copy Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Жолды &amp;көшіру</translation>
     </message>
 </context>
 <context>
@@ -1261,42 +1265,42 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesmodel.cpp" line="46"/>
         <source>Places</source>
-        <translation type="unfinished"></translation>
+        <translation>Орындар</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="54"/>
         <source>Desktop</source>
-        <translation type="unfinished"></translation>
+        <translation>Жұмыс үстелі</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="60"/>
         <source>Computer</source>
-        <translation type="unfinished"></translation>
+        <translation>Компьютер</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="68"/>
         <source>Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Қолданбалар</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="77"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Желі</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="81"/>
         <source>Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Құрылғылар</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="136"/>
         <source>Bookmarks</source>
-        <translation type="unfinished"></translation>
+        <translation>Бетбелгілер</translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="227"/>
         <source>Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Қоқыс шелегі</translation>
     </message>
 </context>
 <context>
@@ -1304,69 +1308,69 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="563"/>
         <source>Open in New Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Жаңа бетте ашу</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="567"/>
         <source>Open in New Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Жаңа терезеде ашу</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="580"/>
         <source>Empty Trash</source>
-        <translation type="unfinished">Қоқыс шелегін тазарту</translation>
+        <translation>Қоқыс шелегін тазарту</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="600"/>
         <location filename="../placesview.cpp" line="667"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Жасыру</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="617"/>
         <source>Move Bookmark Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Бетбелгіні жоғары жылжыту</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="624"/>
         <source>Move Bookmark Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Бетбелгіні төмен жылжыту</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="629"/>
         <source>Rename Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Бетбелгінің атын өзгерту</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="633"/>
         <source>Remove Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Бетбелгіні өшіру</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="643"/>
         <location filename="../placesview.cpp" line="681"/>
         <source>Unmount</source>
-        <translation type="unfinished"></translation>
+        <translation>Тіркеуден шығару</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="647"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Тіркеу</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="653"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Шығару</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="658"/>
         <source>Safely Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Қауіпсіз өшіру</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="693"/>
         <source>Show All Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Барлық жазбаларды көрсету</translation>
     </message>
 </context>
 <context>
@@ -1377,29 +1381,32 @@ Do you want to delete them instead?</source>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Түрі: %1
+Өлшемі: %2
+Өзгертілген уақыты: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Түрі: %1
+Өзгертілген уақыты: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="104"/>
         <source>&amp;Overwrite</source>
-        <translation type="unfinished"></translation>
+        <translation>Үс&amp;тінен жазу</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="106"/>
         <source>&amp;Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Атын өзгерту</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="116"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Файлды өзінің үстіне жазу мүмкін емес.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Басқа атауын таңдаңыз.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1407,12 +1414,12 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Тізімдер</translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="47"/>
         <source>Directory Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Бумалар ағашы</translation>
     </message>
 </context>
 <context>
@@ -1420,7 +1427,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%s&apos; файлын қоқыс шелегінен қайтару мүмкін емес: бастапқы жолы белгісіз</translation>
     </message>
 </context>
 <context>
@@ -1428,52 +1435,52 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Тіркеу</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Анонимді түрде қосылу</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation type="unfinished"></translation>
+        <translation>Пай&amp;даланушы ретінде қосылу:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="76"/>
         <source>&amp;Username:</source>
-        <translation type="unfinished"></translation>
+        <translation>Па&amp;йдаланушы аты:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="108"/>
         <source>&amp;Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Пароль:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="89"/>
         <source>&amp;Domain:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Домен:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation type="unfinished"></translation>
+        <translation>Парольді &amp;дереу ұмыту</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Сессия ұзақтығы пароль менеджері арқылы анықталады</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
         <source>Remember password for &amp;this session</source>
-        <translation type="unfinished"></translation>
+        <translation>Парольді &amp;осы сессия үшін есте сақтау</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="150"/>
         <source>Remember &amp;forever</source>
-        <translation type="unfinished"></translation>
+        <translation>Әрқ&amp;ашан есте сақтау</translation>
     </message>
 </context>
 <context>
@@ -1481,12 +1488,12 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="170"/>
         <source>Rename File</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл атын өзгерту</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="171"/>
         <source>Please enter a new name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Жаңа атауды енгізіңіз:</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="124"/>
@@ -1495,78 +1502,78 @@ Modified: %2</source>
         <location filename="../utilities.cpp" line="154"/>
         <location filename="../utilities.cpp" line="318"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Қате</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="230"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Буманы жасау</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="231"/>
         <source>Create File</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлды жасау</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="235"/>
         <source>Please enter a new file name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Жаңа файл атын енгізіңіз:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>Жаңа файл</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="240"/>
         <source>Please enter a new folder name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Жаңа бума атын енгізіңіз:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="241"/>
         <source>New folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Жаңа бума</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="246"/>
         <source>Enter a name for the new %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Жаңа %1 үшін атауды енгізіңіз:</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="692"/>
         <source>Custom Icon Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Реттелетін таңбашасының қатесі</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Жол тіркелмеген.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="319"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Жарамсыз жұмыс үстелі элементінің файлы: &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%1&apos; іске қосу үшін әдепкі қолданба орнатылмаған</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Жұмыс бумасын &apos;%1&apos; ретінде орнату мүмкін емес: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
         <source>Identifier: </source>
-        <translation type="unfinished"></translation>
+        <translation>Идентификатор: </translation>
     </message>
     <message>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation type="unfinished">---</translation>
+        <translation>Қ/Ж</translation>
     </message>
 </context>
 <context>
@@ -1574,27 +1581,27 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлдарды алмастыруды растау</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Бұл жерде осындай атауы бар файл бұрыннан бар.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Бар файлды алмастыруды қалайсыз ба?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
         <source>with the following file?</source>
-        <translation type="unfinished"></translation>
+        <translation>мына файлмен?</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл &amp;аты:</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation type="unfinished"></translation>
+        <translation>Бұл опцияны барлық бар файлдарға іске асыру</translation>
     </message>
 </context>
 <context>
@@ -1602,176 +1609,176 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлдарды іздеу</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Аты/Орналасуы</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл атының үлгілері:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="44"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation>*</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="58"/>
         <source>Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>Тұрақты өрнекті қолдану</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="71"/>
         <source>Places to Search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Іздеу орындары:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="84"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Қо&amp;су</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="96"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Ө&amp;шіру</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="132"/>
         <source>Search for hidden files</source>
-        <translation type="unfinished"></translation>
+        <translation>Жасырын файлдарды іздеу</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="143"/>
         <source>File Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл түрі</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="149"/>
         <source>Only search for files of following types:</source>
-        <translation type="unfinished"></translation>
+        <translation>Тек келесі түрдегі файлдарды іздеу:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="155"/>
         <source>Text files</source>
-        <translation type="unfinished"></translation>
+        <translation>Мәтіндік файлдар</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="162"/>
         <source>Image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Сурет файлдары</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="169"/>
         <source>Audio files</source>
-        <translation type="unfinished"></translation>
+        <translation>Аудио файлдар</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="176"/>
         <source>Video files</source>
-        <translation type="unfinished"></translation>
+        <translation>Видео файлдар</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="183"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Құжаттар</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="190"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Бумалар</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="214"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Мазмұны</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="220"/>
         <source>File contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл ішінде бар:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="240"/>
         <source>&amp;Use regular expression</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Тұрақты өрнекті қолдану</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="267"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Қасиеттері</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="273"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл өлшемі:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="281"/>
         <source>Larger than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Мынадан үлкен:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="302"/>
         <location filename="../filesearch.ui" line="346"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Байт</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="307"/>
         <location filename="../filesearch.ui" line="351"/>
         <source>KiB</source>
-        <translation type="unfinished"></translation>
+        <translation>КиБ</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="312"/>
         <location filename="../filesearch.ui" line="356"/>
         <source>MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>МиБ</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="317"/>
         <location filename="../filesearch.ui" line="361"/>
         <source>GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>ГиБ</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="325"/>
         <source>Smaller than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Мынадан кіші:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="51"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Регистрді ескеру</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="125"/>
         <source>Search in subdirectories</source>
-        <translation type="unfinished"></translation>
+        <translation>Ішкі бумалардан іздеу</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>Case sensiti&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>Регистрді еске&amp;ру</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="377"/>
         <source>Last Modified Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Соңғы өзгертілген уақыты:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Earlier than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Мынадан ерте:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="402"/>
         <source>Later than:</source>
-        <translation type="unfinished"></translation>
+        <translation>Мынадан кеш:</translation>
     </message>
 </context>
 </TS>

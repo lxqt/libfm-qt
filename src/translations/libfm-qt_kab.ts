@@ -48,12 +48,12 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="91"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>Eǧǧ asfaylu n yixf yeldi deffir n uselkem n tladna</translation>
+        <translation>Eǧǧ asfaylu n tdiwent yeldi deffir n uselkem n tladna</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Execute in terminal emulator</source>
-        <translation>Selkem deg umtellal n ixf</translation>
+        <translation>Selkem deg umtellal n tdiwent</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../exec-file.ui" line="65"/>
         <source>Execute in &amp;Terminal</source>
-        <translation>Selkem deg &amp;Ixf</translation>
+        <translation>Selkem deg &amp;Tadiwent</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="88"/>
