@@ -449,11 +449,10 @@ void FilePropsDialog::onFileSizeTimerTimeout() {
         if(ui->contentsLabel->isVisible()) {
             unsigned int fc =  totalSizeJob->fileCount(); // the directory is included
             if (fc <= 1)
-                str = tr("no file");
-            else if (fc == 2)
-                str = tr("one file");
+                fc = 0;
             else
-                str = tr("%Ln files", "", fc - 1);
+                fc = fc - 1;
+            str = (fc == 1) ? tr("%Ln file", fc) : tr("%Ln files", fc);
             ui->fileNumber->setText(str);
         }
     }
