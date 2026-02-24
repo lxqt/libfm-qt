@@ -847,6 +847,15 @@ void FileDialog::selectFilePathWithDelay(const FilePath &path) {
         if(acceptMode_ == QFileDialog::AcceptSave) {
             // with a save dialog, always put the base name in line-edit, regardless of selection
             ui->fileName->setText(QString::fromUtf8(path.baseName().get()));
+
+            // also, select the base name without its last extension
+            int dot = ui->fileName->text().lastIndexOf(QLatin1Char('.'));
+            if(dot == -1) {
+                ui->fileName->selectAll();
+            }
+            else if(dot > 0) {
+                ui->fileName->setSelection(0, dot);
+            }
         }
         // update "accept" button because there might be no selection later
         updateAcceptButtonState();
