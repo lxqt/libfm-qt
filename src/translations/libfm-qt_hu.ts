@@ -674,6 +674,7 @@ Le szeretné cserélni?</translation>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>Meg szeretné nyitni ezt a fájlt?</numerusform>
+            <numerusform>Meg szeretné nyitni ezt a(z) %1 fájlt?</numerusform>
         </translation>
     </message>
     <message>
@@ -799,6 +800,7 @@ Szeretné véglegesen törölni őket?</translation>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
             <numerusform>Szeretné törölni a kiválasztott fájlt?</numerusform>
+            <numerusform>Szeretné törölni a kiválasztott fájlokat?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -806,6 +808,7 @@ Szeretné véglegesen törölni őket?</translation>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
             <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlt?</numerusform>
+            <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlokat?</numerusform>
         </translation>
     </message>
 </context>
@@ -956,6 +959,7 @@ Szeretné véglegesen törölni őket?</translation>
         <location filename="../filepropsdialog.cpp" line="461"/>
         <source>%Ln files</source>
         <translation>
+            <numerusform>%Ln fájl</numerusform>
             <numerusform>%Ln fájl</numerusform>
         </translation>
     </message>
