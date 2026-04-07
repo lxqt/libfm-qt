@@ -1365,7 +1365,7 @@ Vil du slette dem i stedet?</translation>
     <message>
         <location filename="../placesview.cpp" line="658"/>
         <source>Safely Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Fjern Sikkert</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="693"/>
