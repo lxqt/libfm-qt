@@ -1,3 +1,8 @@
+libfm-qt-2.4.0 / 2026-04-20
+============================
+ * Select base name in "File name" entry on showing save dialog.
+ * Updated translations.
+
 libfm-qt-2.3.1 / 2025-11-27
 ============================
  * Reverted the workaround for moving directory over directory.
