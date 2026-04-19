@@ -582,7 +582,7 @@ Was möchten Sie damit tun?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="605"/>
-        <location filename="../filedialog.cpp" line="1064"/>
+        <location filename="../filedialog.cpp" line="1073"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
@@ -599,34 +599,34 @@ Do you want to replace it?</source>
 Möchten Sie sie ersetzen?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1026"/>
+        <location filename="../filedialog.cpp" line="1035"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>Pfad &quot;%1&quot; existiert nicht</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1040"/>
+        <location filename="../filedialog.cpp" line="1049"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&quot;%1&quot; ist kein Verzeichnis</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1050"/>
+        <location filename="../filedialog.cpp" line="1059"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&quot;%1&quot; ist keine Datei</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1204"/>
-        <location filename="../filedialog.cpp" line="1321"/>
+        <location filename="../filedialog.cpp" line="1213"/>
+        <location filename="../filedialog.cpp" line="1330"/>
         <source>&amp;Open</source>
         <translation>&amp;Öffnen</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1207"/>
-        <location filename="../filedialog.cpp" line="1329"/>
+        <location filename="../filedialog.cpp" line="1216"/>
+        <location filename="../filedialog.cpp" line="1338"/>
         <source>&amp;Save</source>
         <translation>&amp;Speichern</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1214"/>
+        <location filename="../filedialog.cpp" line="1223"/>
         <source>All Files (*)</source>
         <translation>Alle Dateien (*)</translation>
     </message>
@@ -1007,12 +1007,12 @@ Möchtest Sie sie stattdessen löschen?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="492"/>
+        <location filename="../core/filetransferjob.cpp" line="486"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Verzeichnis kann nicht in sich selbst kopiert werden!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="543"/>
+        <location filename="../core/filetransferjob.cpp" line="537"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Kann keine Verknüpfung auf einem nicht-nativen Dateisystem erstellen</translation>
     </message>

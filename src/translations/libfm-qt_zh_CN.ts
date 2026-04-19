@@ -582,7 +582,7 @@ What do you want to do with it?</source>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="605"/>
-        <location filename="../filedialog.cpp" line="1064"/>
+        <location filename="../filedialog.cpp" line="1073"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -599,34 +599,34 @@ Do you want to replace it?</source>
 是否替换？</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1026"/>
+        <location filename="../filedialog.cpp" line="1035"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>路径“%1”不存在</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1040"/>
+        <location filename="../filedialog.cpp" line="1049"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>“%1”不是目录</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1050"/>
+        <location filename="../filedialog.cpp" line="1059"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>“%1”不是文件</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1204"/>
-        <location filename="../filedialog.cpp" line="1321"/>
+        <location filename="../filedialog.cpp" line="1213"/>
+        <location filename="../filedialog.cpp" line="1330"/>
         <source>&amp;Open</source>
         <translation>打开(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1207"/>
-        <location filename="../filedialog.cpp" line="1329"/>
+        <location filename="../filedialog.cpp" line="1216"/>
+        <location filename="../filedialog.cpp" line="1338"/>
         <source>&amp;Save</source>
         <translation>保存(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1214"/>
+        <location filename="../filedialog.cpp" line="1223"/>
         <source>All Files (*)</source>
         <translation>所有文件 (*)</translation>
     </message>
@@ -1003,12 +1003,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="492"/>
+        <location filename="../core/filetransferjob.cpp" line="486"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>无法将目录复制到自身！</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="543"/>
+        <location filename="../core/filetransferjob.cpp" line="537"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>无法在非原生文件系统中创建链接</translation>
     </message>

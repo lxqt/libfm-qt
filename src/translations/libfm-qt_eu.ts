@@ -582,7 +582,7 @@ Zer egin nahi duzu horrekin?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="605"/>
-        <location filename="../filedialog.cpp" line="1064"/>
+        <location filename="../filedialog.cpp" line="1073"/>
         <source>Error</source>
         <translation>Errorea</translation>
     </message>
@@ -599,34 +599,34 @@ Do you want to replace it?</source>
 Ordezkatu nahi duzu?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1026"/>
+        <location filename="../filedialog.cpp" line="1035"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>&quot;%1&quot; bidea ez da existitzen</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1040"/>
+        <location filename="../filedialog.cpp" line="1049"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&quot;%1&quot; ez da direktorio bat</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1050"/>
+        <location filename="../filedialog.cpp" line="1059"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&quot;%1&quot; ez da fitxategi bat</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1204"/>
-        <location filename="../filedialog.cpp" line="1321"/>
+        <location filename="../filedialog.cpp" line="1213"/>
+        <location filename="../filedialog.cpp" line="1330"/>
         <source>&amp;Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1207"/>
-        <location filename="../filedialog.cpp" line="1329"/>
+        <location filename="../filedialog.cpp" line="1216"/>
+        <location filename="../filedialog.cpp" line="1338"/>
         <source>&amp;Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1214"/>
+        <location filename="../filedialog.cpp" line="1223"/>
         <source>All Files (*)</source>
         <translation>Fitxategi guztiak (*)</translation>
     </message>
@@ -1007,12 +1007,12 @@ Horren ordez, ezabatu nahi dituzu?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="492"/>
+        <location filename="../core/filetransferjob.cpp" line="486"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Ezin da direktorio bat bere baitan kopiatu!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="543"/>
+        <location filename="../core/filetransferjob.cpp" line="537"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Ezin da estekarik sortu jatorrizkoa ez den fitxategi-sisteman</translation>
     </message>

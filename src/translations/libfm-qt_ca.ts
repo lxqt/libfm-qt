@@ -582,7 +582,7 @@ Què voleu fer amb ell?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="605"/>
-        <location filename="../filedialog.cpp" line="1064"/>
+        <location filename="../filedialog.cpp" line="1073"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
@@ -599,34 +599,34 @@ Do you want to replace it?</source>
 Voleu substituir-ho?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1026"/>
+        <location filename="../filedialog.cpp" line="1035"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>No existeix el camí «%1»</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1040"/>
+        <location filename="../filedialog.cpp" line="1049"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>«%1» no és un directori</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1050"/>
+        <location filename="../filedialog.cpp" line="1059"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>«%1» no és un fitxer</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1204"/>
-        <location filename="../filedialog.cpp" line="1321"/>
+        <location filename="../filedialog.cpp" line="1213"/>
+        <location filename="../filedialog.cpp" line="1330"/>
         <source>&amp;Open</source>
         <translation>&amp;Obre</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1207"/>
-        <location filename="../filedialog.cpp" line="1329"/>
+        <location filename="../filedialog.cpp" line="1216"/>
+        <location filename="../filedialog.cpp" line="1338"/>
         <source>&amp;Save</source>
         <translation>De&amp;sa</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1214"/>
+        <location filename="../filedialog.cpp" line="1223"/>
         <source>All Files (*)</source>
         <translation>Tots els fitxers (*)</translation>
     </message>
@@ -1007,12 +1007,12 @@ En lloc seu, voleu suprimir-los?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="492"/>
+        <location filename="../core/filetransferjob.cpp" line="486"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>No es pot copiar un directori sobre si mateix!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="543"/>
+        <location filename="../core/filetransferjob.cpp" line="537"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>No es pot crear un enllaç en un sistema de fitxers no natiu</translation>
     </message>

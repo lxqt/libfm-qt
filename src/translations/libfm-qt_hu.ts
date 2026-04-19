@@ -582,7 +582,7 @@ Mit szeretne tenni vele?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="605"/>
-        <location filename="../filedialog.cpp" line="1064"/>
+        <location filename="../filedialog.cpp" line="1073"/>
         <source>Error</source>
         <translation>Hiba</translation>
     </message>
@@ -599,34 +599,34 @@ Do you want to replace it?</source>
 Le szeretné cserélni?</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1026"/>
+        <location filename="../filedialog.cpp" line="1035"/>
         <source>Path &quot;%1&quot; does not exist</source>
         <translation>&quot;%1&quot; útvonal nem létezik</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1040"/>
+        <location filename="../filedialog.cpp" line="1049"/>
         <source>&quot;%1&quot; is not a directory</source>
         <translation>&quot;%1&quot; nem egy könyvtár</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1050"/>
+        <location filename="../filedialog.cpp" line="1059"/>
         <source>&quot;%1&quot; is not a file</source>
         <translation>&quot;%1&quot; nem egy fájl</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1204"/>
-        <location filename="../filedialog.cpp" line="1321"/>
+        <location filename="../filedialog.cpp" line="1213"/>
+        <location filename="../filedialog.cpp" line="1330"/>
         <source>&amp;Open</source>
         <translation>&amp;Megnyitás</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1207"/>
-        <location filename="../filedialog.cpp" line="1329"/>
+        <location filename="../filedialog.cpp" line="1216"/>
+        <location filename="../filedialog.cpp" line="1338"/>
         <source>&amp;Save</source>
         <translation>M&amp;entés</translation>
     </message>
     <message>
-        <location filename="../filedialog.cpp" line="1214"/>
+        <location filename="../filedialog.cpp" line="1223"/>
         <source>All Files (*)</source>
         <translation>Minden fájl (*)</translation>
     </message>
@@ -674,7 +674,6 @@ Le szeretné cserélni?</translation>
         <source>Do you want to open these %1 files?</source>
         <translation>
             <numerusform>Meg szeretné nyitni ezt a fájlt?</numerusform>
-            <numerusform>Meg szeretné nyitni ezt a(z) %1 fájlt?</numerusform>
         </translation>
     </message>
     <message>
@@ -800,7 +799,6 @@ Szeretné véglegesen törölni őket?</translation>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
             <numerusform>Szeretné törölni a kiválasztott fájlt?</numerusform>
-            <numerusform>Szeretné törölni a kiválasztott fájlokat?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -808,7 +806,6 @@ Szeretné véglegesen törölni őket?</translation>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
             <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlt?</numerusform>
-            <numerusform>Szeretné áthelyezni a kukába a kiválasztott fájlokat?</numerusform>
         </translation>
     </message>
 </context>
@@ -960,7 +957,6 @@ Szeretné véglegesen törölni őket?</translation>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln fájl</numerusform>
-            <numerusform>%Ln fájl</numerusform>
         </translation>
     </message>
     <message>
@@ -1007,12 +1003,12 @@ Szeretné véglegesen törölni őket?</translation>
 <context>
     <name>Fm::FileTransferJob</name>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="492"/>
+        <location filename="../core/filetransferjob.cpp" line="486"/>
         <source>Cannot copy a directory into itself!</source>
         <translation>Könyvtár nem másolható önmagába!</translation>
     </message>
     <message>
-        <location filename="../core/filetransferjob.cpp" line="543"/>
+        <location filename="../core/filetransferjob.cpp" line="537"/>
         <source>Cannot create a link on non-native filesystem</source>
         <translation>Nem lehet linket létrehozni nem helyi fájlrendszeren</translation>
     </message>
