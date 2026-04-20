@@ -457,11 +457,11 @@ static gboolean _add_directory(const char *path, GCancellable *cancellable,
             child = fm_xml_file_item_new(menuTag_NotDeleted);
             fm_xml_file_item_append_child(item, child);
             /* touch .directory file, ignore errors */
-            dir = strrchr(path, '/'); /* use it as a storage for basename */
+            dir = (char*) strrchr(path, '/'); /* use it as a storage for basename */
             if (dir)
                 dir++;
             else
-                dir = (char *)path;
+                dir = (char *) path;
             contents = g_strdup_printf("[" G_KEY_FILE_DESKTOP_GROUP "]\n"
                                        G_KEY_FILE_DESKTOP_KEY_TYPE "=" G_KEY_FILE_DESKTOP_TYPE_DIRECTORY "\n"
                                        G_KEY_FILE_DESKTOP_KEY_NAME "=%s", dir);
@@ -1534,7 +1534,7 @@ static gboolean _fm_vfs_menu_set_display_name_real(gpointer data)
             {
                 char *lang;
                 /* remove encoding from locale name */
-                char *sep = strchr(langs[0], '.');
+                const char *sep = strchr(langs[0], '.');
 
                 if (sep)
                     lang = g_strndup(langs[0], sep - langs[0]);
@@ -1695,7 +1695,7 @@ static gboolean _fm_vfs_menu_set_attributes_from_info_real(gpointer data)
                 {
                     char *lang;
                     /* remove encoding from locale name */
-                    char *sep = strchr(langs[0], '.');
+                    const char *sep = strchr(langs[0], '.');
 
                     if (sep)
                         lang = g_strndup(langs[0], sep - langs[0]);

@@ -459,14 +459,14 @@ static void parse_search_uri(FmVfsSearchEnumerator* priv, const char* uri_str)
     if(g_ascii_strncasecmp(uri_str, scheme, sizeof(scheme)-1) == 0)
     {
         const char* p = uri_str + sizeof(scheme)-1; /* skip scheme part */
-        char* params = strchr(p, '?');
+        const char* params = strchr(p, '?');
         char* name_regex = NULL;
         char* content_regex = NULL;
 
         /* add folder paths */
         while (p)
         {
-            char* sep = strchr(p, ','); /* use , to separate multiple paths */
+            const char* sep = strchr(p, ','); /* use , to separate multiple paths */
             char *path;
 
             if (sep && (params == NULL || sep < params))
@@ -499,8 +499,8 @@ static void parse_search_uri(FmVfsSearchEnumerator* priv, const char* uri_str)
             {
                 /* parameters are in name=value pairs */
                 char *name;
-                char* value = strchr(params, '=');
-                char* sep = strchr(params, '&');
+                char* value = (char*) strchr(params, '=');
+                const char* sep = strchr(params, '&');
 
                 if (value && (sep == NULL || value < sep))
                 {
