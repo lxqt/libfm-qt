@@ -1,3 +1,5 @@
+set(CMAKE_C_EXTENSIONS ON)
+
 set(libfm_core_SRCS
     # gio gvfs implementations
     core/vfs/fm-file.c
