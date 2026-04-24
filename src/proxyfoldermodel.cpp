@@ -40,6 +40,7 @@ ProxyFolderModel::ProxyFolderModel(QObject* parent):
     setSortCaseSensitivity(Qt::CaseInsensitive);
 
     collator_.setNumericMode(true);
+    collator_.setLocale(QLocale::AnyLanguage);
 }
 
 ProxyFolderModel::~ProxyFolderModel() {
