@@ -1,5 +1,7 @@
 set(CMAKE_C_EXTENSIONS ON)
 
+add_compile_options("$<$<CXX_COMPILER_ID:Clang>:-Wno-c2y-extensions>")
+
 set(libfm_core_SRCS
     # gio gvfs implementations
     core/vfs/fm-file.c
