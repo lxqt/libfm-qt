@@ -87,16 +87,18 @@ void ProxyFolderModel::sort(int column, Qt::SortOrder order) {
 
 void ProxyFolderModel::setShowHidden(bool show) {
     if(show != showHidden_) {
+        beginFilterChange();
         showHidden_ = show;
-        invalidateFilter();
+        endFilterChange();
         Q_EMIT sortFilterChanged();
     }
 }
 
 void ProxyFolderModel::setBackupAsHidden(bool backupAsHidden) {
     if(backupAsHidden != backupAsHidden_) {
+        beginFilterChange();
         backupAsHidden_ = backupAsHidden;
-        invalidateFilter();
+        endFilterChange();
         Q_EMIT sortFilterChanged();
     }
 }
@@ -341,14 +343,16 @@ void ProxyFolderModel::onThumbnailLoaded(const QModelIndex& srcIndex, int size) 
 }
 
 void ProxyFolderModel::addFilter(ProxyFolderModelFilter* filter) {
+    beginFilterChange();
     filters_.append(filter);
-    invalidateFilter();
+    endFilterChange();
     Q_EMIT sortFilterChanged();
 }
 
 void ProxyFolderModel::removeFilter(ProxyFolderModelFilter* filter) {
+    beginFilterChange();
     filters_.removeOne(filter);
-    invalidateFilter();
+    endFilterChange();
     Q_EMIT sortFilterChanged();
 }
 
