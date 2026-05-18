@@ -466,13 +466,13 @@ What do you want to do with it?</source>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>Этот текстовый файл &apos;%1&apos; похож на исполняемый скрипт.
+        <translation>Этот текстовый файл «%1» похож на исполняемый скрипт.
 Что вы хотите с ним сделать?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>Файл &apos;%1&apos; является исполняемым. Вы хотите запустить его?</translation>
+        <translation>Файл «%1» является исполняемым. Хотите запустить его?</translation>
     </message>
 </context>
 <context>
@@ -596,7 +596,7 @@ What do you want to do with it?</source>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 уже существует.
-Вы хотите заменить его?</translation>
+Хотите заменить его?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1035"/>
@@ -673,9 +673,9 @@ Do you want to replace it?</source>
         <location filename="../filemenu.cpp" line="420"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
-            <numerusform>Вы хотите открыть %1 файл?</numerusform>
-            <numerusform>Вы хотите открыть все %1 файла?</numerusform>
-            <numerusform>Вы хотите открыть все %1 файлов?</numerusform>
+            <numerusform>Хотите открыть %1 файл?</numerusform>
+            <numerusform>Хотите открыть все %1 файла?</numerusform>
+            <numerusform>Хотите открыть все %1 файлов?</numerusform>
         </translation>
     </message>
     <message>
@@ -788,7 +788,7 @@ Do you want to replace it?</source>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
         <translation>Некоторые файлы не могут быть помещены в корзину, поскольку файловая система не поддерживает эту операцию.
-Вы хотите удалить их вместо перемещения?</translation>
+Хотите удалить их вместо перемещения?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="404"/>
@@ -800,18 +800,18 @@ Do you want to delete them instead?</source>
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
-            <numerusform>Вы хотите удалить выбранный файл?</numerusform>
-            <numerusform>Вы хотите удалить выбранные файлы?</numerusform>
-            <numerusform>Вы хотите удалить выбранные файлы?</numerusform>
+            <numerusform>Хотите удалить выбранный файл?</numerusform>
+            <numerusform>Хотите удалить выбранные файлы?</numerusform>
+            <numerusform>Хотите удалить выбранные файлы?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
-            <numerusform>Вы хотите переместить выбранный файл в корзину?</numerusform>
-            <numerusform>Вы хотите переместить выбранные файлы в корзину?</numerusform>
-            <numerusform>Вы хотите переместить выбранные файлы в корзину?</numerusform>
+            <numerusform>Хотите переместить выбранный файл в корзину?</numerusform>
+            <numerusform>Хотите переместить выбранные файлы в корзину?</numerusform>
+            <numerusform>Хотите переместить выбранные файлы в корзину?</numerusform>
         </translation>
     </message>
 </context>
@@ -987,7 +987,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="649"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>Вы хотите применить изменения рекурсивно ко всем файлам и подпапкам?</translation>
+        <translation>Хотите применить изменения рекурсивно ко всем файлам и подпапкам?</translation>
     </message>
 </context>
 <context>
@@ -1590,7 +1590,7 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;В этом месте назначения уже есть файл с таким именем.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Вы хотите заменить существующий файл?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;В этом месте назначения уже есть файл с таким именем.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Хотите заменить существующий файл?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
