@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.1" language="vi">
 <context>
     <name>AppChooserDialog</name>
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation>选择应用</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation>已安装的程序</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation>自定义命令</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation>命令行执行:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="78"/>
         <source>Application name:</source>
-        <translation>程序名称:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
@@ -37,28 +37,22 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;这些特殊符号可以在命令行中使用:&lt;/b&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;：表示单个文件名&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;：表示多个文件名&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;：表示单一文件 URI&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;：表示多个 URI&lt;/li&gt;
-&lt;/ul&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>执行命令后保持终端窗口开启</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="88"/>
         <source>Execute in terminal emulator</source>
-        <translation>在终端模拟器中执行</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>设置为默认打开方式</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -66,32 +60,32 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation>编辑书签</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="49"/>
         <source>Name</source>
-        <translation>名称</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="54"/>
         <source>Location</source>
-        <translation>定位</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="64"/>
         <source>&amp;Add Item</source>
-        <translation>添加项目(&amp;A)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="74"/>
         <source>&amp;Remove Item</source>
-        <translation>移除项目(&amp;R)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="20"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>使用拖放重新排序项目</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -99,32 +93,32 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation>执行文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="42"/>
         <source>&amp;Open</source>
-        <translation>打开（&amp;O）</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="55"/>
         <source>E&amp;xecute</source>
-        <translation>执行(&amp;X)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="65"/>
         <source>Execute in &amp;Terminal</source>
-        <translation>在终端内执行(&amp;T)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="88"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="102"/>
         <source>Remember for next files of this kind</source>
-        <translation>为同类型文件使用相同操作</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -132,17 +126,17 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation>路径：</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation>文件名:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="85"/>
         <source>File type:</source>
-        <translation>文件类型:</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -150,32 +144,32 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="42"/>
         <source>Destination:</source>
-        <translation>目标:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="65"/>
         <source>Processing:</source>
-        <translation>正在处理:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="78"/>
         <source>Preparing...</source>
-        <translation>正在准备...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="85"/>
         <source>Progress:</source>
-        <translation>进度:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="119"/>
         <source>Time remaining:</source>
-        <translation>剩余时间:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="99"/>
         <source>Files processed:</source>
-        <translation>已处理文件：</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -183,168 +177,168 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation>文件属性</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation>常规</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation>位置:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="132"/>
         <source>File type:</source>
-        <translation>文件类型:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="155"/>
         <source>MIME type:</source>
-        <translation>MIME 类型:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="195"/>
         <source>File size:</source>
-        <translation>文件大小:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="218"/>
         <source>On-disk size:</source>
-        <translation>占用空间:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="241"/>
         <source>Last modified:</source>
-        <translation>修改时间:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>Link target:</source>
-        <translation>链接目标:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="178"/>
         <source>Open With:</source>
-        <translation>打开方式:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation>访问时间:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation>创建：</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
         <source>Contains:</source>
-        <translation>包含：</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation>标记：</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation>选择标记</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation>清除标记</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="397"/>
         <source>Device Usage:</source>
-        <translation>设备使用：</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="424"/>
         <source>Permissions</source>
-        <translation>权限</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="439"/>
         <source>Ownership</source>
-        <translation>所有权</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="473"/>
         <location filename="../file-props.ui" line="528"/>
         <location filename="../file-props.ui" line="642"/>
         <source>Group:</source>
-        <translation>组:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="457"/>
         <location filename="../file-props.ui" line="511"/>
         <location filename="../file-props.ui" line="590"/>
         <source>Owner:</source>
-        <translation>所有者:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="492"/>
         <source>Access Control</source>
-        <translation>访问限制</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="545"/>
         <location filename="../file-props.ui" line="694"/>
         <source>Other:</source>
-        <translation>其他:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="562"/>
         <source>Make the file executable</source>
-        <translation>使文件可执行</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="603"/>
         <location filename="../file-props.ui" line="655"/>
         <location filename="../file-props.ui" line="707"/>
         <source>Read</source>
-        <translation>只读</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="616"/>
         <location filename="../file-props.ui" line="668"/>
         <location filename="../file-props.ui" line="720"/>
         <source>Write</source>
-        <translation>写入</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="629"/>
         <location filename="../file-props.ui" line="681"/>
         <location filename="../file-props.ui" line="733"/>
         <source>Execute</source>
-        <translation>执行</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>Sticky</source>
-        <translation>粘附</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
         <source>SetUID</source>
-        <translation>设置用户标识符</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="763"/>
         <source>SetGID</source>
-        <translation>设置组标识符</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="792"/>
         <source>Advanced Mode</source>
-        <translation>高级模式</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -352,7 +346,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation>自定义</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -360,7 +354,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="268"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>选择用于打开“%1”文件的应用程序</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -368,12 +362,12 @@
     <message>
         <location filename="../createnewmenu.cpp" line="62"/>
         <source>Folder</source>
-        <translation>文件夹</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../createnewmenu.cpp" line="66"/>
         <source>Blank File</source>
-        <translation>空文件</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -381,7 +375,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>指定的目录“%1”无效</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -389,14 +383,14 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation>正在加载……</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation>&lt;没有子文件夹&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -404,17 +398,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="217"/>
         <source>Open in New T&amp;ab</source>
-        <translation>在新标签页中打开(&amp;A)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="221"/>
         <source>Open in New Win&amp;dow</source>
-        <translation>在新窗口中打开(&amp;D)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="226"/>
         <source>Open in Termina&amp;l</source>
-        <translation>在终端中打开(&amp;I)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -422,27 +416,27 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation>复制至此</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation>移动至此</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation>在这里创建符号链接</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation>不能拖放在这里</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -450,7 +444,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="84"/>
         <source>New bookmark</source>
-        <translation>新建书签</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -459,20 +453,18 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>此文件“%1”像是桌面快捷方式。
-如何处理？</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>此文本文件“%1”像是可执行脚本。
-如何处理？</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>文件“%1”可以执行，是否执行?</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -480,155 +472,154 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="115"/>
         <source>Go Back</source>
-        <translation>返回</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="116"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation>Alt+左方向键</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="122"/>
         <source>Go Forward</source>
-        <translation>前进</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="123"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation>Alt+右方向键</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="130"/>
         <source>Reload</source>
-        <translation>刷新</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="131"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation>F5</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="148"/>
         <source>Create Folder</source>
-        <translation>新建文件夹</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="164"/>
         <source>Icon View</source>
-        <translation>图标视图</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="168"/>
         <source>Thumbnail View</source>
-        <translation>缩略图视图</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Compact View</source>
-        <translation>列表视图</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="176"/>
         <source>Detailed List View</source>
-        <translation>详细信息视图</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="184"/>
         <source>Icon Sizes</source>
-        <translation>图标大小</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="186"/>
         <source>Size of big icons:</source>
-        <translation>大图标的大小：</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="193"/>
         <source>Size of small icons:</source>
-        <translation>小图标的大小：</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Size of thumbnails:</source>
-        <translation>缩略图的大小：</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="216"/>
         <source>Show Hidden</source>
-        <translation>显示隐藏文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="228"/>
         <source>Show Thumbnails</source>
-        <translation>显示缩略图</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="233"/>
         <source>Show File Tooltips</source>
-        <translation>显示文件信息提示</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="240"/>
         <source>Smooth Scrolling</source>
-        <translation>平滑滚动</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="255"/>
         <source>Options</source>
-        <translation>选项</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="605"/>
         <location filename="../filedialog.cpp" line="1073"/>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="605"/>
         <source>Please select a file</source>
-        <translation>请选择文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="681"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation>%1 已存在。
-是否替换？</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1035"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation>路径“%1”不存在</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1049"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation>“%1”不是目录</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1059"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation>“%1”不是文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1213"/>
         <location filename="../filedialog.cpp" line="1330"/>
         <source>&amp;Open</source>
-        <translation>打开(&amp;O)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1216"/>
         <location filename="../filedialog.cpp" line="1338"/>
         <source>&amp;Save</source>
-        <translation>保存(&amp;S)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1223"/>
         <source>All Files (*)</source>
-        <translation>所有文件 (*)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -636,12 +627,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="140"/>
         <source>Open File</source>
-        <translation>打开文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="141"/>
         <source>Save File</source>
-        <translation>保存文件</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -649,7 +640,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation> 像素</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -657,121 +648,121 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="86"/>
         <source>Open</source>
-        <translation>打开</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="90"/>
         <source>Open With...</source>
-        <translation>打开方式...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="419"/>
         <source>Many files</source>
-        <translation>很多文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="420"/>
         <source>Do you want to open these %1 files?</source>
-        <translation>
-            <numerusform>您是否要打开这些％1文件？</numerusform>
+        <translation type="unfinished">
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="181"/>
         <source>Other Applications</source>
-        <translation>其他应用程序</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="188"/>
         <source>Create &amp;New</source>
-        <translation>新建(&amp;N)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="207"/>
         <source>&amp;Restore</source>
-        <translation>恢复(&amp;R)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="217"/>
         <source>Cut</source>
-        <translation>剪切</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="221"/>
         <source>Copy</source>
-        <translation>复制</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="225"/>
         <source>Paste</source>
-        <translation>粘贴</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="229"/>
         <location filename="../filemenu.cpp" line="547"/>
         <source>&amp;Move to Trash</source>
-        <translation>移至回收站(&amp;M)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="233"/>
         <source>Rename</source>
-        <translation>重命名</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="289"/>
         <source>Mount</source>
-        <translation>挂载</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="303"/>
         <source>Unmount</source>
-        <translation>卸载</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="317"/>
         <source>Eject</source>
-        <translation>弹出</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="338"/>
         <source>Extract to...</source>
-        <translation>解压到...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="346"/>
         <source>Extract Here</source>
-        <translation>解压至此</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Compress</source>
-        <translation>压缩</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="362"/>
         <source>Properties</source>
-        <translation>属性</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="376"/>
         <source>Trust selected executables</source>
-        <translation>信任已选择的可执行文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="377"/>
         <source>Trust this executable</source>
-        <translation>信任这个可执行文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="482"/>
         <source>Output</source>
-        <translation>输出</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="211"/>
         <location filename="../filemenu.cpp" line="547"/>
         <source>&amp;Delete</source>
-        <translation>删除(&amp;D)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -779,33 +770,32 @@ Do you want to replace it?</source>
     <message>
         <location filename="../fileoperation.cpp" line="317"/>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="318"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>因为文件系统不支持，有些文件无法移至回收站。
-是否直接删除这些文件？</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="404"/>
         <location filename="../fileoperation.cpp" line="422"/>
         <source>Confirm</source>
-        <translation>确认</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
-        <translation>
-            <numerusform>你确定要删除选中的文件吗？</numerusform>
+        <translation type="unfinished">
+            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
-        <translation>
-            <numerusform>你确定将选中的文件移至垃圾桶吗？</numerusform>
+        <translation type="unfinished">
+            <numerusform></numerusform>
         </translation>
     </message>
 </context>
@@ -814,78 +804,78 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fileoperationdialog.cpp" line="46"/>
         <source>Move Files</source>
-        <translation>移动文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>正在将下列文件移动至目标文件夹:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
         <source>Copy Files</source>
-        <translation>复制文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>正在将下列文件复制至目标文件夹:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
         <source>Trash Files</source>
-        <translation>将文件移至回收站</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>正在将下列文件移动至回收站:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
         <source>Delete Files</source>
-        <translation>删除文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation>正在删除下列文件:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation>创建符号链接</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>正在为下列文件创建符号链接:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
         <source>Change Attributes</source>
-        <translation>更改属性</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>正在更改下列文件的属性:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation>恢复已删除的文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>正在从回收站恢复下列文件:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="149"/>
         <location filename="../fileoperationdialog.cpp" line="155"/>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -893,93 +883,93 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="167"/>
         <source>View folder content</source>
-        <translation>查看文件夹内容</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="168"/>
         <source>View and modify folder content</source>
-        <translation>查看并修改文件夹内容</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="172"/>
         <source>Read</source>
-        <translation>只读</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="173"/>
         <source>Read and write</source>
-        <translation>读写</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="175"/>
         <source>Forbidden</source>
-        <translation>禁止</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="292"/>
         <source>Files of different types</source>
-        <translation>不同类型的文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="315"/>
         <location filename="../filepropsdialog.cpp" line="322"/>
         <location filename="../filepropsdialog.cpp" line="329"/>
         <source>N/A</source>
-        <translation>N/A</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>Multiple Files</source>
-        <translation>多个文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="410"/>
         <source>%p% used</source>
-        <translation>%p% 已使用</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="411"/>
         <source>%1 Free of %2</source>
-        <translation>%2的%1空闲</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="457"/>
         <source>no file</source>
-        <translation>无文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="459"/>
         <source>one file</source>
-        <translation>一个文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="461"/>
         <source>%Ln files</source>
-        <translation>
-            <numerusform>%Ln 文件</numerusform>
+        <translation type="unfinished">
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="495"/>
         <location filename="../filepropsdialog.cpp" line="540"/>
         <source>Select an icon</source>
-        <translation>选择图标</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="497"/>
         <location filename="../filepropsdialog.cpp" line="542"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation>图像（*.png *.xpm *.svg *.svgz）</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="648"/>
         <source>Apply changes</source>
-        <translation>应用更改</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="649"/>
         <source>Do you want to recursively apply these changes to all files and sub-folders?</source>
-        <translation>您是否要将这些更改应用于所有子文件夹和文件?</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -987,17 +977,17 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="157"/>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="157"/>
         <source>You should add at least one directory to search.</source>
-        <translation>您至少需要新增一个要搜索的目录。</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="164"/>
         <source>Select a folder</source>
-        <translation>选择一个文件夹</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1005,12 +995,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../core/filetransferjob.cpp" line="486"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation>无法将目录复制到自身！</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="537"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation>无法在非原生文件系统中创建链接</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1018,107 +1008,107 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
         <source>Empty Trash</source>
-        <translation>清空回收站</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="70"/>
         <source>Create &amp;New</source>
-        <translation>新建(&amp;N)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="75"/>
         <source>&amp;Paste</source>
-        <translation>粘贴(&amp;P)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="89"/>
         <source>Select &amp;All</source>
-        <translation>全选(&amp;A)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="100"/>
         <source>Sorting</source>
-        <translation>排序</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="105"/>
         <source>Show Hidden</source>
-        <translation>显示隐藏文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="140"/>
         <source>Folder Pr&amp;operties</source>
-        <translation>文件夹属性(&amp;O)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="183"/>
         <source>Output</source>
-        <translation>输出</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="205"/>
         <source>By File Name</source>
-        <translation>按名称</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="206"/>
         <source>By Modification Time</source>
-        <translation>按修改时间</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="207"/>
         <source>By Creation Time</source>
-        <translation>按创建时间</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="210"/>
         <source>By Deletion Time</source>
-        <translation>按删除时间</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="213"/>
         <source>By File Size</source>
-        <translation>按大小</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="214"/>
         <source>By File Type</source>
-        <translation>按文件类型</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="215"/>
         <source>By File Owner</source>
-        <translation>按所有者</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="216"/>
         <source>By File Group</source>
-        <translation>按文件组</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="222"/>
         <source>Ascending</source>
-        <translation>升序</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="227"/>
         <source>Descending</source>
-        <translation>降序</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="244"/>
         <source>Folder First</source>
-        <translation>文件夹优先</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="252"/>
         <source>Hidden Last</source>
-        <translation>隐藏文件次后</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="260"/>
         <source>Case Sensitive</source>
-        <translation>区分大小写</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1126,87 +1116,87 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="306"/>
         <source>Location:</source>
-        <translation>位置:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="310"/>
         <source>File type:</source>
-        <translation>文件类型:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="315"/>
         <source>File size:</source>
-        <translation>文件大小:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>Last modified:</source>
-        <translation>最后修改时间:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Last accessed:</source>
-        <translation>最后访问时间:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>N/A</source>
-        <translation>N/A</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="323"/>
         <source>Created:</source>
-        <translation>创建：</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="328"/>
         <source>Owner:</source>
-        <translation>所有者:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="329"/>
         <source>Group:</source>
-        <translation>组:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="396"/>
         <source>Name</source>
-        <translation>名称</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="399"/>
         <source>Type</source>
-        <translation>类型</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="402"/>
         <source>Size</source>
-        <translation>大小</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="405"/>
         <source>Modified</source>
-        <translation>修改</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="408"/>
         <source>Created</source>
-        <translation>已创建</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="411"/>
         <source>Deleted</source>
-        <translation>删除</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="414"/>
         <source>Owner</source>
-        <translation>所有者</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="417"/>
         <source>Group</source>
-        <translation>组</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1214,12 +1204,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../folderview.cpp" line="410"/>
         <source>Auto-resize columns</source>
-        <translation>自动调整列大小</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="427"/>
         <source>Visible Columns</source>
-        <translation>列可见</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1227,12 +1217,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation>粗体</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation>斜体</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1240,7 +1230,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../mountoperationpassworddialog.cpp" line="42"/>
         <source>&amp;Connect</source>
-        <translation>连接(&amp;C)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1248,12 +1238,12 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../pathbar.cpp" line="123"/>
         <source>&amp;Edit Path</source>
-        <translation>编辑路径(&amp;E)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pathbar.cpp" line="126"/>
         <source>&amp;Copy Path</source>
-        <translation>复制路径(&amp;C)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1261,42 +1251,42 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesmodel.cpp" line="46"/>
         <source>Places</source>
-        <translation>位置</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="54"/>
         <source>Desktop</source>
-        <translation>桌面</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="60"/>
         <source>Computer</source>
-        <translation>计算机</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="68"/>
         <source>Applications</source>
-        <translation>应用程序</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="77"/>
         <source>Network</source>
-        <translation>网络</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="81"/>
         <source>Devices</source>
-        <translation>设备</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="136"/>
         <source>Bookmarks</source>
-        <translation>书签</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodel.cpp" line="227"/>
         <source>Trash</source>
-        <translation>回收站</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1304,69 +1294,69 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../placesview.cpp" line="563"/>
         <source>Open in New Tab</source>
-        <translation>在新标签页中打开</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="567"/>
         <source>Open in New Window</source>
-        <translation>在新窗口中打开</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="580"/>
         <source>Empty Trash</source>
-        <translation>清空回收站</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="600"/>
         <location filename="../placesview.cpp" line="667"/>
         <source>Hide</source>
-        <translation>隐藏</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="617"/>
         <source>Move Bookmark Up</source>
-        <translation>上移书签</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="624"/>
         <source>Move Bookmark Down</source>
-        <translation>下移书签</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="629"/>
         <source>Rename Bookmark</source>
-        <translation>重命名书签</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="633"/>
         <source>Remove Bookmark</source>
-        <translation>移除书签</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="643"/>
         <location filename="../placesview.cpp" line="681"/>
         <source>Unmount</source>
-        <translation>卸载</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="647"/>
         <source>Mount</source>
-        <translation>挂载</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="653"/>
         <source>Eject</source>
-        <translation>弹出</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="658"/>
         <source>Safely Remove</source>
-        <translation>安全移除</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="693"/>
         <source>Show All Entries</source>
-        <translation>显示所有快捷方式</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1377,32 +1367,29 @@ Do you want to delete them instead?</source>
         <source>Type: %1
 Size: %2
 Modified: %3</source>
-        <translation>类型: %1
-大小: %2
-修改时间: %3</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
         <location filename="../renamedialog.cpp" line="83"/>
         <source>Type: %1
 Modified: %2</source>
-        <translation>类型: %1
-修改时间: %2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="104"/>
         <source>&amp;Overwrite</source>
-        <translation>覆盖(&amp;O)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="106"/>
         <source>&amp;Rename</source>
-        <translation>重命名(&amp;R)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="116"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;该文件不能覆盖自身。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;请换一个名称。&lt;/p&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1410,12 +1397,12 @@ Modified: %2</source>
     <message>
         <location filename="../sidepane.cpp" line="46"/>
         <source>Lists</source>
-        <translation>列表</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sidepane.cpp" line="47"/>
         <source>Directory Tree</source>
-        <translation>目录树</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1423,7 +1410,7 @@ Modified: %2</source>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>无法恢复文件“%s”：原路径未知</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1431,52 +1418,52 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation>挂载</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
         <source>Connect &amp;anonymously</source>
-        <translation>匿名连接(&amp;A)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>作为用户连接(&amp;S):</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="76"/>
         <source>&amp;Username:</source>
-        <translation>用户名(&amp;U):</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="108"/>
         <source>&amp;Password:</source>
-        <translation>密码(&amp;P):</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="89"/>
         <source>&amp;Domain:</source>
-        <translation>域(&amp;D):</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation>立即遗忘密码(&amp;I)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation>会话长度由密码管理器决定</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
         <source>Remember password for &amp;this session</source>
-        <translation>本次会话记住密码(&amp;T)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="150"/>
         <source>Remember &amp;forever</source>
-        <translation>永远记住密码(&amp;F)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1484,12 +1471,12 @@ Modified: %2</source>
     <message>
         <location filename="../utilities.cpp" line="170"/>
         <source>Rename File</source>
-        <translation>重命名文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="171"/>
         <source>Please enter a new name:</source>
-        <translation>请输入新名称:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="124"/>
@@ -1498,78 +1485,78 @@ Modified: %2</source>
         <location filename="../utilities.cpp" line="154"/>
         <location filename="../utilities.cpp" line="318"/>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="230"/>
         <source>Create Folder</source>
-        <translation>新建文件夹</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="231"/>
         <source>Create File</source>
-        <translation>新建文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="235"/>
         <source>Please enter a new file name:</source>
-        <translation>请输入新文件名:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
-        <translation>新文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="240"/>
         <source>Please enter a new folder name:</source>
-        <translation>请输入新文件夹名:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="241"/>
         <source>New folder</source>
-        <translation>新建文件夹</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="246"/>
         <source>Enter a name for the new %1:</source>
-        <translation>请为新的%1输入名称:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="692"/>
         <source>Custom Icon Error</source>
-        <translation>自定义图标错误</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation>该目录未挂载。</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="319"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>无效桌面快捷方式：“%1”</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>没有用于运行“%1”的默认应用</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>无法将工作目录切换至“%1”：%2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
         <source>Identifier: </source>
-        <translation>标识符： </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation>N/A</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1577,27 +1564,27 @@ Modified: %2</source>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation>确认替换文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;此处已有同名文件。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;是否覆盖已有文件？&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
         <source>with the following file?</source>
-        <translation>是否包含下列文件？</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="122"/>
         <source>&amp;File name:</source>
-        <translation>文件名(&amp;F):</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation>为所有已有文件应用此选项</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1605,176 +1592,176 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="14"/>
         <source>Search Files</source>
-        <translation>搜索文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="29"/>
         <source>Name/Location</source>
-        <translation>名称/位置</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation>文件名模式:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="44"/>
         <source>*</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="58"/>
         <source>Use regular expression</source>
-        <translation>使用正则表达式</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="71"/>
         <source>Places to Search:</source>
-        <translation>搜索位置:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="84"/>
         <source>&amp;Add</source>
-        <translation>新增(&amp;A)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="96"/>
         <source>&amp;Remove</source>
-        <translation>移除(&amp;R)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="132"/>
         <source>Search for hidden files</source>
-        <translation>搜索隐藏文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="143"/>
         <source>File Type</source>
-        <translation>文件类型</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="149"/>
         <source>Only search for files of following types:</source>
-        <translation>仅搜索下列类型的文件:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="155"/>
         <source>Text files</source>
-        <translation>文本文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="162"/>
         <source>Image files</source>
-        <translation>图像文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="169"/>
         <source>Audio files</source>
-        <translation>音频文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="176"/>
         <source>Video files</source>
-        <translation>视频文件</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="183"/>
         <source>Documents</source>
-        <translation>文档</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="190"/>
         <source>Folders</source>
-        <translation>文件夹</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="214"/>
         <source>Content</source>
-        <translation>内容</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="220"/>
         <source>File contains:</source>
-        <translation>文件包括:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="240"/>
         <source>&amp;Use regular expression</source>
-        <translation>使用正则表达式(&amp;U)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="267"/>
         <source>Properties</source>
-        <translation>属性</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="273"/>
         <source>File Size:</source>
-        <translation>文件大小:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="281"/>
         <source>Larger than:</source>
-        <translation>大于:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="302"/>
         <location filename="../filesearch.ui" line="346"/>
         <source>Bytes</source>
-        <translation>Bytes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="307"/>
         <location filename="../filesearch.ui" line="351"/>
         <source>KiB</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="312"/>
         <location filename="../filesearch.ui" line="356"/>
         <source>MiB</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="317"/>
         <location filename="../filesearch.ui" line="361"/>
         <source>GiB</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="325"/>
         <source>Smaller than:</source>
-        <translation>小于:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="51"/>
         <source>Case sensitive</source>
-        <translation>区分大小写</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="125"/>
         <source>Search in subdirectories</source>
-        <translation>在子文件夹中搜索</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>Case sensiti&amp;ve</source>
-        <translation>区分大小写(&amp;V)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="377"/>
         <source>Last Modified Time:</source>
-        <translation>修改时间:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Earlier than:</source>
-        <translation>早于:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="402"/>
         <source>Later than:</source>
-        <translation>晚于:</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
