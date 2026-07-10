@@ -99,12 +99,12 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation>执行文件</translation>
+        <translation>程序文件</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="42"/>
         <source>&amp;Open</source>
-        <translation>打开（&amp;O）</translation>
+        <translation>打开(&amp;O)</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="55"/>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../exec-file.ui" line="65"/>
         <source>Execute in &amp;Terminal</source>
-        <translation>在终端内执行(&amp;T)</translation>
+        <translation>终端内执行(&amp;T)</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="88"/>
