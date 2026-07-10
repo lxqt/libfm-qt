@@ -50,6 +50,7 @@ PlacesProxyModel::~PlacesProxyModel() {
 void PlacesProxyModel::restoreHiddenItems(const QSet<QString>& items) {
     // hidden items should be restored only once
     if(!hiddenItemsRestored_ && !items.isEmpty()) {
+        beginFilterChange();
         hidden_.clear();
         QSet<QString>::const_iterator i = items.constBegin();
         while (i != items.constEnd()) {
@@ -59,11 +60,12 @@ void PlacesProxyModel::restoreHiddenItems(const QSet<QString>& items) {
             ++i;
         }
         hiddenItemsRestored_ = true;
-        invalidateFilter();
+        endFilterChange();
     }
 }
 
 void PlacesProxyModel::setHidden(const QString& str, bool hide) {
+    beginFilterChange();
     if(hide) {
         if(!str.isEmpty()) {
             hidden_ << str;
@@ -72,12 +74,13 @@ void PlacesProxyModel::setHidden(const QString& str, bool hide) {
     else {
         hidden_.remove(str);
     }
-    invalidateFilter();
+    endFilterChange();
 }
 
 void PlacesProxyModel::showAll(bool show) {
+    beginFilterChange();
     showAll_ = show;
-    invalidateFilter();
+    endFilterChange();
 }
 
 bool PlacesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
