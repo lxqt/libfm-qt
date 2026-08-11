@@ -6,12 +6,12 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Chọn ứng dụng</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Các Ứng dụng đã cài</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="78"/>
         <source>Application name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tên ứng dụng</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
