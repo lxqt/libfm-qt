@@ -349,6 +349,8 @@ FolderViewTreeView::FolderViewTreeView(QWidget* parent):
 
     header()->setSectionResizeMode(QHeaderView::Interactive);
     header()->setStretchLastSection(true);
+    // movable sections are not worth the needed extra codes
+    header()->setSectionsMovable(false);
 
     // get the new width if the section is resized by user
     connect(header(), &QHeaderView::sectionResized, [this](int logicalIndex, int/* oldSize*/, int newSize) {
