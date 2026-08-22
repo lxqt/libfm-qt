@@ -30,15 +30,11 @@ set(GLIB_MINIMUM_VERSION "2.50.0")
 set(LIBMENUCACHE_MINIMUM_VERSION "1.1.0")
 set(LXQTMENUDATA_MINIMUM_VERSION "2.4.0")
 set(LXQTBT_MINIMUM_VERSION "2.4.0")
-set(QT_MINIMUM_VERSION "6.6.0")
+set(QT_MINIMUM_VERSION "6.10.0")
 
 find_package(Qt6Widgets "${QT_MINIMUM_VERSION}" REQUIRED)
 find_package(Qt6LinguistTools "${QT_MINIMUM_VERSION}" REQUIRED)
-
-if (Qt6Gui_VERSION VERSION_GREATER_EQUAL "6.10.0")
-    find_package(Qt6GuiPrivate REQUIRED)
-endif()
-
+find_package(Qt6GuiPrivate REQUIRED)
 find_package(lxqt2-build-tools "${LXQTBT_MINIMUM_VERSION}" REQUIRED)
 find_package(GLIB "${GLIB_MINIMUM_VERSION}" REQUIRED COMPONENTS gio gio-unix gobject gthread)
 find_package(MenuCache "${LIBMENUCACHE_MINIMUM_VERSION}" REQUIRED)
