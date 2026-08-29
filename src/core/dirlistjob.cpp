@@ -7,7 +7,11 @@
 namespace Fm {
 
 DirListJob::DirListJob(const FilePath& path, Flags _flags):
-    dir_path{path}, flags{_flags} {
+    dir_path{path}, flags{_flags}, emit_files_found{false} {
+}
+
+void DirListJob::setIncremental(bool set) {
+    emit_files_found = set;
 }
 
 void DirListJob::exec() {
@@ -79,6 +83,10 @@ _retry:
     }
 
     FileInfoList foundFiles;
+    FileInfoList incrementalBatch;
+    // batch size trades round-trip overhead against result latency;
+    // revisit if very large recursive searches feel laggy.
+    constexpr std::size_t incrementalBatchSize = 32;
     /* check if FS is R/O and set attr. into inf */
     // FIXME:  _fm_file_info_job_update_fs_readonly(gf, inf, nullptr, nullptr);
     err.reset();
@@ -126,7 +134,11 @@ _retry:
 #endif
                 auto fileInfo = std::make_shared<FileInfo>(inf, FilePath(), realParentPath);
                 if(emit_files_found) {
-                    // Q_EMIT filesFound();
+                    incrementalBatch.push_back(fileInfo);
+                    if(incrementalBatch.size() >= incrementalBatchSize) {
+                        Q_EMIT filesFound(incrementalBatch);
+                        incrementalBatch.clear();
+                    }
                 }
 
                 foundFiles.push_back(std::move(fileInfo));
@@ -143,6 +155,10 @@ _retry:
                 break;
             }
         }
+        if(emit_files_found && !incrementalBatch.empty()) {
+            Q_EMIT filesFound(incrementalBatch);
+            incrementalBatch.clear();
+        }
         err.reset();
         g_file_enumerator_close(enu.get(), cancellable().get(), &err);
     }
@@ -158,43 +174,5 @@ _retry:
         files_.swap(foundFiles);
     }
 }
-
-#if 0
-//FIXME: incremental..
-
-static gboolean emit_found_files(gpointer user_data) {
-    /* this callback is called from the main thread */
-    FmDirListJob* job = FM_DIR_LIST_JOB(user_data);
-    /* g_print("emit_found_files: %d\n", g_slist_length(job->files_to_add)); */
-
-    if(g_source_is_destroyed(g_main_current_source())) {
-        return FALSE;
-    }
-    g_signal_emit(job, signals[FILES_FOUND], 0, job->files_to_add);
-    g_slist_free_full(job->files_to_add, (GDestroyNotify)fm_file_info_unref);
-    job->files_to_add = nullptr;
-    job->delay_add_files_handler = 0;
-    return FALSE;
-}
-
-static gpointer queue_add_file(FmJob* fmjob, gpointer user_data) {
-    FmDirListJob* job = FM_DIR_LIST_JOB(fmjob);
-    FmFileInfo* file = FM_FILE_INFO(user_data);
-    /* this callback is called from the main thread */
-    /* g_print("queue_add_file: %s\n", fm_file_info_get_disp_name(file)); */
-    job->files_to_add = g_slist_prepend(job->files_to_add, fm_file_info_ref(file));
-    if(job->delay_add_files_handler == 0)
-        job->delay_add_files_handler = g_timeout_add_seconds_full(G_PRIORITY_LOW,
-                                       1, emit_found_files, g_object_ref(job), g_object_unref);
-    return nullptr;
-}
-
-void fm_dir_list_job_add_found_file(FmDirListJob* job, FmFileInfo* file) {
-    fm_file_info_list_push_tail(job->files, file);
-    if(G_UNLIKELY(job->emit_files_found)) {
-        fm_job_call_main_thread(FM_JOB(job), queue_add_file, file);
-    }
-}
-#endif
 
 } // namespace Fm

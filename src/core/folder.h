@@ -66,6 +66,10 @@ public:
 
     void reload();
 
+    // cancels an in-progress listing job in place, keeping whatever files were already
+    // found (unlike reload(), which cancels and immediately starts over)
+    void stopLoading();
+
     bool isIncremental() const;
 
     bool isValid() const;
@@ -139,6 +143,8 @@ private Q_SLOTS:
     void processPendingChanges();
 
     void onDirListFinished();
+
+    void onDirListFilesFound(FileInfoList& foundFiles);
 
     void onFileSystemInfoFinished();
 

@@ -22,7 +22,6 @@
  */
 
 #include "folder.h"
-#include <cstring>
 #include <cassert>
 #include <QTimer>
 #include <QDebug>
@@ -531,11 +530,14 @@ void Folder::onDirListFinished() {
     std::vector<FileInfoPair> files_to_update;
     const auto& infos = job->files();
 
-    // with "search://", there is no update for infos and all of them should be added
+    // with "search://", there is no update for infos and all of them should be added,
+    // unless they were already streamed live via onDirListFilesFound() as they were found
     if(dirPath_.hasUriScheme("search")) {
-        files_to_add = infos;
-        for(auto& file: files_to_add) {
-            files_[file->path().baseName().get()] = file;
+        if(!job->incremental()) {
+            files_to_add = infos;
+            for(auto& file: files_to_add) {
+                files_[file->path().baseName().get()] = file;
+            }
         }
     }
     else {
@@ -619,6 +621,20 @@ void Folder::onDirListFinished() {
     Q_EMIT finishLoading();
 }
 
+// slot, called (via a blocking queued connection) while a "search://" listing is still running,
+// so matched files can appear in the view as they're found instead of all at once at the end.
+void Folder::onDirListFilesFound(FileInfoList& foundFiles) {
+    FileInfoList files_to_add;
+    files_to_add.reserve(foundFiles.size());
+    for(auto& file: foundFiles) {
+        files_[file->path().baseName().get()] = file;
+        files_to_add.push_back(file);
+    }
+    if(!files_to_add.empty()) {
+        Q_EMIT filesAdded(files_to_add);
+    }
+}
+
 #if 0
 
 
@@ -660,6 +676,12 @@ void free_dirlist_job(FmFolder* folder) {
 
 #endif
 
+
+void Folder::stopLoading() {
+    if(dirlist_job) {
+        dirlist_job->cancel();
+    }
+}
 
 void Folder::reload() {
     if(dirlist_job) {
@@ -750,17 +772,17 @@ void Folder::reallyReload() {
     /* run a new dir listing job */
     // FIXME:
     // defer_content_test = fm_config->defer_content_test;
+    // "search://" results can take a while to enumerate recursively, so stream them into
+    // the view as they're found instead of making the user stare at an empty folder.
+    wants_incremental = dirPath_.hasUriScheme("search");
     dirlist_job = new DirListJob(dirPath_, defer_content_test ? DirListJob::FAST : DirListJob::DETAILED);
     dirlist_job->setAutoDelete(true);
+    dirlist_job->setIncremental(wants_incremental);
     connect(dirlist_job, &DirListJob::error, this, &Folder::error, Qt::BlockingQueuedConnection);
     connect(dirlist_job, &DirListJob::finished, this, &Folder::onDirListFinished, Qt::BlockingQueuedConnection);
-
-#if 0
     if(wants_incremental) {
-        g_signal_connect(dirlist_job, "files-found", G_CALLBACK(on_dirlist_job_files_found), folder);
+        connect(dirlist_job, &DirListJob::filesFound, this, &Folder::onDirListFilesFound, Qt::BlockingQueuedConnection);
     }
-    fm_dir_list_job_set_incremental(dirlist_job, wants_incremental);
-#endif
 
     dirlist_job->runAsync();
 
