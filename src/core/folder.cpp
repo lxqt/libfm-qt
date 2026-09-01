@@ -108,7 +108,7 @@ Folder::~Folder() {
 }
 
 // static
-std::shared_ptr<Folder> Folder::fromPath(const FilePath& path) {
+std::shared_ptr<Folder> Folder::fromPath(const FilePath& path, bool incremental) {
     std::lock_guard<std::mutex> lock{mutex_};
     auto it = cache_.find(path);
     if(it != cache_.end()) {
@@ -121,6 +121,7 @@ std::shared_ptr<Folder> Folder::fromPath(const FilePath& path) {
         }
     }
     auto folder = std::make_shared<Folder>(path);
+    folder->setIncremental(incremental);
     folder->reload();
     cache_.emplace(path, folder);
     return folder;
@@ -148,6 +149,10 @@ bool Folder::makeDirectory(const char* /*name*/, GError** /*error*/) {
 
 bool Folder::isIncremental() const {
     return wants_incremental;
+}
+
+void Folder::setIncremental(bool incremental) {
+    wants_incremental = incremental;
 }
 
 bool Folder::isValid() const {
@@ -621,7 +626,7 @@ void Folder::onDirListFinished() {
     Q_EMIT finishLoading();
 }
 
-// slot, called (via a blocking queued connection) while a "search://" listing is still running,
+// slot, called (via a blocking queued connection) while an incremental listing is still running,
 // so matched files can appear in the view as they're found instead of all at once at the end.
 void Folder::onDirListFilesFound(FileInfoList& foundFiles) {
     FileInfoList files_to_add;
@@ -772,9 +777,6 @@ void Folder::reallyReload() {
     /* run a new dir listing job */
     // FIXME:
     // defer_content_test = fm_config->defer_content_test;
-    // "search://" results can take a while to enumerate recursively, so stream them into
-    // the view as they're found instead of making the user stare at an empty folder.
-    wants_incremental = dirPath_.hasUriScheme("search");
     dirlist_job = new DirListJob(dirPath_, defer_content_test ? DirListJob::FAST : DirListJob::DETAILED);
     dirlist_job->setAutoDelete(true);
     dirlist_job->setIncremental(wants_incremental);

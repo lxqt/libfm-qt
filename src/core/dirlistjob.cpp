@@ -85,7 +85,7 @@ _retry:
     FileInfoList foundFiles;
     FileInfoList incrementalBatch;
     // batch size trades round-trip overhead against result latency;
-    // revisit if very large recursive searches feel laggy.
+    // revisit if very large recursive incremental listing feels laggy.
     constexpr std::size_t incrementalBatchSize = 32;
     /* check if FS is R/O and set attr. into inf */
     // FIXME:  _fm_file_info_job_update_fs_readonly(gf, inf, nullptr, nullptr);

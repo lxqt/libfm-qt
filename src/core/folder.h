@@ -54,7 +54,7 @@ public:
 
     ~Folder() override;
 
-    static std::shared_ptr<Folder> fromPath(const FilePath& path);
+    static std::shared_ptr<Folder> fromPath(const FilePath& path, bool incremental = false);
 
     static std::shared_ptr<Folder> findByPath(const FilePath& path);
 
@@ -71,6 +71,8 @@ public:
     void stopLoading();
 
     bool isIncremental() const;
+
+    void setIncremental(bool incremental);
 
     bool isValid() const;
 
