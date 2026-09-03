@@ -22,7 +22,6 @@
  */
 
 #include "folder.h"
-#include <cstring>
 #include <cassert>
 #include <QTimer>
 #include <QDebug>
@@ -109,7 +108,7 @@ Folder::~Folder() {
 }
 
 // static
-std::shared_ptr<Folder> Folder::fromPath(const FilePath& path) {
+std::shared_ptr<Folder> Folder::fromPath(const FilePath& path, bool incremental) {
     std::lock_guard<std::mutex> lock{mutex_};
     auto it = cache_.find(path);
     if(it != cache_.end()) {
@@ -122,6 +121,7 @@ std::shared_ptr<Folder> Folder::fromPath(const FilePath& path) {
         }
     }
     auto folder = std::make_shared<Folder>(path);
+    folder->setIncremental(incremental);
     folder->reload();
     cache_.emplace(path, folder);
     return folder;
@@ -149,6 +149,10 @@ bool Folder::makeDirectory(const char* /*name*/, GError** /*error*/) {
 
 bool Folder::isIncremental() const {
     return wants_incremental;
+}
+
+void Folder::setIncremental(bool incremental) {
+    wants_incremental = incremental;
 }
 
 bool Folder::isValid() const {
@@ -531,11 +535,14 @@ void Folder::onDirListFinished() {
     std::vector<FileInfoPair> files_to_update;
     const auto& infos = job->files();
 
-    // with "search://", there is no update for infos and all of them should be added
+    // with "search://", there is no update for infos and all of them should be added,
+    // unless they were already streamed live via onDirListFilesFound() as they were found
     if(dirPath_.hasUriScheme("search")) {
-        files_to_add = infos;
-        for(auto& file: files_to_add) {
-            files_[file->path().baseName().get()] = file;
+        if(!job->incremental()) {
+            files_to_add = infos;
+            for(auto& file: files_to_add) {
+                files_[file->path().baseName().get()] = file;
+            }
         }
     }
     else {
@@ -619,6 +626,20 @@ void Folder::onDirListFinished() {
     Q_EMIT finishLoading();
 }
 
+// slot, called (via a blocking queued connection) while an incremental listing is still running,
+// so matched files can appear in the view as they're found instead of all at once at the end.
+void Folder::onDirListFilesFound(FileInfoList& foundFiles) {
+    FileInfoList files_to_add;
+    files_to_add.reserve(foundFiles.size());
+    for(auto& file: foundFiles) {
+        files_[file->path().baseName().get()] = file;
+        files_to_add.push_back(file);
+    }
+    if(!files_to_add.empty()) {
+        Q_EMIT filesAdded(files_to_add);
+    }
+}
+
 #if 0
 
 
@@ -660,6 +681,12 @@ void free_dirlist_job(FmFolder* folder) {
 
 #endif
 
+
+void Folder::stopLoading() {
+    if(dirlist_job) {
+        dirlist_job->cancel();
+    }
+}
 
 void Folder::reload() {
     if(dirlist_job) {
@@ -752,15 +779,12 @@ void Folder::reallyReload() {
     // defer_content_test = fm_config->defer_content_test;
     dirlist_job = new DirListJob(dirPath_, defer_content_test ? DirListJob::FAST : DirListJob::DETAILED);
     dirlist_job->setAutoDelete(true);
+    dirlist_job->setIncremental(wants_incremental);
     connect(dirlist_job, &DirListJob::error, this, &Folder::error, Qt::BlockingQueuedConnection);
     connect(dirlist_job, &DirListJob::finished, this, &Folder::onDirListFinished, Qt::BlockingQueuedConnection);
-
-#if 0
     if(wants_incremental) {
-        g_signal_connect(dirlist_job, "files-found", G_CALLBACK(on_dirlist_job_files_found), folder);
+        connect(dirlist_job, &DirListJob::filesFound, this, &Folder::onDirListFilesFound, Qt::BlockingQueuedConnection);
     }
-    fm_dir_list_job_set_incremental(dirlist_job, wants_incremental);
-#endif
 
     dirlist_job->runAsync();
 

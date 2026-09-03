@@ -54,7 +54,7 @@ public:
 
     ~Folder() override;
 
-    static std::shared_ptr<Folder> fromPath(const FilePath& path);
+    static std::shared_ptr<Folder> fromPath(const FilePath& path, bool incremental = false);
 
     static std::shared_ptr<Folder> findByPath(const FilePath& path);
 
@@ -66,7 +66,13 @@ public:
 
     void reload();
 
+    // cancels an in-progress listing job in place, keeping whatever files were already
+    // found (unlike reload(), which cancels and immediately starts over)
+    void stopLoading();
+
     bool isIncremental() const;
+
+    void setIncremental(bool incremental);
 
     bool isValid() const;
 
@@ -139,6 +145,8 @@ private Q_SLOTS:
     void processPendingChanges();
 
     void onDirListFinished();
+
+    void onDirListFilesFound(FileInfoList& foundFiles);
 
     void onFileSystemInfoFinished();
 
