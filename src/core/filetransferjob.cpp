@@ -653,6 +653,13 @@ bool FileTransferJob::createShortcut(const FilePath &srcPath, const GFileInfoPtr
                 }
             } while(!isCancelled() && retry);
             ret = true;
+
+            // the user explicitly chose "Create Link Here" on this location; trust it
+            // like the desktop's own auto-generated shortcuts.
+            GFileInfoPtr trustInfo{g_file_info_new(), false};
+            g_file_info_set_attribute_string(trustInfo.get(), "metadata::trust", "true");
+            g_file_set_attributes_from_info(destPath.gfile().get(), trustInfo.get(),
+                                            G_FILE_QUERY_INFO_NONE, cancellable().get(), nullptr);
         }
     }
     return ret;

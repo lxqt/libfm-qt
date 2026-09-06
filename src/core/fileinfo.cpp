@@ -409,6 +409,15 @@ bool FileInfo::isExecutableType() const {
                         return true;
                     }
                 }
+                else if(target.hasUriScheme("trash") || target.hasUriScheme("network")
+                        || target.hasUriScheme("computer")) {
+                    /* these virtual schemes are known-safe launch targets;
+                       see BasicFileLauncher::handleShortcut(). "menu" is deliberately
+                       excluded here: it's handled by its own special case in
+                       BasicFileLauncher::launchDesktopEntry(), which needs
+                       isExecutableType() to stay false for it. */
+                    return true;
+                }
             }
             else {
                 return true;
