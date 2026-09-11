@@ -32,6 +32,7 @@
 #include "core/folder.h"
 
 class QTimer;
+class QConcatenateTablesProxyModel;
 
 namespace Fm {
 
@@ -39,6 +40,7 @@ class FileMenu;
 class FolderMenu;
 class FileLauncher;
 class FolderViewStyle;
+class VolumeListModel; // Fm::Volume itself is already visible via core/folder.h below
 
 class LIBFM_QT_API FolderView : public QWidget {
     Q_OBJECT
@@ -95,6 +97,15 @@ public:
         return _folder ? _folder->path() : Fm::FilePath();
     }
 
+    // safe for ANY index this view produced (a click, a drop, a selection),
+    // whether or not setShowVolumes() is on -- unlike
+    // model()->fileInfoFromIndex(index), which only tolerates an index
+    // model() itself created. Prefer this whenever the index came from a
+    // UI event rather than from model()/proxyModel_ directly.
+    std::shared_ptr<const Fm::FileInfo> fileInfoFromIndex(const QModelIndex& index) const {
+        return index.data(FolderModel::FileInfoRole).value<std::shared_ptr<const Fm::FileInfo>>();
+    }
+
     QItemSelectionModel* selectionModel() const;
     Fm::FileInfoList selectedFiles() const;
     Fm::FilePathList selectedFilePaths() const;
@@ -105,6 +116,13 @@ public:
     void selectAll();
 
     void invertSelection();
+
+    // concatenates a live volume list (see VolumeListModel) onto the file
+    // model instead of the desktop having to represent volumes as files.
+    void setShowVolumes(bool show);
+    bool showVolumes() const {
+        return showVolumes_;
+    }
 
     void setFileLauncher(FileLauncher* launcher) {
         fileLauncher_ = launcher;
@@ -182,6 +200,9 @@ private Q_SLOTS:
 
 Q_SIGNALS:
     void clicked(int type, const std::shared_ptr<const Fm::FileInfo>& file);
+    // fired instead of clicked() when the activated/clicked row is a volume
+    // rather than a file (see setShowVolumes())
+    void volumeClicked(int type, const Fm::Volume& volume);
     void clickedBack();
     void clickedForward();
     void selChanged();
@@ -198,6 +219,10 @@ private:
 
     QAbstractItemView* view;
     ProxyFolderModel* model_;
+    bool showVolumes_ = false;
+    VolumeListModel* volumeModel_ = nullptr;
+    QConcatenateTablesProxyModel* concatModel_ = nullptr;
+    QAbstractItemModel* buildViewModel(ProxyFolderModel* fileModel); // model_ + volumeModel_, if showVolumes_
     ViewMode mode;
     QSize iconSize_[NumViewModes];
     FileLauncher* fileLauncher_;
