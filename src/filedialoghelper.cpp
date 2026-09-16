@@ -52,13 +52,12 @@ void FileDialogHelper::exec() {
 }
 
 bool FileDialogHelper::show(Qt::WindowFlags windowFlags, Qt::WindowModality windowModality, QWindow* parent) {
-    dlg_->setAttribute(Qt::WA_NativeWindow, true); // without this, sometimes windowHandle() will return nullptr
+    dlg_->winId(); // without this, sometimes windowHandle() will return nullptr
 
     dlg_->setWindowFlags(windowFlags);
     dlg_->setWindowModality(windowModality);
 
-    // Reference: KDE implementation
-    // https://github.com/KDE/plasma-integration/blob/master/src/platformtheme/kdeplatformfiledialoghelper.cpp
+    // Reference: KDE implementation in kdeplatformfiledialoghelper.cpp
     dlg_->windowHandle()->setTransientParent(parent);
 
     applyOptions();
@@ -70,14 +69,18 @@ bool FileDialogHelper::show(Qt::WindowFlags windowFlags, Qt::WindowModality wind
                    parent->y() + (parent->height() - dlg_->height()) / 2);
     }
 
-    // NOTE: the timer here is required as a workaround borrowed from KDE. Without this, the dialog UI will be blocked.
-    // QFileDialog calls our platform plugin to show our own native file dialog instead of showing its widget.
-    // However, it still creates a hidden dialog internally, and then make it modal.
-    // So user input from all other windows that are not the children of the QFileDialog widget will be blocked.
-    // This includes our own dialog. After the return of this show() method, QFileDialog creates its own window and
-    // then make it modal, which blocks our UI. The timer schedule a delayed popup of our file dialog, so we can
+    // NOTE: The timer is required here as a workaround borrowed from KDE. Without it, the dialog UI will be blocked.
+    // QFileDialog calls our platform plugin to show our native file dialog instead of showing its own widget.
+    // However, it still creates a hidden dialog internally, and then makes it modal.
+    // So, the user input from all other windows that are not the children of the QFileDialog widget will be blocked.
+    // This includes our dialog. After the return of this show() method, QFileDialog creates its own window and
+    // then makes it modal, which blocks our UI. The timer schedules a delayed popup of our file dialog, so we can
     // show again after QFileDialog and override the modal state. Then our UI can be unblocked.
     QTimer::singleShot(0, dlg_.get(), &QDialog::show);
+    // Showing and hiding here make it possible to get access to our file dialog immediately when needed.
+    dlg_->show();
+    dlg_->hide();
+
     dlg_->setFocus();
     return true;
 }
