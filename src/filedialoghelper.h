@@ -36,6 +36,10 @@ public:
 
     bool isSupportedUrl(const QUrl &url) const override;
 
+    QVariant styleHint(StyleHint hint) const override {
+        return hint == DialogIsQtWindow ? true : QPlatformFileDialogHelper::styleHint(hint);
+    }
+
 protected:
     inline Fm::FileDialog & dialog() { return *dlg_; }
 
