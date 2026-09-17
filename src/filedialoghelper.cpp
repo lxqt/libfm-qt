@@ -51,13 +51,12 @@ void FileDialogHelper::exec() {
 }
 
 bool FileDialogHelper::show(Qt::WindowFlags windowFlags, Qt::WindowModality windowModality, QWindow* parent) {
-    dlg_->setAttribute(Qt::WA_NativeWindow, true); // without this, sometimes windowHandle() will return nullptr
+    dlg_->winId(); // without this, sometimes windowHandle() will return nullptr
 
     dlg_->setWindowFlags(windowFlags);
     dlg_->setWindowModality(windowModality);
 
-    // Reference: KDE implementation
-    // https://github.com/KDE/plasma-integration/blob/master/src/platformtheme/kdeplatformfiledialoghelper.cpp
+    // Reference: KDE implementation in kdeplatformfiledialoghelper.cpp
     dlg_->windowHandle()->setTransientParent(parent);
 
     applyOptions();
@@ -69,7 +68,7 @@ bool FileDialogHelper::show(Qt::WindowFlags windowFlags, Qt::WindowModality wind
                    parent->y() + (parent->height() - dlg_->height()) / 2);
     }
 
-    dlg_->show();
+    dlg_->show(); // see styleHint()
     dlg_->setFocus();
     return true;
 }
@@ -122,6 +121,12 @@ QString FileDialogHelper::selectedNameFilter() const {
 
 bool FileDialogHelper::isSupportedUrl(const QUrl& url) const {
     return dlg_->isSupportedUrl(url);
+}
+
+QVariant FileDialogHelper::styleHint(StyleHint hint) const {
+    // NOTE: This is required for preventing the dialog UI from being blocked when shown.
+    // Previously it was shown by using QTimer::singleShot as a workaround.
+    return hint == DialogIsQtWindow ? true : QPlatformFileDialogHelper::styleHint(hint);
 }
 
 void FileDialogHelper::applyOptions() {
