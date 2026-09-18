@@ -153,7 +153,7 @@ void FolderModel::loadPendingThumbnails() {
 }
 
 void FolderModel::queueLoadThumbnail(const std::shared_ptr<const Fm::FileInfo>& file, int size) {
-    auto it = std::find_if(thumbnailData_.begin(), thumbnailData_.end(), [size](ThumbnailData& item){return item.size_ == size;});
+    auto it = std::find_if(thumbnailData_.begin(), thumbnailData_.end(), [size](ThumbnailData& item) { return item.size_ == size; });
     if(it != thumbnailData_.end()) {
         it->pendingThumbnails_.push_back(file);
         if(!hasPendingThumbnailHandler_) {
@@ -622,7 +622,7 @@ Qt::DropActions FolderModel::supportedDropActions() const {
 
 // ask the model to load thumbnails of the specified size
 void FolderModel::cacheThumbnails(const int size) {
-    auto it = std::find_if(thumbnailData_.begin(), thumbnailData_.end(), [size](ThumbnailData& item){return item.size_ == size;});
+    auto it = std::find_if(thumbnailData_.begin(), thumbnailData_.end(), [size](ThumbnailData& item) { return item.size_ == size; });
     if(it != thumbnailData_.cend()) {
         ++it->refCount_;
     }

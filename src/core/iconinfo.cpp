@@ -16,9 +16,9 @@ static const char* fallbackIconNames[] = {
     nullptr
 };
 
-static QIcon getFirst(const QList<QIcon> & icons)
+static QIcon getFirst(const QList<QIcon>& icons)
 {
-    for (const auto & icon : icons) {
+    for (const auto& icon : icons) {
         if (!icon.isNull())
             return icon;
     }

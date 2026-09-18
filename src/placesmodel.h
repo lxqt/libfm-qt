@@ -94,7 +94,7 @@ public Q_SLOTS:
 protected:
 
     PlacesModelItem* itemFromPath(const Fm::FilePath& path);
-    PlacesModelItem* itemFromPath(QStandardItem* rootItem, const Fm::FilePath & path);
+    PlacesModelItem* itemFromPath(QStandardItem* rootItem, const Fm::FilePath& path);
     PlacesModelVolumeItem* itemFromVolume(GVolume* volume);
     PlacesModelMountItem* itemFromMount(GMount* mount);
     PlacesModelBookmarkItem* itemFromBookmark(std::shared_ptr<const Fm::BookmarkItem> bkitem);

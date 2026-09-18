@@ -39,7 +39,7 @@ public:
     QVariant styleHint(StyleHint hint) const override;
 
 protected:
-    inline Fm::FileDialog & dialog() { return *dlg_; }
+    inline Fm::FileDialog& dialog() { return *dlg_; }
 
 private:
     void applyOptions();
