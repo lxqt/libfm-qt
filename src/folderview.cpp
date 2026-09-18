@@ -1081,7 +1081,7 @@ void FolderView::setViewMode(ViewMode _mode) {
         // update the list of custom widhts when the user changes it
         connect(treeView, &FolderViewTreeView::columnResizedByUser, [this](int visualIndex, int newWidth) {
             if(visualIndex >= 0) {
-                if(visualIndex < customColumnWidths_.size()){
+                if(visualIndex < customColumnWidths_.size()) {
                     customColumnWidths_[visualIndex] = newWidth;
                 }
                 else {

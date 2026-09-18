@@ -47,13 +47,13 @@ public:
   void dragLeaveEvent(QDragLeaveEvent* e) override;
   void dropEvent(QDropEvent* e) override;
 
-  QModelIndex indexAt(const QPoint & point) const override;
+  QModelIndex indexAt(const QPoint& point) const override;
 
-  inline void setPositionForIndex(const QPoint & position, const QModelIndex & index) {
+  inline void setPositionForIndex(const QPoint& position, const QModelIndex& index) {
     QListView::setPositionForIndex(position, index);
   }
 
-  inline QRect rectForIndex(const QModelIndex & index) const {
+  inline QRect rectForIndex(const QModelIndex& index) const {
     return QListView::rectForIndex(index);
   }
 

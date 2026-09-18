@@ -348,7 +348,7 @@ FileMenu::FileMenu(Fm::FileInfoList files, std::shared_ptr<const Fm::FileInfo> i
                     addAction(action);
                 }
             }
-            else if(archiver->canCreateArchive()){
+            else if(archiver->canCreateArchive()) {
                 addSeparator();
                 QAction* action = new QAction(tr("Compress"), this);
                 connect(action, &QAction::triggered, this, &FileMenu::onCompress);

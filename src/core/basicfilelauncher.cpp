@@ -156,7 +156,7 @@ bool BasicFileLauncher::launchPaths(FilePathList paths, GAppLaunchContext* ctx) 
 
     // error handling (for example: handle path not mounted error)
     QObject::connect(job, &FileInfoJob::error,
-            &eventLoop, [this, job, ctx](const GErrorPtr & err, Job::ErrorSeverity /* severity */ , Job::ErrorAction &act) {
+            &eventLoop, [this, job, ctx](const GErrorPtr& err, Job::ErrorSeverity /* severity */ , Job::ErrorAction &act) {
         auto path = job->currentPath();
         if(showError(ctx, err, path, nullptr)) {
             // the user handled the error and ask for retry
@@ -198,11 +198,11 @@ bool BasicFileLauncher::openFolder(GAppLaunchContext* ctx, const FileInfoList& f
     return false;
 }
 
-BasicFileLauncher::ExecAction BasicFileLauncher::askExecFile(const FileInfoPtr & /* file */) {
+BasicFileLauncher::ExecAction BasicFileLauncher::askExecFile(const FileInfoPtr& /* file */) {
     return ExecAction::DIRECT_EXEC;
 }
 
-bool BasicFileLauncher::showError(GAppLaunchContext* /* ctx */, const GErrorPtr & /* err */, const FilePath& /* path */, const FileInfoPtr& /* info */) {
+bool BasicFileLauncher::showError(GAppLaunchContext* /* ctx */, const GErrorPtr& /* err */, const FilePath& /* path */, const FileInfoPtr& /* info */) {
     return false;
 }
 
