@@ -22,7 +22,7 @@
 
 #include <QTreeView>
 #include "libfmqtglobals.h"
-#include <menu-cache/menu-cache.h>
+#include "core/vfs/desktop-menu.h"
 
 #include "core/gioptrs.h"
 #include "core/filepath.h"
@@ -54,10 +54,17 @@ Q_SIGNALS:
     void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) override;
 
 private:
-    void addMenuItems(QStandardItem* parentItem, MenuCacheDir* dir);
-    void onMenuCacheReload(MenuCache* mc);
-    static void _onMenuCacheReload(MenuCache* mc, gpointer user_data) {
-        static_cast<AppMenuView*>(user_data)->onMenuCacheReload(mc);
+    // recursively builds QStandardItems for dir's children under parentItem
+    // (or at the top level of model_ if parentItem is null)
+    void addMenuItems(QStandardItem* parentItem, DesktopMenuItem* dir);
+    // rebuilds the whole model from menu_'s (already-reloaded) tree, trying
+    // to preserve the current expansion state and selection across the rebuild
+    void onMenuReloaded();
+    // C-linkage trampoline for desktop_menu_add_reload_notify(), since that
+    // API takes a plain function pointer, not a Qt slot
+    static void _onMenuReloaded(DesktopMenu* dm, gpointer user_data) {
+        Q_UNUSED(dm);
+        static_cast<AppMenuView*>(user_data)->onMenuReloaded();
     }
 
     AppMenuViewItem* selectedItem() const;
@@ -67,10 +74,9 @@ private:
     void restoreExpanded(const QSet<QByteArray>& expanded, const QModelIndex& index = QModelIndex());
 
 private:
-    // gboolean fm_app_menu_view_is_item_app(, GtkTreeIter* it);
     QStandardItemModel* model_;
-    MenuCache* menu_cache;
-    MenuCacheNotifyId menu_cache_reload_notify;
+    DesktopMenu* menu_;
+    gpointer reloadNotifyId_;
 };
 
 }

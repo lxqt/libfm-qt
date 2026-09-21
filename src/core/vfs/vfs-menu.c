@@ -1,6 +1,6 @@
 /*
  *      fm-vfs-menu.c
- *      VFS for "menu://applications/" path using menu-cache library.
+ *      VFS for "menu://applications/" path, backed by desktop-menu.c.
  *
  *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
  *
@@ -24,14 +24,13 @@
 #endif
 
 #include "fm-file.h"
-#include "glib-compat.h"
 #include "fm-xml-file.h"
 
 #include <glib/gi18n-lib.h>
-#include <menu-cache.h>
+#include "desktop-menu.h"
 
-/* libmenu-cache is multithreaded since 0.4.x */
-# define RUN_WITH_MENU_CACHE(__func,__data) __func(__data)
+/* desktop-menu.c is safe to call directly from any thread */
+# define RUN_WITH_DESKTOP_MENU(__func,__data) __func(__data)
 
 /* beforehand declarations */
 GFile *_fm_vfs_menu_new_for_uri(const char *uri);
@@ -457,7 +456,7 @@ static gboolean _add_directory(const char *path, GCancellable *cancellable,
             child = fm_xml_file_item_new(menuTag_NotDeleted);
             fm_xml_file_item_append_child(item, child);
             /* touch .directory file, ignore errors */
-            dir = strrchr(path, '/'); /* use it as a storage for basename */
+            dir = (char *)strrchr(path, '/'); /* use it as a storage for basename */
             if (dir)
                 dir++;
             else
@@ -798,9 +797,8 @@ struct _FmVfsMenuEnumerator
 {
     GFileEnumerator parent;
 
-    MenuCache *mc;
+    DesktopMenu *dm;
     GSList *child;
-    guint32 de_flag;
 };
 
 struct _FmVfsMenuEnumeratorClass
@@ -816,10 +814,10 @@ static void _fm_vfs_menu_enumerator_dispose(GObject *object)
 {
     FmVfsMenuEnumerator *enu = FM_VFS_MENU_ENUMERATOR(object);
 
-    if(enu->mc)
+    if(enu->dm)
     {
-        menu_cache_unref(enu->mc);
-        enu->mc = NULL;
+        desktop_menu_unref(enu->dm);
+        enu->dm = NULL;
     }
 
     G_OBJECT_CLASS(fm_vfs_menu_enumerator_parent_class)->dispose(object);
@@ -827,22 +825,21 @@ static void _fm_vfs_menu_enumerator_dispose(GObject *object)
 
 GIcon* _fm_icon_from_name(const char* name); /* defined in core/iconinfo.cpp */
 
-static GFileInfo *_g_file_info_from_menu_cache_item(MenuCacheItem *item,
-                                                    /* GFileAttributeMatcher *attribute_matcher, */
-                                                    guint32 de_flag)
+static GFileInfo *_g_file_info_from_desktop_menu_item(DesktopMenuItem *item
+                                                    /* GFileAttributeMatcher *attribute_matcher, */)
 {
     GFileInfo *fileinfo = g_file_info_new();
     const char *icon_name;
     GIcon* icon;
 
     /* FIXME: use g_uri_escape_string() for item name */
-    g_file_info_set_name(fileinfo, menu_cache_item_get_id(item));
-    if(menu_cache_item_get_name(item) != NULL)
-        g_file_info_set_display_name(fileinfo, menu_cache_item_get_name(item));
+    g_file_info_set_name(fileinfo, desktop_menu_item_get_id(item));
+    if(desktop_menu_item_get_name(item) != NULL)
+        g_file_info_set_display_name(fileinfo, desktop_menu_item_get_name(item));
 
     /* the setup below was in fm_file_info_set_from_menu_cache_item()
        so this setup makes latter API deprecated */
-    icon_name = menu_cache_item_get_icon(item);
+    icon_name = desktop_menu_item_get_icon(item);
     if(icon_name)
     {
         icon = _fm_icon_from_name(icon_name);
@@ -852,24 +849,31 @@ static GFileInfo *_g_file_info_from_menu_cache_item(MenuCacheItem *item,
             g_object_unref(icon);
         }
     }
-    if(menu_cache_item_get_type(item) == MENU_CACHE_TYPE_DIR)
+    if(desktop_menu_item_get_item_type(item) == DESKTOP_MENU_TYPE_DIR)
     {
         g_file_info_set_file_type(fileinfo, G_FILE_TYPE_DIRECTORY);
-        g_file_info_set_is_hidden(fileinfo,
-                                  !menu_cache_dir_is_visible(MENU_CACHE_DIR(item)));
+        g_file_info_set_is_hidden(fileinfo, !desktop_menu_item_get_is_visible(item));
     }
-    else /* MENU_CACHE_TYPE_APP */
+    else /* DESKTOP_MENU_TYPE_APP */
     {
-        char *path = menu_cache_item_get_file_path(item);
+        char *path = desktop_menu_item_get_file_path(item);
         g_file_info_set_file_type(fileinfo, G_FILE_TYPE_SHORTCUT);
         g_file_info_set_attribute_string(fileinfo,
                                          G_FILE_ATTRIBUTE_STANDARD_TARGET_URI,
                                          path);
         g_free(path);
         g_file_info_set_content_type(fileinfo, "application/x-desktop");
-        g_file_info_set_is_hidden(fileinfo,
-                                  !menu_cache_app_get_is_visible(MENU_CACHE_APP(item),
-                                                                 de_flag));
+        g_file_info_set_is_hidden(fileinfo, !desktop_menu_item_get_is_visible(item));
+    }
+    /* some menus have no Icon (LXQt-About, Screensaver, apps without Icon=),
+       and a GFileInfo without standard::icon makes GIO log a critical when
+       anything asks for it, so give those a generic one */
+    if(!g_file_info_has_attribute(fileinfo, G_FILE_ATTRIBUTE_STANDARD_ICON))
+    {
+        icon = g_themed_icon_new(desktop_menu_item_get_item_type(item) == DESKTOP_MENU_TYPE_DIR
+                                 ? "folder" : "application-x-executable");
+        g_file_info_set_icon(fileinfo, icon);
+        g_object_unref(icon);
     }
 // FIXME: use attribute_matcher and set G_FILE_ATTRIBUTE_ACCESS_CAN_{WRITE,READ,EXECUTE,DELETE}
     g_file_info_set_attribute_string(fileinfo, G_FILE_ATTRIBUTE_ID_FILESYSTEM,
@@ -910,7 +914,7 @@ static gboolean _fm_vfs_menu_enumerator_next_file_real(gpointer data)
     FmVfsMenuMainThreadData *init = data;
     FmVfsMenuEnumerator *enu = init->enumerator;
     GSList *child = enu->child;
-    MenuCacheItem *item;
+    DesktopMenuItem *item;
 
     init->result = NULL;
 
@@ -921,18 +925,11 @@ static gboolean _fm_vfs_menu_enumerator_next_file_real(gpointer data)
     {
         if(g_cancellable_set_error_if_cancelled(init->cancellable, init->error))
             break;
-        item = MENU_CACHE_ITEM(child->data);
-        if(!item || menu_cache_item_get_type(item) == MENU_CACHE_TYPE_SEP ||
-           menu_cache_item_get_type(item) == MENU_CACHE_TYPE_NONE)
+        item = child->data;
+        if(!item)
             continue;
-#if 0
-        /* also hide menu items which should be hidden in current DE. */
-        if(menu_cache_item_get_type(item) == MENU_CACHE_TYPE_APP
-           && !menu_cache_app_get_is_visible(MENU_CACHE_APP(item), enu->de_flag))
-            continue;
-#endif
 
-        init->result = _g_file_info_from_menu_cache_item(item, enu->de_flag);
+        init->result = _g_file_info_from_desktop_menu_item(item);
         child = child->next;
         break;
     }
@@ -940,7 +937,7 @@ static gboolean _fm_vfs_menu_enumerator_next_file_real(gpointer data)
     {
         GSList *ch = enu->child;
         enu->child = ch->next;
-        menu_cache_item_unref(ch->data);
+        desktop_menu_item_unref(ch->data);
         g_slist_free_1(ch);
     }
 
@@ -957,7 +954,7 @@ static GFileInfo *_fm_vfs_menu_enumerator_next_file(GFileEnumerator *enumerator,
     init.enumerator = FM_VFS_MENU_ENUMERATOR(enumerator);
     init.cancellable = cancellable;
     init.error = error;
-    RUN_WITH_MENU_CACHE(_fm_vfs_menu_enumerator_next_file_real, &init);
+    RUN_WITH_DESKTOP_MENU(_fm_vfs_menu_enumerator_next_file_real, &init);
     return init.result;
 }
 
@@ -967,11 +964,11 @@ static gboolean _fm_vfs_menu_enumerator_close(GFileEnumerator *enumerator,
 {
     FmVfsMenuEnumerator *enu = FM_VFS_MENU_ENUMERATOR(enumerator);
 
-    if(enu->mc)
+    if(enu->dm)
     {
-        menu_cache_unref(enu->mc);
-        enu->mc = NULL;
-        g_slist_free_full(enu->child, (GDestroyNotify)menu_cache_item_unref);
+        desktop_menu_unref(enu->dm);
+        enu->dm = NULL;
+        g_slist_free_full(enu->child, (GDestroyNotify)desktop_menu_item_unref);
         enu->child = NULL;
     }
     return TRUE;
@@ -993,78 +990,67 @@ static void fm_vfs_menu_enumerator_init(FmVfsMenuEnumerator *enumerator)
     /* nothing */
 }
 
-static MenuCacheItem *_vfile_path_to_menu_cache_item(MenuCache* mc, const char *path)
+/* path is URI-escaped and relative to the root dir, as GVFS gives it to us */
+static DesktopMenuItem *_vfile_path_to_desktop_menu_item(DesktopMenu *dm, const char *path)
 {
-    MenuCacheItem *dir;
-    char *unescaped, *tmp = NULL;
+    DesktopMenuItem *item;
+    char *unescaped = g_uri_unescape_string(path, NULL);
 
-    unescaped = g_uri_unescape_string(path, NULL);
-    dir = MENU_CACHE_ITEM(menu_cache_dup_root_dir(mc));
-    if(dir)
-    {
-        tmp = g_strconcat("/", menu_cache_item_get_id(dir), "/", unescaped, NULL);
-        menu_cache_item_unref(dir);
-        dir = menu_cache_item_from_path(mc, tmp);
-    }
+    item = desktop_menu_item_from_path(dm, unescaped);
     g_free(unescaped);
-    g_free(tmp);
-    /* NOTE: returned value is referenced for >= 0.4.0 only */
-    return dir;
+    return item;
 }
 
-static MenuCache *_get_menu_cache(GError **error)
+G_LOCK_DEFINE_STATIC(desktopMenu);
+static DesktopMenu *cachedDesktopMenu = NULL;
+
+static DesktopMenu *_get_desktop_menu(GError **error)
 {
-    MenuCache *mc;
-    static gboolean environment_tested = FALSE;
-    static gboolean requires_prefix = FALSE;
+    DesktopMenu *dm;
 
-    /* do it in compatibility with lxpanel */
-    if(!environment_tested)
+    G_LOCK(desktopMenu);
+    if(cachedDesktopMenu == NULL)
     {
-        requires_prefix = (g_getenv("XDG_MENU_PREFIX") == NULL);
-        environment_tested = TRUE;
+        /* do it in compatibility with lxpanel: if the desktop environment
+           hasn't set its own prefix, fall back to lxqt's own menu file */
+        const char *xdg_menu_prefix = g_getenv("XDG_MENU_PREFIX");
+        cachedDesktopMenu = desktop_menu_lookup(
+            xdg_menu_prefix ? "applications.menu" : "lxqt-applications-fm.menu", error);
     }
-    mc = menu_cache_lookup_sync(requires_prefix ? "lxqt-applications-fm.menu+hidden" : "applications.menu+hidden");
-    /* FIXME: may be it is reasonable to set XDG_MENU_PREFIX ? */
+    dm = cachedDesktopMenu ? desktop_menu_ref(cachedDesktopMenu) : NULL;
+    G_UNLOCK(desktopMenu);
 
-    if(mc == NULL) /* initialization failed */
+    if(dm == NULL && error && *error == NULL)
         g_set_error_literal(error, G_IO_ERROR, G_IO_ERROR_FAILED,
                             _("Menu cache error"));
-    return mc;
+    return dm;
 }
 
 static gboolean _fm_vfs_menu_enumerator_new_real(gpointer data)
 {
     FmVfsMenuMainThreadData *init = data;
     FmVfsMenuEnumerator *enumerator;
-    MenuCache* mc;
-    const char *de_name;
-    MenuCacheItem *dir;
+    DesktopMenu *dm;
+    DesktopMenuItem *dir;
 
-    mc = _get_menu_cache(init->error);
+    dm = _get_desktop_menu(init->error);
 
-    if(mc == NULL) /* initialization failed */
+    if(dm == NULL) /* initialization failed */
         return FALSE;
 
     enumerator = g_object_new(FM_TYPE_VFS_MENU_ENUMERATOR, "container",
                               init->file, NULL);
-    enumerator->mc = mc;
-    de_name = g_getenv("XDG_CURRENT_DESKTOP");
-
-    if(de_name)
-        enumerator->de_flag = menu_cache_get_desktop_env_flag(mc, de_name);
-    else
-        enumerator->de_flag = (guint32)-1;
+    enumerator->dm = dm;
 
     /* the menu should be loaded now */
     if(init->path_str)
-        dir = _vfile_path_to_menu_cache_item(mc, init->path_str);
+        dir = _vfile_path_to_desktop_menu_item(dm, init->path_str);
     else
-        dir = MENU_CACHE_ITEM(menu_cache_dup_root_dir(mc));
+        dir = desktop_menu_dup_root_dir(dm);
     if(dir)
     {
-        enumerator->child = menu_cache_dir_list_children(MENU_CACHE_DIR(dir));
-        menu_cache_item_unref(dir);
+        enumerator->child = desktop_menu_dir_list_children(dir);
+        desktop_menu_item_unref(dir);
     }
     /* FIXME: do something with attributes and flags */
 
@@ -1086,7 +1072,7 @@ static GFileEnumerator *_fm_vfs_menu_enumerator_new(GFile *file,
     enu.file = file;
     enu.error = error;
     enu.result = NULL;
-    RUN_WITH_MENU_CACHE(_fm_vfs_menu_enumerator_new_real, &enu);
+    RUN_WITH_DESKTOP_MENU(_fm_vfs_menu_enumerator_new_real, &enu);
     return enu.result;
 }
 
@@ -1263,49 +1249,48 @@ static GFile *_fm_vfs_menu_resolve_relative_path(GFile *file, const char *relati
 static gboolean _fm_vfs_menu_get_child_for_display_name_real(gpointer data)
 {
     FmVfsMenuMainThreadData *init = data;
-    MenuCache *mc;
-    MenuCacheItem *dir;
+    DesktopMenu *dm;
+    DesktopMenuItem *dir;
     gboolean is_invalid = FALSE;
 
     init->result = NULL;
-    mc = _get_menu_cache(init->error);
-    if(mc == NULL)
+    dm = _get_desktop_menu(init->error);
+    if(dm == NULL)
         goto _mc_failed;
 
     if(init->path_str)
     {
-        dir = _vfile_path_to_menu_cache_item(mc, init->path_str);
-        if(dir == NULL || menu_cache_item_get_type(dir) != MENU_CACHE_TYPE_DIR)
+        dir = _vfile_path_to_desktop_menu_item(dm, init->path_str);
+        if(dir == NULL || desktop_menu_item_get_item_type(dir) != DESKTOP_MENU_TYPE_DIR)
             is_invalid = TRUE;
     }
     else
-        dir = MENU_CACHE_ITEM(menu_cache_dup_root_dir(mc));
+        dir = desktop_menu_dup_root_dir(dm);
     if(is_invalid)
         g_set_error_literal(init->error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND,
                             _("Invalid menu directory"));
     else if(dir)
     {
-        MenuCacheItem *item = menu_cache_find_child_by_name(MENU_CACHE_DIR(dir),
-                                                            init->display_name);
+        DesktopMenuItem *item = desktop_menu_find_child_by_name(dir, init->display_name);
         g_debug("searched for child '%s' found '%s'", init->display_name,
-                item ? menu_cache_item_get_id(item) : "(nil)");
+                item ? desktop_menu_item_get_id(item) : "(nil)");
         if (item == NULL)
             init->result = _fm_vfs_menu_resolve_relative_path(init->file,
                                                               init->display_name);
         else
         {
             init->result = _fm_vfs_menu_resolve_relative_path(init->file,
-                                                menu_cache_item_get_id(item));
-            menu_cache_item_unref(item);
+                                                desktop_menu_item_get_id(item));
+            desktop_menu_item_unref(item);
         }
     }
-    else /* menu_cache_get_root_dir failed */
+    else /* desktop_menu_dup_root_dir failed */
         g_set_error_literal(init->error, G_IO_ERROR, G_IO_ERROR_FAILED,
                             _("Menu cache error"));
 
     if(dir)
-        menu_cache_item_unref(dir);
-    menu_cache_unref(mc);
+        desktop_menu_item_unref(dir);
+    desktop_menu_unref(dm);
 
 _mc_failed:
     return FALSE;
@@ -1331,7 +1316,7 @@ static GFile *_fm_vfs_menu_get_child_for_display_name(GFile *file,
     enu.error = error;
     enu.display_name = display_name;
     enu.file = file;
-    RUN_WITH_MENU_CACHE(_fm_vfs_menu_get_child_for_display_name_real, &enu);
+    RUN_WITH_DESKTOP_MENU(_fm_vfs_menu_get_child_for_display_name_real, &enu);
     return enu.result;
 }
 
@@ -1349,43 +1334,35 @@ static GFileEnumerator *_fm_vfs_menu_enumerate_children(GFile *file,
 static gboolean _fm_vfs_menu_query_info_real(gpointer data)
 {
     FmVfsMenuMainThreadData *init = data;
-    MenuCache *mc;
-    MenuCacheItem *dir;
+    DesktopMenu *dm;
+    DesktopMenuItem *dir;
     gboolean is_invalid = FALSE;
 
     init->result = NULL;
-    mc = _get_menu_cache(init->error);
-    if(mc == NULL)
+    dm = _get_desktop_menu(init->error);
+    if(dm == NULL)
         goto _mc_failed;
 
     if(init->path_str)
     {
-        dir = _vfile_path_to_menu_cache_item(mc, init->path_str);
+        dir = _vfile_path_to_desktop_menu_item(dm, init->path_str);
         if(dir == NULL)
             is_invalid = TRUE;
     }
     else
-        dir = MENU_CACHE_ITEM(menu_cache_dup_root_dir(mc));
+        dir = desktop_menu_dup_root_dir(dm);
     if(is_invalid)
         g_set_error(init->error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND,
                     _("Invalid menu directory '%s'"), init->path_str);
     else if(dir)
-    {
-        const char *de_name = g_getenv("XDG_CURRENT_DESKTOP");
-
-        if(de_name)
-            init->result = _g_file_info_from_menu_cache_item(dir,
-                                menu_cache_get_desktop_env_flag(mc, de_name));
-        else
-            init->result = _g_file_info_from_menu_cache_item(dir, (guint32)-1);
-    }
-    else /* menu_cache_get_root_dir failed */
+        init->result = _g_file_info_from_desktop_menu_item(dir);
+    else /* desktop_menu_dup_root_dir failed */
         g_set_error_literal(init->error, G_IO_ERROR, G_IO_ERROR_FAILED,
                             _("Menu cache error"));
 
     if(dir)
-        menu_cache_item_unref(dir);
-    menu_cache_unref(mc);
+        desktop_menu_item_unref(dir);
+    desktop_menu_unref(dm);
 
 _mc_failed:
     return FALSE;
@@ -1448,13 +1425,13 @@ static GFileInfo *_fm_vfs_menu_query_info(GFile *file,
             g_file_attribute_matcher_matches(matcher, G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN) ||
             g_file_attribute_matcher_matches(matcher, G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME))
     {
-        /* retrieve matching attributes from menu-cache */
+        /* retrieve matching attributes from the menu tree */
         enu.path_str = item->path;
 //        enu.attributes = attributes;
 //        enu.flags = flags;
         enu.cancellable = cancellable;
         enu.error = error;
-        RUN_WITH_MENU_CACHE(_fm_vfs_menu_query_info_real, &enu);
+        RUN_WITH_DESKTOP_MENU(_fm_vfs_menu_query_info_real, &enu);
         info = enu.result;
     }
     else
@@ -1498,26 +1475,26 @@ static GMount *_fm_vfs_menu_find_enclosing_mount(GFile *file,
 static gboolean _fm_vfs_menu_set_display_name_real(gpointer data)
 {
     FmVfsMenuMainThreadData *init = data;
-    MenuCache *mc;
-    MenuCacheItem *dir;
+    DesktopMenu *dm;
+    DesktopMenuItem *dir;
+    char *path;
     gboolean ok = FALSE;
 
-    mc = _get_menu_cache(init->error);
-    if(mc == NULL)
+    dm = _get_desktop_menu(init->error);
+    if(dm == NULL)
         goto _mc_failed;
 
-    dir = _vfile_path_to_menu_cache_item(mc, init->path_str);
+    dir = _vfile_path_to_desktop_menu_item(dm, init->path_str);
+    path = dir ? desktop_menu_item_get_file_path(dir) : NULL;
     if(dir == NULL)
         g_set_error_literal(init->error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND,
                             _("Invalid menu item"));
-    else if (menu_cache_item_get_file_basename(dir) == NULL ||
-             menu_cache_item_get_file_dirname(dir) == NULL)
+    else if (path == NULL)
         g_set_error(init->error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
                     _("The menu item '%s' doesn't have appropriate entry file"),
-                    menu_cache_item_get_id(dir));
+                    desktop_menu_item_get_id(dir));
     else if (!g_cancellable_set_error_if_cancelled(init->cancellable, init->error))
     {
-        char *path = menu_cache_item_get_file_path(dir);
         GKeyFile *kf = g_key_file_new();
 
         ok = g_key_file_load_from_file(kf, path, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS,
@@ -1534,7 +1511,7 @@ static gboolean _fm_vfs_menu_set_display_name_real(gpointer data)
             {
                 char *lang;
                 /* remove encoding from locale name */
-                char *sep = strchr(langs[0], '.');
+                char *sep = (char *)strchr(langs[0], '.');
 
                 if (sep)
                     lang = g_strndup(langs[0], sep - langs[0]);
@@ -1553,9 +1530,13 @@ static gboolean _fm_vfs_menu_set_display_name_real(gpointer data)
                 ok = FALSE;
             else
             {
+                char *orig_path = desktop_menu_item_get_file_path(dir);
+                char *basename = g_path_get_basename(orig_path);
+                g_free(orig_path);
                 path = g_build_filename(g_get_user_data_dir(),
-                                        (menu_cache_item_get_type(dir) == MENU_CACHE_TYPE_DIR) ? "desktop-directories" : "applications",
-                                        menu_cache_item_get_file_basename(dir), NULL);
+                                        (desktop_menu_item_get_item_type(dir) == DESKTOP_MENU_TYPE_DIR) ? "desktop-directories" : "applications",
+                                        basename, NULL);
+                g_free(basename);
                 ok = g_file_set_contents(path, contents, length, init->error);
                 /* FIXME: handle case if directory doesn't exist */
                 g_free(contents);
@@ -1566,8 +1547,8 @@ static gboolean _fm_vfs_menu_set_display_name_real(gpointer data)
     }
 
     if(dir)
-        menu_cache_item_unref(dir);
-    menu_cache_unref(mc);
+        desktop_menu_item_unref(dir);
+    desktop_menu_unref(dm);
 
 _mc_failed:
     return ok;
@@ -1597,7 +1578,7 @@ static GFile *_fm_vfs_menu_set_display_name(GFile *file,
     enu.display_name = display_name;
     enu.cancellable = cancellable;
     enu.error = error;
-    if (RUN_WITH_MENU_CACHE(_fm_vfs_menu_set_display_name_real, &enu))
+    if (RUN_WITH_DESKTOP_MENU(_fm_vfs_menu_set_display_name_real, &enu))
         return g_object_ref(file);
     return NULL;
 }
@@ -1620,13 +1601,14 @@ static GFileAttributeInfoList *_fm_vfs_menu_query_writable_namespaces(GFile *fil
 static gboolean _fm_vfs_menu_set_attributes_from_info_real(gpointer data)
 {
     FmVfsMenuMainThreadData *init = data;
-    MenuCache *mc;
-    MenuCacheItem *item;
+    DesktopMenu *dm;
+    DesktopMenuItem *item;
     gpointer value;
     const char *display_name = NULL;
     GIcon *icon = NULL;
     gint set_hidden = -1;
     gboolean ok = FALSE;
+    char *item_path;
 
     /* check attributes first */
     if (g_file_info_get_attribute_data(init->info, G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
@@ -1641,28 +1623,29 @@ static gboolean _fm_vfs_menu_set_attributes_from_info_real(gpointer data)
     if (display_name == NULL && icon == NULL && set_hidden < 0)
         return TRUE; /* nothing to do */
     /* now try access item */
-    mc = _get_menu_cache(init->error);
-    if(mc == NULL)
+    dm = _get_desktop_menu(init->error);
+    if(dm == NULL)
         goto _mc_failed;
 
-    item = _vfile_path_to_menu_cache_item(mc, init->path_str);
+    item = _vfile_path_to_desktop_menu_item(dm, init->path_str);
+    item_path = item ? desktop_menu_item_get_file_path(item) : NULL;
     if(item == NULL)
         g_set_error_literal(init->error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND,
                             _("Invalid menu item"));
-    else if (menu_cache_item_get_file_basename(item) == NULL ||
-             menu_cache_item_get_file_dirname(item) == NULL)
+    else if (item_path == NULL)
         g_set_error(init->error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
                     _("The menu item '%s' doesn't have appropriate entry file"),
-                    menu_cache_item_get_id(item));
+                    desktop_menu_item_get_id(item));
     else if (!g_cancellable_set_error_if_cancelled(init->cancellable, init->error))
     {
         char *path;
+        char *basename = g_path_get_basename(item_path);
         GKeyFile *kf;
         GError *err = NULL;
         gboolean no_error = TRUE;
 
         /* for hidden on directory: use _add_directory() or _remove_directory() */
-        if (set_hidden >= 0 && menu_cache_item_get_type(item) == MENU_CACHE_TYPE_DIR)
+        if (set_hidden >= 0 && desktop_menu_item_get_item_type(item) == DESKTOP_MENU_TYPE_DIR)
         {
             char *unescaped = g_uri_unescape_string(init->path_str, NULL);
             if (set_hidden > 0)
@@ -1676,11 +1659,9 @@ static gboolean _fm_vfs_menu_set_attributes_from_info_real(gpointer data)
             set_hidden = -1; /* don't set NoDisplay for a directory */
         }
         /* in all other cases - update Name, Icon or NoDisplay and save keyfile */
-        path = menu_cache_item_get_file_path(item);
         kf = g_key_file_new();
-        ok = g_key_file_load_from_file(kf, path, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS,
+        ok = g_key_file_load_from_file(kf, item_path, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS,
                                        &err);
-        g_free(path);
         if (ok) /* otherwise there is no reason to continue */
         {
             char *contents;
@@ -1695,7 +1676,7 @@ static gboolean _fm_vfs_menu_set_attributes_from_info_real(gpointer data)
                 {
                     char *lang;
                     /* remove encoding from locale name */
-                    char *sep = strchr(langs[0], '.');
+                    char *sep = (char *)strchr(langs[0], '.');
 
                     if (sep)
                         lang = g_strndup(langs[0], sep - langs[0]);
@@ -1730,8 +1711,8 @@ static gboolean _fm_vfs_menu_set_attributes_from_info_real(gpointer data)
             else
             {
                 path = g_build_filename(g_get_user_data_dir(),
-                                        (menu_cache_item_get_type(item) == MENU_CACHE_TYPE_DIR) ? "desktop-directories" : "applications",
-                                        menu_cache_item_get_file_basename(item), NULL);
+                                        (desktop_menu_item_get_item_type(item) == DESKTOP_MENU_TYPE_DIR) ? "desktop-directories" : "applications",
+                                        basename, NULL);
                 ok = g_file_set_contents(path, contents, length, &err);
                 /* FIXME: handle case if directory doesn't exist */
                 g_free(contents);
@@ -1739,6 +1720,7 @@ static gboolean _fm_vfs_menu_set_attributes_from_info_real(gpointer data)
             }
         }
         g_key_file_free(kf);
+        g_free(basename);
         if (no_error && !ok) /* we got error in err */
             g_propagate_error(init->error, err);
         else if (!ok) /* both init->error and err contain error */
@@ -1748,9 +1730,10 @@ static gboolean _fm_vfs_menu_set_attributes_from_info_real(gpointer data)
     }
 
 _done:
+    g_free(item_path);
     if(item)
-        menu_cache_item_unref(item);
-    menu_cache_unref(mc);
+        desktop_menu_item_unref(item);
+    desktop_menu_unref(dm);
 
 _mc_failed:
     return ok;
@@ -1775,7 +1758,7 @@ static gboolean _fm_vfs_menu_set_attributes_from_info(GFile *file,
 //    enu.flags = flags;
     enu.cancellable = cancellable;
     enu.error = error;
-    return (RUN_WITH_MENU_CACHE(_fm_vfs_menu_set_attributes_from_info_real, &enu));
+    return RUN_WITH_DESKTOP_MENU(_fm_vfs_menu_set_attributes_from_info_real, &enu);
 }
 
 static gboolean _fm_vfs_menu_set_attribute(GFile *file,
@@ -1857,22 +1840,22 @@ static inline GFile *_g_file_new_for_id(const char *id)
 static gboolean _fm_vfs_menu_read_fn_real(gpointer data)
 {
     FmVfsMenuMainThreadData *init = data;
-    MenuCache *mc;
-    MenuCacheItem *item = NULL;
+    DesktopMenu *dm;
+    DesktopMenuItem *item = NULL;
 
     init->result = NULL;
-    mc = _get_menu_cache(init->error);
-    if(mc == NULL)
+    dm = _get_desktop_menu(init->error);
+    if(dm == NULL)
         goto _mc_failed;
 
     if(init->path_str)
-        item = _vfile_path_to_menu_cache_item(mc, init->path_str);
+        item = _vfile_path_to_desktop_menu_item(dm, init->path_str);
 
         /* If item wasn't found or isn't a file then we cannot read it. */
-    if(item != NULL && menu_cache_item_get_type(item) == MENU_CACHE_TYPE_DIR)
+    if(item != NULL && desktop_menu_item_get_item_type(item) == DESKTOP_MENU_TYPE_DIR)
         g_set_error(init->error, G_IO_ERROR, G_IO_ERROR_IS_DIRECTORY,
                     _("The '%s' is a menu directory"), init->path_str);
-    else if(item == NULL || menu_cache_item_get_type(item) != MENU_CACHE_TYPE_APP)
+    else if(item == NULL || desktop_menu_item_get_item_type(item) != DESKTOP_MENU_TYPE_APP)
         g_set_error(init->error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND,
                     _("The '%s' isn't a menu item"),
                     init->path_str ? init->path_str : "/");
@@ -1882,7 +1865,7 @@ static gboolean _fm_vfs_menu_read_fn_real(gpointer data)
         GFile *gf;
         GError *err = NULL;
 
-        file_path = menu_cache_item_get_file_path(item);
+        file_path = desktop_menu_item_get_file_path(item);
         if (file_path)
         {
             gf = g_file_new_for_path(file_path);
@@ -1909,8 +1892,8 @@ static gboolean _fm_vfs_menu_read_fn_real(gpointer data)
     }
 
     if(item)
-        menu_cache_item_unref(item);
-    menu_cache_unref(mc);
+        desktop_menu_item_unref(item);
+    desktop_menu_unref(dm);
 
 _mc_failed:
     return FALSE;
@@ -1927,7 +1910,7 @@ static GFileInputStream *_fm_vfs_menu_read_fn(GFile *file,
     enu.path_str = item->path;
     enu.cancellable = cancellable;
     enu.error = error;
-    RUN_WITH_MENU_CACHE(_fm_vfs_menu_read_fn_real, &enu);
+    RUN_WITH_DESKTOP_MENU(_fm_vfs_menu_read_fn_real, &enu);
     return enu.result;
 }
 
@@ -2131,17 +2114,17 @@ static GFileOutputStream *_vfile_menu_replace(GFile *file,
 static gboolean _fm_vfs_menu_create_real(gpointer data)
 {
     FmVfsMenuMainThreadData *init = data;
-    MenuCache *mc;
+    DesktopMenu *dm;
     char *unescaped = NULL, *id;
     gboolean is_invalid = TRUE;
 
     init->result = NULL;
     if(init->path_str)
     {
-        MenuCacheItem *item;
+        DesktopMenuItem *item;
 
-        mc = _get_menu_cache(init->error);
-        if(mc == NULL)
+        dm = _get_desktop_menu(init->error);
+        if(dm == NULL)
             goto _mc_failed;
         unescaped = g_uri_unescape_string(init->path_str, NULL);
         /* ensure new menu item has suffix .desktop */
@@ -2156,13 +2139,13 @@ static gboolean _fm_vfs_menu_create_real(gpointer data)
             id++;
         else
             id = unescaped;
-        item = menu_cache_find_item_by_id(mc, id);
+        item = desktop_menu_find_item_by_id(dm, id);
         if (item)
-            menu_cache_item_unref(item); /* use item simply as marker */
+            desktop_menu_item_unref(item); /* use item simply as marker */
         if(item == NULL)
             is_invalid = FALSE;
         /* g_debug("create id %s, category %s", id, category); */
-        menu_cache_unref(mc);
+        desktop_menu_unref(dm);
     }
 
     if(is_invalid)
@@ -2200,24 +2183,24 @@ static GFileOutputStream *_fm_vfs_menu_create(GFile *file,
     enu.cancellable = cancellable;
     enu.error = error;
     // enu.flags = flags;
-    RUN_WITH_MENU_CACHE(_fm_vfs_menu_create_real, &enu);
+    RUN_WITH_DESKTOP_MENU(_fm_vfs_menu_create_real, &enu);
     return enu.result;
 }
 
 static gboolean _fm_vfs_menu_replace_real(gpointer data)
 {
     FmVfsMenuMainThreadData *init = data;
-    MenuCache *mc;
+    DesktopMenu *dm;
     char *unescaped = NULL, *id;
     gboolean is_invalid = TRUE;
 
     init->result = NULL;
     if(init->path_str)
     {
-        MenuCacheItem *item, *item2;
+        DesktopMenuItem *item, *item2;
 
-        mc = _get_menu_cache(init->error);
-        if(mc == NULL)
+        dm = _get_desktop_menu(init->error);
+        if(dm == NULL)
             goto _mc_failed;
         /* prepare id first */
         unescaped = g_uri_unescape_string(init->path_str, NULL);
@@ -2227,19 +2210,22 @@ static gboolean _fm_vfs_menu_replace_real(gpointer data)
         else
             id = unescaped;
         /* get existing item */
-        item = _vfile_path_to_menu_cache_item(mc, init->path_str);
+        item = _vfile_path_to_desktop_menu_item(dm, init->path_str);
         if (item != NULL) /* item is there, OK, we'll replace it then */
+        {
             is_invalid = FALSE;
+            desktop_menu_item_unref(item);
+        }
         /* if not found then check item by id to exclude conflicts */
         else
         {
-            item2 = menu_cache_find_item_by_id(mc, id);
+            item2 = desktop_menu_find_item_by_id(dm, id);
             if(item2 == NULL)
                 is_invalid = FALSE;
             else /* item was found in another category */
-                menu_cache_item_unref(item2);
+                desktop_menu_item_unref(item2);
         }
-        menu_cache_unref(mc);
+        desktop_menu_unref(dm);
     }
 
     if(is_invalid)
@@ -2283,7 +2269,7 @@ static GFileOutputStream *_fm_vfs_menu_replace(GFile *file,
     enu.error = error;
     // enu.flags = flags;
     // enu.make_backup = make_backup;
-    RUN_WITH_MENU_CACHE(_fm_vfs_menu_replace_real, &enu);
+    RUN_WITH_DESKTOP_MENU(_fm_vfs_menu_replace_real, &enu);
     return enu.result;
 }
 
@@ -2414,8 +2400,8 @@ static gboolean _fm_vfs_menu_copy(GFile *source,
 static gboolean _fm_vfs_menu_move_real(gpointer data)
 {
     FmVfsMenuMainThreadData *init = data;
-    MenuCache *mc = NULL;
-    MenuCacheItem *item = NULL, *item2;
+    DesktopMenu *dm = NULL;
+    DesktopMenuItem *item = NULL, *item2;
     char *src_path, *dst_path;
     char *src_id, *dst_id;
     gboolean result = FALSE;
@@ -2454,25 +2440,25 @@ static gboolean _fm_vfs_menu_move_real(gpointer data)
         return TRUE; /* nothing was changed */
     }
     /* do actual move */
-    mc = _get_menu_cache(init->error);
-    if(mc == NULL)
+    dm = _get_desktop_menu(init->error);
+    if(dm == NULL)
         goto _failed;
-    item = _vfile_path_to_menu_cache_item(mc, init->path_str);
+    item = _vfile_path_to_desktop_menu_item(dm, init->path_str);
     /* TODO: if id changed then check for ID conflicts */
     /* TODO: save updated desktop entry for old ID (if different) */
-    if(item == NULL || menu_cache_item_get_type(item) != MENU_CACHE_TYPE_APP)
+    if(item == NULL || desktop_menu_item_get_item_type(item) != DESKTOP_MENU_TYPE_APP)
     {
         /* FIXME: implement directories movement */
         g_set_error(init->error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND,
                     _("The '%s' isn't a menu item"), init->path_str);
         goto _failed;
     }
-    item2 = _vfile_path_to_menu_cache_item(mc, init->destination->path);
+    item2 = _vfile_path_to_desktop_menu_item(dm, init->destination->path);
     if (item2)
     {
         g_set_error(init->error, G_IO_ERROR, G_IO_ERROR_EXISTS,
                     _("Menu path '%s' already exists"), dst_path);
-        menu_cache_item_unref(item2);
+        desktop_menu_item_unref(item2);
         goto _failed;
     }
     /* do actual move */
@@ -2486,9 +2472,9 @@ static gboolean _fm_vfs_menu_move_real(gpointer data)
 
 _failed:
     if(item)
-        menu_cache_item_unref(item);
-    if(mc)
-        menu_cache_unref(mc);
+        desktop_menu_item_unref(item);
+    if(dm)
+        desktop_menu_unref(dm);
     g_free(src_path);
     g_free(dst_path);
     return result;
@@ -2518,7 +2504,7 @@ static gboolean _fm_vfs_menu_move(GFile *source,
     // enu.flags = flags;
     enu.destination = FM_MENU_VFILE(destination);
     /* FIXME: use progress_callback */
-    return RUN_WITH_MENU_CACHE(_fm_vfs_menu_move_real, &enu);
+    return RUN_WITH_DESKTOP_MENU(_fm_vfs_menu_move_real, &enu);
 }
 
 /* ---- FmMenuVFileMonitor class ---- */
@@ -2536,9 +2522,9 @@ struct _FmMenuVFileMonitor
     GFileMonitor parent_object;
 
     FmMenuVFile *file;
-    MenuCache *cache;
-    MenuCacheItem *item;
-    MenuCacheNotifyId notifier;
+    DesktopMenu *dm;
+    DesktopMenuItem *item;
+    gpointer notifier;
 };
 
 struct _FmMenuVFileMonitorClass
@@ -2552,14 +2538,14 @@ static void fm_vfs_menu_file_monitor_finalize(GObject *object)
 {
     FmMenuVFileMonitor *mon = FM_MENU_VFILE_MONITOR(object);
 
-    if(mon->cache)
+    if(mon->dm)
     {
         if(mon->notifier)
-            menu_cache_remove_reload_notify(mon->cache, mon->notifier);
-        menu_cache_unref(mon->cache);
+            desktop_menu_remove_reload_notify(mon->dm, mon->notifier);
+        desktop_menu_unref(mon->dm);
     }
     if(mon->item)
-        menu_cache_item_unref(mon->item);
+        desktop_menu_item_unref(mon->item);
     g_object_unref(mon->file);
 
     G_OBJECT_CLASS(fm_vfs_menu_file_monitor_parent_class)->finalize(object);
@@ -2570,7 +2556,7 @@ static gboolean fm_vfs_menu_file_monitor_cancel(GFileMonitor *monitor)
     FmMenuVFileMonitor *mon = FM_MENU_VFILE_MONITOR(monitor);
 
     if(mon->item)
-        menu_cache_item_unref(mon->item); /* rest will be done in finalizer */
+        desktop_menu_item_unref(mon->item); /* rest will be done in finalizer */
     mon->item = NULL;
     return TRUE;
 }
@@ -2594,91 +2580,64 @@ static FmMenuVFileMonitor *_fm_menu_vfile_monitor_new(void)
     return (FmMenuVFileMonitor*)g_object_new(FM_TYPE_MENU_VFILE_MONITOR, NULL);
 }
 
-static void _reload_notify_handler(MenuCache* cache, gpointer user_data)
+static void _reload_notify_handler(DesktopMenu* dm, gpointer user_data)
 {
     FmMenuVFileMonitor *mon = FM_MENU_VFILE_MONITOR(user_data);
     GSList *items, *new_items, *ol, *nl;
-    MenuCacheItem *dir;
+    DesktopMenuItem *dir;
     GFile *file;
-    const char *de_name;
-    guint32 de_flag;
 
     if(mon->item == NULL) /* menu folder was destroyed or monitor cancelled */
         return;
     dir = mon->item;
     if(mon->file->path)
-        mon->item = _vfile_path_to_menu_cache_item(cache, mon->file->path);
+        mon->item = _vfile_path_to_desktop_menu_item(dm, mon->file->path);
     else
-        mon->item = MENU_CACHE_ITEM(menu_cache_dup_root_dir(cache));
-    if(mon->item && menu_cache_item_get_type(mon->item) != MENU_CACHE_TYPE_DIR)
+        mon->item = desktop_menu_dup_root_dir(dm);
+    if(mon->item && desktop_menu_item_get_item_type(mon->item) != DESKTOP_MENU_TYPE_DIR)
     {
-        menu_cache_item_unref(mon->item);
+        desktop_menu_item_unref(mon->item);
         mon->item = NULL;
     }
     if(mon->item == NULL) /* folder was destroyed - emit event and exit */
     {
-        menu_cache_item_unref(dir);
+        desktop_menu_item_unref(dir);
         g_file_monitor_emit_event(G_FILE_MONITOR(mon), G_FILE(mon->file), NULL,
                                   G_FILE_MONITOR_EVENT_DELETED);
         return;
     }
-    items = menu_cache_dir_list_children(MENU_CACHE_DIR(dir));
-    menu_cache_item_unref(dir);
-    new_items = menu_cache_dir_list_children(MENU_CACHE_DIR(mon->item));
-    for (ol = items; ol; ) /* remove all separatorts first */
-    {
-        nl = ol->next;
-        if (menu_cache_item_get_id(ol->data) == NULL)
-        {
-            menu_cache_item_unref(ol->data);
-            items = g_slist_delete_link(items, ol);
-        }
-        ol = nl;
-    }
-    for (ol = new_items; ol; )
-    {
-        nl = ol->next;
-        if (menu_cache_item_get_id(ol->data) == NULL)
-        {
-            menu_cache_item_unref(ol->data);
-            new_items = g_slist_delete_link(new_items, ol);
-        }
-        ol = nl;
-    }
+    items = desktop_menu_dir_list_children(dir);
+    desktop_menu_item_unref(dir);
+    new_items = desktop_menu_dir_list_children(mon->item);
     /* we have two copies of lists now, compare them and emit events */
     ol = items;
-    de_name = g_getenv("XDG_CURRENT_DESKTOP");
-    if(de_name)
-        de_flag = menu_cache_get_desktop_env_flag(cache, de_name);
-    else
-        de_flag = (guint32)-1;
     while (ol)
     {
         for (nl = new_items; nl; nl = nl->next)
-            if (strcmp(menu_cache_item_get_id(ol->data),
-                       menu_cache_item_get_id(nl->data)) == 0)
+            if (strcmp(desktop_menu_item_get_id(ol->data),
+                       desktop_menu_item_get_id(nl->data)) == 0)
                 break; /* the same id found */
         if (nl)
         {
             /* check if any visible attribute of it was changed */
-            if (g_strcmp0(menu_cache_item_get_name(ol->data),
-                          menu_cache_item_get_name(nl->data)) == 0 ||
-                g_strcmp0(menu_cache_item_get_icon(ol->data),
-                          menu_cache_item_get_icon(nl->data)) == 0 ||
-                menu_cache_app_get_is_visible(ol->data, de_flag) !=
-                                menu_cache_app_get_is_visible(nl->data, de_flag))
+            if (g_strcmp0(desktop_menu_item_get_name(ol->data),
+                          desktop_menu_item_get_name(nl->data)) == 0 ||
+                g_strcmp0(desktop_menu_item_get_icon(ol->data),
+                          desktop_menu_item_get_icon(nl->data)) == 0 ||
+                desktop_menu_item_get_is_visible(ol->data) !=
+                                desktop_menu_item_get_is_visible(nl->data))
             {
                 file = _fm_vfs_menu_resolve_relative_path(G_FILE(mon->file),
-                                             menu_cache_item_get_id(nl->data));
+                                             desktop_menu_item_get_id(nl->data));
                 g_file_monitor_emit_event(G_FILE_MONITOR(mon), file, NULL,
                                           G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED);
                 g_object_unref(file);
             }
             /* free both new and old from the list */
-            menu_cache_item_unref(nl->data);
+            desktop_menu_item_unref(nl->data);
             new_items = g_slist_delete_link(new_items, nl);
             nl = ol->next; /* use 'nl' as storage */
-            menu_cache_item_unref(ol->data);
+            desktop_menu_item_unref(ol->data);
             items = g_slist_delete_link(items, ol);
             ol = nl;
         }
@@ -2689,22 +2648,22 @@ static void _reload_notify_handler(MenuCache* cache, gpointer user_data)
     while (items)
     {
         file = _fm_vfs_menu_resolve_relative_path(G_FILE(mon->file),
-                                             menu_cache_item_get_id(items->data));
+                                             desktop_menu_item_get_id(items->data));
         g_file_monitor_emit_event(G_FILE_MONITOR(mon), file, NULL,
                                   G_FILE_MONITOR_EVENT_DELETED);
         g_object_unref(file);
-        menu_cache_item_unref(items->data);
+        desktop_menu_item_unref(items->data);
         items = g_slist_delete_link(items, items);
     }
     /* emit events for added files */
     while (new_items)
     {
         file = _fm_vfs_menu_resolve_relative_path(G_FILE(mon->file),
-                                     menu_cache_item_get_id(new_items->data));
+                                     desktop_menu_item_get_id(new_items->data));
         g_file_monitor_emit_event(G_FILE_MONITOR(mon), file, NULL,
                                   G_FILE_MONITOR_EVENT_CREATED);
         g_object_unref(file);
-        menu_cache_item_unref(new_items->data);
+        desktop_menu_item_unref(new_items->data);
         new_items = g_slist_delete_link(new_items, new_items);
     }
 }
@@ -2722,15 +2681,15 @@ static gboolean _fm_vfs_menu_monitor_dir_real(gpointer data)
     if(mon == NULL) /* out of memory! */
         return FALSE;
     mon->file = FM_MENU_VFILE(g_object_ref(init->destination));
-    mon->cache = _get_menu_cache(init->error);
-    if(mon->cache == NULL)
+    mon->dm = _get_desktop_menu(init->error);
+    if(mon->dm == NULL)
         goto _fail;
     /* check if requested path exists within cache */
     if(mon->file->path)
-        mon->item = _vfile_path_to_menu_cache_item(mon->cache, mon->file->path);
+        mon->item = _vfile_path_to_desktop_menu_item(mon->dm, mon->file->path);
     else
-        mon->item = MENU_CACHE_ITEM(menu_cache_dup_root_dir(mon->cache));
-    if(mon->item == NULL || menu_cache_item_get_type(mon->item) != MENU_CACHE_TYPE_DIR)
+        mon->item = desktop_menu_dup_root_dir(mon->dm);
+    if(mon->item == NULL || desktop_menu_item_get_item_type(mon->item) != DESKTOP_MENU_TYPE_DIR)
     {
         g_set_error(init->error, G_IO_ERROR, G_IO_ERROR_FAILED,
                     _("FmMenuVFileMonitor: folder '%s' not found in menu cache"),
@@ -2741,7 +2700,7 @@ static gboolean _fm_vfs_menu_monitor_dir_real(gpointer data)
         goto _fail;
     /* current directory contents belong to mon->item now */
     /* attach reload notify handler */
-    mon->notifier = menu_cache_add_reload_notify(mon->cache,
+    mon->notifier = desktop_menu_add_reload_notify(mon->dm,
                                                  &_reload_notify_handler, mon);
     init->result = mon;
     return TRUE;
@@ -2763,7 +2722,7 @@ static GFileMonitor *_fm_vfs_menu_monitor_dir(GFile *file,
     enu.error = error;
     // enu.flags = flags;
     enu.destination = FM_MENU_VFILE(file);
-    RUN_WITH_MENU_CACHE(_fm_vfs_menu_monitor_dir_real, &enu);
+    RUN_WITH_DESKTOP_MENU(_fm_vfs_menu_monitor_dir_real, &enu);
     return (GFileMonitor*)enu.result;
 }
 

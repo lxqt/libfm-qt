@@ -102,13 +102,19 @@ static GAppInfo* app_info_create_from_commandline(const char* commandline,
                                        keep ? "true" : "false");
             close(fd); /* g_file_set_contents() may fail creating duplicate */
             if(g_file_set_contents(filename, content->str, content->len, nullptr)) {
-                char* fbname = g_path_get_basename(filename);
-                app = G_APP_INFO(g_desktop_app_info_new(fbname));
-                g_free(fbname);
+                /* Load it by path: g_desktop_app_info_new() looks the id up in a
+                   list that GLib only refreshes once its file monitor has noticed
+                   the new file, so it fails for a moment. The app still gets its
+                   desktop id this way, as the file is in the applications dir. */
+                app = G_APP_INFO(g_desktop_app_info_new_from_filename(filename));
                 /* if there is mime_type set then created application will be
                    saved for the mime type (see fm_choose_app_for_mime_type()
                    below) but if not then we should remove this temp. file */
-                if(!mime_type || !application_name[0])
+                if(!app) {
+                    /* GLib refuses it, e.g. when the program doesn't exist */
+                    g_unlink(filename);
+                }
+                else if(!mime_type || !application_name[0])
                     /* save the name so this file will be removed later */
                     g_object_weak_ref(G_OBJECT(app), on_temp_appinfo_destroy,
                                       g_strdup(filename));
@@ -143,6 +149,22 @@ inline static char* get_binary(const char* cmdline, gboolean* arg_found) {
     }
 }
 
+// Whether the binary of another command line (see get_binary()) names the same
+// program as bin1: written identically, or bin1 is a bare command name (looked
+// up in $PATH) and bin2 a path to a program of that name, so that "firefox"
+// matches an Exec of "/usr/lib/firefox/firefox". (Comparing the real files
+// would not do: /usr/bin/firefox is a wrapper script, not a link to that.)
+static bool isSameBinary(const char* bin1, const char* bin2) {
+    if(g_strcmp0(bin1, bin2) == 0) {
+        return true;
+    }
+    if(!bin1 || !bin2 || strchr(bin1, '/')) {
+        return false;
+    }
+    const char* slash = strrchr(bin2, '/');
+    return slash && strcmp(bin1, slash + 1) == 0;
+}
+
 GAppInfo* AppChooserDialog::customCommandToApp() {
     GAppInfo* app = nullptr;
     QByteArray cmdline = ui->cmdLine->text().toLocal8Bit();
@@ -159,15 +181,17 @@ GAppInfo* AppChooserDialog::customCommandToApp() {
         /* FIXME: is there any better way to do this? */
         /* We need to ensure that no duplicated items are added */
         if(mimeType_) {
-            MenuCache* menu_cache;
             /* see if the command is already in the list of known apps for this mime-type */
             GList* apps = g_app_info_get_all_for_type(mimeType_->name());
             GList* l;
             for(l = apps; l; l = l->next) {
                 GAppInfo* app2 = G_APP_INFO(l->data);
                 const char* cmd = g_app_info_get_commandline(app2);
+                if(cmd == nullptr) {
+                    continue;
+                }
                 char* bin2 = get_binary(cmd, nullptr);
-                if(g_strcmp0(bin1, bin2) == 0) {
+                if(isSameBinary(bin1, bin2)) {
                     app = G_APP_INFO(g_object_ref(app2));
                     qDebug("found in app list");
                     g_free(bin2);
@@ -180,37 +204,27 @@ GAppInfo* AppChooserDialog::customCommandToApp() {
                 goto _out;
             }
 
-            /* see if this command can be found in menu cache */
-            menu_cache = menu_cache_lookup("applications.menu");
-            if(menu_cache) {
-                MenuCacheDir* root_dir = menu_cache_dup_root_dir(menu_cache);
-                if(root_dir) {
-                    GSList* all_apps = menu_cache_list_all_apps(menu_cache);
-                    GSList* l;
-                    for(l = all_apps; l; l = l->next) {
-                        MenuCacheApp* ma = MENU_CACHE_APP(l->data);
-                        const char* exec = menu_cache_app_get_exec(ma);
-                        char* bin2;
-                        if(exec == nullptr) {
-                            g_warning("application %s has no Exec statement", menu_cache_item_get_id(MENU_CACHE_ITEM(ma)));
-                            continue;
-                        }
-                        bin2 = get_binary(exec, nullptr);
-                        if(g_strcmp0(bin1, bin2) == 0) {
-                            app = G_APP_INFO(g_desktop_app_info_new(menu_cache_item_get_id(MENU_CACHE_ITEM(ma))));
-                            qDebug("found in menu cache");
-                            menu_cache_item_unref(MENU_CACHE_ITEM(ma));
-                            g_free(bin2);
-                            break;
-                        }
-                        menu_cache_item_unref(MENU_CACHE_ITEM(ma));
-                        g_free(bin2);
-                    }
-                    g_slist_free(all_apps);
-                    menu_cache_item_unref(MENU_CACHE_ITEM(root_dir));
+            /* see if this command matches the Exec of any installed application */
+            GList* allApps = g_app_info_get_all();
+            for(l = allApps; l; l = l->next) {
+                GAppInfo* app2 = G_APP_INFO(l->data);
+                if(!g_app_info_should_show(app2)) {
+                    continue;
                 }
-                menu_cache_unref(menu_cache);
+                const char* cmd = g_app_info_get_commandline(app2);
+                if(cmd == nullptr) {
+                    continue;
+                }
+                char* bin2 = get_binary(cmd, nullptr);
+                if(isSameBinary(bin1, bin2)) {
+                    app = G_APP_INFO(g_object_ref(app2));
+                    qDebug("found in installed apps");
+                    g_free(bin2);
+                    break;
+                }
+                g_free(bin2);
             }
+            g_list_free_full(allApps, g_object_unref);
             if(app) {
                 goto _out;
             }
@@ -237,7 +251,13 @@ void AppChooserDialog::accept() {
     }
 
     if(selectedApp_) {
-        if(mimeType_ && g_app_info_get_name(selectedApp_.get())) {
+        // A custom command without a name makes a throw-away app (see
+        // app_info_create_from_commandline()): its file is removed with the app,
+        // so it must not be remembered for the MIME type, or the "Open With"
+        // menu would list a blank entry pointing at a file that is gone.
+        // Its name is "", not NULL, so test for that.
+        const char* appName = g_app_info_get_name(selectedApp_.get());
+        if(mimeType_ && appName && *appName) {
             /* add this app to the mime-type */
 #if GLIB_CHECK_VERSION(2, 27, 6)
             g_app_info_set_as_last_used_for_type(selectedApp_.get(), mimeType_->name(), nullptr);
@@ -254,7 +274,7 @@ void AppChooserDialog::accept() {
 
 void AppChooserDialog::onSelectionChanged() {
     if(ui->tabWidget->currentIndex() != 0) {
-        // the selection may be reset by menu-cache,
+        // the selection may be reset when the menu reloads,
         // while the app menu view is not shown
         return;
     }

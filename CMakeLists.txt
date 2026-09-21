@@ -27,7 +27,6 @@ set(LIBFM_QT_ABI_VERSION "17.0.0")
 set(LIBFM_QT_SOVERSION "17")
 
 set(GLIB_MINIMUM_VERSION "2.50.0")
-set(LIBMENUCACHE_MINIMUM_VERSION "1.1.0")
 set(LXQTMENUDATA_MINIMUM_VERSION "2.4.0")
 set(LXQTBT_MINIMUM_VERSION "2.4.0")
 set(QT_MINIMUM_VERSION "6.10.0")
@@ -37,7 +36,6 @@ find_package(Qt6LinguistTools "${QT_MINIMUM_VERSION}" REQUIRED)
 find_package(Qt6GuiPrivate REQUIRED)
 find_package(lxqt2-build-tools "${LXQTBT_MINIMUM_VERSION}" REQUIRED)
 find_package(GLIB "${GLIB_MINIMUM_VERSION}" REQUIRED COMPONENTS gio gio-unix gobject gthread)
-find_package(MenuCache "${LIBMENUCACHE_MINIMUM_VERSION}" REQUIRED)
 find_package(lxqt-menu-data "${LXQTMENUDATA_MINIMUM_VERSION}" REQUIRED)
 find_package(Exif REQUIRED)
 find_package(XCB REQUIRED)
@@ -69,6 +67,7 @@ install(FILES
     COMPONENT Devel
 )
 
+enable_testing()
 add_subdirectory(src)
 add_subdirectory(data)
 
