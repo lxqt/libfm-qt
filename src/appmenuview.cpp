@@ -26,11 +26,27 @@
 
 namespace Fm {
 
+// walks up the QStandardItem tree, joining each dir's own (single-segment)
+// id, to rebuild the full path relative to the menu root. Dir ids alone are
+// only unique among siblings, not globally, so anything that needs a stable
+// key for a dir (selection/expand-state tracking across a reload) must use
+// this instead of the bare id.
+static QByteArray dirRelativePath(QStandardItem* item) {
+    QByteArray path;
+    while(item) {
+        auto* dirItem = static_cast<AppMenuViewItem*>(item);
+        QByteArray segment(desktop_menu_item_get_id(dirItem->item()));
+        path = path.isEmpty() ? segment : (segment + '/' + path);
+        item = item->parent();
+    }
+    return path;
+}
+
 AppMenuView::AppMenuView(QWidget* parent):
     QTreeView(parent),
     model_(new QStandardItemModel()),
-    menu_cache(nullptr),
-    menu_cache_reload_notify(nullptr) {
+    menu_(nullptr),
+    reloadNotifyId_(nullptr) {
 
     setHeaderHidden(true);
     setSelectionMode(SingleSelection);
@@ -40,16 +56,15 @@ AppMenuView::AppMenuView(QWidget* parent):
     // ensure that we're using the fm menu of lxqt-menu-data
     QByteArray oldenv = qgetenv("XDG_MENU_PREFIX");
     qputenv("XDG_MENU_PREFIX", "lxqt-");
-    menu_cache = menu_cache_lookup("applications-fm.menu");
+    menu_ = desktop_menu_lookup("applications-fm.menu", nullptr);
     // if(!oldenv.isEmpty())
     qputenv("XDG_MENU_PREFIX", oldenv); // restore the original value if needed
 
-    if(menu_cache) {
-        MenuCacheDir* dir = menu_cache_dup_root_dir(menu_cache);
-        menu_cache_reload_notify = menu_cache_add_reload_notify(menu_cache, _onMenuCacheReload, this);
-        if(dir) { /* content of menu is already loaded */
+    if(menu_) {
+        reloadNotifyId_ = desktop_menu_add_reload_notify(menu_, &_onMenuReloaded, this);
+        if(DesktopMenuItem* dir = desktop_menu_dup_root_dir(menu_)) {
             addMenuItems(nullptr, dir);
-            menu_cache_item_unref(MENU_CACHE_ITEM(dir));
+            desktop_menu_item_unref(dir);
         }
     }
     setModel(model_);
@@ -59,67 +74,53 @@ AppMenuView::AppMenuView(QWidget* parent):
 
 AppMenuView::~AppMenuView() {
     delete model_;
-    if(menu_cache) {
-        if(menu_cache_reload_notify) {
-            menu_cache_remove_reload_notify(menu_cache, menu_cache_reload_notify);
+    if(menu_) {
+        if(reloadNotifyId_) {
+            desktop_menu_remove_reload_notify(menu_, reloadNotifyId_);
         }
-        menu_cache_unref(menu_cache);
+        desktop_menu_unref(menu_);
     }
 }
 
-// To avoid incompatible cast to GDestroyNotify:
-static inline void menu_cache_item_unref0(MenuCacheItem* item) {
-    menu_cache_item_unref(item);
-}
-
-void AppMenuView::addMenuItems(QStandardItem* parentItem, MenuCacheDir* dir) {
-    GSList* l;
-    GSList* list;
-    /* Iterate over all menu items in this directory. */
-    for(l = list = menu_cache_dir_list_children(dir); l != nullptr; l = l->next) {
-        /* Get the menu item. */
-        MenuCacheItem* menuItem = MENU_CACHE_ITEM(l->data);
-        switch(menu_cache_item_get_type(menuItem)) {
-        case MENU_CACHE_TYPE_NONE:
-        case MENU_CACHE_TYPE_SEP:
-            break;
-        case MENU_CACHE_TYPE_APP:
-        case MENU_CACHE_TYPE_DIR: {
-            AppMenuViewItem* newItem = new AppMenuViewItem(menuItem);
-            if(parentItem) {
-                parentItem->insertRow(parentItem->rowCount(), newItem);
-            }
-            else {
-                model_->insertRow(model_->rowCount(), newItem);
-            }
-
-            if(menu_cache_item_get_type(menuItem) == MENU_CACHE_TYPE_DIR) {
-                addMenuItems(newItem, MENU_CACHE_DIR(menuItem));
-            }
-            break;
+void AppMenuView::addMenuItems(QStandardItem* parentItem, DesktopMenuItem* dir) {
+    GSList* children = desktop_menu_dir_list_children(dir);
+    for(GSList* l = children; l; l = l->next) {
+        DesktopMenuItem* menuItem = static_cast<DesktopMenuItem*>(l->data);
+        // the tree keeps hidden apps and empty submenus (the menu:// backend
+        // shows them greyed-out), but a chooser must not offer them
+        if(!desktop_menu_item_get_is_visible(menuItem)) {
+            continue;
         }
+        AppMenuViewItem* newItem = new AppMenuViewItem(menuItem);
+        if(parentItem) {
+            parentItem->insertRow(parentItem->rowCount(), newItem);
+        }
+        else {
+            model_->insertRow(model_->rowCount(), newItem);
+        }
+        if(desktop_menu_item_get_item_type(menuItem) == DESKTOP_MENU_TYPE_DIR) {
+            addMenuItems(newItem, menuItem);
         }
     }
-    g_slist_free_full(list, (GDestroyNotify)menu_cache_item_unref0);
+    g_slist_free_full(children, (GDestroyNotify)desktop_menu_item_unref);
 }
 
-void AppMenuView::onMenuCacheReload(MenuCache* mc) {
+void AppMenuView::onMenuReloaded() {
     auto expanded = getExpanded();
     QByteArray selectedId;
     bool isDir = false;
     QModelIndexList selected = selectedIndexes();
     if(!selected.isEmpty()) {
         if(AppMenuViewItem* item = static_cast<AppMenuViewItem*>(model_->itemFromIndex(selected.first()))) {
-            selectedId = QByteArray(menu_cache_item_get_id(item->item()));
             isDir = item->isDir();
+            selectedId = isDir ? dirRelativePath(item) : QByteArray(desktop_menu_item_get_id(item->item()));
         }
     }
 
-    MenuCacheDir* dir = menu_cache_dup_root_dir(mc);
     model_->clear();
-    if(dir) {
+    if(DesktopMenuItem* dir = desktop_menu_dup_root_dir(menu_)) {
         addMenuItems(nullptr, dir);
-        menu_cache_item_unref(MENU_CACHE_ITEM(dir));
+        desktop_menu_item_unref(dir);
 
         // try to restore the expansion state and selection
         restoreExpanded(expanded);
@@ -154,7 +155,7 @@ Fm::GAppInfoPtr AppMenuView::selectedApp() const {
 QByteArray AppMenuView::selectedAppDesktopFilePath() const {
     AppMenuViewItem* item = selectedItem();
     if(item && item->isApp()) {
-        char* path = menu_cache_item_get_file_path(item->item());
+        char* path = desktop_menu_item_get_file_path(item->item());
         QByteArray ret(path);
         g_free(path);
         return ret;
@@ -165,7 +166,7 @@ QByteArray AppMenuView::selectedAppDesktopFilePath() const {
 const char* AppMenuView::selectedAppDesktopId() const {
     AppMenuViewItem* item = selectedItem();
     if(item && item->isApp()) {
-        return menu_cache_item_get_id(item->item());
+        return desktop_menu_item_get_id(item->item());
     }
     return nullptr;
 }
@@ -174,9 +175,12 @@ FilePath AppMenuView::selectedAppDesktopPath() const {
     AppMenuViewItem* item = selectedItem();
     FilePath path;
     if(item && item->isApp()) {
-        char* mpath = menu_cache_dir_make_path(MENU_CACHE_DIR(item));
-        path = FilePath::fromUri("menu://applications/").relativePath(mpath + 13 /* skip "/Applications" */);
-        g_free(mpath);
+        // the app's own id goes last; apps at the top level have no parent dir
+        QByteArray relative(desktop_menu_item_get_id(item->item()));
+        if(QStandardItem* parentItem = item->parent()) {
+            relative = dirRelativePath(parentItem) + '/' + relative;
+        }
+        path = FilePath::fromUri("menu://applications/").relativePath(relative.constData());
     }
     return path;
 }
@@ -189,7 +193,8 @@ QModelIndex AppMenuView::indexForId(const QByteArray& id, bool isDir, const QMod
     while(child.isValid()) {
         if(isDir == model_->hasChildren(child)) {
             if(AppMenuViewItem* item = static_cast<AppMenuViewItem*>(model_->itemFromIndex(child))) {
-                if(id == QByteArray(menu_cache_item_get_id(item->item()))) {
+                QByteArray itemId = isDir ? dirRelativePath(item) : QByteArray(desktop_menu_item_get_id(item->item()));
+                if(id == itemId) {
                     return child;
                 }
             }
@@ -209,7 +214,7 @@ QSet<QByteArray> AppMenuView::getExpanded(const QModelIndex& index) const {
     while(child.isValid()) {
         if(isExpanded(child)) {
             if(AppMenuViewItem* item = static_cast<AppMenuViewItem*>(model_->itemFromIndex(child))) {
-                expanded.insert(QByteArray(menu_cache_item_get_id(item->item())));
+                expanded.insert(dirRelativePath(item)); // only dirs can be expanded
             }
             expanded.unite(getExpanded(child)); // only for children of expanded items
         }
@@ -227,7 +232,7 @@ void AppMenuView::restoreExpanded(const QSet<QByteArray>& expanded, const QModel
     while(child.isValid()) {
         if(model_->hasChildren(child)) {
             if(AppMenuViewItem* item = static_cast<AppMenuViewItem*>(model_->itemFromIndex(child))) {
-                auto b = QByteArray(menu_cache_item_get_id(item->item()));
+                auto b = dirRelativePath(item);
                 if(l.contains(b)) {
                     setExpanded(child, true);
                     l.remove(b);

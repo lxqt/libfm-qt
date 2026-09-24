@@ -10,6 +10,8 @@ set(libfm_core_SRCS
     core/vfs/fm-xml-file.h
     core/vfs/vfs-menu.c
     core/vfs/vfs-search.c
+    core/vfs/desktop-menu.c
+    core/vfs/desktop-menu.h
     # other legacy C code
     core/legacy/fm-config.c
     core/legacy/fm-app-info.c
@@ -144,7 +146,6 @@ target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
         ${GLIB_GIO_LIBRARIES}
         ${GLIB_GOBJECT_LIBRARIES}
         ${GLIB_GTHREAD_LIBRARIES}
-        ${MENUCACHE_LIBRARIES}
         ${XCB_LIBRARIES}
         ${EXIF_LIBRARIES}
 )
@@ -161,7 +162,6 @@ target_include_directories(${LIBFM_QT_LIBRARY_NAME}
     PUBLIC
         "${GLIB_INCLUDE_DIRS}"
         "${GLIB_GIO_UNIX_INCLUDE_DIR}"
-        "${MENUCACHE_INCLUDE_DIRS}"
         "${XCB_INCLUDE_DIRS}"
         "${EXIF_INCLUDE_DIRS}"
     INTERFACE
@@ -284,4 +284,13 @@ add_executable("test-placesview"
     tests/test-placesview.cpp
 )
 target_link_libraries("test-placesview" ${TEST_LIBRARIES})
+
+add_executable("test-desktop-menu"
+    tests/test-desktop-menu.c
+)
+target_link_libraries("test-desktop-menu" ${TEST_LIBRARIES})
+# the only self-checking test here (the others are interactive), so run it in ctest;
+# it waits for file-monitor events, hence the generous timeout
+add_test(NAME test-desktop-menu COMMAND test-desktop-menu)
+set_tests_properties(test-desktop-menu PROPERTIES TIMEOUT 60)
 

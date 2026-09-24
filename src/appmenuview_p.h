@@ -21,20 +21,20 @@
 #define FM_APPMENUVIEW_P_H
 
 #include <QStandardItem>
-#include <menu-cache/menu-cache.h>
+#include "core/vfs/desktop-menu.h"
 #include "core/iconinfo.h"
 
 namespace Fm {
 
 class AppMenuViewItem : public QStandardItem {
 public:
-    explicit AppMenuViewItem(MenuCacheItem* item):
-        item_(menu_cache_item_ref(item)) {
+    explicit AppMenuViewItem(DesktopMenuItem* item):
+        item_(desktop_menu_item_ref(item)) {
         std::shared_ptr<const Fm::IconInfo> icon;
-        if(menu_cache_item_get_icon(item)) {
-            icon = Fm::IconInfo::fromName(menu_cache_item_get_icon(item));
+        if(const char* iconName = desktop_menu_item_get_icon(item_)) {
+            icon = Fm::IconInfo::fromName(iconName);
         }
-        setText(QString::fromUtf8(menu_cache_item_get_name(item)));
+        setText(QString::fromUtf8(desktop_menu_item_get_name(item_)));
         setEditable(false);
         setDragEnabled(false);
         if(icon) {
@@ -43,27 +43,23 @@ public:
     }
 
     ~AppMenuViewItem() override {
-        menu_cache_item_unref(item_);
+        desktop_menu_item_unref(item_);
     }
 
-    MenuCacheItem* item() {
+    DesktopMenuItem* item() const {
         return item_;
     }
 
-    int type() const override {
-        return menu_cache_item_get_type(item_);
+    bool isApp() const {
+        return desktop_menu_item_get_item_type(item_) == DESKTOP_MENU_TYPE_APP;
     }
 
-    bool isApp() {
-        return type() == MENU_CACHE_TYPE_APP;
-    }
-
-    bool isDir() {
-        return type() == MENU_CACHE_TYPE_DIR;
+    bool isDir() const {
+        return desktop_menu_item_get_item_type(item_) == DESKTOP_MENU_TYPE_DIR;
     }
 
 private:
-    MenuCacheItem* item_;
+    DesktopMenuItem* item_;
 };
 
 }

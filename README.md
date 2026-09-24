@@ -16,8 +16,8 @@ fm-qt-config.cmake.in is licensed under the terms of the
 
 ### Compiling source code
 
-Runtime dependencies are Qt X11 Extras (although libfm-qt works under Wayland too)
-and menu-cache (not all libfm features are provided by libfm-qt yet).  
+Runtime dependencies are Qt X11 Extras (although libfm-qt works under Wayland too);
+not all libfm features are provided by libfm-qt yet.  
 Additional build dependencies are CMake,
 [lxqt-build-tools](https://github.com/lxqt/lxqt-build-tools),[lxqt-menu-data](https://github.com/lxqt/lxqt-menu-data) and, optionally, Git for pulling latest VCS checkouts.
 
