@@ -823,7 +823,34 @@ static void _fm_vfs_menu_enumerator_dispose(GObject *object)
     G_OBJECT_CLASS(fm_vfs_menu_enumerator_parent_class)->dispose(object);
 }
 
-GIcon* _fm_icon_from_name(const char* name); /* defined in core/iconinfo.cpp */
+static GIcon* _fm_icon_from_name(const char* name)
+{
+    GIcon* gicon = NULL;
+    if(G_LIKELY(name))
+    {
+        gchar *dot;
+        if(g_path_is_absolute(name))
+        {
+            gicon = g_themed_icon_new(name);
+        }
+        else if(G_UNLIKELY((dot = strrchr((char*)name, '.')) != NULL && dot > name &&
+                (g_ascii_strcasecmp(&dot[1], "png") == 0
+                 || g_ascii_strcasecmp(&dot[1], "svg") == 0
+                 || g_ascii_strcasecmp(&dot[1], "xpm") == 0)))
+        {
+            /* some desktop entries have invalid icon name which contains
+               suffix so let strip the suffix from such invalid name */
+            dot = g_strndup(name, dot - name);
+            gicon = g_themed_icon_new_with_default_fallbacks(dot);
+            g_free(dot);
+        }
+        else
+        {
+            gicon = g_themed_icon_new_with_default_fallbacks(name);
+        }
+    }
+    return gicon;
+}
 
 static GFileInfo *_g_file_info_from_desktop_menu_item(DesktopMenuItem *item
                                                     /* GFileAttributeMatcher *attribute_matcher, */)
