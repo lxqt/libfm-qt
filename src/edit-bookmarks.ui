@@ -59,9 +59,36 @@
    <item row="1" column="1">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="addItem">
-       <property name="text">
-        <string>&amp;Add Item</string>
+      <widget class="QToolButton" name="itemUp">
+       <property name="toolTip">
+        <string>Move up</string>
+       </property>
+       <property name="icon">
+        <iconset theme="go-up"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="itemDown">
+       <property name="toolTip">
+        <string>Move down</string>
+       </property>
+       <property name="icon">
+        <iconset theme="go-down"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="addItem">
+       <property name="toolTip">
+        <string>Add</string>
        </property>
        <property name="icon">
         <iconset theme="list-add"/>
@@ -69,9 +96,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="removeItem">
-       <property name="text">
-        <string>&amp;Remove Item</string>
+      <widget class="QToolButton" name="removeItem">
+       <property name="toolTip">
+        <string>Remove</string>
        </property>
        <property name="icon">
         <iconset theme="list-remove"/>

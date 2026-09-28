@@ -43,8 +43,30 @@ EditBookmarksDialog::EditBookmarksDialog(std::shared_ptr<Bookmarks> bookmarks, Q
         ui->treeWidget->addTopLevelItem(item);
     }
 
-    connect(ui->addItem, &QPushButton::clicked, this, &EditBookmarksDialog::onAddItem);
-    connect(ui->removeItem, &QPushButton::clicked, this, &EditBookmarksDialog::onRemoveItem);
+    connect(ui->itemUp, &QToolButton::clicked, this, [this]() {
+        QTreeWidgetItem* item = ui->treeWidget->currentItem();
+        if (item) {
+            int row = ui->treeWidget->indexOfTopLevelItem(item);
+            if (row > 0) {
+                ui->treeWidget->takeTopLevelItem(row);
+                ui->treeWidget->insertTopLevelItem(row - 1, item);
+                ui->treeWidget->setCurrentItem(item);
+            }
+        }
+    });
+    connect(ui->itemDown, &QToolButton::clicked, this, [this]() {
+        QTreeWidgetItem* item = ui->treeWidget->currentItem();
+        if (item) {
+            int row = ui->treeWidget->indexOfTopLevelItem(item);
+            if (row < ui->treeWidget->topLevelItemCount() - 1) {
+                ui->treeWidget->takeTopLevelItem(row);
+                ui->treeWidget->insertTopLevelItem(row + 1, item);
+                ui->treeWidget->setCurrentItem(item);
+            }
+        }
+    });
+    connect(ui->addItem, &QToolButton::clicked, this, &EditBookmarksDialog::onAddItem);
+    connect(ui->removeItem, &QToolButton::clicked, this, &EditBookmarksDialog::onRemoveItem);
 }
 
 EditBookmarksDialog::~EditBookmarksDialog() {
