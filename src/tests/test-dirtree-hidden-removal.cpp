@@ -32,8 +32,8 @@ int main(int argc, char** argv) {
     QTemporaryDir scratch;
     check(scratch.isValid(), "Cannot create scratch directory");
     QDir directory(scratch.path());
-    check(directory.mkdir("visible-anchor"), "Cannot create visible anchor");
-    check(directory.mkdir(".keep"), "Cannot create surviving hidden directory");
+    check(directory.mkdir(QStringLiteral("visible-anchor")), "Cannot create visible anchor");
+    check(directory.mkdir(QStringLiteral(".keep")), "Cannot create surviving hidden directory");
 
     Fm::DirTreeModel model(nullptr);
     Fm::DirTreeView view(nullptr);
@@ -72,23 +72,23 @@ int main(int argc, char** argv) {
     };
 
     for(int cycle = 0; cycle < 3; ++cycle) {
-        churn(".fictional-config.lock");
+        churn(QStringLiteral(".fictional-config.lock"));
     }
     model.setShowHidden(true);
-    check(count(".fictional-config.lock") == 0, "Deleted hidden directories became ghost rows");
-    check(count(".keep") == 1 && count("visible-anchor") == 1,
+    check(count(QStringLiteral(".fictional-config.lock")) == 0, "Deleted hidden directories became ghost rows");
+    check(count(QStringLiteral(".keep")) == 1 && count(QStringLiteral("visible-anchor")) == 1,
           "Unrelated surviving directories were lost");
 
     // Exercise both the existing visible deletion path and previously visible hidden items.
-    churn("visible-temporary");
-    check(count("visible-temporary") == 0, "Visible deletion regressed");
+    churn(QStringLiteral("visible-temporary"));
+    check(count(QStringLiteral("visible-temporary")) == 0, "Visible deletion regressed");
     model.setShowHidden(false);
     const int oldRemovals = removals;
-    check(directory.rmdir(".keep"), "Cannot delete previously visible hidden directory");
+    check(directory.rmdir(QStringLiteral(".keep")), "Cannot delete previously visible hidden directory");
     waitFor([&]() { return removals > oldRemovals; });
     model.setShowHidden(true);
-    check(count(".keep") == 0, "Previously visible hidden directory became a ghost");
-    check(count("visible-anchor") == 1, "Visible anchor disappeared");
+    check(count(QStringLiteral(".keep")) == 0, "Previously visible hidden directory became a ghost");
+    check(count(QStringLiteral("visible-anchor")) == 1, "Visible anchor disappeared");
     qInfo("PASS: hidden churn, surviving rows, visible deletion, hide/delete/show");
     return 0;
 }
