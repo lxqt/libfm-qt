@@ -304,6 +304,18 @@ void DirTreeModelItem::onFolderFilesRemoved(Fm::FileInfoList& files) {
             model->endRemoveRows();
 
         }
+        else {
+            // Hidden items have no view row and can be deleted immediately.
+            for(auto it = hiddenChildren_.begin(); it != hiddenChildren_.end();) {
+                if((*it)->fileInfo_->name() == fi->name()) {
+                    delete *it;
+                    it = hiddenChildren_.erase(it);
+                }
+                else {
+                    ++it;
+                }
+            }
+        }
     }
 
     if(children_.empty()) { // no visible children, add a placeholder item to keep the row expanded
