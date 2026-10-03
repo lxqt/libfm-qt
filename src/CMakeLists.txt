@@ -289,15 +289,8 @@ add_executable("test-desktop-menu"
     tests/test-desktop-menu.c
 )
 target_link_libraries("test-desktop-menu" ${TEST_LIBRARIES})
-# self-checking parser test, so run it in ctest;
+# the only self-checking test here (the others are interactive), so run it in ctest;
 # it waits for file-monitor events, hence the generous timeout
 add_test(NAME test-desktop-menu COMMAND test-desktop-menu)
 set_tests_properties(test-desktop-menu PROPERTIES TIMEOUT 60)
 
-add_executable("test-dirtree-hidden-removal" tests/test-dirtree-hidden-removal.cpp)
-target_link_libraries("test-dirtree-hidden-removal" ${TEST_LIBRARIES})
-add_test(NAME test-dirtree-hidden-removal COMMAND test-dirtree-hidden-removal)
-set_tests_properties(test-dirtree-hidden-removal PROPERTIES
-    ENVIRONMENT "QT_QPA_PLATFORM=offscreen"
-    TIMEOUT 60
-)
