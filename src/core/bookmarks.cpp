@@ -9,11 +9,11 @@ namespace Fm {
 std::weak_ptr<Bookmarks> Bookmarks::globalInstance_;
 
 static inline CStrPtr get_legacy_bookmarks_file(void) {
-    return CStrPtr{g_build_filename(g_get_home_dir(), ".gtk-bookmarks", nullptr)};
+    return CStrPtr{g_build_filename(g_get_user_config_dir(), "gtk-3.0", "bookmarks", nullptr)};
 }
 
 static inline CStrPtr get_new_bookmarks_file(void) {
-    return CStrPtr{g_build_filename(g_get_user_config_dir(), "gtk-3.0", "bookmarks", nullptr)};
+    return CStrPtr{g_build_filename(g_get_user_data_dir(), "libfm-qt", "bookmarks", nullptr)};
 }
 
 BookmarkItem::BookmarkItem(const FilePath& path, const QString name):
@@ -74,14 +74,17 @@ Bookmarks::Bookmarks(QObject* parent):
     QObject(parent),
     idle_handler{false} {
 
-    /* trying the gtk-3.0 first and use it if it exists */
+    /* trying our config file first */
     auto fpath = get_new_bookmarks_file();
     file_ = FilePath::fromLocalPath(fpath.get());
-    load();
-    if(items_.empty()) { /* not found, use legacy file */
+    load(file_);
+    if(items_.empty()) { /* not found, check the legacy, gtk-3.0 file */
         fpath = get_legacy_bookmarks_file();
-        file_ = FilePath::fromLocalPath(fpath.get());
-        load();
+        auto gtkFile = FilePath::fromLocalPath(fpath.get());
+        load(gtkFile);
+        if(!items_.empty()) {
+            queueSave();
+        }
     }
     mon = GObjectPtr<GFileMonitor>{g_file_monitor_file(file_.gfile().get(), G_FILE_MONITOR_NONE, nullptr, nullptr), false};
     if(mon) {
@@ -161,18 +164,21 @@ void Bookmarks::save() {
     }
     idle_handler = false;
     // G_UNLOCK(bookmarks);
-    GError* err = nullptr;
-    if(!g_file_replace_contents(file_.gfile().get(), buf.c_str(), buf.length(), nullptr,
-                                FALSE, G_FILE_CREATE_NONE, nullptr, nullptr, &err)) {
-        g_critical("%s", err->message);
-        g_error_free(err);
+    CStrPtr libfmDataDir{g_build_filename(g_get_user_data_dir(), "libfm-qt", nullptr)};
+    if(g_mkdir_with_parents(libfmDataDir.get(), 0755) == 0) {
+        GError* err = nullptr;
+        if(!g_file_replace_contents(file_.gfile().get(), buf.c_str(), buf.length(), nullptr,
+                                    FALSE, G_FILE_CREATE_NONE, nullptr, nullptr, &err)) {
+            g_critical("%s", err->message);
+            g_error_free(err);
+        }
     }
     /* we changed bookmarks list, let inform who interested in that */
     Q_EMIT changed();
 }
 
-void Bookmarks::load() {
-    auto fpath = file_.localPath();
+void Bookmarks::load(const FilePath& path) {
+    auto fpath = path.localPath();
     FILE* f;
     char buf[1024];
     /* load the file */
@@ -205,7 +211,7 @@ void Bookmarks::load() {
 void Bookmarks::onFileChanged(GFileMonitor* /*mon*/, GFile* /*gf*/, GFile* /*other*/, GFileMonitorEvent /*evt*/) {
     // reload the bookmarks
     items_.clear();
-    load();
+    load(file_);
     Q_EMIT changed();
 }
 

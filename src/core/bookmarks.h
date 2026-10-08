@@ -68,7 +68,7 @@ private Q_SLOTS:
     void save();
 
 private:
-    void load();
+    void load(const FilePath& path);
     void queueSave();
 
     static void _onFileChanged(GFileMonitor* mon, GFile* gf, GFile* other, GFileMonitorEvent evt, Bookmarks* _this) {
