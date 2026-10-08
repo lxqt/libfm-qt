@@ -35,7 +35,7 @@ namespace Fm {
 void PathEditJob::runJob() {
     GError* err = nullptr;
     GFileEnumerator* enu = g_file_enumerate_children(dirName,
-                           // G_FILE_ATTRIBUTE_STANDARD_NAME","
+                           G_FILE_ATTRIBUTE_STANDARD_NAME"," // needed with search:///; otherwise a crash is imminent
                            G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME","
                            G_FILE_ATTRIBUTE_STANDARD_TYPE,
                            G_FILE_QUERY_INFO_NONE, cancellable,
