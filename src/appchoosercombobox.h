@@ -20,6 +20,7 @@
 #ifndef FM_APPCHOOSERCOMBOBOX_H
 #define FM_APPCHOOSERCOMBOBOX_H
 
+#include "filemenu.h"
 #include "libfmqtglobals.h"
 #include <QComboBox>
 
