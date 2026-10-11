@@ -9,7 +9,7 @@ project(libfm-qt)
 set(LIBFM_QT_LIBRARY_NAME "fm-qt6" CACHE STRING "fm-qt6")
 
 set(LIBFM_QT_API_VERSION_MAJOR 2)
-set(LIBFM_QT_API_VERSION_MINOR 4)
+set(LIBFM_QT_API_VERSION_MINOR 5)
 set(LIBFM_QT_API_VERSION_PATCH 0)
 set(LIBFM_QT_API_VERSION ${LIBFM_QT_API_VERSION_MAJOR}.${LIBFM_QT_API_VERSION_MINOR}.${LIBFM_QT_API_VERSION_PATCH})
 
@@ -23,12 +23,12 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 # universal way to translate a libtool version-info to a cmake version.
 # We use "(current-age).age.revision" as the cmake version.
 # current: 6, revision: 0, age: 0 => version: 6.0.0
-set(LIBFM_QT_ABI_VERSION "17.0.0")
-set(LIBFM_QT_SOVERSION "17")
+set(LIBFM_QT_ABI_VERSION "18.0.0")
+set(LIBFM_QT_SOVERSION "18")
 
 set(GLIB_MINIMUM_VERSION "2.50.0")
-set(LXQTMENUDATA_MINIMUM_VERSION "2.4.0")
-set(LXQTBT_MINIMUM_VERSION "2.4.0")
+set(LXQTMENUDATA_MINIMUM_VERSION "2.5.0")
+set(LXQTBT_MINIMUM_VERSION "2.5.0")
 set(QT_MINIMUM_VERSION "6.10.0")
 
 find_package(Qt6Widgets "${QT_MINIMUM_VERSION}" REQUIRED)
