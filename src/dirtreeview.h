@@ -21,6 +21,7 @@
 #define FM_DIRTREEVIEW_H
 
 #include "libfmqtglobals.h"
+#include "filemenu.h"
 #include <QTreeView>
 
 #include "core/filepath.h"
@@ -29,7 +30,6 @@ class QItemSelection;
 
 namespace Fm {
 
-class FileMenu;
 class DirTreeModelItem;
 
 class LIBFM_QT_API DirTreeView : public QTreeView {
