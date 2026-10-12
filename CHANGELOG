@@ -1,7 +1,7 @@
 libfm-qt-2.5.0 / 2026-11-05
 ============================
  * Replaced menu-cache with a custom desktop-menu implementation.
- * Enhanced search experience by incremental file listing and being able to stop a search job.
+ * Implemented incremental file listing (to be used by pcmanfm-qt only for searching).
  * Used `QPlatformFileDialogHelper::styleHint` instead of delayed showing of file dialog (the old workaround)
  * Fixed a regression in color and font dialogs.
  * Made tree view header unmovable.
