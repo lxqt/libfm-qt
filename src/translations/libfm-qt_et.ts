@@ -358,7 +358,7 @@
 <context>
     <name>Fm::AppChooserDialog</name>
     <message>
-        <location filename="../appchooserdialog.cpp" line="268"/>
+        <location filename="../appchooserdialog.cpp" line="288"/>
         <source>Select an application to open &quot;%1&quot; files</source>
         <translation>Vali rakendus „%1“ failide avamiseks</translation>
     </message>
@@ -379,7 +379,7 @@
 <context>
     <name>Fm::DirListJob</name>
     <message>
-        <location filename="../core/dirlistjob.cpp" line="48"/>
+        <location filename="../core/dirlistjob.cpp" line="52"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
         <translation>Kirjeldatud kaust „%1“ ei ole korrektne</translation>
     </message>
@@ -393,8 +393,8 @@
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
-        <location filename="../dirtreemodelitem.cpp" line="311"/>
-        <location filename="../dirtreemodelitem.cpp" line="409"/>
+        <location filename="../dirtreemodelitem.cpp" line="323"/>
+        <location filename="../dirtreemodelitem.cpp" line="421"/>
         <source>&lt;No sub folders&gt;</source>
         <translation>&lt;Alamkaustu pole&gt;</translation>
     </message>
@@ -634,12 +634,12 @@ Kas sa soovid seda asenda?</translation>
 <context>
     <name>Fm::FileDialogHelper</name>
     <message>
-        <location filename="../filedialoghelper.cpp" line="140"/>
+        <location filename="../filedialoghelper.cpp" line="137"/>
         <source>Open File</source>
         <translation>Ava fail</translation>
     </message>
     <message>
-        <location filename="../filedialoghelper.cpp" line="141"/>
+        <location filename="../filedialoghelper.cpp" line="138"/>
         <source>Save File</source>
         <translation>Salvesta fail</translation>
     </message>
@@ -1216,12 +1216,12 @@ Kas sa sooviksid neid siis kustutada?</translation>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="410"/>
+        <location filename="../folderview.cpp" line="412"/>
         <source>Auto-resize columns</source>
         <translation>Muuda veergude laiust automaatselt</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="427"/>
+        <location filename="../folderview.cpp" line="429"/>
         <source>Visible Columns</source>
         <translation>Nähtavad veerud</translation>
     </message>
@@ -1306,69 +1306,69 @@ Kas sa sooviksid neid siis kustutada?</translation>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="563"/>
+        <location filename="../placesview.cpp" line="566"/>
         <source>Open in New Tab</source>
         <translation>Ava uuel kaardil</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="567"/>
+        <location filename="../placesview.cpp" line="570"/>
         <source>Open in New Window</source>
         <translation>Ava uues aknas</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="580"/>
+        <location filename="../placesview.cpp" line="583"/>
         <source>Empty Trash</source>
         <translation>Tühjenda prügikast</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="600"/>
-        <location filename="../placesview.cpp" line="667"/>
+        <location filename="../placesview.cpp" line="603"/>
+        <location filename="../placesview.cpp" line="670"/>
         <source>Hide</source>
         <translation>Peida</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="617"/>
+        <location filename="../placesview.cpp" line="620"/>
         <source>Move Bookmark Up</source>
         <translation>Liiguta järjehoidja üles</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="624"/>
+        <location filename="../placesview.cpp" line="627"/>
         <source>Move Bookmark Down</source>
         <translation>Liiguta järjehoidja alla</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="629"/>
+        <location filename="../placesview.cpp" line="632"/>
         <source>Rename Bookmark</source>
         <translation>Muuda järjehoidja nime</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="633"/>
+        <location filename="../placesview.cpp" line="636"/>
         <source>Remove Bookmark</source>
         <translation>Kustuta järjehoidja</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="643"/>
-        <location filename="../placesview.cpp" line="681"/>
+        <location filename="../placesview.cpp" line="646"/>
+        <location filename="../placesview.cpp" line="684"/>
         <source>Unmount</source>
         <translation>Haagi lahti</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="647"/>
+        <location filename="../placesview.cpp" line="650"/>
         <source>Mount</source>
         <translation>Haagi</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="653"/>
+        <location filename="../placesview.cpp" line="656"/>
         <source>Eject</source>
         <translation>Väljasta</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="658"/>
+        <location filename="../placesview.cpp" line="661"/>
         <source>Safely Remove</source>
         <translation>Eemalda turvaliselt</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="693"/>
+        <location filename="../placesview.cpp" line="696"/>
         <source>Show All Entries</source>
         <translation>Näita kõiki kirjeid</translation>
     </message>

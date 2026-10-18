@@ -358,7 +358,7 @@
 <context>
     <name>Fm::AppChooserDialog</name>
     <message>
-        <location filename="../appchooserdialog.cpp" line="268"/>
+        <location filename="../appchooserdialog.cpp" line="288"/>
         <source>Select an application to open &quot;%1&quot; files</source>
         <translation>&quot;%1&quot; dosyalarını açmak için bir uygulama seçin</translation>
     </message>
@@ -379,7 +379,7 @@
 <context>
     <name>Fm::DirListJob</name>
     <message>
-        <location filename="../core/dirlistjob.cpp" line="48"/>
+        <location filename="../core/dirlistjob.cpp" line="52"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
         <translation>Belirtilen dizin &apos;%1&apos; geçerli değil</translation>
     </message>
@@ -393,8 +393,8 @@
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
-        <location filename="../dirtreemodelitem.cpp" line="311"/>
-        <location filename="../dirtreemodelitem.cpp" line="409"/>
+        <location filename="../dirtreemodelitem.cpp" line="323"/>
+        <location filename="../dirtreemodelitem.cpp" line="421"/>
         <source>&lt;No sub folders&gt;</source>
         <translation>&lt;Alt dizin yok&gt;</translation>
     </message>
@@ -634,12 +634,12 @@ Değiştirmek istiyor musunuz?</translation>
 <context>
     <name>Fm::FileDialogHelper</name>
     <message>
-        <location filename="../filedialoghelper.cpp" line="140"/>
+        <location filename="../filedialoghelper.cpp" line="137"/>
         <source>Open File</source>
         <translation>Dosyayı Aç</translation>
     </message>
     <message>
-        <location filename="../filedialoghelper.cpp" line="141"/>
+        <location filename="../filedialoghelper.cpp" line="138"/>
         <source>Save File</source>
         <translation>Dosyayı Kaydet</translation>
     </message>
@@ -1212,12 +1212,12 @@ Onun yerine silmek ister misiniz?</translation>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="410"/>
+        <location filename="../folderview.cpp" line="412"/>
         <source>Auto-resize columns</source>
         <translation>Sütunları otomatik ölçeklendir</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="427"/>
+        <location filename="../folderview.cpp" line="429"/>
         <source>Visible Columns</source>
         <translation>Görünür Sütunlar</translation>
     </message>
@@ -1302,69 +1302,69 @@ Onun yerine silmek ister misiniz?</translation>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="563"/>
+        <location filename="../placesview.cpp" line="566"/>
         <source>Open in New Tab</source>
         <translation>Yeni Sekmede Aç</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="567"/>
+        <location filename="../placesview.cpp" line="570"/>
         <source>Open in New Window</source>
         <translation>Yeni Pencerede Aç</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="580"/>
+        <location filename="../placesview.cpp" line="583"/>
         <source>Empty Trash</source>
         <translation>Çöp Kutusunu Boşalt</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="600"/>
-        <location filename="../placesview.cpp" line="667"/>
+        <location filename="../placesview.cpp" line="603"/>
+        <location filename="../placesview.cpp" line="670"/>
         <source>Hide</source>
         <translation>Gizle</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="617"/>
+        <location filename="../placesview.cpp" line="620"/>
         <source>Move Bookmark Up</source>
         <translation>Yer İmini Yukarı Taşı</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="624"/>
+        <location filename="../placesview.cpp" line="627"/>
         <source>Move Bookmark Down</source>
         <translation>Yer İmini Aşağı Taşı</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="629"/>
+        <location filename="../placesview.cpp" line="632"/>
         <source>Rename Bookmark</source>
         <translation>Yer İmini Yeniden Adlandır</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="633"/>
+        <location filename="../placesview.cpp" line="636"/>
         <source>Remove Bookmark</source>
         <translation>Yer İmini Kaldır</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="643"/>
-        <location filename="../placesview.cpp" line="681"/>
+        <location filename="../placesview.cpp" line="646"/>
+        <location filename="../placesview.cpp" line="684"/>
         <source>Unmount</source>
         <translation>Ayır</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="647"/>
+        <location filename="../placesview.cpp" line="650"/>
         <source>Mount</source>
         <translation>Bağla</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="653"/>
+        <location filename="../placesview.cpp" line="656"/>
         <source>Eject</source>
         <translation>Çıkart</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="658"/>
+        <location filename="../placesview.cpp" line="661"/>
         <source>Safely Remove</source>
         <translation>Güvenle Kaldır</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="693"/>
+        <location filename="../placesview.cpp" line="696"/>
         <source>Show All Entries</source>
         <translation>Tüm Girdileri Göster</translation>
     </message>
