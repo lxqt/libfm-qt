@@ -6,27 +6,27 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="14"/>
         <source>Choose an Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Chọn Ứng dụng</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Đã Cài Các Ứng dụng</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Tùy chỉnh Lệnh</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
         <source>Command line to execute:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dòng Lệnh để Thực thi:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="78"/>
         <source>Application name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tên Ứng dụng:</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="62"/>
@@ -37,22 +37,28 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Các Mã Đặc biệt Có thể Sử dụng trong Dòng Lệnh:&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Đại diện Tên Tệp Đơn&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Đại diện Tên Tệp Phức&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Đại diện URL Đơn của Tệp&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Đại diện Các URL Phức&lt;/li&gt;
+&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Keep terminal window open after command execution</source>
-        <translation type="unfinished"></translation>
+        <translation>Giữ Cửa sổ Lệnh Mở Sau khi Thực thi Lệnh</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="88"/>
         <source>Execute in terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>Thực thi trong Trình giả lập Lệnh</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation type="unfinished"></translation>
+        <translation>Đặt Ứng dụng Đã Thiết lập như Hành động Mặc định của Kiểu Tệp Này</translation>
     </message>
 </context>
 <context>
@@ -60,32 +66,32 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="14"/>
         <source>Edit Bookmarks</source>
-        <translation type="unfinished"></translation>
+        <translation>Sửa Dấu trang</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="49"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Tên</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="54"/>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Vị trí</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="64"/>
         <source>&amp;Add Item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Thêm Công cụ</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="74"/>
         <source>&amp;Remove Item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Loại bỏ Công cụ</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="20"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation type="unfinished"></translation>
+        <translation>Kéo và Thả để Sắp xếp lại Công cụ</translation>
     </message>
 </context>
 <context>
@@ -93,32 +99,32 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation type="unfinished"></translation>
+        <translation>Thực thi Tệp</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="42"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Mở</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="55"/>
         <source>E&amp;xecute</source>
-        <translation type="unfinished"></translation>
+        <translation>T&amp;hực thi</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="65"/>
         <source>Execute in &amp;Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Thực th&amp;i trong Lệnh</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="88"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Hủy</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="102"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Ghi nhớ cho Các Tệp Tiếp theo của Loại Này</translation>
     </message>
 </context>
 <context>
@@ -126,17 +132,17 @@
     <message>
         <location filename="../filedialog.ui" line="22"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Đường dẫn:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="65"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tên Tệp:</translation>
     </message>
     <message>
         <location filename="../filedialog.ui" line="85"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Loại Tệp:</translation>
     </message>
 </context>
 <context>
@@ -144,32 +150,32 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="42"/>
         <source>Destination:</source>
-        <translation type="unfinished"></translation>
+        <translation>Điểm đến:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="65"/>
         <source>Processing:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiến trình:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="78"/>
         <source>Preparing...</source>
-        <translation type="unfinished"></translation>
+        <translation>Chuẩn bị...</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="85"/>
         <source>Progress:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tăng trưởng:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="119"/>
         <source>Time remaining:</source>
-        <translation type="unfinished"></translation>
+        <translation>Thời gian Còn lại:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="99"/>
         <source>Files processed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tệp Đã Xử lý:</translation>
     </message>
 </context>
 <context>
@@ -177,168 +183,168 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Thuộc tính Tệp</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Chung</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vị trí:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="132"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Loại Tệp:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="155"/>
         <source>MIME type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Loại MIME:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="195"/>
         <source>File size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cỡ Tệp:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="218"/>
         <source>On-disk size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cỡ Trên Đĩa:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="241"/>
         <source>Last modified:</source>
-        <translation type="unfinished"></translation>
+        <translation>Điều chỉnh Lần Cuối:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
         <source>Link target:</source>
-        <translation type="unfinished"></translation>
+        <translation>Đường dẫn Mục tiêu:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="178"/>
         <source>Open With:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở Với:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="264"/>
         <source>Last accessed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Truy cập Lần Cuối:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="287"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Đã Tạo:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="310"/>
         <source>Contains:</source>
-        <translation type="unfinished"></translation>
+        <translation>Chứa:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="330"/>
         <source>Emblem:</source>
-        <translation type="unfinished"></translation>
+        <translation>Biểu tượng:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="342"/>
         <source>Choose emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Chọn Biểu tượng</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="361"/>
         <source>Clear emblem</source>
-        <translation type="unfinished"></translation>
+        <translation>Làm sạch Biểu tượng</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="397"/>
         <source>Device Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Thiết bị Sử dụng:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="424"/>
         <source>Permissions</source>
-        <translation type="unfinished"></translation>
+        <translation>Quyền hạn</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="439"/>
         <source>Ownership</source>
-        <translation type="unfinished"></translation>
+        <translation>Quyền sở hữu</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="473"/>
         <location filename="../file-props.ui" line="528"/>
         <location filename="../file-props.ui" line="642"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nhóm:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="457"/>
         <location filename="../file-props.ui" line="511"/>
         <location filename="../file-props.ui" line="590"/>
         <source>Owner:</source>
-        <translation type="unfinished"></translation>
+        <translation>Chủ sở hữu:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="492"/>
         <source>Access Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Điều khiển Truy cập</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="545"/>
         <location filename="../file-props.ui" line="694"/>
         <source>Other:</source>
-        <translation type="unfinished"></translation>
+        <translation>Khác:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="562"/>
         <source>Make the file executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Tạo Tệp Thực thi</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="603"/>
         <location filename="../file-props.ui" line="655"/>
         <location filename="../file-props.ui" line="707"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>Đọc</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="616"/>
         <location filename="../file-props.ui" line="668"/>
         <location filename="../file-props.ui" line="720"/>
         <source>Write</source>
-        <translation type="unfinished"></translation>
+        <translation>Viết</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="629"/>
         <location filename="../file-props.ui" line="681"/>
         <location filename="../file-props.ui" line="733"/>
         <source>Execute</source>
-        <translation type="unfinished"></translation>
+        <translation>Thực thi</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>Sticky</source>
-        <translation type="unfinished"></translation>
+        <translation>Nhãn dãn</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
         <source>SetUID</source>
-        <translation type="unfinished"></translation>
+        <translation>Đặt UID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="763"/>
         <source>SetGID</source>
-        <translation type="unfinished"></translation>
+        <translation>Đặt GID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="792"/>
         <source>Advanced Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Chế độ Nâng cao</translation>
     </message>
 </context>
 <context>
@@ -346,7 +352,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation type="unfinished"></translation>
+        <translation>Tùy chỉnh</translation>
     </message>
 </context>
 <context>
@@ -354,7 +360,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="268"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation type="unfinished"></translation>
+        <translation>Chọn Ứng dụng để Mở Tệp &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -362,12 +368,12 @@
     <message>
         <location filename="../createnewmenu.cpp" line="62"/>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Thư mục</translation>
     </message>
     <message>
         <location filename="../createnewmenu.cpp" line="66"/>
         <source>Blank File</source>
-        <translation type="unfinished"></translation>
+        <translation>Tệp Trống</translation>
     </message>
 </context>
 <context>
@@ -375,7 +381,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="48"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation type="unfinished"></translation>
+        <translation>Thư mục Chỉ định &apos;%1&apos; Không Hợp lệ</translation>
     </message>
 </context>
 <context>
@@ -383,14 +389,14 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Đang Tải...</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
         <location filename="../dirtreemodelitem.cpp" line="311"/>
         <location filename="../dirtreemodelitem.cpp" line="409"/>
         <source>&lt;No sub folders&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Không có Tệp Con&gt;</translation>
     </message>
 </context>
 <context>
@@ -398,17 +404,17 @@
     <message>
         <location filename="../dirtreeview.cpp" line="217"/>
         <source>Open in New T&amp;ab</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở trong T&amp;ab Mới</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="221"/>
         <source>Open in New Win&amp;dow</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở trong &amp;Cửa sổ Mới</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="226"/>
         <source>Open in Termina&amp;l</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở trong &amp;Lệnh</translation>
     </message>
 </context>
 <context>
@@ -416,27 +422,27 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation type="unfinished"></translation>
+        <translation>Sao chép ở Đây</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation type="unfinished"></translation>
+        <translation>Di chuyển ở Đây</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation type="unfinished"></translation>
+        <translation>Tạo Liên kết Tượng trưng ở Đây</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Hủy</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation type="unfinished"></translation>
+        <translation>Không thể Thả ở Đây</translation>
     </message>
 </context>
 <context>
@@ -444,7 +450,7 @@
     <message>
         <location filename="../editbookmarksdialog.cpp" line="84"/>
         <source>New bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Dấu trang Mới</translation>
     </message>
 </context>
 <context>
@@ -453,18 +459,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Tệp &apos;%1&apos; Có vẻ Nằm trên Màn hình Nền.
+Bạn Muốn Làm Gì với Tệp?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Tệp Văn bản &apos;%1&apos; Có vẻ là Tệp Thực thi.
+Bạn Muốn Làm Gì với Tệp?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Tệp &apos;%1&apos; Có thể Thực thi. Bạn Muốn Thực thi Tệp?</translation>
     </message>
 </context>
 <context>
@@ -472,154 +480,155 @@ What do you want to do with it?</source>
     <message>
         <location filename="../filedialog.cpp" line="115"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Trở về</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="116"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Trái</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="122"/>
         <source>Go Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiếp theo</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="123"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Phải</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="130"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Tải lại</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="131"/>
         <source>F5</source>
         <comment>Reload</comment>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="148"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Tạo Thư mục</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="164"/>
         <source>Icon View</source>
-        <translation type="unfinished"></translation>
+        <translation>Xem Biểu tượng</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="168"/>
         <source>Thumbnail View</source>
-        <translation type="unfinished"></translation>
+        <translation>Xem Ảnh thu nhỏ</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Compact View</source>
-        <translation type="unfinished"></translation>
+        <translation>Xem Thu gọn</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="176"/>
         <source>Detailed List View</source>
-        <translation type="unfinished"></translation>
+        <translation>Xem Danh sách Chi tiết</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="184"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Cỡ Biểu tượng</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="186"/>
         <source>Size of big icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cỡ Biểu tượng Lớn:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="193"/>
         <source>Size of small icons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cỡ Biểu tượng Nhỏ:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="200"/>
         <source>Size of thumbnails:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cỡ Ảnh thu nhỏ:</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="216"/>
         <source>Show Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiện Nội dung Ẩn</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="228"/>
         <source>Show Thumbnails</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiện Ảnh thu nhỏ</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="233"/>
         <source>Show File Tooltips</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiện Hộp chú thích Tệp</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="240"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuộn Mượt</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="255"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Tùy chọn</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="605"/>
         <location filename="../filedialog.cpp" line="1073"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Lỗi</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="605"/>
         <source>Please select a file</source>
-        <translation type="unfinished"></translation>
+        <translation>Chọn Tệp</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="681"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Đã Tồn tại.
+Bạn Muốn Thay thế?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1035"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Đường dẫn &quot;%1&quot; Không Tồn tại</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1049"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; Không phải Thư mục</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1059"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; Không phải Tệp</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1213"/>
         <location filename="../filedialog.cpp" line="1330"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Mở</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1216"/>
         <location filename="../filedialog.cpp" line="1338"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Lưu</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1223"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tất cả Tệp (*)</translation>
     </message>
 </context>
 <context>
@@ -627,12 +636,12 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialoghelper.cpp" line="140"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở Tệp</translation>
     </message>
     <message>
         <location filename="../filedialoghelper.cpp" line="141"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Lưu Tệp</translation>
     </message>
 </context>
 <context>
@@ -640,7 +649,7 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -648,100 +657,100 @@ Do you want to replace it?</source>
     <message>
         <location filename="../filemenu.cpp" line="86"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="90"/>
         <source>Open With...</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở Với...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="419"/>
         <source>Many files</source>
-        <translation type="unfinished"></translation>
+        <translation>Nhiều Tệp</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="420"/>
         <source>Do you want to open these %1 files?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Bạn Muốn Mở Tệp %1?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="181"/>
         <source>Other Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Ứng dụng Khác</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="188"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tạo Mới</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="207"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>Lư&amp;u lại</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="217"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Cắt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="221"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Sao chép</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="225"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>Dán</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="229"/>
         <location filename="../filemenu.cpp" line="547"/>
         <source>&amp;Move to Trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Đưa vào Thù&amp;ng rác</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="233"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi tên</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="289"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation>Đa truy cập</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="303"/>
         <source>Unmount</source>
-        <translation type="unfinished"></translation>
+        <translation>Hủy Đa truy cập</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="317"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Đẩy ra</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="338"/>
         <source>Extract to...</source>
-        <translation type="unfinished"></translation>
+        <translation>Giải nén tại...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="346"/>
         <source>Extract Here</source>
-        <translation type="unfinished"></translation>
+        <translation>Giải nén ở Đây</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Compress</source>
-        <translation type="unfinished"></translation>
+        <translation>Nén</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="362"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Thuộc tính</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="376"/>
