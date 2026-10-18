@@ -358,7 +358,7 @@
 <context>
     <name>Fm::AppChooserDialog</name>
     <message>
-        <location filename="../appchooserdialog.cpp" line="268"/>
+        <location filename="../appchooserdialog.cpp" line="288"/>
         <source>Select an application to open &quot;%1&quot; files</source>
         <translation>Chọn Ứng dụng để Mở Tệp &quot;%1&quot;</translation>
     </message>
@@ -379,7 +379,7 @@
 <context>
     <name>Fm::DirListJob</name>
     <message>
-        <location filename="../core/dirlistjob.cpp" line="48"/>
+        <location filename="../core/dirlistjob.cpp" line="52"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
         <translation>Thư mục Chỉ định &apos;%1&apos; Không Hợp lệ</translation>
     </message>
@@ -393,8 +393,8 @@
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
-        <location filename="../dirtreemodelitem.cpp" line="311"/>
-        <location filename="../dirtreemodelitem.cpp" line="409"/>
+        <location filename="../dirtreemodelitem.cpp" line="323"/>
+        <location filename="../dirtreemodelitem.cpp" line="421"/>
         <source>&lt;No sub folders&gt;</source>
         <translation>&lt;Không có Tệp Con&gt;</translation>
     </message>
@@ -634,12 +634,12 @@ Bạn Muốn Thay thế?</translation>
 <context>
     <name>Fm::FileDialogHelper</name>
     <message>
-        <location filename="../filedialoghelper.cpp" line="140"/>
+        <location filename="../filedialoghelper.cpp" line="137"/>
         <source>Open File</source>
         <translation>Mở Tệp</translation>
     </message>
     <message>
-        <location filename="../filedialoghelper.cpp" line="141"/>
+        <location filename="../filedialoghelper.cpp" line="138"/>
         <source>Save File</source>
         <translation>Lưu Tệp</translation>
     </message>
@@ -779,7 +779,7 @@ Bạn Muốn Thay thế?</translation>
     <message>
         <location filename="../fileoperation.cpp" line="317"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lỗi</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="318"/>
@@ -884,7 +884,7 @@ Do you want to delete them instead?</source>
         <location filename="../fileoperationdialog.cpp" line="149"/>
         <location filename="../fileoperationdialog.cpp" line="155"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lỗi</translation>
     </message>
 </context>
 <context>
@@ -902,7 +902,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filepropsdialog.cpp" line="172"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Đọc</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="173"/>
@@ -986,7 +986,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../filesearchdialog.cpp" line="157"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lỗi</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="157"/>
@@ -1022,7 +1022,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="70"/>
         <source>Create &amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Tạo Mới</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="75"/>
@@ -1042,7 +1042,7 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermenu.cpp" line="105"/>
         <source>Show Hidden</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hiện Nội dung Ẩn</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="140"/>
@@ -1125,27 +1125,27 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="306"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vị trí:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="310"/>
         <source>File type:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Loại Tệp:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="315"/>
         <source>File size:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cỡ Tệp:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>Last modified:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Điều chỉnh Lần Cuối:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
         <source>Last accessed:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Truy cập Lần Cuối:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
@@ -1155,22 +1155,22 @@ Do you want to delete them instead?</source>
     <message>
         <location filename="../foldermodel.cpp" line="323"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Đã Tạo:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="328"/>
         <source>Owner:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chủ sở hữu:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="329"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nhóm:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="396"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tên</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="399"/>
@@ -1211,12 +1211,12 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="410"/>
+        <location filename="../folderview.cpp" line="412"/>
         <source>Auto-resize columns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="427"/>
+        <location filename="../folderview.cpp" line="429"/>
         <source>Visible Columns</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1301,69 +1301,69 @@ Do you want to delete them instead?</source>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="563"/>
+        <location filename="../placesview.cpp" line="566"/>
         <source>Open in New Tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="567"/>
+        <location filename="../placesview.cpp" line="570"/>
         <source>Open in New Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="580"/>
+        <location filename="../placesview.cpp" line="583"/>
         <source>Empty Trash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="600"/>
-        <location filename="../placesview.cpp" line="667"/>
+        <location filename="../placesview.cpp" line="603"/>
+        <location filename="../placesview.cpp" line="670"/>
         <source>Hide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="617"/>
+        <location filename="../placesview.cpp" line="620"/>
         <source>Move Bookmark Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="624"/>
+        <location filename="../placesview.cpp" line="627"/>
         <source>Move Bookmark Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="629"/>
+        <location filename="../placesview.cpp" line="632"/>
         <source>Rename Bookmark</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="633"/>
+        <location filename="../placesview.cpp" line="636"/>
         <source>Remove Bookmark</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="643"/>
-        <location filename="../placesview.cpp" line="681"/>
+        <location filename="../placesview.cpp" line="646"/>
+        <location filename="../placesview.cpp" line="684"/>
         <source>Unmount</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hủy Đa truy cập</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="647"/>
+        <location filename="../placesview.cpp" line="650"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Đa truy cập</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="653"/>
+        <location filename="../placesview.cpp" line="656"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Đẩy ra</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="658"/>
+        <location filename="../placesview.cpp" line="661"/>
         <source>Safely Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="693"/>
+        <location filename="../placesview.cpp" line="696"/>
         <source>Show All Entries</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1427,7 +1427,7 @@ Modified: %2</source>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Đa truy cập</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
@@ -1494,12 +1494,12 @@ Modified: %2</source>
         <location filename="../utilities.cpp" line="154"/>
         <location filename="../utilities.cpp" line="318"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lỗi</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="230"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tạo Thư mục</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="231"/>
@@ -1701,7 +1701,7 @@ Modified: %2</source>
     <message>
         <location filename="../filesearch.ui" line="267"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Thuộc tính</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="273"/>

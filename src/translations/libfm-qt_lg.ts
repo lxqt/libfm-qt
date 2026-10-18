@@ -358,7 +358,7 @@
 <context>
     <name>Fm::AppChooserDialog</name>
     <message>
-        <location filename="../appchooserdialog.cpp" line="268"/>
+        <location filename="../appchooserdialog.cpp" line="288"/>
         <source>Select an application to open &quot;%1&quot; files</source>
         <translation>Londa puloguramu enaakozesebwanga okubikkula fayiro ez&apos;ekika kya &quot;%1&quot;</translation>
     </message>
@@ -379,7 +379,7 @@
 <context>
     <name>Fm::DirListJob</name>
     <message>
-        <location filename="../core/dirlistjob.cpp" line="48"/>
+        <location filename="../core/dirlistjob.cpp" line="52"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
         <translation>Etterekero &apos;%1&apos; erondedwa tekkirizibwa</translation>
     </message>
@@ -393,8 +393,8 @@
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
-        <location filename="../dirtreemodelitem.cpp" line="311"/>
-        <location filename="../dirtreemodelitem.cpp" line="409"/>
+        <location filename="../dirtreemodelitem.cpp" line="323"/>
+        <location filename="../dirtreemodelitem.cpp" line="421"/>
         <source>&lt;No sub folders&gt;</source>
         <translation>&lt;Temuli materekero&gt;</translation>
     </message>
@@ -634,12 +634,12 @@ Oyagala okuzza ebirala mu kifo kya yo?</translation>
 <context>
     <name>Fm::FileDialogHelper</name>
     <message>
-        <location filename="../filedialoghelper.cpp" line="140"/>
+        <location filename="../filedialoghelper.cpp" line="137"/>
         <source>Open File</source>
         <translation>Bikkula fayiro</translation>
     </message>
     <message>
-        <location filename="../filedialoghelper.cpp" line="141"/>
+        <location filename="../filedialoghelper.cpp" line="138"/>
         <source>Save File</source>
         <translation>Kazza fayiro</translation>
     </message>
@@ -1216,12 +1216,12 @@ Fayiro ezo zo nzigyeewobugyi?</translation>
 <context>
     <name>Fm::FolderViewTreeView</name>
     <message>
-        <location filename="../folderview.cpp" line="410"/>
+        <location filename="../folderview.cpp" line="412"/>
         <source>Auto-resize columns</source>
         <translation>Enkumbo zeekyusize obugazi</translation>
     </message>
     <message>
-        <location filename="../folderview.cpp" line="427"/>
+        <location filename="../folderview.cpp" line="429"/>
         <source>Visible Columns</source>
         <translation>Enkumbo eziribaka</translation>
     </message>
@@ -1306,69 +1306,69 @@ Fayiro ezo zo nzigyeewobugyi?</translation>
 <context>
     <name>Fm::PlacesView</name>
     <message>
-        <location filename="../placesview.cpp" line="563"/>
+        <location filename="../placesview.cpp" line="566"/>
         <source>Open in New Tab</source>
         <translation>Bikkulira mu katimbe kapya</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="567"/>
+        <location filename="../placesview.cpp" line="570"/>
         <source>Open in New Window</source>
         <translation>Bikkulira mu ddirisa ppya</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="580"/>
+        <location filename="../placesview.cpp" line="583"/>
         <source>Empty Trash</source>
         <translation>Kunkumula bisuulidwa</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="600"/>
-        <location filename="../placesview.cpp" line="667"/>
+        <location filename="../placesview.cpp" line="603"/>
+        <location filename="../placesview.cpp" line="670"/>
         <source>Hide</source>
         <translation>Kisa</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="617"/>
+        <location filename="../placesview.cpp" line="620"/>
         <source>Move Bookmark Up</source>
         <translation>Akakwatakifo k&apos;ambuse</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="624"/>
+        <location filename="../placesview.cpp" line="627"/>
         <source>Move Bookmark Down</source>
         <translation>Akakwatakifo kasse</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="629"/>
+        <location filename="../placesview.cpp" line="632"/>
         <source>Rename Bookmark</source>
         <translation>Kyusa linnya lya kakwatakifo</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="633"/>
+        <location filename="../placesview.cpp" line="636"/>
         <source>Remove Bookmark</source>
         <translation>Gyawo kakwatakifo</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="643"/>
-        <location filename="../placesview.cpp" line="681"/>
+        <location filename="../placesview.cpp" line="646"/>
+        <location filename="../placesview.cpp" line="684"/>
         <source>Unmount</source>
         <translation>Wangula</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="647"/>
+        <location filename="../placesview.cpp" line="650"/>
         <source>Mount</source>
         <translation>Wanga</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="653"/>
+        <location filename="../placesview.cpp" line="656"/>
         <source>Eject</source>
         <translation>Wandula</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="658"/>
+        <location filename="../placesview.cpp" line="661"/>
         <source>Safely Remove</source>
         <translation>Wandula Ekitereka Data Ekigyikamu</translation>
     </message>
     <message>
-        <location filename="../placesview.cpp" line="693"/>
+        <location filename="../placesview.cpp" line="696"/>
         <source>Show All Entries</source>
         <translation>Laga ebirimu byonna</translation>
     </message>
