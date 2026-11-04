@@ -21,7 +21,7 @@
 #define FM_VOLUMELISTMODEL_H
 
 #include "libfmqtglobals.h"
-#include <QAbstractListModel>
+#include <QAbstractTableModel>
 #include "core/volumemanager.h"
 
 namespace Fm {
@@ -30,7 +30,11 @@ namespace Fm {
 // NOT part of FolderModel/FolderModelItem -- meant to be concatenated onto a
 // file-backed ProxyFolderModel via QConcatenateTablesProxyModel instead (see
 // FolderView::setShowVolumes()), so the file model stays untouched.
-class LIBFM_QT_API VolumeListModel : public QAbstractListModel {
+// Rows are drag- and drop-enabled, but the data is handled elsewhere:
+// FolderView's view model leaves volumes out of file drags (a mixed drag would
+// assert in QConcatenateTablesProxyModel::mimeData()), and
+// FolderView::childDropEvent() performs drops on a volume, mounting it if needed.
+class LIBFM_QT_API VolumeListModel : public QAbstractTableModel {
     Q_OBJECT
 public:
     // a volume row never answers FolderModel::FileInfoRole (it has no file),
@@ -43,14 +47,26 @@ public:
     ~VolumeListModel() override;
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+    // QConcatenateTablesProxyModel keeps only the smallest column count of its
+    // sources, so match FolderModel's or the detailed list view loses columns
+    int columnCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role) const override;
+    Qt::ItemFlags flags(const QModelIndex& index) const override;
+    // file URIs, so a view accepts dragging files over a volume
+    QStringList mimeTypes() const override;
+    Qt::DropActions supportedDropActions() const override;
+    // always false: FolderView::childDropEvent() does the drop (see above)
+    bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) override;
 
 private Q_SLOTS:
     void onVolumeAdded(const Fm::Volume& vol);
     void onVolumeRemoved(const Fm::Volume& vol);
+    void onVolumeChanged(const Fm::Volume& vol);
     void onMountChanged(const Fm::Mount& mnt);
 
 private:
+    void emitRowChanged(GVolume* gvol);
+
     std::shared_ptr<VolumeManager> volumeManager_;
     std::vector<Volume> volumes_;
 };

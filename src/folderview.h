@@ -119,6 +119,8 @@ public:
 
     // concatenates a live volume list (see VolumeListModel) onto the file
     // model instead of the desktop having to represent volumes as files.
+    // While on, don't delete the model given to setModel() yourself: replace it
+    // with setModel() or call setShowVolumes(false) first.
     void setShowVolumes(bool show);
     bool showVolumes() const {
         return showVolumes_;
