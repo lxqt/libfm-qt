@@ -20,6 +20,9 @@
 
 #include "folderview.h"
 #include "foldermodel.h"
+#include "volumelistmodel.h"
+#include "mountoperation.h"
+#include <QConcatenateTablesProxyModel>
 #include <QHeaderView>
 #include <QVBoxLayout>
 #include <QContextMenuEvent>
@@ -59,6 +62,77 @@
 static const int scrollAnimFrames = SCROLL_FRAMES_PER_SEC * SCROLL_DURATION / 1000;
 
 using namespace Fm;
+
+namespace {
+
+// The view model used when volumes are shown: the file model, then a VolumeListModel.
+// QConcatenateTablesProxyModel alone would get drag & drop wrong here: it routes drops on
+// blank space to its *last* source (the volumes), doesn't forward the sources' drag/drop
+// actions, and asserts when a drag mixes rows from both sources.
+class FileVolumeViewModel : public QConcatenateTablesProxyModel {
+public:
+    using QConcatenateTablesProxyModel::QConcatenateTablesProxyModel;
+
+    Qt::DropActions supportedDragActions() const override {
+        auto m = fileModel();
+        return m ? m->supportedDragActions() : Qt::IgnoreAction;
+    }
+    Qt::DropActions supportedDropActions() const override {
+        auto m = fileModel();
+        return m ? m->supportedDropActions() : Qt::IgnoreAction;
+    }
+    // QConcatenateTablesProxyModel::sort() does nothing; sort the files (volumes stay last)
+    void sort(int column, Qt::SortOrder order) override {
+        if(auto m = fileModel()) {
+            m->sort(column, order);
+        }
+    }
+    QMimeData* mimeData(const QModelIndexList& indexes) const override {
+        QModelIndexList fileIndexes;
+        for(const auto& index : indexes) {
+            if(!index.data(VolumeListModel::VolumeRole).isValid()) {
+                fileIndexes << index;
+            }
+        }
+        if(fileIndexes.isEmpty()) {
+            // only volumes: generic item data, enough to move icons around (e.g. on the desktop)
+            return QAbstractItemModel::mimeData(indexes);
+        }
+        return QConcatenateTablesProxyModel::mimeData(fileIndexes);
+    }
+    // anything not dropped onto an item (blank space or between items) goes to the folder
+    bool canDropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) const override {
+        if(!parent.isValid()) {
+            auto m = fileModel();
+            return m && m->canDropMimeData(data, action, -1, -1, QModelIndex());
+        }
+        return QConcatenateTablesProxyModel::canDropMimeData(data, action, row, column, parent);
+    }
+    bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) override {
+        if(!parent.isValid()) {
+            auto m = fileModel();
+            return m && m->dropMimeData(data, action, -1, -1, QModelIndex());
+        }
+        return QConcatenateTablesProxyModel::dropMimeData(data, action, row, column, parent);
+    }
+
+private:
+    QAbstractItemModel* fileModel() const {
+        const auto models = sourceModels();
+        return models.isEmpty() ? nullptr : models.first();
+    }
+};
+
+// the ProxyFolderModel a view shows, directly or as the first source of FileVolumeViewModel
+ProxyFolderModel* proxyFolderModelOf(QAbstractItemModel* model) {
+    if(auto concat = qobject_cast<QConcatenateTablesProxyModel*>(model)) {
+        const auto models = concat->sourceModels();
+        model = models.isEmpty() ? nullptr : models.first();
+    }
+    return qobject_cast<ProxyFolderModel*>(model);
+}
+
+} // namespace
 
 FolderViewListView::FolderViewListView(QWidget* parent):
     QListView(parent),
@@ -433,7 +507,7 @@ void FolderViewTreeView::headerContextMenu(const QPoint &p) {
         int filenameColumn = header()->visualIndex(FolderModel::ColumnFileName);
         int dTimeColumn = header()->visualIndex(FolderModel::ColumnFileDTime);
         bool isTrash = false;
-        if(ProxyFolderModel* proxyModel = qobject_cast<ProxyFolderModel*>(model())) {
+        if(ProxyFolderModel* proxyModel = proxyFolderModelOf(model())) {
             if(auto model = static_cast<FolderModel*>(proxyModel->sourceModel())) {
                 if(model->path() && strcmp(model->path().toString().get(), "trash:///") == 0) {
                     isTrash = true;
@@ -476,7 +550,7 @@ void FolderViewTreeView::headerContextMenu(const QPoint &p) {
 void FolderViewTreeView::setModel(QAbstractItemModel* model) {
     QTreeView::setModel(model);
     layoutColumns();
-    if(ProxyFolderModel* proxyModel = qobject_cast<ProxyFolderModel*>(model)) {
+    if(ProxyFolderModel* proxyModel = proxyFolderModelOf(model)) {
         connect(proxyModel, &ProxyFolderModel::sortFilterChanged, this, &FolderViewTreeView::onSortFilterChanged,
                 Qt::UniqueConnection);
         onSortFilterChanged();
@@ -649,7 +723,7 @@ void FolderViewTreeView::layoutColumns() {
         int filenameColumn = headerView->visualIndex(FolderModel::ColumnFileName);
         int dTimeColumn = header()->visualIndex(FolderModel::ColumnFileDTime);
         bool isTrash = false;
-        if(ProxyFolderModel* proxyModel = qobject_cast<ProxyFolderModel*>(model())) {
+        if(ProxyFolderModel* proxyModel = proxyFolderModelOf(model())) {
             if(auto model = static_cast<FolderModel*>(proxyModel->sourceModel())) {
                 if(model->path() && strcmp(model->path().toString().get(), "trash:///") == 0) {
                     isTrash = true;
@@ -856,7 +930,7 @@ void FolderViewTreeView::activation(const QModelIndex& index) {
 }
 
 void FolderViewTreeView::onSortFilterChanged() {
-    if(QSortFilterProxyModel* proxyModel = qobject_cast<QSortFilterProxyModel*>(model())) {
+    if(QSortFilterProxyModel* proxyModel = proxyFolderModelOf(model())) {
         header()->setSortIndicatorShown(true);
         header()->setSortIndicator(proxyModel->sortColumn(), proxyModel->sortOrder());
         if(!isSortingEnabled()) {
@@ -899,6 +973,10 @@ FolderView::FolderView(FolderView::ViewMode _mode, QWidget *parent):
 }
 
 FolderView::~FolderView() {
+    // QConcatenateTablesProxyModel keeps raw pointers to its sources and doesn't notice
+    // their deletion, so drop it before the children (e.g. volumeModel_) are deleted
+    delete concatModel_;
+    concatModel_ = nullptr;
     if(smoothScrollTimer_) {
         disconnect(smoothScrollTimer_, &QTimer::timeout, this, &FolderView::scrollSmoothly);
         smoothScrollTimer_->stop();
@@ -967,25 +1045,26 @@ void FolderView::onItemActivated(QModelIndex index) {
         return;
     }
     if(QItemSelectionModel* selModel = selectionModel()) {
-        QVariant data;
+        QModelIndex target;
         if(index.isValid() && selModel->isSelected(index)) { // activate index only if it is selected
-            if(index.model()) {
-                data = index.model()->data(index, FolderModel::FileInfoRole);
-            }
+            target = index;
         }
         else { // if index is not valid or selected, activate the first selected index
             QModelIndexList selIndexes = mode == DetailedListMode ? selectedRows() : selectedIndexes();
             if(!selIndexes.isEmpty()) {
-                QModelIndex first = selIndexes.first();
-                if(first.model()) {
-                    data = first.model()->data(first, FolderModel::FileInfoRole);
-                }
+                target = selIndexes.first();
             }
         }
-        if(data.isValid()) {
-            auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
-            if(info) {
+        if(target.isValid() && target.model()) {
+            if(auto info = fileInfoFromIndex(target)) {
                 Q_EMIT clicked(ActivatedClick, info);
+                return;
+            }
+            if(showVolumes_) {
+                QVariant volData = target.model()->data(target, VolumeListModel::VolumeRole);
+                if(auto vol = volData.value<std::shared_ptr<const Fm::Volume>>()) {
+                    Q_EMIT volumeClicked(ActivatedClick, *vol);
+                }
             }
         }
     }
@@ -1029,8 +1108,7 @@ void FolderView::onClosingEditor(QWidget* editor, QAbstractItemDelegate::EndEdit
 
     QModelIndex index = view->selectionModel()->currentIndex();
     if(index.isValid() && index.model()) {
-        QVariant data = index.model()->data(index, FolderModel::FileInfoRole);
-        auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
+        auto info = fileInfoFromIndex(index);
         if (info) {
             // NOTE: "Edit name" is used to handle invalid filename encoding.
             auto oldName = QString::fromUtf8(g_file_info_get_edit_name(info->gFileInfo().get()));
@@ -1188,7 +1266,7 @@ void FolderView::setViewMode(ViewMode _mode) {
         if(model_) {
             // FIXME: preserve selections
             model_->setThumbnailSize(iconSize.width());
-            view->setModel(model_);
+            view->setModel(buildViewModel(model_));
             if(recreateView) {
                 connect(view->selectionModel(), &QItemSelectionModel::selectionChanged, this, &FolderView::onSelectionChanged);
             }
@@ -1309,19 +1387,67 @@ ProxyFolderModel* FolderView::model() const {
     return model_;
 }
 
+// returns model_ itself, or model_ concatenated with a live volume list when
+// setShowVolumes(true) is in effect -- this is what actually gets handed to
+// the real QAbstractItemView, while model_ stays the plain, file-only model
+// for everything that only ever deals with real files.
+QAbstractItemModel* FolderView::buildViewModel(ProxyFolderModel* fileModel) {
+    if(!showVolumes_ || !fileModel) {
+        return fileModel;
+    }
+    if(!volumeModel_) {
+        volumeModel_ = new VolumeListModel(this);
+    }
+    if(!concatModel_) {
+        concatModel_ = new FileVolumeViewModel(this);
+    }
+    else {
+        for(auto* src : concatModel_->sourceModels()) {
+            concatModel_->removeSourceModel(src);
+        }
+    }
+    concatModel_->addSourceModel(fileModel);
+    concatModel_->addSourceModel(volumeModel_);
+    return concatModel_;
+}
+
 void FolderView::setModel(ProxyFolderModel* model) {
     if(view) {
-        view->setModel(model);
+        view->setModel(buildViewModel(model));
         QSize iconSize = iconSize_[mode - FirstViewMode];
         model->setThumbnailSize(iconSize.width());
         if(view->selectionModel()) {
-            connect(view->selectionModel(), &QItemSelectionModel::selectionChanged, this, &FolderView::onSelectionChanged);
+            // UniqueConnection: with volumes shown, the view model (and so its
+            // selection model) stays the same across folder changes
+            connect(view->selectionModel(), &QItemSelectionModel::selectionChanged, this, &FolderView::onSelectionChanged, Qt::UniqueConnection);
         }
     }
     if(model_) {
         delete model_;
     }
     model_ = model;
+}
+
+void FolderView::setShowVolumes(bool show) {
+    if(show == showVolumes_) {
+        return;
+    }
+    showVolumes_ = show;
+    if(!show) {
+        // the index lookups elsewhere ask the index itself (fileInfoFromIndex())
+        // instead of mapping it with QConcatenateTablesProxyModel::mapToSource(),
+        // so they work the same whichever model the view currently has
+        delete concatModel_;
+        concatModel_ = nullptr;
+        delete volumeModel_;
+        volumeModel_ = nullptr;
+    }
+    if(view && model_) {
+        view->setModel(buildViewModel(model_));
+        if(view->selectionModel()) {
+            connect(view->selectionModel(), &QItemSelectionModel::selectionChanged, this, &FolderView::onSelectionChanged, Qt::UniqueConnection);
+        }
+    }
 }
 
 bool FolderView::event(QEvent* event) {
@@ -1384,8 +1510,14 @@ void FolderView::emitClickedAt(ClickType type, const QPoint& pos) {
                 }
             }
         }
-        QVariant data = index.data(FolderModel::FileInfoRole);
-        auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
+        auto info = fileInfoFromIndex(index);
+        if(!info && showVolumes_) {
+            QVariant volData = index.data(VolumeListModel::VolumeRole);
+            if(auto vol = volData.value<std::shared_ptr<const Fm::Volume>>()) {
+                Q_EMIT volumeClicked(type, *vol);
+                return;
+            }
+        }
         Q_EMIT clicked(type, info);
     }
     else {
@@ -1427,8 +1559,13 @@ Fm::FilePathList FolderView::selectedFilePaths() const {
             Fm::FilePathList paths;
             QModelIndexList::const_iterator it;
             for(it = selIndexes.constBegin(); it != selIndexes.constEnd(); ++it) {
-                auto file = model_->fileInfoFromIndex(*it);
-                paths.push_back(file->path());
+                // *it may belong to the concatenated view model rather than
+                // model_ when showVolumes_ is on, so ask the index itself
+                // instead of reaching into model_ directly (see setShowVolumes())
+                auto file = fileInfoFromIndex(*it);
+                if(file) { // skips non-file rows, e.g. a volume
+                    paths.push_back(file->path());
+                }
             }
             return paths;
         }
@@ -1442,14 +1579,15 @@ bool FolderView::hasSelection() const {
 }
 
 QModelIndex FolderView::indexFromFolderPath(const Fm::FilePath& folderPath) const {
-    if(!model_ || !folderPath.isValid()) {
+    if(!model_ || !view || !folderPath.isValid()) {
         return QModelIndex();
     }
     QModelIndex index;
     int count = model_->rowCount();
     for(int row = 0; row < count; ++row) {
-        index = model_->index(row, 0);
-        auto info = model_->fileInfoFromIndex(index);
+        // file rows come first in view->model(), so the row is the same there
+        index = view->model()->index(row, 0);
+        auto info = fileInfoFromIndex(index);
         if(info && info->isDir() && folderPath == info->path()) {
             return index;
         }
@@ -1458,7 +1596,7 @@ QModelIndex FolderView::indexFromFolderPath(const Fm::FilePath& folderPath) cons
 }
 
 bool FolderView::selectFiles(const Fm::FileInfoList& files, bool add) {
-    if(!model_ || files.empty()) {
+    if(!model_ || !view || files.empty()) {
         return false;
     }
     QModelIndex index, firstIndex;
@@ -1473,8 +1611,8 @@ bool FolderView::selectFiles(const Fm::FileInfoList& files, bool add) {
         if (list.empty()) {
             break;
         }
-        index = model_->index(row, 0);
-        auto info = model_->fileInfoFromIndex(index);
+        index = view->model()->index(row, 0); // see indexFromFolderPath()
+        auto info = fileInfoFromIndex(index);
         for(auto it = list.cbegin(); it != list.cend(); ++it) {
             auto& item = *it;
             if(item == info) {
@@ -1509,8 +1647,11 @@ Fm::FileInfoList FolderView::selectedFiles() const {
             Fm::FileInfoList files;
             QModelIndexList::const_iterator it;
             for(it = selIndexes.constBegin(); it != selIndexes.constEnd(); ++it) {
-                auto file = model_->fileInfoFromIndex(*it);
-                files.push_back(file);
+                // see selectedFilePaths() -- *it may not belong to model_
+                auto file = fileInfoFromIndex(*it);
+                if(file) { // skips non-file rows, e.g. a volume
+                    files.push_back(file);
+                }
             }
             return files;
         }
@@ -1529,8 +1670,11 @@ void FolderView::invertSelection() {
         if(mode == DetailedListMode) {
             flags |= QItemSelectionModel::Rows;
         }
+        // use the view's actual model, not model_ directly, so this also
+        // covers volume rows when they're concatenated on (setShowVolumes())
+        QAbstractItemModel* viewModel = view->model();
         // we don't use a "for" loop on rows because it would be slow
-        const QItemSelection _all{model_->index(0, 0), model_->index(model_->rowCount() - 1, 0)};
+        const QItemSelection _all{viewModel->index(0, 0), viewModel->index(viewModel->rowCount() - 1, 0)};
         const QItemSelection _old{selModel->selection()};
 
         selModel->select(_all, flags | QItemSelectionModel::Select);
@@ -1558,8 +1702,7 @@ void FolderView::childDragMoveEvent(QDragMoveEvent* e) {
     // we enable the drop indicator only when the cursor is on a folder.
     QModelIndex index = view->indexAt(e->position().toPoint());
     if(index.isValid() && index.model()) {
-        QVariant data = index.model()->data(index, FolderModel::FileInfoRole);
-        auto info = data.value<std::shared_ptr<const Fm::FileInfo>>();
+        auto info = fileInfoFromIndex(index);
         if(info && !info->isDir()) {
             view->setDropIndicatorShown(false);
             return;
@@ -1591,8 +1734,11 @@ void FolderView::childDropEvent(QDropEvent* e) {
             // 2. construct the fill URI for the file, and update the source window property.
             Fm::FilePath filePath;
             if(model_) {
+                // index may belong to the concatenated view model rather than
+                // model_ (see setShowVolumes()), so ask it directly for its
+                // FileInfo instead of reaching into model_ by row number
                 QModelIndex index = view->indexAt(e->position().toPoint());
-                auto info = model_->fileInfoFromIndex(index);
+                auto info = fileInfoFromIndex(index);
                 if(info && info->isDir()) {
                     filePath = info->path().child(basename.constData());
                 }
@@ -1613,7 +1759,15 @@ void FolderView::childDropEvent(QDropEvent* e) {
         return;
     }
 
-    if(e->modifiers() == Qt::NoModifier) {
+    // a drop on a volume is always handled here: no model can do it, since the
+    // volume may need mounting first (see VolumeListModel::dropMimeData())
+    std::shared_ptr<const Fm::Volume> targetVolume;
+    if(showVolumes_) {
+        QModelIndex index = view->indexAt(e->position().toPoint());
+        targetVolume = index.data(VolumeListModel::VolumeRole).value<std::shared_ptr<const Fm::Volume>>();
+    }
+
+    if(e->modifiers() == Qt::NoModifier || targetVolume) {
         // If no key modifiers are used, pop up a menu
         // to ask the user for the action he/she wants to perform.
 
@@ -1623,10 +1777,15 @@ void FolderView::childDropEvent(QDropEvent* e) {
         Fm::FilePath destPath;
         std::shared_ptr<const Fm::FileInfo> info = nullptr;
         if(model_) {
+            // see childDragMoveEvent()'s XDS branch above for why this doesn't
+            // use model_->fileInfoFromIndex(index) directly
             QModelIndex index = view->indexAt(e->position().toPoint());
-            info = model_->fileInfoFromIndex(index);
+            info = fileInfoFromIndex(index);
         }
-        if(info && info->isDir()) {
+        if(targetVolume) {
+            info = nullptr; // destPath is resolved after the action is chosen
+        }
+        else if(info && info->isDir()) {
             destPath = info->path(); // drop on a subdirectory
         }
         else {
@@ -1646,11 +1805,15 @@ void FolderView::childDropEvent(QDropEvent* e) {
 
         if(!srcPaths.empty()) {
             Qt::DropActions actions = Qt::IgnoreAction;
-            if(info && info->isWritableDirectory() && info->isWritable()) {
+            if(targetVolume) {
+                // writability can't be known before mounting; the file operation reports errors
+                actions = e->possibleActions();
+            }
+            else if(info && info->isWritableDirectory() && info->isWritable()) {
                 actions = e->possibleActions();
             }
             auto curPos = view->viewport()->mapToGlobal(e->position().toPoint());
-            QTimer::singleShot(0, view, [this, curPos, actions, srcPaths, destPath] {
+            QTimer::singleShot(0, view, [this, curPos, actions, srcPaths, destPath, targetVolume]() mutable {
                 Qt::DropAction action;
                 // Wayland does not see the modifier if it is pressed after dragging.
                 // Therefore, it should be checked now, when the DND is finished.
@@ -1671,6 +1834,24 @@ void FolderView::childDropEvent(QDropEvent* e) {
                 }
 
                 Q_EMIT dropIsDecided(action != Qt::IgnoreAction);
+
+                if(targetVolume && action != Qt::IgnoreAction) {
+                    auto mountRoot = [&targetVolume] {
+                        auto gmount = targetVolume->mount();
+                        return gmount ? Fm::Mount{gmount}.root() : Fm::FilePath();
+                    };
+                    destPath = mountRoot();
+                    if(!destPath.isValid()) { // mount first, like PlacesView::activateRow()
+                        auto* op = new MountOperation(true, view);
+                        op->mount(targetVolume->get());
+                        if(op->wait()) {
+                            destPath = mountRoot();
+                        }
+                    }
+                    if(!destPath.isValid()) {
+                        return;
+                    }
+                }
 
                 switch(action) {
                 case Qt::CopyAction:
@@ -1985,7 +2166,7 @@ void FolderView::onAutoSelectionTimeout() {
                 std::swap(begin, end);
             }
             for(int row = begin; row <= end; ++row) {
-                QModelIndex sel = model_->index(row, 0);
+                QModelIndex sel = view->model()->index(row, 0); // may include volume rows
                 selModel->select(sel, flags | QItemSelectionModel::Select);
             }
         }
