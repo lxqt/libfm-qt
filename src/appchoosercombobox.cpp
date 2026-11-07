@@ -127,5 +127,12 @@ void AppChooserComboBox::onCurrentIndexChanged(int index) {
     }
 }
 
+#if 0
+/* get a list of custom apps added with app-chooser.
+* the returned GList is owned by the combo box and shouldn't be freed. */
+const GList* AppChooserComboBox::customApps() {
+
+}
+#endif
 
 } // namespace Fm

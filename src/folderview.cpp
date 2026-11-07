@@ -217,7 +217,6 @@ QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
     return index;
 }
 
-
 // NOTE:
 // QListView has a problem which I consider a bug or a design flaw.
 // When you set movement property to Static, theoretically the icons
@@ -863,7 +862,6 @@ void FolderViewTreeView::onSortFilterChanged() {
         }
     }
 }
-
 
 //-----------------------------------------------------------------------------
 
