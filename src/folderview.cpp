@@ -17,7 +17,6 @@
  *
  */
 
-
 #include "folderview.h"
 #include "foldermodel.h"
 #include <QHeaderView>
@@ -1915,7 +1914,7 @@ void FolderView::scrollSmoothly() {
             QPoint pos = view->viewport()->mapFromGlobal(globalPos);
             QMouseEvent ev(QEvent::MouseMove,
                            pos,
-                           view->viewport()->mapTo(view->viewport()->topLevelWidget(), pos),
+                           view->viewport()->mapTo(view->viewport()->window(), pos),
                            globalPos,
                            Qt::LeftButton,
                            Qt::LeftButton,
