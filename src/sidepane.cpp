@@ -17,17 +17,16 @@
  *
  */
 
-
 #include "sidepane.h"
+#include "placesview.h"
+#include "dirtreeview.h"
+#include "dirtreemodel.h"
+#include "filemenu.h"
 #include <QEvent>
 #include <QComboBox>
 #include <QVBoxLayout>
 #include <QHeaderView>
 #include <QTimer>
-#include "placesview.h"
-#include "dirtreeview.h"
-#include "dirtreemodel.h"
-#include "filemenu.h"
 
 namespace Fm {
 
@@ -45,7 +44,7 @@ SidePane::SidePane(QWidget* parent):
     combo_ = new QComboBox(this);
     combo_->addItem(tr("Lists")); // "Places" is already used in PlacesModel
     combo_->addItem(tr("Directory Tree"));
-    connect(combo_, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SidePane::onComboCurrentIndexChanged);
+    connect(combo_, &QComboBox::currentIndexChanged, this, &SidePane::onComboCurrentIndexChanged);
     verticalLayout->addWidget(combo_);
 }
 
