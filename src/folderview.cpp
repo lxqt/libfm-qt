@@ -17,7 +17,6 @@
  *
  */
 
-
 #include "folderview.h"
 #include "foldermodel.h"
 #include <QHeaderView>
@@ -217,7 +216,6 @@ QModelIndex FolderViewListView::indexAt(const QPoint& point) const {
     }
     return index;
 }
-
 
 // NOTE:
 // QListView has a problem which I consider a bug or a design flaw.
@@ -864,7 +862,6 @@ void FolderViewTreeView::onSortFilterChanged() {
         }
     }
 }
-
 
 //-----------------------------------------------------------------------------
 
@@ -1915,7 +1912,7 @@ void FolderView::scrollSmoothly() {
             QPoint pos = view->viewport()->mapFromGlobal(globalPos);
             QMouseEvent ev(QEvent::MouseMove,
                            pos,
-                           view->viewport()->mapTo(view->viewport()->topLevelWidget(), pos),
+                           view->viewport()->mapTo(view->viewport()->window(), pos),
                            globalPos,
                            Qt::LeftButton,
                            Qt::LeftButton,

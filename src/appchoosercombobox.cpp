@@ -30,10 +30,7 @@ AppChooserComboBox::AppChooserComboBox(QWidget* parent):
     prevIndex_(0),
     blockOnCurrentIndexChanged_(false) {
 
-    // the new Qt5 signal/slot syntax cannot handle overloaded methods by default
-    // hence a type-casting is needed here. really ugly!
-    // reference: https://forum.qt.io/topic/20998/qt5-new-signals-slots-syntax-does-not-work-solved
-    connect((QComboBox*)this, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &AppChooserComboBox::onCurrentIndexChanged);
+    connect(this, &QComboBox::currentIndexChanged, this, &AppChooserComboBox::onCurrentIndexChanged);
 }
 
 AppChooserComboBox::~AppChooserComboBox() {
@@ -89,8 +86,7 @@ void AppChooserComboBox::onCurrentIndexChanged(int index) {
     // the last item is "Customize"
     if(index == (count() - 1)) {
         /* TODO: let the user choose an app or add custom actions here. */
-        QWidget* toplevel = topLevelWidget();
-        AppChooserDialog dlg(mimeType_, toplevel);
+        AppChooserDialog dlg(mimeType_, window());
         dlg.setWindowModality(Qt::WindowModal);
         dlg.setCanSetDefault(false);
         if(dlg.exec() == QDialog::Accepted) {
@@ -130,7 +126,6 @@ void AppChooserComboBox::onCurrentIndexChanged(int index) {
         prevIndex_ = index;
     }
 }
-
 
 #if 0
 /* get a list of custom apps added with app-chooser.
