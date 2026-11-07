@@ -51,7 +51,11 @@ _retry_query_info:
     type = g_file_info_get_file_type(inf.get());
     descend = true;
 
-    ++fileCount_;
+    // The trash root is only a container; the delete job does not delete it.
+    const bool trashRoot = (flags_ & PREPARE_DELETE) && path.hasUriScheme("trash") && path.baseName()[0] == '/';
+    if(!trashRoot) {
+        ++fileCount_;
+    }
     /* SF bug #892: dir file size is not relevant in the summary */
     if(type != G_FILE_TYPE_DIRECTORY) {
         totalSize_ += g_file_info_get_attribute_uint64(inf.get(), G_FILE_ATTRIBUTE_STANDARD_SIZE);
@@ -75,17 +79,10 @@ _retry_query_info:
     }
 
     if(type == G_FILE_TYPE_DIRECTORY) {
-        /* check if we need to decends into the dir. */
-        /* trash:/// doesn't support deleting files recursively (but we want to descend into trash root "trash:///" */
-        if(flags_ & PREPARE_DELETE && path.hasUriScheme("trash") && path.baseName()[0] != '/') {
-            descend = false;
-        }
-        else {
-            /* only descends into files on the same filesystem */
-            if(flags_ & SAME_FS) {
-                fs_id = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_ID_FILESYSTEM);
-                descend = (g_strcmp0(fs_id, dest_fs_id) == 0);
-            }
+        /* only descends into files on the same filesystem */
+        if(flags_ & SAME_FS) {
+            fs_id = g_file_info_get_attribute_string(inf.get(), G_FILE_ATTRIBUTE_ID_FILESYSTEM);
+            descend = (g_strcmp0(fs_id, dest_fs_id) == 0);
         }
 
         inf = nullptr;
