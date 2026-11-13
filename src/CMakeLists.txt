@@ -62,6 +62,7 @@ set(libfm_SRCS
     filelauncher.cpp
     foldermodel.cpp
     foldermodelitem.cpp
+    volumelistmodel.cpp
     cachedfoldermodel.cpp
     proxyfoldermodel.cpp
     folderview.cpp
