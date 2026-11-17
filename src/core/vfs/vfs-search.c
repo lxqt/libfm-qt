@@ -61,6 +61,7 @@ struct _FmVfsSearchEnumerator
     GFileEnumerator parent;
 
     FmSearchIntIter* iter;
+    GFileInfo* recur_dir_match; /* matched dir already returned, to be recursed into on the next call (own ref) */
     char* attributes;
     GFileQueryInfoFlags flags;
     GSList* target_folders; /* GFile */
@@ -170,6 +171,8 @@ static void _fm_vfs_search_enumerator_dispose(GObject *object)
         _search_iter_free(iter, NULL);
     }
 
+    g_clear_object(&priv->recur_dir_match);
+
     if(priv->attributes)
     {
         g_free(priv->attributes);
@@ -228,9 +231,6 @@ static void _fm_vfs_search_enumerator_dispose(GObject *object)
     G_OBJECT_CLASS(fm_vfs_search_enumerator_parent_class)->dispose(object);
 }
 
-/* The next directory that is a match with the recursive search: */
-static GFileInfo *recur_dir_match = NULL;
-
 static GFileInfo *_fm_vfs_search_enumerator_next_file(GFileEnumerator *enumerator,
                                                       GCancellable *cancellable,
                                                       GError **error)
@@ -238,6 +238,7 @@ static GFileInfo *_fm_vfs_search_enumerator_next_file(GFileEnumerator *enumerato
     FmVfsSearchEnumerator *enu = FM_VFS_SEACRH_ENUMERATOR(enumerator);
     FmSearchIntIter *iter;
     GFileInfo * file_info;
+    GFileInfo * pending_dir;
     GError *err = NULL;
     FmSearchVFile *container;
 
@@ -264,8 +265,10 @@ static GFileInfo *_fm_vfs_search_enumerator_next_file(GFileEnumerator *enumerato
             enu->iter = iter;
         }
 
-        gboolean had_recur_dir_match = (recur_dir_match != NULL);
-        file_info = had_recur_dir_match ? recur_dir_match : g_file_enumerator_next_file(iter->enu, cancellable, &err);
+        /* a matched dir returned by the last call: take back our ref and recurse into it now */
+        pending_dir = enu->recur_dir_match;
+        enu->recur_dir_match = NULL;
+        file_info = pending_dir ? pending_dir : g_file_enumerator_next_file(iter->enu, cancellable, &err);
         if(file_info && g_file_info_get_name(file_info))
         {
             gboolean is_recursive = (enu->recursive &&
@@ -275,28 +278,15 @@ static GFileInfo *_fm_vfs_search_enumerator_next_file(GFileEnumerator *enumerato
                                     !g_file_info_get_attribute_boolean(file_info, G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK) &&
                                     g_file_info_get_file_type(file_info) == G_FILE_TYPE_DIRECTORY);
             /* check if directory itself matches criteria */
-            if(fm_search_job_match_file(enu, file_info, iter->folder_path,
-                                        cancellable, &err))
+            if(!pending_dir && fm_search_job_match_file(enu, file_info, iter->folder_path,
+                                                        cancellable, &err))
             {
                 g_debug("found matched: %s", g_file_info_get_name(file_info));
+                /* the caller owns the returned info and may free it before the next call,
+                   so keep our own ref to search inside the matched dir next time */
                 if(err == NULL && is_recursive)
-                {
-                    if(recur_dir_match)
-                    {
-                        /* directory match was found last time;
-                           search inside it recursively below */
-                        recur_dir_match = NULL;
-                    }
-                    else
-                    {
-                        /* directory match is found; remember it for the
-                           next recursive search before returning it */
-                        recur_dir_match = file_info;
-                        return file_info;
-                    }
-                }
-                else
-                    return file_info;
+                    enu->recur_dir_match = g_object_ref(file_info);
+                return file_info;
             }
 
             /* recurse upon each directory */
@@ -315,8 +305,7 @@ static GFileInfo *_fm_vfs_search_enumerator_next_file(GFileEnumerator *enumerato
                 }
             }
 
-            if(!had_recur_dir_match)
-                g_object_unref(file_info);
+            g_object_unref(file_info);
             if(err == NULL)
                 continue;
         }
@@ -350,9 +339,10 @@ static gboolean _fm_vfs_search_enumerator_close(GFileEnumerator *enumerator,
                                               GCancellable *cancellable,
                                               GError **error)
 {
-    recur_dir_match = NULL;
     FmVfsSearchEnumerator *enu = FM_VFS_SEACRH_ENUMERATOR(enumerator);
     FmSearchIntIter *iter;
+
+    g_clear_object(&enu->recur_dir_match);
 
     while((iter = enu->iter))
     {
