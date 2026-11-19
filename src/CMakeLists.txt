@@ -157,7 +157,7 @@ set_target_properties(${LIBFM_QT_LIBRARY_NAME} PROPERTIES
 )
 
 target_include_directories(${LIBFM_QT_LIBRARY_NAME}
-    PRIVATE "${Qt6Gui_PRIVATE_INCLUDE_DIRS}"
+    PRIVATE
         core/legacy
     PUBLIC
         "${GLIB_INCLUDE_DIRS}"
