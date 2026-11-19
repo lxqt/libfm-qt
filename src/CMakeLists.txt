@@ -256,7 +256,6 @@ set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
 set(TEST_LIBRARIES
     Qt6::Core
     Qt6::Widgets
-    ${FM_LIBRARIES}
     ${LIBFM_QT_LIBRARY_NAME}
 )
 # some simple test cases
