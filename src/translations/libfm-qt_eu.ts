@@ -673,7 +673,7 @@ Ordeztu nahi duzu?</translation>
         <location filename="../filemenu.cpp" line="420"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
-            <numerusform>%1 fitxategi hauek ireki nahi dituzu?</numerusform>
+            <numerusform>%1 fitxategi hau ireki nahi duzu?</numerusform>
             <numerusform>%1 fitxategi hauek ireki nahi dituzu?</numerusform>
         </translation>
     </message>
@@ -960,7 +960,7 @@ Horren ordez ezabatu nahi dituzu?</translation>
         <source>%Ln files</source>
         <translation>
             <numerusform>%Ln fitxategi</numerusform>
-            <numerusform>%Ln fitxategi</numerusform>
+            <numerusform>%Ln fitxategiak</numerusform>
         </translation>
     </message>
     <message>
