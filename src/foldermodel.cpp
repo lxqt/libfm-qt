@@ -19,7 +19,7 @@
 
 
 #include "foldermodel.h"
-#include <iostream>
+#include <QDebug>
 #include <algorithm>
 #include <QtAlgorithms>
 #include <qmimedata.h>
@@ -286,6 +286,21 @@ int FolderModel::columnCount(const QModelIndex& parent = QModelIndex()) const {
 }
 
 FolderModelItem* FolderModel::itemFromIndex(const QModelIndex& index) const {
+    if(!index.isValid() || index.model() != this) {
+        // safety net: internalPointer() is only meaningful for an index this
+        // model itself created -- NOT one from a QConcatenateTablesProxyModel
+        // wrapping this model with something else (see
+        // Fm::FolderView::setShowVolumes()). Blindly reinterpreting a foreign
+        // index's internalPointer() as a FolderModelItem* is undefined
+        // behavior, not a safe null -- checking index.model() first turns
+        // that into a clean "not one of mine".
+        if(index.isValid()) {
+            // this shouldn't happen for correct callers: prefer
+            // Fm::FolderView::fileInfoFromIndex(), which handles this safely
+            qWarning("FolderModel::itemFromIndex(): index belongs to a different model (%p), refusing to reinterpret its internalPointer()", static_cast<const void*>(index.model()));
+        }
+        return nullptr;
+    }
     return reinterpret_cast<FolderModelItem*>(index.internalPointer());
 }
 
