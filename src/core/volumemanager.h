@@ -234,4 +234,6 @@ private:
 
 } // namespace Fm
 
+Q_DECLARE_METATYPE(std::shared_ptr<const Fm::Volume>)
+
 #endif // FM2_VOLUMEMANAGER_H
