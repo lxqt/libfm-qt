@@ -11,12 +11,12 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="36"/>
         <source>Installed Applications</source>
-        <translation>Uzstādītās/instalētās lietotnes</translation>
+        <translation>Instalētās lietotnes</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="46"/>
         <source>Custom Command</source>
-        <translation>Pielāgojama komanda</translation>
+        <translation>Pielāgota komanda</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="52"/>
@@ -37,18 +37,18 @@
 &lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Represents a single URI of the file&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Represents multiple URIs&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation>&lt;b&gt;Šos spec. kodus var izmantot komandrindā:&lt;/b&gt;
+        <translation>&lt;b&gt;Komandrindā var izmantot šos īpašos kodus:&lt;/b&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: Norāda viena faila nosaukumu&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: Norāda vairāku failus nosaukumus&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: Norāda vienu faila URI&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: Norāda vairāku failu URI&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%f&lt;/b&gt;: viena faila nosaukums&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%F&lt;/b&gt;: vairāku failu nosaukumi&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%u&lt;/b&gt;: viena faila URI&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;%U&lt;/b&gt;: vairāki URI&lt;/li&gt;
 &lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="98"/>
         <source>Keep terminal window open after command execution</source>
-        <translation>Pēc komandas izpildes termināla logu neaizvērt</translation>
+        <translation>Pēc komandas izpildes atstāt termināļa logu atvērtu</translation>
     </message>
     <message>
         <location filename="../app-chooser-dialog.ui" line="88"/>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../app-chooser-dialog.ui" line="109"/>
         <source>Set selected application as default action of this file type</source>
-        <translation>Iestatīt izvēlēto lietotni kā noklusējuma šī tipa failiem</translation>
+        <translation>Iestatīt atlasīto lietotni kā šī failu tipa noklusējuma darbību</translation>
     </message>
 </context>
 <context>
@@ -76,22 +76,22 @@
     <message>
         <location filename="../edit-bookmarks.ui" line="54"/>
         <source>Location</source>
-        <translation>Vieta/novietojums</translation>
+        <translation>Atrašanās vieta</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="64"/>
         <source>&amp;Add Item</source>
-        <translation>&amp;Pielikt/pievienot elementu</translation>
+        <translation>&amp;Pievienot vienumu</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="74"/>
         <source>&amp;Remove Item</source>
-        <translation>&amp;Noņemt elementu</translation>
+        <translation>&amp;Noņemt vienumu</translation>
     </message>
     <message>
         <location filename="../edit-bookmarks.ui" line="20"/>
         <source>Use drag and drop to reorder the items</source>
-        <translation>Izmantot pārvilkšanu (ar peli) lai pārkārtotu elementus</translation>
+        <translation>Lai mainītu vienumu secību, velciet tos ar peli</translation>
     </message>
 </context>
 <context>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../exec-file.ui" line="14"/>
         <source>Execute file</source>
-        <translation>Palaist/izpildīt failu</translation>
+        <translation>Izpildīt failu</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="42"/>
@@ -109,7 +109,7 @@
     <message>
         <location filename="../exec-file.ui" line="55"/>
         <source>E&amp;xecute</source>
-        <translation>Palaist/i&amp;zpildīt</translation>
+        <translation>&amp;Izpildīt</translation>
     </message>
     <message>
         <location filename="../exec-file.ui" line="65"/>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../exec-file.ui" line="102"/>
         <source>Remember for next files of this kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Atcerēties šāda veida failiem</translation>
     </message>
 </context>
 <context>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="65"/>
         <source>Processing:</source>
-        <translation>Apstrādē:</translation>
+        <translation>Apstrādā:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="78"/>
@@ -165,7 +165,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="85"/>
         <source>Progress:</source>
-        <translation>Progress:</translation>
+        <translation>Norise:</translation>
     </message>
     <message>
         <location filename="../file-operation-dialog.ui" line="119"/>
@@ -175,7 +175,7 @@
     <message>
         <location filename="../file-operation-dialog.ui" line="99"/>
         <source>Files processed:</source>
-        <translation>Apstrādāti faili:</translation>
+        <translation>Apstrādātie faili:</translation>
     </message>
 </context>
 <context>
@@ -183,17 +183,17 @@
     <message>
         <location filename="../file-props.ui" line="14"/>
         <source>File Properties</source>
-        <translation>Faila rekvizīti/īpašības</translation>
+        <translation>Faila īpašības</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="41"/>
         <source>General</source>
-        <translation>Vispārīgie</translation>
+        <translation>Vispārīgi</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="80"/>
         <source>Location:</source>
-        <translation>Vieta:</translation>
+        <translation>Atrašanās vieta:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="132"/>
@@ -213,12 +213,12 @@
     <message>
         <location filename="../file-props.ui" line="218"/>
         <source>On-disk size:</source>
-        <translation>Izmērs uz diska:</translation>
+        <translation>Aizņemtā vieta diskā:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="241"/>
         <source>Last modified:</source>
-        <translation>Pēdējā izmaiņa:</translation>
+        <translation>Pēdējās izmaiņas:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="106"/>
@@ -263,12 +263,12 @@
     <message>
         <location filename="../file-props.ui" line="397"/>
         <source>Device Usage:</source>
-        <translation>Diska brīvā vieta:</translation>
+        <translation>Ierīces noslodze:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="424"/>
         <source>Permissions</source>
-        <translation>Atļaujas (permisijas)</translation>
+        <translation>Atļaujas</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="439"/>
@@ -292,18 +292,18 @@
     <message>
         <location filename="../file-props.ui" line="492"/>
         <source>Access Control</source>
-        <translation>Pieejas kontrole</translation>
+        <translation>Piekļuves kontrole</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="545"/>
         <location filename="../file-props.ui" line="694"/>
         <source>Other:</source>
-        <translation>Pārējie:</translation>
+        <translation>Citi:</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="562"/>
         <source>Make the file executable</source>
-        <translation>Padarīt failu izpildāmu/palaižamu</translation>
+        <translation>Padarīt failu izpildāmu</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="603"/>
@@ -329,22 +329,22 @@
     <message>
         <location filename="../file-props.ui" line="749"/>
         <source>Sticky</source>
-        <translation>Lipīgs</translation>
+        <translation>Lipīgais bits</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="756"/>
         <source>SetUID</source>
-        <translation>Iestatīt UID</translation>
+        <translation>SetUID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="763"/>
         <source>SetGID</source>
-        <translation>Iestatīt GID</translation>
+        <translation>SetGID</translation>
     </message>
     <message>
         <location filename="../file-props.ui" line="792"/>
         <source>Advanced Mode</source>
-        <translation>Izvērstais režīms</translation>
+        <translation>Paplašinātais režīms</translation>
     </message>
 </context>
 <context>
@@ -352,7 +352,7 @@
     <message>
         <location filename="../appchoosercombobox.cpp" line="66"/>
         <source>Customize</source>
-        <translation>Iestatīt/pielāgot/konfigurēt</translation>
+        <translation>Pielāgot</translation>
     </message>
 </context>
 <context>
@@ -360,7 +360,7 @@
     <message>
         <location filename="../appchooserdialog.cpp" line="288"/>
         <source>Select an application to open &quot;%1&quot; files</source>
-        <translation>Izvēlieties lietotni/programmu ar kuru atvērt &quot;%1&quot; failus</translation>
+        <translation>Izvēlieties lietotni, ar ko atvērt „%1” failus</translation>
     </message>
 </context>
 <context>
@@ -368,7 +368,7 @@
     <message>
         <location filename="../createnewmenu.cpp" line="62"/>
         <source>Folder</source>
-        <translation>Mapi</translation>
+        <translation>Mape</translation>
     </message>
     <message>
         <location filename="../createnewmenu.cpp" line="66"/>
@@ -381,7 +381,7 @@
     <message>
         <location filename="../core/dirlistjob.cpp" line="52"/>
         <source>The specified directory &apos;%1&apos; is not valid</source>
-        <translation>Norādītā mape &apos;%1&apos; nav derīga</translation>
+        <translation>Norādītā mape „%1” nav derīga</translation>
     </message>
 </context>
 <context>
@@ -389,7 +389,7 @@
     <message>
         <location filename="../dirtreemodelitem.cpp" line="84"/>
         <source>Loading...</source>
-        <translation>Notiek ielāde...</translation>
+        <translation>Ielādē...</translation>
     </message>
     <message>
         <location filename="../dirtreemodelitem.cpp" line="267"/>
@@ -404,7 +404,7 @@
     <message>
         <location filename="../dirtreeview.cpp" line="217"/>
         <source>Open in New T&amp;ab</source>
-        <translation>Atvērt jaunā &amp;cilnī</translation>
+        <translation>Atvērt jaunā &amp;cilnē</translation>
     </message>
     <message>
         <location filename="../dirtreeview.cpp" line="221"/>
@@ -422,17 +422,17 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="32"/>
         <source>Copy here</source>
-        <translation>Kopēt uz šejieni</translation>
+        <translation>Kopēt šeit</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="35"/>
         <source>Move here</source>
-        <translation>Pārcelt uz šejieni</translation>
+        <translation>Pārvietot šeit</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="38"/>
         <source>Create symlink here</source>
-        <translation>Izveidot saiti (simlinku) uz šejieni</translation>
+        <translation>Izveidot simbolisko saiti šeit</translation>
     </message>
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
@@ -442,7 +442,7 @@
     <message>
         <location filename="../dndactionmenu.cpp" line="42"/>
         <source>Cannot drop here</source>
-        <translation>Nav iespējams uz šejieni pārnest</translation>
+        <translation>Šeit nevar nomest</translation>
     </message>
 </context>
 <context>
@@ -459,20 +459,20 @@
         <location filename="../execfiledialog.cpp" line="40"/>
         <source>This file &apos;%1&apos; seems to be a desktop entry.
 What do you want to do with it?</source>
-        <translation>Šķiet, ka fails &apos;%1 &apos; ir darbvirsmas desktop-fails.
-Ko ar to darīsim?</translation>
+        <translation>Šķiet, ka fails „%1” ir darbvirsmas ieraksts (.desktop).
+Ko vēlaties ar to darīt?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="46"/>
         <source>This text file &apos;%1&apos; seems to be an executable script.
 What do you want to do with it?</source>
-        <translation>Šķiet, ka teksta fails &apos;%1 &apos; ir izpildāms skripts.
-Ko ar to darīsim?</translation>
+        <translation>Šķiet, ka teksta fails „%1” ir izpildāms skripts.
+Ko vēlaties ar to darīt?</translation>
     </message>
     <message>
         <location filename="../execfiledialog.cpp" line="51"/>
         <source>This file &apos;%1&apos; is executable. Do you want to execute it?</source>
-        <translation>Fails &apos;%1 &apos; ir izpildāms/palaižams. Vai vēlaties to palaist?</translation>
+        <translation>Fails „%1” ir izpildāms. Vai vēlaties to izpildīt?</translation>
     </message>
 </context>
 <context>
@@ -486,7 +486,7 @@ Ko ar to darīsim?</translation>
         <location filename="../filedialog.cpp" line="116"/>
         <source>Alt+Left</source>
         <comment>Go Back</comment>
-        <translation>Alt+Pa kreisi</translation>
+        <translation>Alt+Left</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="122"/>
@@ -497,7 +497,7 @@ Ko ar to darīsim?</translation>
         <location filename="../filedialog.cpp" line="123"/>
         <source>Alt+Right</source>
         <comment>Go Forward</comment>
-        <translation>Alt+Pa labi</translation>
+        <translation>Alt+Right</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="130"/>
@@ -528,17 +528,17 @@ Ko ar to darīsim?</translation>
     <message>
         <location filename="../filedialog.cpp" line="172"/>
         <source>Compact View</source>
-        <translation>Kompaktskats</translation>
+        <translation>Kompakts skats</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="176"/>
         <source>Detailed List View</source>
-        <translation>Detalizēts skats</translation>
+        <translation>Detalizētā saraksta skats</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="184"/>
         <source>Icon Sizes</source>
-        <translation>Ikonu izmērs</translation>
+        <translation>Ikonu izmēri</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="186"/>
@@ -558,7 +558,7 @@ Ko ar to darīsim?</translation>
     <message>
         <location filename="../filedialog.cpp" line="216"/>
         <source>Show Hidden</source>
-        <translation type="unfinished">Rādīt slēptos</translation>
+        <translation>Rādīt slēptos</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="228"/>
@@ -568,50 +568,50 @@ Ko ar to darīsim?</translation>
     <message>
         <location filename="../filedialog.cpp" line="233"/>
         <source>Show File Tooltips</source>
-        <translation>Rādīt faila padomus</translation>
+        <translation>Rādīt failu paskaidres</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="240"/>
         <source>Smooth Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Vienmērīga ritināšana</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="255"/>
         <source>Options</source>
-        <translation>Opcijas/parametri</translation>
+        <translation>Opcijas</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="605"/>
         <location filename="../filedialog.cpp" line="1073"/>
         <source>Error</source>
-        <translation>Ķibele</translation>
+        <translation>Kļūda</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="605"/>
         <source>Please select a file</source>
-        <translation>Izvēlieties failu</translation>
+        <translation>Lūdzu, atlasiet failu</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="681"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 jau pastāv.
-Vai vēlaties to aizstāt (pārrakstīt)?</translation>
+Vai vēlaties to aizstāt?</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1035"/>
         <source>Path &quot;%1&quot; does not exist</source>
-        <translation>Ceļš &quot;%1&quot; nepastāv</translation>
+        <translation>Ceļš „%1” nepastāv</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1049"/>
         <source>&quot;%1&quot; is not a directory</source>
-        <translation>&quot;%1&quot; nav mape</translation>
+        <translation>„%1” nav mape</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1059"/>
         <source>&quot;%1&quot; is not a file</source>
-        <translation>&quot;%1&quot; nav fails</translation>
+        <translation>„%1” nav fails</translation>
     </message>
     <message>
         <location filename="../filedialog.cpp" line="1213"/>
@@ -628,7 +628,7 @@ Vai vēlaties to aizstāt (pārrakstīt)?</translation>
     <message>
         <location filename="../filedialog.cpp" line="1223"/>
         <source>All Files (*)</source>
-        <translation>Visus failus (*)</translation>
+        <translation>Visi faili (*)</translation>
     </message>
 </context>
 <context>
@@ -649,7 +649,7 @@ Vai vēlaties to aizstāt (pārrakstīt)?</translation>
     <message>
         <location filename="../filedialog_p.h" line="40"/>
         <source> px</source>
-        <translation> piks.</translation>
+        <translation> px</translation>
     </message>
 </context>
 <context>
@@ -667,15 +667,15 @@ Vai vēlaties to aizstāt (pārrakstīt)?</translation>
     <message>
         <location filename="../filemenu.cpp" line="419"/>
         <source>Many files</source>
-        <translation>Vairākus failus</translation>
+        <translation>Daudz failu</translation>
     </message>
     <message numerus="yes">
         <location filename="../filemenu.cpp" line="420"/>
         <source>Do you want to open these %1 files?</source>
         <translation>
-            <numerusform>Vēlaties atvērt %1 failu?</numerusform>
-            <numerusform>Vēlaties atvērt %1 failus?</numerusform>
-            <numerusform>Vēlaties atvērt %1 failus?</numerusform>
+            <numerusform>Vai vēlaties atvērt visus šos failus (%1)?</numerusform>
+            <numerusform>Vai vēlaties atvērt visus šos failus (%1)?</numerusform>
+            <numerusform>Vai vēlaties atvērt visus šos failus (%1)?</numerusform>
         </translation>
     </message>
     <message>
@@ -686,12 +686,12 @@ Vai vēlaties to aizstāt (pārrakstīt)?</translation>
     <message>
         <location filename="../filemenu.cpp" line="188"/>
         <source>Create &amp;New</source>
-        <translation>Izveidot jau&amp;nu</translation>
+        <translation>Izveidot &amp;jaunu</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="207"/>
         <source>&amp;Restore</source>
-        <translation>At&amp;gūt</translation>
+        <translation>&amp;Atjaunot</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="217"/>
@@ -706,13 +706,13 @@ Vai vēlaties to aizstāt (pārrakstīt)?</translation>
     <message>
         <location filename="../filemenu.cpp" line="225"/>
         <source>Paste</source>
-        <translation>Ielikt</translation>
+        <translation>Ielīmēt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="229"/>
         <location filename="../filemenu.cpp" line="547"/>
         <source>&amp;Move to Trash</source>
-        <translation>Pārvietot/pārcelt uz &amp;miskasti</translation>
+        <translation>&amp;Pārvietot uz miskasti</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="233"/>
@@ -722,42 +722,42 @@ Vai vēlaties to aizstāt (pārrakstīt)?</translation>
     <message>
         <location filename="../filemenu.cpp" line="289"/>
         <source>Mount</source>
-        <translation>Piemontēt</translation>
+        <translation>Montēt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="303"/>
         <source>Unmount</source>
-        <translation>Nomontēt</translation>
+        <translation>Atmontēt</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="317"/>
         <source>Eject</source>
-        <translation>Izstumt</translation>
+        <translation>Izgrūst</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="338"/>
         <source>Extract to...</source>
-        <translation>Ekstraģēt uz...</translation>
+        <translation>Atspiest uz...</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="346"/>
         <source>Extract Here</source>
-        <translation>Ekstraģēt šeit</translation>
+        <translation>Atspiest šeit</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="353"/>
         <source>Compress</source>
-        <translation>Kompresēt</translation>
+        <translation>Saspiest</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="362"/>
         <source>Properties</source>
-        <translation>Parametri/rekvizīti/īpašības</translation>
+        <translation>Īpašības</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="376"/>
         <source>Trust selected executables</source>
-        <translation>Uzticēties izvēlētajiem izpildāmajiem failiem</translation>
+        <translation>Uzticēties atlasītajiem izpildāmajiem failiem</translation>
     </message>
     <message>
         <location filename="../filemenu.cpp" line="377"/>
@@ -781,14 +781,14 @@ Vai vēlaties to aizstāt (pārrakstīt)?</translation>
     <message>
         <location filename="../fileoperation.cpp" line="317"/>
         <source>Error</source>
-        <translation>Ķibele</translation>
+        <translation>Kļūda</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="318"/>
         <source>Some files cannot be moved to trash can because the underlying file systems don&apos;t support this operation.
 Do you want to delete them instead?</source>
-        <translation>Dažus failus nevar pārvietot uz miskasti, jo izmantotās failu sistēmas neatbalsta šo darbību.
-Vēlaties tos dzēst?</translation>
+        <translation>Dažus failus nevar pārvietot uz miskasti, jo to failu sistēmas neatbalsta šo darbību.
+Vai vēlaties tos dzēst?</translation>
     </message>
     <message>
         <location filename="../fileoperation.cpp" line="404"/>
@@ -800,18 +800,18 @@ Vēlaties tos dzēst?</translation>
         <location filename="../fileoperation.cpp" line="405"/>
         <source>Do you want to delete the selected file(s)?</source>
         <translation>
-            <numerusform>Dzēst atlasītos failus?</numerusform>
-            <numerusform>Dzēst atlasīto failu?</numerusform>
-            <numerusform>Dzēst atlasītos failus?</numerusform>
+            <numerusform>Vai vēlaties dzēst atlasīto failu?</numerusform>
+            <numerusform>Vai vēlaties dzēst atlasītos failus?</numerusform>
+            <numerusform>Vai vēlaties dzēst atlasītos failus?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../fileoperation.cpp" line="423"/>
         <source>Do you want to move the selected file(s) to trash can?</source>
         <translation>
-            <numerusform>Pārvietot izvēlētos failus uz miskasti?</numerusform>
-            <numerusform>Pārvietot izvēlēto failu uz miskasti?</numerusform>
-            <numerusform>Pārvietot izvēlētos failus uz miskasti?</numerusform>
+            <numerusform>Vai vēlaties pārvietot atlasīto failu uz miskasti?</numerusform>
+            <numerusform>Vai vēlaties pārvietot atlasītos failus uz miskasti?</numerusform>
+            <numerusform>Vai vēlaties pārvietot atlasītos failus uz miskasti?</numerusform>
         </translation>
     </message>
 </context>
@@ -825,7 +825,7 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="47"/>
         <source>Moving the following files to destination folder:</source>
-        <translation>Pārvietoju uz mērķa mapi failus:</translation>
+        <translation>Pārvieto šos failus uz mērķa mapi:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="50"/>
@@ -835,7 +835,7 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="51"/>
         <source>Copying the following files to destination folder:</source>
-        <translation>Kopēju uz mērķa mapi failus:</translation>
+        <translation>Kopē šos failus uz mērķa mapi:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="54"/>
@@ -845,7 +845,7 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="55"/>
         <source>Moving the following files to trash can:</source>
-        <translation>Pārvietoju uz miskasti failus:</translation>
+        <translation>Pārvieto šos failus uz miskasti:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="58"/>
@@ -855,17 +855,17 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="59"/>
         <source>Deleting the following files:</source>
-        <translation>Dzēšu failus:</translation>
+        <translation>Dzēš šos failus:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="64"/>
         <source>Create Symlinks</source>
-        <translation>Saišu (simlinku) izveide</translation>
+        <translation>Simbolisko saišu izveide</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="65"/>
         <source>Creating symlinks for the following files:</source>
-        <translation>Izveidoju saites (simlinkus) failiem:</translation>
+        <translation>Izveido simboliskās saites šiem failiem:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="68"/>
@@ -875,23 +875,23 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../fileoperationdialog.cpp" line="69"/>
         <source>Changing attributes of the following files:</source>
-        <translation>Mainu atribūtus failiem:</translation>
+        <translation>Maina šo failu atribūtus:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="74"/>
         <source>Restore Trashed Files</source>
-        <translation>Miskastes failu atgriešana</translation>
+        <translation>Failu atjaunošana no miskastes</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="75"/>
         <source>Restoring the following files from trash can:</source>
-        <translation>Atgriežu miskastē esošos failus:</translation>
+        <translation>Atjauno šos failus no miskastes:</translation>
     </message>
     <message>
         <location filename="../fileoperationdialog.cpp" line="149"/>
         <location filename="../fileoperationdialog.cpp" line="155"/>
         <source>Error</source>
-        <translation>Ķibele</translation>
+        <translation>Kļūda</translation>
     </message>
 </context>
 <context>
@@ -899,12 +899,12 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="167"/>
         <source>View folder content</source>
-        <translation>Mapes satura skatīšana</translation>
+        <translation>Skatīt mapes saturu</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="168"/>
         <source>View and modify folder content</source>
-        <translation>Skatīt un rediģēt mapes saturu</translation>
+        <translation>Skatīt un mainīt mapes saturu</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="172"/>
@@ -914,7 +914,7 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="173"/>
         <source>Read and write</source>
-        <translation>Lasīt&amp;Rakstīt</translation>
+        <translation>Lasīt un rakstīt</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="175"/>
@@ -931,22 +931,22 @@ Vēlaties tos dzēst?</translation>
         <location filename="../filepropsdialog.cpp" line="322"/>
         <location filename="../filepropsdialog.cpp" line="329"/>
         <source>N/A</source>
-        <translation>– – –</translation>
+        <translation>Nav pieejams</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="333"/>
         <source>Multiple Files</source>
-        <translation>Vairākus failus</translation>
+        <translation>Vairāki faili</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="410"/>
         <source>%p% used</source>
-        <translation>%p% izmantots</translation>
+        <translation>%p% aizņemts</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="411"/>
         <source>%1 Free of %2</source>
-        <translation>Brīvi %1 no %2</translation>
+        <translation>Brīvs %1 no %2</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="457"/>
@@ -956,15 +956,15 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../filepropsdialog.cpp" line="459"/>
         <source>one file</source>
-        <translation>1 fails</translation>
+        <translation>viens fails</translation>
     </message>
     <message numerus="yes">
         <location filename="../filepropsdialog.cpp" line="461"/>
         <source>%Ln files</source>
         <translation>
-            <numerusform>%Ln failus</numerusform>
+            <numerusform>%Ln fails</numerusform>
+            <numerusform>%Ln faili</numerusform>
             <numerusform>%Ln failu</numerusform>
-            <numerusform>%Ln failus</numerusform>
         </translation>
     </message>
     <message>
@@ -977,12 +977,12 @@ Vēlaties tos dzēst?</translation>
         <location filename="../filepropsdialog.cpp" line="497"/>
         <location filename="../filepropsdialog.cpp" line="542"/>
         <source>Images (*.png *.xpm *.svg *.svgz )</source>
-        <translation>Bildes (*.png *.xpm *.svg *.svgz )</translation>
+        <translation>Attēli (*.png *.xpm *.svg *.svgz )</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="648"/>
         <source>Apply changes</source>
-        <translation>Pielietot izmaiņas</translation>
+        <translation>Lietot izmaiņas</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="649"/>
@@ -995,12 +995,12 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../filesearchdialog.cpp" line="157"/>
         <source>Error</source>
-        <translation>Ķibele</translation>
+        <translation>Kļūda</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="157"/>
         <source>You should add at least one directory to search.</source>
-        <translation>Lai meklētu, nepieciešams pievienot vismaz vienu mapi.</translation>
+        <translation>Meklēšanai jāpievieno vismaz viena mape.</translation>
     </message>
     <message>
         <location filename="../filesearchdialog.cpp" line="164"/>
@@ -1013,12 +1013,12 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../core/filetransferjob.cpp" line="486"/>
         <source>Cannot copy a directory into itself!</source>
-        <translation>Nevar mapi iekopēt sevī!</translation>
+        <translation>Mapi nevar kopēt pašā sevī!</translation>
     </message>
     <message>
         <location filename="../core/filetransferjob.cpp" line="537"/>
         <source>Cannot create a link on non-native filesystem</source>
-        <translation>Nevar izveidot saiti svešā failu sistēmā</translation>
+        <translation>Failu sistēmā, kas nav vietējā, nevar izveidot saiti</translation>
     </message>
 </context>
 <context>
@@ -1026,27 +1026,27 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="58"/>
         <source>Empty Trash</source>
-        <translation>Iztukšot (izdzēst) miskasti</translation>
+        <translation>Iztukšot miskasti</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="70"/>
         <source>Create &amp;New</source>
-        <translation>Iz&amp;veidot</translation>
+        <translation>Izveidot &amp;jaunu</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="75"/>
         <source>&amp;Paste</source>
-        <translation>&amp;Ielikt</translation>
+        <translation>&amp;Ielīmēt</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="89"/>
         <source>Select &amp;All</source>
-        <translation>Atzīmēt/atlasīt visus</translation>
+        <translation>Atlasīt &amp;visu</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="100"/>
         <source>Sorting</source>
-        <translation>Šķirotava</translation>
+        <translation>Kārtošana</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="105"/>
@@ -1056,7 +1056,7 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="140"/>
         <source>Folder Pr&amp;operties</source>
-        <translation>Mapes par&amp;ametri</translation>
+        <translation>Mapes &amp;īpašības</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="183"/>
@@ -1066,7 +1066,7 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="205"/>
         <source>By File Name</source>
-        <translation>Pēc nosaukuma</translation>
+        <translation>Pēc faila nosaukuma</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="206"/>
@@ -1086,7 +1086,7 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="213"/>
         <source>By File Size</source>
-        <translation>Pēc izmēra</translation>
+        <translation>Pēc faila izmēra</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="214"/>
@@ -1106,17 +1106,17 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="222"/>
         <source>Ascending</source>
-        <translation>Augošā</translation>
+        <translation>Augošā secībā</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="227"/>
         <source>Descending</source>
-        <translation>Dilstošā</translation>
+        <translation>Dilstošā secībā</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="244"/>
         <source>Folder First</source>
-        <translation>Mapes sākumā</translation>
+        <translation>Vispirms mapes</translation>
     </message>
     <message>
         <location filename="../foldermenu.cpp" line="252"/>
@@ -1126,7 +1126,7 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../foldermenu.cpp" line="260"/>
         <source>Case Sensitive</source>
-        <translation>Reģistrjūtīgi</translation>
+        <translation>Reģistrjutīgi</translation>
     </message>
 </context>
 <context>
@@ -1134,7 +1134,7 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="306"/>
         <source>Location:</source>
-        <translation>Vieta:</translation>
+        <translation>Atrašanās vieta:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="310"/>
@@ -1149,7 +1149,7 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="319"/>
         <source>Last modified:</source>
-        <translation>Pēdējā izmaiņa:</translation>
+        <translation>Pēdējās izmaiņas:</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="320"/>
@@ -1159,7 +1159,7 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../foldermodel.cpp" line="321"/>
         <source>N/A</source>
-        <translation>– – –</translation>
+        <translation>Nav pieejams</translation>
     </message>
     <message>
         <location filename="../foldermodel.cpp" line="323"/>
@@ -1222,12 +1222,12 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../folderview.cpp" line="412"/>
         <source>Auto-resize columns</source>
-        <translation>Automātisks kolonu/stabiņu platums</translation>
+        <translation>Automātiski mainīt kolonnu platumu</translation>
     </message>
     <message>
         <location filename="../folderview.cpp" line="429"/>
         <source>Visible Columns</source>
-        <translation>Redzamās kolonas/stabiņi</translation>
+        <translation>Redzamās kolonnas</translation>
     </message>
 </context>
 <context>
@@ -1235,12 +1235,12 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../fontbutton.cpp" line="46"/>
         <source>Bold</source>
-        <translation>Treknrakstā</translation>
+        <translation>Treknraksts</translation>
     </message>
     <message>
         <location filename="../fontbutton.cpp" line="50"/>
         <source>Italic</source>
-        <translation>Kursīvā</translation>
+        <translation>Kursīvs</translation>
     </message>
 </context>
 <context>
@@ -1322,7 +1322,7 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../placesview.cpp" line="583"/>
         <source>Empty Trash</source>
-        <translation>Iztukšot (izdzēst) miskasti</translation>
+        <translation>Iztukšot miskasti</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="603"/>
@@ -1333,12 +1333,12 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../placesview.cpp" line="620"/>
         <source>Move Bookmark Up</source>
-        <translation>Pārbīdīt grāmatzīmi augšup</translation>
+        <translation>Pārvietot grāmatzīmi augšup</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="627"/>
         <source>Move Bookmark Down</source>
-        <translation>Pārbīdīt grāmatzīmi lejup</translation>
+        <translation>Pārvietot grāmatzīmi lejup</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="632"/>
@@ -1348,33 +1348,33 @@ Vēlaties tos dzēst?</translation>
     <message>
         <location filename="../placesview.cpp" line="636"/>
         <source>Remove Bookmark</source>
-        <translation>Dzēst/izņemt grāmatzīmi</translation>
+        <translation>Noņemt grāmatzīmi</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="646"/>
         <location filename="../placesview.cpp" line="684"/>
         <source>Unmount</source>
-        <translation>Nomontēt</translation>
+        <translation>Atmontēt</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="650"/>
         <source>Mount</source>
-        <translation>Piemontēt</translation>
+        <translation>Montēt</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="656"/>
         <source>Eject</source>
-        <translation>Izstumt</translation>
+        <translation>Izgrūst</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="661"/>
         <source>Safely Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Droši atvienot</translation>
     </message>
     <message>
         <location filename="../placesview.cpp" line="696"/>
         <source>Show All Entries</source>
-        <translation>Rādīt visus elementus</translation>
+        <translation>Rādīt visus ierakstus</translation>
     </message>
 </context>
 <context>
@@ -1387,7 +1387,7 @@ Size: %2
 Modified: %3</source>
         <translation>Tips: %1
 Izmērs: %2
-Izmaiņa: %3</translation>
+Mainīts: %3</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="64"/>
@@ -1395,12 +1395,12 @@ Izmaiņa: %3</translation>
         <source>Type: %1
 Modified: %2</source>
         <translation>Tips: %1
-Izmaiņa: %2</translation>
+Mainīts: %2</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="104"/>
         <source>&amp;Overwrite</source>
-        <translation>&amp;Pārrakstīt (pa virsu)</translation>
+        <translation>&amp;Pārrakstīt</translation>
     </message>
     <message>
         <location filename="../renamedialog.cpp" line="106"/>
@@ -1410,8 +1410,7 @@ Izmaiņa: %2</translation>
     <message>
         <location filename="../renamedialog.cpp" line="116"/>
         <source>&lt;p&gt;&lt;b&gt;The file cannot overwrite itself.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please select another name.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;fails nevar sevi pārrakstīt.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;
-Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;Failu nevar pārrakstīt ar to pašu failu.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Lūdzu, izvēlieties citu nosaukumu.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1432,7 +1431,7 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../core/untrashjob.cpp" line="35"/>
         <source>Cannot untrash file &apos;%s&apos;: original path not known</source>
-        <translation>Nevar atmiskatot failu &apos;%s&apos;: jo sākotnējais ceļš nav zināms</translation>
+        <translation>Neizdevās atjaunot failu „%s” no miskastes: sākotnējais ceļš nav zināms</translation>
     </message>
 </context>
 <context>
@@ -1440,7 +1439,7 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="20"/>
         <source>Mount</source>
-        <translation>Piemontēt</translation>
+        <translation>Montēt</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="48"/>
@@ -1450,7 +1449,7 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="58"/>
         <source>Connect as u&amp;ser:</source>
-        <translation>Pieslēgties kā lietotājs:</translation>
+        <translation>Pieslēgties kā lie&amp;totājam:</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="76"/>
@@ -1470,22 +1469,22 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../mount-operation-password.ui" line="127"/>
         <source>Forget password &amp;immediately</source>
-        <translation>Tūdaļ pat aizmirst paroli</translation>
+        <translation>&amp;Nekavējoties aizmirst paroli</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="137"/>
         <source>Session length is determined by password manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Sesijas ilgumu nosaka paroļu pārvaldnieks</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="140"/>
         <source>Remember password for &amp;this session</source>
-        <translation>Atcerēties šīs sesijas paroli</translation>
+        <translation>Atcerēties paroli &amp;šai sesijai</translation>
     </message>
     <message>
         <location filename="../mount-operation-password.ui" line="150"/>
         <source>Remember &amp;forever</source>
-        <translation>Atcerēties neierobežoti</translation>
+        <translation>Atcerēties &amp;uz visiem laikiem</translation>
     </message>
 </context>
 <context>
@@ -1498,7 +1497,7 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../utilities.cpp" line="171"/>
         <source>Please enter a new name:</source>
-        <translation>Ievadiet jaunu nosaukumu:</translation>
+        <translation>Lūdzu, ievadiet jaunu nosaukumu:</translation>
     </message>
     <message>
         <location filename="../filelauncher.cpp" line="124"/>
@@ -1507,7 +1506,7 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
         <location filename="../utilities.cpp" line="154"/>
         <location filename="../utilities.cpp" line="318"/>
         <source>Error</source>
-        <translation>Ķibele, ka tevi jupis!</translation>
+        <translation>Kļūda</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="230"/>
@@ -1522,17 +1521,17 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../utilities.cpp" line="235"/>
         <source>Please enter a new file name:</source>
-        <translation>Ierakstiet jaunā faila nosaukumu:</translation>
+        <translation>Lūdzu, ievadiet jaunā faila nosaukumu:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="236"/>
         <source>New file</source>
-        <translation type="unfinished"></translation>
+        <translation>Jauns fails</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="240"/>
         <source>Please enter a new folder name:</source>
-        <translation>Ievadiet jaunās mapes nosaukumu:</translation>
+        <translation>Lūdzu, ievadiet jaunās mapes nosaukumu:</translation>
     </message>
     <message>
         <location filename="../utilities.cpp" line="241"/>
@@ -1542,43 +1541,43 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../utilities.cpp" line="246"/>
         <source>Enter a name for the new %1:</source>
-        <translation>Ierakstiet jaunā faila nosaukumu (%1):</translation>
+        <translation>Ievadiet nosaukumu jaunajam vienumam (%1):</translation>
     </message>
     <message>
         <location filename="../filepropsdialog.cpp" line="692"/>
         <source>Custom Icon Error</source>
-        <translation>Pielāgotās ikonas ķibele</translation>
+        <translation>Pielāgotās ikonas kļūda</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="41"/>
         <source>The path is not mounted.</source>
-        <translation>Ceļš nav piemontēts.</translation>
+        <translation>Ceļš nav montēts.</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="319"/>
         <source>Invalid desktop entry file: &apos;%1&apos;</source>
-        <translation>Nederīgs darbvirsmas desktop-fails: &apos;%1&apos;</translation>
+        <translation>Nederīgs darbvirsmas ieraksta fails: „%1”</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="355"/>
         <source>No default application is set to launch &apos;%1&apos;</source>
-        <translation>Lai palaistu &apos;%1&apos;, nav iestatīta noklusējuma lietotne</translation>
+        <translation>Nav iestatīta noklusējuma lietotne, ar ko palaist „%1”</translation>
     </message>
     <message>
         <location filename="../core/basicfilelauncher.cpp" line="396"/>
         <source>Cannot set working directory to &apos;%1&apos;: %2</source>
-        <translation>Nevar iestatīt kā darba mapi &apos;%1&apos;: % 2</translation>
+        <translation>Neizdevās iestatīt darba mapi „%1”: %2</translation>
     </message>
     <message>
         <location filename="../placesmodelitem.cpp" line="127"/>
         <source>Identifier: </source>
-        <translation>Identifikators (ierīces): </translation>
+        <translation>Identifikators: </translation>
     </message>
     <message>
         <location filename="../foldermodelitem.cpp" line="61"/>
         <location filename="../foldermodelitem.cpp" line="74"/>
         <source>N/A</source>
-        <translation>–––</translation>
+        <translation>Nav pieejams</translation>
     </message>
 </context>
 <context>
@@ -1586,12 +1585,12 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../rename-dialog.ui" line="14"/>
         <source>Confirm to replace files</source>
-        <translation>Apstiprināt, lai aizstātu failus</translation>
+        <translation>Failu aizstāšanas apstiprinājums</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;There is already a file with the same name in this location.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Do you want to replace the existing file?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Šajā mapē jau ir fails ar identisku nosaukumu.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Vai vēlaties aizstāt esošo failu?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Šajā vietā jau ir fails ar tādu pašu nosaukumu.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Vai vēlaties aizstāt esošo failu?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../rename-dialog.ui" line="76"/>
@@ -1606,7 +1605,7 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../rename-dialog.ui" line="137"/>
         <source>Apply this option to all existing files</source>
-        <translation>Piemērot šo opciju visiem esošajiem failiem</translation>
+        <translation>Lietot šo izvēli visiem esošajiem failiem</translation>
     </message>
 </context>
 <context>
@@ -1624,7 +1623,7 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../filesearch.ui" line="35"/>
         <source>File Name Patterns:</source>
-        <translation>Faila nosaukuma šabloni:</translation>
+        <translation>Failu nosaukumu šabloni:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="44"/>
@@ -1634,7 +1633,7 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../filesearch.ui" line="58"/>
         <source>Use regular expression</source>
-        <translation>Izmantojiet regulārās izteiksmes</translation>
+        <translation>Izmantot regulāro izteiksmi</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="71"/>
@@ -1644,12 +1643,12 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../filesearch.ui" line="84"/>
         <source>&amp;Add</source>
-        <translation>&amp;Pielikt/pievienot</translation>
+        <translation>&amp;Pievienot</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="96"/>
         <source>&amp;Remove</source>
-        <translation>&amp;Noņemt/dzēst</translation>
+        <translation>&amp;Noņemt</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="132"/>
@@ -1664,7 +1663,7 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../filesearch.ui" line="149"/>
         <source>Only search for files of following types:</source>
-        <translation>Meklēt vienīgi šādu tipu failus:</translation>
+        <translation>Meklēt tikai šāda tipa failus:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="155"/>
@@ -1674,7 +1673,7 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../filesearch.ui" line="162"/>
         <source>Image files</source>
-        <translation>Bilžu faili</translation>
+        <translation>Attēlu faili</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="169"/>
@@ -1709,12 +1708,12 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../filesearch.ui" line="240"/>
         <source>&amp;Use regular expression</source>
-        <translation>Lietot regulāro izpausmi (regular expression)</translation>
+        <translation>&amp;Izmantot regulāro izteiksmi</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="267"/>
         <source>Properties</source>
-        <translation>Parametri</translation>
+        <translation>Īpašības</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="273"/>
@@ -1724,7 +1723,7 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../filesearch.ui" line="281"/>
         <source>Larger than:</source>
-        <translation>Lielāks kā:</translation>
+        <translation>Lielāks par:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="302"/>
@@ -1753,12 +1752,12 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../filesearch.ui" line="325"/>
         <source>Smaller than:</source>
-        <translation>Mazāks kā:</translation>
+        <translation>Mazāks par:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="51"/>
         <source>Case sensitive</source>
-        <translation>Reģstrjūtīgs</translation>
+        <translation>Reģistrjutīgs</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="125"/>
@@ -1768,22 +1767,22 @@ Lūdzu dodiet citu nosaukumu.&lt;/p&gt;</translation>
     <message>
         <location filename="../filesearch.ui" line="233"/>
         <source>Case sensiti&amp;ve</source>
-        <translation>Reģistr&amp;jūtīgs</translation>
+        <translation>&amp;Reģistrjutīgs</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="377"/>
         <source>Last Modified Time:</source>
-        <translation>Pēdējās izmaiņas laiks:</translation>
+        <translation>Pēdējo izmaiņu laiks:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="385"/>
         <source>Earlier than:</source>
-        <translation>Pirms:</translation>
+        <translation>Agrāk par:</translation>
     </message>
     <message>
         <location filename="../filesearch.ui" line="402"/>
         <source>Later than:</source>
-        <translation>Pēc:</translation>
+        <translation>Vēlāk par:</translation>
     </message>
 </context>
 </TS>
